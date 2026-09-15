@@ -1,0 +1,59 @@
+{
+  "protocol_version": "1.0.0",
+  "lock_timestamp_utc": "2026-09-15T15:00:00Z",
+  "primary_metrics": {
+    "main_metric": "Task Success Rate (TSR)",
+    "diagnostic_metrics": [
+      "Stale Information Error Rate",
+      "Latency (ms)",
+      "Token Efficiency"
+    ]
+  },
+  "data_splits": {
+    "train_episodes": 120,
+    "dev_episodes": 60,
+    "test_episodes": 300,
+    "test_families_count": 30,
+    "categories": [
+      "no_update",
+      "explicit_update",
+      "stale_evidence",
+      "unresolved_conflict"
+    ]
+  },
+  "models": {
+    "model_A": "Qwen2.5-Coder-3B-Instruct (Local)",
+    "model_B": "DeepSeek-V3 (Commercial API)",
+    "handoff_directions": [
+      "A->B",
+      "B->A",
+      "A->A",
+      "B->B"
+    ]
+  },
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "token_budgets": [
+    512,
+    1024,
+    2048,
+    4096
+  ],
+  "methods_to_evaluate": [
+    "B0_no_memory",
+    "B1_recent",
+    "B3_bm25",
+    "B4_time_filter",
+    "A2_no_validity",
+    "A3_no_role_bonus",
+    "F_rolemem_full"
+  ],
+  "statistical_test": {
+    "bootstrap_samples": 2000,
+    "confidence_level": 0.95,
+    "clustering_unit": "task_family"
+  }
+}

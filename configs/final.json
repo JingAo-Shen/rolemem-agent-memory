@@ -1,0 +1,11 @@
+{
+  "protocol_version": "1.0.0",
+  "data_file": "data/test_episodes.jsonl",
+  "seeds": [17, 29, 43],
+  "token_budget": 2048,
+  "methods": ["B0_no_memory", "B1_recent", "B3_bm25", "B4_time_filter", "A2_no_validity", "A3_no_role_bonus", "F_rolemem_full"],
+  "models": {
+    "coder": "Qwen2.5-Coder-3B-Instruct",
+    "reviewer": "DeepSeek-V3"
+  }
+}
