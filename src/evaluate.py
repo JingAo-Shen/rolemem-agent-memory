@@ -1,148 +1,107 @@
-"""
-Evaluation and scoring engine for RoleMem experiments.
-Executes episodes, logs events.jsonl, predictions.jsonl, and calculates rigorous metrics.
-"""
 import os
 import json
 import time
-import hashlib
 from typing import Dict, Any, List
 from src.memory import RoleMemoryStore
 from src.sandbox import TaskSandbox
 
 def setup_task_memory(store: RoleMemoryStore, task_spec: Dict[str, Any]):
-    """Populates memory store with task history and update events."""
     tid = task_spec["id"]
     cat = task_spec["category"]
 
-    # Write initial events
+    # Add general background distractors
+    for i in range(3):
+        store.write_record({
+            "id": f"{tid}_distractor_{i}",
+            "task_scope": tid,
+            "type": "note",
+            "statement": f"General developer note {i}: standard project logging and linting guidelines apply to {tid}.",
+            "evidence_ids": [f"dist_{i}"],
+            "valid_from": 1,
+            "valid_to": 999999,
+            "role_tags": ["coder"],
+            "artifact_hash": "hash_v1"
+        }, as_of=1)
+
     if cat == "explicit_update":
-        if "cache_config" in str(task_spec):
-            store.write_record({
-                "id": f"{tid}_m1",
-                "task_scope": tid,
-                "type": "requirement",
-                "statement": "Set DEFAULT_TTL = 60 in cache_config.py for fixed cache expiration.",
-                "evidence_ids": ["ev_1"],
-                "valid_from": 1,
-                "valid_to": 3,
-                "role_tags": ["coder", "all"],
-                "artifact_hash": "d4e5f6a1"
-            }, as_of=1)
-            store.write_record({
-                "id": f"{tid}_m2",
-                "task_scope": tid,
-                "type": "requirement",
-                "statement": "UPDATE: Discard fixed 60s TTL; change cache strategy to dynamic adaptive LRU with max_keys=10000.",
-                "evidence_ids": ["ev_2"],
-                "valid_from": 3,
-                "valid_to": 999999,
-                "supersedes": f"{tid}_m1",
-                "role_tags": ["coder", "reviewer", "all"],
-                "artifact_hash": "d4e5f6a2"
-            }, as_of=3)
-        elif "payment_service" in str(task_spec):
-            store.write_record({
-                "id": f"{tid}_m1",
-                "task_scope": tid,
-                "type": "requirement",
-                "statement": "Return dict with flat status {'status': 'SUCCESS', 'tx_id': id}.",
-                "evidence_ids": ["ev_1"],
-                "valid_from": 1,
-                "valid_to": 3,
-                "role_tags": ["coder", "all"],
-                "artifact_hash": "e5f6a1b2"
-            }, as_of=1)
-            store.write_record({
-                "id": f"{tid}_m2",
-                "task_scope": tid,
-                "type": "requirement",
-                "statement": "BREAKING UPDATE: Return standard wrapper {'code': 200, 'data': {'tx_id': id, 'status': 'SUCCESS'}}.",
-                "evidence_ids": ["ev_2"],
-                "valid_from": 3,
-                "valid_to": 999999,
-                "supersedes": f"{tid}_m1",
-                "role_tags": ["coder", "reviewer", "all"],
-                "artifact_hash": "e5f6a1b3"
-            }, as_of=3)
-        elif "billing" in str(task_spec):
-            store.write_record({
-                "id": f"{tid}_m1",
-                "task_scope": tid,
-                "type": "requirement",
-                "statement": "Store billing amounts as float with 2 decimal places.",
-                "evidence_ids": ["ev_1"],
-                "valid_from": 1,
-                "valid_to": 3,
-                "role_tags": ["coder", "all"],
-                "artifact_hash": "f6a1b2c3"
-            }, as_of=1)
-            store.write_record({
-                "id": f"{tid}_m2",
-                "task_scope": tid,
-                "type": "requirement",
-                "statement": "URGENT UPDATE: Floating point precision error found. All amounts MUST be integer micro-units (multiply by 1,000,000).",
-                "evidence_ids": ["ev_2"],
-                "valid_from": 3,
-                "valid_to": 999999,
-                "supersedes": f"{tid}_m1",
-                "role_tags": ["coder", "reviewer", "all"],
-                "artifact_hash": "f6a1b2c4"
-            }, as_of=3)
+        store.write_record({
+            "id": f"{tid}_m1",
+            "task_scope": tid,
+            "type": "requirement",
+            "statement": "Legacy configuration policy: Set DEFAULT_TTL = 60 in cache_config.py.",
+            "evidence_ids": ["ev_1"],
+            "valid_from": 1,
+            "valid_to": 3,
+            "role_tags": ["coder", "all"],
+            "artifact_hash": "hash_v1"
+        }, as_of=1)
+        store.write_record({
+            "id": f"{tid}_m2",
+            "task_scope": tid,
+            "type": "requirement",
+            "statement": "UPDATE: Discard fixed 60s TTL; change cache strategy to dynamic adaptive LRU with max_keys=10000.",
+            "evidence_ids": ["ev_2"],
+            "valid_from": 3,
+            "valid_to": 999999,
+            "supersedes": f"{tid}_m1",
+            "role_tags": ["coder", "reviewer", "all"],
+            "artifact_hash": "hash_v2"
+        }, as_of=3)
+
     elif cat == "stale_evidence":
-        if "auth.py" in str(task_spec):
-            store.write_record({
-                "id": f"{tid}_m1",
-                "task_scope": tid,
-                "type": "fact",
-                "statement": "auth.py defines SALT = 'legacy_salt_value'.",
-                "evidence_ids": ["ev_1"],
-                "valid_from": 1,
-                "valid_to": 999999,
-                "role_tags": ["coder"],
-                "artifact_hash": "a2b3c4d5"  # Old hash
-            }, as_of=1)
-        elif "orders.py" in str(task_spec):
-            store.write_record({
-                "id": f"{tid}_m1",
-                "task_scope": tid,
-                "type": "fact",
-                "statement": "OrderStatus = ['PENDING', 'PAID', 'SHIPPED'].",
-                "evidence_ids": ["ev_1"],
-                "valid_from": 1,
-                "valid_to": 999999,
-                "role_tags": ["coder"],
-                "artifact_hash": "b3c4d5e6"  # Old hash
-            }, as_of=1)
-        elif "policy.py" in str(task_spec):
-            store.write_record({
-                "id": f"{tid}_m1",
-                "task_scope": tid,
-                "type": "fact",
-                "statement": "user permissions checked via user.has_role('admin').",
-                "evidence_ids": ["ev_1"],
-                "valid_from": 1,
-                "valid_to": 999999,
-                "role_tags": ["coder"],
-                "artifact_hash": "c4d5e6f7"  # Old hash
-            }, as_of=1)
+        store.write_record({
+            "id": f"{tid}_m1",
+            "task_scope": tid,
+            "type": "fact",
+            "statement": "Observed auth.py defines SALT = 'legacy_salt_value'.",
+            "evidence_ids": ["ev_1"],
+            "valid_from": 1,
+            "valid_to": 999999,
+            "role_tags": ["coder"],
+            "artifact_hash": "commit_v1"  # Old hash
+        }, as_of=1)
+
+    elif cat == "unresolved_conflict":
+        store.write_record({
+            "id": f"{tid}_m1",
+            "task_scope": tid,
+            "type": "requirement",
+            "statement": "Standard requirement doc: Throttling limit 10 requests per minute.",
+            "evidence_ids": ["ev_1"],
+            "valid_from": 1,
+            "valid_to": 999999,
+            "role_tags": ["coder"],
+            "artifact_hash": "hash_v1"
+        }, as_of=1)
+        store.write_record({
+            "id": f"{tid}_m2",
+            "task_scope": tid,
+            "type": "conflict_warning",
+            "statement": "Requirement doc B: Throttling limit 1000 requests per minute (Unresolved conflict).",
+            "evidence_ids": ["ev_2"],
+            "valid_from": 2,
+            "valid_to": 999999,
+            "role_tags": ["reviewer"],
+            "artifact_hash": "hash_v1"
+        }, as_of=2)
+
     elif cat == "no_update":
         store.write_record({
             "id": f"{tid}_m1",
             "task_scope": tid,
             "type": "requirement",
-            "statement": f"Valid initial requirement for {tid}.",
+            "statement": "Migrate DB timeout settings from seconds to milliseconds format in db_config.py: TIMEOUT_MS = 5000.",
             "evidence_ids": ["ev_1"],
             "valid_from": 1,
             "valid_to": 999999,
             "role_tags": ["coder", "reviewer", "all"],
-            "artifact_hash": "initial_hash"
+            "artifact_hash": "hash_v1"
         }, as_of=1)
 
 def run_evaluation(
     tasks: List[Dict[str, Any]],
     method: str = "full",
-    token_budget: int = 2048,
+    token_budget: int = 512,
     output_dir: str = "runs/run_output"
 ) -> Dict[str, Any]:
     os.makedirs(output_dir, exist_ok=True)
@@ -163,13 +122,11 @@ def run_evaluation(
             family = task["family"]
             role = task.get("roles", {}).get("phase2", "reviewer")
 
-            # Create ephemeral memory store for this task
             store = RoleMemoryStore()
             setup_task_memory(store, task)
 
-            # Retrieve memories as of switch point
             as_of = task.get("switch_point", 4)
-            current_hash = "updated_hash_v2" if cat == "stale_evidence" else None
+            current_hash = "commit_v2" if cat == "stale_evidence" else "hash_v2"
             
             retrieved = store.retrieve(
                 query=task.get("title", ""),
@@ -178,10 +135,10 @@ def run_evaluation(
                 task_scope=tid,
                 current_artifact_hash=current_hash,
                 method=method,
-                token_budget=token_budget
+                token_budget=token_budget,
+                role_bonus=0.8
             )
 
-            # Execute in sandbox
             sandbox = TaskSandbox(task)
             passed, err_msg, exec_meta = sandbox.execute_mock_action(method, retrieved)
             sandbox.cleanup()
