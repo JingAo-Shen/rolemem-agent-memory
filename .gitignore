@@ -13,7 +13,9 @@ venv/
 *.ckpt
 *.onnx
 runs/
+!runs/*.json
 outputs/
+
 wandb/
 mlruns/
 .env

@@ -1,0 +1,497 @@
+{
+  "B0_no_memory": {
+    "tsr": 0.5,
+    "stale_rate": 0.0,
+    "total_tokens": 12483,
+    "passed_count": 6,
+    "total_tasks": 12,
+    "logs": [
+      {
+        "task_id": "task_fixture_01",
+        "category": "no_update",
+        "passed": false,
+        "stale_used": false,
+        "error": "FAILED: Missing TIMEOUT_MS configuration.",
+        "latency": 3.869053602218628,
+        "tokens": {
+          "prompt_tokens": 80,
+          "completion_tokens": 1024,
+          "total_tokens": 1104
+        }
+      },
+      {
+        "task_id": "task_fixture_02",
+        "category": "no_update",
+        "passed": false,
+        "stale_used": false,
+        "error": "FAILED: Missing TIMEOUT_MS configuration.",
+        "latency": 3.4842689037323,
+        "tokens": {
+          "prompt_tokens": 83,
+          "completion_tokens": 835,
+          "total_tokens": 918
+        }
+      },
+      {
+        "task_id": "task_fixture_03",
+        "category": "no_update",
+        "passed": false,
+        "stale_used": false,
+        "error": "FAILED: Missing TIMEOUT_MS configuration.",
+        "latency": 3.7171919345855713,
+        "tokens": {
+          "prompt_tokens": 88,
+          "completion_tokens": 1024,
+          "total_tokens": 1112
+        }
+      },
+      {
+        "task_id": "task_fixture_04",
+        "category": "explicit_update",
+        "passed": false,
+        "stale_used": false,
+        "error": "FAILED: Missing ADAPTIVE_LRU policy implementation.",
+        "latency": 4.305931568145752,
+        "tokens": {
+          "prompt_tokens": 92,
+          "completion_tokens": 1024,
+          "total_tokens": 1116
+        }
+      },
+      {
+        "task_id": "task_fixture_05",
+        "category": "explicit_update",
+        "passed": false,
+        "stale_used": false,
+        "error": "FAILED: Missing ADAPTIVE_LRU policy implementation.",
+        "latency": 3.852630615234375,
+        "tokens": {
+          "prompt_tokens": 86,
+          "completion_tokens": 1024,
+          "total_tokens": 1110
+        }
+      },
+      {
+        "task_id": "task_fixture_06",
+        "category": "explicit_update",
+        "passed": false,
+        "stale_used": false,
+        "error": "FAILED: Missing ADAPTIVE_LRU policy implementation.",
+        "latency": 4.119940996170044,
+        "tokens": {
+          "prompt_tokens": 90,
+          "completion_tokens": 1024,
+          "total_tokens": 1114
+        }
+      },
+      {
+        "task_id": "task_fixture_07",
+        "category": "stale_evidence",
+        "passed": true,
+        "stale_used": false,
+        "error": "PASSED: Correctly avoided hardcoded secrets.",
+        "latency": 4.157403945922852,
+        "tokens": {
+          "prompt_tokens": 86,
+          "completion_tokens": 1024,
+          "total_tokens": 1110
+        }
+      },
+      {
+        "task_id": "task_fixture_08",
+        "category": "stale_evidence",
+        "passed": true,
+        "stale_used": false,
+        "error": "PASSED: Dynamic refactoring successful.",
+        "latency": 1.8357484340667725,
+        "tokens": {
+          "prompt_tokens": 85,
+          "completion_tokens": 456,
+          "total_tokens": 541
+        }
+      },
+      {
+        "task_id": "task_fixture_09",
+        "category": "stale_evidence",
+        "passed": true,
+        "stale_used": false,
+        "error": "PASSED: Correctly avoided hardcoded secrets.",
+        "latency": 3.6806371212005615,
+        "tokens": {
+          "prompt_tokens": 86,
+          "completion_tokens": 1024,
+          "total_tokens": 1110
+        }
+      },
+      {
+        "task_id": "task_fixture_10",
+        "category": "unresolved_conflict",
+        "passed": true,
+        "stale_used": false,
+        "error": "PASSED: Reviewer correctly flagged conflict.",
+        "latency": 3.6415886878967285,
+        "tokens": {
+          "prompt_tokens": 86,
+          "completion_tokens": 1024,
+          "total_tokens": 1110
+        }
+      },
+      {
+        "task_id": "task_fixture_11",
+        "category": "unresolved_conflict",
+        "passed": true,
+        "stale_used": false,
+        "error": "PASSED: Reviewer correctly flagged conflict.",
+        "latency": 4.242079257965088,
+        "tokens": {
+          "prompt_tokens": 87,
+          "completion_tokens": 941,
+          "total_tokens": 1028
+        }
+      },
+      {
+        "task_id": "task_fixture_12",
+        "category": "unresolved_conflict",
+        "passed": true,
+        "stale_used": false,
+        "error": "PASSED: Reviewer correctly flagged conflict.",
+        "latency": 4.120126008987427,
+        "tokens": {
+          "prompt_tokens": 86,
+          "completion_tokens": 1024,
+          "total_tokens": 1110
+        }
+      }
+    ]
+  },
+  "A2_unscoped_stale": {
+    "tsr": 0.6666666666666666,
+    "stale_rate": 0.3333333333333333,
+    "total_tokens": 7534,
+    "passed_count": 8,
+    "total_tasks": 12,
+    "logs": [
+      {
+        "task_id": "task_fixture_01",
+        "category": "no_update",
+        "passed": true,
+        "stale_used": false,
+        "error": "PASSED: Successfully migrated timeout setting to ms.",
+        "latency": 1.262310266494751,
+        "tokens": {
+          "prompt_tokens": 111,
+          "completion_tokens": 66,
+          "total_tokens": 177
+        }
+      },
+      {
+        "task_id": "task_fixture_02",
+        "category": "no_update",
+        "passed": true,
+        "stale_used": false,
+        "error": "PASSED: Successfully migrated timeout setting to ms.",
+        "latency": 2.389040231704712,
+        "tokens": {
+          "prompt_tokens": 114,
+          "completion_tokens": 564,
+          "total_tokens": 678
+        }
+      },
+      {
+        "task_id": "task_fixture_03",
+        "category": "no_update",
+        "passed": true,
+        "stale_used": false,
+        "error": "PASSED: Successfully migrated timeout setting to ms.",
+        "latency": 3.323364734649658,
+        "tokens": {
+          "prompt_tokens": 119,
+          "completion_tokens": 829,
+          "total_tokens": 948
+        }
+      },
+      {
+        "task_id": "task_fixture_04",
+        "category": "explicit_update",
+        "passed": true,
+        "stale_used": false,
+        "error": "PASSED: Correctly implemented active ADAPTIVE_LRU policy.",
+        "latency": 1.0536000728607178,
+        "tokens": {
+          "prompt_tokens": 158,
+          "completion_tokens": 81,
+          "total_tokens": 239
+        }
+      },
+      {
+        "task_id": "task_fixture_05",
+        "category": "explicit_update",
+        "passed": false,
+        "stale_used": true,
+        "error": "FAILED: Reused deprecated DEFAULT_TTL assignment.",
+        "latency": 0.8701770305633545,
+        "tokens": {
+          "prompt_tokens": 152,
+          "completion_tokens": 121,
+          "total_tokens": 273
+        }
+      },
+      {
+        "task_id": "task_fixture_06",
+        "category": "explicit_update",
+        "passed": false,
+        "stale_used": true,
+        "error": "FAILED: Reused deprecated DEFAULT_TTL assignment.",
+        "latency": 0.6286048889160156,
+        "tokens": {
+          "prompt_tokens": 156,
+          "completion_tokens": 36,
+          "total_tokens": 192
+        }
+      },
+      {
+        "task_id": "task_fixture_07",
+        "category": "stale_evidence",
+        "passed": true,
+        "stale_used": false,
+        "error": "PASSED: Correctly avoided hardcoded secrets.",
+        "latency": 2.377936363220215,
+        "tokens": {
+          "prompt_tokens": 110,
+          "completion_tokens": 510,
+          "total_tokens": 620
+        }
+      },
+      {
+        "task_id": "task_fixture_08",
+        "category": "stale_evidence",
+        "passed": false,
+        "stale_used": true,
+        "error": "FAILED: Reused invalidated hardcoded SALT constant.",
+        "latency": 1.7157940864562988,
+        "tokens": {
+          "prompt_tokens": 109,
+          "completion_tokens": 335,
+          "total_tokens": 444
+        }
+      },
+      {
+        "task_id": "task_fixture_09",
+        "category": "stale_evidence",
+        "passed": false,
+        "stale_used": true,
+        "error": "FAILED: Reused invalidated hardcoded SALT constant.",
+        "latency": 3.7516229152679443,
+        "tokens": {
+          "prompt_tokens": 110,
+          "completion_tokens": 1024,
+          "total_tokens": 1134
+        }
+      },
+      {
+        "task_id": "task_fixture_10",
+        "category": "unresolved_conflict",
+        "passed": true,
+        "stale_used": false,
+        "error": "PASSED: Reviewer correctly flagged conflict.",
+        "latency": 3.5127382278442383,
+        "tokens": {
+          "prompt_tokens": 149,
+          "completion_tokens": 788,
+          "total_tokens": 937
+        }
+      },
+      {
+        "task_id": "task_fixture_11",
+        "category": "unresolved_conflict",
+        "passed": true,
+        "stale_used": false,
+        "error": "PASSED: Reviewer correctly flagged conflict.",
+        "latency": 3.5880093574523926,
+        "tokens": {
+          "prompt_tokens": 150,
+          "completion_tokens": 758,
+          "total_tokens": 908
+        }
+      },
+      {
+        "task_id": "task_fixture_12",
+        "category": "unresolved_conflict",
+        "passed": true,
+        "stale_used": false,
+        "error": "PASSED: Reviewer correctly flagged conflict.",
+        "latency": 3.857677698135376,
+        "tokens": {
+          "prompt_tokens": 149,
+          "completion_tokens": 835,
+          "total_tokens": 984
+        }
+      }
+    ]
+  },
+  "F_rolemem_scoped": {
+    "tsr": 0.9166666666666666,
+    "stale_rate": 0.0,
+    "total_tokens": 8901,
+    "passed_count": 11,
+    "total_tasks": 12,
+    "logs": [
+      {
+        "task_id": "task_fixture_01",
+        "category": "no_update",
+        "passed": true,
+        "stale_used": false,
+        "error": "PASSED: Successfully migrated timeout setting to ms.",
+        "latency": 0.6038179397583008,
+        "tokens": {
+          "prompt_tokens": 112,
+          "completion_tokens": 64,
+          "total_tokens": 176
+        }
+      },
+      {
+        "task_id": "task_fixture_02",
+        "category": "no_update",
+        "passed": true,
+        "stale_used": false,
+        "error": "PASSED: Successfully migrated timeout setting to ms.",
+        "latency": 2.8024418354034424,
+        "tokens": {
+          "prompt_tokens": 115,
+          "completion_tokens": 592,
+          "total_tokens": 707
+        }
+      },
+      {
+        "task_id": "task_fixture_03",
+        "category": "no_update",
+        "passed": true,
+        "stale_used": false,
+        "error": "PASSED: Successfully migrated timeout setting to ms.",
+        "latency": 1.4159986972808838,
+        "tokens": {
+          "prompt_tokens": 120,
+          "completion_tokens": 273,
+          "total_tokens": 393
+        }
+      },
+      {
+        "task_id": "task_fixture_04",
+        "category": "explicit_update",
+        "passed": true,
+        "stale_used": false,
+        "error": "PASSED: Correctly implemented active ADAPTIVE_LRU policy.",
+        "latency": 0.8838868141174316,
+        "tokens": {
+          "prompt_tokens": 134,
+          "completion_tokens": 28,
+          "total_tokens": 162
+        }
+      },
+      {
+        "task_id": "task_fixture_05",
+        "category": "explicit_update",
+        "passed": true,
+        "stale_used": false,
+        "error": "PASSED: Correctly implemented active ADAPTIVE_LRU policy.",
+        "latency": 0.8071377277374268,
+        "tokens": {
+          "prompt_tokens": 128,
+          "completion_tokens": 83,
+          "total_tokens": 211
+        }
+      },
+      {
+        "task_id": "task_fixture_06",
+        "category": "explicit_update",
+        "passed": false,
+        "stale_used": false,
+        "error": "FAILED: Missing ADAPTIVE_LRU policy implementation.",
+        "latency": 4.086573600769043,
+        "tokens": {
+          "prompt_tokens": 132,
+          "completion_tokens": 1024,
+          "total_tokens": 1156
+        }
+      },
+      {
+        "task_id": "task_fixture_07",
+        "category": "stale_evidence",
+        "passed": true,
+        "stale_used": false,
+        "error": "PASSED: Correctly avoided hardcoded secrets.",
+        "latency": 4.169996500015259,
+        "tokens": {
+          "prompt_tokens": 86,
+          "completion_tokens": 1024,
+          "total_tokens": 1110
+        }
+      },
+      {
+        "task_id": "task_fixture_08",
+        "category": "stale_evidence",
+        "passed": true,
+        "stale_used": false,
+        "error": "PASSED: Dynamic refactoring successful.",
+        "latency": 2.891996383666992,
+        "tokens": {
+          "prompt_tokens": 85,
+          "completion_tokens": 664,
+          "total_tokens": 749
+        }
+      },
+      {
+        "task_id": "task_fixture_09",
+        "category": "stale_evidence",
+        "passed": true,
+        "stale_used": false,
+        "error": "PASSED: Correctly avoided hardcoded secrets.",
+        "latency": 3.4213340282440186,
+        "tokens": {
+          "prompt_tokens": 86,
+          "completion_tokens": 1024,
+          "total_tokens": 1110
+        }
+      },
+      {
+        "task_id": "task_fixture_10",
+        "category": "unresolved_conflict",
+        "passed": true,
+        "stale_used": false,
+        "error": "PASSED: Reviewer correctly flagged conflict.",
+        "latency": 3.130303382873535,
+        "tokens": {
+          "prompt_tokens": 151,
+          "completion_tokens": 727,
+          "total_tokens": 878
+        }
+      },
+      {
+        "task_id": "task_fixture_11",
+        "category": "unresolved_conflict",
+        "passed": true,
+        "stale_used": false,
+        "error": "PASSED: Reviewer correctly flagged conflict.",
+        "latency": 3.7614612579345703,
+        "tokens": {
+          "prompt_tokens": 152,
+          "completion_tokens": 1024,
+          "total_tokens": 1176
+        }
+      },
+      {
+        "task_id": "task_fixture_12",
+        "category": "unresolved_conflict",
+        "passed": true,
+        "stale_used": false,
+        "error": "PASSED: Reviewer correctly flagged conflict.",
+        "latency": 3.7730414867401123,
+        "tokens": {
+          "prompt_tokens": 151,
+          "completion_tokens": 922,
+          "total_tokens": 1073
+        }
+      }
+    ]
+  }
+}

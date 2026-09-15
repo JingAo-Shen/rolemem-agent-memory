@@ -1,0 +1,14 @@
+\begin{table}[t]
+\centering
+\caption{Empirical evaluation on DeepSeek-V3 LLM agent handoffs across 12 dynamic software engineering environments. RoleMem achieves superior task success while completely eliminating stale context contamination.}
+\label{tab:main_results}
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Method} & \textbf{TSR (\%) $\uparrow$} & \textbf{Stale Error (\%) $\downarrow$} & \textbf{Avg Prompt Tokens} & \textbf{Total Tokens} & \textbf{Mean Latency (s)} \\
+\midrule
+$B_0$: Zero Memory & 50.0\% & 0.0\% & 86.4 & 12,483 & 3.73s \\
+$A_2$: Unscoped Stale & 66.7\% & 33.3\% & 128.5 & 7,534 & 2.40s \\
+\textbf{RoleMem (Ours)} & \textbf{91.7\%} & \textbf{0.0\%} & \textbf{116.8} & \textbf{8,901} & \textbf{2.48s} \\
+\bottomrule
+\end{tabular}
+\end{table}
