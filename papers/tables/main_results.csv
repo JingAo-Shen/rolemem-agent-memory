@@ -1,0 +1,8 @@
+Method,Type,TSR (%),Std (%),Stale Rate (%),Paired Diff vs Full (95% CI)
+B0 (No Memory),Baseline,50.0,0.0,50.0,"+30.0pp [+21.3, +38.7]"
+B1 (Recent Truncated),Baseline,80.0,0.0,20.0,"+0.0pp [-7.0, +7.3]"
+B3 (BM25 Retrieval),Baseline,80.0,0.0,0.0,"+0.0pp [+0.0, +0.0]"
+B4 (Temporal Filter),Baseline,80.0,0.0,0.0,"+0.0pp [+0.0, +0.0]"
+A2 (No Validity Filter),Ablation,50.0,0.0,50.0,"+30.0pp [+21.3, +39.3]"
+A3 (No Role Bonus),Ablation,80.0,0.0,0.0,"+0.0pp [+0.0, +0.0]"
+RoleMem (Full),Proposed,80.0,0.0,0.0,Reference (0.0pp)

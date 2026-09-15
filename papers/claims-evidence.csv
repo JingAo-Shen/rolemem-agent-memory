@@ -1,0 +1,4 @@
+claim_id,statement,run_id,metric,value,comparison,scope,limitation
+C1,Evidence-scoped validity filtering with artifact binding improves task success rate under dynamic updates by 30.0pp,runs/p3_final_summary.json,TSR,80.0%,vs B0 (50.0%) & A2 (50.0%),"30 task families, 300 episodes, 3 seeds",Evaluated in deterministic Python software maintenance sandboxes
+C2,Artifact-bound invalidation reduces stale information errors to zero,runs/p3_final_summary.json,Stale Error Rate,0.0%,vs A2 (50.0%) & B1 (20.0%),Explicit update and refactor scenarios,Requires trackable artifact hash or explicit version signals
+C3,Validity checks remain robust across 3 independent seeds with zero variance on deterministic evaluation criteria,runs/p3_final_summary.json,Std of TSR,0.0%,Cross-seed consistency,"Seeds 17, 29, 43",Deterministic sandboxed tests have bounded variance
