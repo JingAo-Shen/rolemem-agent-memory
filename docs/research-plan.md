@@ -1,70 +1,56 @@
-# Research Plan
+# RoleMem：需求变化下的跨模型交接记忆
 
-## Core Question
+## 1. 问题与假设
 
-Can structured, evidence-grounded and role-conditioned memory preserve task continuity when work is handed off across different LLM agents or models, while reducing stale-memory and model-specific bias?
+在工具、历史来源、记忆 token 预算相同的条件下，带证据有效期的角色投影能否降低交接后使用过时信息的错误，并提高最终任务成功率？暂定题目：Evidence-Scoped Role Memory for Cross-Model Task Handoffs。
 
-## Candidate Contributions
+第一篇仅做 coder/reviewer 两个角色、A/B 两个冻结模型；不做通用人格、多 agent 协商或自动技能训练。A-MEM、AgeMem、LongMemEval-V2 都必须核查，不能把结构化记忆本身当创新。
 
-1. Define a precise research problem with measurable failure modes.
-2. Build a reproducible benchmark or task suite.
-3. Propose a method that is lightweight enough to run mostly on a 22 GB GPU.
-4. Compare against strong, simple baselines rather than only weak handcrafted baselines.
-5. Report quality, cost, latency, memory use, and failure cases.
+- H1（主）：Full 相对最强同预算基线提高最终任务成功率。
+- H2：去掉有效期检查会增加需求变化子集的过时信息错误，静态子集效应应较小。
+- H3：Full 优于“同证据/有效期、无角色投影”。若不成立，删掉角色贡献，缩小题目。
+- H4：A→B、B→A 两方向有效；两个模型的结果不能支持适用于所有 agent 的主张。
 
-## Research Hypotheses
+## 2. 最小方法与接口
 
-- **H1:** A structured method tailored to the target failure mode can outperform naive context expansion or naive retrieval.
-- **H2:** The method can improve task success without requiring a larger backbone model.
-- **H3:** Benefits remain under model/domain/task transfer instead of appearing only in a single in-domain setup.
-- **H4:** The contribution remains useful after controlling for additional tokens, retrieval calls, or compute budget.
+采用 append-only JSONL 证据 + SQLite 记录，不需要图数据库。
 
-## Methodology Rules
+记录字段：id, task_scope, type, statement, evidence_ids, created_at, valid_from, valid_to, supersedes, status, role_tags, artifact_hash。
 
-- Separate training, validation, and final evaluation scenarios.
-- Log every experiment with seed, model version, prompt/config hash, GPU, runtime, and cost.
-- Always include simple baselines.
-- Prefer at least 3 random seeds for smaller experiments.
-- Perform ablations on every proposed component.
-- Add qualitative failure analysis, not only aggregate accuracy.
+1. 从当时可见的用户指令、文件版本、工具结果提取候选；推断标 hypothesis，不能自动成为事实。
+2. 写入时检查证据存在、时间和作用域。文件哈希改变则相关记录 stale；明确更新通过 supersedes 形成版本关系。
+3. 没有明确更新关系的矛盾保留双方并标 conflict；不是“最后一句总正确”。可将冲突作为提醒，不能当确定事实。
+4. 检索先过滤作用域和有效时间，再按相关度排序，同分按 ID 排序。
+5. coder 优先当前约束/失败动作，reviewer 优先验收条件/未验证主张。初版 role bonus 在开发集 {0,0.25,0.5} 中选；基础相关度归一化规则固定。
+6. 输出记录摘要和证据 ID。各基线均可在同工具预算内读取相同原始证据。
 
-## Paper Skeleton
+接口：write(events, as_of)、retrieve(query, role, as_of, budget)、invalidate(event)。记录返回顺序、实际 tokens 和全部提取成本。
 
-1. Introduction
-2. Related Work
-3. Problem Formulation
-4. Proposed Method
-5. Benchmark / Experimental Setup
-6. Main Results
-7. Ablation Study
-8. Failure Analysis
-9. Limitations
-10. Conclusion
+## 3. 数据与可执行任务
 
-## Direction-Specific Design
+采用本地小型 Python 仓库：配置变更、API 契约修复、数据转换规则修改。每题三段：初始工作→可见需求/状态更新→新会话完成或审查，隔离隐藏测试决定正确性。
 
-### Memory Layers
-- Evidence Memory: immutable observations, files, tests, logs, tool results.
-- Canonical Memory: facts, decisions, constraints, failures, skills, hypotheses.
-- Role Views: coder, reviewer, researcher, planner, operator.
+- P1：12 个手工审核 fixture，无变化/明确更新/证据失效/未决冲突各 3 个，仅调试。
+- P2：60 个开发 episode，至少 12 个模板家族，四种情况均衡。基线原始历史必须包含 Full 接收的全部更新信息。
+- P3 起始设计：train 120 / dev 60 / test 300 episode；按仓库和模板家族切分，测试至少 30 家族，按功效评估决定是否扩样。实体替换不是新家族。
+- 主实验 A→B，复制 B→A；A→A/B→B 控制会话重置；不换会话完整历史是另一参考。角色变化与模型变化分别操纵，不能捆绑。
+- 外部 LongMemEval 或 V2 用于时间更新诊断，不能用问答成绩替代交接任务成绩。
 
-### Key Research Problems
-- Cross-model memory transfer
-- Stale memory and temporal validity
-- Conflict resolution
-- Selective forgetting
-- Evidence-based verification before memory write
-- Role-aware projection rather than plain top-k retrieval
+示例：初始 CSV 导出 UTC；更新需求改成本地时区并更新可见样例；新 coder 修复，reviewer 审查。旧结论应失效。最终程序边界行为评分，复述新需求不算通过。
 
-### Candidate Benchmark: CrossAgentBench
-Tasks are divided into multiple sessions with deliberate agent/model handoffs, requirement changes, stale facts, failed attempts, and conflicting updates.
+主实验记忆仅来自训练历史；每个测试 episode 可追加其自身可见历史，结束即清空，不跨测试共享。隐藏验收代码、答案和未来更新不在 agent 文件系统中。
 
-### Candidate Metrics
-- Task Success Rate
-- Context Recovery Accuracy
-- Cross-Agent Transfer Retention
-- Stale Memory Error Rate
-- Conflict Resolution Accuracy
-- Repeated Failure Rate
-- Token / latency / storage cost
+## 4. 指标与预算
 
+- 主指标 TSR = 全部隐藏验收通过的 episode / 全部 episode。
+- stale-error = 使用明确被替代的信息造成错误的 episode / 含该类更新的 episode；规则/盲审认定，不能只匹配关键词。
+- evidence precision = 有效支持引用 / 抽查引用；另报缺引用率。
+- 事实槽位恢复准确率为独立诊断，不能把诊断问题输入主任务。
+- 交接损失报相对同模型会话重置的绝对百分点差；按任务家族聚类统计。
+- 主记忆预算 2,048 tokens；512/1,024/4,096 为敏感性。总输出上限 4,096 tokens、工具上限 20 步；超限计失败。跨 tokenizer 报真实 tokens 和字节数。
+
+## 5. 继续/停止及论文证据
+
+P2 观察 TSR +5pp 和更新子集 stale-error 相对下降 20% 的信号，这些是投入门槛，不是显著性结果。只胜无记忆不能扩跑。两轮修复后仍不胜时间过滤基线，优先否定角色假设。
+
+正式证据：配对区间、3 seeds、角色独立消融、双向交接、预算曲线及至少 20 个失败案例盲审。角色无增量时不能继续把 role-conditioned 写成关键贡献。研究设计不等于已证明新颖性。

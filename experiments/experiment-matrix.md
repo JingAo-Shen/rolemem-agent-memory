@@ -1,29 +1,30 @@
-# Experiment Matrix
+# RoleMem 实验矩阵
 
-## Baseline Families
+所有行共用任务、原始证据访问权、模型、输出/工具预算。P2 只用 dev，P3 才按锁定协议评 test。
 
-- No special mechanism / direct prompting
-- Full-history or enlarged-context baseline
-- Summarization baseline
-- Retrieval baseline
-- Strong recent method from literature
-- Proposed method
+| ID | 方法 | 目的 | 阶段 |
+|---|---|---|---|
+| B0 | 无持久记忆，新会话只有当前需求 | 下限 | P1+ |
+| B1 | 最近历史，按同 token 预算截断 | 排除原文保留收益 | P1+ |
+| B2 | 滚动摘要，同一提取模型 | 摘要控制 | P2+ |
+| B3 | BM25 与 dense retrieval 各一行 | 简单检索强基线 | P2+ |
+| B4 | B3 中 dev 最优者 + 明确更新时间/有效期过滤 | 排除时间管理解释全部收益 | P2+ |
+| B5 | A-MEM adapted | 结构记忆相关基线 | P3，P0 核查适配 |
+| B6 | P0 锁定近期环境记忆方法，优先核查 AgentRunbook | 防止只胜旧基线 | P3 |
+| F | 证据校验 + 有效期 + 角色投影 | 主方法 | P2+ |
+| R0 | 完整历史，不限制为记忆预算 | 非等预算参考，单独报告 | P3 |
 
-## Common Metrics
+## 消融
 
-- Task success / primary quality metric
-- Token usage
-- Latency
-- GPU memory
-- Number of model/tool calls
-- Failure rate by category
-- Cost per successful task
+| ID | 从 F 改动 | 必须保持 |
+|---|---|---|
+| A1 | 不做证据校验 | 有效期/角色、提取模型与记录预算 |
+| A2 | 不做有效期过滤 | 证据/角色 |
+| A3 | 取消 role bonus | 证据/有效期、相同预算 |
+| A4 | 角色标签随机打乱 | 实际工作角色不变 |
 
-## Ablation Template
+P2 核心：B1/B3/B4/F/A2/A3；单模型交接对、60 dev、seed 17。每次提取记忆缓存只在同输入/同方法/同种子内使用，不能把 Full 精加工记录免费给其他方法或反之。
 
-| Exp | Backbone | Component A | B | C | Primary Metric | Cost | Notes |
-|---|---|---:|---:|---:|---:|---:|---|
-| B0 | TBD | 0 | 0 | 0 | | | baseline |
-| A1 | TBD | 1 | 0 | 0 | | | |
-| A2 | TBD | 1 | 1 | 0 | | | |
-| Full | TBD | 1 | 1 | 1 | | | |
+P3 主表：B0–B6/F，A→B 与 B→A，各 3 seeds {17,29,43}。先做 2,048 tokens；预算敏感性只对 B4/F 做 512/1,024/4,096，避免全组合爆炸。角色变化×模型变化在独立诊断子表，不把所有交叉都当主比较。
+
+主比较 F 对开发集冻结的最强同预算基线；其他比较为次要。表列：TSR、配对差与 CI、stale-error、缺引用率、全成本、p95 延迟、n/families。失败子类、静态/更新分层必须保留，不填虚拟数值。

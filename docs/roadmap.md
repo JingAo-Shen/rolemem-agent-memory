@@ -1,29 +1,21 @@
-# Roadmap
+# RoleMem：执行路线
 
-## Phase 0 — Literature and Problem Lock
-- Build a paper matrix of recent related work.
-- Identify 3–5 strongest baselines.
-- Write a one-page problem definition.
-- Define success/failure metrics before implementing the proposed method.
+每阶段为一次独立交付。工作包见 agent-task-packets.md；全局规则见 ../../EXECUTION-CONTRACT.md。当前均为 NOT_RUN。
 
-## Phase 1 — Reproducible Baseline
-- Implement the simplest working pipeline.
-- Freeze dataset/task splits.
-- Add experiment logging and seed control.
-- Reproduce at least one public baseline.
+| 阶段 | 目标 | 必须交付 | 进入下一阶段的条件 |
+|---|---|---|---|
+| P0 | 文献最近邻、两模型资源、交接任务规格 | literature.csv、feasibility.md、problem-lock.md、P0-review.md | 数据/资源可行、最近邻差异可检验；交回负责人复核 |
+| P1 | 12 个任务 fixture 与隐藏评分器 | 可运行入口、fixtures、隔离评测器、smoke 日志、P1-review.md | 错误案例可被拒绝、重放一致、资源实测完成 |
+| P2 | 60 个开发 episode 上检验有效期/角色的独立增量 | dev 原始运行、消融、完整成本、P2-review.md | 按 research-plan 判定继续/修复/停止，不能只凭正面案例 |
+| P3 | 双向交接、角色消融与预算曲线 | protocol-lock.json、正式运行与 CI、P3-review.md | 负责人检查 P2 后冻结协议；测试不再调参 |
+| P4 | 从证据组织论文 | 自动表图、claims-evidence.csv、初稿、P4-review.md | 每个主张有 run 和图表证据，无结果的主张删除 |
 
-## Phase 2 — Proposed Method
-- Implement the smallest version of the core idea.
-- Run controlled comparisons under the same budget.
-- Record negative results.
+## 时间与运行预算
 
-## Phase 3 — Ablation and Generalization
-- Remove each component independently.
-- Test different backbone sizes.
-- Test transfer to at least one unseen model/domain/environment when applicable.
+P0 可先安排 1–2 个工作日，P1 约 2–4 个，P2 约 2–5 个；是排程参考而非完成承诺。P3 必须用 P1/P2 的真实吞吐估算，先列运行清单和费用上限。不能在没有测量时承诺一张卡完成。
 
-## Phase 4 — Paper
-- Freeze the experimental protocol.
-- Generate final tables and plots automatically.
-- Write limitations and failure cases early.
-- Prepare reproducibility checklist and release plan.
+每次只执行一个工作包。P2 最多两轮有记录的机制修复；测试只按冻结协议开启。环境问题可以阶段内修复，科学问题/数据协议改变需交回复核，生成新版本并保留原方案。
+
+## 论文所需最小证据
+
+一个主要研究问题、同预算强基线、每核心组件独立消融、独立测试/泛化条件、成本、失败与限制。尚未取得的数据或资源标 BLOCKED；单种子 pilot 不能替代正式结论。
