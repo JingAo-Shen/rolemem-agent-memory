@@ -1,0 +1,11 @@
+{
+  "run_id": "pilot_p2",
+  "data_file": "data/dev_episodes.jsonl",
+  "token_budget": 512,
+  "methods": ["B1_recent", "B3_bm25", "B4_time_filter", "A2_no_validity", "A3_no_role_bonus", "F_rolemem_full"],
+  "models": {
+    "coder": "Qwen2.5-Coder-3B",
+    "reviewer": "DeepSeek-V3"
+  },
+  "seed": 17
+}
