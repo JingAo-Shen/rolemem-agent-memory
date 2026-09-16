@@ -52,13 +52,20 @@ class RoleMemStoreV1:
             parent.valid_to = min(parent.valid_to, record.valid_from)
             self._propagate_invalidation(record.supersedes, record.valid_from)
 
-    def _propagate_invalidation(self, parent_id: str, timestamp: float) -> None:
-        """Transitively invalidate dependent child records."""
+    def _propagate_invalidation(self, parent_id: str, timestamp: float, visited: Optional[Set[str]] = None) -> None:
+        """Transitively invalidate dependent child records with cycle protection."""
+        if visited is None:
+            visited = set()
+        if parent_id in visited:
+            return
+        visited.add(parent_id)
+
         for rec in self.records.values():
             if parent_id in rec.depends_on and rec.status == "ACTIVE":
                 rec.status = "SUPERSEDED"
                 rec.valid_to = min(rec.valid_to, timestamp)
-                self._propagate_invalidation(rec.memory_id, timestamp)
+                self._propagate_invalidation(rec.memory_id, timestamp, visited)
+
 
     def selective_artifact_invalidation(self, workspace_files: Dict[str, str]) -> Set[str]:
         """
