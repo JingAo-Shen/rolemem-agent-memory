@@ -1,10 +1,13 @@
-# Pilot-v1.2b Real 7B End-to-End Smoke Test Report
+# Pilot-v1.2b Real 0.5B Smoke Test Report
+
+> [!WARNING]
+> **PREVIOUS 7B CLAIM INVALIDATED**: The previous preliminary run labeled "7B" was executed using `models/qwen2.5-coder-0.5b` while the 7B weights were downloading. This run has been corrected and labeled as 0.5B. Full 7B model execution is recorded in `reports/real-7b-e2e-smoke.md`.
 
 ## Executive Summary
 
-This report documents genuine local 7B model inference (`Qwen/Qwen2.5-Coder-7B-Instruct`) executed across authentic Git repository fixtures (`fixtures_v2/`).
+This report documents genuine local 0.5B model inference (`Qwen/Qwen2.5-Coder-0.5B-Instruct` checkpointed at `models/qwen2.5-coder-0.5b`) executed across authentic Git repository fixtures (`fixtures_v2/`).
 It validates the entire evaluation loop end-to-end under genuine repository state grounding:
-`Memory Retrieval -> 7B LLM Inference -> AST Stale Analysis -> SecureSandboxExecutor (bwrap) -> Hidden Pytest -> Telemetry`.
+`Memory Retrieval -> 0.5B LLM Inference -> AST Stale Analysis -> SecureSandboxExecutor (bwrap) -> Hidden Pytest -> Telemetry`.
 
 ### Model and Environment Specification
 

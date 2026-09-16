@@ -5,31 +5,54 @@
   "license": "MIT",
   "language": "Python",
   "track_candidate": "B",
-  "task_family": "convention_change",
-  "pr_url": "https://github.com/urllib3/urllib3/pull/5223",
-  "issue_url": "https://github.com/urllib3/urllib3/issues/5222",
+  "task_family": "semantic_change",
+  "pr_url": "https://github.com/urllib3/urllib3/pull/2050",
+  "issue_url": "https://github.com/urllib3/urllib3/issues/2049",
   "base_commit": "a5d70ebfd6a30ceba0e9cc322089a6497dcd643e",
   "history_commit": "a5d70ebfd6a30ceba0e9cc322089a6497dcd643e",
-  "transition_commit": "dbd3622b354d3a9538826983cfcd78dde10e8472",
+  "transition_commit": "9a209d21087de10b300b2530de023989a71a3f7e",
   "target_commit": "9a209d21087de10b300b2530de023989a71a3f7e",
-  "repository_change": "Deprecate empty collection allowed_methods in Retry in favor of explicit False or None for all-verbs retries",
+  "repository_change": "Deprecate passing empty collection to allowed_methods in favor of False",
   "changed_files": [
     "src/urllib3/util/retry.py"
   ],
   "changed_symbols": [
-    "Retry.allowed_methods",
-    "Retry.DEFAULT_ALLOWED_METHODS"
+    "Retry.allowed_methods"
   ],
-  "stale_memory_candidate": "Pass allowed_methods=[] or allowed_methods=set() to retry all HTTP methods",
-  "valid_memory_candidate": "Pass allowed_methods=None or allowed_methods=False to retry all HTTP methods without deprecation warning",
-  "current_task": "Implement `create_all_verbs_retry()` in `retry_factory.py` returning Retry configured for all methods.",
-  "target_file": "retry_factory.py",
-  "target_symbol": "create_all_verbs_retry",
-  "existing_tests": "test/test_retry.py::test_retry_allowed_methods_empty",
+  "stale_memory_candidate": "Pass empty collection allowed_methods=[] to disable retry on all HTTP methods",
+  "valid_memory_candidate": "Pass allowed_methods=False to disable retry on all HTTP methods",
+  "current_task": "Implement `disable_method_retries()` in `no_retry_policy.py` returning Retry configured to never retry by method.",
+  "target_file": "no_retry_policy.py",
+  "target_symbol": "disable_method_retries",
+  "existing_tests": "test/test_retry.py::TestRetry::test_empty_allowed_methods_deprecation",
   "generated_tests": "def test_all_verbs_retry():\n    from retry_factory import create_all_verbs_retry\n    r = create_all_verbs_retry()\n    assert r.allowed_methods is None or r.allowed_methods is False",
-  "test_evidence_source": "urllib3 PR #5223 deprecation warning in retry.py",
+  "test_evidence_source": "urllib3 PR #2050 empty collection deprecation warning",
   "difficulty": "medium",
   "leakage_review": "PASS",
-  "benchmark_status": "PROVISIONAL_GOLD",
-  "provisional_notes": "Commit/PR metadata verified, but repository-state causality and fixture fidelity not yet fully grounded in git checkout."
+  "benchmark_status": "PROVISIONAL_GOLD_V2",
+  "provisional_notes": "Commit/PR metadata verified, but repository-state causality and fixture fidelity not yet fully grounded in git checkout.",
+  "track": "B",
+  "causality_assertions": [
+    {
+      "artifact": "src/urllib3/util/retry.py",
+      "symbol": "allowed_methods",
+      "base_state": "exists_active",
+      "target_state": "deprecated_warn",
+      "target_text_contains": "Using an empty collection for 'allowed_methods'"
+    }
+  ],
+  "environment": {
+    "python_version": "3.10",
+    "dependency_constraints": [
+      "pytest>=7.0.0"
+    ],
+    "install_command": "uv pip install pytest",
+    "environment_source": "setup.cfg"
+  },
+  "overlay": {
+    "overlay_required": false,
+    "overlay_reason": null,
+    "overlay_sha256": null,
+    "affected_files": []
+  }
 }

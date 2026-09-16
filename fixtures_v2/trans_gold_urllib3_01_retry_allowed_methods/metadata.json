@@ -5,31 +5,54 @@
   "license": "MIT",
   "language": "Python",
   "track_candidate": "A",
-  "task_family": "parameter_renaming",
-  "pr_url": "https://github.com/urllib3/urllib3/pull/2000",
-  "issue_url": "https://github.com/urllib3/urllib3/issues/1916",
+  "task_family": "api_deprecation",
+  "pr_url": "https://github.com/urllib3/urllib3/pull/2050",
+  "issue_url": "https://github.com/urllib3/urllib3/issues/2049",
   "base_commit": "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5",
   "history_commit": "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5",
-  "transition_commit": "0993ad4390cd524262eef79fda304b0f96a80918",
+  "transition_commit": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
   "target_commit": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
-  "repository_change": "Rename Retry method_whitelist to allowed_methods with deprecation warning for method_whitelist",
+  "repository_change": "Deprecate method_whitelist in Retry in favor of allowed_methods",
   "changed_files": [
     "src/urllib3/util/retry.py"
   ],
   "changed_symbols": [
-    "Retry.method_whitelist",
-    "Retry.allowed_methods"
+    "Retry.DEFAULT_ALLOWED_METHODS",
+    "Retry.__init__"
   ],
-  "stale_memory_candidate": "Instantiate Retry with method_whitelist={'GET', 'POST'}",
-  "valid_memory_candidate": "Instantiate Retry with allowed_methods={'GET', 'POST'}",
-  "current_task": "Implement `build_custom_retry(methods: list)` in `retry_factory.py` configuring a Retry instance.",
+  "stale_memory_candidate": "Pass method_whitelist to urllib3.util.retry.Retry constructor",
+  "valid_memory_candidate": "Pass allowed_methods to urllib3.util.retry.Retry constructor",
+  "current_task": "Implement `build_custom_retry(methods)` in `retry_factory.py` returning a Retry object with custom methods.",
   "target_file": "retry_factory.py",
   "target_symbol": "build_custom_retry",
-  "existing_tests": "test/test_retry.py::test_retry_allowed_methods",
+  "existing_tests": "test/test_retry.py::TestRetry::test_method_whitelist_deprecation",
   "generated_tests": "def test_build_custom_retry():\n    from retry_factory import build_custom_retry\n    r = build_custom_retry(['GET', 'POST'])\n    assert r.allowed_methods == frozenset(['GET', 'POST'])",
-  "test_evidence_source": "urllib3 PR #2000 deprecation implementation in retry.py",
+  "test_evidence_source": "urllib3 PR #2050 deprecation warning for method_whitelist",
   "difficulty": "medium",
   "leakage_review": "PASS",
-  "benchmark_status": "PROVISIONAL_GOLD",
-  "provisional_notes": "Commit/PR metadata verified, but repository-state causality and fixture fidelity not yet fully grounded in git checkout."
+  "benchmark_status": "PROVISIONAL_GOLD_V2",
+  "provisional_notes": "Commit/PR metadata verified, but repository-state causality and fixture fidelity not yet fully grounded in git checkout.",
+  "track": "A",
+  "causality_assertions": [
+    {
+      "artifact": "src/urllib3/util/retry.py",
+      "symbol": "DEFAULT_ALLOWED_METHODS",
+      "base_state": "absent",
+      "target_state": "exists_active"
+    }
+  ],
+  "environment": {
+    "python_version": "3.10",
+    "dependency_constraints": [
+      "pytest>=7.0.0"
+    ],
+    "install_command": "uv pip install pytest",
+    "environment_source": "setup.cfg"
+  },
+  "overlay": {
+    "overlay_required": false,
+    "overlay_reason": null,
+    "overlay_sha256": null,
+    "affected_files": []
+  }
 }

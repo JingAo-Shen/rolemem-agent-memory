@@ -4,5 +4,5 @@
   "expected": "FAIL",
   "passed": false,
   "control_pass": true,
-  "log_preview": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_91qfe04e\nplugins: anyio-4.15.1\ncollecting ... collected 0 items / 1 error\n\n==================================== ERRORS ====================================\n___________"
+  "log_preview": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.10.12, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_flask_01_context_stack_removal/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_rn3e4hel\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_activate_ctx FAILED           "
 }

@@ -12,7 +12,7 @@
   "history_commit": "25ca9cd92956e48a38f7a32c837e0f8a54c8ae31",
   "transition_commit": "004b446eac19db2ff351a923fd594d4f23d67e90",
   "target_commit": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
-  "repository_change": "Deprecate invalidate_cached_property and Href in favor of modern standard deletion del obj.prop and routing",
+  "repository_change": "Deprecate invalidate_cached_property in favor of del obj.prop and descriptor deletion",
   "changed_files": [
     "src/werkzeug/utils.py"
   ],
@@ -26,9 +26,32 @@
   "target_symbol": "reset_cached_attribute",
   "existing_tests": "tests/test_utils.py::test_cached_property",
   "generated_tests": "def test_reset_cached_attribute():\n    class Target:\n        @property\n        def val(self):\n            return 42\n    t = Target()\n    t.__dict__['val'] = 100\n    from property_helper import reset_cached_attribute\n    reset_cached_attribute(t, 'val')\n    assert 'val' not in t.__dict__",
-  "test_evidence_source": "Werkzeug PR #2085 deprecation notes and test_utils.py",
+  "test_evidence_source": "Werkzeug PR #2084 deprecation warning and test_utils.py",
   "difficulty": "medium",
   "leakage_review": "PASS",
-  "benchmark_status": "PROVISIONAL_GOLD",
-  "provisional_notes": "Commit/PR metadata verified, but repository-state causality and fixture fidelity not yet fully grounded in git checkout."
+  "benchmark_status": "PROVISIONAL_GOLD_V2",
+  "provisional_notes": "Commit/PR metadata verified, but repository-state causality and fixture fidelity not yet fully grounded in git checkout.",
+  "track": "A",
+  "causality_assertions": [
+    {
+      "artifact": "src/werkzeug/utils.py",
+      "symbol": "invalidate_cached_property",
+      "base_state": "exists_active",
+      "target_state": "deprecated_warn"
+    }
+  ],
+  "environment": {
+    "python_version": "3.13",
+    "dependency_constraints": [
+      "pytest>=8.0.0"
+    ],
+    "install_command": "uv pip install pytest",
+    "environment_source": "pyproject.toml"
+  },
+  "overlay": {
+    "overlay_required": false,
+    "overlay_reason": null,
+    "overlay_sha256": null,
+    "affected_files": []
+  }
 }

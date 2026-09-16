@@ -1,0 +1,55 @@
+{
+  "transition_id": "trans_gold_urllib3_02_empty_allowed_methods",
+  "repo_name": "urllib3/urllib3",
+  "repo_url": "https://github.com/urllib3/urllib3",
+  "license": "MIT",
+  "language": "Python",
+  "track": "B",
+  "task_family": "semantic_change",
+  "pr_url": "https://github.com/urllib3/urllib3/pull/2050",
+  "issue_url": "https://github.com/urllib3/urllib3/issues/2049",
+  "base_commit": "a5d70ebfd6a30ceba0e9cc322089a6497dcd643e",
+  "history_commit": "a5d70ebfd6a30ceba0e9cc322089a6497dcd643e",
+  "transition_commit": "9a209d21087de10b300b2530de023989a71a3f7e",
+  "target_commit": "9a209d21087de10b300b2530de023989a71a3f7e",
+  "repository_change": "Deprecate passing empty collection to allowed_methods in favor of False",
+  "changed_files": [
+    "src/urllib3/util/retry.py"
+  ],
+  "changed_symbols": [
+    "Retry.allowed_methods"
+  ],
+  "causality_assertions": [
+    {
+      "artifact": "src/urllib3/util/retry.py",
+      "symbol": "allowed_methods",
+      "base_state": "exists_active",
+      "target_state": "deprecated_warn",
+      "target_text_contains": "Using an empty collection for 'allowed_methods'"
+    }
+  ],
+  "environment": {
+    "python_version": "3.10",
+    "dependency_constraints": [
+      "pytest>=7.0.0"
+    ],
+    "install_command": "uv pip install pytest",
+    "environment_source": "setup.cfg"
+  },
+  "overlay": {
+    "overlay_required": false,
+    "overlay_reason": null,
+    "overlay_sha256": null,
+    "affected_files": []
+  },
+  "stale_memory_candidate": "Pass empty collection allowed_methods=[] to disable retry on all HTTP methods",
+  "valid_memory_candidate": "Pass allowed_methods=False to disable retry on all HTTP methods",
+  "current_task": "Implement `disable_method_retries()` in `no_retry_policy.py` returning Retry configured to never retry by method.",
+  "target_file": "no_retry_policy.py",
+  "target_symbol": "disable_method_retries",
+  "existing_tests": "test/test_retry.py::TestRetry::test_empty_allowed_methods_deprecation",
+  "test_evidence_source": "urllib3 PR #2050 empty collection deprecation warning",
+  "difficulty": "medium",
+  "leakage_review": "PASS",
+  "benchmark_status": "PROVISIONAL_GOLD_V2"
+}

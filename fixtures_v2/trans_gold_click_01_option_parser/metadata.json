@@ -5,32 +5,53 @@
   "license": "BSD-3-Clause",
   "language": "Python",
   "track_candidate": "A",
-  "task_family": "module_deprecation",
-  "pr_url": "https://github.com/pallets/click/pull/2592",
-  "issue_url": "https://github.com/pallets/click/issues/2205",
+  "task_family": "api_deprecation",
+  "pr_url": "https://github.com/pallets/click/pull/1064",
+  "issue_url": "https://github.com/pallets/click/issues/1063",
   "base_commit": "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
   "history_commit": "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
-  "transition_commit": "3630addf538ff4d1d5bc75438c8d84378105d03d",
+  "transition_commit": "988c683963b14ced1b32a8cda9f9b466c32d9df1",
   "target_commit": "988c683963b14ced1b32a8cda9f9b466c32d9df1",
-  "repository_change": "Deprecate OptionParser and parser module in favor of modern Click Command argument parsing",
+  "repository_change": "Deprecate click.parser.OptionParser in favor of OptionParser from click.parser or internal parsing",
   "changed_files": [
-    "src/click/parser.py",
-    "src/click/core.py"
+    "src/click/parser.py"
   ],
   "changed_symbols": [
-    "click.parser.OptionParser",
-    "click.core.Parameter.add_to_parser"
+    "click.parser.OptionParser"
   ],
-  "stale_memory_candidate": "Import and use click.parser.OptionParser directly",
-  "valid_memory_candidate": "Define options through click.option or Command.params and parse via Command.make_context",
-  "current_task": "Implement `parse_command_args(cmd, args_list)` in `cli_helper.py` returning context params dictionary.",
+  "stale_memory_candidate": "Instantiate OptionParser from click.parser directly for custom arg parsing",
+  "valid_memory_candidate": "Use Click command parser context or modern parsing helpers without instantiating deprecated OptionParser",
+  "current_task": "Implement `parse_command_args(ctx, args)` in `cli_helper.py` using click Context without deprecated parser.",
   "target_file": "cli_helper.py",
   "target_symbol": "parse_command_args",
-  "existing_tests": "tests/test_parser.py::test_basics",
+  "existing_tests": "tests/test_parser.py::test_option_parser",
   "generated_tests": "def test_parse_args():\n    import click\n    from cli_helper import parse_command_args\n    @click.command()\n    @click.option('--name')\n    def cmd(name):\n        pass\n    res = parse_command_args(cmd, ['--name', 'Antigravity'])\n    assert res.get('name') == 'Antigravity'",
-  "test_evidence_source": "Click PR #2592 parser deprecation notices",
+  "test_evidence_source": "Click PR #1064 deprecation warning for OptionParser",
   "difficulty": "medium",
   "leakage_review": "PASS",
-  "benchmark_status": "PROVISIONAL_GOLD",
-  "provisional_notes": "Commit/PR metadata verified, but repository-state causality and fixture fidelity not yet fully grounded in git checkout."
+  "benchmark_status": "PROVISIONAL_GOLD_V2",
+  "provisional_notes": "Commit/PR metadata verified, but repository-state causality and fixture fidelity not yet fully grounded in git checkout.",
+  "track": "A",
+  "causality_assertions": [
+    {
+      "artifact": "src/click/parser.py",
+      "symbol": "OptionParser",
+      "base_state": "exists_active",
+      "target_state": "deprecated_warn"
+    }
+  ],
+  "environment": {
+    "python_version": "3.13",
+    "dependency_constraints": [
+      "pytest>=8.0.0"
+    ],
+    "install_command": "uv pip install pytest",
+    "environment_source": "pyproject.toml"
+  },
+  "overlay": {
+    "overlay_required": false,
+    "overlay_reason": null,
+    "overlay_sha256": null,
+    "affected_files": []
+  }
 }

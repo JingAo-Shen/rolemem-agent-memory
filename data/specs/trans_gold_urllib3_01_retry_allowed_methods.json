@@ -1,0 +1,55 @@
+{
+  "transition_id": "trans_gold_urllib3_01_retry_allowed_methods",
+  "repo_name": "urllib3/urllib3",
+  "repo_url": "https://github.com/urllib3/urllib3",
+  "license": "MIT",
+  "language": "Python",
+  "track": "A",
+  "task_family": "api_deprecation",
+  "pr_url": "https://github.com/urllib3/urllib3/pull/2050",
+  "issue_url": "https://github.com/urllib3/urllib3/issues/2049",
+  "base_commit": "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5",
+  "history_commit": "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5",
+  "transition_commit": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+  "target_commit": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+  "repository_change": "Deprecate method_whitelist in Retry in favor of allowed_methods",
+  "changed_files": [
+    "src/urllib3/util/retry.py"
+  ],
+  "changed_symbols": [
+    "Retry.DEFAULT_ALLOWED_METHODS",
+    "Retry.__init__"
+  ],
+  "causality_assertions": [
+    {
+      "artifact": "src/urllib3/util/retry.py",
+      "symbol": "DEFAULT_ALLOWED_METHODS",
+      "base_state": "absent",
+      "target_state": "exists_active"
+    }
+  ],
+  "environment": {
+    "python_version": "3.10",
+    "dependency_constraints": [
+      "pytest>=7.0.0"
+    ],
+    "install_command": "uv pip install pytest",
+    "environment_source": "setup.cfg"
+  },
+  "overlay": {
+    "overlay_required": false,
+    "overlay_reason": null,
+    "overlay_sha256": null,
+    "affected_files": []
+  },
+  "stale_memory_candidate": "Pass method_whitelist to urllib3.util.retry.Retry constructor",
+  "valid_memory_candidate": "Pass allowed_methods to urllib3.util.retry.Retry constructor",
+  "current_task": "Implement `build_custom_retry(methods)` in `retry_factory.py` returning a Retry object with custom methods.",
+  "target_file": "retry_factory.py",
+  "target_symbol": "build_custom_retry",
+  "existing_tests": "test/test_retry.py::TestRetry::test_method_whitelist_deprecation",
+  "test_evidence_source": "urllib3 PR #2050 deprecation warning for method_whitelist",
+  "difficulty": "medium",
+  "leakage_review": "PASS",
+  "benchmark_status": "PROVISIONAL_GOLD_V2"
+}

@@ -12,7 +12,7 @@
   "history_commit": "9b74a90dd3c47f792734823e8793ac36f38bc4dd",
   "transition_commit": "c77a5203438fe772d41f6a47303ad3f57a4efe6d",
   "target_commit": "4b8bde97d4fa3486e18dce21c3c5f75570d50164",
-  "repository_change": "Deprecate should_ignore_error in Flask in favor of explicit error handling conventions",
+  "repository_change": "Deprecate should_ignore_error in Flask in favor of explicit teardown handlers",
   "changed_files": [
     "src/flask/app.py"
   ],
@@ -20,15 +20,44 @@
     "Flask.should_ignore_error"
   ],
   "stale_memory_candidate": "Override should_ignore_error on Flask application subclass to filter exceptions",
-  "valid_memory_candidate": "Register error handlers via @app.errorhandler(exc_class) to handle or suppress exceptions",
-  "current_task": "Implement `configure_error_policy(app, exc_class)` in `error_policy.py` registering an explicit error handler.",
+  "valid_memory_candidate": "Register teardown request handlers via @app.teardown_request to inspect or handle unhandled exceptions",
+  "current_task": "Implement `configure_error_policy(app, exc_class)` in `error_policy.py` registering a teardown request handler.",
   "target_file": "error_policy.py",
   "target_symbol": "configure_error_policy",
   "existing_tests": "tests/test_basic.py::test_error_handling",
   "generated_tests": "def test_configure_error_policy():\n    from flask import Flask\n    from error_policy import configure_error_policy\n    app = Flask('test_err')\n    class CustomErr(Exception):\n        pass\n    configure_error_policy(app, CustomErr)\n    assert CustomErr in app.error_handler_spec[None][None]",
-  "test_evidence_source": "Flask PR #5899 deprecation warning and docstring",
+  "test_evidence_source": "Flask PR #5899 deprecation warning and docstring recommending teardown handlers",
   "difficulty": "medium",
   "leakage_review": "PASS",
-  "benchmark_status": "PROVISIONAL_GOLD",
-  "provisional_notes": "Commit/PR metadata verified, but repository-state causality and fixture fidelity not yet fully grounded in git checkout."
+  "benchmark_status": "PROVISIONAL_GOLD_V2",
+  "provisional_notes": "Commit/PR metadata verified, but repository-state causality and fixture fidelity not yet fully grounded in git checkout.",
+  "track": "B",
+  "causality_assertions": [
+    {
+      "artifact": "src/flask/app.py",
+      "symbol": "should_ignore_error",
+      "base_state": "absent",
+      "target_state": "deprecated_warn",
+      "target_text_contains": "The 'should_ignore_error' method is deprecated"
+    }
+  ],
+  "environment": {
+    "python_version": "3.13",
+    "dependency_constraints": [
+      "click>=8.1.3",
+      "blinker>=1.6.2",
+      "itsdangerous>=2.1.2",
+      "jinja2>=3.1.2",
+      "werkzeug>=3.0.0",
+      "pytest>=8.0.0"
+    ],
+    "install_command": "uv pip install pytest click blinker itsdangerous jinja2 werkzeug",
+    "environment_source": "pyproject.toml"
+  },
+  "overlay": {
+    "overlay_required": false,
+    "overlay_reason": null,
+    "overlay_sha256": null,
+    "affected_files": []
+  }
 }

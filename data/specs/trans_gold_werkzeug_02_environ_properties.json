@@ -1,0 +1,55 @@
+{
+  "transition_id": "trans_gold_werkzeug_02_environ_properties",
+  "repo_name": "pallets/werkzeug",
+  "repo_url": "https://github.com/pallets/werkzeug",
+  "license": "BSD-3-Clause",
+  "language": "Python",
+  "track": "A",
+  "task_family": "api_deprecation",
+  "pr_url": "https://github.com/pallets/werkzeug/pull/2607",
+  "issue_url": "https://github.com/pallets/werkzeug/issues/2606",
+  "base_commit": "f97c305673ba121a1dae6764c37e8be48907a1d1",
+  "history_commit": "f97c305673ba121a1dae6764c37e8be48907a1d1",
+  "transition_commit": "7641d4990f06d583425a4e6ba25e9d2f18934885",
+  "target_commit": "7641d4990f06d583425a4e6ba25e9d2f18934885",
+  "repository_change": "Move environ_property from werkzeug.utils to werkzeug.sansio.utils, deprecating root export",
+  "changed_files": [
+    "src/werkzeug/utils.py",
+    "src/werkzeug/wrappers/request.py"
+  ],
+  "changed_symbols": [
+    "werkzeug.utils.environ_property"
+  ],
+  "causality_assertions": [
+    {
+      "artifact": "src/werkzeug/utils.py",
+      "symbol": "environ_property",
+      "base_state": "exists_active",
+      "target_state": "deprecated_warn"
+    }
+  ],
+  "environment": {
+    "python_version": "3.13",
+    "dependency_constraints": [
+      "pytest>=8.0.0"
+    ],
+    "install_command": "uv pip install pytest",
+    "environment_source": "pyproject.toml"
+  },
+  "overlay": {
+    "overlay_required": false,
+    "overlay_reason": null,
+    "overlay_sha256": null,
+    "affected_files": []
+  },
+  "stale_memory_candidate": "Import environ_property directly from werkzeug.utils",
+  "valid_memory_candidate": "Import environ_property from werkzeug.sansio.utils",
+  "current_task": "Implement `build_request_header_proxy(name)` in `header_proxy.py` creating an environ_property descriptor.",
+  "target_file": "header_proxy.py",
+  "target_symbol": "build_request_header_proxy",
+  "existing_tests": "tests/test_utils.py",
+  "test_evidence_source": "Werkzeug PR #2607 deprecation warning in __getattr__",
+  "difficulty": "medium",
+  "leakage_review": "PASS",
+  "benchmark_status": "PROVISIONAL_GOLD_V2"
+}

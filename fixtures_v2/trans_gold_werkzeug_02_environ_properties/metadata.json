@@ -5,14 +5,14 @@
   "license": "BSD-3-Clause",
   "language": "Python",
   "track_candidate": "A",
-  "task_family": "property_deprecation",
-  "pr_url": "https://github.com/pallets/werkzeug/pull/3276",
-  "issue_url": "https://github.com/pallets/werkzeug/issues/3275",
+  "task_family": "api_deprecation",
+  "pr_url": "https://github.com/pallets/werkzeug/pull/2607",
+  "issue_url": "https://github.com/pallets/werkzeug/issues/2606",
   "base_commit": "f97c305673ba121a1dae6764c37e8be48907a1d1",
   "history_commit": "f97c305673ba121a1dae6764c37e8be48907a1d1",
-  "transition_commit": "2f2625fefdaead837c5433e44d5fe86972d013dd",
+  "transition_commit": "7641d4990f06d583425a4e6ba25e9d2f18934885",
   "target_commit": "7641d4990f06d583425a4e6ba25e9d2f18934885",
-  "repository_change": "Deprecate environ_property in favor of direct WSGI environ dict access and descriptors",
+  "repository_change": "Move environ_property from werkzeug.utils to werkzeug.sansio.utils, deprecating root export",
   "changed_files": [
     "src/werkzeug/utils.py",
     "src/werkzeug/wrappers/request.py"
@@ -20,16 +20,39 @@
   "changed_symbols": [
     "werkzeug.utils.environ_property"
   ],
-  "stale_memory_candidate": "Define WSGI accessors using werkzeug.sansio.utils.environ_property descriptor",
-  "valid_memory_candidate": "Access WSGI values via environ.get() or standard property retrieving from environ mapping",
-  "current_task": "Implement `extract_wsgi_header(environ: dict, header_name: str) -> str` in `wsgi_helper.py`.",
-  "target_file": "wsgi_helper.py",
-  "target_symbol": "extract_wsgi_header",
-  "existing_tests": "tests/sansio/test_utils.py::test_environ_property",
+  "stale_memory_candidate": "Import environ_property directly from werkzeug.utils",
+  "valid_memory_candidate": "Import environ_property from werkzeug.sansio.utils",
+  "current_task": "Implement `build_request_header_proxy(name)` in `header_proxy.py` creating an environ_property descriptor.",
+  "target_file": "header_proxy.py",
+  "target_symbol": "build_request_header_proxy",
+  "existing_tests": "tests/test_utils.py",
   "generated_tests": "def test_extract_wsgi_header():\n    from wsgi_helper import extract_wsgi_header\n    assert extract_wsgi_header({'HTTP_HOST': 'localhost:5000'}, 'host') == 'localhost:5000'",
-  "test_evidence_source": "Werkzeug PR #3276 deprecation notes and commit diff",
+  "test_evidence_source": "Werkzeug PR #2607 deprecation warning in __getattr__",
   "difficulty": "medium",
   "leakage_review": "PASS",
-  "benchmark_status": "PROVISIONAL_GOLD",
-  "provisional_notes": "Commit/PR metadata verified, but repository-state causality and fixture fidelity not yet fully grounded in git checkout."
+  "benchmark_status": "PROVISIONAL_GOLD_V2",
+  "provisional_notes": "Commit/PR metadata verified, but repository-state causality and fixture fidelity not yet fully grounded in git checkout.",
+  "track": "A",
+  "causality_assertions": [
+    {
+      "artifact": "src/werkzeug/utils.py",
+      "symbol": "environ_property",
+      "base_state": "exists_active",
+      "target_state": "deprecated_warn"
+    }
+  ],
+  "environment": {
+    "python_version": "3.13",
+    "dependency_constraints": [
+      "pytest>=8.0.0"
+    ],
+    "install_command": "uv pip install pytest",
+    "environment_source": "pyproject.toml"
+  },
+  "overlay": {
+    "overlay_required": false,
+    "overlay_reason": null,
+    "overlay_sha256": null,
+    "affected_files": []
+  }
 }

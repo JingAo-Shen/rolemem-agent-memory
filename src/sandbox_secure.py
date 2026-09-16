@@ -22,12 +22,14 @@ class SecureSandboxExecutor:
         timeout_seconds: int = 15,
         max_memory_bytes: int = 4 * 1024 * 1024 * 1024,  # 4 GB
         max_procs: int = 128,
-        cpu_limit_seconds: int = 15
+        cpu_limit_seconds: int = 15,
+        custom_env_bin_dir: Optional[str] = None
     ):
         self.timeout_seconds = timeout_seconds
         self.max_memory_bytes = max_memory_bytes
         self.max_procs = max_procs
         self.cpu_limit_seconds = cpu_limit_seconds
+        self.custom_env_bin_dir = custom_env_bin_dir
         self.bwrap_path = shutil.which("bwrap")
         self.prlimit_path = shutil.which("prlimit")
 
@@ -79,12 +81,20 @@ class SecureSandboxExecutor:
                 f.write(test_code)
 
             # 5. Build sandbox command with bwrap
+            path_env = "/root/anaconda3/bin:/usr/local/bin:/usr/bin:/bin"
+            extra_mounts = []
+            if self.custom_env_bin_dir and os.path.isdir(self.custom_env_bin_dir):
+                path_env = f"{self.custom_env_bin_dir}:{path_env}"
+                venv_root = os.path.dirname(os.path.abspath(self.custom_env_bin_dir))
+                extra_mounts = ["--ro-bind", venv_root, venv_root]
+
             bwrap_cmd = [
                 self.bwrap_path,
                 "--ro-bind", "/", "/",
                 "--tmpfs", "/tmp",
                 "--tmpfs", "/root",
                 "--ro-bind", "/root/anaconda3", "/root/anaconda3",
+            ] + extra_mounts + [
                 "--tmpfs", "/home",
                 "--proc", "/proc",
                 "--dev", "/dev",
@@ -96,7 +106,7 @@ class SecureSandboxExecutor:
                 "--bind", tmpdir, tmpdir,
                 "--chdir", tmpdir,
                 "--clearenv",
-                "--setenv", "PATH", "/root/anaconda3/bin:/usr/local/bin:/usr/bin:/bin",
+                "--setenv", "PATH", path_env,
                 "--setenv", "PYTHONPATH", tmpdir,
                 "--setenv", "LANG", "C.UTF-8",
                 "--setenv", "HOME", "/tmp",
@@ -117,7 +127,7 @@ class SecureSandboxExecutor:
 
             # Clean host environment passed to the runner subprocess
             clean_host_env = {
-                "PATH": "/root/anaconda3/bin:/usr/local/bin:/usr/bin:/bin",
+                "PATH": path_env,
                 "HOME": "/tmp",
                 "LANG": "C.UTF-8"
             }

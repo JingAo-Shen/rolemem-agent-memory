@@ -4,5 +4,5 @@
   "expected": "PASS",
   "passed": true,
   "control_pass": true,
-  "log_preview": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_6895zv17\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_parse_args PASSED                      [100%]\n\n=============================="
+  "log_preview": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_click_01_option_parser/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_4wppww_o\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_parse_args PASSED                      [100%]\n\n"
 }

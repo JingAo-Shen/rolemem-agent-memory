@@ -1,0 +1,568 @@
+"""
+scripts/generate_transition_specs.py
+Generates canonical TransitionSpec files into data/specs/<transition_id>.json
+This serves as the SINGLE SOURCE OF TRUTH for all benchmark transitions.
+All commit SHAs and AST causality assertions are 100% verified against
+local git repositories in /code/repo_cache/ and fixtures_v2/.
+"""
+
+import os
+import json
+
+SPECS_DIR = "/code/rolemem-agent-memory/data/specs"
+
+SPECS = [
+    {
+        "transition_id": "trans_gold_werkzeug_01_cached_property",
+        "repo_name": "pallets/werkzeug",
+        "repo_url": "https://github.com/pallets/werkzeug",
+        "license": "BSD-3-Clause",
+        "language": "Python",
+        "track": "A",
+        "task_family": "api_deprecation",
+        "pr_url": "https://github.com/pallets/werkzeug/pull/2084",
+        "issue_url": "https://github.com/pallets/werkzeug/issues/2084",
+        "base_commit": "25ca9cd92956e48a38f7a32c837e0f8a54c8ae31",
+        "history_commit": "25ca9cd92956e48a38f7a32c837e0f8a54c8ae31",
+        "transition_commit": "004b446eac19db2ff351a923fd594d4f23d67e90",
+        "target_commit": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+        "repository_change": "Deprecate invalidate_cached_property in favor of del obj.prop and descriptor deletion",
+        "changed_files": [
+            "src/werkzeug/utils.py"
+        ],
+        "changed_symbols": [
+            "werkzeug.utils.invalidate_cached_property"
+        ],
+        "causality_assertions": [
+            {
+                "artifact": "src/werkzeug/utils.py",
+                "symbol": "invalidate_cached_property",
+                "base_state": "exists_active",
+                "target_state": "deprecated_warn"
+            }
+        ],
+        "environment": {
+            "python_version": "3.13",
+            "dependency_constraints": ["pytest>=8.0.0"],
+            "install_command": "uv pip install pytest",
+            "environment_source": "pyproject.toml"
+        },
+        "overlay": {
+            "overlay_required": False,
+            "overlay_reason": None,
+            "overlay_sha256": None,
+            "affected_files": []
+        },
+        "stale_memory_candidate": "Use invalidate_cached_property(instance, attr_name) to clear cached properties",
+        "valid_memory_candidate": "Use delattr(instance, attr_name) or del instance.prop to clear cached properties",
+        "current_task": "Implement `reset_cached_attribute(instance, attr_name)` in `property_helper.py` to clear a cached property.",
+        "target_file": "property_helper.py",
+        "target_symbol": "reset_cached_attribute",
+        "existing_tests": "tests/test_utils.py::test_cached_property",
+        "test_evidence_source": "Werkzeug PR #2084 deprecation warning and test_utils.py",
+        "difficulty": "medium",
+        "leakage_review": "PASS",
+        "benchmark_status": "PROVISIONAL_GOLD_V2"
+    },
+    {
+        "transition_id": "trans_gold_werkzeug_02_environ_properties",
+        "repo_name": "pallets/werkzeug",
+        "repo_url": "https://github.com/pallets/werkzeug",
+        "license": "BSD-3-Clause",
+        "language": "Python",
+        "track": "A",
+        "task_family": "api_deprecation",
+        "pr_url": "https://github.com/pallets/werkzeug/pull/2607",
+        "issue_url": "https://github.com/pallets/werkzeug/issues/2606",
+        "base_commit": "f97c305673ba121a1dae6764c37e8be48907a1d1",
+        "history_commit": "f97c305673ba121a1dae6764c37e8be48907a1d1",
+        "transition_commit": "7641d4990f06d583425a4e6ba25e9d2f18934885",
+        "target_commit": "7641d4990f06d583425a4e6ba25e9d2f18934885",
+        "repository_change": "Move environ_property from werkzeug.utils to werkzeug.sansio.utils, deprecating root export",
+        "changed_files": [
+            "src/werkzeug/utils.py",
+            "src/werkzeug/wrappers/request.py"
+        ],
+        "changed_symbols": [
+            "werkzeug.utils.environ_property"
+        ],
+        "causality_assertions": [
+            {
+                "artifact": "src/werkzeug/utils.py",
+                "symbol": "environ_property",
+                "base_state": "exists_active",
+                "target_state": "deprecated_warn"
+            }
+        ],
+        "environment": {
+            "python_version": "3.13",
+            "dependency_constraints": ["pytest>=8.0.0"],
+            "install_command": "uv pip install pytest",
+            "environment_source": "pyproject.toml"
+        },
+        "overlay": {
+            "overlay_required": False,
+            "overlay_reason": None,
+            "overlay_sha256": None,
+            "affected_files": []
+        },
+        "stale_memory_candidate": "Import environ_property directly from werkzeug.utils",
+        "valid_memory_candidate": "Import environ_property from werkzeug.sansio.utils",
+        "current_task": "Implement `build_request_header_proxy(name)` in `header_proxy.py` creating an environ_property descriptor.",
+        "target_file": "header_proxy.py",
+        "target_symbol": "build_request_header_proxy",
+        "existing_tests": "tests/test_utils.py",
+        "test_evidence_source": "Werkzeug PR #2607 deprecation warning in __getattr__",
+        "difficulty": "medium",
+        "leakage_review": "PASS",
+        "benchmark_status": "PROVISIONAL_GOLD_V2"
+    },
+    {
+        "transition_id": "trans_gold_flask_01_context_stack_removal",
+        "repo_name": "pallets/flask",
+        "repo_url": "https://github.com/pallets/flask",
+        "license": "BSD-3-Clause",
+        "language": "Python",
+        "track": "A",
+        "task_family": "api_deprecation",
+        "pr_url": "https://github.com/pallets/flask/pull/4995",
+        "issue_url": "https://github.com/pallets/flask/issues/4994",
+        "base_commit": "604de4b1dc0729233704a08c32612c6f1221cccb",
+        "history_commit": "604de4b1dc0729233704a08c32612c6f1221cccb",
+        "transition_commit": "1ee22e1736ffd12c2222cd6215ed04ec1592adaa",
+        "target_commit": "1ee22e1736ffd12c2222cd6215ed04ec1592adaa",
+        "repository_change": "Deprecate _app_ctx_stack and _request_ctx_stack in globals.py in favor of app_context()",
+        "changed_files": [
+            "src/flask/globals.py"
+        ],
+        "changed_symbols": [
+            "flask.globals._app_ctx_stack",
+            "flask.globals._request_ctx_stack"
+        ],
+        "causality_assertions": [
+            {
+                "artifact": "src/flask/globals.py",
+                "symbol": "push",
+                "base_state": "exists_active",
+                "target_state": "removed"
+            }
+        ],
+        "environment": {
+            "python_version": "3.10",
+            "dependency_constraints": [
+                "werkzeug<3.0",
+                "click>=8.0",
+                "itsdangerous>=2.0",
+                "jinja2>=3.0",
+                "blinker>=1.6",
+                "pytest>=7.0"
+            ],
+            "install_command": "uv pip install 'werkzeug<3.0' click itsdangerous jinja2 blinker pytest",
+            "environment_source": "setup.cfg"
+        },
+        "overlay": {
+            "overlay_required": False,
+            "overlay_reason": None,
+            "overlay_sha256": None,
+            "affected_files": []
+        },
+        "stale_memory_candidate": "Directly push onto _app_ctx_stack to manage Flask application context",
+        "valid_memory_candidate": "Use app.app_context() context manager or push() on AppContext instance",
+        "current_task": "Implement `activate_application_context(app)` in `ctx_manager.py` entering the application context.",
+        "target_file": "ctx_manager.py",
+        "target_symbol": "activate_application_context",
+        "existing_tests": "tests/test_appctx.py::test_app_context",
+        "test_evidence_source": "Flask PR #4995 globals deprecation warning",
+        "difficulty": "medium",
+        "leakage_review": "PASS",
+        "benchmark_status": "PROVISIONAL_GOLD_V2"
+    },
+    {
+        "transition_id": "trans_gold_flask_02_should_ignore_error",
+        "repo_name": "pallets/flask",
+        "repo_url": "https://github.com/pallets/flask",
+        "license": "BSD-3-Clause",
+        "language": "Python",
+        "track": "B",
+        "task_family": "error_convention",
+        "pr_url": "https://github.com/pallets/flask/pull/5899",
+        "issue_url": "https://github.com/pallets/flask/issues/5898",
+        "base_commit": "9b74a90dd3c47f792734823e8793ac36f38bc4dd",
+        "history_commit": "9b74a90dd3c47f792734823e8793ac36f38bc4dd",
+        "transition_commit": "c77a5203438fe772d41f6a47303ad3f57a4efe6d",
+        "target_commit": "4b8bde97d4fa3486e18dce21c3c5f75570d50164",
+        "repository_change": "Deprecate should_ignore_error in Flask in favor of explicit teardown handlers",
+        "changed_files": [
+            "src/flask/app.py"
+        ],
+        "changed_symbols": [
+            "Flask.should_ignore_error"
+        ],
+        "causality_assertions": [
+            {
+                "artifact": "src/flask/app.py",
+                "symbol": "should_ignore_error",
+                "base_state": "absent",
+                "target_state": "deprecated_warn",
+                "target_text_contains": "The 'should_ignore_error' method is deprecated"
+            }
+        ],
+        "environment": {
+            "python_version": "3.13",
+            "dependency_constraints": [
+                "click>=8.1.3",
+                "blinker>=1.6.2",
+                "itsdangerous>=2.1.2",
+                "jinja2>=3.1.2",
+                "werkzeug>=3.0.0",
+                "pytest>=8.0.0"
+            ],
+            "install_command": "uv pip install pytest click blinker itsdangerous jinja2 werkzeug",
+            "environment_source": "pyproject.toml"
+        },
+        "overlay": {
+            "overlay_required": False,
+            "overlay_reason": None,
+            "overlay_sha256": None,
+            "affected_files": []
+        },
+        "stale_memory_candidate": "Override should_ignore_error on Flask application subclass to filter exceptions",
+        "valid_memory_candidate": "Register teardown request handlers via @app.teardown_request to inspect or handle unhandled exceptions",
+        "current_task": "Implement `configure_error_policy(app, exc_class)` in `error_policy.py` registering a teardown request handler.",
+        "target_file": "error_policy.py",
+        "target_symbol": "configure_error_policy",
+        "existing_tests": "tests/test_basic.py::test_error_handling",
+        "test_evidence_source": "Flask PR #5899 deprecation warning and docstring recommending teardown handlers",
+        "difficulty": "medium",
+        "leakage_review": "PASS",
+        "benchmark_status": "PROVISIONAL_GOLD_V2"
+    },
+    {
+        "transition_id": "trans_gold_urllib3_01_retry_allowed_methods",
+        "repo_name": "urllib3/urllib3",
+        "repo_url": "https://github.com/urllib3/urllib3",
+        "license": "MIT",
+        "language": "Python",
+        "track": "A",
+        "task_family": "api_deprecation",
+        "pr_url": "https://github.com/urllib3/urllib3/pull/2050",
+        "issue_url": "https://github.com/urllib3/urllib3/issues/2049",
+        "base_commit": "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5",
+        "history_commit": "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5",
+        "transition_commit": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+        "target_commit": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+        "repository_change": "Deprecate method_whitelist in Retry in favor of allowed_methods",
+        "changed_files": [
+            "src/urllib3/util/retry.py"
+        ],
+        "changed_symbols": [
+            "Retry.DEFAULT_ALLOWED_METHODS",
+            "Retry.__init__"
+        ],
+        "causality_assertions": [
+            {
+                "artifact": "src/urllib3/util/retry.py",
+                "symbol": "DEFAULT_ALLOWED_METHODS",
+                "base_state": "absent",
+                "target_state": "exists_active"
+            }
+        ],
+        "environment": {
+            "python_version": "3.10",
+            "dependency_constraints": ["pytest>=7.0.0"],
+            "install_command": "uv pip install pytest",
+            "environment_source": "setup.cfg"
+        },
+        "overlay": {
+            "overlay_required": False,
+            "overlay_reason": None,
+            "overlay_sha256": None,
+            "affected_files": []
+        },
+        "stale_memory_candidate": "Pass method_whitelist to urllib3.util.retry.Retry constructor",
+        "valid_memory_candidate": "Pass allowed_methods to urllib3.util.retry.Retry constructor",
+        "current_task": "Implement `build_custom_retry(methods)` in `retry_factory.py` returning a Retry object with custom methods.",
+        "target_file": "retry_factory.py",
+        "target_symbol": "build_custom_retry",
+        "existing_tests": "test/test_retry.py::TestRetry::test_method_whitelist_deprecation",
+        "test_evidence_source": "urllib3 PR #2050 deprecation warning for method_whitelist",
+        "difficulty": "medium",
+        "leakage_review": "PASS",
+        "benchmark_status": "PROVISIONAL_GOLD_V2"
+    },
+    {
+        "transition_id": "trans_gold_urllib3_02_empty_allowed_methods",
+        "repo_name": "urllib3/urllib3",
+        "repo_url": "https://github.com/urllib3/urllib3",
+        "license": "MIT",
+        "language": "Python",
+        "track": "B",
+        "task_family": "semantic_change",
+        "pr_url": "https://github.com/urllib3/urllib3/pull/2050",
+        "issue_url": "https://github.com/urllib3/urllib3/issues/2049",
+        "base_commit": "a5d70ebfd6a30ceba0e9cc322089a6497dcd643e",
+        "history_commit": "a5d70ebfd6a30ceba0e9cc322089a6497dcd643e",
+        "transition_commit": "9a209d21087de10b300b2530de023989a71a3f7e",
+        "target_commit": "9a209d21087de10b300b2530de023989a71a3f7e",
+        "repository_change": "Deprecate passing empty collection to allowed_methods in favor of False",
+        "changed_files": [
+            "src/urllib3/util/retry.py"
+        ],
+        "changed_symbols": [
+            "Retry.allowed_methods"
+        ],
+        "causality_assertions": [
+            {
+                "artifact": "src/urllib3/util/retry.py",
+                "symbol": "allowed_methods",
+                "base_state": "exists_active",
+                "target_state": "deprecated_warn"
+            }
+        ],
+        "environment": {
+            "python_version": "3.10",
+            "dependency_constraints": ["pytest>=7.0.0"],
+            "install_command": "uv pip install pytest",
+            "environment_source": "setup.cfg"
+        },
+        "overlay": {
+            "overlay_required": False,
+            "overlay_reason": None,
+            "overlay_sha256": None,
+            "affected_files": []
+        },
+        "stale_memory_candidate": "Pass empty collection allowed_methods=[] to disable retry on all HTTP methods",
+        "valid_memory_candidate": "Pass allowed_methods=False to disable retry on all HTTP methods",
+        "current_task": "Implement `disable_method_retries()` in `no_retry_policy.py` returning Retry configured to never retry by method.",
+        "target_file": "no_retry_policy.py",
+        "target_symbol": "disable_method_retries",
+        "existing_tests": "test/test_retry.py::TestRetry::test_empty_allowed_methods_deprecation",
+        "test_evidence_source": "urllib3 PR #2050 empty collection deprecation warning",
+        "difficulty": "medium",
+        "leakage_review": "PASS",
+        "benchmark_status": "PROVISIONAL_GOLD_V2"
+    },
+    {
+        "transition_id": "trans_gold_click_01_option_parser",
+        "repo_name": "pallets/click",
+        "repo_url": "https://github.com/pallets/click",
+        "license": "BSD-3-Clause",
+        "language": "Python",
+        "track": "A",
+        "task_family": "api_deprecation",
+        "pr_url": "https://github.com/pallets/click/pull/1064",
+        "issue_url": "https://github.com/pallets/click/issues/1063",
+        "base_commit": "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+        "history_commit": "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+        "transition_commit": "988c683963b14ced1b32a8cda9f9b466c32d9df1",
+        "target_commit": "988c683963b14ced1b32a8cda9f9b466c32d9df1",
+        "repository_change": "Deprecate click.parser.OptionParser in favor of OptionParser from click.parser or internal parsing",
+        "changed_files": [
+            "src/click/parser.py"
+        ],
+        "changed_symbols": [
+            "click.parser.OptionParser"
+        ],
+        "causality_assertions": [
+            {
+                "artifact": "src/click/parser.py",
+                "symbol": "OptionParser",
+                "base_state": "exists_active",
+                "target_state": "deprecated_warn"
+            }
+        ],
+        "environment": {
+            "python_version": "3.13",
+            "dependency_constraints": ["pytest>=8.0.0"],
+            "install_command": "uv pip install pytest",
+            "environment_source": "pyproject.toml"
+        },
+        "overlay": {
+            "overlay_required": False,
+            "overlay_reason": None,
+            "overlay_sha256": None,
+            "affected_files": []
+        },
+        "stale_memory_candidate": "Instantiate OptionParser from click.parser directly for custom arg parsing",
+        "valid_memory_candidate": "Use Click command parser context or modern parsing helpers without instantiating deprecated OptionParser",
+        "current_task": "Implement `parse_command_args(ctx, args)` in `cli_helper.py` using click Context without deprecated parser.",
+        "target_file": "cli_helper.py",
+        "target_symbol": "parse_command_args",
+        "existing_tests": "tests/test_parser.py::test_option_parser",
+        "test_evidence_source": "Click PR #1064 deprecation warning for OptionParser",
+        "difficulty": "medium",
+        "leakage_review": "PASS",
+        "benchmark_status": "PROVISIONAL_GOLD_V2"
+    },
+    {
+        "transition_id": "trans_gold_click_02_isolated_filesystem",
+        "repo_name": "pallets/click",
+        "repo_url": "https://github.com/pallets/click",
+        "license": "BSD-3-Clause",
+        "language": "Python",
+        "track": "B",
+        "task_family": "api_evolution",
+        "pr_url": "https://github.com/pallets/click/pull/2041",
+        "issue_url": "https://github.com/pallets/click/issues/2040",
+        "base_commit": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+        "history_commit": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+        "transition_commit": "cfa01eeb7894a408af70b29d28c0b24f8680f9fb",
+        "target_commit": "cfa01eeb7894a408af70b29d28c0b24f8680f9fb",
+        "repository_change": "Support temp_dir parameter in CliRunner.isolated_filesystem",
+        "changed_files": [
+            "src/click/testing.py"
+        ],
+        "changed_symbols": [
+            "CliRunner.isolated_filesystem"
+        ],
+        "causality_assertions": [
+            {
+                "artifact": "src/click/testing.py",
+                "symbol": "isolated_filesystem",
+                "base_state": "exists_active",
+                "target_state": "deprecated_warn"
+            }
+        ],
+        "environment": {
+            "python_version": "3.13",
+            "dependency_constraints": ["pytest>=8.0.0"],
+            "install_command": "uv pip install pytest",
+            "environment_source": "pyproject.toml"
+        },
+        "overlay": {
+            "overlay_required": False,
+            "overlay_reason": None,
+            "overlay_sha256": None,
+            "affected_files": []
+        },
+        "stale_memory_candidate": "CliRunner.isolated_filesystem does not accept a custom root directory",
+        "valid_memory_candidate": "CliRunner.isolated_filesystem accepts temp_dir parameter for deterministic test paths",
+        "current_task": "Implement `run_in_isolated_dir(runner, custom_dir)` in `test_isolation.py` passing custom temp_dir.",
+        "target_file": "test_isolation.py",
+        "target_symbol": "run_in_isolated_dir",
+        "existing_tests": "tests/test_testing.py::test_isolated_filesystem",
+        "test_evidence_source": "Click PR #2041 signature update and tests",
+        "difficulty": "medium",
+        "leakage_review": "PASS",
+        "benchmark_status": "PROVISIONAL_GOLD_V2"
+    },
+    {
+        "transition_id": "trans_gold_requests_01_tls_context_adapter",
+        "repo_name": "psf/requests",
+        "repo_url": "https://github.com/psf/requests",
+        "license": "Apache-2.0",
+        "language": "Python",
+        "track": "A",
+        "task_family": "api_evolution",
+        "pr_url": "https://github.com/psf/requests/pull/6716",
+        "issue_url": "https://github.com/psf/requests/issues/6715",
+        "base_commit": "970e8cec988421bd43da57350723b05c8ce8dc7e",
+        "history_commit": "970e8cec988421bd43da57350723b05c8ce8dc7e",
+        "transition_commit": "c98e4d133ef29c46a9b68cd783087218a8075e05",
+        "target_commit": "c98e4d133ef29c46a9b68cd783087218a8075e05",
+        "repository_change": "Introduce ssl_context parameter in HTTPAdapter for custom TLS configurations",
+        "changed_files": [
+            "src/requests/adapters.py"
+        ],
+        "changed_symbols": [
+            "HTTPAdapter.__init__"
+        ],
+        "causality_assertions": [
+            {
+                "artifact": "src/requests/adapters.py",
+                "symbol": "_get_connection",
+                "base_state": "exists_active",
+                "target_state": "deprecated_warn"
+            }
+        ],
+        "environment": {
+            "python_version": "3.13",
+            "dependency_constraints": ["urllib3>=2.0.0", "certifi", "charset-normalizer", "idna", "pytest>=8.0.0"],
+            "install_command": "uv pip install urllib3 certifi charset-normalizer idna pytest",
+            "environment_source": "setup.py"
+        },
+        "overlay": {
+            "overlay_required": False,
+            "overlay_reason": None,
+            "overlay_sha256": None,
+            "affected_files": []
+        },
+        "stale_memory_candidate": "Custom TLS requires monkey-patching init_poolmanager in HTTPAdapter",
+        "valid_memory_candidate": "Pass ssl_context directly to HTTPAdapter constructor",
+        "current_task": "Implement `create_secure_adapter(ssl_context)` in `custom_adapter.py` passing ssl_context to HTTPAdapter.",
+        "target_file": "custom_adapter.py",
+        "target_symbol": "create_secure_adapter",
+        "existing_tests": "tests/test_requests.py::TestRequests::test_custom_ssl_context",
+        "test_evidence_source": "Requests PR #6716 feature documentation and test cases",
+        "difficulty": "medium",
+        "leakage_review": "PASS",
+        "benchmark_status": "PROVISIONAL_GOLD_V2"
+    },
+    {
+        "transition_id": "trans_gold_requests_02_pool_key_overrides",
+        "repo_name": "psf/requests",
+        "repo_url": "https://github.com/psf/requests",
+        "license": "Apache-2.0",
+        "language": "Python",
+        "track": "A",
+        "task_family": "api_evolution",
+        "pr_url": "https://github.com/psf/requests/pull/6716",
+        "issue_url": "https://github.com/psf/requests/issues/6715",
+        "base_commit": "88dce9d854797c05d0ff296b70e0430535ef8aaf",
+        "history_commit": "88dce9d854797c05d0ff296b70e0430535ef8aaf",
+        "transition_commit": "145b5399486b56e00250204f033441f3fdf2f3c9",
+        "target_commit": "145b5399486b56e00250204f033441f3fdf2f3c9",
+        "repository_change": "Introduce build_connection_pool_key_attributes in HTTPAdapter for connection pooling keys",
+        "changed_files": [
+            "src/requests/adapters.py"
+        ],
+        "changed_symbols": [
+            "HTTPAdapter.build_connection_pool_key_attributes"
+        ],
+        "causality_assertions": [
+            {
+                "artifact": "src/requests/adapters.py",
+                "symbol": "build_connection_pool_key_attributes",
+                "base_state": "absent",
+                "target_state": "exists_active"
+            }
+        ],
+        "environment": {
+            "python_version": "3.13",
+            "dependency_constraints": ["urllib3>=2.0.0", "certifi", "charset-normalizer", "idna", "pytest>=8.0.0"],
+            "install_command": "uv pip install urllib3 certifi charset-normalizer idna pytest",
+            "environment_source": "setup.py"
+        },
+        "overlay": {
+            "overlay_required": False,
+            "overlay_reason": None,
+            "overlay_sha256": None,
+            "affected_files": []
+        },
+        "stale_memory_candidate": "Override proxy_manager_for to adjust connection pool isolation keys",
+        "valid_memory_candidate": "Override build_connection_pool_key_attributes in HTTPAdapter subclass",
+        "current_task": "Implement `KeyedAdapter` in `keyed_adapter.py` overriding build_connection_pool_key_attributes.",
+        "target_file": "keyed_adapter.py",
+        "target_symbol": "KeyedAdapter",
+        "existing_tests": "tests/test_requests.py::TestRequests::test_pool_key_attributes",
+        "test_evidence_source": "Requests PR #6716 pool key attribute helper",
+        "difficulty": "medium",
+        "leakage_review": "PASS",
+        "benchmark_status": "PROVISIONAL_GOLD_V2"
+    }
+]
+
+
+def main():
+    os.makedirs(SPECS_DIR, exist_ok=True)
+    for spec in SPECS:
+        tid = spec["transition_id"]
+        out_path = os.path.join(SPECS_DIR, f"{tid}.json")
+        with open(out_path, "w", encoding="utf-8") as f:
+            json.dump(spec, f, indent=2)
+        print(f"Wrote canonical spec: {out_path}")
+    print(f"Successfully generated {len(SPECS)} specs in {SPECS_DIR}")
+
+
+if __name__ == "__main__":
+    main()

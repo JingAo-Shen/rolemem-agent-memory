@@ -1,0 +1,26 @@
+{
+  "transition_id": "trans_gold_flask_02_should_ignore_error",
+  "track": "B",
+  "repo_name": "pallets/flask",
+  "model_repo": "Qwen/Qwen2.5-Coder-7B-Instruct",
+  "model_revision": "c03e6d358207e414f1eca0bb1891e29f1db0e242",
+  "weights_prefix_sha256_64mb": "7f7c6896a15384ae302b92df47d35acd22210f08c848f1116442492e20e94353",
+  "config_sha256": "c0242402ad6a13b331ea320feea8c7e3776ffb7a4eff0757b9cd667e116d9a28",
+  "tokenizer_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+  "safetensors_index_sha256": "998a078123ffc97763690de7f2a677eb89168af5eaf8a5e12e6bc24d18e25bdb",
+  "gpu": "NVIDIA GeForce RTX 2080 Ti",
+  "vram_allocated_gb": 15.232282624,
+  "latency_seconds": 6.7,
+  "prompt_tokens": 91,
+  "completion_tokens": 162,
+  "prompt": "<|im_start|>system\nYou are an expert software engineer implementing updates for pallets/flask. Provide ONLY python code inside ```python code block without extra explanations.<|im_end|>\n<|im_start|>user\nProject Context Note: Override should_ignore_error on Flask application subclass to filter exceptions\n\nTask: Implement `configure_error_policy(app, exc_class)` in `error_policy.py` registering a teardown request handler.\nImplement the solution for error_policy.py.\n<|im_end|>\n<|im_start|>assistant\n```python\n",
+  "retrieved_memories": [
+    "Override should_ignore_error on Flask application subclass to filter exceptions"
+  ],
+  "raw_generation": "from flask import Flask, request, jsonify\n\ndef configure_error_policy(app, exc_class):\n    @app.teardown_request\n    def handle_teardown(exception=None):\n        if exception and isinstance(exception, exc_class):\n            # Log or handle the exception as needed\n            app.logger.error(f\"Error occurred: {exception}\")\n            return jsonify({\"error\": \"An error occurred\"}), 500\n        return None\n```\n\nThis function registers a teardown request handler with the Flask application. The handler checks if the exception is of the specified class (`exc_class`). If it is, it logs the error and returns a JSON response indicating an internal server error (HTTP status code 500). If no exception occurs or the exception is not of the specified class, the handler does nothing.",
+  "cleaned_code": "from flask import Flask, request, jsonify\n\ndef configure_error_policy(app, exc_class):\n    @app.teardown_request\n    def handle_teardown(exception=None):\n        if exception and isinstance(exception, exc_class):\n            # Log or handle the exception as needed\n            app.logger.error(f\"Error occurred: {exception}\")\n            return jsonify({\"error\": \"An error occurred\"}), 500\n        return None",
+  "stale_ast_detected": false,
+  "stale_nodes": [],
+  "sandbox_passed": true,
+  "pytest_log_preview": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_flask_02_should_ignore_error/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_fz61tmy9\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_error_policy PASSED                    [100%]\n\n============================== 1 passed in 0.23s ===============================\n"
+}

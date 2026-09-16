@@ -11,14 +11,14 @@ import os
 import sys
 import json
 import argparse
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from src.sandbox_secure import SecureSandboxExecutor
 
 
-def run_controls_for_fixture(fixture_dir: str, executor: SecureSandboxExecutor) -> Dict[str, Any]:
+def run_controls_for_fixture(fixture_dir: str, executor: Optional[SecureSandboxExecutor] = None) -> Dict[str, Any]:
     t_id = os.path.basename(fixture_dir)
     meta_path = os.path.join(fixture_dir, "metadata.json")
     if not os.path.exists(meta_path):
@@ -28,6 +28,13 @@ def run_controls_for_fixture(fixture_dir: str, executor: SecureSandboxExecutor) 
         meta = json.load(f)
 
     target_file = meta.get("target_file", "solution.py")
+
+    # Use per-transition venv if available
+    custom_bin = os.path.join("/code/rolemem-agent-memory/.venvs", t_id, "bin")
+    if os.path.exists(custom_bin):
+        executor = SecureSandboxExecutor(custom_env_bin_dir=custom_bin)
+    elif executor is None:
+        executor = SecureSandboxExecutor()
 
     # 1. Load workspace files from after/
     after_dir = os.path.join(fixture_dir, "after")
