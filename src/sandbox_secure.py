@@ -12,11 +12,31 @@ from typing import Dict, Tuple, Optional
 
 
 class SecureSandboxExecutor:
-    """Executes generated code in an isolated, read-only root, networkless sandbox."""
+    """
+    Executes generated code in an isolated, read-only root, networkless sandbox.
+    Enforces Bubblewrap kernel containment, resource limits, and environment redaction.
+    """
 
-    def __init__(self, timeout_seconds: int = 10):
+    def __init__(
+        self,
+        timeout_seconds: int = 15,
+        max_memory_bytes: int = 4 * 1024 * 1024 * 1024,  # 4 GB
+        max_procs: int = 128,
+        cpu_limit_seconds: int = 15
+    ):
         self.timeout_seconds = timeout_seconds
-        self.has_bwrap = shutil.which("bwrap") is not None
+        self.max_memory_bytes = max_memory_bytes
+        self.max_procs = max_procs
+        self.cpu_limit_seconds = cpu_limit_seconds
+        self.bwrap_path = shutil.which("bwrap")
+        self.prlimit_path = shutil.which("prlimit")
+
+        if not self.bwrap_path:
+            raise RuntimeError(
+                "CRITICAL SECURITY ERROR: /usr/bin/bwrap (Bubblewrap) executable is not found. "
+                "Secure containerized sandbox isolation is mandatory for RoleMem evaluation. "
+                "Fallback to uncontained execution is strictly prohibited."
+            )
 
     def execute_in_sandbox(
         self,
@@ -27,8 +47,11 @@ class SecureSandboxExecutor:
     ) -> Tuple[bool, str]:
         """
         Creates an isolated ephemeral workspace, mounts read-only system libraries,
-        denies all network access, and executes pytest with unprivileged UID.
+        denies all network access, applies resource limits, and executes pytest with unprivileged UID.
         """
+        if not self.bwrap_path or not os.path.exists(self.bwrap_path):
+            raise RuntimeError("HARD FAIL: bwrap executable is missing. Evaluation aborted.")
+
         with tempfile.TemporaryDirectory(prefix="rolemem_sandbox_") as tmpdir:
             # 1. Populate workspace files
             for rel_path, content in workspace_files.items():
@@ -55,50 +78,54 @@ class SecureSandboxExecutor:
             with open(test_file_path, "w", encoding="utf-8") as f:
                 f.write(test_code)
 
-            # 5. Build sandbox command
-            if self.has_bwrap:
+            # 5. Build sandbox command with bwrap
+            bwrap_cmd = [
+                self.bwrap_path,
+                "--ro-bind", "/", "/",
+                "--tmpfs", "/tmp",
+                "--tmpfs", "/root",
+                "--ro-bind", "/root/anaconda3", "/root/anaconda3",
+                "--tmpfs", "/home",
+                "--proc", "/proc",
+                "--dev", "/dev",
+                "--unshare-net",
+                "--unshare-pid",
+                "--unshare-user",
+                "--uid", "1000",
+                "--gid", "1000",
+                "--bind", tmpdir, tmpdir,
+                "--chdir", tmpdir,
+                "--clearenv",
+                "--setenv", "PATH", "/root/anaconda3/bin:/usr/local/bin:/usr/bin:/bin",
+                "--setenv", "PYTHONPATH", tmpdir,
+                "--setenv", "LANG", "C.UTF-8",
+                "--setenv", "HOME", "/tmp",
+                "--die-with-parent",
+                "pytest", "test_hidden_verification.py", "-v"
+            ]
+
+            # 6. Prepend prlimit resource limits if prlimit is available
+            if self.prlimit_path:
                 cmd = [
-                    "bwrap",
-                    "--ro-bind", "/", "/",
-                    "--tmpfs", "/tmp",
-                    "--tmpfs", "/root",
-                    "--ro-bind", "/root/anaconda3", "/root/anaconda3",
-                    "--tmpfs", "/home",
-
-                    "--proc", "/proc",
-                    "--dev", "/dev",
-                    "--unshare-net",
-                    "--unshare-pid",
-                    "--unshare-user",
-                    "--uid", "1000",
-                    "--gid", "1000",
-                    "--bind", tmpdir, tmpdir,
-                    "--chdir", tmpdir,
-                    "--clearenv",
-                    "--setenv", "PATH", "/root/anaconda3/bin:/usr/local/bin:/usr/bin:/bin",
-                    "--setenv", "PYTHONPATH", tmpdir,
-                    "--setenv", "LANG", "C.UTF-8",
-                    "--setenv", "HOME", "/tmp",
-                    "--die-with-parent",
-                    "pytest", "test_hidden_verification.py", "-v"
-
-                ]
+                    self.prlimit_path,
+                    f"--as={self.max_memory_bytes}",
+                    f"--nproc={self.max_procs}",
+                    f"--cpu={self.cpu_limit_seconds}"
+                ] + bwrap_cmd
             else:
-                # Fallback: strict clean-environment subprocess
-                cmd = ["pytest", "test_hidden_verification.py", "-v"]
+                cmd = bwrap_cmd
 
-            clean_env = {
+            # Clean host environment passed to the runner subprocess
+            clean_host_env = {
                 "PATH": "/root/anaconda3/bin:/usr/local/bin:/usr/bin:/bin",
-                "PYTHONPATH": tmpdir,
-                "LANG": "C.UTF-8",
-                "HOME": "/tmp"
+                "HOME": "/tmp",
+                "LANG": "C.UTF-8"
             }
 
             try:
                 res = subprocess.run(
                     cmd,
-                    cwd=tmpdir if not self.has_bwrap else None,
-                    env=clean_env if not self.has_bwrap else None,
+                    env=clean_host_env,
                     capture_output=True,
                     text=True,
                     timeout=self.timeout_seconds

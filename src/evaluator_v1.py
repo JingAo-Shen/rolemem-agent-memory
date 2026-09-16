@@ -13,119 +13,81 @@ import subprocess
 from typing import Dict, Any, Tuple, Optional
 from openai import OpenAI
 from src.schema_v1 import TaskEnvironmentV1
+from src.sandbox_secure import SecureSandboxExecutor
+from src.stale_detector_ast import ASTStaleActionDetector
 
 
 def _load_deepseek_api_client() -> Tuple[OpenAI, str]:
+    model_override = os.getenv("DEEPSEEK_MODEL", "")
     auth_file = "/root/.local/share/opencode/auth.json"
+    key = ""
     if os.path.exists(auth_file):
         try:
             with open(auth_file, "r") as f:
                 data = json.load(f)
-                key = data.get("deepseek", {}).get("key") or data.get("deepseek", {}).get("apiKey")
-                if key:
-                    return OpenAI(api_key=key, base_url="https://api.deepseek.com"), "deepseek-chat"
+                key = data.get("deepseek", {}).get("key") or data.get("deepseek", {}).get("apiKey") or ""
         except Exception:
             pass
 
-    key = os.getenv("DEEPSEEK_API_KEY", "")
-    return OpenAI(api_key=key, base_url="https://api.deepseek.com"), "deepseek-chat"
+    if not key:
+        key = os.getenv("DEEPSEEK_API_KEY", "")
 
+    client = OpenAI(api_key=key, base_url="https://api.deepseek.com")
+    # Default to verified endpoint deepseek-flash corresponding to DeepSeek-V4.1-Flash
+    selected_model = model_override or "deepseek-flash"
+    return client, selected_model
 
 
 class SandboxEvaluatorV1:
-    """Executes generated code in an isolated directory with domain-specific pytest suites."""
+    """
+    Deprecated legacy evaluator. Replaced by SecureSandboxExecutor in Pilot-v1.2.
+    Redirects calls to SecureSandboxExecutor to ensure bubblewrap containment.
+    """
 
-    @staticmethod
+    def __init__(self):
+        self.executor = SecureSandboxExecutor()
+
     def evaluate_in_sandbox(
+        self,
         workspace_files: Dict[str, str],
         target_file: str,
         generated_code: str,
         test_code: str
     ) -> Tuple[bool, str]:
-        with tempfile.TemporaryDirectory() as tmpdir:
-            # 1. Write workspace files
-            for rel_path, content in workspace_files.items():
-                full_path = os.path.join(tmpdir, rel_path)
-                os.makedirs(os.path.dirname(full_path), exist_ok=True)
-                with open(full_path, "w", encoding="utf-8") as f:
-                    f.write(content)
-
-            # 2. Write generated target file
-            target_full_path = os.path.join(tmpdir, target_file)
-            os.makedirs(os.path.dirname(target_full_path), exist_ok=True)
-            with open(target_full_path, "w", encoding="utf-8") as f:
-                f.write(generated_code)
-
-            # 3. Create __init__.py files in all directories to enable importing
-            for root, dirs, _ in os.walk(tmpdir):
-                init_file = os.path.join(root, "__init__.py")
-                if not os.path.exists(init_file):
-                    with open(init_file, "w") as f:
-                        f.write("")
-
-            # 4. Write test file
-            test_path = os.path.join(tmpdir, "test_hidden_verification.py")
-            with open(test_path, "w", encoding="utf-8") as f:
-                f.write(test_code)
-
-            # 5. Run pytest in isolated sandbox
-            env = os.environ.copy()
-            env["PYTHONPATH"] = tmpdir
-            try:
-                res = subprocess.run(
-                    ["pytest", "test_hidden_verification.py", "-v"],
-                    cwd=tmpdir,
-                    env=env,
-                    capture_output=True,
-                    text=True,
-                    timeout=15
-                )
-                passed = (res.returncode == 0)
-                output = res.stdout if passed else f"STDOUT:\n{res.stdout}\nSTDERR:\n{res.stderr}"
-                return passed, output
-            except subprocess.TimeoutExpired:
-                return False, "TIMEOUT: Pytest execution exceeded 15s limit."
-            except Exception as e:
-                return False, f"EXECUTION_ERROR: {str(e)}"
+        return self.executor.execute_in_sandbox(
+            workspace_files=workspace_files,
+            target_file=target_file,
+            generated_code=generated_code,
+            test_code=test_code
+        )
 
 
 class RealLLMRunnerV1:
-    """Invokes LLM with strict fair information budgeting and records full evaluation telemetry."""
+    """
+    Invokes LLM with strict fair information budgeting and records full evaluation telemetry.
+    All executions are strictly contained within SecureSandboxExecutor (bwrap).
+    All stale metrics are computed via ASTStaleActionDetector.
+    """
 
-    def __init__(self):
-        self.client, self.model_name = _load_deepseek_api_client()
-        self.evaluator = SandboxEvaluatorV1()
+    def __init__(self, model_name: Optional[str] = None):
+        client, default_model = _load_deepseek_api_client()
+        self.client = client
+        self.model_name = model_name or default_model
+        self.evaluator = SecureSandboxExecutor()
 
     def _extract_code(self, response_text: str) -> str:
         """Extract clean python code block from LLM markdown response."""
         pattern = r"```python\s*(.*?)\s*```"
         matches = re.findall(pattern, response_text, re.DOTALL)
         if matches:
-            # Return the longest python code block
             return max(matches, key=len).strip()
         
-        # If backticks without python
         pattern_generic = r"```\s*(.*?)\s*```"
         generic_matches = re.findall(pattern_generic, response_text, re.DOTALL)
         if generic_matches:
             return max(generic_matches, key=len).strip()
         
         return response_text.strip()
-
-    def _check_stale_patterns(self, code: str, patterns: list) -> bool:
-        """Check if generated code actively utilizes deprecated/stale symbols."""
-        code_lines = [l for l in code.split("\n") if not l.strip().startswith("#")]
-        clean_code = "\n".join(code_lines)
-        for pat in patterns:
-            try:
-                if re.search(pat, clean_code):
-                    return True
-            except Exception:
-                pass
-            if pat in clean_code:
-                return True
-        return False
-
 
     def evaluate_task(
         self,
@@ -192,18 +154,25 @@ class RealLLMRunnerV1:
                 "method": method_name,
                 "passed": False,
                 "stale_used": False,
+                "stale_active_use": False,
+                "stale_mentions": False,
+                "active_stale_nodes": [],
                 "error": f"API_CALL_ERROR: {str(e)}",
                 "latency": latency,
                 "tokens": {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0},
                 "generated_code": "",
-                "raw_output": ""
+                "raw_output": "",
+                "test_log": "",
+                "model_name": self.model_name
             }
 
         generated_code = self._extract_code(raw_output)
-        stale_used = self._check_stale_patterns(generated_code, task.stale_patterns)
 
-        # Run in isolated sandbox
-        passed, test_log = self.evaluator.evaluate_in_sandbox(
+        # Scientific AST Stale Action Analysis (replaces regex heuristics)
+        stale_analysis = ASTStaleActionDetector.analyze(generated_code, task.stale_patterns)
+
+        # Run in kernel-isolated secure sandbox (Bubblewrap bwrap)
+        passed, test_log = self.evaluator.execute_in_sandbox(
             workspace_files=current_workspace,
             target_file=task.target_file,
             generated_code=generated_code,
@@ -216,9 +185,14 @@ class RealLLMRunnerV1:
             "category": task.category,
             "method": method_name,
             "passed": passed,
-            "stale_used": stale_used,
+            "stale_used": stale_analysis.stale_active_use,
+            "stale_active_use": stale_analysis.stale_active_use,
+            "stale_mentions": stale_analysis.stale_mentions,
+            "active_stale_nodes": stale_analysis.active_stale_nodes,
             "latency": latency,
             "tokens": tokens,
             "generated_code": generated_code,
-            "test_log": test_log
+            "raw_output": raw_output,
+            "test_log": test_log,
+            "model_name": self.model_name
         }

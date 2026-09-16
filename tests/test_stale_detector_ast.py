@@ -74,3 +74,40 @@ def build_cache():
     res = ASTStaleActionDetector.analyze(code, ["ttl"])
     assert res.stale_active_use is True
     assert any(n["type"] == "KeywordArg" and n["symbol"] == "ttl" for n in res.active_nodes)
+
+
+def test_active_dict_subscript_and_string_literal_is_flagged():
+    code = """
+def send_request(token):
+    headers = {}
+    headers["X-Stripe-Token"] = token
+    return headers
+"""
+    res = ASTStaleActionDetector.analyze(code, ["X-Stripe-Token"])
+    assert res.stale_active_use is True
+    assert res.stale_mentions is False
+    assert any(n["symbol"] == "X-Stripe-Token" for n in res.active_stale_nodes)
+
+
+def test_active_assignment_string_literal_is_flagged():
+    code = """
+def get_auth_algo():
+    algorithm = "HS256"
+    return algorithm
+"""
+    res = ASTStaleActionDetector.analyze(code, ["HS256"])
+    assert res.stale_active_use is True
+    assert any(n["symbol"] == "HS256" for n in res.active_stale_nodes)
+
+
+def test_active_comparison_literal_is_flagged():
+    code = """
+def verify_cache(policy):
+    if policy == "TTL":
+        return True
+    return False
+"""
+    res = ASTStaleActionDetector.analyze(code, ["TTL"])
+    assert res.stale_active_use is True
+    assert any(n["symbol"] == "TTL" for n in res.active_stale_nodes)
+

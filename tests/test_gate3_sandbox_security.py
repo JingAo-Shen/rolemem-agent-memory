@@ -116,3 +116,19 @@ def test_infinite_loop():
     )
     assert passed is False
     assert "TIMEOUT" in output
+
+
+def test_missing_bwrap_hard_fails(monkeypatch):
+    """If bwrap is missing, SecureSandboxExecutor must HARD FAIL, never fall back."""
+    import shutil
+    monkeypatch.setattr(shutil, "which", lambda cmd: None if cmd == "bwrap" else "/usr/bin/" + cmd)
+    with pytest.raises(RuntimeError, match="bwrap.*not found"):
+        SecureSandboxExecutor()
+
+
+def test_prlimit_resource_limits_configured(sandbox):
+    """Verify resource limit attributes are active."""
+    assert sandbox.max_memory_bytes == 4 * 1024 * 1024 * 1024
+    assert sandbox.max_procs == 128
+    assert sandbox.cpu_limit_seconds == 15
+

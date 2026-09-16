@@ -19,12 +19,33 @@ class StaleAnalysisResult:
     active_nodes: List[Dict[str, Any]] = field(default_factory=list)
     mention_contexts: List[str] = field(default_factory=list)
 
+    @property
+    def stale_mentions(self) -> bool:
+        return self.stale_mention
+
+    @property
+    def active_stale_nodes(self) -> List[Dict[str, Any]]:
+        return self.active_nodes
+
+
+def _find_docstring_node_ids(tree: ast.AST) -> Set[int]:
+    """Identify AST node IDs that represent passive docstrings."""
+    docstring_ids = set()
+    for node in ast.walk(tree):
+        if isinstance(node, (ast.Module, ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+            if node.body and isinstance(node.body[0], ast.Expr):
+                expr_val = node.body[0].value
+                if isinstance(expr_val, ast.Constant) and isinstance(expr_val.value, str):
+                    docstring_ids.add(id(expr_val))
+    return docstring_ids
+
 
 class ASTStaleVisitor(ast.NodeVisitor):
     """Walks the Python Abstract Syntax Tree to identify active invocations of stale symbols."""
 
-    def __init__(self, stale_symbols: Set[str]):
+    def __init__(self, stale_symbols: Set[str], docstring_node_ids: Set[int]):
         self.stale_symbols = stale_symbols
+        self.docstring_node_ids = docstring_node_ids
         self.active_nodes: List[Dict[str, Any]] = []
 
     def visit_Import(self, node: ast.Import) -> None:
@@ -96,6 +117,24 @@ class ASTStaleVisitor(ast.NodeVisitor):
             })
         self.generic_visit(node)
 
+    def visit_Constant(self, node: ast.Constant) -> None:
+        # Ignore docstring constants
+        if id(node) in self.docstring_node_ids:
+            return
+        
+        val_str = str(node.value)
+        # Check if the constant matches or contains a stale symbol
+        for sym in self.stale_symbols:
+            if sym == val_str or (isinstance(node.value, str) and sym in node.value and len(sym) >= 3):
+                self.active_nodes.append({
+                    "type": "ConstantLiteral",
+                    "lineno": node.lineno,
+                    "symbol": sym,
+                    "literal_value": val_str
+                })
+                break
+        self.generic_visit(node)
+
 
 class ASTStaleActionDetector:
     """Evaluates Python code for active stale actions vs passive mentions."""
@@ -113,22 +152,34 @@ class ASTStaleActionDetector:
         # 1. Parse AST
         try:
             tree = ast.parse(code)
-            visitor = ASTStaleVisitor(stale_symbols_set)
+            docstring_ids = _find_docstring_node_ids(tree)
+            visitor = ASTStaleVisitor(stale_symbols_set, docstring_ids)
             visitor.visit(tree)
             active_nodes = visitor.active_nodes
         except SyntaxError:
             # Fallback regex for active syntax if code has syntax error
             for sym in stale_patterns:
-                # Look for assignment or invocation
-                pattern = rf"(?m)^\s*(?:from\s+\S+\s+import\s+.*{re.escape(sym)}|{re.escape(sym)}\s*=|import\s+.*{re.escape(sym)})"
+                pattern = rf"(?m)^\s*(?:from\s+\S+\s+import\s+.*{re.escape(sym)}|{re.escape(sym)}\s*=|import\s+.*{re.escape(sym)}|.*\[['\"]{re.escape(sym)}['\"]\])"
                 if re.search(pattern, code):
                     active_nodes.append({"type": "RegexFallbackActive", "lineno": 0, "symbol": sym})
 
         # 2. Extract comments and docstrings to check for passive mentions
+        # Check docstrings
+        if 'tree' in locals():
+            for node in ast.walk(tree):
+                if isinstance(node, (ast.Module, ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+                    doc = ast.get_docstring(node)
+                    if doc:
+                        for sym in stale_patterns:
+                            if sym in doc:
+                                stale_mention = True
+                                mention_contexts.append(f"Docstring in {getattr(node, 'name', 'module')}: {doc[:60]}")
+
+        # Check comments via tokenize
         try:
             tokens = tokenize.tokenize(io.BytesIO(code.encode('utf-8')).readline)
             for tok_type, tok_string, (srow, _), _, _ in tokens:
-                if tok_type in (tokenize.COMMENT, tokenize.STRING):
+                if tok_type == tokenize.COMMENT:
                     for sym in stale_patterns:
                         if sym in tok_string:
                             stale_mention = True
