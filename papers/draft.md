@@ -1,7 +1,12 @@
 # RoleMem: Evidence-Scoped Role Memory for Dynamic Cross-Model Agent Handoffs
 
+> [!CAUTION]
+> **STATUS: INVALIDATED PILOT DRAFT — NOT FOR SUBMISSION**
+> All empirical metrics, statistical claims ($p < 0.001$), cross-model transfer claims, and evaluation tables in this historical draft originate from `pilot-v0` (which contained synthetic mock actions in P3 and evaluator category-level mismatches in P4). They have been formally retracted and must NOT be cited as scientific conclusions. This document is preserved strictly for architectural lineage and will be completely re-authored under the audited `pilot-v1` framework.
+
 **Anonymous Authors**  
-*Submitted to NeurIPS / ICLR Track on Language Agents and Reasoning*
+*Submitted to NeurIPS / ICLR Track on Language Agents and Reasoning (Historical Pilot Draft)*
+
 
 ---
 
