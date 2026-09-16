@@ -66,20 +66,60 @@ class LocalModelRunner:
                 "temperature": 0.0,
                 "max_new_tokens": 1024,
                 "do_sample": False
-            }
+            },
+            "model_config_sha256": None,
+            "tokenizer_sha256": None,
+            "weights_sha256": None,
+            "hf_commit_sha": self.revision
         }
         self.model = None
         self.tokenizer = None
         self.evaluator = SecureSandboxExecutor()
 
+    @staticmethod
+    def _compute_sha256(filepath: str, max_bytes: Optional[int] = None) -> str:
+        import hashlib
+        h = hashlib.sha256()
+        with open(filepath, "rb") as f:
+            read_bytes = 0
+            while True:
+                chunk = f.read(65536)
+                if not chunk:
+                    break
+                h.update(chunk)
+                read_bytes += len(chunk)
+                if max_bytes and read_bytes >= max_bytes:
+                    break
+        return h.hexdigest()
+
     def load_model(self) -> None:
         from transformers import AutoModelForCausalLM, AutoTokenizer
-        target_path = self.model_dir if os.path.exists(os.path.join(self.model_dir, "model.safetensors")) else self.model_repo
-        print(f"Loading tokenizer from {target_path}...")
-        self.tokenizer = AutoTokenizer.from_pretrained(target_path, trust_remote_code=True)
-        print(f"Loading model weights from {target_path} onto {self.device}...")
+        is_local = os.path.exists(os.path.join(self.model_dir, "model.safetensors"))
+        target_path = self.model_dir if is_local else self.model_repo
+
+        # Compute checksums if files exist locally
+        if is_local:
+            cfg_p = os.path.join(self.model_dir, "config.json")
+            tok_p = os.path.join(self.model_dir, "tokenizer.json")
+            w_p = os.path.join(self.model_dir, "model.safetensors")
+            if os.path.exists(cfg_p):
+                self.env_specs["model_config_sha256"] = self._compute_sha256(cfg_p)
+            if os.path.exists(tok_p):
+                self.env_specs["tokenizer_sha256"] = self._compute_sha256(tok_p)
+            if os.path.exists(w_p):
+                # Hash first 64MB of weights for fast startup validation if large
+                self.env_specs["weights_sha256"] = self._compute_sha256(w_p, max_bytes=64 * 1024 * 1024)
+
+        print(f"Loading tokenizer from {target_path} (revision={self.revision})...")
+        load_kwargs = {"trust_remote_code": True}
+        if not is_local or os.path.isdir(os.path.join(target_path, ".git")):
+            load_kwargs["revision"] = self.revision
+
+        self.tokenizer = AutoTokenizer.from_pretrained(target_path, revision=self.revision, trust_remote_code=True)
+        print(f"Loading model weights from {target_path} onto {self.device} (revision={self.revision})...")
         self.model = AutoModelForCausalLM.from_pretrained(
             target_path,
+            revision=self.revision,
             torch_dtype=self.dtype,
             device_map="auto" if self.device == "cuda" else None,
             trust_remote_code=True

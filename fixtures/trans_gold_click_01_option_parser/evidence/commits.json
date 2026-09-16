@@ -1,0 +1,45 @@
+{
+  "base_commit": {
+    "verified": true,
+    "commit_sha": "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+    "full_sha": "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+    "message": "deprecate base classes `BaseCommand` and `MultiCommand` (#2591)",
+    "author_date": "2023-08-19T20:07:35Z",
+    "parents": [
+      "f5e47a6fc29c515c5c23bab297e1454c054844cb",
+      "238ee070af40576d23418e41fa96d1c41e53f6b1"
+    ]
+  },
+  "history_commit": {
+    "verified": true,
+    "commit_sha": "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+    "full_sha": "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+    "message": "deprecate base classes `BaseCommand` and `MultiCommand` (#2591)",
+    "author_date": "2023-08-19T20:07:35Z",
+    "parents": [
+      "f5e47a6fc29c515c5c23bab297e1454c054844cb",
+      "238ee070af40576d23418e41fa96d1c41e53f6b1"
+    ]
+  },
+  "transition_commit": {
+    "verified": true,
+    "commit_sha": "3630addf538ff4d1d5bc75438c8d84378105d03d",
+    "full_sha": "3630addf538ff4d1d5bc75438c8d84378105d03d",
+    "message": "deprecate OptionParser",
+    "author_date": "2023-08-20T16:13:25Z",
+    "parents": [
+      "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3"
+    ]
+  },
+  "target_commit": {
+    "verified": true,
+    "commit_sha": "988c683963b14ced1b32a8cda9f9b466c32d9df1",
+    "full_sha": "988c683963b14ced1b32a8cda9f9b466c32d9df1",
+    "message": "deprecate `OptionParser` (#2592)",
+    "author_date": "2023-08-20T16:16:54Z",
+    "parents": [
+      "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+      "3630addf538ff4d1d5bc75438c8d84378105d03d"
+    ]
+  }
+}

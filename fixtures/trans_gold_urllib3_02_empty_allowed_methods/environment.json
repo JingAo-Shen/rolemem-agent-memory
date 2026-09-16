@@ -1,0 +1,16 @@
+{
+  "transition_id": "trans_gold_urllib3_02_empty_allowed_methods",
+  "repo_name": "urllib3/urllib3",
+  "license": "MIT",
+  "python_version": ">=3.10",
+  "dependency_install_command": "pip install pytest",
+  "requirements": [
+    "pytest>=8.0.0"
+  ],
+  "os_assumptions": "Linux x86_64",
+  "setup_command": "export PYTHONPATH=.",
+  "test_command": "pytest hidden_tests/test_evaluation.py",
+  "timeout": 15,
+  "network_requirement": "none",
+  "sandbox_type": "bwrap"
+}

@@ -1,0 +1,11 @@
+{
+  "verified": true,
+  "pr_number": 4995,
+  "pr_title": "remove previously deprecated code",
+  "pr_body": "Remove code that was previously deprecated in 2.3.\r\n\r\n- I've pushed back the removal of `_app_ctx_stack` and `_request_ctx_stack` until 2.4 to give extensions more time to update. The `push` and `pop` methods are removed, only `top` remains.\r\n- `FLASK_ENV` env var, `ENV` config, and `app.env`\r\n- `session_cookie_name`, `send_file_max_age_default`, `use_x_sendfile`, `propagate_exceptions`, and `templates_auto_reload` properties\r\n- `JSON_AS_ASCII`, `JSON_SORT_KEYS`, `JSONIFY_MIMETYPE`, and `JSONIFY_PRETTYPRINT_REGULAR` config keys\r\n- `before_first_request`\r\n- `json_encoder` and `json_decoder` attributes, `JSONEncoder` and `JSONDecoder` classes\r\n- `htmlsafe_dumps` and `htmlsafe_dump`",
+  "pr_state": "closed",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "1ee22e1736ffd12c2222cd6215ed04ec1592adaa",
+  "base_sha": "604de4b1dc0729233704a08c32612c6f1221cccb",
+  "head_sha": "6650764e9719402de2aaa6f321bdec587699c6b2"
+}

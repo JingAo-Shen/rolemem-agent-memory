@@ -1,0 +1,34 @@
+{
+  "transition_id": "trans_gold_flask_01_context_stack_removal",
+  "repo_name": "pallets/flask",
+  "repo_url": "https://github.com/pallets/flask",
+  "license": "BSD-3-Clause",
+  "language": "Python",
+  "track_candidate": "A",
+  "task_family": "internal_refactor",
+  "pr_url": "https://github.com/pallets/flask/pull/4995",
+  "issue_url": "https://github.com/pallets/flask/issues/4994",
+  "base_commit": "604de4b1dc0729233704a08c32612c6f1221cccb",
+  "history_commit": "604de4b1dc0729233704a08c32612c6f1221cccb",
+  "transition_commit": "6650764e9719402de2aaa6f321bdec587699c6b2",
+  "target_commit": "1ee22e1736ffd12c2222cd6215ed04ec1592adaa",
+  "repository_change": "Remove _app_ctx_stack push and pop methods, requiring direct context.push() invocation",
+  "changed_files": [
+    "src/flask/globals.py",
+    "src/flask/ctx.py"
+  ],
+  "changed_symbols": [
+    "_app_ctx_stack.push",
+    "_request_ctx_stack.push"
+  ],
+  "stale_memory_candidate": "Call _app_ctx_stack.push(app_ctx) to bind active application context",
+  "valid_memory_candidate": "Call app_ctx.push() or use with app.app_context(): directly",
+  "current_task": "Implement `activate_application_context(app)` in `ctx_manager.py` returning the pushed context.",
+  "target_file": "ctx_manager.py",
+  "target_symbol": "activate_application_context",
+  "existing_tests": "tests/test_basic.py::test_app_context",
+  "generated_tests": "def test_activate_ctx():\n    from flask import Flask\n    from ctx_manager import activate_application_context\n    app = Flask('test_app')\n    ctx = activate_application_context(app)\n    from flask import current_app\n    assert current_app.name == 'test_app'\n    ctx.pop()",
+  "test_evidence_source": "Flask PR #4995 removal diff in globals.py",
+  "difficulty": "medium",
+  "leakage_review": "PASS"
+}

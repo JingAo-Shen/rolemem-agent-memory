@@ -1,0 +1,11 @@
+{
+  "verified": true,
+  "pr_number": 5899,
+  "pr_title": "deprecate `should_ignore_error`",
+  "pr_body": "closes #5816 ",
+  "pr_state": "closed",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "4b8bde97d4fa3486e18dce21c3c5f75570d50164",
+  "base_sha": "9b74a90dd3c47f792734823e8793ac36f38bc4dd",
+  "head_sha": "c77a5203438fe772d41f6a47303ad3f57a4efe6d"
+}

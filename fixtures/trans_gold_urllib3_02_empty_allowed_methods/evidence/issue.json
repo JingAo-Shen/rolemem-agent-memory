@@ -1,0 +1,7 @@
+{
+  "verified": true,
+  "issue_number": 5222,
+  "issue_title": "fix: clear tracebacks retained by retries",
+  "issue_body": "Fixes #3082\n\n## Summary\n\n- Clear exception tracebacks before retaining request errors in retry history.\n- Clear the exception used by retry warning records so log handlers do not retain request frames.\n- Add regressions covering both retention paths.\n\n## Validation\n\n- `python -m pytest -q test/test_retry.py test/test_connectionpool.py` \u2014 148 passed, 18 skipped\n- `python -m pytest -q test/test_retry.py::TestRetry::test_history_does_not_keep_error_traceback test/test_connectionpool.py::TestConnectionPool::test_retry_warning_does_not_keep_error_traceback`\n- `python -m ruff format --check src/urllib3/util/retry.py src/urllib3/connectionpool.py test/test_retry.py test/test_connectionpool.py`\n- `git diff --check`",
+  "issue_state": "open"
+}

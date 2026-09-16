@@ -1,0 +1,90 @@
+{
+  "transition_id": "trans_gold_requests_01_tls_context_adapter",
+  "repo_name": "psf/requests",
+  "overall_status": "VERIFIED",
+  "commit_verification": "PASS",
+  "semantic_evidence_match": "PASS",
+  "test_verification": "PASS",
+  "repo_details": {
+    "verified": true,
+    "repo_id": 1362490,
+    "full_name": "psf/requests",
+    "default_branch": "main",
+    "language": "Python",
+    "license": "Apache-2.0",
+    "is_fork": false,
+    "is_archived": false
+  },
+  "commit_details": {
+    "base_commit": {
+      "verified": true,
+      "commit_sha": "970e8cec988421bd43da57350723b05c8ce8dc7e",
+      "full_sha": "970e8cec988421bd43da57350723b05c8ce8dc7e",
+      "message": "v2.32.1",
+      "author_date": "2024-05-20T22:02:29Z",
+      "parents": [
+        "d6ebc4a2f1f68b7e355fb7e4dd5ffc0845547f9f"
+      ]
+    },
+    "history_commit": {
+      "verified": true,
+      "commit_sha": "970e8cec988421bd43da57350723b05c8ce8dc7e",
+      "full_sha": "970e8cec988421bd43da57350723b05c8ce8dc7e",
+      "message": "v2.32.1",
+      "author_date": "2024-05-20T22:02:29Z",
+      "parents": [
+        "d6ebc4a2f1f68b7e355fb7e4dd5ffc0845547f9f"
+      ]
+    },
+    "transition_commit": {
+      "verified": true,
+      "commit_sha": "92075b330a30b9883f466a43d3f7566ab849f91b",
+      "full_sha": "92075b330a30b9883f466a43d3f7566ab849f91b",
+      "message": "Add deprecation warning",
+      "author_date": "2024-05-21T16:28:30Z",
+      "parents": [
+        "aa1461b68aa73e2f6ec0e78c8853b635c76fd099"
+      ]
+    },
+    "target_commit": {
+      "verified": true,
+      "commit_sha": "c98e4d133ef29c46a9b68cd783087218a8075e05",
+      "full_sha": "c98e4d133ef29c46a9b68cd783087218a8075e05",
+      "message": "Merge pull request #6710 from nateprewitt/api_rename",
+      "author_date": "2024-05-21T16:41:18Z",
+      "parents": [
+        "970e8cec988421bd43da57350723b05c8ce8dc7e",
+        "92075b330a30b9883f466a43d3f7566ab849f91b"
+      ]
+    }
+  },
+  "ancestry_details": {
+    "verified": true,
+    "status": "ahead",
+    "ahead_by": 3,
+    "behind_by": 0,
+    "total_commits": 3,
+    "files_changed": [
+      "src/requests/adapters.py"
+    ]
+  },
+  "pr_details": {
+    "verified": true,
+    "pr_number": 6710,
+    "pr_title": "Move _get_connection to get_connection_with_tls_context",
+    "pr_body": "This PR is meant to provide a new publicly supported api `get_connection_with_tls_context` to better facilitate custom adapters with our recent fix for CVE-2024-35195.\r\n\r\nAs described [here](https://github.com/psf/requests/issues/6707#issuecomment-2122490651), we will be deprecating the existing `get_connection` API, and custom adapters will need to migrate their existing `get_connection` implementations to use `get_connection_with_tls_context`. Below is a very simple implementation that will get projects relying on a custom `get_connection` implementation unblocked.\r\n\r\nHowever, we _strongly_ recommend maintainers evaluate if their custom `get_connection` is subject to the same issues as the CVE above and make appropriate changes as needed.\r\n\r\n**Minimum new code to work as a pass-through**\r\nThis will be backwards compatible between versions of Requests.\r\n```python\r\ndef get_connection_with_tls_context(self, request, verify, proxies=None, cert=None):\r\n    return self.get_connection(request.url, proxies)\r\n```",
+    "pr_state": "closed",
+    "pr_merged": true,
+    "pr_merge_commit_sha": "c98e4d133ef29c46a9b68cd783087218a8075e05",
+    "base_sha": "970e8cec988421bd43da57350723b05c8ce8dc7e",
+    "head_sha": "92075b330a30b9883f466a43d3f7566ab849f91b"
+  },
+  "issue_details": {
+    "verified": true,
+    "issue_number": 6707,
+    "issue_title": "Requests 2.32.0 Not supported URL scheme http+docker",
+    "issue_body": "<!-- Summary. -->\r\nNewest version of requests 2.32.0 has an incompatibility with python lib `docker`\r\n\r\n```\r\n\r\nINTERNALERROR> Traceback (most recent call last):\r\n\r\nINTERNALERROR>   File \"/var/lib/jenkins/workspace/Development_sm_master/gravity/.nox/lib/python3.10/site-packages/requests/adapters.py\", line 532, in send\r\n\r\nINTERNALERROR>     conn = self._get_connection(request, verify, proxies=proxies, cert=cert)\r\n\r\nINTERNALERROR>   File \"/var/lib/jenkins/workspace/Development_sm_master/gravity/.nox/lib/python3.10/site-packages/requests/adapters.py\", line 400, in _get_connection\r\n\r\nINTERNALERROR>     conn = self.poolmanager.connection_from_host(\r\n\r\nINTERNALERROR>   File \"/var/lib/jenkins/workspace/Development_sm_master/gravity/.nox/lib/python3.10/site-packages/urllib3/poolmanager.py\", line 304, in connection_from_host\r\n\r\nINTERNALERROR>     return self.connection_from_context(request_context)\r\n\r\nINTERNALERROR>   File \"/var/lib/jenkins/workspace/Development_sm_master/gravity/.nox/lib/python3.10/site-packages/urllib3/poolmanager.py\", line 326, in connection_from_context\r\n\r\nINTERNALERROR>     raise URLSchemeUnknown(scheme)\r\n\r\nINTERNALERROR> urllib3.exceptions.URLSchemeUnknown: Not supported URL scheme http+docker\r\n\r\nINTERNALERROR> \r\n\r\nINTERNALERROR> During handling of the above exception, another exception occurred:\r\n\r\nINTERNALERROR> \r\n\r\nINTERNALERROR> Traceback (most recent call last):\r\n\r\nINTERNALERROR>   File \"/var/lib/jenkins/workspace/Development_sm_master/gravity/.nox/lib/python3.10/site-packages/docker/api/client.py\", line 213, in _retrieve_server_version\r\n\r\nINTERNALERROR>     return self.version(api_version=False)[\"ApiVersion\"]\r\n\r\nINTERNALERROR>   File \"/var/lib/jenkins/workspace/Development_sm_master/gravity/.nox/lib/python3.10/site-packages/docker/api/daemon.py\", line 181, in version\r\n\r\nINTERNALERROR>     return self._result(self._get(url), json=True)\r\n\r\nINTERNALERROR>   File \"/var/lib/jenkins/workspace/Development_sm_master/gravity/.nox/lib/python3.10/site-packages/docker/utils/decorators.py\", line 44, in inner\r\n\r\nINTERNALERROR>     return f(self, *args, **kwargs)\r\n\r\nINTERNALERROR>   File \"/var/lib/jenkins/workspace/Development_sm_master/gravity/.nox/lib/python3.10/site-packages/docker/api/client.py\", line 236, in _get\r\n\r\nINTERNALERROR>     return self.get(url, **self._set_request_timeout(kwargs))\r\n\r\nINTERNALERROR>   File \"/var/lib/jenkins/workspace/Development_sm_master/gravity/.nox/lib/python3.10/site-packages/requests/sessions.py\", line 602, in get\r\n\r\nINTERNALERROR>     return self.request(\"GET\", url, **kwargs)\r\n\r\nINTERNALERROR>   File \"/var/lib/jenkins/workspace/Development_sm_master/gravity/.nox/lib/python3.10/site-packages/requests/sessions.py\", line 589, in request\r\n\r\nINTERNALERROR>     resp = self.send(prep, **send_kwargs)\r\n\r\nINTERNALERROR>   File \"/var/lib/jenkins/workspace/Development_sm_master/gravity/.nox/lib/python3.10/site-packages/requests/sessions.py\", line 703, in send\r\n\r\nINTERNALERROR>     r = adapter.send(request, **kwargs)\r\n\r\nINTERNALERROR>   File \"/var/lib/jenkins/workspace/Development_sm_master/gravity/.nox/lib/python3.10/site-packages/requests/adapters.py\", line 534, in send\r\n\r\nINTERNALERROR>     raise InvalidURL(e, request=request)\r\n\r\nINTERNALERROR> requests.exceptions.InvalidURL: Not supported URL scheme http+docker\r\n```\r\n\r\n## Expected Result\r\n\r\nNormal initalization of docker client \r\n\r\n## Actual Result\r\n\r\n<!-- What happened instead. -->\r\n\r\nStack trace posted above\r\n\r\n## Reproduction Steps\r\n\r\n```sh\r\nmkvirtualenv debug_issue\r\npip install docker\r\npip install 'requests>=2.32.0'\r\npython\r\n```\r\n```python\r\nimport docker\r\ndocker.from_env()\r\n```\r\n\r\n## System Information\r\n\r\n    $ python -m requests.help\r\n\r\n```json\r\n{\r\n  \"chardet\": {\r\n    \"version\": null\r\n  },\r\n  \"charset_normalizer\": {\r\n    \"version\": \"3.3.2\"\r\n  },\r\n  \"cryptography\": {\r\n    \"version\": \"\"\r\n  },\r\n  \"idna\": {\r\n    \"version\": \"3.7\"\r\n  },\r\n  \"implementation\": {\r\n    \"name\": \"CPython\",\r\n    \"version\": \"3.10.12\"\r\n  },\r\n  \"platform\": {\r\n    \"release\": \"6.5.0-28-generic\",\r\n    \"system\": \"Linux\"\r\n  },\r\n  \"pyOpenSSL\": {\r\n    \"openssl_version\": \"\",\r\n    \"version\": null\r\n  },\r\n  \"requests\": {\r\n    \"version\": \"2.31.0\"\r\n  },\r\n  \"system_ssl\": {\r\n    \"version\": \"30000020\"\r\n  },\r\n  \"urllib3\": {\r\n    \"version\": \"2.2.1\"\r\n  },\r\n  \"using_charset_normalizer\": true,\r\n  \"using_pyopenssl\": false\r\n}\r\n```\r\n\r\n<!-- This command is only available on Requests v2.16.4 and greater. Otherwise,\r\nplease provide some basic information about your system (Python version,\r\noperating system, &c). -->\r\n",
+    "issue_state": "closed"
+  },
+  "rejection_reasons": []
+}

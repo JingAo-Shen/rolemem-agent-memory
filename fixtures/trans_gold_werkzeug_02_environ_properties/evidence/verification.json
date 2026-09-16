@@ -1,0 +1,96 @@
+{
+  "transition_id": "trans_gold_werkzeug_02_environ_properties",
+  "repo_name": "pallets/werkzeug",
+  "overall_status": "VERIFIED",
+  "commit_verification": "PASS",
+  "semantic_evidence_match": "PASS",
+  "test_verification": "PASS",
+  "repo_details": {
+    "verified": true,
+    "repo_id": 997338,
+    "full_name": "pallets/werkzeug",
+    "default_branch": "main",
+    "language": "Python",
+    "license": "BSD-3-Clause",
+    "is_fork": false,
+    "is_archived": false
+  },
+  "commit_details": {
+    "base_commit": {
+      "verified": true,
+      "commit_sha": "f97c305673ba121a1dae6764c37e8be48907a1d1",
+      "full_sha": "f97c305673ba121a1dae6764c37e8be48907a1d1",
+      "message": "deprecate UserAgent (#3273)",
+      "author_date": "2026-09-13T16:07:15Z",
+      "parents": [
+        "a33190bffb7f6dd4c7084c08257b4542689b8c66",
+        "50bf1e92af0b1acbc00aacd044e4f6b10b7787bf"
+      ]
+    },
+    "history_commit": {
+      "verified": true,
+      "commit_sha": "f97c305673ba121a1dae6764c37e8be48907a1d1",
+      "full_sha": "f97c305673ba121a1dae6764c37e8be48907a1d1",
+      "message": "deprecate UserAgent (#3273)",
+      "author_date": "2026-09-13T16:07:15Z",
+      "parents": [
+        "a33190bffb7f6dd4c7084c08257b4542689b8c66",
+        "50bf1e92af0b1acbc00aacd044e4f6b10b7787bf"
+      ]
+    },
+    "transition_commit": {
+      "verified": true,
+      "commit_sha": "2f2625fefdaead837c5433e44d5fe86972d013dd",
+      "full_sha": "2f2625fefdaead837c5433e44d5fe86972d013dd",
+      "message": "deprecate environ properties",
+      "author_date": "2026-09-14T16:48:19Z",
+      "parents": [
+        "f97c305673ba121a1dae6764c37e8be48907a1d1"
+      ]
+    },
+    "target_commit": {
+      "verified": true,
+      "commit_sha": "7641d4990f06d583425a4e6ba25e9d2f18934885",
+      "full_sha": "7641d4990f06d583425a4e6ba25e9d2f18934885",
+      "message": "deprecate environ properties (#3276)",
+      "author_date": "2026-09-14T17:00:19Z",
+      "parents": [
+        "f97c305673ba121a1dae6764c37e8be48907a1d1",
+        "2f2625fefdaead837c5433e44d5fe86972d013dd"
+      ]
+    }
+  },
+  "ancestry_details": {
+    "verified": true,
+    "status": "ahead",
+    "ahead_by": 2,
+    "behind_by": 0,
+    "total_commits": 2,
+    "files_changed": [
+      "CHANGES.rst",
+      "src/werkzeug/test.py",
+      "src/werkzeug/utils.py",
+      "src/werkzeug/wrappers/request.py",
+      "tests/test_utils.py"
+    ]
+  },
+  "pr_details": {
+    "verified": true,
+    "pr_number": 3276,
+    "pr_title": "deprecate environ properties",
+    "pr_body": "closed #3275\r\n\r\nA side note, `environ_property` was essentially just overhead. We weren't using `dump_func`, it was never writable (and should never be), and it required an extra function call to get the environ first. It saved no lines compared to using `@property` on a function with a docstring.\r\n",
+    "pr_state": "closed",
+    "pr_merged": true,
+    "pr_merge_commit_sha": "7641d4990f06d583425a4e6ba25e9d2f18934885",
+    "base_sha": "f97c305673ba121a1dae6764c37e8be48907a1d1",
+    "head_sha": "2f2625fefdaead837c5433e44d5fe86972d013dd"
+  },
+  "issue_details": {
+    "verified": true,
+    "issue_number": 3275,
+    "issue_title": "deprecate environ properties",
+    "issue_body": "- `input_stream` is explicitly documented as unsafe compared to its wrapped counterpart in `stream`.\n- `remote_user` is only mentioned in passing as part of CGI that WSGI accepts for compatibility.\n- `is_multithread`, `is_multiprocess`, and `is_run_once` are about how the server is running workers. But I can't think of how that matters to the application, code must avoid globals and use external storage regardless of the worker type.\n- All of these can be accessed directly from `request.environ` if needed, they even still have their correct types.\n- I can't find any uses of `environ_property` (or `header_property`) in external code.\n- None of the many other WSGI and CGI keys are exposed.\n- ASGI has no concept of any of these.",
+    "issue_state": "closed"
+  },
+  "rejection_reasons": []
+}

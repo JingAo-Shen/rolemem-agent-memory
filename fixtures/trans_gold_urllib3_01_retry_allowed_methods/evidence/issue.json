@@ -1,0 +1,7 @@
+{
+  "verified": true,
+  "issue_number": 1916,
+  "issue_title": "Replace method_whitelist and DEFAULT_REDIRECT_HEADERS_BLACKLIST parameter names for the Retry method",
+  "issue_body": "Ref: https://urllib3.readthedocs.io/en/latest/reference/urllib3.util.html\r\n\r\nRequest to replace the following parameters in the `Retry` module with neutral terms that do not have any Slavery connotation.\r\n\r\n`method_whitelist`\r\n`DEFAULT_REDIRECT_HEADERS_BLACKLIST`\r\n\r\nMany thanks.",
+  "issue_state": "closed"
+}

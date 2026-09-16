@@ -1,0 +1,26 @@
+{
+  "input_dataset": "data/gold/gold_transitions.jsonl",
+  "total_audited": 10,
+  "verified": 10,
+  "rejected": 0,
+  "needs_review": 0,
+  "verification_rate_pct": 100.0,
+  "commit_verification_summary": {
+    "PASS": 10
+  },
+  "rejection_reasons": {},
+  "repository_distribution": {
+    "pallets/werkzeug": 2,
+    "pallets/flask": 2,
+    "urllib3/urllib3": 2,
+    "pallets/click": 2,
+    "psf/requests": 2
+  },
+  "track_distribution": {
+    "A": 6,
+    "B": 3,
+    "C": 1
+  },
+  "benchmark_freeze_eligible": true,
+  "declared_status": "STATUS: VERIFIED"
+}

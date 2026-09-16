@@ -1,0 +1,11 @@
+{
+  "verified": true,
+  "pr_number": 6710,
+  "pr_title": "Move _get_connection to get_connection_with_tls_context",
+  "pr_body": "This PR is meant to provide a new publicly supported api `get_connection_with_tls_context` to better facilitate custom adapters with our recent fix for CVE-2024-35195.\r\n\r\nAs described [here](https://github.com/psf/requests/issues/6707#issuecomment-2122490651), we will be deprecating the existing `get_connection` API, and custom adapters will need to migrate their existing `get_connection` implementations to use `get_connection_with_tls_context`. Below is a very simple implementation that will get projects relying on a custom `get_connection` implementation unblocked.\r\n\r\nHowever, we _strongly_ recommend maintainers evaluate if their custom `get_connection` is subject to the same issues as the CVE above and make appropriate changes as needed.\r\n\r\n**Minimum new code to work as a pass-through**\r\nThis will be backwards compatible between versions of Requests.\r\n```python\r\ndef get_connection_with_tls_context(self, request, verify, proxies=None, cert=None):\r\n    return self.get_connection(request.url, proxies)\r\n```",
+  "pr_state": "closed",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "c98e4d133ef29c46a9b68cd783087218a8075e05",
+  "base_sha": "970e8cec988421bd43da57350723b05c8ce8dc7e",
+  "head_sha": "92075b330a30b9883f466a43d3f7566ab849f91b"
+}

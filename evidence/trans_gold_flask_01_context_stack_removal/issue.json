@@ -1,0 +1,7 @@
+{
+  "verified": true,
+  "issue_number": 4994,
+  "issue_title": "route decorator compatibility with MethodView",
+  "issue_body": "I am trying to get the ```route``` decorator to work with the ```MethodView```.\r\n\r\n```python\r\nfrom flask import Blueprint\r\nfrom flask.views import MethodView\r\n\r\napi = Blueprint(\"api\", __name__)\r\n\r\n@api.route(\"/users\")\r\nclass UserAPI(MethodView):\r\n\r\n    def get(self):\r\n        pass\r\n\r\n    def post(self):\r\n        pass\r\n```\r\n\r\nI am not sure if this is currently supported but it would be a good plus.",
+  "issue_state": "closed"
+}

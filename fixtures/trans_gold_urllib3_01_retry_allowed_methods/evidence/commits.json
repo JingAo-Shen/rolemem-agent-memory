@@ -1,0 +1,42 @@
+{
+  "base_commit": {
+    "verified": true,
+    "commit_sha": "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5",
+    "full_sha": "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5",
+    "message": "Add PR and issue templates (#1978)",
+    "author_date": "2020-09-25T18:26:16Z",
+    "parents": [
+      "ed628df10b2810b9bf1e02aca0adb23ea4f4d977"
+    ]
+  },
+  "history_commit": {
+    "verified": true,
+    "commit_sha": "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5",
+    "full_sha": "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5",
+    "message": "Add PR and issue templates (#1978)",
+    "author_date": "2020-09-25T18:26:16Z",
+    "parents": [
+      "ed628df10b2810b9bf1e02aca0adb23ea4f4d977"
+    ]
+  },
+  "transition_commit": {
+    "verified": true,
+    "commit_sha": "0993ad4390cd524262eef79fda304b0f96a80918",
+    "full_sha": "0993ad4390cd524262eef79fda304b0f96a80918",
+    "message": "Make Retry metaclass private",
+    "author_date": "2020-09-28T14:29:38Z",
+    "parents": [
+      "182e80eb3a222a15909614f295dc163fb3746813"
+    ]
+  },
+  "target_commit": {
+    "verified": true,
+    "commit_sha": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+    "full_sha": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+    "message": "Rename Retry options and defaults",
+    "author_date": "2020-09-28T17:44:55Z",
+    "parents": [
+      "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5"
+    ]
+  }
+}

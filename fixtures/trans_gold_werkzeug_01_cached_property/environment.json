@@ -1,0 +1,16 @@
+{
+  "transition_id": "trans_gold_werkzeug_01_cached_property",
+  "repo_name": "pallets/werkzeug",
+  "license": "BSD-3-Clause",
+  "python_version": ">=3.10",
+  "dependency_install_command": "pip install pytest",
+  "requirements": [
+    "pytest>=8.0.0"
+  ],
+  "os_assumptions": "Linux x86_64",
+  "setup_command": "export PYTHONPATH=.",
+  "test_command": "pytest hidden_tests/test_evaluation.py",
+  "timeout": 15,
+  "network_requirement": "none",
+  "sandbox_type": "bwrap"
+}

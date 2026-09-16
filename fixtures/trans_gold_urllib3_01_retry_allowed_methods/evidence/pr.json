@@ -1,0 +1,11 @@
+{
+  "verified": true,
+  "pr_number": 2000,
+  "pr_title": "Rename Retry options and defaults",
+  "pr_body": "Closes #1916\r\n\r\nStill need to add some test cases on how setting both options interacts.\r\n",
+  "pr_state": "closed",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+  "base_sha": "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5",
+  "head_sha": "0993ad4390cd524262eef79fda304b0f96a80918"
+}

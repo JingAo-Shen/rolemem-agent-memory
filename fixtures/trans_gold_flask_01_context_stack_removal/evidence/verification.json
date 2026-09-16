@@ -1,0 +1,107 @@
+{
+  "transition_id": "trans_gold_flask_01_context_stack_removal",
+  "repo_name": "pallets/flask",
+  "overall_status": "VERIFIED",
+  "commit_verification": "PASS",
+  "semantic_evidence_match": "PASS",
+  "test_verification": "PASS",
+  "repo_details": {
+    "verified": true,
+    "repo_id": 596892,
+    "full_name": "pallets/flask",
+    "default_branch": "main",
+    "language": "Python",
+    "license": "BSD-3-Clause",
+    "is_fork": false,
+    "is_archived": false
+  },
+  "commit_details": {
+    "base_commit": {
+      "verified": true,
+      "commit_sha": "604de4b1dc0729233704a08c32612c6f1221cccb",
+      "full_sha": "604de4b1dc0729233704a08c32612c6f1221cccb",
+      "message": "Merge branch '2.2.x'",
+      "author_date": "2023-02-16T14:27:41Z",
+      "parents": [
+        "ed5b240417414cbd0322efa95c91f759928ba154",
+        "c4c7f504be222c3aca9062656498ec3c72e2b2ad"
+      ]
+    },
+    "history_commit": {
+      "verified": true,
+      "commit_sha": "604de4b1dc0729233704a08c32612c6f1221cccb",
+      "full_sha": "604de4b1dc0729233704a08c32612c6f1221cccb",
+      "message": "Merge branch '2.2.x'",
+      "author_date": "2023-02-16T14:27:41Z",
+      "parents": [
+        "ed5b240417414cbd0322efa95c91f759928ba154",
+        "c4c7f504be222c3aca9062656498ec3c72e2b2ad"
+      ]
+    },
+    "transition_commit": {
+      "verified": true,
+      "commit_sha": "6650764e9719402de2aaa6f321bdec587699c6b2",
+      "full_sha": "6650764e9719402de2aaa6f321bdec587699c6b2",
+      "message": "remove previously deprecated code",
+      "author_date": "2023-02-23T16:35:16Z",
+      "parents": [
+        "604de4b1dc0729233704a08c32612c6f1221cccb"
+      ]
+    },
+    "target_commit": {
+      "verified": true,
+      "commit_sha": "1ee22e1736ffd12c2222cd6215ed04ec1592adaa",
+      "full_sha": "1ee22e1736ffd12c2222cd6215ed04ec1592adaa",
+      "message": "Merge pull request #4995 from pallets/remove-deprecated",
+      "author_date": "2023-02-23T16:45:38Z",
+      "parents": [
+        "604de4b1dc0729233704a08c32612c6f1221cccb",
+        "6650764e9719402de2aaa6f321bdec587699c6b2"
+      ]
+    }
+  },
+  "ancestry_details": {
+    "verified": true,
+    "status": "ahead",
+    "ahead_by": 2,
+    "behind_by": 0,
+    "total_commits": 2,
+    "files_changed": [
+      "CHANGES.rst",
+      "docs/api.rst",
+      "docs/config.rst",
+      "src/flask/__init__.py",
+      "src/flask/app.py",
+      "src/flask/blueprints.py",
+      "src/flask/globals.py",
+      "src/flask/helpers.py",
+      "src/flask/json/__init__.py",
+      "src/flask/json/provider.py",
+      "src/flask/scaffold.py",
+      "tests/conftest.py",
+      "tests/test_async.py",
+      "tests/test_basic.py",
+      "tests/test_blueprints.py",
+      "tests/test_helpers.py"
+    ]
+  },
+  "pr_details": {
+    "verified": true,
+    "pr_number": 4995,
+    "pr_title": "remove previously deprecated code",
+    "pr_body": "Remove code that was previously deprecated in 2.3.\r\n\r\n- I've pushed back the removal of `_app_ctx_stack` and `_request_ctx_stack` until 2.4 to give extensions more time to update. The `push` and `pop` methods are removed, only `top` remains.\r\n- `FLASK_ENV` env var, `ENV` config, and `app.env`\r\n- `session_cookie_name`, `send_file_max_age_default`, `use_x_sendfile`, `propagate_exceptions`, and `templates_auto_reload` properties\r\n- `JSON_AS_ASCII`, `JSON_SORT_KEYS`, `JSONIFY_MIMETYPE`, and `JSONIFY_PRETTYPRINT_REGULAR` config keys\r\n- `before_first_request`\r\n- `json_encoder` and `json_decoder` attributes, `JSONEncoder` and `JSONDecoder` classes\r\n- `htmlsafe_dumps` and `htmlsafe_dump`",
+    "pr_state": "closed",
+    "pr_merged": true,
+    "pr_merge_commit_sha": "1ee22e1736ffd12c2222cd6215ed04ec1592adaa",
+    "base_sha": "604de4b1dc0729233704a08c32612c6f1221cccb",
+    "head_sha": "6650764e9719402de2aaa6f321bdec587699c6b2"
+  },
+  "issue_details": {
+    "verified": true,
+    "issue_number": 4994,
+    "issue_title": "route decorator compatibility with MethodView",
+    "issue_body": "I am trying to get the ```route``` decorator to work with the ```MethodView```.\r\n\r\n```python\r\nfrom flask import Blueprint\r\nfrom flask.views import MethodView\r\n\r\napi = Blueprint(\"api\", __name__)\r\n\r\n@api.route(\"/users\")\r\nclass UserAPI(MethodView):\r\n\r\n    def get(self):\r\n        pass\r\n\r\n    def post(self):\r\n        pass\r\n```\r\n\r\nI am not sure if this is currently supported but it would be a good plus.",
+    "issue_state": "closed"
+  },
+  "rejection_reasons": []
+}

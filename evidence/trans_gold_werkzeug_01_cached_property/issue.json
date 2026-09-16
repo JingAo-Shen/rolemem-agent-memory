@@ -1,0 +1,7 @@
+{
+  "verified": true,
+  "issue_number": 2084,
+  "issue_title": "`del` invalidates `cached_property`",
+  "issue_body": "I think using `del obj.name` makes more sense than `invalidate_cached_property(obj, \"name\")`, and doesn't require importing a separate function. I don't expect users to be invalidating/deleting non-cached-properties anyway, I don't think the extra check was giving us much.\r\n\r\nUpdated the test to test get, set, and delete.\r\n\r\ncc @singingwolfboy\r\n\r\n<!--\r\nEnsure each step in CONTRIBUTING.rst is complete by adding an \"x\" to\r\neach box below.\r\n\r\nIf only docs were changed, these aren't relevant and can be removed.\r\n-->\r\n\r\nChecklist:\r\n\r\n- [x] Add tests that demonstrate the correct behavior of the change. Tests should fail without the change.\r\n- [x] Add or update relevant docs, in the docs folder and in code.\r\n- [x] Add an entry in `CHANGES.rst` summarizing the change and linking to the issue.\r\n- [x] Add `.. versionchanged::` entries in any relevant code docs.\r\n- [x] Run `pre-commit` hooks and fix any issues.\r\n- [x] Run `pytest` and `tox`, no tests failed.\r\n",
+  "issue_state": "closed"
+}

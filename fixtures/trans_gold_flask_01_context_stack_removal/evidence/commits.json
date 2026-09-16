@@ -1,0 +1,41 @@
+{
+  "base_commit": {
+    "verified": true,
+    "commit_sha": "604de4b1dc0729233704a08c32612c6f1221cccb",
+    "full_sha": "604de4b1dc0729233704a08c32612c6f1221cccb",
+    "message": "Merge branch '2.2.x'",
+    "author_date": "2023-02-16T14:27:41Z",
+    "parents": [
+      "ed5b240417414cbd0322efa95c91f759928ba154",
+      "c4c7f504be222c3aca9062656498ec3c72e2b2ad"
+    ]
+  },
+  "history_commit": {
+    "verified": true,
+    "commit_sha": "604de4b1dc0729233704a08c32612c6f1221cccb",
+    "full_sha": "604de4b1dc0729233704a08c32612c6f1221cccb",
+    "message": "Merge branch '2.2.x'",
+    "author_date": "2023-02-16T14:27:41Z",
+    "parents": [
+      "ed5b240417414cbd0322efa95c91f759928ba154",
+      "c4c7f504be222c3aca9062656498ec3c72e2b2ad"
+    ]
+  },
+  "transition_commit": {
+    "verified": false,
+    "status_code": 500,
+    "commit_sha": "6650764e9719402de2aaa6f321bdec587699c6b2",
+    "reason": "Commit '6650764e9719402de2aaa6f321bdec587699c6b2' does not exist in repository 'pallets/flask'"
+  },
+  "target_commit": {
+    "verified": true,
+    "commit_sha": "1ee22e1736ffd12c2222cd6215ed04ec1592adaa",
+    "full_sha": "1ee22e1736ffd12c2222cd6215ed04ec1592adaa",
+    "message": "Merge pull request #4995 from pallets/remove-deprecated",
+    "author_date": "2023-02-23T16:45:38Z",
+    "parents": [
+      "604de4b1dc0729233704a08c32612c6f1221cccb",
+      "6650764e9719402de2aaa6f321bdec587699c6b2"
+    ]
+  }
+}

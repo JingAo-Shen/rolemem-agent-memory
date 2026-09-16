@@ -1,0 +1,43 @@
+{
+  "base_commit": {
+    "verified": true,
+    "commit_sha": "88dce9d854797c05d0ff296b70e0430535ef8aaf",
+    "full_sha": "88dce9d854797c05d0ff296b70e0430535ef8aaf",
+    "message": "v2.32.2",
+    "author_date": "2024-05-21T18:49:22Z",
+    "parents": [
+      "c98e4d133ef29c46a9b68cd783087218a8075e05"
+    ]
+  },
+  "history_commit": {
+    "verified": true,
+    "commit_sha": "88dce9d854797c05d0ff296b70e0430535ef8aaf",
+    "full_sha": "88dce9d854797c05d0ff296b70e0430535ef8aaf",
+    "message": "v2.32.2",
+    "author_date": "2024-05-21T18:49:22Z",
+    "parents": [
+      "c98e4d133ef29c46a9b68cd783087218a8075e05"
+    ]
+  },
+  "transition_commit": {
+    "verified": true,
+    "commit_sha": "b1d73ddb509a3a2d3e10744e85f9cdebdbde90f0",
+    "full_sha": "b1d73ddb509a3a2d3e10744e85f9cdebdbde90f0",
+    "message": "Don't use default SSLContext with custom poolmanager kwargs",
+    "author_date": "2024-05-24T16:00:52Z",
+    "parents": [
+      "6badbac6e0d6b5a53872f26401761ad37a9002b8"
+    ]
+  },
+  "target_commit": {
+    "verified": true,
+    "commit_sha": "145b5399486b56e00250204f033441f3fdf2f3c9",
+    "full_sha": "145b5399486b56e00250204f033441f3fdf2f3c9",
+    "message": "Merge pull request #6716 from sigmavirus24/bug/6715",
+    "author_date": "2024-05-24T21:37:06Z",
+    "parents": [
+      "88dce9d854797c05d0ff296b70e0430535ef8aaf",
+      "b1d73ddb509a3a2d3e10744e85f9cdebdbde90f0"
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "verified": true,
+  "issue_number": 3275,
+  "issue_title": "deprecate environ properties",
+  "issue_body": "- `input_stream` is explicitly documented as unsafe compared to its wrapped counterpart in `stream`.\n- `remote_user` is only mentioned in passing as part of CGI that WSGI accepts for compatibility.\n- `is_multithread`, `is_multiprocess`, and `is_run_once` are about how the server is running workers. But I can't think of how that matters to the application, code must avoid globals and use external storage regardless of the worker type.\n- All of these can be accessed directly from `request.environ` if needed, they even still have their correct types.\n- I can't find any uses of `environ_property` (or `header_property`) in external code.\n- None of the many other WSGI and CGI keys are exposed.\n- ASGI has no concept of any of these.",
+  "issue_state": "closed"
+}

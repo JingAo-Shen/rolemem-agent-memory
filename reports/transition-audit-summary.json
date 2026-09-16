@@ -1,0 +1,39 @@
+{
+  "input_dataset": "data/archive/pilot_v1_2_unverified_candidates.jsonl",
+  "total_audited": 44,
+  "verified": 0,
+  "rejected": 44,
+  "needs_review": 0,
+  "verification_rate_pct": 0.0,
+  "commit_verification_summary": {
+    "FAIL": 44
+  },
+  "rejection_reasons": {
+    "Synthetic or Nonexistent Commit SHA": 176,
+    "PR/Issue Unverifiable": 20
+  },
+  "repository_distribution": {
+    "psf/requests": 3,
+    "urllib3/urllib3": 3,
+    "pallets/flask": 3,
+    "pallets/werkzeug": 3,
+    "pallets/jinja": 3,
+    "pallets/click": 3,
+    "encode/httpx": 3,
+    "encode/starlette": 3,
+    "tiangolo/fastapi": 3,
+    "pydantic/pydantic": 3,
+    "sqlalchemy/sqlalchemy": 3,
+    "celery/celery": 3,
+    "pytest-dev/pytest": 3,
+    "pyca/cryptography": 3,
+    "Textualize/rich": 2
+  },
+  "track_distribution": {
+    "A": 33,
+    "AB": 6,
+    "B": 5
+  },
+  "benchmark_freeze_eligible": false,
+  "declared_status": "STATUS: UNVERIFIED \u2014 NOT ELIGIBLE FOR BENCHMARK"
+}

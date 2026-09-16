@@ -1,0 +1,564 @@
+diff --git a/CHANGES.rst b/CHANGES.rst
+index c1c8f6ead..91f03404d 100644
+--- a/CHANGES.rst
++++ b/CHANGES.rst
+@@ -183,7 +183,12 @@ Unreleased
+     ``hashlib`` and ``hmac`` provide equivalents. :pr:`2083`
+ -   ``invalidate_cached_property`` is deprecated. Use ``del obj.name``
+     instead. :pr:`2084`
+-
++-   ``Href`` is deprecated. Use ``werkzeug.routing`` instead.
++    :pr:`2085`
++-   ``Request.disable_data_descriptor`` is deprecated. Create the
++    request with ``shallow=True`` instead. :pr:`2085`
++-   ``HTTPException.wrap`` is deprecated. Create a subclass manually
++    instead. :pr:`2085`
+ 
+ Version 1.0.2
+ -------------
+diff --git a/src/werkzeug/datastructures.py b/src/werkzeug/datastructures.py
+index 1c7b27da6..9b7056a2c 100644
+--- a/src/werkzeug/datastructures.py
++++ b/src/werkzeug/datastructures.py
+@@ -2,6 +2,7 @@
+ import codecs
+ import mimetypes
+ import re
++import warnings
+ from collections.abc import Collection
+ from collections.abc import MutableSet
+ from copy import deepcopy
+@@ -1072,7 +1073,19 @@ def __contains__(self, key):
+             return False
+         return True
+ 
+-    has_key = __contains__
++    def has_key(self, key):
++        """
++        .. deprecated:: 2.0
++            Will be removed in Werkzeug 2.1. Use ``key in data``
++            instead.
++        """
++        warnings.warn(
++            "'has_key' is deprecated and will be removed in Werkzeug"
++            " 2.1. Use 'key in data' instead.",
++            DeprecationWarning,
++            stacklevel=2,
++        )
++        return key in self
+ 
+     def __iter__(self):
+         """Yield ``(key, value)`` tuples."""
+@@ -1525,7 +1538,19 @@ def __contains__(self, key):
+                 return True
+         return False
+ 
+-    has_key = __contains__
++    def has_key(self, key):
++        """
++        .. deprecated:: 2.0
++            Will be removed in Werkzeug 2.1. Use ``key in data``
++            instead.
++        """
++        warnings.warn(
++            "'has_key' is deprecated and will be removed in Werkzeug"
++            " 2.1. Use 'key in data' instead.",
++            DeprecationWarning,
++            stacklevel=2,
++        )
++        return key in self
+ 
+     def __repr__(self):
+         return f"{type(self).__name__}({self.dicts!r})"
+@@ -1941,9 +1966,13 @@ def _normalize(name):
+         return item == "*" or _normalize(value) == _normalize(item)
+ 
+ 
+-def cache_property(key, empty, type):
+-    """Return a new property object for a cache header.  Useful if you
+-    want to add support for a cache extension in a subclass."""
++def cache_control_property(key, empty, type):
++    """Return a new property object for a cache header. Useful if you
++    want to add support for a cache extension in a subclass.
++
++    .. versionchanged:: 2.0
++        Renamed from ``cache_property``.
++    """
+     return property(
+         lambda x: x._get_cache_value(key, empty, type),
+         lambda x, v: x._set_cache_value(key, v, type),
+@@ -1952,6 +1981,16 @@ def cache_property(key, empty, type):
+     )
+ 
+ 
++def cache_property(key, empty, type):
++    warnings.warn(
++        "'cache_property' is renamed to 'cache_control_property'. The"
++        " old name is deprecated and will be removed in Werkzeug 2.1.",
++        DeprecationWarning,
++        stacklevel=2,
++    )
++    return cache_control_property(key, empty, type)
++
++
+ class _CacheControl(UpdateDictMixin, dict):
+     """Subclass of a dict that stores values for a Cache-Control header.  It
+     has accessors for all the cache-control directives specified in RFC 2616.
+@@ -1984,10 +2023,10 @@ class _CacheControl(UpdateDictMixin, dict):
+        no longer existing `CacheControl` class.
+     """
+ 
+-    no_cache = cache_property("no-cache", "*", None)
+-    no_store = cache_property("no-store", None, bool)
+-    max_age = cache_property("max-age", -1, int)
+-    no_transform = cache_property("no-transform", None, None)
++    no_cache = cache_control_property("no-cache", "*", None)
++    no_store = cache_control_property("no-store", None, bool)
++    max_age = cache_control_property("max-age", -1, int)
++    no_transform = cache_control_property("no-transform", None, None)
+ 
+     def __init__(self, values=(), on_update=None):
+         dict.__init__(self, values or ())
+@@ -2041,7 +2080,7 @@ def __repr__(self):
+         kv_str = " ".join(f"{k}={v!r}" for k, v in sorted(self.items()))
+         return f"<{type(self).__name__} {kv_str}>"
+ 
+-    cache_property = staticmethod(cache_property)
++    cache_property = staticmethod(cache_control_property)
+ 
+ 
+ class RequestCacheControl(ImmutableDictMixin, _CacheControl):
+@@ -2058,9 +2097,9 @@ class RequestCacheControl(ImmutableDictMixin, _CacheControl):
+        both for request and response.
+     """
+ 
+-    max_stale = cache_property("max-stale", "*", int)
+-    min_fresh = cache_property("min-fresh", "*", int)
+-    only_if_cached = cache_property("only-if-cached", None, bool)
++    max_stale = cache_control_property("max-stale", "*", int)
++    min_fresh = cache_control_property("min-fresh", "*", int)
++    only_if_cached = cache_control_property("only-if-cached", None, bool)
+ 
+ 
+ class ResponseCacheControl(_CacheControl):
+@@ -2078,12 +2117,12 @@ class ResponseCacheControl(_CacheControl):
+        both for request and response.
+     """
+ 
+-    public = cache_property("public", None, bool)
+-    private = cache_property("private", "*", None)
+-    must_revalidate = cache_property("must-revalidate", None, bool)
+-    proxy_revalidate = cache_property("proxy-revalidate", None, bool)
+-    s_maxage = cache_property("s-maxage", None, None)
+-    immutable = cache_property("immutable", None, bool)
++    public = cache_control_property("public", None, bool)
++    private = cache_control_property("private", "*", None)
++    must_revalidate = cache_control_property("must-revalidate", None, bool)
++    proxy_revalidate = cache_control_property("proxy-revalidate", None, bool)
++    s_maxage = cache_control_property("s-maxage", None, None)
++    immutable = cache_control_property("immutable", None, bool)
+ 
+ 
+ def csp_property(key):
+diff --git a/src/werkzeug/exceptions.py b/src/werkzeug/exceptions.py
+index afc14c3de..daceb2df3 100644
+--- a/src/werkzeug/exceptions.py
++++ b/src/werkzeug/exceptions.py
+@@ -45,6 +45,7 @@ def application(request):
+ """
+ import sys
+ import typing as t
++import warnings
+ from datetime import datetime
+ from html import escape
+ 
+@@ -90,6 +91,10 @@ def wrap(
+         the wrapped exception message is added to the HTTP error
+         description.
+ 
++        .. deprecated:: 2.0
++            Will be removed in Werkzeug 2.1. Create a subclass manually
++            instead.
++
+         .. versionchanged:: 0.15.5
+             The ``show_exception`` attribute controls whether the
+             description includes the wrapped exception message.
+@@ -97,6 +102,12 @@ def wrap(
+         .. versionchanged:: 0.15.0
+             The description includes the wrapped exception message.
+         """
++        warnings.warn(
++            "'HTTPException.wrap' is deprecated and will be removed in"
++            " Werkzeug 2.1. Create a subclass manually instead.",
++            DeprecationWarning,
++            stacklevel=2,
++        )
+ 
+         class newcls(cls, exception):  # type: ignore
+             _description = cls.description
+@@ -223,6 +234,40 @@ class BadRequest(HTTPException):
+     )
+ 
+ 
++class BadRequestKeyError(BadRequest, KeyError):
++    """An exception that is used to signal both a :exc:`KeyError` and a
++    :exc:`BadRequest`. Used by many of the datastructures.
++    """
++
++    _description = BadRequest.description
++    #: Show the KeyError along with the HTTP error message in the
++    #: response. This should be disabled in production, but can be
++    #: useful in a debug mode.
++    show_exception = False
++
++    def __init__(self, arg=None, *args, **kwargs):
++        super().__init__(*args, **kwargs)
++
++        if arg is None:
++            KeyError.__init__(self)
++        else:
++            KeyError.__init__(self, arg)
++
++    @property  # type: ignore
++    def description(self) -> str:  # type: ignore
++        if self.show_exception:
++            return (
++                f"{self._description}\n"
++                f"{KeyError.__name__}: {KeyError.__str__(self)}"
++            )
++
++        return self._description
++
++    @description.setter
++    def description(self, value):
++        self._description = value
++
++
+ class ClientDisconnected(BadRequest):
+     """Internal exception that is raised if Werkzeug detects a disconnected
+     client.  Since the client is already gone at that point attempting to
+@@ -882,7 +927,3 @@ def abort(status: t.Union[int, "Response"], *args, **kwargs) -> t.NoReturn:
+ 
+ 
+ _aborter: Aborter = Aborter()
+-
+-#: An exception that is used to signal both a :exc:`KeyError` and a
+-#: :exc:`BadRequest`. Used by many of the datastructures.
+-BadRequestKeyError = BadRequest.wrap(KeyError)
+diff --git a/src/werkzeug/urls.py b/src/werkzeug/urls.py
+index 63f18104c..d9edb8860 100644
+--- a/src/werkzeug/urls.py
++++ b/src/werkzeug/urls.py
+@@ -885,8 +885,6 @@ def url_decode_stream(
+     directly fed to the `cls` so you can consume the data while it's
+     parsed.
+ 
+-    .. versionadded:: 0.8
+-
+     :param stream: a stream with the encoded querystring
+     :param charset: the charset of the query string.  If set to `None`
+         no decoding will take place.
+@@ -898,13 +896,10 @@ def url_decode_stream(
+                        or `None` the default :class:`MultiDict` is used.
+     :param limit: the content length of the URL data.  Not necessary if
+                   a limited stream is provided.
+-    :param return_iterator: if set to `True` the `cls` argument is ignored
+-                            and an iterator over all decoded pairs is
+-                            returned
+ 
+     .. versionchanged:: 2.0
+-        The ``decode_keys`` parameter is deprecated and will be removed
+-        in Werkzeug 2.1.
++        The ``decode_keys`` and ``return_iterator`` parameters are
++        deprecated and will be removed in Werkzeug 2.1.
+ 
+     .. versionadded:: 0.8
+     """
+@@ -921,6 +916,11 @@ def url_decode_stream(
+     decoder = _url_decode_impl(pair_iter, charset, include_empty, errors)
+ 
+     if return_iterator:
++        warnings.warn(
++            "'return_iterator' is deprecated and will be removed in Werkzeug 2.1.",
++            DeprecationWarning,
++            stacklevel=2,
++        )
+         return decoder  # type: ignore
+ 
+     if cls is None:
+@@ -1152,11 +1152,22 @@ class Href:
+     >>> href(a=1, b=2, c=3)
+     '/?a=1&b=2&c=3'
+ 
++    .. deprecated:: 2.0
++        Will be removed in Werkzeug 2.1. Use :mod:`werkzeug.routing`
++        instead.
++
+     .. versionadded:: 0.5
+         `sort` and `key` were added.
+     """
+ 
+     def __init__(self, base="./", charset="utf-8", sort=False, key=None):
++        warnings.warn(
++            "'Href' is deprecated and will be removed in Werkzeug 2.1."
++            " Use 'werkzeug.routing' instead.",
++            DeprecationWarning,
++            stacklevel=2,
++        )
++
+         if not base:
+             base = "./"
+         self.base = base
+diff --git a/src/werkzeug/utils.py b/src/werkzeug/utils.py
+index 5b314885c..cad786c76 100644
+--- a/src/werkzeug/utils.py
++++ b/src/werkzeug/utils.py
+@@ -356,8 +356,18 @@ def detect_utf_encoding(data: bytes) -> str:
+     :param data: Bytes in unknown UTF encoding.
+     :return: UTF encoding name
+ 
++    .. deprecated:: 2.0
++        Will be removed in Werkzeug 2.1. This is built in to
++        :func:`json.loads`.
++
+     .. versionadded:: 0.15
+     """
++    warnings.warn(
++        "'detect_utf_encoding' is deprecated and will be removed in"
++        " Werkzeug 2.1. This is built in to 'json.loads'.",
++        DeprecationWarning,
++        stacklevel=2,
++    )
+     head = data[:4]
+ 
+     if head[:3] == codecs.BOM_UTF8:
+diff --git a/src/werkzeug/wrappers/request.py b/src/werkzeug/wrappers/request.py
+index 1e243eb10..255913772 100644
+--- a/src/werkzeug/wrappers/request.py
++++ b/src/werkzeug/wrappers/request.py
+@@ -83,11 +83,15 @@ class Request(_SansIORequest):
+     #: the form date parsing.
+     form_data_parser_class: t.Type[FormDataParser] = FormDataParser
+ 
+-    #: Indicates whether the data descriptor should be allowed to read and
+-    #: buffer up the input stream.  By default it's enabled.
++    #: Disable the :attr:`data` property to avoid reading from the input
++    #: stream.
++    #:
++    #: .. deprecated:: 2.0
++    #:     Will be removed in Werkzeug 2.1. Create the request with
++    #:     ``shallow=True`` instead.
+     #:
+     #: .. versionadded:: 0.9
+-    disable_data_descriptor: bool = False
++    disable_data_descriptor: t.Optional[bool] = None
+ 
+     #: The WSGI environment containing HTTP headers and information from
+     #: the WSGI server.
+@@ -119,9 +123,21 @@ def __init__(
+             remote_addr=environ.get("REMOTE_ADDR"),
+         )
+         self.environ = environ
++
++        if self.disable_data_descriptor is not None:
++            warnings.warn(
++                "'disable_data_descriptor' is deprecated and will be"
++                " removed in Werkzeug 2.1. Create the request with"
++                " 'shallow=True' instead.",
++                DeprecationWarning,
++                stacklevel=2,
++            )
++            shallow = shallow or self.disable_data_descriptor
++
++        self.shallow = shallow
++
+         if populate_request and not shallow:
+             self.environ["werkzeug.request"] = self
+-        self.shallow = shallow
+ 
+     @classmethod
+     def from_values(cls, *args, **kwargs) -> "Request":
+@@ -227,8 +243,8 @@ def _get_file_stream(
+ 
+     @property
+     def want_form_data_parsed(self) -> bool:
+-        """Returns True if the request method carries content.  As of
+-        Werkzeug 0.9 this will be the case if a content type is transmitted.
++        """``True`` if the request method carries content. By default
++        this is true if a ``Content-Type`` is sent.
+ 
+         .. versionadded:: 0.8
+         """
+@@ -262,8 +278,6 @@ def _load_form_data(self) -> None:
+         if "form" in self.__dict__:
+             return
+ 
+-        _assert_not_shallow(self)
+-
+         if self.want_form_data_parsed:
+             parser = self.make_form_data_parser()
+             data = parser.parse(
+@@ -331,7 +345,12 @@ def stream(self) -> t.BinaryIO:
+            form parser later on.  Previously the stream was only set if no
+            parsing happened.
+         """
+-        _assert_not_shallow(self)
++        if self.shallow:
++            raise RuntimeError(
++                "This request was created with 'shallow=True', reading"
++                " from the input stream is disabled."
++            )
++
+         return get_input_stream(self.environ)
+ 
+     input_stream = environ_property[t.BinaryIO](
+@@ -349,16 +368,6 @@ def data(self) -> bytes:
+         Contains the incoming request data as string in case it came with
+         a mimetype Werkzeug does not handle.
+         """
+-
+-        if self.disable_data_descriptor:
+-            raise AttributeError("data descriptor is disabled")
+-        # XXX: this should eventually be deprecated.
+-
+-        # We trigger form data parsing first which means that the descriptor
+-        # will not cache the data that would otherwise be .form or .files
+-        # data.  This restores the behavior that was there in Werkzeug
+-        # before 0.9.  New code should use :meth:`get_data` explicitly as
+-        # this will make behavior explicit.
+         return self.get_data(parse_form_data=True)
+ 
+     def get_data(
+@@ -583,29 +592,17 @@ def on_json_loading_failed(self, e: ValueError) -> t.Any:
+         raise BadRequest(f"Failed to decode JSON object: {e}")
+ 
+ 
+-def _assert_not_shallow(request: Request) -> None:
+-    if request.shallow:
+-        raise RuntimeError(
+-            "A shallow request tried to consume form data. If you really"
+-            " want to do that, set `shallow` to False."
+-        )
+-
+-
+ class StreamOnlyMixin:
+     """Mixin to create a ``Request`` that disables the ``data``,
+     ``form``, and ``files`` properties. Only ``stream`` is available.
+ 
+     .. deprecated:: 2.0
+-        Will be removed in Werkzeug 2.1. You likely want to create the
+-        request with ``shallow=True`` instead. Or subclass and set
+-        ``disable_data_descriptor`` and ``want_form_data_parsed``.
++        Will be removed in Werkzeug 2.1. Create the request with
++        ``shallow=True`` instead.
+ 
+     .. versionadded:: 0.9
+     """
+ 
+-    disable_data_descriptor = True
+-    want_form_data_parsed = False
+-
+     def __init__(self, *args, **kwargs):
+         warnings.warn(
+             "'StreamOnlyMixin' is deprecated and will be removed in"
+@@ -614,6 +611,7 @@ def __init__(self, *args, **kwargs):
+             DeprecationWarning,
+             stacklevel=2,
+         )
++        kwargs["shallow"] = True
+         super().__init__(*args, **kwargs)
+ 
+ 
+@@ -621,9 +619,8 @@ class PlainRequest(StreamOnlyMixin, Request):
+     """A request object without ``data``, ``form``, and ``files``.
+ 
+     .. deprecated:: 2.0
+-        Will be removed in Werkzeug 2.1. You likely want to create the
+-        request with ``shallow=True`` instead. Or subclass and set
+-        ``disable_data_descriptor`` and ``want_form_data_parsed``.
++        Will be removed in Werkzeug 2.1. Create the request with
++        ``shallow=True`` instead.
+ 
+     .. versionadded:: 0.9
+     """
+diff --git a/tests/test_urls.py b/tests/test_urls.py
+index 9f9fcae86..a409709c4 100644
+--- a/tests/test_urls.py
++++ b/tests/test_urls.py
+@@ -104,19 +104,6 @@ def test_url_bytes_decoding():
+     assert x[b"uni"] == "Hänsel".encode()
+ 
+ 
+-def test_streamed_url_decoding():
+-    item1 = "a" * 100000
+-    item2 = "b" * 400
+-    string = (f"a={item1}&b={item2}&c={item2}").encode("ascii")
+-    gen = urls.url_decode_stream(
+-        io.BytesIO(string), limit=len(string), return_iterator=True
+-    )
+-    assert next(gen) == ("a", item1)
+-    assert next(gen) == ("b", item2)
+-    assert next(gen) == ("c", item2)
+-    pytest.raises(StopIteration, lambda: next(gen))
+-
+-
+ def test_stream_decoding_string_fails():
+     pytest.raises(TypeError, urls.url_decode_stream, "testing")
+ 
+@@ -274,41 +261,6 @@ def test_multidict_encoding():
+     )
+ 
+ 
+-def test_href():
+-    x = urls.Href("http://www.example.com/")
+-    assert x("foo") == "http://www.example.com/foo"
+-    assert x.foo("bar") == "http://www.example.com/foo/bar"
+-    assert x.foo("bar", x=42) == "http://www.example.com/foo/bar?x=42"
+-    assert x.foo("bar", class_=42) == "http://www.example.com/foo/bar?class=42"
+-    assert x.foo("bar", {"class": 42}) == "http://www.example.com/foo/bar?class=42"
+-    pytest.raises(AttributeError, lambda: x.__blah__)
+-
+-    x = urls.Href("blah")
+-    assert x.foo("bar") == "blah/foo/bar"
+-
+-    pytest.raises(TypeError, x.foo, {"foo": 23}, x=42)
+-
+-    x = urls.Href("")
+-    assert x("foo") == "foo"
+-
+-
+-def test_href_url_join():
+-    x = urls.Href("test")
+-    assert x("foo:bar") == "test/foo:bar"
+-    assert x("http://example.com/") == "test/http://example.com/"
+-    assert x.a() == "test/a"
+-
+-
+-def test_href_past_root():
+-    base_href = urls.Href("http://www.blagga.com/1/2/3")
+-    assert base_href("../foo") == "http://www.blagga.com/1/2/foo"
+-    assert base_href("../../foo") == "http://www.blagga.com/1/foo"
+-    assert base_href("../../../foo") == "http://www.blagga.com/foo"
+-    assert base_href("../../../../foo") == "http://www.blagga.com/foo"
+-    assert base_href("../../../../../foo") == "http://www.blagga.com/foo"
+-    assert base_href("../../../../../../foo") == "http://www.blagga.com/foo"
+-
+-
+ def test_url_unquote_plus_unicode():
+     # was broken in 0.6
+     assert urls.url_unquote_plus("\x6d") == "\x6d"
+diff --git a/tests/test_wrappers.py b/tests/test_wrappers.py
+index e683c3b22..bf9fd6d92 100644
+--- a/tests/test_wrappers.py
++++ b/tests/test_wrappers.py
+@@ -1021,7 +1021,9 @@ def test_shallow_mode():
+         shallow=True,
+     )
+     assert request.args["foo"] == "bar"
+-    pytest.raises(RuntimeError, lambda: request.form["foo"])
++    pytest.raises(RuntimeError, lambda: request.stream)
++    pytest.raises(RuntimeError, lambda: request.data)
++    pytest.raises(RuntimeError, lambda: request.form)
+ 
+ 
+ def test_form_parsing_failed():

@@ -1,0 +1,45 @@
+{
+  "base_commit": {
+    "verified": true,
+    "commit_sha": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+    "full_sha": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+    "message": "Merge pull request #2084 from pallets/delete-cached-property",
+    "author_date": "2021-04-16T02:24:14Z",
+    "parents": [
+      "25ca9cd92956e48a38f7a32c837e0f8a54c8ae31",
+      "004b446eac19db2ff351a923fd594d4f23d67e90"
+    ]
+  },
+  "history_commit": {
+    "verified": true,
+    "commit_sha": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+    "full_sha": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+    "message": "Merge pull request #2084 from pallets/delete-cached-property",
+    "author_date": "2021-04-16T02:24:14Z",
+    "parents": [
+      "25ca9cd92956e48a38f7a32c837e0f8a54c8ae31",
+      "004b446eac19db2ff351a923fd594d4f23d67e90"
+    ]
+  },
+  "transition_commit": {
+    "verified": true,
+    "commit_sha": "a397cb29d91f6d97d60a8ab4f6d054b615556c79",
+    "full_sha": "a397cb29d91f6d97d60a8ab4f6d054b615556c79",
+    "message": "deprecated HTTPException.wrap",
+    "author_date": "2021-04-16T05:25:27Z",
+    "parents": [
+      "e28eb930e1b493965440bb5a0417e0a45e966141"
+    ]
+  },
+  "target_commit": {
+    "verified": true,
+    "commit_sha": "38d859b817ab2c9f51c9d349182be262e3a24e3d",
+    "full_sha": "38d859b817ab2c9f51c9d349182be262e3a24e3d",
+    "message": "Merge pull request #2085 from pallets/more-deprecation",
+    "author_date": "2021-04-16T05:46:45Z",
+    "parents": [
+      "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+      "a397cb29d91f6d97d60a8ab4f6d054b615556c79"
+    ]
+  }
+}

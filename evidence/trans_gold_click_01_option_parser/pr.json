@@ -1,0 +1,11 @@
+{
+  "verified": true,
+  "pr_number": 2592,
+  "pr_title": "deprecate `OptionParser`",
+  "pr_body": "The first step toward rewriting the parser #2205. The `parser` module, `OptionParser`, `Parameter.add_to_parser`, and `Context.protected_args` are all deprecated. Imports will show deprecation warnings.",
+  "pr_state": "closed",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "988c683963b14ced1b32a8cda9f9b466c32d9df1",
+  "base_sha": "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+  "head_sha": "3630addf538ff4d1d5bc75438c8d84378105d03d"
+}

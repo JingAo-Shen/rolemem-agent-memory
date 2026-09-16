@@ -1,0 +1,11 @@
+{
+  "verified": true,
+  "pr_number": 3276,
+  "pr_title": "deprecate environ properties",
+  "pr_body": "closed #3275\r\n\r\nA side note, `environ_property` was essentially just overhead. We weren't using `dump_func`, it was never writable (and should never be), and it required an extra function call to get the environ first. It saved no lines compared to using `@property` on a function with a docstring.\r\n",
+  "pr_state": "closed",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "7641d4990f06d583425a4e6ba25e9d2f18934885",
+  "base_sha": "f97c305673ba121a1dae6764c37e8be48907a1d1",
+  "head_sha": "2f2625fefdaead837c5433e44d5fe86972d013dd"
+}

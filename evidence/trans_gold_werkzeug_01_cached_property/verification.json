@@ -1,0 +1,99 @@
+{
+  "transition_id": "trans_gold_werkzeug_01_cached_property",
+  "repo_name": "pallets/werkzeug",
+  "overall_status": "VERIFIED",
+  "commit_verification": "PASS",
+  "semantic_evidence_match": "PASS",
+  "test_verification": "PASS",
+  "repo_details": {
+    "verified": true,
+    "repo_id": 997338,
+    "full_name": "pallets/werkzeug",
+    "default_branch": "main",
+    "language": "Python",
+    "license": "BSD-3-Clause",
+    "is_fork": false,
+    "is_archived": false
+  },
+  "commit_details": {
+    "base_commit": {
+      "verified": true,
+      "commit_sha": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+      "full_sha": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+      "message": "Merge pull request #2084 from pallets/delete-cached-property",
+      "author_date": "2021-04-16T02:24:14Z",
+      "parents": [
+        "25ca9cd92956e48a38f7a32c837e0f8a54c8ae31",
+        "004b446eac19db2ff351a923fd594d4f23d67e90"
+      ]
+    },
+    "history_commit": {
+      "verified": true,
+      "commit_sha": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+      "full_sha": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+      "message": "Merge pull request #2084 from pallets/delete-cached-property",
+      "author_date": "2021-04-16T02:24:14Z",
+      "parents": [
+        "25ca9cd92956e48a38f7a32c837e0f8a54c8ae31",
+        "004b446eac19db2ff351a923fd594d4f23d67e90"
+      ]
+    },
+    "transition_commit": {
+      "verified": true,
+      "commit_sha": "a397cb29d91f6d97d60a8ab4f6d054b615556c79",
+      "full_sha": "a397cb29d91f6d97d60a8ab4f6d054b615556c79",
+      "message": "deprecated HTTPException.wrap",
+      "author_date": "2021-04-16T05:25:27Z",
+      "parents": [
+        "e28eb930e1b493965440bb5a0417e0a45e966141"
+      ]
+    },
+    "target_commit": {
+      "verified": true,
+      "commit_sha": "38d859b817ab2c9f51c9d349182be262e3a24e3d",
+      "full_sha": "38d859b817ab2c9f51c9d349182be262e3a24e3d",
+      "message": "Merge pull request #2085 from pallets/more-deprecation",
+      "author_date": "2021-04-16T05:46:45Z",
+      "parents": [
+        "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+        "a397cb29d91f6d97d60a8ab4f6d054b615556c79"
+      ]
+    }
+  },
+  "ancestry_details": {
+    "verified": true,
+    "status": "ahead",
+    "ahead_by": 8,
+    "behind_by": 0,
+    "total_commits": 8,
+    "files_changed": [
+      "CHANGES.rst",
+      "src/werkzeug/datastructures.py",
+      "src/werkzeug/exceptions.py",
+      "src/werkzeug/urls.py",
+      "src/werkzeug/utils.py",
+      "src/werkzeug/wrappers/request.py",
+      "tests/test_urls.py",
+      "tests/test_wrappers.py"
+    ]
+  },
+  "pr_details": {
+    "verified": true,
+    "pr_number": 2085,
+    "pr_title": "deprecate more ",
+    "pr_body": "Deprecate various things I came across while adding typing to the code. These either seem unused or caused issues with typing, or both.\r\n\r\n* `urls.Href` seems to have been replaced by `werkzeug.routing`.\r\n* `utils.detect_utf_encoding` was probably used by Flask, so I'm issuing a deprecation warning just in case someone uses an older Flask with Werkzeug 2.0. This function is part of Python's `json.loads` now.\r\n* `CombinedMultiDict` and `Headers` both had a `has_key` alias for `__contains__`. `has_key` has been deprecated since Python 2.\r\n* `Request.disable_data_descriptor` class attribute. There's an old comment about deprecating the `request.data` attribute, but I don't think that should be done. `shallow=True` can be used to the same effect.\r\n* There's an (internal) helper called `cache_property`, renamed it `cache_control_property` to avoid confusion with `cached_property`, especially when using IDEs to find names.\r\n* `url_decode_stream` had a `return_iterator` flag that was unused anywhere in the code.\r\n* `HTTPException.wrap` seems to only be used to create the `BadRequestKeyError` class. It's more straightforward to create the class manually, and the type system understands it better too.\r\n\r\nOne that I did not remove was the `parse_option_header` `multiple` parameter. It's not used anywhere, but it's the majority of the function, and I think it could be refactored differently later.\r\n\r\n<!--\r\nEnsure each step in CONTRIBUTING.rst is complete by adding an \"x\" to\r\neach box below.\r\n\r\nIf only docs were changed, these aren't relevant and can be removed.\r\n-->\r\n\r\nChecklist:\r\n\r\n- [x] Add tests that demonstrate the correct behavior of the change. Tests should fail without the change.\r\n- [x] Add or update relevant docs, in the docs folder and in code.\r\n- [x] Add an entry in `CHANGES.rst` summarizing the change and linking to the issue.\r\n- [x] Add `.. versionchanged::` entries in any relevant code docs.\r\n- [x] Run `pre-commit` hooks and fix any issues.\r\n- [x] Run `pytest` and `tox`, no tests failed.\r\n",
+    "pr_state": "closed",
+    "pr_merged": true,
+    "pr_merge_commit_sha": "38d859b817ab2c9f51c9d349182be262e3a24e3d",
+    "base_sha": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+    "head_sha": "a397cb29d91f6d97d60a8ab4f6d054b615556c79"
+  },
+  "issue_details": {
+    "verified": true,
+    "issue_number": 2084,
+    "issue_title": "`del` invalidates `cached_property`",
+    "issue_body": "I think using `del obj.name` makes more sense than `invalidate_cached_property(obj, \"name\")`, and doesn't require importing a separate function. I don't expect users to be invalidating/deleting non-cached-properties anyway, I don't think the extra check was giving us much.\r\n\r\nUpdated the test to test get, set, and delete.\r\n\r\ncc @singingwolfboy\r\n\r\n<!--\r\nEnsure each step in CONTRIBUTING.rst is complete by adding an \"x\" to\r\neach box below.\r\n\r\nIf only docs were changed, these aren't relevant and can be removed.\r\n-->\r\n\r\nChecklist:\r\n\r\n- [x] Add tests that demonstrate the correct behavior of the change. Tests should fail without the change.\r\n- [x] Add or update relevant docs, in the docs folder and in code.\r\n- [x] Add an entry in `CHANGES.rst` summarizing the change and linking to the issue.\r\n- [x] Add `.. versionchanged::` entries in any relevant code docs.\r\n- [x] Run `pre-commit` hooks and fix any issues.\r\n- [x] Run `pytest` and `tox`, no tests failed.\r\n",
+    "issue_state": "closed"
+  },
+  "rejection_reasons": []
+}

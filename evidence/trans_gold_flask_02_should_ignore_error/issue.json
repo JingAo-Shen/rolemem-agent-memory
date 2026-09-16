@@ -1,0 +1,7 @@
+{
+  "verified": true,
+  "issue_number": 5898,
+  "issue_title": "redirect defaults to 303",
+  "issue_body": "closes #5895 ",
+  "issue_state": "closed"
+}

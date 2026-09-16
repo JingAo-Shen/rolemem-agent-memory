@@ -1,0 +1,43 @@
+{
+  "base_commit": {
+    "verified": true,
+    "commit_sha": "970e8cec988421bd43da57350723b05c8ce8dc7e",
+    "full_sha": "970e8cec988421bd43da57350723b05c8ce8dc7e",
+    "message": "v2.32.1",
+    "author_date": "2024-05-20T22:02:29Z",
+    "parents": [
+      "d6ebc4a2f1f68b7e355fb7e4dd5ffc0845547f9f"
+    ]
+  },
+  "history_commit": {
+    "verified": true,
+    "commit_sha": "970e8cec988421bd43da57350723b05c8ce8dc7e",
+    "full_sha": "970e8cec988421bd43da57350723b05c8ce8dc7e",
+    "message": "v2.32.1",
+    "author_date": "2024-05-20T22:02:29Z",
+    "parents": [
+      "d6ebc4a2f1f68b7e355fb7e4dd5ffc0845547f9f"
+    ]
+  },
+  "transition_commit": {
+    "verified": true,
+    "commit_sha": "92075b330a30b9883f466a43d3f7566ab849f91b",
+    "full_sha": "92075b330a30b9883f466a43d3f7566ab849f91b",
+    "message": "Add deprecation warning",
+    "author_date": "2024-05-21T16:28:30Z",
+    "parents": [
+      "aa1461b68aa73e2f6ec0e78c8853b635c76fd099"
+    ]
+  },
+  "target_commit": {
+    "verified": true,
+    "commit_sha": "c98e4d133ef29c46a9b68cd783087218a8075e05",
+    "full_sha": "c98e4d133ef29c46a9b68cd783087218a8075e05",
+    "message": "Merge pull request #6710 from nateprewitt/api_rename",
+    "author_date": "2024-05-21T16:41:18Z",
+    "parents": [
+      "970e8cec988421bd43da57350723b05c8ce8dc7e",
+      "92075b330a30b9883f466a43d3f7566ab849f91b"
+    ]
+  }
+}

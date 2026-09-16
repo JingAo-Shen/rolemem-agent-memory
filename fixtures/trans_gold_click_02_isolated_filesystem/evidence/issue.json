@@ -1,0 +1,7 @@
+{
+  "verified": true,
+  "issue_number": 3501,
+  "issue_title": "`isolated_filesystem()` is not thread safe",
+  "issue_body": "This is a follow-up on https://github.com/pallets/click/issues/2899, to cover for @Rowlando13's concerns that `isolated_filesystem()` is not thread safe: https://github.com/pallets/click/issues/2899#issuecomment-2870786207",
+  "issue_state": "closed"
+}

@@ -1,0 +1,43 @@
+{
+  "base_commit": {
+    "verified": true,
+    "commit_sha": "a5d70ebfd6a30ceba0e9cc322089a6497dcd643e",
+    "full_sha": "a5d70ebfd6a30ceba0e9cc322089a6497dcd643e",
+    "message": "Bump the github-actions group with 6 updates (#5225)",
+    "author_date": "2026-09-07T17:58:51Z",
+    "parents": [
+      "9778f3c8ce1046d7614b7ce7ec338fe421d0eda0"
+    ]
+  },
+  "history_commit": {
+    "verified": true,
+    "commit_sha": "a5d70ebfd6a30ceba0e9cc322089a6497dcd643e",
+    "full_sha": "a5d70ebfd6a30ceba0e9cc322089a6497dcd643e",
+    "message": "Bump the github-actions group with 6 updates (#5225)",
+    "author_date": "2026-09-07T17:58:51Z",
+    "parents": [
+      "9778f3c8ce1046d7614b7ce7ec338fe421d0eda0"
+    ]
+  },
+  "transition_commit": {
+    "verified": true,
+    "commit_sha": "dbd3622b354d3a9538826983cfcd78dde10e8472",
+    "full_sha": "dbd3622b354d3a9538826983cfcd78dde10e8472",
+    "message": "Merge branch 'main' into 5044-deprecate-empty-collection",
+    "author_date": "2026-09-07T20:56:35Z",
+    "parents": [
+      "4b1e5ee7f26eed728efc489b764a7b96c28ff29a",
+      "a5d70ebfd6a30ceba0e9cc322089a6497dcd643e"
+    ]
+  },
+  "target_commit": {
+    "verified": true,
+    "commit_sha": "9a209d21087de10b300b2530de023989a71a3f7e",
+    "full_sha": "9a209d21087de10b300b2530de023989a71a3f7e",
+    "message": "Deprecate empty collection for retrying all methods (#5223)",
+    "author_date": "2026-09-08T20:09:00Z",
+    "parents": [
+      "adde463f32b7c52727211d10f45ae961650ffd4c"
+    ]
+  }
+}

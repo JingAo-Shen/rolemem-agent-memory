@@ -1,0 +1,11 @@
+{
+  "verified": true,
+  "pr_number": 3704,
+  "pr_title": "Deprecate `isolated_filesystem` and document its limits",
+  "pr_body": "This is an attempt to deprecate `isolated_filesystem` from the `CliRunner`. It has been discussed in #3501.\r\n\r\nIn addition to the deprecation, I added some explicit documentation about thread-safety as discussed in #3501. I used our own usage of `pytest-xdist` as a good example to follow.\r\n\r\nAll occurrences of `isolated_filesystem` in our own test suite have been removed and we are now relying on Pytest's `tmp_path`.\r\n\r\nI also inaugurated the `docs/upgrade-guides.md` section introduced a while ago by @Rowlando13 .\r\n\r\nThis PR closes #3700.\r\n",
+  "pr_state": "closed",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "cfa01eeb7894a408af70b29d28c0b24f8680f9fb",
+  "base_sha": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+  "head_sha": "c2ed41490baa08002714ab79afa4a41f2d67c02c"
+}

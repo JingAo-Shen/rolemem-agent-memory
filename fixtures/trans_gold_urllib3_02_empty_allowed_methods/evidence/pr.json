@@ -1,0 +1,11 @@
+{
+  "verified": true,
+  "pr_number": 5223,
+  "pr_title": "Deprecate using an empty collection to indicate retries on all verbs for Retry's allowed_methods option",
+  "pr_body": "- Deprecate use of an empty collection to indicate \"retry any verb\"\r\n- Add explicit test for `allowed_methods=False` as an alternative to `allowed_methods=None`\r\n\r\nA first step towards resolving #5044 ",
+  "pr_state": "closed",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "9a209d21087de10b300b2530de023989a71a3f7e",
+  "base_sha": "a5d70ebfd6a30ceba0e9cc322089a6497dcd643e",
+  "head_sha": "dbd3622b354d3a9538826983cfcd78dde10e8472"
+}

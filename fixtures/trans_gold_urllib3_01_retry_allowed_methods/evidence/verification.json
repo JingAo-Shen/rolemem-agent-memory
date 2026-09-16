@@ -1,0 +1,92 @@
+{
+  "transition_id": "trans_gold_urllib3_01_retry_allowed_methods",
+  "repo_name": "urllib3/urllib3",
+  "overall_status": "VERIFIED",
+  "commit_verification": "PASS",
+  "semantic_evidence_match": "PASS",
+  "test_verification": "PASS",
+  "repo_details": {
+    "verified": true,
+    "repo_id": 2410676,
+    "full_name": "urllib3/urllib3",
+    "default_branch": "main",
+    "language": "Python",
+    "license": "MIT",
+    "is_fork": false,
+    "is_archived": false
+  },
+  "commit_details": {
+    "base_commit": {
+      "verified": true,
+      "commit_sha": "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5",
+      "full_sha": "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5",
+      "message": "Add PR and issue templates (#1978)",
+      "author_date": "2020-09-25T18:26:16Z",
+      "parents": [
+        "ed628df10b2810b9bf1e02aca0adb23ea4f4d977"
+      ]
+    },
+    "history_commit": {
+      "verified": true,
+      "commit_sha": "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5",
+      "full_sha": "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5",
+      "message": "Add PR and issue templates (#1978)",
+      "author_date": "2020-09-25T18:26:16Z",
+      "parents": [
+        "ed628df10b2810b9bf1e02aca0adb23ea4f4d977"
+      ]
+    },
+    "transition_commit": {
+      "verified": true,
+      "commit_sha": "0993ad4390cd524262eef79fda304b0f96a80918",
+      "full_sha": "0993ad4390cd524262eef79fda304b0f96a80918",
+      "message": "Make Retry metaclass private",
+      "author_date": "2020-09-28T14:29:38Z",
+      "parents": [
+        "182e80eb3a222a15909614f295dc163fb3746813"
+      ]
+    },
+    "target_commit": {
+      "verified": true,
+      "commit_sha": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+      "full_sha": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+      "message": "Rename Retry options and defaults",
+      "author_date": "2020-09-28T17:44:55Z",
+      "parents": [
+        "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5"
+      ]
+    }
+  },
+  "ancestry_details": {
+    "verified": true,
+    "status": "ahead",
+    "ahead_by": 1,
+    "behind_by": 0,
+    "total_commits": 1,
+    "files_changed": [
+      "docs/reference/urllib3.util.rst",
+      "src/urllib3/util/retry.py",
+      "test/test_retry.py",
+      "test/test_retry_deprecated.py"
+    ]
+  },
+  "pr_details": {
+    "verified": true,
+    "pr_number": 2000,
+    "pr_title": "Rename Retry options and defaults",
+    "pr_body": "Closes #1916\r\n\r\nStill need to add some test cases on how setting both options interacts.\r\n",
+    "pr_state": "closed",
+    "pr_merged": true,
+    "pr_merge_commit_sha": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+    "base_sha": "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5",
+    "head_sha": "0993ad4390cd524262eef79fda304b0f96a80918"
+  },
+  "issue_details": {
+    "verified": true,
+    "issue_number": 1916,
+    "issue_title": "Replace method_whitelist and DEFAULT_REDIRECT_HEADERS_BLACKLIST parameter names for the Retry method",
+    "issue_body": "Ref: https://urllib3.readthedocs.io/en/latest/reference/urllib3.util.html\r\n\r\nRequest to replace the following parameters in the `Retry` module with neutral terms that do not have any Slavery connotation.\r\n\r\n`method_whitelist`\r\n`DEFAULT_REDIRECT_HEADERS_BLACKLIST`\r\n\r\nMany thanks.",
+    "issue_state": "closed"
+  },
+  "rejection_reasons": []
+}

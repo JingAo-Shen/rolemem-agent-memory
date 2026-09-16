@@ -1,0 +1,98 @@
+{
+  "transition_id": "trans_gold_click_01_option_parser",
+  "repo_name": "pallets/click",
+  "overall_status": "VERIFIED",
+  "commit_verification": "PASS",
+  "semantic_evidence_match": "PASS",
+  "test_verification": "PASS",
+  "repo_details": {
+    "verified": true,
+    "repo_id": 19103692,
+    "full_name": "pallets/click",
+    "default_branch": "main",
+    "language": "Python",
+    "license": "BSD-3-Clause",
+    "is_fork": false,
+    "is_archived": false
+  },
+  "commit_details": {
+    "base_commit": {
+      "verified": true,
+      "commit_sha": "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+      "full_sha": "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+      "message": "deprecate base classes `BaseCommand` and `MultiCommand` (#2591)",
+      "author_date": "2023-08-19T20:07:35Z",
+      "parents": [
+        "f5e47a6fc29c515c5c23bab297e1454c054844cb",
+        "238ee070af40576d23418e41fa96d1c41e53f6b1"
+      ]
+    },
+    "history_commit": {
+      "verified": true,
+      "commit_sha": "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+      "full_sha": "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+      "message": "deprecate base classes `BaseCommand` and `MultiCommand` (#2591)",
+      "author_date": "2023-08-19T20:07:35Z",
+      "parents": [
+        "f5e47a6fc29c515c5c23bab297e1454c054844cb",
+        "238ee070af40576d23418e41fa96d1c41e53f6b1"
+      ]
+    },
+    "transition_commit": {
+      "verified": true,
+      "commit_sha": "3630addf538ff4d1d5bc75438c8d84378105d03d",
+      "full_sha": "3630addf538ff4d1d5bc75438c8d84378105d03d",
+      "message": "deprecate OptionParser",
+      "author_date": "2023-08-20T16:13:25Z",
+      "parents": [
+        "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3"
+      ]
+    },
+    "target_commit": {
+      "verified": true,
+      "commit_sha": "988c683963b14ced1b32a8cda9f9b466c32d9df1",
+      "full_sha": "988c683963b14ced1b32a8cda9f9b466c32d9df1",
+      "message": "deprecate `OptionParser` (#2592)",
+      "author_date": "2023-08-20T16:16:54Z",
+      "parents": [
+        "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+        "3630addf538ff4d1d5bc75438c8d84378105d03d"
+      ]
+    }
+  },
+  "ancestry_details": {
+    "verified": true,
+    "status": "ahead",
+    "ahead_by": 2,
+    "behind_by": 0,
+    "total_commits": 2,
+    "files_changed": [
+      "CHANGES.rst",
+      "src/click/__init__.py",
+      "src/click/core.py",
+      "src/click/formatting.py",
+      "src/click/parser.py",
+      "src/click/shell_completion.py",
+      "tests/test_parser.py"
+    ]
+  },
+  "pr_details": {
+    "verified": true,
+    "pr_number": 2592,
+    "pr_title": "deprecate `OptionParser`",
+    "pr_body": "The first step toward rewriting the parser #2205. The `parser` module, `OptionParser`, `Parameter.add_to_parser`, and `Context.protected_args` are all deprecated. Imports will show deprecation warnings.",
+    "pr_state": "closed",
+    "pr_merged": true,
+    "pr_merge_commit_sha": "988c683963b14ced1b32a8cda9f9b466c32d9df1",
+    "base_sha": "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+    "head_sha": "3630addf538ff4d1d5bc75438c8d84378105d03d"
+  },
+  "issue_details": {
+    "verified": true,
+    "issue_number": 2205,
+    "issue_title": "rewrite the parser",
+    "issue_body": "Click currently uses a modified copy of optparse to parse command line arguments. In order to use it, Click creates an entire optparse class structure mirroring the structure that users write, which seems like unnecessary overhead. Click also goes beyond what optparse was intended for, which means there's a lot of working around how optparse works. There are old issues about the processing being an issue, and newer features are also affected because it's hard to manage whether the parser or the processing will get values or raise errors.\r\n\r\nMost of the code in our parser copy isn't even the actual parsing code, it's all the optparse equivalent objects to Click's objects. I've started working on a new parser that works directly from the Click objects, instead of constructing a separate parser structure.\r\n\r\nThe following open issues are related, although I'm not guaranteeing that they'll all be immediately fixed with the rewrite. Some of them are also affected by the processing pipeline, which happens after parsing.\r\n\r\n* https://github.com/pallets/click/issues/473\r\n* https://github.com/pallets/click/issues/590\r\n* https://github.com/pallets/click/issues/602\r\n* https://github.com/pallets/click/issues/611\r\n* https://github.com/pallets/click/issues/619\r\n* https://github.com/pallets/click/issues/680\r\n* https://github.com/pallets/click/issues/742\r\n* https://github.com/pallets/click/issues/1269\r\n* https://github.com/pallets/click/issues/1279\r\n* https://github.com/pallets/click/issues/1322\r\n* https://github.com/pallets/click/issues/1340\r\n* https://github.com/pallets/click/issues/1394\r\n* https://github.com/pallets/click/issues/1489\r\n* https://github.com/pallets/click/issues/1574\r\n* https://github.com/pallets/click/issues/1992",
+    "issue_state": "open"
+  },
+  "rejection_reasons": []
+}

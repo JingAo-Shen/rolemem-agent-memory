@@ -1,0 +1,32 @@
+{
+  "transition_id": "trans_gold_click_02_isolated_filesystem",
+  "repo_name": "pallets/click",
+  "repo_url": "https://github.com/pallets/click",
+  "license": "BSD-3-Clause",
+  "language": "Python",
+  "track_candidate": "B",
+  "task_family": "testing_convention",
+  "pr_url": "https://github.com/pallets/click/pull/3704",
+  "issue_url": "https://github.com/pallets/click/issues/3501",
+  "base_commit": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+  "history_commit": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+  "transition_commit": "c2ed41490baa08002714ab79afa4a41f2d67c02c",
+  "target_commit": "cfa01eeb7894a408af70b29d28c0b24f8680f9fb",
+  "repository_change": "Deprecate isolated_filesystem in CliRunner due to thread safety limitations in favor of tempfile/tmp_path",
+  "changed_files": [
+    "src/click/testing.py"
+  ],
+  "changed_symbols": [
+    "CliRunner.isolated_filesystem"
+  ],
+  "stale_memory_candidate": "Use runner.isolated_filesystem() for temporary test directory creation",
+  "valid_memory_candidate": "Use tempfile.TemporaryDirectory() or pytest tmp_path fixture for thread-safe test isolation",
+  "current_task": "Implement `run_in_isolated_dir(task_fn)` in `test_isolation.py` running a callable in an isolated directory.",
+  "target_file": "test_isolation.py",
+  "target_symbol": "run_in_isolated_dir",
+  "existing_tests": "tests/test_testing.py::test_runner",
+  "generated_tests": "def test_run_in_isolated_dir():\n    import os\n    from test_isolation import run_in_isolated_dir\n    orig_cwd = os.getcwd()\n    def worker():\n        return os.getcwd()\n    path = run_in_isolated_dir(worker)\n    assert path != orig_cwd\n    assert not os.path.exists(path)",
+  "test_evidence_source": "Click PR #3704 testing.py deprecation warning and issue #3501",
+  "difficulty": "medium",
+  "leakage_review": "PASS"
+}
