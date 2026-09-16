@@ -1,0 +1,34 @@
+{
+  "transition_id": "trans_gold_werkzeug_01_cached_property",
+  "repo_name": "pallets/werkzeug",
+  "repo_url": "https://github.com/pallets/werkzeug",
+  "license": "BSD-3-Clause",
+  "language": "Python",
+  "track_candidate": "A",
+  "task_family": "api_deprecation",
+  "pr_url": "https://github.com/pallets/werkzeug/pull/2084",
+  "issue_url": "https://github.com/pallets/werkzeug/issues/2084",
+  "base_commit": "25ca9cd92956e48a38f7a32c837e0f8a54c8ae31",
+  "history_commit": "25ca9cd92956e48a38f7a32c837e0f8a54c8ae31",
+  "transition_commit": "004b446eac19db2ff351a923fd594d4f23d67e90",
+  "target_commit": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+  "repository_change": "Deprecate invalidate_cached_property and Href in favor of modern standard deletion del obj.prop and routing",
+  "changed_files": [
+    "src/werkzeug/utils.py"
+  ],
+  "changed_symbols": [
+    "werkzeug.utils.invalidate_cached_property"
+  ],
+  "stale_memory_candidate": "Use invalidate_cached_property(instance, attr_name) to clear cached properties",
+  "valid_memory_candidate": "Use delattr(instance, attr_name) or del instance.prop to clear cached properties",
+  "current_task": "Implement `reset_cached_attribute(instance, attr_name)` in `property_helper.py` to clear a cached property.",
+  "target_file": "property_helper.py",
+  "target_symbol": "reset_cached_attribute",
+  "existing_tests": "tests/test_utils.py::test_cached_property",
+  "generated_tests": "def test_reset_cached_attribute():\n    class Target:\n        @property\n        def val(self):\n            return 42\n    t = Target()\n    t.__dict__['val'] = 100\n    from property_helper import reset_cached_attribute\n    reset_cached_attribute(t, 'val')\n    assert 'val' not in t.__dict__",
+  "test_evidence_source": "Werkzeug PR #2085 deprecation notes and test_utils.py",
+  "difficulty": "medium",
+  "leakage_review": "PASS",
+  "benchmark_status": "PROVISIONAL_GOLD",
+  "provisional_notes": "Commit/PR metadata verified, but repository-state causality and fixture fidelity not yet fully grounded in git checkout."
+}

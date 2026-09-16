@@ -1,0 +1,18 @@
+{
+  "transition_id": "trans_gold_urllib3_01_retry_allowed_methods",
+  "repo_name": "urllib3/urllib3",
+  "license": "MIT",
+  "base_commit": "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5",
+  "target_commit": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+  "python_version": ">=3.10",
+  "dependency_install_command": "pip install pytest",
+  "requirements": [
+    "pytest>=8.0.0"
+  ],
+  "os_assumptions": "Linux x86_64",
+  "setup_command": "export PYTHONPATH=.:src",
+  "test_command": "pytest hidden_tests/test_evaluation.py",
+  "timeout": 15,
+  "network_requirement": "none",
+  "sandbox_type": "bwrap"
+}

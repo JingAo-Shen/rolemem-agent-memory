@@ -1,0 +1,18 @@
+{
+  "transition_id": "trans_gold_flask_01_context_stack_removal",
+  "repo_name": "pallets/flask",
+  "license": "BSD-3-Clause",
+  "base_commit": "604de4b1dc0729233704a08c32612c6f1221cccb",
+  "target_commit": "1ee22e1736ffd12c2222cd6215ed04ec1592adaa",
+  "python_version": ">=3.10",
+  "dependency_install_command": "pip install pytest",
+  "requirements": [
+    "pytest>=8.0.0"
+  ],
+  "os_assumptions": "Linux x86_64",
+  "setup_command": "export PYTHONPATH=.:src",
+  "test_command": "pytest hidden_tests/test_evaluation.py",
+  "timeout": 15,
+  "network_requirement": "none",
+  "sandbox_type": "bwrap"
+}

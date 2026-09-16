@@ -1,0 +1,36 @@
+{
+  "transition_id": "trans_gold_click_01_option_parser",
+  "repo_name": "pallets/click",
+  "repo_url": "https://github.com/pallets/click",
+  "license": "BSD-3-Clause",
+  "language": "Python",
+  "track_candidate": "A",
+  "task_family": "module_deprecation",
+  "pr_url": "https://github.com/pallets/click/pull/2592",
+  "issue_url": "https://github.com/pallets/click/issues/2205",
+  "base_commit": "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+  "history_commit": "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+  "transition_commit": "3630addf538ff4d1d5bc75438c8d84378105d03d",
+  "target_commit": "988c683963b14ced1b32a8cda9f9b466c32d9df1",
+  "repository_change": "Deprecate OptionParser and parser module in favor of modern Click Command argument parsing",
+  "changed_files": [
+    "src/click/parser.py",
+    "src/click/core.py"
+  ],
+  "changed_symbols": [
+    "click.parser.OptionParser",
+    "click.core.Parameter.add_to_parser"
+  ],
+  "stale_memory_candidate": "Import and use click.parser.OptionParser directly",
+  "valid_memory_candidate": "Define options through click.option or Command.params and parse via Command.make_context",
+  "current_task": "Implement `parse_command_args(cmd, args_list)` in `cli_helper.py` returning context params dictionary.",
+  "target_file": "cli_helper.py",
+  "target_symbol": "parse_command_args",
+  "existing_tests": "tests/test_parser.py::test_basics",
+  "generated_tests": "def test_parse_args():\n    import click\n    from cli_helper import parse_command_args\n    @click.command()\n    @click.option('--name')\n    def cmd(name):\n        pass\n    res = parse_command_args(cmd, ['--name', 'Antigravity'])\n    assert res.get('name') == 'Antigravity'",
+  "test_evidence_source": "Click PR #2592 parser deprecation notices",
+  "difficulty": "medium",
+  "leakage_review": "PASS",
+  "benchmark_status": "PROVISIONAL_GOLD",
+  "provisional_notes": "Commit/PR metadata verified, but repository-state causality and fixture fidelity not yet fully grounded in git checkout."
+}

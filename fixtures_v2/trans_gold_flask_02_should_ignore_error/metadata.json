@@ -1,0 +1,34 @@
+{
+  "transition_id": "trans_gold_flask_02_should_ignore_error",
+  "repo_name": "pallets/flask",
+  "repo_url": "https://github.com/pallets/flask",
+  "license": "BSD-3-Clause",
+  "language": "Python",
+  "track_candidate": "B",
+  "task_family": "error_convention",
+  "pr_url": "https://github.com/pallets/flask/pull/5899",
+  "issue_url": "https://github.com/pallets/flask/issues/5898",
+  "base_commit": "9b74a90dd3c47f792734823e8793ac36f38bc4dd",
+  "history_commit": "9b74a90dd3c47f792734823e8793ac36f38bc4dd",
+  "transition_commit": "c77a5203438fe772d41f6a47303ad3f57a4efe6d",
+  "target_commit": "4b8bde97d4fa3486e18dce21c3c5f75570d50164",
+  "repository_change": "Deprecate should_ignore_error in Flask in favor of explicit error handling conventions",
+  "changed_files": [
+    "src/flask/app.py"
+  ],
+  "changed_symbols": [
+    "Flask.should_ignore_error"
+  ],
+  "stale_memory_candidate": "Override should_ignore_error on Flask application subclass to filter exceptions",
+  "valid_memory_candidate": "Register error handlers via @app.errorhandler(exc_class) to handle or suppress exceptions",
+  "current_task": "Implement `configure_error_policy(app, exc_class)` in `error_policy.py` registering an explicit error handler.",
+  "target_file": "error_policy.py",
+  "target_symbol": "configure_error_policy",
+  "existing_tests": "tests/test_basic.py::test_error_handling",
+  "generated_tests": "def test_configure_error_policy():\n    from flask import Flask\n    from error_policy import configure_error_policy\n    app = Flask('test_err')\n    class CustomErr(Exception):\n        pass\n    configure_error_policy(app, CustomErr)\n    assert CustomErr in app.error_handler_spec[None][None]",
+  "test_evidence_source": "Flask PR #5899 deprecation warning and docstring",
+  "difficulty": "medium",
+  "leakage_review": "PASS",
+  "benchmark_status": "PROVISIONAL_GOLD",
+  "provisional_notes": "Commit/PR metadata verified, but repository-state causality and fixture fidelity not yet fully grounded in git checkout."
+}

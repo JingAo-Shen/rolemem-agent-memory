@@ -1,0 +1,18 @@
+{
+  "transition_id": "trans_gold_requests_01_tls_context_adapter",
+  "repo_name": "psf/requests",
+  "license": "Apache-2.0",
+  "base_commit": "970e8cec988421bd43da57350723b05c8ce8dc7e",
+  "target_commit": "c98e4d133ef29c46a9b68cd783087218a8075e05",
+  "python_version": ">=3.10",
+  "dependency_install_command": "pip install pytest",
+  "requirements": [
+    "pytest>=8.0.0"
+  ],
+  "os_assumptions": "Linux x86_64",
+  "setup_command": "export PYTHONPATH=.:src",
+  "test_command": "pytest hidden_tests/test_evaluation.py",
+  "timeout": 15,
+  "network_requirement": "none",
+  "sandbox_type": "bwrap"
+}

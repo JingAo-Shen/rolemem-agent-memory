@@ -67,9 +67,13 @@ class LocalModelRunner:
                 "max_new_tokens": 1024,
                 "do_sample": False
             },
+            "config_sha256": None,
             "model_config_sha256": None,
             "tokenizer_sha256": None,
+            "weights_prefix_sha256_64mb": None,
             "weights_sha256": None,
+            "safetensors_index_sha256": None,
+            "hf_revision_sha": self.revision,
             "hf_commit_sha": self.revision
         }
         self.model = None
@@ -94,7 +98,7 @@ class LocalModelRunner:
 
     def load_model(self) -> None:
         from transformers import AutoModelForCausalLM, AutoTokenizer
-        is_local = os.path.exists(os.path.join(self.model_dir, "model.safetensors"))
+        is_local = os.path.exists(os.path.join(self.model_dir, "model.safetensors")) or os.path.exists(os.path.join(self.model_dir, "model.safetensors.index.json"))
         target_path = self.model_dir if is_local else self.model_repo
 
         # Compute checksums if files exist locally
@@ -102,13 +106,20 @@ class LocalModelRunner:
             cfg_p = os.path.join(self.model_dir, "config.json")
             tok_p = os.path.join(self.model_dir, "tokenizer.json")
             w_p = os.path.join(self.model_dir, "model.safetensors")
+            idx_p = os.path.join(self.model_dir, "model.safetensors.index.json")
             if os.path.exists(cfg_p):
-                self.env_specs["model_config_sha256"] = self._compute_sha256(cfg_p)
+                sha = self._compute_sha256(cfg_p)
+                self.env_specs["config_sha256"] = sha
+                self.env_specs["model_config_sha256"] = sha
             if os.path.exists(tok_p):
                 self.env_specs["tokenizer_sha256"] = self._compute_sha256(tok_p)
+            if os.path.exists(idx_p):
+                self.env_specs["safetensors_index_sha256"] = self._compute_sha256(idx_p)
             if os.path.exists(w_p):
                 # Hash first 64MB of weights for fast startup validation if large
-                self.env_specs["weights_sha256"] = self._compute_sha256(w_p, max_bytes=64 * 1024 * 1024)
+                prefix_sha = self._compute_sha256(w_p, max_bytes=64 * 1024 * 1024)
+                self.env_specs["weights_prefix_sha256_64mb"] = prefix_sha
+                self.env_specs["weights_sha256"] = prefix_sha
 
         print(f"Loading tokenizer from {target_path} (revision={self.revision})...")
         load_kwargs = {"trust_remote_code": True}

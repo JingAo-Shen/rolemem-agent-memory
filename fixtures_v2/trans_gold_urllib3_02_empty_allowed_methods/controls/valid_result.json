@@ -1,0 +1,8 @@
+{
+  "transition_id": "trans_gold_urllib3_02_empty_allowed_methods",
+  "control_type": "valid_solution",
+  "expected": "PASS",
+  "passed": true,
+  "control_pass": true,
+  "log_preview": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_9ztkuxrh\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_create_all_verbs_retry PASSED          [100%]\n\n=============================="
+}

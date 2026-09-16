@@ -1,16 +1,15 @@
-#!/usr/bin/env python3
 """
-Transition Fixture Builder.
-Constructs fully reproducible workspace snapshots, evidence bundles,
-before/after state trees, and hidden pytest execution harnesses under:
-fixtures/{transition_id}/
-    metadata.json
-    evidence/
-    before/
-    after/
-    hidden_tests/
-    environment.json
+DEPRECATED — UNIT TEST ONLY.
+DO NOT USE FOR BENCHMARK CONSTRUCTION.
+Official benchmark fixtures are built by scripts/build_real_repo_fixture.py directly from Git checkout.
 """
+import warnings
+warnings.warn(
+    "build_transition_fixture.py uses synthetic templates and is DEPRECATED for benchmark construction. "
+    "Use scripts/build_real_repo_fixture.py instead.",
+    UserWarning,
+    stacklevel=2
+)
 
 import os
 import sys

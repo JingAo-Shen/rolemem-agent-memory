@@ -1,0 +1,18 @@
+{
+  "transition_id": "trans_gold_werkzeug_01_cached_property",
+  "repo_name": "pallets/werkzeug",
+  "license": "BSD-3-Clause",
+  "base_commit": "25ca9cd92956e48a38f7a32c837e0f8a54c8ae31",
+  "target_commit": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+  "python_version": ">=3.10",
+  "dependency_install_command": "pip install pytest",
+  "requirements": [
+    "pytest>=8.0.0"
+  ],
+  "os_assumptions": "Linux x86_64",
+  "setup_command": "export PYTHONPATH=.:src",
+  "test_command": "pytest hidden_tests/test_evaluation.py",
+  "timeout": 15,
+  "network_requirement": "none",
+  "sandbox_type": "bwrap"
+}

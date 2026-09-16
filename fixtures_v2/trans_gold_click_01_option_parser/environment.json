@@ -1,0 +1,18 @@
+{
+  "transition_id": "trans_gold_click_01_option_parser",
+  "repo_name": "pallets/click",
+  "license": "BSD-3-Clause",
+  "base_commit": "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+  "target_commit": "988c683963b14ced1b32a8cda9f9b466c32d9df1",
+  "python_version": ">=3.10",
+  "dependency_install_command": "pip install pytest",
+  "requirements": [
+    "pytest>=8.0.0"
+  ],
+  "os_assumptions": "Linux x86_64",
+  "setup_command": "export PYTHONPATH=.:src",
+  "test_command": "pytest hidden_tests/test_evaluation.py",
+  "timeout": 15,
+  "network_requirement": "none",
+  "sandbox_type": "bwrap"
+}

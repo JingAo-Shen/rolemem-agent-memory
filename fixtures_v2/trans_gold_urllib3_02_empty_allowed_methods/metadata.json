@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_gold_urllib3_02_empty_allowed_methods",
+  "repo_name": "urllib3/urllib3",
+  "repo_url": "https://github.com/urllib3/urllib3",
+  "license": "MIT",
+  "language": "Python",
+  "track_candidate": "B",
+  "task_family": "convention_change",
+  "pr_url": "https://github.com/urllib3/urllib3/pull/5223",
+  "issue_url": "https://github.com/urllib3/urllib3/issues/5222",
+  "base_commit": "a5d70ebfd6a30ceba0e9cc322089a6497dcd643e",
+  "history_commit": "a5d70ebfd6a30ceba0e9cc322089a6497dcd643e",
+  "transition_commit": "dbd3622b354d3a9538826983cfcd78dde10e8472",
+  "target_commit": "9a209d21087de10b300b2530de023989a71a3f7e",
+  "repository_change": "Deprecate empty collection allowed_methods in Retry in favor of explicit False or None for all-verbs retries",
+  "changed_files": [
+    "src/urllib3/util/retry.py"
+  ],
+  "changed_symbols": [
+    "Retry.allowed_methods",
+    "Retry.DEFAULT_ALLOWED_METHODS"
+  ],
+  "stale_memory_candidate": "Pass allowed_methods=[] or allowed_methods=set() to retry all HTTP methods",
+  "valid_memory_candidate": "Pass allowed_methods=None or allowed_methods=False to retry all HTTP methods without deprecation warning",
+  "current_task": "Implement `create_all_verbs_retry()` in `retry_factory.py` returning Retry configured for all methods.",
+  "target_file": "retry_factory.py",
+  "target_symbol": "create_all_verbs_retry",
+  "existing_tests": "test/test_retry.py::test_retry_allowed_methods_empty",
+  "generated_tests": "def test_all_verbs_retry():\n    from retry_factory import create_all_verbs_retry\n    r = create_all_verbs_retry()\n    assert r.allowed_methods is None or r.allowed_methods is False",
+  "test_evidence_source": "urllib3 PR #5223 deprecation warning in retry.py",
+  "difficulty": "medium",
+  "leakage_review": "PASS",
+  "benchmark_status": "PROVISIONAL_GOLD",
+  "provisional_notes": "Commit/PR metadata verified, but repository-state causality and fixture fidelity not yet fully grounded in git checkout."
+}
