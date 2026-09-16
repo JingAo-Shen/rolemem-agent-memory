@@ -1,7 +1,9 @@
 """
 scripts/audit_metadata_consistency.py
-Audits and synchronizes benchmark metadata across the repository.
+Audits and synchronizes internal benchmark metadata across the repository.
 Enforces TransitionSpec (data/specs/<transition_id>.json) as the SINGLE SOURCE OF TRUTH.
+NOTE: This script ONLY audits and syncs internal metadata consistency between specs and fixtures.
+It DOES NOT emit review decisions or verify external ground truth.
 """
 
 import os
@@ -12,19 +14,16 @@ from typing import Dict, Any, List
 
 SPECS_DIR = "/code/rolemem-agent-memory/data/specs"
 FIXTURES_DIR = "/code/rolemem-agent-memory/fixtures_v2"
-GOLD_V2_PATH = "/code/rolemem-agent-memory/data/gold/gold_transitions_v2.jsonl"
-GOLD_V3_PATH = "/code/rolemem-agent-memory/data/gold/gold_transitions_v3.jsonl"
-REVIEW_V3_PATH = "/code/rolemem-agent-memory/data/reviewed/review_records_v3.jsonl"
+GOLD_V4_PATH = "/code/rolemem-agent-memory/data/gold/seed_gold_v4.jsonl"
 
 
 def audit_and_sync(sync: bool = False) -> Dict[str, Any]:
-    """Audit metadata across specs, fixtures, and datasets."""
+    """Audit metadata consistency across specs and fixtures."""
     spec_files = sorted([f for f in os.listdir(SPECS_DIR) if f.endswith(".json")])
     discrepancies = []
     synced_count = 0
 
-    gold_v3_records = []
-    review_v3_records = []
+    gold_v4_records = []
 
     for fname in spec_files:
         spec_path = os.path.join(SPECS_DIR, fname)
@@ -56,7 +55,10 @@ def audit_and_sync(sync: bool = False) -> Dict[str, Any]:
             "current_task",
             "stale_memory_candidate",
             "valid_memory_candidate",
-            "test_evidence_source"
+            "test_evidence_source",
+            "pr_url",
+            "issue_url",
+            "original_test_required"
         ]
 
         item_diffs = []
@@ -75,14 +77,12 @@ def audit_and_sync(sync: bool = False) -> Dict[str, Any]:
                     json.dump(fixture_meta, f, indent=2)
                 synced_count += 1
         elif sync:
-            # Keep updated
             fixture_meta.update(spec)
             with open(fixture_meta_path, "w", encoding="utf-8") as f:
                 json.dump(fixture_meta, f, indent=2)
             synced_count += 1
 
         # Check for banned legacy patterns
-        raw_text = json.dumps(spec)
         if "2085" in spec.get("test_evidence_source", ""):
             discrepancies.append({"transition_id": tid, "error": "Banned typo PR #2085 found in test_evidence_source"})
         if "Href" in spec.get("repository_change", ""):
@@ -90,36 +90,14 @@ def audit_and_sync(sync: bool = False) -> Dict[str, Any]:
         if tid == "trans_gold_flask_02_should_ignore_error" and "errorhandler" in spec.get("valid_memory_candidate", ""):
             discrepancies.append({"transition_id": tid, "error": "Banned pattern errorhandler found in flask 02 valid candidate"})
 
-        # Build Gold V3 and Review V3 records
         gold_rec = dict(spec)
         gold_rec["benchmark_status"] = "PROVISIONAL_GOLD_V2"
-        gold_v3_records.append(gold_rec)
+        gold_v4_records.append(gold_rec)
 
-        review_rec = {
-            "transition_id": tid,
-            "repo_name": spec["repo_name"],
-            "track": spec.get("track", "A"),
-            "review_status": "AUTO_REVIEWED",
-            "reviewer_type": "automated_self_review",
-            "review_decision": "ACCEPT",
-            "git_commit_verified": True,
-            "causality_verified": True,
-            "controls_verified": True,
-            "environment_reproduced": True,
-            "notes": "Verified against local git repository state and bwrap sandbox controls."
-        }
-        review_v3_records.append(review_rec)
-
-    # Write synchronized datasets
     if sync:
-        os.makedirs(os.path.dirname(GOLD_V3_PATH), exist_ok=True)
-        with open(GOLD_V3_PATH, "w", encoding="utf-8") as f:
-            for r in gold_v3_records:
-                f.write(json.dumps(r) + "\n")
-
-        os.makedirs(os.path.dirname(REVIEW_V3_PATH), exist_ok=True)
-        with open(REVIEW_V3_PATH, "w", encoding="utf-8") as f:
-            for r in review_v3_records:
+        os.makedirs(os.path.dirname(GOLD_V4_PATH), exist_ok=True)
+        with open(GOLD_V4_PATH, "w", encoding="utf-8") as f:
+            for r in gold_v4_records:
                 f.write(json.dumps(r) + "\n")
 
     return {
@@ -135,19 +113,17 @@ def main():
     parser.add_argument("--sync", action="store_true", help="Sync fixtures and jsonl from specs")
     args = parser.parse_args()
 
-    result = audit_and_sync(sync=args.sync)
-    print(f"Audited {result['total_specs']} specifications.")
-    if result["discrepancies"]:
-        print(f"Found {len(result['discrepancies'])} discrepancies:")
-        for d in result["discrepancies"]:
+    res = audit_and_sync(sync=args.sync)
+    print(f"Total Specs: {res['total_specs']}")
+    print(f"Discrepancies: {len(res['discrepancies'])}")
+    print(f"Synced Count: {res['synced_count']}")
+    print(f"Consistent: {res['is_consistent']}")
+
+    if not res["is_consistent"] and not args.sync:
+        print("\nDiscrepancies found:")
+        for d in res["discrepancies"]:
             print(json.dumps(d, indent=2))
-        if not args.sync:
-            print("\nRun with --sync to propagate canonical specs to fixtures and datasets.")
-            sys.exit(1)
-        else:
-            print(f"\nSynchronized {result['synced_count']} fixtures and updated datasets.")
-    else:
-        print("ALL METADATA 100% CONSISTENT AND COMPLIANT!")
+        sys.exit(1)
 
 
 if __name__ == "__main__":

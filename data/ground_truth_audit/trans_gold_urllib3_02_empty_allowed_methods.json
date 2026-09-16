@@ -1,0 +1,30 @@
+{
+  "transition_id": "trans_gold_urllib3_02_empty_allowed_methods",
+  "repo_name": "urllib3/urllib3",
+  "pr_url": "https://github.com/urllib3/urllib3/pull/5223",
+  "issue_url": "https://github.com/urllib3/urllib3/issues/5223",
+  "pr_title": "Deprecate empty collection for retrying all methods",
+  "base_commit": "a5d70ebfd6a30ceba0e9cc322089a6497dcd643e",
+  "target_commit": "9a209d21087de10b300b2530de023989a71a3f7e",
+  "git_cache_path": "/code/repo_cache/urllib3",
+  "base_commit_exists": true,
+  "target_commit_exists": true,
+  "pr_number_matched_in_git": true,
+  "pr_title_matched_in_git": true,
+  "changed_files_verified": true,
+  "git_diff_files": [
+    "changelog/5044.removal.rst",
+    "changelog/5161.bugfix.rst",
+    "dummyserver/app.py",
+    "src/urllib3/_collections.py",
+    "src/urllib3/connectionpool.py",
+    "src/urllib3/poolmanager.py",
+    "src/urllib3/util/retry.py",
+    "test/test_retry.py",
+    "test/with_dummyserver/test_connectionpool.py",
+    "test/with_dummyserver/test_poolmanager.py"
+  ],
+  "git_commit_log": "Deprecate empty collection for retrying all methods (#5223)\nDrop request body framing state on 303 redirects (#5161)\n\n* Drop request body framing state on 303 redirects\n\nA 303 makes urllib3 switch the method to GET and discard the request\nbody per RFC 9110, Section 15.4.4, but the state describing that body\nsurvived the switch.\n\nThe redirected request kept its chunked framing, so a bodyless GET went\nout carrying \"Transfer-Encoding: chunked\" and an empty chunked body. It\nalso kept body_pos, so a file-like body made the redirect fail with\n\"ValueError: body_pos must be of type integer, instead it was\n<class 'int'>\" while trying to rewind a body that no longer existed.\n\nReset chunked and body_pos alongside the body in both\nHTTPConnectionPool.urlopen() and PoolManager.urlopen(), and discard\nTransfer-Encoding in HTTPHeaderDict._prepare_for_method_change() to\ncover bodies framed by an explicit header rather than the chunked\nkeyword.\n\ntest_redirect_with_failed_tell used /redirect, which defaults to 303, so\nit asserted UnrewindableBodyError for a body that never needed rewinding.\nPoint it at status=307, which preserves the body and genuinely requires a\nrewind, matching how test_redirect_put_file already selects 307 for\nbody-preserving coverage. The 303 case is now covered explicitly by\ntest_303_redirect_with_failed_tell.\n\n* Test 303 redirect body framing against the dummy server\n\nReplace the socket-level tests with assertions on the headers echoed back\nby the dummy server, next to the existing 303 tests, and shorten the\nchangelog entry.\n\n* Trigger CI after flaky job timeout\n\n* Close the connection in the 303 body framing tests\n\nThe chunked request body is never read by the server, since nothing\nroutes it to a form parser, so reusing the connection let the leftover\nbody desynchronize the redirected GET and hang the client. Ask for the\nconnection to be closed instead.\n\n* Let the server read the body in the 303 framing tests\n\nThe chunked body is only read when it is announced as a form. Left\nunread, it desynchronized the redirected request on the reused\nconnection and hung the client until the job timed out.\n\nName the headers being sent apart from the ones echoed back, since the\ntwo are different types.\n\n* Drain the request body in dummyserver's redirect handler\n\n/redirect read the body through `request.values`, which only parses it\nfor form content types. A request carrying any other kind of body got\nits redirect while the body was still sitting in the socket, and the\nleftover bytes then desynchronized the next request on the reused\nconnection.\n\nRead the body unconditionally, keeping form parsing for the handlers and\ntests that depend on it. The 303 framing tests no longer have to disguise\ntheir bodies as forms to avoid hanging.",
+  "external_ground_truth_status": "PASS",
+  "errors": []
+}

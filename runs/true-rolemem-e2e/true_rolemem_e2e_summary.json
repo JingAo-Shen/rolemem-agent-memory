@@ -1,0 +1,466 @@
+[
+  {
+    "task_id": "trans_gold_werkzeug_01_cached_property",
+    "track": "A",
+    "repo_name": "pallets/werkzeug",
+    "model_revision": "c03e6d358207e414f1eca0bb1891e29f1db0e242",
+    "prompt": "<|im_start|>system\nYou are an expert Python engineer for pallets/werkzeug. Implement the requested solution for property_helper.py. Provide ONLY executable python code inside ```python code block without extra explanations.<|im_end|>\n<|im_start|>user\nProject Context Memory: Use delattr(instance, attr_name) or del instance.prop to clear cached properties\nTask: Implement `reset_cached_attribute(instance, attr_name)` in `property_helper.py` to clear a cached property.\nFile: property_helper.py\n<|im_end|>\n<|im_start|>assistant\n```python\n",
+    "memory_before_validation": [
+      {
+        "memory_id": "mem_stale_1",
+        "artifact_uri": "src/werkzeug/utils.py",
+        "artifact_type": "file",
+        "symbol": "werkzeug.utils.invalidate_cached_property",
+        "source_commit": "25ca9cd92956e48a38f7a32c837e0f8a54c8ae31",
+        "observed_at": 100.0,
+        "evidence_type": "diff",
+        "evidence_ref": "https://github.com/pallets/werkzeug/pull/2084",
+        "valid_from": 100.0,
+        "valid_to": "inf",
+        "supersedes": null,
+        "depends_on": [],
+        "status": "ACTIVE",
+        "role_tags": [
+          "coder"
+        ],
+        "statement": "Use invalidate_cached_property(instance, attr_name) to clear cached properties",
+        "artifact_digest": "7204bc26d5d3ac5e01b573636ecd035ad231de46b2418f331148f6a8d38a7d6c"
+      },
+      {
+        "memory_id": "mem_valid_1",
+        "artifact_uri": "src/werkzeug/utils.py",
+        "artifact_type": "file",
+        "symbol": "werkzeug.utils.invalidate_cached_property",
+        "source_commit": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+        "observed_at": 200.0,
+        "evidence_type": "diff",
+        "evidence_ref": "https://github.com/pallets/werkzeug/pull/2084",
+        "valid_from": 200.0,
+        "valid_to": "inf",
+        "supersedes": null,
+        "depends_on": [],
+        "status": "ACTIVE",
+        "role_tags": [
+          "coder"
+        ],
+        "statement": "Use delattr(instance, attr_name) or del instance.prop to clear cached properties",
+        "artifact_digest": "a098ad5ceeef276e6485a855e651eea6e14c14df15a3bdb12efd1c5a87d12e61"
+      }
+    ],
+    "memory_after_validation": [
+      {
+        "memory_id": "mem_stale_1",
+        "artifact_uri": "src/werkzeug/utils.py",
+        "artifact_type": "file",
+        "symbol": "werkzeug.utils.invalidate_cached_property",
+        "source_commit": "25ca9cd92956e48a38f7a32c837e0f8a54c8ae31",
+        "observed_at": 100.0,
+        "evidence_type": "diff",
+        "evidence_ref": "https://github.com/pallets/werkzeug/pull/2084",
+        "valid_from": 100.0,
+        "valid_to": "inf",
+        "supersedes": null,
+        "depends_on": [],
+        "status": "INVALIDATED_BY_ARTIFACT",
+        "role_tags": [
+          "coder"
+        ],
+        "statement": "Use invalidate_cached_property(instance, attr_name) to clear cached properties",
+        "artifact_digest": "7204bc26d5d3ac5e01b573636ecd035ad231de46b2418f331148f6a8d38a7d6c"
+      },
+      {
+        "memory_id": "mem_valid_1",
+        "artifact_uri": "src/werkzeug/utils.py",
+        "artifact_type": "file",
+        "symbol": "werkzeug.utils.invalidate_cached_property",
+        "source_commit": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+        "observed_at": 200.0,
+        "evidence_type": "diff",
+        "evidence_ref": "https://github.com/pallets/werkzeug/pull/2084",
+        "valid_from": 200.0,
+        "valid_to": "inf",
+        "supersedes": null,
+        "depends_on": [],
+        "status": "ACTIVE",
+        "role_tags": [
+          "coder"
+        ],
+        "statement": "Use delattr(instance, attr_name) or del instance.prop to clear cached properties",
+        "artifact_digest": "a098ad5ceeef276e6485a855e651eea6e14c14df15a3bdb12efd1c5a87d12e61"
+      }
+    ],
+    "retrieved_memory_ids": [
+      "mem_valid_1"
+    ],
+    "filtered_memory_ids": [
+      "mem_stale_1"
+    ],
+    "memory_text_delivered_to_model": "Project Context Memory: Use delattr(instance, attr_name) or del instance.prop to clear cached properties\n",
+    "raw_generation": "def reset_cached_attribute(instance, attr_name):\n    if hasattr(instance, attr_name):\n        delattr(instance, attr_name)\n```",
+    "parsed_code": "def reset_cached_attribute(instance, attr_name):\n    if hasattr(instance, attr_name):\n        delattr(instance, attr_name)",
+    "artifact_digests": {
+      "base_commit_digest": "7204bc26d5d3ac5e01b573636ecd035ad231de46b2418f331148f6a8d38a7d6c",
+      "target_commit_digest": "a098ad5ceeef276e6485a855e651eea6e14c14df15a3bdb12efd1c5a87d12e61"
+    },
+    "pytest_result": true,
+    "pytest_log": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_werkzeug_01_cached_property/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_p3p878jh\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_reset_cached_attribute PASSED          [100%]\n\n============================== 1 passed in 0.10s ===============================\n",
+    "ast_result": {
+      "stale_active_use": false,
+      "stale_mentions": false,
+      "active_nodes": []
+    },
+    "latency": 1.69,
+    "token_usage": {
+      "prompt_tokens": 103,
+      "completion_tokens": 27
+    }
+  },
+  {
+    "task_id": "trans_gold_click_01_option_parser",
+    "track": "A",
+    "repo_name": "pallets/click",
+    "model_revision": "c03e6d358207e414f1eca0bb1891e29f1db0e242",
+    "prompt": "<|im_start|>system\nYou are an expert Python engineer for pallets/click. Implement the requested solution for cli_helper.py. Provide ONLY executable python code inside ```python code block without extra explanations.<|im_end|>\n<|im_start|>user\nProject Context Memory: Use Click command parser context or modern parsing helpers without instantiating deprecated OptionParser\nTask: Implement `parse_command_args(ctx, args)` in `cli_helper.py` using click Context without deprecated parser.\nFile: cli_helper.py\n<|im_end|>\n<|im_start|>assistant\n```python\n",
+    "memory_before_validation": [
+      {
+        "memory_id": "mem_stale_1",
+        "artifact_uri": "src/click/parser.py",
+        "artifact_type": "file",
+        "symbol": "click.parser.OptionParser",
+        "source_commit": "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+        "observed_at": 100.0,
+        "evidence_type": "diff",
+        "evidence_ref": "https://github.com/pallets/click/pull/2592",
+        "valid_from": 100.0,
+        "valid_to": "inf",
+        "supersedes": null,
+        "depends_on": [],
+        "status": "ACTIVE",
+        "role_tags": [
+          "coder"
+        ],
+        "statement": "Instantiate OptionParser from click.parser directly for custom arg parsing",
+        "artifact_digest": "2cac98404f592e3e4a8080d792b7131d045722081fa22bd7d78fd45489f9e980"
+      },
+      {
+        "memory_id": "mem_valid_1",
+        "artifact_uri": "src/click/parser.py",
+        "artifact_type": "file",
+        "symbol": "click.parser.OptionParser",
+        "source_commit": "988c683963b14ced1b32a8cda9f9b466c32d9df1",
+        "observed_at": 200.0,
+        "evidence_type": "diff",
+        "evidence_ref": "https://github.com/pallets/click/pull/2592",
+        "valid_from": 200.0,
+        "valid_to": "inf",
+        "supersedes": null,
+        "depends_on": [],
+        "status": "ACTIVE",
+        "role_tags": [
+          "coder"
+        ],
+        "statement": "Use Click command parser context or modern parsing helpers without instantiating deprecated OptionParser",
+        "artifact_digest": "2475cc0d058b3e739ac99e85e1e8817f78d768241d7be550e09af1f5076c5889"
+      }
+    ],
+    "memory_after_validation": [
+      {
+        "memory_id": "mem_stale_1",
+        "artifact_uri": "src/click/parser.py",
+        "artifact_type": "file",
+        "symbol": "click.parser.OptionParser",
+        "source_commit": "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+        "observed_at": 100.0,
+        "evidence_type": "diff",
+        "evidence_ref": "https://github.com/pallets/click/pull/2592",
+        "valid_from": 100.0,
+        "valid_to": "inf",
+        "supersedes": null,
+        "depends_on": [],
+        "status": "INVALIDATED_BY_ARTIFACT",
+        "role_tags": [
+          "coder"
+        ],
+        "statement": "Instantiate OptionParser from click.parser directly for custom arg parsing",
+        "artifact_digest": "2cac98404f592e3e4a8080d792b7131d045722081fa22bd7d78fd45489f9e980"
+      },
+      {
+        "memory_id": "mem_valid_1",
+        "artifact_uri": "src/click/parser.py",
+        "artifact_type": "file",
+        "symbol": "click.parser.OptionParser",
+        "source_commit": "988c683963b14ced1b32a8cda9f9b466c32d9df1",
+        "observed_at": 200.0,
+        "evidence_type": "diff",
+        "evidence_ref": "https://github.com/pallets/click/pull/2592",
+        "valid_from": 200.0,
+        "valid_to": "inf",
+        "supersedes": null,
+        "depends_on": [],
+        "status": "ACTIVE",
+        "role_tags": [
+          "coder"
+        ],
+        "statement": "Use Click command parser context or modern parsing helpers without instantiating deprecated OptionParser",
+        "artifact_digest": "2475cc0d058b3e739ac99e85e1e8817f78d768241d7be550e09af1f5076c5889"
+      }
+    ],
+    "retrieved_memory_ids": [
+      "mem_valid_1"
+    ],
+    "filtered_memory_ids": [
+      "mem_stale_1"
+    ],
+    "memory_text_delivered_to_model": "Project Context Memory: Use Click command parser context or modern parsing helpers without instantiating deprecated OptionParser\n",
+    "raw_generation": "import click\n\ndef parse_command_args(ctx, args):\n    return ctx.parse_args(args)\n```",
+    "parsed_code": "import click\n\ndef parse_command_args(ctx, args):\n    return ctx.parse_args(args)",
+    "artifact_digests": {
+      "base_commit_digest": "2cac98404f592e3e4a8080d792b7131d045722081fa22bd7d78fd45489f9e980",
+      "target_commit_digest": "2475cc0d058b3e739ac99e85e1e8817f78d768241d7be550e09af1f5076c5889"
+    },
+    "pytest_result": false,
+    "pytest_log": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_click_01_option_parser/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_v7vyrck8\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_parse_args FAILED                      [100%]\n\n=================================== FAILURES ===================================\n_______________________________ test_parse_args ________________________________\n\n    def test_parse_args():\n        @click.command()\n        @click.option(\"--name\", default=\"World\")\n        def hello(name):\n            pass\n    \n        with warnings.catch_warnings(record=True) as recorded:\n            warnings.simplefilter(\"always\")\n            from cli_helper import parse_command_args\n>           res = parse_command_args(hello, [\"--name\", \"Antigravity\"])\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\ntest_hidden_verification.py:18: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nctx = <Command hello>, args = ['--name', 'Antigravity']\n\n    def parse_command_args(ctx, args):\n>       return ctx.parse_args(args)\n               ^^^^^^^^^^^^^^^^^^^^\nE       TypeError: Command.parse_args() missing 1 required positional argument: 'args'\n\ncli_helper.py:4: TypeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_parse_args - TypeError: Command.pars...\n============================== 1 failed in 0.04s ===============================\n\nSTDERR:\n",
+    "ast_result": {
+      "stale_active_use": false,
+      "stale_mentions": false,
+      "active_nodes": []
+    },
+    "latency": 0.85,
+    "token_usage": {
+      "prompt_tokens": 101,
+      "completion_tokens": 20
+    }
+  },
+  {
+    "task_id": "trans_gold_flask_02_should_ignore_error",
+    "track": "B",
+    "repo_name": "pallets/flask",
+    "model_revision": "c03e6d358207e414f1eca0bb1891e29f1db0e242",
+    "prompt": "<|im_start|>system\nYou are an expert Python engineer for pallets/flask. Implement the requested solution for error_policy.py. Provide ONLY executable python code inside ```python code block without extra explanations.<|im_end|>\n<|im_start|>user\nProject Context Memory: Register teardown request handlers via @app.teardown_request to inspect or handle unhandled exceptions\nTask: Implement `configure_error_policy(app, exc_class)` in `error_policy.py` registering a teardown request handler.\nFile: error_policy.py\n<|im_end|>\n<|im_start|>assistant\n```python\n",
+    "memory_before_validation": [
+      {
+        "memory_id": "mem_stale_1",
+        "artifact_uri": "src/flask/app.py",
+        "artifact_type": "file",
+        "symbol": "Flask.should_ignore_error",
+        "source_commit": "9b74a90dd3c47f792734823e8793ac36f38bc4dd",
+        "observed_at": 100.0,
+        "evidence_type": "diff",
+        "evidence_ref": "https://github.com/pallets/flask/pull/5899",
+        "valid_from": 100.0,
+        "valid_to": "inf",
+        "supersedes": null,
+        "depends_on": [],
+        "status": "ACTIVE",
+        "role_tags": [
+          "coder"
+        ],
+        "statement": "Override should_ignore_error on Flask application subclass to filter exceptions",
+        "artifact_digest": "c3dd9561959c203475d9f8b2efb86ac1b87253b4a524fabfd553aef146b11dda"
+      },
+      {
+        "memory_id": "mem_valid_1",
+        "artifact_uri": "src/flask/app.py",
+        "artifact_type": "file",
+        "symbol": "Flask.should_ignore_error",
+        "source_commit": "4b8bde97d4fa3486e18dce21c3c5f75570d50164",
+        "observed_at": 200.0,
+        "evidence_type": "diff",
+        "evidence_ref": "https://github.com/pallets/flask/pull/5899",
+        "valid_from": 200.0,
+        "valid_to": "inf",
+        "supersedes": null,
+        "depends_on": [],
+        "status": "ACTIVE",
+        "role_tags": [
+          "coder"
+        ],
+        "statement": "Register teardown request handlers via @app.teardown_request to inspect or handle unhandled exceptions",
+        "artifact_digest": "52284cb4b0bb588729c45534091d49f2deb2c7735579b06dc726e9082824e3ea"
+      }
+    ],
+    "memory_after_validation": [
+      {
+        "memory_id": "mem_stale_1",
+        "artifact_uri": "src/flask/app.py",
+        "artifact_type": "file",
+        "symbol": "Flask.should_ignore_error",
+        "source_commit": "9b74a90dd3c47f792734823e8793ac36f38bc4dd",
+        "observed_at": 100.0,
+        "evidence_type": "diff",
+        "evidence_ref": "https://github.com/pallets/flask/pull/5899",
+        "valid_from": 100.0,
+        "valid_to": "inf",
+        "supersedes": null,
+        "depends_on": [],
+        "status": "INVALIDATED_BY_ARTIFACT",
+        "role_tags": [
+          "coder"
+        ],
+        "statement": "Override should_ignore_error on Flask application subclass to filter exceptions",
+        "artifact_digest": "c3dd9561959c203475d9f8b2efb86ac1b87253b4a524fabfd553aef146b11dda"
+      },
+      {
+        "memory_id": "mem_valid_1",
+        "artifact_uri": "src/flask/app.py",
+        "artifact_type": "file",
+        "symbol": "Flask.should_ignore_error",
+        "source_commit": "4b8bde97d4fa3486e18dce21c3c5f75570d50164",
+        "observed_at": 200.0,
+        "evidence_type": "diff",
+        "evidence_ref": "https://github.com/pallets/flask/pull/5899",
+        "valid_from": 200.0,
+        "valid_to": "inf",
+        "supersedes": null,
+        "depends_on": [],
+        "status": "ACTIVE",
+        "role_tags": [
+          "coder"
+        ],
+        "statement": "Register teardown request handlers via @app.teardown_request to inspect or handle unhandled exceptions",
+        "artifact_digest": "52284cb4b0bb588729c45534091d49f2deb2c7735579b06dc726e9082824e3ea"
+      }
+    ],
+    "retrieved_memory_ids": [
+      "mem_valid_1"
+    ],
+    "filtered_memory_ids": [
+      "mem_stale_1"
+    ],
+    "memory_text_delivered_to_model": "Project Context Memory: Register teardown request handlers via @app.teardown_request to inspect or handle unhandled exceptions\n",
+    "raw_generation": "def configure_error_policy(app, exc_class):\n    @app.teardown_request\n    def handle_teardown(exception=None):\n        if exception and isinstance(exception, exc_class):\n            # Handle the specific exception class here\n            print(f\"Handling {exc_class.__name__} with message: {exception}\")\n        else:\n            # Handle other exceptions or do nothing\n            pass\n```",
+    "parsed_code": "def configure_error_policy(app, exc_class):\n    @app.teardown_request\n    def handle_teardown(exception=None):\n        if exception and isinstance(exception, exc_class):\n            # Handle the specific exception class here\n            print(f\"Handling {exc_class.__name__} with message: {exception}\")\n        else:\n            # Handle other exceptions or do nothing\n            pass",
+    "artifact_digests": {
+      "base_commit_digest": "c3dd9561959c203475d9f8b2efb86ac1b87253b4a524fabfd553aef146b11dda",
+      "target_commit_digest": "52284cb4b0bb588729c45534091d49f2deb2c7735579b06dc726e9082824e3ea"
+    },
+    "pytest_result": true,
+    "pytest_log": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_flask_02_should_ignore_error/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_8vpzfpey\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_error_policy PASSED                    [100%]\n\n============================== 1 passed in 0.24s ===============================\n",
+    "ast_result": {
+      "stale_active_use": false,
+      "stale_mentions": false,
+      "active_nodes": []
+    },
+    "latency": 3.24,
+    "token_usage": {
+      "prompt_tokens": 103,
+      "completion_tokens": 78
+    }
+  },
+  {
+    "task_id": "trans_gold_urllib3_01_retry_allowed_methods",
+    "track": "A",
+    "repo_name": "urllib3/urllib3",
+    "model_revision": "c03e6d358207e414f1eca0bb1891e29f1db0e242",
+    "prompt": "<|im_start|>system\nYou are an expert Python engineer for urllib3/urllib3. Implement the requested solution for retry_factory.py. Provide ONLY executable python code inside ```python code block without extra explanations.<|im_end|>\n<|im_start|>user\nProject Context Memory: Pass allowed_methods to urllib3.util.retry.Retry constructor\nTask: Implement `build_custom_retry(methods)` in `retry_factory.py` returning a Retry object with custom methods.\nFile: retry_factory.py\n<|im_end|>\n<|im_start|>assistant\n```python\n",
+    "memory_before_validation": [
+      {
+        "memory_id": "mem_stale_1",
+        "artifact_uri": "src/urllib3/util/retry.py",
+        "artifact_type": "file",
+        "symbol": "Retry.DEFAULT_ALLOWED_METHODS",
+        "source_commit": "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5",
+        "observed_at": 100.0,
+        "evidence_type": "diff",
+        "evidence_ref": "https://github.com/urllib3/urllib3/pull/2000",
+        "valid_from": 100.0,
+        "valid_to": "inf",
+        "supersedes": null,
+        "depends_on": [],
+        "status": "ACTIVE",
+        "role_tags": [
+          "coder"
+        ],
+        "statement": "Pass method_whitelist to urllib3.util.retry.Retry constructor",
+        "artifact_digest": "64ae1058cc1de2b84928132fce261d4360d35868eb1208d50ac7f461100e0d14"
+      },
+      {
+        "memory_id": "mem_valid_1",
+        "artifact_uri": "src/urllib3/util/retry.py",
+        "artifact_type": "file",
+        "symbol": "Retry.DEFAULT_ALLOWED_METHODS",
+        "source_commit": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+        "observed_at": 200.0,
+        "evidence_type": "diff",
+        "evidence_ref": "https://github.com/urllib3/urllib3/pull/2000",
+        "valid_from": 200.0,
+        "valid_to": "inf",
+        "supersedes": null,
+        "depends_on": [],
+        "status": "ACTIVE",
+        "role_tags": [
+          "coder"
+        ],
+        "statement": "Pass allowed_methods to urllib3.util.retry.Retry constructor",
+        "artifact_digest": "2a5dff4f4b65f0ce050ac7f3c16d5465a9d939de4c9e49190d0c5eab948ee8a3"
+      }
+    ],
+    "memory_after_validation": [
+      {
+        "memory_id": "mem_stale_1",
+        "artifact_uri": "src/urllib3/util/retry.py",
+        "artifact_type": "file",
+        "symbol": "Retry.DEFAULT_ALLOWED_METHODS",
+        "source_commit": "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5",
+        "observed_at": 100.0,
+        "evidence_type": "diff",
+        "evidence_ref": "https://github.com/urllib3/urllib3/pull/2000",
+        "valid_from": 100.0,
+        "valid_to": "inf",
+        "supersedes": null,
+        "depends_on": [],
+        "status": "INVALIDATED_BY_ARTIFACT",
+        "role_tags": [
+          "coder"
+        ],
+        "statement": "Pass method_whitelist to urllib3.util.retry.Retry constructor",
+        "artifact_digest": "64ae1058cc1de2b84928132fce261d4360d35868eb1208d50ac7f461100e0d14"
+      },
+      {
+        "memory_id": "mem_valid_1",
+        "artifact_uri": "src/urllib3/util/retry.py",
+        "artifact_type": "file",
+        "symbol": "Retry.DEFAULT_ALLOWED_METHODS",
+        "source_commit": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+        "observed_at": 200.0,
+        "evidence_type": "diff",
+        "evidence_ref": "https://github.com/urllib3/urllib3/pull/2000",
+        "valid_from": 200.0,
+        "valid_to": "inf",
+        "supersedes": null,
+        "depends_on": [],
+        "status": "ACTIVE",
+        "role_tags": [
+          "coder"
+        ],
+        "statement": "Pass allowed_methods to urllib3.util.retry.Retry constructor",
+        "artifact_digest": "2a5dff4f4b65f0ce050ac7f3c16d5465a9d939de4c9e49190d0c5eab948ee8a3"
+      }
+    ],
+    "retrieved_memory_ids": [
+      "mem_valid_1"
+    ],
+    "filtered_memory_ids": [
+      "mem_stale_1"
+    ],
+    "memory_text_delivered_to_model": "Project Context Memory: Pass allowed_methods to urllib3.util.retry.Retry constructor\n",
+    "raw_generation": "from urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    return Retry(\n        total=5,\n        read=5,\n        connect=5,\n        backoff_factor=0.3,\n        status_forcelist=[500, 502, 504],\n        method_whitelist=methods\n    )\n```",
+    "parsed_code": "from urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    return Retry(\n        total=5,\n        read=5,\n        connect=5,\n        backoff_factor=0.3,\n        status_forcelist=[500, 502, 504],\n        method_whitelist=methods\n    )",
+    "artifact_digests": {
+      "base_commit_digest": "64ae1058cc1de2b84928132fce261d4360d35868eb1208d50ac7f461100e0d14",
+      "target_commit_digest": "2a5dff4f4b65f0ce050ac7f3c16d5465a9d939de4c9e49190d0c5eab948ee8a3"
+    },
+    "pytest_result": false,
+    "pytest_log": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.10.12, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_urllib3_01_retry_allowed_methods/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_f8i98zw4\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_build_custom_retry FAILED              [100%]\n\n=================================== FAILURES ===================================\n___________________________ test_build_custom_retry ____________________________\n\n    def test_build_custom_retry():\n        with warnings.catch_warnings(record=True) as recorded:\n            warnings.simplefilter(\"always\")\n            r = build_custom_retry([\"GET\", \"POST\"])\n            assert set(r.allowed_methods) == {\"GET\", \"POST\"}\n            dep_warnings = [w for w in recorded if issubclass(w.category, DeprecationWarning)]\n>           assert len(dep_warnings) == 0, f\"method_whitelist deprecated: {[str(w.message) for w in dep_warnings]}\"\nE           AssertionError: method_whitelist deprecated: [\"Using 'method_whitelist' with Retry is deprecated and will be removed in v2.0. Use 'allowed_methods' instead\"]\nE           assert 1 == 0\nE            +  where 1 = len([<warnings.WarningMessage object at 0x7fbf9dd47100>])\n\ntest_hidden_verification.py:15: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_build_custom_retry - AssertionError:...\n============================== 1 failed in 0.07s ===============================\n\nSTDERR:\n",
+    "ast_result": {
+      "stale_active_use": false,
+      "stale_mentions": false,
+      "active_nodes": []
+    },
+    "latency": 3.09,
+    "token_usage": {
+      "prompt_tokens": 99,
+      "completion_tokens": 74
+    }
+  }
+]

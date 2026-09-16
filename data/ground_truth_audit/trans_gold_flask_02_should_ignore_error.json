@@ -1,0 +1,24 @@
+{
+  "transition_id": "trans_gold_flask_02_should_ignore_error",
+  "repo_name": "pallets/flask",
+  "pr_url": "https://github.com/pallets/flask/pull/5899",
+  "issue_url": "https://github.com/pallets/flask/issues/5898",
+  "pr_title": "deprecate should_ignore_error",
+  "base_commit": "9b74a90dd3c47f792734823e8793ac36f38bc4dd",
+  "target_commit": "4b8bde97d4fa3486e18dce21c3c5f75570d50164",
+  "git_cache_path": "/code/repo_cache/flask",
+  "base_commit_exists": true,
+  "target_commit_exists": true,
+  "pr_number_matched_in_git": true,
+  "pr_title_matched_in_git": true,
+  "changed_files_verified": true,
+  "git_diff_files": [
+    "CHANGES.rst",
+    "pyproject.toml",
+    "src/flask/app.py",
+    "src/flask/sansio/app.py"
+  ],
+  "git_commit_log": "deprecate `should_ignore_error` (#5899)\n\n\nremove unused ruff check rule\n\ndeprecate should_ignore_error",
+  "external_ground_truth_status": "PASS",
+  "errors": []
+}

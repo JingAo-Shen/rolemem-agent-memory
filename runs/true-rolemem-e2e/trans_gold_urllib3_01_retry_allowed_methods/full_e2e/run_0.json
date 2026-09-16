@@ -1,0 +1,116 @@
+{
+  "task_id": "trans_gold_urllib3_01_retry_allowed_methods",
+  "track": "A",
+  "repo_name": "urllib3/urllib3",
+  "model_revision": "c03e6d358207e414f1eca0bb1891e29f1db0e242",
+  "prompt": "<|im_start|>system\nYou are an expert Python engineer for urllib3/urllib3. Implement the requested solution for retry_factory.py. Provide ONLY executable python code inside ```python code block without extra explanations.<|im_end|>\n<|im_start|>user\nProject Context Memory: Pass allowed_methods to urllib3.util.retry.Retry constructor\nTask: Implement `build_custom_retry(methods)` in `retry_factory.py` returning a Retry object with custom methods.\nFile: retry_factory.py\n<|im_end|>\n<|im_start|>assistant\n```python\n",
+  "memory_before_validation": [
+    {
+      "memory_id": "mem_stale_1",
+      "artifact_uri": "src/urllib3/util/retry.py",
+      "artifact_type": "file",
+      "symbol": "Retry.DEFAULT_ALLOWED_METHODS",
+      "source_commit": "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5",
+      "observed_at": 100.0,
+      "evidence_type": "diff",
+      "evidence_ref": "https://github.com/urllib3/urllib3/pull/2000",
+      "valid_from": 100.0,
+      "valid_to": "inf",
+      "supersedes": null,
+      "depends_on": [],
+      "status": "ACTIVE",
+      "role_tags": [
+        "coder"
+      ],
+      "statement": "Pass method_whitelist to urllib3.util.retry.Retry constructor",
+      "artifact_digest": "64ae1058cc1de2b84928132fce261d4360d35868eb1208d50ac7f461100e0d14"
+    },
+    {
+      "memory_id": "mem_valid_1",
+      "artifact_uri": "src/urllib3/util/retry.py",
+      "artifact_type": "file",
+      "symbol": "Retry.DEFAULT_ALLOWED_METHODS",
+      "source_commit": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+      "observed_at": 200.0,
+      "evidence_type": "diff",
+      "evidence_ref": "https://github.com/urllib3/urllib3/pull/2000",
+      "valid_from": 200.0,
+      "valid_to": "inf",
+      "supersedes": null,
+      "depends_on": [],
+      "status": "ACTIVE",
+      "role_tags": [
+        "coder"
+      ],
+      "statement": "Pass allowed_methods to urllib3.util.retry.Retry constructor",
+      "artifact_digest": "2a5dff4f4b65f0ce050ac7f3c16d5465a9d939de4c9e49190d0c5eab948ee8a3"
+    }
+  ],
+  "memory_after_validation": [
+    {
+      "memory_id": "mem_stale_1",
+      "artifact_uri": "src/urllib3/util/retry.py",
+      "artifact_type": "file",
+      "symbol": "Retry.DEFAULT_ALLOWED_METHODS",
+      "source_commit": "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5",
+      "observed_at": 100.0,
+      "evidence_type": "diff",
+      "evidence_ref": "https://github.com/urllib3/urllib3/pull/2000",
+      "valid_from": 100.0,
+      "valid_to": "inf",
+      "supersedes": null,
+      "depends_on": [],
+      "status": "INVALIDATED_BY_ARTIFACT",
+      "role_tags": [
+        "coder"
+      ],
+      "statement": "Pass method_whitelist to urllib3.util.retry.Retry constructor",
+      "artifact_digest": "64ae1058cc1de2b84928132fce261d4360d35868eb1208d50ac7f461100e0d14"
+    },
+    {
+      "memory_id": "mem_valid_1",
+      "artifact_uri": "src/urllib3/util/retry.py",
+      "artifact_type": "file",
+      "symbol": "Retry.DEFAULT_ALLOWED_METHODS",
+      "source_commit": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+      "observed_at": 200.0,
+      "evidence_type": "diff",
+      "evidence_ref": "https://github.com/urllib3/urllib3/pull/2000",
+      "valid_from": 200.0,
+      "valid_to": "inf",
+      "supersedes": null,
+      "depends_on": [],
+      "status": "ACTIVE",
+      "role_tags": [
+        "coder"
+      ],
+      "statement": "Pass allowed_methods to urllib3.util.retry.Retry constructor",
+      "artifact_digest": "2a5dff4f4b65f0ce050ac7f3c16d5465a9d939de4c9e49190d0c5eab948ee8a3"
+    }
+  ],
+  "retrieved_memory_ids": [
+    "mem_valid_1"
+  ],
+  "filtered_memory_ids": [
+    "mem_stale_1"
+  ],
+  "memory_text_delivered_to_model": "Project Context Memory: Pass allowed_methods to urllib3.util.retry.Retry constructor\n",
+  "raw_generation": "from urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    return Retry(\n        total=5,\n        read=5,\n        connect=5,\n        backoff_factor=0.3,\n        status_forcelist=[500, 502, 504],\n        method_whitelist=methods\n    )\n```",
+  "parsed_code": "from urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    return Retry(\n        total=5,\n        read=5,\n        connect=5,\n        backoff_factor=0.3,\n        status_forcelist=[500, 502, 504],\n        method_whitelist=methods\n    )",
+  "artifact_digests": {
+    "base_commit_digest": "64ae1058cc1de2b84928132fce261d4360d35868eb1208d50ac7f461100e0d14",
+    "target_commit_digest": "2a5dff4f4b65f0ce050ac7f3c16d5465a9d939de4c9e49190d0c5eab948ee8a3"
+  },
+  "pytest_result": false,
+  "pytest_log": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.10.12, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_urllib3_01_retry_allowed_methods/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_f8i98zw4\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_build_custom_retry FAILED              [100%]\n\n=================================== FAILURES ===================================\n___________________________ test_build_custom_retry ____________________________\n\n    def test_build_custom_retry():\n        with warnings.catch_warnings(record=True) as recorded:\n            warnings.simplefilter(\"always\")\n            r = build_custom_retry([\"GET\", \"POST\"])\n            assert set(r.allowed_methods) == {\"GET\", \"POST\"}\n            dep_warnings = [w for w in recorded if issubclass(w.category, DeprecationWarning)]\n>           assert len(dep_warnings) == 0, f\"method_whitelist deprecated: {[str(w.message) for w in dep_warnings]}\"\nE           AssertionError: method_whitelist deprecated: [\"Using 'method_whitelist' with Retry is deprecated and will be removed in v2.0. Use 'allowed_methods' instead\"]\nE           assert 1 == 0\nE            +  where 1 = len([<warnings.WarningMessage object at 0x7fbf9dd47100>])\n\ntest_hidden_verification.py:15: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_build_custom_retry - AssertionError:...\n============================== 1 failed in 0.07s ===============================\n\nSTDERR:\n",
+  "ast_result": {
+    "stale_active_use": false,
+    "stale_mentions": false,
+    "active_nodes": []
+  },
+  "latency": 3.09,
+  "token_usage": {
+    "prompt_tokens": 99,
+    "completion_tokens": 74
+  }
+}

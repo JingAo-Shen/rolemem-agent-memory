@@ -1,0 +1,124 @@
+{
+  "transition_id": "trans_gold_werkzeug_01_cached_property",
+  "repo_name": "pallets/werkzeug",
+  "track": "A",
+  "overall_status": "ACCEPT",
+  "gates": {
+    "commit_verification": "PASS",
+    "causality_status": "CAUSALITY_PASS",
+    "original_test_verification": "PASS",
+    "original_test_required": true,
+    "original_test_passed_gate": true,
+    "hidden_test_verification": "PASS",
+    "fixture_control_verification": "PASS",
+    "snapshot_hash_verification": "PASS",
+    "metadata_ground_truth_verification": "PASS"
+  },
+  "commit_details": {
+    "base_commit": {
+      "verified": true,
+      "commit_sha": "25ca9cd92956e48a38f7a32c837e0f8a54c8ae31",
+      "full_sha": "25ca9cd92956e48a38f7a32c837e0f8a54c8ae31",
+      "message": "Merge pull request #2083 from pallets/password-hash",
+      "parents": [
+        "cb0fbec75f2e738c58e116a971656b00b9dec42c",
+        "d847cb5d21ee0449570445224753cad0dfc08320"
+      ],
+      "source": "local_git_cache"
+    },
+    "history_commit": {
+      "verified": true,
+      "commit_sha": "25ca9cd92956e48a38f7a32c837e0f8a54c8ae31",
+      "full_sha": "25ca9cd92956e48a38f7a32c837e0f8a54c8ae31",
+      "message": "Merge pull request #2083 from pallets/password-hash",
+      "parents": [
+        "cb0fbec75f2e738c58e116a971656b00b9dec42c",
+        "d847cb5d21ee0449570445224753cad0dfc08320"
+      ],
+      "source": "local_git_cache"
+    },
+    "transition_commit": {
+      "verified": true,
+      "commit_sha": "004b446eac19db2ff351a923fd594d4f23d67e90",
+      "full_sha": "004b446eac19db2ff351a923fd594d4f23d67e90",
+      "message": "del invalidates cached_property",
+      "parents": [
+        "d847cb5d21ee0449570445224753cad0dfc08320"
+      ],
+      "source": "local_git_cache"
+    },
+    "target_commit": {
+      "verified": true,
+      "commit_sha": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+      "full_sha": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+      "message": "Merge pull request #2084 from pallets/delete-cached-property",
+      "parents": [
+        "25ca9cd92956e48a38f7a32c837e0f8a54c8ae31",
+        "004b446eac19db2ff351a923fd594d4f23d67e90"
+      ],
+      "source": "local_git_cache"
+    }
+  },
+  "causality_details": {
+    "causality_status": "CAUSALITY_PASS",
+    "base_commit": "25ca9cd92956e48a38f7a32c837e0f8a54c8ae31",
+    "target_commit": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+    "diff_lines": 155,
+    "assertions": [
+      {
+        "artifact": "src/werkzeug/utils.py",
+        "symbol": "invalidate_cached_property",
+        "expected_base": "exists_active",
+        "actual_base": "exists_active",
+        "expected_target": "deprecated_warn",
+        "actual_target": "deprecated_warn",
+        "passed": true
+      }
+    ]
+  },
+  "original_test_details": {
+    "status": "PASS",
+    "rel_path": "tests/test_utils.py",
+    "test_node": "test_cached_property",
+    "target_commit": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+    "verified_in_git": true
+  },
+  "hidden_test_details": {
+    "status": "PASS",
+    "test_file": "/code/rolemem-agent-memory/fixtures_v2/trans_gold_werkzeug_01_cached_property/hidden_tests/test_evaluation.py",
+    "lines": 32
+  },
+  "control_details": {
+    "status": "PASS",
+    "stale_pass": true,
+    "valid_pass": true,
+    "control_status": "PASS"
+  },
+  "snapshot_details": {
+    "status": "PASS",
+    "verified_files": 1
+  },
+  "ground_truth_details": {
+    "transition_id": "trans_gold_werkzeug_01_cached_property",
+    "repo_name": "pallets/werkzeug",
+    "pr_url": "https://github.com/pallets/werkzeug/pull/2084",
+    "issue_url": "https://github.com/pallets/werkzeug/issues/2084",
+    "pr_title": "del invalidates cached_property",
+    "base_commit": "25ca9cd92956e48a38f7a32c837e0f8a54c8ae31",
+    "target_commit": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+    "git_cache_path": "/code/repo_cache/werkzeug",
+    "base_commit_exists": true,
+    "target_commit_exists": true,
+    "pr_number_matched_in_git": true,
+    "pr_title_matched_in_git": true,
+    "changed_files_verified": true,
+    "git_diff_files": [
+      "CHANGES.rst",
+      "src/werkzeug/utils.py",
+      "tests/test_utils.py"
+    ],
+    "git_commit_log": "Merge pull request #2084 from pallets/delete-cached-property\n\n`del` invalidates `cached_property`\ndel invalidates cached_property",
+    "external_ground_truth_status": "PASS",
+    "errors": []
+  }
+}

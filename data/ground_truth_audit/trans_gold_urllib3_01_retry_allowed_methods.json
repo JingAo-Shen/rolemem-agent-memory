@@ -1,0 +1,24 @@
+{
+  "transition_id": "trans_gold_urllib3_01_retry_allowed_methods",
+  "repo_name": "urllib3/urllib3",
+  "pr_url": "https://github.com/urllib3/urllib3/pull/2000",
+  "issue_url": "https://github.com/urllib3/urllib3/issues/2000",
+  "pr_title": "Rename Retry options and defaults",
+  "base_commit": "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5",
+  "target_commit": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+  "git_cache_path": "/code/repo_cache/urllib3",
+  "base_commit_exists": true,
+  "target_commit_exists": true,
+  "pr_number_matched_in_git": false,
+  "pr_title_matched_in_git": true,
+  "changed_files_verified": true,
+  "git_diff_files": [
+    "docs/reference/urllib3.util.rst",
+    "src/urllib3/util/retry.py",
+    "test/test_retry.py",
+    "test/test_retry_deprecated.py"
+  ],
+  "git_commit_log": "Rename Retry options and defaults",
+  "external_ground_truth_status": "PASS",
+  "errors": []
+}

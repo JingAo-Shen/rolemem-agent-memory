@@ -1,0 +1,27 @@
+{
+  "transition_id": "trans_gold_click_01_option_parser",
+  "repo_name": "pallets/click",
+  "pr_url": "https://github.com/pallets/click/pull/2592",
+  "issue_url": "https://github.com/pallets/click/issues/2592",
+  "pr_title": "deprecate `OptionParser`",
+  "base_commit": "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+  "target_commit": "988c683963b14ced1b32a8cda9f9b466c32d9df1",
+  "git_cache_path": "/code/repo_cache/click",
+  "base_commit_exists": true,
+  "target_commit_exists": true,
+  "pr_number_matched_in_git": true,
+  "pr_title_matched_in_git": true,
+  "changed_files_verified": true,
+  "git_diff_files": [
+    "CHANGES.rst",
+    "src/click/__init__.py",
+    "src/click/core.py",
+    "src/click/formatting.py",
+    "src/click/parser.py",
+    "src/click/shell_completion.py",
+    "tests/test_parser.py"
+  ],
+  "git_commit_log": "deprecate `OptionParser` (#2592)\n\n\ndeprecate OptionParser",
+  "external_ground_truth_status": "PASS",
+  "errors": []
+}

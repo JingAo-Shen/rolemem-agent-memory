@@ -1,0 +1,129 @@
+{
+  "transition_id": "trans_gold_click_01_option_parser",
+  "repo_name": "pallets/click",
+  "track": "A",
+  "overall_status": "ACCEPT",
+  "gates": {
+    "commit_verification": "PASS",
+    "causality_status": "CAUSALITY_PASS",
+    "original_test_verification": "PASS",
+    "original_test_required": true,
+    "original_test_passed_gate": true,
+    "hidden_test_verification": "PASS",
+    "fixture_control_verification": "PASS",
+    "snapshot_hash_verification": "PASS",
+    "metadata_ground_truth_verification": "PASS"
+  },
+  "commit_details": {
+    "base_commit": {
+      "verified": true,
+      "commit_sha": "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+      "full_sha": "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+      "message": "deprecate base classes `BaseCommand` and `MultiCommand` (#2591)",
+      "parents": [
+        "f5e47a6fc29c515c5c23bab297e1454c054844cb",
+        "238ee070af40576d23418e41fa96d1c41e53f6b1"
+      ],
+      "source": "local_git_cache"
+    },
+    "history_commit": {
+      "verified": true,
+      "commit_sha": "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+      "full_sha": "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+      "message": "deprecate base classes `BaseCommand` and `MultiCommand` (#2591)",
+      "parents": [
+        "f5e47a6fc29c515c5c23bab297e1454c054844cb",
+        "238ee070af40576d23418e41fa96d1c41e53f6b1"
+      ],
+      "source": "local_git_cache"
+    },
+    "transition_commit": {
+      "verified": true,
+      "commit_sha": "988c683963b14ced1b32a8cda9f9b466c32d9df1",
+      "full_sha": "988c683963b14ced1b32a8cda9f9b466c32d9df1",
+      "message": "deprecate `OptionParser` (#2592)",
+      "parents": [
+        "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+        "3630addf538ff4d1d5bc75438c8d84378105d03d"
+      ],
+      "source": "local_git_cache"
+    },
+    "target_commit": {
+      "verified": true,
+      "commit_sha": "988c683963b14ced1b32a8cda9f9b466c32d9df1",
+      "full_sha": "988c683963b14ced1b32a8cda9f9b466c32d9df1",
+      "message": "deprecate `OptionParser` (#2592)",
+      "parents": [
+        "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+        "3630addf538ff4d1d5bc75438c8d84378105d03d"
+      ],
+      "source": "local_git_cache"
+    }
+  },
+  "causality_details": {
+    "causality_status": "CAUSALITY_PASS",
+    "base_commit": "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+    "target_commit": "988c683963b14ced1b32a8cda9f9b466c32d9df1",
+    "diff_lines": 635,
+    "assertions": [
+      {
+        "artifact": "src/click/parser.py",
+        "symbol": "OptionParser",
+        "expected_base": "exists_active",
+        "actual_base": "exists_active",
+        "expected_target": "deprecated_warn",
+        "actual_target": "deprecated_warn",
+        "passed": true
+      }
+    ]
+  },
+  "original_test_details": {
+    "status": "PASS",
+    "rel_path": "tests/test_parser.py",
+    "test_node": "test_parser_default_prefixes",
+    "target_commit": "988c683963b14ced1b32a8cda9f9b466c32d9df1",
+    "verified_in_git": true
+  },
+  "hidden_test_details": {
+    "status": "PASS",
+    "test_file": "/code/rolemem-agent-memory/fixtures_v2/trans_gold_click_01_option_parser/hidden_tests/test_evaluation.py",
+    "lines": 21
+  },
+  "control_details": {
+    "status": "PASS",
+    "stale_pass": true,
+    "valid_pass": true,
+    "control_status": "PASS"
+  },
+  "snapshot_details": {
+    "status": "PASS",
+    "verified_files": 1
+  },
+  "ground_truth_details": {
+    "transition_id": "trans_gold_click_01_option_parser",
+    "repo_name": "pallets/click",
+    "pr_url": "https://github.com/pallets/click/pull/2592",
+    "issue_url": "https://github.com/pallets/click/issues/2592",
+    "pr_title": "deprecate `OptionParser`",
+    "base_commit": "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+    "target_commit": "988c683963b14ced1b32a8cda9f9b466c32d9df1",
+    "git_cache_path": "/code/repo_cache/click",
+    "base_commit_exists": true,
+    "target_commit_exists": true,
+    "pr_number_matched_in_git": true,
+    "pr_title_matched_in_git": true,
+    "changed_files_verified": true,
+    "git_diff_files": [
+      "CHANGES.rst",
+      "src/click/__init__.py",
+      "src/click/core.py",
+      "src/click/formatting.py",
+      "src/click/parser.py",
+      "src/click/shell_completion.py",
+      "tests/test_parser.py"
+    ],
+    "git_commit_log": "deprecate `OptionParser` (#2592)\n\n\ndeprecate OptionParser",
+    "external_ground_truth_status": "PASS",
+    "errors": []
+  }
+}

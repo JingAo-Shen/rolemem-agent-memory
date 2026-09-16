@@ -1,4 +1,4 @@
-# Pilot-v1.2c RoleMem Validity End-to-End Audit Report
+# RoleMem Artifact Validity Mechanism Audit Report
 
 ## Executive Summary
 

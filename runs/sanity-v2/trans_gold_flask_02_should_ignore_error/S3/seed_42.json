@@ -1,0 +1,13 @@
+{
+  "task_id": "trans_gold_flask_02_should_ignore_error",
+  "condition": "S3",
+  "seed": 42,
+  "temperature": 0.2,
+  "passed": true,
+  "stale_ast": false,
+  "latency": 3.15,
+  "prompt_tokens": 103,
+  "gen_tokens": 75,
+  "code_snippet": "def configure_error_policy(app, exc_class):\n    @app.teardown_request\n    def handle_teardown(exception=None):\n        if exception and isinstance(exc",
+  "pytest_log_preview": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_flask_02_should_ignore_error/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_nz23ndu5\ncollecti"
+}

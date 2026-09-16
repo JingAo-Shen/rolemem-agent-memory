@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_gold_werkzeug_01_cached_property",
+  "repo_name": "pallets/werkzeug",
+  "pr_url": "https://github.com/pallets/werkzeug/pull/2084",
+  "issue_url": "https://github.com/pallets/werkzeug/issues/2084",
+  "pr_title": "del invalidates cached_property",
+  "base_commit": "25ca9cd92956e48a38f7a32c837e0f8a54c8ae31",
+  "target_commit": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+  "git_cache_path": "/code/repo_cache/werkzeug",
+  "base_commit_exists": true,
+  "target_commit_exists": true,
+  "pr_number_matched_in_git": true,
+  "pr_title_matched_in_git": true,
+  "changed_files_verified": true,
+  "git_diff_files": [
+    "CHANGES.rst",
+    "src/werkzeug/utils.py",
+    "tests/test_utils.py"
+  ],
+  "git_commit_log": "Merge pull request #2084 from pallets/delete-cached-property\n\n`del` invalidates `cached_property`\ndel invalidates cached_property",
+  "external_ground_truth_status": "PASS",
+  "errors": []
+}

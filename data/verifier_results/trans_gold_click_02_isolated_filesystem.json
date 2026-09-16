@@ -1,0 +1,132 @@
+{
+  "transition_id": "trans_gold_click_02_isolated_filesystem",
+  "repo_name": "pallets/click",
+  "track": "B",
+  "overall_status": "ACCEPT",
+  "gates": {
+    "commit_verification": "PASS",
+    "causality_status": "CAUSALITY_PASS",
+    "original_test_verification": "PASS",
+    "original_test_required": true,
+    "original_test_passed_gate": true,
+    "hidden_test_verification": "PASS",
+    "fixture_control_verification": "PASS",
+    "snapshot_hash_verification": "PASS",
+    "metadata_ground_truth_verification": "PASS"
+  },
+  "commit_details": {
+    "base_commit": {
+      "verified": true,
+      "commit_sha": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+      "full_sha": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+      "message": "Mark clearly functions private status. Deprecated Python 2 utilities. (#3695)",
+      "parents": [
+        "7df2f82305f20f1611a9668b38d26933b648d807",
+        "051725fa7e0c69effc9107066d8791c5b99242c3"
+      ],
+      "source": "local_git_cache"
+    },
+    "history_commit": {
+      "verified": true,
+      "commit_sha": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+      "full_sha": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+      "message": "Mark clearly functions private status. Deprecated Python 2 utilities. (#3695)",
+      "parents": [
+        "7df2f82305f20f1611a9668b38d26933b648d807",
+        "051725fa7e0c69effc9107066d8791c5b99242c3"
+      ],
+      "source": "local_git_cache"
+    },
+    "transition_commit": {
+      "verified": true,
+      "commit_sha": "cfa01eeb7894a408af70b29d28c0b24f8680f9fb",
+      "full_sha": "cfa01eeb7894a408af70b29d28c0b24f8680f9fb",
+      "message": "Deprecate `isolated_filesystem` and document its limits (#3704)",
+      "parents": [
+        "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+        "c2ed41490baa08002714ab79afa4a41f2d67c02c"
+      ],
+      "source": "local_git_cache"
+    },
+    "target_commit": {
+      "verified": true,
+      "commit_sha": "cfa01eeb7894a408af70b29d28c0b24f8680f9fb",
+      "full_sha": "cfa01eeb7894a408af70b29d28c0b24f8680f9fb",
+      "message": "Deprecate `isolated_filesystem` and document its limits (#3704)",
+      "parents": [
+        "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+        "c2ed41490baa08002714ab79afa4a41f2d67c02c"
+      ],
+      "source": "local_git_cache"
+    }
+  },
+  "causality_details": {
+    "causality_status": "CAUSALITY_PASS",
+    "base_commit": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+    "target_commit": "cfa01eeb7894a408af70b29d28c0b24f8680f9fb",
+    "diff_lines": 712,
+    "assertions": [
+      {
+        "artifact": "src/click/testing.py",
+        "symbol": "isolated_filesystem",
+        "expected_base": "exists_active",
+        "actual_base": "exists_active",
+        "expected_target": "deprecated_warn",
+        "actual_target": "deprecated_warn",
+        "passed": true
+      }
+    ]
+  },
+  "original_test_details": {
+    "status": "PASS",
+    "rel_path": "tests/test_testing.py",
+    "test_node": "test_isolated_runner_custom_tempdir",
+    "target_commit": "cfa01eeb7894a408af70b29d28c0b24f8680f9fb",
+    "verified_in_git": true
+  },
+  "hidden_test_details": {
+    "status": "PASS",
+    "test_file": "/code/rolemem-agent-memory/fixtures_v2/trans_gold_click_02_isolated_filesystem/hidden_tests/test_evaluation.py",
+    "lines": 17
+  },
+  "control_details": {
+    "status": "PASS",
+    "stale_pass": true,
+    "valid_pass": true,
+    "control_status": "PASS"
+  },
+  "snapshot_details": {
+    "status": "PASS",
+    "verified_files": 1
+  },
+  "ground_truth_details": {
+    "transition_id": "trans_gold_click_02_isolated_filesystem",
+    "repo_name": "pallets/click",
+    "pr_url": "https://github.com/pallets/click/pull/3704",
+    "issue_url": "https://github.com/pallets/click/issues/3704",
+    "pr_title": "Deprecate `isolated_filesystem` and document its limits",
+    "base_commit": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+    "target_commit": "cfa01eeb7894a408af70b29d28c0b24f8680f9fb",
+    "git_cache_path": "/code/repo_cache/click",
+    "base_commit_exists": true,
+    "target_commit_exists": true,
+    "pr_number_matched_in_git": true,
+    "pr_title_matched_in_git": true,
+    "changed_files_verified": true,
+    "git_diff_files": [
+      "CHANGES.md",
+      "docs/testing.md",
+      "docs/upgrade-guides.md",
+      "src/click/testing.py",
+      "tests/test_arguments.py",
+      "tests/test_basic.py",
+      "tests/test_deprecations.py",
+      "tests/test_shell_completion.py",
+      "tests/test_testing.py",
+      "tests/test_utils/test_open_file.py"
+    ],
+    "git_commit_log": "Deprecate `isolated_filesystem` and document its limits (#3704)\nDeprecate `isolated_filesystem` and document its limits\n\nFix #3700\nRefs #3501",
+    "external_ground_truth_status": "PASS",
+    "errors": []
+  }
+}

@@ -22,9 +22,9 @@
   "stale_memory_candidate": "Override proxy_manager_for to adjust connection pool isolation keys",
   "valid_memory_candidate": "Override build_connection_pool_key_attributes in HTTPAdapter subclass",
   "current_task": "Implement `KeyedAdapter` in `keyed_adapter.py` overriding build_connection_pool_key_attributes.",
-  "target_file": "pool_config.py",
-  "target_symbol": "get_pool_key_attributes",
-  "existing_tests": "tests/test_requests.py::TestRequests::test_pool_key_attributes",
+  "target_file": "keyed_adapter.py",
+  "target_symbol": "KeyedAdapter",
+  "existing_tests": "tests/test_adapters.py::test_request_url_trims_leading_path_separators",
   "generated_tests": "def test_build_adapter():\n    from pool_config import build_custom_adapter_pool\n    adapter = build_custom_adapter_pool(connections=15, maxsize=25)\n    assert adapter is not None",
   "test_evidence_source": "Requests PR #6716 pool key attribute helper",
   "difficulty": "medium",
@@ -57,5 +57,7 @@
     "overlay_reason": null,
     "overlay_sha256": null,
     "affected_files": []
-  }
+  },
+  "pr_title": "Allow for overriding of specific pool key params",
+  "original_test_required": true
 }

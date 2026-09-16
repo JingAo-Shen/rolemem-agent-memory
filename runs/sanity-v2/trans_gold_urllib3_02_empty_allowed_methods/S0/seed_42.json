@@ -1,0 +1,13 @@
+{
+  "task_id": "trans_gold_urllib3_02_empty_allowed_methods",
+  "condition": "S0",
+  "seed": 42,
+  "temperature": 0.2,
+  "passed": false,
+  "stale_ast": true,
+  "latency": 2.33,
+  "prompt_tokens": 86,
+  "gen_tokens": 56,
+  "code_snippet": "from urllib3.util.retry import Retry\n\ndef disable_method_retries():\n    return Retry(\n        total=False,\n        read=False,\n        connect=False,\n",
+  "pytest_log_preview": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.10.12, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_urllib3_02_empty_allowed_methods/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_kb1k"
+}

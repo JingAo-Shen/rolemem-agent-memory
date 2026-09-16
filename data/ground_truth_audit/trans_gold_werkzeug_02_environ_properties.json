@@ -1,0 +1,25 @@
+{
+  "transition_id": "trans_gold_werkzeug_02_environ_properties",
+  "repo_name": "pallets/werkzeug",
+  "pr_url": "https://github.com/pallets/werkzeug/pull/3276",
+  "issue_url": "https://github.com/pallets/werkzeug/issues/3276",
+  "pr_title": "deprecate environ properties",
+  "base_commit": "f97c305673ba121a1dae6764c37e8be48907a1d1",
+  "target_commit": "7641d4990f06d583425a4e6ba25e9d2f18934885",
+  "git_cache_path": "/code/repo_cache/werkzeug",
+  "base_commit_exists": true,
+  "target_commit_exists": true,
+  "pr_number_matched_in_git": true,
+  "pr_title_matched_in_git": true,
+  "changed_files_verified": true,
+  "git_diff_files": [
+    "CHANGES.rst",
+    "src/werkzeug/test.py",
+    "src/werkzeug/utils.py",
+    "src/werkzeug/wrappers/request.py",
+    "tests/test_utils.py"
+  ],
+  "git_commit_log": "deprecate environ properties (#3276)\ndeprecate environ properties",
+  "external_ground_truth_status": "PASS",
+  "errors": []
+}

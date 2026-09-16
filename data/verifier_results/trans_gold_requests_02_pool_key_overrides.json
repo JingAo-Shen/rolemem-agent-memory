@@ -1,0 +1,122 @@
+{
+  "transition_id": "trans_gold_requests_02_pool_key_overrides",
+  "repo_name": "psf/requests",
+  "track": "A",
+  "overall_status": "ACCEPT",
+  "gates": {
+    "commit_verification": "PASS",
+    "causality_status": "CAUSALITY_PASS",
+    "original_test_verification": "PASS",
+    "original_test_required": true,
+    "original_test_passed_gate": true,
+    "hidden_test_verification": "PASS",
+    "fixture_control_verification": "PASS",
+    "snapshot_hash_verification": "PASS",
+    "metadata_ground_truth_verification": "PASS"
+  },
+  "commit_details": {
+    "base_commit": {
+      "verified": true,
+      "commit_sha": "88dce9d854797c05d0ff296b70e0430535ef8aaf",
+      "full_sha": "88dce9d854797c05d0ff296b70e0430535ef8aaf",
+      "message": "v2.32.2",
+      "parents": [
+        "c98e4d133ef29c46a9b68cd783087218a8075e05"
+      ],
+      "source": "local_git_cache"
+    },
+    "history_commit": {
+      "verified": true,
+      "commit_sha": "88dce9d854797c05d0ff296b70e0430535ef8aaf",
+      "full_sha": "88dce9d854797c05d0ff296b70e0430535ef8aaf",
+      "message": "v2.32.2",
+      "parents": [
+        "c98e4d133ef29c46a9b68cd783087218a8075e05"
+      ],
+      "source": "local_git_cache"
+    },
+    "transition_commit": {
+      "verified": true,
+      "commit_sha": "145b5399486b56e00250204f033441f3fdf2f3c9",
+      "full_sha": "145b5399486b56e00250204f033441f3fdf2f3c9",
+      "message": "Merge pull request #6716 from sigmavirus24/bug/6715",
+      "parents": [
+        "88dce9d854797c05d0ff296b70e0430535ef8aaf",
+        "b1d73ddb509a3a2d3e10744e85f9cdebdbde90f0"
+      ],
+      "source": "local_git_cache"
+    },
+    "target_commit": {
+      "verified": true,
+      "commit_sha": "145b5399486b56e00250204f033441f3fdf2f3c9",
+      "full_sha": "145b5399486b56e00250204f033441f3fdf2f3c9",
+      "message": "Merge pull request #6716 from sigmavirus24/bug/6715",
+      "parents": [
+        "88dce9d854797c05d0ff296b70e0430535ef8aaf",
+        "b1d73ddb509a3a2d3e10744e85f9cdebdbde90f0"
+      ],
+      "source": "local_git_cache"
+    }
+  },
+  "causality_details": {
+    "causality_status": "CAUSALITY_PASS",
+    "base_commit": "88dce9d854797c05d0ff296b70e0430535ef8aaf",
+    "target_commit": "145b5399486b56e00250204f033441f3fdf2f3c9",
+    "diff_lines": 137,
+    "assertions": [
+      {
+        "artifact": "src/requests/adapters.py",
+        "symbol": "build_connection_pool_key_attributes",
+        "expected_base": "absent",
+        "actual_base": "absent",
+        "expected_target": "exists_active",
+        "actual_target": "exists_active",
+        "passed": true
+      }
+    ]
+  },
+  "original_test_details": {
+    "status": "PASS",
+    "rel_path": "tests/test_adapters.py",
+    "test_node": "test_request_url_trims_leading_path_separators",
+    "target_commit": "145b5399486b56e00250204f033441f3fdf2f3c9",
+    "verified_in_git": true
+  },
+  "hidden_test_details": {
+    "status": "PASS",
+    "test_file": "/code/rolemem-agent-memory/fixtures_v2/trans_gold_requests_02_pool_key_overrides/hidden_tests/test_evaluation.py",
+    "lines": 17
+  },
+  "control_details": {
+    "status": "PASS",
+    "stale_pass": true,
+    "valid_pass": true,
+    "control_status": "PASS"
+  },
+  "snapshot_details": {
+    "status": "PASS",
+    "verified_files": 1
+  },
+  "ground_truth_details": {
+    "transition_id": "trans_gold_requests_02_pool_key_overrides",
+    "repo_name": "psf/requests",
+    "pr_url": "https://github.com/psf/requests/pull/6716",
+    "issue_url": "https://github.com/psf/requests/issues/6715",
+    "pr_title": "Allow for overriding of specific pool key params",
+    "base_commit": "88dce9d854797c05d0ff296b70e0430535ef8aaf",
+    "target_commit": "145b5399486b56e00250204f033441f3fdf2f3c9",
+    "git_cache_path": "/code/repo_cache/requests",
+    "base_commit_exists": true,
+    "target_commit_exists": true,
+    "pr_number_matched_in_git": true,
+    "pr_title_matched_in_git": true,
+    "changed_files_verified": true,
+    "git_diff_files": [
+      "HISTORY.md",
+      "src/requests/adapters.py"
+    ],
+    "git_commit_log": "Merge pull request #6716 from sigmavirus24/bug/6715\n\n\nDon't use default SSLContext with custom poolmanager kwargs\n\nUpdate HISTORY.md\n\nAllow for overriding of specific pool key params\n\nThis re-enables the use case of providing a custom SSLContext via a\nTransport Adapter as broken in #6655 and reported in #6715\n\nCloses #6715",
+    "external_ground_truth_status": "PASS",
+    "errors": []
+  }
+}

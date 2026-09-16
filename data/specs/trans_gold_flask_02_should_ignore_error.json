@@ -8,6 +8,7 @@
   "task_family": "error_convention",
   "pr_url": "https://github.com/pallets/flask/pull/5899",
   "issue_url": "https://github.com/pallets/flask/issues/5898",
+  "pr_title": "deprecate should_ignore_error",
   "base_commit": "9b74a90dd3c47f792734823e8793ac36f38bc4dd",
   "history_commit": "9b74a90dd3c47f792734823e8793ac36f38bc4dd",
   "transition_commit": "c77a5203438fe772d41f6a47303ad3f57a4efe6d",
@@ -47,6 +48,7 @@
     "overlay_sha256": null,
     "affected_files": []
   },
+  "original_test_required": true,
   "stale_memory_candidate": "Override should_ignore_error on Flask application subclass to filter exceptions",
   "valid_memory_candidate": "Register teardown request handlers via @app.teardown_request to inspect or handle unhandled exceptions",
   "current_task": "Implement `configure_error_policy(app, exc_class)` in `error_policy.py` registering a teardown request handler.",

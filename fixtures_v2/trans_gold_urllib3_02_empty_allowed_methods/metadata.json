@@ -6,8 +6,8 @@
   "language": "Python",
   "track_candidate": "B",
   "task_family": "semantic_change",
-  "pr_url": "https://github.com/urllib3/urllib3/pull/2050",
-  "issue_url": "https://github.com/urllib3/urllib3/issues/2049",
+  "pr_url": "https://github.com/urllib3/urllib3/pull/5223",
+  "issue_url": "https://github.com/urllib3/urllib3/issues/5223",
   "base_commit": "a5d70ebfd6a30ceba0e9cc322089a6497dcd643e",
   "history_commit": "a5d70ebfd6a30ceba0e9cc322089a6497dcd643e",
   "transition_commit": "9a209d21087de10b300b2530de023989a71a3f7e",
@@ -24,9 +24,9 @@
   "current_task": "Implement `disable_method_retries()` in `no_retry_policy.py` returning Retry configured to never retry by method.",
   "target_file": "no_retry_policy.py",
   "target_symbol": "disable_method_retries",
-  "existing_tests": "test/test_retry.py::TestRetry::test_empty_allowed_methods_deprecation",
+  "existing_tests": "test/test_retry.py::test_empty_allowed_methods",
   "generated_tests": "def test_all_verbs_retry():\n    from retry_factory import create_all_verbs_retry\n    r = create_all_verbs_retry()\n    assert r.allowed_methods is None or r.allowed_methods is False",
-  "test_evidence_source": "urllib3 PR #2050 empty collection deprecation warning",
+  "test_evidence_source": "urllib3 PR #5223 empty collection deprecation warning",
   "difficulty": "medium",
   "leakage_review": "PASS",
   "benchmark_status": "PROVISIONAL_GOLD_V2",
@@ -54,5 +54,7 @@
     "overlay_reason": null,
     "overlay_sha256": null,
     "affected_files": []
-  }
+  },
+  "pr_title": "Deprecate empty collection for retrying all methods",
+  "original_test_required": true
 }

@@ -1,0 +1,138 @@
+{
+  "transition_id": "trans_gold_flask_01_context_stack_removal",
+  "repo_name": "pallets/flask",
+  "track": "A",
+  "overall_status": "ACCEPT",
+  "gates": {
+    "commit_verification": "PASS",
+    "causality_status": "CAUSALITY_PASS",
+    "original_test_verification": "PASS",
+    "original_test_required": true,
+    "original_test_passed_gate": true,
+    "hidden_test_verification": "PASS",
+    "fixture_control_verification": "PASS",
+    "snapshot_hash_verification": "PASS",
+    "metadata_ground_truth_verification": "PASS"
+  },
+  "commit_details": {
+    "base_commit": {
+      "verified": true,
+      "commit_sha": "604de4b1dc0729233704a08c32612c6f1221cccb",
+      "full_sha": "604de4b1dc0729233704a08c32612c6f1221cccb",
+      "message": "Merge branch '2.2.x'",
+      "parents": [
+        "ed5b240417414cbd0322efa95c91f759928ba154",
+        "c4c7f504be222c3aca9062656498ec3c72e2b2ad"
+      ],
+      "source": "local_git_cache"
+    },
+    "history_commit": {
+      "verified": true,
+      "commit_sha": "604de4b1dc0729233704a08c32612c6f1221cccb",
+      "full_sha": "604de4b1dc0729233704a08c32612c6f1221cccb",
+      "message": "Merge branch '2.2.x'",
+      "parents": [
+        "ed5b240417414cbd0322efa95c91f759928ba154",
+        "c4c7f504be222c3aca9062656498ec3c72e2b2ad"
+      ],
+      "source": "local_git_cache"
+    },
+    "transition_commit": {
+      "verified": true,
+      "commit_sha": "1ee22e1736ffd12c2222cd6215ed04ec1592adaa",
+      "full_sha": "1ee22e1736ffd12c2222cd6215ed04ec1592adaa",
+      "message": "Merge pull request #4995 from pallets/remove-deprecated",
+      "parents": [
+        "604de4b1dc0729233704a08c32612c6f1221cccb",
+        "6650764e9719402de2aaa6f321bdec587699c6b2"
+      ],
+      "source": "local_git_cache"
+    },
+    "target_commit": {
+      "verified": true,
+      "commit_sha": "1ee22e1736ffd12c2222cd6215ed04ec1592adaa",
+      "full_sha": "1ee22e1736ffd12c2222cd6215ed04ec1592adaa",
+      "message": "Merge pull request #4995 from pallets/remove-deprecated",
+      "parents": [
+        "604de4b1dc0729233704a08c32612c6f1221cccb",
+        "6650764e9719402de2aaa6f321bdec587699c6b2"
+      ],
+      "source": "local_git_cache"
+    }
+  },
+  "causality_details": {
+    "causality_status": "CAUSALITY_PASS",
+    "base_commit": "604de4b1dc0729233704a08c32612c6f1221cccb",
+    "target_commit": "1ee22e1736ffd12c2222cd6215ed04ec1592adaa",
+    "diff_lines": 1540,
+    "assertions": [
+      {
+        "artifact": "src/flask/globals.py",
+        "symbol": "push",
+        "expected_base": "deprecated_warn",
+        "actual_base": "deprecated_warn",
+        "expected_target": "removed",
+        "actual_target": "removed",
+        "passed": true
+      }
+    ]
+  },
+  "original_test_details": {
+    "status": "PASS",
+    "rel_path": "tests/test_appctx.py",
+    "test_node": "test_app_ctx_globals_methods",
+    "target_commit": "1ee22e1736ffd12c2222cd6215ed04ec1592adaa",
+    "verified_in_git": true
+  },
+  "hidden_test_details": {
+    "status": "PASS",
+    "test_file": "/code/rolemem-agent-memory/fixtures_v2/trans_gold_flask_01_context_stack_removal/hidden_tests/test_evaluation.py",
+    "lines": 13
+  },
+  "control_details": {
+    "status": "PASS",
+    "stale_pass": true,
+    "valid_pass": true,
+    "control_status": "PASS"
+  },
+  "snapshot_details": {
+    "status": "PASS",
+    "verified_files": 1
+  },
+  "ground_truth_details": {
+    "transition_id": "trans_gold_flask_01_context_stack_removal",
+    "repo_name": "pallets/flask",
+    "pr_url": "https://github.com/pallets/flask/pull/4995",
+    "issue_url": "https://github.com/pallets/flask/issues/4994",
+    "pr_title": "remove previously deprecated code",
+    "base_commit": "604de4b1dc0729233704a08c32612c6f1221cccb",
+    "target_commit": "1ee22e1736ffd12c2222cd6215ed04ec1592adaa",
+    "git_cache_path": "/code/repo_cache/flask",
+    "base_commit_exists": true,
+    "target_commit_exists": true,
+    "pr_number_matched_in_git": true,
+    "pr_title_matched_in_git": true,
+    "changed_files_verified": true,
+    "git_diff_files": [
+      "CHANGES.rst",
+      "docs/api.rst",
+      "docs/config.rst",
+      "src/flask/__init__.py",
+      "src/flask/app.py",
+      "src/flask/blueprints.py",
+      "src/flask/globals.py",
+      "src/flask/helpers.py",
+      "src/flask/json/__init__.py",
+      "src/flask/json/provider.py",
+      "src/flask/scaffold.py",
+      "tests/conftest.py",
+      "tests/test_async.py",
+      "tests/test_basic.py",
+      "tests/test_blueprints.py",
+      "tests/test_helpers.py"
+    ],
+    "git_commit_log": "Merge pull request #4995 from pallets/remove-deprecated\n\nremove previously deprecated code\nremove previously deprecated code",
+    "external_ground_truth_status": "PASS",
+    "errors": []
+  }
+}

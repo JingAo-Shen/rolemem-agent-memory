@@ -1,0 +1,21 @@
+{
+  "transition_id": "trans_gold_requests_01_tls_context_adapter",
+  "repo_name": "psf/requests",
+  "pr_url": "https://github.com/psf/requests/pull/6710",
+  "issue_url": "https://github.com/psf/requests/issues/6710",
+  "pr_title": "Move _get_connection to get_connection_with_tls_context",
+  "base_commit": "970e8cec988421bd43da57350723b05c8ce8dc7e",
+  "target_commit": "c98e4d133ef29c46a9b68cd783087218a8075e05",
+  "git_cache_path": "/code/repo_cache/requests",
+  "base_commit_exists": true,
+  "target_commit_exists": true,
+  "pr_number_matched_in_git": true,
+  "pr_title_matched_in_git": true,
+  "changed_files_verified": true,
+  "git_diff_files": [
+    "src/requests/adapters.py"
+  ],
+  "git_commit_log": "Merge pull request #6710 from nateprewitt/api_rename\n\nMove _get_connection to get_connection_with_tls_context\nAdd deprecation warning\n\nMove _get_connection to get_connection_with_tls_context",
+  "external_ground_truth_status": "PASS",
+  "errors": []
+}

@@ -1,0 +1,116 @@
+{
+  "task_id": "trans_gold_flask_02_should_ignore_error",
+  "track": "B",
+  "repo_name": "pallets/flask",
+  "model_revision": "c03e6d358207e414f1eca0bb1891e29f1db0e242",
+  "prompt": "<|im_start|>system\nYou are an expert Python engineer for pallets/flask. Implement the requested solution for error_policy.py. Provide ONLY executable python code inside ```python code block without extra explanations.<|im_end|>\n<|im_start|>user\nProject Context Memory: Register teardown request handlers via @app.teardown_request to inspect or handle unhandled exceptions\nTask: Implement `configure_error_policy(app, exc_class)` in `error_policy.py` registering a teardown request handler.\nFile: error_policy.py\n<|im_end|>\n<|im_start|>assistant\n```python\n",
+  "memory_before_validation": [
+    {
+      "memory_id": "mem_stale_1",
+      "artifact_uri": "src/flask/app.py",
+      "artifact_type": "file",
+      "symbol": "Flask.should_ignore_error",
+      "source_commit": "9b74a90dd3c47f792734823e8793ac36f38bc4dd",
+      "observed_at": 100.0,
+      "evidence_type": "diff",
+      "evidence_ref": "https://github.com/pallets/flask/pull/5899",
+      "valid_from": 100.0,
+      "valid_to": "inf",
+      "supersedes": null,
+      "depends_on": [],
+      "status": "ACTIVE",
+      "role_tags": [
+        "coder"
+      ],
+      "statement": "Override should_ignore_error on Flask application subclass to filter exceptions",
+      "artifact_digest": "c3dd9561959c203475d9f8b2efb86ac1b87253b4a524fabfd553aef146b11dda"
+    },
+    {
+      "memory_id": "mem_valid_1",
+      "artifact_uri": "src/flask/app.py",
+      "artifact_type": "file",
+      "symbol": "Flask.should_ignore_error",
+      "source_commit": "4b8bde97d4fa3486e18dce21c3c5f75570d50164",
+      "observed_at": 200.0,
+      "evidence_type": "diff",
+      "evidence_ref": "https://github.com/pallets/flask/pull/5899",
+      "valid_from": 200.0,
+      "valid_to": "inf",
+      "supersedes": null,
+      "depends_on": [],
+      "status": "ACTIVE",
+      "role_tags": [
+        "coder"
+      ],
+      "statement": "Register teardown request handlers via @app.teardown_request to inspect or handle unhandled exceptions",
+      "artifact_digest": "52284cb4b0bb588729c45534091d49f2deb2c7735579b06dc726e9082824e3ea"
+    }
+  ],
+  "memory_after_validation": [
+    {
+      "memory_id": "mem_stale_1",
+      "artifact_uri": "src/flask/app.py",
+      "artifact_type": "file",
+      "symbol": "Flask.should_ignore_error",
+      "source_commit": "9b74a90dd3c47f792734823e8793ac36f38bc4dd",
+      "observed_at": 100.0,
+      "evidence_type": "diff",
+      "evidence_ref": "https://github.com/pallets/flask/pull/5899",
+      "valid_from": 100.0,
+      "valid_to": "inf",
+      "supersedes": null,
+      "depends_on": [],
+      "status": "INVALIDATED_BY_ARTIFACT",
+      "role_tags": [
+        "coder"
+      ],
+      "statement": "Override should_ignore_error on Flask application subclass to filter exceptions",
+      "artifact_digest": "c3dd9561959c203475d9f8b2efb86ac1b87253b4a524fabfd553aef146b11dda"
+    },
+    {
+      "memory_id": "mem_valid_1",
+      "artifact_uri": "src/flask/app.py",
+      "artifact_type": "file",
+      "symbol": "Flask.should_ignore_error",
+      "source_commit": "4b8bde97d4fa3486e18dce21c3c5f75570d50164",
+      "observed_at": 200.0,
+      "evidence_type": "diff",
+      "evidence_ref": "https://github.com/pallets/flask/pull/5899",
+      "valid_from": 200.0,
+      "valid_to": "inf",
+      "supersedes": null,
+      "depends_on": [],
+      "status": "ACTIVE",
+      "role_tags": [
+        "coder"
+      ],
+      "statement": "Register teardown request handlers via @app.teardown_request to inspect or handle unhandled exceptions",
+      "artifact_digest": "52284cb4b0bb588729c45534091d49f2deb2c7735579b06dc726e9082824e3ea"
+    }
+  ],
+  "retrieved_memory_ids": [
+    "mem_valid_1"
+  ],
+  "filtered_memory_ids": [
+    "mem_stale_1"
+  ],
+  "memory_text_delivered_to_model": "Project Context Memory: Register teardown request handlers via @app.teardown_request to inspect or handle unhandled exceptions\n",
+  "raw_generation": "def configure_error_policy(app, exc_class):\n    @app.teardown_request\n    def handle_teardown(exception=None):\n        if exception and isinstance(exception, exc_class):\n            # Handle the specific exception class here\n            print(f\"Handling {exc_class.__name__} with message: {exception}\")\n        else:\n            # Handle other exceptions or do nothing\n            pass\n```",
+  "parsed_code": "def configure_error_policy(app, exc_class):\n    @app.teardown_request\n    def handle_teardown(exception=None):\n        if exception and isinstance(exception, exc_class):\n            # Handle the specific exception class here\n            print(f\"Handling {exc_class.__name__} with message: {exception}\")\n        else:\n            # Handle other exceptions or do nothing\n            pass",
+  "artifact_digests": {
+    "base_commit_digest": "c3dd9561959c203475d9f8b2efb86ac1b87253b4a524fabfd553aef146b11dda",
+    "target_commit_digest": "52284cb4b0bb588729c45534091d49f2deb2c7735579b06dc726e9082824e3ea"
+  },
+  "pytest_result": true,
+  "pytest_log": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_flask_02_should_ignore_error/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_8vpzfpey\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_error_policy PASSED                    [100%]\n\n============================== 1 passed in 0.24s ===============================\n",
+  "ast_result": {
+    "stale_active_use": false,
+    "stale_mentions": false,
+    "active_nodes": []
+  },
+  "latency": 3.24,
+  "token_usage": {
+    "prompt_tokens": 103,
+    "completion_tokens": 78
+  }
+}

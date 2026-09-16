@@ -1,0 +1,123 @@
+{
+  "transition_id": "trans_gold_flask_02_should_ignore_error",
+  "repo_name": "pallets/flask",
+  "track": "B",
+  "overall_status": "ACCEPT",
+  "gates": {
+    "commit_verification": "PASS",
+    "causality_status": "CAUSALITY_PASS",
+    "original_test_verification": "PASS",
+    "original_test_required": true,
+    "original_test_passed_gate": true,
+    "hidden_test_verification": "PASS",
+    "fixture_control_verification": "PASS",
+    "snapshot_hash_verification": "PASS",
+    "metadata_ground_truth_verification": "PASS"
+  },
+  "commit_details": {
+    "base_commit": {
+      "verified": true,
+      "commit_sha": "9b74a90dd3c47f792734823e8793ac36f38bc4dd",
+      "full_sha": "9b74a90dd3c47f792734823e8793ac36f38bc4dd",
+      "message": "fix codespell findings",
+      "parents": [
+        "5880befcd22490c40f3c63d6178427f7753672c1"
+      ],
+      "source": "local_git_cache"
+    },
+    "history_commit": {
+      "verified": true,
+      "commit_sha": "9b74a90dd3c47f792734823e8793ac36f38bc4dd",
+      "full_sha": "9b74a90dd3c47f792734823e8793ac36f38bc4dd",
+      "message": "fix codespell findings",
+      "parents": [
+        "5880befcd22490c40f3c63d6178427f7753672c1"
+      ],
+      "source": "local_git_cache"
+    },
+    "transition_commit": {
+      "verified": true,
+      "commit_sha": "c77a5203438fe772d41f6a47303ad3f57a4efe6d",
+      "full_sha": "c77a5203438fe772d41f6a47303ad3f57a4efe6d",
+      "message": "deprecate should_ignore_error",
+      "parents": [
+        "9b74a90dd3c47f792734823e8793ac36f38bc4dd"
+      ],
+      "source": "local_git_cache"
+    },
+    "target_commit": {
+      "verified": true,
+      "commit_sha": "4b8bde97d4fa3486e18dce21c3c5f75570d50164",
+      "full_sha": "4b8bde97d4fa3486e18dce21c3c5f75570d50164",
+      "message": "deprecate `should_ignore_error` (#5899)",
+      "parents": [
+        "0292047b22c82921dcf165322d93a0b988328c2e",
+        "c77a5203438fe772d41f6a47303ad3f57a4efe6d"
+      ],
+      "source": "local_git_cache"
+    }
+  },
+  "causality_details": {
+    "causality_status": "CAUSALITY_PASS",
+    "base_commit": "9b74a90dd3c47f792734823e8793ac36f38bc4dd",
+    "target_commit": "4b8bde97d4fa3486e18dce21c3c5f75570d50164",
+    "diff_lines": 91,
+    "assertions": [
+      {
+        "artifact": "src/flask/app.py",
+        "symbol": "should_ignore_error",
+        "expected_base": "absent",
+        "actual_base": "absent",
+        "expected_target": "deprecated_warn",
+        "actual_target": "removed",
+        "passed": true
+      }
+    ]
+  },
+  "original_test_details": {
+    "status": "PASS",
+    "rel_path": "tests/test_basic.py",
+    "test_node": "test_error_handling",
+    "target_commit": "4b8bde97d4fa3486e18dce21c3c5f75570d50164",
+    "verified_in_git": true
+  },
+  "hidden_test_details": {
+    "status": "PASS",
+    "test_file": "/code/rolemem-agent-memory/fixtures_v2/trans_gold_flask_02_should_ignore_error/hidden_tests/test_evaluation.py",
+    "lines": 27
+  },
+  "control_details": {
+    "status": "PASS",
+    "stale_pass": true,
+    "valid_pass": true,
+    "control_status": "PASS"
+  },
+  "snapshot_details": {
+    "status": "PASS",
+    "verified_files": 1
+  },
+  "ground_truth_details": {
+    "transition_id": "trans_gold_flask_02_should_ignore_error",
+    "repo_name": "pallets/flask",
+    "pr_url": "https://github.com/pallets/flask/pull/5899",
+    "issue_url": "https://github.com/pallets/flask/issues/5898",
+    "pr_title": "deprecate should_ignore_error",
+    "base_commit": "9b74a90dd3c47f792734823e8793ac36f38bc4dd",
+    "target_commit": "4b8bde97d4fa3486e18dce21c3c5f75570d50164",
+    "git_cache_path": "/code/repo_cache/flask",
+    "base_commit_exists": true,
+    "target_commit_exists": true,
+    "pr_number_matched_in_git": true,
+    "pr_title_matched_in_git": true,
+    "changed_files_verified": true,
+    "git_diff_files": [
+      "CHANGES.rst",
+      "pyproject.toml",
+      "src/flask/app.py",
+      "src/flask/sansio/app.py"
+    ],
+    "git_commit_log": "deprecate `should_ignore_error` (#5899)\n\n\nremove unused ruff check rule\n\ndeprecate should_ignore_error",
+    "external_ground_truth_status": "PASS",
+    "errors": []
+  }
+}

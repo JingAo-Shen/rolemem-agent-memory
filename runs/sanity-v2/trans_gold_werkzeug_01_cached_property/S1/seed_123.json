@@ -1,0 +1,13 @@
+{
+  "task_id": "trans_gold_werkzeug_01_cached_property",
+  "condition": "S1",
+  "seed": 123,
+  "temperature": 0.2,
+  "passed": false,
+  "stale_ast": false,
+  "latency": 1.73,
+  "prompt_tokens": 100,
+  "gen_tokens": 41,
+  "code_snippet": "def reset_cached_attribute(instance, attr_name):\n    if hasattr(instance, '_cache'):\n        cache = getattr(instance, '_cache')\n        if attr_name ",
+  "pytest_log_preview": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_werkzeug_01_cached_property/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_dusu6csl\nc"
+}

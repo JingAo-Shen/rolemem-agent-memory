@@ -1,0 +1,22 @@
+{
+  "transition_id": "trans_gold_requests_02_pool_key_overrides",
+  "repo_name": "psf/requests",
+  "pr_url": "https://github.com/psf/requests/pull/6716",
+  "issue_url": "https://github.com/psf/requests/issues/6715",
+  "pr_title": "Allow for overriding of specific pool key params",
+  "base_commit": "88dce9d854797c05d0ff296b70e0430535ef8aaf",
+  "target_commit": "145b5399486b56e00250204f033441f3fdf2f3c9",
+  "git_cache_path": "/code/repo_cache/requests",
+  "base_commit_exists": true,
+  "target_commit_exists": true,
+  "pr_number_matched_in_git": true,
+  "pr_title_matched_in_git": true,
+  "changed_files_verified": true,
+  "git_diff_files": [
+    "HISTORY.md",
+    "src/requests/adapters.py"
+  ],
+  "git_commit_log": "Merge pull request #6716 from sigmavirus24/bug/6715\n\n\nDon't use default SSLContext with custom poolmanager kwargs\n\nUpdate HISTORY.md\n\nAllow for overriding of specific pool key params\n\nThis re-enables the use case of providing a custom SSLContext via a\nTransport Adapter as broken in #6655 and reported in #6715\n\nCloses #6715",
+  "external_ground_truth_status": "PASS",
+  "errors": []
+}

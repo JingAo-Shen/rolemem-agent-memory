@@ -1,0 +1,116 @@
+{
+  "task_id": "trans_gold_werkzeug_01_cached_property",
+  "track": "A",
+  "repo_name": "pallets/werkzeug",
+  "model_revision": "c03e6d358207e414f1eca0bb1891e29f1db0e242",
+  "prompt": "<|im_start|>system\nYou are an expert Python engineer for pallets/werkzeug. Implement the requested solution for property_helper.py. Provide ONLY executable python code inside ```python code block without extra explanations.<|im_end|>\n<|im_start|>user\nProject Context Memory: Use delattr(instance, attr_name) or del instance.prop to clear cached properties\nTask: Implement `reset_cached_attribute(instance, attr_name)` in `property_helper.py` to clear a cached property.\nFile: property_helper.py\n<|im_end|>\n<|im_start|>assistant\n```python\n",
+  "memory_before_validation": [
+    {
+      "memory_id": "mem_stale_1",
+      "artifact_uri": "src/werkzeug/utils.py",
+      "artifact_type": "file",
+      "symbol": "werkzeug.utils.invalidate_cached_property",
+      "source_commit": "25ca9cd92956e48a38f7a32c837e0f8a54c8ae31",
+      "observed_at": 100.0,
+      "evidence_type": "diff",
+      "evidence_ref": "https://github.com/pallets/werkzeug/pull/2084",
+      "valid_from": 100.0,
+      "valid_to": "inf",
+      "supersedes": null,
+      "depends_on": [],
+      "status": "ACTIVE",
+      "role_tags": [
+        "coder"
+      ],
+      "statement": "Use invalidate_cached_property(instance, attr_name) to clear cached properties",
+      "artifact_digest": "7204bc26d5d3ac5e01b573636ecd035ad231de46b2418f331148f6a8d38a7d6c"
+    },
+    {
+      "memory_id": "mem_valid_1",
+      "artifact_uri": "src/werkzeug/utils.py",
+      "artifact_type": "file",
+      "symbol": "werkzeug.utils.invalidate_cached_property",
+      "source_commit": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+      "observed_at": 200.0,
+      "evidence_type": "diff",
+      "evidence_ref": "https://github.com/pallets/werkzeug/pull/2084",
+      "valid_from": 200.0,
+      "valid_to": "inf",
+      "supersedes": null,
+      "depends_on": [],
+      "status": "ACTIVE",
+      "role_tags": [
+        "coder"
+      ],
+      "statement": "Use delattr(instance, attr_name) or del instance.prop to clear cached properties",
+      "artifact_digest": "a098ad5ceeef276e6485a855e651eea6e14c14df15a3bdb12efd1c5a87d12e61"
+    }
+  ],
+  "memory_after_validation": [
+    {
+      "memory_id": "mem_stale_1",
+      "artifact_uri": "src/werkzeug/utils.py",
+      "artifact_type": "file",
+      "symbol": "werkzeug.utils.invalidate_cached_property",
+      "source_commit": "25ca9cd92956e48a38f7a32c837e0f8a54c8ae31",
+      "observed_at": 100.0,
+      "evidence_type": "diff",
+      "evidence_ref": "https://github.com/pallets/werkzeug/pull/2084",
+      "valid_from": 100.0,
+      "valid_to": "inf",
+      "supersedes": null,
+      "depends_on": [],
+      "status": "INVALIDATED_BY_ARTIFACT",
+      "role_tags": [
+        "coder"
+      ],
+      "statement": "Use invalidate_cached_property(instance, attr_name) to clear cached properties",
+      "artifact_digest": "7204bc26d5d3ac5e01b573636ecd035ad231de46b2418f331148f6a8d38a7d6c"
+    },
+    {
+      "memory_id": "mem_valid_1",
+      "artifact_uri": "src/werkzeug/utils.py",
+      "artifact_type": "file",
+      "symbol": "werkzeug.utils.invalidate_cached_property",
+      "source_commit": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+      "observed_at": 200.0,
+      "evidence_type": "diff",
+      "evidence_ref": "https://github.com/pallets/werkzeug/pull/2084",
+      "valid_from": 200.0,
+      "valid_to": "inf",
+      "supersedes": null,
+      "depends_on": [],
+      "status": "ACTIVE",
+      "role_tags": [
+        "coder"
+      ],
+      "statement": "Use delattr(instance, attr_name) or del instance.prop to clear cached properties",
+      "artifact_digest": "a098ad5ceeef276e6485a855e651eea6e14c14df15a3bdb12efd1c5a87d12e61"
+    }
+  ],
+  "retrieved_memory_ids": [
+    "mem_valid_1"
+  ],
+  "filtered_memory_ids": [
+    "mem_stale_1"
+  ],
+  "memory_text_delivered_to_model": "Project Context Memory: Use delattr(instance, attr_name) or del instance.prop to clear cached properties\n",
+  "raw_generation": "def reset_cached_attribute(instance, attr_name):\n    if hasattr(instance, attr_name):\n        delattr(instance, attr_name)\n```",
+  "parsed_code": "def reset_cached_attribute(instance, attr_name):\n    if hasattr(instance, attr_name):\n        delattr(instance, attr_name)",
+  "artifact_digests": {
+    "base_commit_digest": "7204bc26d5d3ac5e01b573636ecd035ad231de46b2418f331148f6a8d38a7d6c",
+    "target_commit_digest": "a098ad5ceeef276e6485a855e651eea6e14c14df15a3bdb12efd1c5a87d12e61"
+  },
+  "pytest_result": true,
+  "pytest_log": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_werkzeug_01_cached_property/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_p3p878jh\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_reset_cached_attribute PASSED          [100%]\n\n============================== 1 passed in 0.10s ===============================\n",
+  "ast_result": {
+    "stale_active_use": false,
+    "stale_mentions": false,
+    "active_nodes": []
+  },
+  "latency": 1.69,
+  "token_usage": {
+    "prompt_tokens": 103,
+    "completion_tokens": 27
+  }
+}

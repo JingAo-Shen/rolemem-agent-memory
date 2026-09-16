@@ -1,0 +1,206 @@
+[
+  {
+    "task_id": "trans_gold_werkzeug_01_cached_property",
+    "track": "A",
+    "repo_name": "pallets/werkzeug",
+    "tsr_s0": 0.33,
+    "tsr_s1": 0.0,
+    "tsr_s2": 1.0,
+    "tsr_s3": 1.0,
+    "stale_degradation": 0.33,
+    "memory_lift": 0.67,
+    "max_solvability": 1.0,
+    "classification": "TRACK_A_STALE_SENSITIVE",
+    "conditions": {
+      "S0": {
+        "tsr": 0.33,
+        "passes": [
+          false,
+          false,
+          true
+        ],
+        "n_runs": 3
+      },
+      "S1": {
+        "tsr": 0.0,
+        "passes": [
+          false,
+          false,
+          false
+        ],
+        "n_runs": 3
+      },
+      "S2": {
+        "tsr": 1.0,
+        "passes": [
+          true,
+          true,
+          true
+        ],
+        "n_runs": 3
+      },
+      "S3": {
+        "tsr": 1.0,
+        "passes": [
+          true,
+          true,
+          true
+        ],
+        "n_runs": 3
+      }
+    }
+  },
+  {
+    "task_id": "trans_gold_flask_02_should_ignore_error",
+    "track": "B",
+    "repo_name": "pallets/flask",
+    "tsr_s0": 1.0,
+    "tsr_s1": 1.0,
+    "tsr_s2": 1.0,
+    "tsr_s3": 1.0,
+    "stale_degradation": 0.0,
+    "memory_lift": 0.0,
+    "max_solvability": 1.0,
+    "classification": "NOT_MEMORY_REQUIRED",
+    "conditions": {
+      "S0": {
+        "tsr": 1.0,
+        "passes": [
+          true,
+          true,
+          true
+        ],
+        "n_runs": 3
+      },
+      "S1": {
+        "tsr": 1.0,
+        "passes": [
+          true,
+          true,
+          true
+        ],
+        "n_runs": 3
+      },
+      "S2": {
+        "tsr": 1.0,
+        "passes": [
+          true,
+          true,
+          true
+        ],
+        "n_runs": 3
+      },
+      "S3": {
+        "tsr": 1.0,
+        "passes": [
+          true,
+          true,
+          true
+        ],
+        "n_runs": 3
+      }
+    }
+  },
+  {
+    "task_id": "trans_gold_urllib3_01_retry_allowed_methods",
+    "track": "A",
+    "repo_name": "urllib3/urllib3",
+    "tsr_s0": 1.0,
+    "tsr_s1": 1.0,
+    "tsr_s2": 0.0,
+    "tsr_s3": 0.0,
+    "stale_degradation": 0.0,
+    "memory_lift": -1.0,
+    "max_solvability": 1.0,
+    "classification": "TRACK_A_API_EVOLUTION",
+    "conditions": {
+      "S0": {
+        "tsr": 1.0,
+        "passes": [
+          true,
+          true,
+          true
+        ],
+        "n_runs": 3
+      },
+      "S1": {
+        "tsr": 1.0,
+        "passes": [
+          true,
+          true,
+          true
+        ],
+        "n_runs": 3
+      },
+      "S2": {
+        "tsr": 0.0,
+        "passes": [
+          false,
+          false,
+          false
+        ],
+        "n_runs": 3
+      },
+      "S3": {
+        "tsr": 0.0,
+        "passes": [
+          false,
+          false,
+          false
+        ],
+        "n_runs": 3
+      }
+    }
+  },
+  {
+    "task_id": "trans_gold_urllib3_02_empty_allowed_methods",
+    "track": "B",
+    "repo_name": "urllib3/urllib3",
+    "tsr_s0": 0.0,
+    "tsr_s1": 0.0,
+    "tsr_s2": 0.0,
+    "tsr_s3": 0.0,
+    "stale_degradation": 0.0,
+    "memory_lift": 0.0,
+    "max_solvability": 0.0,
+    "classification": "TASK_TOO_HARD",
+    "conditions": {
+      "S0": {
+        "tsr": 0.0,
+        "passes": [
+          false,
+          false,
+          false
+        ],
+        "n_runs": 3
+      },
+      "S1": {
+        "tsr": 0.0,
+        "passes": [
+          false,
+          false,
+          false
+        ],
+        "n_runs": 3
+      },
+      "S2": {
+        "tsr": 0.0,
+        "passes": [
+          false,
+          false,
+          false
+        ],
+        "n_runs": 3
+      },
+      "S3": {
+        "tsr": 0.0,
+        "passes": [
+          false,
+          false,
+          false
+        ],
+        "n_runs": 3
+      }
+    }
+  }
+]

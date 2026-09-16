@@ -1,0 +1,127 @@
+{
+  "transition_id": "trans_gold_werkzeug_02_environ_properties",
+  "repo_name": "pallets/werkzeug",
+  "track": "A",
+  "overall_status": "ACCEPT",
+  "gates": {
+    "commit_verification": "PASS",
+    "causality_status": "CAUSALITY_PASS",
+    "original_test_verification": "PASS",
+    "original_test_required": true,
+    "original_test_passed_gate": true,
+    "hidden_test_verification": "PASS",
+    "fixture_control_verification": "PASS",
+    "snapshot_hash_verification": "PASS",
+    "metadata_ground_truth_verification": "PASS"
+  },
+  "commit_details": {
+    "base_commit": {
+      "verified": true,
+      "commit_sha": "f97c305673ba121a1dae6764c37e8be48907a1d1",
+      "full_sha": "f97c305673ba121a1dae6764c37e8be48907a1d1",
+      "message": "deprecate UserAgent (#3273)",
+      "parents": [
+        "a33190bffb7f6dd4c7084c08257b4542689b8c66",
+        "50bf1e92af0b1acbc00aacd044e4f6b10b7787bf"
+      ],
+      "source": "local_git_cache"
+    },
+    "history_commit": {
+      "verified": true,
+      "commit_sha": "f97c305673ba121a1dae6764c37e8be48907a1d1",
+      "full_sha": "f97c305673ba121a1dae6764c37e8be48907a1d1",
+      "message": "deprecate UserAgent (#3273)",
+      "parents": [
+        "a33190bffb7f6dd4c7084c08257b4542689b8c66",
+        "50bf1e92af0b1acbc00aacd044e4f6b10b7787bf"
+      ],
+      "source": "local_git_cache"
+    },
+    "transition_commit": {
+      "verified": true,
+      "commit_sha": "7641d4990f06d583425a4e6ba25e9d2f18934885",
+      "full_sha": "7641d4990f06d583425a4e6ba25e9d2f18934885",
+      "message": "deprecate environ properties (#3276)",
+      "parents": [
+        "f97c305673ba121a1dae6764c37e8be48907a1d1",
+        "2f2625fefdaead837c5433e44d5fe86972d013dd"
+      ],
+      "source": "local_git_cache"
+    },
+    "target_commit": {
+      "verified": true,
+      "commit_sha": "7641d4990f06d583425a4e6ba25e9d2f18934885",
+      "full_sha": "7641d4990f06d583425a4e6ba25e9d2f18934885",
+      "message": "deprecate environ properties (#3276)",
+      "parents": [
+        "f97c305673ba121a1dae6764c37e8be48907a1d1",
+        "2f2625fefdaead837c5433e44d5fe86972d013dd"
+      ],
+      "source": "local_git_cache"
+    }
+  },
+  "causality_details": {
+    "causality_status": "CAUSALITY_PASS",
+    "base_commit": "f97c305673ba121a1dae6764c37e8be48907a1d1",
+    "target_commit": "7641d4990f06d583425a4e6ba25e9d2f18934885",
+    "diff_lines": 259,
+    "assertions": [
+      {
+        "artifact": "src/werkzeug/utils.py",
+        "symbol": "environ_property",
+        "expected_base": "exists_active",
+        "actual_base": "exists_active",
+        "expected_target": "deprecated_warn",
+        "actual_target": "deprecated_warn",
+        "passed": true
+      }
+    ]
+  },
+  "original_test_details": {
+    "status": "PASS",
+    "rel_path": "tests/test_utils.py",
+    "test_node": "test_environ_property",
+    "target_commit": "7641d4990f06d583425a4e6ba25e9d2f18934885",
+    "verified_in_git": true
+  },
+  "hidden_test_details": {
+    "status": "PASS",
+    "test_file": "/code/rolemem-agent-memory/fixtures_v2/trans_gold_werkzeug_02_environ_properties/hidden_tests/test_evaluation.py",
+    "lines": 19
+  },
+  "control_details": {
+    "status": "PASS",
+    "stale_pass": true,
+    "valid_pass": true,
+    "control_status": "PASS"
+  },
+  "snapshot_details": {
+    "status": "PASS",
+    "verified_files": 2
+  },
+  "ground_truth_details": {
+    "transition_id": "trans_gold_werkzeug_02_environ_properties",
+    "repo_name": "pallets/werkzeug",
+    "pr_url": "https://github.com/pallets/werkzeug/pull/3276",
+    "issue_url": "https://github.com/pallets/werkzeug/issues/3276",
+    "pr_title": "deprecate environ properties",
+    "base_commit": "f97c305673ba121a1dae6764c37e8be48907a1d1",
+    "target_commit": "7641d4990f06d583425a4e6ba25e9d2f18934885",
+    "git_cache_path": "/code/repo_cache/werkzeug",
+    "base_commit_exists": true,
+    "target_commit_exists": true,
+    "pr_number_matched_in_git": true,
+    "pr_title_matched_in_git": true,
+    "changed_files_verified": true,
+    "git_diff_files": [
+      "CHANGES.rst",
+      "src/werkzeug/test.py",
+      "src/werkzeug/utils.py",
+      "src/werkzeug/wrappers/request.py",
+      "tests/test_utils.py"
+    ],
+    "git_commit_log": "deprecate environ properties (#3276)\ndeprecate environ properties",
+    "external_ground_truth_status": "PASS",
+    "errors": []
+  }
+}

@@ -59,5 +59,7 @@
     "overlay_reason": null,
     "overlay_sha256": null,
     "affected_files": []
-  }
+  },
+  "pr_title": "deprecate should_ignore_error",
+  "original_test_required": true
 }

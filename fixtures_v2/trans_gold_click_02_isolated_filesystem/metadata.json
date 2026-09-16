@@ -6,8 +6,8 @@
   "language": "Python",
   "track_candidate": "B",
   "task_family": "api_evolution",
-  "pr_url": "https://github.com/pallets/click/pull/2041",
-  "issue_url": "https://github.com/pallets/click/issues/2040",
+  "pr_url": "https://github.com/pallets/click/pull/3704",
+  "issue_url": "https://github.com/pallets/click/issues/3704",
   "base_commit": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
   "history_commit": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
   "transition_commit": "cfa01eeb7894a408af70b29d28c0b24f8680f9fb",
@@ -24,9 +24,9 @@
   "current_task": "Implement `run_in_isolated_dir(runner, custom_dir)` in `test_isolation.py` passing custom temp_dir.",
   "target_file": "test_isolation.py",
   "target_symbol": "run_in_isolated_dir",
-  "existing_tests": "tests/test_testing.py::test_isolated_filesystem",
+  "existing_tests": "tests/test_testing.py::test_isolated_runner_custom_tempdir",
   "generated_tests": "def test_run_in_isolated_dir():\n    import os\n    from test_isolation import run_in_isolated_dir\n    orig_cwd = os.getcwd()\n    def worker():\n        return os.getcwd()\n    path = run_in_isolated_dir(worker)\n    assert path != orig_cwd\n    assert not os.path.exists(path)",
-  "test_evidence_source": "Click PR #2041 signature update and tests",
+  "test_evidence_source": "Click PR #3704 signature update and tests",
   "difficulty": "medium",
   "leakage_review": "PASS",
   "benchmark_status": "PROVISIONAL_GOLD_V2",
@@ -53,5 +53,7 @@
     "overlay_reason": null,
     "overlay_sha256": null,
     "affected_files": []
-  }
+  },
+  "pr_title": "Deprecate `isolated_filesystem` and document its limits",
+  "original_test_required": true
 }

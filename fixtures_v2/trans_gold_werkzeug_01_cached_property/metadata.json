@@ -53,5 +53,7 @@
     "overlay_reason": null,
     "overlay_sha256": null,
     "affected_files": []
-  }
+  },
+  "pr_title": "del invalidates cached_property",
+  "original_test_required": true
 }

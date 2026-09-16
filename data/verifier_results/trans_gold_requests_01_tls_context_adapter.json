@@ -1,0 +1,121 @@
+{
+  "transition_id": "trans_gold_requests_01_tls_context_adapter",
+  "repo_name": "psf/requests",
+  "track": "A",
+  "overall_status": "ACCEPT",
+  "gates": {
+    "commit_verification": "PASS",
+    "causality_status": "CAUSALITY_PASS",
+    "original_test_verification": "PASS",
+    "original_test_required": true,
+    "original_test_passed_gate": true,
+    "hidden_test_verification": "PASS",
+    "fixture_control_verification": "PASS",
+    "snapshot_hash_verification": "PASS",
+    "metadata_ground_truth_verification": "PASS"
+  },
+  "commit_details": {
+    "base_commit": {
+      "verified": true,
+      "commit_sha": "970e8cec988421bd43da57350723b05c8ce8dc7e",
+      "full_sha": "970e8cec988421bd43da57350723b05c8ce8dc7e",
+      "message": "v2.32.1",
+      "parents": [
+        "d6ebc4a2f1f68b7e355fb7e4dd5ffc0845547f9f"
+      ],
+      "source": "local_git_cache"
+    },
+    "history_commit": {
+      "verified": true,
+      "commit_sha": "970e8cec988421bd43da57350723b05c8ce8dc7e",
+      "full_sha": "970e8cec988421bd43da57350723b05c8ce8dc7e",
+      "message": "v2.32.1",
+      "parents": [
+        "d6ebc4a2f1f68b7e355fb7e4dd5ffc0845547f9f"
+      ],
+      "source": "local_git_cache"
+    },
+    "transition_commit": {
+      "verified": true,
+      "commit_sha": "c98e4d133ef29c46a9b68cd783087218a8075e05",
+      "full_sha": "c98e4d133ef29c46a9b68cd783087218a8075e05",
+      "message": "Merge pull request #6710 from nateprewitt/api_rename",
+      "parents": [
+        "970e8cec988421bd43da57350723b05c8ce8dc7e",
+        "92075b330a30b9883f466a43d3f7566ab849f91b"
+      ],
+      "source": "local_git_cache"
+    },
+    "target_commit": {
+      "verified": true,
+      "commit_sha": "c98e4d133ef29c46a9b68cd783087218a8075e05",
+      "full_sha": "c98e4d133ef29c46a9b68cd783087218a8075e05",
+      "message": "Merge pull request #6710 from nateprewitt/api_rename",
+      "parents": [
+        "970e8cec988421bd43da57350723b05c8ce8dc7e",
+        "92075b330a30b9883f466a43d3f7566ab849f91b"
+      ],
+      "source": "local_git_cache"
+    }
+  },
+  "causality_details": {
+    "causality_status": "CAUSALITY_PASS",
+    "base_commit": "970e8cec988421bd43da57350723b05c8ce8dc7e",
+    "target_commit": "c98e4d133ef29c46a9b68cd783087218a8075e05",
+    "diff_lines": 76,
+    "assertions": [
+      {
+        "artifact": "src/requests/adapters.py",
+        "symbol": "_get_connection",
+        "expected_base": "exists_active",
+        "actual_base": "exists_active",
+        "expected_target": "removed",
+        "actual_target": "removed",
+        "passed": true
+      }
+    ]
+  },
+  "original_test_details": {
+    "status": "PASS",
+    "rel_path": "tests/test_adapters.py",
+    "test_node": "test_request_url_trims_leading_path_separators",
+    "target_commit": "c98e4d133ef29c46a9b68cd783087218a8075e05",
+    "verified_in_git": true
+  },
+  "hidden_test_details": {
+    "status": "PASS",
+    "test_file": "/code/rolemem-agent-memory/fixtures_v2/trans_gold_requests_01_tls_context_adapter/hidden_tests/test_evaluation.py",
+    "lines": 20
+  },
+  "control_details": {
+    "status": "PASS",
+    "stale_pass": true,
+    "valid_pass": true,
+    "control_status": "PASS"
+  },
+  "snapshot_details": {
+    "status": "PASS",
+    "verified_files": 1
+  },
+  "ground_truth_details": {
+    "transition_id": "trans_gold_requests_01_tls_context_adapter",
+    "repo_name": "psf/requests",
+    "pr_url": "https://github.com/psf/requests/pull/6710",
+    "issue_url": "https://github.com/psf/requests/issues/6710",
+    "pr_title": "Move _get_connection to get_connection_with_tls_context",
+    "base_commit": "970e8cec988421bd43da57350723b05c8ce8dc7e",
+    "target_commit": "c98e4d133ef29c46a9b68cd783087218a8075e05",
+    "git_cache_path": "/code/repo_cache/requests",
+    "base_commit_exists": true,
+    "target_commit_exists": true,
+    "pr_number_matched_in_git": true,
+    "pr_title_matched_in_git": true,
+    "changed_files_verified": true,
+    "git_diff_files": [
+      "src/requests/adapters.py"
+    ],
+    "git_commit_log": "Merge pull request #6710 from nateprewitt/api_rename\n\nMove _get_connection to get_connection_with_tls_context\nAdd deprecation warning\n\nMove _get_connection to get_connection_with_tls_context",
+    "external_ground_truth_status": "PASS",
+    "errors": []
+  }
+}
