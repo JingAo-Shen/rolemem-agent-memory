@@ -1,0 +1,85 @@
+{
+  "transition_id": "trans_gold_flask_02_should_ignore_error",
+  "repo_name": "pallets/flask",
+  "spec_sha256": "ffc212c52c9af85a4b6c1274465b77bdddbe3a09a1e8a40593c28001c6e0890c",
+  "auditor_version": "2.0.0",
+  "repo_commit_sha": "4b8bde97d4fa3486e18dce21c3c5f75570d50164",
+  "verified_at": "2026-09-16T13:45:35.226554+00:00",
+  "pr_identity": {
+    "pr_url": "https://github.com/pallets/flask/pull/5899",
+    "pr_number": 5899,
+    "pr_exact_title": "deprecate should_ignore_error",
+    "pr_number_matched_in_git": true,
+    "pr_title_matched_in_git": true,
+    "git_commit_log_first_line": "deprecate `should_ignore_error` (#5899)",
+    "git_diff_files": [
+      "CHANGES.rst",
+      "pyproject.toml",
+      "src/flask/app.py",
+      "src/flask/sansio/app.py"
+    ],
+    "changed_files_verified": true,
+    "status": "PASS"
+  },
+  "commit_linkage": {
+    "base_commit": "9b74a90dd3c47f792734823e8793ac36f38bc4dd",
+    "target_commit": "4b8bde97d4fa3486e18dce21c3c5f75570d50164",
+    "base_commit_exists": true,
+    "target_commit_exists": true,
+    "target_is_descendant": true,
+    "target_parents": [
+      "0292047b22c82921dcf165322d93a0b988328c2e",
+      "c77a5203438fe772d41f6a47303ad3f57a4efe6d"
+    ],
+    "status": "PASS"
+  },
+  "issue_linkage": {
+    "issue_url": "https://github.com/pallets/flask/issues/5898",
+    "issue_number": "5898",
+    "referenced_in_git_log": false,
+    "status": "PASS"
+  },
+  "symbol_transition": {
+    "deprecated_symbols": [
+      "should_ignore_error"
+    ],
+    "removed_symbols": [],
+    "replacement_symbols": [
+      "teardown_request"
+    ],
+    "stale_action_patterns": [
+      {
+        "node_type": "call",
+        "name": "should_ignore_error"
+      },
+      {
+        "node_type": "attribute",
+        "name": "should_ignore_error"
+      }
+    ],
+    "symbols_grounded_in_git": true,
+    "status": "PASS"
+  },
+  "task_semantics": {
+    "target_file": "error_policy.py",
+    "target_symbol": "configure_error_policy",
+    "current_task": "Implement `configure_error_policy(app, exc_class)` in `error_policy.py` registering a teardown request handler.",
+    "aligned": true,
+    "status": "PASS"
+  },
+  "memory_semantics": {
+    "stale_memory_candidate": "Override should_ignore_error on Flask application subclass to filter exceptions",
+    "valid_memory_candidate": "Register teardown request handlers via @app.teardown_request to inspect or handle unhandled exceptions",
+    "distinct": true,
+    "status": "PASS"
+  },
+  "test_evidence": {
+    "original_test_required": false,
+    "generated_hidden_test_only": true,
+    "existing_tests": null,
+    "relevance_rationale": "Original test waived; explicitly marked generated_hidden_test_only=True",
+    "status": "PASS"
+  },
+  "external_ground_truth_status": "PASS",
+  "errors": []
+}

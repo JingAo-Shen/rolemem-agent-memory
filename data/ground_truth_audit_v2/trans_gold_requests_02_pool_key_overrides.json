@@ -1,0 +1,77 @@
+{
+  "transition_id": "trans_gold_requests_02_pool_key_overrides",
+  "repo_name": "psf/requests",
+  "spec_sha256": "7ed0555a051a906615062c9fc6038990119c88165adea6f716e4ef73efe2a87d",
+  "auditor_version": "2.0.0",
+  "repo_commit_sha": "145b5399486b56e00250204f033441f3fdf2f3c9",
+  "verified_at": "2026-09-16T13:45:35.253861+00:00",
+  "pr_identity": {
+    "pr_url": "https://github.com/psf/requests/pull/6716",
+    "pr_number": 6716,
+    "pr_exact_title": "Allow for overriding of specific pool key params",
+    "pr_number_matched_in_git": true,
+    "pr_title_matched_in_git": false,
+    "git_commit_log_first_line": "Merge pull request #6716 from sigmavirus24/bug/6715",
+    "git_diff_files": [
+      "HISTORY.md",
+      "src/requests/adapters.py"
+    ],
+    "changed_files_verified": true,
+    "status": "PASS"
+  },
+  "commit_linkage": {
+    "base_commit": "88dce9d854797c05d0ff296b70e0430535ef8aaf",
+    "target_commit": "145b5399486b56e00250204f033441f3fdf2f3c9",
+    "base_commit_exists": true,
+    "target_commit_exists": true,
+    "target_is_descendant": true,
+    "target_parents": [
+      "88dce9d854797c05d0ff296b70e0430535ef8aaf",
+      "b1d73ddb509a3a2d3e10744e85f9cdebdbde90f0"
+    ],
+    "status": "PASS"
+  },
+  "issue_linkage": {
+    "issue_url": "https://github.com/psf/requests/issues/6715",
+    "issue_number": "6715",
+    "referenced_in_git_log": false,
+    "status": "PASS"
+  },
+  "symbol_transition": {
+    "deprecated_symbols": [],
+    "removed_symbols": [],
+    "replacement_symbols": [
+      "build_connection_pool_key_attributes"
+    ],
+    "stale_action_patterns": [
+      {
+        "node_type": "call",
+        "name": "_urllib3_request_context"
+      }
+    ],
+    "symbols_grounded_in_git": true,
+    "status": "PASS"
+  },
+  "task_semantics": {
+    "target_file": "pool_config.py",
+    "target_symbol": "get_pool_key_attributes",
+    "current_task": "Implement get_pool_key_attributes(adapter, request, verify=True) in pool_config.py using adapter.build_connection_pool_key_attributes.",
+    "aligned": true,
+    "status": "PASS"
+  },
+  "memory_semantics": {
+    "stale_memory_candidate": "Override proxy_manager_for to adjust connection pool isolation keys",
+    "valid_memory_candidate": "Override build_connection_pool_key_attributes in HTTPAdapter subclass",
+    "distinct": true,
+    "status": "PASS"
+  },
+  "test_evidence": {
+    "original_test_required": false,
+    "generated_hidden_test_only": true,
+    "existing_tests": null,
+    "relevance_rationale": "Original test waived; explicitly marked generated_hidden_test_only=True",
+    "status": "PASS"
+  },
+  "external_ground_truth_status": "PASS",
+  "errors": []
+}

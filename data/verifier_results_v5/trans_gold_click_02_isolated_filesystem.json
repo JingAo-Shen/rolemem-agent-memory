@@ -1,0 +1,212 @@
+{
+  "transition_id": "trans_gold_click_02_isolated_filesystem",
+  "overall_status": "ACCEPT",
+  "gates": {
+    "gate1_commit_verification": "PASS",
+    "gate2_causality_verification": "CAUSALITY_PASS",
+    "gate3_test_evidence_verification": "PASS",
+    "gate4_hidden_test_verification": "PASS",
+    "gate5_fixture_control_verification": "PASS",
+    "gate6_snapshot_hash_verification": "PASS",
+    "gate7_external_ground_truth_v2": "PASS",
+    "gate8_semantic_coherence_verification": "PASS",
+    "causal_counterfactual_verification": "PASS"
+  },
+  "ground_truth_v2": {
+    "status": "PASS",
+    "source": "cache_valid",
+    "details": {
+      "transition_id": "trans_gold_click_02_isolated_filesystem",
+      "repo_name": "pallets/click",
+      "spec_sha256": "9716ca4f1082ccb84ed9018ed1e5996742c0adb659eff968c661e12e7b114cbf",
+      "auditor_version": "2.0.0",
+      "repo_commit_sha": "cfa01eeb7894a408af70b29d28c0b24f8680f9fb",
+      "verified_at": "2026-09-16T13:45:35.193869+00:00",
+      "pr_identity": {
+        "pr_url": "https://github.com/pallets/click/pull/3704",
+        "pr_number": 3704,
+        "pr_exact_title": "Deprecate `isolated_filesystem` and document its limits",
+        "pr_number_matched_in_git": true,
+        "pr_title_matched_in_git": true,
+        "git_commit_log_first_line": "Deprecate `isolated_filesystem` and document its limits (#3704)",
+        "git_diff_files": [
+          "CHANGES.md",
+          "docs/testing.md",
+          "docs/upgrade-guides.md",
+          "src/click/testing.py",
+          "tests/test_arguments.py",
+          "tests/test_basic.py",
+          "tests/test_deprecations.py",
+          "tests/test_shell_completion.py",
+          "tests/test_testing.py",
+          "tests/test_utils/test_open_file.py"
+        ],
+        "changed_files_verified": true,
+        "status": "PASS"
+      },
+      "commit_linkage": {
+        "base_commit": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+        "target_commit": "cfa01eeb7894a408af70b29d28c0b24f8680f9fb",
+        "base_commit_exists": true,
+        "target_commit_exists": true,
+        "target_is_descendant": true,
+        "target_parents": [
+          "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+          "c2ed41490baa08002714ab79afa4a41f2d67c02c"
+        ],
+        "status": "PASS"
+      },
+      "issue_linkage": {
+        "issue_url": "https://github.com/pallets/click/issues/3704",
+        "issue_number": "3704",
+        "referenced_in_git_log": true,
+        "status": "PASS"
+      },
+      "symbol_transition": {
+        "deprecated_symbols": [
+          "CliRunner.isolated_filesystem",
+          "isolated_filesystem"
+        ],
+        "removed_symbols": [],
+        "replacement_symbols": [
+          "pytest.tmp_path",
+          "tmp_path"
+        ],
+        "stale_action_patterns": [
+          {
+            "node_type": "call",
+            "name": "isolated_filesystem"
+          },
+          {
+            "node_type": "attribute",
+            "name": "isolated_filesystem"
+          }
+        ],
+        "symbols_grounded_in_git": true,
+        "status": "PASS"
+      },
+      "task_semantics": {
+        "target_file": "test_workspace_helper.py",
+        "target_symbol": "setup_test_workspace",
+        "current_task": "Implement `setup_test_workspace(tmp_path)` in `test_workspace_helper.py` providing an isolated directory path for test files using pytest tmp_path without calling deprecated isolated_filesystem.",
+        "aligned": true,
+        "status": "PASS"
+      },
+      "memory_semantics": {
+        "stale_memory_candidate": "Use CliRunner.isolated_filesystem for filesystem-isolated tests.",
+        "valid_memory_candidate": "Use pytest tmp_path / tmp_path_factory rather than CliRunner.isolated_filesystem.",
+        "distinct": true,
+        "status": "PASS"
+      },
+      "test_evidence": {
+        "original_test_required": true,
+        "generated_hidden_test_only": false,
+        "existing_tests": "tests/test_deprecations.py::test_isolated_filesystem_deprecated",
+        "relevance_rationale": "Test in diff: True, references symbol: True",
+        "status": "PASS"
+      },
+      "external_ground_truth_status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_coherence": {
+    "status": "PASS",
+    "details": {
+      "transition_id": "trans_gold_click_02_isolated_filesystem",
+      "overall_status": "PASS",
+      "layers": {
+        "pr_vs_repo_change": {
+          "status": "PASS",
+          "repository_change": "Deprecate isolated_filesystem in CliRunner in favor of pytest tmp_path or tempfile.TemporaryDirectory",
+          "symbols_checked": [
+            "isolated_filesystem",
+            "isolated_filesystem",
+            "isolated_filesystem",
+            "tmp_path",
+            "tmp_path"
+          ]
+        },
+        "repo_change_vs_causality": {
+          "status": "PASS",
+          "assertions": [
+            {
+              "artifact": "src/click/testing.py",
+              "symbol": "isolated_filesystem",
+              "base_state": "exists_active",
+              "target_state": "deprecated_warn"
+            }
+          ]
+        },
+        "memory_distinctness": {
+          "status": "PASS",
+          "stale_memory": "Use CliRunner.isolated_filesystem for filesystem-isolated tests.",
+          "valid_memory": "Use pytest tmp_path / tmp_path_factory rather than CliRunner.isolated_filesystem."
+        },
+        "task_vs_target": {
+          "status": "PASS",
+          "task": "Implement `setup_test_workspace(tmp_path)` in `test_workspace_helper.py` providing an isolated directory path for test files using pytest tmp_path without calling deprecated isolated_filesystem.",
+          "target_file": "test_workspace_helper.py",
+          "target_symbol": "setup_test_workspace",
+          "file_in_task": true,
+          "sym_in_task": true
+        },
+        "hidden_test_coherence": {
+          "status": "PASS",
+          "expected_module": "test_workspace_helper",
+          "expected_symbol": "setup_test_workspace",
+          "detected_imports": [
+            [
+              "",
+              "os"
+            ],
+            [
+              "",
+              "sys"
+            ],
+            [
+              "",
+              "pathlib"
+            ],
+            [
+              "",
+              "warnings"
+            ],
+            [
+              "",
+              "pytest"
+            ],
+            [
+              "test_workspace_helper",
+              "setup_test_workspace"
+            ]
+          ]
+        },
+        "controls_definition_coherence": {
+          "status": "PASS",
+          "stale_defines_target": true,
+          "valid_defines_target": true,
+          "stale_defs": [
+            "setup_test_workspace"
+          ],
+          "valid_defs": [
+            "setup_test_workspace"
+          ]
+        }
+      },
+      "errors": []
+    }
+  },
+  "causal_counterfactual": {
+    "status": "PASS",
+    "causality_status": "CAUSAL_PASS",
+    "matrix": {
+      "stale_on_base": true,
+      "stale_on_target": false,
+      "valid_on_base": true,
+      "valid_on_target": true
+    },
+    "rationale": "Deprecation transition: stale valid on base, deprecated/failing on target"
+  },
+  "environment_verification": "FAIL",
+  "spec_sha256": "9716ca4f1082ccb84ed9018ed1e5996742c0adb659eff968c661e12e7b114cbf"
+}

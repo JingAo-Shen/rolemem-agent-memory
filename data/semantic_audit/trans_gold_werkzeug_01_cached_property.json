@@ -1,0 +1,82 @@
+{
+  "transition_id": "trans_gold_werkzeug_01_cached_property",
+  "overall_status": "PASS",
+  "layers": {
+    "pr_vs_repo_change": {
+      "status": "PASS",
+      "repository_change": "Deprecate invalidate_cached_property in favor of del obj.prop and descriptor deletion",
+      "symbols_checked": [
+        "invalidate_cached_property",
+        "invalidate_cached_property",
+        "delattr"
+      ]
+    },
+    "repo_change_vs_causality": {
+      "status": "PASS",
+      "assertions": [
+        {
+          "artifact": "src/werkzeug/utils.py",
+          "symbol": "invalidate_cached_property",
+          "base_state": "exists_active",
+          "target_state": "deprecated_warn"
+        }
+      ]
+    },
+    "memory_distinctness": {
+      "status": "PASS",
+      "stale_memory": "Use invalidate_cached_property(instance, attr_name) to clear cached properties",
+      "valid_memory": "Use delattr(instance, attr_name) or del instance.prop to clear cached properties"
+    },
+    "task_vs_target": {
+      "status": "PASS",
+      "task": "Implement `reset_cached_attribute(instance, attr_name)` in `property_helper.py` to clear a cached property.",
+      "target_file": "property_helper.py",
+      "target_symbol": "reset_cached_attribute",
+      "file_in_task": true,
+      "sym_in_task": true
+    },
+    "hidden_test_coherence": {
+      "status": "PASS",
+      "expected_module": "property_helper",
+      "expected_symbol": "reset_cached_attribute",
+      "detected_imports": [
+        [
+          "",
+          "pytest"
+        ],
+        [
+          "",
+          "warnings"
+        ],
+        [
+          "",
+          "sys"
+        ],
+        [
+          "",
+          "os"
+        ],
+        [
+          "werkzeug.utils",
+          "cached_property"
+        ],
+        [
+          "property_helper",
+          "reset_cached_attribute"
+        ]
+      ]
+    },
+    "controls_definition_coherence": {
+      "status": "PASS",
+      "stale_defines_target": true,
+      "valid_defines_target": true,
+      "stale_defs": [
+        "reset_cached_attribute"
+      ],
+      "valid_defs": [
+        "reset_cached_attribute"
+      ]
+    }
+  },
+  "errors": []
+}

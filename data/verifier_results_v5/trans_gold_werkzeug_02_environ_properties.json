@@ -1,0 +1,197 @@
+{
+  "transition_id": "trans_gold_werkzeug_02_environ_properties",
+  "overall_status": "ACCEPT",
+  "gates": {
+    "gate1_commit_verification": "PASS",
+    "gate2_causality_verification": "CAUSALITY_PASS",
+    "gate3_test_evidence_verification": "PASS",
+    "gate4_hidden_test_verification": "PASS",
+    "gate5_fixture_control_verification": "PASS",
+    "gate6_snapshot_hash_verification": "PASS",
+    "gate7_external_ground_truth_v2": "PASS",
+    "gate8_semantic_coherence_verification": "PASS",
+    "causal_counterfactual_verification": "PASS"
+  },
+  "ground_truth_v2": {
+    "status": "PASS",
+    "source": "cache_valid",
+    "details": {
+      "transition_id": "trans_gold_werkzeug_02_environ_properties",
+      "repo_name": "pallets/werkzeug",
+      "spec_sha256": "787dfacd9de5e3337e776c62c35c3f285ac050b00caac2f64046d0f6b33d9167",
+      "auditor_version": "2.0.0",
+      "repo_commit_sha": "7641d4990f06d583425a4e6ba25e9d2f18934885",
+      "verified_at": "2026-09-16T13:45:35.331187+00:00",
+      "pr_identity": {
+        "pr_url": "https://github.com/pallets/werkzeug/pull/3276",
+        "pr_number": 3276,
+        "pr_exact_title": "deprecate environ properties",
+        "pr_number_matched_in_git": true,
+        "pr_title_matched_in_git": true,
+        "git_commit_log_first_line": "deprecate environ properties (#3276)",
+        "git_diff_files": [
+          "CHANGES.rst",
+          "src/werkzeug/test.py",
+          "src/werkzeug/utils.py",
+          "src/werkzeug/wrappers/request.py",
+          "tests/test_utils.py"
+        ],
+        "changed_files_verified": true,
+        "status": "PASS"
+      },
+      "commit_linkage": {
+        "base_commit": "f97c305673ba121a1dae6764c37e8be48907a1d1",
+        "target_commit": "7641d4990f06d583425a4e6ba25e9d2f18934885",
+        "base_commit_exists": true,
+        "target_commit_exists": true,
+        "target_is_descendant": true,
+        "target_parents": [
+          "f97c305673ba121a1dae6764c37e8be48907a1d1",
+          "2f2625fefdaead837c5433e44d5fe86972d013dd"
+        ],
+        "status": "PASS"
+      },
+      "issue_linkage": {
+        "issue_url": "https://github.com/pallets/werkzeug/issues/3276",
+        "issue_number": "3276",
+        "referenced_in_git_log": true,
+        "status": "PASS"
+      },
+      "symbol_transition": {
+        "deprecated_symbols": [
+          "environ_property"
+        ],
+        "removed_symbols": [],
+        "replacement_symbols": [
+          "werkzeug.sansio.utils.environ_property"
+        ],
+        "stale_action_patterns": [
+          {
+            "node_type": "import",
+            "name": "environ_property",
+            "module": "werkzeug.utils"
+          }
+        ],
+        "symbols_grounded_in_git": true,
+        "status": "PASS"
+      },
+      "task_semantics": {
+        "target_file": "wsgi_helper.py",
+        "target_symbol": "extract_wsgi_header",
+        "current_task": "Implement extract_wsgi_header(environ, header_name) in wsgi_helper.py accessing environ without deprecated environ_property.",
+        "aligned": true,
+        "status": "PASS"
+      },
+      "memory_semantics": {
+        "stale_memory_candidate": "Import environ_property directly from werkzeug.utils",
+        "valid_memory_candidate": "Import environ_property from werkzeug.sansio.utils",
+        "distinct": true,
+        "status": "PASS"
+      },
+      "test_evidence": {
+        "original_test_required": true,
+        "generated_hidden_test_only": false,
+        "existing_tests": "tests/test_utils.py::test_environ_property",
+        "relevance_rationale": "Test in diff: True, references symbol: True",
+        "status": "PASS"
+      },
+      "external_ground_truth_status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_coherence": {
+    "status": "PASS",
+    "details": {
+      "transition_id": "trans_gold_werkzeug_02_environ_properties",
+      "overall_status": "PASS",
+      "layers": {
+        "pr_vs_repo_change": {
+          "status": "PASS",
+          "repository_change": "Move environ_property from werkzeug.utils to werkzeug.sansio.utils, deprecating root export",
+          "symbols_checked": [
+            "environ_property",
+            "environ_property",
+            "environ_property"
+          ]
+        },
+        "repo_change_vs_causality": {
+          "status": "PASS",
+          "assertions": [
+            {
+              "artifact": "src/werkzeug/utils.py",
+              "symbol": "environ_property",
+              "base_state": "exists_active",
+              "target_state": "deprecated_warn"
+            }
+          ]
+        },
+        "memory_distinctness": {
+          "status": "PASS",
+          "stale_memory": "Import environ_property directly from werkzeug.utils",
+          "valid_memory": "Import environ_property from werkzeug.sansio.utils"
+        },
+        "task_vs_target": {
+          "status": "PASS",
+          "task": "Implement extract_wsgi_header(environ, header_name) in wsgi_helper.py accessing environ without deprecated environ_property.",
+          "target_file": "wsgi_helper.py",
+          "target_symbol": "extract_wsgi_header",
+          "file_in_task": true,
+          "sym_in_task": true
+        },
+        "hidden_test_coherence": {
+          "status": "PASS",
+          "expected_module": "wsgi_helper",
+          "expected_symbol": "extract_wsgi_header",
+          "detected_imports": [
+            [
+              "",
+              "pytest"
+            ],
+            [
+              "",
+              "warnings"
+            ],
+            [
+              "",
+              "sys"
+            ],
+            [
+              "",
+              "os"
+            ],
+            [
+              "wsgi_helper",
+              "extract_wsgi_header"
+            ]
+          ]
+        },
+        "controls_definition_coherence": {
+          "status": "PASS",
+          "stale_defines_target": true,
+          "valid_defines_target": true,
+          "stale_defs": [
+            "HeaderHolder",
+            "extract_wsgi_header"
+          ],
+          "valid_defs": [
+            "extract_wsgi_header"
+          ]
+        }
+      },
+      "errors": []
+    }
+  },
+  "causal_counterfactual": {
+    "status": "PASS",
+    "causality_status": "CAUSAL_PASS",
+    "matrix": {
+      "stale_on_base": true,
+      "stale_on_target": false,
+      "valid_on_base": true,
+      "valid_on_target": true
+    },
+    "rationale": "Deprecation transition: stale valid on base, deprecated/failing on target"
+  },
+  "environment_verification": "FAIL",
+  "spec_sha256": "787dfacd9de5e3337e776c62c35c3f285ac050b00caac2f64046d0f6b33d9167"
+}

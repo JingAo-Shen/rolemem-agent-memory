@@ -1,0 +1,87 @@
+{
+  "transition_id": "trans_gold_urllib3_02_empty_allowed_methods",
+  "repo_name": "urllib3/urllib3",
+  "spec_sha256": "6322d06fa9355ceb8ba045ceb58b5f20ef347e7e3beef638099dcf1bccfb9e7d",
+  "auditor_version": "2.0.0",
+  "repo_commit_sha": "9a209d21087de10b300b2530de023989a71a3f7e",
+  "verified_at": "2026-09-16T13:45:35.292938+00:00",
+  "pr_identity": {
+    "pr_url": "https://github.com/urllib3/urllib3/pull/5223",
+    "pr_number": 5223,
+    "pr_exact_title": "Deprecate empty collection for retrying all methods",
+    "pr_number_matched_in_git": true,
+    "pr_title_matched_in_git": true,
+    "git_commit_log_first_line": "Deprecate empty collection for retrying all methods (#5223)",
+    "git_diff_files": [
+      "changelog/5044.removal.rst",
+      "changelog/5161.bugfix.rst",
+      "dummyserver/app.py",
+      "src/urllib3/_collections.py",
+      "src/urllib3/connectionpool.py",
+      "src/urllib3/poolmanager.py",
+      "src/urllib3/util/retry.py",
+      "test/test_retry.py",
+      "test/with_dummyserver/test_connectionpool.py",
+      "test/with_dummyserver/test_poolmanager.py"
+    ],
+    "changed_files_verified": true,
+    "status": "PASS"
+  },
+  "commit_linkage": {
+    "base_commit": "a5d70ebfd6a30ceba0e9cc322089a6497dcd643e",
+    "target_commit": "9a209d21087de10b300b2530de023989a71a3f7e",
+    "base_commit_exists": true,
+    "target_commit_exists": true,
+    "target_is_descendant": true,
+    "target_parents": [
+      "adde463f32b7c52727211d10f45ae961650ffd4c"
+    ],
+    "status": "PASS"
+  },
+  "issue_linkage": {
+    "issue_url": "https://github.com/urllib3/urllib3/issues/5223",
+    "issue_number": "5223",
+    "referenced_in_git_log": true,
+    "status": "PASS"
+  },
+  "symbol_transition": {
+    "deprecated_symbols": [
+      "allowed_methods"
+    ],
+    "removed_symbols": [],
+    "replacement_symbols": [
+      "allowed_methods_none"
+    ],
+    "stale_action_patterns": [
+      {
+        "node_type": "keyword",
+        "name": "allowed_methods",
+        "value_type": "empty_collection"
+      }
+    ],
+    "symbols_grounded_in_git": true,
+    "status": "PASS"
+  },
+  "task_semantics": {
+    "target_file": "retry_factory.py",
+    "target_symbol": "create_all_verbs_retry",
+    "current_task": "Implement `create_all_verbs_retry()` in `retry_factory.py` returning a Retry instance configured to retry on all HTTP methods without using deprecated empty collections.",
+    "aligned": true,
+    "status": "PASS"
+  },
+  "memory_semantics": {
+    "stale_memory_candidate": "Pass an empty collection allowed_methods=[] to retry on all HTTP methods",
+    "valid_memory_candidate": "Pass allowed_methods=None to Retry to retry on all HTTP methods without warnings",
+    "distinct": true,
+    "status": "PASS"
+  },
+  "test_evidence": {
+    "original_test_required": true,
+    "generated_hidden_test_only": false,
+    "existing_tests": "test/test_retry.py::test_empty_allowed_methods",
+    "relevance_rationale": "Test in diff: True, references symbol: True",
+    "status": "PASS"
+  },
+  "external_ground_truth_status": "PASS",
+  "errors": []
+}

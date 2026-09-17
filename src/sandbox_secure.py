@@ -88,6 +88,7 @@ class SecureSandboxExecutor:
                 venv_root = os.path.dirname(os.path.abspath(self.custom_env_bin_dir))
                 extra_mounts = ["--ro-bind", venv_root, venv_root]
 
+            pythonpath = f"{tmpdir}:{os.path.join(tmpdir, 'src')}" if os.path.isdir(os.path.join(tmpdir, "src")) else tmpdir
             bwrap_cmd = [
                 self.bwrap_path,
                 "--ro-bind", "/", "/",
@@ -107,7 +108,7 @@ class SecureSandboxExecutor:
                 "--chdir", tmpdir,
                 "--clearenv",
                 "--setenv", "PATH", path_env,
-                "--setenv", "PYTHONPATH", tmpdir,
+                "--setenv", "PYTHONPATH", pythonpath,
                 "--setenv", "LANG", "C.UTF-8",
                 "--setenv", "HOME", "/tmp",
                 "--die-with-parent",

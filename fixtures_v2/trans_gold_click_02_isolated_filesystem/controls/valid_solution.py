@@ -1,12 +1,7 @@
-import tempfile
-import os
+import pathlib
 
-def run_in_isolated_dir(task_fn):
-    # Valid pattern: tempfile.TemporaryDirectory
-    with tempfile.TemporaryDirectory() as tmp_dir:
-        orig = os.getcwd()
-        try:
-            os.chdir(tmp_dir)
-            return task_fn()
-        finally:
-            os.chdir(orig)
+def setup_test_workspace(tmp_path):
+    # Modern pattern: uses pytest tmp_path directly without deprecated isolated_filesystem
+    test_dir = pathlib.Path(tmp_path) / "workspace"
+    test_dir.mkdir(parents=True, exist_ok=True)
+    return test_dir

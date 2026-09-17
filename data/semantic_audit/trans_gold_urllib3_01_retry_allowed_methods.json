@@ -1,0 +1,79 @@
+{
+  "transition_id": "trans_gold_urllib3_01_retry_allowed_methods",
+  "overall_status": "PASS",
+  "layers": {
+    "pr_vs_repo_change": {
+      "status": "PASS",
+      "repository_change": "Deprecate method_whitelist in Retry in favor of allowed_methods",
+      "symbols_checked": [
+        "DEFAULT_ALLOWED_METHODS",
+        "__init__",
+        "method_whitelist",
+        "allowed_methods"
+      ]
+    },
+    "repo_change_vs_causality": {
+      "status": "PASS",
+      "assertions": [
+        {
+          "artifact": "src/urllib3/util/retry.py",
+          "symbol": "DEFAULT_ALLOWED_METHODS",
+          "base_state": "absent",
+          "target_state": "exists_active"
+        }
+      ]
+    },
+    "memory_distinctness": {
+      "status": "PASS",
+      "stale_memory": "Pass method_whitelist to urllib3.util.retry.Retry constructor",
+      "valid_memory": "Pass allowed_methods to urllib3.util.retry.Retry constructor"
+    },
+    "task_vs_target": {
+      "status": "PASS",
+      "task": "Implement `build_custom_retry(methods)` in `retry_factory.py` returning a Retry object with custom methods.",
+      "target_file": "retry_factory.py",
+      "target_symbol": "build_custom_retry",
+      "file_in_task": true,
+      "sym_in_task": true
+    },
+    "hidden_test_coherence": {
+      "status": "PASS",
+      "expected_module": "retry_factory",
+      "expected_symbol": "build_custom_retry",
+      "detected_imports": [
+        [
+          "",
+          "pytest"
+        ],
+        [
+          "",
+          "warnings"
+        ],
+        [
+          "",
+          "sys"
+        ],
+        [
+          "",
+          "os"
+        ],
+        [
+          "retry_factory",
+          "build_custom_retry"
+        ]
+      ]
+    },
+    "controls_definition_coherence": {
+      "status": "PASS",
+      "stale_defines_target": true,
+      "valid_defines_target": true,
+      "stale_defs": [
+        "build_custom_retry"
+      ],
+      "valid_defs": [
+        "build_custom_retry"
+      ]
+    }
+  },
+  "errors": []
+}

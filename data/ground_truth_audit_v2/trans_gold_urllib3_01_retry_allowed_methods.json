@@ -1,0 +1,80 @@
+{
+  "transition_id": "trans_gold_urllib3_01_retry_allowed_methods",
+  "repo_name": "urllib3/urllib3",
+  "spec_sha256": "87feb0a48a23d06803b5407bef2c14bf5696d155de9e2d480643abb2228263e5",
+  "auditor_version": "2.0.0",
+  "repo_commit_sha": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+  "verified_at": "2026-09-16T13:45:35.273055+00:00",
+  "pr_identity": {
+    "pr_url": "https://github.com/urllib3/urllib3/pull/2000",
+    "pr_number": 2000,
+    "pr_exact_title": "Rename Retry options and defaults",
+    "pr_number_matched_in_git": false,
+    "pr_title_matched_in_git": true,
+    "git_commit_log_first_line": "Rename Retry options and defaults",
+    "git_diff_files": [
+      "docs/reference/urllib3.util.rst",
+      "src/urllib3/util/retry.py",
+      "test/test_retry.py",
+      "test/test_retry_deprecated.py"
+    ],
+    "changed_files_verified": true,
+    "status": "PASS"
+  },
+  "commit_linkage": {
+    "base_commit": "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5",
+    "target_commit": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+    "base_commit_exists": true,
+    "target_commit_exists": true,
+    "target_is_descendant": true,
+    "target_parents": [
+      "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5"
+    ],
+    "status": "PASS"
+  },
+  "issue_linkage": {
+    "issue_url": "https://github.com/urllib3/urllib3/issues/2000",
+    "issue_number": "2000",
+    "referenced_in_git_log": false,
+    "status": "PASS"
+  },
+  "symbol_transition": {
+    "deprecated_symbols": [
+      "method_whitelist"
+    ],
+    "removed_symbols": [],
+    "replacement_symbols": [
+      "allowed_methods"
+    ],
+    "stale_action_patterns": [
+      {
+        "node_type": "keyword",
+        "name": "method_whitelist"
+      }
+    ],
+    "symbols_grounded_in_git": true,
+    "status": "PASS"
+  },
+  "task_semantics": {
+    "target_file": "retry_factory.py",
+    "target_symbol": "build_custom_retry",
+    "current_task": "Implement `build_custom_retry(methods)` in `retry_factory.py` returning a Retry object with custom methods.",
+    "aligned": true,
+    "status": "PASS"
+  },
+  "memory_semantics": {
+    "stale_memory_candidate": "Pass method_whitelist to urllib3.util.retry.Retry constructor",
+    "valid_memory_candidate": "Pass allowed_methods to urllib3.util.retry.Retry constructor",
+    "distinct": true,
+    "status": "PASS"
+  },
+  "test_evidence": {
+    "original_test_required": true,
+    "generated_hidden_test_only": false,
+    "existing_tests": "test/test_retry_deprecated.py::test_cls_get_default_method_whitelist",
+    "relevance_rationale": "Test in diff: True, references symbol: True",
+    "status": "PASS"
+  },
+  "external_ground_truth_status": "PASS",
+  "errors": []
+}

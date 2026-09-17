@@ -52,5 +52,22 @@
   "test_evidence_source": "Werkzeug PR #2084 deprecation warning and test_utils.py",
   "difficulty": "medium",
   "leakage_review": "PASS",
-  "benchmark_status": "PROVISIONAL_GOLD_V2"
+  "benchmark_status": "PROVISIONAL_GOLD_V2",
+  "deprecated_symbols": [
+    "invalidate_cached_property"
+  ],
+  "removed_symbols": [],
+  "replacement_symbols": [
+    "delattr"
+  ],
+  "stale_action_patterns": [
+    {
+      "node_type": "call",
+      "name": "invalidate_cached_property"
+    },
+    {
+      "node_type": "attribute",
+      "name": "invalidate_cached_property"
+    }
+  ]
 }

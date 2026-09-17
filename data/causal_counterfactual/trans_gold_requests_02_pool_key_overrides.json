@@ -1,0 +1,18 @@
+{
+  "transition_id": "trans_gold_requests_02_pool_key_overrides",
+  "matrix": {
+    "stale_on_base": false,
+    "stale_on_target": false,
+    "valid_on_base": false,
+    "valid_on_target": true
+  },
+  "causality_status": "CAUSAL_PASS",
+  "is_causal": true,
+  "rationale": "Feature introduction: valid action impossible on base, succeeds on target",
+  "execution_logs": {
+    "stale_base_preview": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_req",
+    "stale_target_preview": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_req",
+    "valid_base_preview": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_req",
+    "valid_target_preview": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_requests_02"
+  }
+}

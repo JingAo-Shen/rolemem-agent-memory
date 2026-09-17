@@ -13,12 +13,26 @@
   "history_commit": "a5d70ebfd6a30ceba0e9cc322089a6497dcd643e",
   "transition_commit": "9a209d21087de10b300b2530de023989a71a3f7e",
   "target_commit": "9a209d21087de10b300b2530de023989a71a3f7e",
-  "repository_change": "Deprecate passing empty collection to allowed_methods in favor of False",
+  "repository_change": "Deprecate passing empty collection to allowed_methods in favor of None",
   "changed_files": [
     "src/urllib3/util/retry.py"
   ],
   "changed_symbols": [
     "Retry.allowed_methods"
+  ],
+  "deprecated_symbols": [
+    "allowed_methods"
+  ],
+  "removed_symbols": [],
+  "replacement_symbols": [
+    "allowed_methods_none"
+  ],
+  "stale_action_patterns": [
+    {
+      "node_type": "keyword",
+      "name": "allowed_methods",
+      "value_type": "empty_collection"
+    }
   ],
   "causality_assertions": [
     {
@@ -44,11 +58,11 @@
     "affected_files": []
   },
   "original_test_required": true,
-  "stale_memory_candidate": "Pass empty collection allowed_methods=[] to disable retry on all HTTP methods",
-  "valid_memory_candidate": "Pass allowed_methods=False to disable retry on all HTTP methods",
-  "current_task": "Implement `disable_method_retries()` in `no_retry_policy.py` returning Retry configured to never retry by method.",
-  "target_file": "no_retry_policy.py",
-  "target_symbol": "disable_method_retries",
+  "stale_memory_candidate": "Pass an empty collection allowed_methods=[] to retry on all HTTP methods",
+  "valid_memory_candidate": "Pass allowed_methods=None to Retry to retry on all HTTP methods without warnings",
+  "current_task": "Implement `create_all_verbs_retry()` in `retry_factory.py` returning a Retry instance configured to retry on all HTTP methods without using deprecated empty collections.",
+  "target_file": "retry_factory.py",
+  "target_symbol": "create_all_verbs_retry",
   "existing_tests": "test/test_retry.py::test_empty_allowed_methods",
   "test_evidence_source": "urllib3 PR #5223 empty collection deprecation warning",
   "difficulty": "medium",

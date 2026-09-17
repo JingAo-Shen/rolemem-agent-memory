@@ -1,0 +1,82 @@
+{
+  "transition_id": "test_incoherent_transition",
+  "repo_name": "pallets/click",
+  "spec_sha256": "aa4a232995ff7b4d1c5c73ceaf35b8a566a3d419bb06da1d7277006d5803af1a",
+  "auditor_version": "2.0.0",
+  "repo_commit_sha": "988c683963b14ced1b32a8cda9f9b466c32d9df1",
+  "verified_at": "2026-09-16T13:49:52.426142+00:00",
+  "pr_identity": {
+    "pr_url": "",
+    "pr_number": null,
+    "pr_exact_title": "",
+    "pr_number_matched_in_git": false,
+    "pr_title_matched_in_git": true,
+    "git_commit_log_first_line": "deprecate `OptionParser` (#2592)",
+    "git_diff_files": [
+      "CHANGES.rst",
+      "src/click/__init__.py",
+      "src/click/core.py",
+      "src/click/formatting.py",
+      "src/click/parser.py",
+      "src/click/shell_completion.py",
+      "tests/test_parser.py"
+    ],
+    "changed_files_verified": true,
+    "status": "PASS"
+  },
+  "commit_linkage": {
+    "base_commit": "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+    "target_commit": "988c683963b14ced1b32a8cda9f9b466c32d9df1",
+    "base_commit_exists": true,
+    "target_commit_exists": true,
+    "target_is_descendant": true,
+    "target_parents": [
+      "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+      "3630addf538ff4d1d5bc75438c8d84378105d03d"
+    ],
+    "status": "PASS"
+  },
+  "issue_linkage": {
+    "issue_url": "",
+    "issue_number": null,
+    "referenced_in_git_log": false,
+    "status": "PASS"
+  },
+  "symbol_transition": {
+    "deprecated_symbols": [
+      "OptionParser"
+    ],
+    "removed_symbols": [],
+    "replacement_symbols": [
+      "parse_args"
+    ],
+    "stale_action_patterns": [],
+    "symbols_grounded_in_git": true,
+    "status": "PASS"
+  },
+  "task_semantics": {
+    "target_file": "cli_helper.py",
+    "target_symbol": "parse_command_args",
+    "current_task": "Do something completely unrelated in another_file.py",
+    "aligned": false,
+    "status": "FAIL"
+  },
+  "memory_semantics": {
+    "stale_memory_candidate": "stale memory candidate test string",
+    "valid_memory_candidate": "valid memory candidate test string",
+    "distinct": true,
+    "status": "PASS"
+  },
+  "test_evidence": {
+    "original_test_required": true,
+    "generated_hidden_test_only": false,
+    "existing_tests": null,
+    "relevance_rationale": "",
+    "status": "FAIL"
+  },
+  "external_ground_truth_status": "FAIL",
+  "errors": [
+    "Task prompt does not reference target_file (cli_helper.py) or target_symbol (parse_command_args)",
+    "original_test_required is True but existing_tests is invalid: None"
+  ]
+}

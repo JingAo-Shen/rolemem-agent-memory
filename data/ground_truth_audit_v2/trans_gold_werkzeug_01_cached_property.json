@@ -1,0 +1,84 @@
+{
+  "transition_id": "trans_gold_werkzeug_01_cached_property",
+  "repo_name": "pallets/werkzeug",
+  "spec_sha256": "bc1b70fcb50a0bcd5c9e906319ba6a5168a6ce1a7bdf35baa330f17bfae18fac",
+  "auditor_version": "2.0.0",
+  "repo_commit_sha": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+  "verified_at": "2026-09-17T02:24:24.957538+00:00",
+  "pr_identity": {
+    "pr_url": "https://github.com/pallets/werkzeug/pull/2084",
+    "pr_number": 2084,
+    "pr_exact_title": "del invalidates cached_property",
+    "pr_number_matched_in_git": true,
+    "pr_title_matched_in_git": true,
+    "git_commit_log_first_line": "Merge pull request #2084 from pallets/delete-cached-property",
+    "git_diff_files": [
+      "CHANGES.rst",
+      "src/werkzeug/utils.py",
+      "tests/test_utils.py"
+    ],
+    "changed_files_verified": true,
+    "status": "PASS"
+  },
+  "commit_linkage": {
+    "base_commit": "25ca9cd92956e48a38f7a32c837e0f8a54c8ae31",
+    "target_commit": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+    "base_commit_exists": true,
+    "target_commit_exists": true,
+    "target_is_descendant": true,
+    "target_parents": [
+      "25ca9cd92956e48a38f7a32c837e0f8a54c8ae31",
+      "004b446eac19db2ff351a923fd594d4f23d67e90"
+    ],
+    "status": "PASS"
+  },
+  "issue_linkage": {
+    "issue_url": "https://github.com/pallets/werkzeug/issues/2084",
+    "issue_number": "2084",
+    "referenced_in_git_log": true,
+    "status": "PASS"
+  },
+  "symbol_transition": {
+    "deprecated_symbols": [
+      "invalidate_cached_property"
+    ],
+    "removed_symbols": [],
+    "replacement_symbols": [
+      "delattr"
+    ],
+    "stale_action_patterns": [
+      {
+        "node_type": "call",
+        "name": "invalidate_cached_property"
+      },
+      {
+        "node_type": "attribute",
+        "name": "invalidate_cached_property"
+      }
+    ],
+    "symbols_grounded_in_git": true,
+    "status": "PASS"
+  },
+  "task_semantics": {
+    "target_file": "property_helper.py",
+    "target_symbol": "reset_cached_attribute",
+    "current_task": "Implement `reset_cached_attribute(instance, attr_name)` in `property_helper.py` to clear a cached property.",
+    "aligned": true,
+    "status": "PASS"
+  },
+  "memory_semantics": {
+    "stale_memory_candidate": "Use invalidate_cached_property(instance, attr_name) to clear cached properties",
+    "valid_memory_candidate": "Use delattr(instance, attr_name) or del instance.prop to clear cached properties",
+    "distinct": true,
+    "status": "PASS"
+  },
+  "test_evidence": {
+    "original_test_required": true,
+    "generated_hidden_test_only": false,
+    "existing_tests": "tests/test_utils.py::test_cached_property",
+    "relevance_rationale": "Test in diff: True, references symbol: False",
+    "status": "PASS"
+  },
+  "external_ground_truth_status": "PASS",
+  "errors": []
+}

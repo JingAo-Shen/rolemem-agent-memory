@@ -48,15 +48,33 @@
     "overlay_sha256": null,
     "affected_files": []
   },
-  "original_test_required": true,
+  "original_test_required": false,
   "stale_memory_candidate": "Override should_ignore_error on Flask application subclass to filter exceptions",
   "valid_memory_candidate": "Register teardown request handlers via @app.teardown_request to inspect or handle unhandled exceptions",
   "current_task": "Implement `configure_error_policy(app, exc_class)` in `error_policy.py` registering a teardown request handler.",
   "target_file": "error_policy.py",
   "target_symbol": "configure_error_policy",
-  "existing_tests": "tests/test_basic.py::test_error_handling",
+  "existing_tests": null,
   "test_evidence_source": "Flask PR #5899 deprecation warning and docstring recommending teardown handlers",
   "difficulty": "medium",
   "leakage_review": "PASS",
-  "benchmark_status": "PROVISIONAL_GOLD_V2"
+  "benchmark_status": "PROVISIONAL_GOLD_V2",
+  "deprecated_symbols": [
+    "should_ignore_error"
+  ],
+  "removed_symbols": [],
+  "replacement_symbols": [
+    "teardown_request"
+  ],
+  "stale_action_patterns": [
+    {
+      "node_type": "call",
+      "name": "should_ignore_error"
+    },
+    {
+      "node_type": "attribute",
+      "name": "should_ignore_error"
+    }
+  ],
+  "generated_hidden_test_only": true
 }

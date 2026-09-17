@@ -46,12 +46,26 @@
   "original_test_required": true,
   "stale_memory_candidate": "Import environ_property directly from werkzeug.utils",
   "valid_memory_candidate": "Import environ_property from werkzeug.sansio.utils",
-  "current_task": "Implement `build_request_header_proxy(name)` in `header_proxy.py` creating an environ_property descriptor.",
-  "target_file": "header_proxy.py",
-  "target_symbol": "build_request_header_proxy",
+  "current_task": "Implement extract_wsgi_header(environ, header_name) in wsgi_helper.py accessing environ without deprecated environ_property.",
+  "target_file": "wsgi_helper.py",
+  "target_symbol": "extract_wsgi_header",
   "existing_tests": "tests/test_utils.py::test_environ_property",
   "test_evidence_source": "Werkzeug PR #3276 deprecation warning in __getattr__",
   "difficulty": "medium",
   "leakage_review": "PASS",
-  "benchmark_status": "PROVISIONAL_GOLD_V2"
+  "benchmark_status": "PROVISIONAL_GOLD_V2",
+  "deprecated_symbols": [
+    "environ_property"
+  ],
+  "removed_symbols": [],
+  "replacement_symbols": [
+    "werkzeug.sansio.utils.environ_property"
+  ],
+  "stale_action_patterns": [
+    {
+      "node_type": "import",
+      "name": "environ_property",
+      "module": "werkzeug.utils"
+    }
+  ]
 }

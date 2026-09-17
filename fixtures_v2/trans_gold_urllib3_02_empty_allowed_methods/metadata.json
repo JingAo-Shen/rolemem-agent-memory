@@ -4,34 +4,36 @@
   "repo_url": "https://github.com/urllib3/urllib3",
   "license": "MIT",
   "language": "Python",
-  "track_candidate": "B",
+  "track": "B",
   "task_family": "semantic_change",
   "pr_url": "https://github.com/urllib3/urllib3/pull/5223",
   "issue_url": "https://github.com/urllib3/urllib3/issues/5223",
+  "pr_title": "Deprecate empty collection for retrying all methods",
   "base_commit": "a5d70ebfd6a30ceba0e9cc322089a6497dcd643e",
   "history_commit": "a5d70ebfd6a30ceba0e9cc322089a6497dcd643e",
   "transition_commit": "9a209d21087de10b300b2530de023989a71a3f7e",
   "target_commit": "9a209d21087de10b300b2530de023989a71a3f7e",
-  "repository_change": "Deprecate passing empty collection to allowed_methods in favor of False",
+  "repository_change": "Deprecate passing empty collection to allowed_methods in favor of None",
   "changed_files": [
     "src/urllib3/util/retry.py"
   ],
   "changed_symbols": [
     "Retry.allowed_methods"
   ],
-  "stale_memory_candidate": "Pass empty collection allowed_methods=[] to disable retry on all HTTP methods",
-  "valid_memory_candidate": "Pass allowed_methods=False to disable retry on all HTTP methods",
-  "current_task": "Implement `disable_method_retries()` in `no_retry_policy.py` returning Retry configured to never retry by method.",
-  "target_file": "no_retry_policy.py",
-  "target_symbol": "disable_method_retries",
-  "existing_tests": "test/test_retry.py::test_empty_allowed_methods",
-  "generated_tests": "def test_all_verbs_retry():\n    from retry_factory import create_all_verbs_retry\n    r = create_all_verbs_retry()\n    assert r.allowed_methods is None or r.allowed_methods is False",
-  "test_evidence_source": "urllib3 PR #5223 empty collection deprecation warning",
-  "difficulty": "medium",
-  "leakage_review": "PASS",
-  "benchmark_status": "PROVISIONAL_GOLD_V2",
-  "provisional_notes": "Commit/PR metadata verified, but repository-state causality and fixture fidelity not yet fully grounded in git checkout.",
-  "track": "B",
+  "deprecated_symbols": [
+    "allowed_methods"
+  ],
+  "removed_symbols": [],
+  "replacement_symbols": [
+    "allowed_methods_none"
+  ],
+  "stale_action_patterns": [
+    {
+      "node_type": "keyword",
+      "name": "allowed_methods",
+      "value_type": "empty_collection"
+    }
+  ],
   "causality_assertions": [
     {
       "artifact": "src/urllib3/util/retry.py",
@@ -55,6 +57,15 @@
     "overlay_sha256": null,
     "affected_files": []
   },
-  "pr_title": "Deprecate empty collection for retrying all methods",
-  "original_test_required": true
+  "original_test_required": true,
+  "stale_memory_candidate": "Pass an empty collection allowed_methods=[] to retry on all HTTP methods",
+  "valid_memory_candidate": "Pass allowed_methods=None to Retry to retry on all HTTP methods without warnings",
+  "current_task": "Implement `create_all_verbs_retry()` in `retry_factory.py` returning a Retry instance configured to retry on all HTTP methods without using deprecated empty collections.",
+  "target_file": "retry_factory.py",
+  "target_symbol": "create_all_verbs_retry",
+  "existing_tests": "test/test_retry.py::test_empty_allowed_methods",
+  "test_evidence_source": "urllib3 PR #5223 empty collection deprecation warning",
+  "difficulty": "medium",
+  "leakage_review": "PASS",
+  "benchmark_status": "PROVISIONAL_GOLD_V2"
 }

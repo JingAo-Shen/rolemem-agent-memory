@@ -1,0 +1,112 @@
+{
+  "seeds": [
+    {
+      "tid": "track_b_urllib3_custom_retry",
+      "target_file": "custom_retry_policy.py",
+      "task": "Implement `get_repository_retry_policy()` in `custom_retry_policy.py` returning a `urllib3.util.Retry` instance for external API integrations.",
+      "memory": "Project architectural decision (PR #4102): External service integrations must use `urllib3.util.Retry(total=5, backoff_factor=0.5, status_forcelist=[429, 503])`.",
+      "tsr_s0": 0.0,
+      "tsr_s2": 1.0,
+      "lift": 1.0,
+      "qualified": true,
+      "runs": [
+        {
+          "condition": "S0",
+          "seed": 42,
+          "passed": false,
+          "generated_code": "import urllib3\n\ndef get_repository_retry_policy():\n    \"\"\"\n    Returns a Retry instance with custom settings suitable for external API integrations.\n    \n    This function configures retries to handle transient errors such as network issues or server timeouts.\n    It sets up exponential backoff and limits the number of retries to prevent overwhelming the server.\n    \"\"\"\n    retry_policy = urllib3.util.Retry(\n        total=5,  # Total number of retries to allow\n        read=5,   # Number of allowed retries for reading from the response body\n        connect=5,  # Number of allowed retries for connecting to the host\n        backoff_factor=0.3,  # Exponential backoff factor between attempts\n        status_forcelist=[500, 502, 503, 504],  # HTTP status codes that we should force a retry on\n        method_whitelist=[\"GET\", \"POST\"]  # HTTP methods that we should retry on\n    )\n    return retry_policy",
+          "sandbox_log": "urllib3/util/retry.py:252: DeprecationWarning: Using 'method_whitelist' with Retry is deprecated and will be removed in v2.0. Use 'allowed_methods' instead\n    warnings.warn(\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_custom_retry_policy - AssertionError...\n========================= 1 failed, 1 warning in 0.06s =========================\n\nSTDERR:\n"
+        },
+        {
+          "condition": "S0",
+          "seed": 123,
+          "passed": false,
+          "generated_code": "import urllib3\n\ndef get_repository_retry_policy():\n    \"\"\"\n    Returns a Retry instance with custom settings suitable for external API integrations.\n    \n    This function configures retries to handle transient errors such as network issues or server timeouts.\n    It sets up exponential backoff and limits the number of retries to avoid overwhelming the server.\n    \"\"\"\n    retry_policy = urllib3.util.Retry(\n        total=5,  # Total number of retries to allow\n        read=5,   # Number of allowed retries for read failures\n        connect=5,  # Number of allowed retries for connection-related failures\n        backoff_factor=0.3,  # Exponential backoff factor between attempts\n        status_forcelist=[500, 502, 503, 504],  # HTTP response codes that we should force a retry on\n        method_whitelist=[\"GET\", \"POST\"]  # HTTP methods to retry on\n    )\n    return retry_policy",
+          "sandbox_log": "urllib3/util/retry.py:252: DeprecationWarning: Using 'method_whitelist' with Retry is deprecated and will be removed in v2.0. Use 'allowed_methods' instead\n    warnings.warn(\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_custom_retry_policy - AssertionError...\n========================= 1 failed, 1 warning in 0.04s =========================\n\nSTDERR:\n"
+        },
+        {
+          "condition": "S0",
+          "seed": 999,
+          "passed": false,
+          "generated_code": "import urllib3\n\ndef get_repository_retry_policy():\n    \"\"\"\n    Returns a Retry instance with custom settings suitable for external API integrations.\n    \n    This function configures retries to handle transient errors such as network issues or server timeouts.\n    It sets up exponential backoff and limits the number of retries to prevent overwhelming the server.\n    \"\"\"\n    retry_policy = urllib3.util.Retry(\n        total=5,  # Total number of retries to allow\n        read=5,   # Number of allowed retries for reading from the response body\n        connect=5,  # Number of allowed retries for connecting to the host\n        backoff_factor=0.3,  # Exponential backoff factor between attempts\n        status_forcelist=[500, 502, 503, 504],  # HTTP status codes that we should force a retry on\n        method_whitelist=[\"GET\", \"POST\"]  # HTTP methods that we should retry on\n    )\n    return retry_policy",
+          "sandbox_log": "urllib3/util/retry.py:252: DeprecationWarning: Using 'method_whitelist' with Retry is deprecated and will be removed in v2.0. Use 'allowed_methods' instead\n    warnings.warn(\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_custom_retry_policy - AssertionError...\n========================= 1 failed, 1 warning in 0.05s =========================\n\nSTDERR:\n"
+        },
+        {
+          "condition": "S2",
+          "seed": 42,
+          "passed": true,
+          "generated_code": "from urllib3.util.retry import Retry\n\ndef get_repository_retry_policy():\n    return Retry(\n        total=5,\n        backoff_factor=0.5,\n        status_forcelist=[429, 503]\n    )",
+          "sandbox_log": "============================= test session starts ==============================\nplatform linux -- Python 3.10.12, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_urllib3_01_retry_allowed_methods/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_awiegr9l\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_custom_retry_policy PASSED             [100%]\n\n============================== 1 passed in 0.04s ===============================\n"
+        },
+        {
+          "condition": "S2",
+          "seed": 123,
+          "passed": true,
+          "generated_code": "from urllib3.util.retry import Retry\n\ndef get_repository_retry_policy():\n    return Retry(\n        total=5,\n        backoff_factor=0.5,\n        status_forcelist=[429, 503]\n    )",
+          "sandbox_log": "============================= test session starts ==============================\nplatform linux -- Python 3.10.12, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_urllib3_01_retry_allowed_methods/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_wazmp4t8\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_custom_retry_policy PASSED             [100%]\n\n============================== 1 passed in 0.04s ===============================\n"
+        },
+        {
+          "condition": "S2",
+          "seed": 999,
+          "passed": true,
+          "generated_code": "from urllib3.util.retry import Retry\n\ndef get_repository_retry_policy():\n    return Retry(\n        total=5,\n        backoff_factor=0.5,\n        status_forcelist=[429, 503]\n    )",
+          "sandbox_log": "============================= test session starts ==============================\nplatform linux -- Python 3.10.12, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_urllib3_01_retry_allowed_methods/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_k64q0yo5\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_custom_retry_policy PASSED             [100%]\n\n============================== 1 passed in 0.04s ===============================\n"
+        }
+      ]
+    },
+    {
+      "tid": "track_b_requests_service_adapter",
+      "target_file": "service_adapter.py",
+      "task": "Implement `build_internal_service_adapter()` in `service_adapter.py` returning a `requests.adapters.HTTPAdapter` instance for internal microservice communication.",
+      "memory": "Project infrastructure convention (PR #6520): Internal microservice HTTPAdapter must be configured with pool_connections=25, pool_maxsize=50, pool_block=True.",
+      "tsr_s0": 0.0,
+      "tsr_s2": 1.0,
+      "lift": 1.0,
+      "qualified": true,
+      "runs": [
+        {
+          "condition": "S0",
+          "seed": 42,
+          "passed": false,
+          "generated_code": "import requests\n\ndef build_internal_service_adapter() -> requests.adapters.HTTPAdapter:\n    \"\"\"\n    Builds and returns an HTTPAdapter instance configured for internal microservice communication.\n    \n    This adapter can be used with a session to handle retries, timeouts, and other configurations\n    that are specific to internal microservices interactions.\n    \n    Returns:\n        requests.adapters.HTTPAdapter: An HTTPAdapter instance configured for internal use.\n    \"\"\"\n    # Create a custom HTTPAdapter\n    adapter = requests.adapters.HTTPAdapter(\n        max_retries=3,  # Number of retry attempts\n        pool_connections=10,  # Maximum number of connections in the pool\n        pool_maxsize=10,  # Maximum size of the connection pool\n        pool_block=True  # Block when reaching the maximum pool size\n    )\n    \n    return adapter",
+          "sandbox_log": "ool_connections}\"\nE       AssertionError: Expected pool_connections=25, got 10\nE       assert 10 == 25\nE        +  where 10 = <requests.adapters.HTTPAdapter object at 0x7cefab168590>._pool_connections\n\ntest_hidden_verification.py:7: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_service_adapter - AssertionError: Ex...\n============================== 1 failed in 0.17s ===============================\n\nSTDERR:\n"
+        },
+        {
+          "condition": "S0",
+          "seed": 123,
+          "passed": false,
+          "generated_code": "import requests\n\ndef build_internal_service_adapter() -> requests.adapters.HTTPAdapter:\n    \"\"\"\n    Builds and returns an HTTPAdapter instance configured for internal microservice communication.\n    \n    Returns:\n        requests.adapters.HTTPAdapter: An HTTPAdapter instance with default settings suitable for internal use.\n    \"\"\"\n    # Create an HTTPAdapter instance\n    adapter = requests.adapters.HTTPAdapter(\n        pool_connections=10,\n        pool_maxsize=20,\n        max_retries=requests.adapters.Retry(\n            total=5,\n            read=5,\n            connect=5,\n            backoff_factor=1,\n            status_forcelist=[500, 502, 503, 504],\n        ),\n    )\n    \n    return adapter",
+          "sandbox_log": "ool_connections}\"\nE       AssertionError: Expected pool_connections=25, got 10\nE       assert 10 == 25\nE        +  where 10 = <requests.adapters.HTTPAdapter object at 0x752f86f80590>._pool_connections\n\ntest_hidden_verification.py:7: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_service_adapter - AssertionError: Ex...\n============================== 1 failed in 0.12s ===============================\n\nSTDERR:\n"
+        },
+        {
+          "condition": "S0",
+          "seed": 999,
+          "passed": false,
+          "generated_code": "import requests\n\ndef build_internal_service_adapter() -> requests.adapters.HTTPAdapter:\n    \"\"\"\n    Builds and returns a requests.adapters.HTTPAdapter instance configured for internal microservice communication.\n    \n    This adapter can be used with a session to handle HTTP connections efficiently, especially useful in scenarios where multiple requests need to be made to the same host.\n    \n    Returns:\n        requests.adapters.HTTPAdapter: An HTTPAdapter instance configured for internal use.\n    \"\"\"\n    # Create a pool manager with a specific number of connections per host\n    return requests.adapters.HTTPAdapter(pool_connections=10, pool_maxsize=20)",
+          "sandbox_log": "ool_connections}\"\nE       AssertionError: Expected pool_connections=25, got 10\nE       assert 10 == 25\nE        +  where 10 = <requests.adapters.HTTPAdapter object at 0x776dd5d1c590>._pool_connections\n\ntest_hidden_verification.py:7: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_service_adapter - AssertionError: Ex...\n============================== 1 failed in 0.12s ===============================\n\nSTDERR:\n"
+        },
+        {
+          "condition": "S2",
+          "seed": 42,
+          "passed": true,
+          "generated_code": "import requests\n\ndef build_internal_service_adapter():\n    \"\"\"\n    Builds and returns an HTTPAdapter instance configured for internal microservice communication.\n    \n    The adapter is configured with:\n    - pool_connections: 25\n    - pool_maxsize: 50\n    - pool_block: True\n    \n    Returns:\n        requests.adapters.HTTPAdapter: A configured HTTPAdapter instance.\n    \"\"\"\n    return requests.adapters.HTTPAdapter(\n        pool_connections=25,\n        pool_maxsize=50,\n        pool_block=True\n    )",
+          "sandbox_log": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_requests_01_tls_context_adapter/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_t_xoli4m\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_service_adapter PASSED                 [100%]\n\n============================== 1 passed in 0.12s ===============================\n"
+        },
+        {
+          "condition": "S2",
+          "seed": 123,
+          "passed": true,
+          "generated_code": "import requests\n\ndef build_internal_service_adapter():\n    \"\"\"\n    Builds and returns an HTTPAdapter instance configured for internal microservice communication.\n    \n    Returns:\n        requests.adapters.HTTPAdapter: An HTTPAdapter instance with specified connection pooling parameters.\n    \"\"\"\n    return requests.adapters.HTTPAdapter(\n        pool_connections=25,\n        pool_maxsize=50,\n        pool_block=True\n    )",
+          "sandbox_log": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_requests_01_tls_context_adapter/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox__3nsztnm\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_service_adapter PASSED                 [100%]\n\n============================== 1 passed in 0.12s ===============================\n"
+        },
+        {
+          "condition": "S2",
+          "seed": 999,
+          "passed": true,
+          "generated_code": "import requests\n\ndef build_internal_service_adapter():\n    \"\"\"\n    Builds and returns an HTTPAdapter instance configured for internal microservice communication.\n    \n    Returns:\n        requests.adapters.HTTPAdapter: A configured HTTPAdapter instance.\n    \"\"\"\n    return requests.adapters.HTTPAdapter(\n        pool_connections=25,\n        pool_maxsize=50,\n        pool_block=True\n    )",
+          "sandbox_log": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_requests_01_tls_context_adapter/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_l7z7j_sp\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_service_adapter PASSED                 [100%]\n\n============================== 1 passed in 0.12s ===============================\n"
+        }
+      ]
+    }
+  ]
+}

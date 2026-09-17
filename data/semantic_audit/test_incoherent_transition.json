@@ -1,0 +1,51 @@
+{
+  "transition_id": "test_incoherent_transition",
+  "overall_status": "FAIL",
+  "layers": {
+    "pr_vs_repo_change": {
+      "status": "PASS",
+      "repository_change": "Deprecate OptionParser in favor of parse_args",
+      "symbols_checked": [
+        "OptionParser",
+        "OptionParser",
+        "parse_args"
+      ]
+    },
+    "repo_change_vs_causality": {
+      "status": "FAIL",
+      "assertions": []
+    },
+    "memory_distinctness": {
+      "status": "PASS",
+      "stale_memory": "stale memory candidate test string",
+      "valid_memory": "valid memory candidate test string"
+    },
+    "task_vs_target": {
+      "status": "FAIL",
+      "task": "Do something completely unrelated in another_file.py",
+      "target_file": "cli_helper.py",
+      "target_symbol": "parse_command_args",
+      "file_in_task": false,
+      "sym_in_task": false
+    },
+    "hidden_test_coherence": {
+      "status": "FAIL",
+      "expected_module": "cli_helper",
+      "expected_symbol": "parse_command_args",
+      "detected_imports": []
+    },
+    "controls_definition_coherence": {
+      "status": "FAIL",
+      "stale_defines_target": false,
+      "valid_defines_target": false,
+      "stale_defs": [],
+      "valid_defs": []
+    }
+  },
+  "errors": [
+    "causality_assertions (0) do not map to transition symbols",
+    "current_task does not reference target_file (cli_helper.py) or target_symbol (parse_command_args)",
+    "hidden_tests/test_evaluation.py does not import parse_command_args from cli_helper",
+    "controls do not define target_symbol 'parse_command_args' (stale_defines=False, valid_defines=False)"
+  ]
+}

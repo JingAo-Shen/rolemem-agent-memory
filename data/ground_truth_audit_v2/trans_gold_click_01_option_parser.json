@@ -1,0 +1,88 @@
+{
+  "transition_id": "trans_gold_click_01_option_parser",
+  "repo_name": "pallets/click",
+  "spec_sha256": "2ef93b67707b8af122159076df64601547be27d07e53f81d024898cec6cb3e1c",
+  "auditor_version": "2.0.0",
+  "repo_commit_sha": "988c683963b14ced1b32a8cda9f9b466c32d9df1",
+  "verified_at": "2026-09-16T13:45:35.178230+00:00",
+  "pr_identity": {
+    "pr_url": "https://github.com/pallets/click/pull/2592",
+    "pr_number": 2592,
+    "pr_exact_title": "deprecate `OptionParser`",
+    "pr_number_matched_in_git": true,
+    "pr_title_matched_in_git": true,
+    "git_commit_log_first_line": "deprecate `OptionParser` (#2592)",
+    "git_diff_files": [
+      "CHANGES.rst",
+      "src/click/__init__.py",
+      "src/click/core.py",
+      "src/click/formatting.py",
+      "src/click/parser.py",
+      "src/click/shell_completion.py",
+      "tests/test_parser.py"
+    ],
+    "changed_files_verified": true,
+    "status": "PASS"
+  },
+  "commit_linkage": {
+    "base_commit": "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+    "target_commit": "988c683963b14ced1b32a8cda9f9b466c32d9df1",
+    "base_commit_exists": true,
+    "target_commit_exists": true,
+    "target_is_descendant": true,
+    "target_parents": [
+      "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+      "3630addf538ff4d1d5bc75438c8d84378105d03d"
+    ],
+    "status": "PASS"
+  },
+  "issue_linkage": {
+    "issue_url": "https://github.com/pallets/click/issues/2592",
+    "issue_number": "2592",
+    "referenced_in_git_log": true,
+    "status": "PASS"
+  },
+  "symbol_transition": {
+    "deprecated_symbols": [
+      "OptionParser"
+    ],
+    "removed_symbols": [],
+    "replacement_symbols": [
+      "parse_args"
+    ],
+    "stale_action_patterns": [
+      {
+        "node_type": "call",
+        "name": "OptionParser"
+      },
+      {
+        "node_type": "name",
+        "name": "OptionParser"
+      }
+    ],
+    "symbols_grounded_in_git": true,
+    "status": "PASS"
+  },
+  "task_semantics": {
+    "target_file": "cli_helper.py",
+    "target_symbol": "parse_command_args",
+    "current_task": "Implement `parse_command_args(ctx, args)` in `cli_helper.py` using click Context without deprecated parser.",
+    "aligned": true,
+    "status": "PASS"
+  },
+  "memory_semantics": {
+    "stale_memory_candidate": "Instantiate OptionParser from click.parser directly for custom arg parsing",
+    "valid_memory_candidate": "Use Click command parser context or modern parsing helpers without instantiating deprecated OptionParser",
+    "distinct": true,
+    "status": "PASS"
+  },
+  "test_evidence": {
+    "original_test_required": true,
+    "generated_hidden_test_only": false,
+    "existing_tests": "tests/test_parser.py::test_parser_default_prefixes",
+    "relevance_rationale": "Test in diff: True, references symbol: True",
+    "status": "PASS"
+  },
+  "external_ground_truth_status": "PASS",
+  "errors": []
+}

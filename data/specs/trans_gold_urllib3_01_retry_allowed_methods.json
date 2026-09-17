@@ -21,6 +21,19 @@
     "Retry.DEFAULT_ALLOWED_METHODS",
     "Retry.__init__"
   ],
+  "deprecated_symbols": [
+    "method_whitelist"
+  ],
+  "removed_symbols": [],
+  "replacement_symbols": [
+    "allowed_methods"
+  ],
+  "stale_action_patterns": [
+    {
+      "node_type": "keyword",
+      "name": "method_whitelist"
+    }
+  ],
   "causality_assertions": [
     {
       "artifact": "src/urllib3/util/retry.py",

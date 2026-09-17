@@ -1,0 +1,84 @@
+{
+  "transition_id": "trans_gold_requests_01_tls_context_adapter",
+  "repo_name": "psf/requests",
+  "spec_sha256": "a45c977bd83b1eae6dd375804177303c4823abbf8cecb9502d5aa19859a0fba5",
+  "auditor_version": "2.0.0",
+  "repo_commit_sha": "c98e4d133ef29c46a9b68cd783087218a8075e05",
+  "verified_at": "2026-09-16T13:45:35.240277+00:00",
+  "pr_identity": {
+    "pr_url": "https://github.com/psf/requests/pull/6710",
+    "pr_number": 6710,
+    "pr_exact_title": "Move _get_connection to get_connection_with_tls_context",
+    "pr_number_matched_in_git": true,
+    "pr_title_matched_in_git": true,
+    "git_commit_log_first_line": "Merge pull request #6710 from nateprewitt/api_rename",
+    "git_diff_files": [
+      "src/requests/adapters.py"
+    ],
+    "changed_files_verified": true,
+    "status": "PASS"
+  },
+  "commit_linkage": {
+    "base_commit": "970e8cec988421bd43da57350723b05c8ce8dc7e",
+    "target_commit": "c98e4d133ef29c46a9b68cd783087218a8075e05",
+    "base_commit_exists": true,
+    "target_commit_exists": true,
+    "target_is_descendant": true,
+    "target_parents": [
+      "970e8cec988421bd43da57350723b05c8ce8dc7e",
+      "92075b330a30b9883f466a43d3f7566ab849f91b"
+    ],
+    "status": "PASS"
+  },
+  "issue_linkage": {
+    "issue_url": "https://github.com/psf/requests/issues/6710",
+    "issue_number": "6710",
+    "referenced_in_git_log": true,
+    "status": "PASS"
+  },
+  "symbol_transition": {
+    "deprecated_symbols": [
+      "HTTPAdapter.get_connection",
+      "get_connection"
+    ],
+    "removed_symbols": [],
+    "replacement_symbols": [
+      "HTTPAdapter.get_connection_with_tls_context",
+      "get_connection_with_tls_context"
+    ],
+    "stale_action_patterns": [
+      {
+        "node_type": "call",
+        "name": "get_connection"
+      },
+      {
+        "node_type": "attribute",
+        "name": "get_connection"
+      }
+    ],
+    "symbols_grounded_in_git": true,
+    "status": "PASS"
+  },
+  "task_semantics": {
+    "target_file": "adapter_helper.py",
+    "target_symbol": "get_adapter_connection",
+    "current_task": "Implement `get_adapter_connection(adapter, request, verify=True)` in `adapter_helper.py` obtaining a connection from HTTPAdapter without calling deprecated get_connection.",
+    "aligned": true,
+    "status": "PASS"
+  },
+  "memory_semantics": {
+    "stale_memory_candidate": "Call get_connection(request.url) on HTTPAdapter to retrieve connection pools",
+    "valid_memory_candidate": "Call get_connection_with_tls_context(request, verify=verify) on HTTPAdapter to retrieve connection pools",
+    "distinct": true,
+    "status": "PASS"
+  },
+  "test_evidence": {
+    "original_test_required": false,
+    "generated_hidden_test_only": true,
+    "existing_tests": null,
+    "relevance_rationale": "Original test waived; explicitly marked generated_hidden_test_only=True",
+    "status": "PASS"
+  },
+  "external_ground_truth_status": "PASS",
+  "errors": []
+}

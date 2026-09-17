@@ -2,10 +2,10 @@
   "transition_id": "trans_gold_werkzeug_01_cached_property",
   "repo_name": "pallets/werkzeug",
   "track": "A",
-  "overall_status": "ACCEPT",
+  "overall_status": "REJECT",
   "gates": {
     "commit_verification": "PASS",
-    "causality_status": "CAUSALITY_PASS",
+    "causality_status": "CAUSALITY_FAIL",
     "original_test_verification": "PASS",
     "original_test_required": true,
     "original_test_passed_gate": true,
@@ -60,21 +60,8 @@
     }
   },
   "causality_details": {
-    "causality_status": "CAUSALITY_PASS",
-    "base_commit": "25ca9cd92956e48a38f7a32c837e0f8a54c8ae31",
-    "target_commit": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
-    "diff_lines": 155,
-    "assertions": [
-      {
-        "artifact": "src/werkzeug/utils.py",
-        "symbol": "invalidate_cached_property",
-        "expected_base": "exists_active",
-        "actual_base": "exists_active",
-        "expected_target": "deprecated_warn",
-        "actual_target": "deprecated_warn",
-        "passed": true
-      }
-    ]
+    "causality_status": "CAUSALITY_FAIL",
+    "assertions": []
   },
   "original_test_details": {
     "status": "PASS",

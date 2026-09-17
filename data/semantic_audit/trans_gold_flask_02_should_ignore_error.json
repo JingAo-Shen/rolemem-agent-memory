@@ -1,0 +1,83 @@
+{
+  "transition_id": "trans_gold_flask_02_should_ignore_error",
+  "overall_status": "PASS",
+  "layers": {
+    "pr_vs_repo_change": {
+      "status": "PASS",
+      "repository_change": "Deprecate should_ignore_error in Flask in favor of explicit teardown handlers",
+      "symbols_checked": [
+        "should_ignore_error",
+        "should_ignore_error",
+        "teardown_request"
+      ]
+    },
+    "repo_change_vs_causality": {
+      "status": "PASS",
+      "assertions": [
+        {
+          "artifact": "src/flask/app.py",
+          "symbol": "should_ignore_error",
+          "base_state": "absent",
+          "target_state": "deprecated_warn",
+          "target_text_contains": "The 'should_ignore_error' method is deprecated"
+        }
+      ]
+    },
+    "memory_distinctness": {
+      "status": "PASS",
+      "stale_memory": "Override should_ignore_error on Flask application subclass to filter exceptions",
+      "valid_memory": "Register teardown request handlers via @app.teardown_request to inspect or handle unhandled exceptions"
+    },
+    "task_vs_target": {
+      "status": "PASS",
+      "task": "Implement `configure_error_policy(app, exc_class)` in `error_policy.py` registering a teardown request handler.",
+      "target_file": "error_policy.py",
+      "target_symbol": "configure_error_policy",
+      "file_in_task": true,
+      "sym_in_task": true
+    },
+    "hidden_test_coherence": {
+      "status": "PASS",
+      "expected_module": "error_policy",
+      "expected_symbol": "configure_error_policy",
+      "detected_imports": [
+        [
+          "",
+          "pytest"
+        ],
+        [
+          "",
+          "warnings"
+        ],
+        [
+          "",
+          "sys"
+        ],
+        [
+          "",
+          "os"
+        ],
+        [
+          "flask",
+          "Flask"
+        ],
+        [
+          "error_policy",
+          "configure_error_policy"
+        ]
+      ]
+    },
+    "controls_definition_coherence": {
+      "status": "PASS",
+      "stale_defines_target": true,
+      "valid_defines_target": true,
+      "stale_defs": [
+        "configure_error_policy"
+      ],
+      "valid_defs": [
+        "configure_error_policy"
+      ]
+    }
+  },
+  "errors": []
+}

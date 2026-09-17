@@ -52,5 +52,22 @@
   "test_evidence_source": "Click PR #2592 deprecation warning for OptionParser",
   "difficulty": "medium",
   "leakage_review": "PASS",
-  "benchmark_status": "PROVISIONAL_GOLD_V2"
+  "benchmark_status": "PROVISIONAL_GOLD_V2",
+  "deprecated_symbols": [
+    "OptionParser"
+  ],
+  "removed_symbols": [],
+  "replacement_symbols": [
+    "parse_args"
+  ],
+  "stale_action_patterns": [
+    {
+      "node_type": "call",
+      "name": "OptionParser"
+    },
+    {
+      "node_type": "name",
+      "name": "OptionParser"
+    }
+  ]
 }

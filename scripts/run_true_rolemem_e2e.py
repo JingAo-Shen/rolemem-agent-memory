@@ -202,8 +202,7 @@ def run_true_rolemem_e2e():
         parsed_code = extract_code(gen_text)
 
         # 7. AST Stale Analysis
-        stale_syms = [s.split(".")[-1] for s in spec.get("changed_symbols", [])]
-        ast_res = ASTStaleActionDetector.analyze(parsed_code, stale_syms)
+        ast_res = ASTStaleActionDetector.analyze_spec(parsed_code, spec)
 
         # 8. Sandbox Execution
         custom_bin = os.path.join("/code/rolemem-agent-memory/.venvs", tid, "bin")

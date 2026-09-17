@@ -4,10 +4,11 @@
   "repo_url": "https://github.com/psf/requests",
   "license": "Apache-2.0",
   "language": "Python",
-  "track_candidate": "C",
+  "track": "A",
   "task_family": "api_evolution",
   "pr_url": "https://github.com/psf/requests/pull/6716",
   "issue_url": "https://github.com/psf/requests/issues/6715",
+  "pr_title": "Allow for overriding of specific pool key params",
   "base_commit": "88dce9d854797c05d0ff296b70e0430535ef8aaf",
   "history_commit": "88dce9d854797c05d0ff296b70e0430535ef8aaf",
   "transition_commit": "145b5399486b56e00250204f033441f3fdf2f3c9",
@@ -19,19 +20,6 @@
   "changed_symbols": [
     "HTTPAdapter.build_connection_pool_key_attributes"
   ],
-  "stale_memory_candidate": "Override proxy_manager_for to adjust connection pool isolation keys",
-  "valid_memory_candidate": "Override build_connection_pool_key_attributes in HTTPAdapter subclass",
-  "current_task": "Implement `KeyedAdapter` in `keyed_adapter.py` overriding build_connection_pool_key_attributes.",
-  "target_file": "keyed_adapter.py",
-  "target_symbol": "KeyedAdapter",
-  "existing_tests": "tests/test_adapters.py::test_request_url_trims_leading_path_separators",
-  "generated_tests": "def test_build_adapter():\n    from pool_config import build_custom_adapter_pool\n    adapter = build_custom_adapter_pool(connections=15, maxsize=25)\n    assert adapter is not None",
-  "test_evidence_source": "Requests PR #6716 pool key attribute helper",
-  "difficulty": "medium",
-  "leakage_review": "PASS",
-  "benchmark_status": "PROVISIONAL_GOLD_V2",
-  "provisional_notes": "Commit/PR metadata verified, but repository-state causality and fixture fidelity not yet fully grounded in git checkout.",
-  "track": "A",
   "causality_assertions": [
     {
       "artifact": "src/requests/adapters.py",
@@ -58,6 +46,27 @@
     "overlay_sha256": null,
     "affected_files": []
   },
-  "pr_title": "Allow for overriding of specific pool key params",
-  "original_test_required": true
+  "original_test_required": false,
+  "stale_memory_candidate": "Override proxy_manager_for to adjust connection pool isolation keys",
+  "valid_memory_candidate": "Override build_connection_pool_key_attributes in HTTPAdapter subclass",
+  "current_task": "Implement get_pool_key_attributes(adapter, request, verify=True) in pool_config.py using adapter.build_connection_pool_key_attributes.",
+  "target_file": "pool_config.py",
+  "target_symbol": "get_pool_key_attributes",
+  "existing_tests": null,
+  "test_evidence_source": "Requests PR #6716 pool key attribute helper",
+  "difficulty": "medium",
+  "leakage_review": "PASS",
+  "benchmark_status": "PROVISIONAL_GOLD_V2",
+  "deprecated_symbols": [],
+  "removed_symbols": [],
+  "replacement_symbols": [
+    "build_connection_pool_key_attributes"
+  ],
+  "stale_action_patterns": [
+    {
+      "node_type": "call",
+      "name": "_urllib3_request_context"
+    }
+  ],
+  "generated_hidden_test_only": true
 }

@@ -1,0 +1,89 @@
+{
+  "transition_id": "trans_gold_requests_01_tls_context_adapter",
+  "overall_status": "PASS",
+  "layers": {
+    "pr_vs_repo_change": {
+      "status": "PASS",
+      "repository_change": "Deprecate HTTPAdapter.get_connection in favor of get_connection_with_tls_context",
+      "symbols_checked": [
+        "get_connection",
+        "get_connection_with_tls_context",
+        "get_connection",
+        "get_connection",
+        "get_connection_with_tls_context",
+        "get_connection_with_tls_context"
+      ]
+    },
+    "repo_change_vs_causality": {
+      "status": "PASS",
+      "assertions": [
+        {
+          "artifact": "src/requests/adapters.py",
+          "symbol": "get_connection",
+          "base_state": "exists_active",
+          "target_state": "deprecated_warn"
+        }
+      ]
+    },
+    "memory_distinctness": {
+      "status": "PASS",
+      "stale_memory": "Call get_connection(request.url) on HTTPAdapter to retrieve connection pools",
+      "valid_memory": "Call get_connection_with_tls_context(request, verify=verify) on HTTPAdapter to retrieve connection pools"
+    },
+    "task_vs_target": {
+      "status": "PASS",
+      "task": "Implement `get_adapter_connection(adapter, request, verify=True)` in `adapter_helper.py` obtaining a connection from HTTPAdapter without calling deprecated get_connection.",
+      "target_file": "adapter_helper.py",
+      "target_symbol": "get_adapter_connection",
+      "file_in_task": true,
+      "sym_in_task": true
+    },
+    "hidden_test_coherence": {
+      "status": "PASS",
+      "expected_module": "adapter_helper",
+      "expected_symbol": "get_adapter_connection",
+      "detected_imports": [
+        [
+          "",
+          "pytest"
+        ],
+        [
+          "",
+          "warnings"
+        ],
+        [
+          "",
+          "sys"
+        ],
+        [
+          "",
+          "os"
+        ],
+        [
+          "requests.adapters",
+          "HTTPAdapter"
+        ],
+        [
+          "requests.models",
+          "PreparedRequest"
+        ],
+        [
+          "adapter_helper",
+          "get_adapter_connection"
+        ]
+      ]
+    },
+    "controls_definition_coherence": {
+      "status": "PASS",
+      "stale_defines_target": true,
+      "valid_defines_target": true,
+      "stale_defs": [
+        "get_adapter_connection"
+      ],
+      "valid_defs": [
+        "get_adapter_connection"
+      ]
+    }
+  },
+  "errors": []
+}

@@ -1,0 +1,84 @@
+{
+  "transition_id": "trans_gold_flask_01_context_stack_removal",
+  "overall_status": "PASS",
+  "layers": {
+    "pr_vs_repo_change": {
+      "status": "PASS",
+      "repository_change": "Deprecate _app_ctx_stack and _request_ctx_stack in globals.py in favor of app_context()",
+      "symbols_checked": [
+        "_app_ctx_stack",
+        "_request_ctx_stack",
+        "_app_ctx_stack",
+        "_request_ctx_stack",
+        "app_context"
+      ]
+    },
+    "repo_change_vs_causality": {
+      "status": "PASS",
+      "assertions": [
+        {
+          "artifact": "src/flask/globals.py",
+          "symbol": "_app_ctx_stack",
+          "base_state": "deprecated_warn",
+          "target_state": "removed"
+        }
+      ]
+    },
+    "memory_distinctness": {
+      "status": "PASS",
+      "stale_memory": "Directly push onto _app_ctx_stack to manage Flask application context",
+      "valid_memory": "Use app.app_context() context manager or push() on AppContext instance"
+    },
+    "task_vs_target": {
+      "status": "PASS",
+      "task": "Implement `activate_application_context(app)` in `ctx_manager.py` entering the application context.",
+      "target_file": "ctx_manager.py",
+      "target_symbol": "activate_application_context",
+      "file_in_task": true,
+      "sym_in_task": true
+    },
+    "hidden_test_coherence": {
+      "status": "PASS",
+      "expected_module": "ctx_manager",
+      "expected_symbol": "activate_application_context",
+      "detected_imports": [
+        [
+          "",
+          "pytest"
+        ],
+        [
+          "",
+          "sys"
+        ],
+        [
+          "",
+          "os"
+        ],
+        [
+          "flask",
+          "Flask"
+        ],
+        [
+          "flask",
+          "current_app"
+        ],
+        [
+          "ctx_manager",
+          "activate_application_context"
+        ]
+      ]
+    },
+    "controls_definition_coherence": {
+      "status": "PASS",
+      "stale_defines_target": true,
+      "valid_defines_target": true,
+      "stale_defs": [
+        "activate_application_context"
+      ],
+      "valid_defs": [
+        "activate_application_context"
+      ]
+    }
+  },
+  "errors": []
+}

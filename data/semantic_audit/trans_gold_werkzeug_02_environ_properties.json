@@ -1,0 +1,79 @@
+{
+  "transition_id": "trans_gold_werkzeug_02_environ_properties",
+  "overall_status": "PASS",
+  "layers": {
+    "pr_vs_repo_change": {
+      "status": "PASS",
+      "repository_change": "Move environ_property from werkzeug.utils to werkzeug.sansio.utils, deprecating root export",
+      "symbols_checked": [
+        "environ_property",
+        "environ_property",
+        "environ_property"
+      ]
+    },
+    "repo_change_vs_causality": {
+      "status": "PASS",
+      "assertions": [
+        {
+          "artifact": "src/werkzeug/utils.py",
+          "symbol": "environ_property",
+          "base_state": "exists_active",
+          "target_state": "deprecated_warn"
+        }
+      ]
+    },
+    "memory_distinctness": {
+      "status": "PASS",
+      "stale_memory": "Import environ_property directly from werkzeug.utils",
+      "valid_memory": "Import environ_property from werkzeug.sansio.utils"
+    },
+    "task_vs_target": {
+      "status": "PASS",
+      "task": "Implement extract_wsgi_header(environ, header_name) in wsgi_helper.py accessing environ without deprecated environ_property.",
+      "target_file": "wsgi_helper.py",
+      "target_symbol": "extract_wsgi_header",
+      "file_in_task": true,
+      "sym_in_task": true
+    },
+    "hidden_test_coherence": {
+      "status": "PASS",
+      "expected_module": "wsgi_helper",
+      "expected_symbol": "extract_wsgi_header",
+      "detected_imports": [
+        [
+          "",
+          "pytest"
+        ],
+        [
+          "",
+          "warnings"
+        ],
+        [
+          "",
+          "sys"
+        ],
+        [
+          "",
+          "os"
+        ],
+        [
+          "wsgi_helper",
+          "extract_wsgi_header"
+        ]
+      ]
+    },
+    "controls_definition_coherence": {
+      "status": "PASS",
+      "stale_defines_target": true,
+      "valid_defines_target": true,
+      "stale_defs": [
+        "HeaderHolder",
+        "extract_wsgi_header"
+      ],
+      "valid_defs": [
+        "extract_wsgi_header"
+      ]
+    }
+  },
+  "errors": []
+}

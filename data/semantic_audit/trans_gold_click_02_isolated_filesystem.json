@@ -1,0 +1,84 @@
+{
+  "transition_id": "trans_gold_click_02_isolated_filesystem",
+  "overall_status": "PASS",
+  "layers": {
+    "pr_vs_repo_change": {
+      "status": "PASS",
+      "repository_change": "Deprecate isolated_filesystem in CliRunner in favor of pytest tmp_path or tempfile.TemporaryDirectory",
+      "symbols_checked": [
+        "isolated_filesystem",
+        "isolated_filesystem",
+        "isolated_filesystem",
+        "tmp_path",
+        "tmp_path"
+      ]
+    },
+    "repo_change_vs_causality": {
+      "status": "PASS",
+      "assertions": [
+        {
+          "artifact": "src/click/testing.py",
+          "symbol": "isolated_filesystem",
+          "base_state": "exists_active",
+          "target_state": "deprecated_warn"
+        }
+      ]
+    },
+    "memory_distinctness": {
+      "status": "PASS",
+      "stale_memory": "Use CliRunner.isolated_filesystem for filesystem-isolated tests.",
+      "valid_memory": "Use pytest tmp_path / tmp_path_factory rather than CliRunner.isolated_filesystem."
+    },
+    "task_vs_target": {
+      "status": "PASS",
+      "task": "Implement `setup_test_workspace(tmp_path)` in `test_workspace_helper.py` providing an isolated directory path for test files using pytest tmp_path without calling deprecated isolated_filesystem.",
+      "target_file": "test_workspace_helper.py",
+      "target_symbol": "setup_test_workspace",
+      "file_in_task": true,
+      "sym_in_task": true
+    },
+    "hidden_test_coherence": {
+      "status": "PASS",
+      "expected_module": "test_workspace_helper",
+      "expected_symbol": "setup_test_workspace",
+      "detected_imports": [
+        [
+          "",
+          "os"
+        ],
+        [
+          "",
+          "sys"
+        ],
+        [
+          "",
+          "pathlib"
+        ],
+        [
+          "",
+          "warnings"
+        ],
+        [
+          "",
+          "pytest"
+        ],
+        [
+          "test_workspace_helper",
+          "setup_test_workspace"
+        ]
+      ]
+    },
+    "controls_definition_coherence": {
+      "status": "PASS",
+      "stale_defines_target": true,
+      "valid_defines_target": true,
+      "stale_defs": [
+        "setup_test_workspace"
+      ],
+      "valid_defs": [
+        "setup_test_workspace"
+      ]
+    }
+  },
+  "errors": []
+}

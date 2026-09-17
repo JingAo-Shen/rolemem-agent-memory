@@ -1,0 +1,18 @@
+{
+  "transition_id": "trans_gold_flask_01_context_stack_removal",
+  "matrix": {
+    "stale_on_base": false,
+    "stale_on_target": false,
+    "valid_on_base": true,
+    "valid_on_target": true
+  },
+  "causality_status": "TRANSITION_NOT_CAUSAL",
+  "is_causal": false,
+  "rationale": "stale and valid actions have identical behavior across base and target snapshots",
+  "execution_logs": {
+    "stale_base_preview": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.10.12, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_fl",
+    "stale_target_preview": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.10.12, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_fl",
+    "valid_base_preview": "============================= test session starts ==============================\nplatform linux -- Python 3.10.12, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_flask_01_c",
+    "valid_target_preview": "============================= test session starts ==============================\nplatform linux -- Python 3.10.12, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_flask_01_c"
+  }
+}

@@ -1,0 +1,220 @@
+{
+  "transition_id": "trans_gold_flask_01_context_stack_removal",
+  "overall_status": "REBUILD",
+  "gates": {
+    "gate1_commit_verification": "PASS",
+    "gate2_causality_verification": "CAUSALITY_FAIL",
+    "gate3_test_evidence_verification": "PASS",
+    "gate4_hidden_test_verification": "PASS",
+    "gate5_fixture_control_verification": "PASS",
+    "gate6_snapshot_hash_verification": "PASS",
+    "gate7_external_ground_truth_v2": "PASS",
+    "gate8_semantic_coherence_verification": "PASS",
+    "causal_counterfactual_verification": "FAIL"
+  },
+  "ground_truth_v2": {
+    "status": "PASS",
+    "source": "cache_valid",
+    "details": {
+      "transition_id": "trans_gold_flask_01_context_stack_removal",
+      "repo_name": "pallets/flask",
+      "spec_sha256": "a2c1909eb524b28e2ec9f054529eeb9a59932c35dd49b16be5b6174835f44eda",
+      "auditor_version": "2.0.0",
+      "repo_commit_sha": "1ee22e1736ffd12c2222cd6215ed04ec1592adaa",
+      "verified_at": "2026-09-16T13:45:35.208063+00:00",
+      "pr_identity": {
+        "pr_url": "https://github.com/pallets/flask/pull/4995",
+        "pr_number": 4995,
+        "pr_exact_title": "remove previously deprecated code",
+        "pr_number_matched_in_git": true,
+        "pr_title_matched_in_git": true,
+        "git_commit_log_first_line": "Merge pull request #4995 from pallets/remove-deprecated",
+        "git_diff_files": [
+          "CHANGES.rst",
+          "docs/api.rst",
+          "docs/config.rst",
+          "src/flask/__init__.py",
+          "src/flask/app.py",
+          "src/flask/blueprints.py",
+          "src/flask/globals.py",
+          "src/flask/helpers.py",
+          "src/flask/json/__init__.py",
+          "src/flask/json/provider.py",
+          "src/flask/scaffold.py",
+          "tests/conftest.py",
+          "tests/test_async.py",
+          "tests/test_basic.py",
+          "tests/test_blueprints.py",
+          "tests/test_helpers.py"
+        ],
+        "changed_files_verified": true,
+        "status": "PASS"
+      },
+      "commit_linkage": {
+        "base_commit": "604de4b1dc0729233704a08c32612c6f1221cccb",
+        "target_commit": "1ee22e1736ffd12c2222cd6215ed04ec1592adaa",
+        "base_commit_exists": true,
+        "target_commit_exists": true,
+        "target_is_descendant": true,
+        "target_parents": [
+          "604de4b1dc0729233704a08c32612c6f1221cccb",
+          "6650764e9719402de2aaa6f321bdec587699c6b2"
+        ],
+        "status": "PASS"
+      },
+      "issue_linkage": {
+        "issue_url": "https://github.com/pallets/flask/issues/4994",
+        "issue_number": "4994",
+        "referenced_in_git_log": false,
+        "status": "PASS"
+      },
+      "symbol_transition": {
+        "deprecated_symbols": [
+          "_app_ctx_stack",
+          "_request_ctx_stack"
+        ],
+        "removed_symbols": [
+          "_app_ctx_stack",
+          "_request_ctx_stack"
+        ],
+        "replacement_symbols": [
+          "app_context"
+        ],
+        "stale_action_patterns": [
+          {
+            "node_type": "name",
+            "name": "_app_ctx_stack"
+          },
+          {
+            "node_type": "attribute",
+            "name": "_app_ctx_stack"
+          }
+        ],
+        "symbols_grounded_in_git": true,
+        "status": "PASS"
+      },
+      "task_semantics": {
+        "target_file": "ctx_manager.py",
+        "target_symbol": "activate_application_context",
+        "current_task": "Implement `activate_application_context(app)` in `ctx_manager.py` entering the application context.",
+        "aligned": true,
+        "status": "PASS"
+      },
+      "memory_semantics": {
+        "stale_memory_candidate": "Directly push onto _app_ctx_stack to manage Flask application context",
+        "valid_memory_candidate": "Use app.app_context() context manager or push() on AppContext instance",
+        "distinct": true,
+        "status": "PASS"
+      },
+      "test_evidence": {
+        "original_test_required": false,
+        "generated_hidden_test_only": true,
+        "existing_tests": null,
+        "relevance_rationale": "Original test waived; explicitly marked generated_hidden_test_only=True",
+        "status": "PASS"
+      },
+      "external_ground_truth_status": "PASS",
+      "errors": []
+    }
+  },
+  "semantic_coherence": {
+    "status": "PASS",
+    "details": {
+      "transition_id": "trans_gold_flask_01_context_stack_removal",
+      "overall_status": "PASS",
+      "layers": {
+        "pr_vs_repo_change": {
+          "status": "PASS",
+          "repository_change": "Deprecate _app_ctx_stack and _request_ctx_stack in globals.py in favor of app_context()",
+          "symbols_checked": [
+            "_app_ctx_stack",
+            "_request_ctx_stack",
+            "_app_ctx_stack",
+            "_request_ctx_stack",
+            "app_context"
+          ]
+        },
+        "repo_change_vs_causality": {
+          "status": "PASS",
+          "assertions": [
+            {
+              "artifact": "src/flask/globals.py",
+              "symbol": "_app_ctx_stack",
+              "base_state": "deprecated_warn",
+              "target_state": "removed"
+            }
+          ]
+        },
+        "memory_distinctness": {
+          "status": "PASS",
+          "stale_memory": "Directly push onto _app_ctx_stack to manage Flask application context",
+          "valid_memory": "Use app.app_context() context manager or push() on AppContext instance"
+        },
+        "task_vs_target": {
+          "status": "PASS",
+          "task": "Implement `activate_application_context(app)` in `ctx_manager.py` entering the application context.",
+          "target_file": "ctx_manager.py",
+          "target_symbol": "activate_application_context",
+          "file_in_task": true,
+          "sym_in_task": true
+        },
+        "hidden_test_coherence": {
+          "status": "PASS",
+          "expected_module": "ctx_manager",
+          "expected_symbol": "activate_application_context",
+          "detected_imports": [
+            [
+              "",
+              "pytest"
+            ],
+            [
+              "",
+              "sys"
+            ],
+            [
+              "",
+              "os"
+            ],
+            [
+              "flask",
+              "Flask"
+            ],
+            [
+              "flask",
+              "current_app"
+            ],
+            [
+              "ctx_manager",
+              "activate_application_context"
+            ]
+          ]
+        },
+        "controls_definition_coherence": {
+          "status": "PASS",
+          "stale_defines_target": true,
+          "valid_defines_target": true,
+          "stale_defs": [
+            "activate_application_context"
+          ],
+          "valid_defs": [
+            "activate_application_context"
+          ]
+        }
+      },
+      "errors": []
+    }
+  },
+  "causal_counterfactual": {
+    "status": "FAIL",
+    "causality_status": "TRANSITION_NOT_CAUSAL",
+    "matrix": {
+      "stale_on_base": false,
+      "stale_on_target": false,
+      "valid_on_base": true,
+      "valid_on_target": true
+    },
+    "rationale": "stale and valid actions have identical behavior across base and target snapshots"
+  },
+  "environment_verification": "FAIL",
+  "spec_sha256": "a2c1909eb524b28e2ec9f054529eeb9a59932c35dd49b16be5b6174835f44eda"
+}
