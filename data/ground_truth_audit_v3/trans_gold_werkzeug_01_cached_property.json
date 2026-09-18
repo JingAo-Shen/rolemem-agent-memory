@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_gold_werkzeug_01_cached_property",
+  "repo_name": "pallets/werkzeug",
+  "pr_number": 2084,
+  "pr_title": "`del` invalidates `cached_property`",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+  "pr_base_sha": "25ca9cd92956e48a38f7a32c837e0f8a54c8ae31",
+  "pr_head_sha": "004b446eac19db2ff351a923fd594d4f23d67e90",
+  "base_commit": "25ca9cd92956e48a38f7a32c837e0f8a54c8ae31",
+  "target_commit": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+  "ancestry_verified": true,
+  "merge_strategy": "merge_commit",
+  "merge_relationship_verified": true,
+  "diff_match": true,
+  "issue_required": false,
+  "issue_id_verified": null,
+  "issue_status": "NOT_APPLICABLE",
+  "spec_sha256": "b60c0dfc556128e257539fb177a1cb5b70e119809a9b915950328667bd0086d6",
+  "audit_fingerprint": "dbe5ba5f84826aa8ac73ecf096b0cbbfc8765772e2a3f46e94a42032f9bb9761",
+  "auditor_version": "3.0.0",
+  "overall_status": "PASS"
+}

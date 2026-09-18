@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_gold_click_02_isolated_filesystem",
+  "repo_name": "pallets/click",
+  "pr_number": 3704,
+  "pr_title": "Deprecate `isolated_filesystem` and document its limits",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "cfa01eeb7894a408af70b29d28c0b24f8680f9fb",
+  "pr_base_sha": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+  "pr_head_sha": "c2ed41490baa08002714ab79afa4a41f2d67c02c",
+  "base_commit": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+  "target_commit": "cfa01eeb7894a408af70b29d28c0b24f8680f9fb",
+  "ancestry_verified": true,
+  "merge_strategy": "merge_commit",
+  "merge_relationship_verified": true,
+  "diff_match": true,
+  "issue_required": false,
+  "issue_id_verified": null,
+  "issue_status": "NOT_APPLICABLE",
+  "spec_sha256": "26a9fbb4b141e8c3554ad484ddcef70715cb52a179232eb740a7ade9ef7741d0",
+  "audit_fingerprint": "70dc86eee219ea51efc428eff40b3f68851d00bcf5e7b3e473a3beb5d081f5c2",
+  "auditor_version": "3.0.0",
+  "overall_status": "PASS"
+}

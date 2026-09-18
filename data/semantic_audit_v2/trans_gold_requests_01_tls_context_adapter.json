@@ -1,0 +1,92 @@
+{
+  "transition_id": "trans_gold_requests_01_tls_context_adapter",
+  "repo_name": "psf/requests",
+  "auditor_version": "2.0.0",
+  "spec_sha256": "901f129d0604c1880a76d2af8a85ac7108cf1f6de4c7fa238f6598f362b5f569",
+  "audit_fingerprint": "fff1525978f9b5bf5221f3c8ba8fcc34099c1ab9b08824f88f921702a31f0e35",
+  "gates": [
+    {
+      "gate_id": "G1",
+      "name": "PR evidence <-> repository_change",
+      "expected": "PR title/body describes the repository architectural or API change",
+      "observed": "Word overlap: ['deprecate', 'get_connection', 'get_connection_with_tls_context', 'httpadapter'] | PR title: Move _get_connection to get_connection_with_tls_context",
+      "evidence": "pr.json:title='Move _get_connection to get_connection_with_tls_context'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G2",
+      "name": "repository_change <-> actual diff",
+      "expected": "Actual diff contains code edits in files specified in repository_change",
+      "observed": "Diff mentions files: ['src/requests/adapters.py'] -> True",
+      "evidence": "diff.patch length: 3437 bytes",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G3",
+      "name": "actual diff <-> changed/deprecated/replacement symbols",
+      "expected": "Diff patch directly modifies or introduces the target symbols",
+      "observed": "Tokens ['get_connection', 'get_connection_with_tls_context', 'get_connection', 'get_connection', 'get_connection_with_tls_context', 'get_connection_with_tls_context'] found in diff: True",
+      "evidence": "Matching symbols in diff: ['get_connection', 'get_connection_with_tls_context', 'get_connection', 'get_connection', 'get_connection_with_tls_context', 'get_connection_with_tls_context']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G4",
+      "name": "stale memory <-> base-state behavior",
+      "expected": "Stale memory candidate instructs usage of legacy symbol from base state",
+      "observed": "Stale memory references legacy symbol: True",
+      "evidence": "stale_memory_candidate='Call get_connection(request.url) on HTTPAdapter to retrieve connection pools...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G5",
+      "name": "valid memory <-> target-state behavior",
+      "expected": "Valid memory candidate instructs modern pattern introduced in target state",
+      "observed": "Valid memory references modern symbol: True",
+      "evidence": "valid_memory_candidate='Call get_connection_with_tls_context(request, verify=verify) on HTTPAdapter to r...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G6",
+      "name": "current task <-> transition capability",
+      "expected": "Evaluation task prompt requires implementing or using transition capability",
+      "observed": "Task exercises target file 'adapter_helper.py' and target symbol 'get_adapter_connection': True",
+      "evidence": "current_task='Implement `get_adapter_connection(adapter, request, verify=True)` in `adapter_he...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G7",
+      "name": "hidden test <-> current task semantics",
+      "expected": "Hidden test verifies the target symbol/module without leaking solution code",
+      "observed": "Hidden test imports/tests target symbol 'get_adapter_connection': True",
+      "evidence": "hidden test len=757 bytes, tests=['issubclass', 'DeprecationWarning', 'warnings', 'verify', 'PreparedRequest']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G8",
+      "name": "stale control <-> stale memory semantics",
+      "expected": "Stale control solution invokes deprecated API as instructed by stale memory",
+      "observed": "Stale control uses deprecated symbol: True",
+      "evidence": "stale_solution.py contains ['get_connection', 'get_connection', 'get_connection']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G9",
+      "name": "valid control <-> valid memory semantics",
+      "expected": "Valid control solution invokes modern API as instructed by valid memory",
+      "observed": "Valid control uses replacement symbol: True",
+      "evidence": "valid_solution.py contains modern pattern: True",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G10",
+      "name": "causal matrix <-> transition evidence",
+      "expected": "Causal counterfactual matrix demonstrates base-state pass, target-state fail with genuine failure taxonomy",
+      "observed": "Causal status: 'CAUSAL_PASS', failure taxonomy: 'DEPRECATION_WARNING'",
+      "evidence": "causal_counterfactual/trans_gold_requests_01_tls_context_adapter.json",
+      "status": "PASS"
+    }
+  ],
+  "passed_gates_count": 10,
+  "total_gates_count": 10,
+  "overall_status": "PASS"
+}

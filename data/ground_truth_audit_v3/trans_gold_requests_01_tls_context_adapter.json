@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_gold_requests_01_tls_context_adapter",
+  "repo_name": "psf/requests",
+  "pr_number": 6710,
+  "pr_title": "Move _get_connection to get_connection_with_tls_context",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "c98e4d133ef29c46a9b68cd783087218a8075e05",
+  "pr_base_sha": "970e8cec988421bd43da57350723b05c8ce8dc7e",
+  "pr_head_sha": "92075b330a30b9883f466a43d3f7566ab849f91b",
+  "base_commit": "970e8cec988421bd43da57350723b05c8ce8dc7e",
+  "target_commit": "c98e4d133ef29c46a9b68cd783087218a8075e05",
+  "ancestry_verified": true,
+  "merge_strategy": "merge_commit",
+  "merge_relationship_verified": true,
+  "diff_match": true,
+  "issue_required": false,
+  "issue_id_verified": null,
+  "issue_status": "NOT_APPLICABLE",
+  "spec_sha256": "901f129d0604c1880a76d2af8a85ac7108cf1f6de4c7fa238f6598f362b5f569",
+  "audit_fingerprint": "fe0fbc85935b5ce64329f8662668deea4b1fad748403e1755d47975873f1b98b",
+  "auditor_version": "3.0.0",
+  "overall_status": "PASS"
+}

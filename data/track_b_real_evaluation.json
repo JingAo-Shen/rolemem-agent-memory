@@ -1,0 +1,118 @@
+{
+  "qualified_track_b_seeds": [
+    {
+      "tid": "track_b_urllib3_redirect_headers",
+      "repo_name": "urllib3/urllib3",
+      "decision_claim": "The project default headers stripped when redirecting across hosts is frozenset(['Authorization'])",
+      "decision_value": "Authorization",
+      "evidence_url": "https://github.com/urllib3/urllib3/pull/1346",
+      "evidence_commit": "560bd227b90f74417ffaedebf5f8d05a8ee4f532",
+      "evidence_hiding_audit": "PASS",
+      "tsr_s0": 0.0,
+      "tsr_s2": 1.0,
+      "lift": 1.0,
+      "qualified": true,
+      "runs": [
+        {
+          "condition": "S0",
+          "seed": 42,
+          "passed": false,
+          "code_snippet": "def get_cross_host_redirect_strip_headers():\n    \"\"\"\n    Returns the project standard set of HTTP header names stripped during cross-host redirects.\n ",
+          "log_preview": "\n\ntest_hidden_verification.py:9: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_redirect_strip_headers - AssertionEr...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
+        },
+        {
+          "condition": "S0",
+          "seed": 123,
+          "passed": false,
+          "code_snippet": "def get_cross_host_redirect_strip_headers():\n    \"\"\"\n    Returns the project standard set of HTTP header names stripped during cross-host redirects.\n ",
+          "log_preview": "\n\ntest_hidden_verification.py:9: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_redirect_strip_headers - AssertionEr...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
+        },
+        {
+          "condition": "S0",
+          "seed": 999,
+          "passed": false,
+          "code_snippet": "def get_cross_host_redirect_strip_headers():\n    \"\"\"\n    Returns the project standard set of HTTP header names stripped during cross-host redirects.\n ",
+          "log_preview": "\n\ntest_hidden_verification.py:9: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_redirect_strip_headers - AssertionEr...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
+        },
+        {
+          "condition": "S2",
+          "seed": 42,
+          "passed": true,
+          "code_snippet": "# custom_redirect_policy.py\n\ndef get_cross_host_redirect_strip_headers():\n    \"\"\"\n    Returns the project standard set of HTTP header names stripped d",
+          "log_preview": "llib3_01_retry_allowed_methods/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_x66khm1i\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_redirect_strip_headers PASSED          [100%]\n\n============================== 1 passed in 0.00s ===============================\n"
+        },
+        {
+          "condition": "S2",
+          "seed": 123,
+          "passed": true,
+          "code_snippet": "# custom_redirect_policy.py\n\ndef get_cross_host_redirect_strip_headers():\n    \"\"\"\n    Returns the project standard set of HTTP header names stripped d",
+          "log_preview": "llib3_01_retry_allowed_methods/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_94vaeu0h\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_redirect_strip_headers PASSED          [100%]\n\n============================== 1 passed in 0.00s ===============================\n"
+        },
+        {
+          "condition": "S2",
+          "seed": 999,
+          "passed": true,
+          "code_snippet": "# custom_redirect_policy.py\n\ndef get_cross_host_redirect_strip_headers():\n    \"\"\"\n    Returns the project standard set of HTTP header names stripped d",
+          "log_preview": "llib3_01_retry_allowed_methods/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_4b7xkbvr\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_redirect_strip_headers PASSED          [100%]\n\n============================== 1 passed in 0.00s ===============================\n"
+        }
+      ]
+    },
+    {
+      "tid": "track_b_werkzeug_pbkdf2_iterations",
+      "repo_name": "pallets/werkzeug",
+      "decision_claim": "The project default work factor for PBKDF2 password hashing is 600,000 iterations",
+      "decision_value": "600000",
+      "evidence_url": "https://github.com/pallets/werkzeug/pull/2612",
+      "evidence_commit": "92b994f76ec3687e97839c7ea225bf556a587a98",
+      "evidence_hiding_audit": "PASS",
+      "tsr_s0": 0.0,
+      "tsr_s2": 1.0,
+      "lift": 1.0,
+      "qualified": true,
+      "runs": [
+        {
+          "condition": "S0",
+          "seed": 42,
+          "passed": false,
+          "code_snippet": "def get_password_hash_work_factor():\n    \"\"\"\n    Returns the project's standard iteration count for PBKDF2 password hashing.\n    \n    :return: The ite",
+          "log_preview": "\n\ntest_hidden_verification.py:8: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_password_hash_work_factor - Assertio...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
+        },
+        {
+          "condition": "S0",
+          "seed": 123,
+          "passed": false,
+          "code_snippet": "# security_policy.py\n\ndef get_password_hash_work_factor():\n    \"\"\"\n    Returns the project's standard iteration count for PBKDF2 password hashing.\n   ",
+          "log_preview": "\n\ntest_hidden_verification.py:8: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_password_hash_work_factor - Assertio...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
+        },
+        {
+          "condition": "S0",
+          "seed": 999,
+          "passed": false,
+          "code_snippet": "def get_password_hash_work_factor():\n    \"\"\"\n    Returns the project's standard iteration count for PBKDF2 password hashing.\n    \n    The work factor ",
+          "log_preview": "\n\ntest_hidden_verification.py:8: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_password_hash_work_factor - Assertio...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
+        },
+        {
+          "condition": "S2",
+          "seed": 42,
+          "passed": true,
+          "code_snippet": "# security_policy.py\n\ndef get_password_hash_work_factor():\n    \"\"\"\n    Returns the project's standard iteration count for PBKDF2 password hashing.\n   ",
+          "log_preview": "ld_werkzeug_01_cached_property/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_6i0r0oe7\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_password_hash_work_factor PASSED       [100%]\n\n============================== 1 passed in 0.00s ===============================\n"
+        },
+        {
+          "condition": "S2",
+          "seed": 123,
+          "passed": true,
+          "code_snippet": "# security_policy.py\n\ndef get_password_hash_work_factor():\n    \"\"\"\n    Returns the project's standard iteration count for PBKDF2 password hashing.\n   ",
+          "log_preview": "ld_werkzeug_01_cached_property/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_ttfyjasl\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_password_hash_work_factor PASSED       [100%]\n\n============================== 1 passed in 0.00s ===============================\n"
+        },
+        {
+          "condition": "S2",
+          "seed": 999,
+          "passed": true,
+          "code_snippet": "# security_policy.py\n\ndef get_password_hash_work_factor():\n    \"\"\"\n    Returns the project's standard iteration count for PBKDF2 password hashing.\n   ",
+          "log_preview": "ld_werkzeug_01_cached_property/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_lsmilb4i\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_password_hash_work_factor PASSED       [100%]\n\n============================== 1 passed in 0.00s ===============================\n"
+        }
+      ]
+    }
+  ]
+}

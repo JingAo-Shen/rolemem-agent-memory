@@ -1,0 +1,84 @@
+[
+  {
+    "sha": "c2ed41490baa08002714ab79afa4a41f2d67c02c",
+    "node_id": "C_kwDOQYmiNdoAKGMyZWQ0MTQ5MGJhYTA4MDAyNzE0YWI3OWFmYTRhNDFmMmQ2N2MwMmM",
+    "commit": {
+      "author": {
+        "name": "Kevin Deldycke",
+        "email": "kevin@deldycke.com",
+        "date": "2026-05-23T12:28:49Z"
+      },
+      "committer": {
+        "name": "Kevin Deldycke",
+        "email": "kevin@deldycke.com",
+        "date": "2026-07-20T12:16:06Z"
+      },
+      "message": "Deprecate `isolated_filesystem` and document its limits\n\nFix #3700\nRefs #3501",
+      "tree": {
+        "sha": "19ee823d4189f6878e6adb9f1772f479d52fc746",
+        "url": "https://api.github.com/repos/pallets/click/git/trees/19ee823d4189f6878e6adb9f1772f479d52fc746"
+      },
+      "url": "https://api.github.com/repos/pallets/click/git/commits/c2ed41490baa08002714ab79afa4a41f2d67c02c",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAE\nEEygejgMYYWnPg+kV+zx80Y/u6i0YjHKQVT/pBY4sTXu0iQknpVCQhTrrIJhi0tybvAhal\nnAdiwoaecI2gpC70tQAAAANnaXQAAAAAAAAABnNoYTUxMgAAAGQAAAATZWNkc2Etc2hhMi\n1uaXN0cDI1NgAAAEkAAAAhALBq327dOpcThcN5ME5fvI1erz4J09zgFYaeA52FtcpTAAAA\nIH8Xk8H7tIAgoo/KePSUZl45RcA5rvPrjVQ1b1ZOZOQ0\n-----END SSH SIGNATURE-----",
+        "payload": "tree 19ee823d4189f6878e6adb9f1772f479d52fc746\nparent 333c28d79cd982990ee98eef61ec20ab1a4f38ba\nauthor Kevin Deldycke <kevin@deldycke.com> 1779539329 +0200\ncommitter Kevin Deldycke <kevin@deldycke.com> 1784549766 +0200\n\nDeprecate `isolated_filesystem` and document its limits\n\nFix #3700\nRefs #3501\n",
+        "verified_at": "2026-07-20T12:20:04Z"
+      }
+    },
+    "url": "https://api.github.com/repos/pallets/click/commits/c2ed41490baa08002714ab79afa4a41f2d67c02c",
+    "html_url": "https://github.com/pallets/click/commit/c2ed41490baa08002714ab79afa4a41f2d67c02c",
+    "comments_url": "https://api.github.com/repos/pallets/click/commits/c2ed41490baa08002714ab79afa4a41f2d67c02c/comments",
+    "author": {
+      "login": "kdeldycke",
+      "id": 159718,
+      "node_id": "MDQ6VXNlcjE1OTcxOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/159718?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/kdeldycke",
+      "html_url": "https://github.com/kdeldycke",
+      "followers_url": "https://api.github.com/users/kdeldycke/followers",
+      "following_url": "https://api.github.com/users/kdeldycke/following{/other_user}",
+      "gists_url": "https://api.github.com/users/kdeldycke/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/kdeldycke/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/kdeldycke/subscriptions",
+      "organizations_url": "https://api.github.com/users/kdeldycke/orgs",
+      "repos_url": "https://api.github.com/users/kdeldycke/repos",
+      "events_url": "https://api.github.com/users/kdeldycke/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/kdeldycke/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "kdeldycke",
+      "id": 159718,
+      "node_id": "MDQ6VXNlcjE1OTcxOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/159718?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/kdeldycke",
+      "html_url": "https://github.com/kdeldycke",
+      "followers_url": "https://api.github.com/users/kdeldycke/followers",
+      "following_url": "https://api.github.com/users/kdeldycke/following{/other_user}",
+      "gists_url": "https://api.github.com/users/kdeldycke/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/kdeldycke/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/kdeldycke/subscriptions",
+      "organizations_url": "https://api.github.com/users/kdeldycke/orgs",
+      "repos_url": "https://api.github.com/users/kdeldycke/repos",
+      "events_url": "https://api.github.com/users/kdeldycke/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/kdeldycke/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+        "url": "https://api.github.com/repos/pallets/click/commits/333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+        "html_url": "https://github.com/pallets/click/commit/333c28d79cd982990ee98eef61ec20ab1a4f38ba"
+      }
+    ]
+  }
+]

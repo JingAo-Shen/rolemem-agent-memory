@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_gold_flask_01_context_stack_removal",
+  "repo_name": "pallets/flask",
+  "pr_number": 4995,
+  "pr_title": "remove previously deprecated code",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "1ee22e1736ffd12c2222cd6215ed04ec1592adaa",
+  "pr_base_sha": "604de4b1dc0729233704a08c32612c6f1221cccb",
+  "pr_head_sha": "6650764e9719402de2aaa6f321bdec587699c6b2",
+  "base_commit": "604de4b1dc0729233704a08c32612c6f1221cccb",
+  "target_commit": "1ee22e1736ffd12c2222cd6215ed04ec1592adaa",
+  "ancestry_verified": true,
+  "merge_strategy": "merge_commit",
+  "merge_relationship_verified": true,
+  "diff_match": true,
+  "issue_required": false,
+  "issue_id_verified": null,
+  "issue_status": "NOT_APPLICABLE",
+  "spec_sha256": "e28f86bac1ce31b4fa23188130f422816c1934f4340b2ff7f816759b3408d37a",
+  "audit_fingerprint": "4b1474a789b96907bc34a085c85c00015352c2374d8542562cc35f615fe4c892",
+  "auditor_version": "3.0.0",
+  "overall_status": "PASS"
+}

@@ -1,0 +1,522 @@
+{
+  "tasks_evaluated": [
+    "trans_gold_werkzeug_01_cached_property",
+    "trans_gold_click_02_isolated_filesystem",
+    "trans_gold_requests_01_tls_context_adapter",
+    "trans_gold_urllib3_01_retry_allowed_methods"
+  ],
+  "total_evals_per_condition": 12,
+  "results_by_condition": {
+    "H0": 3,
+    "H1": 6,
+    "H2": 3,
+    "H3": 6
+  },
+  "overall_tsr": {
+    "H0": 0.25,
+    "H1": 0.5,
+    "H2": 0.25,
+    "H3": 0.5
+  },
+  "stale_calls_by_condition": {
+    "H0": 1,
+    "H1": 4,
+    "H2": 6,
+    "H3": 3
+  },
+  "stale_action_rate": {
+    "H0": 0.0833,
+    "H1": 0.3333,
+    "H2": 0.5,
+    "H3": 0.25
+  },
+  "oracle_tsr": 0.5,
+  "agent_generated_rolemem_tsr": 0.5,
+  "tsr_delta_agent_vs_oracle": 0.0,
+  "task_summaries": [
+    {
+      "task_id": "trans_gold_werkzeug_01_cached_property",
+      "conditions": {
+        "H0": {
+          "passed_runs": 0,
+          "total_runs": 3,
+          "tsr": 0.0,
+          "stale_actions_count": 0,
+          "runs": [
+            {
+              "seed": 42,
+              "passed": false,
+              "has_stale_action": false,
+              "code_snippet": "class PropertyHelper:\n    @staticmethod\n    def reset_cached_attribute(instance, attr_name):\n        if hasattr(instance, f'_{attr_name}'):\n          ",
+              "log_preview": "ty_helper.py)\n=========================== short test summary info ============================\nERROR test_hidden_verification.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n=============================== 1 error in 0.14s ===============================\n\nSTDERR:\n"
+            },
+            {
+              "seed": 123,
+              "passed": false,
+              "has_stale_action": false,
+              "code_snippet": "class PropertyHelper:\n    @staticmethod\n    def reset_cached_attribute(instance, attr_name):\n        if hasattr(instance, f'_{attr_name}'):\n          ",
+              "log_preview": "ty_helper.py)\n=========================== short test summary info ============================\nERROR test_hidden_verification.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n=============================== 1 error in 0.14s ===============================\n\nSTDERR:\n"
+            },
+            {
+              "seed": 999,
+              "passed": false,
+              "has_stale_action": false,
+              "code_snippet": "class PropertyHelper:\n    @staticmethod\n    def reset_cached_attribute(instance, attr_name):\n        if hasattr(instance, f'_{attr_name}'):\n          ",
+              "log_preview": "ty_helper.py)\n=========================== short test summary info ============================\nERROR test_hidden_verification.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n=============================== 1 error in 0.14s ===============================\n\nSTDERR:\n"
+            }
+          ]
+        },
+        "H1": {
+          "passed_runs": 3,
+          "total_runs": 3,
+          "tsr": 1.0,
+          "stale_actions_count": 0,
+          "runs": [
+            {
+              "seed": 42,
+              "passed": true,
+              "has_stale_action": false,
+              "code_snippet": "def reset_cached_attribute(instance, attr_name):\n    \"\"\"\n    Clears the cached value of a property from the given instance.\n    \n    Args:\n    instanc",
+              "log_preview": "ld_werkzeug_01_cached_property/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_fdva8z34\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_reset_cached_attribute PASSED          [100%]\n\n============================== 1 passed in 0.09s ===============================\n"
+            },
+            {
+              "seed": 123,
+              "passed": true,
+              "has_stale_action": false,
+              "code_snippet": "def reset_cached_attribute(instance, attr_name):\n    \"\"\"\n    Clears the cached value of a property from the given instance.\n    \n    Args:\n    instanc",
+              "log_preview": "ld_werkzeug_01_cached_property/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_8jab3tqt\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_reset_cached_attribute PASSED          [100%]\n\n============================== 1 passed in 0.09s ===============================\n"
+            },
+            {
+              "seed": 999,
+              "passed": true,
+              "has_stale_action": false,
+              "code_snippet": "def reset_cached_attribute(instance, attr_name):\n    \"\"\"\n    Clears the cached value of a property from the given instance.\n    \n    Args:\n    instanc",
+              "log_preview": "ld_werkzeug_01_cached_property/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox__pqszp7g\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_reset_cached_attribute PASSED          [100%]\n\n============================== 1 passed in 0.09s ===============================\n"
+            }
+          ]
+        },
+        "H2": {
+          "passed_runs": 0,
+          "total_runs": 3,
+          "tsr": 0.0,
+          "stale_actions_count": 0,
+          "runs": [
+            {
+              "seed": 42,
+              "passed": false,
+              "has_stale_action": false,
+              "code_snippet": "def reset_cached_attribute(instance, attr_name):\n    \"\"\"\n    Clears the cache of a property on the given instance.\n    \n    Args:\n    instance: The ob",
+              "log_preview": "\ntest_hidden_verification.py:30: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_reset_cached_attribute - AssertionEr...\n============================== 1 failed in 0.10s ===============================\n\nSTDERR:\n"
+            },
+            {
+              "seed": 123,
+              "passed": false,
+              "has_stale_action": false,
+              "code_snippet": "def reset_cached_attribute(instance, attr_name):\n    \"\"\"\n    Clears the cache of a property on the given instance.\n    \n    Args:\n    instance: The ob",
+              "log_preview": "\ntest_hidden_verification.py:30: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_reset_cached_attribute - AssertionEr...\n============================== 1 failed in 0.10s ===============================\n\nSTDERR:\n"
+            },
+            {
+              "seed": 999,
+              "passed": false,
+              "has_stale_action": false,
+              "code_snippet": "def reset_cached_attribute(instance, attr_name):\n    \"\"\"\n    Clears the cache of a property on the given instance.\n    \n    Args:\n    instance: The ob",
+              "log_preview": "\ntest_hidden_verification.py:30: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_reset_cached_attribute - AssertionEr...\n============================== 1 failed in 0.10s ===============================\n\nSTDERR:\n"
+            }
+          ]
+        },
+        "H3": {
+          "passed_runs": 3,
+          "total_runs": 3,
+          "tsr": 1.0,
+          "stale_actions_count": 0,
+          "runs": [
+            {
+              "seed": 42,
+              "passed": true,
+              "has_stale_action": false,
+              "code_snippet": "def reset_cached_attribute(instance, attr_name):\n    \"\"\"\n    Clears the cache of a property on the given instance.\n    \n    Args:\n    instance: The ob",
+              "log_preview": "ld_werkzeug_01_cached_property/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_ocbspg78\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_reset_cached_attribute PASSED          [100%]\n\n============================== 1 passed in 0.09s ===============================\n"
+            },
+            {
+              "seed": 123,
+              "passed": true,
+              "has_stale_action": false,
+              "code_snippet": "def reset_cached_attribute(instance, attr_name):\n    \"\"\"\n    Clears the cache of a property for the given instance and attribute name.\n    \n    Args:\n",
+              "log_preview": "ld_werkzeug_01_cached_property/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_ko39_5gf\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_reset_cached_attribute PASSED          [100%]\n\n============================== 1 passed in 0.09s ===============================\n"
+            },
+            {
+              "seed": 999,
+              "passed": true,
+              "has_stale_action": false,
+              "code_snippet": "def reset_cached_attribute(instance, attr_name):\n    \"\"\"\n    Clears the cached attribute of an instance.\n    \n    Args:\n    instance: The object whose",
+              "log_preview": "ld_werkzeug_01_cached_property/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_7hyadvlv\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_reset_cached_attribute PASSED          [100%]\n\n============================== 1 passed in 0.09s ===============================\n"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "task_id": "trans_gold_click_02_isolated_filesystem",
+      "conditions": {
+        "H0": {
+          "passed_runs": 3,
+          "total_runs": 3,
+          "tsr": 1.0,
+          "stale_actions_count": 0,
+          "runs": [
+            {
+              "seed": 42,
+              "passed": true,
+              "has_stale_action": false,
+              "code_snippet": "import os\n\ndef setup_test_workspace(tmp_path):\n    \"\"\"\n    Set up an isolated workspace for tests using pytest's tmp_path fixture.\n    \n    Args:\n    ",
+              "log_preview": "d_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_v4eolrcq\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n"
+            },
+            {
+              "seed": 123,
+              "passed": true,
+              "has_stale_action": false,
+              "code_snippet": "import os\n\ndef setup_test_workspace(tmp_path):\n    \"\"\"\n    Set up an isolated workspace for tests using pytest's tmp_path fixture.\n    \n    Args:\n    ",
+              "log_preview": "d_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_gc0kcp9_\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n"
+            },
+            {
+              "seed": 999,
+              "passed": true,
+              "has_stale_action": false,
+              "code_snippet": "import os\n\ndef setup_test_workspace(tmp_path):\n    \"\"\"\n    Create and return an isolated directory path for test files using pytest's tmp_path fixture",
+              "log_preview": "d_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_djhw823q\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n"
+            }
+          ]
+        },
+        "H1": {
+          "passed_runs": 3,
+          "total_runs": 3,
+          "tsr": 1.0,
+          "stale_actions_count": 0,
+          "runs": [
+            {
+              "seed": 42,
+              "passed": true,
+              "has_stale_action": false,
+              "code_snippet": "import os\n\ndef setup_test_workspace(tmp_path):\n    \"\"\"\n    Set up an isolated workspace for tests using pytest's tmp_path.\n    \n    Args:\n    - tmp_pa",
+              "log_preview": "d_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_idijyn_7\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n"
+            },
+            {
+              "seed": 123,
+              "passed": true,
+              "has_stale_action": false,
+              "code_snippet": "import os\n\ndef setup_test_workspace(tmp_path):\n    \"\"\"\n    Set up an isolated workspace for tests using pytest's tmp_path.\n    \n    Args:\n        tmp_",
+              "log_preview": "d_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_5lhn6bre\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n"
+            },
+            {
+              "seed": 999,
+              "passed": true,
+              "has_stale_action": false,
+              "code_snippet": "import os\n\ndef setup_test_workspace(tmp_path):\n    \"\"\"\n    Set up an isolated workspace for tests using pytest's tmp_path.\n    \n    Args:\n    - tmp_pa",
+              "log_preview": "d_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_0lc5ngis\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n"
+            }
+          ]
+        },
+        "H2": {
+          "passed_runs": 3,
+          "total_runs": 3,
+          "tsr": 1.0,
+          "stale_actions_count": 0,
+          "runs": [
+            {
+              "seed": 42,
+              "passed": true,
+              "has_stale_action": false,
+              "code_snippet": "import os\n\ndef setup_test_workspace(tmp_path):\n    \"\"\"\n    Set up an isolated workspace for testing.\n    \n    Args:\n    tmp_path (Path): A temporary p",
+              "log_preview": "d_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_rhxueuyh\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n"
+            },
+            {
+              "seed": 123,
+              "passed": true,
+              "has_stale_action": false,
+              "code_snippet": "import os\n\ndef setup_test_workspace(tmp_path):\n    \"\"\"\n    Set up an isolated workspace for testing.\n    \n    Args:\n        tmp_path (Path): A tempora",
+              "log_preview": "d_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_o471fvma\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n"
+            },
+            {
+              "seed": 999,
+              "passed": true,
+              "has_stale_action": false,
+              "code_snippet": "import os\n\ndef setup_test_workspace(tmp_path):\n    \"\"\"\n    Set up an isolated workspace for testing.\n    \n    Args:\n    - tmp_path (Path): A temporary",
+              "log_preview": "d_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_ggw5_qgk\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n"
+            }
+          ]
+        },
+        "H3": {
+          "passed_runs": 3,
+          "total_runs": 3,
+          "tsr": 1.0,
+          "stale_actions_count": 0,
+          "runs": [
+            {
+              "seed": 42,
+              "passed": true,
+              "has_stale_action": false,
+              "code_snippet": "import os\n\ndef setup_test_workspace(tmp_path):\n    # Create a subdirectory within the temporary path provided by pytest\n    workspace_dir = tmp_path /",
+              "log_preview": "d_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_puuiqusi\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n"
+            },
+            {
+              "seed": 123,
+              "passed": true,
+              "has_stale_action": false,
+              "code_snippet": "import os\n\ndef setup_test_workspace(tmp_path):\n    # Create a subdirectory within the temporary path provided by pytest\n    workspace_dir = tmp_path /",
+              "log_preview": "d_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_mivryv8e\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n"
+            },
+            {
+              "seed": 999,
+              "passed": true,
+              "has_stale_action": false,
+              "code_snippet": "import pytest\n\ndef setup_test_workspace(tmp_path):\n    # Create an isolated directory path for test files using pytest tmp_path\n    test_workspace = t",
+              "log_preview": "d_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_p2kgxqjf\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "task_id": "trans_gold_requests_01_tls_context_adapter",
+      "conditions": {
+        "H0": {
+          "passed_runs": 0,
+          "total_runs": 3,
+          "tsr": 0.0,
+          "stale_actions_count": 1,
+          "runs": [
+            {
+              "seed": 42,
+              "passed": false,
+              "has_stale_action": false,
+              "code_snippet": "import requests.adapters\n\ndef get_adapter_connection(adapter, request, verify=True):\n    \"\"\"\n    Obtain a connection from HTTPAdapter without calling ",
+              "log_preview": "\n\nsrc/requests/adapters.py:622: ConnectionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_get_conn - requests.exceptions.Conne...\n============================== 1 failed in 0.21s ===============================\n\nSTDERR:\n"
+            },
+            {
+              "seed": 123,
+              "passed": false,
+              "has_stale_action": false,
+              "code_snippet": "import requests.adapters\n\ndef get_adapter_connection(adapter, request, verify=True):\n    \"\"\"\n    Obtain a connection from HTTPAdapter without calling ",
+              "log_preview": "\n\nsrc/requests/adapters.py:622: ConnectionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_get_conn - requests.exceptions.Conne...\n============================== 1 failed in 0.20s ===============================\n\nSTDERR:\n"
+            },
+            {
+              "seed": 999,
+              "passed": false,
+              "has_stale_action": true,
+              "code_snippet": "import requests.adapters\n\ndef get_adapter_connection(adapter, request, verify=True):\n    \"\"\"\n    Obtain a connection from HTTPAdapter without calling ",
+              "log_preview": "'\n\nsrc/requests/sessions.py:467: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_get_conn - AttributeError: 'Prepared...\n============================== 1 failed in 0.14s ===============================\n\nSTDERR:\n"
+            }
+          ]
+        },
+        "H1": {
+          "passed_runs": 0,
+          "total_runs": 3,
+          "tsr": 0.0,
+          "stale_actions_count": 1,
+          "runs": [
+            {
+              "seed": 42,
+              "passed": false,
+              "has_stale_action": true,
+              "code_snippet": "import requests.adapters\n\ndef get_adapter_connection(adapter, request, verify=True):\n    # Create a TLS context if needed\n    tls_context = adapter.ge",
+              "log_preview": " iterable\n\nsrc/requests/utils.py:857: TypeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_get_conn - TypeError: argument of ty...\n============================== 1 failed in 0.14s ===============================\n\nSTDERR:\n"
+            },
+            {
+              "seed": 123,
+              "passed": false,
+              "has_stale_action": false,
+              "code_snippet": "import requests.adapters\nfrom urllib3.poolmanager import PoolManager\n\ndef get_adapter_connection(adapter, request, verify=True):\n    # Create a custom",
+              "log_preview": "'timeout'\n\nadapter_helper.py:10: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_get_conn - AttributeError: 'HTTPAdap...\n============================== 1 failed in 0.13s ===============================\n\nSTDERR:\n"
+            },
+            {
+              "seed": 999,
+              "passed": false,
+              "has_stale_action": false,
+              "code_snippet": "import requests.adapters\nfrom urllib3.poolmanager import PoolManager\nfrom urllib3.util.retry import Retry\n\ndef get_adapter_connection(adapter, request",
+              "log_preview": "nnection'?\n\nadapter_helper.py:7: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_get_conn - AttributeError: 'HTTPAdap...\n============================== 1 failed in 0.14s ===============================\n\nSTDERR:\n"
+            }
+          ]
+        },
+        "H2": {
+          "passed_runs": 0,
+          "total_runs": 3,
+          "tsr": 0.0,
+          "stale_actions_count": 3,
+          "runs": [
+            {
+              "seed": 42,
+              "passed": false,
+              "has_stale_action": true,
+              "code_snippet": "import requests.adapters\n\ndef get_adapter_connection(adapter, request, verify=True):\n    # Create a session using the provided adapter\n    session = r",
+              "log_preview": "\n\nsrc/requests/adapters.py:622: ConnectionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_get_conn - requests.exceptions.Conne...\n============================== 1 failed in 0.19s ===============================\n\nSTDERR:\n"
+            },
+            {
+              "seed": 123,
+              "passed": false,
+              "has_stale_action": true,
+              "code_snippet": "import requests.adapters\n\ndef get_adapter_connection(adapter, request, verify=True):\n    # Create a session using the provided adapter\n    session = r",
+              "log_preview": "\n\nsrc/requests/adapters.py:622: ConnectionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_get_conn - requests.exceptions.Conne...\n============================== 1 failed in 0.19s ===============================\n\nSTDERR:\n"
+            },
+            {
+              "seed": 999,
+              "passed": false,
+              "has_stale_action": true,
+              "code_snippet": "import requests.adapters\n\ndef get_adapter_connection(adapter, request, verify=True):\n    # Create a session using the provided adapter\n    session = r",
+              "log_preview": "\n\nsrc/requests/adapters.py:622: ConnectionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_get_conn - requests.exceptions.Conne...\n============================== 1 failed in 0.19s ===============================\n\nSTDERR:\n"
+            }
+          ]
+        },
+        "H3": {
+          "passed_runs": 0,
+          "total_runs": 3,
+          "tsr": 0.0,
+          "stale_actions_count": 0,
+          "runs": [
+            {
+              "seed": 42,
+              "passed": false,
+              "has_stale_action": false,
+              "code_snippet": "import requests\nfrom requests.adapters import HTTPAdapter\n\ndef get_adapter_connection(adapter, request, verify=True):\n    # Create a session object\n  ",
+              "log_preview": "one?\n\nsrc/requests/models.py:438: MissingSchema\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_get_conn - requests.exceptions.Missi...\n============================== 1 failed in 0.14s ===============================\n\nSTDERR:\n"
+            },
+            {
+              "seed": 123,
+              "passed": false,
+              "has_stale_action": false,
+              "code_snippet": "import requests.adapters\n\ndef get_adapter_connection(adapter, request, verify=True):\n    # Create a session using the provided adapter\n    session = r",
+              "log_preview": "one?\n\nsrc/requests/models.py:438: MissingSchema\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_get_conn - requests.exceptions.Missi...\n============================== 1 failed in 0.14s ===============================\n\nSTDERR:\n"
+            },
+            {
+              "seed": 999,
+              "passed": false,
+              "has_stale_action": false,
+              "code_snippet": "import requests.adapters\n\ndef get_adapter_connection(adapter, request, verify=True):\n    # Create a session using the provided adapter\n    session = r",
+              "log_preview": "'\n\nsrc/requests/sessions.py:564: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_get_conn - AttributeError: 'NoneType...\n============================== 1 failed in 0.14s ===============================\n\nSTDERR:\n"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "task_id": "trans_gold_urllib3_01_retry_allowed_methods",
+      "conditions": {
+        "H0": {
+          "passed_runs": 0,
+          "total_runs": 3,
+          "tsr": 0.0,
+          "stale_actions_count": 0,
+          "runs": [
+            {
+              "seed": 42,
+              "passed": false,
+              "has_stale_action": false,
+              "code_snippet": "from tenacity import Retry, wait_fixed, stop_after_attempt\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Build a Retry object with custom methods.\n\n  ",
+              "log_preview": "ed 'tenacity'\n=========================== short test summary info ============================\nERROR test_hidden_verification.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n=============================== 1 error in 0.06s ===============================\n\nSTDERR:\n"
+            },
+            {
+              "seed": 123,
+              "passed": false,
+              "has_stale_action": false,
+              "code_snippet": "from tenacity import Retry, wait_fixed, stop_after_attempt\n\ndef build_custom_retry(methods):\n    # Define custom retry logic here\n    # For example, r",
+              "log_preview": "ed 'tenacity'\n=========================== short test summary info ============================\nERROR test_hidden_verification.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n=============================== 1 error in 0.06s ===============================\n\nSTDERR:\n"
+            },
+            {
+              "seed": 999,
+              "passed": false,
+              "has_stale_action": false,
+              "code_snippet": "from tenacity import Retry, wait_fixed, stop_after_attempt\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Builds a Retry object with custom methods.\n  ",
+              "log_preview": "ed 'tenacity'\n=========================== short test summary info ============================\nERROR test_hidden_verification.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n=============================== 1 error in 0.06s ===============================\n\nSTDERR:\n"
+            }
+          ]
+        },
+        "H1": {
+          "passed_runs": 0,
+          "total_runs": 3,
+          "tsr": 0.0,
+          "stale_actions_count": 3,
+          "runs": [
+            {
+              "seed": 42,
+              "passed": false,
+              "has_stale_action": true,
+              "code_snippet": "from urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Builds and returns a Retry object with custom methods.\n    \n    Arg",
+              "log_preview": "\ntest_hidden_verification.py:15: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_build_custom_retry - AssertionError:...\n============================== 1 failed in 0.06s ===============================\n\nSTDERR:\n"
+            },
+            {
+              "seed": 123,
+              "passed": false,
+              "has_stale_action": true,
+              "code_snippet": "from urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Builds a custom Retry object with specified HTTP methods.\n\n    Args",
+              "log_preview": "\ntest_hidden_verification.py:15: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_build_custom_retry - AssertionError:...\n============================== 1 failed in 0.05s ===============================\n\nSTDERR:\n"
+            },
+            {
+              "seed": 999,
+              "passed": false,
+              "has_stale_action": true,
+              "code_snippet": "from urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Builds a custom Retry object with specified methods.\n\n    Args:\n   ",
+              "log_preview": "\ntest_hidden_verification.py:15: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_build_custom_retry - AssertionError:...\n============================== 1 failed in 0.05s ===============================\n\nSTDERR:\n"
+            }
+          ]
+        },
+        "H2": {
+          "passed_runs": 0,
+          "total_runs": 3,
+          "tsr": 0.0,
+          "stale_actions_count": 3,
+          "runs": [
+            {
+              "seed": 42,
+              "passed": false,
+              "has_stale_action": true,
+              "code_snippet": "from urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Builds a custom Retry object with specified methods allowed to be r",
+              "log_preview": "\ntest_hidden_verification.py:15: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_build_custom_retry - AssertionError:...\n============================== 1 failed in 0.05s ===============================\n\nSTDERR:\n"
+            },
+            {
+              "seed": 123,
+              "passed": false,
+              "has_stale_action": true,
+              "code_snippet": "from urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Builds a custom Retry object with specified methods allowed to be r",
+              "log_preview": "\ntest_hidden_verification.py:15: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_build_custom_retry - AssertionError:...\n============================== 1 failed in 0.05s ===============================\n\nSTDERR:\n"
+            },
+            {
+              "seed": 999,
+              "passed": false,
+              "has_stale_action": true,
+              "code_snippet": "from urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Builds a custom Retry object with specified methods allowed to be r",
+              "log_preview": "\ntest_hidden_verification.py:15: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_build_custom_retry - AssertionError:...\n============================== 1 failed in 0.05s ===============================\n\nSTDERR:\n"
+            }
+          ]
+        },
+        "H3": {
+          "passed_runs": 0,
+          "total_runs": 3,
+          "tsr": 0.0,
+          "stale_actions_count": 3,
+          "runs": [
+            {
+              "seed": 42,
+              "passed": false,
+              "has_stale_action": true,
+              "code_snippet": "from requests.adapters import HTTPAdapter\nfrom urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Builds a custom Retry obj",
+              "log_preview": "ed 'requests'\n=========================== short test summary info ============================\nERROR test_hidden_verification.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n=============================== 1 error in 0.06s ===============================\n\nSTDERR:\n"
+            },
+            {
+              "seed": 123,
+              "passed": false,
+              "has_stale_action": true,
+              "code_snippet": "from requests.adapters import HTTPAdapter\nfrom urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Builds a Retry object wit",
+              "log_preview": "ed 'requests'\n=========================== short test summary info ============================\nERROR test_hidden_verification.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n=============================== 1 error in 0.06s ===============================\n\nSTDERR:\n"
+            },
+            {
+              "seed": 999,
+              "passed": false,
+              "has_stale_action": true,
+              "code_snippet": "from requests.adapters import HTTPAdapter\nfrom urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Builds a Retry object wit",
+              "log_preview": "ed 'requests'\n=========================== short test summary info ============================\nERROR test_hidden_verification.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n=============================== 1 error in 0.06s ===============================\n\nSTDERR:\n"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

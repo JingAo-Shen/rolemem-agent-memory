@@ -7,7 +7,7 @@
   "track": "A",
   "task_family": "api_deprecation",
   "pr_url": "https://github.com/pallets/flask/pull/4995",
-  "issue_url": "https://github.com/pallets/flask/issues/4994",
+  "issue_url": null,
   "pr_title": "remove previously deprecated code",
   "base_commit": "604de4b1dc0729233704a08c32612c6f1221cccb",
   "history_commit": "604de4b1dc0729233704a08c32612c6f1221cccb",

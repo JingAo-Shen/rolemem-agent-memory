@@ -1,0 +1,121 @@
+{
+  "task_id": "trans_gold_urllib3_01_retry_allowed_methods",
+  "conditions": {
+    "H0": {
+      "passed_runs": 0,
+      "total_runs": 3,
+      "tsr": 0.0,
+      "stale_actions_count": 0,
+      "runs": [
+        {
+          "seed": 42,
+          "passed": false,
+          "has_stale_action": false,
+          "code_snippet": "from tenacity import Retry, wait_fixed, stop_after_attempt\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Build a Retry object with custom methods.\n\n  ",
+          "log_preview": "ed 'tenacity'\n=========================== short test summary info ============================\nERROR test_hidden_verification.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n=============================== 1 error in 0.06s ===============================\n\nSTDERR:\n"
+        },
+        {
+          "seed": 123,
+          "passed": false,
+          "has_stale_action": false,
+          "code_snippet": "from tenacity import Retry, wait_fixed, stop_after_attempt\n\ndef build_custom_retry(methods):\n    # Define custom retry logic here\n    # For example, r",
+          "log_preview": "ed 'tenacity'\n=========================== short test summary info ============================\nERROR test_hidden_verification.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n=============================== 1 error in 0.06s ===============================\n\nSTDERR:\n"
+        },
+        {
+          "seed": 999,
+          "passed": false,
+          "has_stale_action": false,
+          "code_snippet": "from tenacity import Retry, wait_fixed, stop_after_attempt\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Builds a Retry object with custom methods.\n  ",
+          "log_preview": "ed 'tenacity'\n=========================== short test summary info ============================\nERROR test_hidden_verification.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n=============================== 1 error in 0.06s ===============================\n\nSTDERR:\n"
+        }
+      ]
+    },
+    "H1": {
+      "passed_runs": 0,
+      "total_runs": 3,
+      "tsr": 0.0,
+      "stale_actions_count": 3,
+      "runs": [
+        {
+          "seed": 42,
+          "passed": false,
+          "has_stale_action": true,
+          "code_snippet": "from urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Builds and returns a Retry object with custom methods.\n    \n    Arg",
+          "log_preview": "\ntest_hidden_verification.py:15: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_build_custom_retry - AssertionError:...\n============================== 1 failed in 0.06s ===============================\n\nSTDERR:\n"
+        },
+        {
+          "seed": 123,
+          "passed": false,
+          "has_stale_action": true,
+          "code_snippet": "from urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Builds a custom Retry object with specified HTTP methods.\n\n    Args",
+          "log_preview": "\ntest_hidden_verification.py:15: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_build_custom_retry - AssertionError:...\n============================== 1 failed in 0.05s ===============================\n\nSTDERR:\n"
+        },
+        {
+          "seed": 999,
+          "passed": false,
+          "has_stale_action": true,
+          "code_snippet": "from urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Builds a custom Retry object with specified methods.\n\n    Args:\n   ",
+          "log_preview": "\ntest_hidden_verification.py:15: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_build_custom_retry - AssertionError:...\n============================== 1 failed in 0.05s ===============================\n\nSTDERR:\n"
+        }
+      ]
+    },
+    "H2": {
+      "passed_runs": 0,
+      "total_runs": 3,
+      "tsr": 0.0,
+      "stale_actions_count": 3,
+      "runs": [
+        {
+          "seed": 42,
+          "passed": false,
+          "has_stale_action": true,
+          "code_snippet": "from urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Builds a custom Retry object with specified methods allowed to be r",
+          "log_preview": "\ntest_hidden_verification.py:15: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_build_custom_retry - AssertionError:...\n============================== 1 failed in 0.05s ===============================\n\nSTDERR:\n"
+        },
+        {
+          "seed": 123,
+          "passed": false,
+          "has_stale_action": true,
+          "code_snippet": "from urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Builds a custom Retry object with specified methods allowed to be r",
+          "log_preview": "\ntest_hidden_verification.py:15: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_build_custom_retry - AssertionError:...\n============================== 1 failed in 0.05s ===============================\n\nSTDERR:\n"
+        },
+        {
+          "seed": 999,
+          "passed": false,
+          "has_stale_action": true,
+          "code_snippet": "from urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Builds a custom Retry object with specified methods allowed to be r",
+          "log_preview": "\ntest_hidden_verification.py:15: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_build_custom_retry - AssertionError:...\n============================== 1 failed in 0.05s ===============================\n\nSTDERR:\n"
+        }
+      ]
+    },
+    "H3": {
+      "passed_runs": 0,
+      "total_runs": 3,
+      "tsr": 0.0,
+      "stale_actions_count": 3,
+      "runs": [
+        {
+          "seed": 42,
+          "passed": false,
+          "has_stale_action": true,
+          "code_snippet": "from requests.adapters import HTTPAdapter\nfrom urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Builds a custom Retry obj",
+          "log_preview": "ed 'requests'\n=========================== short test summary info ============================\nERROR test_hidden_verification.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n=============================== 1 error in 0.06s ===============================\n\nSTDERR:\n"
+        },
+        {
+          "seed": 123,
+          "passed": false,
+          "has_stale_action": true,
+          "code_snippet": "from requests.adapters import HTTPAdapter\nfrom urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Builds a Retry object wit",
+          "log_preview": "ed 'requests'\n=========================== short test summary info ============================\nERROR test_hidden_verification.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n=============================== 1 error in 0.06s ===============================\n\nSTDERR:\n"
+        },
+        {
+          "seed": 999,
+          "passed": false,
+          "has_stale_action": true,
+          "code_snippet": "from requests.adapters import HTTPAdapter\nfrom urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Builds a Retry object wit",
+          "log_preview": "ed 'requests'\n=========================== short test summary info ============================\nERROR test_hidden_verification.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n=============================== 1 error in 0.06s ===============================\n\nSTDERR:\n"
+        }
+      ]
+    }
+  }
+}

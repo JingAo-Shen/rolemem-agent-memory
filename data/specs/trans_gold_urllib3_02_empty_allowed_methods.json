@@ -25,7 +25,8 @@
   ],
   "removed_symbols": [],
   "replacement_symbols": [
-    "allowed_methods_none"
+    "allowed_methods",
+    "None"
   ],
   "stale_action_patterns": [
     {

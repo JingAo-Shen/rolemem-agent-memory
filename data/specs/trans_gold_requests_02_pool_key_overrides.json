@@ -56,8 +56,10 @@
   "test_evidence_source": "Requests PR #6716 pool key attribute helper",
   "difficulty": "medium",
   "leakage_review": "PASS",
-  "benchmark_status": "PROVISIONAL_GOLD_V2",
-  "deprecated_symbols": [],
+  "deprecated_symbols": [
+    "proxy_manager_for",
+    "init_poolmanager"
+  ],
   "removed_symbols": [],
   "replacement_symbols": [
     "build_connection_pool_key_attributes"

@@ -1,0 +1,92 @@
+{
+  "transition_id": "trans_gold_urllib3_01_retry_allowed_methods",
+  "repo_name": "urllib3/urllib3",
+  "auditor_version": "2.0.0",
+  "spec_sha256": "4c9380e3b55a91590f83164e41dd0c0694a48933d6e435037370369c4858b504",
+  "audit_fingerprint": "df218b6e1a20129336e10619e42cf0e75169c93293fa8ba60112feba484b442f",
+  "gates": [
+    {
+      "gate_id": "G1",
+      "name": "PR evidence <-> repository_change",
+      "expected": "PR title/body describes the repository architectural or API change",
+      "observed": "Word overlap: ['allowed_methods', 'method_whitelist', 'retry'] | PR title: Rename Retry options and defaults",
+      "evidence": "pr.json:title='Rename Retry options and defaults'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G2",
+      "name": "repository_change <-> actual diff",
+      "expected": "Actual diff contains code edits in files specified in repository_change",
+      "observed": "Diff mentions files: ['src/urllib3/util/retry.py'] -> True",
+      "evidence": "diff.patch length: 32890 bytes",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G3",
+      "name": "actual diff <-> changed/deprecated/replacement symbols",
+      "expected": "Diff patch directly modifies or introduces the target symbols",
+      "observed": "Tokens ['DEFAULT_ALLOWED_METHODS', '__init__', 'method_whitelist', 'allowed_methods'] found in diff: True",
+      "evidence": "Matching symbols in diff: ['DEFAULT_ALLOWED_METHODS', '__init__', 'method_whitelist', 'allowed_methods']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G4",
+      "name": "stale memory <-> base-state behavior",
+      "expected": "Stale memory candidate instructs usage of legacy symbol from base state",
+      "observed": "Stale memory references legacy symbol: True",
+      "evidence": "stale_memory_candidate='Pass method_whitelist to urllib3.util.retry.Retry constructor...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G5",
+      "name": "valid memory <-> target-state behavior",
+      "expected": "Valid memory candidate instructs modern pattern introduced in target state",
+      "observed": "Valid memory references modern symbol: True",
+      "evidence": "valid_memory_candidate='Pass allowed_methods to urllib3.util.retry.Retry constructor...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G6",
+      "name": "current task <-> transition capability",
+      "expected": "Evaluation task prompt requires implementing or using transition capability",
+      "observed": "Task exercises target file 'retry_factory.py' and target symbol 'build_custom_retry': True",
+      "evidence": "current_task='Implement `build_custom_retry(methods)` in `retry_factory.py` returning a Retry ...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G7",
+      "name": "hidden test <-> current task semantics",
+      "expected": "Hidden test verifies the target symbol/module without leaking solution code",
+      "observed": "Hidden test imports/tests target symbol 'build_custom_retry': True",
+      "evidence": "hidden test len=579 bytes, tests=['issubclass', 'DeprecationWarning', 'test_build_custom_retry', 'warnings', 'sys']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G8",
+      "name": "stale control <-> stale memory semantics",
+      "expected": "Stale control solution invokes deprecated API as instructed by stale memory",
+      "observed": "Stale control uses deprecated symbol: True",
+      "evidence": "stale_solution.py contains ['method_whitelist']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G9",
+      "name": "valid control <-> valid memory semantics",
+      "expected": "Valid control solution invokes modern API as instructed by valid memory",
+      "observed": "Valid control uses replacement symbol: True",
+      "evidence": "valid_solution.py contains modern pattern: True",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G10",
+      "name": "causal matrix <-> transition evidence",
+      "expected": "Causal counterfactual matrix demonstrates base-state pass, target-state fail with genuine failure taxonomy",
+      "observed": "Causal status: 'CAUSAL_PASS', failure taxonomy: 'DEPRECATION_WARNING'",
+      "evidence": "causal_counterfactual/trans_gold_urllib3_01_retry_allowed_methods.json",
+      "status": "PASS"
+    }
+  ],
+  "passed_gates_count": 10,
+  "total_gates_count": 10,
+  "overall_status": "PASS"
+}

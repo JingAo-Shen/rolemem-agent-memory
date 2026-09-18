@@ -1,0 +1,95 @@
+{
+  "task_id": "trans_gold_urllib3_01_retry_allowed_methods",
+  "seed": 42,
+  "base_commit": "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5",
+  "target_commit": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+  "raw_generation": "```json\n{\n  \"claims\": [\n    {\n      \"artifact_uri\": \"src/urllib3/util/retry.py\",\n      \"symbol\": \"Retry.DEFAULT_METHOD_WHITELIST\",\n      \"claim_type\": \"DEPRECATION\",\n      \"statement\": \"Use 'Retry.DEFAULT_ALLOWED_METHODS' instead.\",\n      \"evidence_ref\": \"src/urllib3/util/retry.py#L28-L49\"\n    },\n    {\n      \"artifact_uri\": \"src/urllib3/util/retry.py\",\n      \"symbol\": \"Retry.DEFAULT_REDIRECT_HEADERS_BLACKLIST\",\n      \"claim_type\": \"DEPRECATION\",\n      \"statement\": \"Use 'Retry.DEFAULT_REMOVE_HEADERS_ON_REDIRECT' instead.\",\n      \"evidence_ref\": \"src/urllib3/util/retry.py#L28-L49\"\n    },\n    {\n      \"artifact_uri\": \"src/urllib3/util/retry.py\",\n      \"symbol\": \"method_whitelist\",\n      \"claim_type\": \"DEPRECATION\",\n      \"statement\": \"Use 'allowed_methods' instead.\",\n      \"evidence_ref\": \"src/urllib3/util/retry.py#L107-L208\"\n    }\n  ]\n}\n```",
+  "parsed_claims": [
+    {
+      "artifact_uri": "src/urllib3/util/retry.py",
+      "symbol": "Retry.DEFAULT_METHOD_WHITELIST",
+      "claim_type": "DEPRECATION",
+      "statement": "Use 'Retry.DEFAULT_ALLOWED_METHODS' instead.",
+      "evidence_ref": "src/urllib3/util/retry.py#L28-L49"
+    },
+    {
+      "artifact_uri": "src/urllib3/util/retry.py",
+      "symbol": "Retry.DEFAULT_REDIRECT_HEADERS_BLACKLIST",
+      "claim_type": "DEPRECATION",
+      "statement": "Use 'Retry.DEFAULT_REMOVE_HEADERS_ON_REDIRECT' instead.",
+      "evidence_ref": "src/urllib3/util/retry.py#L28-L49"
+    },
+    {
+      "artifact_uri": "src/urllib3/util/retry.py",
+      "symbol": "method_whitelist",
+      "claim_type": "DEPRECATION",
+      "statement": "Use 'allowed_methods' instead.",
+      "evidence_ref": "src/urllib3/util/retry.py#L107-L208"
+    }
+  ],
+  "memory_records": [
+    {
+      "memory_id": "mem_writer_trans_gold_urllib3_01_retry_allowed_methods_1",
+      "artifact_uri": "src/urllib3/util/retry.py",
+      "artifact_type": "file",
+      "symbol": "Retry.DEFAULT_METHOD_WHITELIST",
+      "source_commit": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+      "observed_at": 200.0,
+      "evidence_type": "diff_analysis",
+      "evidence_ref": "src/urllib3/util/retry.py#L28-L49",
+      "valid_from": 200.0,
+      "valid_to": "inf",
+      "supersedes": null,
+      "depends_on": [],
+      "status": "ACTIVE",
+      "role_tags": [
+        "coder",
+        "architect"
+      ],
+      "statement": "Use 'Retry.DEFAULT_ALLOWED_METHODS' instead.",
+      "artifact_digest": "2a5dff4f4b65f0ce050ac7f3c16d5465a9d939de4c9e49190d0c5eab948ee8a3"
+    },
+    {
+      "memory_id": "mem_writer_trans_gold_urllib3_01_retry_allowed_methods_2",
+      "artifact_uri": "src/urllib3/util/retry.py",
+      "artifact_type": "file",
+      "symbol": "Retry.DEFAULT_REDIRECT_HEADERS_BLACKLIST",
+      "source_commit": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+      "observed_at": 200.0,
+      "evidence_type": "diff_analysis",
+      "evidence_ref": "src/urllib3/util/retry.py#L28-L49",
+      "valid_from": 200.0,
+      "valid_to": "inf",
+      "supersedes": null,
+      "depends_on": [],
+      "status": "ACTIVE",
+      "role_tags": [
+        "coder",
+        "architect"
+      ],
+      "statement": "Use 'Retry.DEFAULT_REMOVE_HEADERS_ON_REDIRECT' instead.",
+      "artifact_digest": "2a5dff4f4b65f0ce050ac7f3c16d5465a9d939de4c9e49190d0c5eab948ee8a3"
+    },
+    {
+      "memory_id": "mem_writer_trans_gold_urllib3_01_retry_allowed_methods_3",
+      "artifact_uri": "src/urllib3/util/retry.py",
+      "artifact_type": "file",
+      "symbol": "method_whitelist",
+      "source_commit": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+      "observed_at": 200.0,
+      "evidence_type": "diff_analysis",
+      "evidence_ref": "src/urllib3/util/retry.py#L107-L208",
+      "valid_from": 200.0,
+      "valid_to": "inf",
+      "supersedes": null,
+      "depends_on": [],
+      "status": "ACTIVE",
+      "role_tags": [
+        "coder",
+        "architect"
+      ],
+      "statement": "Use 'allowed_methods' instead.",
+      "artifact_digest": "2a5dff4f4b65f0ce050ac7f3c16d5465a9d939de4c9e49190d0c5eab948ee8a3"
+    }
+  ]
+}

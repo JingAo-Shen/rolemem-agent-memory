@@ -43,9 +43,9 @@
     "affected_files": []
   },
   "original_test_required": true,
-  "stale_memory_candidate": "Instantiate OptionParser from click.parser directly for custom arg parsing",
-  "valid_memory_candidate": "Use Click command parser context or modern parsing helpers without instantiating deprecated OptionParser",
-  "current_task": "Implement `parse_command_args(ctx, args)` in `cli_helper.py` using click Context without deprecated parser.",
+  "stale_memory_candidate": "Instantiate OptionParser from click.parser directly for custom option parsing",
+  "valid_memory_candidate": "Use cmd.make_context or Click command parser context without directly instantiating OptionParser",
+  "current_task": "Implement parse_command_args(cmd, args_list) in custom_parser.py returning parsed parameter dictionary using Click context parser.",
   "target_file": "cli_helper.py",
   "target_symbol": "parse_command_args",
   "existing_tests": "tests/test_parser.py::test_parser_default_prefixes",
@@ -58,7 +58,7 @@
   ],
   "removed_symbols": [],
   "replacement_symbols": [
-    "parse_args"
+    "make_context"
   ],
   "stale_action_patterns": [
     {

@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_gold_urllib3_02_empty_allowed_methods",
+  "repo_name": "urllib3/urllib3",
+  "pr_number": 5223,
+  "pr_title": "Deprecate using an empty collection to indicate retries on all verbs for Retry's allowed_methods option",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "9a209d21087de10b300b2530de023989a71a3f7e",
+  "pr_base_sha": "a5d70ebfd6a30ceba0e9cc322089a6497dcd643e",
+  "pr_head_sha": "dbd3622b354d3a9538826983cfcd78dde10e8472",
+  "base_commit": "a5d70ebfd6a30ceba0e9cc322089a6497dcd643e",
+  "target_commit": "9a209d21087de10b300b2530de023989a71a3f7e",
+  "ancestry_verified": true,
+  "merge_strategy": "merge_commit",
+  "merge_relationship_verified": true,
+  "diff_match": true,
+  "issue_required": false,
+  "issue_id_verified": null,
+  "issue_status": "NOT_APPLICABLE",
+  "spec_sha256": "6792c60771bf8f8fb1e735d7f999a329990710ec66607e6fde1696bbbe7e5501",
+  "audit_fingerprint": "41c80fd0b469b8c01bf78de01605d8cc09c4aedcf5bfc1e66a129da71910b53c",
+  "auditor_version": "3.0.0",
+  "overall_status": "PASS"
+}

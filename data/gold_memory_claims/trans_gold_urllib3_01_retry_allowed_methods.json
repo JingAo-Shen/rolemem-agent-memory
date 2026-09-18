@@ -1,0 +1,24 @@
+{
+  "task_id": "trans_gold_urllib3_01_retry_allowed_methods",
+  "repo_name": "urllib3/urllib3",
+  "base_commit": "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5",
+  "target_commit": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+  "gold_claims": [
+    {
+      "claim_id": "urllib3_01_claim_01",
+      "artifact_uri": "src/urllib3/util/retry.py",
+      "symbol": "method_whitelist",
+      "claim_type": "DEPRECATION",
+      "core_fact_keywords": [
+        "deprecated",
+        "method_whitelist",
+        "allowed_methods"
+      ],
+      "evidence_file": "src/urllib3/util/retry.py"
+    }
+  ],
+  "distractor_files": [
+    "docs/reference/urllib3.util.rst",
+    "test/test_retry_deprecated.py"
+  ]
+}

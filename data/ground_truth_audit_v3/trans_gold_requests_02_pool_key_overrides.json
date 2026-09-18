@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_gold_requests_02_pool_key_overrides",
+  "repo_name": "psf/requests",
+  "pr_number": 6716,
+  "pr_title": "Allow for overriding of specific pool key params",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "145b5399486b56e00250204f033441f3fdf2f3c9",
+  "pr_base_sha": "88dce9d854797c05d0ff296b70e0430535ef8aaf",
+  "pr_head_sha": "b1d73ddb509a3a2d3e10744e85f9cdebdbde90f0",
+  "base_commit": "88dce9d854797c05d0ff296b70e0430535ef8aaf",
+  "target_commit": "145b5399486b56e00250204f033441f3fdf2f3c9",
+  "ancestry_verified": true,
+  "merge_strategy": "merge_commit",
+  "merge_relationship_verified": true,
+  "diff_match": true,
+  "issue_required": true,
+  "issue_id_verified": 6715,
+  "issue_status": "PASS",
+  "spec_sha256": "72b7494a0a9f0832da8553eff6b57e4cb88280f0b464786d378027bf92ee697a",
+  "audit_fingerprint": "641ffe397e5b0ee2a46175a7e18781d3cc12b4cf54146e4ae49c4a9dccd30f77",
+  "auditor_version": "3.0.0",
+  "overall_status": "PASS"
+}

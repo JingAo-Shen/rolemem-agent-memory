@@ -1,0 +1,38 @@
+[
+  {
+    "sha": "c1c8f6ead48efa4bed8a6db7c1ffb2951886c62b",
+    "filename": "CHANGES.rst",
+    "status": "modified",
+    "additions": 2,
+    "deletions": 0,
+    "changes": 2,
+    "blob_url": "https://github.com/pallets/werkzeug/blob/004b446eac19db2ff351a923fd594d4f23d67e90/CHANGES.rst",
+    "raw_url": "https://github.com/pallets/werkzeug/raw/004b446eac19db2ff351a923fd594d4f23d67e90/CHANGES.rst",
+    "contents_url": "https://api.github.com/repos/pallets/werkzeug/contents/CHANGES.rst?ref=004b446eac19db2ff351a923fd594d4f23d67e90",
+    "patch": "@@ -181,6 +181,8 @@ Unreleased\n -   Fix connection reset when exceeding max content size. :pr:`2051`\n -   ``pbkdf2_hex``, ``pbkdf2_bin``, and ``safe_str_cmp`` are deprecated.\n     ``hashlib`` and ``hmac`` provide equivalents. :pr:`2083`\n+-   ``invalidate_cached_property`` is deprecated. Use ``del obj.name``\n+    instead. :pr:`2084`\n \n \n Version 1.0.2"
+  },
+  {
+    "sha": "5b314885cfcded5d6dac3c6f65732b4372dd9e1b",
+    "filename": "src/werkzeug/utils.py",
+    "status": "modified",
+    "additions": 33,
+    "deletions": 14,
+    "changes": 47,
+    "blob_url": "https://github.com/pallets/werkzeug/blob/004b446eac19db2ff351a923fd594d4f23d67e90/src%2Fwerkzeug%2Futils.py",
+    "raw_url": "https://github.com/pallets/werkzeug/raw/004b446eac19db2ff351a923fd594d4f23d67e90/src%2Fwerkzeug%2Futils.py",
+    "contents_url": "https://api.github.com/repos/pallets/werkzeug/contents/src%2Fwerkzeug%2Futils.py?ref=004b446eac19db2ff351a923fd594d4f23d67e90",
+    "patch": "@@ -47,20 +47,29 @@\n \n \n class cached_property(property):\n-    \"\"\"A decorator that converts a function into a lazy property.  The\n-    function wrapped is called the first time to retrieve the result\n-    and then that calculated result is used the next time you access\n-    the value::\n+    \"\"\"A :func:`property` that is only evaluated once. Subsequent access\n+    returns the cached value. Setting the property sets the cached\n+    value. Deleting the property clears the cached value, accessing it\n+    again will evaluate it again.\n \n-        class Foo(object):\n+    .. code-block:: python\n \n+        class Example:\n             @cached_property\n-            def foo(self):\n+            def value(self):\n                 # calculate something important here\n                 return 42\n \n-    The class has to have a `__dict__` in order for this property to\n-    work.\n+        e = Example()\n+        e.value  # evaluates\n+        e.value  # uses cache\n+        e.value = 16  # sets cache\n+        del e.value  # clears cache\n+\n+    The class must have a ``__dict__`` for this to work.\n+\n+    .. versionchanged:: 2.0\n+        ``del obj.name`` clears the cached value.\n     \"\"\"\n \n     def __init__(\n@@ -79,12 +88,18 @@ def __set__(self, obj: object, value: t.Any) -> None:\n     def __get__(self, obj: object, type: type = None) -> t.Any:  # type: ignore\n         if obj is None:\n             return self\n+\n         value = obj.__dict__.get(self.__name__, _missing)\n+\n         if value is _missing:\n             value = self.fget(obj)  # type: ignore\n             obj.__dict__[self.__name__] = value\n+\n         return value\n \n+    def __delete__(self, obj: object) -> None:\n+        del obj.__dict__[self.__name__]\n+\n \n def invalidate_cached_property(obj: object, name: str) -> None:\n     \"\"\"Invalidates the cache for a :class:`cached_property`:\n@@ -107,13 +122,17 @@ def invalidate_cached_property(obj: object, name: str) -> None:\n     42\n \n     You must pass the name of the cached property as the second argument.\n+\n+    .. deprecated:: 2.0\n+        Will be removed in Werkzeug 2.1. Use ``del obj.name`` instead.\n     \"\"\"\n-    if not isinstance(getattr(obj.__class__, name, None), cached_property):\n-        raise TypeError(\n-            f\"Attribute {name!r} of object {obj} is not a\"\n-            \" cached_property, cannot be invalidated.\"\n-        )\n-    del obj.__dict__[name]\n+    warnings.warn(\n+        \"'invalidate_cached_property' is deprecated and will be removed\"\n+        \" in Werkzeug 2.1. Use 'del obj.name' instead.\",\n+        DeprecationWarning,\n+        stacklevel=2,\n+    )\n+    delattr(obj, name)\n \n \n class environ_property(_DictAccessorProperty[_TAccessorValue]):"
+  },
+  {
+    "sha": "52c6f84f796c13988d955dbb99d1650eba0067da",
+    "filename": "tests/test_utils.py",
+    "status": "modified",
+    "additions": 12,
+    "deletions": 22,
+    "changes": 34,
+    "blob_url": "https://github.com/pallets/werkzeug/blob/004b446eac19db2ff351a923fd594d4f23d67e90/tests%2Ftest_utils.py",
+    "raw_url": "https://github.com/pallets/werkzeug/raw/004b446eac19db2ff351a923fd594d4f23d67e90/tests%2Ftest_utils.py",
+    "contents_url": "https://api.github.com/repos/pallets/werkzeug/contents/tests%2Ftest_utils.py?ref=004b446eac19db2ff351a923fd594d4f23d67e90",
+    "patch": "@@ -94,40 +94,30 @@ def _prop(self):\n     assert a._prop == \"value\"\n \n \n-def test_can_invalidate_cached_property():\n-    foo = []\n+def test_invalidate_cached_property():\n+    accessed = 0\n \n     class A:\n+        @utils.cached_property\n         def prop(self):\n-            foo.append(42)\n+            nonlocal accessed\n+            accessed += 1\n             return 42\n \n-        prop = utils.cached_property(prop)\n-\n     a = A()\n     p = a.prop\n     q = a.prop\n     assert p == q == 42\n-    assert foo == [42]\n+    assert accessed == 1\n+\n+    a.prop = 16\n+    assert a.prop == 16\n+    assert accessed == 1\n \n-    utils.invalidate_cached_property(a, \"prop\")\n+    del a.prop\n     r = a.prop\n     assert r == 42\n-    assert foo == [42, 42]\n-\n-    s = a.prop\n-    assert s == 42\n-    assert foo == [42, 42]\n-\n-\n-def test_invalidate_cached_property_on_non_property():\n-    class A:\n-        def __init__(self):\n-            self.prop = 42\n-\n-    a = A()\n-    with pytest.raises(TypeError):\n-        utils.invalidate_cached_property(a, \"prop\")\n+    assert accessed == 2\n \n \n def test_inspect_treats_cached_property_as_property():"
+  }
+]

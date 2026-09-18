@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_gold_click_01_option_parser",
+  "repo_name": "pallets/click",
+  "pr_number": 2592,
+  "pr_title": "deprecate `OptionParser`",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "988c683963b14ced1b32a8cda9f9b466c32d9df1",
+  "pr_base_sha": "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+  "pr_head_sha": "3630addf538ff4d1d5bc75438c8d84378105d03d",
+  "base_commit": "edcd2dc240f7f97ca5ef5b3c1f43c34234e2fee3",
+  "target_commit": "988c683963b14ced1b32a8cda9f9b466c32d9df1",
+  "ancestry_verified": true,
+  "merge_strategy": "merge_commit",
+  "merge_relationship_verified": true,
+  "diff_match": true,
+  "issue_required": false,
+  "issue_id_verified": null,
+  "issue_status": "NOT_APPLICABLE",
+  "spec_sha256": "372b6e1573b8cdbf2de31cb533b7338366f0d07ef713649170634c73a128d123",
+  "audit_fingerprint": "6aa4dfed27726e5a824e340ae5c8b44174ba5b796138802ce3fd1ecdfdd92a9a",
+  "auditor_version": "3.0.0",
+  "overall_status": "PASS"
+}

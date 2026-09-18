@@ -1,0 +1,38 @@
+[
+  {
+    "sha": "fc3ef437db0f4efc79784052d7129fa167a068cc",
+    "filename": "CHANGES.rst",
+    "status": "modified",
+    "additions": 2,
+    "deletions": 0,
+    "changes": 2,
+    "blob_url": "https://github.com/pallets/flask/blob/c77a5203438fe772d41f6a47303ad3f57a4efe6d/CHANGES.rst",
+    "raw_url": "https://github.com/pallets/flask/raw/c77a5203438fe772d41f6a47303ad3f57a4efe6d/CHANGES.rst",
+    "contents_url": "https://api.github.com/repos/pallets/flask/contents/CHANGES.rst?ref=c77a5203438fe772d41f6a47303ad3f57a4efe6d",
+    "patch": "@@ -14,6 +14,8 @@ Unreleased\n     If subclasses were overriding these methods, the old signature is detected,\n     shows a deprecation warning, and will continue to work during the\n     deprecation period. :issue:`5815`\n+-   The ``should_ignore_error`` is deprecated. Handle errors as needed in\n+    teardown handlers instead. :issue:`5816`\n -   ``template_filter``, ``template_test``, and ``template_global`` decorators\n     can be used without parentheses. :issue:`5729`\n -   ``redirect`` returns a ``303`` status code by default instead of ``302``."
+  },
+  {
+    "sha": "c17da4b49d3e1affd14300985ea9f1f031bac561",
+    "filename": "src/flask/app.py",
+    "status": "modified",
+    "additions": 16,
+    "deletions": 1,
+    "changes": 17,
+    "blob_url": "https://github.com/pallets/flask/blob/c77a5203438fe772d41f6a47303ad3f57a4efe6d/src%2Fflask%2Fapp.py",
+    "raw_url": "https://github.com/pallets/flask/raw/c77a5203438fe772d41f6a47303ad3f57a4efe6d/src%2Fflask%2Fapp.py",
+    "contents_url": "https://api.github.com/repos/pallets/flask/contents/src%2Fflask%2Fapp.py?ref=c77a5203438fe772d41f6a47303ad3f57a4efe6d",
+    "patch": "@@ -995,6 +995,17 @@ def full_dispatch_request(self, ctx: AppContext) -> Response:\n \n         .. versionadded:: 0.7\n         \"\"\"\n+        if not self._got_first_request and self.should_ignore_error is not None:\n+            import warnings\n+\n+            warnings.warn(\n+                \"The 'should_ignore_error' method is deprecated and will\"\n+                \" be removed in Flask 3.3. Handle errors as needed in\"\n+                \" teardown handlers instead.\",\n+                DeprecationWarning,\n+                stacklevel=1,\n+            )\n+\n         self._got_first_request = True\n \n         try:\n@@ -1576,7 +1587,11 @@ def wsgi_app(\n             if \"werkzeug.debug.preserve_context\" in environ:\n                 environ[\"werkzeug.debug.preserve_context\"](ctx)\n \n-            if error is not None and self.should_ignore_error(error):\n+            if (\n+                error is not None\n+                and self.should_ignore_error is not None\n+                and self.should_ignore_error(error)\n+            ):\n                 error = None\n \n             ctx.pop(error)"
+  },
+  {
+    "sha": "e069b9087a0a4900071c94744b4d315f438c9736",
+    "filename": "src/flask/sansio/app.py",
+    "status": "modified",
+    "additions": 9,
+    "deletions": 8,
+    "changes": 17,
+    "blob_url": "https://github.com/pallets/flask/blob/c77a5203438fe772d41f6a47303ad3f57a4efe6d/src%2Fflask%2Fsansio%2Fapp.py",
+    "raw_url": "https://github.com/pallets/flask/raw/c77a5203438fe772d41f6a47303ad3f57a4efe6d/src%2Fflask%2Fsansio%2Fapp.py",
+    "contents_url": "https://api.github.com/repos/pallets/flask/contents/src%2Fflask%2Fsansio%2Fapp.py?ref=c77a5203438fe772d41f6a47303ad3f57a4efe6d",
+    "patch": "@@ -922,15 +922,16 @@ def trap_http_exception(self, e: Exception) -> bool:\n \n         return False\n \n-    def should_ignore_error(self, error: BaseException | None) -> bool:\n-        \"\"\"This is called to figure out if an error should be ignored\n-        or not as far as the teardown system is concerned.  If this\n-        function returns ``True`` then the teardown handlers will not be\n-        passed the error.\n+    should_ignore_error: None = None\n+    \"\"\"If this method returns ``True``, the error will not be passed to\n+    teardown handlers, and the context will not be preserved for\n+    debugging.\n \n-        .. versionadded:: 0.10\n-        \"\"\"\n-        return False\n+    .. deprecated:: 3.2\n+        Handle errors as needed in teardown handlers instead.\n+\n+    .. versionadded:: 0.10\n+    \"\"\"\n \n     def redirect(self, location: str, code: int = 303) -> BaseResponse:\n         \"\"\"Create a redirect response object."
+  }
+]

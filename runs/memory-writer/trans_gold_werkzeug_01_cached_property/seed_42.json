@@ -1,0 +1,39 @@
+{
+  "task_id": "trans_gold_werkzeug_01_cached_property",
+  "seed": 42,
+  "base_commit": "25ca9cd92956e48a38f7a32c837e0f8a54c8ae31",
+  "target_commit": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+  "raw_generation": "```json\n{\n  \"claims\": [\n    {\n      \"artifact_uri\": \"src/werkzeug/utils.py\",\n      \"symbol\": \"invalidate_cached_property\",\n      \"claim_type\": \"DEPRECATION\",\n      \"statement\": \"The function 'invalidate_cached_property' is deprecated. Use 'del obj.name' instead.\",\n      \"evidence_ref\": \"src/werkzeug/utils.py#L107-L122\"\n    }\n  ]\n}\n```",
+  "parsed_claims": [
+    {
+      "artifact_uri": "src/werkzeug/utils.py",
+      "symbol": "invalidate_cached_property",
+      "claim_type": "DEPRECATION",
+      "statement": "The function 'invalidate_cached_property' is deprecated. Use 'del obj.name' instead.",
+      "evidence_ref": "src/werkzeug/utils.py#L107-L122"
+    }
+  ],
+  "memory_records": [
+    {
+      "memory_id": "mem_writer_trans_gold_werkzeug_01_cached_property_1",
+      "artifact_uri": "src/werkzeug/utils.py",
+      "artifact_type": "file",
+      "symbol": "invalidate_cached_property",
+      "source_commit": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+      "observed_at": 200.0,
+      "evidence_type": "diff_analysis",
+      "evidence_ref": "src/werkzeug/utils.py#L107-L122",
+      "valid_from": 200.0,
+      "valid_to": "inf",
+      "supersedes": null,
+      "depends_on": [],
+      "status": "ACTIVE",
+      "role_tags": [
+        "coder",
+        "architect"
+      ],
+      "statement": "The function 'invalidate_cached_property' is deprecated. Use 'del obj.name' instead.",
+      "artifact_digest": "a098ad5ceeef276e6485a855e651eea6e14c14df15a3bdb12efd1c5a87d12e61"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "task_id": "trans_gold_click_02_isolated_filesystem",
+  "seed": 42,
+  "base_commit": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+  "target_commit": "cfa01eeb7894a408af70b29d28c0b24f8680f9fb",
+  "raw_generation": "```json\n{\n  \"claims\": [\n    {\n      \"artifact_uri\": \"src/click/testing.py\",\n      \"symbol\": \"isolated_filesystem\",\n      \"claim_type\": \"DEPRECATION\",\n      \"statement\": \"The isolated_filesystem method is deprecated and will be removed in Click 9.0. Use tempfile.TemporaryDirectory or pytest's tmp_path fixture with absolute paths instead.\",\n      \"evidence_ref\": \"src/click/testing.py\"\n    }\n  ]\n}\n```",
+  "parsed_claims": [
+    {
+      "artifact_uri": "src/click/testing.py",
+      "symbol": "isolated_filesystem",
+      "claim_type": "DEPRECATION",
+      "statement": "The isolated_filesystem method is deprecated and will be removed in Click 9.0. Use tempfile.TemporaryDirectory or pytest's tmp_path fixture with absolute paths instead.",
+      "evidence_ref": "src/click/testing.py"
+    }
+  ],
+  "memory_records": [
+    {
+      "memory_id": "mem_writer_trans_gold_click_02_isolated_filesystem_1",
+      "artifact_uri": "src/click/testing.py",
+      "artifact_type": "file",
+      "symbol": "isolated_filesystem",
+      "source_commit": "cfa01eeb7894a408af70b29d28c0b24f8680f9fb",
+      "observed_at": 200.0,
+      "evidence_type": "diff_analysis",
+      "evidence_ref": "src/click/testing.py",
+      "valid_from": 200.0,
+      "valid_to": "inf",
+      "supersedes": null,
+      "depends_on": [],
+      "status": "ACTIVE",
+      "role_tags": [
+        "coder",
+        "architect"
+      ],
+      "statement": "The isolated_filesystem method is deprecated and will be removed in Click 9.0. Use tempfile.TemporaryDirectory or pytest's tmp_path fixture with absolute paths instead.",
+      "artifact_digest": "76f4e649bc53000d667c8c0deff1591970fa034b0f085a207165839b2301019a"
+    }
+  ]
+}

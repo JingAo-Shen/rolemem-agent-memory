@@ -1,0 +1,57 @@
+{
+  "tasks_evaluated": 4,
+  "total_claims_extracted": 6,
+  "total_tp": 5,
+  "total_fp": 1,
+  "total_fn": 0,
+  "precision": 0.8333,
+  "recall": 1.0,
+  "f1_score": 0.9091,
+  "evidence_attribution_accuracy": 1.0,
+  "task_breakdown": [
+    {
+      "task_id": "trans_gold_werkzeug_01_cached_property",
+      "seed": 42,
+      "claims_count": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "task_id": "trans_gold_click_02_isolated_filesystem",
+      "seed": 42,
+      "claims_count": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "task_id": "trans_gold_requests_01_tls_context_adapter",
+      "seed": 42,
+      "claims_count": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "task_id": "trans_gold_urllib3_01_retry_allowed_methods",
+      "seed": 42,
+      "claims_count": 3,
+      "tp": 2,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.6667,
+      "recall": 1.0,
+      "f1": 0.8
+    }
+  ]
+}

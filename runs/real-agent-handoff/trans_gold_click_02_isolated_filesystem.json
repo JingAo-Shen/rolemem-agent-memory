@@ -1,0 +1,121 @@
+{
+  "task_id": "trans_gold_click_02_isolated_filesystem",
+  "conditions": {
+    "H0": {
+      "passed_runs": 3,
+      "total_runs": 3,
+      "tsr": 1.0,
+      "stale_actions_count": 0,
+      "runs": [
+        {
+          "seed": 42,
+          "passed": true,
+          "has_stale_action": false,
+          "code_snippet": "import os\n\ndef setup_test_workspace(tmp_path):\n    \"\"\"\n    Set up an isolated workspace for tests using pytest's tmp_path fixture.\n    \n    Args:\n    ",
+          "log_preview": "d_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_v4eolrcq\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n"
+        },
+        {
+          "seed": 123,
+          "passed": true,
+          "has_stale_action": false,
+          "code_snippet": "import os\n\ndef setup_test_workspace(tmp_path):\n    \"\"\"\n    Set up an isolated workspace for tests using pytest's tmp_path fixture.\n    \n    Args:\n    ",
+          "log_preview": "d_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_gc0kcp9_\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n"
+        },
+        {
+          "seed": 999,
+          "passed": true,
+          "has_stale_action": false,
+          "code_snippet": "import os\n\ndef setup_test_workspace(tmp_path):\n    \"\"\"\n    Create and return an isolated directory path for test files using pytest's tmp_path fixture",
+          "log_preview": "d_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_djhw823q\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n"
+        }
+      ]
+    },
+    "H1": {
+      "passed_runs": 3,
+      "total_runs": 3,
+      "tsr": 1.0,
+      "stale_actions_count": 0,
+      "runs": [
+        {
+          "seed": 42,
+          "passed": true,
+          "has_stale_action": false,
+          "code_snippet": "import os\n\ndef setup_test_workspace(tmp_path):\n    \"\"\"\n    Set up an isolated workspace for tests using pytest's tmp_path.\n    \n    Args:\n    - tmp_pa",
+          "log_preview": "d_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_idijyn_7\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n"
+        },
+        {
+          "seed": 123,
+          "passed": true,
+          "has_stale_action": false,
+          "code_snippet": "import os\n\ndef setup_test_workspace(tmp_path):\n    \"\"\"\n    Set up an isolated workspace for tests using pytest's tmp_path.\n    \n    Args:\n        tmp_",
+          "log_preview": "d_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_5lhn6bre\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n"
+        },
+        {
+          "seed": 999,
+          "passed": true,
+          "has_stale_action": false,
+          "code_snippet": "import os\n\ndef setup_test_workspace(tmp_path):\n    \"\"\"\n    Set up an isolated workspace for tests using pytest's tmp_path.\n    \n    Args:\n    - tmp_pa",
+          "log_preview": "d_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_0lc5ngis\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n"
+        }
+      ]
+    },
+    "H2": {
+      "passed_runs": 3,
+      "total_runs": 3,
+      "tsr": 1.0,
+      "stale_actions_count": 0,
+      "runs": [
+        {
+          "seed": 42,
+          "passed": true,
+          "has_stale_action": false,
+          "code_snippet": "import os\n\ndef setup_test_workspace(tmp_path):\n    \"\"\"\n    Set up an isolated workspace for testing.\n    \n    Args:\n    tmp_path (Path): A temporary p",
+          "log_preview": "d_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_rhxueuyh\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n"
+        },
+        {
+          "seed": 123,
+          "passed": true,
+          "has_stale_action": false,
+          "code_snippet": "import os\n\ndef setup_test_workspace(tmp_path):\n    \"\"\"\n    Set up an isolated workspace for testing.\n    \n    Args:\n        tmp_path (Path): A tempora",
+          "log_preview": "d_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_o471fvma\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n"
+        },
+        {
+          "seed": 999,
+          "passed": true,
+          "has_stale_action": false,
+          "code_snippet": "import os\n\ndef setup_test_workspace(tmp_path):\n    \"\"\"\n    Set up an isolated workspace for testing.\n    \n    Args:\n    - tmp_path (Path): A temporary",
+          "log_preview": "d_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_ggw5_qgk\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n"
+        }
+      ]
+    },
+    "H3": {
+      "passed_runs": 3,
+      "total_runs": 3,
+      "tsr": 1.0,
+      "stale_actions_count": 0,
+      "runs": [
+        {
+          "seed": 42,
+          "passed": true,
+          "has_stale_action": false,
+          "code_snippet": "import os\n\ndef setup_test_workspace(tmp_path):\n    # Create a subdirectory within the temporary path provided by pytest\n    workspace_dir = tmp_path /",
+          "log_preview": "d_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_puuiqusi\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n"
+        },
+        {
+          "seed": 123,
+          "passed": true,
+          "has_stale_action": false,
+          "code_snippet": "import os\n\ndef setup_test_workspace(tmp_path):\n    # Create a subdirectory within the temporary path provided by pytest\n    workspace_dir = tmp_path /",
+          "log_preview": "d_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_mivryv8e\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n"
+        },
+        {
+          "seed": 999,
+          "passed": true,
+          "has_stale_action": false,
+          "code_snippet": "import pytest\n\ndef setup_test_workspace(tmp_path):\n    # Create an isolated directory path for test files using pytest tmp_path\n    test_workspace = t",
+          "log_preview": "d_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_p2kgxqjf\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n"
+        }
+      ]
+    }
+  }
+}

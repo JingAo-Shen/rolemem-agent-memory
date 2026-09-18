@@ -1,0 +1,92 @@
+{
+  "transition_id": "trans_gold_werkzeug_02_environ_properties",
+  "repo_name": "pallets/werkzeug",
+  "auditor_version": "2.0.0",
+  "spec_sha256": "bfc1fba8b5ae867ca7874206a7fffaed1067566d4688d71030311f8a9446d2c0",
+  "audit_fingerprint": "1d18e02cd84390bb1f7567b916de2065d3ea74f92d507ad75e93c2f37c3bde49",
+  "gates": [
+    {
+      "gate_id": "G1",
+      "name": "PR evidence <-> repository_change",
+      "expected": "PR title/body describes the repository architectural or API change",
+      "observed": "Word overlap: ['deprecating', 'environ_property'] | PR title: deprecate environ properties",
+      "evidence": "pr.json:title='deprecate environ properties'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G2",
+      "name": "repository_change <-> actual diff",
+      "expected": "Actual diff contains code edits in files specified in repository_change",
+      "observed": "Diff mentions files: ['src/werkzeug/utils.py', 'src/werkzeug/wrappers/request.py'] -> True",
+      "evidence": "diff.patch length: 9994 bytes",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G3",
+      "name": "actual diff <-> changed/deprecated/replacement symbols",
+      "expected": "Diff patch directly modifies or introduces the target symbols",
+      "observed": "Tokens ['environ_property', 'environ_property', 'environ_property', 'environ'] found in diff: True",
+      "evidence": "Matching symbols in diff: ['environ_property', 'environ_property', 'environ_property', 'environ']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G4",
+      "name": "stale memory <-> base-state behavior",
+      "expected": "Stale memory candidate instructs usage of legacy symbol from base state",
+      "observed": "Stale memory references legacy symbol: True",
+      "evidence": "stale_memory_candidate='Import environ_property directly from werkzeug.utils...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G5",
+      "name": "valid memory <-> target-state behavior",
+      "expected": "Valid memory candidate instructs modern pattern introduced in target state",
+      "observed": "Valid memory references modern symbol: True",
+      "evidence": "valid_memory_candidate='Import environ_property from werkzeug.sansio.utils...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G6",
+      "name": "current task <-> transition capability",
+      "expected": "Evaluation task prompt requires implementing or using transition capability",
+      "observed": "Task exercises target file 'wsgi_helper.py' and target symbol 'extract_wsgi_header': True",
+      "evidence": "current_task='Implement extract_wsgi_header(environ, header_name) in wsgi_helper.py accessing ...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G7",
+      "name": "hidden test <-> current task semantics",
+      "expected": "Hidden test verifies the target symbol/module without leaking solution code",
+      "observed": "Hidden test imports/tests target symbol 'extract_wsgi_header': True",
+      "evidence": "hidden test len=694 bytes, tests=['issubclass', 'DeprecationWarning', 'warnings', 'sys', 'environ']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G8",
+      "name": "stale control <-> stale memory semantics",
+      "expected": "Stale control solution invokes deprecated API as instructed by stale memory",
+      "observed": "Stale control uses deprecated symbol: True",
+      "evidence": "stale_solution.py contains ['environ_property', 'environ_property']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G9",
+      "name": "valid control <-> valid memory semantics",
+      "expected": "Valid control solution invokes modern API as instructed by valid memory",
+      "observed": "Valid control uses replacement symbol: True",
+      "evidence": "valid_solution.py contains modern pattern: True",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G10",
+      "name": "causal matrix <-> transition evidence",
+      "expected": "Causal counterfactual matrix demonstrates base-state pass, target-state fail with genuine failure taxonomy",
+      "observed": "Causal status: 'CAUSAL_PASS', failure taxonomy: 'DEPRECATION_WARNING'",
+      "evidence": "causal_counterfactual/trans_gold_werkzeug_02_environ_properties.json",
+      "status": "PASS"
+    }
+  ],
+  "passed_gates_count": 10,
+  "total_gates_count": 10,
+  "overall_status": "PASS"
+}

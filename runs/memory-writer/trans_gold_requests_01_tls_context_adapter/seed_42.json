@@ -1,0 +1,39 @@
+{
+  "task_id": "trans_gold_requests_01_tls_context_adapter",
+  "seed": 42,
+  "base_commit": "970e8cec988421bd43da57350723b05c8ce8dc7e",
+  "target_commit": "c98e4d133ef29c46a9b68cd783087218a8075e05",
+  "raw_generation": "```json\n{\n  \"claims\": [\n    {\n      \"artifact_uri\": \"src/requests/adapters.py\",\n      \"symbol\": \"get_connection\",\n      \"claim_type\": \"DEPRECATION\",\n      \"statement\": \"The `get_connection` method has been deprecated. Use `get_connection_with_tls_context` instead.\",\n      \"evidence_ref\": \"src/requests/adapters.py#L412-L426\"\n    }\n  ]\n}\n```",
+  "parsed_claims": [
+    {
+      "artifact_uri": "src/requests/adapters.py",
+      "symbol": "get_connection",
+      "claim_type": "DEPRECATION",
+      "statement": "The `get_connection` method has been deprecated. Use `get_connection_with_tls_context` instead.",
+      "evidence_ref": "src/requests/adapters.py#L412-L426"
+    }
+  ],
+  "memory_records": [
+    {
+      "memory_id": "mem_writer_trans_gold_requests_01_tls_context_adapter_1",
+      "artifact_uri": "src/requests/adapters.py",
+      "artifact_type": "file",
+      "symbol": "get_connection",
+      "source_commit": "c98e4d133ef29c46a9b68cd783087218a8075e05",
+      "observed_at": 200.0,
+      "evidence_type": "diff_analysis",
+      "evidence_ref": "src/requests/adapters.py#L412-L426",
+      "valid_from": 200.0,
+      "valid_to": "inf",
+      "supersedes": null,
+      "depends_on": [],
+      "status": "ACTIVE",
+      "role_tags": [
+        "coder",
+        "architect"
+      ],
+      "statement": "The `get_connection` method has been deprecated. Use `get_connection_with_tls_context` instead.",
+      "artifact_digest": "faa6f6ff3a0d4e7a975a7ebbca1b8d8fb0a6db3ccb6531c72974fb28fc997ebd"
+    }
+  ]
+}

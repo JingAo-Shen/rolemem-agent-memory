@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_gold_urllib3_01_retry_allowed_methods",
+  "repo_name": "urllib3/urllib3",
+  "pr_number": 2000,
+  "pr_title": "Rename Retry options and defaults",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+  "pr_base_sha": "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5",
+  "pr_head_sha": "0993ad4390cd524262eef79fda304b0f96a80918",
+  "base_commit": "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5",
+  "target_commit": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+  "ancestry_verified": true,
+  "merge_strategy": "merge_commit",
+  "merge_relationship_verified": true,
+  "diff_match": true,
+  "issue_required": false,
+  "issue_id_verified": null,
+  "issue_status": "NOT_APPLICABLE",
+  "spec_sha256": "4c9380e3b55a91590f83164e41dd0c0694a48933d6e435037370369c4858b504",
+  "audit_fingerprint": "732bfd67881aa92b9e2dec0b59acf430f8768a6b40c6b03366aa47a10459470d",
+  "auditor_version": "3.0.0",
+  "overall_status": "PASS"
+}

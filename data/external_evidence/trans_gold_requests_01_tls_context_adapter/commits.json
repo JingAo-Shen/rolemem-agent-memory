@@ -1,0 +1,166 @@
+[
+  {
+    "sha": "aa1461b68aa73e2f6ec0e78c8853b635c76fd099",
+    "node_id": "C_kwDOA7BMyNoAKGFhMTQ2MWI2OGFhNzNlMmY2ZWMwZTc4Yzg4NTNiNjM1Yzc2ZmQwOTk",
+    "commit": {
+      "author": {
+        "name": "Nate Prewitt",
+        "email": "nate.prewitt@gmail.com",
+        "date": "2024-05-21T12:40:52Z"
+      },
+      "committer": {
+        "name": "Nate Prewitt",
+        "email": "nate.prewitt@gmail.com",
+        "date": "2024-05-21T12:42:49Z"
+      },
+      "message": "Move _get_connection to get_connection_with_tls_context",
+      "tree": {
+        "sha": "fcf8b8273d35834c875914a4ec630527249c99fa",
+        "url": "https://api.github.com/repos/psf/requests/git/trees/fcf8b8273d35834c875914a4ec630527249c99fa"
+      },
+      "url": "https://api.github.com/repos/psf/requests/git/commits/aa1461b68aa73e2f6ec0e78c8853b635c76fd099",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/psf/requests/commits/aa1461b68aa73e2f6ec0e78c8853b635c76fd099",
+    "html_url": "https://github.com/psf/requests/commit/aa1461b68aa73e2f6ec0e78c8853b635c76fd099",
+    "comments_url": "https://api.github.com/repos/psf/requests/commits/aa1461b68aa73e2f6ec0e78c8853b635c76fd099/comments",
+    "author": {
+      "login": "nateprewitt",
+      "id": 5271761,
+      "node_id": "MDQ6VXNlcjUyNzE3NjE=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5271761?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/nateprewitt",
+      "html_url": "https://github.com/nateprewitt",
+      "followers_url": "https://api.github.com/users/nateprewitt/followers",
+      "following_url": "https://api.github.com/users/nateprewitt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/nateprewitt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/nateprewitt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/nateprewitt/subscriptions",
+      "organizations_url": "https://api.github.com/users/nateprewitt/orgs",
+      "repos_url": "https://api.github.com/users/nateprewitt/repos",
+      "events_url": "https://api.github.com/users/nateprewitt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/nateprewitt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "nateprewitt",
+      "id": 5271761,
+      "node_id": "MDQ6VXNlcjUyNzE3NjE=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5271761?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/nateprewitt",
+      "html_url": "https://github.com/nateprewitt",
+      "followers_url": "https://api.github.com/users/nateprewitt/followers",
+      "following_url": "https://api.github.com/users/nateprewitt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/nateprewitt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/nateprewitt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/nateprewitt/subscriptions",
+      "organizations_url": "https://api.github.com/users/nateprewitt/orgs",
+      "repos_url": "https://api.github.com/users/nateprewitt/repos",
+      "events_url": "https://api.github.com/users/nateprewitt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/nateprewitt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "970e8cec988421bd43da57350723b05c8ce8dc7e",
+        "url": "https://api.github.com/repos/psf/requests/commits/970e8cec988421bd43da57350723b05c8ce8dc7e",
+        "html_url": "https://github.com/psf/requests/commit/970e8cec988421bd43da57350723b05c8ce8dc7e"
+      }
+    ]
+  },
+  {
+    "sha": "92075b330a30b9883f466a43d3f7566ab849f91b",
+    "node_id": "C_kwDOA7BMyNoAKDkyMDc1YjMzMGEzMGI5ODgzZjQ2NmE0M2QzZjc1NjZhYjg0OWY5MWI",
+    "commit": {
+      "author": {
+        "name": "Nate Prewitt",
+        "email": "nate.prewitt@gmail.com",
+        "date": "2024-05-21T16:28:30Z"
+      },
+      "committer": {
+        "name": "Nate Prewitt",
+        "email": "nate.prewitt@gmail.com",
+        "date": "2024-05-21T16:28:30Z"
+      },
+      "message": "Add deprecation warning",
+      "tree": {
+        "sha": "255454da33306475a983d7829e62da558cad0602",
+        "url": "https://api.github.com/repos/psf/requests/git/trees/255454da33306475a983d7829e62da558cad0602"
+      },
+      "url": "https://api.github.com/repos/psf/requests/git/commits/92075b330a30b9883f466a43d3f7566ab849f91b",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/psf/requests/commits/92075b330a30b9883f466a43d3f7566ab849f91b",
+    "html_url": "https://github.com/psf/requests/commit/92075b330a30b9883f466a43d3f7566ab849f91b",
+    "comments_url": "https://api.github.com/repos/psf/requests/commits/92075b330a30b9883f466a43d3f7566ab849f91b/comments",
+    "author": {
+      "login": "nateprewitt",
+      "id": 5271761,
+      "node_id": "MDQ6VXNlcjUyNzE3NjE=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5271761?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/nateprewitt",
+      "html_url": "https://github.com/nateprewitt",
+      "followers_url": "https://api.github.com/users/nateprewitt/followers",
+      "following_url": "https://api.github.com/users/nateprewitt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/nateprewitt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/nateprewitt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/nateprewitt/subscriptions",
+      "organizations_url": "https://api.github.com/users/nateprewitt/orgs",
+      "repos_url": "https://api.github.com/users/nateprewitt/repos",
+      "events_url": "https://api.github.com/users/nateprewitt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/nateprewitt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "nateprewitt",
+      "id": 5271761,
+      "node_id": "MDQ6VXNlcjUyNzE3NjE=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5271761?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/nateprewitt",
+      "html_url": "https://github.com/nateprewitt",
+      "followers_url": "https://api.github.com/users/nateprewitt/followers",
+      "following_url": "https://api.github.com/users/nateprewitt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/nateprewitt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/nateprewitt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/nateprewitt/subscriptions",
+      "organizations_url": "https://api.github.com/users/nateprewitt/orgs",
+      "repos_url": "https://api.github.com/users/nateprewitt/repos",
+      "events_url": "https://api.github.com/users/nateprewitt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/nateprewitt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "aa1461b68aa73e2f6ec0e78c8853b635c76fd099",
+        "url": "https://api.github.com/repos/psf/requests/commits/aa1461b68aa73e2f6ec0e78c8853b635c76fd099",
+        "html_url": "https://github.com/psf/requests/commit/aa1461b68aa73e2f6ec0e78c8853b635c76fd099"
+      }
+    ]
+  }
+]

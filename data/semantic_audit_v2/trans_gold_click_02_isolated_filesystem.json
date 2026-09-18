@@ -1,0 +1,92 @@
+{
+  "transition_id": "trans_gold_click_02_isolated_filesystem",
+  "repo_name": "pallets/click",
+  "auditor_version": "2.0.0",
+  "spec_sha256": "26a9fbb4b141e8c3554ad484ddcef70715cb52a179232eb740a7ade9ef7741d0",
+  "audit_fingerprint": "cf13e1abf4ffa8f1080639792be5b643c6027a7795ef6fa38124e936ca78e82e",
+  "gates": [
+    {
+      "gate_id": "G1",
+      "name": "PR evidence <-> repository_change",
+      "expected": "PR title/body describes the repository architectural or API change",
+      "observed": "Word overlap: ['clirunner', 'deprecate', 'isolated_filesystem', 'pytest', 'tmp_path'] | PR title: Deprecate `isolated_filesystem` and document its limits",
+      "evidence": "pr.json:title='Deprecate `isolated_filesystem` and document its limits'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G2",
+      "name": "repository_change <-> actual diff",
+      "expected": "Actual diff contains code edits in files specified in repository_change",
+      "observed": "Diff mentions files: ['src/click/testing.py'] -> True",
+      "evidence": "diff.patch length: 27246 bytes",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G3",
+      "name": "actual diff <-> changed/deprecated/replacement symbols",
+      "expected": "Diff patch directly modifies or introduces the target symbols",
+      "observed": "Tokens ['isolated_filesystem', 'isolated_filesystem', 'isolated_filesystem', 'tmp_path', 'tmp_path'] found in diff: True",
+      "evidence": "Matching symbols in diff: ['isolated_filesystem', 'isolated_filesystem', 'isolated_filesystem', 'tmp_path', 'tmp_path']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G4",
+      "name": "stale memory <-> base-state behavior",
+      "expected": "Stale memory candidate instructs usage of legacy symbol from base state",
+      "observed": "Stale memory references legacy symbol: True",
+      "evidence": "stale_memory_candidate='Use CliRunner.isolated_filesystem for filesystem-isolated tests....'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G5",
+      "name": "valid memory <-> target-state behavior",
+      "expected": "Valid memory candidate instructs modern pattern introduced in target state",
+      "observed": "Valid memory references modern symbol: True",
+      "evidence": "valid_memory_candidate='Use pytest tmp_path / tmp_path_factory rather than CliRunner.isolated_filesystem...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G6",
+      "name": "current task <-> transition capability",
+      "expected": "Evaluation task prompt requires implementing or using transition capability",
+      "observed": "Task exercises target file 'test_workspace_helper.py' and target symbol 'setup_test_workspace': True",
+      "evidence": "current_task='Implement `setup_test_workspace(tmp_path)` in `test_workspace_helper.py` providi...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G7",
+      "name": "hidden test <-> current task semantics",
+      "expected": "Hidden test verifies the target symbol/module without leaking solution code",
+      "observed": "Hidden test imports/tests target symbol 'setup_test_workspace': True",
+      "evidence": "hidden test len=735 bytes, tests=['issubclass', 'DeprecationWarning', 'warnings', 'tmp_path', 'Path']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G8",
+      "name": "stale control <-> stale memory semantics",
+      "expected": "Stale control solution invokes deprecated API as instructed by stale memory",
+      "observed": "Stale control uses deprecated symbol: True",
+      "evidence": "stale_solution.py contains ['isolated_filesystem', 'isolated_filesystem', 'isolated_filesystem']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G9",
+      "name": "valid control <-> valid memory semantics",
+      "expected": "Valid control solution invokes modern API as instructed by valid memory",
+      "observed": "Valid control uses replacement symbol: True",
+      "evidence": "valid_solution.py contains modern pattern: True",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G10",
+      "name": "causal matrix <-> transition evidence",
+      "expected": "Causal counterfactual matrix demonstrates base-state pass, target-state fail with genuine failure taxonomy",
+      "observed": "Causal status: 'CAUSAL_PASS', failure taxonomy: 'DEPRECATION_WARNING'",
+      "evidence": "causal_counterfactual/trans_gold_click_02_isolated_filesystem.json",
+      "status": "PASS"
+    }
+  ],
+  "passed_gates_count": 10,
+  "total_gates_count": 10,
+  "overall_status": "PASS"
+}

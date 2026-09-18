@@ -1,0 +1,13 @@
+{
+  "tid": "track_b_urllib3_redirect_headers",
+  "repo_name": "urllib3/urllib3",
+  "decision_claim": "The project default headers stripped when redirecting across hosts is frozenset(['Authorization'])",
+  "decision_value": "Authorization",
+  "evidence_type": "PR discussion & code change",
+  "evidence_url": "https://github.com/urllib3/urllib3/pull/1346",
+  "evidence_commit": "560bd227b90f74417ffaedebf5f8d05a8ee4f532",
+  "evidence_file": "urllib3/util/retry.py",
+  "evidence_line_range": "151-155",
+  "evidence_excerpt": "DEFAULT_REDIRECT_HEADERS_BLACKLIST = frozenset(['Authorization'])",
+  "evidence_hiding_audit": "PASS"
+}

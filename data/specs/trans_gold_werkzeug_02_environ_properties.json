@@ -59,7 +59,8 @@
   ],
   "removed_symbols": [],
   "replacement_symbols": [
-    "werkzeug.sansio.utils.environ_property"
+    "werkzeug.sansio.utils.environ_property",
+    "environ"
   ],
   "stale_action_patterns": [
     {

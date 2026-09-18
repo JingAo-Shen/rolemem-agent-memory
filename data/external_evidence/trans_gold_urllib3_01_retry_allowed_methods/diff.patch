@@ -1,0 +1,789 @@
+diff --git a/docs/reference/urllib3.util.rst b/docs/reference/urllib3.util.rst
+index 663efd6b68..cb51215e80 100644
+--- a/docs/reference/urllib3.util.rst
++++ b/docs/reference/urllib3.util.rst
+@@ -14,5 +14,4 @@ but can also be used independently.
+ 
+ .. automodule:: urllib3.util
+     :members:
+-    :undoc-members:
+     :show-inheritance:
+diff --git a/src/urllib3/util/retry.py b/src/urllib3/util/retry.py
+index e5eda7a16d..9d9f4a3c3d 100644
+--- a/src/urllib3/util/retry.py
++++ b/src/urllib3/util/retry.py
+@@ -5,6 +5,7 @@
+ from itertools import takewhile
+ import email
+ import re
++import warnings
+ 
+ from ..exceptions import (
+     ConnectTimeoutError,
+@@ -27,6 +28,49 @@
+ )
+ 
+ 
++# TODO: In v2 we can remove this sentinel and metaclass with deprecated options.
++_Default = object()
++
++
++class _RetryMeta(type):
++    @property
++    def DEFAULT_METHOD_WHITELIST(cls):
++        warnings.warn(
++            "Using 'Retry.DEFAULT_METHOD_WHITELIST' is deprecated and "
++            "will be removed in v2.0. Use 'Retry.DEFAULT_METHODS_ALLOWED' instead",
++            DeprecationWarning,
++        )
++        return cls.DEFAULT_ALLOWED_METHODS
++
++    @DEFAULT_METHOD_WHITELIST.setter
++    def DEFAULT_METHOD_WHITELIST(cls, value):
++        warnings.warn(
++            "Using 'Retry.DEFAULT_METHOD_WHITELIST' is deprecated and "
++            "will be removed in v2.0. Use 'Retry.DEFAULT_ALLOWED_METHODS' instead",
++            DeprecationWarning,
++        )
++        cls.DEFAULT_ALLOWED_METHODS = value
++
++    @property
++    def DEFAULT_REDIRECT_HEADERS_BLACKLIST(cls):
++        warnings.warn(
++            "Using 'Retry.DEFAULT_REDIRECT_HEADERS_BLACKLIST' is deprecated and "
++            "will be removed in v2.0. Use 'Retry.DEFAULT_REMOVE_HEADERS_ON_REDIRECT' instead",
++            DeprecationWarning,
++        )
++        return cls.DEFAULT_REMOVE_HEADERS_ON_REDIRECT
++
++    @DEFAULT_REDIRECT_HEADERS_BLACKLIST.setter
++    def DEFAULT_REDIRECT_HEADERS_BLACKLIST(cls, value):
++        warnings.warn(
++            "Using 'Retry.DEFAULT_REDIRECT_HEADERS_BLACKLIST' is deprecated and "
++            "will be removed in v2.0. Use 'Retry.DEFAULT_REMOVE_HEADERS_ON_REDIRECT' instead",
++            DeprecationWarning,
++        )
++        cls.DEFAULT_REMOVE_HEADERS_ON_REDIRECT = value
++
++
++@six.add_metaclass(_RetryMeta)
+ class Retry(object):
+     """Retry configuration.
+ 
+@@ -107,18 +151,23 @@ class Retry(object):
+         If ``total`` is not set, it's a good idea to set this to 0 to account
+         for unexpected edge cases and avoid infinite retry loops.
+ 
+-    :param iterable method_whitelist:
++    :param iterable allowed_methods:
+         Set of uppercased HTTP method verbs that we should retry on.
+ 
+         By default, we only retry on methods which are considered to be
+         idempotent (multiple requests with the same parameters end with the
+-        same state). See :attr:`Retry.DEFAULT_METHOD_WHITELIST`.
++        same state). See :attr:`Retry.DEFAULT_ALLOWED_METHODS`.
+ 
+         Set to a ``False`` value to retry on any verb.
+ 
++        .. warning::
++
++            Previously this parameter was named ``method_whitelist``, that
++            usage is deprecated in v1.26.0 and will be removed in v2.0.
++
+     :param iterable status_forcelist:
+         A set of integer HTTP status codes that we should force a retry on.
+-        A retry is initiated if the request method is in ``method_whitelist``
++        A retry is initiated if the request method is in ``allowed_methods``
+         and the response status code is in ``status_forcelist``.
+ 
+         By default, this is disabled with ``None``.
+@@ -159,13 +208,16 @@ class Retry(object):
+         request.
+     """
+ 
+-    DEFAULT_METHOD_WHITELIST = frozenset(
++    #: Default methods to be used for ``allowed_methods``
++    DEFAULT_ALLOWED_METHODS = frozenset(
+         ["HEAD", "GET", "PUT", "DELETE", "OPTIONS", "TRACE"]
+     )
+ 
++    #: Default status codes to be used for ``status_forcelist``
+     RETRY_AFTER_STATUS_CODES = frozenset([413, 429, 503])
+ 
+-    DEFAULT_REDIRECT_HEADERS_BLACKLIST = frozenset(["Authorization"])
++    #: Default headers to be used for ``remove_headers_on_redirect``
++    DEFAULT_REMOVE_HEADERS_ON_REDIRECT = frozenset(["Authorization"])
+ 
+     #: Maximum backoff time.
+     BACKOFF_MAX = 120
+@@ -178,16 +230,36 @@ def __init__(
+         redirect=None,
+         status=None,
+         other=None,
+-        method_whitelist=DEFAULT_METHOD_WHITELIST,
++        allowed_methods=_Default,
+         status_forcelist=None,
+         backoff_factor=0,
+         raise_on_redirect=True,
+         raise_on_status=True,
+         history=None,
+         respect_retry_after_header=True,
+-        remove_headers_on_redirect=DEFAULT_REDIRECT_HEADERS_BLACKLIST,
++        remove_headers_on_redirect=_Default,
++        # TODO: Deprecated, remove in v2.0
++        method_whitelist=_Default,
+     ):
+ 
++        if method_whitelist is not _Default:
++            if allowed_methods is not _Default:
++                raise ValueError(
++                    "Using both 'allowed_methods' and "
++                    "'method_whitelist' together is not allowed. "
++                    "Instead only use 'allowed_methods'"
++                )
++            warnings.warn(
++                "Using 'method_whitelist' with Retry is deprecated and "
++                "will be removed in v2.0. Use 'allowed_methods' instead",
++                DeprecationWarning,
++            )
++            allowed_methods = method_whitelist
++        if allowed_methods is _Default:
++            allowed_methods = self.DEFAULT_ALLOWED_METHODS
++        if remove_headers_on_redirect is _Default:
++            remove_headers_on_redirect = self.DEFAULT_REMOVE_HEADERS_ON_REDIRECT
++
+         self.total = total
+         self.connect = connect
+         self.read = read
+@@ -200,7 +272,7 @@ def __init__(
+ 
+         self.redirect = redirect
+         self.status_forcelist = status_forcelist or set()
+-        self.method_whitelist = method_whitelist
++        self.allowed_methods = allowed_methods
+         self.backoff_factor = backoff_factor
+         self.raise_on_redirect = raise_on_redirect
+         self.raise_on_status = raise_on_status
+@@ -218,7 +290,6 @@ def new(self, **kw):
+             redirect=self.redirect,
+             status=self.status,
+             other=self.other,
+-            method_whitelist=self.method_whitelist,
+             status_forcelist=self.status_forcelist,
+             backoff_factor=self.backoff_factor,
+             raise_on_redirect=self.raise_on_redirect,
+@@ -227,6 +298,23 @@ def new(self, **kw):
+             remove_headers_on_redirect=self.remove_headers_on_redirect,
+             respect_retry_after_header=self.respect_retry_after_header,
+         )
++
++        # TODO: If already given in **kw we use what's given to us
++        # If not given we need to figure out what to pass. We decide
++        # based on whether our class has the 'method_whitelist' property
++        # and if so we pass the deprecated 'method_whitelist' otherwise
++        # we use 'allowed_methods'. Remove in v2.0
++        if "method_whitelist" not in kw and "allowed_methods" not in kw:
++            if "method_whitelist" in self.__dict__:
++                warnings.warn(
++                    "Using 'method_whitelist' with Retry is deprecated and "
++                    "will be removed in v2.0. Use 'allowed_methods' instead",
++                    DeprecationWarning,
++                )
++                params["method_whitelist"] = self.allowed_methods
++            else:
++                params["allowed_methods"] = self.allowed_methods
++
+         params.update(kw)
+         return type(self)(**params)
+ 
+@@ -340,15 +428,26 @@ def _is_read_error(self, err):
+ 
+     def _is_method_retryable(self, method):
+         """Checks if a given HTTP method should be retried upon, depending if
+-        it is included on the method whitelist.
++        it is included in the allowed_methods
+         """
+-        if self.method_whitelist and method.upper() not in self.method_whitelist:
+-            return False
++        # TODO: For now favor if the Retry implementation sets its own method_whitelist
++        # property outside of our constructor to avoid breaking custom implementations.
++        if "method_whitelist" in self.__dict__:
++            warnings.warn(
++                "Using 'method_whitelist' with Retry is deprecated and "
++                "will be removed in v2.0. Use 'allowed_methods' instead",
++                DeprecationWarning,
++            )
++            allowed_methods = self.method_whitelist
++        else:
++            allowed_methods = self.allowed_methods
+ 
++        if allowed_methods and method.upper() not in allowed_methods:
++            return False
+         return True
+ 
+     def is_retry(self, method, status_code, has_retry_after=False):
+-        """Is this method/status code retryable? (Based on whitelists and control
++        """Is this method/status code retryable? (Based on allowlists and control
+         variables such as the number of total retries to allow, whether to
+         respect the Retry-After header, whether this header is present, and
+         whether the returned status code is on the list of status codes to
+@@ -448,7 +547,7 @@ def increment(
+ 
+         else:
+             # Incrementing because of a server error like a 500 in
+-            # status_forcelist and a the given method is in the whitelist
++            # status_forcelist and the given method is in the allowed_methods
+             cause = ResponseError.GENERIC_ERROR
+             if response and response.status:
+                 if status_count is not None:
+@@ -483,6 +582,20 @@ def __repr__(self):
+             "read={self.read}, redirect={self.redirect}, status={self.status})"
+         ).format(cls=type(self), self=self)
+ 
++    def __getattr__(self, item):
++        if item == "method_whitelist":
++            # TODO: Remove this deprecated alias in v2.0
++            warnings.warn(
++                "Using 'method_whitelist' with Retry is deprecated and "
++                "will be removed in v2.0. Use 'allowed_methods' instead",
++                DeprecationWarning,
++            )
++            return self.allowed_methods
++        try:
++            return getattr(super(Retry, self), item)
++        except AttributeError:
++            return getattr(Retry, item)
++
+ 
+ # For backwards compatibility (equivalent to pre-v1.9):
+ Retry.DEFAULT = Retry(3)
+diff --git a/test/test_retry.py b/test/test_retry.py
+index a29b03e2cd..0ca79dd3a2 100644
+--- a/test/test_retry.py
++++ b/test/test_retry.py
+@@ -1,5 +1,6 @@
+ import mock
+ import pytest
++import warnings
+ 
+ from urllib3.response import HTTPResponse
+ from urllib3.packages import six
+@@ -15,6 +16,13 @@
+ )
+ 
+ 
++@pytest.fixture(scope="function", autouse=True)
++def no_retry_deprecations():
++    with warnings.catch_warnings(record=True) as w:
++        yield
++    assert len([str(x.message) for x in w if "Retry" in str(x.message)]) == 0
++
++
+ class TestRetry(object):
+     def test_string(self):
+         """ Retry string representation looks the way we expect """
+@@ -196,14 +204,14 @@ def test_status_forcelist(self):
+         retry = Retry(total=1, status_forcelist=["418"])
+         assert not retry.is_retry("GET", status_code=418)
+ 
+-    def test_method_whitelist_with_status_forcelist(self):
+-        # Falsey method_whitelist means to retry on any method.
+-        retry = Retry(status_forcelist=[500], method_whitelist=None)
++    def test_allowed_methods_with_status_forcelist(self):
++        # Falsey allowed_methods means to retry on any method.
++        retry = Retry(status_forcelist=[500], allowed_methods=None)
+         assert retry.is_retry("GET", status_code=500)
+         assert retry.is_retry("POST", status_code=500)
+ 
+-        # Criteria of method_whitelist and status_forcelist are ANDed.
+-        retry = Retry(status_forcelist=[500], method_whitelist=["POST"])
++        # Criteria of allowed_methods and status_forcelist are ANDed.
++        retry = Retry(status_forcelist=[500], allowed_methods=["POST"])
+         assert not retry.is_retry("GET", status_code=500)
+         assert retry.is_retry("POST", status_code=500)
+ 
+@@ -251,7 +259,7 @@ def test_error_message(self):
+         assert str(e.value.reason) == "conntimeout"
+ 
+     def test_history(self):
+-        retry = Retry(total=10, method_whitelist=frozenset(["GET", "POST"]))
++        retry = Retry(total=10, allowed_methods=frozenset(["GET", "POST"]))
+         assert retry.history == tuple()
+         connection_error = ConnectTimeoutError("conntimeout")
+         retry = retry.increment("GET", "/test1", None, connection_error)
+diff --git a/test/test_retry_deprecated.py b/test/test_retry_deprecated.py
+new file mode 100644
+index 0000000000..73b5ef0f71
+--- /dev/null
++++ b/test/test_retry_deprecated.py
+@@ -0,0 +1,470 @@
++# This is a copy-paste of test_retry.py with extra asserts about deprecated options. It will be removed for v2.
++import mock
++import pytest
++import warnings
++
++from urllib3.response import HTTPResponse
++from urllib3.packages import six
++from urllib3.packages.six.moves import xrange
++from urllib3.util.retry import Retry, RequestHistory
++from urllib3.exceptions import (
++    ConnectTimeoutError,
++    InvalidHeader,
++    MaxRetryError,
++    ReadTimeoutError,
++    ResponseError,
++    SSLError,
++)
++
++
++# TODO: Remove this entire file once deprecated Retry options are removed in v2.
++@pytest.fixture(scope="function")
++def expect_retry_deprecation():
++    with warnings.catch_warnings(record=True) as w:
++        yield
++    assert len([str(x.message) for x in w if "Retry" in str(x.message)]) > 0
++
++
++class TestRetry(object):
++    def test_string(self):
++        """ Retry string representation looks the way we expect """
++        retry = Retry()
++        assert (
++            str(retry)
++            == "Retry(total=10, connect=None, read=None, redirect=None, status=None)"
++        )
++        for _ in range(3):
++            retry = retry.increment(method="GET")
++        assert (
++            str(retry)
++            == "Retry(total=7, connect=None, read=None, redirect=None, status=None)"
++        )
++
++    def test_retry_both_specified(self):
++        """Total can win if it's lower than the connect value"""
++        error = ConnectTimeoutError()
++        retry = Retry(connect=3, total=2)
++        retry = retry.increment(error=error)
++        retry = retry.increment(error=error)
++        with pytest.raises(MaxRetryError) as e:
++            retry.increment(error=error)
++        assert e.value.reason == error
++
++    def test_retry_higher_total_loses(self):
++        """ A lower connect timeout than the total is honored """
++        error = ConnectTimeoutError()
++        retry = Retry(connect=2, total=3)
++        retry = retry.increment(error=error)
++        retry = retry.increment(error=error)
++        with pytest.raises(MaxRetryError):
++            retry.increment(error=error)
++
++    def test_retry_higher_total_loses_vs_read(self):
++        """ A lower read timeout than the total is honored """
++        error = ReadTimeoutError(None, "/", "read timed out")
++        retry = Retry(read=2, total=3)
++        retry = retry.increment(method="GET", error=error)
++        retry = retry.increment(method="GET", error=error)
++        with pytest.raises(MaxRetryError):
++            retry.increment(method="GET", error=error)
++
++    def test_retry_total_none(self):
++        """ if Total is none, connect error should take precedence """
++        error = ConnectTimeoutError()
++        retry = Retry(connect=2, total=None)
++        retry = retry.increment(error=error)
++        retry = retry.increment(error=error)
++        with pytest.raises(MaxRetryError) as e:
++            retry.increment(error=error)
++        assert e.value.reason == error
++
++        error = ReadTimeoutError(None, "/", "read timed out")
++        retry = Retry(connect=2, total=None)
++        retry = retry.increment(method="GET", error=error)
++        retry = retry.increment(method="GET", error=error)
++        retry = retry.increment(method="GET", error=error)
++        assert not retry.is_exhausted()
++
++    def test_retry_default(self):
++        """ If no value is specified, should retry connects 3 times """
++        retry = Retry()
++        assert retry.total == 10
++        assert retry.connect is None
++        assert retry.read is None
++        assert retry.redirect is None
++        assert retry.other is None
++
++        error = ConnectTimeoutError()
++        retry = Retry(connect=1)
++        retry = retry.increment(error=error)
++        with pytest.raises(MaxRetryError):
++            retry.increment(error=error)
++
++        retry = Retry(connect=1)
++        retry = retry.increment(error=error)
++        assert not retry.is_exhausted()
++
++        assert Retry(0).raise_on_redirect
++        assert not Retry(False).raise_on_redirect
++
++    def test_retry_other(self):
++        """ If an unexpected error is raised, should retry other times """
++        other_error = SSLError()
++        retry = Retry(connect=1)
++        retry = retry.increment(error=other_error)
++        retry = retry.increment(error=other_error)
++        assert not retry.is_exhausted()
++
++        retry = Retry(other=1)
++        retry = retry.increment(error=other_error)
++        with pytest.raises(MaxRetryError) as e:
++            retry.increment(error=other_error)
++        assert e.value.reason == other_error
++
++    def test_retry_read_zero(self):
++        """ No second chances on read timeouts, by default """
++        error = ReadTimeoutError(None, "/", "read timed out")
++        retry = Retry(read=0)
++        with pytest.raises(MaxRetryError) as e:
++            retry.increment(method="GET", error=error)
++        assert e.value.reason == error
++
++    def test_status_counter(self):
++        resp = HTTPResponse(status=400)
++        retry = Retry(status=2)
++        retry = retry.increment(response=resp)
++        retry = retry.increment(response=resp)
++        with pytest.raises(MaxRetryError) as e:
++            retry.increment(response=resp)
++        assert str(e.value.reason) == ResponseError.SPECIFIC_ERROR.format(
++            status_code=400
++        )
++
++    def test_backoff(self):
++        """ Backoff is computed correctly """
++        max_backoff = Retry.BACKOFF_MAX
++
++        retry = Retry(total=100, backoff_factor=0.2)
++        assert retry.get_backoff_time() == 0  # First request
++
++        retry = retry.increment(method="GET")
++        assert retry.get_backoff_time() == 0  # First retry
++
++        retry = retry.increment(method="GET")
++        assert retry.backoff_factor == 0.2
++        assert retry.total == 98
++        assert retry.get_backoff_time() == 0.4  # Start backoff
++
++        retry = retry.increment(method="GET")
++        assert retry.get_backoff_time() == 0.8
++
++        retry = retry.increment(method="GET")
++        assert retry.get_backoff_time() == 1.6
++
++        for _ in xrange(10):
++            retry = retry.increment(method="GET")
++
++        assert retry.get_backoff_time() == max_backoff
++
++    def test_zero_backoff(self):
++        retry = Retry()
++        assert retry.get_backoff_time() == 0
++        retry = retry.increment(method="GET")
++        retry = retry.increment(method="GET")
++        assert retry.get_backoff_time() == 0
++
++    def test_backoff_reset_after_redirect(self):
++        retry = Retry(total=100, redirect=5, backoff_factor=0.2)
++        retry = retry.increment(method="GET")
++        retry = retry.increment(method="GET")
++        assert retry.get_backoff_time() == 0.4
++        redirect_response = HTTPResponse(status=302, headers={"location": "test"})
++        retry = retry.increment(method="GET", response=redirect_response)
++        assert retry.get_backoff_time() == 0
++        retry = retry.increment(method="GET")
++        retry = retry.increment(method="GET")
++        assert retry.get_backoff_time() == 0.4
++
++    def test_sleep(self):
++        # sleep a very small amount of time so our code coverage is happy
++        retry = Retry(backoff_factor=0.0001)
++        retry = retry.increment(method="GET")
++        retry = retry.increment(method="GET")
++        retry.sleep()
++
++    def test_status_forcelist(self):
++        retry = Retry(status_forcelist=xrange(500, 600))
++        assert not retry.is_retry("GET", status_code=200)
++        assert not retry.is_retry("GET", status_code=400)
++        assert retry.is_retry("GET", status_code=500)
++
++        retry = Retry(total=1, status_forcelist=[418])
++        assert not retry.is_retry("GET", status_code=400)
++        assert retry.is_retry("GET", status_code=418)
++
++        # String status codes are not matched.
++        retry = Retry(total=1, status_forcelist=["418"])
++        assert not retry.is_retry("GET", status_code=418)
++
++    def test_method_whitelist_with_status_forcelist(self, expect_retry_deprecation):
++        # Falsey method_whitelist means to retry on any method.
++        retry = Retry(status_forcelist=[500], method_whitelist=None)
++        assert retry.is_retry("GET", status_code=500)
++        assert retry.is_retry("POST", status_code=500)
++
++        # Criteria of method_whitelist and status_forcelist are ANDed.
++        retry = Retry(status_forcelist=[500], method_whitelist=["POST"])
++        assert not retry.is_retry("GET", status_code=500)
++        assert retry.is_retry("POST", status_code=500)
++
++    def test_exhausted(self):
++        assert not Retry(0).is_exhausted()
++        assert Retry(-1).is_exhausted()
++        assert Retry(1).increment(method="GET").total == 0
++
++    @pytest.mark.parametrize("total", [-1, 0])
++    def test_disabled(self, total):
++        with pytest.raises(MaxRetryError):
++            Retry(total).increment(method="GET")
++
++    def test_error_message(self):
++        retry = Retry(total=0)
++        with pytest.raises(MaxRetryError) as e:
++            retry = retry.increment(
++                method="GET", error=ReadTimeoutError(None, "/", "read timed out")
++            )
++        assert "Caused by redirect" not in str(e.value)
++        assert str(e.value.reason) == "None: read timed out"
++
++        retry = Retry(total=1)
++        with pytest.raises(MaxRetryError) as e:
++            retry = retry.increment("POST", "/")
++            retry = retry.increment("POST", "/")
++        assert "Caused by redirect" not in str(e.value)
++        assert isinstance(e.value.reason, ResponseError)
++        assert str(e.value.reason) == ResponseError.GENERIC_ERROR
++
++        retry = Retry(total=1)
++        response = HTTPResponse(status=500)
++        with pytest.raises(MaxRetryError) as e:
++            retry = retry.increment("POST", "/", response=response)
++            retry = retry.increment("POST", "/", response=response)
++        assert "Caused by redirect" not in str(e.value)
++        msg = ResponseError.SPECIFIC_ERROR.format(status_code=500)
++        assert str(e.value.reason) == msg
++
++        retry = Retry(connect=1)
++        with pytest.raises(MaxRetryError) as e:
++            retry = retry.increment(error=ConnectTimeoutError("conntimeout"))
++            retry = retry.increment(error=ConnectTimeoutError("conntimeout"))
++        assert "Caused by redirect" not in str(e.value)
++        assert str(e.value.reason) == "conntimeout"
++
++    def test_history(self, expect_retry_deprecation):
++        retry = Retry(total=10, method_whitelist=frozenset(["GET", "POST"]))
++        assert retry.history == tuple()
++        connection_error = ConnectTimeoutError("conntimeout")
++        retry = retry.increment("GET", "/test1", None, connection_error)
++        history = (RequestHistory("GET", "/test1", connection_error, None, None),)
++        assert retry.history == history
++
++        read_error = ReadTimeoutError(None, "/test2", "read timed out")
++        retry = retry.increment("POST", "/test2", None, read_error)
++        history = (
++            RequestHistory("GET", "/test1", connection_error, None, None),
++            RequestHistory("POST", "/test2", read_error, None, None),
++        )
++        assert retry.history == history
++
++        response = HTTPResponse(status=500)
++        retry = retry.increment("GET", "/test3", response, None)
++        history = (
++            RequestHistory("GET", "/test1", connection_error, None, None),
++            RequestHistory("POST", "/test2", read_error, None, None),
++            RequestHistory("GET", "/test3", None, 500, None),
++        )
++        assert retry.history == history
++
++    def test_retry_method_not_in_whitelist(self):
++        error = ReadTimeoutError(None, "/", "read timed out")
++        retry = Retry()
++        with pytest.raises(ReadTimeoutError):
++            retry.increment(method="POST", error=error)
++
++    def test_retry_default_remove_headers_on_redirect(self):
++        retry = Retry()
++
++        assert list(retry.remove_headers_on_redirect) == ["authorization"]
++
++    def test_retry_set_remove_headers_on_redirect(self):
++        retry = Retry(remove_headers_on_redirect=["X-API-Secret"])
++
++        assert list(retry.remove_headers_on_redirect) == ["x-api-secret"]
++
++    @pytest.mark.parametrize("value", ["-1", "+1", "1.0", six.u("\xb2")])  # \xb2 = ^2
++    def test_parse_retry_after_invalid(self, value):
++        retry = Retry()
++        with pytest.raises(InvalidHeader):
++            retry.parse_retry_after(value)
++
++    @pytest.mark.parametrize(
++        "value, expected", [("0", 0), ("1000", 1000), ("\t42 ", 42)]
++    )
++    def test_parse_retry_after(self, value, expected):
++        retry = Retry()
++        assert retry.parse_retry_after(value) == expected
++
++    @pytest.mark.parametrize("respect_retry_after_header", [True, False])
++    def test_respect_retry_after_header_propagated(self, respect_retry_after_header):
++
++        retry = Retry(respect_retry_after_header=respect_retry_after_header)
++        new_retry = retry.new()
++        assert new_retry.respect_retry_after_header == respect_retry_after_header
++
++    @pytest.mark.freeze_time("2019-06-03 11:00:00", tz_offset=0)
++    @pytest.mark.parametrize(
++        "retry_after_header,respect_retry_after_header,sleep_duration",
++        [
++            ("3600", True, 3600),
++            ("3600", False, None),
++            # Will sleep due to header is 1 hour in future
++            ("Mon, 3 Jun 2019 12:00:00 UTC", True, 3600),
++            # Won't sleep due to not respecting header
++            ("Mon, 3 Jun 2019 12:00:00 UTC", False, None),
++            # Won't sleep due to current time reached
++            ("Mon, 3 Jun 2019 11:00:00 UTC", True, None),
++            # Won't sleep due to current time reached + not respecting header
++            ("Mon, 3 Jun 2019 11:00:00 UTC", False, None),
++            # Handle all the formats in RFC 7231 Section 7.1.1.1
++            ("Mon, 03 Jun 2019 11:30:12 GMT", True, 1812),
++            ("Monday, 03-Jun-19 11:30:12 GMT", True, 1812),
++            # Assume that datetimes without a timezone are in UTC per RFC 7231
++            ("Mon Jun  3 11:30:12 2019", True, 1812),
++        ],
++    )
++    @pytest.mark.parametrize(
++        "stub_timezone",
++        [
++            "UTC",
++            "Asia/Jerusalem",
++            None,
++        ],
++        indirect=True,
++    )
++    @pytest.mark.usefixtures("stub_timezone")
++    def test_respect_retry_after_header_sleep(
++        self, retry_after_header, respect_retry_after_header, sleep_duration
++    ):
++        retry = Retry(respect_retry_after_header=respect_retry_after_header)
++
++        with mock.patch("time.sleep") as sleep_mock:
++            # for the default behavior, it must be in RETRY_AFTER_STATUS_CODES
++            response = HTTPResponse(
++                status=503, headers={"Retry-After": retry_after_header}
++            )
++
++            retry.sleep(response)
++
++            # The expected behavior is that we'll only sleep if respecting
++            # this header (since we won't have any backoff sleep attempts)
++            if respect_retry_after_header and sleep_duration is not None:
++                sleep_mock.assert_called_with(sleep_duration)
++            else:
++                sleep_mock.assert_not_called()
++
++
++class TestRetryDeprecations(object):
++    def test_cls_get_default_method_whitelist(self, expect_retry_deprecation):
++        assert Retry.DEFAULT_ALLOWED_METHODS == Retry.DEFAULT_METHOD_WHITELIST
++
++    def test_cls_get_default_redirect_headers_blacklist(self, expect_retry_deprecation):
++        assert (
++            Retry.DEFAULT_REMOVE_HEADERS_ON_REDIRECT
++            == Retry.DEFAULT_REDIRECT_HEADERS_BLACKLIST
++        )
++
++    def test_cls_set_default_method_whitelist(self, expect_retry_deprecation):
++        old_setting = Retry.DEFAULT_METHOD_WHITELIST
++        try:
++            Retry.DEFAULT_METHOD_WHITELIST = {"GET"}
++            retry = Retry()
++            assert retry.DEFAULT_ALLOWED_METHODS == {"GET"}
++            assert retry.DEFAULT_METHOD_WHITELIST == {"GET"}
++            assert retry.allowed_methods == {"GET"}
++            assert retry.method_whitelist == {"GET"}
++
++            # Test that the default can be overridden both ways
++            retry = Retry(allowed_methods={"GET", "POST"})
++            assert retry.DEFAULT_ALLOWED_METHODS == {"GET"}
++            assert retry.DEFAULT_METHOD_WHITELIST == {"GET"}
++            assert retry.allowed_methods == {"GET", "POST"}
++            assert retry.method_whitelist == {"GET", "POST"}
++
++            retry = Retry(method_whitelist={"POST"})
++            assert retry.DEFAULT_ALLOWED_METHODS == {"GET"}
++            assert retry.DEFAULT_METHOD_WHITELIST == {"GET"}
++            assert retry.allowed_methods == {"POST"}
++            assert retry.method_whitelist == {"POST"}
++        finally:
++            Retry.DEFAULT_METHOD_WHITELIST = old_setting
++            assert Retry.DEFAULT_ALLOWED_METHODS == old_setting
++
++    def test_cls_set_default_redirect_headers_blacklist(self, expect_retry_deprecation):
++        old_setting = Retry.DEFAULT_REDIRECT_HEADERS_BLACKLIST
++        try:
++            Retry.DEFAULT_REDIRECT_HEADERS_BLACKLIST = {"test"}
++            retry = Retry()
++            assert retry.DEFAULT_REMOVE_HEADERS_ON_REDIRECT == {"test"}
++            assert retry.DEFAULT_REDIRECT_HEADERS_BLACKLIST == {"test"}
++            assert retry.remove_headers_on_redirect == {"test"}
++            assert retry.remove_headers_on_redirect == {"test"}
++
++            retry = Retry(remove_headers_on_redirect={"test2"})
++            assert retry.DEFAULT_REMOVE_HEADERS_ON_REDIRECT == {"test"}
++            assert retry.DEFAULT_REDIRECT_HEADERS_BLACKLIST == {"test"}
++            assert retry.remove_headers_on_redirect == {"test2"}
++            assert retry.remove_headers_on_redirect == {"test2"}
++        finally:
++            Retry.DEFAULT_REDIRECT_HEADERS_BLACKLIST = old_setting
++            assert Retry.DEFAULT_REDIRECT_HEADERS_BLACKLIST == old_setting
++
++    @pytest.mark.parametrize(
++        "options", [(None, None), ({"GET"}, None), (None, {"GET"}), ({"GET"}, {"GET"})]
++    )
++    def test_retry_allowed_methods_and_method_whitelist_error(self, options):
++        with pytest.raises(ValueError) as e:
++            Retry(allowed_methods=options[0], method_whitelist=options[1])
++        assert str(e.value) == (
++            "Using both 'allowed_methods' and 'method_whitelist' together "
++            "is not allowed. Instead only use 'allowed_methods'"
++        )
++
++    def test_retry_subclass_that_sets_method_whitelist(self, expect_retry_deprecation):
++        class SubclassRetry(Retry):
++            def __init__(self, **kwargs):
++                if "allowed_methods" in kwargs:
++                    raise AssertionError(
++                        "This subclass likely doesn't use 'allowed_methods'"
++                    )
++
++                super(SubclassRetry, self).__init__(**kwargs)
++
++                # Since we're setting 'method_whiteist' we get fallbacks
++                # within Retry.new() and Retry._is_method_retryable()
++                # to use 'method_whitelist' instead of 'allowed_methods'
++                self.method_whitelist = self.method_whitelist | {"POST"}
++
++        retry = SubclassRetry()
++        assert retry.method_whitelist == Retry.DEFAULT_ALLOWED_METHODS | {"POST"}
++        assert retry.new(read=0).method_whitelist == retry.method_whitelist
++        assert retry._is_method_retryable("POST")
++        assert not retry._is_method_retryable("CONNECT")
++
++        assert retry.new(method_whitelist={"GET"}).method_whitelist == {"GET", "POST"}
++
++        # urllib3 doesn't do this during normal operation
++        # so we don't want users passing in 'allowed_methods'
++        # when their subclass doesn't support the option yet.
++        with pytest.raises(AssertionError) as e:
++            retry.new(allowed_methods={"GET"})
++        assert str(e.value) == "This subclass likely doesn't use 'allowed_methods'"

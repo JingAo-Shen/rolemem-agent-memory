@@ -1,0 +1,171 @@
+[
+  {
+    "sha": "4b1e5ee7f26eed728efc489b764a7b96c28ff29a",
+    "node_id": "C_kwDOSkGGsNoAKDRiMWU1ZWU3ZjI2ZWVkNzI4ZWZjNDg5Yjc2NGE3Yjk2YzI4ZmYyOWE",
+    "commit": {
+      "author": {
+        "name": "Jonathan Sharpe",
+        "email": "mail@jonrshar.pe",
+        "date": "2026-09-07T16:59:24Z"
+      },
+      "committer": {
+        "name": "Jonathan Sharpe",
+        "email": "mail@jonrshar.pe",
+        "date": "2026-09-07T16:59:24Z"
+      },
+      "message": "Deprecate empty collection for retrying all methods",
+      "tree": {
+        "sha": "c600628d7e464a91ab1d18bff24523e4b4b7f092",
+        "url": "https://api.github.com/repos/urllib3/urllib3/git/trees/c600628d7e464a91ab1d18bff24523e4b4b7f092"
+      },
+      "url": "https://api.github.com/repos/urllib3/urllib3/git/commits/4b1e5ee7f26eed728efc489b764a7b96c28ff29a",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/urllib3/urllib3/commits/4b1e5ee7f26eed728efc489b764a7b96c28ff29a",
+    "html_url": "https://github.com/urllib3/urllib3/commit/4b1e5ee7f26eed728efc489b764a7b96c28ff29a",
+    "comments_url": "https://api.github.com/repos/urllib3/urllib3/commits/4b1e5ee7f26eed728efc489b764a7b96c28ff29a/comments",
+    "author": {
+      "login": "textbook",
+      "id": 785939,
+      "node_id": "MDQ6VXNlcjc4NTkzOQ==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/785939?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/textbook",
+      "html_url": "https://github.com/textbook",
+      "followers_url": "https://api.github.com/users/textbook/followers",
+      "following_url": "https://api.github.com/users/textbook/following{/other_user}",
+      "gists_url": "https://api.github.com/users/textbook/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/textbook/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/textbook/subscriptions",
+      "organizations_url": "https://api.github.com/users/textbook/orgs",
+      "repos_url": "https://api.github.com/users/textbook/repos",
+      "events_url": "https://api.github.com/users/textbook/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/textbook/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "textbook",
+      "id": 785939,
+      "node_id": "MDQ6VXNlcjc4NTkzOQ==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/785939?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/textbook",
+      "html_url": "https://github.com/textbook",
+      "followers_url": "https://api.github.com/users/textbook/followers",
+      "following_url": "https://api.github.com/users/textbook/following{/other_user}",
+      "gists_url": "https://api.github.com/users/textbook/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/textbook/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/textbook/subscriptions",
+      "organizations_url": "https://api.github.com/users/textbook/orgs",
+      "repos_url": "https://api.github.com/users/textbook/repos",
+      "events_url": "https://api.github.com/users/textbook/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/textbook/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "278d98d7bf6cbafbccc924e7aa73dbbe06474dc2",
+        "url": "https://api.github.com/repos/urllib3/urllib3/commits/278d98d7bf6cbafbccc924e7aa73dbbe06474dc2",
+        "html_url": "https://github.com/urllib3/urllib3/commit/278d98d7bf6cbafbccc924e7aa73dbbe06474dc2"
+      }
+    ]
+  },
+  {
+    "sha": "dbd3622b354d3a9538826983cfcd78dde10e8472",
+    "node_id": "C_kwDOSkGGsNoAKGRiZDM2MjJiMzU0ZDNhOTUzODgyNjk4M2NmY2Q3OGRkZTEwZTg0NzI",
+    "commit": {
+      "author": {
+        "name": "Jonathan Sharpe",
+        "email": "j.r.sharpe@gmail.com",
+        "date": "2026-09-07T20:56:35Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2026-09-07T20:56:35Z"
+      },
+      "message": "Merge branch 'main' into 5044-deprecate-empty-collection",
+      "tree": {
+        "sha": "55383943d9884ee0f6bf0a08ff651aaba91ea490",
+        "url": "https://api.github.com/repos/urllib3/urllib3/git/trees/55383943d9884ee0f6bf0a08ff651aaba91ea490"
+      },
+      "url": "https://api.github.com/repos/urllib3/urllib3/git/commits/dbd3622b354d3a9538826983cfcd78dde10e8472",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqnyUDCRC1aQ7uu5UhlAAAUBYQAEC8y6jH/RtIs+ID98DIDr2q\nE2bHPGzhFxL3H/FpfSM0LfD/uHjxfCBgm+4v+7EFx17coCkmu94QswYNYa+vHTff\nMsK7oFp7eFbotm9dazBKXJDvo8TJUyUy3/tUowVpq4Wpg1P2J25bwDtnq76yTYIz\nVRXvUyiCBXTF530t3ZpUgEaf8mPt/8R35HaPp6niuwyZWty1OGSgYZw1xpreSCwj\nFalBnOPT5mI1ZAdyd6Y1P76FJ7iXJThDMtGxObpPnrmf1zJhFheWkA+B8xU4qx8i\n41dfC2QRsJIYIICD4d/1uOfG2tEIMQdV4Vm6ODJbEXZjz4rldw7XcqPl3soNBAR+\nv214YSEu0TKMUpUKXOZ6WsuxSmLSzZBXL3Ky0j8PPLeqE6l7uNKvqWSxFBwHTFEG\n/uiPmIgsoTJan0P0uiOaNYZF6vOlwxsmWjrwqklQTU+HYefWssyMDwLjgo4gxNO2\nBjR+64MTIXCZgEvOepK3ZKh+3BHpzbQ2rKoyvu2kDhX9ZEsjrMLUiwfdxhAkfWhm\nhVWsJMjdXmx/gMC+nyESJsK348p2t6AqxW8pgfDF785UtCgW4WaD1YFn38qzxKLu\noTTjPTMTLNCTVk3CvR2rlG/7WtUZ9nL6ceK/icTKpJMGsm0PsNWy5vsktIdu2h2v\n5a1oq+Zauoioype33s1+\n=KiFw\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 55383943d9884ee0f6bf0a08ff651aaba91ea490\nparent 4b1e5ee7f26eed728efc489b764a7b96c28ff29a\nparent a5d70ebfd6a30ceba0e9cc322089a6497dcd643e\nauthor Jonathan Sharpe <j.r.sharpe@gmail.com> 1788814595 +0100\ncommitter GitHub <noreply@github.com> 1788814595 +0100\n\nMerge branch 'main' into 5044-deprecate-empty-collection",
+        "verified_at": "2026-09-07T20:56:35Z"
+      }
+    },
+    "url": "https://api.github.com/repos/urllib3/urllib3/commits/dbd3622b354d3a9538826983cfcd78dde10e8472",
+    "html_url": "https://github.com/urllib3/urllib3/commit/dbd3622b354d3a9538826983cfcd78dde10e8472",
+    "comments_url": "https://api.github.com/repos/urllib3/urllib3/commits/dbd3622b354d3a9538826983cfcd78dde10e8472/comments",
+    "author": {
+      "login": "textbook",
+      "id": 785939,
+      "node_id": "MDQ6VXNlcjc4NTkzOQ==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/785939?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/textbook",
+      "html_url": "https://github.com/textbook",
+      "followers_url": "https://api.github.com/users/textbook/followers",
+      "following_url": "https://api.github.com/users/textbook/following{/other_user}",
+      "gists_url": "https://api.github.com/users/textbook/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/textbook/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/textbook/subscriptions",
+      "organizations_url": "https://api.github.com/users/textbook/orgs",
+      "repos_url": "https://api.github.com/users/textbook/repos",
+      "events_url": "https://api.github.com/users/textbook/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/textbook/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "4b1e5ee7f26eed728efc489b764a7b96c28ff29a",
+        "url": "https://api.github.com/repos/urllib3/urllib3/commits/4b1e5ee7f26eed728efc489b764a7b96c28ff29a",
+        "html_url": "https://github.com/urllib3/urllib3/commit/4b1e5ee7f26eed728efc489b764a7b96c28ff29a"
+      },
+      {
+        "sha": "a5d70ebfd6a30ceba0e9cc322089a6497dcd643e",
+        "url": "https://api.github.com/repos/urllib3/urllib3/commits/a5d70ebfd6a30ceba0e9cc322089a6497dcd643e",
+        "html_url": "https://github.com/urllib3/urllib3/commit/a5d70ebfd6a30ceba0e9cc322089a6497dcd643e"
+      }
+    ]
+  }
+]

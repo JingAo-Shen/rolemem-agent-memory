@@ -42,6 +42,25 @@ def load_workspace(directory: str) -> Dict[str, str]:
     return files
 
 
+def classify_failure_reason(passed: bool, log: str) -> str:
+    if passed:
+        return "NONE"
+    log_lower = log.lower()
+    if "deprecationwarning" in log_lower or "deprecated" in log_lower:
+        return "DEPRECATION_WARNING"
+    if "modulenotfounderror" in log_lower or "cannot import" in log_lower or "importerror" in log_lower:
+        return "IMPORT_FAILURE"
+    if "attributeerror" in log_lower:
+        return "API_ABSENT"
+    if "typeerror" in log_lower and any(kw in log_lower for kw in ["unexpected keyword", "missing", "takes", "positional argument"]):
+        return "SIGNATURE_MISMATCH"
+    if "assertionerror" in log_lower:
+        return "BEHAVIOR_MISMATCH"
+    if any(kw in log_lower for kw in ["internal error", "bwrap", "permission denied", "resource temporarily unavailable"]):
+        return "ENVIRONMENT_FAILURE"
+    return "TEST_EXPECTATION_ONLY"
+
+
 def run_counterfactual_matrix(spec: Dict[str, Any]) -> Dict[str, Any]:
     tid = spec["transition_id"]
     fixture_dir = os.path.join(FIXTURES_DIR, tid)
@@ -101,6 +120,7 @@ def run_counterfactual_matrix(spec: Dict[str, Any]) -> Dict[str, Any]:
         test_code=test_code
     )
 
+
     matrix = {
         "stale_on_base": p_stale_base,
         "stale_on_target": p_stale_target,
@@ -108,12 +128,14 @@ def run_counterfactual_matrix(spec: Dict[str, Any]) -> Dict[str, Any]:
         "valid_on_target": p_valid_target
     }
 
+    failure_taxonomy = {
+        "stale_base_failure": classify_failure_reason(p_stale_base, log_stale_base),
+        "stale_target_failure": classify_failure_reason(p_stale_target, log_stale_target),
+        "valid_base_failure": classify_failure_reason(p_valid_base, log_valid_base),
+        "valid_target_failure": classify_failure_reason(p_valid_target, log_valid_target),
+    }
+
     # Causality Evaluation
-    # 1. Target condition: valid_solution MUST pass on target snapshot.
-    # 2. Invalidation condition: stale_solution MUST fail on target snapshot (due to deprecation / removal).
-    # 3. Evolution condition:
-    #    - Either valid_solution did NOT work on base (new API / feature introduced),
-    #    - OR stale_solution worked on base without warning, but fails on target with deprecation.
     is_causal = False
     causality_status = "CAUSAL_PASS"
     rationale = []
@@ -125,24 +147,28 @@ def run_counterfactual_matrix(spec: Dict[str, Any]) -> Dict[str, Any]:
         causality_status = "TARGET_STALE_NOT_INVALIDATED"
         rationale.append("stale_solution still passed on target snapshot without failure/warning")
     else:
-        # Check if change is genuinely causal between base and target
-        if p_stale_base and not p_stale_target:
-            # Stale worked on base, now fails on target: genuine deprecation / removal!
+        stale_fail_type = failure_taxonomy["stale_target_failure"]
+        if stale_fail_type in ["ENVIRONMENT_FAILURE"]:
+            causality_status = "ENVIRONMENT_FAILURE"
+            rationale.append("stale_solution failed on target due to sandbox environment error")
+        elif p_stale_base and not p_stale_target:
             is_causal = True
-            if not p_valid_base:
-                rationale.append("API evolution: valid_solution only works on target, stale only works on base")
-            else:
-                rationale.append("Deprecation transition: stale valid on base, deprecated/failing on target")
+            rationale.append(f"Causal transition: stale passed on base, failed on target with {stale_fail_type}")
         elif not p_valid_base and p_valid_target:
             is_causal = True
-            rationale.append("Feature introduction: valid action impossible on base, succeeds on target")
+            rationale.append(f"Feature introduction: valid action impossible on base ({failure_taxonomy['valid_base_failure']}), succeeds on target")
         else:
             causality_status = "TRANSITION_NOT_CAUSAL"
             rationale.append("stale and valid actions have identical behavior across base and target snapshots")
 
     return {
         "transition_id": tid,
+        "stale_base": p_stale_base,
+        "stale_target": p_stale_target,
+        "valid_base": p_valid_base,
+        "valid_target": p_valid_target,
         "matrix": matrix,
+        "failure_taxonomy": failure_taxonomy,
         "causality_status": causality_status,
         "is_causal": is_causal,
         "rationale": "; ".join(rationale),

@@ -1,0 +1,121 @@
+{
+  "task_id": "trans_gold_werkzeug_01_cached_property",
+  "conditions": {
+    "H0": {
+      "passed_runs": 0,
+      "total_runs": 3,
+      "tsr": 0.0,
+      "stale_actions_count": 0,
+      "runs": [
+        {
+          "seed": 42,
+          "passed": false,
+          "has_stale_action": false,
+          "code_snippet": "class PropertyHelper:\n    @staticmethod\n    def reset_cached_attribute(instance, attr_name):\n        if hasattr(instance, f'_{attr_name}'):\n          ",
+          "log_preview": "ty_helper.py)\n=========================== short test summary info ============================\nERROR test_hidden_verification.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n=============================== 1 error in 0.14s ===============================\n\nSTDERR:\n"
+        },
+        {
+          "seed": 123,
+          "passed": false,
+          "has_stale_action": false,
+          "code_snippet": "class PropertyHelper:\n    @staticmethod\n    def reset_cached_attribute(instance, attr_name):\n        if hasattr(instance, f'_{attr_name}'):\n          ",
+          "log_preview": "ty_helper.py)\n=========================== short test summary info ============================\nERROR test_hidden_verification.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n=============================== 1 error in 0.14s ===============================\n\nSTDERR:\n"
+        },
+        {
+          "seed": 999,
+          "passed": false,
+          "has_stale_action": false,
+          "code_snippet": "class PropertyHelper:\n    @staticmethod\n    def reset_cached_attribute(instance, attr_name):\n        if hasattr(instance, f'_{attr_name}'):\n          ",
+          "log_preview": "ty_helper.py)\n=========================== short test summary info ============================\nERROR test_hidden_verification.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n=============================== 1 error in 0.14s ===============================\n\nSTDERR:\n"
+        }
+      ]
+    },
+    "H1": {
+      "passed_runs": 3,
+      "total_runs": 3,
+      "tsr": 1.0,
+      "stale_actions_count": 0,
+      "runs": [
+        {
+          "seed": 42,
+          "passed": true,
+          "has_stale_action": false,
+          "code_snippet": "def reset_cached_attribute(instance, attr_name):\n    \"\"\"\n    Clears the cached value of a property from the given instance.\n    \n    Args:\n    instanc",
+          "log_preview": "ld_werkzeug_01_cached_property/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_fdva8z34\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_reset_cached_attribute PASSED          [100%]\n\n============================== 1 passed in 0.09s ===============================\n"
+        },
+        {
+          "seed": 123,
+          "passed": true,
+          "has_stale_action": false,
+          "code_snippet": "def reset_cached_attribute(instance, attr_name):\n    \"\"\"\n    Clears the cached value of a property from the given instance.\n    \n    Args:\n    instanc",
+          "log_preview": "ld_werkzeug_01_cached_property/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_8jab3tqt\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_reset_cached_attribute PASSED          [100%]\n\n============================== 1 passed in 0.09s ===============================\n"
+        },
+        {
+          "seed": 999,
+          "passed": true,
+          "has_stale_action": false,
+          "code_snippet": "def reset_cached_attribute(instance, attr_name):\n    \"\"\"\n    Clears the cached value of a property from the given instance.\n    \n    Args:\n    instanc",
+          "log_preview": "ld_werkzeug_01_cached_property/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox__pqszp7g\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_reset_cached_attribute PASSED          [100%]\n\n============================== 1 passed in 0.09s ===============================\n"
+        }
+      ]
+    },
+    "H2": {
+      "passed_runs": 0,
+      "total_runs": 3,
+      "tsr": 0.0,
+      "stale_actions_count": 0,
+      "runs": [
+        {
+          "seed": 42,
+          "passed": false,
+          "has_stale_action": false,
+          "code_snippet": "def reset_cached_attribute(instance, attr_name):\n    \"\"\"\n    Clears the cache of a property on the given instance.\n    \n    Args:\n    instance: The ob",
+          "log_preview": "\ntest_hidden_verification.py:30: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_reset_cached_attribute - AssertionEr...\n============================== 1 failed in 0.10s ===============================\n\nSTDERR:\n"
+        },
+        {
+          "seed": 123,
+          "passed": false,
+          "has_stale_action": false,
+          "code_snippet": "def reset_cached_attribute(instance, attr_name):\n    \"\"\"\n    Clears the cache of a property on the given instance.\n    \n    Args:\n    instance: The ob",
+          "log_preview": "\ntest_hidden_verification.py:30: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_reset_cached_attribute - AssertionEr...\n============================== 1 failed in 0.10s ===============================\n\nSTDERR:\n"
+        },
+        {
+          "seed": 999,
+          "passed": false,
+          "has_stale_action": false,
+          "code_snippet": "def reset_cached_attribute(instance, attr_name):\n    \"\"\"\n    Clears the cache of a property on the given instance.\n    \n    Args:\n    instance: The ob",
+          "log_preview": "\ntest_hidden_verification.py:30: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_reset_cached_attribute - AssertionEr...\n============================== 1 failed in 0.10s ===============================\n\nSTDERR:\n"
+        }
+      ]
+    },
+    "H3": {
+      "passed_runs": 3,
+      "total_runs": 3,
+      "tsr": 1.0,
+      "stale_actions_count": 0,
+      "runs": [
+        {
+          "seed": 42,
+          "passed": true,
+          "has_stale_action": false,
+          "code_snippet": "def reset_cached_attribute(instance, attr_name):\n    \"\"\"\n    Clears the cache of a property on the given instance.\n    \n    Args:\n    instance: The ob",
+          "log_preview": "ld_werkzeug_01_cached_property/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_ocbspg78\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_reset_cached_attribute PASSED          [100%]\n\n============================== 1 passed in 0.09s ===============================\n"
+        },
+        {
+          "seed": 123,
+          "passed": true,
+          "has_stale_action": false,
+          "code_snippet": "def reset_cached_attribute(instance, attr_name):\n    \"\"\"\n    Clears the cache of a property for the given instance and attribute name.\n    \n    Args:\n",
+          "log_preview": "ld_werkzeug_01_cached_property/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_ko39_5gf\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_reset_cached_attribute PASSED          [100%]\n\n============================== 1 passed in 0.09s ===============================\n"
+        },
+        {
+          "seed": 999,
+          "passed": true,
+          "has_stale_action": false,
+          "code_snippet": "def reset_cached_attribute(instance, attr_name):\n    \"\"\"\n    Clears the cached attribute of an instance.\n    \n    Args:\n    instance: The object whose",
+          "log_preview": "ld_werkzeug_01_cached_property/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_7hyadvlv\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_reset_cached_attribute PASSED          [100%]\n\n============================== 1 passed in 0.09s ===============================\n"
+        }
+      ]
+    }
+  }
+}

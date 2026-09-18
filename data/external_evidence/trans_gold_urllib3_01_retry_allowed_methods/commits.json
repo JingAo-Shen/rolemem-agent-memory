@@ -1,0 +1,494 @@
+[
+  {
+    "sha": "77dd9d8f853fd7d82e17e3efddfcea8657c97c18",
+    "node_id": "MDY6Q29tbWl0NzEyODE1NDI6NzdkZDlkOGY4NTNmZDdkODJlMTdlM2VmZGRmY2VhODY1N2M5N2MxOA==",
+    "commit": {
+      "author": {
+        "name": "Seth Michael Larson",
+        "email": "sethmichaellarson@gmail.com",
+        "date": "2020-09-25T18:42:30Z"
+      },
+      "committer": {
+        "name": "Seth Michael Larson",
+        "email": "sethmichaellarson@gmail.com",
+        "date": "2020-09-27T17:00:14Z"
+      },
+      "message": "Rename Retry options and defaults",
+      "tree": {
+        "sha": "0792998be7472a0f38951f09f36f2d85b0259442",
+        "url": "https://api.github.com/repos/urllib3/urllib3/git/trees/0792998be7472a0f38951f09f36f2d85b0259442"
+      },
+      "url": "https://api.github.com/repos/urllib3/urllib3/git/commits/77dd9d8f853fd7d82e17e3efddfcea8657c97c18",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEEwZb6Rv9T//oX6uKtfV7J/g3ix5UFAl9wxR8ACgkQfV7J/g3i\nx5WQLw/+KyNmBGPXvB1nSl7T8ApHEkUhKaZx899NAVdRQSye/G2DRR3Tim7ssj2V\n6BLpkQsU52x/F9Pc6wa6IfNr1d5qsTUYF9/+GaIiLzPslhevmA2N6WnRP87vmUjR\nTDMgEatOQsjDfwHffovQJpEJjOTAYaKFKIRWei6AWq/idbBQlWscSCxRh4Gx3JYo\n1FNZwbk9otZcg+zwTynGp3E76XTOcRW41cooNFp9rBNH1QiGmeo3yRaNkWS93+yE\nXXN0S1qepga7M9140QVYn5mNOqLgGwSHjCSEagKiV+K9dicu+4I1OOQZW2pv9dGp\nwzzdfxalK7w4D6weCx55WjqkYbkbCfCzz5JCdHIP94CWu/RxDu2OxaKG7mc4b8O5\nLqWGO6KRqNJ3wg1wcYiZSgumHH4EG3JoV/B+vP87yvc/uQwxS5XLvjEYc1y+Aqax\nys+LfOYvpu/RF/6Mf7BwFL6x2H9zIUe4T5wude45Gr6A56gk61GwJa8QqE+0k5WM\nDzmRIoiIGzTp4cHa56EtD7olKzi4VfZAFgT9d4BQnGEW3G4yOA4MMjR5J/0rqbqu\nTLIDlBlWIILQnV8qo2dOkOGtwBgQR80NpuMrG133e3n6slc8Ml0I6ATpyLAWwOn9\nQzR7Bi7zZ/uWCAOJAUaZJeXJvqUKuGjyH1UjCOMbczihomIYdCA=\n=J34j\n-----END PGP SIGNATURE-----",
+        "payload": "tree 0792998be7472a0f38951f09f36f2d85b0259442\nparent 2a5c028972bc019130b4ec59abc8e797e08d3de3\nauthor Seth Michael Larson <sethmichaellarson@gmail.com> 1601059350 -0500\ncommitter Seth Michael Larson <sethmichaellarson@gmail.com> 1601226014 -0500\n\nRename Retry options and defaults\n",
+        "verified_at": "2024-11-12T21:58:22Z"
+      }
+    },
+    "url": "https://api.github.com/repos/urllib3/urllib3/commits/77dd9d8f853fd7d82e17e3efddfcea8657c97c18",
+    "html_url": "https://github.com/urllib3/urllib3/commit/77dd9d8f853fd7d82e17e3efddfcea8657c97c18",
+    "comments_url": "https://api.github.com/repos/urllib3/urllib3/commits/77dd9d8f853fd7d82e17e3efddfcea8657c97c18/comments",
+    "author": {
+      "login": "sethmlarson",
+      "id": 18519037,
+      "node_id": "MDQ6VXNlcjE4NTE5MDM3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/18519037?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/sethmlarson",
+      "html_url": "https://github.com/sethmlarson",
+      "followers_url": "https://api.github.com/users/sethmlarson/followers",
+      "following_url": "https://api.github.com/users/sethmlarson/following{/other_user}",
+      "gists_url": "https://api.github.com/users/sethmlarson/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/sethmlarson/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/sethmlarson/subscriptions",
+      "organizations_url": "https://api.github.com/users/sethmlarson/orgs",
+      "repos_url": "https://api.github.com/users/sethmlarson/repos",
+      "events_url": "https://api.github.com/users/sethmlarson/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/sethmlarson/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "sethmlarson",
+      "id": 18519037,
+      "node_id": "MDQ6VXNlcjE4NTE5MDM3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/18519037?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/sethmlarson",
+      "html_url": "https://github.com/sethmlarson",
+      "followers_url": "https://api.github.com/users/sethmlarson/followers",
+      "following_url": "https://api.github.com/users/sethmlarson/following{/other_user}",
+      "gists_url": "https://api.github.com/users/sethmlarson/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/sethmlarson/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/sethmlarson/subscriptions",
+      "organizations_url": "https://api.github.com/users/sethmlarson/orgs",
+      "repos_url": "https://api.github.com/users/sethmlarson/repos",
+      "events_url": "https://api.github.com/users/sethmlarson/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/sethmlarson/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "2a5c028972bc019130b4ec59abc8e797e08d3de3",
+        "url": "https://api.github.com/repos/urllib3/urllib3/commits/2a5c028972bc019130b4ec59abc8e797e08d3de3",
+        "html_url": "https://github.com/urllib3/urllib3/commit/2a5c028972bc019130b4ec59abc8e797e08d3de3"
+      }
+    ]
+  },
+  {
+    "sha": "d867f383ac758c1a8e4b4e749b47f6679915f3ea",
+    "node_id": "MDY6Q29tbWl0NzEyODE1NDI6ZDg2N2YzODNhYzc1OGMxYThlNGI0ZTc0OWI0N2Y2Njc5OTE1ZjNlYQ==",
+    "commit": {
+      "author": {
+        "name": "Seth Michael Larson",
+        "email": "sethmichaellarson@gmail.com",
+        "date": "2020-09-28T02:18:39Z"
+      },
+      "committer": {
+        "name": "Seth Michael Larson",
+        "email": "sethmichaellarson@gmail.com",
+        "date": "2020-09-28T02:18:39Z"
+      },
+      "message": "method_allowlist -> allowed_methods",
+      "tree": {
+        "sha": "ba2b2692aeedcd6446f1bc0c99716094c97dc6cd",
+        "url": "https://api.github.com/repos/urllib3/urllib3/git/trees/ba2b2692aeedcd6446f1bc0c99716094c97dc6cd"
+      },
+      "url": "https://api.github.com/repos/urllib3/urllib3/git/commits/d867f383ac758c1a8e4b4e749b47f6679915f3ea",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEEwZb6Rv9T//oX6uKtfV7J/g3ix5UFAl9xR/8ACgkQfV7J/g3i\nx5WX8Q/9EnZ/aEvIbuuWvlEgvmDLQLQpCCnkSYAZoMhrRLPG640Wravz3SivOe3+\nh+b9g0ju53uDNF7//blxIlrvxyNmqmvAsDel3hj1VtEIRI/TVX3MX2i91HJrvXSH\nGYmCVcTYrMPrT+lHE38W2D7Yf8sphFVJNrjVnZ54hdC5XGSB2qEHJPWKDI2zYQll\nT5M11wiXbIhtUMqGHIZWXhOcHdw/i/KMul8UVkTeFOEYRh1L6zM7/ACNHj8hr7Hy\nW+0uX413GMtJ897BrDJ6KgPF+qc9vu0SbZnPVHr/cJdDT9nncc0DCCjTTawuulsj\n5koqzsvKWolFl7WIY2NiA2PFfi9zyxjV1FMGKf/d17pKctfbKs4fCOgVhEiWYjWB\nXkHgaUgfeJR3JTU1pKR8SwGksdLNoXs3xqk6g7nKzpq7mauCzSjT3zbpr6KgugAv\nAAhw3NihICemVHS7k4YqOYFAoFV8FYT91OXXQA+cJohkvR117fHVpQv7T5x5Q3O1\n3R5wYy5RVv/3+jv7gElE9wX+qE9o4tW5GtYBNuLSNchtsmTGv5G97yxhZza0X7xy\nwObcLcUXf/MGsbM8y2XhVsFWf5R33aVAJdtE4yrWXHL/fA3wBG1a3svdlzyHeAtB\nx+rMSlinwxwYb2PR+rEst5JY+6wEzi3FZTvkt3yVebFa5R/piRw=\n=1Pu+\n-----END PGP SIGNATURE-----",
+        "payload": "tree ba2b2692aeedcd6446f1bc0c99716094c97dc6cd\nparent 77dd9d8f853fd7d82e17e3efddfcea8657c97c18\nauthor Seth Michael Larson <sethmichaellarson@gmail.com> 1601259519 -0500\ncommitter Seth Michael Larson <sethmichaellarson@gmail.com> 1601259519 -0500\n\nmethod_allowlist -> allowed_methods\n",
+        "verified_at": "2024-11-12T21:58:22Z"
+      }
+    },
+    "url": "https://api.github.com/repos/urllib3/urllib3/commits/d867f383ac758c1a8e4b4e749b47f6679915f3ea",
+    "html_url": "https://github.com/urllib3/urllib3/commit/d867f383ac758c1a8e4b4e749b47f6679915f3ea",
+    "comments_url": "https://api.github.com/repos/urllib3/urllib3/commits/d867f383ac758c1a8e4b4e749b47f6679915f3ea/comments",
+    "author": {
+      "login": "sethmlarson",
+      "id": 18519037,
+      "node_id": "MDQ6VXNlcjE4NTE5MDM3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/18519037?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/sethmlarson",
+      "html_url": "https://github.com/sethmlarson",
+      "followers_url": "https://api.github.com/users/sethmlarson/followers",
+      "following_url": "https://api.github.com/users/sethmlarson/following{/other_user}",
+      "gists_url": "https://api.github.com/users/sethmlarson/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/sethmlarson/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/sethmlarson/subscriptions",
+      "organizations_url": "https://api.github.com/users/sethmlarson/orgs",
+      "repos_url": "https://api.github.com/users/sethmlarson/repos",
+      "events_url": "https://api.github.com/users/sethmlarson/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/sethmlarson/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "sethmlarson",
+      "id": 18519037,
+      "node_id": "MDQ6VXNlcjE4NTE5MDM3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/18519037?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/sethmlarson",
+      "html_url": "https://github.com/sethmlarson",
+      "followers_url": "https://api.github.com/users/sethmlarson/followers",
+      "following_url": "https://api.github.com/users/sethmlarson/following{/other_user}",
+      "gists_url": "https://api.github.com/users/sethmlarson/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/sethmlarson/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/sethmlarson/subscriptions",
+      "organizations_url": "https://api.github.com/users/sethmlarson/orgs",
+      "repos_url": "https://api.github.com/users/sethmlarson/repos",
+      "events_url": "https://api.github.com/users/sethmlarson/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/sethmlarson/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "77dd9d8f853fd7d82e17e3efddfcea8657c97c18",
+        "url": "https://api.github.com/repos/urllib3/urllib3/commits/77dd9d8f853fd7d82e17e3efddfcea8657c97c18",
+        "html_url": "https://github.com/urllib3/urllib3/commit/77dd9d8f853fd7d82e17e3efddfcea8657c97c18"
+      }
+    ]
+  },
+  {
+    "sha": "9c76e52177a43ab7d521960933b8b5625585a0ce",
+    "node_id": "MDY6Q29tbWl0NzEyODE1NDI6OWM3NmU1MjE3N2E0M2FiN2Q1MjE5NjA5MzNiOGI1NjI1NTg1YTBjZQ==",
+    "commit": {
+      "author": {
+        "name": "Seth Michael Larson",
+        "email": "sethmichaellarson@gmail.com",
+        "date": "2020-09-28T14:28:12Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2020-09-28T14:28:12Z"
+      },
+      "message": "Update src/urllib3/util/retry.py\n\nCo-authored-by: Andrey Petrov <shazow@gmail.com>",
+      "tree": {
+        "sha": "4966c13f3a51089b6c4d1f7f5e8a646ff07a4ec6",
+        "url": "https://api.github.com/repos/urllib3/urllib3/git/trees/4966c13f3a51089b6c4d1f7f5e8a646ff07a4ec6"
+      },
+      "url": "https://api.github.com/repos/urllib3/urllib3/git/commits/9c76e52177a43ab7d521960933b8b5625585a0ce",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJfcfL8CRBK7hj4Ov3rIwAAdHIIABlHCF8Wjef8kfCJatoauWVf\nNpOtYaztPyUHG1n3fmJ0gcJBMFQ0Z2crn6KIBIehl9UwWRhpGOvgSb1K1SrdK+hE\nfTKOj1uXCh40SX6O2odst90qxlazmz1QMxt8hlQbSoln8yeXTKbmkL3f3tmJGVeF\n1dhLD2mRshNpsMZrDJc/oKC8E6chfOfWV+rQ5PpjFLrzIIXuvuN9NKlNTdVSgvAx\nxRusUa2bufWTTqGeTEs0Cbe4Pj+FP12RALn42lP1b05KiKv4yhs15FRRCSBz0TXA\nEwOFdZf6YPGi+Ja57vXAx3VfQ5zlxjdumKb2gyu2keiA8LPz7O2zxNV3UzslJm0=\n=B2mw\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 4966c13f3a51089b6c4d1f7f5e8a646ff07a4ec6\nparent d867f383ac758c1a8e4b4e749b47f6679915f3ea\nauthor Seth Michael Larson <sethmichaellarson@gmail.com> 1601303292 -0500\ncommitter GitHub <noreply@github.com> 1601303292 -0500\n\nUpdate src/urllib3/util/retry.py\n\nCo-authored-by: Andrey Petrov <shazow@gmail.com>",
+        "verified_at": "2024-01-16T19:59:59Z"
+      }
+    },
+    "url": "https://api.github.com/repos/urllib3/urllib3/commits/9c76e52177a43ab7d521960933b8b5625585a0ce",
+    "html_url": "https://github.com/urllib3/urllib3/commit/9c76e52177a43ab7d521960933b8b5625585a0ce",
+    "comments_url": "https://api.github.com/repos/urllib3/urllib3/commits/9c76e52177a43ab7d521960933b8b5625585a0ce/comments",
+    "author": {
+      "login": "sethmlarson",
+      "id": 18519037,
+      "node_id": "MDQ6VXNlcjE4NTE5MDM3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/18519037?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/sethmlarson",
+      "html_url": "https://github.com/sethmlarson",
+      "followers_url": "https://api.github.com/users/sethmlarson/followers",
+      "following_url": "https://api.github.com/users/sethmlarson/following{/other_user}",
+      "gists_url": "https://api.github.com/users/sethmlarson/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/sethmlarson/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/sethmlarson/subscriptions",
+      "organizations_url": "https://api.github.com/users/sethmlarson/orgs",
+      "repos_url": "https://api.github.com/users/sethmlarson/repos",
+      "events_url": "https://api.github.com/users/sethmlarson/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/sethmlarson/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "d867f383ac758c1a8e4b4e749b47f6679915f3ea",
+        "url": "https://api.github.com/repos/urllib3/urllib3/commits/d867f383ac758c1a8e4b4e749b47f6679915f3ea",
+        "html_url": "https://github.com/urllib3/urllib3/commit/d867f383ac758c1a8e4b4e749b47f6679915f3ea"
+      }
+    ]
+  },
+  {
+    "sha": "c03771282d5f8249441ec46af4d6ab33b45227ff",
+    "node_id": "MDY6Q29tbWl0NzEyODE1NDI6YzAzNzcxMjgyZDVmODI0OTQ0MWVjNDZhZjRkNmFiMzNiNDUyMjdmZg==",
+    "commit": {
+      "author": {
+        "name": "Seth Michael Larson",
+        "email": "sethmichaellarson@gmail.com",
+        "date": "2020-09-28T14:29:01Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2020-09-28T14:29:01Z"
+      },
+      "message": "Update test/test_retry_deprecated.py\n\nCo-authored-by: Andrey Petrov <shazow@gmail.com>",
+      "tree": {
+        "sha": "f64257a69fe98a5b0ef987ccc259a6e2d2026353",
+        "url": "https://api.github.com/repos/urllib3/urllib3/git/trees/f64257a69fe98a5b0ef987ccc259a6e2d2026353"
+      },
+      "url": "https://api.github.com/repos/urllib3/urllib3/git/commits/c03771282d5f8249441ec46af4d6ab33b45227ff",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJfcfMtCRBK7hj4Ov3rIwAAdHIIAA5u/UG2KYY/cMxyT4cjjsT7\n1cZSE8xhLv/xIFoKmb5GChSVk9PSyxpqSUIhcNXq6ntn0+6ABtNZ2UmRW/3xgLql\nBC4gYZNh+ZT/Xc1r0gKZUuxht1mj9Hot4z36W3Q8NmgJVFGrl6N+lfZ9uYU3IoTN\n4D50MYFCE+HKGMajenrVBbPfX1QVrHHI6Sjit3J5mZRoPjmmplsepypbA42Z4VUi\nCXcOQDajqpVvPK4vnUoiJbDDO4qHVCsgM1WVmPo0SkMex4JhpQwM4VTtGzYNnR+g\ncDuVpL3/l2IWqSrzV2p4S3GvomjJurBP3HFL9ju2R1giMy0f+L9xc8RZppBTNSs=\n=8YkV\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree f64257a69fe98a5b0ef987ccc259a6e2d2026353\nparent 9c76e52177a43ab7d521960933b8b5625585a0ce\nauthor Seth Michael Larson <sethmichaellarson@gmail.com> 1601303341 -0500\ncommitter GitHub <noreply@github.com> 1601303341 -0500\n\nUpdate test/test_retry_deprecated.py\n\nCo-authored-by: Andrey Petrov <shazow@gmail.com>",
+        "verified_at": "2024-01-16T19:59:59Z"
+      }
+    },
+    "url": "https://api.github.com/repos/urllib3/urllib3/commits/c03771282d5f8249441ec46af4d6ab33b45227ff",
+    "html_url": "https://github.com/urllib3/urllib3/commit/c03771282d5f8249441ec46af4d6ab33b45227ff",
+    "comments_url": "https://api.github.com/repos/urllib3/urllib3/commits/c03771282d5f8249441ec46af4d6ab33b45227ff/comments",
+    "author": {
+      "login": "sethmlarson",
+      "id": 18519037,
+      "node_id": "MDQ6VXNlcjE4NTE5MDM3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/18519037?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/sethmlarson",
+      "html_url": "https://github.com/sethmlarson",
+      "followers_url": "https://api.github.com/users/sethmlarson/followers",
+      "following_url": "https://api.github.com/users/sethmlarson/following{/other_user}",
+      "gists_url": "https://api.github.com/users/sethmlarson/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/sethmlarson/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/sethmlarson/subscriptions",
+      "organizations_url": "https://api.github.com/users/sethmlarson/orgs",
+      "repos_url": "https://api.github.com/users/sethmlarson/repos",
+      "events_url": "https://api.github.com/users/sethmlarson/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/sethmlarson/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "9c76e52177a43ab7d521960933b8b5625585a0ce",
+        "url": "https://api.github.com/repos/urllib3/urllib3/commits/9c76e52177a43ab7d521960933b8b5625585a0ce",
+        "html_url": "https://github.com/urllib3/urllib3/commit/9c76e52177a43ab7d521960933b8b5625585a0ce"
+      }
+    ]
+  },
+  {
+    "sha": "182e80eb3a222a15909614f295dc163fb3746813",
+    "node_id": "MDY6Q29tbWl0NzEyODE1NDI6MTgyZTgwZWIzYTIyMmExNTkwOTYxNGYyOTVkYzE2M2ZiMzc0NjgxMw==",
+    "commit": {
+      "author": {
+        "name": "Seth Michael Larson",
+        "email": "sethmichaellarson@gmail.com",
+        "date": "2020-09-28T14:29:09Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2020-09-28T14:29:09Z"
+      },
+      "message": "Update test/test_retry_deprecated.py\n\nCo-authored-by: Andrey Petrov <shazow@gmail.com>",
+      "tree": {
+        "sha": "327490e43866ae9bef987fce11199dcd192d6baf",
+        "url": "https://api.github.com/repos/urllib3/urllib3/git/trees/327490e43866ae9bef987fce11199dcd192d6baf"
+      },
+      "url": "https://api.github.com/repos/urllib3/urllib3/git/commits/182e80eb3a222a15909614f295dc163fb3746813",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJfcfM1CRBK7hj4Ov3rIwAAdHIIAKQjWmOgAzMBq02Rl1SNMvIX\nOfuXqJjiapiXzohrWezbVWo72UzNCN+y+LywiPAjp+W/np0gfm2HcwY56A/jlGx5\nWyr7yZnkGIa6KaP43gVGR4YUqN0ihVabi5J2juCvyLEDMwDnHZIp2M+XdLPX0ynq\nNkp4sIchPvYZ1g58s2y8mm+SYl5yak+JKLu9Xxw8+9Qwc+ulK9acMy+cl0AdefUo\nEMr1VboEcp8EgelBOVEs+vrUpnVDVarmujN/n4GjQhFE/8TC28nDhpb6lxOrItxj\nKYEa2bxaBbinm4SMyLjKE8doPpNBcSxCl/DEvlTwiWFTPuyXJdM/GWZ9lKow0HU=\n=Zr98\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 327490e43866ae9bef987fce11199dcd192d6baf\nparent c03771282d5f8249441ec46af4d6ab33b45227ff\nauthor Seth Michael Larson <sethmichaellarson@gmail.com> 1601303349 -0500\ncommitter GitHub <noreply@github.com> 1601303349 -0500\n\nUpdate test/test_retry_deprecated.py\n\nCo-authored-by: Andrey Petrov <shazow@gmail.com>",
+        "verified_at": "2024-01-16T19:59:59Z"
+      }
+    },
+    "url": "https://api.github.com/repos/urllib3/urllib3/commits/182e80eb3a222a15909614f295dc163fb3746813",
+    "html_url": "https://github.com/urllib3/urllib3/commit/182e80eb3a222a15909614f295dc163fb3746813",
+    "comments_url": "https://api.github.com/repos/urllib3/urllib3/commits/182e80eb3a222a15909614f295dc163fb3746813/comments",
+    "author": {
+      "login": "sethmlarson",
+      "id": 18519037,
+      "node_id": "MDQ6VXNlcjE4NTE5MDM3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/18519037?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/sethmlarson",
+      "html_url": "https://github.com/sethmlarson",
+      "followers_url": "https://api.github.com/users/sethmlarson/followers",
+      "following_url": "https://api.github.com/users/sethmlarson/following{/other_user}",
+      "gists_url": "https://api.github.com/users/sethmlarson/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/sethmlarson/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/sethmlarson/subscriptions",
+      "organizations_url": "https://api.github.com/users/sethmlarson/orgs",
+      "repos_url": "https://api.github.com/users/sethmlarson/repos",
+      "events_url": "https://api.github.com/users/sethmlarson/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/sethmlarson/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "c03771282d5f8249441ec46af4d6ab33b45227ff",
+        "url": "https://api.github.com/repos/urllib3/urllib3/commits/c03771282d5f8249441ec46af4d6ab33b45227ff",
+        "html_url": "https://github.com/urllib3/urllib3/commit/c03771282d5f8249441ec46af4d6ab33b45227ff"
+      }
+    ]
+  },
+  {
+    "sha": "0993ad4390cd524262eef79fda304b0f96a80918",
+    "node_id": "MDY6Q29tbWl0NzEyODE1NDI6MDk5M2FkNDM5MGNkNTI0MjYyZWVmNzlmZGEzMDRiMGY5NmE4MDkxOA==",
+    "commit": {
+      "author": {
+        "name": "Seth Michael Larson",
+        "email": "sethmichaellarson@gmail.com",
+        "date": "2020-09-28T14:29:38Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2020-09-28T14:29:38Z"
+      },
+      "message": "Make Retry metaclass private",
+      "tree": {
+        "sha": "a1a655910b8befdae61b51328dce448885a423cd",
+        "url": "https://api.github.com/repos/urllib3/urllib3/git/trees/a1a655910b8befdae61b51328dce448885a423cd"
+      },
+      "url": "https://api.github.com/repos/urllib3/urllib3/git/commits/0993ad4390cd524262eef79fda304b0f96a80918",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJfcfNSCRBK7hj4Ov3rIwAAdHIIAI6c+/DjbGbY3FlYEKSO6KLo\nhM4Af4LkAomFeXeXa96uxV4/XXByz/Nkm7jY1keZTAcH61H1mm4UZMVvH/pgLGAK\nd4eoHsHpTURl+P9utQxWVOVU0Z4KLcE5KolGLS/+IX+D8Y5mGrvs3rfhc4MGQgb7\njbIFQPs3FEiSRbPTsCNkTac/+chc/In5UmbV2Hj+Spj9QbtVWBW6j0lUIIcLHMF3\nog440R2mKniT2O8y3qYix6n0q9qcQQ3MxBrW89ObNz1IGWtq+ivf/a3ux1G9eE4X\nV3CjiHJzGRKaVr5h+VIK1wzeD3OCLn/AosATQQcTXeXRK+R1k57Vz4NG9TtVmSY=\n=ChjP\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree a1a655910b8befdae61b51328dce448885a423cd\nparent 182e80eb3a222a15909614f295dc163fb3746813\nauthor Seth Michael Larson <sethmichaellarson@gmail.com> 1601303378 -0500\ncommitter GitHub <noreply@github.com> 1601303378 -0500\n\nMake Retry metaclass private",
+        "verified_at": "2024-01-16T19:59:59Z"
+      }
+    },
+    "url": "https://api.github.com/repos/urllib3/urllib3/commits/0993ad4390cd524262eef79fda304b0f96a80918",
+    "html_url": "https://github.com/urllib3/urllib3/commit/0993ad4390cd524262eef79fda304b0f96a80918",
+    "comments_url": "https://api.github.com/repos/urllib3/urllib3/commits/0993ad4390cd524262eef79fda304b0f96a80918/comments",
+    "author": {
+      "login": "sethmlarson",
+      "id": 18519037,
+      "node_id": "MDQ6VXNlcjE4NTE5MDM3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/18519037?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/sethmlarson",
+      "html_url": "https://github.com/sethmlarson",
+      "followers_url": "https://api.github.com/users/sethmlarson/followers",
+      "following_url": "https://api.github.com/users/sethmlarson/following{/other_user}",
+      "gists_url": "https://api.github.com/users/sethmlarson/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/sethmlarson/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/sethmlarson/subscriptions",
+      "organizations_url": "https://api.github.com/users/sethmlarson/orgs",
+      "repos_url": "https://api.github.com/users/sethmlarson/repos",
+      "events_url": "https://api.github.com/users/sethmlarson/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/sethmlarson/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "182e80eb3a222a15909614f295dc163fb3746813",
+        "url": "https://api.github.com/repos/urllib3/urllib3/commits/182e80eb3a222a15909614f295dc163fb3746813",
+        "html_url": "https://github.com/urllib3/urllib3/commit/182e80eb3a222a15909614f295dc163fb3746813"
+      }
+    ]
+  }
+]

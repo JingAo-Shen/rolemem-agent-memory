@@ -1,0 +1,38 @@
+[
+  {
+    "sha": "921fcba19ce21ef888403a6bfffca91ed3820497",
+    "filename": "changelog/5044.removal.rst",
+    "status": "added",
+    "additions": 1,
+    "deletions": 0,
+    "changes": 1,
+    "blob_url": "https://github.com/urllib3/urllib3/blob/dbd3622b354d3a9538826983cfcd78dde10e8472/changelog%2F5044.removal.rst",
+    "raw_url": "https://github.com/urllib3/urllib3/raw/dbd3622b354d3a9538826983cfcd78dde10e8472/changelog%2F5044.removal.rst",
+    "contents_url": "https://api.github.com/repos/urllib3/urllib3/contents/changelog%2F5044.removal.rst?ref=dbd3622b354d3a9538826983cfcd78dde10e8472",
+    "patch": "@@ -0,0 +1 @@\n+Deprecated using an empty collection as ``Retry`` option ``allowed_methods`` to retry any verb."
+  },
+  {
+    "sha": "6ab90229dc01e17e91c9253a224e71c34d43f7eb",
+    "filename": "src/urllib3/util/retry.py",
+    "status": "modified",
+    "additions": 11,
+    "deletions": 0,
+    "changes": 11,
+    "blob_url": "https://github.com/urllib3/urllib3/blob/dbd3622b354d3a9538826983cfcd78dde10e8472/src%2Furllib3%2Futil%2Fretry.py",
+    "raw_url": "https://github.com/urllib3/urllib3/raw/dbd3622b354d3a9538826983cfcd78dde10e8472/src%2Furllib3%2Futil%2Fretry.py",
+    "contents_url": "https://api.github.com/repos/urllib3/urllib3/contents/src%2Furllib3%2Futil%2Fretry.py?ref=dbd3622b354d3a9538826983cfcd78dde10e8472",
+    "patch": "@@ -6,6 +6,8 @@\n import re\n import time\n import typing\n+import warnings\n+from collections.abc import Collection\n from itertools import takewhile\n from types import TracebackType\n \n@@ -251,6 +253,15 @@ def __init__(\n \n         self.redirect = redirect\n         self.status_forcelist = status_forcelist or set()\n+        if not allowed_methods and isinstance(allowed_methods, Collection):\n+            warnings.warn(\n+                \"Using an empty collection for 'allowed_methods' option to \"\n+                \"retry on any verb is deprecated and will skip retries for \"\n+                \"all verbs in urllib3 v3.0. Instead use \"\n+                \"Retry(..., allowed_methods=None).\",\n+                FutureWarning,\n+                stacklevel=2,\n+            )\n         self.allowed_methods = allowed_methods\n         self.backoff_factor = backoff_factor\n         self.backoff_max = backoff_max"
+  },
+  {
+    "sha": "48ca072e4cda460b1c6418dc0d349fc13430928e",
+    "filename": "test/test_retry.py",
+    "status": "modified",
+    "additions": 19,
+    "deletions": 1,
+    "changes": 20,
+    "blob_url": "https://github.com/urllib3/urllib3/blob/dbd3622b354d3a9538826983cfcd78dde10e8472/test%2Ftest_retry.py",
+    "raw_url": "https://github.com/urllib3/urllib3/raw/dbd3622b354d3a9538826983cfcd78dde10e8472/test%2Ftest_retry.py",
+    "contents_url": "https://api.github.com/repos/urllib3/urllib3/contents/test%2Ftest_retry.py?ref=dbd3622b354d3a9538826983cfcd78dde10e8472",
+    "patch": "@@ -263,7 +263,7 @@ def test_status_forcelist(self) -> None:\n         assert not retry.is_retry(\"GET\", status_code=418)\n \n     def test_allowed_methods_with_status_forcelist(self) -> None:\n-        # Falsey allowed_methods means to retry on any method.\n+        # None allowed_methods means to retry on any method.\n         retry = Retry(status_forcelist=[500], allowed_methods=None)\n         assert retry.is_retry(\"GET\", status_code=500)\n         assert retry.is_retry(\"POST\", status_code=500)\n@@ -273,6 +273,24 @@ def test_allowed_methods_with_status_forcelist(self) -> None:\n         assert not retry.is_retry(\"GET\", status_code=500)\n         assert retry.is_retry(\"POST\", status_code=500)\n \n+    def test_false_allowed_methods(self) -> None:\n+        # False is also accepted to mean retry on any method, since 1.26.x\n+        retry = Retry(status_forcelist=[500], allowed_methods=False)  # type: ignore[arg-type]\n+        assert retry.is_retry(\"POST\", status_code=500)\n+\n+    def test_empty_allowed_methods(self) -> None:\n+        with pytest.warns(FutureWarning) as records:\n+            retry = Retry(status_forcelist=[500], allowed_methods=[])\n+        assert retry.is_retry(\"GET\", status_code=500)\n+        msg = (\n+            \"Using an empty collection for 'allowed_methods' option to retry \"\n+            \"on any verb is deprecated and will skip retries for all verbs \"\n+            \"in urllib3 v3.0. Instead use Retry(..., allowed_methods=None).\"\n+        )\n+        record = records[0]\n+        assert isinstance(record.message, Warning)\n+        assert record.message.args[0] == msg\n+\n     def test_exhausted(self) -> None:\n         assert not Retry(0).is_exhausted()\n         assert Retry(-1).is_exhausted()"
+  }
+]

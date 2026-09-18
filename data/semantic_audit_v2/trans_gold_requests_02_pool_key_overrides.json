@@ -1,0 +1,92 @@
+{
+  "transition_id": "trans_gold_requests_02_pool_key_overrides",
+  "repo_name": "psf/requests",
+  "auditor_version": "2.0.0",
+  "spec_sha256": "706adc2176285c82a2e577dbcfb054199ed6bd191b4686d8f47c02b780d8bd69",
+  "audit_fingerprint": "8523af5373e05de8cc4c2ede4689b6c5f4192a7c0016055459f154e424e19d24",
+  "gates": [
+    {
+      "gate_id": "G1",
+      "name": "PR evidence <-> repository_change",
+      "expected": "PR title/body describes the repository architectural or API change",
+      "observed": "Word overlap: ['for', 'keys', 'pooling'] | PR title: Allow for overriding of specific pool key params",
+      "evidence": "pr.json:title='Allow for overriding of specific pool key params'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G2",
+      "name": "repository_change <-> actual diff",
+      "expected": "Actual diff contains code edits in files specified in repository_change",
+      "observed": "Diff mentions files: ['src/requests/adapters.py'] -> True",
+      "evidence": "diff.patch length: 6225 bytes",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G3",
+      "name": "actual diff <-> changed/deprecated/replacement symbols",
+      "expected": "Diff patch directly modifies or introduces the target symbols",
+      "observed": "Tokens ['build_connection_pool_key_attributes', 'proxy_manager_for', 'init_poolmanager', 'build_connection_pool_key_attributes'] found in diff: True",
+      "evidence": "Matching symbols in diff: ['build_connection_pool_key_attributes', 'build_connection_pool_key_attributes']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G4",
+      "name": "stale memory <-> base-state behavior",
+      "expected": "Stale memory candidate instructs usage of legacy symbol from base state",
+      "observed": "Stale memory references legacy symbol: True",
+      "evidence": "stale_memory_candidate='Override proxy_manager_for to adjust connection pool isolation keys...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G5",
+      "name": "valid memory <-> target-state behavior",
+      "expected": "Valid memory candidate instructs modern pattern introduced in target state",
+      "observed": "Valid memory references modern symbol: True",
+      "evidence": "valid_memory_candidate='Override build_connection_pool_key_attributes in HTTPAdapter subclass...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G6",
+      "name": "current task <-> transition capability",
+      "expected": "Evaluation task prompt requires implementing or using transition capability",
+      "observed": "Task exercises target file 'pool_config.py' and target symbol 'get_pool_key_attributes': True",
+      "evidence": "current_task='Implement get_pool_key_attributes(adapter, request, verify=True) in pool_config....'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G7",
+      "name": "hidden test <-> current task semantics",
+      "expected": "Hidden test verifies the target symbol/module without leaking solution code",
+      "observed": "Hidden test imports/tests target symbol 'get_pool_key_attributes': True",
+      "evidence": "hidden test len=587 bytes, tests=['verify', 'isinstance', 'PreparedRequest', 'HTTPAdapter', 'sys']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G8",
+      "name": "stale control <-> stale memory semantics",
+      "expected": "Stale control solution invokes deprecated API as instructed by stale memory",
+      "observed": "Stale control uses deprecated symbol: True",
+      "evidence": "stale_solution.py contains ['build_connection_pool_key_attributes']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G9",
+      "name": "valid control <-> valid memory semantics",
+      "expected": "Valid control solution invokes modern API as instructed by valid memory",
+      "observed": "Valid control uses replacement symbol: True",
+      "evidence": "valid_solution.py contains modern pattern: True",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G10",
+      "name": "causal matrix <-> transition evidence",
+      "expected": "Causal counterfactual matrix demonstrates base-state pass, target-state fail with genuine failure taxonomy",
+      "observed": "Causal status: 'CAUSAL_PASS', failure taxonomy: 'BEHAVIOR_MISMATCH'",
+      "evidence": "causal_counterfactual/trans_gold_requests_02_pool_key_overrides.json",
+      "status": "PASS"
+    }
+  ],
+  "passed_gates_count": 10,
+  "total_gates_count": 10,
+  "overall_status": "PASS"
+}

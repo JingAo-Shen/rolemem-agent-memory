@@ -1,10 +1,20 @@
 {
   "transition_id": "trans_gold_flask_01_context_stack_removal",
+  "stale_base": false,
+  "stale_target": false,
+  "valid_base": true,
+  "valid_target": true,
   "matrix": {
     "stale_on_base": false,
     "stale_on_target": false,
     "valid_on_base": true,
     "valid_on_target": true
+  },
+  "failure_taxonomy": {
+    "stale_base_failure": "DEPRECATION_WARNING",
+    "stale_target_failure": "DEPRECATION_WARNING",
+    "valid_base_failure": "NONE",
+    "valid_target_failure": "NONE"
   },
   "causality_status": "TRANSITION_NOT_CAUSAL",
   "is_causal": false,

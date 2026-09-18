@@ -1,0 +1,121 @@
+{
+  "task_id": "trans_gold_requests_01_tls_context_adapter",
+  "conditions": {
+    "H0": {
+      "passed_runs": 0,
+      "total_runs": 3,
+      "tsr": 0.0,
+      "stale_actions_count": 1,
+      "runs": [
+        {
+          "seed": 42,
+          "passed": false,
+          "has_stale_action": false,
+          "code_snippet": "import requests.adapters\n\ndef get_adapter_connection(adapter, request, verify=True):\n    \"\"\"\n    Obtain a connection from HTTPAdapter without calling ",
+          "log_preview": "\n\nsrc/requests/adapters.py:622: ConnectionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_get_conn - requests.exceptions.Conne...\n============================== 1 failed in 0.21s ===============================\n\nSTDERR:\n"
+        },
+        {
+          "seed": 123,
+          "passed": false,
+          "has_stale_action": false,
+          "code_snippet": "import requests.adapters\n\ndef get_adapter_connection(adapter, request, verify=True):\n    \"\"\"\n    Obtain a connection from HTTPAdapter without calling ",
+          "log_preview": "\n\nsrc/requests/adapters.py:622: ConnectionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_get_conn - requests.exceptions.Conne...\n============================== 1 failed in 0.20s ===============================\n\nSTDERR:\n"
+        },
+        {
+          "seed": 999,
+          "passed": false,
+          "has_stale_action": true,
+          "code_snippet": "import requests.adapters\n\ndef get_adapter_connection(adapter, request, verify=True):\n    \"\"\"\n    Obtain a connection from HTTPAdapter without calling ",
+          "log_preview": "'\n\nsrc/requests/sessions.py:467: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_get_conn - AttributeError: 'Prepared...\n============================== 1 failed in 0.14s ===============================\n\nSTDERR:\n"
+        }
+      ]
+    },
+    "H1": {
+      "passed_runs": 0,
+      "total_runs": 3,
+      "tsr": 0.0,
+      "stale_actions_count": 1,
+      "runs": [
+        {
+          "seed": 42,
+          "passed": false,
+          "has_stale_action": true,
+          "code_snippet": "import requests.adapters\n\ndef get_adapter_connection(adapter, request, verify=True):\n    # Create a TLS context if needed\n    tls_context = adapter.ge",
+          "log_preview": " iterable\n\nsrc/requests/utils.py:857: TypeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_get_conn - TypeError: argument of ty...\n============================== 1 failed in 0.14s ===============================\n\nSTDERR:\n"
+        },
+        {
+          "seed": 123,
+          "passed": false,
+          "has_stale_action": false,
+          "code_snippet": "import requests.adapters\nfrom urllib3.poolmanager import PoolManager\n\ndef get_adapter_connection(adapter, request, verify=True):\n    # Create a custom",
+          "log_preview": "'timeout'\n\nadapter_helper.py:10: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_get_conn - AttributeError: 'HTTPAdap...\n============================== 1 failed in 0.13s ===============================\n\nSTDERR:\n"
+        },
+        {
+          "seed": 999,
+          "passed": false,
+          "has_stale_action": false,
+          "code_snippet": "import requests.adapters\nfrom urllib3.poolmanager import PoolManager\nfrom urllib3.util.retry import Retry\n\ndef get_adapter_connection(adapter, request",
+          "log_preview": "nnection'?\n\nadapter_helper.py:7: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_get_conn - AttributeError: 'HTTPAdap...\n============================== 1 failed in 0.14s ===============================\n\nSTDERR:\n"
+        }
+      ]
+    },
+    "H2": {
+      "passed_runs": 0,
+      "total_runs": 3,
+      "tsr": 0.0,
+      "stale_actions_count": 3,
+      "runs": [
+        {
+          "seed": 42,
+          "passed": false,
+          "has_stale_action": true,
+          "code_snippet": "import requests.adapters\n\ndef get_adapter_connection(adapter, request, verify=True):\n    # Create a session using the provided adapter\n    session = r",
+          "log_preview": "\n\nsrc/requests/adapters.py:622: ConnectionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_get_conn - requests.exceptions.Conne...\n============================== 1 failed in 0.19s ===============================\n\nSTDERR:\n"
+        },
+        {
+          "seed": 123,
+          "passed": false,
+          "has_stale_action": true,
+          "code_snippet": "import requests.adapters\n\ndef get_adapter_connection(adapter, request, verify=True):\n    # Create a session using the provided adapter\n    session = r",
+          "log_preview": "\n\nsrc/requests/adapters.py:622: ConnectionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_get_conn - requests.exceptions.Conne...\n============================== 1 failed in 0.19s ===============================\n\nSTDERR:\n"
+        },
+        {
+          "seed": 999,
+          "passed": false,
+          "has_stale_action": true,
+          "code_snippet": "import requests.adapters\n\ndef get_adapter_connection(adapter, request, verify=True):\n    # Create a session using the provided adapter\n    session = r",
+          "log_preview": "\n\nsrc/requests/adapters.py:622: ConnectionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_get_conn - requests.exceptions.Conne...\n============================== 1 failed in 0.19s ===============================\n\nSTDERR:\n"
+        }
+      ]
+    },
+    "H3": {
+      "passed_runs": 0,
+      "total_runs": 3,
+      "tsr": 0.0,
+      "stale_actions_count": 0,
+      "runs": [
+        {
+          "seed": 42,
+          "passed": false,
+          "has_stale_action": false,
+          "code_snippet": "import requests\nfrom requests.adapters import HTTPAdapter\n\ndef get_adapter_connection(adapter, request, verify=True):\n    # Create a session object\n  ",
+          "log_preview": "one?\n\nsrc/requests/models.py:438: MissingSchema\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_get_conn - requests.exceptions.Missi...\n============================== 1 failed in 0.14s ===============================\n\nSTDERR:\n"
+        },
+        {
+          "seed": 123,
+          "passed": false,
+          "has_stale_action": false,
+          "code_snippet": "import requests.adapters\n\ndef get_adapter_connection(adapter, request, verify=True):\n    # Create a session using the provided adapter\n    session = r",
+          "log_preview": "one?\n\nsrc/requests/models.py:438: MissingSchema\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_get_conn - requests.exceptions.Missi...\n============================== 1 failed in 0.14s ===============================\n\nSTDERR:\n"
+        },
+        {
+          "seed": 999,
+          "passed": false,
+          "has_stale_action": false,
+          "code_snippet": "import requests.adapters\n\ndef get_adapter_connection(adapter, request, verify=True):\n    # Create a session using the provided adapter\n    session = r",
+          "log_preview": "'\n\nsrc/requests/sessions.py:564: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_get_conn - AttributeError: 'NoneType...\n============================== 1 failed in 0.14s ===============================\n\nSTDERR:\n"
+        }
+      ]
+    }
+  }
+}

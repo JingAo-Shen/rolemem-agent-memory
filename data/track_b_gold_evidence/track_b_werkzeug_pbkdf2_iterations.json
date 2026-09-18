@@ -1,0 +1,13 @@
+{
+  "tid": "track_b_werkzeug_pbkdf2_iterations",
+  "repo_name": "pallets/werkzeug",
+  "decision_claim": "The project default work factor for PBKDF2 password hashing is 600,000 iterations",
+  "decision_value": "600000",
+  "evidence_type": "PR discussion & code change",
+  "evidence_url": "https://github.com/pallets/werkzeug/pull/2612",
+  "evidence_commit": "92b994f76ec3687e97839c7ea225bf556a587a98",
+  "evidence_file": "src/werkzeug/security.py",
+  "evidence_line_range": "9-13",
+  "evidence_excerpt": "DEFAULT_PBKDF2_ITERATIONS = 600000",
+  "evidence_hiding_audit": "PASS"
+}
