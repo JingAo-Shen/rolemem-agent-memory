@@ -1,0 +1,14 @@
+{
+  "transition_id": "trans_gold_click_01_option_parser",
+  "original_test_required": true,
+  "existing_tests": "tests/test_parser.py::test_parser_default_prefixes",
+  "status": "PASS",
+  "details": {
+    "git_commit": "988c683963b14ced1b32a8cda9f9b466c32d9df1",
+    "file": "tests/test_parser.py",
+    "test_node": "test_parser_default_prefixes",
+    "node_found_in_target_commit": true
+  },
+  "audit_fingerprint": "e64456454615690a3207eaaec47894657ad7f66b158d890a4f7d96a8b3af280b",
+  "auditor_version": "v7.0"
+}

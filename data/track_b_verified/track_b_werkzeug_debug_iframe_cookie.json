@@ -1,0 +1,161 @@
+{
+  "tid": "track_b_werkzeug_debug_iframe_cookie",
+  "repo_name": "pallets/werkzeug",
+  "target_commit": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+  "evidence_commit": "fcd246e5",
+  "evidence_url": "https://github.com/pallets/werkzeug/pull/1913",
+  "decision_claim": "Debugging cookies in embedded iframe environments must specify samesite='None' and secure=True to avoid browser cross-site cookie rejection.",
+  "causality_verified": true,
+  "evidence_hiding_audit": "PASS",
+  "classification": "EVIDENCE_GROUNDED_MEMORY_LIFT_PROBE",
+  "is_qualified_seed": false,
+  "metrics": {
+    "s0_tsr": 0.0,
+    "s1_tsr": 0.0,
+    "s2_tsr": 0.0,
+    "lift": 0.0
+  },
+  "condition_runs": {
+    "S0": [
+      {
+        "seed": 42,
+        "passed": false,
+        "memory_tokens": 0,
+        "task_tokens": 70,
+        "workspace_tokens": 1500,
+        "total_prompt_tokens": 1636,
+        "code_preview": "from werkzeug.http import dump_cookie\n\ndef create_debug_embed_cookie(token: str) -> str:\n    return dump_cookie('debug_auth', token, secure=True, httponly=True, samesite='Strict')"
+      },
+      {
+        "seed": 43,
+        "passed": false,
+        "memory_tokens": 0,
+        "task_tokens": 70,
+        "workspace_tokens": 1500,
+        "total_prompt_tokens": 1636,
+        "code_preview": "from werkzeug.http import dump_cookie\n\ndef create_debug_embed_cookie(token: str) -> str:\n    return dump_cookie('debug_auth', token, secure=True, httponly=True, samesite='Strict')"
+      },
+      {
+        "seed": 44,
+        "passed": false,
+        "memory_tokens": 0,
+        "task_tokens": 70,
+        "workspace_tokens": 1500,
+        "total_prompt_tokens": 1636,
+        "code_preview": "from werkzeug.http import dump_cookie\n\ndef create_debug_embed_cookie(token: str) -> str:\n    return dump_cookie('debug_auth', token, secure=True, httponly=True, samesite='Strict')"
+      },
+      {
+        "seed": 45,
+        "passed": false,
+        "memory_tokens": 0,
+        "task_tokens": 70,
+        "workspace_tokens": 1500,
+        "total_prompt_tokens": 1636,
+        "code_preview": "from werkzeug.http import dump_cookie\n\ndef create_debug_embed_cookie(token: str) -> str:\n    return dump_cookie('debug_auth', token, secure=True, httponly=True, samesite='Strict')"
+      },
+      {
+        "seed": 46,
+        "passed": false,
+        "memory_tokens": 0,
+        "task_tokens": 70,
+        "workspace_tokens": 1500,
+        "total_prompt_tokens": 1636,
+        "code_preview": "def create_debug_embed_cookie(token: str) -> str:\n    from werkzeug.http import dump_cookie\n    \n    # Create a cookie with the specified token\n    cookie = dump_cookie('debug_auth', token, max_age=36"
+      }
+    ],
+    "S1": [
+      {
+        "seed": 42,
+        "passed": false,
+        "memory_tokens": 29,
+        "task_tokens": 70,
+        "workspace_tokens": 1500,
+        "total_prompt_tokens": 1665,
+        "code_preview": "def create_debug_embed_cookie(token: str) -> str:\n    return dump_cookie('debug_auth', token, samesite=None, secure=False)"
+      },
+      {
+        "seed": 43,
+        "passed": false,
+        "memory_tokens": 29,
+        "task_tokens": 70,
+        "workspace_tokens": 1500,
+        "total_prompt_tokens": 1665,
+        "code_preview": "def create_debug_embed_cookie(token: str) -> str:\n    return dump_cookie('debug_auth', token, samesite=None, secure=False)"
+      },
+      {
+        "seed": 44,
+        "passed": false,
+        "memory_tokens": 29,
+        "task_tokens": 70,
+        "workspace_tokens": 1500,
+        "total_prompt_tokens": 1665,
+        "code_preview": "def create_debug_embed_cookie(token: str) -> str:\n    return dump_cookie('debug_auth', token, samesite=None, secure=False)"
+      },
+      {
+        "seed": 45,
+        "passed": false,
+        "memory_tokens": 29,
+        "task_tokens": 70,
+        "workspace_tokens": 1500,
+        "total_prompt_tokens": 1665,
+        "code_preview": "def create_debug_embed_cookie(token: str) -> str:\n    return dump_cookie('debug_auth', token, samesite=None, secure=False)"
+      },
+      {
+        "seed": 46,
+        "passed": false,
+        "memory_tokens": 29,
+        "task_tokens": 70,
+        "workspace_tokens": 1500,
+        "total_prompt_tokens": 1665,
+        "code_preview": "def create_debug_embed_cookie(token: str) -> str:\n    return dump_cookie('debug_auth', token, samesite=None, secure=False)"
+      }
+    ],
+    "S2": [
+      {
+        "seed": 42,
+        "passed": false,
+        "memory_tokens": 48,
+        "task_tokens": 70,
+        "workspace_tokens": 1500,
+        "total_prompt_tokens": 1684,
+        "code_preview": "from werkzeug.http import dump_cookie\n\ndef create_debug_embed_cookie(token: str) -> str:\n    return dump_cookie('debug_auth', token, samesite='None', secure=True, httponly=True)"
+      },
+      {
+        "seed": 43,
+        "passed": false,
+        "memory_tokens": 48,
+        "task_tokens": 70,
+        "workspace_tokens": 1500,
+        "total_prompt_tokens": 1684,
+        "code_preview": "from werkzeug.http import dump_cookie\n\ndef create_debug_embed_cookie(token: str) -> str:\n    return dump_cookie('debug_auth', token, samesite='None', secure=True, httponly=True)"
+      },
+      {
+        "seed": 44,
+        "passed": false,
+        "memory_tokens": 48,
+        "task_tokens": 70,
+        "workspace_tokens": 1500,
+        "total_prompt_tokens": 1684,
+        "code_preview": "def create_debug_embed_cookie(token: str) -> str:\n    return dump_cookie('debug_auth', token, samesite='None', secure=True, httponly=True)"
+      },
+      {
+        "seed": 45,
+        "passed": false,
+        "memory_tokens": 48,
+        "task_tokens": 70,
+        "workspace_tokens": 1500,
+        "total_prompt_tokens": 1684,
+        "code_preview": "from werkzeug.http import dump_cookie\n\ndef create_debug_embed_cookie(token: str) -> str:\n    return dump_cookie('debug_auth', token, samesite='None', secure=True, httponly=True)"
+      },
+      {
+        "seed": 46,
+        "passed": false,
+        "memory_tokens": 48,
+        "task_tokens": 70,
+        "workspace_tokens": 1500,
+        "total_prompt_tokens": 1684,
+        "code_preview": "def create_debug_embed_cookie(token: str) -> str:\n    return dump_cookie('debug_auth', token, samesite='None', secure=True, httponly=True)"
+      }
+    ]
+  }
+}

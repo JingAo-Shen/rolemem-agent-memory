@@ -1,0 +1,8 @@
+{
+  "transition_id": "trans_gold_requests_01_tls_context_adapter",
+  "files_checked_count": 18,
+  "mismatches": [],
+  "status": "PASS",
+  "audit_fingerprint": "71c7e221732ab138f8de6f13c4472fcf25b860608fae0aee18d07b95211bfa3f",
+  "auditor_version": "v7.0"
+}

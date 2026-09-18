@@ -1,9 +1,9 @@
 {
   "transition_id": "trans_gold_urllib3_02_empty_allowed_methods",
   "repo_name": "urllib3/urllib3",
-  "auditor_version": "2.0.0",
+  "auditor_version": "v7.0",
   "spec_sha256": "517ad09ab2cb344a3abcca9eead018010119d260d91f3071446a015f9db07535",
-  "audit_fingerprint": "4a16f11a4ce3c25efadf41064689318bb00a06166a3e1d3912fefaa4a81a0aa8",
+  "audit_fingerprint": "4d89bbe52f7d7c9468cd913648a82ec988beffcdcc75b1659747c3eb746dcbe0",
   "gates": [
     {
       "gate_id": "G1",

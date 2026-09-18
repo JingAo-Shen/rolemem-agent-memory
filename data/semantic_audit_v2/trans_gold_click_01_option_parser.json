@@ -1,9 +1,9 @@
 {
   "transition_id": "trans_gold_click_01_option_parser",
   "repo_name": "pallets/click",
-  "auditor_version": "2.0.0",
+  "auditor_version": "v7.0",
   "spec_sha256": "684f2d22a9fc6f02a86317bd8c292230621f3853510fd92ca9c9bf22ddcf774c",
-  "audit_fingerprint": "81a42e04cdc43951c5a43a14a96fd7268f107d841d88e76f8376da22757f4c42",
+  "audit_fingerprint": "e64456454615690a3207eaaec47894657ad7f66b158d890a4f7d96a8b3af280b",
   "gates": [
     {
       "gate_id": "G1",

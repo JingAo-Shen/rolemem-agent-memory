@@ -1,0 +1,9 @@
+{
+  "transition_id": "trans_gold_urllib3_02_empty_allowed_methods",
+  "hidden_test_file": "/code/rolemem-agent-memory/fixtures_v2/trans_gold_urllib3_02_empty_allowed_methods/hidden_tests/test_evaluation.py",
+  "syntax_valid": true,
+  "collected_tests_count": 1,
+  "status": "PASS",
+  "audit_fingerprint": "4d89bbe52f7d7c9468cd913648a82ec988beffcdcc75b1659747c3eb746dcbe0",
+  "auditor_version": "v7.0"
+}

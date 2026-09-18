@@ -4,7 +4,7 @@
   "repo_url": "https://github.com/pallets/click",
   "license": "BSD-3-Clause",
   "language": "Python",
-  "track": "A",
+  "track": "TRACK_A_API_EVOLUTION",
   "task_family": "api_deprecation",
   "pr_url": "https://github.com/pallets/click/pull/2592",
   "issue_url": "https://github.com/pallets/click/issues/2592",

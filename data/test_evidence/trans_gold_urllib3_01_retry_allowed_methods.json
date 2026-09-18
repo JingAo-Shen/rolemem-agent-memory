@@ -1,0 +1,14 @@
+{
+  "transition_id": "trans_gold_urllib3_01_retry_allowed_methods",
+  "original_test_required": true,
+  "existing_tests": "test/test_retry_deprecated.py::test_cls_get_default_method_whitelist",
+  "status": "PASS",
+  "details": {
+    "git_commit": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+    "file": "test/test_retry_deprecated.py",
+    "test_node": "test_cls_get_default_method_whitelist",
+    "node_found_in_target_commit": true
+  },
+  "audit_fingerprint": "d14444992b5de316a3ffc93257fab7b80eda3c4c61fe5e54238e1a1b10372e41",
+  "auditor_version": "v7.0"
+}

@@ -4,7 +4,7 @@
   "repo_url": "https://github.com/pallets/werkzeug",
   "license": "BSD-3-Clause",
   "language": "Python",
-  "track": "A",
+  "track": "TRACK_A_API_EVOLUTION",
   "task_family": "api_deprecation",
   "pr_url": "https://github.com/pallets/werkzeug/pull/3276",
   "issue_url": "https://github.com/pallets/werkzeug/issues/3276",

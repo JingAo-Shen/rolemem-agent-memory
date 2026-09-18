@@ -1,0 +1,8 @@
+{
+  "transition_id": "trans_gold_flask_02_should_ignore_error",
+  "stale_pass": true,
+  "valid_pass": true,
+  "status": "PASS",
+  "audit_fingerprint": "6519f7a565ffb5b4e39b6bb8c0cda4e9300bc059003256aeb64ce1d4e95d3ce7",
+  "auditor_version": "v7.0"
+}

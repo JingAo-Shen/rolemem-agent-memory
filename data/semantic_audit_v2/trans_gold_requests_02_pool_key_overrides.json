@@ -1,9 +1,9 @@
 {
   "transition_id": "trans_gold_requests_02_pool_key_overrides",
   "repo_name": "psf/requests",
-  "auditor_version": "2.0.0",
+  "auditor_version": "v7.0",
   "spec_sha256": "706adc2176285c82a2e577dbcfb054199ed6bd191b4686d8f47c02b780d8bd69",
-  "audit_fingerprint": "8523af5373e05de8cc4c2ede4689b6c5f4192a7c0016055459f154e424e19d24",
+  "audit_fingerprint": "838a0a4327dea8ece1e9da22fa8abd912b8eace68a8d0a9f62624ae3135849c4",
   "gates": [
     {
       "gate_id": "G1",

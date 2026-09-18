@@ -1,0 +1,161 @@
+{
+  "tid": "track_b_requests_gateway_retries",
+  "repo_name": "psf/requests",
+  "target_commit": "c98e4d133ef29c46a9b68cd783087218a8075e05",
+  "evidence_commit": "452ba32e",
+  "evidence_url": "https://github.com/psf/requests/pull/2497",
+  "decision_claim": "Custom HTTPAdapters for production gateways must use Retry(total=3, backoff_factor=0.5, status_forcelist=[502, 503, 504])",
+  "causality_verified": true,
+  "evidence_hiding_audit": "PASS",
+  "classification": "EVIDENCE_GROUNDED_MEMORY_LIFT_PROBE",
+  "is_qualified_seed": false,
+  "metrics": {
+    "s0_tsr": 0.0,
+    "s1_tsr": 0.0,
+    "s2_tsr": 0.0,
+    "lift": 0.0
+  },
+  "condition_runs": {
+    "S0": [
+      {
+        "seed": 42,
+        "passed": false,
+        "memory_tokens": 0,
+        "task_tokens": 46,
+        "workspace_tokens": 1500,
+        "total_prompt_tokens": 1612,
+        "code_preview": "from requests.adapters import HTTPAdapter\nfrom urllib3.util.retry import Retry\n\ndef create_gateway_adapter():\n    # Define the retry strategy according to the project's microservice retry convention f"
+      },
+      {
+        "seed": 43,
+        "passed": false,
+        "memory_tokens": 0,
+        "task_tokens": 46,
+        "workspace_tokens": 1500,
+        "total_prompt_tokens": 1612,
+        "code_preview": "def create_gateway_adapter():\n    # Define the retry strategy according to the project's established microservice retry convention for production gateways\n    retry_strategy = Retry(\n        total=5, "
+      },
+      {
+        "seed": 44,
+        "passed": false,
+        "memory_tokens": 0,
+        "task_tokens": 46,
+        "workspace_tokens": 1500,
+        "total_prompt_tokens": 1612,
+        "code_preview": "def create_gateway_adapter():\n    # Define the retry strategy according to the project's established microservice retry convention for production gateways\n    retry_strategy = Retry(\n        total=5, "
+      },
+      {
+        "seed": 45,
+        "passed": false,
+        "memory_tokens": 0,
+        "task_tokens": 46,
+        "workspace_tokens": 1500,
+        "total_prompt_tokens": 1612,
+        "code_preview": "from requests.adapters import HTTPAdapter\nfrom urllib3.util.retry import Retry\n\ndef create_gateway_adapter():\n    # Define the retry strategy according to the project's established microservice retry "
+      },
+      {
+        "seed": 46,
+        "passed": false,
+        "memory_tokens": 0,
+        "task_tokens": 46,
+        "workspace_tokens": 1500,
+        "total_prompt_tokens": 1612,
+        "code_preview": "def create_gateway_adapter():\n    # Define the retry strategy according to the project's microservice retry convention for production gateways\n    retry_strategy = Retry(\n        total=5,  # Total num"
+      }
+    ],
+    "S1": [
+      {
+        "seed": 42,
+        "passed": false,
+        "memory_tokens": 26,
+        "task_tokens": 46,
+        "workspace_tokens": 1500,
+        "total_prompt_tokens": 1638,
+        "code_preview": "def create_gateway_adapter():\n    return HTTPAdapter(max_retries=Retry(0, read=False))"
+      },
+      {
+        "seed": 43,
+        "passed": false,
+        "memory_tokens": 26,
+        "task_tokens": 46,
+        "workspace_tokens": 1500,
+        "total_prompt_tokens": 1638,
+        "code_preview": "def create_gateway_adapter():\n    return HTTPAdapter(max_retries=Retry(0, read=False))"
+      },
+      {
+        "seed": 44,
+        "passed": false,
+        "memory_tokens": 26,
+        "task_tokens": 46,
+        "workspace_tokens": 1500,
+        "total_prompt_tokens": 1638,
+        "code_preview": "def create_gateway_adapter():\n    return HTTPAdapter(max_retries=Retry(0, read=False))"
+      },
+      {
+        "seed": 45,
+        "passed": false,
+        "memory_tokens": 26,
+        "task_tokens": 46,
+        "workspace_tokens": 1500,
+        "total_prompt_tokens": 1638,
+        "code_preview": "def create_gateway_adapter():\n    return HTTPAdapter(max_retries=Retry(0, read=False))"
+      },
+      {
+        "seed": 46,
+        "passed": false,
+        "memory_tokens": 26,
+        "task_tokens": 46,
+        "workspace_tokens": 1500,
+        "total_prompt_tokens": 1638,
+        "code_preview": "def create_gateway_adapter():\n    return HTTPAdapter(max_retries=Retry(0, read=False))"
+      }
+    ],
+    "S2": [
+      {
+        "seed": 42,
+        "passed": false,
+        "memory_tokens": 65,
+        "task_tokens": 46,
+        "workspace_tokens": 1500,
+        "total_prompt_tokens": 1677,
+        "code_preview": "from requests.adapters import HTTPAdapter\nfrom urllib3.util.retry import Retry\n\ndef create_gateway_adapter():\n    \"\"\"\n    Creates an HTTPAdapter configured with the retry strategy for production gatew"
+      },
+      {
+        "seed": 43,
+        "passed": false,
+        "memory_tokens": 65,
+        "task_tokens": 46,
+        "workspace_tokens": 1500,
+        "total_prompt_tokens": 1677,
+        "code_preview": "from requests.adapters import HTTPAdapter\nfrom urllib3.util.retry import Retry\n\ndef create_gateway_adapter():\n    retry_strategy = Retry(\n        total=3,\n        backoff_factor=0.5,\n        status_fo"
+      },
+      {
+        "seed": 44,
+        "passed": false,
+        "memory_tokens": 65,
+        "task_tokens": 46,
+        "workspace_tokens": 1500,
+        "total_prompt_tokens": 1677,
+        "code_preview": "from urllib3.util.retry import Retry\nfrom requests.adapters import HTTPAdapter\n\ndef create_gateway_adapter():\n    \"\"\"\n    Creates an HTTPAdapter configured with the retry strategy for production gatew"
+      },
+      {
+        "seed": 45,
+        "passed": false,
+        "memory_tokens": 65,
+        "task_tokens": 46,
+        "workspace_tokens": 1500,
+        "total_prompt_tokens": 1677,
+        "code_preview": "from urllib3.util.retry import Retry\nfrom requests.adapters import HTTPAdapter\n\ndef create_gateway_adapter():\n    retry_strategy = Retry(\n        total=3,\n        backoff_factor=0.5,\n        status_fo"
+      },
+      {
+        "seed": 46,
+        "passed": false,
+        "memory_tokens": 65,
+        "task_tokens": 46,
+        "workspace_tokens": 1500,
+        "total_prompt_tokens": 1677,
+        "code_preview": "from urllib3.util.retry import Retry\nfrom requests.adapters import HTTPAdapter\n\ndef create_gateway_adapter():\n    retry_strategy = Retry(\n        total=3,\n        backoff_factor=0.5,\n        status_fo"
+      }
+    ]
+  }
+}

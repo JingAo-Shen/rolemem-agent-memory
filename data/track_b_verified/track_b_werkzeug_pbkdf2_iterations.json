@@ -1,0 +1,10 @@
+{
+  "tid": "track_b_werkzeug_pbkdf2_iterations",
+  "repo_name": "pallets/werkzeug",
+  "repo_dir": "/code/repo_cache/werkzeug",
+  "target_commit": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+  "evidence_commit": "205bf90d",
+  "decision_value": "600000",
+  "probe_classification": "EVIDENCE_GROUNDED_MEMORY_LIFT_PROBE",
+  "demotion_reason": "Decision came from subsequent PR #2612 (2023) injected into older 2021 repo (evidence_time > target_state_time)"
+}

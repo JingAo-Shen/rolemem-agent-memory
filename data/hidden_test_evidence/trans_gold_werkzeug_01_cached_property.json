@@ -1,0 +1,9 @@
+{
+  "transition_id": "trans_gold_werkzeug_01_cached_property",
+  "hidden_test_file": "/code/rolemem-agent-memory/fixtures_v2/trans_gold_werkzeug_01_cached_property/hidden_tests/test_evaluation.py",
+  "syntax_valid": true,
+  "collected_tests_count": 1,
+  "status": "PASS",
+  "audit_fingerprint": "d98d773e67e7fb8b5cb9d0530d0e93cebc729c34b37bc6db2b2b30fc25009efb",
+  "auditor_version": "v7.0"
+}

@@ -1,0 +1,9 @@
+{
+  "transition_id": "trans_gold_requests_01_tls_context_adapter",
+  "hidden_test_file": "/code/rolemem-agent-memory/fixtures_v2/trans_gold_requests_01_tls_context_adapter/hidden_tests/test_evaluation.py",
+  "syntax_valid": true,
+  "collected_tests_count": 1,
+  "status": "PASS",
+  "audit_fingerprint": "71c7e221732ab138f8de6f13c4472fcf25b860608fae0aee18d07b95211bfa3f",
+  "auditor_version": "v7.0"
+}

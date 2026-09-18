@@ -4,7 +4,7 @@
   "repo_url": "https://github.com/pallets/flask",
   "license": "BSD-3-Clause",
   "language": "Python",
-  "track": "B",
+  "track": "NOT_MEMORY_REQUIRED",
   "task_family": "error_convention",
   "pr_url": "https://github.com/pallets/flask/pull/5899",
   "issue_url": "https://github.com/pallets/flask/issues/5816",

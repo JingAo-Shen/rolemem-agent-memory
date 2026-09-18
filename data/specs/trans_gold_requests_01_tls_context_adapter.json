@@ -4,7 +4,7 @@
   "repo_url": "https://github.com/psf/requests",
   "license": "Apache-2.0",
   "language": "Python",
-  "track": "A",
+  "track": "TRACK_A_STALE_SENSITIVE",
   "task_family": "api_deprecation",
   "pr_url": "https://github.com/psf/requests/pull/6710",
   "issue_url": "https://github.com/psf/requests/issues/6710",

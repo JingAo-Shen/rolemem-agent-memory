@@ -4,7 +4,7 @@
   "repo_url": "https://github.com/pallets/flask",
   "license": "BSD-3-Clause",
   "language": "Python",
-  "track": "A",
+  "track": "REBUILD",
   "task_family": "api_deprecation",
   "pr_url": "https://github.com/pallets/flask/pull/4995",
   "issue_url": null,

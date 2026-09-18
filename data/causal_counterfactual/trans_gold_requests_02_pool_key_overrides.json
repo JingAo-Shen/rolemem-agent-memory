@@ -24,5 +24,7 @@
     "stale_target_preview": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_req",
     "valid_base_preview": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_req",
     "valid_target_preview": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_requests_02"
-  }
+  },
+  "audit_fingerprint": "838a0a4327dea8ece1e9da22fa8abd912b8eace68a8d0a9f62624ae3135849c4",
+  "auditor_version": "v7.0"
 }

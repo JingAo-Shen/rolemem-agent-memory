@@ -4,7 +4,7 @@
   "repo_url": "https://github.com/urllib3/urllib3",
   "license": "MIT",
   "language": "Python",
-  "track": "A",
+  "track": "TRACK_A_STALE_SENSITIVE",
   "task_family": "api_deprecation",
   "pr_url": "https://github.com/urllib3/urllib3/pull/2000",
   "issue_url": "https://github.com/urllib3/urllib3/issues/2000",

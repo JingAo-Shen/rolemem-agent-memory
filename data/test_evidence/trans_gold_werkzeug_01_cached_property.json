@@ -1,0 +1,14 @@
+{
+  "transition_id": "trans_gold_werkzeug_01_cached_property",
+  "original_test_required": true,
+  "existing_tests": "tests/test_utils.py::test_cached_property",
+  "status": "PASS",
+  "details": {
+    "git_commit": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+    "file": "tests/test_utils.py",
+    "test_node": "test_cached_property",
+    "node_found_in_target_commit": true
+  },
+  "audit_fingerprint": "d98d773e67e7fb8b5cb9d0530d0e93cebc729c34b37bc6db2b2b30fc25009efb",
+  "auditor_version": "v7.0"
+}

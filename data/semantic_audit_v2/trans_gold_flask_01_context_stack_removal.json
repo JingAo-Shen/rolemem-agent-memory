@@ -1,9 +1,9 @@
 {
   "transition_id": "trans_gold_flask_01_context_stack_removal",
   "repo_name": "pallets/flask",
-  "auditor_version": "2.0.0",
+  "auditor_version": "v7.0",
   "spec_sha256": "e28f86bac1ce31b4fa23188130f422816c1934f4340b2ff7f816759b3408d37a",
-  "audit_fingerprint": "f340a28cc8126ee32335d2c2da15c9d4cefc01dba51a953b5dc6149e9166daef",
+  "audit_fingerprint": "39480d862245581a16702ca28bb0a9c04e8a85ba094954d73833c4c5c7cbe2bf",
   "gates": [
     {
       "gate_id": "G1",

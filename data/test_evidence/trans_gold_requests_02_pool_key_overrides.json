@@ -1,0 +1,11 @@
+{
+  "transition_id": "trans_gold_requests_02_pool_key_overrides",
+  "original_test_required": false,
+  "existing_tests": null,
+  "status": "GENERATED_HIDDEN_TEST_ONLY",
+  "details": {
+    "reason": "Transition validated via generated sandbox hidden tests"
+  },
+  "audit_fingerprint": "838a0a4327dea8ece1e9da22fa8abd912b8eace68a8d0a9f62624ae3135849c4",
+  "auditor_version": "v7.0"
+}

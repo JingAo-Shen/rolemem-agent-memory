@@ -1,0 +1,10 @@
+{
+  "tid": "track_b_urllib3_redirect_headers",
+  "repo_name": "urllib3/urllib3",
+  "repo_dir": "/code/repo_cache/urllib3",
+  "target_commit": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+  "evidence_commit": "560bd227b90f74417ffaedebf5f8d05a8ee4f532",
+  "decision_value": "Authorization",
+  "probe_classification": "EVIDENCE_GROUNDED_MEMORY_LIFT_PROBE",
+  "demotion_reason": "Decision constant DEFAULT_REMOVE_HEADERS_ON_REDIRECT is present in C1 repo retry.py"
+}

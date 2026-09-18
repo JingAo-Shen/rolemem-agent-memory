@@ -1,0 +1,8 @@
+{
+  "transition_id": "trans_gold_urllib3_02_empty_allowed_methods",
+  "stale_pass": true,
+  "valid_pass": true,
+  "status": "PASS",
+  "audit_fingerprint": "4d89bbe52f7d7c9468cd913648a82ec988beffcdcc75b1659747c3eb746dcbe0",
+  "auditor_version": "v7.0"
+}

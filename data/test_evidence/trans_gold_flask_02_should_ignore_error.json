@@ -1,0 +1,11 @@
+{
+  "transition_id": "trans_gold_flask_02_should_ignore_error",
+  "original_test_required": false,
+  "existing_tests": null,
+  "status": "GENERATED_HIDDEN_TEST_ONLY",
+  "details": {
+    "reason": "Transition validated via generated sandbox hidden tests"
+  },
+  "audit_fingerprint": "6519f7a565ffb5b4e39b6bb8c0cda4e9300bc059003256aeb64ce1d4e95d3ce7",
+  "auditor_version": "v7.0"
+}

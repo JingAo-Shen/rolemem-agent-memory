@@ -1,0 +1,8 @@
+{
+  "transition_id": "trans_gold_flask_01_context_stack_removal",
+  "stale_pass": true,
+  "valid_pass": true,
+  "status": "PASS",
+  "audit_fingerprint": "39480d862245581a16702ca28bb0a9c04e8a85ba094954d73833c4c5c7cbe2bf",
+  "auditor_version": "v7.0"
+}

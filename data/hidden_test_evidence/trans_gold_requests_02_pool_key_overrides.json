@@ -1,0 +1,9 @@
+{
+  "transition_id": "trans_gold_requests_02_pool_key_overrides",
+  "hidden_test_file": "/code/rolemem-agent-memory/fixtures_v2/trans_gold_requests_02_pool_key_overrides/hidden_tests/test_evaluation.py",
+  "syntax_valid": true,
+  "collected_tests_count": 1,
+  "status": "PASS",
+  "audit_fingerprint": "838a0a4327dea8ece1e9da22fa8abd912b8eace68a8d0a9f62624ae3135849c4",
+  "auditor_version": "v7.0"
+}

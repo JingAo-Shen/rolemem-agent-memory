@@ -1,9 +1,9 @@
 {
   "transition_id": "trans_gold_werkzeug_01_cached_property",
   "repo_name": "pallets/werkzeug",
-  "auditor_version": "2.0.0",
+  "auditor_version": "v7.0",
   "spec_sha256": "b60c0dfc556128e257539fb177a1cb5b70e119809a9b915950328667bd0086d6",
-  "audit_fingerprint": "8c23eb527c6e287c4a2d8fe5ebe5956b9ad5e458a7dd593026b49e142e8174ed",
+  "audit_fingerprint": "d98d773e67e7fb8b5cb9d0530d0e93cebc729c34b37bc6db2b2b30fc25009efb",
   "gates": [
     {
       "gate_id": "G1",

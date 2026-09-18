@@ -1,0 +1,14 @@
+{
+  "transition_id": "trans_gold_click_02_isolated_filesystem",
+  "original_test_required": true,
+  "existing_tests": "tests/test_deprecations.py::test_isolated_filesystem_deprecated",
+  "status": "PASS",
+  "details": {
+    "git_commit": "cfa01eeb7894a408af70b29d28c0b24f8680f9fb",
+    "file": "tests/test_deprecations.py",
+    "test_node": "test_isolated_filesystem_deprecated",
+    "node_found_in_target_commit": true
+  },
+  "audit_fingerprint": "2713664fc3ac525ab70e0ac606f8fce59125ce52096daa57a0e328f6c23db93f",
+  "auditor_version": "v7.0"
+}

@@ -1,9 +1,9 @@
 {
   "transition_id": "trans_gold_requests_01_tls_context_adapter",
   "repo_name": "psf/requests",
-  "auditor_version": "2.0.0",
+  "auditor_version": "v7.0",
   "spec_sha256": "901f129d0604c1880a76d2af8a85ac7108cf1f6de4c7fa238f6598f362b5f569",
-  "audit_fingerprint": "fff1525978f9b5bf5221f3c8ba8fcc34099c1ab9b08824f88f921702a31f0e35",
+  "audit_fingerprint": "71c7e221732ab138f8de6f13c4472fcf25b860608fae0aee18d07b95211bfa3f",
   "gates": [
     {
       "gate_id": "G1",

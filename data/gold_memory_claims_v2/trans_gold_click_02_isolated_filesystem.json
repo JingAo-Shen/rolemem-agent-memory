@@ -1,0 +1,20 @@
+{
+  "task_id": "trans_gold_click_02_isolated_filesystem",
+  "repo_name": "pallets/click",
+  "base_commit": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+  "target_commit": "cfa01eeb7894a408af70b29d28c0b24f8680f9fb",
+  "gold_claims": [
+    {
+      "claim_id": "click_02_claim_01",
+      "artifact_uri": "src/click/testing.py",
+      "symbol": "isolated_filesystem",
+      "claim_type": "DEPRECATION",
+      "gold_claim_status": "REQUIRED",
+      "change_direction": "deprecated",
+      "replacement_symbol": "tmp_path",
+      "core_fact_keywords": ["deprecated", "isolated_filesystem", "tmp_path"],
+      "evidence_file": "src/click/testing.py"
+    }
+  ],
+  "distractor_files": ["CHANGES.md", "docs/testing.md", "tests/test_testing.py"]
+}

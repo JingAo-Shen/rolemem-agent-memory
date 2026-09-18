@@ -1,0 +1,14 @@
+{
+  "transition_id": "trans_gold_urllib3_02_empty_allowed_methods",
+  "original_test_required": true,
+  "existing_tests": "test/test_retry.py::test_empty_allowed_methods",
+  "status": "PASS",
+  "details": {
+    "git_commit": "9a209d21087de10b300b2530de023989a71a3f7e",
+    "file": "test/test_retry.py",
+    "test_node": "test_empty_allowed_methods",
+    "node_found_in_target_commit": true
+  },
+  "audit_fingerprint": "4d89bbe52f7d7c9468cd913648a82ec988beffcdcc75b1659747c3eb746dcbe0",
+  "auditor_version": "v7.0"
+}

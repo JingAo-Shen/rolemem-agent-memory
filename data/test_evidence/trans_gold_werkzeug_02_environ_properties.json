@@ -1,0 +1,14 @@
+{
+  "transition_id": "trans_gold_werkzeug_02_environ_properties",
+  "original_test_required": true,
+  "existing_tests": "tests/test_utils.py::test_environ_property",
+  "status": "PASS",
+  "details": {
+    "git_commit": "7641d4990f06d583425a4e6ba25e9d2f18934885",
+    "file": "tests/test_utils.py",
+    "test_node": "test_environ_property",
+    "node_found_in_target_commit": true
+  },
+  "audit_fingerprint": "fa1160e031db517baaf41c82b5b3124e472ed405aaca06d4057d23a9ded2c185",
+  "auditor_version": "v7.0"
+}

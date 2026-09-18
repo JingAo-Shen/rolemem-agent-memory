@@ -1,9 +1,9 @@
 {
   "transition_id": "trans_gold_click_02_isolated_filesystem",
   "repo_name": "pallets/click",
-  "auditor_version": "2.0.0",
+  "auditor_version": "v7.0",
   "spec_sha256": "26a9fbb4b141e8c3554ad484ddcef70715cb52a179232eb740a7ade9ef7741d0",
-  "audit_fingerprint": "cf13e1abf4ffa8f1080639792be5b643c6027a7795ef6fa38124e936ca78e82e",
+  "audit_fingerprint": "2713664fc3ac525ab70e0ac606f8fce59125ce52096daa57a0e328f6c23db93f",
   "gates": [
     {
       "gate_id": "G1",

@@ -1,0 +1,42 @@
+{
+  "task_id": "trans_gold_urllib3_01_retry_allowed_methods",
+  "repo_name": "urllib3/urllib3",
+  "base_commit": "6d38f171c4921043e1ff633e2a3e9f7ea382e1d5",
+  "target_commit": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+  "gold_claims": [
+    {
+      "claim_id": "urllib3_01_claim_01",
+      "artifact_uri": "src/urllib3/util/retry.py",
+      "symbol": "method_whitelist",
+      "claim_type": "DEPRECATION",
+      "gold_claim_status": "REQUIRED",
+      "change_direction": "deprecated",
+      "replacement_symbol": "allowed_methods",
+      "core_fact_keywords": ["deprecated", "method_whitelist", "allowed_methods"],
+      "evidence_file": "src/urllib3/util/retry.py"
+    },
+    {
+      "claim_id": "urllib3_01_claim_02",
+      "artifact_uri": "src/urllib3/util/retry.py",
+      "symbol": "DEFAULT_METHOD_WHITELIST",
+      "claim_type": "DEPRECATION",
+      "gold_claim_status": "OPTIONAL_VALID",
+      "change_direction": "deprecated",
+      "replacement_symbol": "DEFAULT_ALLOWED_METHODS",
+      "core_fact_keywords": ["deprecated", "DEFAULT_METHOD_WHITELIST", "DEFAULT_ALLOWED_METHODS"],
+      "evidence_file": "src/urllib3/util/retry.py"
+    },
+    {
+      "claim_id": "urllib3_01_claim_03",
+      "artifact_uri": "src/urllib3/util/retry.py",
+      "symbol": "DEFAULT_REDIRECT_HEADERS_BLACKLIST",
+      "claim_type": "DEPRECATION",
+      "gold_claim_status": "OPTIONAL_VALID",
+      "change_direction": "deprecated",
+      "replacement_symbol": "DEFAULT_REMOVE_HEADERS_ON_REDIRECT",
+      "core_fact_keywords": ["deprecated", "DEFAULT_REDIRECT_HEADERS_BLACKLIST", "DEFAULT_REMOVE_HEADERS_ON_REDIRECT"],
+      "evidence_file": "src/urllib3/util/retry.py"
+    }
+  ],
+  "distractor_files": ["docs/reference/urllib3.util.rst", "test/test_retry_deprecated.py"]
+}

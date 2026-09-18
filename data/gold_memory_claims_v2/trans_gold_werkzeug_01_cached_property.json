@@ -1,0 +1,20 @@
+{
+  "task_id": "trans_gold_werkzeug_01_cached_property",
+  "repo_name": "pallets/werkzeug",
+  "base_commit": "25ca9cd92956e48a38f7a32c837e0f8a54c8ae31",
+  "target_commit": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+  "gold_claims": [
+    {
+      "claim_id": "werkzeug_01_claim_01",
+      "artifact_uri": "src/werkzeug/utils.py",
+      "symbol": "invalidate_cached_property",
+      "claim_type": "DEPRECATION",
+      "gold_claim_status": "REQUIRED",
+      "change_direction": "deprecated",
+      "replacement_symbol": "del",
+      "core_fact_keywords": ["deprecated", "invalidate_cached_property", "del"],
+      "evidence_file": "src/werkzeug/utils.py"
+    }
+  ],
+  "distractor_files": ["CHANGES.rst", "tests/test_utils.py"]
+}

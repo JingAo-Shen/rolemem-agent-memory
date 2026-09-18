@@ -1,0 +1,11 @@
+{
+  "transition_id": "trans_gold_requests_01_tls_context_adapter",
+  "original_test_required": false,
+  "existing_tests": null,
+  "status": "GENERATED_HIDDEN_TEST_ONLY",
+  "details": {
+    "reason": "Transition validated via generated sandbox hidden tests"
+  },
+  "audit_fingerprint": "71c7e221732ab138f8de6f13c4472fcf25b860608fae0aee18d07b95211bfa3f",
+  "auditor_version": "v7.0"
+}
