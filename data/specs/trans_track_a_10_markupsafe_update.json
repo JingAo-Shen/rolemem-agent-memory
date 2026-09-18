@@ -1,0 +1,22 @@
+{
+  "transition_id": "trans_track_a_10_markupsafe_update",
+  "repo_name": "pallets/markupsafe",
+  "repo_url": "https://github.com/pallets/markupsafe",
+  "base_commit": "31d9b663f298a79741fd6b9351b7a61bde4998f8",
+  "target_commit": "80aff0325c83991e5c62ad741b9a85d65df18058",
+  "changed_files": [
+    "src/markupsafe/__init__.py"
+  ],
+  "changed_symbols": [
+    "update"
+  ],
+  "deprecated_symbols": [],
+  "current_task": "Implement helper function using update in src/markupsafe/__init__.py according to project conventions.",
+  "stale_memory_candidate": "Historical API convention: invoke update directly using legacy parameter style.",
+  "valid_memory_candidate": "Current API convention: invoke update following updated signature without legacy parameters.",
+  "transition_type": "API_EVOLUTION",
+  "stale_sensitive": false,
+  "original_test_required": false,
+  "generated_hidden_test_only": true,
+  "track": "TRACK_A_API_EVOLUTION"
+}

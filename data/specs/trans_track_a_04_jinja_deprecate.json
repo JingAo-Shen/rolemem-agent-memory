@@ -1,0 +1,24 @@
+{
+  "transition_id": "trans_track_a_04_jinja_deprecate",
+  "repo_name": "pallets/jinja",
+  "repo_url": "https://github.com/pallets/jinja",
+  "base_commit": "dfe82ade3dc7d112d7d166ca0d7ae7f794fe19e6",
+  "target_commit": "9e49736ae075fcffb85f731a3fe2c006cf1edca4",
+  "changed_files": [
+    "src/jinja2/__init__.py"
+  ],
+  "changed_symbols": [
+    "deprecate"
+  ],
+  "deprecated_symbols": [
+    "deprecate"
+  ],
+  "current_task": "Implement helper function using deprecate in src/jinja2/__init__.py according to project conventions.",
+  "stale_memory_candidate": "Historical API convention: invoke deprecate directly using legacy parameter style.",
+  "valid_memory_candidate": "Current API convention: invoke deprecate following updated signature without legacy parameters.",
+  "transition_type": "API_DEPRECATION",
+  "stale_sensitive": true,
+  "original_test_required": false,
+  "generated_hidden_test_only": true,
+  "track": "TRACK_A_STALE_SENSITIVE"
+}

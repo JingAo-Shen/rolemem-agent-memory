@@ -1,0 +1,9 @@
+{
+  "transition_id": "trans_track_a_03_werkzeug_deprecate",
+  "repo_name": "pallets/werkzeug",
+  "base_commit": "f97c305673ba121a1dae6764c37e8be48907a1d1",
+  "target_commit": "7641d4990f06d583425a4e6ba25e9d2f18934885",
+  "file_digest_before": "bbad5c8e4c9dbbf77394dd23eff85f305845d3ee71601c85da1da5812314fbb1",
+  "file_digest_after": "89615831e792cb6cabede51270ae8a919e0e8021d189695c8b6ac788c765fa04",
+  "verified": true
+}

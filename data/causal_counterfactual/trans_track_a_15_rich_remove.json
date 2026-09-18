@@ -1,0 +1,6 @@
+{
+  "transition_id": "trans_track_a_15_rich_remove",
+  "audit_fingerprint": "35e9d81874feb00549c6f9f7918ca65df9c5a8cc211f3516561a9a4164016e4e",
+  "causality_status": "CAUSAL_PASS",
+  "failure_reason": "Causal transition on remove: stale passes on base, fails/warns on target."
+}

@@ -1,0 +1,9 @@
+{
+  "transition_id": "trans_track_a_12_urllib3_Deal",
+  "repo_name": "urllib3/urllib3",
+  "base_commit": "6e42ff11a1ba5c1542f38c67ec17238d0b779552",
+  "target_commit": "627636551e0e0159996b0f28dd21a60372cc5b10",
+  "file_digest_before": "99d94aa78a3f16235f0be463d3da19222966302c47743066ff79b0aa6563f170",
+  "file_digest_after": "9bac2119ed32922cb1eb1de5f12924ef4e1656c43747de21e3bee472677b9958",
+  "verified": true
+}

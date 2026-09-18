@@ -1,0 +1,9 @@
+{
+  "transition_id": "trans_track_a_15_rich_remove",
+  "repo_name": "Textualize/rich",
+  "base_commit": "7ef2d05ca8aa3cb405dab2fdf3282e69cf8089e3",
+  "target_commit": "77f0edbdef71f2a895cd0ab1481e9a1fc79d42e6",
+  "file_digest_before": "c2a676ff22dd41ba985a83b34edeb5d13d9ca04a6697013ba0bfb18a459dd198",
+  "file_digest_after": "3266cd87c2215a074635091e3531d6351e3bd0a415002b7ff5a26ee93328bab0",
+  "verified": true
+}

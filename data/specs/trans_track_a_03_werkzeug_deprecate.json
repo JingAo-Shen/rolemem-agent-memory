@@ -1,0 +1,26 @@
+{
+  "transition_id": "trans_track_a_03_werkzeug_deprecate",
+  "repo_name": "pallets/werkzeug",
+  "repo_url": "https://github.com/pallets/werkzeug",
+  "base_commit": "f97c305673ba121a1dae6764c37e8be48907a1d1",
+  "target_commit": "7641d4990f06d583425a4e6ba25e9d2f18934885",
+  "changed_files": [
+    "src/werkzeug/test.py",
+    "src/werkzeug/utils.py",
+    "src/werkzeug/wrappers/request.py"
+  ],
+  "changed_symbols": [
+    "deprecate"
+  ],
+  "deprecated_symbols": [
+    "deprecate"
+  ],
+  "current_task": "Implement helper function using deprecate in src/werkzeug/test.py according to project conventions.",
+  "stale_memory_candidate": "Historical API convention: invoke deprecate directly using legacy parameter style.",
+  "valid_memory_candidate": "Current API convention: invoke deprecate following updated signature without legacy parameters.",
+  "transition_type": "API_DEPRECATION",
+  "stale_sensitive": true,
+  "original_test_required": false,
+  "generated_hidden_test_only": true,
+  "track": "TRACK_A_STALE_SENSITIVE"
+}

@@ -1,0 +1,24 @@
+{
+  "transition_id": "trans_track_a_23_iniconfig_Migrate",
+  "repo_name": "pytest-dev/iniconfig",
+  "repo_url": "https://github.com/pytest-dev/iniconfig",
+  "base_commit": "40f7760e0e8f9c1b7a733099e43e2c52bbe7d001",
+  "target_commit": "1dab01a81f78dd6154833b27217a038d06b5c2eb",
+  "changed_files": [
+    "src/iniconfig/__init__.py",
+    "src/iniconfig/_parse.py",
+    "src/iniconfig/exceptions.py"
+  ],
+  "changed_symbols": [
+    "Migrate"
+  ],
+  "deprecated_symbols": [],
+  "current_task": "Implement helper function using Migrate in src/iniconfig/__init__.py according to project conventions.",
+  "stale_memory_candidate": "Historical API convention: invoke Migrate directly using legacy parameter style.",
+  "valid_memory_candidate": "Current API convention: invoke Migrate following updated signature without legacy parameters.",
+  "transition_type": "API_EVOLUTION",
+  "stale_sensitive": false,
+  "original_test_required": false,
+  "generated_hidden_test_only": true,
+  "track": "TRACK_A_API_EVOLUTION"
+}

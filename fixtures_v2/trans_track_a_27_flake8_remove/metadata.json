@@ -1,0 +1,9 @@
+{
+  "transition_id": "trans_track_a_27_flake8_remove",
+  "repo_name": "PyCQA/flake8",
+  "base_commit": "15f45696701bc234494fbc0e803f8fdee712b945",
+  "target_commit": "b3e251512238ad39c87e4b8d1614903fe493f7ea",
+  "file_digest_before": "3fd53ab2d996c2590c998f3e1aa1deac635c387cb7c8cae0ef42334ee5201b4f",
+  "file_digest_after": "58186b5b62b6d992448796f8b46852f7ee2f7184682553608ce1c02ba592bece",
+  "verified": true
+}

@@ -1,0 +1,9 @@
+{
+  "transition_id": "trans_track_a_07_itsdangerous_deprecate",
+  "repo_name": "pallets/itsdangerous",
+  "base_commit": "05c805fce50a058ecc72ecbb91d02c98dc4a82ac",
+  "target_commit": "1e9550e9c30a1a9c346fed78815c4b23573ffb73",
+  "file_digest_before": "bd108029bfee4669c9e95e86aa5fb8b828cd437451108cc45e5b8571868a1968",
+  "file_digest_after": "e122bbe6c09edbdc5b460404d5942d3079ca52e65801fddb4a964eadf7f52006",
+  "verified": true
+}

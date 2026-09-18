@@ -1,0 +1,9 @@
+{
+  "transition_id": "trans_track_a_31_attrs_Expose",
+  "repo_name": "python-attrs/attrs",
+  "base_commit": "4737f0e6c77f2bd4501322b1b5d1e265181849b9",
+  "target_commit": "112dd1d49848da7a956c78415e0f571e0dc70d90",
+  "file_digest_before": "24c500679be1b3053243f9a89702da5afefa2cda0e7ccdf64e91cf834e3fa82f",
+  "file_digest_after": "351243192f2cca0da1dd835f9553682b61704770a9752671c7c33a95a7309630",
+  "verified": true
+}

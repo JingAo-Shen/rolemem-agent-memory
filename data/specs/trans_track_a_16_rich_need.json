@@ -1,0 +1,24 @@
+{
+  "transition_id": "trans_track_a_16_rich_need",
+  "repo_name": "Textualize/rich",
+  "repo_url": "https://github.com/Textualize/rich",
+  "base_commit": "5d6e2d72e4012eb594e131a8319dbd4165d97eda",
+  "target_commit": "e5b7b3199fecb1f7d1fbc3d3d0df800fa6234830",
+  "changed_files": [
+    "rich/console.py"
+  ],
+  "changed_symbols": [
+    "need"
+  ],
+  "deprecated_symbols": [
+    "need"
+  ],
+  "current_task": "Implement helper function using need in rich/console.py according to project conventions.",
+  "stale_memory_candidate": "Historical API convention: invoke need directly using legacy parameter style.",
+  "valid_memory_candidate": "Current API convention: invoke need following updated signature without legacy parameters.",
+  "transition_type": "FUNCTION_RENAME",
+  "stale_sensitive": true,
+  "original_test_required": false,
+  "generated_hidden_test_only": true,
+  "track": "TRACK_A_STALE_SENSITIVE"
+}

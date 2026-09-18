@@ -1,0 +1,9 @@
+{
+  "transition_id": "trans_track_a_32_virtualenv_util",
+  "repo_name": "pypa/virtualenv",
+  "base_commit": "4b31a6316a872a5c0713c88ace1ceb1782d6b5b4",
+  "target_commit": "66fadcbfeac2977a12d4d671b81a32f0a3458cb4",
+  "file_digest_before": "b0ef7822f2beee70c05a686f21ad95c6751f76d3466657306462e838d7b06fb2",
+  "file_digest_after": "5e2416c3c2348e64033e32a1556d6bec9aa12730061d4d603ec991e3e87c8a0a",
+  "verified": true
+}

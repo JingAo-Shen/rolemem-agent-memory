@@ -1,0 +1,24 @@
+{
+  "transition_id": "trans_track_a_11_requests_remove",
+  "repo_name": "psf/requests",
+  "repo_url": "https://github.com/psf/requests",
+  "base_commit": "0e322af87745eff34caffe4df68456ebc20d9068",
+  "target_commit": "15e1f17bb6f3f978787dd23da0268388148bc3d5",
+  "changed_files": [
+    "setup.py"
+  ],
+  "changed_symbols": [
+    "remove"
+  ],
+  "deprecated_symbols": [
+    "remove"
+  ],
+  "current_task": "Implement helper function using remove in setup.py according to project conventions.",
+  "stale_memory_candidate": "Historical API convention: invoke remove directly using legacy parameter style.",
+  "valid_memory_candidate": "Current API convention: invoke remove following updated signature without legacy parameters.",
+  "transition_type": "API_REMOVAL",
+  "stale_sensitive": true,
+  "original_test_required": false,
+  "generated_hidden_test_only": true,
+  "track": "TRACK_A_STALE_SENSITIVE"
+}

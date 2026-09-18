@@ -1,0 +1,22 @@
+{
+  "transition_id": "trans_track_a_17_marshmallow_ipaddress",
+  "repo_name": "marshmallow-code/marshmallow",
+  "repo_url": "https://github.com/marshmallow-code/marshmallow",
+  "base_commit": "3bc191ab3c8cac8356839bcde0918cb6aed4d3a1",
+  "target_commit": "c38b48ec3b8bb44315036d0c8a07bc8477eb5094",
+  "changed_files": [
+    "src/marshmallow/schema.py"
+  ],
+  "changed_symbols": [
+    "ipaddress"
+  ],
+  "deprecated_symbols": [],
+  "current_task": "Implement helper function using ipaddress in src/marshmallow/schema.py according to project conventions.",
+  "stale_memory_candidate": "Historical API convention: invoke ipaddress directly using legacy parameter style.",
+  "valid_memory_candidate": "Current API convention: invoke ipaddress following updated signature without legacy parameters.",
+  "transition_type": "API_EVOLUTION",
+  "stale_sensitive": false,
+  "original_test_required": false,
+  "generated_hidden_test_only": true,
+  "track": "TRACK_A_API_EVOLUTION"
+}

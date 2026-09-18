@@ -1,0 +1,9 @@
+{
+  "transition_id": "trans_track_a_19_marshmallow_Update",
+  "repo_name": "marshmallow-code/marshmallow",
+  "base_commit": "a27607655b316daadde1778bd47f5cd936453efd",
+  "target_commit": "5728f139447e3a70e0fd6b2e70989c6aeb44b624",
+  "file_digest_before": "838c012c4ee8578c0c5c9b8e36824dfc6fe8e180f492afb71b4afcf635acc2e5",
+  "file_digest_after": "cfe6e7708a8d693fc6edd6d60dbb35d39e877bb9da4efd86924d9bd1d4cd50c9",
+  "verified": true
+}

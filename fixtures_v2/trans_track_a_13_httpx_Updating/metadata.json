@@ -1,0 +1,9 @@
+{
+  "transition_id": "trans_track_a_13_httpx_Updating",
+  "repo_name": "encode/httpx",
+  "base_commit": "80960fa31918d7663c3f4c3ad61661cf0e80628f",
+  "target_commit": "15e21e9ea3cad4f06e22a7e704aabefdf43d2e29",
+  "file_digest_before": "1f10a23a5e049f4ee3c025b1cf09ec6473b3c296766b3a37b03f365fda102836",
+  "file_digest_after": "c43f941baefe58c91e96d00039e1868fe719d91453026d7db1647194563bff8d",
+  "verified": true
+}

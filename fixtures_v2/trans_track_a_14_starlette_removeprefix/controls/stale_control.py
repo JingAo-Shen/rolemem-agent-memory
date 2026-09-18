@@ -1,0 +1,1 @@
+# Stale implementation of removeprefix

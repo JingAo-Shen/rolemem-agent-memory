@@ -1,0 +1,25 @@
+{
+  "transition_id": "trans_track_a_35_pydantic_documentation",
+  "repo_name": "pydantic/pydantic",
+  "repo_url": "https://github.com/pydantic/pydantic",
+  "base_commit": "7b15a786a755ec4089a34c9bb5f957f8b8ce3690",
+  "target_commit": "51d2b27aa90a4cce5d2acc8d9c44cd170f26c3e4",
+  "changed_files": [
+    "pydantic-core/python/pydantic_core/core_schema.py",
+    "pydantic-core/tests/test_errors.py"
+  ],
+  "changed_symbols": [
+    "documentation"
+  ],
+  "deprecated_symbols": [
+    "documentation"
+  ],
+  "current_task": "Implement helper function using documentation in pydantic-core/python/pydantic_core/core_schema.py according to project conventions.",
+  "stale_memory_candidate": "Historical API convention: invoke documentation directly using legacy parameter style.",
+  "valid_memory_candidate": "Current API convention: invoke documentation following updated signature without legacy parameters.",
+  "transition_type": "API_REMOVAL",
+  "stale_sensitive": true,
+  "original_test_required": false,
+  "generated_hidden_test_only": true,
+  "track": "TRACK_A_STALE_SENSITIVE"
+}

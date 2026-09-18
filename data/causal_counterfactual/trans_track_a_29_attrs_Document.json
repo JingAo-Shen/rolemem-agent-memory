@@ -1,0 +1,6 @@
+{
+  "transition_id": "trans_track_a_29_attrs_Document",
+  "audit_fingerprint": "221c3d6551ab515f474d270561c276c92ba4cb7cf5ba8d692820ab8e3025eefe",
+  "causality_status": "CAUSAL_PASS",
+  "failure_reason": "Causal transition on Document: stale passes on base, fails/warns on target."
+}

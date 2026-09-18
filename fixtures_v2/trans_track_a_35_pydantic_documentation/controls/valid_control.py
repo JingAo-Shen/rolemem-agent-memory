@@ -1,0 +1,1 @@
+# Valid implementation of documentation

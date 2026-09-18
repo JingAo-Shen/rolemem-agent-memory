@@ -1,0 +1,25 @@
+{
+  "transition_id": "trans_track_a_22_pluggy_test",
+  "repo_name": "pytest-dev/pluggy",
+  "repo_url": "https://github.com/pytest-dev/pluggy",
+  "base_commit": "f632a4d1b69e32e210063a91a71ae32fb3ac150c",
+  "target_commit": "79631fd8647c8e5c94d4998e6af06d7ac85aee93",
+  "changed_files": [
+    "testing/test_details.py",
+    "testing/test_hookcaller.py"
+  ],
+  "changed_symbols": [
+    "test"
+  ],
+  "deprecated_symbols": [
+    "test"
+  ],
+  "current_task": "Implement helper function using test in testing/test_details.py according to project conventions.",
+  "stale_memory_candidate": "Historical API convention: invoke test directly using legacy parameter style.",
+  "valid_memory_candidate": "Current API convention: invoke test following updated signature without legacy parameters.",
+  "transition_type": "API_REMOVAL",
+  "stale_sensitive": true,
+  "original_test_required": false,
+  "generated_hidden_test_only": true,
+  "track": "TRACK_A_STALE_SENSITIVE"
+}

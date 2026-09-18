@@ -1,0 +1,8 @@
+{
+  "transition_id": "trans_track_a_23_iniconfig_Migrate",
+  "audit_fingerprint": "bd8a89a0bc779658424ba640e85ad389355c5de1eebb13d972e5b24a2121faa5",
+  "status": "PASS",
+  "collection_status": "PASS",
+  "execution_status": "PASS",
+  "exit_code": 0
+}

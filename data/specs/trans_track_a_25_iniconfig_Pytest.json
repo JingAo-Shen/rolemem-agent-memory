@@ -1,0 +1,22 @@
+{
+  "transition_id": "trans_track_a_25_iniconfig_Pytest",
+  "repo_name": "pytest-dev/iniconfig",
+  "repo_url": "https://github.com/pytest-dev/iniconfig",
+  "base_commit": "f7f4939de5d8a7034aa964f20c18640a028f5478",
+  "target_commit": "41076a67c333d96be14557ecbb29995f98744bd7",
+  "changed_files": [
+    "test_iniconfig.py"
+  ],
+  "changed_symbols": [
+    "Pytest"
+  ],
+  "deprecated_symbols": [],
+  "current_task": "Implement helper function using Pytest in test_iniconfig.py according to project conventions.",
+  "stale_memory_candidate": "Historical API convention: invoke Pytest directly using legacy parameter style.",
+  "valid_memory_candidate": "Current API convention: invoke Pytest following updated signature without legacy parameters.",
+  "transition_type": "API_EVOLUTION",
+  "stale_sensitive": false,
+  "original_test_required": false,
+  "generated_hidden_test_only": true,
+  "track": "TRACK_A_API_EVOLUTION"
+}

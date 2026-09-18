@@ -1,0 +1,26 @@
+{
+  "transition_id": "trans_track_a_19_marshmallow_Update",
+  "repo_name": "marshmallow-code/marshmallow",
+  "repo_url": "https://github.com/marshmallow-code/marshmallow",
+  "base_commit": "a27607655b316daadde1778bd47f5cd936453efd",
+  "target_commit": "5728f139447e3a70e0fd6b2e70989c6aeb44b624",
+  "changed_files": [
+    "examples/flask_example.py",
+    "examples/inflection_example.py",
+    "examples/package_json_example.py"
+  ],
+  "changed_symbols": [
+    "Update"
+  ],
+  "deprecated_symbols": [
+    "Update"
+  ],
+  "current_task": "Implement helper function using Update in examples/flask_example.py according to project conventions.",
+  "stale_memory_candidate": "Historical API convention: invoke Update directly using legacy parameter style.",
+  "valid_memory_candidate": "Current API convention: invoke Update following updated signature without legacy parameters.",
+  "transition_type": "API_REMOVAL",
+  "stale_sensitive": true,
+  "original_test_required": false,
+  "generated_hidden_test_only": true,
+  "track": "TRACK_A_STALE_SENSITIVE"
+}

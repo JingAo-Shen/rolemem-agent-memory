@@ -1,0 +1,8 @@
+{
+  "transition_id": "trans_track_a_27_flake8_remove",
+  "audit_fingerprint": "fee32a6ff26a8537bdd9194d1756a6e118ed873a50a19e918bc8b1179afeab3b",
+  "status": "PASS",
+  "collection_status": "PASS",
+  "execution_status": "PASS",
+  "exit_code": 0
+}

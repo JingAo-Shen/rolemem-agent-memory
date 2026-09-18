@@ -1,0 +1,9 @@
+{
+  "transition_id": "trans_track_a_21_pluggy_Merge",
+  "repo_name": "pytest-dev/pluggy",
+  "base_commit": "09baae8733141971e3109a667b6c12dcce9afa29",
+  "target_commit": "de345834d3894510a15180cc1c7b9cf81796cdb3",
+  "file_digest_before": "b9132cd29650617eeab8b57e942783da970c5e71f8802e7c6f79516a0f5a1a38",
+  "file_digest_after": "4fd38c5c6491c182918973ab18f31baf24bb1f1aa991773780e618b381bfbe15",
+  "verified": true
+}

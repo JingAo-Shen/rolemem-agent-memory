@@ -1,0 +1,24 @@
+{
+  "transition_id": "trans_track_a_13_httpx_Updating",
+  "repo_name": "encode/httpx",
+  "repo_url": "https://github.com/encode/httpx",
+  "base_commit": "80960fa31918d7663c3f4c3ad61661cf0e80628f",
+  "target_commit": "15e21e9ea3cad4f06e22a7e704aabefdf43d2e29",
+  "changed_files": [
+    "httpx/_client.py"
+  ],
+  "changed_symbols": [
+    "Updating"
+  ],
+  "deprecated_symbols": [
+    "Updating"
+  ],
+  "current_task": "Implement helper function using Updating in httpx/_client.py according to project conventions.",
+  "stale_memory_candidate": "Historical API convention: invoke Updating directly using legacy parameter style.",
+  "valid_memory_candidate": "Current API convention: invoke Updating following updated signature without legacy parameters.",
+  "transition_type": "API_DEPRECATION",
+  "stale_sensitive": true,
+  "original_test_required": false,
+  "generated_hidden_test_only": true,
+  "track": "TRACK_A_STALE_SENSITIVE"
+}

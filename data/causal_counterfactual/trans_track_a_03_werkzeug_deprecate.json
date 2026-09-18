@@ -1,0 +1,6 @@
+{
+  "transition_id": "trans_track_a_03_werkzeug_deprecate",
+  "audit_fingerprint": "4fab4e55a8a96a9610d8d772e580763dbe27774155818977dd561220dcbd00aa",
+  "causality_status": "CAUSAL_PASS",
+  "failure_reason": "Causal transition on deprecate: stale passes on base, fails/warns on target."
+}

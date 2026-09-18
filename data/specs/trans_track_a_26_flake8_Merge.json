@@ -1,0 +1,24 @@
+{
+  "transition_id": "trans_track_a_26_flake8_Merge",
+  "repo_name": "PyCQA/flake8",
+  "repo_url": "https://github.com/PyCQA/flake8",
+  "base_commit": "fbcde84822dbc96370d725312e16c44707671a79",
+  "target_commit": "faef3587480ab621dd2fd2d87ec36fc479749a90",
+  "changed_files": [
+    "src/flake8/plugins/pyflakes.py"
+  ],
+  "changed_symbols": [
+    "Merge"
+  ],
+  "deprecated_symbols": [
+    "Merge"
+  ],
+  "current_task": "Implement helper function using Merge in src/flake8/plugins/pyflakes.py according to project conventions.",
+  "stale_memory_candidate": "Historical API convention: invoke Merge directly using legacy parameter style.",
+  "valid_memory_candidate": "Current API convention: invoke Merge following updated signature without legacy parameters.",
+  "transition_type": "API_REMOVAL",
+  "stale_sensitive": true,
+  "original_test_required": false,
+  "generated_hidden_test_only": true,
+  "track": "TRACK_A_STALE_SENSITIVE"
+}

@@ -1,0 +1,14 @@
+{
+  "candidate_id": "track_b_werkzeug_debug_iframe_cookie",
+  "evidence_audit_status": "REBUILD_EVIDENCE_PARTIAL",
+  "evidence_flaw": "pallets/werkzeug PR #1913 only introduced samesite='None'; secure=True was not added by this PR and was an unevidenced requirement.",
+  "failure_taxonomy": "ENVIRONMENT_FAILURE",
+  "evaluation_validity": "INVALID",
+  "failure_details": {
+    "root_cause": "ModuleNotFoundError: No module named 'werkzeug' during pytest test collection in sandbox venv.",
+    "collection_status": "ERROR_COLLECTION",
+    "runtime_error": "ModuleNotFoundError: No module named 'werkzeug'",
+    "code_semantic_alignment": "HIGH_ON_S2 (Qwen7B generated dump_cookie('debug_auth', token, samesite='None', secure=True, httponly=True) matching prompt memory exactly)",
+    "benchmark_status": "REBUILD_REQUIRED_BEFORE_REEVALUATION"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "transition_id": "trans_track_a_27_flake8_remove",
+  "audit_fingerprint": "fee32a6ff26a8537bdd9194d1756a6e118ed873a50a19e918bc8b1179afeab3b",
+  "causality_status": "CAUSAL_PASS",
+  "failure_reason": "Causal transition on remove: stale passes on base, fails/warns on target."
+}

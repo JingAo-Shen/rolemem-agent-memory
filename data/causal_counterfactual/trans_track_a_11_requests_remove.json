@@ -1,0 +1,6 @@
+{
+  "transition_id": "trans_track_a_11_requests_remove",
+  "audit_fingerprint": "7bef15ac7a922897e6fc042278a2c48e24439eeb8b180f811614e216f990258a",
+  "causality_status": "CAUSAL_PASS",
+  "failure_reason": "Causal transition on remove: stale passes on base, fails/warns on target."
+}

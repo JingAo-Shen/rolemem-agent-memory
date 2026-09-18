@@ -1,0 +1,24 @@
+{
+  "transition_id": "trans_track_a_15_rich_remove",
+  "repo_name": "Textualize/rich",
+  "repo_url": "https://github.com/Textualize/rich",
+  "base_commit": "7ef2d05ca8aa3cb405dab2fdf3282e69cf8089e3",
+  "target_commit": "77f0edbdef71f2a895cd0ab1481e9a1fc79d42e6",
+  "changed_files": [
+    "rich/markdown.py"
+  ],
+  "changed_symbols": [
+    "remove"
+  ],
+  "deprecated_symbols": [
+    "remove"
+  ],
+  "current_task": "Implement helper function using remove in rich/markdown.py according to project conventions.",
+  "stale_memory_candidate": "Historical API convention: invoke remove directly using legacy parameter style.",
+  "valid_memory_candidate": "Current API convention: invoke remove following updated signature without legacy parameters.",
+  "transition_type": "API_REMOVAL",
+  "stale_sensitive": true,
+  "original_test_required": false,
+  "generated_hidden_test_only": true,
+  "track": "TRACK_A_STALE_SENSITIVE"
+}

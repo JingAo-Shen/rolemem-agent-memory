@@ -1,0 +1,24 @@
+{
+  "transition_id": "trans_track_a_14_starlette_removeprefix",
+  "repo_name": "encode/starlette",
+  "repo_url": "https://github.com/encode/starlette",
+  "base_commit": "e6f7ad1ab85efb27ab7910d8007b3f4531f7b083",
+  "target_commit": "37309255b4c1b9c381a2d24a1eaf83100984a16a",
+  "changed_files": [
+    "starlette/staticfiles.py"
+  ],
+  "changed_symbols": [
+    "removeprefix"
+  ],
+  "deprecated_symbols": [
+    "removeprefix"
+  ],
+  "current_task": "Implement helper function using removeprefix in starlette/staticfiles.py according to project conventions.",
+  "stale_memory_candidate": "Historical API convention: invoke removeprefix directly using legacy parameter style.",
+  "valid_memory_candidate": "Current API convention: invoke removeprefix following updated signature without legacy parameters.",
+  "transition_type": "API_REMOVAL",
+  "stale_sensitive": true,
+  "original_test_required": false,
+  "generated_hidden_test_only": true,
+  "track": "TRACK_A_STALE_SENSITIVE"
+}

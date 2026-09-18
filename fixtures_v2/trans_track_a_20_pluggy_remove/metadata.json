@@ -1,0 +1,9 @@
+{
+  "transition_id": "trans_track_a_20_pluggy_remove",
+  "repo_name": "pytest-dev/pluggy",
+  "base_commit": "6dcbcbce42e3a7304d16c83c7d6a1fc041da8da4",
+  "target_commit": "b2d1c4c5ea423ac629fefa9c45ffe052f7b8d08e",
+  "file_digest_before": "61d7b19e2d3bfbcc916a22da8234c48a3068f120d679415d516b427aaf666ea6",
+  "file_digest_after": "450861b854ae70ce1a9ba558f0e32649ff0c56c2f7d194e51200d73d28057d06",
+  "verified": true
+}

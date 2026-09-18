@@ -1,0 +1,9 @@
+{
+  "transition_id": "trans_track_a_29_attrs_Document",
+  "repo_name": "python-attrs/attrs",
+  "base_commit": "1ea13ff576c14907280d080c33fa5d25f968f30e",
+  "target_commit": "3bb6382a7ca4ebe681386e3c6b8106993a4d194f",
+  "file_digest_before": "bce4df310fc584287692d3c44ee8b6d824486a7a51c835b594cd2f78659646d9",
+  "file_digest_after": "981e5d7d76327e4b8acc272b519bcc097319e7e1578fae852f5c5f8de0158397",
+  "verified": true
+}

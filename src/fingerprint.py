@@ -27,7 +27,21 @@ REPO_DIR_MAP = {
     "pallets/click": os.path.join(REPO_CACHE_ROOT, "click"),
     "urllib3/urllib3": os.path.join(REPO_CACHE_ROOT, "urllib3"),
     "psf/requests": os.path.join(REPO_CACHE_ROOT, "requests"),
+    "pallets/jinja": os.path.join(REPO_CACHE_ROOT, "jinja"),
+    "pallets/itsdangerous": os.path.join(REPO_CACHE_ROOT, "itsdangerous"),
+    "pallets/markupsafe": os.path.join(REPO_CACHE_ROOT, "markupsafe"),
+    "encode/httpx": os.path.join(REPO_CACHE_ROOT, "httpx"),
+    "encode/starlette": os.path.join(REPO_CACHE_ROOT, "starlette"),
+    "Textualize/rich": os.path.join(REPO_CACHE_ROOT, "rich"),
+    "marshmallow-code/marshmallow": os.path.join(REPO_CACHE_ROOT, "marshmallow"),
+    "pytest-dev/pluggy": os.path.join(REPO_CACHE_ROOT, "pluggy"),
+    "pytest-dev/iniconfig": os.path.join(REPO_CACHE_ROOT, "iniconfig"),
+    "PyCQA/flake8": os.path.join(REPO_CACHE_ROOT, "flake8"),
+    "python-attrs/attrs": os.path.join(REPO_CACHE_ROOT, "attrs"),
+    "pypa/virtualenv": os.path.join(REPO_CACHE_ROOT, "virtualenv"),
+    "pydantic/pydantic": os.path.join(REPO_CACHE_ROOT, "pydantic"),
 }
+
 
 
 def get_git_tree_hash(repo_dir: str, commit_ref: str) -> str:

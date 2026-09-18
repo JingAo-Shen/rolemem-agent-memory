@@ -1,0 +1,8 @@
+{
+  "transition_id": "trans_track_a_02_flask_deprecate",
+  "audit_fingerprint": "e5429d5ecf3101e7f34003afaccb23a191063192139740f56553fe8a1fa757dc",
+  "status": "PASS",
+  "collection_status": "PASS",
+  "execution_status": "PASS",
+  "exit_code": 0
+}

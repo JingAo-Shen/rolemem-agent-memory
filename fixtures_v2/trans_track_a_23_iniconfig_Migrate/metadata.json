@@ -1,0 +1,9 @@
+{
+  "transition_id": "trans_track_a_23_iniconfig_Migrate",
+  "repo_name": "pytest-dev/iniconfig",
+  "base_commit": "40f7760e0e8f9c1b7a733099e43e2c52bbe7d001",
+  "target_commit": "1dab01a81f78dd6154833b27217a038d06b5c2eb",
+  "file_digest_before": "d80449c6b6c540f7c9029901fcdde12454313fa3ce386e648b0498541180443a",
+  "file_digest_after": "64168e10b3781a781982b0fa59c823aafa25d03d33bfffc8aa1fc0d41a1f8fe3",
+  "verified": true
+}

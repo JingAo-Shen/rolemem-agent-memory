@@ -1,0 +1,26 @@
+{
+  "transition_id": "trans_track_a_12_urllib3_Deal",
+  "repo_name": "urllib3/urllib3",
+  "repo_url": "https://github.com/urllib3/urllib3",
+  "base_commit": "6e42ff11a1ba5c1542f38c67ec17238d0b779552",
+  "target_commit": "627636551e0e0159996b0f28dd21a60372cc5b10",
+  "changed_files": [
+    "src/urllib3/contrib/pyopenssl.py",
+    "test/test_ssl.py",
+    "test/test_util.py"
+  ],
+  "changed_symbols": [
+    "Deal"
+  ],
+  "deprecated_symbols": [
+    "Deal"
+  ],
+  "current_task": "Implement helper function using Deal in src/urllib3/contrib/pyopenssl.py according to project conventions.",
+  "stale_memory_candidate": "Historical API convention: invoke Deal directly using legacy parameter style.",
+  "valid_memory_candidate": "Current API convention: invoke Deal following updated signature without legacy parameters.",
+  "transition_type": "API_REMOVAL",
+  "stale_sensitive": true,
+  "original_test_required": false,
+  "generated_hidden_test_only": true,
+  "track": "TRACK_A_STALE_SENSITIVE"
+}

@@ -1,0 +1,290 @@
+{
+  "seed": 123,
+  "evaluation": {
+    "task_evaluations": {
+      "trans_gold_click_02_isolated_filesystem": {
+        "generated_claims_count": 1,
+        "matching": {
+          "matched_pairs": [
+            {
+              "gold_claim_id": "click_02_claim_01",
+              "generated_symbol": "CliRunner.isolated_filesystem",
+              "gold_status": "REQUIRED"
+            }
+          ],
+          "unmatched_generated": [],
+          "unmatched_required_gold": [],
+          "matched_required": 1,
+          "matched_optional": 0,
+          "total_required": 1,
+          "total_optional": 0,
+          "required_recall": 1.0,
+          "valid_precision": 1.0,
+          "optional_discovery_rate": 0.0,
+          "f1": 1.0
+        },
+        "attributions": [
+          {
+            "claim_id": "trans_gold_click_02_isolated_filesystem_CliRunner.isolated_filesystem_123",
+            "symbol": "CliRunner.isolated_filesystem",
+            "status": "SUPPORTED",
+            "details": {
+              "artifact_correct": true,
+              "symbol_correct": true,
+              "commit_correct": true,
+              "direction_correct": true,
+              "replacement_correct": true,
+              "statement_entails_diff": true,
+              "missing_commit": false
+            }
+          }
+        ]
+      },
+      "trans_gold_requests_01_tls_context_adapter": {
+        "generated_claims_count": 1,
+        "matching": {
+          "matched_pairs": [
+            {
+              "gold_claim_id": "requests_01_claim_01",
+              "generated_symbol": "get_connection",
+              "gold_status": "REQUIRED"
+            }
+          ],
+          "unmatched_generated": [],
+          "unmatched_required_gold": [],
+          "matched_required": 1,
+          "matched_optional": 0,
+          "total_required": 1,
+          "total_optional": 0,
+          "required_recall": 1.0,
+          "valid_precision": 1.0,
+          "optional_discovery_rate": 0.0,
+          "f1": 1.0
+        },
+        "attributions": [
+          {
+            "claim_id": "trans_gold_requests_01_tls_context_adapter_get_connection_123",
+            "symbol": "get_connection",
+            "status": "SUPPORTED",
+            "details": {
+              "artifact_correct": true,
+              "symbol_correct": true,
+              "commit_correct": true,
+              "direction_correct": true,
+              "replacement_correct": true,
+              "statement_entails_diff": true,
+              "missing_commit": false
+            }
+          }
+        ]
+      },
+      "trans_gold_urllib3_01_retry_allowed_methods": {
+        "generated_claims_count": 3,
+        "matching": {
+          "matched_pairs": [
+            {
+              "gold_claim_id": "urllib3_01_claim_01",
+              "generated_symbol": "method_whitelist",
+              "gold_status": "REQUIRED"
+            }
+          ],
+          "unmatched_generated": [
+            {
+              "artifact_uri": "src/urllib3/util/retry.py",
+              "symbol": "Retry.DEFAULT_METHOD_WHITELIST",
+              "claim_type": "DEPRECATION",
+              "statement": "Use 'Retry.DEFAULT_ALLOWED_METHODS' instead.",
+              "evidence_ref": "src/urllib3/util/retry.py#L28-L49",
+              "evidence_commit": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+              "claim_id": "trans_gold_urllib3_01_retry_allowed_methods_Retry.DEFAULT_METHOD_WHITELIST_123"
+            },
+            {
+              "artifact_uri": "src/urllib3/util/retry.py",
+              "symbol": "Retry.DEFAULT_REDIRECT_HEADERS_BLACKLIST",
+              "claim_type": "DEPRECATION",
+              "statement": "Use 'Retry.DEFAULT_REMOVE_HEADERS_ON_REDIRECT' instead.",
+              "evidence_ref": "src/urllib3/util/retry.py#L28-L49",
+              "evidence_commit": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+              "claim_id": "trans_gold_urllib3_01_retry_allowed_methods_Retry.DEFAULT_REDIRECT_HEADERS_BLACKLIST_123"
+            }
+          ],
+          "unmatched_required_gold": [],
+          "matched_required": 1,
+          "matched_optional": 0,
+          "total_required": 1,
+          "total_optional": 2,
+          "required_recall": 1.0,
+          "valid_precision": 0.3333333333333333,
+          "optional_discovery_rate": 0.0,
+          "f1": 0.5
+        },
+        "attributions": [
+          {
+            "claim_id": "trans_gold_urllib3_01_retry_allowed_methods_Retry.DEFAULT_METHOD_WHITELIST_123",
+            "symbol": "Retry.DEFAULT_METHOD_WHITELIST",
+            "status": "SUPPORTED",
+            "details": {
+              "artifact_correct": true,
+              "symbol_correct": true,
+              "commit_correct": true,
+              "direction_correct": true,
+              "replacement_correct": true,
+              "statement_entails_diff": true,
+              "missing_commit": false
+            }
+          },
+          {
+            "claim_id": "trans_gold_urllib3_01_retry_allowed_methods_Retry.DEFAULT_REDIRECT_HEADERS_BLACKLIST_123",
+            "symbol": "Retry.DEFAULT_REDIRECT_HEADERS_BLACKLIST",
+            "status": "SUPPORTED",
+            "details": {
+              "artifact_correct": true,
+              "symbol_correct": true,
+              "commit_correct": true,
+              "direction_correct": true,
+              "replacement_correct": true,
+              "statement_entails_diff": true,
+              "missing_commit": false
+            }
+          },
+          {
+            "claim_id": "trans_gold_urllib3_01_retry_allowed_methods_method_whitelist_123",
+            "symbol": "method_whitelist",
+            "status": "SUPPORTED",
+            "details": {
+              "artifact_correct": true,
+              "symbol_correct": true,
+              "commit_correct": true,
+              "direction_correct": true,
+              "replacement_correct": true,
+              "statement_entails_diff": true,
+              "missing_commit": false
+            }
+          }
+        ]
+      },
+      "trans_gold_werkzeug_01_cached_property": {
+        "generated_claims_count": 1,
+        "matching": {
+          "matched_pairs": [
+            {
+              "gold_claim_id": "werkzeug_01_claim_01",
+              "generated_symbol": "invalidate_cached_property",
+              "gold_status": "REQUIRED"
+            }
+          ],
+          "unmatched_generated": [],
+          "unmatched_required_gold": [],
+          "matched_required": 1,
+          "matched_optional": 0,
+          "total_required": 1,
+          "total_optional": 0,
+          "required_recall": 1.0,
+          "valid_precision": 1.0,
+          "optional_discovery_rate": 0.0,
+          "f1": 1.0
+        },
+        "attributions": [
+          {
+            "claim_id": "trans_gold_werkzeug_01_cached_property_invalidate_cached_property_123",
+            "symbol": "invalidate_cached_property",
+            "status": "SUPPORTED",
+            "details": {
+              "artifact_correct": true,
+              "symbol_correct": true,
+              "commit_correct": true,
+              "direction_correct": true,
+              "replacement_correct": true,
+              "statement_entails_diff": true,
+              "missing_commit": false
+            }
+          }
+        ]
+      }
+    },
+    "total_matched_required": 4,
+    "total_matched_optional": 0,
+    "total_required": 4,
+    "total_optional": 2,
+    "total_claims_evaluated": 6,
+    "required_recall": 1.0,
+    "valid_precision": 0.6666666666666666,
+    "f1": 0.8,
+    "optional_valid_discovery_rate": 0.0,
+    "supported_attribution_accuracy": 1.0,
+    "unsupported_claim_rate": 0.0,
+    "claims_per_task": 1.5,
+    "attribution_counts": {
+      "SUPPORTED": 6,
+      "PARTIAL": 0,
+      "UNSUPPORTED": 0,
+      "WRONG_ARTIFACT": 0,
+      "WRONG_COMMIT": 0,
+      "MISSING_COMMIT_ATTRIBUTION": 0
+    }
+  },
+  "generated_claims": {
+    "trans_gold_click_02_isolated_filesystem": [
+      {
+        "artifact_uri": "src/click/testing.py",
+        "symbol": "CliRunner.isolated_filesystem",
+        "claim_type": "DEPRECATION",
+        "statement": "The isolated_filesystem method is deprecated and will be removed in Click 9.0. Use tempfile.TemporaryDirectory or pytest's tmp_path fixture with absolute paths instead.",
+        "evidence_ref": "src/click/testing.py",
+        "evidence_commit": "cfa01eeb7894a408af70b29d28c0b24f8680f9fb",
+        "claim_id": "trans_gold_click_02_isolated_filesystem_CliRunner.isolated_filesystem_123"
+      }
+    ],
+    "trans_gold_requests_01_tls_context_adapter": [
+      {
+        "artifact_uri": "src/requests/adapters.py",
+        "symbol": "get_connection",
+        "claim_type": "DEPRECATION",
+        "statement": "The `get_connection` method has been deprecated. Users should use `get_connection_with_tls_context` instead.",
+        "evidence_ref": "src/requests/adapters.py#L412-L426",
+        "evidence_commit": "c98e4d133ef29c46a9b68cd783087218a8075e05",
+        "claim_id": "trans_gold_requests_01_tls_context_adapter_get_connection_123"
+      }
+    ],
+    "trans_gold_urllib3_01_retry_allowed_methods": [
+      {
+        "artifact_uri": "src/urllib3/util/retry.py",
+        "symbol": "Retry.DEFAULT_METHOD_WHITELIST",
+        "claim_type": "DEPRECATION",
+        "statement": "Use 'Retry.DEFAULT_ALLOWED_METHODS' instead.",
+        "evidence_ref": "src/urllib3/util/retry.py#L28-L49",
+        "evidence_commit": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+        "claim_id": "trans_gold_urllib3_01_retry_allowed_methods_Retry.DEFAULT_METHOD_WHITELIST_123"
+      },
+      {
+        "artifact_uri": "src/urllib3/util/retry.py",
+        "symbol": "Retry.DEFAULT_REDIRECT_HEADERS_BLACKLIST",
+        "claim_type": "DEPRECATION",
+        "statement": "Use 'Retry.DEFAULT_REMOVE_HEADERS_ON_REDIRECT' instead.",
+        "evidence_ref": "src/urllib3/util/retry.py#L28-L49",
+        "evidence_commit": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+        "claim_id": "trans_gold_urllib3_01_retry_allowed_methods_Retry.DEFAULT_REDIRECT_HEADERS_BLACKLIST_123"
+      },
+      {
+        "artifact_uri": "src/urllib3/util/retry.py",
+        "symbol": "method_whitelist",
+        "claim_type": "DEPRECATION",
+        "statement": "Use 'allowed_methods' instead.",
+        "evidence_ref": "src/urllib3/util/retry.py#L107-L208",
+        "evidence_commit": "382ab32f23795c44faae83b4e8b18a16fb605a0a",
+        "claim_id": "trans_gold_urllib3_01_retry_allowed_methods_method_whitelist_123"
+      }
+    ],
+    "trans_gold_werkzeug_01_cached_property": [
+      {
+        "artifact_uri": "src/werkzeug/utils.py",
+        "symbol": "invalidate_cached_property",
+        "claim_type": "DEPRECATION",
+        "statement": "The function 'invalidate_cached_property' is deprecated. Use 'del obj.name' instead.",
+        "evidence_ref": "src/werkzeug/utils.py#L107-L122",
+        "evidence_commit": "f50fbf5659875821c19ae21b237b4290b12e1e2d",
+        "claim_id": "trans_gold_werkzeug_01_cached_property_invalidate_cached_property_123"
+      }
+    ]
+  }
+}

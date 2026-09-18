@@ -1,0 +1,24 @@
+{
+  "transition_id": "trans_track_a_31_attrs_Expose",
+  "repo_name": "python-attrs/attrs",
+  "repo_url": "https://github.com/python-attrs/attrs",
+  "base_commit": "4737f0e6c77f2bd4501322b1b5d1e265181849b9",
+  "target_commit": "112dd1d49848da7a956c78415e0f571e0dc70d90",
+  "changed_files": [
+    "src/attr/_make.py",
+    "src/attr/_next_gen.py",
+    "src/attrs/__init__.py"
+  ],
+  "changed_symbols": [
+    "Expose"
+  ],
+  "deprecated_symbols": [],
+  "current_task": "Implement helper function using Expose in src/attr/_make.py according to project conventions.",
+  "stale_memory_candidate": "Historical API convention: invoke Expose directly using legacy parameter style.",
+  "valid_memory_candidate": "Current API convention: invoke Expose following updated signature without legacy parameters.",
+  "transition_type": "API_EVOLUTION",
+  "stale_sensitive": false,
+  "original_test_required": false,
+  "generated_hidden_test_only": true,
+  "track": "TRACK_A_API_EVOLUTION"
+}

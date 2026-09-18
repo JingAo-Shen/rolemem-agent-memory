@@ -1,0 +1,14 @@
+{
+  "candidate_id": "track_b_requests_gateway_retries",
+  "evidence_audit_status": "REJECT_EVIDENCE_INVALID",
+  "evidence_flaw": "psf/requests PR #2497 is a security disclosure policy document, not a code implementation of Retry constants.",
+  "failure_taxonomy": "ENVIRONMENT_FAILURE",
+  "evaluation_validity": "INVALID",
+  "failure_details": {
+    "root_cause": "ModuleNotFoundError: No module named 'requests' during pytest test collection in sandbox venv.",
+    "collection_status": "ERROR_COLLECTION",
+    "runtime_error": "ModuleNotFoundError: No module named 'requests'",
+    "code_semantic_alignment": "HIGH_ON_S2 (Qwen7B generated Retry(total=3, backoff_factor=0.5, status_forcelist=[502, 503, 504]) matching prompt memory exactly)",
+    "benchmark_status": "REJECTED_FROM_TRACK_B"
+  }
+}

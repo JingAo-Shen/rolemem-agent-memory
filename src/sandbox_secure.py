@@ -8,7 +8,7 @@ import os
 import shutil
 import tempfile
 import subprocess
-from typing import Dict, Tuple, Optional
+from typing import Dict, Tuple, Optional, Any, List
 
 
 class SecureSandboxExecutor:
@@ -148,3 +148,41 @@ class SecureSandboxExecutor:
                 return False, f"TIMEOUT: Execution exceeded {self.timeout_seconds}s limit."
             except Exception as e:
                 return False, f"SANDBOX_ERROR: {str(e)}"
+
+    def execute_in_sandbox_detailed(
+        self,
+        workspace_files: Dict[str, str],
+        target_file: str,
+        generated_code: str,
+        test_code: str
+    ) -> Dict[str, Any]:
+        """Execute with detailed telemetry (stdout, stderr, exit_code)."""
+        passed, log = self.execute_in_sandbox(
+            workspace_files=workspace_files,
+            target_file=target_file,
+            generated_code=generated_code,
+            test_code=test_code
+        )
+        # Parse stdout, stderr, exit_code
+        stdout = log
+        stderr = ""
+        exit_code = 0 if passed else 1
+        if "STDOUT:\n" in log and "\nSTDERR:\n" in log:
+            parts = log.split("\nSTDERR:\n")
+            stdout = parts[0].replace("STDOUT:\n", "")
+            stderr = parts[1]
+        elif "TIMEOUT:" in log:
+            stderr = log
+            exit_code = 124
+        elif "SANDBOX_ERROR:" in log:
+            stderr = log
+            exit_code = 127
+
+        return {
+            "passed": passed,
+            "stdout": stdout,
+            "stderr": stderr,
+            "exit_code": exit_code,
+            "log": log
+        }
+

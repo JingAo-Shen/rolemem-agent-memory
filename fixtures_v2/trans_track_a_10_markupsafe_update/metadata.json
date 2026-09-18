@@ -1,0 +1,9 @@
+{
+  "transition_id": "trans_track_a_10_markupsafe_update",
+  "repo_name": "pallets/markupsafe",
+  "base_commit": "31d9b663f298a79741fd6b9351b7a61bde4998f8",
+  "target_commit": "80aff0325c83991e5c62ad741b9a85d65df18058",
+  "file_digest_before": "e1f9ab242264e778df343628420fe104a5e6c3e449a3d6b76685531f05e72d6c",
+  "file_digest_after": "f087751d033e0a767f4c45cb8ba6693c1be5ec8086b29311cdf8667ad0ac4775",
+  "verified": true
+}

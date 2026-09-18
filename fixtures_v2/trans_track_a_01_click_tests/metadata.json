@@ -1,0 +1,9 @@
+{
+  "transition_id": "trans_track_a_01_click_tests",
+  "repo_name": "pallets/click",
+  "base_commit": "7a0a3447f6ddd2c15438c5d098e289323f9f9556",
+  "target_commit": "051725fa7e0c69effc9107066d8791c5b99242c3",
+  "file_digest_before": "ea7a2626364a9fa72483c434a0a2d1a7d88905de06be0e1c4b55b8fbcf541d0e",
+  "file_digest_after": "5abfc54d37d47cc788b7e7a05e9514787f8c5a0b7db429d0f24d748ac89964ca",
+  "verified": true
+}

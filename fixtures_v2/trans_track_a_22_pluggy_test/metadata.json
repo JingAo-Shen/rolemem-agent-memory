@@ -1,0 +1,9 @@
+{
+  "transition_id": "trans_track_a_22_pluggy_test",
+  "repo_name": "pytest-dev/pluggy",
+  "base_commit": "f632a4d1b69e32e210063a91a71ae32fb3ac150c",
+  "target_commit": "79631fd8647c8e5c94d4998e6af06d7ac85aee93",
+  "file_digest_before": "9b8df28bdf4a6c2cfbd61a8cdb2c7fc7b09ccaa803b64eead050010be2cf248e",
+  "file_digest_after": "798d3c2c1ca379f20a279a0434c78089c2a77d9f55fb332192b2cffc4172c785",
+  "verified": true
+}

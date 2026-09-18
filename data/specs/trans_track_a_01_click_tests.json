@@ -1,0 +1,25 @@
+{
+  "transition_id": "trans_track_a_01_click_tests",
+  "repo_name": "pallets/click",
+  "repo_url": "https://github.com/pallets/click",
+  "base_commit": "7a0a3447f6ddd2c15438c5d098e289323f9f9556",
+  "target_commit": "051725fa7e0c69effc9107066d8791c5b99242c3",
+  "changed_files": [
+    "src/click/__init__.py",
+    "src/click/utils.py"
+  ],
+  "changed_symbols": [
+    "tests"
+  ],
+  "deprecated_symbols": [
+    "tests"
+  ],
+  "current_task": "Implement helper function using tests in src/click/__init__.py according to project conventions.",
+  "stale_memory_candidate": "Historical API convention: invoke tests directly using legacy parameter style.",
+  "valid_memory_candidate": "Current API convention: invoke tests following updated signature without legacy parameters.",
+  "transition_type": "API_DEPRECATION",
+  "stale_sensitive": true,
+  "original_test_required": false,
+  "generated_hidden_test_only": true,
+  "track": "TRACK_A_STALE_SENSITIVE"
+}

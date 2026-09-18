@@ -1,0 +1,9 @@
+{
+  "transition_id": "trans_track_a_11_requests_remove",
+  "repo_name": "psf/requests",
+  "base_commit": "0e322af87745eff34caffe4df68456ebc20d9068",
+  "target_commit": "15e1f17bb6f3f978787dd23da0268388148bc3d5",
+  "file_digest_before": "b45df91c5c6c34e6a799e5a2cbec75eb8bfcead682aaddd10d5da4583f20bfc1",
+  "file_digest_after": "1992681a164ee2cde11449b37fe370c9782181ba4a2d88eb7293ad33bb8c5d1a",
+  "verified": true
+}

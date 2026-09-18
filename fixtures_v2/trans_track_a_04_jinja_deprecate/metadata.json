@@ -1,0 +1,9 @@
+{
+  "transition_id": "trans_track_a_04_jinja_deprecate",
+  "repo_name": "pallets/jinja",
+  "base_commit": "dfe82ade3dc7d112d7d166ca0d7ae7f794fe19e6",
+  "target_commit": "9e49736ae075fcffb85f731a3fe2c006cf1edca4",
+  "file_digest_before": "705fcc42991fcdeea57124f06144730a08d45f425a04bb6ef9bbc222e6e6b70e",
+  "file_digest_after": "eb0f58170da5a4d0a844700d760611c4ccce6c987471ba3210851433462d9044",
+  "verified": true
+}

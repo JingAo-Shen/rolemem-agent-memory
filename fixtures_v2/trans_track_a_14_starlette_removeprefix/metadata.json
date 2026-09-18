@@ -1,0 +1,9 @@
+{
+  "transition_id": "trans_track_a_14_starlette_removeprefix",
+  "repo_name": "encode/starlette",
+  "base_commit": "e6f7ad1ab85efb27ab7910d8007b3f4531f7b083",
+  "target_commit": "37309255b4c1b9c381a2d24a1eaf83100984a16a",
+  "file_digest_before": "d8d02e8870b93d22a22bea2fd52e8b47970d4d8dac401eb6b90ac5751e5949fe",
+  "file_digest_after": "f063f70ca34df16dd51992113d914f4012038aa37e61a29c34dd84bda30c418c",
+  "verified": true
+}

@@ -1,0 +1,6 @@
+{
+  "transition_id": "trans_track_a_26_flake8_Merge",
+  "audit_fingerprint": "a06355ad00a0bdde8e74e4b2ce24872146d9806c44aca1a2383729e49ea036fe",
+  "causality_status": "CAUSAL_PASS",
+  "failure_reason": "Causal transition on Merge: stale passes on base, fails/warns on target."
+}

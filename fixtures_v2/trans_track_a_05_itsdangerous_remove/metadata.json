@@ -1,0 +1,9 @@
+{
+  "transition_id": "trans_track_a_05_itsdangerous_remove",
+  "repo_name": "pallets/itsdangerous",
+  "base_commit": "4dffa1963f896a0a311dec3c14f003a5f382c446",
+  "target_commit": "31f46a3469dbfb2ecf83dd0c4297c1efc508fcca",
+  "file_digest_before": "e122bbe6c09edbdc5b460404d5942d3079ca52e65801fddb4a964eadf7f52006",
+  "file_digest_after": "cd4e17bf6c055e1d4e6fb30c5d51406365ccb0d5e2bb0f65b446a9208996a9a0",
+  "verified": true
+}
