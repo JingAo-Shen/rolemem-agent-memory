@@ -144,32 +144,52 @@ def audit_transition_v3(spec_path):
     owner, repo, pr_num_str = m.groups()
     pr_num = int(pr_num_str)
 
-    # 1. Fetch GitHub PR Metadata
-    pr_api_url = f"https://api.github.com/repos/{owner}/{repo}/pulls/{pr_num}"
-    pr_data = fetch_github_api(pr_api_url, headers)
-    if not pr_data:
-        return {"transition_id": tid, "status": "FAIL", "error": f"PR #{pr_num} not found on GitHub"}
-    with open(os.path.join(evidence_dir, "pr.json"), "w", encoding="utf-8") as f:
-        json.dump(pr_data, f, indent=2)
+    # 1. Fetch GitHub PR Metadata (with local cache check)
+    pr_cache = os.path.join(evidence_dir, "pr.json")
+    if os.path.exists(pr_cache):
+        with open(pr_cache, "r", encoding="utf-8") as f:
+            pr_data = json.load(f)
+    else:
+        pr_api_url = f"https://api.github.com/repos/{owner}/{repo}/pulls/{pr_num}"
+        pr_data = fetch_github_api(pr_api_url, headers)
+        if not pr_data:
+            return {"transition_id": tid, "status": "FAIL", "error": f"PR #{pr_num} not found on GitHub"}
+        with open(pr_cache, "w", encoding="utf-8") as f:
+            json.dump(pr_data, f, indent=2)
 
     # 2. Fetch Changed Files
-    files_api_url = f"https://api.github.com/repos/{owner}/{repo}/pulls/{pr_num}/files"
-    files_data = fetch_github_api(files_api_url, headers)
-    with open(os.path.join(evidence_dir, "changed_files.json"), "w", encoding="utf-8") as f:
-        json.dump(files_data or [], f, indent=2)
+    files_cache = os.path.join(evidence_dir, "changed_files.json")
+    if os.path.exists(files_cache):
+        with open(files_cache, "r", encoding="utf-8") as f:
+            files_data = json.load(f)
+    else:
+        files_api_url = f"https://api.github.com/repos/{owner}/{repo}/pulls/{pr_num}/files"
+        files_data = fetch_github_api(files_api_url, headers)
+        with open(files_cache, "w", encoding="utf-8") as f:
+            json.dump(files_data or [], f, indent=2)
 
     # 3. Fetch Commits
-    commits_api_url = f"https://api.github.com/repos/{owner}/{repo}/pulls/{pr_num}/commits"
-    commits_data = fetch_github_api(commits_api_url, headers)
-    with open(os.path.join(evidence_dir, "commits.json"), "w", encoding="utf-8") as f:
-        json.dump(commits_data or [], f, indent=2)
+    commits_cache = os.path.join(evidence_dir, "commits.json")
+    if os.path.exists(commits_cache):
+        with open(commits_cache, "r", encoding="utf-8") as f:
+            commits_data = json.load(f)
+    else:
+        commits_api_url = f"https://api.github.com/repos/{owner}/{repo}/pulls/{pr_num}/commits"
+        commits_data = fetch_github_api(commits_api_url, headers)
+        with open(commits_cache, "w", encoding="utf-8") as f:
+            json.dump(commits_data or [], f, indent=2)
 
     # 4. Fetch Raw Diff Patch
-    diff_headers = dict(headers)
-    diff_headers["Accept"] = "application/vnd.github.v3.diff"
-    raw_diff = fetch_github_api(pr_api_url, diff_headers, is_diff=True)
-    with open(os.path.join(evidence_dir, "diff.patch"), "w", encoding="utf-8") as f:
-        f.write(raw_diff or "")
+    diff_cache = os.path.join(evidence_dir, "diff.patch")
+    if os.path.exists(diff_cache):
+        with open(diff_cache, "r", encoding="utf-8") as f:
+            raw_diff = f.read()
+    else:
+        diff_headers = dict(headers)
+        diff_headers["Accept"] = "application/vnd.github.v3.diff"
+        raw_diff = fetch_github_api(pr_api_url, diff_headers, is_diff=True)
+        with open(diff_cache, "w", encoding="utf-8") as f:
+            f.write(raw_diff or "")
 
     # 5. Handle Issue Linkage
     issue_data = None

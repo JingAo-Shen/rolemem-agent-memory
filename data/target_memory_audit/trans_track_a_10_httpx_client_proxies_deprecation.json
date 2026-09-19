@@ -1,0 +1,24 @@
+{
+  "transition_id": "trans_track_a_10_httpx_client_proxies_deprecation",
+  "provenance_status": "TARGET_MEMORY_VERIFIED",
+  "checks": {
+    "source_pr_matches": true,
+    "source_commit_matches": true,
+    "artifact_in_diff": true,
+    "symbol_in_evidence": true,
+    "replacement_supported": true,
+    "statement_supported": true
+  },
+  "claim": {
+    "transition_id": "trans_track_a_10_httpx_client_proxies_deprecation",
+    "statement": "Passing proxies parameter to httpx.Client is deprecated; pass singular proxy parameter instead (e.g., httpx.Client(proxy=url)).",
+    "symbol": "httpx.Client.proxies",
+    "replacement": "httpx.Client(proxy=...)",
+    "source_pr_url": "https://github.com/encode/httpx/pull/2879",
+    "source_commit": "f8981f3d124f9b8db9073fd5c8afa11acb55a738",
+    "evidence_file": "data/external_evidence/trans_track_a_10_httpx_client_proxies_deprecation/diff.patch",
+    "evidence_hunk_sha256": "83135973f37ca8225b6314a3c7f89a641a9c424fa722cd02a41bab66091c8ae5",
+    "evidence_excerpt_hash": "1fc27d5bb38eafe527a3d66bfa67f117209df7704aa4f7d10bad927655ec2f15",
+    "ground_truth_audit_hash": "eb2285ad3a69147e303feb2ea27a9eabc79bdccd8859985b26566b18785b963e"
+  }
+}

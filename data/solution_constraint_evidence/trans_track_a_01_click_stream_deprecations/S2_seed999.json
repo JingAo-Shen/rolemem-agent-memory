@@ -1,0 +1,22 @@
+{
+  "transition_id": "trans_track_a_01_click_stream_deprecations",
+  "run_id": "S2_seed999",
+  "target_file": "stream_helper.py",
+  "api_deprecation_gate": {
+    "status": "PASS",
+    "details": "Code free of deprecated symbol 'get_binary_stream'"
+  },
+  "replacement_mechanism_gate": {
+    "status": "PASS",
+    "details": "Direct stream buffer access present"
+  },
+  "behavior_fidelity_gate": {
+    "status": "FAIL",
+    "details": "Pytest execution failed",
+    "pytest_passed": false,
+    "log_snippet": "o import 'sys'?\n\nstream_helper.py:14: NameError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_stream_retrieval - NameError: name '...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
+  },
+  "overall_constraint_status": "FAIL",
+  "overall_status": "FAIL",
+  "task_success": false
+}

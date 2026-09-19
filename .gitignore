@@ -13,9 +13,10 @@ venv/
 *.pth
 *.ckpt
 *.onnx
-runs/
-!runs/**/*.json
-!runs/*.json
+runs/*
+!runs/llm-stale-challenge/
+!runs/historical-memory-writer-v4/
+!runs/full-agent-handoff-v4/
 outputs/
 
 

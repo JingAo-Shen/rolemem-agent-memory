@@ -1,9 +1,11 @@
 {
   "transition_id": "trans_track_a_07_pluggy_varnames_noself",
-  "audit_fingerprint": "4394e79abe6dd37ef65917ec862c08fad84e3e9048d1e39dc0d5d2da4be5120e",
+  "audit_fingerprint": "70561d595ef31e15f984d7c533163cf888f0d91b8e7cbe3cf706ca97b7074a9e",
   "total_mutants": 8,
-  "killed_mutants": 7,
-  "mutation_kill_rate": 0.875,
+  "invalid_mutants_count": 8,
+  "invalid_mutants_killed": 8,
+  "killed_mutants": 8,
+  "mutation_kill_rate": 1.0,
   "constant_return_killed": true,
   "constant_return_bypass": false,
   "meets_kill_rate_threshold": true,
@@ -11,34 +13,39 @@
   "mutants": {
     "M1_return_none": {
       "description": "return None",
+      "expected_to_fail": true,
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "e)\n\ntest_hidden_verification.py:10: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_varnames_extraction - assert (False)\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
+      "log_snippet": "e)\n\ntest_hidden_verification.py:18: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_varnames_extraction - assert (False)\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
     },
     "M2_constant_return": {
       "description": "return constant string",
+      "expected_to_fail": true,
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\n\ntest_hidden_verification.py:9: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_varnames_extraction - AssertionError...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:17: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_varnames_extraction - AssertionError...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
     },
     "M3_noop_pass": {
       "description": "pass / no-op",
+      "expected_to_fail": true,
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "e)\n\ntest_hidden_verification.py:10: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_varnames_extraction - assert (False)\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
+      "log_snippet": "e)\n\ntest_hidden_verification.py:18: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_varnames_extraction - assert (False)\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
     },
     "M4_try_except_dummy": {
       "description": "try/except return dummy",
+      "expected_to_fail": true,
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "e)\n\ntest_hidden_verification.py:10: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_varnames_extraction - assert (False)\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
+      "log_snippet": "e)\n\ntest_hidden_verification.py:18: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_varnames_extraction - assert (False)\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
     },
     "M5_stale_solution": {
       "description": "stale legacy_noself=True call",
+      "expected_to_fail": true,
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
@@ -46,24 +53,27 @@
     },
     "M6_mismatched_signature": {
       "description": "wrong signature / no arguments",
+      "expected_to_fail": true,
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\ntest_hidden_verification.py:10: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_varnames_extraction - assert (True a...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:18: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_varnames_extraction - assert (True a...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
     },
     "M7_missing_attribute": {
       "description": "missing function",
+      "expected_to_fail": true,
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\n\ntest_hidden_verification.py:8: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_varnames_extraction - AttributeError...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:16: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_varnames_extraction - AttributeError...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
     },
     "M8_static_mock": {
       "description": "static tuple mock",
-      "passed_test": true,
-      "killed": false,
-      "status": "SURVIVED",
-      "log_snippet": "naconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_lvtyy8kp\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_varnames_extraction PASSED             [100%]\n\n============================== 1 passed in 0.01s ===============================\n"
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "\ntest_hidden_verification.py:25: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_varnames_extraction - AssertionError...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
     }
   }
 }

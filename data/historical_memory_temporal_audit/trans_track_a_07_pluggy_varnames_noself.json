@@ -1,0 +1,32 @@
+{
+  "transition_id": "trans_track_a_07_pluggy_varnames_noself",
+  "overall_status": "TEMPORAL_VALID",
+  "reconstructed_seed_count": 3,
+  "valid_seed_count": 3,
+  "evaluations": {
+    "42": {
+      "verdict": "TEMPORAL_VALID",
+      "pr_leak": false,
+      "matched_replacements": [],
+      "matched_leak_terms": [],
+      "base_has_content": true,
+      "statement": "The varnames function retrieves the positional and keyword parameter names for a given callable, handling class methods, bound methods, and unbound methods appropriately."
+    },
+    "123": {
+      "verdict": "TEMPORAL_VALID",
+      "pr_leak": false,
+      "matched_replacements": [],
+      "matched_leak_terms": [],
+      "base_has_content": true,
+      "statement": "The 'varnames' function retrieves the positional and keyword parameter names for a given callable, handling class methods, bound methods, and unbound methods appropriately."
+    },
+    "999": {
+      "verdict": "TEMPORAL_VALID",
+      "pr_leak": false,
+      "matched_replacements": [],
+      "matched_leak_terms": [],
+      "base_has_content": true,
+      "statement": "The 'varnames' function retrieves the positional and keyword parameter names for a given callable, handling class methods, bound methods, and unbound methods with specific rules."
+    }
+  }
+}

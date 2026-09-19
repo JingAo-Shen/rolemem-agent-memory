@@ -1,10 +1,10 @@
 {
   "transition_id": "trans_track_a_04_jinja_version_deprecation",
-  "audit_fingerprint": "f8eb8d4c5f5a81e848edc785fe451353f2babfed90f1911aef10817e6c62169c",
+  "audit_fingerprint": "71586076ef2abbd39f5d6bd48d0c9143fbf243aebba91a581b73fbce9157a9ad",
   "status": "PASS",
   "collection_status": "PASS",
   "execution_status": "PASS",
   "exit_code": 0,
-  "raw_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_kncmbc6h\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_version_retrieval PASSED               [100%]\n\n============================== 1 passed in 0.07s ===============================\n",
+  "raw_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_4m8v_vol\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_version_retrieval PASSED               [100%]\n\n============================== 1 passed in 0.07s ===============================\n",
   "verification_status": "GENERATED_HIDDEN_TEST_PASS"
 }

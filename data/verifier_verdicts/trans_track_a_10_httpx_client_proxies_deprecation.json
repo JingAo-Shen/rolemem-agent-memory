@@ -1,0 +1,27 @@
+{
+  "transition_id": "trans_track_a_10_httpx_client_proxies_deprecation",
+  "integrity_status": "PASS",
+  "benchmark_eligibility": "TRACK_A_PROVISIONAL_GOLD",
+  "overall_status": "ACCEPT",
+  "audit_fingerprint": "60b6df1545618bb7e74e0c8b7dbe6d30d093fc19ae1e2b00ad9b566edebcbea2",
+  "gates": {
+    "gate1_commit_verification": "PASS",
+    "gate2_causality_counterfactual": "PASS",
+    "gate3_original_test_verification": "GENERATED_HIDDEN_TEST_ONLY",
+    "gate4_hidden_test_verification": "PASS",
+    "gate5_fixture_control_verification": "PASS",
+    "gate6_snapshot_hash_verification": "PASS",
+    "gate7_external_ground_truth_v3": "PASS",
+    "gate8_semantic_coherence_v2": "PASS"
+  },
+  "evidence_manifest": {
+    "causal_counterfactual": "/code/rolemem-agent-memory/data/causal_counterfactual/trans_track_a_10_httpx_client_proxies_deprecation.json",
+    "hidden_test_evidence": "/code/rolemem-agent-memory/data/hidden_test_evidence/trans_track_a_10_httpx_client_proxies_deprecation.json",
+    "fixture_controls": "/code/rolemem-agent-memory/data/fixture_controls/trans_track_a_10_httpx_client_proxies_deprecation.json",
+    "snapshot_eval": "/code/rolemem-agent-memory/data/snapshot_eval/trans_track_a_10_httpx_client_proxies_deprecation.json",
+    "ground_truth_audit_v3": "/code/rolemem-agent-memory/data/ground_truth_audit_v3/trans_track_a_10_httpx_client_proxies_deprecation.json",
+    "semantic_audit_v2": "/code/rolemem-agent-memory/data/semantic_audit_v2/trans_track_a_10_httpx_client_proxies_deprecation.json"
+  },
+  "verifier_version": "v9.0.0",
+  "verified_at": "2026-09-19T13:30:42.126723+00:00"
+}

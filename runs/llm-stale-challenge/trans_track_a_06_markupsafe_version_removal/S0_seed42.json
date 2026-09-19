@@ -1,0 +1,22 @@
+{
+  "task_id": "trans_track_a_06_markupsafe_version_removal",
+  "condition": "S0",
+  "seed": 42,
+  "task_prompt": "Implement `get_library_version()` in `markup_version.py` retrieving MarkupSafe version.",
+  "memory_statements": [],
+  "raw_generation": "```python\nimport pkg_resources\n\ndef get_library_version():\n    try:\n        version = pkg_resources.get_distribution('MarkupSafe').version\n        return version\n    except pkg_resources.DistributionNotFound:\n        return \"MarkupSafe is not installed\"\n\n# Test the function\nprint(get_library_version())\n```\n\nThis code snippet defines a function `get_library_version()` that retrieves the version of the `MarkupSafe` library using `pkg_resources`. If the library is not found, it returns a message indicating that the library is not installed. The test at the end prints the version of `MarkupSafe` if it is installed, or a message otherwise.",
+  "parsed_code": "import pkg_resources\n\ndef get_library_version():\n    try:\n        version = pkg_resources.get_distribution('MarkupSafe').version\n        return version\n    except pkg_resources.DistributionNotFound:\n        return \"MarkupSafe is not installed\"\n\n# Test the function\nprint(get_library_version())",
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": false,
+    "active_nodes": []
+  },
+  "pytest_pass": false,
+  "pytest_log_excerpt": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_ffb81cs_\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_version_retrieval FAILED               [100%]\n\n=================================== FAILURES ===================================\n____________________________ test_version_retrieval ____________________________\n\n    def test_version_retrieval():\n        import markupsafe",
+  "constraint_status": "FAIL",
+  "constraint_results": null,
+  "overall_task_success": false,
+  "input_tokens": 95,
+  "output_tokens": 131
+}

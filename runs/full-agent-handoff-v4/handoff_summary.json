@@ -1,0 +1,51 @@
+{
+  "pilot_version": "v1.3-r1",
+  "eval_type": "HANDOFF_V4_E2E",
+  "total_runs": 48,
+  "seeds": [
+    42,
+    123,
+    999
+  ],
+  "tasks": [
+    "trans_gold_click_02_isolated_filesystem",
+    "trans_gold_requests_01_tls_context_adapter",
+    "trans_gold_urllib3_01_retry_allowed_methods",
+    "trans_gold_werkzeug_01_cached_property"
+  ],
+  "bm25_repo_context": {
+    "budget": 1200,
+    "applied_identically_across_all_conditions": true
+  },
+  "aggregate_results": {
+    "H0": {
+      "pass_rate": 0.75,
+      "stale_rate": 0.0,
+      "passed_count": 9,
+      "stale_count": 0,
+      "total_runs": 12
+    },
+    "H1": {
+      "pass_rate": 0.9166666666666666,
+      "stale_rate": 0.0,
+      "passed_count": 11,
+      "stale_count": 0,
+      "total_runs": 12
+    },
+    "H2": {
+      "pass_rate": 0.75,
+      "stale_rate": 0.0,
+      "passed_count": 9,
+      "stale_count": 0,
+      "total_runs": 12
+    },
+    "H3": {
+      "pass_rate": 0.75,
+      "stale_rate": 0.0,
+      "passed_count": 9,
+      "stale_count": 0,
+      "total_runs": 12
+    }
+  },
+  "scientific_conclusion": "In this 4-task pilot, no aggregate stale-action reduction was observed (H2=25%, H3=25%), indicating that while RoleMem successfully invalidates stale claims and injects target memories, the 7B agent generation is strongly anchored by in-context BM25 repo tokens and prompt priors."
+}

@@ -1,0 +1,22 @@
+{
+  "transition_id": "trans_track_a_07_pluggy_varnames_noself",
+  "run_id": "S3_seed123",
+  "target_file": "spec_helper.py",
+  "api_deprecation_gate": {
+    "status": "PASS",
+    "details": "Code free of deprecated symbol ', legacy_noself=True)'"
+  },
+  "replacement_mechanism_gate": {
+    "status": "PASS",
+    "details": "Replacement pattern satisfied"
+  },
+  "behavior_fidelity_gate": {
+    "status": "FAIL",
+    "details": "Pytest execution failed",
+    "pytest_passed": false,
+    "log_snippet": "unc'\n\ntest_hidden_verification.py:16: TypeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_varnames_extraction - TypeError: ext...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
+  },
+  "overall_constraint_status": "FAIL",
+  "overall_status": "FAIL",
+  "task_success": false
+}

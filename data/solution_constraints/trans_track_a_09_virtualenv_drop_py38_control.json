@@ -6,7 +6,7 @@
     "api_deprecation_gate": {
       "deprecated_symbol": "CPython3Posix.pyvenv_launch_patch_active",
       "enforcement": "assert not hasattr(CPython3Posix, 'pyvenv_launch_patch_active') - method removed",
-      "verified": true
+      "constraint_status": "SPECIFIED"
     },
     "replacement_mechanism_gate": {
       "required_mechanism": "Direct boolean evaluation returning False without calling removed launcher patch",
@@ -16,7 +16,7 @@
         "dummy",
         "False"
       ],
-      "verified": true
+      "constraint_status": "SPECIFIED"
     },
     "behavior_fidelity_gate": {
       "dynamic_checks": [
@@ -26,8 +26,9 @@
       "boundary_checks": [
         "Boolean type strictness"
       ],
-      "verified": true
+      "constraint_status": "SPECIFIED"
     }
   },
-  "verification_status": "CONSTRAINTS_REGISTERED"
+  "verification_status": "CONSTRAINTS_SPECIFIED",
+  "constraint_status": "SPECIFIED"
 }

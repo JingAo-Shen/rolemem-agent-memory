@@ -1,0 +1,1040 @@
+[
+  {
+    "task_id": "trans_gold_click_02_isolated_filesystem",
+    "condition": "H0",
+    "seed": 42,
+    "current_task": "Implement `setup_test_workspace(tmp_path)` in `test_workspace_helper.py` providing an isolated directory path for test files using pytest tmp_path without calling deprecated isolated_filesystem.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 0,
+    "memory_statements": [],
+    "agent_a_hist_statement": "A context manager that creates a temporary directory and changes the current working directory to it, isolating tests that affect the contents of the CWD.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_0xrayc03\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n",
+    "raw_generation_preview": "```python\nimport tempfile\nfrom pathlib import Path\n\ndef setup_test_workspace(tmp_path: Path) -> Path:\n    \"\"\"Create an isolated workspace directory for testing using pytest's tmp_path fixture.\"\"\"\n    workspace_dir = tmp_path / \"test_workspace\"\n    workspace_dir.mkdir(exist_ok=True)\n    return workspace_dir\n```"
+  },
+  {
+    "task_id": "trans_gold_click_02_isolated_filesystem",
+    "condition": "H0",
+    "seed": 123,
+    "current_task": "Implement `setup_test_workspace(tmp_path)` in `test_workspace_helper.py` providing an isolated directory path for test files using pytest tmp_path without calling deprecated isolated_filesystem.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 0,
+    "memory_statements": [],
+    "agent_a_hist_statement": "Creates a temporary directory, changes the current working directory to it, and yields the path of the temporary directory; on exit, it restores the original working directory and removes the temporary directory unless specified otherwise.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_9qz_dde3\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n",
+    "raw_generation_preview": "```python\nimport os\nfrom pathlib import Path\nimport tempfile\n\ndef setup_test_workspace(tmp_path: Path) -> Path:\n    \"\"\"Create an isolated workspace for testing using pytest's tmp_path fixture.\"\"\"\n    # Ensure the provided tmp_path is used as the base directory\n    workspace_path = tmp_path / \"test_workspace\"\n    \n    # Create the workspace directory if it does not exist\n    workspace_path.mkdir(pa"
+  },
+  {
+    "task_id": "trans_gold_click_02_isolated_filesystem",
+    "condition": "H0",
+    "seed": 999,
+    "current_task": "Implement `setup_test_workspace(tmp_path)` in `test_workspace_helper.py` providing an isolated directory path for test files using pytest tmp_path without calling deprecated isolated_filesystem.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 0,
+    "memory_statements": [],
+    "agent_a_hist_statement": "A context manager that creates a temporary directory and changes the current working directory to it, isolating tests that affect the contents of the CWD.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_mi0uvvee\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n",
+    "raw_generation_preview": "```python\nimport os\nfrom pathlib import Path\nimport tempfile\n\ndef setup_test_workspace(tmp_path: Path) -> Path:\n    \"\"\"Create an isolated workspace for testing using pytest's tmp_path fixture.\"\"\"\n    # Ensure the provided tmp_path is used as the base directory\n    workspace_path = tmp_path / \"test_workspace\"\n    \n    # Create the workspace directory\n    workspace_path.mkdir(parents=True, exist_ok="
+  },
+  {
+    "task_id": "trans_gold_click_02_isolated_filesystem",
+    "condition": "H1",
+    "seed": 42,
+    "current_task": "Implement `setup_test_workspace(tmp_path)` in `test_workspace_helper.py` providing an isolated directory path for test files using pytest tmp_path without calling deprecated isolated_filesystem.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 23,
+    "memory_statements": [
+      "Use pytest tmp_path / tmp_path_factory rather than CliRunner.isolated_filesystem."
+    ],
+    "agent_a_hist_statement": "A context manager that creates a temporary directory and changes the current working directory to it, isolating tests that affect the contents of the CWD.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_zh9v0p29\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n",
+    "raw_generation_preview": "```python\nimport os\nfrom pathlib import Path\nimport pytest\n\ndef setup_test_workspace(tmp_path: Path) -> Path:\n    \"\"\"Create an isolated workspace for testing using pytest's tmp_path.\n\n    Args:\n        tmp_path (Path): The temporary path provided by pytest.\n\n    Returns:\n        Path: The path to the isolated workspace directory.\n    \"\"\"\n    workspace_dir = tmp_path / \"test_workspace\"\n    workspac"
+  },
+  {
+    "task_id": "trans_gold_click_02_isolated_filesystem",
+    "condition": "H1",
+    "seed": 123,
+    "current_task": "Implement `setup_test_workspace(tmp_path)` in `test_workspace_helper.py` providing an isolated directory path for test files using pytest tmp_path without calling deprecated isolated_filesystem.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 23,
+    "memory_statements": [
+      "Use pytest tmp_path / tmp_path_factory rather than CliRunner.isolated_filesystem."
+    ],
+    "agent_a_hist_statement": "Creates a temporary directory, changes the current working directory to it, and yields the path of the temporary directory; on exit, it restores the original working directory and removes the temporary directory unless specified otherwise.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_6mclc1xs\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n",
+    "raw_generation_preview": "```python\nimport os\nfrom pathlib import Path\nimport pytest\n\ndef setup_test_workspace(tmp_path: Path) -> Path:\n    \"\"\"Create an isolated workspace for testing using pytest's tmp_path.\"\"\"\n    return tmp_path\n```"
+  },
+  {
+    "task_id": "trans_gold_click_02_isolated_filesystem",
+    "condition": "H1",
+    "seed": 999,
+    "current_task": "Implement `setup_test_workspace(tmp_path)` in `test_workspace_helper.py` providing an isolated directory path for test files using pytest tmp_path without calling deprecated isolated_filesystem.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 23,
+    "memory_statements": [
+      "Use pytest tmp_path / tmp_path_factory rather than CliRunner.isolated_filesystem."
+    ],
+    "agent_a_hist_statement": "A context manager that creates a temporary directory and changes the current working directory to it, isolating tests that affect the contents of the CWD.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_3r7bebj_\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n",
+    "raw_generation_preview": "```python\nimport os\nfrom pathlib import Path\nimport pytest\n\ndef setup_test_workspace(tmp_path: Path) -> Path:\n    \"\"\"Create an isolated workspace for testing using pytest's tmp_path.\"\"\"\n    return tmp_path\n```"
+  },
+  {
+    "task_id": "trans_gold_click_02_isolated_filesystem",
+    "condition": "H2",
+    "seed": 42,
+    "current_task": "Implement `setup_test_workspace(tmp_path)` in `test_workspace_helper.py` providing an isolated directory path for test files using pytest tmp_path without calling deprecated isolated_filesystem.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 35,
+    "memory_statements": [
+      "A context manager that creates a temporary directory and changes the current working directory to it, isolating tests that affect the contents of the CWD."
+    ],
+    "agent_a_hist_statement": "A context manager that creates a temporary directory and changes the current working directory to it, isolating tests that affect the contents of the CWD.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_bxenovas\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n",
+    "raw_generation_preview": "```python\nimport tempfile\nfrom pathlib import Path\n\ndef setup_test_workspace(tmp_path: Path) -> Path:\n    \"\"\"Create an isolated workspace for testing using pytest's tmp_path fixture.\"\"\"\n    return tmp_path / \"test_workspace\"\n\n# Example usage within a pytest test function\n# def test_example(test_workspace_helper):\n#     workspace = test_workspace_helper.setup_test_workspace(tmp_path)\n#     assert w"
+  },
+  {
+    "task_id": "trans_gold_click_02_isolated_filesystem",
+    "condition": "H2",
+    "seed": 123,
+    "current_task": "Implement `setup_test_workspace(tmp_path)` in `test_workspace_helper.py` providing an isolated directory path for test files using pytest tmp_path without calling deprecated isolated_filesystem.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 46,
+    "memory_statements": [
+      "Creates a temporary directory, changes the current working directory to it, and yields the path of the temporary directory; on exit, it restores the original working directory and removes the temporary directory unless specified otherwise."
+    ],
+    "agent_a_hist_statement": "Creates a temporary directory, changes the current working directory to it, and yields the path of the temporary directory; on exit, it restores the original working directory and removes the temporary directory unless specified otherwise.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_zc7wiwv6\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n",
+    "raw_generation_preview": "```python\nimport os\nfrom pathlib import Path\nimport tempfile\n\ndef setup_test_workspace(tmp_path: Path) -> Path:\n    \"\"\"Create an isolated workspace for testing using pytest's tmp_path fixture.\n\n    Args:\n        tmp_path (Path): The temporary directory provided by pytest.\n\n    Returns:\n        Path: The path to the isolated workspace directory.\n    \"\"\"\n    # Ensure the tmp_path is an absolute path"
+  },
+  {
+    "task_id": "trans_gold_click_02_isolated_filesystem",
+    "condition": "H2",
+    "seed": 999,
+    "current_task": "Implement `setup_test_workspace(tmp_path)` in `test_workspace_helper.py` providing an isolated directory path for test files using pytest tmp_path without calling deprecated isolated_filesystem.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 35,
+    "memory_statements": [
+      "A context manager that creates a temporary directory and changes the current working directory to it, isolating tests that affect the contents of the CWD."
+    ],
+    "agent_a_hist_statement": "A context manager that creates a temporary directory and changes the current working directory to it, isolating tests that affect the contents of the CWD.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": false,
+    "pytest_exit_code": 1,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_9b3u_3vx\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace FAILED            [100%]\n\n=================================== FAILURES ===================================\n__________________________ test_setup_test_workspace ___________________________\n\ntmp_path = PosixPath('/tmp/pytest-of-sja/pytest-0/test_setup_test_workspace0')\n\n    def test_setup_test_workspace(tmp_path):\n        with warnings.catch_warnings(record=True) as recorded:\n            warnings.simplefilter(\"always\")\n            res = setup_test_workspace(tmp_path)\n            assert res is not None\n            dep_warnings = [w for w in recorded if issubclass(w.category, DeprecationWarning) and \"isolated_filesys",
+    "raw_generation_preview": "```python\nimport os\nfrom contextlib import contextmanager\n\n@contextmanager\ndef setup_test_workspace(tmp_path):\n    \"\"\"Set up a test workspace using pytest's tmp_path fixture.\n\n    Args:\n        tmp_path (pathlib.Path): The temporary path provided by pytest.\n\n    Yields:\n        str: The absolute path to the isolated test workspace.\n    \"\"\"\n    workspace_path = tmp_path / \"test_workspace\"\n    works"
+  },
+  {
+    "task_id": "trans_gold_click_02_isolated_filesystem",
+    "condition": "H3",
+    "seed": 42,
+    "current_task": "Implement `setup_test_workspace(tmp_path)` in `test_workspace_helper.py` providing an isolated directory path for test files using pytest tmp_path without calling deprecated isolated_filesystem.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 40,
+    "memory_statements": [
+      "The isolated_filesystem method is deprecated and will be removed in Click 9.0. Use tempfile.TemporaryDirectory or pytest's tmp_path fixture with absolute paths instead."
+    ],
+    "agent_a_hist_statement": "A context manager that creates a temporary directory and changes the current working directory to it, isolating tests that affect the contents of the CWD.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_g0r9gj_8\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n",
+    "raw_generation_preview": "```python\nimport tempfile\nfrom pathlib import Path\n\ndef setup_test_workspace(tmp_path: Path) -> Path:\n    \"\"\"Create an isolated workspace for testing using pytest's tmp_path fixture.\n\n    Args:\n        tmp_path (Path): The temporary directory provided by pytest.\n\n    Returns:\n        Path: The path to the isolated workspace directory.\n    \"\"\"\n    # Ensure the path is an absolute path\n    isolated_"
+  },
+  {
+    "task_id": "trans_gold_click_02_isolated_filesystem",
+    "condition": "H3",
+    "seed": 123,
+    "current_task": "Implement `setup_test_workspace(tmp_path)` in `test_workspace_helper.py` providing an isolated directory path for test files using pytest tmp_path without calling deprecated isolated_filesystem.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 40,
+    "memory_statements": [
+      "The isolated_filesystem method is deprecated and will be removed in Click 9.0. Use tempfile.TemporaryDirectory or pytest's tmp_path fixture with absolute paths instead."
+    ],
+    "agent_a_hist_statement": "Creates a temporary directory, changes the current working directory to it, and yields the path of the temporary directory; on exit, it restores the original working directory and removes the temporary directory unless specified otherwise.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_mvajj396\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n",
+    "raw_generation_preview": "```python\nimport tempfile\nfrom pathlib import Path\n\ndef setup_test_workspace(tmp_path: Path) -> Path:\n    \"\"\"Create an isolated workspace for testing using pytest's tmp_path fixture.\"\"\"\n    return tmp_path / \"test_workspace\"\n\n# Example usage within a pytest test function\ndef test_example(test_workspace: Path):\n    workspace = setup_test_workspace(test_workspace)\n    # Your test code here using the"
+  },
+  {
+    "task_id": "trans_gold_click_02_isolated_filesystem",
+    "condition": "H3",
+    "seed": 999,
+    "current_task": "Implement `setup_test_workspace(tmp_path)` in `test_workspace_helper.py` providing an isolated directory path for test files using pytest tmp_path without calling deprecated isolated_filesystem.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 40,
+    "memory_statements": [
+      "The isolated_filesystem method is deprecated and will be removed in Click 9.0. Use tempfile.TemporaryDirectory or pytest's tmp_path fixture with absolute paths instead."
+    ],
+    "agent_a_hist_statement": "A context manager that creates a temporary directory and changes the current working directory to it, isolating tests that affect the contents of the CWD.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_click_02_isolated_filesystem/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_prx13qrj\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_setup_test_workspace PASSED            [100%]\n\n============================== 1 passed in 0.01s ===============================\n",
+    "raw_generation_preview": "```python\nimport tempfile\nfrom pathlib import Path\n\ndef setup_test_workspace(tmp_path: Path) -> Path:\n    \"\"\"Create an isolated workspace for testing using pytest's tmp_path fixture.\n\n    Args:\n        tmp_path (Path): The temporary path provided by pytest's tmp_path fixture.\n\n    Returns:\n        Path: The path to the newly created isolated workspace.\n    \"\"\"\n    # Create a subdirectory within th"
+  },
+  {
+    "task_id": "trans_gold_requests_01_tls_context_adapter",
+    "condition": "H0",
+    "seed": 42,
+    "current_task": "Implement `get_adapter_connection(adapter, request, verify=True)` in `adapter_helper.py` obtaining a connection from HTTPAdapter without calling deprecated get_connection.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 0,
+    "memory_statements": [],
+    "agent_a_hist_statement": "This method returns a urllib3 connection for the given URL, handling both direct connections and proxied connections.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": true,
+      "active_nodes": []
+    },
+    "test_pass": false,
+    "pytest_exit_code": 1,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_requests_01_tls_context_adapter/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_exs2pw1p\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_get_conn FAILED                        [100%]\n\n=================================== FAILURES ===================================\n________________________________ test_get_conn _________________________________\n\n    def test_get_conn():\n        adapter = HTTPAdapter()\n        req = PreparedRequest()\n        req.prepare_url(\"https://httpbin.org/get\", {})\n        with warnings.catch_warnings(record=True) as recorded:\n            warnings.simplefilter(\"always\")\n>           conn = get_adapter_connection(adapter, req, verify=True)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\ntest_hidden_verification.py:17: \n_ _ _",
+    "raw_generation_preview": "```python\nfrom requests.adapters import HTTPAdapter\nfrom requests.models import PreparedRequest\nfrom requests.sessions import Session\n\ndef get_adapter_connection(adapter: HTTPAdapter, request: PreparedRequest, verify=True):\n    \"\"\"\n    Obtains a connection from the given HTTPAdapter without calling the deprecated get_connection method.\n\n    :param adapter: An instance of HTTPAdapter from which to "
+  },
+  {
+    "task_id": "trans_gold_requests_01_tls_context_adapter",
+    "condition": "H0",
+    "seed": 123,
+    "current_task": "Implement `get_adapter_connection(adapter, request, verify=True)` in `adapter_helper.py` obtaining a connection from HTTPAdapter without calling deprecated get_connection.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 0,
+    "memory_statements": [],
+    "agent_a_hist_statement": "This method returns a urllib3 connection for the given URL, handling both direct connections and proxied connections.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": true,
+      "active_nodes": []
+    },
+    "test_pass": false,
+    "pytest_exit_code": 1,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_requests_01_tls_context_adapter/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_ckscvujo\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_get_conn FAILED                        [100%]\n\n=================================== FAILURES ===================================\n________________________________ test_get_conn _________________________________\n\n    def test_get_conn():\n        adapter = HTTPAdapter()\n        req = PreparedRequest()\n        req.prepare_url(\"https://httpbin.org/get\", {})\n        with warnings.catch_warnings(record=True) as recorded:\n            warnings.simplefilter(\"always\")\n>           conn = get_adapter_connection(adapter, req, verify=True)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\ntest_hidden_verification.py:17: \n_ _ _",
+    "raw_generation_preview": "```python\nfrom requests.adapters import HTTPAdapter\nfrom requests.models import PreparedRequest\nfrom requests.sessions import Session\n\ndef get_adapter_connection(adapter: HTTPAdapter, request: PreparedRequest, verify=True):\n    \"\"\"\n    Obtains a connection from the given HTTPAdapter without calling the deprecated get_connection method.\n\n    :param adapter: An instance of HTTPAdapter from which to "
+  },
+  {
+    "task_id": "trans_gold_requests_01_tls_context_adapter",
+    "condition": "H0",
+    "seed": 999,
+    "current_task": "Implement `get_adapter_connection(adapter, request, verify=True)` in `adapter_helper.py` obtaining a connection from HTTPAdapter without calling deprecated get_connection.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 0,
+    "memory_statements": [],
+    "agent_a_hist_statement": "This method returns a urllib3 connection for the given URL, handling both direct connections and proxied connections.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": true,
+      "active_nodes": []
+    },
+    "test_pass": false,
+    "pytest_exit_code": 1,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_requests_01_tls_context_adapter/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_vcw5rmy1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_get_conn FAILED                        [100%]\n\n=================================== FAILURES ===================================\n________________________________ test_get_conn _________________________________\n\n    def test_get_conn():\n        adapter = HTTPAdapter()\n        req = PreparedRequest()\n        req.prepare_url(\"https://httpbin.org/get\", {})\n        with warnings.catch_warnings(record=True) as recorded:\n            warnings.simplefilter(\"always\")\n>           conn = get_adapter_connection(adapter, req, verify=True)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\ntest_hidden_verification.py:17: \n_ _ _",
+    "raw_generation_preview": "```python\nfrom requests.adapters import HTTPAdapter\nfrom requests.models import PreparedRequest\nfrom requests.exceptions import InvalidSchema\n\ndef get_adapter_connection(adapter, request, verify=True):\n    \"\"\"\n    Obtains a connection from the given HTTPAdapter instance without using the deprecated get_connection method.\n\n    :param adapter: An instance of HTTPAdapter.\n    :param request: A Prepar"
+  },
+  {
+    "task_id": "trans_gold_requests_01_tls_context_adapter",
+    "condition": "H1",
+    "seed": 42,
+    "current_task": "Implement `get_adapter_connection(adapter, request, verify=True)` in `adapter_helper.py` obtaining a connection from HTTPAdapter without calling deprecated get_connection.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 26,
+    "memory_statements": [
+      "Call get_connection_with_tls_context(request, verify=verify) on HTTPAdapter to retrieve connection pools"
+    ],
+    "agent_a_hist_statement": "This method returns a urllib3 connection for the given URL, handling both direct connections and proxied connections.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": true,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_requests_01_tls_context_adapter/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_dhjlhlqq\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_get_conn PASSED                        [100%]\n\n============================== 1 passed in 0.12s ===============================\n",
+    "raw_generation_preview": "```python\nfrom requests.adapters import HTTPAdapter\nfrom requests.models import PreparedRequest\n\ndef get_adapter_connection(adapter, request, verify=True):\n    \"\"\"\n    Retrieves a connection from the given HTTPAdapter for the specified request.\n\n    :param adapter: An instance of HTTPAdapter.\n    :param request: A PreparedRequest object representing the request.\n    :param verify: Boolean indicati"
+  },
+  {
+    "task_id": "trans_gold_requests_01_tls_context_adapter",
+    "condition": "H1",
+    "seed": 123,
+    "current_task": "Implement `get_adapter_connection(adapter, request, verify=True)` in `adapter_helper.py` obtaining a connection from HTTPAdapter without calling deprecated get_connection.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 26,
+    "memory_statements": [
+      "Call get_connection_with_tls_context(request, verify=verify) on HTTPAdapter to retrieve connection pools"
+    ],
+    "agent_a_hist_statement": "This method returns a urllib3 connection for the given URL, handling both direct connections and proxied connections.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": false,
+    "pytest_exit_code": 1,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_requests_01_tls_context_adapter/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_oeyk46d7\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_get_conn FAILED                        [100%]\n\n=================================== FAILURES ===================================\n________________________________ test_get_conn _________________________________\n\n    def test_get_conn():\n        adapter = HTTPAdapter()\n        req = PreparedRequest()\n        req.prepare_url(\"https://httpbin.org/get\", {})\n        with warnings.catch_warnings(record=True) as recorded:\n            warnings.simplefilter(\"always\")\n>           conn = get_adapter_connection(adapter, req, verify=True)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\ntest_hidden_verification.py:17: \n_ _ _",
+    "raw_generation_preview": "```python\nfrom requests.adapters import HTTPAdapter\nfrom requests.models import PreparedRequest\nfrom requests.exceptions import InvalidProxyURL, InvalidSchema, InvalidURL\n\ndef get_adapter_connection(adapter: HTTPAdapter, request: PreparedRequest, verify=True) -> 'urllib3.ConnectionPool':\n    \"\"\"\n    Retrieves a connection from the given HTTPAdapter for the specified request and verification settin"
+  },
+  {
+    "task_id": "trans_gold_requests_01_tls_context_adapter",
+    "condition": "H1",
+    "seed": 999,
+    "current_task": "Implement `get_adapter_connection(adapter, request, verify=True)` in `adapter_helper.py` obtaining a connection from HTTPAdapter without calling deprecated get_connection.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 26,
+    "memory_statements": [
+      "Call get_connection_with_tls_context(request, verify=verify) on HTTPAdapter to retrieve connection pools"
+    ],
+    "agent_a_hist_statement": "This method returns a urllib3 connection for the given URL, handling both direct connections and proxied connections.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": true,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_requests_01_tls_context_adapter/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_5cguawiy\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_get_conn PASSED                        [100%]\n\n============================== 1 passed in 0.12s ===============================\n",
+    "raw_generation_preview": "```python\nfrom requests.adapters import HTTPAdapter\nfrom requests.models import PreparedRequest\nfrom requests.exceptions import InvalidProxyURL, InvalidSchema, InvalidURL\n\ndef get_adapter_connection(adapter, request, verify=True):\n    \"\"\"\n    Obtains a connection from the given HTTPAdapter instance for the provided request.\n\n    :param adapter: An instance of HTTPAdapter.\n    :param request: A Pre"
+  },
+  {
+    "task_id": "trans_gold_requests_01_tls_context_adapter",
+    "condition": "H2",
+    "seed": 42,
+    "current_task": "Implement `get_adapter_connection(adapter, request, verify=True)` in `adapter_helper.py` obtaining a connection from HTTPAdapter without calling deprecated get_connection.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 27,
+    "memory_statements": [
+      "This method returns a urllib3 connection for the given URL, handling both direct connections and proxied connections."
+    ],
+    "agent_a_hist_statement": "This method returns a urllib3 connection for the given URL, handling both direct connections and proxied connections.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": true,
+      "active_nodes": []
+    },
+    "test_pass": false,
+    "pytest_exit_code": 1,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_requests_01_tls_context_adapter/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_7s6uyr2t\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_get_conn FAILED                        [100%]\n\n=================================== FAILURES ===================================\n________________________________ test_get_conn _________________________________\n\n    def test_get_conn():\n        adapter = HTTPAdapter()\n        req = PreparedRequest()\n        req.prepare_url(\"https://httpbin.org/get\", {})\n        with warnings.catch_warnings(record=True) as recorded:\n            warnings.simplefilter(\"always\")\n>           conn = get_adapter_connection(adapter, req, verify=True)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\ntest_hidden_verification.py:17: \n_ _ _",
+    "raw_generation_preview": "```python\nfrom requests.adapters import HTTPAdapter\nfrom requests.exceptions import InvalidProxyURL, InvalidSchema\nfrom requests.models import PreparedRequest\nfrom urllib3.util.retry import Retry\n\ndef get_adapter_connection(adapter, request, verify=True):\n    \"\"\"\n    Obtains a connection from the given HTTPAdapter without calling deprecated get_connection.\n\n    :param adapter: An instance of HTTPA"
+  },
+  {
+    "task_id": "trans_gold_requests_01_tls_context_adapter",
+    "condition": "H2",
+    "seed": 123,
+    "current_task": "Implement `get_adapter_connection(adapter, request, verify=True)` in `adapter_helper.py` obtaining a connection from HTTPAdapter without calling deprecated get_connection.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 27,
+    "memory_statements": [
+      "This method returns a urllib3 connection for the given URL, handling both direct connections and proxied connections."
+    ],
+    "agent_a_hist_statement": "This method returns a urllib3 connection for the given URL, handling both direct connections and proxied connections.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": true,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_requests_01_tls_context_adapter/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_s6r0kz2c\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_get_conn PASSED                        [100%]\n\n============================== 1 passed in 0.12s ===============================\n",
+    "raw_generation_preview": "```python\nimport requests\n\ndef get_adapter_connection(adapter, request, verify=True):\n    \"\"\"\n    Obtains a connection from the given HTTPAdapter instance for the specified request.\n\n    :param adapter: An instance of requests.adapters.HTTPAdapter.\n    :param request: A requests.PreparedRequest object representing the request.\n    :param verify: Boolean indicating whether to verify the server's TL"
+  },
+  {
+    "task_id": "trans_gold_requests_01_tls_context_adapter",
+    "condition": "H2",
+    "seed": 999,
+    "current_task": "Implement `get_adapter_connection(adapter, request, verify=True)` in `adapter_helper.py` obtaining a connection from HTTPAdapter without calling deprecated get_connection.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 27,
+    "memory_statements": [
+      "This method returns a urllib3 connection for the given URL, handling both direct connections and proxied connections."
+    ],
+    "agent_a_hist_statement": "This method returns a urllib3 connection for the given URL, handling both direct connections and proxied connections.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": true,
+      "active_nodes": []
+    },
+    "test_pass": false,
+    "pytest_exit_code": 1,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_requests_01_tls_context_adapter/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_xtq8y51n\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_get_conn FAILED                        [100%]\n\n=================================== FAILURES ===================================\n________________________________ test_get_conn _________________________________\n\n    def test_get_conn():\n        adapter = HTTPAdapter()\n        req = PreparedRequest()\n        req.prepare_url(\"https://httpbin.org/get\", {})\n        with warnings.catch_warnings(record=True) as recorded:\n            warnings.simplefilter(\"always\")\n>           conn = get_adapter_connection(adapter, req, verify=True)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\ntest_hidden_verification.py:17: \n_ _ _",
+    "raw_generation_preview": "```python\nfrom requests.adapters import HTTPAdapter\nfrom requests.models import PreparedRequest\nfrom requests.utils import select_proxy\n\ndef get_adapter_connection(adapter: HTTPAdapter, request: PreparedRequest, verify=True):\n    \"\"\"\n    Obtains a connection from the given HTTPAdapter without calling deprecated get_connection.\n\n    :param adapter: An instance of HTTPAdapter.\n    :param request: A "
+  },
+  {
+    "task_id": "trans_gold_requests_01_tls_context_adapter",
+    "condition": "H3",
+    "seed": 42,
+    "current_task": "Implement `get_adapter_connection(adapter, request, verify=True)` in `adapter_helper.py` obtaining a connection from HTTPAdapter without calling deprecated get_connection.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 26,
+    "memory_statements": [
+      "The `get_connection` method has been deprecated. Use `get_connection_with_tls_context` instead."
+    ],
+    "agent_a_hist_statement": "This method returns a urllib3 connection for the given URL, handling both direct connections and proxied connections.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": true,
+      "active_nodes": []
+    },
+    "test_pass": false,
+    "pytest_exit_code": 1,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_requests_01_tls_context_adapter/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_2vtj3nc_\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_get_conn FAILED                        [100%]\n\n=================================== FAILURES ===================================\n________________________________ test_get_conn _________________________________\n\n    def test_get_conn():\n        adapter = HTTPAdapter()\n        req = PreparedRequest()\n        req.prepare_url(\"https://httpbin.org/get\", {})\n        with warnings.catch_warnings(record=True) as recorded:\n            warnings.simplefilter(\"always\")\n>           conn = get_adapter_connection(adapter, req, verify=True)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\ntest_hidden_verification.py:17: \n_ _ _",
+    "raw_generation_preview": "```python\nfrom requests.adapters import HTTPAdapter\nfrom requests.exceptions import InvalidProxyURL, InvalidSchema\nfrom requests.models import PreparedRequest, Response\nfrom urllib3.util.retry import Retry\n\ndef get_adapter_connection(adapter, request, verify=True):\n    \"\"\"\n    Obtains a connection from the given HTTPAdapter instance without using the deprecated get_connection method.\n\n    :param a"
+  },
+  {
+    "task_id": "trans_gold_requests_01_tls_context_adapter",
+    "condition": "H3",
+    "seed": 123,
+    "current_task": "Implement `get_adapter_connection(adapter, request, verify=True)` in `adapter_helper.py` obtaining a connection from HTTPAdapter without calling deprecated get_connection.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 26,
+    "memory_statements": [
+      "The `get_connection` method has been deprecated. Use `get_connection_with_tls_context` instead."
+    ],
+    "agent_a_hist_statement": "This method returns a urllib3 connection for the given URL, handling both direct connections and proxied connections.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": true,
+      "active_nodes": []
+    },
+    "test_pass": false,
+    "pytest_exit_code": 1,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_requests_01_tls_context_adapter/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_ape7e5ky\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_get_conn FAILED                        [100%]\n\n=================================== FAILURES ===================================\n________________________________ test_get_conn _________________________________\n\n    def test_get_conn():\n        adapter = HTTPAdapter()\n        req = PreparedRequest()\n        req.prepare_url(\"https://httpbin.org/get\", {})\n        with warnings.catch_warnings(record=True) as recorded:\n            warnings.simplefilter(\"always\")\n>           conn = get_adapter_connection(adapter, req, verify=True)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\ntest_hidden_verification.py:17: \n_ _ _",
+    "raw_generation_preview": "```python\nimport requests\n\ndef get_adapter_connection(adapter, request, verify=True):\n    \"\"\"\n    Obtains a connection from the given HTTPAdapter instance without using the deprecated get_connection method.\n\n    :param adapter: An instance of requests.adapters.HTTPAdapter.\n    :param request: A requests.PreparedRequest object representing the request.\n    :param verify: Boolean indicating whether "
+  },
+  {
+    "task_id": "trans_gold_requests_01_tls_context_adapter",
+    "condition": "H3",
+    "seed": 999,
+    "current_task": "Implement `get_adapter_connection(adapter, request, verify=True)` in `adapter_helper.py` obtaining a connection from HTTPAdapter without calling deprecated get_connection.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 26,
+    "memory_statements": [
+      "The `get_connection` method has been deprecated. Use `get_connection_with_tls_context` instead."
+    ],
+    "agent_a_hist_statement": "This method returns a urllib3 connection for the given URL, handling both direct connections and proxied connections.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": false,
+    "pytest_exit_code": 1,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_requests_01_tls_context_adapter/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_w9kokwvc\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_get_conn FAILED                        [100%]\n\n=================================== FAILURES ===================================\n________________________________ test_get_conn _________________________________\n\n    def test_get_conn():\n        adapter = HTTPAdapter()\n        req = PreparedRequest()\n        req.prepare_url(\"https://httpbin.org/get\", {})\n        with warnings.catch_warnings(record=True) as recorded:\n            warnings.simplefilter(\"always\")\n>           conn = get_adapter_connection(adapter, req, verify=True)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\ntest_hidden_verification.py:17: \n_ _ _",
+    "raw_generation_preview": "```python\nimport requests\n\ndef get_adapter_connection(adapter, request, verify=True):\n    \"\"\"\n    Obtains a connection from the given HTTPAdapter instance for the specified request.\n\n    :param adapter: An instance of requests.adapters.HTTPAdapter.\n    :param request: A requests.PreparedRequest object representing the request.\n    :param verify: Boolean indicating whether to verify the server's TL"
+  },
+  {
+    "task_id": "trans_gold_urllib3_01_retry_allowed_methods",
+    "condition": "H0",
+    "seed": 42,
+    "current_task": "Implement `build_custom_retry(methods)` in `retry_factory.py` returning a Retry object with custom methods.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 0,
+    "memory_statements": [],
+    "agent_a_hist_statement": "Not explicitly defined or used in the provided snippet.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.10.12, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_urllib3_01_retry_allowed_methods/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_0kwr8l91\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_build_custom_retry PASSED              [100%]\n\n============================== 1 passed in 0.05s ===============================\n",
+    "raw_generation_preview": "```python\nfrom urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Build a Retry object with custom methods.\n\n    Args:\n    methods (iterable): An iterable of uppercased HTTP method verbs that should be retried on.\n\n    Returns:\n    Retry: A Retry object configured with the specified methods.\n    \"\"\"\n    # Create a Retry object with default settings\n    retry_strategy = R"
+  },
+  {
+    "task_id": "trans_gold_urllib3_01_retry_allowed_methods",
+    "condition": "H0",
+    "seed": 123,
+    "current_task": "Implement `build_custom_retry(methods)` in `retry_factory.py` returning a Retry object with custom methods.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 0,
+    "memory_statements": [],
+    "agent_a_hist_statement": "Not explicitly defined or used in the provided snippet.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.10.12, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_urllib3_01_retry_allowed_methods/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_2iq_f6_m\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_build_custom_retry PASSED              [100%]\n\n============================== 1 passed in 0.04s ===============================\n",
+    "raw_generation_preview": "```python\nfrom urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Builds a Retry object with custom methods.\n\n    Args:\n    methods (iterable): An iterable of uppercased HTTP method verbs to be used for retries.\n\n    Returns:\n    Retry: A Retry object configured with the specified methods.\n    \"\"\"\n    # Create a Retry object with default settings\n    retry_strategy = Ret"
+  },
+  {
+    "task_id": "trans_gold_urllib3_01_retry_allowed_methods",
+    "condition": "H0",
+    "seed": 999,
+    "current_task": "Implement `build_custom_retry(methods)` in `retry_factory.py` returning a Retry object with custom methods.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 0,
+    "memory_statements": [],
+    "agent_a_hist_statement": "Not explicitly defined or used in the provided snippet.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.10.12, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_urllib3_01_retry_allowed_methods/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_5amnxyra\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_build_custom_retry PASSED              [100%]\n\n============================== 1 passed in 0.04s ===============================\n",
+    "raw_generation_preview": "```python\nfrom urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Builds a Retry object with custom methods.\n\n    Args:\n    methods (iterable): An iterable of uppercased HTTP method verbs that should be retried on.\n\n    Returns:\n    Retry: A Retry object configured with the specified methods.\n    \"\"\"\n    # Create a Retry object with default settings\n    retry_strategy = "
+  },
+  {
+    "task_id": "trans_gold_urllib3_01_retry_allowed_methods",
+    "condition": "H1",
+    "seed": 42,
+    "current_task": "Implement `build_custom_retry(methods)` in `retry_factory.py` returning a Retry object with custom methods.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 18,
+    "memory_statements": [
+      "Pass allowed_methods to urllib3.util.retry.Retry constructor"
+    ],
+    "agent_a_hist_statement": "Not explicitly defined or used in the provided snippet.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.10.12, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_urllib3_01_retry_allowed_methods/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_ra_un4ze\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_build_custom_retry PASSED              [100%]\n\n============================== 1 passed in 0.04s ===============================\n",
+    "raw_generation_preview": "```python\nfrom urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Builds a Retry object with custom allowed methods.\n\n    Args:\n    methods (iterable): An iterable of uppercased HTTP method verbs to be used for retries.\n\n    Returns:\n    Retry: A Retry object configured with the specified allowed methods.\n    \"\"\"\n    return Retry(allowed_methods=frozenset(methods))\n```"
+  },
+  {
+    "task_id": "trans_gold_urllib3_01_retry_allowed_methods",
+    "condition": "H1",
+    "seed": 123,
+    "current_task": "Implement `build_custom_retry(methods)` in `retry_factory.py` returning a Retry object with custom methods.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 18,
+    "memory_statements": [
+      "Pass allowed_methods to urllib3.util.retry.Retry constructor"
+    ],
+    "agent_a_hist_statement": "Not explicitly defined or used in the provided snippet.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.10.12, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_urllib3_01_retry_allowed_methods/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_auu7x735\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_build_custom_retry PASSED              [100%]\n\n============================== 1 passed in 0.04s ===============================\n",
+    "raw_generation_preview": "```python\nfrom urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Builds a custom Retry object with specified allowed methods.\n\n    Args:\n    methods (iterable): An iterable of uppercased HTTP method verbs to allow.\n\n    Returns:\n    Retry: A Retry object configured with the specified allowed methods.\n    \"\"\"\n    # Create a Retry object with default settings\n    retry_st"
+  },
+  {
+    "task_id": "trans_gold_urllib3_01_retry_allowed_methods",
+    "condition": "H1",
+    "seed": 999,
+    "current_task": "Implement `build_custom_retry(methods)` in `retry_factory.py` returning a Retry object with custom methods.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 18,
+    "memory_statements": [
+      "Pass allowed_methods to urllib3.util.retry.Retry constructor"
+    ],
+    "agent_a_hist_statement": "Not explicitly defined or used in the provided snippet.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.10.12, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_urllib3_01_retry_allowed_methods/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_fd4wtdqc\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_build_custom_retry PASSED              [100%]\n\n============================== 1 passed in 0.04s ===============================\n",
+    "raw_generation_preview": "```python\nfrom urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Builds a Retry object with custom allowed methods.\n\n    Args:\n    methods (iterable): An iterable of uppercased HTTP method verbs to be used for retries.\n\n    Returns:\n    Retry: A Retry object configured with the specified allowed methods.\n    \"\"\"\n    return Retry(allowed_methods=frozenset(methods))\n```"
+  },
+  {
+    "task_id": "trans_gold_urllib3_01_retry_allowed_methods",
+    "condition": "H2",
+    "seed": 42,
+    "current_task": "Implement `build_custom_retry(methods)` in `retry_factory.py` returning a Retry object with custom methods.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 16,
+    "memory_statements": [
+      "Not explicitly defined or used in the provided snippet."
+    ],
+    "agent_a_hist_statement": "Not explicitly defined or used in the provided snippet.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.10.12, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_urllib3_01_retry_allowed_methods/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_lbewvdb3\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_build_custom_retry PASSED              [100%]\n\n============================== 1 passed in 0.04s ===============================\n",
+    "raw_generation_preview": "```python\nfrom urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Returns a Retry object configured with custom methods.\n\n    Args:\n    methods (iterable): An iterable of uppercased HTTP method verbs to be included in the Retry configuration.\n\n    Returns:\n    Retry: A Retry object with the specified methods.\n    \"\"\"\n    # Create a Retry object with custom methods\n    cu"
+  },
+  {
+    "task_id": "trans_gold_urllib3_01_retry_allowed_methods",
+    "condition": "H2",
+    "seed": 123,
+    "current_task": "Implement `build_custom_retry(methods)` in `retry_factory.py` returning a Retry object with custom methods.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 16,
+    "memory_statements": [
+      "Not explicitly defined or used in the provided snippet."
+    ],
+    "agent_a_hist_statement": "Not explicitly defined or used in the provided snippet.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.10.12, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_urllib3_01_retry_allowed_methods/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_v1i0xvpn\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_build_custom_retry PASSED              [100%]\n\n============================== 1 passed in 0.04s ===============================\n",
+    "raw_generation_preview": "```python\nfrom urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Builds a Retry object with custom methods.\n\n    Args:\n    methods (iterable): An iterable of uppercased HTTP method verbs to be used for retries.\n\n    Returns:\n    Retry: A Retry object configured with the specified methods.\n    \"\"\"\n    # Create a Retry object with default settings\n    retry_strategy = Ret"
+  },
+  {
+    "task_id": "trans_gold_urllib3_01_retry_allowed_methods",
+    "condition": "H2",
+    "seed": 999,
+    "current_task": "Implement `build_custom_retry(methods)` in `retry_factory.py` returning a Retry object with custom methods.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 16,
+    "memory_statements": [
+      "Not explicitly defined or used in the provided snippet."
+    ],
+    "agent_a_hist_statement": "Not explicitly defined or used in the provided snippet.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.10.12, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_urllib3_01_retry_allowed_methods/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_3wedtvgv\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_build_custom_retry PASSED              [100%]\n\n============================== 1 passed in 0.04s ===============================\n",
+    "raw_generation_preview": "```python\nfrom urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Returns a Retry object configured with custom methods.\n\n    Args:\n    methods (iterable): An iterable of uppercased HTTP method verbs to be retried.\n\n    Returns:\n    Retry: A Retry object with the specified methods enabled for retries.\n    \"\"\"\n    # Create a Retry object with default settings\n    retry_st"
+  },
+  {
+    "task_id": "trans_gold_urllib3_01_retry_allowed_methods",
+    "condition": "H3",
+    "seed": 42,
+    "current_task": "Implement `build_custom_retry(methods)` in `retry_factory.py` returning a Retry object with custom methods.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 36,
+    "memory_statements": [
+      "Use 'Retry.DEFAULT_ALLOWED_METHODS' instead.",
+      "Use 'Retry.DEFAULT_REMOVE_HEADERS_ON_REDIRECT' instead.",
+      "Use 'allowed_methods' instead."
+    ],
+    "agent_a_hist_statement": "Not explicitly defined or used in the provided snippet.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.10.12, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_urllib3_01_retry_allowed_methods/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_nl0wn3kn\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_build_custom_retry PASSED              [100%]\n\n============================== 1 passed in 0.04s ===============================\n",
+    "raw_generation_preview": "```python\nfrom urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Builds a Retry object with custom methods.\n\n    Args:\n    methods (iterable): An iterable of uppercased HTTP method verbs that we should retry on.\n\n    Returns:\n    Retry: A Retry object configured with the specified methods.\n    \"\"\"\n    # Create a Retry object with custom methods\n    custom_retry = Retry("
+  },
+  {
+    "task_id": "trans_gold_urllib3_01_retry_allowed_methods",
+    "condition": "H3",
+    "seed": 123,
+    "current_task": "Implement `build_custom_retry(methods)` in `retry_factory.py` returning a Retry object with custom methods.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 36,
+    "memory_statements": [
+      "Use 'Retry.DEFAULT_ALLOWED_METHODS' instead.",
+      "Use 'Retry.DEFAULT_REMOVE_HEADERS_ON_REDIRECT' instead.",
+      "Use 'allowed_methods' instead."
+    ],
+    "agent_a_hist_statement": "Not explicitly defined or used in the provided snippet.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.10.12, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_urllib3_01_retry_allowed_methods/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_kd3saols\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_build_custom_retry PASSED              [100%]\n\n============================== 1 passed in 0.04s ===============================\n",
+    "raw_generation_preview": "```python\nfrom urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Builds a custom Retry object with specified methods.\n\n    Args:\n    methods (list): List of HTTP methods to include in the Retry configuration.\n\n    Returns:\n    Retry: A Retry object configured with the specified methods.\n    \"\"\"\n    # Create a Retry object with custom methods\n    custom_retry = Retry(\n  "
+  },
+  {
+    "task_id": "trans_gold_urllib3_01_retry_allowed_methods",
+    "condition": "H3",
+    "seed": 999,
+    "current_task": "Implement `build_custom_retry(methods)` in `retry_factory.py` returning a Retry object with custom methods.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 36,
+    "memory_statements": [
+      "Use 'Retry.DEFAULT_ALLOWED_METHODS' instead.",
+      "Use 'Retry.DEFAULT_REMOVE_HEADERS_ON_REDIRECT' instead.",
+      "Use 'allowed_methods' instead."
+    ],
+    "agent_a_hist_statement": "Not explicitly defined or used in the provided snippet.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.10.12, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_urllib3_01_retry_allowed_methods/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_mft2nkql\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_build_custom_retry PASSED              [100%]\n\n============================== 1 passed in 0.04s ===============================\n",
+    "raw_generation_preview": "```python\nfrom urllib3.util.retry import Retry\n\ndef build_custom_retry(methods):\n    \"\"\"\n    Builds a Retry object with custom methods.\n\n    Args:\n    methods (iterable): An iterable of uppercased HTTP method verbs that we should retry on.\n\n    Returns:\n    Retry: A Retry object configured with the specified methods.\n    \"\"\"\n    # Create a Retry object with custom methods\n    custom_retry = Retry("
+  },
+  {
+    "task_id": "trans_gold_werkzeug_01_cached_property",
+    "condition": "H0",
+    "seed": 42,
+    "current_task": "Implement `reset_cached_attribute(instance, attr_name)` in `property_helper.py` to clear a cached property.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 0,
+    "memory_statements": [],
+    "agent_a_hist_statement": "The function invalidates the cache for a cached_property on an object.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_werkzeug_01_cached_property/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_uf_rhe0e\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_reset_cached_attribute PASSED          [100%]\n\n============================== 1 passed in 0.09s ===============================\n",
+    "raw_generation_preview": "```python\n# property_helper.py\n\ndef reset_cached_attribute(instance, attr_name):\n    \"\"\"\n    Resets the cached attribute of a given instance.\n\n    Args:\n    instance (object): The instance whose cached attribute needs to be reset.\n    attr_name (str): The name of the cached attribute to be reset.\n\n    Returns:\n    None\n    \"\"\"\n    if hasattr(instance, attr_name):\n        delattr(instance, attr_nam"
+  },
+  {
+    "task_id": "trans_gold_werkzeug_01_cached_property",
+    "condition": "H0",
+    "seed": 123,
+    "current_task": "Implement `reset_cached_attribute(instance, attr_name)` in `property_helper.py` to clear a cached property.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 0,
+    "memory_statements": [],
+    "agent_a_hist_statement": "Invalidates the cache for a cached_property on an object.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_werkzeug_01_cached_property/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_yr4mobkh\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_reset_cached_attribute PASSED          [100%]\n\n============================== 1 passed in 0.10s ===============================\n",
+    "raw_generation_preview": "```python\n# property_helper.py\n\ndef reset_cached_attribute(instance, attr_name):\n    \"\"\"\n    Clears the cache for a cached property on the given instance.\n\n    Args:\n        instance (object): The instance containing the cached property.\n        attr_name (str): The name of the cached property to clear.\n\n    Returns:\n        None\n    \"\"\"\n    try:\n        del instance.__dict__[attr_name]\n    except"
+  },
+  {
+    "task_id": "trans_gold_werkzeug_01_cached_property",
+    "condition": "H0",
+    "seed": 999,
+    "current_task": "Implement `reset_cached_attribute(instance, attr_name)` in `property_helper.py` to clear a cached property.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 0,
+    "memory_statements": [],
+    "agent_a_hist_statement": "Invalidates the cache for a cached_property on an object.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_werkzeug_01_cached_property/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_y6x3xlib\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_reset_cached_attribute PASSED          [100%]\n\n============================== 1 passed in 0.09s ===============================\n",
+    "raw_generation_preview": "```python\n# property_helper.py\n\ndef reset_cached_attribute(instance, attr_name):\n    \"\"\"\n    Clears the cache for a cached property on the given instance.\n\n    Args:\n    instance (object): The instance containing the cached property.\n    attr_name (str): The name of the cached property to clear.\n    \"\"\"\n    if hasattr(instance, attr_name):\n        delattr(instance, attr_name)\n```"
+  },
+  {
+    "task_id": "trans_gold_werkzeug_01_cached_property",
+    "condition": "H1",
+    "seed": 42,
+    "current_task": "Implement `reset_cached_attribute(instance, attr_name)` in `property_helper.py` to clear a cached property.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 23,
+    "memory_statements": [
+      "Use delattr(instance, attr_name) or del instance.prop to clear cached properties"
+    ],
+    "agent_a_hist_statement": "The function invalidates the cache for a cached_property on an object.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_werkzeug_01_cached_property/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_slzbf0xj\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_reset_cached_attribute PASSED          [100%]\n\n============================== 1 passed in 0.09s ===============================\n",
+    "raw_generation_preview": "```python\n# property_helper.py\n\ndef reset_cached_attribute(instance, attr_name):\n    \"\"\"Clears the cache for a cached property on the given instance.\"\"\"\n    try:\n        delattr(instance, attr_name)\n    except AttributeError:\n        raise AttributeError(f\"No cached property named '{attr_name}' found on {instance}\")\n```"
+  },
+  {
+    "task_id": "trans_gold_werkzeug_01_cached_property",
+    "condition": "H1",
+    "seed": 123,
+    "current_task": "Implement `reset_cached_attribute(instance, attr_name)` in `property_helper.py` to clear a cached property.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 23,
+    "memory_statements": [
+      "Use delattr(instance, attr_name) or del instance.prop to clear cached properties"
+    ],
+    "agent_a_hist_statement": "Invalidates the cache for a cached_property on an object.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_werkzeug_01_cached_property/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_jz6hmmm2\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_reset_cached_attribute PASSED          [100%]\n\n============================== 1 passed in 0.09s ===============================\n",
+    "raw_generation_preview": "```python\n# property_helper.py\n\ndef reset_cached_attribute(instance, attr_name):\n    \"\"\"Clears the cache for a cached property on the given instance.\n\n    Args:\n        instance (object): The instance containing the cached property.\n        attr_name (str): The name of the cached property to clear.\n\n    Returns:\n        None\n    \"\"\"\n    try:\n        delattr(instance, attr_name)\n    except Attribut"
+  },
+  {
+    "task_id": "trans_gold_werkzeug_01_cached_property",
+    "condition": "H1",
+    "seed": 999,
+    "current_task": "Implement `reset_cached_attribute(instance, attr_name)` in `property_helper.py` to clear a cached property.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 23,
+    "memory_statements": [
+      "Use delattr(instance, attr_name) or del instance.prop to clear cached properties"
+    ],
+    "agent_a_hist_statement": "Invalidates the cache for a cached_property on an object.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_werkzeug_01_cached_property/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_cfm2fc0r\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_reset_cached_attribute PASSED          [100%]\n\n============================== 1 passed in 0.09s ===============================\n",
+    "raw_generation_preview": "```python\n# property_helper.py\n\ndef reset_cached_attribute(instance, attr_name):\n    \"\"\"Clears the cache for a cached property on the given instance.\n\n    Args:\n        instance (object): The instance containing the cached property.\n        attr_name (str): The name of the cached property to clear.\n    \"\"\"\n    try:\n        delattr(instance, attr_name)\n    except AttributeError:\n        raise Attri"
+  },
+  {
+    "task_id": "trans_gold_werkzeug_01_cached_property",
+    "condition": "H2",
+    "seed": 42,
+    "current_task": "Implement `reset_cached_attribute(instance, attr_name)` in `property_helper.py` to clear a cached property.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 20,
+    "memory_statements": [
+      "The function invalidates the cache for a cached_property on an object."
+    ],
+    "agent_a_hist_statement": "The function invalidates the cache for a cached_property on an object.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_werkzeug_01_cached_property/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_tvnfabv4\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_reset_cached_attribute PASSED          [100%]\n\n============================== 1 passed in 0.09s ===============================\n",
+    "raw_generation_preview": "```python\n# property_helper.py\n\ndef reset_cached_attribute(instance, attr_name):\n    \"\"\"\n    Resets the cached attribute for a given instance and attribute name.\n    \n    Args:\n    instance (object): The instance containing the cached attribute.\n    attr_name (str): The name of the cached attribute to reset.\n    \"\"\"\n    if hasattr(instance, attr_name):\n        delattr(instance, attr_name)\n```"
+  },
+  {
+    "task_id": "trans_gold_werkzeug_01_cached_property",
+    "condition": "H2",
+    "seed": 123,
+    "current_task": "Implement `reset_cached_attribute(instance, attr_name)` in `property_helper.py` to clear a cached property.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 18,
+    "memory_statements": [
+      "Invalidates the cache for a cached_property on an object."
+    ],
+    "agent_a_hist_statement": "Invalidates the cache for a cached_property on an object.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_werkzeug_01_cached_property/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_bk2ux5rf\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_reset_cached_attribute PASSED          [100%]\n\n============================== 1 passed in 0.09s ===============================\n",
+    "raw_generation_preview": "```python\n# property_helper.py\n\ndef reset_cached_attribute(instance, attr_name):\n    \"\"\"\n    Resets the cached attribute for a given instance and attribute name.\n\n    Args:\n        instance (object): The instance containing the cached attribute.\n        attr_name (str): The name of the cached attribute to reset.\n\n    Returns:\n        None\n    \"\"\"\n    try:\n        del instance.__dict__[attr_name]\n "
+  },
+  {
+    "task_id": "trans_gold_werkzeug_01_cached_property",
+    "condition": "H2",
+    "seed": 999,
+    "current_task": "Implement `reset_cached_attribute(instance, attr_name)` in `property_helper.py` to clear a cached property.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 18,
+    "memory_statements": [
+      "Invalidates the cache for a cached_property on an object."
+    ],
+    "agent_a_hist_statement": "Invalidates the cache for a cached_property on an object.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_werkzeug_01_cached_property/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_qc0z_stb\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_reset_cached_attribute PASSED          [100%]\n\n============================== 1 passed in 0.09s ===============================\n",
+    "raw_generation_preview": "```python\n# property_helper.py\n\ndef reset_cached_attribute(instance, attr_name):\n    \"\"\"\n    Clears the cache for a cached_property on an instance.\n\n    Args:\n        instance (object): The instance containing the cached property.\n        attr_name (str): The name of the cached property to clear.\n    \"\"\"\n    try:\n        del instance.__dict__[attr_name]\n    except KeyError:\n        raise Attribute"
+  },
+  {
+    "task_id": "trans_gold_werkzeug_01_cached_property",
+    "condition": "H3",
+    "seed": 42,
+    "current_task": "Implement `reset_cached_attribute(instance, attr_name)` in `property_helper.py` to clear a cached property.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 24,
+    "memory_statements": [
+      "The function 'invalidate_cached_property' is deprecated. Use 'del obj.name' instead."
+    ],
+    "agent_a_hist_statement": "The function invalidates the cache for a cached_property on an object.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_werkzeug_01_cached_property/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_ygvyhjez\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_reset_cached_attribute PASSED          [100%]\n\n============================== 1 passed in 0.09s ===============================\n",
+    "raw_generation_preview": "```python\ndef reset_cached_attribute(instance, attr_name):\n    \"\"\"Clears the cache for a cached property on the given instance.\"\"\"\n    try:\n        del instance.__dict__[attr_name]\n    except KeyError:\n        raise AttributeError(f\"{instance} has no attribute '{attr_name}'\")\n```"
+  },
+  {
+    "task_id": "trans_gold_werkzeug_01_cached_property",
+    "condition": "H3",
+    "seed": 123,
+    "current_task": "Implement `reset_cached_attribute(instance, attr_name)` in `property_helper.py` to clear a cached property.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 24,
+    "memory_statements": [
+      "The function 'invalidate_cached_property' is deprecated. Use 'del obj.name' instead."
+    ],
+    "agent_a_hist_statement": "Invalidates the cache for a cached_property on an object.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_werkzeug_01_cached_property/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_5xtabej9\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_reset_cached_attribute PASSED          [100%]\n\n============================== 1 passed in 0.09s ===============================\n",
+    "raw_generation_preview": "```python\ndef reset_cached_attribute(instance, attr_name):\n    \"\"\"Clears the cache for a cached property on the given instance.\n\n    Args:\n        instance: The instance containing the cached property.\n        attr_name: The name of the cached property to clear.\n\n    Returns:\n        None\n    \"\"\"\n    if hasattr(instance, attr_name):\n        delattr(instance, attr_name)\n```"
+  },
+  {
+    "task_id": "trans_gold_werkzeug_01_cached_property",
+    "condition": "H3",
+    "seed": 999,
+    "current_task": "Implement `reset_cached_attribute(instance, attr_name)` in `property_helper.py` to clear a cached property.",
+    "repo_bm25_tokens": 1200,
+    "memory_tokens": 24,
+    "memory_statements": [
+      "The function 'invalidate_cached_property' is deprecated. Use 'del obj.name' instead."
+    ],
+    "agent_a_hist_statement": "Invalidates the cache for a cached_property on an object.",
+    "is_stale_ast": false,
+    "ast_details": {
+      "stale_active_use": false,
+      "stale_mention": false,
+      "active_nodes": []
+    },
+    "test_pass": true,
+    "pytest_exit_code": 0,
+    "pytest_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /code/rolemem-agent-memory/.venvs/trans_gold_werkzeug_01_cached_property/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_orgcisbd\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_reset_cached_attribute PASSED          [100%]\n\n============================== 1 passed in 0.09s ===============================\n",
+    "raw_generation_preview": "```python\ndef reset_cached_attribute(instance, attr_name):\n    \"\"\"Clears the cache for a cached property on the given instance.\"\"\"\n    try:\n        del instance.__dict__[attr_name]\n    except KeyError:\n        raise AttributeError(f\"{instance} has no attribute '{attr_name}'\")\n```"
+  }
+]

@@ -1,0 +1,32 @@
+{
+  "transition_id": "trans_track_a_01_click_stream_deprecations",
+  "overall_status": "TEMPORAL_VALID",
+  "reconstructed_seed_count": 3,
+  "valid_seed_count": 3,
+  "evaluations": {
+    "42": {
+      "verdict": "TEMPORAL_VALID",
+      "pr_leak": false,
+      "matched_replacements": [],
+      "matched_leak_terms": [],
+      "base_has_content": true,
+      "statement": "get_binary_stream retrieves a system stream for byte processing based on the provided name ('stdin', 'stdout', or 'stderr')."
+    },
+    "123": {
+      "verdict": "TEMPORAL_VALID",
+      "pr_leak": false,
+      "matched_replacements": [],
+      "matched_leak_terms": [],
+      "base_has_content": true,
+      "statement": "get_binary_stream opens a system stream for byte processing based on the provided name ('stdin', 'stdout', or 'stderr')."
+    },
+    "999": {
+      "verdict": "TEMPORAL_VALID",
+      "pr_leak": false,
+      "matched_replacements": [],
+      "matched_leak_terms": [],
+      "base_has_content": true,
+      "statement": "get_binary_stream opens a system stream for byte processing based on the provided name ('stdin', 'stdout', or 'stderr')."
+    }
+  }
+}

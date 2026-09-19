@@ -1,0 +1,24 @@
+{
+  "task_id": "trans_track_a_01_click_stream_deprecations",
+  "condition": "S2",
+  "seed": 999,
+  "task_prompt": "Implement `get_io_stream(name: str)` in `stream_helper.py` obtaining standard binary streams without deprecated click utilities.",
+  "memory_statements": [
+    "get_binary_stream opens a system stream for byte processing based on the provided name ('stdin', 'stdout', or 'stderr')."
+  ],
+  "raw_generation": "```python\ndef get_io_stream(name: str):\n    \"\"\"\n    Obtain standard binary streams without using deprecated click utilities.\n\n    Args:\n        name (str): The name of the stream ('stdin', 'stdout', or 'stderr').\n\n    Returns:\n        file-like object: The corresponding standard binary stream.\n    \"\"\"\n    if name == 'stdin':\n        return sys.stdin.buffer\n    elif name == 'stdout':\n        return sys.stdout.buffer\n    elif name == 'stderr':\n        return sys.stderr.buffer\n    else:\n        raise ValueError(\"Invalid stream name. Choose from 'stdin', 'stdout', or 'stderr'.\")\n\n# Example usage:\n# import stream_helper as sh\n\n# stdin_stream = sh.get_io_stream('stdin')\n# stdout_stream = sh.get_io_stream('stdout')\n# stderr_stream = sh.get_io_stream('stderr')\n\n# print(stdout_stream.read(10))  # Read up to 10 bytes from stdout\n```\n\nThis solution provides a function `get_io_stream` that returns the appropriate standard binary stream (`stdin`, `stdout`, or `stderr`) based on the input string. It uses Python's built-in `sys.stdin.buffer`, `sys.stdout.buffer`, and `sys.stderr.buffer` attributes to access the binary streams directly. This approach avoids using any deprecated libraries like `click`.",
+  "parsed_code": "def get_io_stream(name: str):\n    \"\"\"\n    Obtain standard binary streams without using deprecated click utilities.\n\n    Args:\n        name (str): The name of the stream ('stdin', 'stdout', or 'stderr').\n\n    Returns:\n        file-like object: The corresponding standard binary stream.\n    \"\"\"\n    if name == 'stdin':\n        return sys.stdin.buffer\n    elif name == 'stdout':\n        return sys.stdout.buffer\n    elif name == 'stderr':\n        return sys.stderr.buffer\n    else:\n        raise ValueError(\"Invalid stream name. Choose from 'stdin', 'stdout', or 'stderr'.\")\n\n# Example usage:\n# import stream_helper as sh\n\n# stdin_stream = sh.get_io_stream('stdin')\n# stdout_stream = sh.get_io_stream('stdout')\n# stderr_stream = sh.get_io_stream('stderr')\n\n# print(stdout_stream.read(10))  # Read up to 10 bytes from stdout",
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": false,
+    "active_nodes": []
+  },
+  "pytest_pass": false,
+  "pytest_log_excerpt": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_7fu1bni8\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_stream_retrieval FAILED                [100%]\n\n=================================== FAILURES ===================================\n____________________________ test_stream_retrieval _____________________________\n\n    def test_stream_retrieval():\n        with warnings.catc",
+  "constraint_status": "FAIL",
+  "constraint_results": null,
+  "overall_task_success": false,
+  "input_tokens": 138,
+  "output_tokens": 269
+}

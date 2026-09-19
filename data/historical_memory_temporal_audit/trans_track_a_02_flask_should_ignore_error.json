@@ -1,0 +1,32 @@
+{
+  "transition_id": "trans_track_a_02_flask_should_ignore_error",
+  "overall_status": "TEMPORAL_VALID",
+  "reconstructed_seed_count": 3,
+  "valid_seed_count": 3,
+  "evaluations": {
+    "42": {
+      "verdict": "TEMPORAL_VALID",
+      "pr_leak": false,
+      "matched_replacements": [],
+      "matched_leak_terms": [],
+      "base_has_content": true,
+      "statement": "App.should_ignore_error always returns False, indicating that no errors should be ignored by the teardown system."
+    },
+    "123": {
+      "verdict": "TEMPORAL_VALID",
+      "pr_leak": false,
+      "matched_replacements": [],
+      "matched_leak_terms": [],
+      "base_has_content": true,
+      "statement": "App.should_ignore_error always returns False, indicating that no errors should be ignored by the teardown system."
+    },
+    "999": {
+      "verdict": "TEMPORAL_VALID",
+      "pr_leak": false,
+      "matched_replacements": [],
+      "matched_leak_terms": [],
+      "base_has_content": true,
+      "statement": "App.should_ignore_error always returns False, indicating that no errors should be ignored by the teardown system."
+    }
+  }
+}

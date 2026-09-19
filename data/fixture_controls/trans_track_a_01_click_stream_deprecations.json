@@ -1,6 +1,6 @@
 {
   "transition_id": "trans_track_a_01_click_stream_deprecations",
-  "audit_fingerprint": "4790e68eb830baf90fa52289c53ab2f433ce3fb6ab402484a9995df0fbc49f4b",
+  "audit_fingerprint": "af32f13a8e5bac6d9963c011c4fb6237fc5f5834a5bb0d434e91dcc22a01e6c8",
   "status": "PASS",
   "valid_control_status": "PASS",
   "stale_control_status": "PASS",

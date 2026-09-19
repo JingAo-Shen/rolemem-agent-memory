@@ -1,6 +1,6 @@
 {
   "transition_id": "trans_track_a_08_attrs_py313_replace_control",
-  "audit_fingerprint": "7db99be2638c747468ddcc6cf994d74206cbe91fe01a8a146b2ed1ef67207875",
+  "audit_fingerprint": "bc1053730b8336b618c7b9b5dfccdfa95f0e93fe67bfcf91eaafab419d1a239a",
   "stale_base": true,
   "stale_target": true,
   "valid_base": false,
@@ -21,9 +21,9 @@
   "is_causal": true,
   "rationale": "Feature introduction: valid action impossible on base (TEST_EXPECTATION_ONLY), succeeds on target",
   "execution_logs": {
-    "stale_base_preview": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_zlf9gjk2\nplugins: anyio-4",
-    "stale_target_preview": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_w_76bwj9\nplugins: anyio-4",
-    "valid_base_preview": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_xlrsik4z\nplugins:",
-    "valid_target_preview": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_s052ewhr\nplugins: anyio-4"
+    "stale_base_preview": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_w6utw3ni\nplugins: anyio-4",
+    "stale_target_preview": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_jx2c61gx\nplugins: anyio-4",
+    "valid_base_preview": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_4yk6av5d\nplugins:",
+    "valid_target_preview": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_lw57yvqu\nplugins: anyio-4"
   }
 }

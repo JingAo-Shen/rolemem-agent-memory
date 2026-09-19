@@ -1,0 +1,17 @@
+{
+  "task_id": "trans_track_a_10_httpx_client_proxies_deprecation",
+  "attempt": 1,
+  "seed": 65,
+  "symbol": "BaseClient._get_proxy_map.proxies",
+  "statement": "The method `_get_proxy_map` processes and returns a dictionary mapping proxy keys to `Proxy` objects based on the input `proxies` parameter and whether environment proxies should be allowed.",
+  "verdict": "HIST_MEMORY_VALID",
+  "criteria": {
+    "symbol_grounded": true,
+    "artifact_grounded": true,
+    "statement_supported": true,
+    "non_generic": true,
+    "non_future_looking": true,
+    "ast_unique": true
+  },
+  "raw_generation": "```json\n{\n  \"symbol\": \"BaseClient._get_proxy_map.proxies\",\n  \"statement\": \"The method `_get_proxy_map` processes and returns a dictionary mapping proxy keys to `Proxy` objects based on the input `proxies` parameter and whether environment proxies should be allowed.\"\n}\n```"
+}

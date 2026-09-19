@@ -1,0 +1,32 @@
+{
+  "transition_id": "trans_track_a_09_virtualenv_drop_py38_control",
+  "overall_status": "TEMPORAL_VALID",
+  "reconstructed_seed_count": 3,
+  "valid_seed_count": 3,
+  "evaluations": {
+    "42": {
+      "verdict": "TEMPORAL_VALID",
+      "pr_leak": false,
+      "matched_replacements": [],
+      "matched_leak_terms": [],
+      "base_has_content": true,
+      "statement": "CPython3Posix.pyvenv_launch_patch_active checks if the current Python interpreter running on a POSIX system is version 3.8.3 or later but less than 3.8."
+    },
+    "123": {
+      "verdict": "TEMPORAL_VALID",
+      "pr_leak": false,
+      "matched_replacements": [],
+      "matched_leak_terms": [],
+      "base_has_content": true,
+      "statement": "CPython3Posix.pyvenv_launch_patch_active checks if the current Python interpreter running on a POSIX system is version 3.8.3 or later but less than 3.8."
+    },
+    "999": {
+      "verdict": "TEMPORAL_VALID",
+      "pr_leak": false,
+      "matched_replacements": [],
+      "matched_leak_terms": [],
+      "base_has_content": true,
+      "statement": "CPython3Posix.pyvenv_launch_patch_active checks if the current Python interpreter running on a POSIX system is version 3.8.3 or later but less than 3.8."
+    }
+  }
+}

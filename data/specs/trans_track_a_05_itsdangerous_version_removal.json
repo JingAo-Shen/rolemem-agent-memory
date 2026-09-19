@@ -30,5 +30,7 @@
   "transition_type": "API_REMOVAL",
   "original_test_required": false,
   "generated_hidden_test_only": true,
-  "track": "TRACK_A_STALE_SENSITIVE"
+  "track": "TRACK_A_STALE_SENSITIVE",
+  "pr_number": 406,
+  "external_pr_url": "https://github.com/pallets/itsdangerous/pull/406"
 }

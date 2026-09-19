@@ -1,10 +1,10 @@
 {
   "transition_id": "trans_track_a_08_attrs_py313_replace_control",
-  "audit_fingerprint": "7db99be2638c747468ddcc6cf994d74206cbe91fe01a8a146b2ed1ef67207875",
+  "audit_fingerprint": "bc1053730b8336b618c7b9b5dfccdfa95f0e93fe67bfcf91eaafab419d1a239a",
   "status": "PASS",
   "collection_status": "PASS",
   "execution_status": "PASS",
   "exit_code": 0,
-  "raw_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_2154cl54\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_replace_behavior PASSED                [100%]\n\n============================== 1 passed in 0.04s ===============================\n",
+  "raw_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_p9ehsqj5\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_replace_behavior PASSED                [100%]\n\n============================== 1 passed in 0.03s ===============================\n",
   "verification_status": "GENERATED_HIDDEN_TEST_PASS"
 }

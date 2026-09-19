@@ -1,0 +1,17 @@
+{
+  "task_id": "trans_track_a_07_pluggy_varnames_noself",
+  "attempt": 1,
+  "seed": 1022,
+  "symbol": "varnames",
+  "statement": "The 'varnames' function retrieves the positional and keyword parameter names for a given callable, handling class methods, bound methods, and unbound methods with specific rules.",
+  "verdict": "HIST_MEMORY_VALID",
+  "criteria": {
+    "symbol_grounded": true,
+    "artifact_grounded": true,
+    "statement_supported": true,
+    "non_generic": true,
+    "non_future_looking": true,
+    "ast_unique": true
+  },
+  "raw_generation": "```json\n{\n  \"symbol\": \"varnames\",\n  \"statement\": \"The 'varnames' function retrieves the positional and keyword parameter names for a given callable, handling class methods, bound methods, and unbound methods with specific rules.\"\n}\n```"
+}

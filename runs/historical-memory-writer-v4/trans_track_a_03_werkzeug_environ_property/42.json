@@ -1,0 +1,17 @@
+{
+  "task_id": "trans_track_a_03_werkzeug_environ_property",
+  "attempt": 1,
+  "seed": 65,
+  "symbol": "environ_property",
+  "statement": "environ_property is a descriptor class used to map request attributes to environment variables, providing functionality similar to accessing dictionary keys but with additional handling for default values and converters.",
+  "verdict": "HIST_MEMORY_VALID",
+  "criteria": {
+    "symbol_grounded": true,
+    "artifact_grounded": true,
+    "statement_supported": true,
+    "non_generic": true,
+    "non_future_looking": true,
+    "ast_unique": true
+  },
+  "raw_generation": "```json\n{\n  \"symbol\": \"environ_property\",\n  \"statement\": \"environ_property is a descriptor class used to map request attributes to environment variables, providing functionality similar to accessing dictionary keys but with additional handling for default values and converters.\"\n}\n```"
+}

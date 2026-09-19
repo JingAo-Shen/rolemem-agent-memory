@@ -1,6 +1,6 @@
 {
   "transition_id": "trans_track_a_10_httpx_client_proxies_deprecation",
-  "audit_fingerprint": "e5abff95493d122ad6d481bbbd86304591b14958fe050da14a2d2fc5fef7da83",
+  "audit_fingerprint": "60b6df1545618bb7e74e0c8b7dbe6d30d093fc19ae1e2b00ad9b566edebcbea2",
   "status": "PASS",
   "verification_status": "PASS",
   "details": "Snapshot SHA-256 digest purity verified against Git extract"

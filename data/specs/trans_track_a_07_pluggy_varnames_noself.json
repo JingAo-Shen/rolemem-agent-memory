@@ -30,5 +30,7 @@
   "transition_type": "API_DEPRECATION",
   "original_test_required": false,
   "generated_hidden_test_only": true,
-  "track": "TRACK_A_STALE_SENSITIVE"
+  "track": "TRACK_A_STALE_SENSITIVE",
+  "pr_number": 632,
+  "external_pr_url": "https://github.com/pytest-dev/pluggy/pull/632"
 }

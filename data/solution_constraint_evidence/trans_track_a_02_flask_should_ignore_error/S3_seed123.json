@@ -1,0 +1,22 @@
+{
+  "transition_id": "trans_track_a_02_flask_should_ignore_error",
+  "run_id": "S3_seed123",
+  "target_file": "custom_app.py",
+  "api_deprecation_gate": {
+    "status": "PASS",
+    "details": "Code free of deprecated symbol 'should_ignore_error'"
+  },
+  "replacement_mechanism_gate": {
+    "status": "FAIL",
+    "details": "Missing required teardown_request handler registration"
+  },
+  "behavior_fidelity_gate": {
+    "status": "FAIL",
+    "details": "Pytest execution failed",
+    "pytest_passed": false,
+    "log_snippet": "ster_teardown'\n\ncustom_app.py:6: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_flask_custom_app_dispatch - Attribut...\n============================== 1 failed in 0.09s ===============================\n\nSTDERR:\n"
+  },
+  "overall_constraint_status": "FAIL",
+  "overall_status": "FAIL",
+  "task_success": false
+}

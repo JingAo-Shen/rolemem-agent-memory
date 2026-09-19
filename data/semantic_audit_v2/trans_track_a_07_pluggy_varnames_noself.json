@@ -2,8 +2,8 @@
   "transition_id": "trans_track_a_07_pluggy_varnames_noself",
   "repo_name": "pytest-dev/pluggy",
   "auditor_version": "2.0.0",
-  "spec_sha256": "2b9a57a0f30f392bb55658c26bd1d1eb68e17823be0670fdcacc522853c346b4",
-  "audit_fingerprint": "4394e79abe6dd37ef65917ec862c08fad84e3e9048d1e39dc0d5d2da4be5120e",
+  "spec_sha256": "b08255af04b1505cc2fc7da489a8de4d147b510dd5a20678d29a203388b24e4c",
+  "audit_fingerprint": "70561d595ef31e15f984d7c533163cf888f0d91b8e7cbe3cf706ca97b7074a9e",
   "gates": [
     {
       "gate_id": "G1",
@@ -57,8 +57,8 @@
       "gate_id": "G7",
       "name": "hidden test strength <-> current task semantics",
       "expected": "Hidden test verifies target capability with mutation_kill_rate >= 0.80 and zero constant-return bypass",
-      "observed": "Semantic match: True, Mutation kill rate: 87.5%, Constant return bypass: False",
-      "evidence": "test_strength/trans_track_a_07_pluggy_varnames_noself.json, len=487 bytes",
+      "observed": "Semantic match: True, Mutation kill rate: 100.0%, Constant return bypass: False",
+      "evidence": "test_strength/trans_track_a_07_pluggy_varnames_noself.json, len=980 bytes",
       "status": "PASS"
     },
     {

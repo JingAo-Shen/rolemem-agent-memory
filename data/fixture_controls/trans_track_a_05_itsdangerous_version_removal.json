@@ -1,6 +1,6 @@
 {
   "transition_id": "trans_track_a_05_itsdangerous_version_removal",
-  "audit_fingerprint": "decf2acf2939bf5e4f9918d798319fae9e20aa5bdc3ff7397369de365994542c",
+  "audit_fingerprint": "626292e07c3db3e7c415001233b082885105d77f3c98de8b6f44887a3ab31a40",
   "status": "PASS",
   "valid_control_status": "PASS",
   "stale_control_status": "PASS",

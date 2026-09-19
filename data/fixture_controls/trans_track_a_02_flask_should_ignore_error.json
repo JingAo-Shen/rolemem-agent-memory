@@ -1,6 +1,6 @@
 {
   "transition_id": "trans_track_a_02_flask_should_ignore_error",
-  "audit_fingerprint": "9333ad87157ee15f87fbc35f040bdd93084a3dcefb3a376717ebd01f5ad279de",
+  "audit_fingerprint": "3135ed6d17ccbdba542e33ecf3c1cbbb899f6be6f5ce6e07c1a2aecf18c8fcfb",
   "status": "PASS",
   "valid_control_status": "PASS",
   "stale_control_status": "PASS",

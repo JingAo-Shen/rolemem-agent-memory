@@ -1,0 +1,17 @@
+{
+  "task_id": "trans_track_a_01_click_stream_deprecations",
+  "attempt": 1,
+  "seed": 1022,
+  "symbol": "get_binary_stream",
+  "statement": "get_binary_stream opens a system stream for byte processing based on the provided name ('stdin', 'stdout', or 'stderr').",
+  "verdict": "HIST_MEMORY_VALID",
+  "criteria": {
+    "symbol_grounded": true,
+    "artifact_grounded": true,
+    "statement_supported": true,
+    "non_generic": true,
+    "non_future_looking": true,
+    "ast_unique": true
+  },
+  "raw_generation": "```json\n{\n  \"symbol\": \"get_binary_stream\",\n  \"statement\": \"get_binary_stream opens a system stream for byte processing based on the provided name ('stdin', 'stdout', or 'stderr').\"\n}\n```"
+}

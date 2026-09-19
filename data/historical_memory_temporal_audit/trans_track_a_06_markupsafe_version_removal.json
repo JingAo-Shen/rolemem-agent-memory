@@ -1,0 +1,36 @@
+{
+  "transition_id": "trans_track_a_06_markupsafe_version_removal",
+  "overall_status": "FUTURE_LEAKAGE",
+  "reconstructed_seed_count": 3,
+  "valid_seed_count": 1,
+  "evaluations": {
+    "42": {
+      "verdict": "TEMPORAL_VALID",
+      "pr_leak": false,
+      "matched_replacements": [],
+      "matched_leak_terms": [],
+      "base_has_content": true,
+      "statement": "__version__ is accessed using getattr and returns the version of the markupsafe package dynamically."
+    },
+    "123": {
+      "verdict": "FUTURE_LEAKAGE",
+      "pr_leak": false,
+      "matched_replacements": [
+        "importlib.metadata"
+      ],
+      "matched_leak_terms": [],
+      "base_has_content": true,
+      "statement": "__version__ is accessed via a custom __getattr__ method that returns the version of the markupsafe package using importlib.metadata."
+    },
+    "999": {
+      "verdict": "FUTURE_LEAKAGE",
+      "pr_leak": false,
+      "matched_replacements": [
+        "importlib.metadata"
+      ],
+      "matched_leak_terms": [],
+      "base_has_content": true,
+      "statement": "__version__ is accessed via a custom __getattr__ method that returns the version of the markupsafe package using importlib.metadata."
+    }
+  }
+}

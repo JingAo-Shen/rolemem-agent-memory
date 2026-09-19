@@ -6,4 +6,5 @@ class LegacyHookSpec:
 
 def extract_spec_varnames(func=None):
     # Stale: passes legacy_noself=True on methods lacking self
-    return varnames(LegacyHookSpec.my_hook, legacy_noself=True)
+    target = func or LegacyHookSpec.my_hook
+    return varnames(target, legacy_noself=True)

@@ -1,0 +1,24 @@
+{
+  "task_id": "trans_track_a_06_markupsafe_version_removal",
+  "condition": "S3",
+  "seed": 123,
+  "task_prompt": "Implement `get_library_version()` in `markup_version.py` retrieving MarkupSafe version.",
+  "memory_statements": [
+    "markupsafe.__version__ has been removed in MarkupSafe 3.1; use importlib.metadata.version(\"markupsafe\") instead."
+  ],
+  "raw_generation": "```python\nimport importlib.metadata\n\ndef get_library_version():\n    return importlib.metadata.version(\"markupsafe\")\n```",
+  "parsed_code": "import importlib.metadata\n\ndef get_library_version():\n    return importlib.metadata.version(\"markupsafe\")",
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": false,
+    "active_nodes": []
+  },
+  "pytest_pass": true,
+  "pytest_log_excerpt": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_fzcm8ufx\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_version_retrieval PASSED               [100%]\n\n============================== 1 passed in 0.02s ===============================\n",
+  "constraint_status": "PASS",
+  "constraint_results": null,
+  "overall_task_success": true,
+  "input_tokens": 135,
+  "output_tokens": 26
+}

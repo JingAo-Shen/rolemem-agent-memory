@@ -1,0 +1,24 @@
+{
+  "transition_id": "trans_track_a_08_attrs_py313_replace_control",
+  "provenance_status": "TARGET_MEMORY_VERIFIED",
+  "checks": {
+    "source_pr_matches": true,
+    "source_commit_matches": true,
+    "artifact_in_diff": true,
+    "symbol_in_evidence": true,
+    "replacement_supported": true,
+    "statement_supported": true
+  },
+  "claim": {
+    "transition_id": "trans_track_a_08_attrs_py313_replace_control",
+    "statement": "In attrs on Python 3.13, continue using attr.evolve(instance, **changes) to evolve immutable attribute instances.",
+    "symbol": "attr.evolve",
+    "replacement": "attr.evolve",
+    "source_pr_url": "https://github.com/python-attrs/attrs/pull/1383",
+    "source_commit": "62bdbf234f45195e75bfc2bb0648dab6fd2f0d33",
+    "evidence_file": "data/external_evidence/trans_track_a_08_attrs_py313_replace_control/diff.patch",
+    "evidence_hunk_sha256": "55e9914ee3f9329a631f4e7a070a79fa6b7e5168740b38e459249bb70753b673",
+    "evidence_excerpt_hash": "2d09b45f3dfd38ec6abc0e12cbc197924a01b432e4df5965e769fff41c1dd8b5",
+    "ground_truth_audit_hash": "08e4229a4f472c4056665f95059fab3f1e2dcd64bb688087977a2ea02d23a477"
+  }
+}

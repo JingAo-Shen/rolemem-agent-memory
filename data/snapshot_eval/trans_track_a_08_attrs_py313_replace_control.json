@@ -1,6 +1,6 @@
 {
   "transition_id": "trans_track_a_08_attrs_py313_replace_control",
-  "audit_fingerprint": "7db99be2638c747468ddcc6cf994d74206cbe91fe01a8a146b2ed1ef67207875",
+  "audit_fingerprint": "bc1053730b8336b618c7b9b5dfccdfa95f0e93fe67bfcf91eaafab419d1a239a",
   "status": "PASS",
   "verification_status": "PASS",
   "details": "Snapshot SHA-256 digest purity verified against Git extract"

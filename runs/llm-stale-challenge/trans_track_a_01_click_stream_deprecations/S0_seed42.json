@@ -1,0 +1,22 @@
+{
+  "task_id": "trans_track_a_01_click_stream_deprecations",
+  "condition": "S0",
+  "seed": 42,
+  "task_prompt": "Implement `get_io_stream(name: str)` in `stream_helper.py` obtaining standard binary streams without deprecated click utilities.",
+  "memory_statements": [],
+  "raw_generation": "```python\nimport sys\n\ndef get_io_stream(name: str):\n    if name == 'stdin':\n        return sys.stdin.buffer\n    elif name == 'stdout':\n        return sys.stdout.buffer\n    elif name == 'stderr':\n        return sys.stderr.buffer\n    else:\n        raise ValueError(f\"Unknown stream name: {name}\")\n\n# Test cases\nif __name__ == \"__main__\":\n    import io\n    import unittest\n\n    class TestIOStream(unittest.TestCase):\n        def test_stdin(self):\n            with io.BytesIO(b'test input') as stdin_mock:\n                old_stdin = sys.stdin\n                sys.stdin = stdin_mock\n                self.assertEqual(get_io_stream('stdin').read(), b'test input')\n                sys.stdin = old_stdin\n\n        def test_stdout(self):\n            output = io.BytesIO()\n            old_stdout = sys.stdout\n            sys.stdout = output\n            get_io_stream('stdout').write(b'test output\\n')\n            sys.stdout = old_stdout\n            self.assertEqual(output.getvalue(), b'test output\\n')\n\n        def test_stderr(self):\n            error_output = io.BytesIO()\n            old_stderr = sys.stderr\n            sys.stderr = error_output\n            get_io_stream('stderr').write(b'test error\\n')\n            sys.stderr = old_stderr\n            self.assertEqual(error_output.getvalue(), b'test error\\n')\n\n    unittest.main()\n```\n\nThis solution provides a function `get_io_stream` that returns the appropriate binary stream based on the provided name ('stdin', 'stdout', or 'stderr'). It also includes a simple unit test suite to verify the correctness of the function. The test cases use mock objects to simulate the behavior of the standard streams and check if the function reads from or writes to them correctly.",
+  "parsed_code": "import sys\n\ndef get_io_stream(name: str):\n    if name == 'stdin':\n        return sys.stdin.buffer\n    elif name == 'stdout':\n        return sys.stdout.buffer\n    elif name == 'stderr':\n        return sys.stderr.buffer\n    else:\n        raise ValueError(f\"Unknown stream name: {name}\")\n\n# Test cases\nif __name__ == \"__main__\":\n    import io\n    import unittest\n\n    class TestIOStream(unittest.TestCase):\n        def test_stdin(self):\n            with io.BytesIO(b'test input') as stdin_mock:\n                old_stdin = sys.stdin\n                sys.stdin = stdin_mock\n                self.assertEqual(get_io_stream('stdin').read(), b'test input')\n                sys.stdin = old_stdin\n\n        def test_stdout(self):\n            output = io.BytesIO()\n            old_stdout = sys.stdout\n            sys.stdout = output\n            get_io_stream('stdout').write(b'test output\\n')\n            sys.stdout = old_stdout\n            self.assertEqual(output.getvalue(), b'test output\\n')\n\n        def test_stderr(self):\n            error_output = io.BytesIO()\n            old_stderr = sys.stderr\n            sys.stderr = error_output\n            get_io_stream('stderr').write(b'test error\\n')\n            sys.stderr = old_stderr\n            self.assertEqual(error_output.getvalue(), b'test error\\n')\n\n    unittest.main()",
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": false,
+    "active_nodes": []
+  },
+  "pytest_pass": true,
+  "pytest_log_excerpt": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_bvchf9br\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_stream_retrieval PASSED                [100%]\n\n============================== 1 passed in 0.01s ===============================\n",
+  "constraint_status": "PASS",
+  "constraint_results": null,
+  "overall_task_success": true,
+  "input_tokens": 102,
+  "output_tokens": 358
+}

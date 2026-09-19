@@ -10,6 +10,11 @@ def test_flask_custom_app_dispatch():
         warnings.simplefilter("error", DeprecationWarning)
         app = custom_app.CustomApp("test_app")
         assert app != "1.0", "Anti-cheating check: constant return detected!"
+        # Replacement Mechanism Gate: verify teardown_request decorator operates correctly
+        @app.teardown_request
+        def _evaluation_teardown(exception):
+            pass
+
         @app.route("/")
         def index():
             return "ok"

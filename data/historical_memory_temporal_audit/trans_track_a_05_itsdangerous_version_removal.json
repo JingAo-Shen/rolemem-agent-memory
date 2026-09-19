@@ -1,0 +1,38 @@
+{
+  "transition_id": "trans_track_a_05_itsdangerous_version_removal",
+  "overall_status": "FUTURE_LEAKAGE",
+  "reconstructed_seed_count": 3,
+  "valid_seed_count": 0,
+  "evaluations": {
+    "42": {
+      "verdict": "FUTURE_LEAKAGE",
+      "pr_leak": false,
+      "matched_replacements": [
+        "importlib.metadata"
+      ],
+      "matched_leak_terms": [],
+      "base_has_content": true,
+      "statement": "__version__ is accessed via a custom __getattr__ method that returns the version using importlib.metadata."
+    },
+    "123": {
+      "verdict": "FUTURE_LEAKAGE",
+      "pr_leak": false,
+      "matched_replacements": [
+        "importlib.metadata"
+      ],
+      "matched_leak_terms": [],
+      "base_has_content": true,
+      "statement": "__version__ is accessed via a custom __getattr__ method that returns the version using importlib.metadata."
+    },
+    "999": {
+      "verdict": "FUTURE_LEAKAGE",
+      "pr_leak": false,
+      "matched_replacements": [
+        "importlib.metadata"
+      ],
+      "matched_leak_terms": [],
+      "base_has_content": true,
+      "statement": "__version__ is accessed via a custom __getattr__ method that imports and returns the version using importlib.metadata."
+    }
+  }
+}

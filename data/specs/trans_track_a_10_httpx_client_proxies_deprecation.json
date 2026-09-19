@@ -17,8 +17,9 @@
     "Client.__init__.proxies"
   ],
   "replacement_symbols": [
-    "proxy",
-    "Client.__init__.proxy"
+    "proxy_parameter",
+    "Client.__init__.proxy",
+    "mounts"
   ],
   "repository_change": "Client proxies parameter deprecated in favor of proxy or mounts.",
   "stale_memory_candidate": "Pass proxies={'http://': url} dictionary to httpx.Client.",
@@ -30,5 +31,7 @@
   "transition_type": "API_DEPRECATION",
   "original_test_required": false,
   "generated_hidden_test_only": true,
-  "track": "TRACK_A_STALE_SENSITIVE"
+  "track": "TRACK_A_STALE_SENSITIVE",
+  "pr_number": 2879,
+  "external_pr_url": "https://github.com/encode/httpx/pull/2879"
 }

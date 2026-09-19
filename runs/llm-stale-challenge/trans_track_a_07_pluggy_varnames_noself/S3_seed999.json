@@ -1,0 +1,24 @@
+{
+  "task_id": "trans_track_a_07_pluggy_varnames_noself",
+  "condition": "S3",
+  "seed": 999,
+  "task_prompt": "Implement `extract_spec_varnames(func)` in `spec_helper.py` inspecting hook specification parameters.",
+  "memory_statements": [
+    "pluggy._hooks.varnames legacy_noself=True is deprecated; define hook specifications with explicit self parameter and invoke varnames with legacy_noself=False."
+  ],
+  "raw_generation": "```python\nimport inspect\n\ndef extract_spec_varnames(func):\n    \"\"\"\n    Extracts the variable names from the hook specification parameters of a function.\n    \n    Args:\n        func (function): The function containing the hook specification.\n        \n    Returns:\n        list: A list of variable names from the hook specification parameters.\n    \"\"\"\n    # Check if the function has a __dict__ attribute and 'hookspec' key\n    if hasattr(func, '__dict__') and 'hookspec' in func.__dict__:\n        hookspec = func.__dict__['hookspec']\n        # Get the signature of the hook specification\n        sig = inspect.signature(hookspec)\n        # Extract the parameter names excluding 'self'\n        param_names = [param.name for param in sig.parameters.values() if param.name != 'self']\n        return param_names\n    else:\n        raise ValueError(\"The provided function does not contain a valid hook specification.\")\n\n# Example usage and test cases\nif __name__ == \"__main__\":\n    def example_hookspec(self, arg1, arg2):\n        \"\"\"Example hook specification.\"\"\"\n        pass\n    \n    print(extract_spec_varnames(example_hookspec))  # Output should be ['arg1', 'arg2']\n\n    def another_example_hookspec(arg3, arg4):\n        \"\"\"Another example hook specification without 'self'.\"\"\"\n        pass\n    \n    print(extract_spec_varnames(another_example_hookspec))  # Output should be ['arg3', 'arg4']\n```\n\nThis solution defines the `extract_spec_varnames` function that takes a function as input and returns a list of variable names from its hook specification parameters. The function uses the `inspect` module to get the signature of the hook specification and then extracts the parameter names, excluding 'self'. If the function does not contain a valid hook specification, it raises a `ValueError`. The example usage demonstrates how to use the function and includes test cases to verify its correctness.",
+  "parsed_code": "import inspect\n\ndef extract_spec_varnames(func):\n    \"\"\"\n    Extracts the variable names from the hook specification parameters of a function.\n    \n    Args:\n        func (function): The function containing the hook specification.\n        \n    Returns:\n        list: A list of variable names from the hook specification parameters.\n    \"\"\"\n    # Check if the function has a __dict__ attribute and 'hookspec' key\n    if hasattr(func, '__dict__') and 'hookspec' in func.__dict__:\n        hookspec = func.__dict__['hookspec']\n        # Get the signature of the hook specification\n        sig = inspect.signature(hookspec)\n        # Extract the parameter names excluding 'self'\n        param_names = [param.name for param in sig.parameters.values() if param.name != 'self']\n        return param_names\n    else:\n        raise ValueError(\"The provided function does not contain a valid hook specification.\")\n\n# Example usage and test cases\nif __name__ == \"__main__\":\n    def example_hookspec(self, arg1, arg2):\n        \"\"\"Example hook specification.\"\"\"\n        pass\n    \n    print(extract_spec_varnames(example_hookspec))  # Output should be ['arg1', 'arg2']\n\n    def another_example_hookspec(arg3, arg4):\n        \"\"\"Another example hook specification without 'self'.\"\"\"\n        pass\n    \n    print(extract_spec_varnames(another_example_hookspec))  # Output should be ['arg3', 'arg4']",
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": false,
+    "active_nodes": []
+  },
+  "pytest_pass": false,
+  "pytest_log_excerpt": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_gbq7q28s\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_varnames_extraction FAILED             [100%]\n\n=================================== FAILURES ===================================\n___________________________ test_varnames_extraction ___________________________\n\n    def test_varnames_extraction():\n        with warnings.c",
+  "constraint_status": "FAIL",
+  "constraint_results": null,
+  "overall_task_success": false,
+  "input_tokens": 141,
+  "output_tokens": 399
+}

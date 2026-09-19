@@ -1,18 +1,19 @@
 #!/usr/bin/env python3
 """
 scripts/run_stale_challenge_screen.py
-Evaluates whether reconstructed candidate transitions qualify as genuine 'Stale Challenges':
-Runs 3 experimental conditions on the target snapshot:
-- H0: No Memory Baseline
-- H2: Stale-Injected Condition (forced injection of stale memory candidate)
-- H3: Target Memory Condition (injection of frozen valid memory snapshot)
+CONTROL_DISCRIMINATION_SCREEN for RoleMem Track A:
+Evaluates whether fixture controls discriminate between stale and valid patterns:
+Runs 3 deterministic fixture conditions on the target snapshot:
+- H0: Placeholder Baseline
+- H2: Stale Control Solution (evaluating whether stale pattern fails on target snapshot)
+- H3: Valid Control Solution (evaluating whether target solution succeeds on target snapshot)
 
-Qualification criteria:
-- QUALIFIED_STALE_CHALLENGE: H2 triggers deprecation/failure, and H3 restores PASS.
-- EVOLUTION_CONTROL_BENCHMARK: Both H2 and H3 pass without deprecation (valid evolutionary control).
-- STALE_INSENSITIVE: H0 passes and H2 also passes despite stale injection (disqualified from stale-sensitive cohort).
+Note: This is a fixture-level control discrimination screen, NOT an LLM generation screen.
+The LLM generation screen is executed by scripts/run_llm_stale_challenge_screen.py.
 
-Outputs results to data/stale_challenge_screen.json.
+Outputs results to:
+- data/control_discrimination_screen.json
+- data/stale_challenge_screen.json (compatibility link)
 """
 
 import os
@@ -29,7 +30,8 @@ DATA_DIR = "/code/rolemem-agent-memory/data"
 FIXTURES_DIR = "/code/rolemem-agent-memory/fixtures_v2"
 MANIFEST_PATH = os.path.join(DATA_DIR, "track_a_reconstructed_manifest.jsonl")
 TARGET_MEM_SNAPSHOT = os.path.join(DATA_DIR, "handoff_target_memory_snapshot.json")
-OUTPUT_PATH = os.path.join(DATA_DIR, "stale_challenge_screen.json")
+OUTPUT_PATH = os.path.join(DATA_DIR, "control_discrimination_screen.json")
+LEGACY_OUTPUT_PATH = os.path.join(DATA_DIR, "stale_challenge_screen.json")
 VENVS_ROOT = "/code/rolemem-agent-memory/.venvs"
 
 
@@ -128,9 +130,11 @@ def run_screen():
 
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         json.dump(summary, f, indent=2)
+    with open(LEGACY_OUTPUT_PATH, "w", encoding="utf-8") as f:
+        json.dump(summary, f, indent=2)
 
-    print(f"\nScreen Complete: {qualified_count} Qualified Stale Challenges, {control_count} Evolution Controls.")
-    print(f"Results saved to {OUTPUT_PATH}\n")
+    print(f"\nControl Discrimination Screen Complete: {qualified_count} Qualified Stale Challenges, {control_count} Evolution Controls.")
+    print(f"Results saved to {OUTPUT_PATH} and {LEGACY_OUTPUT_PATH}\n")
     return summary
 
 

@@ -1,0 +1,24 @@
+{
+  "task_id": "trans_track_a_08_attrs_py313_replace_control",
+  "condition": "S3",
+  "seed": 999,
+  "task_prompt": "Implement `create_point(x, y)` and `replace_point(pt, **changes)` in `point_manager.py` using standard copy.replace.",
+  "memory_statements": [
+    "In attrs on Python 3.13, continue using attr.evolve(instance, **changes) to evolve immutable attribute instances."
+  ],
+  "raw_generation": "```python\nclass Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\ndef create_point(x, y):\n    return Point(x, y)\n\ndef replace_point(pt, **changes):\n    return pt.__class__(**{**pt.__dict__, **changes})\n```\n\nThis solution defines a `Point` class with `x` and `y` attributes. The `create_point` function creates a new `Point` instance with the given `x` and `y` values. The `replace_point` function uses the `__class__` method of the input `pt` object to create a new instance of the same class, combining the original attributes with any changes provided through the `**changes` keyword arguments. This effectively replaces the specified attributes while keeping the rest unchanged.",
+  "parsed_code": "class Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\ndef create_point(x, y):\n    return Point(x, y)\n\ndef replace_point(pt, **changes):\n    return pt.__class__(**{**pt.__dict__, **changes})",
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": false,
+    "active_nodes": []
+  },
+  "pytest_pass": true,
+  "pytest_log_excerpt": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_csxwu16l\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_replace_behavior PASSED                [100%]\n\n============================== 1 passed in 0.01s ===============================\n",
+  "constraint_status": "PASS",
+  "constraint_results": null,
+  "overall_task_success": true,
+  "input_tokens": 143,
+  "output_tokens": 173
+}

@@ -18,8 +18,8 @@
     "werkzeug.utils.environ_property"
   ],
   "replacement_symbols": [
-    "environ",
-    "Request.environ"
+    "Request.environ",
+    "request.environ"
   ],
   "repository_change": "werkzeug.utils.environ_property deprecated in favor of accessing request.environ directly.",
   "stale_memory_candidate": "Use werkzeug.utils.environ_property descriptor to bind WSGI environ keys.",
@@ -31,5 +31,7 @@
   "transition_type": "API_DEPRECATION",
   "original_test_required": false,
   "generated_hidden_test_only": true,
-  "track": "TRACK_A_STALE_SENSITIVE"
+  "track": "TRACK_A_STALE_SENSITIVE",
+  "pr_number": 3276,
+  "external_pr_url": "https://github.com/pallets/werkzeug/pull/3276"
 }

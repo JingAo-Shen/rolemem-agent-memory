@@ -1,7 +1,9 @@
 {
   "transition_id": "trans_track_a_04_jinja_version_deprecation",
-  "audit_fingerprint": "f8eb8d4c5f5a81e848edc785fe451353f2babfed90f1911aef10817e6c62169c",
+  "audit_fingerprint": "71586076ef2abbd39f5d6bd48d0c9143fbf243aebba91a581b73fbce9157a9ad",
   "total_mutants": 8,
+  "invalid_mutants_count": 8,
+  "invalid_mutants_killed": 8,
   "killed_mutants": 8,
   "mutation_kill_rate": 1.0,
   "constant_return_killed": true,
@@ -11,6 +13,7 @@
   "mutants": {
     "M1_return_none": {
       "description": "return None",
+      "expected_to_fail": true,
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
@@ -18,13 +21,15 @@
     },
     "M2_constant_return": {
       "description": "return constant string",
+      "expected_to_fail": true,
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\ntest_hidden_verification.py:23: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_version_retrieval - AssertionError: ...\n============================== 1 failed in 0.08s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:23: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_version_retrieval - AssertionError: ...\n============================== 1 failed in 0.07s ===============================\n\nSTDERR:\n"
     },
     "M3_noop_pass": {
       "description": "pass / no-op",
+      "expected_to_fail": true,
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
@@ -32,6 +37,7 @@
     },
     "M4_try_except_dummy": {
       "description": "try/except return dummy",
+      "expected_to_fail": true,
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
@@ -39,6 +45,7 @@
     },
     "M5_stale_solution": {
       "description": "stale jinja2.__version__ read",
+      "expected_to_fail": true,
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
@@ -46,13 +53,15 @@
     },
     "M6_wrong_package_arg": {
       "description": "metadata lookup for wrong package",
+      "expected_to_fail": true,
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\ntest_hidden_verification.py:25: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_version_retrieval - AssertionError: ...\n============================== 1 failed in 0.07s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:25: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_version_retrieval - AssertionError: ...\n============================== 1 failed in 0.08s ===============================\n\nSTDERR:\n"
     },
     "M7_missing_attribute": {
       "description": "missing function",
+      "expected_to_fail": true,
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
@@ -60,6 +69,7 @@
     },
     "M8_static_mock": {
       "description": "static string mock bypassing metadata",
+      "expected_to_fail": true,
       "passed_test": false,
       "killed": true,
       "status": "KILLED",

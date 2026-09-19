@@ -6,7 +6,7 @@
     "api_deprecation_gate": {
       "deprecated_symbol": "werkzeug.wsgi.environ_property",
       "enforcement": "werkzeug.wsgi.environ_property deprecated/removed in Werkzeug 2.1+",
-      "verified": true
+      "constraint_status": "SPECIFIED"
     },
     "replacement_mechanism_gate": {
       "required_mechanism": "Dynamic property descriptor accessing self.environ dictionary",
@@ -15,7 +15,7 @@
         null,
         "dummy"
       ],
-      "verified": true
+      "constraint_status": "SPECIFIED"
     },
     "behavior_fidelity_gate": {
       "dynamic_checks": [
@@ -26,8 +26,9 @@
       "boundary_checks": [
         "Empty environ handling"
       ],
-      "verified": true
+      "constraint_status": "SPECIFIED"
     }
   },
-  "verification_status": "CONSTRAINTS_REGISTERED"
+  "verification_status": "CONSTRAINTS_SPECIFIED",
+  "constraint_status": "SPECIFIED"
 }

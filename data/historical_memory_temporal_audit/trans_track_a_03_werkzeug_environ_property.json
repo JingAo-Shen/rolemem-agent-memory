@@ -1,0 +1,32 @@
+{
+  "transition_id": "trans_track_a_03_werkzeug_environ_property",
+  "overall_status": "TEMPORAL_VALID",
+  "reconstructed_seed_count": 3,
+  "valid_seed_count": 3,
+  "evaluations": {
+    "42": {
+      "verdict": "TEMPORAL_VALID",
+      "pr_leak": false,
+      "matched_replacements": [],
+      "matched_leak_terms": [],
+      "base_has_content": true,
+      "statement": "environ_property is a descriptor class used to map request attributes to environment variables, providing functionality similar to accessing dictionary keys but with additional handling for default values and converters."
+    },
+    "123": {
+      "verdict": "TEMPORAL_VALID",
+      "pr_leak": false,
+      "matched_replacements": [],
+      "matched_leak_terms": [],
+      "base_has_content": true,
+      "statement": "environ_property is a descriptor class that maps request attributes to environment variables, allowing access to values stored in the environ dictionary of a request object."
+    },
+    "999": {
+      "verdict": "TEMPORAL_VALID",
+      "pr_leak": false,
+      "matched_replacements": [],
+      "matched_leak_terms": [],
+      "base_has_content": true,
+      "statement": "environ_property is a descriptor class used to map request attributes to environment variables in a flexible manner, allowing access to values stored in the environ dictionary of a request object."
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "transition_id": "trans_track_a_04_jinja_version_deprecation",
+  "overall_status": "TEMPORAL_VALID",
+  "reconstructed_seed_count": 3,
+  "valid_seed_count": 3,
+  "evaluations": {
+    "42": {
+      "verdict": "TEMPORAL_VALID",
+      "pr_leak": false,
+      "matched_replacements": [],
+      "matched_leak_terms": [],
+      "base_has_content": true,
+      "statement": "__version__ is set to '3.2.0.dev0', indicating the development version of Jinja2 at this commit."
+    },
+    "123": {
+      "verdict": "TEMPORAL_VALID",
+      "pr_leak": false,
+      "matched_replacements": [],
+      "matched_leak_terms": [],
+      "base_has_content": true,
+      "statement": "__version__ is set to '3.2.0.dev0', indicating the development version of Jinja2 at this commit."
+    },
+    "999": {
+      "verdict": "TEMPORAL_VALID",
+      "pr_leak": false,
+      "matched_replacements": [],
+      "matched_leak_terms": [],
+      "base_has_content": true,
+      "statement": "__version__ is set to '3.2.0.dev0', indicating the development version of Jinja2 at this commit."
+    }
+  }
+}

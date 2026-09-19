@@ -1,0 +1,24 @@
+{
+  "task_id": "trans_track_a_07_pluggy_varnames_noself",
+  "condition": "S2",
+  "seed": 42,
+  "task_prompt": "Implement `extract_spec_varnames(func)` in `spec_helper.py` inspecting hook specification parameters.",
+  "memory_statements": [
+    "The varnames function retrieves the positional and keyword parameter names for a given callable, handling class methods, bound methods, and unbound methods appropriately."
+  ],
+  "raw_generation": "```python\nimport inspect\n\ndef extract_spec_varnames(func):\n    \"\"\"\n    Extracts the parameter names of a hook specification function.\n\n    Args:\n        func (callable): The hook specification function to inspect.\n\n    Returns:\n        list: A list of parameter names for the hook specification function.\n    \"\"\"\n    # Use inspect.signature to get the signature of the function\n    sig = inspect.signature(func)\n    # Extract the parameter names from the signature\n    params = sig.parameters\n    # Return a list of parameter names\n    return list(params.keys())\n\n# Example usage:\n# def my_hook_spec(arg1, arg2=None):\n#     pass\n#\n# print(extract_spec_varnames(my_hook_spec))  # Output: ['arg1', 'arg2']\n```\n\nThis code defines the `extract_spec_varnames` function, which uses the `inspect` module to retrieve the parameter names of a given hook specification function. The function returns a list of these parameter names.",
+  "parsed_code": "import inspect\n\ndef extract_spec_varnames(func):\n    \"\"\"\n    Extracts the parameter names of a hook specification function.\n\n    Args:\n        func (callable): The hook specification function to inspect.\n\n    Returns:\n        list: A list of parameter names for the hook specification function.\n    \"\"\"\n    # Use inspect.signature to get the signature of the function\n    sig = inspect.signature(func)\n    # Extract the parameter names from the signature\n    params = sig.parameters\n    # Return a list of parameter names\n    return list(params.keys())\n\n# Example usage:\n# def my_hook_spec(arg1, arg2=None):\n#     pass\n#\n# print(extract_spec_varnames(my_hook_spec))  # Output: ['arg1', 'arg2']",
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": false,
+    "active_nodes": []
+  },
+  "pytest_pass": false,
+  "pytest_log_excerpt": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_s5aa99dq\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_varnames_extraction FAILED             [100%]\n\n=================================== FAILURES ===================================\n___________________________ test_varnames_extraction ___________________________\n\n    def test_varnames_extraction():\n        with warnings.c",
+  "constraint_status": "FAIL",
+  "constraint_results": null,
+  "overall_task_success": false,
+  "input_tokens": 138,
+  "output_tokens": 200
+}

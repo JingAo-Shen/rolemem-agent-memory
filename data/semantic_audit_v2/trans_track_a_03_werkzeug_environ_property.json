@@ -2,8 +2,8 @@
   "transition_id": "trans_track_a_03_werkzeug_environ_property",
   "repo_name": "pallets/werkzeug",
   "auditor_version": "2.0.0",
-  "spec_sha256": "d18229edf6b379106e49b3f2a5f174f845d2d369cc3496387e42e1f8c69027e7",
-  "audit_fingerprint": "195e4ab63ad200d4659f7e2ab2b67025633160f92bf24f5dc125b3c20c01bec0",
+  "spec_sha256": "6154d9ce44a26310e4df5acce59a6a31bd33b1f0410ca8b4e2303c16d43eabc0",
+  "audit_fingerprint": "850f6125c4f62f8d78aeacb3050a584e6f6099c1eb2a7bae1182fa665c850d49",
   "gates": [
     {
       "gate_id": "G1",

@@ -1,0 +1,24 @@
+{
+  "transition_id": "trans_track_a_09_virtualenv_drop_py38_control",
+  "provenance_status": "TARGET_MEMORY_VERIFIED",
+  "checks": {
+    "source_pr_matches": true,
+    "source_commit_matches": true,
+    "artifact_in_diff": true,
+    "symbol_in_evidence": true,
+    "replacement_supported": true,
+    "statement_supported": true
+  },
+  "claim": {
+    "transition_id": "trans_track_a_09_virtualenv_drop_py38_control",
+    "statement": "CPython3Posix.pyvenv_launch_patch_active has been removed as macOS Python 3.8 support was dropped; return False directly for pyvenv launcher patch requirements.",
+    "symbol": "CPython3Posix.pyvenv_launch_patch_active",
+    "replacement": "return False",
+    "source_pr_url": "https://github.com/pypa/virtualenv/pull/3170",
+    "source_commit": "79ce906a2378e24c81a7b27ac506c73d5cc262d9",
+    "evidence_file": "data/external_evidence/trans_track_a_09_virtualenv_drop_py38_control/diff.patch",
+    "evidence_hunk_sha256": "1f6f3850e403dd7e400dfea77545f5002531b6a75d0b155a585330485c9ee4d2",
+    "evidence_excerpt_hash": "81e23693f4ab11edbea169783aee01021a9615d52d186b27718bde01cbc9af7c",
+    "ground_truth_audit_hash": "7f1a4d31234125d21af48e80d5e0191f8321d6b4a1380132166b935a32af6a0e"
+  }
+}

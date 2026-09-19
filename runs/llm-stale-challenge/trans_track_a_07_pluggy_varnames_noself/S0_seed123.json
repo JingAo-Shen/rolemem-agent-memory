@@ -1,0 +1,22 @@
+{
+  "task_id": "trans_track_a_07_pluggy_varnames_noself",
+  "condition": "S0",
+  "seed": 123,
+  "task_prompt": "Implement `extract_spec_varnames(func)` in `spec_helper.py` inspecting hook specification parameters.",
+  "memory_statements": [],
+  "raw_generation": "```python\nimport inspect\n\ndef extract_spec_varnames(func):\n    \"\"\"\n    Extracts variable names from the function signature of a hook specification.\n\n    Args:\n        func (callable): The hook specification function whose parameter names need to be extracted.\n\n    Returns:\n        list: A list of parameter names from the function signature.\n    \"\"\"\n    # Get the signature of the function\n    sig = inspect.signature(func)\n    \n    # Extract the parameter names from the signature\n    param_names = [param.name for param in sig.parameters.values()]\n    \n    return param_names\n```\n\nThis solution uses the `inspect` module to get the signature of the provided function and then extracts the names of the parameters from that signature. The function returns a list of these parameter names. This approach ensures that we correctly identify all parameters defined in the hook specification function's signature.",
+  "parsed_code": "import inspect\n\ndef extract_spec_varnames(func):\n    \"\"\"\n    Extracts variable names from the function signature of a hook specification.\n\n    Args:\n        func (callable): The hook specification function whose parameter names need to be extracted.\n\n    Returns:\n        list: A list of parameter names from the function signature.\n    \"\"\"\n    # Get the signature of the function\n    sig = inspect.signature(func)\n    \n    # Extract the parameter names from the signature\n    param_names = [param.name for param in sig.parameters.values()]\n    \n    return param_names",
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": false,
+    "active_nodes": []
+  },
+  "pytest_pass": false,
+  "pytest_log_excerpt": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_wudh3cma\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_varnames_extraction FAILED             [100%]\n\n=================================== FAILURES ===================================\n___________________________ test_varnames_extraction ___________________________\n\n    def test_varnames_extraction():\n        with warnings.c",
+  "constraint_status": "FAIL",
+  "constraint_results": null,
+  "overall_task_success": false,
+  "input_tokens": 98,
+  "output_tokens": 173
+}

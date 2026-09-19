@@ -1,0 +1,22 @@
+{
+  "transition_id": "trans_track_a_02_flask_should_ignore_error",
+  "run_id": "S2_seed999",
+  "target_file": "custom_app.py",
+  "api_deprecation_gate": {
+    "status": "PASS",
+    "details": "Code free of deprecated symbol 'should_ignore_error'"
+  },
+  "replacement_mechanism_gate": {
+    "status": "FAIL",
+    "details": "Missing required teardown_request handler registration"
+  },
+  "behavior_fidelity_gate": {
+    "status": "PASS",
+    "details": "Pytest execution passed",
+    "pytest_passed": true,
+    "log_snippet": "kes 'ctx: AppContext' as the first parameter. The old signature is deprecated and will not be supported in Flask 4.0.\n    class CustomApp(Flask):\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n========================= 1 passed, 1 warning in 0.08s =========================\n"
+  },
+  "overall_constraint_status": "FAIL",
+  "overall_status": "FAIL",
+  "task_success": false
+}

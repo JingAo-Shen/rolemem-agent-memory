@@ -1,0 +1,22 @@
+{
+  "task_id": "trans_track_a_01_click_stream_deprecations",
+  "condition": "S0",
+  "seed": 123,
+  "task_prompt": "Implement `get_io_stream(name: str)` in `stream_helper.py` obtaining standard binary streams without deprecated click utilities.",
+  "memory_statements": [],
+  "raw_generation": "```python\nimport sys\n\ndef get_io_stream(name: str):\n    if name == 'stdin':\n        return sys.stdin.buffer\n    elif name == 'stdout':\n        return sys.stdout.buffer\n    elif name == 'stderr':\n        return sys.stderr.buffer\n    else:\n        raise ValueError(f\"Unsupported stream name: {name}\")\n\n# Example usage:\n# stdin_stream = get_io_stream('stdin')\n# stdout_stream = get_io_stream('stdout')\n# stderr_stream = get_io_stream('stderr')\n```\n\nThis implementation provides a function `get_io_stream` that returns the appropriate binary stream based on the input string. It uses Python's built-in `sys.stdin`, `sys.stdout`, and `sys.stderr` objects, accessing their `.buffer` attribute to obtain the binary versions of these streams. If an unsupported stream name is provided, it raises a `ValueError`. This solution avoids using any deprecated click utilities and adheres to the requirement of obtaining standard binary streams.",
+  "parsed_code": "import sys\n\ndef get_io_stream(name: str):\n    if name == 'stdin':\n        return sys.stdin.buffer\n    elif name == 'stdout':\n        return sys.stdout.buffer\n    elif name == 'stderr':\n        return sys.stderr.buffer\n    else:\n        raise ValueError(f\"Unsupported stream name: {name}\")\n\n# Example usage:\n# stdin_stream = get_io_stream('stdin')\n# stdout_stream = get_io_stream('stdout')\n# stderr_stream = get_io_stream('stderr')",
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": false,
+    "active_nodes": []
+  },
+  "pytest_pass": true,
+  "pytest_log_excerpt": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_fwkl9rvh\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_stream_retrieval PASSED                [100%]\n\n============================== 1 passed in 0.01s ===============================\n",
+  "constraint_status": "PASS",
+  "constraint_results": null,
+  "overall_task_success": true,
+  "input_tokens": 102,
+  "output_tokens": 198
+}

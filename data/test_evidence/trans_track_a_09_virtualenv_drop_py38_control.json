@@ -1,6 +1,6 @@
 {
   "transition_id": "trans_track_a_09_virtualenv_drop_py38_control",
-  "audit_fingerprint": "137a54beeb4f32c8301c548932541af176d0a8531c2a5c94e4c493efec5be1c2",
+  "audit_fingerprint": "9e30d9e2516b4b9c732926768b4fac95439bcd2456966ab66eafae6a90465dd4",
   "status": "GENERATED_HIDDEN_TEST_ONLY",
   "verification_status": "GENERATED_HIDDEN_TEST_ONLY",
   "evidence": "Executable hidden test verified in sandbox"

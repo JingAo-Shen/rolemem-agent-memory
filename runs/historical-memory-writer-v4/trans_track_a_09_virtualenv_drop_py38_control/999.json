@@ -1,0 +1,17 @@
+{
+  "task_id": "trans_track_a_09_virtualenv_drop_py38_control",
+  "attempt": 1,
+  "seed": 1022,
+  "symbol": "CPython3Posix.pyvenv_launch_patch_active",
+  "statement": "CPython3Posix.pyvenv_launch_patch_active checks if the current Python interpreter running on a POSIX system is version 3.8.3 or later but less than 3.8.",
+  "verdict": "HIST_MEMORY_VALID",
+  "criteria": {
+    "symbol_grounded": true,
+    "artifact_grounded": true,
+    "statement_supported": true,
+    "non_generic": true,
+    "non_future_looking": true,
+    "ast_unique": true
+  },
+  "raw_generation": "```json\n{\n  \"symbol\": \"CPython3Posix.pyvenv_launch_patch_active\",\n  \"statement\": \"It checks if the current Python interpreter running on a POSIX system is version 3.8.3 or later but less than 3.8.\"\n}\n```"
+}

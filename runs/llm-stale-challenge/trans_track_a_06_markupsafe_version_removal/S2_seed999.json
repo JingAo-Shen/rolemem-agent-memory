@@ -1,0 +1,30 @@
+{
+  "task_id": "trans_track_a_06_markupsafe_version_removal",
+  "condition": "S2",
+  "seed": 999,
+  "task_prompt": "Implement `get_library_version()` in `markup_version.py` retrieving MarkupSafe version.",
+  "memory_statements": [
+    "Access markupsafe.__version__ directly from module."
+  ],
+  "raw_generation": "```python\nimport markupsafe\n\ndef get_library_version():\n    return markupsafe.__version__\n```",
+  "parsed_code": "import markupsafe\n\ndef get_library_version():\n    return markupsafe.__version__",
+  "is_stale_action": true,
+  "ast_details": {
+    "stale_active_use": true,
+    "stale_mention": false,
+    "active_nodes": [
+      {
+        "type": "Attribute",
+        "lineno": 4,
+        "symbol": "__version__"
+      }
+    ]
+  },
+  "pytest_pass": false,
+  "pytest_log_excerpt": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_3r_q9ipf\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_version_retrieval FAILED               [100%]\n\n=================================== FAILURES ===================================\n____________________________ test_version_retrieval ____________________________\n\n    def test_version_retrieval():\n        import markupsafe",
+  "constraint_status": "FAIL",
+  "constraint_results": null,
+  "overall_task_success": false,
+  "input_tokens": 117,
+  "output_tokens": 23
+}

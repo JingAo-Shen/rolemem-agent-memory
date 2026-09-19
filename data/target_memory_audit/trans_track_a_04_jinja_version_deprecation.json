@@ -1,0 +1,24 @@
+{
+  "transition_id": "trans_track_a_04_jinja_version_deprecation",
+  "provenance_status": "TARGET_MEMORY_VERIFIED",
+  "checks": {
+    "source_pr_matches": true,
+    "source_commit_matches": true,
+    "artifact_in_diff": true,
+    "symbol_in_evidence": true,
+    "replacement_supported": true,
+    "statement_supported": true
+  },
+  "claim": {
+    "transition_id": "trans_track_a_04_jinja_version_deprecation",
+    "statement": "jinja2.__version__ is deprecated; use importlib.metadata.version(\"jinja2\") to inspect package version at runtime.",
+    "symbol": "jinja2.__version__",
+    "replacement": "importlib.metadata.version(\"jinja2\")",
+    "source_pr_url": "https://github.com/pallets/jinja/pull/2098",
+    "source_commit": "9e49736ae075fcffb85f731a3fe2c006cf1edca4",
+    "evidence_file": "data/external_evidence/trans_track_a_04_jinja_version_deprecation/diff.patch",
+    "evidence_hunk_sha256": "22803df9e0368a8d2cb807c3e8d7f0cca845eb0c23d1659de8185d4cc021dd55",
+    "evidence_excerpt_hash": "300feaeef646f4e0413b97aa220aa770a25dc19fcdffea90f0a2c3d739aebd33",
+    "ground_truth_audit_hash": "6f45269c8b86fbcf4c5b4bbabaff60019552b4abc348a5d6738fe841df0789b8"
+  }
+}

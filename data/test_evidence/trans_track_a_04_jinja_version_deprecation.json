@@ -1,6 +1,6 @@
 {
   "transition_id": "trans_track_a_04_jinja_version_deprecation",
-  "audit_fingerprint": "f8eb8d4c5f5a81e848edc785fe451353f2babfed90f1911aef10817e6c62169c",
+  "audit_fingerprint": "71586076ef2abbd39f5d6bd48d0c9143fbf243aebba91a581b73fbce9157a9ad",
   "status": "GENERATED_HIDDEN_TEST_ONLY",
   "verification_status": "GENERATED_HIDDEN_TEST_ONLY",
   "evidence": "Executable hidden test verified in sandbox"

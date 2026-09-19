@@ -2,8 +2,8 @@
   "transition_id": "trans_track_a_09_virtualenv_drop_py38_control",
   "repo_name": "pypa/virtualenv",
   "auditor_version": "2.0.0",
-  "spec_sha256": "094655d043c3bba380e17a0feb7d1d752e9031c765ab047062f40fc8dcc1b082",
-  "audit_fingerprint": "137a54beeb4f32c8301c548932541af176d0a8531c2a5c94e4c493efec5be1c2",
+  "spec_sha256": "45e553f74017e7d8e0575ed976d40abed19307e5c8800143499c56824ca4be97",
+  "audit_fingerprint": "9e30d9e2516b4b9c732926768b4fac95439bcd2456966ab66eafae6a90465dd4",
   "gates": [
     {
       "gate_id": "G1",
@@ -25,8 +25,8 @@
       "gate_id": "G3",
       "name": "actual diff <-> changed/deprecated/replacement symbols",
       "expected": "Diff patch directly modifies or introduces the target symbols",
-      "observed": "Tokens ['pyvenv_launch_patch_active', 'pyvenv_launch_patch_active', 'False', 'PythonInfo', 'CPython3Posix'] found in diff: True",
-      "evidence": "Matching symbols in diff: ['pyvenv_launch_patch_active', 'pyvenv_launch_patch_active', 'False', 'PythonInfo', 'CPython3Posix']",
+      "observed": "Tokens ['pyvenv_launch_patch_active', 'pyvenv_launch_patch_active', 'False', 'drop_py38', 'no_launcher_patch'] found in diff: True",
+      "evidence": "Matching symbols in diff: ['pyvenv_launch_patch_active', 'pyvenv_launch_patch_active', 'False']",
       "status": "PASS"
     },
     {

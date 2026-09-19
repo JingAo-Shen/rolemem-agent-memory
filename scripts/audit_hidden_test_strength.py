@@ -115,14 +115,14 @@ def get_mutants_for_transition(tid: str, fixture_dir: str) -> Dict[str, Dict[str
     elif tid == "trans_track_a_08_attrs_py313_replace_control":
         prefix = "import attr\n@attr.s(auto_attribs=True)\nclass Point:\n    x: int\n    y: int\ndef create_point(x: int, y: int):\n    return Point(x, y)\n"
         mutants = {
-            "M1_return_none": {"desc": "return None", "code": prefix + "def replace_point(pt, **changes):\n    return None\n"},
-            "M2_constant_return": {"desc": "return constant string", "code": prefix + "def replace_point(pt, **changes):\n    return '1.0'\n"},
-            "M3_noop_pass": {"desc": "pass / no-op", "code": prefix + "def replace_point(pt, **changes):\n    pass\n"},
-            "M4_try_except_dummy": {"desc": "try/except return dummy", "code": prefix + "def replace_point(pt, **changes):\n    return 'dummy'\n"},
-            "M5_stale_solution": {"desc": "control evolve call", "code": stale_code},
-            "M6_mismatched_signature": {"desc": "wrong signature", "code": prefix + "def replace_point(pt):\n    return pt\n"},
-            "M7_missing_attribute": {"desc": "missing replace_point", "code": prefix},
-            "M8_static_mock": {"desc": "static object mock", "code": prefix + "def replace_point(pt, **changes):\n    class P: x = 30; y = 20\n    return P()\n"},
+            "M1_return_none": {"desc": "return None", "code": prefix + "def replace_point(pt, **changes):\n    return None\n", "expected_to_fail": True},
+            "M2_constant_return": {"desc": "return constant string", "code": prefix + "def replace_point(pt, **changes):\n    return '1.0'\n", "expected_to_fail": True},
+            "M3_noop_pass": {"desc": "pass / no-op", "code": prefix + "def replace_point(pt, **changes):\n    pass\n", "expected_to_fail": True},
+            "M4_try_except_dummy": {"desc": "try/except return dummy", "code": prefix + "def replace_point(pt, **changes):\n    return 'dummy'\n", "expected_to_fail": True},
+            "M5_stale_solution": {"desc": "control evolve call (EXPECTED_SURVIVOR_CONTROL)", "code": stale_code, "expected_to_fail": False},
+            "M6_mismatched_signature": {"desc": "wrong signature", "code": prefix + "def replace_point(pt):\n    return pt\n", "expected_to_fail": True},
+            "M7_missing_attribute": {"desc": "missing replace_point", "code": prefix, "expected_to_fail": True},
+            "M8_static_mock": {"desc": "static object mock", "code": prefix + "def replace_point(pt, **changes):\n    class P: x = 30; y = 20\n    return P()\n", "expected_to_fail": True},
         }
     elif tid == "trans_track_a_09_virtualenv_drop_py38_control":
         mutants = {
@@ -182,9 +182,15 @@ def run_mutation_audit():
 
         mutant_evals = {}
         killed_count = 0
+        invalid_count = 0
+        invalid_killed = 0
 
         for mid, mdata in mutants.items():
+            expected_fail = mdata.get("expected_to_fail", True)
             total_mutants += 1
+            if expected_fail:
+                invalid_count += 1
+
             res, log = executor.execute_in_sandbox(
                 workspace_files=target_ws,
                 target_file=target_file,
@@ -196,19 +202,23 @@ def run_mutation_audit():
             if is_killed:
                 killed_count += 1
                 total_killed += 1
+                if expected_fail:
+                    invalid_killed += 1
 
             if mid == "M2_constant_return" and not is_killed:
                 constant_return_bypasses += 1
 
+            status_str = "KILLED" if is_killed else ("EXPECTED_SURVIVOR" if not expected_fail else "SURVIVED")
             mutant_evals[mid] = {
                 "description": mdata["desc"],
+                "expected_to_fail": expected_fail,
                 "passed_test": res,
                 "killed": is_killed,
-                "status": "KILLED" if is_killed else "SURVIVED",
+                "status": status_str,
                 "log_snippet": log[-300:] if len(log) > 300 else log
             }
 
-        kill_rate = killed_count / len(mutants) if mutants else 0.0
+        kill_rate = invalid_killed / invalid_count if invalid_count else 0.0
         meets_threshold = kill_rate >= 0.80
         m2_killed = mutant_evals.get("M2_constant_return", {}).get("killed", False)
 
@@ -218,6 +228,8 @@ def run_mutation_audit():
             "transition_id": tid,
             "audit_fingerprint": fp,
             "total_mutants": len(mutants),
+            "invalid_mutants_count": invalid_count,
+            "invalid_mutants_killed": invalid_killed,
             "killed_mutants": killed_count,
             "mutation_kill_rate": round(kill_rate, 4),
             "constant_return_killed": m2_killed,
@@ -234,12 +246,15 @@ def run_mutation_audit():
         all_results[tid] = audit_payload
 
         status_str = "PASS" if meets_threshold and m2_killed else "FAIL"
-        print(f"[{tid}] {status_str} | Kill Rate: {killed_count}/{len(mutants)} ({kill_rate*100:.1f}%) | M2_Killed: {m2_killed}")
+        print(f"[{tid}] {status_str} | Invalid Kill Rate: {invalid_killed}/{invalid_count} ({kill_rate*100:.1f}%) | M2_Killed: {m2_killed}")
 
-    overall_kill_rate = total_killed / total_mutants if total_mutants else 0.0
+    total_invalid = sum(r["invalid_mutants_count"] for r in all_results.values())
+    total_invalid_killed = sum(r["invalid_mutants_killed"] for r in all_results.values())
+    overall_kill_rate = total_invalid_killed / total_invalid if total_invalid else 0.0
     print("\n=== Audit Summary ===")
     print(f"Total Mutants Evaluated: {total_mutants}")
-    print(f"Total Mutants Killed: {total_killed} ({overall_kill_rate*100:.1f}%)")
+    print(f"Total Invalid Mutants (expected to fail): {total_invalid}")
+    print(f"Total Invalid Mutants Killed: {total_invalid_killed} ({overall_kill_rate*100:.1f}%)")
     print(f"Constant Return Bypasses: {constant_return_bypasses} (0.0% required)")
 
     assert constant_return_bypasses == 0, f"FAILED: {constant_return_bypasses} constant return mutants bypassed hidden tests!"

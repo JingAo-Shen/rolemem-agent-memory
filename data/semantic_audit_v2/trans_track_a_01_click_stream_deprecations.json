@@ -2,8 +2,8 @@
   "transition_id": "trans_track_a_01_click_stream_deprecations",
   "repo_name": "pallets/click",
   "auditor_version": "2.0.0",
-  "spec_sha256": "cc9e41c482889f9897a4b8cfb2ca83f3caeed7a2ecfe24c78f8e4d35a969f697",
-  "audit_fingerprint": "4790e68eb830baf90fa52289c53ab2f433ce3fb6ab402484a9995df0fbc49f4b",
+  "spec_sha256": "9588ec3287336a09ee7d9793bd19bc6ae762f6265fcae58970453c6702b6a92e",
+  "audit_fingerprint": "af32f13a8e5bac6d9963c011c4fb6237fc5f5834a5bb0d434e91dcc22a01e6c8",
   "gates": [
     {
       "gate_id": "G1",

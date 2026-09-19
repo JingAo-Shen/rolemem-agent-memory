@@ -1,0 +1,17 @@
+{
+  "task_id": "trans_track_a_08_attrs_py313_replace_control",
+  "attempt": 1,
+  "seed": 146,
+  "symbol": "Attribute.evolve",
+  "statement": "Attribute.evolve creates a copy of the current instance and applies the specified changes using the _setattrs method.",
+  "verdict": "HIST_MEMORY_VALID",
+  "criteria": {
+    "symbol_grounded": true,
+    "artifact_grounded": true,
+    "statement_supported": true,
+    "non_generic": true,
+    "non_future_looking": true,
+    "ast_unique": true
+  },
+  "raw_generation": "```json\n{\n  \"symbol\": \"Attribute.evolve\",\n  \"statement\": \"Attribute.evolve creates a copy of the current instance and applies the specified changes using the _setattrs method.\"\n}\n```"
+}

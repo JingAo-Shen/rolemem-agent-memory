@@ -32,5 +32,7 @@
   "transition_type": "API_EVOLUTION",
   "original_test_required": false,
   "generated_hidden_test_only": true,
-  "track": "TRACK_A_API_EVOLUTION"
+  "track": "TRACK_A_API_EVOLUTION",
+  "pr_number": 1383,
+  "external_pr_url": "https://github.com/python-attrs/attrs/pull/1383"
 }

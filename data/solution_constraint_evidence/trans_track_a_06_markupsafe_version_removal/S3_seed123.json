@@ -1,0 +1,22 @@
+{
+  "transition_id": "trans_track_a_06_markupsafe_version_removal",
+  "run_id": "S3_seed123",
+  "target_file": "markup_version.py",
+  "api_deprecation_gate": {
+    "status": "PASS",
+    "details": "Code free of deprecated symbol '__version__'"
+  },
+  "replacement_mechanism_gate": {
+    "status": "PASS",
+    "details": "importlib.metadata mechanism present"
+  },
+  "behavior_fidelity_gate": {
+    "status": "PASS",
+    "details": "Pytest execution passed",
+    "pytest_passed": true,
+    "log_snippet": "naconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_r6v0wm4_\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_version_retrieval PASSED               [100%]\n\n============================== 1 passed in 0.02s ===============================\n"
+  },
+  "overall_constraint_status": "PASS",
+  "overall_status": "PASS",
+  "task_success": true
+}

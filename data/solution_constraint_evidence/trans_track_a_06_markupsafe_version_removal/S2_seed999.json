@@ -1,0 +1,22 @@
+{
+  "transition_id": "trans_track_a_06_markupsafe_version_removal",
+  "run_id": "S2_seed999",
+  "target_file": "markup_version.py",
+  "api_deprecation_gate": {
+    "status": "FAIL",
+    "details": "Generated code invokes deprecated symbol '__version__'"
+  },
+  "replacement_mechanism_gate": {
+    "status": "FAIL",
+    "details": "Missing required importlib.metadata replacement"
+  },
+  "behavior_fidelity_gate": {
+    "status": "FAIL",
+    "details": "Pytest execution failed",
+    "pytest_passed": false,
+    "log_snippet": "version__'\n\nmarkup_version.py:4: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_version_retrieval - AttributeError: ...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
+  },
+  "overall_constraint_status": "FAIL",
+  "overall_status": "FAIL",
+  "task_success": false
+}

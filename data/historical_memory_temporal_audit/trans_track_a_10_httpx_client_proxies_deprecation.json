@@ -1,0 +1,32 @@
+{
+  "transition_id": "trans_track_a_10_httpx_client_proxies_deprecation",
+  "overall_status": "TEMPORAL_VALID",
+  "reconstructed_seed_count": 3,
+  "valid_seed_count": 3,
+  "evaluations": {
+    "42": {
+      "verdict": "TEMPORAL_VALID",
+      "pr_leak": false,
+      "matched_replacements": [],
+      "matched_leak_terms": [],
+      "base_has_content": true,
+      "statement": "The method `_get_proxy_map` processes and returns a dictionary mapping proxy keys to `Proxy` objects based on the input `proxies` parameter and whether environment proxies should be allowed."
+    },
+    "123": {
+      "verdict": "TEMPORAL_VALID",
+      "pr_leak": false,
+      "matched_replacements": [],
+      "matched_leak_terms": [],
+      "base_has_content": true,
+      "statement": "BaseClient._get_proxy_map.proxies is a method that processes and returns a dictionary mapping proxy keys to Proxy objects based on the input proxies parameter and whether environment proxies should be allowed."
+    },
+    "999": {
+      "verdict": "TEMPORAL_VALID",
+      "pr_leak": false,
+      "matched_replacements": [],
+      "matched_leak_terms": [],
+      "base_has_content": true,
+      "statement": "BaseClient._get_proxy_map.proxies is a method that processes and returns a dictionary mapping proxy keys to Proxy objects based on the provided proxies argument and whether environment proxies should be allowed."
+    }
+  }
+}

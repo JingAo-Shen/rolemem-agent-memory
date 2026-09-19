@@ -1,9 +1,11 @@
 {
   "transition_id": "trans_track_a_08_attrs_py313_replace_control",
-  "audit_fingerprint": "7db99be2638c747468ddcc6cf994d74206cbe91fe01a8a146b2ed1ef67207875",
+  "audit_fingerprint": "bc1053730b8336b618c7b9b5dfccdfa95f0e93fe67bfcf91eaafab419d1a239a",
   "total_mutants": 8,
+  "invalid_mutants_count": 7,
+  "invalid_mutants_killed": 7,
   "killed_mutants": 7,
-  "mutation_kill_rate": 0.875,
+  "mutation_kill_rate": 1.0,
   "constant_return_killed": true,
   "constant_return_bypass": false,
   "meets_kill_rate_threshold": true,
@@ -11,6 +13,7 @@
   "mutants": {
     "M1_return_none": {
       "description": "return None",
+      "expected_to_fail": true,
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
@@ -18,6 +21,7 @@
     },
     "M2_constant_return": {
       "description": "return constant string",
+      "expected_to_fail": true,
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
@@ -25,6 +29,7 @@
     },
     "M3_noop_pass": {
       "description": "pass / no-op",
+      "expected_to_fail": true,
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
@@ -32,20 +37,23 @@
     },
     "M4_try_except_dummy": {
       "description": "try/except return dummy",
+      "expected_to_fail": true,
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
       "log_snippet": "\n\ntest_hidden_verification.py:8: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_replace_behavior - AssertionError: A...\n============================== 1 failed in 0.04s ===============================\n\nSTDERR:\n"
     },
     "M5_stale_solution": {
-      "description": "control evolve call",
+      "description": "control evolve call (EXPECTED_SURVIVOR_CONTROL)",
+      "expected_to_fail": false,
       "passed_test": true,
       "killed": false,
-      "status": "SURVIVED",
-      "log_snippet": "naconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_ixa40_94\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_replace_behavior PASSED                [100%]\n\n============================== 1 passed in 0.03s ===============================\n"
+      "status": "EXPECTED_SURVIVOR",
+      "log_snippet": "naconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_k47b032t\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_replace_behavior PASSED                [100%]\n\n============================== 1 passed in 0.03s ===============================\n"
     },
     "M6_mismatched_signature": {
       "description": "wrong signature",
+      "expected_to_fail": true,
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
@@ -53,6 +61,7 @@
     },
     "M7_missing_attribute": {
       "description": "missing replace_point",
+      "expected_to_fail": true,
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
@@ -60,6 +69,7 @@
     },
     "M8_static_mock": {
       "description": "static object mock",
+      "expected_to_fail": true,
       "passed_test": false,
       "killed": true,
       "status": "KILLED",

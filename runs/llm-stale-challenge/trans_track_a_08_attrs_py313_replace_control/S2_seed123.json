@@ -1,0 +1,35 @@
+{
+  "task_id": "trans_track_a_08_attrs_py313_replace_control",
+  "condition": "S2",
+  "seed": 123,
+  "task_prompt": "Implement `create_point(x, y)` and `replace_point(pt, **changes)` in `point_manager.py` using standard copy.replace.",
+  "memory_statements": [
+    "Attribute.evolve creates a copy of the current instance and applies the specified changes using the _setattrs method."
+  ],
+  "raw_generation": "```python\nimport copy\n\nclass Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\n    def _setattrs(self, **kwargs):\n        for key, value in kwargs.items():\n            setattr(self, key, value)\n\n    def evolve(self, **changes):\n        new_instance = copy.copy(self)\n        new_instance._setattrs(**changes)\n        return new_instance\n\ndef create_point(x, y):\n    return Point(x, y)\n\ndef replace_point(pt, **changes):\n    return pt.evolve(**changes)\n```\n\nThis solution defines a `Point` class with methods `_setattrs` and `evolve`. The `create_point` function creates a new `Point` instance, and the `replace_point` function uses the `evolve` method to create a modified copy of an existing `Point` instance based on the provided changes.",
+  "parsed_code": "import copy\n\nclass Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\n    def _setattrs(self, **kwargs):\n        for key, value in kwargs.items():\n            setattr(self, key, value)\n\n    def evolve(self, **changes):\n        new_instance = copy.copy(self)\n        new_instance._setattrs(**changes)\n        return new_instance\n\ndef create_point(x, y):\n    return Point(x, y)\n\ndef replace_point(pt, **changes):\n    return pt.evolve(**changes)",
+  "is_stale_action": true,
+  "ast_details": {
+    "stale_active_use": true,
+    "stale_mention": false,
+    "active_nodes": [
+      {
+        "type": "FunctionDef",
+        "lineno": 12,
+        "symbol": "evolve"
+      },
+      {
+        "type": "Attribute",
+        "lineno": 21,
+        "symbol": "evolve"
+      }
+    ]
+  },
+  "pytest_pass": true,
+  "pytest_log_excerpt": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_7eoxghot\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_replace_behavior PASSED                [100%]\n\n============================== 1 passed in 0.01s ===============================\n",
+  "constraint_status": "PASS",
+  "constraint_results": null,
+  "overall_task_success": false,
+  "input_tokens": 139,
+  "output_tokens": 187
+}

@@ -1,0 +1,32 @@
+{
+  "transition_id": "trans_track_a_08_attrs_py313_replace_control",
+  "overall_status": "TEMPORAL_VALID",
+  "reconstructed_seed_count": 3,
+  "valid_seed_count": 3,
+  "evaluations": {
+    "42": {
+      "verdict": "TEMPORAL_VALID",
+      "pr_leak": false,
+      "matched_replacements": [],
+      "matched_leak_terms": [],
+      "base_has_content": true,
+      "statement": "Attribute.evolve creates a copy of the current instance and applies the specified changes using the _setattrs method."
+    },
+    "123": {
+      "verdict": "TEMPORAL_VALID",
+      "pr_leak": false,
+      "matched_replacements": [],
+      "matched_leak_terms": [],
+      "base_has_content": true,
+      "statement": "Attribute.evolve creates a copy of the current instance and applies the specified changes using the _setattrs method."
+    },
+    "999": {
+      "verdict": "TEMPORAL_VALID",
+      "pr_leak": false,
+      "matched_replacements": [],
+      "matched_leak_terms": [],
+      "base_has_content": true,
+      "statement": "Attribute.evolve creates a copy of the current instance and applies the specified changes using the _setattrs method."
+    }
+  }
+}

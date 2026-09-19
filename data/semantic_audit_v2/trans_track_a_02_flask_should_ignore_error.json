@@ -2,8 +2,8 @@
   "transition_id": "trans_track_a_02_flask_should_ignore_error",
   "repo_name": "pallets/flask",
   "auditor_version": "2.0.0",
-  "spec_sha256": "f9026c01073fb61d3b1cc9629f06a6a27e3476cd6e2aa0a640a5ebb67d198d32",
-  "audit_fingerprint": "9333ad87157ee15f87fbc35f040bdd93084a3dcefb3a376717ebd01f5ad279de",
+  "spec_sha256": "044ce5b1575f3af7381e80ca43c205fcc53c20f6ce0cddd48df6d9862cc073d2",
+  "audit_fingerprint": "3135ed6d17ccbdba542e33ecf3c1cbbb899f6be6f5ce6e07c1a2aecf18c8fcfb",
   "gates": [
     {
       "gate_id": "G1",
@@ -57,8 +57,8 @@
       "gate_id": "G7",
       "name": "hidden test strength <-> current task semantics",
       "expected": "Hidden test verifies target capability with mutation_kill_rate >= 0.80 and zero constant-return bypass",
-      "observed": "Semantic match: True, Mutation kill rate: 87.5%, Constant return bypass: False",
-      "evidence": "test_strength/trans_track_a_02_flask_should_ignore_error.json, len=648 bytes",
+      "observed": "Semantic match: True, Mutation kill rate: 100.0%, Constant return bypass: False",
+      "evidence": "test_strength/trans_track_a_02_flask_should_ignore_error.json, len=832 bytes",
       "status": "PASS"
     },
     {

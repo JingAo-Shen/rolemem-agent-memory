@@ -1,0 +1,24 @@
+{
+  "transition_id": "trans_track_a_01_click_stream_deprecations",
+  "provenance_status": "TARGET_MEMORY_VERIFIED",
+  "checks": {
+    "source_pr_matches": true,
+    "source_commit_matches": true,
+    "artifact_in_diff": true,
+    "symbol_in_evidence": true,
+    "replacement_supported": true,
+    "statement_supported": true
+  },
+  "claim": {
+    "transition_id": "trans_track_a_01_click_stream_deprecations",
+    "statement": "click.utils.get_binary_stream is deprecated in Click 8.1; use sys.stdin.buffer and sys.stdout.buffer directly for standard binary IO streams.",
+    "symbol": "click.utils.get_binary_stream",
+    "replacement": "sys.stdin.buffer / sys.stdout.buffer",
+    "source_pr_url": "https://github.com/pallets/click/pull/3695",
+    "source_commit": "051725fa7e0c69effc9107066d8791c5b99242c3",
+    "evidence_file": "data/external_evidence/trans_track_a_01_click_stream_deprecations/diff.patch",
+    "evidence_hunk_sha256": "73be4c7c8f0f254c0ce01c1e131a142a3d4f44ed58f6a48893820e0217d4de7a",
+    "evidence_excerpt_hash": "35919c3e3b95771337c7dd0df4f2fa5ce0be8c2017b6b13de5a504f41f0a56f2",
+    "ground_truth_audit_hash": "9d9aa5ed9030f0e5e70c036b789292f06551cdc1a6b4d1da5810b0d008d122e4"
+  }
+}

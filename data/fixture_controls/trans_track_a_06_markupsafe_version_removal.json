@@ -1,6 +1,6 @@
 {
   "transition_id": "trans_track_a_06_markupsafe_version_removal",
-  "audit_fingerprint": "88559a536cbb289f2008f2c84437151b7a403f0ed95c566824f33c66c846988a",
+  "audit_fingerprint": "d9d1d5d9ce93edbcc3b4414b91a90bf062b919008b4cd704e84598b35695f52a",
   "status": "PASS",
   "valid_control_status": "PASS",
   "stale_control_status": "PASS",

@@ -6,7 +6,7 @@
     "api_deprecation_gate": {
       "deprecated_symbol": "httpx.Client(proxies=...)",
       "enforcement": "proxies parameter triggers DeprecationWarning in modern HTTPX",
-      "verified": true
+      "constraint_status": "SPECIFIED"
     },
     "replacement_mechanism_gate": {
       "required_mechanism": "httpx.Client(proxy=proxy_url) passing singular proxy parameter",
@@ -15,7 +15,7 @@
         null,
         "dummy"
       ],
-      "verified": true
+      "constraint_status": "SPECIFIED"
     },
     "behavior_fidelity_gate": {
       "dynamic_checks": [
@@ -25,8 +25,9 @@
       "boundary_checks": [
         "Deprecation filter catches legacy parameter"
       ],
-      "verified": true
+      "constraint_status": "SPECIFIED"
     }
   },
-  "verification_status": "CONSTRAINTS_REGISTERED"
+  "verification_status": "CONSTRAINTS_SPECIFIED",
+  "constraint_status": "SPECIFIED"
 }

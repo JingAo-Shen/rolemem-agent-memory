@@ -1,0 +1,22 @@
+{
+  "transition_id": "trans_track_a_06_markupsafe_version_removal",
+  "run_id": "S0_seed123",
+  "target_file": "markup_version.py",
+  "api_deprecation_gate": {
+    "status": "PASS",
+    "details": "Code free of deprecated symbol '__version__'"
+  },
+  "replacement_mechanism_gate": {
+    "status": "FAIL",
+    "details": "Missing required importlib.metadata replacement"
+  },
+  "behavior_fidelity_gate": {
+    "status": "FAIL",
+    "details": "Pytest execution failed",
+    "pytest_passed": false,
+    "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_version_retrieval - AssertionError: ...\n======================== 1 failed, 3 warnings in 0.07s =========================\n\nSTDERR:\n"
+  },
+  "overall_constraint_status": "FAIL",
+  "overall_status": "FAIL",
+  "task_success": false
+}

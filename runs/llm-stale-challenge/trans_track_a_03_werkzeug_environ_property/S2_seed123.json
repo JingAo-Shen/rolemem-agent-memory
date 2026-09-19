@@ -1,0 +1,35 @@
+{
+  "task_id": "trans_track_a_03_werkzeug_environ_property",
+  "condition": "S2",
+  "seed": 123,
+  "task_prompt": "Implement `create_header_property(key: str)` in `header_proxy.py` returning an environ property accessor.",
+  "memory_statements": [
+    "environ_property is a descriptor class that maps request attributes to environment variables, allowing access to values stored in the environ dictionary of a request object."
+  ],
+  "raw_generation": "```python\nclass environ_property:\n    def __init__(self, key):\n        self.key = key\n\n    def __get__(self, instance, owner):\n        if instance is None:\n            return self\n        return instance.environ.get(self.key)\n\nclass HeaderProxy:\n    def __init__(self, environ):\n        self.environ = environ\n\n    @classmethod\n    def create_header_property(cls, key: str):\n        return environ_property(key)\n```\n\nThis solution defines two classes: `environ_property` and `HeaderProxy`. The `environ_property` class is used as a descriptor to map request attributes to environment variables. It has a `__get__` method that retrieves the value from the `environ` dictionary using the provided key. The `HeaderProxy` class initializes with an `environ` dictionary and provides a class method `create_header_property` that returns an instance of `environ_property` configured with the specified key. This setup allows for accessing environment variables through attribute-like syntax on instances of `HeaderProxy`.",
+  "parsed_code": "class environ_property:\n    def __init__(self, key):\n        self.key = key\n\n    def __get__(self, instance, owner):\n        if instance is None:\n            return self\n        return instance.environ.get(self.key)\n\nclass HeaderProxy:\n    def __init__(self, environ):\n        self.environ = environ\n\n    @classmethod\n    def create_header_property(cls, key: str):\n        return environ_property(key)",
+  "is_stale_action": true,
+  "ast_details": {
+    "stale_active_use": true,
+    "stale_mention": false,
+    "active_nodes": [
+      {
+        "type": "ClassDef",
+        "lineno": 1,
+        "symbol": "environ_property"
+      },
+      {
+        "type": "Name(Load)",
+        "lineno": 16,
+        "symbol": "environ_property"
+      }
+    ]
+  },
+  "pytest_pass": false,
+  "pytest_log_excerpt": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_20g2h6ym\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_environ_property_creation FAILED       [100%]\n\n=================================== FAILURES ===================================\n________________________ test_environ_property_creation ________________________\n\n    def test_environ_property_creation():\n        with warn",
+  "constraint_status": "FAIL",
+  "constraint_results": null,
+  "overall_task_success": false,
+  "input_tokens": 138,
+  "output_tokens": 213
+}

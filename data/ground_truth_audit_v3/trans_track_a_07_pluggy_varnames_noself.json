@@ -16,8 +16,8 @@
   "issue_required": false,
   "issue_id_verified": null,
   "issue_status": "NOT_APPLICABLE",
-  "spec_sha256": "2b9a57a0f30f392bb55658c26bd1d1eb68e17823be0670fdcacc522853c346b4",
-  "audit_fingerprint": "4394e79abe6dd37ef65917ec862c08fad84e3e9048d1e39dc0d5d2da4be5120e",
+  "spec_sha256": "b08255af04b1505cc2fc7da489a8de4d147b510dd5a20678d29a203388b24e4c",
+  "audit_fingerprint": "70561d595ef31e15f984d7c533163cf888f0d91b8e7cbe3cf706ca97b7074a9e",
   "auditor_version": "3.0.0",
   "overall_status": "PASS"
 }

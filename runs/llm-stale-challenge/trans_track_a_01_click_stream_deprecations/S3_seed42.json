@@ -1,0 +1,24 @@
+{
+  "task_id": "trans_track_a_01_click_stream_deprecations",
+  "condition": "S3",
+  "seed": 42,
+  "task_prompt": "Implement `get_io_stream(name: str)` in `stream_helper.py` obtaining standard binary streams without deprecated click utilities.",
+  "memory_statements": [
+    "click.utils.get_binary_stream is deprecated in Click 8.1; use sys.stdin.buffer and sys.stdout.buffer directly for standard binary IO streams."
+  ],
+  "raw_generation": "```python\nimport sys\n\ndef get_io_stream(name: str):\n    if name == 'stdin':\n        return sys.stdin.buffer\n    elif name == 'stdout':\n        return sys.stdout.buffer\n    else:\n        raise ValueError(f\"Unsupported stream name: {name}\")\n```\n\nThis function checks the input `name` and returns the corresponding standard binary stream using `sys.stdin.buffer` or `sys.stdout.buffer`. If the `name` does not match either 'stdin' or 'stdout', it raises a `ValueError` indicating that the stream name is unsupported. This solution adheres to the architectural memory provided, avoiding the use of deprecated Click utilities for handling binary streams.",
+  "parsed_code": "import sys\n\ndef get_io_stream(name: str):\n    if name == 'stdin':\n        return sys.stdin.buffer\n    elif name == 'stdout':\n        return sys.stdout.buffer\n    else:\n        raise ValueError(f\"Unsupported stream name: {name}\")",
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": false,
+    "active_nodes": []
+  },
+  "pytest_pass": true,
+  "pytest_log_excerpt": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_6hu8agmu\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_stream_retrieval PASSED                [100%]\n\n============================== 1 passed in 0.01s ===============================\n",
+  "constraint_status": "PASS",
+  "constraint_results": null,
+  "overall_task_success": true,
+  "input_tokens": 142,
+  "output_tokens": 138
+}

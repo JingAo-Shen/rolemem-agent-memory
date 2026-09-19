@@ -1,7 +1,9 @@
 {
   "transition_id": "trans_track_a_09_virtualenv_drop_py38_control",
-  "audit_fingerprint": "137a54beeb4f32c8301c548932541af176d0a8531c2a5c94e4c493efec5be1c2",
+  "audit_fingerprint": "9e30d9e2516b4b9c732926768b4fac95439bcd2456966ab66eafae6a90465dd4",
   "total_mutants": 8,
+  "invalid_mutants_count": 8,
+  "invalid_mutants_killed": 8,
   "killed_mutants": 8,
   "mutation_kill_rate": 1.0,
   "constant_return_killed": true,
@@ -11,6 +13,7 @@
   "mutants": {
     "M1_return_none": {
       "description": "return None",
+      "expected_to_fail": true,
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
@@ -18,27 +21,31 @@
     },
     "M2_constant_return": {
       "description": "return constant string",
+      "expected_to_fail": true,
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\ntest_hidden_verification.py:11: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_patch_check - AssertionError: Anti-c...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:11: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_patch_check - AssertionError: Anti-c...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
     },
     "M3_noop_pass": {
       "description": "pass / no-op",
+      "expected_to_fail": true,
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\ntest_hidden_verification.py:12: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_patch_check - AssertionError: Anti-c...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:12: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_patch_check - AssertionError: Anti-c...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
     },
     "M4_try_except_dummy": {
       "description": "try/except return dummy",
+      "expected_to_fail": true,
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\ntest_hidden_verification.py:12: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_patch_check - AssertionError: Anti-c...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:12: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_patch_check - AssertionError: Anti-c...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
     },
     "M5_stale_solution": {
       "description": "calls dropped pyvenv_launch_patch_active",
+      "expected_to_fail": true,
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
@@ -46,13 +53,15 @@
     },
     "M6_mismatched_signature": {
       "description": "wrong signature",
+      "expected_to_fail": true,
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "iven\n\ntest_hidden_verification.py:10: TypeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_patch_check - TypeError: requires_py...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
+      "log_snippet": "iven\n\ntest_hidden_verification.py:10: TypeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_patch_check - TypeError: requires_py...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
     },
     "M7_missing_attribute": {
       "description": "missing function",
+      "expected_to_fail": true,
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
@@ -60,10 +69,11 @@
     },
     "M8_static_mock": {
       "description": "string boolean instead of bool",
+      "expected_to_fail": true,
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\ntest_hidden_verification.py:12: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_patch_check - AssertionError: Anti-c...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:12: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_patch_check - AssertionError: Anti-c...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
     }
   }
 }
