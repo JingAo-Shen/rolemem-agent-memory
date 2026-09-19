@@ -1,0 +1,19 @@
+{
+  "transition_id": "trans_track_a_10_httpx_client_proxies_deprecation",
+  "repo_name": "encode/httpx",
+  "repo_url": "https://github.com/encode/httpx",
+  "pr_url": "https://github.com/encode/httpx/pull/2879",
+  "base_commit": "b471f01d668b9ef730e8843531b07b1c21b74c47",
+  "target_commit": "f8981f3d124f9b8db9073fd5c8afa11acb55a738",
+  "pkg_path": "httpx",
+  "changed_files": [
+    "httpx/_client.py"
+  ],
+  "primary_file": "httpx/_client.py",
+  "symbol": "Client.__init__.proxies",
+  "file_digest_before": "26fa1ac41dd76032d7ca52e39fde413a75064f84e0987f924a1812fb5fad97a6",
+  "file_digest_after": "d086376600749fe0d098898828011c693134013a45a96d46150b663fd07e4102",
+  "stale_sensitive": true,
+  "transition_type": "API_DEPRECATION",
+  "builder_status": "FIXTURE_EXTRACTED_UNVERIFIED"
+}

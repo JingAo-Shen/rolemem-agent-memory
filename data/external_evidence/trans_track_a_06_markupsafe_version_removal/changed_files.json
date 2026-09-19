@@ -1,0 +1,26 @@
+[
+  {
+    "sha": "763f0babe7d6577d2df2d7d95bd90c1496c40775",
+    "filename": "CHANGES.rst",
+    "status": "modified",
+    "additions": 1,
+    "deletions": 0,
+    "changes": 1,
+    "blob_url": "https://github.com/pallets/markupsafe/blob/82cabf9c5a2f8f1b27854afcc3e0d9bf5a32f0c2/CHANGES.rst",
+    "raw_url": "https://github.com/pallets/markupsafe/raw/82cabf9c5a2f8f1b27854afcc3e0d9bf5a32f0c2/CHANGES.rst",
+    "contents_url": "https://api.github.com/repos/pallets/markupsafe/contents/CHANGES.rst?ref=82cabf9c5a2f8f1b27854afcc3e0d9bf5a32f0c2",
+    "patch": "@@ -4,6 +4,7 @@ Version 3.1.0\n Unreleased\n \n -   Drop support for Python 3.9.\n+-   Remove previously deprecated code.\n \n \n Version 3.0.3"
+  },
+  {
+    "sha": "f8a0d58b949ca3eca7c993b80ada9fd9e0e979ae",
+    "filename": "src/markupsafe/__init__.py",
+    "status": "modified",
+    "additions": 0,
+    "deletions": 17,
+    "changes": 17,
+    "blob_url": "https://github.com/pallets/markupsafe/blob/82cabf9c5a2f8f1b27854afcc3e0d9bf5a32f0c2/src%2Fmarkupsafe%2F__init__.py",
+    "raw_url": "https://github.com/pallets/markupsafe/raw/82cabf9c5a2f8f1b27854afcc3e0d9bf5a32f0c2/src%2Fmarkupsafe%2F__init__.py",
+    "contents_url": "https://api.github.com/repos/pallets/markupsafe/contents/src%2Fmarkupsafe%2F__init__.py?ref=82cabf9c5a2f8f1b27854afcc3e0d9bf5a32f0c2",
+    "patch": "@@ -377,20 +377,3 @@ def __int__(self, /) -> int:\n \n     def __float__(self, /) -> float:\n         return float(self.obj)\n-\n-\n-def __getattr__(name: str) -> t.Any:\n-    if name == \"__version__\":\n-        import importlib.metadata\n-        import warnings\n-\n-        warnings.warn(\n-            \"The '__version__' attribute is deprecated and will be removed in\"\n-            \" MarkupSafe 3.1. Use feature detection, or\"\n-            ' `importlib.metadata.version(\"markupsafe\")`, instead.',\n-            DeprecationWarning,\n-            stacklevel=2,\n-        )\n-        return importlib.metadata.version(\"markupsafe\")\n-\n-    raise AttributeError(name)"
+  }
+]

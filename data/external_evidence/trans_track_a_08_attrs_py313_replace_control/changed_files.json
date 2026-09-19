@@ -1,0 +1,122 @@
+[
+  {
+    "sha": "6b025d69cba83bd973e149aad2c68a9d8fd82a2c",
+    "filename": ".github/workflows/ci.yml",
+    "status": "modified",
+    "additions": 1,
+    "deletions": 1,
+    "changes": 2,
+    "blob_url": "https://github.com/python-attrs/attrs/blob/1d3e4b94f93788f33753e7edb1e374ab19d9ae2f/.github%2Fworkflows%2Fci.yml",
+    "raw_url": "https://github.com/python-attrs/attrs/raw/1d3e4b94f93788f33753e7edb1e374ab19d9ae2f/.github%2Fworkflows%2Fci.yml",
+    "contents_url": "https://api.github.com/repos/python-attrs/attrs/contents/.github%2Fworkflows%2Fci.yml?ref=1d3e4b94f93788f33753e7edb1e374ab19d9ae2f",
+    "patch": "@@ -185,7 +185,7 @@ jobs:\n       - uses: actions/setup-python@v5\n         with:\n           # Keep in sync with tox/docs and .readthedocs.yaml.\n-          python-version: \"3.12\"\n+          python-version: \"3.13\"\n       - uses: hynek/setup-cached-uv@v2\n \n       - run: uvx --with=tox-uv tox run -e docs,changelog"
+  },
+  {
+    "sha": "9bcdc4bcec6bb8d912219a0c5efab7a0e91430ce",
+    "filename": ".readthedocs.yaml",
+    "status": "modified",
+    "additions": 1,
+    "deletions": 1,
+    "changes": 2,
+    "blob_url": "https://github.com/python-attrs/attrs/blob/1d3e4b94f93788f33753e7edb1e374ab19d9ae2f/.readthedocs.yaml",
+    "raw_url": "https://github.com/python-attrs/attrs/raw/1d3e4b94f93788f33753e7edb1e374ab19d9ae2f/.readthedocs.yaml",
+    "contents_url": "https://api.github.com/repos/python-attrs/attrs/contents/.readthedocs.yaml?ref=1d3e4b94f93788f33753e7edb1e374ab19d9ae2f",
+    "patch": "@@ -5,7 +5,7 @@ build:\n   os: ubuntu-lts-latest\n   tools:\n     # Keep version in sync with tox.ini/docs and ci.yml/docs.\n-    python: \"3.12\"\n+    python: \"3.13\"\n   jobs:\n     # Need the tags to calculate the version (sometimes).\n     post_checkout:"
+  },
+  {
+    "sha": "dbc6348e85fea348bdfb194a091bff503fba458c",
+    "filename": "changelog.d/1383.change.md",
+    "status": "added",
+    "additions": 1,
+    "deletions": 0,
+    "changes": 1,
+    "blob_url": "https://github.com/python-attrs/attrs/blob/1d3e4b94f93788f33753e7edb1e374ab19d9ae2f/changelog.d%2F1383.change.md",
+    "raw_url": "https://github.com/python-attrs/attrs/raw/1d3e4b94f93788f33753e7edb1e374ab19d9ae2f/changelog.d%2F1383.change.md",
+    "contents_url": "https://api.github.com/repos/python-attrs/attrs/contents/changelog.d%2F1383.change.md?ref=1d3e4b94f93788f33753e7edb1e374ab19d9ae2f",
+    "patch": "@@ -0,0 +1 @@\n+*attrs* instances now support [`copy.replace()`](https://docs.python.org/3/library/copy.html#copy.replace)."
+  },
+  {
+    "sha": "2393decf45b257f7b520cdc608e879bc8da67b04",
+    "filename": "docs/examples.md",
+    "status": "modified",
+    "additions": 13,
+    "deletions": 0,
+    "changes": 13,
+    "blob_url": "https://github.com/python-attrs/attrs/blob/1d3e4b94f93788f33753e7edb1e374ab19d9ae2f/docs%2Fexamples.md",
+    "raw_url": "https://github.com/python-attrs/attrs/raw/1d3e4b94f93788f33753e7edb1e374ab19d9ae2f/docs%2Fexamples.md",
+    "contents_url": "https://api.github.com/repos/python-attrs/attrs/contents/docs%2Fexamples.md?ref=1d3e4b94f93788f33753e7edb1e374ab19d9ae2f",
+    "patch": "@@ -674,6 +674,19 @@ C(x=1, y=3)\n False\n ```\n \n+On Python 3.13 and later, you can also use {func}`copy.replace` from the standard library:\n+\n+```{doctest}\n+>>> import copy\n+>>> @frozen\n+... class C:\n+...     x: int\n+...     y: int\n+>>> i = C(1, 2)\n+>>> copy.replace(i, y=3)\n+C(x=1, y=3)\n+```\n+\n \n ## Other Goodies\n "
+  },
+  {
+    "sha": "5c6e0650bc4bf53806420d7ef5f881ecd2bd77ea",
+    "filename": "src/attr/__init__.py",
+    "status": "modified",
+    "additions": 2,
+    "deletions": 1,
+    "changes": 3,
+    "blob_url": "https://github.com/python-attrs/attrs/blob/1d3e4b94f93788f33753e7edb1e374ab19d9ae2f/src%2Fattr%2F__init__.py",
+    "raw_url": "https://github.com/python-attrs/attrs/raw/1d3e4b94f93788f33753e7edb1e374ab19d9ae2f/src%2Fattr%2F__init__.py",
+    "contents_url": "https://api.github.com/repos/python-attrs/attrs/contents/src%2Fattr%2F__init__.py?ref=1d3e4b94f93788f33753e7edb1e374ab19d9ae2f",
+    "patch": "@@ -10,7 +10,7 @@\n from . import converters, exceptions, filters, setters, validators\n from ._cmp import cmp_using\n from ._config import get_run_validators, set_run_validators\n-from ._funcs import asdict, assoc, astuple, evolve, has, resolve_types\n+from ._funcs import asdict, assoc, astuple, has, resolve_types\n from ._make import (\n     NOTHING,\n     Attribute,\n@@ -19,6 +19,7 @@\n     _Nothing,\n     attrib,\n     attrs,\n+    evolve,\n     fields,\n     fields_dict,\n     make_class,"
+  },
+  {
+    "sha": "c39fb8aa5a9426c18157253aad4b0168084eeb1a",
+    "filename": "src/attr/_funcs.py",
+    "status": "modified",
+    "additions": 0,
+    "deletions": 54,
+    "changes": 54,
+    "blob_url": "https://github.com/python-attrs/attrs/blob/1d3e4b94f93788f33753e7edb1e374ab19d9ae2f/src%2Fattr%2F_funcs.py",
+    "raw_url": "https://github.com/python-attrs/attrs/raw/1d3e4b94f93788f33753e7edb1e374ab19d9ae2f/src%2Fattr%2F_funcs.py",
+    "contents_url": "https://api.github.com/repos/python-attrs/attrs/contents/src%2Fattr%2F_funcs.py?ref=1d3e4b94f93788f33753e7edb1e374ab19d9ae2f",
+    "patch": "@@ -394,60 +394,6 @@ def assoc(inst, **changes):\n     return new\n \n \n-def evolve(*args, **changes):\n-    \"\"\"\n-    Create a new instance, based on the first positional argument with\n-    *changes* applied.\n-\n-    Args:\n-\n-        inst:\n-            Instance of a class with *attrs* attributes. *inst* must be passed\n-            as a positional argument.\n-\n-        changes:\n-            Keyword changes in the new copy.\n-\n-    Returns:\n-        A copy of inst with *changes* incorporated.\n-\n-    Raises:\n-        TypeError:\n-            If *attr_name* couldn't be found in the class ``__init__``.\n-\n-        attrs.exceptions.NotAnAttrsClassError:\n-            If *cls* is not an *attrs* class.\n-\n-    .. versionadded:: 17.1.0\n-    .. deprecated:: 23.1.0\n-       It is now deprecated to pass the instance using the keyword argument\n-       *inst*. It will raise a warning until at least April 2024, after which\n-       it will become an error. Always pass the instance as a positional\n-       argument.\n-    .. versionchanged:: 24.1.0\n-       *inst* can't be passed as a keyword argument anymore.\n-    \"\"\"\n-    try:\n-        (inst,) = args\n-    except ValueError:\n-        msg = (\n-            f\"evolve() takes 1 positional argument, but {len(args)} were given\"\n-        )\n-        raise TypeError(msg) from None\n-\n-    cls = inst.__class__\n-    attrs = fields(cls)\n-    for a in attrs:\n-        if not a.init:\n-            continue\n-        attr_name = a.name  # To deal with private attributes.\n-        init_name = a.alias\n-        if init_name not in changes:\n-            changes[init_name] = getattr(inst, attr_name)\n-\n-    return cls(**changes)\n-\n-\n def resolve_types(\n     cls, globalns=None, localns=None, attribs=None, include_extras=True\n ):"
+  },
+  {
+    "sha": "e17e6a2159db30403a5ecadba8515dce164d6e1e",
+    "filename": "src/attr/_make.py",
+    "status": "modified",
+    "additions": 69,
+    "deletions": 1,
+    "changes": 70,
+    "blob_url": "https://github.com/python-attrs/attrs/blob/1d3e4b94f93788f33753e7edb1e374ab19d9ae2f/src%2Fattr%2F_make.py",
+    "raw_url": "https://github.com/python-attrs/attrs/raw/1d3e4b94f93788f33753e7edb1e374ab19d9ae2f/src%2Fattr%2F_make.py",
+    "contents_url": "https://api.github.com/repos/python-attrs/attrs/contents/src%2Fattr%2F_make.py?ref=1d3e4b94f93788f33753e7edb1e374ab19d9ae2f",
+    "patch": "@@ -22,6 +22,7 @@\n from ._compat import (\n     PY_3_10_PLUS,\n     PY_3_11_PLUS,\n+    PY_3_13_PLUS,\n     _AnnotationExtractor,\n     _get_annotations,\n     get_generic_base,\n@@ -565,6 +566,64 @@ def _frozen_delattrs(self, name):\n     raise FrozenInstanceError\n \n \n+def evolve(*args, **changes):\n+    \"\"\"\n+    Create a new instance, based on the first positional argument with\n+    *changes* applied.\n+\n+    .. tip::\n+\n+       On Python 3.13 and later, you can also use `copy.replace` instead.\n+\n+    Args:\n+\n+        inst:\n+            Instance of a class with *attrs* attributes. *inst* must be passed\n+            as a positional argument.\n+\n+        changes:\n+            Keyword changes in the new copy.\n+\n+    Returns:\n+        A copy of inst with *changes* incorporated.\n+\n+    Raises:\n+        TypeError:\n+            If *attr_name* couldn't be found in the class ``__init__``.\n+\n+        attrs.exceptions.NotAnAttrsClassError:\n+            If *cls* is not an *attrs* class.\n+\n+    .. versionadded:: 17.1.0\n+    .. deprecated:: 23.1.0\n+       It is now deprecated to pass the instance using the keyword argument\n+       *inst*. It will raise a warning until at least April 2024, after which\n+       it will become an error. Always pass the instance as a positional\n+       argument.\n+    .. versionchanged:: 24.1.0\n+       *inst* can't be passed as a keyword argument anymore.\n+    \"\"\"\n+    try:\n+        (inst,) = args\n+    except ValueError:\n+        msg = (\n+            f\"evolve() takes 1 positional argument, but {len(args)} were given\"\n+        )\n+        raise TypeError(msg) from None\n+\n+    cls = inst.__class__\n+    attrs = fields(cls)\n+    for a in attrs:\n+        if not a.init:\n+            continue\n+        attr_name = a.name  # To deal with private attributes.\n+        init_name = a.alias\n+        if init_name not in changes:\n+            changes[init_name] = getattr(inst, attr_name)\n+\n+    return cls(**changes)\n+\n+\n class _ClassBuilder:\n     \"\"\"\n     Iteratively build *one* class.\n@@ -979,6 +1038,12 @@ def add_init(self):\n \n         return self\n \n+    def add_replace(self):\n+        self._cls_dict[\"__replace__\"] = self._add_method_dunders(\n+            lambda self, **changes: evolve(self, **changes)\n+        )\n+        return self\n+\n     def add_match_args(self):\n         self._cls_dict[\"__match_args__\"] = tuple(\n             field.name\n@@ -1381,6 +1446,9 @@ def wrap(cls):\n                 msg = \"Invalid value for cache_hash.  To use hash caching, init must be True.\"\n                 raise TypeError(msg)\n \n+        if PY_3_13_PLUS and not _has_own_attribute(cls, \"__replace__\"):\n+            builder.add_replace()\n+\n         if (\n             PY_3_10_PLUS\n             and match_args\n@@ -2394,7 +2462,7 @@ def evolve(self, **changes):\n         Copy *self* and apply *changes*.\n \n         This works similarly to `attrs.evolve` but that function does not work\n-        with {class}`Attribute`.\n+        with :class:`attrs.Attribute`.\n \n         It is mainly meant to be used for `transform-fields`.\n "
+  },
+  {
+    "sha": "9290664b2dca9285855a4c4c38bb09ca9e616f69",
+    "filename": "src/attr/_next_gen.py",
+    "status": "modified",
+    "additions": 3,
+    "deletions": 0,
+    "changes": 3,
+    "blob_url": "https://github.com/python-attrs/attrs/blob/1d3e4b94f93788f33753e7edb1e374ab19d9ae2f/src%2Fattr%2F_next_gen.py",
+    "raw_url": "https://github.com/python-attrs/attrs/raw/1d3e4b94f93788f33753e7edb1e374ab19d9ae2f/src%2Fattr%2F_next_gen.py",
+    "contents_url": "https://api.github.com/repos/python-attrs/attrs/contents/src%2Fattr%2F_next_gen.py?ref=1d3e4b94f93788f33753e7edb1e374ab19d9ae2f",
+    "patch": "@@ -316,6 +316,9 @@ def define(\n        If a class has an *inherited* classmethod called\n        ``__attrs_init_subclass__``, it is executed after the class is created.\n     .. deprecated:: 24.1.0 *hash* is deprecated in favor of *unsafe_hash*.\n+    .. versionadded:: 24.3.0\n+       Unless already present, a ``__replace__`` method is automatically\n+       created for `copy.replace` (Python 3.13+ only).\n \n     .. note::\n "
+  },
+  {
+    "sha": "7b0317d19da765aa95fd6e05b593c333dd4a383f",
+    "filename": "tests/test_functional.py",
+    "status": "modified",
+    "additions": 39,
+    "deletions": 0,
+    "changes": 39,
+    "blob_url": "https://github.com/python-attrs/attrs/blob/1d3e4b94f93788f33753e7edb1e374ab19d9ae2f/tests%2Ftest_functional.py",
+    "raw_url": "https://github.com/python-attrs/attrs/raw/1d3e4b94f93788f33753e7edb1e374ab19d9ae2f/tests%2Ftest_functional.py",
+    "contents_url": "https://api.github.com/repos/python-attrs/attrs/contents/tests%2Ftest_functional.py?ref=1d3e4b94f93788f33753e7edb1e374ab19d9ae2f",
+    "patch": "@@ -4,6 +4,7 @@\n End-to-end tests.\n \"\"\"\n \n+import copy\n import inspect\n import pickle\n \n@@ -16,6 +17,7 @@\n \n import attr\n \n+from attr._compat import PY_3_13_PLUS\n from attr._make import NOTHING, Attribute\n from attr.exceptions import FrozenInstanceError\n \n@@ -766,3 +768,40 @@ class ToRegister(Base):\n             pass\n \n         assert [ToRegister] == REGISTRY\n+\n+\n+@pytest.mark.skipif(not PY_3_13_PLUS, reason=\"requires Python 3.13+\")\n+class TestReplace:\n+    def test_replaces(self):\n+        \"\"\"\n+        copy.replace() is added by default and works like `attrs.evolve`.\n+        \"\"\"\n+        inst = C1(1, 2)\n+\n+        assert C1(1, 42) == copy.replace(inst, y=42)\n+        assert C1(42, 2) == copy.replace(inst, x=42)\n+\n+    def test_already_has_one(self):\n+        \"\"\"\n+        If the object already has a __replace__, it's left alone.\n+        \"\"\"\n+        sentinel = object()\n+\n+        @attr.s\n+        class C:\n+            x = attr.ib()\n+\n+            __replace__ = sentinel\n+\n+        assert sentinel == C.__replace__\n+\n+    def test_invalid_field_name(self):\n+        \"\"\"\n+        Invalid field names raise a TypeError.\n+\n+        This is consistent with dataclasses.\n+        \"\"\"\n+        inst = C1(1, 2)\n+\n+        with pytest.raises(TypeError):\n+            copy.replace(inst, z=42)"
+  },
+  {
+    "sha": "b1250f06c84790691e26aacb28d5ae407fe4fe98",
+    "filename": "tox.ini",
+    "status": "modified",
+    "additions": 1,
+    "deletions": 1,
+    "changes": 2,
+    "blob_url": "https://github.com/python-attrs/attrs/blob/1d3e4b94f93788f33753e7edb1e374ab19d9ae2f/tox.ini",
+    "raw_url": "https://github.com/python-attrs/attrs/raw/1d3e4b94f93788f33753e7edb1e374ab19d9ae2f/tox.ini",
+    "contents_url": "https://api.github.com/repos/python-attrs/attrs/contents/tox.ini?ref=1d3e4b94f93788f33753e7edb1e374ab19d9ae2f",
+    "patch": "@@ -62,7 +62,7 @@ commands = pytest --codspeed -n auto bench/test_benchmarks.py\n \n [testenv:docs]\n # Keep base_python in-sync with ci.yml/docs and .readthedocs.yaml.\n-base_python = py312\n+base_python = py313\n extras = docs\n commands =\n     sphinx-build -n -T -W -b html -d {envtmpdir}/doctrees docs docs/_build/html"
+  }
+]

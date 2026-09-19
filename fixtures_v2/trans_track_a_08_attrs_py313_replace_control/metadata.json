@@ -1,0 +1,20 @@
+{
+  "transition_id": "trans_track_a_08_attrs_py313_replace_control",
+  "repo_name": "python-attrs/attrs",
+  "repo_url": "https://github.com/python-attrs/attrs",
+  "pr_url": "https://github.com/python-attrs/attrs/pull/1383",
+  "base_commit": "103d51f6efa36efcc7be4adecfd571da3f63291c",
+  "target_commit": "62bdbf234f45195e75bfc2bb0648dab6fd2f0d33",
+  "pkg_path": "src/attr",
+  "changed_files": [
+    "src/attr/_make.py",
+    "src/attr/_funcs.py"
+  ],
+  "primary_file": "src/attr/_make.py",
+  "symbol": "attrs.add_replace",
+  "file_digest_before": "991a19b4c40572ebfb5ed5ef8f552303508d53ee702398f46d70a5f852c5b1b2",
+  "file_digest_after": "25f70f6fe18ef543cd89dcdadfebb0b8e389016afa936ba87aa8b20927eecdfa",
+  "stale_sensitive": false,
+  "transition_type": "API_EVOLUTION",
+  "builder_status": "FIXTURE_EXTRACTED_UNVERIFIED"
+}

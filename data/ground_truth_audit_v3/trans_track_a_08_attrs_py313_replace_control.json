@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_track_a_08_attrs_py313_replace_control",
+  "repo_name": "python-attrs/attrs",
+  "pr_number": 1383,
+  "pr_title": "Implement __replace__ on 3.13",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "62bdbf234f45195e75bfc2bb0648dab6fd2f0d33",
+  "pr_base_sha": "103d51f6efa36efcc7be4adecfd571da3f63291c",
+  "pr_head_sha": "1d3e4b94f93788f33753e7edb1e374ab19d9ae2f",
+  "base_commit": "103d51f6efa36efcc7be4adecfd571da3f63291c",
+  "target_commit": "62bdbf234f45195e75bfc2bb0648dab6fd2f0d33",
+  "ancestry_verified": true,
+  "merge_strategy": "merge_commit",
+  "merge_relationship_verified": true,
+  "diff_match": true,
+  "issue_required": false,
+  "issue_id_verified": null,
+  "issue_status": "NOT_APPLICABLE",
+  "spec_sha256": "a82307ac82c8caab978ef8bd5195a8bdebc1f9e5d55cda94f151bfa173d17753",
+  "audit_fingerprint": "b9e86740ba7803fb4a974d300de19fe10d32967d4c0af1b7c8b6c188f688d8bd",
+  "auditor_version": "3.0.0",
+  "overall_status": "PASS"
+}

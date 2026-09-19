@@ -1,0 +1,29 @@
+{
+  "transition_id": "trans_track_a_02_flask_should_ignore_error",
+  "audit_fingerprint": "543dab13c04547b19aedef95403a9b417c15534f756e315165493b4829a140fa",
+  "stale_base": true,
+  "stale_target": false,
+  "valid_base": true,
+  "valid_target": true,
+  "matrix": {
+    "stale_on_base": true,
+    "stale_on_target": false,
+    "valid_on_base": true,
+    "valid_on_target": true
+  },
+  "failure_taxonomy": {
+    "stale_base_failure": "NONE",
+    "stale_target_failure": "DEPRECATION_WARNING",
+    "valid_base_failure": "NONE",
+    "valid_target_failure": "NONE"
+  },
+  "causality_status": "CAUSAL_PASS",
+  "is_causal": true,
+  "rationale": "Causal transition: stale passed on base, failed on target with DEPRECATION_WARNING",
+  "execution_logs": {
+    "stale_base_preview": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_lnu2hml9\nplugins: anyio-4",
+    "stale_target_preview": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_vu9r57gs\nplugins:",
+    "valid_base_preview": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_3qn4vzwx\nplugins: anyio-4",
+    "valid_target_preview": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_nnldn5bi\nplugins: anyio-4"
+  }
+}

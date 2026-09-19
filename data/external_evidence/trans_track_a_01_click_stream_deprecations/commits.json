@@ -1,0 +1,166 @@
+[
+  {
+    "sha": "7a0a3447f6ddd2c15438c5d098e289323f9f9556",
+    "node_id": "C_kwDOJeHVB9oAKDdhMGEzNDQ3ZjZkZGQyYzE1NDM4YzVkMDk4ZTI4OTMyM2Y5Zjk1NTY",
+    "commit": {
+      "author": {
+        "name": "Eddie Girling",
+        "email": "67291205+Rowlando13@users.noreply.github.com",
+        "date": "2026-07-16T22:50:06Z"
+      },
+      "committer": {
+        "name": "Eddie Girling",
+        "email": "67291205+Rowlando13@users.noreply.github.com",
+        "date": "2026-07-16T22:50:06Z"
+      },
+      "message": "Mark clearly functions private status. Deprecated Python 2 utilities.",
+      "tree": {
+        "sha": "42cde17d306a65c45b56bd765b2606ddad04c97a",
+        "url": "https://api.github.com/repos/pallets/click/git/trees/42cde17d306a65c45b56bd765b2606ddad04c97a"
+      },
+      "url": "https://api.github.com/repos/pallets/click/git/commits/7a0a3447f6ddd2c15438c5d098e289323f9f9556",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/pallets/click/commits/7a0a3447f6ddd2c15438c5d098e289323f9f9556",
+    "html_url": "https://github.com/pallets/click/commit/7a0a3447f6ddd2c15438c5d098e289323f9f9556",
+    "comments_url": "https://api.github.com/repos/pallets/click/commits/7a0a3447f6ddd2c15438c5d098e289323f9f9556/comments",
+    "author": {
+      "login": "Rowlando13",
+      "id": 67291205,
+      "node_id": "MDQ6VXNlcjY3MjkxMjA1",
+      "avatar_url": "https://avatars.githubusercontent.com/u/67291205?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Rowlando13",
+      "html_url": "https://github.com/Rowlando13",
+      "followers_url": "https://api.github.com/users/Rowlando13/followers",
+      "following_url": "https://api.github.com/users/Rowlando13/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Rowlando13/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Rowlando13/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Rowlando13/subscriptions",
+      "organizations_url": "https://api.github.com/users/Rowlando13/orgs",
+      "repos_url": "https://api.github.com/users/Rowlando13/repos",
+      "events_url": "https://api.github.com/users/Rowlando13/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Rowlando13/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "Rowlando13",
+      "id": 67291205,
+      "node_id": "MDQ6VXNlcjY3MjkxMjA1",
+      "avatar_url": "https://avatars.githubusercontent.com/u/67291205?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Rowlando13",
+      "html_url": "https://github.com/Rowlando13",
+      "followers_url": "https://api.github.com/users/Rowlando13/followers",
+      "following_url": "https://api.github.com/users/Rowlando13/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Rowlando13/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Rowlando13/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Rowlando13/subscriptions",
+      "organizations_url": "https://api.github.com/users/Rowlando13/orgs",
+      "repos_url": "https://api.github.com/users/Rowlando13/repos",
+      "events_url": "https://api.github.com/users/Rowlando13/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Rowlando13/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "b551fe85714c906565303fae98136d7c72b252ea",
+        "url": "https://api.github.com/repos/pallets/click/commits/b551fe85714c906565303fae98136d7c72b252ea",
+        "html_url": "https://github.com/pallets/click/commit/b551fe85714c906565303fae98136d7c72b252ea"
+      }
+    ]
+  },
+  {
+    "sha": "051725fa7e0c69effc9107066d8791c5b99242c3",
+    "node_id": "C_kwDOJeHVB9oAKDA1MTcyNWZhN2UwYzY5ZWZmYzkxMDcwNjZkODc5MWM1Yjk5MjQyYzM",
+    "commit": {
+      "author": {
+        "name": "Eddie Girling",
+        "email": "67291205+Rowlando13@users.noreply.github.com",
+        "date": "2026-07-17T19:21:15Z"
+      },
+      "committer": {
+        "name": "Eddie Girling",
+        "email": "67291205+Rowlando13@users.noreply.github.com",
+        "date": "2026-07-17T19:21:15Z"
+      },
+      "message": "Add tests to deprecations. Better deprecate streams.",
+      "tree": {
+        "sha": "d05c38228807d7ac7678e08b86ad953563f10b61",
+        "url": "https://api.github.com/repos/pallets/click/git/trees/d05c38228807d7ac7678e08b86ad953563f10b61"
+      },
+      "url": "https://api.github.com/repos/pallets/click/git/commits/051725fa7e0c69effc9107066d8791c5b99242c3",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/pallets/click/commits/051725fa7e0c69effc9107066d8791c5b99242c3",
+    "html_url": "https://github.com/pallets/click/commit/051725fa7e0c69effc9107066d8791c5b99242c3",
+    "comments_url": "https://api.github.com/repos/pallets/click/commits/051725fa7e0c69effc9107066d8791c5b99242c3/comments",
+    "author": {
+      "login": "Rowlando13",
+      "id": 67291205,
+      "node_id": "MDQ6VXNlcjY3MjkxMjA1",
+      "avatar_url": "https://avatars.githubusercontent.com/u/67291205?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Rowlando13",
+      "html_url": "https://github.com/Rowlando13",
+      "followers_url": "https://api.github.com/users/Rowlando13/followers",
+      "following_url": "https://api.github.com/users/Rowlando13/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Rowlando13/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Rowlando13/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Rowlando13/subscriptions",
+      "organizations_url": "https://api.github.com/users/Rowlando13/orgs",
+      "repos_url": "https://api.github.com/users/Rowlando13/repos",
+      "events_url": "https://api.github.com/users/Rowlando13/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Rowlando13/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "Rowlando13",
+      "id": 67291205,
+      "node_id": "MDQ6VXNlcjY3MjkxMjA1",
+      "avatar_url": "https://avatars.githubusercontent.com/u/67291205?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Rowlando13",
+      "html_url": "https://github.com/Rowlando13",
+      "followers_url": "https://api.github.com/users/Rowlando13/followers",
+      "following_url": "https://api.github.com/users/Rowlando13/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Rowlando13/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Rowlando13/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Rowlando13/subscriptions",
+      "organizations_url": "https://api.github.com/users/Rowlando13/orgs",
+      "repos_url": "https://api.github.com/users/Rowlando13/repos",
+      "events_url": "https://api.github.com/users/Rowlando13/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Rowlando13/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "7a0a3447f6ddd2c15438c5d098e289323f9f9556",
+        "url": "https://api.github.com/repos/pallets/click/commits/7a0a3447f6ddd2c15438c5d098e289323f9f9556",
+        "html_url": "https://github.com/pallets/click/commit/7a0a3447f6ddd2c15438c5d098e289323f9f9556"
+      }
+    ]
+  }
+]

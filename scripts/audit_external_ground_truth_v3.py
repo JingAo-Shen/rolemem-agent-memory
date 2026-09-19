@@ -19,14 +19,24 @@ import subprocess
 import urllib.request
 import urllib.error
 
+sys.path.insert(0, "/code/rolemem-agent-memory")
+from src.fingerprint import compute_unified_audit_fingerprint, DEFAULT_AUDITOR_VERSION
+
 AUDITOR_VERSION = "3.0.0"
 
 REPO_MIRRORS = {
     "pallets/click": "/code/repo_cache/click",
     "pallets/flask": "/code/repo_cache/flask",
+    "pallets/werkzeug": "/code/repo_cache/werkzeug",
+    "pallets/jinja": "/code/repo_cache/jinja",
+    "pallets/itsdangerous": "/code/repo_cache/itsdangerous",
+    "pallets/markupsafe": "/code/repo_cache/markupsafe",
+    "pytest-dev/pluggy": "/code/repo_cache/pluggy",
+    "python-attrs/attrs": "/code/repo_cache/attrs",
+    "pypa/virtualenv": "/code/repo_cache/virtualenv",
+    "encode/httpx": "/code/repo_cache/httpx",
     "psf/requests": "/code/repo_cache/requests",
     "urllib3/urllib3": "/code/repo_cache/urllib3",
-    "pallets/werkzeug": "/code/repo_cache/werkzeug",
 }
 
 def get_github_token():
@@ -115,7 +125,7 @@ def audit_transition_v3(spec_path):
         return {"transition_id": tid, "status": "FAIL", "error": f"Missing git mirror for {repo_name}"}
 
     fixture_dir = f"/code/rolemem-agent-memory/fixtures_v2/{tid}"
-    fingerprint = compute_audit_fingerprint(spec_path, fixture_dir, AUDITOR_VERSION, git_dir)
+    fingerprint = compute_unified_audit_fingerprint(spec, fixture_dir=fixture_dir, auditor_version=DEFAULT_AUDITOR_VERSION)
 
     evidence_dir = f"/code/rolemem-agent-memory/data/external_evidence/{tid}"
     os.makedirs(evidence_dir, exist_ok=True)
@@ -201,11 +211,16 @@ def audit_transition_v3(spec_path):
         with open(os.path.join(evidence_dir, "issue.json"), "w", encoding="utf-8") as f:
             json.dump({"note": "No independent issue declared", "status": issue_status}, f, indent=2)
 
+    GIT_ENV = {**os.environ, "GIT_NO_LAZY_FETCH": "1", "GIT_TERMINAL_PROMPT": "0"}
+
     # 6. Local Git Ancestry Verification
     # git merge-base --is-ancestor <base_commit> <target_commit>
     ancestry_cmd = ["git", "-C", git_dir, "merge-base", "--is-ancestor", base_commit, target_commit]
-    ancestry_res = subprocess.run(ancestry_cmd, capture_output=True, text=True)
-    ancestry_verified = (ancestry_res.returncode == 0)
+    try:
+        ancestry_res = subprocess.run(ancestry_cmd, capture_output=True, text=True, env=GIT_ENV, timeout=5)
+        ancestry_verified = (ancestry_res.returncode == 0)
+    except Exception:
+        ancestry_verified = False
 
     # 7. Merge Relationship Verification
     pr_merged = bool(pr_data.get("merged"))
@@ -225,29 +240,50 @@ def audit_transition_v3(spec_path):
             merge_relationship_verified = True
         else:
             # Check if target commit contains PR head changes (squash/rebase)
-            # In git: check if PR head is ancestor or if patch id / tree matches
-            head_ancestry = subprocess.run(
-                ["git", "-C", git_dir, "merge-base", "--is-ancestor", pr_head_sha, target_commit],
-                capture_output=True, text=True
-            )
-            if head_ancestry.returncode == 0:
-                merge_strategy = "rebase_ancestor"
-                merge_relationship_verified = True
-            else:
+            head_exists = False
+            if pr_head_sha:
+                try:
+                    cat_chk = subprocess.run(
+                        ["git", "-C", git_dir, "cat-file", "-e", pr_head_sha],
+                        capture_output=True, env=GIT_ENV, timeout=5
+                    )
+                    head_exists = (cat_chk.returncode == 0)
+                except Exception:
+                    head_exists = False
+
+            if head_exists:
+                try:
+                    head_ancestry = subprocess.run(
+                        ["git", "-C", git_dir, "merge-base", "--is-ancestor", pr_head_sha, target_commit],
+                        capture_output=True, text=True, env=GIT_ENV, timeout=5
+                    )
+                    if head_ancestry.returncode == 0:
+                        merge_strategy = "rebase_ancestor"
+                        merge_relationship_verified = True
+                except Exception:
+                    pass
+
+            if not merge_relationship_verified:
                 # Squash merge check: verify commit message or changed files
-                target_log = subprocess.run(
-                    ["git", "-C", git_dir, "log", "-n", "1", "--format=%B", target_commit],
-                    capture_output=True, text=True
-                ).stdout
-                if f"#{pr_num}" in target_log or pr_data.get("title", "").lower() in target_log.lower():
-                    merge_strategy = "squash_merge"
-                    merge_relationship_verified = True
+                try:
+                    target_log = subprocess.run(
+                        ["git", "-C", git_dir, "log", "-n", "1", "--format=%B", target_commit],
+                        capture_output=True, text=True, env=GIT_ENV, timeout=5
+                    ).stdout
+                    if f"#{pr_num}" in target_log or pr_data.get("title", "").lower() in target_log.lower():
+                        merge_strategy = "squash_merge"
+                        merge_relationship_verified = True
+                except Exception:
+                    pass
 
     # 8. Changed Files Cross-Verification
-    git_diff_files = subprocess.run(
-        ["git", "-C", git_dir, "diff", "--name-only", base_commit, target_commit],
-        capture_output=True, text=True
-    ).stdout.splitlines()
+    try:
+        git_diff_files = subprocess.run(
+            ["git", "-C", git_dir, "diff", "--name-only", base_commit, target_commit],
+            capture_output=True, text=True, env=GIT_ENV, timeout=5
+        ).stdout.splitlines()
+    except Exception:
+        git_diff_files = []
 
     pr_files = [f.get("filename") for f in (files_data or [])]
     spec_changed = spec.get("changed_files", [])
@@ -295,8 +331,11 @@ def audit_transition_v3(spec_path):
     return result
 
 if __name__ == "__main__":
-    specs = sorted(glob.glob("/code/rolemem-agent-memory/data/specs/trans_gold_*.json"))
-    print(f"Starting Ground Truth V3 Audit on {len(specs)} seed specs...")
+    if len(sys.argv) > 1:
+        specs = sorted(glob.glob(sys.argv[1]))
+    else:
+        specs = sorted(glob.glob("/code/rolemem-agent-memory/data/specs/trans_track_a_*.json") + glob.glob("/code/rolemem-agent-memory/data/specs/trans_gold_*.json"))
+    print(f"Starting Ground Truth V3 Audit on {len(specs)} specs...")
     passed = 0
     for s in specs:
         r = audit_transition_v3(s)

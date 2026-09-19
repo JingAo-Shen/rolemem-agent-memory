@@ -1,0 +1,19 @@
+{
+  "transition_id": "trans_track_a_06_markupsafe_version_removal",
+  "repo_name": "pallets/markupsafe",
+  "repo_url": "https://github.com/pallets/markupsafe",
+  "pr_url": "https://github.com/pallets/markupsafe/pull/499",
+  "base_commit": "0c422e10b1e1ba43ca56a56f1f8a11edfb431b71",
+  "target_commit": "dfa58162f6ba9a0afebab7e924af362cd0bede66",
+  "pkg_path": "src/markupsafe",
+  "changed_files": [
+    "src/markupsafe/__init__.py"
+  ],
+  "primary_file": "src/markupsafe/__init__.py",
+  "symbol": "markupsafe.__version__",
+  "file_digest_before": "bb57cb70d0b1d0ff04ecb4facf73977fa8a99d29a09ba69e7e77b9cbe77ba38d",
+  "file_digest_after": "b6e3b472b60fb708c6fc54fdb36173abe0d4991238bff1b9b26674aaa97e11c8",
+  "stale_sensitive": true,
+  "transition_type": "API_REMOVAL",
+  "builder_status": "FIXTURE_EXTRACTED_UNVERIFIED"
+}

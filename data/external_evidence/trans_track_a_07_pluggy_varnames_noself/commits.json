@@ -1,0 +1,904 @@
+[
+  {
+    "sha": "74876c40efa3137aee8ebf5d53d9542d65a13381",
+    "node_id": "C_kwDOAmN2vNoAKDc0ODc2YzQwZWZhMzEzN2FlZThlYmY1ZDUzZDk1NDJkNjVhMTMzODE",
+    "commit": {
+      "author": {
+        "name": "Ronny Pfannschmidt",
+        "email": "opensource@ronnypfannschmidt.de",
+        "date": "2025-11-28T20:57:49Z"
+      },
+      "committer": {
+        "name": "Ronny Pfannschmidt",
+        "email": "opensource@ronnypfannschmidt.de",
+        "date": "2026-05-27T07:05:59Z"
+      },
+      "message": "Fix varnames to handle Python 3.14 deferred annotations\n\nIn Python 3.14+, annotations are evaluated lazily per PEP 649/749.\nWhen inspect.signature() is called, it tries to resolve annotations\nby default, which fails if the annotation references an undefined type.\n\nAdd a version-gated _signature helper that uses\nannotation_format=annotationlib.Format.STRING on Python 3.14+ to\nprevent annotation resolution errors.\n\nFixes #629\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>",
+      "tree": {
+        "sha": "d269029e7e3e2b2ef35a0afe83bdb53e5eafa2f7",
+        "url": "https://api.github.com/repos/pytest-dev/pluggy/git/trees/d269029e7e3e2b2ef35a0afe83bdb53e5eafa2f7"
+      },
+      "url": "https://api.github.com/repos/pytest-dev/pluggy/git/commits/74876c40efa3137aee8ebf5d53d9542d65a13381",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/pytest-dev/pluggy/commits/74876c40efa3137aee8ebf5d53d9542d65a13381",
+    "html_url": "https://github.com/pytest-dev/pluggy/commit/74876c40efa3137aee8ebf5d53d9542d65a13381",
+    "comments_url": "https://api.github.com/repos/pytest-dev/pluggy/commits/74876c40efa3137aee8ebf5d53d9542d65a13381/comments",
+    "author": {
+      "login": "RonnyPfannschmidt",
+      "id": 156838,
+      "node_id": "MDQ6VXNlcjE1NjgzOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156838?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/RonnyPfannschmidt",
+      "html_url": "https://github.com/RonnyPfannschmidt",
+      "followers_url": "https://api.github.com/users/RonnyPfannschmidt/followers",
+      "following_url": "https://api.github.com/users/RonnyPfannschmidt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/RonnyPfannschmidt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/RonnyPfannschmidt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/RonnyPfannschmidt/subscriptions",
+      "organizations_url": "https://api.github.com/users/RonnyPfannschmidt/orgs",
+      "repos_url": "https://api.github.com/users/RonnyPfannschmidt/repos",
+      "events_url": "https://api.github.com/users/RonnyPfannschmidt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/RonnyPfannschmidt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "RonnyPfannschmidt",
+      "id": 156838,
+      "node_id": "MDQ6VXNlcjE1NjgzOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156838?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/RonnyPfannschmidt",
+      "html_url": "https://github.com/RonnyPfannschmidt",
+      "followers_url": "https://api.github.com/users/RonnyPfannschmidt/followers",
+      "following_url": "https://api.github.com/users/RonnyPfannschmidt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/RonnyPfannschmidt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/RonnyPfannschmidt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/RonnyPfannschmidt/subscriptions",
+      "organizations_url": "https://api.github.com/users/RonnyPfannschmidt/orgs",
+      "repos_url": "https://api.github.com/users/RonnyPfannschmidt/repos",
+      "events_url": "https://api.github.com/users/RonnyPfannschmidt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/RonnyPfannschmidt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "59e66fdb231bf47ce5e0b8ed75b788820b135c34",
+        "url": "https://api.github.com/repos/pytest-dev/pluggy/commits/59e66fdb231bf47ce5e0b8ed75b788820b135c34",
+        "html_url": "https://github.com/pytest-dev/pluggy/commit/59e66fdb231bf47ce5e0b8ed75b788820b135c34"
+      }
+    ]
+  },
+  {
+    "sha": "c4e254ca53d02f969c81586dc50c83cc8bb3dea9",
+    "node_id": "C_kwDOAmN2vNoAKGM0ZTI1NGNhNTNkMDJmOTY5YzgxNTg2ZGM1MGM4M2NjOGJiM2RlYTk",
+    "commit": {
+      "author": {
+        "name": "Ronny Pfannschmidt",
+        "email": "opensource@ronnypfannschmidt.de",
+        "date": "2025-11-28T21:03:49Z"
+      },
+      "committer": {
+        "name": "Ronny Pfannschmidt",
+        "email": "opensource@ronnypfannschmidt.de",
+        "date": "2026-05-27T07:05:59Z"
+      },
+      "message": "Simplify varnames to use code object directly\n\nUse code object attributes (co_varnames, co_argcount) and __defaults__\ndirectly instead of inspect.signature(). This avoids annotation\nresolution entirely, which is simpler and more efficient.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>",
+      "tree": {
+        "sha": "53cfae1c4dac6096475096dd42833cc260e2c918",
+        "url": "https://api.github.com/repos/pytest-dev/pluggy/git/trees/53cfae1c4dac6096475096dd42833cc260e2c918"
+      },
+      "url": "https://api.github.com/repos/pytest-dev/pluggy/git/commits/c4e254ca53d02f969c81586dc50c83cc8bb3dea9",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/pytest-dev/pluggy/commits/c4e254ca53d02f969c81586dc50c83cc8bb3dea9",
+    "html_url": "https://github.com/pytest-dev/pluggy/commit/c4e254ca53d02f969c81586dc50c83cc8bb3dea9",
+    "comments_url": "https://api.github.com/repos/pytest-dev/pluggy/commits/c4e254ca53d02f969c81586dc50c83cc8bb3dea9/comments",
+    "author": {
+      "login": "RonnyPfannschmidt",
+      "id": 156838,
+      "node_id": "MDQ6VXNlcjE1NjgzOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156838?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/RonnyPfannschmidt",
+      "html_url": "https://github.com/RonnyPfannschmidt",
+      "followers_url": "https://api.github.com/users/RonnyPfannschmidt/followers",
+      "following_url": "https://api.github.com/users/RonnyPfannschmidt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/RonnyPfannschmidt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/RonnyPfannschmidt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/RonnyPfannschmidt/subscriptions",
+      "organizations_url": "https://api.github.com/users/RonnyPfannschmidt/orgs",
+      "repos_url": "https://api.github.com/users/RonnyPfannschmidt/repos",
+      "events_url": "https://api.github.com/users/RonnyPfannschmidt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/RonnyPfannschmidt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "RonnyPfannschmidt",
+      "id": 156838,
+      "node_id": "MDQ6VXNlcjE1NjgzOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156838?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/RonnyPfannschmidt",
+      "html_url": "https://github.com/RonnyPfannschmidt",
+      "followers_url": "https://api.github.com/users/RonnyPfannschmidt/followers",
+      "following_url": "https://api.github.com/users/RonnyPfannschmidt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/RonnyPfannschmidt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/RonnyPfannschmidt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/RonnyPfannschmidt/subscriptions",
+      "organizations_url": "https://api.github.com/users/RonnyPfannschmidt/orgs",
+      "repos_url": "https://api.github.com/users/RonnyPfannschmidt/repos",
+      "events_url": "https://api.github.com/users/RonnyPfannschmidt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/RonnyPfannschmidt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "74876c40efa3137aee8ebf5d53d9542d65a13381",
+        "url": "https://api.github.com/repos/pytest-dev/pluggy/commits/74876c40efa3137aee8ebf5d53d9542d65a13381",
+        "html_url": "https://github.com/pytest-dev/pluggy/commit/74876c40efa3137aee8ebf5d53d9542d65a13381"
+      }
+    ]
+  },
+  {
+    "sha": "fd62ef81595f84c08e35a80fa5834ef51d9c37fe",
+    "node_id": "C_kwDOAmN2vNoAKGZkNjJlZjgxNTk1Zjg0YzA4ZTM1YTgwZmE1ODM0ZWY1MWQ5YzM3ZmU",
+    "commit": {
+      "author": {
+        "name": "Ronny Pfannschmidt",
+        "email": "opensource@ronnypfannschmidt.de",
+        "date": "2026-04-29T08:27:54Z"
+      },
+      "committer": {
+        "name": "Ronny Pfannschmidt",
+        "email": "opensource@ronnypfannschmidt.de",
+        "date": "2026-05-27T07:05:59Z"
+      },
+      "message": "Add varnames benchmark comparing __code__ vs inspect.signature\n\nInclude both the current implementation and the legacy inspect.signature-based\nversion to clearly demonstrate the ~7-66x speedup from using code objects directly.\n\nCo-authored-by: Cursor AI <ai@cursor.sh>\nCo-authored-by: Anthropic Claude Opus 4 <claude@anthropic.com>",
+      "tree": {
+        "sha": "6c1ee3992c6f1f5da96419789f73eda13d3641d5",
+        "url": "https://api.github.com/repos/pytest-dev/pluggy/git/trees/6c1ee3992c6f1f5da96419789f73eda13d3641d5"
+      },
+      "url": "https://api.github.com/repos/pytest-dev/pluggy/git/commits/fd62ef81595f84c08e35a80fa5834ef51d9c37fe",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/pytest-dev/pluggy/commits/fd62ef81595f84c08e35a80fa5834ef51d9c37fe",
+    "html_url": "https://github.com/pytest-dev/pluggy/commit/fd62ef81595f84c08e35a80fa5834ef51d9c37fe",
+    "comments_url": "https://api.github.com/repos/pytest-dev/pluggy/commits/fd62ef81595f84c08e35a80fa5834ef51d9c37fe/comments",
+    "author": {
+      "login": "RonnyPfannschmidt",
+      "id": 156838,
+      "node_id": "MDQ6VXNlcjE1NjgzOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156838?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/RonnyPfannschmidt",
+      "html_url": "https://github.com/RonnyPfannschmidt",
+      "followers_url": "https://api.github.com/users/RonnyPfannschmidt/followers",
+      "following_url": "https://api.github.com/users/RonnyPfannschmidt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/RonnyPfannschmidt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/RonnyPfannschmidt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/RonnyPfannschmidt/subscriptions",
+      "organizations_url": "https://api.github.com/users/RonnyPfannschmidt/orgs",
+      "repos_url": "https://api.github.com/users/RonnyPfannschmidt/repos",
+      "events_url": "https://api.github.com/users/RonnyPfannschmidt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/RonnyPfannschmidt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "RonnyPfannschmidt",
+      "id": 156838,
+      "node_id": "MDQ6VXNlcjE1NjgzOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156838?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/RonnyPfannschmidt",
+      "html_url": "https://github.com/RonnyPfannschmidt",
+      "followers_url": "https://api.github.com/users/RonnyPfannschmidt/followers",
+      "following_url": "https://api.github.com/users/RonnyPfannschmidt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/RonnyPfannschmidt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/RonnyPfannschmidt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/RonnyPfannschmidt/subscriptions",
+      "organizations_url": "https://api.github.com/users/RonnyPfannschmidt/orgs",
+      "repos_url": "https://api.github.com/users/RonnyPfannschmidt/repos",
+      "events_url": "https://api.github.com/users/RonnyPfannschmidt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/RonnyPfannschmidt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "c4e254ca53d02f969c81586dc50c83cc8bb3dea9",
+        "url": "https://api.github.com/repos/pytest-dev/pluggy/commits/c4e254ca53d02f969c81586dc50c83cc8bb3dea9",
+        "html_url": "https://github.com/pytest-dev/pluggy/commit/c4e254ca53d02f969c81586dc50c83cc8bb3dea9"
+      }
+    ]
+  },
+  {
+    "sha": "c1dfc0b9ca32355c214883471d15ecc5133cd2b8",
+    "node_id": "C_kwDOAmN2vNoAKGMxZGZjMGI5Y2EzMjM1NWMyMTQ4ODM0NzFkMTVlY2M1MTMzY2QyYjg",
+    "commit": {
+      "author": {
+        "name": "Ronny Pfannschmidt",
+        "email": "opensource@ronnypfannschmidt.de",
+        "date": "2026-04-29T19:27:45Z"
+      },
+      "committer": {
+        "name": "Ronny Pfannschmidt",
+        "email": "opensource@ronnypfannschmidt.de",
+        "date": "2026-05-27T07:05:59Z"
+      },
+      "message": "Fix typo in varnames docstring: 'keywrord' -> 'keyword'\n\nCo-authored-by: Cursor AI <ai@cursor.sh>\nCo-authored-by: Anthropic Claude Opus 4 <claude@anthropic.com>",
+      "tree": {
+        "sha": "8770caf499d607420b73c6d087689028d0a37084",
+        "url": "https://api.github.com/repos/pytest-dev/pluggy/git/trees/8770caf499d607420b73c6d087689028d0a37084"
+      },
+      "url": "https://api.github.com/repos/pytest-dev/pluggy/git/commits/c1dfc0b9ca32355c214883471d15ecc5133cd2b8",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/pytest-dev/pluggy/commits/c1dfc0b9ca32355c214883471d15ecc5133cd2b8",
+    "html_url": "https://github.com/pytest-dev/pluggy/commit/c1dfc0b9ca32355c214883471d15ecc5133cd2b8",
+    "comments_url": "https://api.github.com/repos/pytest-dev/pluggy/commits/c1dfc0b9ca32355c214883471d15ecc5133cd2b8/comments",
+    "author": {
+      "login": "RonnyPfannschmidt",
+      "id": 156838,
+      "node_id": "MDQ6VXNlcjE1NjgzOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156838?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/RonnyPfannschmidt",
+      "html_url": "https://github.com/RonnyPfannschmidt",
+      "followers_url": "https://api.github.com/users/RonnyPfannschmidt/followers",
+      "following_url": "https://api.github.com/users/RonnyPfannschmidt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/RonnyPfannschmidt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/RonnyPfannschmidt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/RonnyPfannschmidt/subscriptions",
+      "organizations_url": "https://api.github.com/users/RonnyPfannschmidt/orgs",
+      "repos_url": "https://api.github.com/users/RonnyPfannschmidt/repos",
+      "events_url": "https://api.github.com/users/RonnyPfannschmidt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/RonnyPfannschmidt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "RonnyPfannschmidt",
+      "id": 156838,
+      "node_id": "MDQ6VXNlcjE1NjgzOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156838?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/RonnyPfannschmidt",
+      "html_url": "https://github.com/RonnyPfannschmidt",
+      "followers_url": "https://api.github.com/users/RonnyPfannschmidt/followers",
+      "following_url": "https://api.github.com/users/RonnyPfannschmidt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/RonnyPfannschmidt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/RonnyPfannschmidt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/RonnyPfannschmidt/subscriptions",
+      "organizations_url": "https://api.github.com/users/RonnyPfannschmidt/orgs",
+      "repos_url": "https://api.github.com/users/RonnyPfannschmidt/repos",
+      "events_url": "https://api.github.com/users/RonnyPfannschmidt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/RonnyPfannschmidt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "fd62ef81595f84c08e35a80fa5834ef51d9c37fe",
+        "url": "https://api.github.com/repos/pytest-dev/pluggy/commits/fd62ef81595f84c08e35a80fa5834ef51d9c37fe",
+        "html_url": "https://github.com/pytest-dev/pluggy/commit/fd62ef81595f84c08e35a80fa5834ef51d9c37fe"
+      }
+    ]
+  },
+  {
+    "sha": "0b7790eb2adf436c6df39c9a2256aa8a31ba3893",
+    "node_id": "C_kwDOAmN2vNoAKDBiNzc5MGViMmFkZjQzNmM2ZGYzOWM5YTIyNTZhYThhMzFiYTM4OTM",
+    "commit": {
+      "author": {
+        "name": "Ronny Pfannschmidt",
+        "email": "opensource@ronnypfannschmidt.de",
+        "date": "2026-04-29T19:28:19Z"
+      },
+      "committer": {
+        "name": "Ronny Pfannschmidt",
+        "email": "opensource@ronnypfannschmidt.de",
+        "date": "2026-05-27T07:05:59Z"
+      },
+      "message": "Fix varnames to strip self for bound methods without dotted qualname\n\nA module-level function assigned to a class attribute becomes a bound\nmethod on instances, but its __qualname__ has no dot. Track whether\nthe original callable was a bound method before unwrapping to __func__,\nso self is always stripped for bound methods.\n\nCo-authored-by: Cursor AI <ai@cursor.sh>\nCo-authored-by: Anthropic Claude Opus 4 <claude@anthropic.com>",
+      "tree": {
+        "sha": "b2d1ea8dd1596720a13a969717176db92fccd23f",
+        "url": "https://api.github.com/repos/pytest-dev/pluggy/git/trees/b2d1ea8dd1596720a13a969717176db92fccd23f"
+      },
+      "url": "https://api.github.com/repos/pytest-dev/pluggy/git/commits/0b7790eb2adf436c6df39c9a2256aa8a31ba3893",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/pytest-dev/pluggy/commits/0b7790eb2adf436c6df39c9a2256aa8a31ba3893",
+    "html_url": "https://github.com/pytest-dev/pluggy/commit/0b7790eb2adf436c6df39c9a2256aa8a31ba3893",
+    "comments_url": "https://api.github.com/repos/pytest-dev/pluggy/commits/0b7790eb2adf436c6df39c9a2256aa8a31ba3893/comments",
+    "author": {
+      "login": "RonnyPfannschmidt",
+      "id": 156838,
+      "node_id": "MDQ6VXNlcjE1NjgzOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156838?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/RonnyPfannschmidt",
+      "html_url": "https://github.com/RonnyPfannschmidt",
+      "followers_url": "https://api.github.com/users/RonnyPfannschmidt/followers",
+      "following_url": "https://api.github.com/users/RonnyPfannschmidt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/RonnyPfannschmidt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/RonnyPfannschmidt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/RonnyPfannschmidt/subscriptions",
+      "organizations_url": "https://api.github.com/users/RonnyPfannschmidt/orgs",
+      "repos_url": "https://api.github.com/users/RonnyPfannschmidt/repos",
+      "events_url": "https://api.github.com/users/RonnyPfannschmidt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/RonnyPfannschmidt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "RonnyPfannschmidt",
+      "id": 156838,
+      "node_id": "MDQ6VXNlcjE1NjgzOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156838?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/RonnyPfannschmidt",
+      "html_url": "https://github.com/RonnyPfannschmidt",
+      "followers_url": "https://api.github.com/users/RonnyPfannschmidt/followers",
+      "following_url": "https://api.github.com/users/RonnyPfannschmidt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/RonnyPfannschmidt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/RonnyPfannschmidt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/RonnyPfannschmidt/subscriptions",
+      "organizations_url": "https://api.github.com/users/RonnyPfannschmidt/orgs",
+      "repos_url": "https://api.github.com/users/RonnyPfannschmidt/repos",
+      "events_url": "https://api.github.com/users/RonnyPfannschmidt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/RonnyPfannschmidt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "c1dfc0b9ca32355c214883471d15ecc5133cd2b8",
+        "url": "https://api.github.com/repos/pytest-dev/pluggy/commits/c1dfc0b9ca32355c214883471d15ecc5133cd2b8",
+        "html_url": "https://github.com/pytest-dev/pluggy/commit/c1dfc0b9ca32355c214883471d15ecc5133cd2b8"
+      }
+    ]
+  },
+  {
+    "sha": "a90470fe3f1661438405b3dad642ca2206a2abb3",
+    "node_id": "C_kwDOAmN2vNoAKGE5MDQ3MGZlM2YxNjYxNDM4NDA1YjNkYWQ2NDJjYTIyMDZhMmFiYjM",
+    "commit": {
+      "author": {
+        "name": "Ronny Pfannschmidt",
+        "email": "opensource@ronnypfannschmidt.de",
+        "date": "2026-04-29T19:29:59Z"
+      },
+      "committer": {
+        "name": "Ronny Pfannschmidt",
+        "email": "opensource@ronnypfannschmidt.de",
+        "date": "2026-05-27T07:05:59Z"
+      },
+      "message": "Simplify unresolvable annotation test to use direct function definition\n\nReplace exec()-based test with a direct function definition. The string\nannotation \"NonExistentType\" triggers the same behavior without the\nindirection.\n\nCo-authored-by: Cursor AI <ai@cursor.sh>\nCo-authored-by: Anthropic Claude Opus 4 <claude@anthropic.com>",
+      "tree": {
+        "sha": "a04b34aec743f1b1cce9357d80ec28f15a7f6967",
+        "url": "https://api.github.com/repos/pytest-dev/pluggy/git/trees/a04b34aec743f1b1cce9357d80ec28f15a7f6967"
+      },
+      "url": "https://api.github.com/repos/pytest-dev/pluggy/git/commits/a90470fe3f1661438405b3dad642ca2206a2abb3",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/pytest-dev/pluggy/commits/a90470fe3f1661438405b3dad642ca2206a2abb3",
+    "html_url": "https://github.com/pytest-dev/pluggy/commit/a90470fe3f1661438405b3dad642ca2206a2abb3",
+    "comments_url": "https://api.github.com/repos/pytest-dev/pluggy/commits/a90470fe3f1661438405b3dad642ca2206a2abb3/comments",
+    "author": {
+      "login": "RonnyPfannschmidt",
+      "id": 156838,
+      "node_id": "MDQ6VXNlcjE1NjgzOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156838?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/RonnyPfannschmidt",
+      "html_url": "https://github.com/RonnyPfannschmidt",
+      "followers_url": "https://api.github.com/users/RonnyPfannschmidt/followers",
+      "following_url": "https://api.github.com/users/RonnyPfannschmidt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/RonnyPfannschmidt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/RonnyPfannschmidt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/RonnyPfannschmidt/subscriptions",
+      "organizations_url": "https://api.github.com/users/RonnyPfannschmidt/orgs",
+      "repos_url": "https://api.github.com/users/RonnyPfannschmidt/repos",
+      "events_url": "https://api.github.com/users/RonnyPfannschmidt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/RonnyPfannschmidt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "RonnyPfannschmidt",
+      "id": 156838,
+      "node_id": "MDQ6VXNlcjE1NjgzOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156838?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/RonnyPfannschmidt",
+      "html_url": "https://github.com/RonnyPfannschmidt",
+      "followers_url": "https://api.github.com/users/RonnyPfannschmidt/followers",
+      "following_url": "https://api.github.com/users/RonnyPfannschmidt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/RonnyPfannschmidt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/RonnyPfannschmidt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/RonnyPfannschmidt/subscriptions",
+      "organizations_url": "https://api.github.com/users/RonnyPfannschmidt/orgs",
+      "repos_url": "https://api.github.com/users/RonnyPfannschmidt/repos",
+      "events_url": "https://api.github.com/users/RonnyPfannschmidt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/RonnyPfannschmidt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "0b7790eb2adf436c6df39c9a2256aa8a31ba3893",
+        "url": "https://api.github.com/repos/pytest-dev/pluggy/commits/0b7790eb2adf436c6df39c9a2256aa8a31ba3893",
+        "html_url": "https://github.com/pytest-dev/pluggy/commit/0b7790eb2adf436c6df39c9a2256aa8a31ba3893"
+      }
+    ]
+  },
+  {
+    "sha": "5656caaa69e5df8912f465597610c415237f7f5e",
+    "node_id": "C_kwDOAmN2vNoAKDU2NTZjYWFhNjllNWRmODkxMmY0NjU1OTc2MTBjNDE1MjM3ZjdmNWU",
+    "commit": {
+      "author": {
+        "name": "Ronny Pfannschmidt",
+        "email": "opensource@ronnypfannschmidt.de",
+        "date": "2026-04-29T19:53:01Z"
+      },
+      "committer": {
+        "name": "Ronny Pfannschmidt",
+        "email": "opensource@ronnypfannschmidt.de",
+        "date": "2026-05-27T07:05:59Z"
+      },
+      "message": "Add changelog fragment for #629\n\nCo-authored-by: Cursor AI <ai@cursor.sh>\nCo-authored-by: Anthropic Claude Opus 4 <claude@anthropic.com>",
+      "tree": {
+        "sha": "27ddad22c9bb790dd82a7949589adf321ff992c5",
+        "url": "https://api.github.com/repos/pytest-dev/pluggy/git/trees/27ddad22c9bb790dd82a7949589adf321ff992c5"
+      },
+      "url": "https://api.github.com/repos/pytest-dev/pluggy/git/commits/5656caaa69e5df8912f465597610c415237f7f5e",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/pytest-dev/pluggy/commits/5656caaa69e5df8912f465597610c415237f7f5e",
+    "html_url": "https://github.com/pytest-dev/pluggy/commit/5656caaa69e5df8912f465597610c415237f7f5e",
+    "comments_url": "https://api.github.com/repos/pytest-dev/pluggy/commits/5656caaa69e5df8912f465597610c415237f7f5e/comments",
+    "author": {
+      "login": "RonnyPfannschmidt",
+      "id": 156838,
+      "node_id": "MDQ6VXNlcjE1NjgzOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156838?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/RonnyPfannschmidt",
+      "html_url": "https://github.com/RonnyPfannschmidt",
+      "followers_url": "https://api.github.com/users/RonnyPfannschmidt/followers",
+      "following_url": "https://api.github.com/users/RonnyPfannschmidt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/RonnyPfannschmidt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/RonnyPfannschmidt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/RonnyPfannschmidt/subscriptions",
+      "organizations_url": "https://api.github.com/users/RonnyPfannschmidt/orgs",
+      "repos_url": "https://api.github.com/users/RonnyPfannschmidt/repos",
+      "events_url": "https://api.github.com/users/RonnyPfannschmidt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/RonnyPfannschmidt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "RonnyPfannschmidt",
+      "id": 156838,
+      "node_id": "MDQ6VXNlcjE1NjgzOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156838?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/RonnyPfannschmidt",
+      "html_url": "https://github.com/RonnyPfannschmidt",
+      "followers_url": "https://api.github.com/users/RonnyPfannschmidt/followers",
+      "following_url": "https://api.github.com/users/RonnyPfannschmidt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/RonnyPfannschmidt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/RonnyPfannschmidt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/RonnyPfannschmidt/subscriptions",
+      "organizations_url": "https://api.github.com/users/RonnyPfannschmidt/orgs",
+      "repos_url": "https://api.github.com/users/RonnyPfannschmidt/repos",
+      "events_url": "https://api.github.com/users/RonnyPfannschmidt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/RonnyPfannschmidt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "a90470fe3f1661438405b3dad642ca2206a2abb3",
+        "url": "https://api.github.com/repos/pytest-dev/pluggy/commits/a90470fe3f1661438405b3dad642ca2206a2abb3",
+        "html_url": "https://github.com/pytest-dev/pluggy/commit/a90470fe3f1661438405b3dad642ca2206a2abb3"
+      }
+    ]
+  },
+  {
+    "sha": "5631ed96fb7f9f7cec6f981483325236cd5cceee",
+    "node_id": "C_kwDOAmN2vNoAKDU2MzFlZDk2ZmI3ZjlmN2NlYzZmOTgxNDgzMzI1MjM2Y2Q1Y2NlZWU",
+    "commit": {
+      "author": {
+        "name": "Ronny Pfannschmidt",
+        "email": "opensource@ronnypfannschmidt.de",
+        "date": "2026-05-01T06:42:57Z"
+      },
+      "committer": {
+        "name": "Ronny Pfannschmidt",
+        "email": "opensource@ronnypfannschmidt.de",
+        "date": "2026-05-27T07:05:59Z"
+      },
+      "message": "Improve varnames docstring: use 'parameter' and note keyword-only exclusion\n\nCo-authored-by: Cursor AI <ai@cursor.sh>\nCo-authored-by: Anthropic Claude Opus 4 <claude@anthropic.com>",
+      "tree": {
+        "sha": "1abaa965e2e2dd53a6b64dba445d896de581529e",
+        "url": "https://api.github.com/repos/pytest-dev/pluggy/git/trees/1abaa965e2e2dd53a6b64dba445d896de581529e"
+      },
+      "url": "https://api.github.com/repos/pytest-dev/pluggy/git/commits/5631ed96fb7f9f7cec6f981483325236cd5cceee",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/pytest-dev/pluggy/commits/5631ed96fb7f9f7cec6f981483325236cd5cceee",
+    "html_url": "https://github.com/pytest-dev/pluggy/commit/5631ed96fb7f9f7cec6f981483325236cd5cceee",
+    "comments_url": "https://api.github.com/repos/pytest-dev/pluggy/commits/5631ed96fb7f9f7cec6f981483325236cd5cceee/comments",
+    "author": {
+      "login": "RonnyPfannschmidt",
+      "id": 156838,
+      "node_id": "MDQ6VXNlcjE1NjgzOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156838?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/RonnyPfannschmidt",
+      "html_url": "https://github.com/RonnyPfannschmidt",
+      "followers_url": "https://api.github.com/users/RonnyPfannschmidt/followers",
+      "following_url": "https://api.github.com/users/RonnyPfannschmidt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/RonnyPfannschmidt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/RonnyPfannschmidt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/RonnyPfannschmidt/subscriptions",
+      "organizations_url": "https://api.github.com/users/RonnyPfannschmidt/orgs",
+      "repos_url": "https://api.github.com/users/RonnyPfannschmidt/repos",
+      "events_url": "https://api.github.com/users/RonnyPfannschmidt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/RonnyPfannschmidt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "RonnyPfannschmidt",
+      "id": 156838,
+      "node_id": "MDQ6VXNlcjE1NjgzOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156838?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/RonnyPfannschmidt",
+      "html_url": "https://github.com/RonnyPfannschmidt",
+      "followers_url": "https://api.github.com/users/RonnyPfannschmidt/followers",
+      "following_url": "https://api.github.com/users/RonnyPfannschmidt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/RonnyPfannschmidt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/RonnyPfannschmidt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/RonnyPfannschmidt/subscriptions",
+      "organizations_url": "https://api.github.com/users/RonnyPfannschmidt/orgs",
+      "repos_url": "https://api.github.com/users/RonnyPfannschmidt/repos",
+      "events_url": "https://api.github.com/users/RonnyPfannschmidt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/RonnyPfannschmidt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "5656caaa69e5df8912f465597610c415237f7f5e",
+        "url": "https://api.github.com/repos/pytest-dev/pluggy/commits/5656caaa69e5df8912f465597610c415237f7f5e",
+        "html_url": "https://github.com/pytest-dev/pluggy/commit/5656caaa69e5df8912f465597610c415237f7f5e"
+      }
+    ]
+  },
+  {
+    "sha": "1990b19c3a6adf1a22ace3b39b5fad8fd08189f4",
+    "node_id": "C_kwDOAmN2vNoAKDE5OTBiMTljM2E2YWRmMWEyMmFjZTNiMzliNWZhZDhmZDA4MTg5ZjQ",
+    "commit": {
+      "author": {
+        "name": "Ronny Pfannschmidt",
+        "email": "opensource@ronnypfannschmidt.de",
+        "date": "2026-05-01T06:43:28Z"
+      },
+      "committer": {
+        "name": "Ronny Pfannschmidt",
+        "email": "opensource@ronnypfannschmidt.de",
+        "date": "2026-05-27T07:05:59Z"
+      },
+      "message": "Reword changelog fragment to describe user-facing bug\n\nCo-authored-by: Cursor AI <ai@cursor.sh>\nCo-authored-by: Anthropic Claude Opus 4 <claude@anthropic.com>\nMade-with: Cursor",
+      "tree": {
+        "sha": "6baf15a680af0def6f487953f0ad80918e0e54bb",
+        "url": "https://api.github.com/repos/pytest-dev/pluggy/git/trees/6baf15a680af0def6f487953f0ad80918e0e54bb"
+      },
+      "url": "https://api.github.com/repos/pytest-dev/pluggy/git/commits/1990b19c3a6adf1a22ace3b39b5fad8fd08189f4",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/pytest-dev/pluggy/commits/1990b19c3a6adf1a22ace3b39b5fad8fd08189f4",
+    "html_url": "https://github.com/pytest-dev/pluggy/commit/1990b19c3a6adf1a22ace3b39b5fad8fd08189f4",
+    "comments_url": "https://api.github.com/repos/pytest-dev/pluggy/commits/1990b19c3a6adf1a22ace3b39b5fad8fd08189f4/comments",
+    "author": {
+      "login": "RonnyPfannschmidt",
+      "id": 156838,
+      "node_id": "MDQ6VXNlcjE1NjgzOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156838?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/RonnyPfannschmidt",
+      "html_url": "https://github.com/RonnyPfannschmidt",
+      "followers_url": "https://api.github.com/users/RonnyPfannschmidt/followers",
+      "following_url": "https://api.github.com/users/RonnyPfannschmidt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/RonnyPfannschmidt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/RonnyPfannschmidt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/RonnyPfannschmidt/subscriptions",
+      "organizations_url": "https://api.github.com/users/RonnyPfannschmidt/orgs",
+      "repos_url": "https://api.github.com/users/RonnyPfannschmidt/repos",
+      "events_url": "https://api.github.com/users/RonnyPfannschmidt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/RonnyPfannschmidt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "RonnyPfannschmidt",
+      "id": 156838,
+      "node_id": "MDQ6VXNlcjE1NjgzOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156838?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/RonnyPfannschmidt",
+      "html_url": "https://github.com/RonnyPfannschmidt",
+      "followers_url": "https://api.github.com/users/RonnyPfannschmidt/followers",
+      "following_url": "https://api.github.com/users/RonnyPfannschmidt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/RonnyPfannschmidt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/RonnyPfannschmidt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/RonnyPfannschmidt/subscriptions",
+      "organizations_url": "https://api.github.com/users/RonnyPfannschmidt/orgs",
+      "repos_url": "https://api.github.com/users/RonnyPfannschmidt/repos",
+      "events_url": "https://api.github.com/users/RonnyPfannschmidt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/RonnyPfannschmidt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "5631ed96fb7f9f7cec6f981483325236cd5cceee",
+        "url": "https://api.github.com/repos/pytest-dev/pluggy/commits/5631ed96fb7f9f7cec6f981483325236cd5cceee",
+        "html_url": "https://github.com/pytest-dev/pluggy/commit/5631ed96fb7f9f7cec6f981483325236cd5cceee"
+      }
+    ]
+  },
+  {
+    "sha": "dd20a85e38af556e1c818b03391eab1480438e0c",
+    "node_id": "C_kwDOAmN2vNoAKGRkMjBhODVlMzhhZjU1NmUxYzgxOGIwMzM5MWVhYjE0ODA0MzhlMGM",
+    "commit": {
+      "author": {
+        "name": "Ronny Pfannschmidt",
+        "email": "opensource@ronnypfannschmidt.de",
+        "date": "2026-05-04T10:54:09Z"
+      },
+      "committer": {
+        "name": "Ronny Pfannschmidt",
+        "email": "opensource@ronnypfannschmidt.de",
+        "date": "2026-05-27T07:05:59Z"
+      },
+      "message": "Warn from varnames for hookspec methods missing self\n\nMove the missing-self warning into varnames where the ambiguity\nactually lives, instead of bolting it onto HookSpec.__init__.\n\nAdd a legacy_noself parameter to varnames: when True and the\nfunction looks like a class method but lacks self/cls as its\nfirst parameter, emit a FutureWarning. HookSpec.__init__ passes\nlegacy_noself=True for class-based non-static hookspecs to\nsupport the legacy pattern while warning about it.\n\nCo-authored-by: Cursor AI <ai@cursor.sh>\nCo-authored-by: Anthropic Claude Opus 4 <claude@anthropic.com>",
+      "tree": {
+        "sha": "7290bc67402a528c117b78304c5f6c362cba281a",
+        "url": "https://api.github.com/repos/pytest-dev/pluggy/git/trees/7290bc67402a528c117b78304c5f6c362cba281a"
+      },
+      "url": "https://api.github.com/repos/pytest-dev/pluggy/git/commits/dd20a85e38af556e1c818b03391eab1480438e0c",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/pytest-dev/pluggy/commits/dd20a85e38af556e1c818b03391eab1480438e0c",
+    "html_url": "https://github.com/pytest-dev/pluggy/commit/dd20a85e38af556e1c818b03391eab1480438e0c",
+    "comments_url": "https://api.github.com/repos/pytest-dev/pluggy/commits/dd20a85e38af556e1c818b03391eab1480438e0c/comments",
+    "author": {
+      "login": "RonnyPfannschmidt",
+      "id": 156838,
+      "node_id": "MDQ6VXNlcjE1NjgzOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156838?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/RonnyPfannschmidt",
+      "html_url": "https://github.com/RonnyPfannschmidt",
+      "followers_url": "https://api.github.com/users/RonnyPfannschmidt/followers",
+      "following_url": "https://api.github.com/users/RonnyPfannschmidt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/RonnyPfannschmidt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/RonnyPfannschmidt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/RonnyPfannschmidt/subscriptions",
+      "organizations_url": "https://api.github.com/users/RonnyPfannschmidt/orgs",
+      "repos_url": "https://api.github.com/users/RonnyPfannschmidt/repos",
+      "events_url": "https://api.github.com/users/RonnyPfannschmidt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/RonnyPfannschmidt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "RonnyPfannschmidt",
+      "id": 156838,
+      "node_id": "MDQ6VXNlcjE1NjgzOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156838?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/RonnyPfannschmidt",
+      "html_url": "https://github.com/RonnyPfannschmidt",
+      "followers_url": "https://api.github.com/users/RonnyPfannschmidt/followers",
+      "following_url": "https://api.github.com/users/RonnyPfannschmidt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/RonnyPfannschmidt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/RonnyPfannschmidt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/RonnyPfannschmidt/subscriptions",
+      "organizations_url": "https://api.github.com/users/RonnyPfannschmidt/orgs",
+      "repos_url": "https://api.github.com/users/RonnyPfannschmidt/repos",
+      "events_url": "https://api.github.com/users/RonnyPfannschmidt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/RonnyPfannschmidt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "1990b19c3a6adf1a22ace3b39b5fad8fd08189f4",
+        "url": "https://api.github.com/repos/pytest-dev/pluggy/commits/1990b19c3a6adf1a22ace3b39b5fad8fd08189f4",
+        "html_url": "https://github.com/pytest-dev/pluggy/commit/1990b19c3a6adf1a22ace3b39b5fad8fd08189f4"
+      }
+    ]
+  },
+  {
+    "sha": "0258484dc180a0c28705de83783b269f4fed4873",
+    "node_id": "C_kwDOAmN2vNoAKDAyNTg0ODRkYzE4MGEwYzI4NzA1ZGU4Mzc4M2IyNjlmNGZlZDQ4NzM",
+    "commit": {
+      "author": {
+        "name": "Ronny Pfannschmidt",
+        "email": "opensource@ronnypfannschmidt.de",
+        "date": "2026-05-27T07:37:41Z"
+      },
+      "committer": {
+        "name": "Ronny Pfannschmidt",
+        "email": "opensource@ronnypfannschmidt.de",
+        "date": "2026-05-27T07:37:41Z"
+      },
+      "message": "Address review: DeprecationWarning, add self to test, suppress pytest-timeout\n\n- Change FutureWarning to DeprecationWarning for hookspec methods missing self\n- Add self to HookSpec methods in test_hookspec instead of suppressing the warning\n- Suppress the deprecation warning for pytest-timeout's TimeoutHooks (upstream\n  fix exists but is unreleased)\n- Add changelog entry for the deprecation\n- Update all test references from FutureWarning to DeprecationWarning\n\nCo-authored-by: Cursor AI <ai@cursor.sh>\nCo-authored-by: Anthropic Claude Opus 4 <claude@anthropic.com>",
+      "tree": {
+        "sha": "a47deb9f609d32d98341c7b3a6b50e08ca11cf98",
+        "url": "https://api.github.com/repos/pytest-dev/pluggy/git/trees/a47deb9f609d32d98341c7b3a6b50e08ca11cf98"
+      },
+      "url": "https://api.github.com/repos/pytest-dev/pluggy/git/commits/0258484dc180a0c28705de83783b269f4fed4873",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/pytest-dev/pluggy/commits/0258484dc180a0c28705de83783b269f4fed4873",
+    "html_url": "https://github.com/pytest-dev/pluggy/commit/0258484dc180a0c28705de83783b269f4fed4873",
+    "comments_url": "https://api.github.com/repos/pytest-dev/pluggy/commits/0258484dc180a0c28705de83783b269f4fed4873/comments",
+    "author": {
+      "login": "RonnyPfannschmidt",
+      "id": 156838,
+      "node_id": "MDQ6VXNlcjE1NjgzOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156838?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/RonnyPfannschmidt",
+      "html_url": "https://github.com/RonnyPfannschmidt",
+      "followers_url": "https://api.github.com/users/RonnyPfannschmidt/followers",
+      "following_url": "https://api.github.com/users/RonnyPfannschmidt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/RonnyPfannschmidt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/RonnyPfannschmidt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/RonnyPfannschmidt/subscriptions",
+      "organizations_url": "https://api.github.com/users/RonnyPfannschmidt/orgs",
+      "repos_url": "https://api.github.com/users/RonnyPfannschmidt/repos",
+      "events_url": "https://api.github.com/users/RonnyPfannschmidt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/RonnyPfannschmidt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "RonnyPfannschmidt",
+      "id": 156838,
+      "node_id": "MDQ6VXNlcjE1NjgzOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156838?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/RonnyPfannschmidt",
+      "html_url": "https://github.com/RonnyPfannschmidt",
+      "followers_url": "https://api.github.com/users/RonnyPfannschmidt/followers",
+      "following_url": "https://api.github.com/users/RonnyPfannschmidt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/RonnyPfannschmidt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/RonnyPfannschmidt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/RonnyPfannschmidt/subscriptions",
+      "organizations_url": "https://api.github.com/users/RonnyPfannschmidt/orgs",
+      "repos_url": "https://api.github.com/users/RonnyPfannschmidt/repos",
+      "events_url": "https://api.github.com/users/RonnyPfannschmidt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/RonnyPfannschmidt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "dd20a85e38af556e1c818b03391eab1480438e0c",
+        "url": "https://api.github.com/repos/pytest-dev/pluggy/commits/dd20a85e38af556e1c818b03391eab1480438e0c",
+        "html_url": "https://github.com/pytest-dev/pluggy/commit/dd20a85e38af556e1c818b03391eab1480438e0c"
+      }
+    ]
+  }
+]

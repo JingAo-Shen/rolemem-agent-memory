@@ -1,0 +1,37 @@
+diff --git a/CHANGES.rst b/CHANGES.rst
+index ddf2ca94..763f0bab 100644
+--- a/CHANGES.rst
++++ b/CHANGES.rst
+@@ -4,6 +4,7 @@ Version 3.1.0
+ Unreleased
+ 
+ -   Drop support for Python 3.9.
++-   Remove previously deprecated code.
+ 
+ 
+ Version 3.0.3
+diff --git a/src/markupsafe/__init__.py b/src/markupsafe/__init__.py
+index 4c395d7b..f8a0d58b 100644
+--- a/src/markupsafe/__init__.py
++++ b/src/markupsafe/__init__.py
+@@ -377,20 +377,3 @@ def __int__(self, /) -> int:
+ 
+     def __float__(self, /) -> float:
+         return float(self.obj)
+-
+-
+-def __getattr__(name: str) -> t.Any:
+-    if name == "__version__":
+-        import importlib.metadata
+-        import warnings
+-
+-        warnings.warn(
+-            "The '__version__' attribute is deprecated and will be removed in"
+-            " MarkupSafe 3.1. Use feature detection, or"
+-            ' `importlib.metadata.version("markupsafe")`, instead.',
+-            DeprecationWarning,
+-            stacklevel=2,
+-        )
+-        return importlib.metadata.version("markupsafe")
+-
+-    raise AttributeError(name)

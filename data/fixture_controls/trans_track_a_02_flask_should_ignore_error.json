@@ -1,0 +1,8 @@
+{
+  "transition_id": "trans_track_a_02_flask_should_ignore_error",
+  "audit_fingerprint": "543dab13c04547b19aedef95403a9b417c15534f756e315165493b4829a140fa",
+  "status": "PASS",
+  "valid_control_status": "PASS",
+  "stale_control_status": "PASS",
+  "details": "valid_target=True, stale_target=False"
+}

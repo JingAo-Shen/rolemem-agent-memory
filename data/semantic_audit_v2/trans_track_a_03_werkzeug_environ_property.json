@@ -1,0 +1,92 @@
+{
+  "transition_id": "trans_track_a_03_werkzeug_environ_property",
+  "repo_name": "pallets/werkzeug",
+  "auditor_version": "2.0.0",
+  "spec_sha256": "d18229edf6b379106e49b3f2a5f174f845d2d369cc3496387e42e1f8c69027e7",
+  "audit_fingerprint": "a280e966e99bb776d96f710c448adc78233dd0c2b234416b7a37ce82e5665a34",
+  "gates": [
+    {
+      "gate_id": "G1",
+      "name": "PR evidence <-> repository_change",
+      "expected": "PR title/body describes the repository architectural or API change",
+      "observed": "Word overlap: ['deprecated', 'environ', 'environ_property', 'request'] | PR title: deprecate environ properties",
+      "evidence": "pr.json:title='deprecate environ properties'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G2",
+      "name": "repository_change <-> actual diff",
+      "expected": "Actual diff contains code edits in files specified in repository_change",
+      "observed": "Diff mentions files: ['src/werkzeug/utils.py', 'src/werkzeug/wrappers/request.py'] -> True",
+      "evidence": "diff.patch length: 9994 bytes",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G3",
+      "name": "actual diff <-> changed/deprecated/replacement symbols",
+      "expected": "Diff patch directly modifies or introduces the target symbols",
+      "observed": "Tokens ['environ_property', 'environ_property', 'environ', 'environ'] found in diff: True",
+      "evidence": "Matching symbols in diff: ['environ_property', 'environ_property', 'environ', 'environ']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G4",
+      "name": "stale memory <-> base-state behavior",
+      "expected": "Stale memory candidate instructs usage of legacy symbol from base state",
+      "observed": "Stale memory references legacy symbol: True",
+      "evidence": "stale_memory_candidate='Use werkzeug.utils.environ_property descriptor to bind WSGI environ keys....'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G5",
+      "name": "valid memory <-> target-state behavior",
+      "expected": "Valid memory candidate instructs modern pattern introduced in target state",
+      "observed": "Valid memory references modern symbol: True",
+      "evidence": "valid_memory_candidate='Access request.environ dictionary directly or wrap with standard property....'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G6",
+      "name": "current task <-> transition capability",
+      "expected": "Evaluation task prompt requires implementing or using transition capability",
+      "observed": "Task exercises target file 'header_proxy.py' and target symbol 'create_header_property': True",
+      "evidence": "current_task='Implement `create_header_property(key: str)` in `header_proxy.py` returning an e...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G7",
+      "name": "hidden test <-> current task semantics",
+      "expected": "Hidden test verifies the target symbol/module without leaking solution code",
+      "observed": "Hidden test imports/tests target symbol 'create_header_property': True",
+      "evidence": "hidden test len=452 bytes, tests=['prop', 'req', 'host', 'header_proxy', 'create_header_property']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G8",
+      "name": "stale control <-> stale memory semantics",
+      "expected": "Stale control solution invokes deprecated API as instructed by stale memory",
+      "observed": "Stale control uses deprecated symbol: True",
+      "evidence": "stale_solution.py contains ['environ_property', 'environ_property']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G9",
+      "name": "valid control <-> valid memory semantics",
+      "expected": "Valid control solution invokes modern API as instructed by valid memory",
+      "observed": "Valid control uses replacement symbol: True",
+      "evidence": "valid_solution.py contains modern pattern: True",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G10",
+      "name": "causal matrix <-> transition evidence",
+      "expected": "Causal counterfactual matrix demonstrates base-state pass, target-state fail with genuine failure taxonomy",
+      "observed": "Causal status: 'CAUSAL_PASS', failure taxonomy: 'DEPRECATION_WARNING'",
+      "evidence": "causal_counterfactual/trans_track_a_03_werkzeug_environ_property.json",
+      "status": "PASS"
+    }
+  ],
+  "passed_gates_count": 10,
+  "total_gates_count": 10,
+  "overall_status": "PASS"
+}

@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_03_werkzeug_environ_property",
+  "repo_name": "pallets/werkzeug",
+  "repo_url": "https://github.com/pallets/werkzeug",
+  "pr_url": "https://github.com/pallets/werkzeug/pull/3276",
+  "base_commit": "f97c305673ba121a1dae6764c37e8be48907a1d1",
+  "target_commit": "7641d4990f06d583425a4e6ba25e9d2f18934885",
+  "pkg_path": "src/werkzeug",
+  "changed_files": [
+    "src/werkzeug/utils.py",
+    "src/werkzeug/wrappers/request.py"
+  ],
+  "primary_file": "src/werkzeug/utils.py",
+  "changed_symbols": [
+    "environ_property"
+  ],
+  "deprecated_symbols": [
+    "werkzeug.utils.environ_property"
+  ],
+  "replacement_symbols": [
+    "environ",
+    "Request.environ"
+  ],
+  "repository_change": "werkzeug.utils.environ_property deprecated in favor of accessing request.environ directly.",
+  "stale_memory_candidate": "Use werkzeug.utils.environ_property descriptor to bind WSGI environ keys.",
+  "valid_memory_candidate": "Access request.environ dictionary directly or wrap with standard property.",
+  "current_task": "Implement `create_header_property(key: str)` in `header_proxy.py` returning an environ property accessor.",
+  "target_file": "header_proxy.py",
+  "target_symbol": "create_header_property",
+  "stale_sensitive": true,
+  "transition_type": "API_DEPRECATION",
+  "original_test_required": false,
+  "generated_hidden_test_only": true,
+  "track": "TRACK_A_STALE_SENSITIVE"
+}

@@ -1,0 +1,412 @@
+[
+  {
+    "sha": "fb3db97bab555321cb708a9a3389788bf8da7e21",
+    "node_id": "C_kwDOAciG_9oAKGZiM2RiOTdiYWI1NTUzMjFjYjcwOGE5YTMzODk3ODhiZjhkYTdlMjE",
+    "commit": {
+      "author": {
+        "name": "Hynek Schlawack",
+        "email": "hs@ox.cx",
+        "date": "2024-12-14T12:22:04Z"
+      },
+      "committer": {
+        "name": "Hynek Schlawack",
+        "email": "hs@ox.cx",
+        "date": "2024-12-14T12:49:13Z"
+      },
+      "message": "Implement __replace__ on 3.13\n\nFixes #1313",
+      "tree": {
+        "sha": "2bcddf1eebe24620dfeaecfa37b55eccad4ca471",
+        "url": "https://api.github.com/repos/python-attrs/attrs/git/trees/2bcddf1eebe24620dfeaecfa37b55eccad4ca471"
+      },
+      "url": "https://api.github.com/repos/python-attrs/attrs/git/commits/fb3db97bab555321cb708a9a3389788bf8da7e21",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAgETuBAlFkiJhJeXyXvZoO2GhDUB\nAhb/d+abMtn5dE4NYAAAADZ2l0AAAAAAAAAAZzaGE1MTIAAABTAAAAC3NzaC1lZDI1NTE5\nAAAAQC8yEaL5wovz5EUrYGFKDfQ7V3xHy/WZlgjLG8pOEVL3lXdvnPQGqUMRWd7iD7skkV\ndAbOmhDduOTYSdJUSawQk=\n-----END SSH SIGNATURE-----",
+        "payload": "tree 2bcddf1eebe24620dfeaecfa37b55eccad4ca471\nparent 103d51f6efa36efcc7be4adecfd571da3f63291c\nauthor Hynek Schlawack <hs@ox.cx> 1734178924 +0100\ncommitter Hynek Schlawack <hs@ox.cx> 1734180553 +0100\n\nImplement __replace__ on 3.13\n\nFixes #1313\n",
+        "verified_at": "2024-12-14T12:49:18Z"
+      }
+    },
+    "url": "https://api.github.com/repos/python-attrs/attrs/commits/fb3db97bab555321cb708a9a3389788bf8da7e21",
+    "html_url": "https://github.com/python-attrs/attrs/commit/fb3db97bab555321cb708a9a3389788bf8da7e21",
+    "comments_url": "https://api.github.com/repos/python-attrs/attrs/commits/fb3db97bab555321cb708a9a3389788bf8da7e21/comments",
+    "author": {
+      "login": "hynek",
+      "id": 41240,
+      "node_id": "MDQ6VXNlcjQxMjQw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41240?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hynek",
+      "html_url": "https://github.com/hynek",
+      "followers_url": "https://api.github.com/users/hynek/followers",
+      "following_url": "https://api.github.com/users/hynek/following{/other_user}",
+      "gists_url": "https://api.github.com/users/hynek/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/hynek/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/hynek/subscriptions",
+      "organizations_url": "https://api.github.com/users/hynek/orgs",
+      "repos_url": "https://api.github.com/users/hynek/repos",
+      "events_url": "https://api.github.com/users/hynek/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/hynek/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "hynek",
+      "id": 41240,
+      "node_id": "MDQ6VXNlcjQxMjQw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41240?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hynek",
+      "html_url": "https://github.com/hynek",
+      "followers_url": "https://api.github.com/users/hynek/followers",
+      "following_url": "https://api.github.com/users/hynek/following{/other_user}",
+      "gists_url": "https://api.github.com/users/hynek/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/hynek/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/hynek/subscriptions",
+      "organizations_url": "https://api.github.com/users/hynek/orgs",
+      "repos_url": "https://api.github.com/users/hynek/repos",
+      "events_url": "https://api.github.com/users/hynek/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/hynek/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "103d51f6efa36efcc7be4adecfd571da3f63291c",
+        "url": "https://api.github.com/repos/python-attrs/attrs/commits/103d51f6efa36efcc7be4adecfd571da3f63291c",
+        "html_url": "https://github.com/python-attrs/attrs/commit/103d51f6efa36efcc7be4adecfd571da3f63291c"
+      }
+    ]
+  },
+  {
+    "sha": "5ae6f180b7844f5c20dcc5769fd7adc26e0468dd",
+    "node_id": "C_kwDOAciG_9oAKDVhZTZmMTgwYjc4NDRmNWMyMGRjYzU3NjlmZDdhZGMyNmUwNDY4ZGQ",
+    "commit": {
+      "author": {
+        "name": "Hynek Schlawack",
+        "email": "hs@ox.cx",
+        "date": "2024-12-14T12:26:13Z"
+      },
+      "committer": {
+        "name": "Hynek Schlawack",
+        "email": "hs@ox.cx",
+        "date": "2024-12-14T12:49:13Z"
+      },
+      "message": "Add newsfragment\n\nAdd news fragment",
+      "tree": {
+        "sha": "0c568a3f907b224ddfaee10a4e22b55067665200",
+        "url": "https://api.github.com/repos/python-attrs/attrs/git/trees/0c568a3f907b224ddfaee10a4e22b55067665200"
+      },
+      "url": "https://api.github.com/repos/python-attrs/attrs/git/commits/5ae6f180b7844f5c20dcc5769fd7adc26e0468dd",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAgETuBAlFkiJhJeXyXvZoO2GhDUB\nAhb/d+abMtn5dE4NYAAAADZ2l0AAAAAAAAAAZzaGE1MTIAAABTAAAAC3NzaC1lZDI1NTE5\nAAAAQPfiEGWfQa6b3dePaEMCXpeL3ppQA9j2MRlm5Lo7l8TsiLBXsCKed9Ia5Bl7R6ps6S\nCzXzmbb8wJ1nh9t3WSlw4=\n-----END SSH SIGNATURE-----",
+        "payload": "tree 0c568a3f907b224ddfaee10a4e22b55067665200\nparent fb3db97bab555321cb708a9a3389788bf8da7e21\nauthor Hynek Schlawack <hs@ox.cx> 1734179173 +0100\ncommitter Hynek Schlawack <hs@ox.cx> 1734180553 +0100\n\nAdd newsfragment\n\nAdd news fragment\n",
+        "verified_at": "2024-12-14T12:49:18Z"
+      }
+    },
+    "url": "https://api.github.com/repos/python-attrs/attrs/commits/5ae6f180b7844f5c20dcc5769fd7adc26e0468dd",
+    "html_url": "https://github.com/python-attrs/attrs/commit/5ae6f180b7844f5c20dcc5769fd7adc26e0468dd",
+    "comments_url": "https://api.github.com/repos/python-attrs/attrs/commits/5ae6f180b7844f5c20dcc5769fd7adc26e0468dd/comments",
+    "author": {
+      "login": "hynek",
+      "id": 41240,
+      "node_id": "MDQ6VXNlcjQxMjQw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41240?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hynek",
+      "html_url": "https://github.com/hynek",
+      "followers_url": "https://api.github.com/users/hynek/followers",
+      "following_url": "https://api.github.com/users/hynek/following{/other_user}",
+      "gists_url": "https://api.github.com/users/hynek/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/hynek/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/hynek/subscriptions",
+      "organizations_url": "https://api.github.com/users/hynek/orgs",
+      "repos_url": "https://api.github.com/users/hynek/repos",
+      "events_url": "https://api.github.com/users/hynek/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/hynek/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "hynek",
+      "id": 41240,
+      "node_id": "MDQ6VXNlcjQxMjQw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41240?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hynek",
+      "html_url": "https://github.com/hynek",
+      "followers_url": "https://api.github.com/users/hynek/followers",
+      "following_url": "https://api.github.com/users/hynek/following{/other_user}",
+      "gists_url": "https://api.github.com/users/hynek/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/hynek/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/hynek/subscriptions",
+      "organizations_url": "https://api.github.com/users/hynek/orgs",
+      "repos_url": "https://api.github.com/users/hynek/repos",
+      "events_url": "https://api.github.com/users/hynek/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/hynek/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "fb3db97bab555321cb708a9a3389788bf8da7e21",
+        "url": "https://api.github.com/repos/python-attrs/attrs/commits/fb3db97bab555321cb708a9a3389788bf8da7e21",
+        "html_url": "https://github.com/python-attrs/attrs/commit/fb3db97bab555321cb708a9a3389788bf8da7e21"
+      }
+    ]
+  },
+  {
+    "sha": "9c8d3d5c571a207ee2b1244ced25b021bb63fd95",
+    "node_id": "C_kwDOAciG_9oAKDljOGQzZDVjNTcxYTIwN2VlMmIxMjQ0Y2VkMjViMDIxYmI2M2ZkOTU",
+    "commit": {
+      "author": {
+        "name": "Hynek Schlawack",
+        "email": "hs@ox.cx",
+        "date": "2024-12-14T12:30:30Z"
+      },
+      "committer": {
+        "name": "Hynek Schlawack",
+        "email": "hs@ox.cx",
+        "date": "2024-12-14T12:49:13Z"
+      },
+      "message": "fix markup",
+      "tree": {
+        "sha": "6df10dc14fa02064be2560a62291ee2296afab08",
+        "url": "https://api.github.com/repos/python-attrs/attrs/git/trees/6df10dc14fa02064be2560a62291ee2296afab08"
+      },
+      "url": "https://api.github.com/repos/python-attrs/attrs/git/commits/9c8d3d5c571a207ee2b1244ced25b021bb63fd95",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAgETuBAlFkiJhJeXyXvZoO2GhDUB\nAhb/d+abMtn5dE4NYAAAADZ2l0AAAAAAAAAAZzaGE1MTIAAABTAAAAC3NzaC1lZDI1NTE5\nAAAAQKZNQPE/gVz9DoY2aObHwOC6g4iXv32jXW4C3S44Jh4r4sAOEJiRAlE6dYYGU0NA55\nb7FhQzU+kfH4Mjuuqk+wk=\n-----END SSH SIGNATURE-----",
+        "payload": "tree 6df10dc14fa02064be2560a62291ee2296afab08\nparent 5ae6f180b7844f5c20dcc5769fd7adc26e0468dd\nauthor Hynek Schlawack <hs@ox.cx> 1734179430 +0100\ncommitter Hynek Schlawack <hs@ox.cx> 1734180553 +0100\n\nfix markup\n",
+        "verified_at": "2024-12-14T12:49:18Z"
+      }
+    },
+    "url": "https://api.github.com/repos/python-attrs/attrs/commits/9c8d3d5c571a207ee2b1244ced25b021bb63fd95",
+    "html_url": "https://github.com/python-attrs/attrs/commit/9c8d3d5c571a207ee2b1244ced25b021bb63fd95",
+    "comments_url": "https://api.github.com/repos/python-attrs/attrs/commits/9c8d3d5c571a207ee2b1244ced25b021bb63fd95/comments",
+    "author": {
+      "login": "hynek",
+      "id": 41240,
+      "node_id": "MDQ6VXNlcjQxMjQw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41240?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hynek",
+      "html_url": "https://github.com/hynek",
+      "followers_url": "https://api.github.com/users/hynek/followers",
+      "following_url": "https://api.github.com/users/hynek/following{/other_user}",
+      "gists_url": "https://api.github.com/users/hynek/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/hynek/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/hynek/subscriptions",
+      "organizations_url": "https://api.github.com/users/hynek/orgs",
+      "repos_url": "https://api.github.com/users/hynek/repos",
+      "events_url": "https://api.github.com/users/hynek/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/hynek/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "hynek",
+      "id": 41240,
+      "node_id": "MDQ6VXNlcjQxMjQw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41240?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hynek",
+      "html_url": "https://github.com/hynek",
+      "followers_url": "https://api.github.com/users/hynek/followers",
+      "following_url": "https://api.github.com/users/hynek/following{/other_user}",
+      "gists_url": "https://api.github.com/users/hynek/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/hynek/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/hynek/subscriptions",
+      "organizations_url": "https://api.github.com/users/hynek/orgs",
+      "repos_url": "https://api.github.com/users/hynek/repos",
+      "events_url": "https://api.github.com/users/hynek/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/hynek/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "5ae6f180b7844f5c20dcc5769fd7adc26e0468dd",
+        "url": "https://api.github.com/repos/python-attrs/attrs/commits/5ae6f180b7844f5c20dcc5769fd7adc26e0468dd",
+        "html_url": "https://github.com/python-attrs/attrs/commit/5ae6f180b7844f5c20dcc5769fd7adc26e0468dd"
+      }
+    ]
+  },
+  {
+    "sha": "48f972ad4d0079005cd06405fe7b3db40662b1cb",
+    "node_id": "C_kwDOAciG_9oAKDQ4Zjk3MmFkNGQwMDc5MDA1Y2QwNjQwNWZlN2IzZGI0MDY2MmIxY2I",
+    "commit": {
+      "author": {
+        "name": "Hynek Schlawack",
+        "email": "hs@ox.cx",
+        "date": "2024-12-14T12:31:03Z"
+      },
+      "committer": {
+        "name": "Hynek Schlawack",
+        "email": "hs@ox.cx",
+        "date": "2024-12-14T12:49:13Z"
+      },
+      "message": "Add pro-tip",
+      "tree": {
+        "sha": "af76e56ed3b3b7a0e9517048c374b037afc59c0e",
+        "url": "https://api.github.com/repos/python-attrs/attrs/git/trees/af76e56ed3b3b7a0e9517048c374b037afc59c0e"
+      },
+      "url": "https://api.github.com/repos/python-attrs/attrs/git/commits/48f972ad4d0079005cd06405fe7b3db40662b1cb",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAgETuBAlFkiJhJeXyXvZoO2GhDUB\nAhb/d+abMtn5dE4NYAAAADZ2l0AAAAAAAAAAZzaGE1MTIAAABTAAAAC3NzaC1lZDI1NTE5\nAAAAQKB4NNphginaL+zC0XTmQUJHT/R/GmnjOy98Qky6C2dY6BJGAtEMv77oRI64TJqFeX\n9TYhjFgP9OulpuYvNzPgk=\n-----END SSH SIGNATURE-----",
+        "payload": "tree af76e56ed3b3b7a0e9517048c374b037afc59c0e\nparent 9c8d3d5c571a207ee2b1244ced25b021bb63fd95\nauthor Hynek Schlawack <hs@ox.cx> 1734179463 +0100\ncommitter Hynek Schlawack <hs@ox.cx> 1734180553 +0100\n\nAdd pro-tip\n",
+        "verified_at": "2024-12-14T12:49:18Z"
+      }
+    },
+    "url": "https://api.github.com/repos/python-attrs/attrs/commits/48f972ad4d0079005cd06405fe7b3db40662b1cb",
+    "html_url": "https://github.com/python-attrs/attrs/commit/48f972ad4d0079005cd06405fe7b3db40662b1cb",
+    "comments_url": "https://api.github.com/repos/python-attrs/attrs/commits/48f972ad4d0079005cd06405fe7b3db40662b1cb/comments",
+    "author": {
+      "login": "hynek",
+      "id": 41240,
+      "node_id": "MDQ6VXNlcjQxMjQw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41240?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hynek",
+      "html_url": "https://github.com/hynek",
+      "followers_url": "https://api.github.com/users/hynek/followers",
+      "following_url": "https://api.github.com/users/hynek/following{/other_user}",
+      "gists_url": "https://api.github.com/users/hynek/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/hynek/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/hynek/subscriptions",
+      "organizations_url": "https://api.github.com/users/hynek/orgs",
+      "repos_url": "https://api.github.com/users/hynek/repos",
+      "events_url": "https://api.github.com/users/hynek/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/hynek/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "hynek",
+      "id": 41240,
+      "node_id": "MDQ6VXNlcjQxMjQw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41240?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hynek",
+      "html_url": "https://github.com/hynek",
+      "followers_url": "https://api.github.com/users/hynek/followers",
+      "following_url": "https://api.github.com/users/hynek/following{/other_user}",
+      "gists_url": "https://api.github.com/users/hynek/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/hynek/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/hynek/subscriptions",
+      "organizations_url": "https://api.github.com/users/hynek/orgs",
+      "repos_url": "https://api.github.com/users/hynek/repos",
+      "events_url": "https://api.github.com/users/hynek/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/hynek/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "9c8d3d5c571a207ee2b1244ced25b021bb63fd95",
+        "url": "https://api.github.com/repos/python-attrs/attrs/commits/9c8d3d5c571a207ee2b1244ced25b021bb63fd95",
+        "html_url": "https://github.com/python-attrs/attrs/commit/9c8d3d5c571a207ee2b1244ced25b021bb63fd95"
+      }
+    ]
+  },
+  {
+    "sha": "1d3e4b94f93788f33753e7edb1e374ab19d9ae2f",
+    "node_id": "C_kwDOAciG_9oAKDFkM2U0Yjk0ZjkzNzg4ZjMzNzUzZTdlZGIxZTM3NGFiMTlkOWFlMmY",
+    "commit": {
+      "author": {
+        "name": "Hynek Schlawack",
+        "email": "hs@ox.cx",
+        "date": "2024-12-14T12:37:06Z"
+      },
+      "committer": {
+        "name": "Hynek Schlawack",
+        "email": "hs@ox.cx",
+        "date": "2024-12-14T12:49:13Z"
+      },
+      "message": "Explicit autodoc",
+      "tree": {
+        "sha": "63f156b51b25cc7f63a2bb59c1ca3b752376e375",
+        "url": "https://api.github.com/repos/python-attrs/attrs/git/trees/63f156b51b25cc7f63a2bb59c1ca3b752376e375"
+      },
+      "url": "https://api.github.com/repos/python-attrs/attrs/git/commits/1d3e4b94f93788f33753e7edb1e374ab19d9ae2f",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAgETuBAlFkiJhJeXyXvZoO2GhDUB\nAhb/d+abMtn5dE4NYAAAADZ2l0AAAAAAAAAAZzaGE1MTIAAABTAAAAC3NzaC1lZDI1NTE5\nAAAAQK/KI07XQJYdnLujzi2UasGReaNe0ciCyBqkINbKNjta9yN7E2f3u7qZ91xvNTRgiw\nFSozYmLb663la69t6AMgQ=\n-----END SSH SIGNATURE-----",
+        "payload": "tree 63f156b51b25cc7f63a2bb59c1ca3b752376e375\nparent 48f972ad4d0079005cd06405fe7b3db40662b1cb\nauthor Hynek Schlawack <hs@ox.cx> 1734179826 +0100\ncommitter Hynek Schlawack <hs@ox.cx> 1734180553 +0100\n\nExplicit autodoc\n",
+        "verified_at": "2024-12-14T12:49:18Z"
+      }
+    },
+    "url": "https://api.github.com/repos/python-attrs/attrs/commits/1d3e4b94f93788f33753e7edb1e374ab19d9ae2f",
+    "html_url": "https://github.com/python-attrs/attrs/commit/1d3e4b94f93788f33753e7edb1e374ab19d9ae2f",
+    "comments_url": "https://api.github.com/repos/python-attrs/attrs/commits/1d3e4b94f93788f33753e7edb1e374ab19d9ae2f/comments",
+    "author": {
+      "login": "hynek",
+      "id": 41240,
+      "node_id": "MDQ6VXNlcjQxMjQw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41240?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hynek",
+      "html_url": "https://github.com/hynek",
+      "followers_url": "https://api.github.com/users/hynek/followers",
+      "following_url": "https://api.github.com/users/hynek/following{/other_user}",
+      "gists_url": "https://api.github.com/users/hynek/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/hynek/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/hynek/subscriptions",
+      "organizations_url": "https://api.github.com/users/hynek/orgs",
+      "repos_url": "https://api.github.com/users/hynek/repos",
+      "events_url": "https://api.github.com/users/hynek/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/hynek/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "hynek",
+      "id": 41240,
+      "node_id": "MDQ6VXNlcjQxMjQw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41240?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hynek",
+      "html_url": "https://github.com/hynek",
+      "followers_url": "https://api.github.com/users/hynek/followers",
+      "following_url": "https://api.github.com/users/hynek/following{/other_user}",
+      "gists_url": "https://api.github.com/users/hynek/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/hynek/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/hynek/subscriptions",
+      "organizations_url": "https://api.github.com/users/hynek/orgs",
+      "repos_url": "https://api.github.com/users/hynek/repos",
+      "events_url": "https://api.github.com/users/hynek/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/hynek/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "48f972ad4d0079005cd06405fe7b3db40662b1cb",
+        "url": "https://api.github.com/repos/python-attrs/attrs/commits/48f972ad4d0079005cd06405fe7b3db40662b1cb",
+        "html_url": "https://github.com/python-attrs/attrs/commit/48f972ad4d0079005cd06405fe7b3db40662b1cb"
+      }
+    ]
+  }
+]

@@ -1,0 +1,84 @@
+[
+  {
+    "sha": "b7ce542db1cd1e85f5c47a6ec7eb584aa189bffc",
+    "node_id": "C_kwDOAA8s99oAKGI3Y2U1NDJkYjFjZDFlODVmNWM0N2E2ZWM3ZWI1ODRhYTE4OWJmZmM",
+    "commit": {
+      "author": {
+        "name": "David Lord",
+        "email": "davidism@gmail.com",
+        "date": "2025-05-28T18:39:42Z"
+      },
+      "committer": {
+        "name": "David Lord",
+        "email": "davidism@gmail.com",
+        "date": "2025-05-28T18:39:42Z"
+      },
+      "message": "deprecate `__version__`",
+      "tree": {
+        "sha": "43cd1efca9a36cf27d8c04d130e28f8140868049",
+        "url": "https://api.github.com/repos/pallets/jinja/git/trees/43cd1efca9a36cf27d8c04d130e28f8140868049"
+      },
+      "url": "https://api.github.com/repos/pallets/jinja/git/commits/b7ce542db1cd1e85f5c47a6ec7eb584aa189bffc",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEElYA9VthxhDIwUSDdQzaKeqjMWSYFAmg3WG4ACgkQQzaKeqjM\nWSZ8KA/+MHOzAO7kYAXg58FmKQK0MFslQrjHM/bI05jSv1QWg8Y0T/CiQk165NQr\n9zGCnbVsck1S6hKN/kFRC6kBtL5AQ5zUOeKmeRtpS3KPS1JFz5EqFHmzFj7twd6P\nV22Ym25yuI8Mm5hKHrlBcWBlWqJI800YFDfoq4R3ThZ0MCq1T/c2KTTbc4tDAQH4\nipfJJ9q0wWBUJ2fdN2p9s82pJYmdCfbUiqLN5SkjCrBJvx54FzZ/eLcAOyeDTP0l\n8K2umCzDDHbZdD7NwNYrugNbeVyanCgF5KjbTsCqD+x4kK4KF9xZtUIX99AYgK83\nixCXr8S/mtFf4DSpiVgtQ2YuxPT8cLu+jhjBjeBDSydzBKdIpX+GGBTwOAfTZOHO\n0YypXOcbFnAKkQsGeam/1C4egtj8i4xUK/QfunlBDJ/z69ic2f/XN2ekJ25yUv8S\ns4gKxQuC4aOOXRVW2OKj1sn7wlJ318vHd2SxwRZE+cZ8sum5NQ+42fDVeFzRduvK\nJ4gqKkTcoQYxp71tX5FKak8pY+oF8GkVW3IXrJEUnBCzxD9FWtINqs/3RwuWCqZe\nERkwDiLTaefJ/k613RyYN/qmXTG3PnlPRYJEfLm+AsDycul2TZXIaNLwV9jikLLU\naXnhXtuxlK1VXD2xJsoWS05p+sx3V3GPGzd1a83vFRlhqArIxvI=\n=EQyW\n-----END PGP SIGNATURE-----",
+        "payload": "tree 43cd1efca9a36cf27d8c04d130e28f8140868049\nparent dfe82ade3dc7d112d7d166ca0d7ae7f794fe19e6\nauthor David Lord <davidism@gmail.com> 1748457582 -0700\ncommitter David Lord <davidism@gmail.com> 1748457582 -0700\n\ndeprecate `__version__`\n",
+        "verified_at": "2025-05-28T18:39:58Z"
+      }
+    },
+    "url": "https://api.github.com/repos/pallets/jinja/commits/b7ce542db1cd1e85f5c47a6ec7eb584aa189bffc",
+    "html_url": "https://github.com/pallets/jinja/commit/b7ce542db1cd1e85f5c47a6ec7eb584aa189bffc",
+    "comments_url": "https://api.github.com/repos/pallets/jinja/commits/b7ce542db1cd1e85f5c47a6ec7eb584aa189bffc/comments",
+    "author": {
+      "login": "davidism",
+      "id": 1242887,
+      "node_id": "MDQ6VXNlcjEyNDI4ODc=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1242887?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/davidism",
+      "html_url": "https://github.com/davidism",
+      "followers_url": "https://api.github.com/users/davidism/followers",
+      "following_url": "https://api.github.com/users/davidism/following{/other_user}",
+      "gists_url": "https://api.github.com/users/davidism/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/davidism/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/davidism/subscriptions",
+      "organizations_url": "https://api.github.com/users/davidism/orgs",
+      "repos_url": "https://api.github.com/users/davidism/repos",
+      "events_url": "https://api.github.com/users/davidism/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/davidism/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "davidism",
+      "id": 1242887,
+      "node_id": "MDQ6VXNlcjEyNDI4ODc=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1242887?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/davidism",
+      "html_url": "https://github.com/davidism",
+      "followers_url": "https://api.github.com/users/davidism/followers",
+      "following_url": "https://api.github.com/users/davidism/following{/other_user}",
+      "gists_url": "https://api.github.com/users/davidism/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/davidism/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/davidism/subscriptions",
+      "organizations_url": "https://api.github.com/users/davidism/orgs",
+      "repos_url": "https://api.github.com/users/davidism/repos",
+      "events_url": "https://api.github.com/users/davidism/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/davidism/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "dfe82ade3dc7d112d7d166ca0d7ae7f794fe19e6",
+        "url": "https://api.github.com/repos/pallets/jinja/commits/dfe82ade3dc7d112d7d166ca0d7ae7f794fe19e6",
+        "html_url": "https://github.com/pallets/jinja/commit/dfe82ade3dc7d112d7d166ca0d7ae7f794fe19e6"
+      }
+    ]
+  }
+]

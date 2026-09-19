@@ -49,11 +49,14 @@ def get_git_tree_hash(repo_dir: str, commit_ref: str) -> str:
     if not repo_dir or not os.path.exists(repo_dir) or not commit_ref:
         return ""
     try:
+        git_env = {**os.environ, "GIT_NO_LAZY_FETCH": "1", "GIT_TERMINAL_PROMPT": "0"}
         res = subprocess.run(
             ["git", "-C", repo_dir, "rev-parse", f"{commit_ref}^{{tree}}"],
             capture_output=True,
             text=True,
-            check=False
+            check=False,
+            env=git_env,
+            timeout=5
         )
         if res.returncode == 0:
             return res.stdout.strip()

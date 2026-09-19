@@ -1,0 +1,903 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index f81d973e4b..cf47d0edf1 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
+ 
+ ## Unreleased
+ 
++### Changed
++
++* The `proxies` argument is now deprecated. You should use the `proxy` argument instead, or use `mounts=` for more complex configurations. (#2879)
++
+ ### Fixed
+ 
+ * Allow URLs where username or password contains unescaped '@'. (#2986)
+diff --git a/docs/advanced.md b/docs/advanced.md
+index 2a4779662e..bb003a1a52 100644
+--- a/docs/advanced.md
++++ b/docs/advanced.md
+@@ -504,7 +504,7 @@ The `NetRCAuth()` class uses [the `netrc.netrc()` function from the Python stand
+ 
+ ## HTTP Proxying
+ 
+-HTTPX supports setting up [HTTP proxies](https://en.wikipedia.org/wiki/Proxy_server#Web_proxy_servers) via the `proxies` parameter to be passed on client initialization or top-level API functions like `httpx.get(..., proxies=...)`.
++HTTPX supports setting up [HTTP proxies](https://en.wikipedia.org/wiki/Proxy_server#Web_proxy_servers) via the `proxy` parameter to be passed on client initialization or top-level API functions like `httpx.get(..., proxy=...)`.
+ 
+ <div align="center">
+     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Open_proxy_h2g2bob.svg/480px-Open_proxy_h2g2bob.svg.png"/>
+@@ -516,19 +516,19 @@ HTTPX supports setting up [HTTP proxies](https://en.wikipedia.org/wiki/Proxy_ser
+ To route all traffic (HTTP and HTTPS) to a proxy located at `http://localhost:8030`, pass the proxy URL to the client...
+ 
+ ```python
+-with httpx.Client(proxies="http://localhost:8030") as client:
++with httpx.Client(proxy="http://localhost:8030") as client:
+     ...
+ ```
+ 
+-For more advanced use cases, pass a proxies `dict`. For example, to route HTTP and HTTPS requests to 2 different proxies, respectively located at `http://localhost:8030`, and `http://localhost:8031`, pass a `dict` of proxy URLs:
++For more advanced use cases, pass a mounts `dict`. For example, to route HTTP and HTTPS requests to 2 different proxies, respectively located at `http://localhost:8030`, and `http://localhost:8031`, pass a `dict` of proxy URLs:
+ 
+ ```python
+-proxies = {
+-    "http://": "http://localhost:8030",
+-    "https://": "http://localhost:8031",
++proxy_mounts = {
++    "http://": httpx.HTTPTransport(proxy="http://localhost:8030"),
++    "https://": httpx.HTTPTransport(proxy="http://localhost:8031"),
+ }
+ 
+-with httpx.Client(proxies=proxies) as client:
++with httpx.Client(mounts=proxy_mounts) as client:
+     ...
+ ```
+ 
+@@ -546,132 +546,10 @@ For detailed information about proxy routing, see the [Routing](#routing) sectio
+ Proxy credentials can be passed as the `userinfo` section of the proxy URL. For example:
+ 
+ ```python
+-proxies = {
+-    "http://": "http://username:password@localhost:8030",
+-    # ...
+-}
+-```
+-
+-### Routing
+-
+-HTTPX provides fine-grained controls for deciding which requests should go through a proxy, and which shouldn't. This process is known as proxy routing.
+-
+-The `proxies` dictionary maps URL patterns ("proxy keys") to proxy URLs. HTTPX matches requested URLs against proxy keys to decide which proxy should be used, if any. Matching is done from most specific proxy keys (e.g. `https://<domain>:<port>`) to least specific ones (e.g. `https://`).
+-
+-HTTPX supports routing proxies based on **scheme**, **domain**, **port**, or a combination of these.
+-
+-#### Wildcard routing
+-
+-Route everything through a proxy...
+-
+-```python
+-proxies = {
+-    "all://": "http://localhost:8030",
+-}
+-```
+-
+-#### Scheme routing
+-
+-Route HTTP requests through one proxy, and HTTPS requests through another...
+-
+-```python
+-proxies = {
+-    "http://": "http://localhost:8030",
+-    "https://": "http://localhost:8031",
+-}
+-```
+-
+-#### Domain routing
+-
+-Proxy all requests on domain "example.com", let other requests pass through...
+-
+-```python
+-proxies = {
+-    "all://example.com": "http://localhost:8030",
+-}
+-```
+-
+-Proxy HTTP requests on domain "example.com", let HTTPS and other requests pass through...
+-
+-```python
+-proxies = {
+-    "http://example.com": "http://localhost:8030",
+-}
+-```
+-
+-Proxy all requests to "example.com" and its subdomains, let other requests pass through...
+-
+-```python
+-proxies = {
+-    "all://*example.com": "http://localhost:8030",
+-}
+-```
+-
+-Proxy all requests to strict subdomains of "example.com", let "example.com" and other requests pass through...
+-
+-```python
+-proxies = {
+-    "all://*.example.com": "http://localhost:8030",
+-}
+-```
+-
+-#### Port routing
+-
+-Proxy HTTPS requests on port 1234 to "example.com"...
+-
+-```python
+-proxies = {
+-    "https://example.com:1234": "http://localhost:8030",
+-}
+-```
+-
+-Proxy all requests on port 1234...
+-
+-```python
+-proxies = {
+-    "all://*:1234": "http://localhost:8030",
+-}
+-```
+-
+-#### No-proxy support
+-
+-It is also possible to define requests that _shouldn't_ be routed through proxies.
+-
+-To do so, pass `None` as the proxy URL. For example...
+-
+-```python
+-proxies = {
+-    # Route requests through a proxy by default...
+-    "all://": "http://localhost:8031",
+-    # Except those for "example.com".
+-    "all://example.com": None,
+-}
+-```
+-
+-#### Complex configuration example
+-
+-You can combine the routing features outlined above to build complex proxy routing configurations. For example...
+-
+-```python
+-proxies = {
+-    # Route all traffic through a proxy by default...
+-    "all://": "http://localhost:8030",
+-    # But don't use proxies for HTTPS requests to "domain.io"...
+-    "https://domain.io": None,
+-    # And use another proxy for requests to "example.com" and its subdomains...
+-    "all://*example.com": "http://localhost:8031",
+-    # And yet another proxy if HTTP is used,
+-    # and the "internal" subdomain on port 5550 is requested...
+-    "http://internal.example.com:5550": "http://localhost:8032",
+-}
++with httpx.Client(proxy="http://username:password@localhost:8030") as client:
++    ...
+ ```
+ 
+-#### Environment variables
+-
+-HTTP proxying can also be configured through environment variables, although with less fine-grained control.
+-
+-See documentation on [`HTTP_PROXY`, `HTTPS_PROXY`, `ALL_PROXY`](environment_variables.md#http_proxy-https_proxy-all_proxy) for more information.
+-
+ ### Proxy mechanisms
+ 
+ !!! note
+@@ -707,7 +585,7 @@ $ pip install httpx[socks]
+ You can now configure a client to make requests via a proxy using the SOCKS protocol:
+ 
+ ```python
+-httpx.Client(proxies='socks5://user:pass@host:port')
++httpx.Client(proxy='socks5://user:pass@host:port')
+ ```
+ 
+ ## Timeout Configuration
+@@ -1294,3 +1172,125 @@ Adding support for custom schemes:
+ mounts = {"file://": FileSystemTransport()}
+ client = httpx.Client(mounts=mounts)
+ ```
++
++### Routing
++
++HTTPX provides a powerful mechanism for routing requests, allowing you to write complex rules that specify which transport should be used for each request.
++
++The `mounts` dictionary maps URL patterns to HTTP transports. HTTPX matches requested URLs against URL patterns to decide which transport should be used, if any. Matching is done from most specific URL patterns (e.g. `https://<domain>:<port>`) to least specific ones (e.g. `https://`).
++
++HTTPX supports routing requests based on **scheme**, **domain**, **port**, or a combination of these.
++
++#### Wildcard routing
++
++Route everything through a transport...
++
++```python
++mounts = {
++    "all://": httpx.HTTPTransport(proxy="http://localhost:8030"),
++}
++```
++
++#### Scheme routing
++
++Route HTTP requests through one transport, and HTTPS requests through another...
++
++```python
++mounts = {
++    "http://": httpx.HTTPTransport(proxy="http://localhost:8030"),
++    "https://": httpx.HTTPTransport(proxy="http://localhost:8031"),
++}
++```
++
++#### Domain routing
++
++Proxy all requests on domain "example.com", let other requests pass through...
++
++```python
++mounts = {
++    "all://example.com": httpx.HTTPTransport(proxy="http://localhost:8030"),
++}
++```
++
++Proxy HTTP requests on domain "example.com", let HTTPS and other requests pass through...
++
++```python
++mounts = {
++    "http://example.com": httpx.HTTPTransport(proxy="http://localhost:8030"),
++}
++```
++
++Proxy all requests to "example.com" and its subdomains, let other requests pass through...
++
++```python
++mounts = {
++    "all://*example.com": httpx.HTTPTransport(proxy="http://localhost:8030"),
++}
++```
++
++Proxy all requests to strict subdomains of "example.com", let "example.com" and other requests pass through...
++
++```python
++mounts = {
++    "all://*.example.com": httpx.HTTPTransport(proxy="http://localhost:8030"),
++}
++```
++
++#### Port routing
++
++Proxy HTTPS requests on port 1234 to "example.com"...
++
++```python
++mounts = {
++    "https://example.com:1234": httpx.HTTPTransport(proxy="http://localhost:8030"),
++}
++```
++
++Proxy all requests on port 1234...
++
++```python
++mounts = {
++    "all://*:1234": httpx.HTTPTransport(proxy="http://localhost:8030"),
++}
++```
++
++#### No-proxy support
++
++It is also possible to define requests that _shouldn't_ be routed through the transport.
++
++To do so, pass `None` as the proxy URL. For example...
++
++```python
++mounts = {
++    # Route requests through a proxy by default...
++    "all://": httpx.HTTPTransport(proxy="http://localhost:8031"),
++    # Except those for "example.com".
++    "all://example.com": None,
++}
++```
++
++#### Complex configuration example
++
++You can combine the routing features outlined above to build complex proxy routing configurations. For example...
++
++```python
++mounts = {
++    # Route all traffic through a proxy by default...
++    "all://": httpx.HTTPTransport(proxy="http://localhost:8030"),
++    # But don't use proxies for HTTPS requests to "domain.io"...
++    "https://domain.io": None,
++    # And use another proxy for requests to "example.com" and its subdomains...
++    "all://*example.com": httpx.HTTPTransport(proxy="http://localhost:8031"),
++    # And yet another proxy if HTTP is used,
++    # and the "internal" subdomain on port 5550 is requested...
++    "http://internal.example.com:5550": httpx.HTTPTransport(proxy="http://localhost:8032"),
++}
++```
++
++#### Environment variables
++
++There are also environment variables that can be used to control the dictionary of the client mounts. 
++They can be used to configure HTTP proxying for clients.
++
++See documentation on [`HTTP_PROXY`, `HTTPS_PROXY`, `ALL_PROXY`](environment_variables.md#http_proxy-https_proxy-all_proxy) for more information.
++
+diff --git a/docs/compatibility.md b/docs/compatibility.md
+index 3e8bf9b965..7190b65898 100644
+--- a/docs/compatibility.md
++++ b/docs/compatibility.md
+@@ -157,13 +157,17 @@ httpx.get('https://www.example.com', timeout=None)
+ 
+ ## Proxy keys
+ 
+-When using `httpx.Client(proxies={...})` to map to a selection of different proxies, we use full URL schemes, such as `proxies={"http://": ..., "https://": ...}`.
++HTTPX uses the mounts argument for HTTP proxying and transport routing.
++It can do much more than proxies and allows you to configure more than just the proxy route.
++For more detailed documentation, see [Mounting Transports](advanced.md#mounting-transports).
++
++When using `httpx.Client(mounts={...})` to map to a selection of different transports, we use full URL schemes, such as `mounts={"http://": ..., "https://": ...}`.
+ 
+ This is different to the `requests` usage of `proxies={"http": ..., "https": ...}`.
+ 
+-This change is for better consistency with more complex mappings, that might also include domain names, such as `proxies={"all://": ..., "all://www.example.com": None}` which maps all requests onto a proxy, except for requests to "www.example.com" which have an explicit exclusion.
++This change is for better consistency with more complex mappings, that might also include domain names, such as `mounts={"all://": ..., httpx.HTTPTransport(proxy="all://www.example.com": None})` which maps all requests onto a proxy, except for requests to "www.example.com" which have an explicit exclusion.
+ 
+-Also note that `requests.Session.request(...)` allows a `proxies=...` parameter, whereas `httpx.Client.request(...)` does not.
++Also note that `requests.Session.request(...)` allows a `proxies=...` parameter, whereas `httpx.Client.request(...)` does not allow `mounts=...`.
+ 
+ ## SSL configuration
+ 
+@@ -195,7 +199,7 @@ We don't support `response.is_ok` since the naming is ambiguous there, and might
+ 
+ There is no notion of [prepared requests](https://requests.readthedocs.io/en/stable/user/advanced/#prepared-requests) in HTTPX. If you need to customize request instantiation, see [Request instances](advanced.md#request-instances).
+ 
+-Besides, `httpx.Request()` does not support the `auth`, `timeout`, `follow_redirects`, `proxies`, `verify` and `cert` parameters. However these are available in `httpx.request`, `httpx.get`, `httpx.post` etc., as well as on [`Client` instances](advanced.md#client-instances).
++Besides, `httpx.Request()` does not support the `auth`, `timeout`, `follow_redirects`, `mounts`, `verify` and `cert` parameters. However these are available in `httpx.request`, `httpx.get`, `httpx.post` etc., as well as on [`Client` instances](advanced.md#client-instances).
+ 
+ ## Mocking
+ 
+diff --git a/docs/contributing.md b/docs/contributing.md
+index 1d44616f73..47dd9dc5e3 100644
+--- a/docs/contributing.md
++++ b/docs/contributing.md
+@@ -213,9 +213,7 @@ this is where our previously generated `client.pem` comes in:
+ ```
+ import httpx
+ 
+-proxies = {"all://": "http://127.0.0.1:8080/"}
+-
+-with httpx.Client(proxies=proxies, verify="/path/to/client.pem") as client:
++with httpx.Client(proxy="http://127.0.0.1:8080/", verify="/path/to/client.pem") as client:
+     response = client.get("https://example.org")
+     print(response.status_code)  # should print 200
+ ```
+diff --git a/docs/troubleshooting.md b/docs/troubleshooting.md
+index 459f744edf..a0cb210ccf 100644
+--- a/docs/troubleshooting.md
++++ b/docs/troubleshooting.md
+@@ -19,9 +19,9 @@ httpx.ProxyError: _ssl.c:1091: The handshake operation timed out
+ **Resolution**: it is likely that you've set up your proxies like this...
+ 
+ ```python
+-proxies = {
+-  "http://": "http://myproxy.org",
+-  "https://": "https://myproxy.org",
++mounts = {
++  "http://": httpx.HTTPTransport(proxy="http://myproxy.org"),
++  "https://": httpx.HTTPTransport(proxy="https://myproxy.org"),
+ }
+ ```
+ 
+@@ -32,16 +32,18 @@ But if you get the error above, it is likely that your proxy doesn't support con
+ Change the scheme of your HTTPS proxy to `http://...` instead of `https://...`:
+ 
+ ```python
+-proxies = {
+-  "http://": "http://myproxy.org",
+-  "https://": "http://myproxy.org",
++mounts = {
++  "http://": httpx.HTTPTransport(proxy="http://myproxy.org"),
++  "https://": httpx.HTTPTransport(proxy="http://myproxy.org"),
+ }
+ ```
+ 
+ This can be simplified to:
+ 
+ ```python
+-proxies = "http://myproxy.org"
++proxy = "http://myproxy.org"
++with httpx.Client(proxy=proxy) as client:
++  ...
+ ```
+ 
+ For more information, see [Proxies: FORWARD vs TUNNEL](advanced.md#forward-vs-tunnel).
+diff --git a/httpx/_api.py b/httpx/_api.py
+index 571289cf2b..c7af947218 100644
+--- a/httpx/_api.py
++++ b/httpx/_api.py
+@@ -10,6 +10,7 @@
+     CookieTypes,
+     HeaderTypes,
+     ProxiesTypes,
++    ProxyTypes,
+     QueryParamTypes,
+     RequestContent,
+     RequestData,
+@@ -32,6 +33,7 @@ def request(
+     headers: typing.Optional[HeaderTypes] = None,
+     cookies: typing.Optional[CookieTypes] = None,
+     auth: typing.Optional[AuthTypes] = None,
++    proxy: typing.Optional[ProxyTypes] = None,
+     proxies: typing.Optional[ProxiesTypes] = None,
+     timeout: TimeoutTypes = DEFAULT_TIMEOUT_CONFIG,
+     follow_redirects: bool = False,
+@@ -63,6 +65,7 @@ def request(
+     request.
+     * **auth** - *(optional)* An authentication class to use when sending the
+     request.
++    * **proxy** - *(optional)* A proxy URL where all the traffic should be routed.
+     * **proxies** - *(optional)* A dictionary mapping proxy keys to proxy URLs.
+     * **timeout** - *(optional)* The timeout configuration to use when sending
+     the request.
+@@ -91,6 +94,7 @@ def request(
+     """
+     with Client(
+         cookies=cookies,
++        proxy=proxy,
+         proxies=proxies,
+         cert=cert,
+         verify=verify,
+@@ -124,6 +128,7 @@ def stream(
+     headers: typing.Optional[HeaderTypes] = None,
+     cookies: typing.Optional[CookieTypes] = None,
+     auth: typing.Optional[AuthTypes] = None,
++    proxy: typing.Optional[ProxyTypes] = None,
+     proxies: typing.Optional[ProxiesTypes] = None,
+     timeout: TimeoutTypes = DEFAULT_TIMEOUT_CONFIG,
+     follow_redirects: bool = False,
+@@ -143,6 +148,7 @@ def stream(
+     """
+     with Client(
+         cookies=cookies,
++        proxy=proxy,
+         proxies=proxies,
+         cert=cert,
+         verify=verify,
+@@ -171,6 +177,7 @@ def get(
+     headers: typing.Optional[HeaderTypes] = None,
+     cookies: typing.Optional[CookieTypes] = None,
+     auth: typing.Optional[AuthTypes] = None,
++    proxy: typing.Optional[ProxyTypes] = None,
+     proxies: typing.Optional[ProxiesTypes] = None,
+     follow_redirects: bool = False,
+     cert: typing.Optional[CertTypes] = None,
+@@ -193,6 +200,7 @@ def get(
+         headers=headers,
+         cookies=cookies,
+         auth=auth,
++        proxy=proxy,
+         proxies=proxies,
+         follow_redirects=follow_redirects,
+         cert=cert,
+@@ -209,6 +217,7 @@ def options(
+     headers: typing.Optional[HeaderTypes] = None,
+     cookies: typing.Optional[CookieTypes] = None,
+     auth: typing.Optional[AuthTypes] = None,
++    proxy: typing.Optional[ProxyTypes] = None,
+     proxies: typing.Optional[ProxiesTypes] = None,
+     follow_redirects: bool = False,
+     cert: typing.Optional[CertTypes] = None,
+@@ -231,6 +240,7 @@ def options(
+         headers=headers,
+         cookies=cookies,
+         auth=auth,
++        proxy=proxy,
+         proxies=proxies,
+         follow_redirects=follow_redirects,
+         cert=cert,
+@@ -247,6 +257,7 @@ def head(
+     headers: typing.Optional[HeaderTypes] = None,
+     cookies: typing.Optional[CookieTypes] = None,
+     auth: typing.Optional[AuthTypes] = None,
++    proxy: typing.Optional[ProxyTypes] = None,
+     proxies: typing.Optional[ProxiesTypes] = None,
+     follow_redirects: bool = False,
+     cert: typing.Optional[CertTypes] = None,
+@@ -269,6 +280,7 @@ def head(
+         headers=headers,
+         cookies=cookies,
+         auth=auth,
++        proxy=proxy,
+         proxies=proxies,
+         follow_redirects=follow_redirects,
+         cert=cert,
+@@ -289,6 +301,7 @@ def post(
+     headers: typing.Optional[HeaderTypes] = None,
+     cookies: typing.Optional[CookieTypes] = None,
+     auth: typing.Optional[AuthTypes] = None,
++    proxy: typing.Optional[ProxyTypes] = None,
+     proxies: typing.Optional[ProxiesTypes] = None,
+     follow_redirects: bool = False,
+     cert: typing.Optional[CertTypes] = None,
+@@ -312,6 +325,7 @@ def post(
+         headers=headers,
+         cookies=cookies,
+         auth=auth,
++        proxy=proxy,
+         proxies=proxies,
+         follow_redirects=follow_redirects,
+         cert=cert,
+@@ -332,6 +346,7 @@ def put(
+     headers: typing.Optional[HeaderTypes] = None,
+     cookies: typing.Optional[CookieTypes] = None,
+     auth: typing.Optional[AuthTypes] = None,
++    proxy: typing.Optional[ProxyTypes] = None,
+     proxies: typing.Optional[ProxiesTypes] = None,
+     follow_redirects: bool = False,
+     cert: typing.Optional[CertTypes] = None,
+@@ -355,6 +370,7 @@ def put(
+         headers=headers,
+         cookies=cookies,
+         auth=auth,
++        proxy=proxy,
+         proxies=proxies,
+         follow_redirects=follow_redirects,
+         cert=cert,
+@@ -375,6 +391,7 @@ def patch(
+     headers: typing.Optional[HeaderTypes] = None,
+     cookies: typing.Optional[CookieTypes] = None,
+     auth: typing.Optional[AuthTypes] = None,
++    proxy: typing.Optional[ProxyTypes] = None,
+     proxies: typing.Optional[ProxiesTypes] = None,
+     follow_redirects: bool = False,
+     cert: typing.Optional[CertTypes] = None,
+@@ -398,6 +415,7 @@ def patch(
+         headers=headers,
+         cookies=cookies,
+         auth=auth,
++        proxy=proxy,
+         proxies=proxies,
+         follow_redirects=follow_redirects,
+         cert=cert,
+@@ -414,6 +432,7 @@ def delete(
+     headers: typing.Optional[HeaderTypes] = None,
+     cookies: typing.Optional[CookieTypes] = None,
+     auth: typing.Optional[AuthTypes] = None,
++    proxy: typing.Optional[ProxyTypes] = None,
+     proxies: typing.Optional[ProxiesTypes] = None,
+     follow_redirects: bool = False,
+     cert: typing.Optional[CertTypes] = None,
+@@ -436,6 +455,7 @@ def delete(
+         headers=headers,
+         cookies=cookies,
+         auth=auth,
++        proxy=proxy,
+         proxies=proxies,
+         follow_redirects=follow_redirects,
+         cert=cert,
+diff --git a/httpx/_client.py b/httpx/_client.py
+index 67f304bc68..2813a84f01 100644
+--- a/httpx/_client.py
++++ b/httpx/_client.py
+@@ -36,6 +36,7 @@
+     CookieTypes,
+     HeaderTypes,
+     ProxiesTypes,
++    ProxyTypes,
+     QueryParamTypes,
+     RequestContent,
+     RequestData,
+@@ -597,6 +598,7 @@ class Client(BaseClient):
+     to authenticate the client. Either a path to an SSL certificate file, or
+     two-tuple of (certificate file, key file), or a three-tuple of (certificate
+     file, key file, password).
++    * **proxy** - *(optional)* A proxy URL where all the traffic should be routed.
+     * **proxies** - *(optional)* A dictionary mapping proxy keys to proxy
+     URLs.
+     * **timeout** - *(optional)* The timeout configuration to use when sending
+@@ -628,8 +630,11 @@ def __init__(
+         cert: typing.Optional[CertTypes] = None,
+         http1: bool = True,
+         http2: bool = False,
++        proxy: typing.Optional[ProxyTypes] = None,
+         proxies: typing.Optional[ProxiesTypes] = None,
+-        mounts: typing.Optional[typing.Mapping[str, BaseTransport]] = None,
++        mounts: typing.Optional[
++            typing.Mapping[str, typing.Optional[BaseTransport]]
++        ] = None,
+         timeout: TimeoutTypes = DEFAULT_TIMEOUT_CONFIG,
+         follow_redirects: bool = False,
+         limits: Limits = DEFAULT_LIMITS,
+@@ -666,8 +671,17 @@ def __init__(
+                     "Make sure to install httpx using `pip install httpx[http2]`."
+                 ) from None
+ 
++        if proxies:
++            message = (
++                "The 'proxies' argument is now deprecated."
++                " Use 'proxy' or 'mounts' instead."
++            )
++            warnings.warn(message, DeprecationWarning)
++            if proxy:
++                raise RuntimeError("Use either `proxy` or 'proxies', not both.")
++
+         allow_env_proxies = trust_env and app is None and transport is None
+-        proxy_map = self._get_proxy_map(proxies, allow_env_proxies)
++        proxy_map = self._get_proxy_map(proxies or proxy, allow_env_proxies)
+ 
+         self._transport = self._init_transport(
+             verify=verify,
+@@ -1324,6 +1338,7 @@ class AsyncClient(BaseClient):
+     file, key file, password).
+     * **http2** - *(optional)* A boolean indicating if HTTP/2 support should be
+     enabled. Defaults to `False`.
++    * **proxy** - *(optional)* A proxy URL where all the traffic should be routed.
+     * **proxies** - *(optional)* A dictionary mapping HTTP protocols to proxy
+     URLs.
+     * **timeout** - *(optional)* The timeout configuration to use when sending
+@@ -1355,8 +1370,11 @@ def __init__(
+         cert: typing.Optional[CertTypes] = None,
+         http1: bool = True,
+         http2: bool = False,
++        proxy: typing.Optional[ProxyTypes] = None,
+         proxies: typing.Optional[ProxiesTypes] = None,
+-        mounts: typing.Optional[typing.Mapping[str, AsyncBaseTransport]] = None,
++        mounts: typing.Optional[
++            typing.Mapping[str, typing.Optional[AsyncBaseTransport]]
++        ] = None,
+         timeout: TimeoutTypes = DEFAULT_TIMEOUT_CONFIG,
+         follow_redirects: bool = False,
+         limits: Limits = DEFAULT_LIMITS,
+@@ -1393,8 +1411,17 @@ def __init__(
+                     "Make sure to install httpx using `pip install httpx[http2]`."
+                 ) from None
+ 
++        if proxies:
++            message = (
++                "The 'proxies' argument is now deprecated."
++                " Use 'proxy' or 'mounts' instead."
++            )
++            warnings.warn(message, DeprecationWarning)
++            if proxy:
++                raise RuntimeError("Use either `proxy` or 'proxies', not both.")
++
+         allow_env_proxies = trust_env and app is None and transport is None
+-        proxy_map = self._get_proxy_map(proxies, allow_env_proxies)
++        proxy_map = self._get_proxy_map(proxies or proxy, allow_env_proxies)
+ 
+         self._transport = self._init_transport(
+             verify=verify,
+diff --git a/httpx/_main.py b/httpx/_main.py
+index 98e12e23c7..adb57d5fc0 100644
+--- a/httpx/_main.py
++++ b/httpx/_main.py
+@@ -70,7 +70,7 @@ def print_help() -> None:
+     )
+ 
+     table.add_row(
+-        "--proxies [cyan]URL",
++        "--proxy [cyan]URL",
+         "Send the request via a proxy. Should be the URL giving the proxy address.",
+     )
+ 
+@@ -386,8 +386,8 @@ def handle_help(
+     ),
+ )
+ @click.option(
+-    "--proxies",
+-    "proxies",
++    "--proxy",
++    "proxy",
+     type=str,
+     default=None,
+     help="Send the request via a proxy. Should be the URL giving the proxy address.",
+@@ -456,7 +456,7 @@ def main(
+     headers: typing.List[typing.Tuple[str, str]],
+     cookies: typing.List[typing.Tuple[str, str]],
+     auth: typing.Optional[typing.Tuple[str, str]],
+-    proxies: str,
++    proxy: str,
+     timeout: float,
+     follow_redirects: bool,
+     verify: bool,
+@@ -473,7 +473,7 @@ def main(
+ 
+     try:
+         with Client(
+-            proxies=proxies,
++            proxy=proxy,
+             timeout=timeout,
+             verify=verify,
+             http2=http2,
+diff --git a/httpx/_transports/default.py b/httpx/_transports/default.py
+index c0c4ffd40a..14a087389a 100644
+--- a/httpx/_transports/default.py
++++ b/httpx/_transports/default.py
+@@ -47,7 +47,8 @@
+     WriteTimeout,
+ )
+ from .._models import Request, Response
+-from .._types import AsyncByteStream, CertTypes, SyncByteStream, VerifyTypes
++from .._types import AsyncByteStream, CertTypes, ProxyTypes, SyncByteStream, VerifyTypes
++from .._urls import URL
+ from .base import AsyncBaseTransport, BaseTransport
+ 
+ T = typing.TypeVar("T", bound="HTTPTransport")
+@@ -124,13 +125,14 @@ def __init__(
+         http2: bool = False,
+         limits: Limits = DEFAULT_LIMITS,
+         trust_env: bool = True,
+-        proxy: typing.Optional[Proxy] = None,
++        proxy: typing.Optional[ProxyTypes] = None,
+         uds: typing.Optional[str] = None,
+         local_address: typing.Optional[str] = None,
+         retries: int = 0,
+         socket_options: typing.Optional[typing.Iterable[SOCKET_OPTION]] = None,
+     ) -> None:
+         ssl_context = create_ssl_context(verify=verify, cert=cert, trust_env=trust_env)
++        proxy = Proxy(url=proxy) if isinstance(proxy, (str, URL)) else proxy
+ 
+         if proxy is None:
+             self._pool = httpcore.ConnectionPool(
+@@ -264,13 +266,14 @@ def __init__(
+         http2: bool = False,
+         limits: Limits = DEFAULT_LIMITS,
+         trust_env: bool = True,
+-        proxy: typing.Optional[Proxy] = None,
++        proxy: typing.Optional[ProxyTypes] = None,
+         uds: typing.Optional[str] = None,
+         local_address: typing.Optional[str] = None,
+         retries: int = 0,
+         socket_options: typing.Optional[typing.Iterable[SOCKET_OPTION]] = None,
+     ) -> None:
+         ssl_context = create_ssl_context(verify=verify, cert=cert, trust_env=trust_env)
++        proxy = Proxy(url=proxy) if isinstance(proxy, (str, URL)) else proxy
+ 
+         if proxy is None:
+             self._pool = httpcore.AsyncConnectionPool(
+diff --git a/httpx/_types.py b/httpx/_types.py
+index 83cf35a32a..649d101d54 100644
+--- a/httpx/_types.py
++++ b/httpx/_types.py
+@@ -78,7 +78,8 @@
+     Tuple[Optional[float], Optional[float], Optional[float], Optional[float]],
+     "Timeout",
+ ]
+-ProxiesTypes = Union[URLTypes, "Proxy", Dict[URLTypes, Union[None, URLTypes, "Proxy"]]]
++ProxyTypes = Union[URLTypes, "Proxy"]
++ProxiesTypes = Union[ProxyTypes, Dict[URLTypes, Union[None, ProxyTypes]]]
+ 
+ AuthTypes = Union[
+     Tuple[Union[str, bytes], Union[str, bytes]],
+diff --git a/tests/client/test_proxies.py b/tests/client/test_proxies.py
+index 62ffc380bf..7bba1ab2c3 100644
+--- a/tests/client/test_proxies.py
++++ b/tests/client/test_proxies.py
+@@ -33,7 +33,8 @@ def url_to_origin(url: str) -> httpcore.URL:
+     ],
+ )
+ def test_proxies_parameter(proxies, expected_proxies):
+-    client = httpx.Client(proxies=proxies)
++    with pytest.warns(DeprecationWarning):
++        client = httpx.Client(proxies=proxies)
+     client_patterns = [p.pattern for p in client._mounts.keys()]
+     client_proxies = list(client._mounts.values())
+ 
+@@ -47,15 +48,31 @@ def test_proxies_parameter(proxies, expected_proxies):
+     assert len(expected_proxies) == len(client._mounts)
+ 
+ 
++def test_socks_proxy_deprecated():
++    url = httpx.URL("http://www.example.com")
++
++    with pytest.warns(DeprecationWarning):
++        client = httpx.Client(proxies="socks5://localhost/")
++    transport = client._transport_for_url(url)
++    assert isinstance(transport, httpx.HTTPTransport)
++    assert isinstance(transport._pool, httpcore.SOCKSProxy)
++
++    with pytest.warns(DeprecationWarning):
++        async_client = httpx.AsyncClient(proxies="socks5://localhost/")
++    async_transport = async_client._transport_for_url(url)
++    assert isinstance(async_transport, httpx.AsyncHTTPTransport)
++    assert isinstance(async_transport._pool, httpcore.AsyncSOCKSProxy)
++
++
+ def test_socks_proxy():
+     url = httpx.URL("http://www.example.com")
+ 
+-    client = httpx.Client(proxies="socks5://localhost/")
++    client = httpx.Client(proxy="socks5://localhost/")
+     transport = client._transport_for_url(url)
+     assert isinstance(transport, httpx.HTTPTransport)
+     assert isinstance(transport._pool, httpcore.SOCKSProxy)
+ 
+-    async_client = httpx.AsyncClient(proxies="socks5://localhost/")
++    async_client = httpx.AsyncClient(proxy="socks5://localhost/")
+     async_transport = async_client._transport_for_url(url)
+     assert isinstance(async_transport, httpx.AsyncHTTPTransport)
+     assert isinstance(async_transport._pool, httpcore.AsyncSOCKSProxy)
+@@ -121,7 +138,12 @@ def test_socks_proxy():
+     ],
+ )
+ def test_transport_for_request(url, proxies, expected):
+-    client = httpx.Client(proxies=proxies)
++    if proxies:
++        with pytest.warns(DeprecationWarning):
++            client = httpx.Client(proxies=proxies)
++    else:
++        client = httpx.Client(proxies=proxies)
++
+     transport = client._transport_for_url(httpx.URL(url))
+ 
+     if expected is None:
+@@ -136,7 +158,8 @@ def test_transport_for_request(url, proxies, expected):
+ @pytest.mark.network
+ async def test_async_proxy_close():
+     try:
+-        client = httpx.AsyncClient(proxies={"https://": PROXY_URL})
++        with pytest.warns(DeprecationWarning):
++            client = httpx.AsyncClient(proxies={"https://": PROXY_URL})
+         await client.get("http://example.com")
+     finally:
+         await client.aclose()
+@@ -145,15 +168,21 @@ async def test_async_proxy_close():
+ @pytest.mark.network
+ def test_sync_proxy_close():
+     try:
+-        client = httpx.Client(proxies={"https://": PROXY_URL})
++        with pytest.warns(DeprecationWarning):
++            client = httpx.Client(proxies={"https://": PROXY_URL})
+         client.get("http://example.com")
+     finally:
+         client.close()
+ 
+ 
++def test_unsupported_proxy_scheme_deprecated():
++    with pytest.warns(DeprecationWarning), pytest.raises(ValueError):
++        httpx.Client(proxies="ftp://127.0.0.1")
++
++
+ def test_unsupported_proxy_scheme():
+     with pytest.raises(ValueError):
+-        httpx.Client(proxies="ftp://127.0.0.1")
++        httpx.Client(proxy="ftp://127.0.0.1")
+ 
+ 
+ @pytest.mark.parametrize(
+@@ -279,8 +308,31 @@ def test_proxies_environ(monkeypatch, client_class, url, env, expected):
+     ],
+ )
+ def test_for_deprecated_proxy_params(proxies, is_valid):
+-    if not is_valid:
+-        with pytest.raises(ValueError):
++    with pytest.warns(DeprecationWarning):
++        if not is_valid:
++            with pytest.raises(ValueError):
++                httpx.Client(proxies=proxies)
++        else:
+             httpx.Client(proxies=proxies)
+-    else:
+-        httpx.Client(proxies=proxies)
++
++
++def test_proxy_and_proxies_together():
++    with pytest.warns(DeprecationWarning), pytest.raises(
++        RuntimeError,
++    ):
++        httpx.Client(proxies={"all://": "http://127.0.0.1"}, proxy="http://127.0.0.1")
++
++    with pytest.warns(DeprecationWarning), pytest.raises(
++        RuntimeError,
++    ):
++        httpx.AsyncClient(
++            proxies={"all://": "http://127.0.0.1"}, proxy="http://127.0.0.1"
++        )
++
++
++def test_proxy_with_mounts():
++    proxy_transport = httpx.HTTPTransport(proxy="http://127.0.0.1")
++    client = httpx.Client(mounts={"http://": proxy_transport})
++
++    transport = client._transport_for_url(httpx.URL("http://example.com"))
++    assert transport == proxy_transport

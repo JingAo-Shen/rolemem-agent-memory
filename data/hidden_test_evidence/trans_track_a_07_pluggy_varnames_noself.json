@@ -1,0 +1,10 @@
+{
+  "transition_id": "trans_track_a_07_pluggy_varnames_noself",
+  "audit_fingerprint": "b5f402e090b3505eed685a76ba4ba555ace89833dd6143189f06acb943ba6c61",
+  "status": "PASS",
+  "collection_status": "PASS",
+  "execution_status": "PASS",
+  "exit_code": 0,
+  "raw_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_uvowdizd\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_varnames_extraction PASSED             [100%]\n\n============================== 1 passed in 0.01s ===============================\n",
+  "verification_status": "GENERATED_HIDDEN_TEST_PASS"
+}

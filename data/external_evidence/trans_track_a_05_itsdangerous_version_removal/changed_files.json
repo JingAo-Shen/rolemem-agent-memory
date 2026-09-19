@@ -1,0 +1,26 @@
+[
+  {
+    "sha": "17c1a19645f96b9257a0dba6c205f388d74dfeb3",
+    "filename": "CHANGES.rst",
+    "status": "modified",
+    "additions": 1,
+    "deletions": 0,
+    "changes": 1,
+    "blob_url": "https://github.com/pallets/itsdangerous/blob/4bb03cd6819228f30079885297299fe568a62863/CHANGES.rst",
+    "raw_url": "https://github.com/pallets/itsdangerous/raw/4bb03cd6819228f30079885297299fe568a62863/CHANGES.rst",
+    "contents_url": "https://api.github.com/repos/pallets/itsdangerous/contents/CHANGES.rst?ref=4bb03cd6819228f30079885297299fe568a62863",
+    "patch": "@@ -4,6 +4,7 @@ Version 2.3.0\n Unreleased\n \n -   Drop support for Python 3.8 and 3.9.\n+-   Remove previously deprecated code.\n \n \n Version 2.2.0"
+  },
+  {
+    "sha": "2ce2ef8a4ed2d4bbde4539d92b0777324286b12e",
+    "filename": "src/itsdangerous/__init__.py",
+    "status": "modified",
+    "additions": 0,
+    "deletions": 21,
+    "changes": 21,
+    "blob_url": "https://github.com/pallets/itsdangerous/blob/4bb03cd6819228f30079885297299fe568a62863/src%2Fitsdangerous%2F__init__.py",
+    "raw_url": "https://github.com/pallets/itsdangerous/raw/4bb03cd6819228f30079885297299fe568a62863/src%2Fitsdangerous%2F__init__.py",
+    "contents_url": "https://api.github.com/repos/pallets/itsdangerous/contents/src%2Fitsdangerous%2F__init__.py?ref=4bb03cd6819228f30079885297299fe568a62863",
+    "patch": "@@ -1,7 +1,3 @@\n-from __future__ import annotations\n-\n-import typing as t\n-\n from .encoding import base64_decode as base64_decode\n from .encoding import base64_encode as base64_encode\n from .encoding import want_bytes as want_bytes\n@@ -19,20 +15,3 @@\n from .timed import TimestampSigner as TimestampSigner\n from .url_safe import URLSafeSerializer as URLSafeSerializer\n from .url_safe import URLSafeTimedSerializer as URLSafeTimedSerializer\n-\n-\n-def __getattr__(name: str) -> t.Any:\n-    if name == \"__version__\":\n-        import importlib.metadata\n-        import warnings\n-\n-        warnings.warn(\n-            \"The '__version__' attribute is deprecated and will be removed in\"\n-            \" ItsDangerous 2.3. Use feature detection or\"\n-            \" 'importlib.metadata.version(\\\"itsdangerous\\\")' instead.\",\n-            DeprecationWarning,\n-            stacklevel=2,\n-        )\n-        return importlib.metadata.version(\"itsdangerous\")\n-\n-    raise AttributeError(name)"
+  }
+]

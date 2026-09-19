@@ -1,0 +1,92 @@
+{
+  "transition_id": "trans_track_a_08_attrs_py313_replace_control",
+  "repo_name": "python-attrs/attrs",
+  "auditor_version": "2.0.0",
+  "spec_sha256": "a82307ac82c8caab978ef8bd5195a8bdebc1f9e5d55cda94f151bfa173d17753",
+  "audit_fingerprint": "b9e86740ba7803fb4a974d300de19fe10d32967d4c0af1b7c8b6c188f688d8bd",
+  "gates": [
+    {
+      "gate_id": "G1",
+      "name": "PR evidence <-> repository_change",
+      "expected": "PR title/body describes the repository architectural or API change",
+      "observed": "Word overlap: ['__replace__', 'added', 'automatically', 'support'] | PR title: Implement __replace__ on 3.13",
+      "evidence": "pr.json:title='Implement __replace__ on 3.13'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G2",
+      "name": "repository_change <-> actual diff",
+      "expected": "Actual diff contains code edits in files specified in repository_change",
+      "observed": "Diff mentions files: ['src/attr/_make.py', 'src/attr/_funcs.py'] -> True",
+      "evidence": "diff.patch length: 9716 bytes",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G3",
+      "name": "actual diff <-> changed/deprecated/replacement symbols",
+      "expected": "Diff patch directly modifies or introduces the target symbols",
+      "observed": "Tokens ['add_replace', 'evolve', 'evolve', 'replace', '__replace__'] found in diff: True",
+      "evidence": "Matching symbols in diff: ['add_replace', 'evolve', 'evolve', 'replace', '__replace__']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G4",
+      "name": "stale memory <-> base-state behavior",
+      "expected": "Stale memory candidate instructs usage of legacy symbol from base state",
+      "observed": "Stale memory references legacy symbol: True",
+      "evidence": "stale_memory_candidate='Use attr.evolve(instance, **changes) to clone attrs instances....'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G5",
+      "name": "valid memory <-> target-state behavior",
+      "expected": "Valid memory candidate instructs modern pattern introduced in target state",
+      "observed": "Valid memory references modern symbol: True",
+      "evidence": "valid_memory_candidate='Use copy.replace(instance, **changes) relying on attrs __replace__....'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G6",
+      "name": "current task <-> transition capability",
+      "expected": "Evaluation task prompt requires implementing or using transition capability",
+      "observed": "Task exercises target file 'point_manager.py' and target symbol 'replace_point': True",
+      "evidence": "current_task='Implement `create_point(x, y)` and `replace_point(pt, **changes)` in `point_mana...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G7",
+      "name": "hidden test <-> current task semantics",
+      "expected": "Hidden test verifies the target symbol/module without leaking solution code",
+      "observed": "Hidden test imports/tests target symbol 'replace_point': True",
+      "evidence": "hidden test len=200 bytes, tests=['point_manager', 'replace_point', 'create_point', 'p2', 'y']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G8",
+      "name": "stale control <-> stale memory semantics",
+      "expected": "Stale control solution invokes deprecated API as instructed by stale memory",
+      "observed": "Stale control uses deprecated symbol: True",
+      "evidence": "stale_solution.py contains ['evolve', 'evolve']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G9",
+      "name": "valid control <-> valid memory semantics",
+      "expected": "Valid control solution invokes modern API as instructed by valid memory",
+      "observed": "Valid control uses replacement symbol: True",
+      "evidence": "valid_solution.py contains modern pattern: True",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G10",
+      "name": "causal matrix <-> transition evidence",
+      "expected": "Causal counterfactual matrix demonstrates base-state pass, target-state fail with genuine failure taxonomy",
+      "observed": "Causal status: 'CAUSAL_PASS', failure taxonomy: 'NONE'",
+      "evidence": "causal_counterfactual/trans_track_a_08_attrs_py313_replace_control.json",
+      "status": "PASS"
+    }
+  ],
+  "passed_gates_count": 10,
+  "total_gates_count": 10,
+  "overall_status": "PASS"
+}

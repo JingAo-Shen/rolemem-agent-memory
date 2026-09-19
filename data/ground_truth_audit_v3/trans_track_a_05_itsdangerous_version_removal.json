@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_track_a_05_itsdangerous_version_removal",
+  "repo_name": "pallets/itsdangerous",
+  "pr_number": 406,
+  "pr_title": "remove previously deprecated code",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "31f46a3469dbfb2ecf83dd0c4297c1efc508fcca",
+  "pr_base_sha": "4dffa1963f896a0a311dec3c14f003a5f382c446",
+  "pr_head_sha": "4bb03cd6819228f30079885297299fe568a62863",
+  "base_commit": "4dffa1963f896a0a311dec3c14f003a5f382c446",
+  "target_commit": "31f46a3469dbfb2ecf83dd0c4297c1efc508fcca",
+  "ancestry_verified": true,
+  "merge_strategy": "merge_commit",
+  "merge_relationship_verified": true,
+  "diff_match": true,
+  "issue_required": false,
+  "issue_id_verified": null,
+  "issue_status": "NOT_APPLICABLE",
+  "spec_sha256": "5856a085c520d5dda06aebdb6214f61459a136be7fb91928e6accf1641cd66d4",
+  "audit_fingerprint": "0cf98c94845afd9cec552fcaf4c51ca5432dcbe05a18297e6d7080320edfb0ab",
+  "auditor_version": "3.0.0",
+  "overall_status": "PASS"
+}

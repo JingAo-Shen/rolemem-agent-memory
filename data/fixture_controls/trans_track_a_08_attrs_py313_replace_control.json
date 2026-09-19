@@ -1,0 +1,8 @@
+{
+  "transition_id": "trans_track_a_08_attrs_py313_replace_control",
+  "audit_fingerprint": "b9e86740ba7803fb4a974d300de19fe10d32967d4c0af1b7c8b6c188f688d8bd",
+  "status": "PASS",
+  "valid_control_status": "PASS",
+  "stale_control_status": "PASS",
+  "details": "valid_target=True, stale_target=True"
+}

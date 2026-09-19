@@ -1,0 +1,19 @@
+{
+  "transition_id": "trans_track_a_07_pluggy_varnames_noself",
+  "repo_name": "pytest-dev/pluggy",
+  "repo_url": "https://github.com/pytest-dev/pluggy",
+  "pr_url": "https://github.com/pytest-dev/pluggy/pull/632",
+  "base_commit": "dd20a85e38af556e1c818b03391eab1480438e0c",
+  "target_commit": "0258484dc180a0c28705de83783b269f4fed4873",
+  "pkg_path": "src/pluggy",
+  "changed_files": [
+    "src/pluggy/_hooks.py"
+  ],
+  "primary_file": "src/pluggy/_hooks.py",
+  "symbol": "pluggy._hooks.varnames",
+  "file_digest_before": "abffecf3558e24afb0725ae73dbc3957f278e009fc96c8802a21ceb6c38145a2",
+  "file_digest_after": "ee1c8cc8fefc5656f23efdc330a2b735c5bba7b7b1dfd41f6c3b0aa4aa2cd52f",
+  "stale_sensitive": true,
+  "transition_type": "API_DEPRECATION",
+  "builder_status": "FIXTURE_EXTRACTED_UNVERIFIED"
+}

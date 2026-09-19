@@ -1,0 +1,7 @@
+{
+  "transition_id": "trans_track_a_10_httpx_client_proxies_deprecation",
+  "audit_fingerprint": "11cf527667745e22286adc9d030cbeadc91738d339bd1d9e5235aa2f733175bc",
+  "status": "PASS",
+  "verification_status": "PASS",
+  "details": "Snapshot SHA-256 digest purity verified against Git extract"
+}

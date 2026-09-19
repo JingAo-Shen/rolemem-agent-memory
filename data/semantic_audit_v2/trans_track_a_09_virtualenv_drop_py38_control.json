@@ -1,0 +1,92 @@
+{
+  "transition_id": "trans_track_a_09_virtualenv_drop_py38_control",
+  "repo_name": "pypa/virtualenv",
+  "auditor_version": "2.0.0",
+  "spec_sha256": "b2bdcc0bb19e16237b1f63a387e8039971449e5b381e3906d19f1b06ba9c5e77",
+  "audit_fingerprint": "1be2caefaba0e6e322f67fc2bd4b8047dae223e1508208771c7a8382ac51a7a1",
+  "gates": [
+    {
+      "gate_id": "G1",
+      "name": "PR evidence <-> repository_change",
+      "expected": "PR title/body describes the repository architectural or API change",
+      "observed": "Word overlap: ['dropped', 'python', 'pyvenv_launch_patch_active', 'removed', 'support'] | PR title: \u2728 feat: drop Python 3.8 support",
+      "evidence": "pr.json:title='\u2728 feat: drop Python 3.8 support'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G2",
+      "name": "repository_change <-> actual diff",
+      "expected": "Actual diff contains code edits in files specified in repository_change",
+      "observed": "Diff mentions files: ['src/virtualenv/create/via_global_ref/builtin/cpython/cpython3.py'] -> True",
+      "evidence": "diff.patch length: 27935 bytes",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G3",
+      "name": "actual diff <-> changed/deprecated/replacement symbols",
+      "expected": "Diff patch directly modifies or introduces the target symbols",
+      "observed": "Tokens ['pyvenv_launch_patch_active', 'pyvenv_launch_patch_active', 'False', 'PythonInfo', 'CPython3Posix'] found in diff: True",
+      "evidence": "Matching symbols in diff: ['pyvenv_launch_patch_active', 'pyvenv_launch_patch_active', 'False', 'PythonInfo', 'CPython3Posix']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G4",
+      "name": "stale memory <-> base-state behavior",
+      "expected": "Stale memory candidate instructs usage of legacy symbol from base state",
+      "observed": "Stale memory references legacy symbol: True",
+      "evidence": "stale_memory_candidate='Call CPython3Posix.pyvenv_launch_patch_active to detect launcher patch necessity...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G5",
+      "name": "valid memory <-> target-state behavior",
+      "expected": "Valid memory candidate instructs modern pattern introduced in target state",
+      "observed": "Valid memory references modern symbol: True",
+      "evidence": "valid_memory_candidate='Python 3.8 support is dropped; always return False without legacy launcher patch...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G6",
+      "name": "current task <-> transition capability",
+      "expected": "Evaluation task prompt requires implementing or using transition capability",
+      "observed": "Task exercises target file 'cpython_patch.py' and target symbol 'requires_pyvenv_patch': True",
+      "evidence": "current_task='Implement `requires_pyvenv_patch(info)` in `cpython_patch.py` checking whether l...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G7",
+      "name": "hidden test <-> current task semantics",
+      "expected": "Hidden test verifies the target symbol/module without leaking solution code",
+      "observed": "Hidden test imports/tests target symbol 'requires_pyvenv_patch': True",
+      "evidence": "hidden test len=225 bytes, tests=['test_patch_check', 'requires_pyvenv_patch', 'res', 'version_info', 'DummyInfo']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G8",
+      "name": "stale control <-> stale memory semantics",
+      "expected": "Stale control solution invokes deprecated API as instructed by stale memory",
+      "observed": "Stale control uses deprecated symbol: True",
+      "evidence": "stale_solution.py contains ['pyvenv_launch_patch_active', 'pyvenv_launch_patch_active']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G9",
+      "name": "valid control <-> valid memory semantics",
+      "expected": "Valid control solution invokes modern API as instructed by valid memory",
+      "observed": "Valid control uses replacement symbol: True",
+      "evidence": "valid_solution.py contains modern pattern: True",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G10",
+      "name": "causal matrix <-> transition evidence",
+      "expected": "Causal counterfactual matrix demonstrates base-state pass, target-state fail with genuine failure taxonomy",
+      "observed": "Causal status: 'CAUSAL_PASS', failure taxonomy: 'API_ABSENT'",
+      "evidence": "causal_counterfactual/trans_track_a_09_virtualenv_drop_py38_control.json",
+      "status": "PASS"
+    }
+  ],
+  "passed_gates_count": 10,
+  "total_gates_count": 10,
+  "overall_status": "PASS"
+}

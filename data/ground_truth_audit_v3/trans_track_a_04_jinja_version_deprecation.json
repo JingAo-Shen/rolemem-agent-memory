@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_track_a_04_jinja_version_deprecation",
+  "repo_name": "pallets/jinja",
+  "pr_number": 2098,
+  "pr_title": "deprecate `__version__`",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "9e49736ae075fcffb85f731a3fe2c006cf1edca4",
+  "pr_base_sha": "dfe82ade3dc7d112d7d166ca0d7ae7f794fe19e6",
+  "pr_head_sha": "b7ce542db1cd1e85f5c47a6ec7eb584aa189bffc",
+  "base_commit": "dfe82ade3dc7d112d7d166ca0d7ae7f794fe19e6",
+  "target_commit": "9e49736ae075fcffb85f731a3fe2c006cf1edca4",
+  "ancestry_verified": true,
+  "merge_strategy": "merge_commit",
+  "merge_relationship_verified": true,
+  "diff_match": true,
+  "issue_required": false,
+  "issue_id_verified": null,
+  "issue_status": "NOT_APPLICABLE",
+  "spec_sha256": "ef6ac360aabed5e6310a252c5bfd5a9353fc5edd37b91043f8b4850515e125be",
+  "audit_fingerprint": "878bea9022c74e3b2973bab2e8d30fa954c2733861393e215757940ab8c115a9",
+  "auditor_version": "3.0.0",
+  "overall_status": "PASS"
+}

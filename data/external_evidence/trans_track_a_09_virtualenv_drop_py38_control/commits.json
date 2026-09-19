@@ -1,0 +1,166 @@
+[
+  {
+    "sha": "b2fb7f64903f03007d36dbe2f9508f9c31db57a1",
+    "node_id": "C_kwDOM4JC9toAKGIyZmI3ZjY0OTAzZjAzMDA3ZDM2ZGJlMmY5NTA4ZjljMzFkYjU3YTE",
+    "commit": {
+      "author": {
+        "name": "Bernat Gabor",
+        "email": "gaborjbernat@gmail.com",
+        "date": "2026-06-13T16:50:41Z"
+      },
+      "committer": {
+        "name": "Bernat Gabor",
+        "email": "gaborjbernat@gmail.com",
+        "date": "2026-06-13T17:04:06Z"
+      },
+      "message": "Drop Python 3.8 support\n\nCPython 3.8 reached end of life on 2024-10-07, more than 18 months ago,\nwhich meets the project policy for dropping a version. virtualenv now\nrequires Python 3.9 or later to run and to create environments.\n\nvirtualenv bundled the embedded wheel seed package only for Python 3.8,\nso this removes it: the wheel files, the 3.8 bundle entry, and the wheel\nhandling in the upgrade tooling. The --wheel and --no-wheel options stay\nas no-ops, but the deprecation warning is louder and now states that\nvirtualenv will remove them in a release after 2026-12.\n\nThis also drops the macOS pyvenv launcher patch, which only applied to\nCPython 3.8.0-3.8.2, and updates packaging metadata, the CI matrix, tox\nenvironments, tests, and docs.",
+      "tree": {
+        "sha": "3885b721a11448b806a981df37f9aec50d09ec5e",
+        "url": "https://api.github.com/repos/pypa/virtualenv/git/trees/3885b721a11448b806a981df37f9aec50d09ec5e"
+      },
+      "url": "https://api.github.com/repos/pypa/virtualenv/git/commits/b2fb7f64903f03007d36dbe2f9508f9c31db57a1",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQJPBAABCAA5FiEEAHzDu7rLel9SJ9N2Gf59hK6ziYYFAmotjYYbFIAAAAAABAAO\nbWFudTIsMi41KzEuMTIsMCwzAAoJEBn+fYSus4mGLuQP/AoCeR8OCtuZem5M0Mlb\niRYFTKkbTPitMBg+tqmNxieqzqwSC2LCtDQENd3eRcLQ95k2pteARtfgzKX7yPIs\n+onbvCxrtsV50f+QPtgKaGkEZ3pVrB9kXK0uUjE6CVC/3j+em0M7ZhjmUcsxkg2+\nhr4goXrNueiuLFN4rXPn6QxMdax8V3BH9NASTRpFkDoK+ZpdmWgvP6eQDFuBL0zE\nOdfAM7ReOJwq4FwHYYIHZQhBrk+YSCRdZNsjpwk2yJuTzEOjzZBlMvouIPla9xQC\nMmgSUqgeAd8ZZdSx2VJ7F16HfGv0WNx9E8L86ivtmKd29D6awiOsqBCqxPGf/mQf\nIJHan3+JVreP1t8GwqNVjw+Vx4qqYcsJzNMRwdkcpQfBLBW5amMu0TSK7zgNdWB3\nnBueUn/M+tIwvHDnOIgCMF4h2cPCVM1VUmrbZtVJA6lY2DIP1t7nFdlhOuYmZI87\nPRz/hdue2VM1xKx9LRDufda9l9un2aV94uG2V3sdlteP6uOJk53FEmIm0Niuu39/\nJ0r8fKcI5KTaiSjvH+R5LadKgmK5Jc8ywnnCaTwrwsXTYPLuiGn7dxb+gVNsEXxj\n7FbZR2EhGc+uPuVvOdRzOk6tYJW52EVSxnAOh9lDzHxZ+9euJpWNVTPAqvoFi6k0\nr30PcMKfj4iIdGa9o8uTmUFb\n=jv7O\n-----END PGP SIGNATURE-----",
+        "payload": "tree 3885b721a11448b806a981df37f9aec50d09ec5e\nparent f1f4d687b12caac079d81ffc5ee50a16d1fabc1a\nauthor Bernat Gabor <gaborjbernat@gmail.com> 1781369441 -0700\ncommitter Bernat Gabor <gaborjbernat@gmail.com> 1781370246 -0700\n\nDrop Python 3.8 support\n\nCPython 3.8 reached end of life on 2024-10-07, more than 18 months ago,\nwhich meets the project policy for dropping a version. virtualenv now\nrequires Python 3.9 or later to run and to create environments.\n\nvirtualenv bundled the embedded wheel seed package only for Python 3.8,\nso this removes it: the wheel files, the 3.8 bundle entry, and the wheel\nhandling in the upgrade tooling. The --wheel and --no-wheel options stay\nas no-ops, but the deprecation warning is louder and now states that\nvirtualenv will remove them in a release after 2026-12.\n\nThis also drops the macOS pyvenv launcher patch, which only applied to\nCPython 3.8.0-3.8.2, and updates packaging metadata, the CI matrix, tox\nenvironments, tests, and docs.\n",
+        "verified_at": "2026-06-13T17:05:20Z"
+      }
+    },
+    "url": "https://api.github.com/repos/pypa/virtualenv/commits/b2fb7f64903f03007d36dbe2f9508f9c31db57a1",
+    "html_url": "https://github.com/pypa/virtualenv/commit/b2fb7f64903f03007d36dbe2f9508f9c31db57a1",
+    "comments_url": "https://api.github.com/repos/pypa/virtualenv/commits/b2fb7f64903f03007d36dbe2f9508f9c31db57a1/comments",
+    "author": {
+      "login": "gaborbernat",
+      "id": 690238,
+      "node_id": "MDQ6VXNlcjY5MDIzOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/690238?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/gaborbernat",
+      "html_url": "https://github.com/gaborbernat",
+      "followers_url": "https://api.github.com/users/gaborbernat/followers",
+      "following_url": "https://api.github.com/users/gaborbernat/following{/other_user}",
+      "gists_url": "https://api.github.com/users/gaborbernat/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/gaborbernat/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/gaborbernat/subscriptions",
+      "organizations_url": "https://api.github.com/users/gaborbernat/orgs",
+      "repos_url": "https://api.github.com/users/gaborbernat/repos",
+      "events_url": "https://api.github.com/users/gaborbernat/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/gaborbernat/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "gaborbernat",
+      "id": 690238,
+      "node_id": "MDQ6VXNlcjY5MDIzOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/690238?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/gaborbernat",
+      "html_url": "https://github.com/gaborbernat",
+      "followers_url": "https://api.github.com/users/gaborbernat/followers",
+      "following_url": "https://api.github.com/users/gaborbernat/following{/other_user}",
+      "gists_url": "https://api.github.com/users/gaborbernat/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/gaborbernat/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/gaborbernat/subscriptions",
+      "organizations_url": "https://api.github.com/users/gaborbernat/orgs",
+      "repos_url": "https://api.github.com/users/gaborbernat/repos",
+      "events_url": "https://api.github.com/users/gaborbernat/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/gaborbernat/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "f1f4d687b12caac079d81ffc5ee50a16d1fabc1a",
+        "url": "https://api.github.com/repos/pypa/virtualenv/commits/f1f4d687b12caac079d81ffc5ee50a16d1fabc1a",
+        "html_url": "https://github.com/pypa/virtualenv/commit/f1f4d687b12caac079d81ffc5ee50a16d1fabc1a"
+      }
+    ]
+  },
+  {
+    "sha": "3f3f3c4e45dcc46f410934a0035637249b54eb23",
+    "node_id": "C_kwDOM4JC9toAKDNmM2YzYzRlNDVkY2M0NmY0MTA5MzRhMDAzNTYzNzI0OWI1NGViMjM",
+    "commit": {
+      "author": {
+        "name": "pre-commit-ci[bot]",
+        "email": "66853113+pre-commit-ci[bot]@users.noreply.github.com",
+        "date": "2026-06-13T17:05:38Z"
+      },
+      "committer": {
+        "name": "pre-commit-ci[bot]",
+        "email": "66853113+pre-commit-ci[bot]@users.noreply.github.com",
+        "date": "2026-06-13T17:05:39Z"
+      },
+      "message": "[pre-commit.ci] auto fixes from pre-commit.com hooks\n\nfor more information, see https://pre-commit.ci",
+      "tree": {
+        "sha": "f4229f00335d8359ece4bbf758df1fd9a30387be",
+        "url": "https://api.github.com/repos/pypa/virtualenv/git/trees/f4229f00335d8359ece4bbf758df1fd9a30387be"
+      },
+      "url": "https://api.github.com/repos/pypa/virtualenv/git/commits/3f3f3c4e45dcc46f410934a0035637249b54eb23",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/pypa/virtualenv/commits/3f3f3c4e45dcc46f410934a0035637249b54eb23",
+    "html_url": "https://github.com/pypa/virtualenv/commit/3f3f3c4e45dcc46f410934a0035637249b54eb23",
+    "comments_url": "https://api.github.com/repos/pypa/virtualenv/commits/3f3f3c4e45dcc46f410934a0035637249b54eb23/comments",
+    "author": {
+      "login": "pre-commit-ci[bot]",
+      "id": 66853113,
+      "node_id": "MDM6Qm90NjY4NTMxMTM=",
+      "avatar_url": "https://avatars.githubusercontent.com/in/68672?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D",
+      "html_url": "https://github.com/apps/pre-commit-ci",
+      "followers_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/followers",
+      "following_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/subscriptions",
+      "organizations_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/orgs",
+      "repos_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/repos",
+      "events_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/received_events",
+      "type": "Bot",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "pre-commit-ci[bot]",
+      "id": 66853113,
+      "node_id": "MDM6Qm90NjY4NTMxMTM=",
+      "avatar_url": "https://avatars.githubusercontent.com/in/68672?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D",
+      "html_url": "https://github.com/apps/pre-commit-ci",
+      "followers_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/followers",
+      "following_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/subscriptions",
+      "organizations_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/orgs",
+      "repos_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/repos",
+      "events_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/received_events",
+      "type": "Bot",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "b2fb7f64903f03007d36dbe2f9508f9c31db57a1",
+        "url": "https://api.github.com/repos/pypa/virtualenv/commits/b2fb7f64903f03007d36dbe2f9508f9c31db57a1",
+        "html_url": "https://github.com/pypa/virtualenv/commit/b2fb7f64903f03007d36dbe2f9508f9c31db57a1"
+      }
+    ]
+  }
+]

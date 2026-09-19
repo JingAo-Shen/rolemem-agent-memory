@@ -1,0 +1,1923 @@
+[
+  {
+    "sha": "170cbef0db5e40d0733f6187d7cdcda88b37a4d2",
+    "node_id": "C_kwDOJDFEz9oAKDE3MGNiZWYwZGI1ZTQwZDA3MzNmNjE4N2Q3Y2RjZGE4OGIzN2E0ZDI",
+    "commit": {
+      "author": {
+        "name": "karosis88",
+        "email": "kar.petrosyanpy@gmail.com",
+        "date": "2023-10-06T13:07:06Z"
+      },
+      "committer": {
+        "name": "karosis88",
+        "email": "kar.petrosyanpy@gmail.com",
+        "date": "2023-10-06T13:07:06Z"
+      },
+      "message": "Add the proxy parameter and deprecate proxies",
+      "tree": {
+        "sha": "e33660552e40998b80646290e72733f4141529c2",
+        "url": "https://api.github.com/repos/encode/httpx/git/trees/e33660552e40998b80646290e72733f4141529c2"
+      },
+      "url": "https://api.github.com/repos/encode/httpx/git/commits/170cbef0db5e40d0733f6187d7cdcda88b37a4d2",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/encode/httpx/commits/170cbef0db5e40d0733f6187d7cdcda88b37a4d2",
+    "html_url": "https://github.com/encode/httpx/commit/170cbef0db5e40d0733f6187d7cdcda88b37a4d2",
+    "comments_url": "https://api.github.com/repos/encode/httpx/commits/170cbef0db5e40d0733f6187d7cdcda88b37a4d2/comments",
+    "author": {
+      "login": "karpetrosyan",
+      "id": 92274156,
+      "node_id": "U_kgDOBX_97A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92274156?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/karpetrosyan",
+      "html_url": "https://github.com/karpetrosyan",
+      "followers_url": "https://api.github.com/users/karpetrosyan/followers",
+      "following_url": "https://api.github.com/users/karpetrosyan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/karpetrosyan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/karpetrosyan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/karpetrosyan/subscriptions",
+      "organizations_url": "https://api.github.com/users/karpetrosyan/orgs",
+      "repos_url": "https://api.github.com/users/karpetrosyan/repos",
+      "events_url": "https://api.github.com/users/karpetrosyan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/karpetrosyan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "karpetrosyan",
+      "id": 92274156,
+      "node_id": "U_kgDOBX_97A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92274156?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/karpetrosyan",
+      "html_url": "https://github.com/karpetrosyan",
+      "followers_url": "https://api.github.com/users/karpetrosyan/followers",
+      "following_url": "https://api.github.com/users/karpetrosyan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/karpetrosyan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/karpetrosyan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/karpetrosyan/subscriptions",
+      "organizations_url": "https://api.github.com/users/karpetrosyan/orgs",
+      "repos_url": "https://api.github.com/users/karpetrosyan/repos",
+      "events_url": "https://api.github.com/users/karpetrosyan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/karpetrosyan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "3ba5fe0d7ac70222590e759c31442b1cab263791",
+        "url": "https://api.github.com/repos/encode/httpx/commits/3ba5fe0d7ac70222590e759c31442b1cab263791",
+        "html_url": "https://github.com/encode/httpx/commit/3ba5fe0d7ac70222590e759c31442b1cab263791"
+      }
+    ]
+  },
+  {
+    "sha": "189a4f2b5847267e4efd1572d4583b253ef07f9b",
+    "node_id": "C_kwDOJDFEz9oAKDE4OWE0ZjJiNTg0NzI2N2U0ZWZkMTU3MmQ0NTgzYjI1M2VmMDdmOWI",
+    "commit": {
+      "author": {
+        "name": "Tom Christie",
+        "email": "tom@tomchristie.com",
+        "date": "2023-10-10T13:11:56Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2023-10-10T13:11:56Z"
+      },
+      "message": "Merge branch 'master' into drop-proxies",
+      "tree": {
+        "sha": "72438058320f2b752f380894f49a1f8978cdbe95",
+        "url": "https://api.github.com/repos/encode/httpx/git/trees/72438058320f2b752f380894f49a1f8978cdbe95"
+      },
+      "url": "https://api.github.com/repos/encode/httpx/git/commits/189a4f2b5847267e4efd1572d4583b253ef07f9b",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJlJU2cCRBK7hj4Ov3rIwAAdVEIAIP64SpxN9ssJCejcTHPsRuG\no7Bcy87u7goMEz7XWeaUigRtCQ/fyLLLxim54UeLoG7vnS35m04gTJ+p3EHgvV0M\nD94YbFitx1PIDr/A7X2bH76zTsDUsBXCvj/AD/pe183odc5c8prLMa6JPatwTr3k\nUYApSXghpOBPB7F7jN9s/dDQTYhMMnUf7XP0OyJZ+jLNt5drvHnULPwqX4iv/YsN\nc0kNIK/UbOKzByp/afmFUm4ugC7XtAPWNctVMtoCbrq1Sq30+UYmnrBnfI8yqWw8\n9HdnqLbhCz8iJuYMIGr2d50GriJ4JSMtWStY3wOA07tNbHUJA1LgRTP9iwCKkUc=\n=zegr\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 72438058320f2b752f380894f49a1f8978cdbe95\nparent 170cbef0db5e40d0733f6187d7cdcda88b37a4d2\nparent e63b6594f2863b7c8274eb0991ebc6cad63661f7\nauthor Tom Christie <tom@tomchristie.com> 1696943516 +0100\ncommitter GitHub <noreply@github.com> 1696943516 +0100\n\nMerge branch 'master' into drop-proxies",
+        "verified_at": "2024-01-16T19:59:59Z"
+      }
+    },
+    "url": "https://api.github.com/repos/encode/httpx/commits/189a4f2b5847267e4efd1572d4583b253ef07f9b",
+    "html_url": "https://github.com/encode/httpx/commit/189a4f2b5847267e4efd1572d4583b253ef07f9b",
+    "comments_url": "https://api.github.com/repos/encode/httpx/commits/189a4f2b5847267e4efd1572d4583b253ef07f9b/comments",
+    "author": {
+      "login": "lovelydinosaur",
+      "id": 647359,
+      "node_id": "MDQ6VXNlcjY0NzM1OQ==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/647359?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lovelydinosaur",
+      "html_url": "https://github.com/lovelydinosaur",
+      "followers_url": "https://api.github.com/users/lovelydinosaur/followers",
+      "following_url": "https://api.github.com/users/lovelydinosaur/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lovelydinosaur/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lovelydinosaur/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lovelydinosaur/subscriptions",
+      "organizations_url": "https://api.github.com/users/lovelydinosaur/orgs",
+      "repos_url": "https://api.github.com/users/lovelydinosaur/repos",
+      "events_url": "https://api.github.com/users/lovelydinosaur/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lovelydinosaur/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "170cbef0db5e40d0733f6187d7cdcda88b37a4d2",
+        "url": "https://api.github.com/repos/encode/httpx/commits/170cbef0db5e40d0733f6187d7cdcda88b37a4d2",
+        "html_url": "https://github.com/encode/httpx/commit/170cbef0db5e40d0733f6187d7cdcda88b37a4d2"
+      },
+      {
+        "sha": "e63b6594f2863b7c8274eb0991ebc6cad63661f7",
+        "url": "https://api.github.com/repos/encode/httpx/commits/e63b6594f2863b7c8274eb0991ebc6cad63661f7",
+        "html_url": "https://github.com/encode/httpx/commit/e63b6594f2863b7c8274eb0991ebc6cad63661f7"
+      }
+    ]
+  },
+  {
+    "sha": "88eb99b25c353aafcf1aa103d63c1a9081f7c6e9",
+    "node_id": "C_kwDOJDFEz9oAKDg4ZWI5OWIyNWMzNTNhYWZjZjFhYTEwM2Q2M2MxYTkwODFmN2M2ZTk",
+    "commit": {
+      "author": {
+        "name": "karosis88",
+        "email": "kar.petrosyanpy@gmail.com",
+        "date": "2023-10-10T13:50:53Z"
+      },
+      "committer": {
+        "name": "karosis88",
+        "email": "kar.petrosyanpy@gmail.com",
+        "date": "2023-10-10T13:50:53Z"
+      },
+      "message": "Make the Client.proxy and HTTPTransport.proxy types the same",
+      "tree": {
+        "sha": "d7afdc8f6db0701e9bcf538fe0dbb6cd7a4cf543",
+        "url": "https://api.github.com/repos/encode/httpx/git/trees/d7afdc8f6db0701e9bcf538fe0dbb6cd7a4cf543"
+      },
+      "url": "https://api.github.com/repos/encode/httpx/git/commits/88eb99b25c353aafcf1aa103d63c1a9081f7c6e9",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/encode/httpx/commits/88eb99b25c353aafcf1aa103d63c1a9081f7c6e9",
+    "html_url": "https://github.com/encode/httpx/commit/88eb99b25c353aafcf1aa103d63c1a9081f7c6e9",
+    "comments_url": "https://api.github.com/repos/encode/httpx/commits/88eb99b25c353aafcf1aa103d63c1a9081f7c6e9/comments",
+    "author": {
+      "login": "karpetrosyan",
+      "id": 92274156,
+      "node_id": "U_kgDOBX_97A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92274156?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/karpetrosyan",
+      "html_url": "https://github.com/karpetrosyan",
+      "followers_url": "https://api.github.com/users/karpetrosyan/followers",
+      "following_url": "https://api.github.com/users/karpetrosyan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/karpetrosyan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/karpetrosyan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/karpetrosyan/subscriptions",
+      "organizations_url": "https://api.github.com/users/karpetrosyan/orgs",
+      "repos_url": "https://api.github.com/users/karpetrosyan/repos",
+      "events_url": "https://api.github.com/users/karpetrosyan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/karpetrosyan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "karpetrosyan",
+      "id": 92274156,
+      "node_id": "U_kgDOBX_97A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92274156?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/karpetrosyan",
+      "html_url": "https://github.com/karpetrosyan",
+      "followers_url": "https://api.github.com/users/karpetrosyan/followers",
+      "following_url": "https://api.github.com/users/karpetrosyan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/karpetrosyan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/karpetrosyan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/karpetrosyan/subscriptions",
+      "organizations_url": "https://api.github.com/users/karpetrosyan/orgs",
+      "repos_url": "https://api.github.com/users/karpetrosyan/repos",
+      "events_url": "https://api.github.com/users/karpetrosyan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/karpetrosyan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "189a4f2b5847267e4efd1572d4583b253ef07f9b",
+        "url": "https://api.github.com/repos/encode/httpx/commits/189a4f2b5847267e4efd1572d4583b253ef07f9b",
+        "html_url": "https://github.com/encode/httpx/commit/189a4f2b5847267e4efd1572d4583b253ef07f9b"
+      }
+    ]
+  },
+  {
+    "sha": "11bec0880eeb51fb09e9fcbadb6f86159ec0bbc4",
+    "node_id": "C_kwDOJDFEz9oAKDExYmVjMDg4MGVlYjUxZmIwOWU5ZmNiYWRiNmY4NjE1OWVjMGJiYzQ",
+    "commit": {
+      "author": {
+        "name": "Tom Christie",
+        "email": "tom@tomchristie.com",
+        "date": "2023-10-11T08:35:00Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2023-10-11T08:35:00Z"
+      },
+      "message": "Update httpx/_transports/default.py\n\nCo-authored-by: T-256 <132141463+T-256@users.noreply.github.com>",
+      "tree": {
+        "sha": "d017c10b2da16beb655a3e0e10891c5f745ea860",
+        "url": "https://api.github.com/repos/encode/httpx/git/trees/d017c10b2da16beb655a3e0e10891c5f745ea860"
+      },
+      "url": "https://api.github.com/repos/encode/httpx/git/commits/11bec0880eeb51fb09e9fcbadb6f86159ec0bbc4",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJlJl40CRBK7hj4Ov3rIwAAxxQIAJpRsao5ygIq276C031Oj22a\n4Y3Cs23Dd7YwxoLqeWI2/dphza8Ecr+kCLYKZeMR9jEdnmNqstmabwL1vRkfb8MC\ngV7gX3qX7HnLClKkutEYS144s7reECiR3s8FurdGJPc0ouTs6G5ChbX7k50jKNo3\nlGU7ZhPu9w3qpx+sWUbswDmSC9cwyVkmatdTNkzv9BELU8P3tFtvYwQMxYkRbo97\nrpAYjh7XQcRZyJsYjNQdPeSXz9O9BPlthj2J4x5s+DrUoDcQJbCUp2/DTPKptFo7\n5cbbrHYlJMwk/LBttnRqqPQzDFO430M2ufnLm08FLoPOWuOxcJaXk1dFFkoSxYo=\n=uxwr\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree d017c10b2da16beb655a3e0e10891c5f745ea860\nparent 88eb99b25c353aafcf1aa103d63c1a9081f7c6e9\nauthor Tom Christie <tom@tomchristie.com> 1697013300 +0100\ncommitter GitHub <noreply@github.com> 1697013300 +0100\n\nUpdate httpx/_transports/default.py\n\nCo-authored-by: T-256 <132141463+T-256@users.noreply.github.com>",
+        "verified_at": "2024-01-16T19:59:59Z"
+      }
+    },
+    "url": "https://api.github.com/repos/encode/httpx/commits/11bec0880eeb51fb09e9fcbadb6f86159ec0bbc4",
+    "html_url": "https://github.com/encode/httpx/commit/11bec0880eeb51fb09e9fcbadb6f86159ec0bbc4",
+    "comments_url": "https://api.github.com/repos/encode/httpx/commits/11bec0880eeb51fb09e9fcbadb6f86159ec0bbc4/comments",
+    "author": {
+      "login": "lovelydinosaur",
+      "id": 647359,
+      "node_id": "MDQ6VXNlcjY0NzM1OQ==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/647359?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lovelydinosaur",
+      "html_url": "https://github.com/lovelydinosaur",
+      "followers_url": "https://api.github.com/users/lovelydinosaur/followers",
+      "following_url": "https://api.github.com/users/lovelydinosaur/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lovelydinosaur/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lovelydinosaur/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lovelydinosaur/subscriptions",
+      "organizations_url": "https://api.github.com/users/lovelydinosaur/orgs",
+      "repos_url": "https://api.github.com/users/lovelydinosaur/repos",
+      "events_url": "https://api.github.com/users/lovelydinosaur/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lovelydinosaur/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "88eb99b25c353aafcf1aa103d63c1a9081f7c6e9",
+        "url": "https://api.github.com/repos/encode/httpx/commits/88eb99b25c353aafcf1aa103d63c1a9081f7c6e9",
+        "html_url": "https://github.com/encode/httpx/commit/88eb99b25c353aafcf1aa103d63c1a9081f7c6e9"
+      }
+    ]
+  },
+  {
+    "sha": "fad66cfd5929a1819276d94a51f9329dd3801991",
+    "node_id": "C_kwDOJDFEz9oAKGZhZDY2Y2ZkNTkyOWExODE5Mjc2ZDk0YTUxZjkzMjlkZDM4MDE5OTE",
+    "commit": {
+      "author": {
+        "name": "Tom Christie",
+        "email": "tom@tomchristie.com",
+        "date": "2023-10-11T08:35:08Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2023-10-11T08:35:08Z"
+      },
+      "message": "Update httpx/_transports/default.py\n\nCo-authored-by: T-256 <132141463+T-256@users.noreply.github.com>",
+      "tree": {
+        "sha": "93fc67e4538db236fe80b3c68f0f83648b0736ae",
+        "url": "https://api.github.com/repos/encode/httpx/git/trees/93fc67e4538db236fe80b3c68f0f83648b0736ae"
+      },
+      "url": "https://api.github.com/repos/encode/httpx/git/commits/fad66cfd5929a1819276d94a51f9329dd3801991",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJlJl48CRBK7hj4Ov3rIwAAJz0IAEYH+PxHhpPGIv++YeTkCtYh\nccDwMD5eECiMChvJc9dNuSf+OtZQtrYJGTmMsYoUaHZuFjoqxn6jpSqAca9n303R\noZTWRaZdj2aaFQgSaN5X3bmwVNwVc2EZOoJvSonJyPyWwGApLJAMbu9LQLuO+Oqx\nOqArcuF4rl4LefTDAOMw+B+ut8o7yqhjlz+URHU4ZbmiNcazXYBgJn80EnkX7VbT\npVKo0FxVbjiOHQIj+Tuz5YLfAWfeQzchHEsbf+d67leD316jd7P47khzQkLFZqau\nCFb3Q+CBxkAieoouHW90GwHTp2BaUdvKR5gG7/33WDmYzdoi+BfIYeFX49cVF0Q=\n=zFFa\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 93fc67e4538db236fe80b3c68f0f83648b0736ae\nparent 11bec0880eeb51fb09e9fcbadb6f86159ec0bbc4\nauthor Tom Christie <tom@tomchristie.com> 1697013308 +0100\ncommitter GitHub <noreply@github.com> 1697013308 +0100\n\nUpdate httpx/_transports/default.py\n\nCo-authored-by: T-256 <132141463+T-256@users.noreply.github.com>",
+        "verified_at": "2024-11-06T01:21:24Z"
+      }
+    },
+    "url": "https://api.github.com/repos/encode/httpx/commits/fad66cfd5929a1819276d94a51f9329dd3801991",
+    "html_url": "https://github.com/encode/httpx/commit/fad66cfd5929a1819276d94a51f9329dd3801991",
+    "comments_url": "https://api.github.com/repos/encode/httpx/commits/fad66cfd5929a1819276d94a51f9329dd3801991/comments",
+    "author": {
+      "login": "lovelydinosaur",
+      "id": 647359,
+      "node_id": "MDQ6VXNlcjY0NzM1OQ==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/647359?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lovelydinosaur",
+      "html_url": "https://github.com/lovelydinosaur",
+      "followers_url": "https://api.github.com/users/lovelydinosaur/followers",
+      "following_url": "https://api.github.com/users/lovelydinosaur/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lovelydinosaur/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lovelydinosaur/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lovelydinosaur/subscriptions",
+      "organizations_url": "https://api.github.com/users/lovelydinosaur/orgs",
+      "repos_url": "https://api.github.com/users/lovelydinosaur/repos",
+      "events_url": "https://api.github.com/users/lovelydinosaur/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lovelydinosaur/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "11bec0880eeb51fb09e9fcbadb6f86159ec0bbc4",
+        "url": "https://api.github.com/repos/encode/httpx/commits/11bec0880eeb51fb09e9fcbadb6f86159ec0bbc4",
+        "html_url": "https://github.com/encode/httpx/commit/11bec0880eeb51fb09e9fcbadb6f86159ec0bbc4"
+      }
+    ]
+  },
+  {
+    "sha": "d16f9f3c3fcb284f7c8bc4ad3902145585961c71",
+    "node_id": "C_kwDOJDFEz9oAKGQxNmY5ZjNjM2ZjYjI4NGY3YzhiYzRhZDM5MDIxNDU1ODU5NjFjNzE",
+    "commit": {
+      "author": {
+        "name": "karosis88",
+        "email": "kar.petrosyanpy@gmail.com",
+        "date": "2023-10-11T11:27:08Z"
+      },
+      "committer": {
+        "name": "karosis88",
+        "email": "kar.petrosyanpy@gmail.com",
+        "date": "2023-10-11T11:27:08Z"
+      },
+      "message": "Drop unneeded noqa",
+      "tree": {
+        "sha": "9a1706c5a1e3df686c993103861aeaf664a2cb00",
+        "url": "https://api.github.com/repos/encode/httpx/git/trees/9a1706c5a1e3df686c993103861aeaf664a2cb00"
+      },
+      "url": "https://api.github.com/repos/encode/httpx/git/commits/d16f9f3c3fcb284f7c8bc4ad3902145585961c71",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/encode/httpx/commits/d16f9f3c3fcb284f7c8bc4ad3902145585961c71",
+    "html_url": "https://github.com/encode/httpx/commit/d16f9f3c3fcb284f7c8bc4ad3902145585961c71",
+    "comments_url": "https://api.github.com/repos/encode/httpx/commits/d16f9f3c3fcb284f7c8bc4ad3902145585961c71/comments",
+    "author": {
+      "login": "karpetrosyan",
+      "id": 92274156,
+      "node_id": "U_kgDOBX_97A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92274156?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/karpetrosyan",
+      "html_url": "https://github.com/karpetrosyan",
+      "followers_url": "https://api.github.com/users/karpetrosyan/followers",
+      "following_url": "https://api.github.com/users/karpetrosyan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/karpetrosyan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/karpetrosyan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/karpetrosyan/subscriptions",
+      "organizations_url": "https://api.github.com/users/karpetrosyan/orgs",
+      "repos_url": "https://api.github.com/users/karpetrosyan/repos",
+      "events_url": "https://api.github.com/users/karpetrosyan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/karpetrosyan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "karpetrosyan",
+      "id": 92274156,
+      "node_id": "U_kgDOBX_97A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92274156?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/karpetrosyan",
+      "html_url": "https://github.com/karpetrosyan",
+      "followers_url": "https://api.github.com/users/karpetrosyan/followers",
+      "following_url": "https://api.github.com/users/karpetrosyan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/karpetrosyan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/karpetrosyan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/karpetrosyan/subscriptions",
+      "organizations_url": "https://api.github.com/users/karpetrosyan/orgs",
+      "repos_url": "https://api.github.com/users/karpetrosyan/repos",
+      "events_url": "https://api.github.com/users/karpetrosyan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/karpetrosyan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "fad66cfd5929a1819276d94a51f9329dd3801991",
+        "url": "https://api.github.com/repos/encode/httpx/commits/fad66cfd5929a1819276d94a51f9329dd3801991",
+        "html_url": "https://github.com/encode/httpx/commit/fad66cfd5929a1819276d94a51f9329dd3801991"
+      }
+    ]
+  },
+  {
+    "sha": "64a4596ef0938d821a3468c272a33889145e2ad6",
+    "node_id": "C_kwDOJDFEz9oAKDY0YTQ1OTZlZjA5MzhkODIxYTM0NjhjMjcyYTMzODg5MTQ1ZTJhZDY",
+    "commit": {
+      "author": {
+        "name": "karosis88",
+        "email": "kar.petrosyanpy@gmail.com",
+        "date": "2023-10-11T11:31:34Z"
+      },
+      "committer": {
+        "name": "karosis88",
+        "email": "kar.petrosyanpy@gmail.com",
+        "date": "2023-10-11T11:31:34Z"
+      },
+      "message": "Changelog",
+      "tree": {
+        "sha": "f4fc7a3fc1dbd1501cda4bed9e986330026cb1a6",
+        "url": "https://api.github.com/repos/encode/httpx/git/trees/f4fc7a3fc1dbd1501cda4bed9e986330026cb1a6"
+      },
+      "url": "https://api.github.com/repos/encode/httpx/git/commits/64a4596ef0938d821a3468c272a33889145e2ad6",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/encode/httpx/commits/64a4596ef0938d821a3468c272a33889145e2ad6",
+    "html_url": "https://github.com/encode/httpx/commit/64a4596ef0938d821a3468c272a33889145e2ad6",
+    "comments_url": "https://api.github.com/repos/encode/httpx/commits/64a4596ef0938d821a3468c272a33889145e2ad6/comments",
+    "author": {
+      "login": "karpetrosyan",
+      "id": 92274156,
+      "node_id": "U_kgDOBX_97A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92274156?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/karpetrosyan",
+      "html_url": "https://github.com/karpetrosyan",
+      "followers_url": "https://api.github.com/users/karpetrosyan/followers",
+      "following_url": "https://api.github.com/users/karpetrosyan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/karpetrosyan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/karpetrosyan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/karpetrosyan/subscriptions",
+      "organizations_url": "https://api.github.com/users/karpetrosyan/orgs",
+      "repos_url": "https://api.github.com/users/karpetrosyan/repos",
+      "events_url": "https://api.github.com/users/karpetrosyan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/karpetrosyan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "karpetrosyan",
+      "id": 92274156,
+      "node_id": "U_kgDOBX_97A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92274156?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/karpetrosyan",
+      "html_url": "https://github.com/karpetrosyan",
+      "followers_url": "https://api.github.com/users/karpetrosyan/followers",
+      "following_url": "https://api.github.com/users/karpetrosyan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/karpetrosyan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/karpetrosyan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/karpetrosyan/subscriptions",
+      "organizations_url": "https://api.github.com/users/karpetrosyan/orgs",
+      "repos_url": "https://api.github.com/users/karpetrosyan/repos",
+      "events_url": "https://api.github.com/users/karpetrosyan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/karpetrosyan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "d16f9f3c3fcb284f7c8bc4ad3902145585961c71",
+        "url": "https://api.github.com/repos/encode/httpx/commits/d16f9f3c3fcb284f7c8bc4ad3902145585961c71",
+        "html_url": "https://github.com/encode/httpx/commit/d16f9f3c3fcb284f7c8bc4ad3902145585961c71"
+      }
+    ]
+  },
+  {
+    "sha": "541cc31c5c2c4180c76bfbdabf37d4dd59ce4f1c",
+    "node_id": "C_kwDOJDFEz9oAKDU0MWNjMzFjNWMyYzQxODBjNzZiZmJkYWJmMzdkNGRkNTljZTRmMWM",
+    "commit": {
+      "author": {
+        "name": "karosis88",
+        "email": "kar.petrosyanpy@gmail.com",
+        "date": "2023-10-12T06:49:12Z"
+      },
+      "committer": {
+        "name": "karosis88",
+        "email": "kar.petrosyanpy@gmail.com",
+        "date": "2023-10-12T06:49:12Z"
+      },
+      "message": "update documentation",
+      "tree": {
+        "sha": "da795d3a8a9b090e1df7b0aa53bbf7de22f976d2",
+        "url": "https://api.github.com/repos/encode/httpx/git/trees/da795d3a8a9b090e1df7b0aa53bbf7de22f976d2"
+      },
+      "url": "https://api.github.com/repos/encode/httpx/git/commits/541cc31c5c2c4180c76bfbdabf37d4dd59ce4f1c",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/encode/httpx/commits/541cc31c5c2c4180c76bfbdabf37d4dd59ce4f1c",
+    "html_url": "https://github.com/encode/httpx/commit/541cc31c5c2c4180c76bfbdabf37d4dd59ce4f1c",
+    "comments_url": "https://api.github.com/repos/encode/httpx/commits/541cc31c5c2c4180c76bfbdabf37d4dd59ce4f1c/comments",
+    "author": {
+      "login": "karpetrosyan",
+      "id": 92274156,
+      "node_id": "U_kgDOBX_97A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92274156?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/karpetrosyan",
+      "html_url": "https://github.com/karpetrosyan",
+      "followers_url": "https://api.github.com/users/karpetrosyan/followers",
+      "following_url": "https://api.github.com/users/karpetrosyan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/karpetrosyan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/karpetrosyan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/karpetrosyan/subscriptions",
+      "organizations_url": "https://api.github.com/users/karpetrosyan/orgs",
+      "repos_url": "https://api.github.com/users/karpetrosyan/repos",
+      "events_url": "https://api.github.com/users/karpetrosyan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/karpetrosyan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "karpetrosyan",
+      "id": 92274156,
+      "node_id": "U_kgDOBX_97A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92274156?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/karpetrosyan",
+      "html_url": "https://github.com/karpetrosyan",
+      "followers_url": "https://api.github.com/users/karpetrosyan/followers",
+      "following_url": "https://api.github.com/users/karpetrosyan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/karpetrosyan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/karpetrosyan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/karpetrosyan/subscriptions",
+      "organizations_url": "https://api.github.com/users/karpetrosyan/orgs",
+      "repos_url": "https://api.github.com/users/karpetrosyan/repos",
+      "events_url": "https://api.github.com/users/karpetrosyan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/karpetrosyan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "64a4596ef0938d821a3468c272a33889145e2ad6",
+        "url": "https://api.github.com/repos/encode/httpx/commits/64a4596ef0938d821a3468c272a33889145e2ad6",
+        "html_url": "https://github.com/encode/httpx/commit/64a4596ef0938d821a3468c272a33889145e2ad6"
+      }
+    ]
+  },
+  {
+    "sha": "812a70b594a646bd92e37104cff73f9307743a38",
+    "node_id": "C_kwDOJDFEz9oAKDgxMmE3MGI1OTRhNjQ2YmQ5MmUzNzEwNGNmZjczZjkzMDc3NDNhMzg",
+    "commit": {
+      "author": {
+        "name": "karosis88",
+        "email": "kar.petrosyanpy@gmail.com",
+        "date": "2023-10-12T07:18:27Z"
+      },
+      "committer": {
+        "name": "karosis88",
+        "email": "kar.petrosyanpy@gmail.com",
+        "date": "2023-10-12T07:18:27Z"
+      },
+      "message": "Allow None in mounts",
+      "tree": {
+        "sha": "c6422b6a9455a334fb509e575b6d6d20aea7e823",
+        "url": "https://api.github.com/repos/encode/httpx/git/trees/c6422b6a9455a334fb509e575b6d6d20aea7e823"
+      },
+      "url": "https://api.github.com/repos/encode/httpx/git/commits/812a70b594a646bd92e37104cff73f9307743a38",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/encode/httpx/commits/812a70b594a646bd92e37104cff73f9307743a38",
+    "html_url": "https://github.com/encode/httpx/commit/812a70b594a646bd92e37104cff73f9307743a38",
+    "comments_url": "https://api.github.com/repos/encode/httpx/commits/812a70b594a646bd92e37104cff73f9307743a38/comments",
+    "author": {
+      "login": "karpetrosyan",
+      "id": 92274156,
+      "node_id": "U_kgDOBX_97A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92274156?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/karpetrosyan",
+      "html_url": "https://github.com/karpetrosyan",
+      "followers_url": "https://api.github.com/users/karpetrosyan/followers",
+      "following_url": "https://api.github.com/users/karpetrosyan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/karpetrosyan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/karpetrosyan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/karpetrosyan/subscriptions",
+      "organizations_url": "https://api.github.com/users/karpetrosyan/orgs",
+      "repos_url": "https://api.github.com/users/karpetrosyan/repos",
+      "events_url": "https://api.github.com/users/karpetrosyan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/karpetrosyan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "karpetrosyan",
+      "id": 92274156,
+      "node_id": "U_kgDOBX_97A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92274156?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/karpetrosyan",
+      "html_url": "https://github.com/karpetrosyan",
+      "followers_url": "https://api.github.com/users/karpetrosyan/followers",
+      "following_url": "https://api.github.com/users/karpetrosyan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/karpetrosyan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/karpetrosyan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/karpetrosyan/subscriptions",
+      "organizations_url": "https://api.github.com/users/karpetrosyan/orgs",
+      "repos_url": "https://api.github.com/users/karpetrosyan/repos",
+      "events_url": "https://api.github.com/users/karpetrosyan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/karpetrosyan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "541cc31c5c2c4180c76bfbdabf37d4dd59ce4f1c",
+        "url": "https://api.github.com/repos/encode/httpx/commits/541cc31c5c2c4180c76bfbdabf37d4dd59ce4f1c",
+        "html_url": "https://github.com/encode/httpx/commit/541cc31c5c2c4180c76bfbdabf37d4dd59ce4f1c"
+      }
+    ]
+  },
+  {
+    "sha": "ccf180387ff1f9164b9f69515dc260804d75b90b",
+    "node_id": "C_kwDOJDFEz9oAKGNjZjE4MDM4N2ZmMWY5MTY0YjlmNjk1MTVkYzI2MDgwNGQ3NWI5MGI",
+    "commit": {
+      "author": {
+        "name": "karosis88",
+        "email": "kar.petrosyanpy@gmail.com",
+        "date": "2023-10-12T07:27:16Z"
+      },
+      "committer": {
+        "name": "karosis88",
+        "email": "kar.petrosyanpy@gmail.com",
+        "date": "2023-10-12T07:27:16Z"
+      },
+      "message": "typos",
+      "tree": {
+        "sha": "3f3aa9764c3a9560becc1b43384c2b8c374cf063",
+        "url": "https://api.github.com/repos/encode/httpx/git/trees/3f3aa9764c3a9560becc1b43384c2b8c374cf063"
+      },
+      "url": "https://api.github.com/repos/encode/httpx/git/commits/ccf180387ff1f9164b9f69515dc260804d75b90b",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/encode/httpx/commits/ccf180387ff1f9164b9f69515dc260804d75b90b",
+    "html_url": "https://github.com/encode/httpx/commit/ccf180387ff1f9164b9f69515dc260804d75b90b",
+    "comments_url": "https://api.github.com/repos/encode/httpx/commits/ccf180387ff1f9164b9f69515dc260804d75b90b/comments",
+    "author": {
+      "login": "karpetrosyan",
+      "id": 92274156,
+      "node_id": "U_kgDOBX_97A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92274156?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/karpetrosyan",
+      "html_url": "https://github.com/karpetrosyan",
+      "followers_url": "https://api.github.com/users/karpetrosyan/followers",
+      "following_url": "https://api.github.com/users/karpetrosyan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/karpetrosyan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/karpetrosyan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/karpetrosyan/subscriptions",
+      "organizations_url": "https://api.github.com/users/karpetrosyan/orgs",
+      "repos_url": "https://api.github.com/users/karpetrosyan/repos",
+      "events_url": "https://api.github.com/users/karpetrosyan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/karpetrosyan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "karpetrosyan",
+      "id": 92274156,
+      "node_id": "U_kgDOBX_97A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92274156?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/karpetrosyan",
+      "html_url": "https://github.com/karpetrosyan",
+      "followers_url": "https://api.github.com/users/karpetrosyan/followers",
+      "following_url": "https://api.github.com/users/karpetrosyan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/karpetrosyan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/karpetrosyan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/karpetrosyan/subscriptions",
+      "organizations_url": "https://api.github.com/users/karpetrosyan/orgs",
+      "repos_url": "https://api.github.com/users/karpetrosyan/repos",
+      "events_url": "https://api.github.com/users/karpetrosyan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/karpetrosyan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "812a70b594a646bd92e37104cff73f9307743a38",
+        "url": "https://api.github.com/repos/encode/httpx/commits/812a70b594a646bd92e37104cff73f9307743a38",
+        "html_url": "https://github.com/encode/httpx/commit/812a70b594a646bd92e37104cff73f9307743a38"
+      }
+    ]
+  },
+  {
+    "sha": "bacd8b26a5715eba40f6c711bb4ea71e121f1fad",
+    "node_id": "C_kwDOJDFEz9oAKGJhY2Q4YjI2YTU3MTVlYmE0MGY2YzcxMWJiNGVhNzFlMTIxZjFmYWQ",
+    "commit": {
+      "author": {
+        "name": "Kar Petrosyan",
+        "email": "92274156+karpetrosyan@users.noreply.github.com",
+        "date": "2023-10-12T08:03:44Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2023-10-12T08:03:44Z"
+      },
+      "message": "Update httpx/_types.py",
+      "tree": {
+        "sha": "f76e8fd687a15b79d469d9c1613ca63d95673f57",
+        "url": "https://api.github.com/repos/encode/httpx/git/trees/f76e8fd687a15b79d469d9c1613ca63d95673f57"
+      },
+      "url": "https://api.github.com/repos/encode/httpx/git/commits/bacd8b26a5715eba40f6c711bb4ea71e121f1fad",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJlJ6hgCRBK7hj4Ov3rIwAAEK8IAKGLuSZ4ysM/bxcwsWD5RGUj\nXD5W/xbyJXNpKcCIBUTDNfr/LqpzVHSKkVgSDfZ4Kfxmhk3OscV0bAP82/lD6VmK\nC5eLgSnLb03NPRK8n/s0iravTYBuJ5Z5faK9GbMuv0hRLrr+LcZBRSGxnXDpndRg\n2hYtcMKkoCQoXSupGHZQkbs9CqjYRQmrKBmkKf9iF7HVTW1a9SQOJz2jSUCGKaVa\nKibNUJ6OG8hjbQZMB0wiuJJ/Ywtmv7sY6ls6+gjncYg4vHJpNXx1DQZcUkIPtoTl\n4DEdTuVMr9yytCtcnGu1H4nb9VWDdHuvXa4l/nHMDSklDT0qBrqtNAFkDgLM0lw=\n=COQS\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree f76e8fd687a15b79d469d9c1613ca63d95673f57\nparent ccf180387ff1f9164b9f69515dc260804d75b90b\nauthor Kar Petrosyan <92274156+karpetrosyan@users.noreply.github.com> 1697097824 +0300\ncommitter GitHub <noreply@github.com> 1697097824 +0300\n\nUpdate httpx/_types.py",
+        "verified_at": "2024-11-06T01:21:24Z"
+      }
+    },
+    "url": "https://api.github.com/repos/encode/httpx/commits/bacd8b26a5715eba40f6c711bb4ea71e121f1fad",
+    "html_url": "https://github.com/encode/httpx/commit/bacd8b26a5715eba40f6c711bb4ea71e121f1fad",
+    "comments_url": "https://api.github.com/repos/encode/httpx/commits/bacd8b26a5715eba40f6c711bb4ea71e121f1fad/comments",
+    "author": {
+      "login": "karpetrosyan",
+      "id": 92274156,
+      "node_id": "U_kgDOBX_97A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92274156?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/karpetrosyan",
+      "html_url": "https://github.com/karpetrosyan",
+      "followers_url": "https://api.github.com/users/karpetrosyan/followers",
+      "following_url": "https://api.github.com/users/karpetrosyan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/karpetrosyan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/karpetrosyan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/karpetrosyan/subscriptions",
+      "organizations_url": "https://api.github.com/users/karpetrosyan/orgs",
+      "repos_url": "https://api.github.com/users/karpetrosyan/repos",
+      "events_url": "https://api.github.com/users/karpetrosyan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/karpetrosyan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "ccf180387ff1f9164b9f69515dc260804d75b90b",
+        "url": "https://api.github.com/repos/encode/httpx/commits/ccf180387ff1f9164b9f69515dc260804d75b90b",
+        "html_url": "https://github.com/encode/httpx/commit/ccf180387ff1f9164b9f69515dc260804d75b90b"
+      }
+    ]
+  },
+  {
+    "sha": "d5fa2b0844010d5dd881bd6490f5b27bc66d1775",
+    "node_id": "C_kwDOJDFEz9oAKGQ1ZmEyYjA4NDQwMTBkNWRkODgxYmQ2NDkwZjViMjdiYzY2ZDE3NzU",
+    "commit": {
+      "author": {
+        "name": "karosis88",
+        "email": "kar.petrosyanpy@gmail.com",
+        "date": "2023-10-12T08:50:00Z"
+      },
+      "committer": {
+        "name": "karosis88",
+        "email": "kar.petrosyanpy@gmail.com",
+        "date": "2023-10-12T08:50:00Z"
+      },
+      "message": "Changes proxies to proxy in CLI app",
+      "tree": {
+        "sha": "4ecc369c41910f4e2f5d0a142c025d3778fc60f3",
+        "url": "https://api.github.com/repos/encode/httpx/git/trees/4ecc369c41910f4e2f5d0a142c025d3778fc60f3"
+      },
+      "url": "https://api.github.com/repos/encode/httpx/git/commits/d5fa2b0844010d5dd881bd6490f5b27bc66d1775",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/encode/httpx/commits/d5fa2b0844010d5dd881bd6490f5b27bc66d1775",
+    "html_url": "https://github.com/encode/httpx/commit/d5fa2b0844010d5dd881bd6490f5b27bc66d1775",
+    "comments_url": "https://api.github.com/repos/encode/httpx/commits/d5fa2b0844010d5dd881bd6490f5b27bc66d1775/comments",
+    "author": {
+      "login": "karpetrosyan",
+      "id": 92274156,
+      "node_id": "U_kgDOBX_97A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92274156?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/karpetrosyan",
+      "html_url": "https://github.com/karpetrosyan",
+      "followers_url": "https://api.github.com/users/karpetrosyan/followers",
+      "following_url": "https://api.github.com/users/karpetrosyan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/karpetrosyan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/karpetrosyan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/karpetrosyan/subscriptions",
+      "organizations_url": "https://api.github.com/users/karpetrosyan/orgs",
+      "repos_url": "https://api.github.com/users/karpetrosyan/repos",
+      "events_url": "https://api.github.com/users/karpetrosyan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/karpetrosyan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "karpetrosyan",
+      "id": 92274156,
+      "node_id": "U_kgDOBX_97A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92274156?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/karpetrosyan",
+      "html_url": "https://github.com/karpetrosyan",
+      "followers_url": "https://api.github.com/users/karpetrosyan/followers",
+      "following_url": "https://api.github.com/users/karpetrosyan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/karpetrosyan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/karpetrosyan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/karpetrosyan/subscriptions",
+      "organizations_url": "https://api.github.com/users/karpetrosyan/orgs",
+      "repos_url": "https://api.github.com/users/karpetrosyan/repos",
+      "events_url": "https://api.github.com/users/karpetrosyan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/karpetrosyan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "ccf180387ff1f9164b9f69515dc260804d75b90b",
+        "url": "https://api.github.com/repos/encode/httpx/commits/ccf180387ff1f9164b9f69515dc260804d75b90b",
+        "html_url": "https://github.com/encode/httpx/commit/ccf180387ff1f9164b9f69515dc260804d75b90b"
+      }
+    ]
+  },
+  {
+    "sha": "17c6cdef84a75efd1abcd8062fb2bfdcecea51df",
+    "node_id": "C_kwDOJDFEz9oAKDE3YzZjZGVmODRhNzVlZmQxYWJjZDgwNjJmYjJiZmRjZWNlYTUxZGY",
+    "commit": {
+      "author": {
+        "name": "karosis88",
+        "email": "kar.petrosyanpy@gmail.com",
+        "date": "2023-10-12T08:57:34Z"
+      },
+      "committer": {
+        "name": "karosis88",
+        "email": "kar.petrosyanpy@gmail.com",
+        "date": "2023-10-12T08:57:34Z"
+      },
+      "message": "Add proxy to request function",
+      "tree": {
+        "sha": "af368c1c2c04cbd6bf9423ff97c4d3ce2e03ad2a",
+        "url": "https://api.github.com/repos/encode/httpx/git/trees/af368c1c2c04cbd6bf9423ff97c4d3ce2e03ad2a"
+      },
+      "url": "https://api.github.com/repos/encode/httpx/git/commits/17c6cdef84a75efd1abcd8062fb2bfdcecea51df",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/encode/httpx/commits/17c6cdef84a75efd1abcd8062fb2bfdcecea51df",
+    "html_url": "https://github.com/encode/httpx/commit/17c6cdef84a75efd1abcd8062fb2bfdcecea51df",
+    "comments_url": "https://api.github.com/repos/encode/httpx/commits/17c6cdef84a75efd1abcd8062fb2bfdcecea51df/comments",
+    "author": {
+      "login": "karpetrosyan",
+      "id": 92274156,
+      "node_id": "U_kgDOBX_97A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92274156?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/karpetrosyan",
+      "html_url": "https://github.com/karpetrosyan",
+      "followers_url": "https://api.github.com/users/karpetrosyan/followers",
+      "following_url": "https://api.github.com/users/karpetrosyan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/karpetrosyan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/karpetrosyan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/karpetrosyan/subscriptions",
+      "organizations_url": "https://api.github.com/users/karpetrosyan/orgs",
+      "repos_url": "https://api.github.com/users/karpetrosyan/repos",
+      "events_url": "https://api.github.com/users/karpetrosyan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/karpetrosyan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "karpetrosyan",
+      "id": 92274156,
+      "node_id": "U_kgDOBX_97A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92274156?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/karpetrosyan",
+      "html_url": "https://github.com/karpetrosyan",
+      "followers_url": "https://api.github.com/users/karpetrosyan/followers",
+      "following_url": "https://api.github.com/users/karpetrosyan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/karpetrosyan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/karpetrosyan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/karpetrosyan/subscriptions",
+      "organizations_url": "https://api.github.com/users/karpetrosyan/orgs",
+      "repos_url": "https://api.github.com/users/karpetrosyan/repos",
+      "events_url": "https://api.github.com/users/karpetrosyan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/karpetrosyan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "d5fa2b0844010d5dd881bd6490f5b27bc66d1775",
+        "url": "https://api.github.com/repos/encode/httpx/commits/d5fa2b0844010d5dd881bd6490f5b27bc66d1775",
+        "html_url": "https://github.com/encode/httpx/commit/d5fa2b0844010d5dd881bd6490f5b27bc66d1775"
+      }
+    ]
+  },
+  {
+    "sha": "5aed92eea05867256b4a62a5e0611be453094f5f",
+    "node_id": "C_kwDOJDFEz9oAKDVhZWQ5MmVlYTA1ODY3MjU2YjRhNjJhNWUwNjExYmU0NTMwOTRmNWY",
+    "commit": {
+      "author": {
+        "name": "karosis88",
+        "email": "kar.petrosyanpy@gmail.com",
+        "date": "2023-10-12T08:58:39Z"
+      },
+      "committer": {
+        "name": "karosis88",
+        "email": "kar.petrosyanpy@gmail.com",
+        "date": "2023-10-12T08:58:39Z"
+      },
+      "message": "Merge branch 'drop-proxies' of github.com:karosis88/httpx into drop-proxies",
+      "tree": {
+        "sha": "12b22ecbed031d189fff1401258c0dcc5ad4eb6d",
+        "url": "https://api.github.com/repos/encode/httpx/git/trees/12b22ecbed031d189fff1401258c0dcc5ad4eb6d"
+      },
+      "url": "https://api.github.com/repos/encode/httpx/git/commits/5aed92eea05867256b4a62a5e0611be453094f5f",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/encode/httpx/commits/5aed92eea05867256b4a62a5e0611be453094f5f",
+    "html_url": "https://github.com/encode/httpx/commit/5aed92eea05867256b4a62a5e0611be453094f5f",
+    "comments_url": "https://api.github.com/repos/encode/httpx/commits/5aed92eea05867256b4a62a5e0611be453094f5f/comments",
+    "author": {
+      "login": "karpetrosyan",
+      "id": 92274156,
+      "node_id": "U_kgDOBX_97A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92274156?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/karpetrosyan",
+      "html_url": "https://github.com/karpetrosyan",
+      "followers_url": "https://api.github.com/users/karpetrosyan/followers",
+      "following_url": "https://api.github.com/users/karpetrosyan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/karpetrosyan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/karpetrosyan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/karpetrosyan/subscriptions",
+      "organizations_url": "https://api.github.com/users/karpetrosyan/orgs",
+      "repos_url": "https://api.github.com/users/karpetrosyan/repos",
+      "events_url": "https://api.github.com/users/karpetrosyan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/karpetrosyan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "karpetrosyan",
+      "id": 92274156,
+      "node_id": "U_kgDOBX_97A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92274156?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/karpetrosyan",
+      "html_url": "https://github.com/karpetrosyan",
+      "followers_url": "https://api.github.com/users/karpetrosyan/followers",
+      "following_url": "https://api.github.com/users/karpetrosyan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/karpetrosyan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/karpetrosyan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/karpetrosyan/subscriptions",
+      "organizations_url": "https://api.github.com/users/karpetrosyan/orgs",
+      "repos_url": "https://api.github.com/users/karpetrosyan/repos",
+      "events_url": "https://api.github.com/users/karpetrosyan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/karpetrosyan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "17c6cdef84a75efd1abcd8062fb2bfdcecea51df",
+        "url": "https://api.github.com/repos/encode/httpx/commits/17c6cdef84a75efd1abcd8062fb2bfdcecea51df",
+        "html_url": "https://github.com/encode/httpx/commit/17c6cdef84a75efd1abcd8062fb2bfdcecea51df"
+      },
+      {
+        "sha": "bacd8b26a5715eba40f6c711bb4ea71e121f1fad",
+        "url": "https://api.github.com/repos/encode/httpx/commits/bacd8b26a5715eba40f6c711bb4ea71e121f1fad",
+        "html_url": "https://github.com/encode/httpx/commit/bacd8b26a5715eba40f6c711bb4ea71e121f1fad"
+      }
+    ]
+  },
+  {
+    "sha": "6e5e4ac8dce19f2e65861e55b3e7fc2a75215483",
+    "node_id": "C_kwDOJDFEz9oAKDZlNWU0YWM4ZGNlMTlmMmU2NTg2MWU1NWIzZTdmYzJhNzUyMTU0ODM",
+    "commit": {
+      "author": {
+        "name": "Kar Petrosyan",
+        "email": "92274156+karpetrosyan@users.noreply.github.com",
+        "date": "2023-10-29T08:43:01Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2023-10-29T08:43:01Z"
+      },
+      "message": "Merge branch 'master' into drop-proxies",
+      "tree": {
+        "sha": "6852407e84788c0c85ecd3fbe366d1894062d090",
+        "url": "https://api.github.com/repos/encode/httpx/git/trees/6852407e84788c0c85ecd3fbe366d1894062d090"
+      },
+      "url": "https://api.github.com/repos/encode/httpx/git/commits/6e5e4ac8dce19f2e65861e55b3e7fc2a75215483",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJlPhsVCRBK7hj4Ov3rIwAAdfEIAH01YJnyVI/xbFtGtpLugsiC\nbAXMbudGzmOtpgl4AYeboWOcACHXH4mQ5oCs8/h0Uzer6D9PVJPeXlCK3vougmja\ntxbpRygoX/gqiaAB76T8rAa/NEqohUDx7zYhcXsD6Paf19uLQNhjD/Wc2PV5xB0J\ndOqAx9jJyCl639iTwdzugvT/YOapCBePWmylFtWJiepeOYURFgQhT1Dm5ovta+7G\n/ZdkxYsS8jIBs4uveleYF/HPel4EMFB57JI+dKXo3CkYm1ahr9WKbNw9usxmZlK3\n9rlJvR0/Sy59xtJmOHjMKVW7XEEg95oGvaGwNIJkoahssu4BS0vcIQN3quW4R00=\n=RarX\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 6852407e84788c0c85ecd3fbe366d1894062d090\nparent 5aed92eea05867256b4a62a5e0611be453094f5f\nparent 31a7bb381ac9f5d99e3e2dc68ffaff4b5d23faca\nauthor Kar Petrosyan <92274156+karpetrosyan@users.noreply.github.com> 1698568981 -0400\ncommitter GitHub <noreply@github.com> 1698568981 -0400\n\nMerge branch 'master' into drop-proxies",
+        "verified_at": "2024-01-16T19:59:59Z"
+      }
+    },
+    "url": "https://api.github.com/repos/encode/httpx/commits/6e5e4ac8dce19f2e65861e55b3e7fc2a75215483",
+    "html_url": "https://github.com/encode/httpx/commit/6e5e4ac8dce19f2e65861e55b3e7fc2a75215483",
+    "comments_url": "https://api.github.com/repos/encode/httpx/commits/6e5e4ac8dce19f2e65861e55b3e7fc2a75215483/comments",
+    "author": {
+      "login": "karpetrosyan",
+      "id": 92274156,
+      "node_id": "U_kgDOBX_97A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92274156?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/karpetrosyan",
+      "html_url": "https://github.com/karpetrosyan",
+      "followers_url": "https://api.github.com/users/karpetrosyan/followers",
+      "following_url": "https://api.github.com/users/karpetrosyan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/karpetrosyan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/karpetrosyan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/karpetrosyan/subscriptions",
+      "organizations_url": "https://api.github.com/users/karpetrosyan/orgs",
+      "repos_url": "https://api.github.com/users/karpetrosyan/repos",
+      "events_url": "https://api.github.com/users/karpetrosyan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/karpetrosyan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "5aed92eea05867256b4a62a5e0611be453094f5f",
+        "url": "https://api.github.com/repos/encode/httpx/commits/5aed92eea05867256b4a62a5e0611be453094f5f",
+        "html_url": "https://github.com/encode/httpx/commit/5aed92eea05867256b4a62a5e0611be453094f5f"
+      },
+      {
+        "sha": "31a7bb381ac9f5d99e3e2dc68ffaff4b5d23faca",
+        "url": "https://api.github.com/repos/encode/httpx/commits/31a7bb381ac9f5d99e3e2dc68ffaff4b5d23faca",
+        "html_url": "https://github.com/encode/httpx/commit/31a7bb381ac9f5d99e3e2dc68ffaff4b5d23faca"
+      }
+    ]
+  },
+  {
+    "sha": "2672d8ab523fb257e0d363c00558cddb601a4236",
+    "node_id": "C_kwDOJDFEz9oAKDI2NzJkOGFiNTIzZmIyNTdlMGQzNjNjMDA1NThjZGRiNjAxYTQyMzY",
+    "commit": {
+      "author": {
+        "name": "Tom Christie",
+        "email": "tom@tomchristie.com",
+        "date": "2023-11-02T14:44:25Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2023-11-02T14:44:25Z"
+      },
+      "message": "Merge branch 'master' into drop-proxies",
+      "tree": {
+        "sha": "eea44ebbd5f0b3941b4cd3f06e6246ef08e3898d",
+        "url": "https://api.github.com/repos/encode/httpx/git/trees/eea44ebbd5f0b3941b4cd3f06e6246ef08e3898d"
+      },
+      "url": "https://api.github.com/repos/encode/httpx/git/commits/2672d8ab523fb257e0d363c00558cddb601a4236",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJlQ7XJCRBK7hj4Ov3rIwAAB98IACucB0D/QRUXXnrKmoGbATfV\nIaqFvdK8+2kfOfBHgfLKuxdGfTQoDRB5hDlKgsYQNzxR4FIlykAlUU7+JAhsI7q2\nyNW9VUpoZ0wRHO4m4Nbh1h2ONKIJa+f62JdT5XBVJ7x316MdV4QZz2dRn8R02WNy\nUsdfGOg5kU/PZhSJwlFDVd1F7QZGQIANXm2OxOY0UsQY0DvZmiDPjYlSfyPi0YNT\n0pmz2Yepxw3JCNVL73qvGI4txJbObBetNez7KwLLbvb5xx5wnWLZN009NkQEISXS\nWDzMq+C96Bioky2tNqQSGpRr9sefTCzyGBkxvZvwJaMaBoi3y14OKNsdqZr4xN0=\n=90ED\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree eea44ebbd5f0b3941b4cd3f06e6246ef08e3898d\nparent 6e5e4ac8dce19f2e65861e55b3e7fc2a75215483\nparent 280a89a4d13b65852b065b3e1aaa53d388946a88\nauthor Tom Christie <tom@tomchristie.com> 1698936265 +0000\ncommitter GitHub <noreply@github.com> 1698936265 +0000\n\nMerge branch 'master' into drop-proxies",
+        "verified_at": "2024-01-16T19:59:59Z"
+      }
+    },
+    "url": "https://api.github.com/repos/encode/httpx/commits/2672d8ab523fb257e0d363c00558cddb601a4236",
+    "html_url": "https://github.com/encode/httpx/commit/2672d8ab523fb257e0d363c00558cddb601a4236",
+    "comments_url": "https://api.github.com/repos/encode/httpx/commits/2672d8ab523fb257e0d363c00558cddb601a4236/comments",
+    "author": {
+      "login": "lovelydinosaur",
+      "id": 647359,
+      "node_id": "MDQ6VXNlcjY0NzM1OQ==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/647359?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lovelydinosaur",
+      "html_url": "https://github.com/lovelydinosaur",
+      "followers_url": "https://api.github.com/users/lovelydinosaur/followers",
+      "following_url": "https://api.github.com/users/lovelydinosaur/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lovelydinosaur/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lovelydinosaur/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lovelydinosaur/subscriptions",
+      "organizations_url": "https://api.github.com/users/lovelydinosaur/orgs",
+      "repos_url": "https://api.github.com/users/lovelydinosaur/repos",
+      "events_url": "https://api.github.com/users/lovelydinosaur/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lovelydinosaur/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "6e5e4ac8dce19f2e65861e55b3e7fc2a75215483",
+        "url": "https://api.github.com/repos/encode/httpx/commits/6e5e4ac8dce19f2e65861e55b3e7fc2a75215483",
+        "html_url": "https://github.com/encode/httpx/commit/6e5e4ac8dce19f2e65861e55b3e7fc2a75215483"
+      },
+      {
+        "sha": "280a89a4d13b65852b065b3e1aaa53d388946a88",
+        "url": "https://api.github.com/repos/encode/httpx/commits/280a89a4d13b65852b065b3e1aaa53d388946a88",
+        "html_url": "https://github.com/encode/httpx/commit/280a89a4d13b65852b065b3e1aaa53d388946a88"
+      }
+    ]
+  },
+  {
+    "sha": "fffa4542c5967750ed55112138bff714d414d4b8",
+    "node_id": "C_kwDOJDFEz9oAKGZmZmE0NTQyYzU5Njc3NTBlZDU1MTEyMTM4YmZmNzE0ZDQxNGQ0Yjg",
+    "commit": {
+      "author": {
+        "name": "Kar Petrosyan",
+        "email": "92274156+karpetrosyan@users.noreply.github.com",
+        "date": "2023-11-17T13:54:25Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2023-11-17T13:54:25Z"
+      },
+      "message": "Merge branch 'master' into drop-proxies",
+      "tree": {
+        "sha": "3dcb810e7b5456a6526da33e51a4d4a44a7029a0",
+        "url": "https://api.github.com/repos/encode/httpx/git/trees/3dcb810e7b5456a6526da33e51a4d4a44a7029a0"
+      },
+      "url": "https://api.github.com/repos/encode/httpx/git/commits/fffa4542c5967750ed55112138bff714d414d4b8",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJlV3CRCRBK7hj4Ov3rIwAALScIAHAdibu0j0ZjC9caQJXAK3Wr\nLggQsmJqEhPYUpnc2vJYwEwwXVNDoU12LD1zoT00gMKO5WZxrcHG5GZEbJWYlBT6\nk9zy0mu/blmgbBDgOwgCo03TnWw8ZJZ0CY0JCsOKudiMfreKKU8FBJItuxowxbfx\nPp96Ui05tDMm7PxS6WPrcUQ/lxkXMBAr7hWpU6uzcBe9TWQvnZNM5H2Vx2TyfCoR\nEQxNTgWe45iU6BZCasctbWSlaFmazIisiVUcFRcJzw2gq8rGiG0OjADPrnhmK5/N\nCyCJA9fzUhfxJHuqbM4EUX9zG9lPLsTkGbkw+//pgBE6F6nE/FSrxnyIaJmA7Ik=\n=ZvQl\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 3dcb810e7b5456a6526da33e51a4d4a44a7029a0\nparent 2672d8ab523fb257e0d363c00558cddb601a4236\nparent c51e0466be600af7f36c72fca084f16a91bce9d2\nauthor Kar Petrosyan <92274156+karpetrosyan@users.noreply.github.com> 1700229265 +0400\ncommitter GitHub <noreply@github.com> 1700229265 +0400\n\nMerge branch 'master' into drop-proxies",
+        "verified_at": "2024-11-06T01:21:24Z"
+      }
+    },
+    "url": "https://api.github.com/repos/encode/httpx/commits/fffa4542c5967750ed55112138bff714d414d4b8",
+    "html_url": "https://github.com/encode/httpx/commit/fffa4542c5967750ed55112138bff714d414d4b8",
+    "comments_url": "https://api.github.com/repos/encode/httpx/commits/fffa4542c5967750ed55112138bff714d414d4b8/comments",
+    "author": {
+      "login": "karpetrosyan",
+      "id": 92274156,
+      "node_id": "U_kgDOBX_97A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92274156?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/karpetrosyan",
+      "html_url": "https://github.com/karpetrosyan",
+      "followers_url": "https://api.github.com/users/karpetrosyan/followers",
+      "following_url": "https://api.github.com/users/karpetrosyan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/karpetrosyan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/karpetrosyan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/karpetrosyan/subscriptions",
+      "organizations_url": "https://api.github.com/users/karpetrosyan/orgs",
+      "repos_url": "https://api.github.com/users/karpetrosyan/repos",
+      "events_url": "https://api.github.com/users/karpetrosyan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/karpetrosyan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "2672d8ab523fb257e0d363c00558cddb601a4236",
+        "url": "https://api.github.com/repos/encode/httpx/commits/2672d8ab523fb257e0d363c00558cddb601a4236",
+        "html_url": "https://github.com/encode/httpx/commit/2672d8ab523fb257e0d363c00558cddb601a4236"
+      },
+      {
+        "sha": "c51e0466be600af7f36c72fca084f16a91bce9d2",
+        "url": "https://api.github.com/repos/encode/httpx/commits/c51e0466be600af7f36c72fca084f16a91bce9d2",
+        "html_url": "https://github.com/encode/httpx/commit/c51e0466be600af7f36c72fca084f16a91bce9d2"
+      }
+    ]
+  },
+  {
+    "sha": "4deebb87322451612e0c712ada3cd2b8f8e1fd9c",
+    "node_id": "C_kwDOJDFEz9oAKDRkZWViYjg3MzIyNDUxNjEyZTBjNzEyYWRhM2NkMmI4ZjhlMWZkOWM",
+    "commit": {
+      "author": {
+        "name": "Kar Petrosyan",
+        "email": "92274156+karpetrosyan@users.noreply.github.com",
+        "date": "2023-11-17T14:00:01Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2023-11-17T14:00:01Z"
+      },
+      "message": "Merge branch 'master' into drop-proxies",
+      "tree": {
+        "sha": "0a7725444d98a68a5c9ba9dc83630884e3b04929",
+        "url": "https://api.github.com/repos/encode/httpx/git/trees/0a7725444d98a68a5c9ba9dc83630884e3b04929"
+      },
+      "url": "https://api.github.com/repos/encode/httpx/git/commits/4deebb87322451612e0c712ada3cd2b8f8e1fd9c",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJlV3HhCRBK7hj4Ov3rIwAAqz0IAJ/Wyhchzs7qdNcg5FFeAiU9\nEFyOgoH3HsmHT2NrOX1snzpDIRVR0FoEqu/Iy3/69w1boo9k/9yEzNDiB5zksUJ1\nLiwKc0jJdJH8CGOnFGMCTPmK/9A98w4zETL5+Tk3UU4KVD5v+WhVEcbP0DnqRkak\nJoJYM86TGGn35TAX1uUlDGKAFfh7rse8V4SACrdlDz/SauPoCtJSfQq8g3WKGzou\nMuIb6QMV5V3VEsajmv9MaixT3hKbl1iKtBMUc7VCiQTHoh0ar6hvum/FKnFBxkbg\nMC00H+oU3MpRe8/QvEKX1GRiA9QAJ7r9o1ctqkAkUOSe9OMPiapB3+kkbplGXs4=\n=vpuD\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 0a7725444d98a68a5c9ba9dc83630884e3b04929\nparent fffa4542c5967750ed55112138bff714d414d4b8\nparent 87f39f12c9ecdd0ebcd8d017235698e72567e9c7\nauthor Kar Petrosyan <92274156+karpetrosyan@users.noreply.github.com> 1700229601 +0400\ncommitter GitHub <noreply@github.com> 1700229601 +0400\n\nMerge branch 'master' into drop-proxies",
+        "verified_at": "2024-01-16T19:59:59Z"
+      }
+    },
+    "url": "https://api.github.com/repos/encode/httpx/commits/4deebb87322451612e0c712ada3cd2b8f8e1fd9c",
+    "html_url": "https://github.com/encode/httpx/commit/4deebb87322451612e0c712ada3cd2b8f8e1fd9c",
+    "comments_url": "https://api.github.com/repos/encode/httpx/commits/4deebb87322451612e0c712ada3cd2b8f8e1fd9c/comments",
+    "author": {
+      "login": "karpetrosyan",
+      "id": 92274156,
+      "node_id": "U_kgDOBX_97A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92274156?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/karpetrosyan",
+      "html_url": "https://github.com/karpetrosyan",
+      "followers_url": "https://api.github.com/users/karpetrosyan/followers",
+      "following_url": "https://api.github.com/users/karpetrosyan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/karpetrosyan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/karpetrosyan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/karpetrosyan/subscriptions",
+      "organizations_url": "https://api.github.com/users/karpetrosyan/orgs",
+      "repos_url": "https://api.github.com/users/karpetrosyan/repos",
+      "events_url": "https://api.github.com/users/karpetrosyan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/karpetrosyan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "fffa4542c5967750ed55112138bff714d414d4b8",
+        "url": "https://api.github.com/repos/encode/httpx/commits/fffa4542c5967750ed55112138bff714d414d4b8",
+        "html_url": "https://github.com/encode/httpx/commit/fffa4542c5967750ed55112138bff714d414d4b8"
+      },
+      {
+        "sha": "87f39f12c9ecdd0ebcd8d017235698e72567e9c7",
+        "url": "https://api.github.com/repos/encode/httpx/commits/87f39f12c9ecdd0ebcd8d017235698e72567e9c7",
+        "html_url": "https://github.com/encode/httpx/commit/87f39f12c9ecdd0ebcd8d017235698e72567e9c7"
+      }
+    ]
+  },
+  {
+    "sha": "0b738175e4a74c73d2c01a70645b2ee5d774ec14",
+    "node_id": "C_kwDOJDFEz9oAKDBiNzM4MTc1ZTRhNzRjNzNkMmMwMWE3MDY0NWIyZWU1ZDc3NGVjMTQ",
+    "commit": {
+      "author": {
+        "name": "Kar Petrosyan",
+        "email": "92274156+karpetrosyan@users.noreply.github.com",
+        "date": "2023-12-11T12:11:45Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2023-12-11T12:11:45Z"
+      },
+      "message": "Update CHANGELOG.md\n\nCo-authored-by: Tom Christie <tom@tomchristie.com>",
+      "tree": {
+        "sha": "706f16bcfc1dadaae967f4502ccb255330fc07df",
+        "url": "https://api.github.com/repos/encode/httpx/git/trees/706f16bcfc1dadaae967f4502ccb255330fc07df"
+      },
+      "url": "https://api.github.com/repos/encode/httpx/git/commits/0b738175e4a74c73d2c01a70645b2ee5d774ec14",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJldvyBCRBK7hj4Ov3rIwAA6xgIAAYZDIHPmDMWtpQjaPDBnEm/\nnZbzDbSjw19YkPICeADdasKy+WoDpmA5+GbhPGioqvCHWd6vNrwjPstxyw3nHM5U\nC8l8N4rQUkbmJna+i65ceKaTZLcdd93uoRzEqGSMGEocV8eL/oyNuQelEPzmHz18\nsPa6gI9VRzorNIeJhdEyWe/K29p1/3zwo6X/XYDMeRolT41OWtsAcyvzQryVgRzq\n2ziHETOBeC+piEt5jjlx52YdlgpgKajnRmIEXF++SQVv9QS86/0nA548S+pPt0ZG\n9HnCWdDNHy8LrIE3WHMEds9zZTHxsTyTmQ/gQOlC5Y4nmMg9HnaY4b1Eso35BHo=\n=bG9a\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 706f16bcfc1dadaae967f4502ccb255330fc07df\nparent 4deebb87322451612e0c712ada3cd2b8f8e1fd9c\nauthor Kar Petrosyan <92274156+karpetrosyan@users.noreply.github.com> 1702296705 +0400\ncommitter GitHub <noreply@github.com> 1702296705 +0400\n\nUpdate CHANGELOG.md\n\nCo-authored-by: Tom Christie <tom@tomchristie.com>",
+        "verified_at": "2024-01-16T19:59:59Z"
+      }
+    },
+    "url": "https://api.github.com/repos/encode/httpx/commits/0b738175e4a74c73d2c01a70645b2ee5d774ec14",
+    "html_url": "https://github.com/encode/httpx/commit/0b738175e4a74c73d2c01a70645b2ee5d774ec14",
+    "comments_url": "https://api.github.com/repos/encode/httpx/commits/0b738175e4a74c73d2c01a70645b2ee5d774ec14/comments",
+    "author": {
+      "login": "karpetrosyan",
+      "id": 92274156,
+      "node_id": "U_kgDOBX_97A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92274156?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/karpetrosyan",
+      "html_url": "https://github.com/karpetrosyan",
+      "followers_url": "https://api.github.com/users/karpetrosyan/followers",
+      "following_url": "https://api.github.com/users/karpetrosyan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/karpetrosyan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/karpetrosyan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/karpetrosyan/subscriptions",
+      "organizations_url": "https://api.github.com/users/karpetrosyan/orgs",
+      "repos_url": "https://api.github.com/users/karpetrosyan/repos",
+      "events_url": "https://api.github.com/users/karpetrosyan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/karpetrosyan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "4deebb87322451612e0c712ada3cd2b8f8e1fd9c",
+        "url": "https://api.github.com/repos/encode/httpx/commits/4deebb87322451612e0c712ada3cd2b8f8e1fd9c",
+        "html_url": "https://github.com/encode/httpx/commit/4deebb87322451612e0c712ada3cd2b8f8e1fd9c"
+      }
+    ]
+  },
+  {
+    "sha": "1e3bf1ebb326668f18f8d0cb1837cd99442459da",
+    "node_id": "C_kwDOJDFEz9oAKDFlM2JmMWViYjMyNjY2OGYxOGY4ZDBjYjE4MzdjZDk5NDQyNDU5ZGE",
+    "commit": {
+      "author": {
+        "name": "Kar Petrosyan",
+        "email": "92274156+karpetrosyan@users.noreply.github.com",
+        "date": "2023-12-11T12:13:06Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2023-12-11T12:13:06Z"
+      },
+      "message": "Update docs/troubleshooting.md\n\nCo-authored-by: Tom Christie <tom@tomchristie.com>",
+      "tree": {
+        "sha": "be821220f8fef0438594f20fd553de5bcf8aa064",
+        "url": "https://api.github.com/repos/encode/httpx/git/trees/be821220f8fef0438594f20fd553de5bcf8aa064"
+      },
+      "url": "https://api.github.com/repos/encode/httpx/git/commits/1e3bf1ebb326668f18f8d0cb1837cd99442459da",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJldvzSCRBK7hj4Ov3rIwAATE8IAK+yvgxZZm+Kd0zHKQT7bMyV\neyw0ehbKIMdjzPzRSf/frpChOjtb0N/nnUhYDTL+2UKikJiWEt4mOp3yVlow6u5n\nbfNh0ePtI/U89+ZZNkBIpDHa24XuGyU8RvEzLblfGQBTn5Bq86/X9+s3G15Pipmp\n3rZoRWZQ/yxFsOEvYf+0Ad4lLoENnMnaRBfJ3dSZd7PG6LYkS4xlxo3HJqHKr5i6\nDYgso2QQsFnZOJ6Vky14jXJSUNLZXvijtlPHBTNIgmAWfFS0PyyGb+VWSgaczGdK\nsM0NC3Xjcko6dZrL5zTp994WxluZwrpM9M0ncIc8Pr2ZajXVVMbT7jKBoOwwWrU=\n=KlX5\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree be821220f8fef0438594f20fd553de5bcf8aa064\nparent 0b738175e4a74c73d2c01a70645b2ee5d774ec14\nauthor Kar Petrosyan <92274156+karpetrosyan@users.noreply.github.com> 1702296786 +0400\ncommitter GitHub <noreply@github.com> 1702296786 +0400\n\nUpdate docs/troubleshooting.md\n\nCo-authored-by: Tom Christie <tom@tomchristie.com>",
+        "verified_at": "2024-01-16T19:59:59Z"
+      }
+    },
+    "url": "https://api.github.com/repos/encode/httpx/commits/1e3bf1ebb326668f18f8d0cb1837cd99442459da",
+    "html_url": "https://github.com/encode/httpx/commit/1e3bf1ebb326668f18f8d0cb1837cd99442459da",
+    "comments_url": "https://api.github.com/repos/encode/httpx/commits/1e3bf1ebb326668f18f8d0cb1837cd99442459da/comments",
+    "author": {
+      "login": "karpetrosyan",
+      "id": 92274156,
+      "node_id": "U_kgDOBX_97A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92274156?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/karpetrosyan",
+      "html_url": "https://github.com/karpetrosyan",
+      "followers_url": "https://api.github.com/users/karpetrosyan/followers",
+      "following_url": "https://api.github.com/users/karpetrosyan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/karpetrosyan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/karpetrosyan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/karpetrosyan/subscriptions",
+      "organizations_url": "https://api.github.com/users/karpetrosyan/orgs",
+      "repos_url": "https://api.github.com/users/karpetrosyan/repos",
+      "events_url": "https://api.github.com/users/karpetrosyan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/karpetrosyan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "0b738175e4a74c73d2c01a70645b2ee5d774ec14",
+        "url": "https://api.github.com/repos/encode/httpx/commits/0b738175e4a74c73d2c01a70645b2ee5d774ec14",
+        "html_url": "https://github.com/encode/httpx/commit/0b738175e4a74c73d2c01a70645b2ee5d774ec14"
+      }
+    ]
+  },
+  {
+    "sha": "725a32e607c9f6017bbb5d76a902d317f27ef374",
+    "node_id": "C_kwDOJDFEz9oAKDcyNWEzMmU2MDdjOWY2MDE3YmJiNWQ3NmE5MDJkMzE3ZjI3ZWYzNzQ",
+    "commit": {
+      "author": {
+        "name": "Kar Petrosyan",
+        "email": "92274156+karpetrosyan@users.noreply.github.com",
+        "date": "2023-12-11T12:13:17Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2023-12-11T12:13:17Z"
+      },
+      "message": "Update docs/troubleshooting.md\n\nCo-authored-by: Tom Christie <tom@tomchristie.com>",
+      "tree": {
+        "sha": "e172716a8700acaa2bdfdf5a6f9204dc31a45484",
+        "url": "https://api.github.com/repos/encode/httpx/git/trees/e172716a8700acaa2bdfdf5a6f9204dc31a45484"
+      },
+      "url": "https://api.github.com/repos/encode/httpx/git/commits/725a32e607c9f6017bbb5d76a902d317f27ef374",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJldvzdCRBK7hj4Ov3rIwAApnQIAF0FfxiinlmTGlHI6FaNE8nt\nRYqTg56oYyHOOYhSR4gEvCRkT5UGPDFo+YNf3KuMeFNR7iFns/GSukygkFlAkCHV\nxDiGwtXfl90OO921QECstLOoWvehWqcC48Jtk+ddLENlloWfYcw5oEi+jX1xWFGg\nWeXI45CXY2kWnuxjIHWh+qB0CknaGM/wfkLTKv3MQ4rw6iHnbmj5lM5wxEw4ON5w\nMz9PB7UH8/CDd/GF45NZru1tXZ8WikrGLMd2RnPUk2oFv846RhGQBYcLAp/Q+yXM\nlSfxOnObkqwjWP+c3T2Y4CjTDN9ZzxbpVSvXGRIoAe9qMn/prGcPgia1qeMEeNk=\n=BlkO\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree e172716a8700acaa2bdfdf5a6f9204dc31a45484\nparent 1e3bf1ebb326668f18f8d0cb1837cd99442459da\nauthor Kar Petrosyan <92274156+karpetrosyan@users.noreply.github.com> 1702296797 +0400\ncommitter GitHub <noreply@github.com> 1702296797 +0400\n\nUpdate docs/troubleshooting.md\n\nCo-authored-by: Tom Christie <tom@tomchristie.com>",
+        "verified_at": "2024-01-16T19:59:59Z"
+      }
+    },
+    "url": "https://api.github.com/repos/encode/httpx/commits/725a32e607c9f6017bbb5d76a902d317f27ef374",
+    "html_url": "https://github.com/encode/httpx/commit/725a32e607c9f6017bbb5d76a902d317f27ef374",
+    "comments_url": "https://api.github.com/repos/encode/httpx/commits/725a32e607c9f6017bbb5d76a902d317f27ef374/comments",
+    "author": {
+      "login": "karpetrosyan",
+      "id": 92274156,
+      "node_id": "U_kgDOBX_97A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92274156?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/karpetrosyan",
+      "html_url": "https://github.com/karpetrosyan",
+      "followers_url": "https://api.github.com/users/karpetrosyan/followers",
+      "following_url": "https://api.github.com/users/karpetrosyan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/karpetrosyan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/karpetrosyan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/karpetrosyan/subscriptions",
+      "organizations_url": "https://api.github.com/users/karpetrosyan/orgs",
+      "repos_url": "https://api.github.com/users/karpetrosyan/repos",
+      "events_url": "https://api.github.com/users/karpetrosyan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/karpetrosyan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "1e3bf1ebb326668f18f8d0cb1837cd99442459da",
+        "url": "https://api.github.com/repos/encode/httpx/commits/1e3bf1ebb326668f18f8d0cb1837cd99442459da",
+        "html_url": "https://github.com/encode/httpx/commit/1e3bf1ebb326668f18f8d0cb1837cd99442459da"
+      }
+    ]
+  },
+  {
+    "sha": "cbd63daacde03c7b3cc15594f75bee33f417deb6",
+    "node_id": "C_kwDOJDFEz9oAKGNiZDYzZGFhY2RlMDNjN2IzY2MxNTU5NGY3NWJlZTMzZjQxN2RlYjY",
+    "commit": {
+      "author": {
+        "name": "Kar Petrosyan",
+        "email": "92274156+karpetrosyan@users.noreply.github.com",
+        "date": "2023-12-11T12:14:21Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2023-12-11T12:14:21Z"
+      },
+      "message": "Merge branch 'master' into drop-proxies",
+      "tree": {
+        "sha": "7c775defe6b88b1f79cde7937b39e0854830b048",
+        "url": "https://api.github.com/repos/encode/httpx/git/trees/7c775defe6b88b1f79cde7937b39e0854830b048"
+      },
+      "url": "https://api.github.com/repos/encode/httpx/git/commits/cbd63daacde03c7b3cc15594f75bee33f417deb6",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJldv0dCRBK7hj4Ov3rIwAAJyoIAJQI3UsI++iK86p46bmW2h6P\nQX5mYgQqD7KWKK8TWQ9dq31Wk/eT07gz/4Cw9h6mJakqeG02Fq5CvVMbkp7F5QnL\nvK+Hei8YudsbvelPXOWRpjJiMMVjkuA2AeOzP8qh3EJM5A0ev63nTHqdF6IuIG3f\n0KbccL3rOTsYOwgy6l3CxVWB8GdKRPBEfHenXvM1DPiK0t2xCyTZP+RxlJtVhntj\nHCa8/yxZuDtQ43SCr6h3SOiowN3p88EN5yDIwt6CGrvMjS7YaqduyunKV35BVvoh\nvIlJCDbph97GXfwZrPoOw5f/DIMkyacI0d6pCD/jP8uBCwiX08dttDRCqCT0Xw4=\n=8NJu\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 7c775defe6b88b1f79cde7937b39e0854830b048\nparent 725a32e607c9f6017bbb5d76a902d317f27ef374\nparent b471f01d668b9ef730e8843531b07b1c21b74c47\nauthor Kar Petrosyan <92274156+karpetrosyan@users.noreply.github.com> 1702296861 -0500\ncommitter GitHub <noreply@github.com> 1702296861 -0500\n\nMerge branch 'master' into drop-proxies",
+        "verified_at": "2024-11-06T01:21:24Z"
+      }
+    },
+    "url": "https://api.github.com/repos/encode/httpx/commits/cbd63daacde03c7b3cc15594f75bee33f417deb6",
+    "html_url": "https://github.com/encode/httpx/commit/cbd63daacde03c7b3cc15594f75bee33f417deb6",
+    "comments_url": "https://api.github.com/repos/encode/httpx/commits/cbd63daacde03c7b3cc15594f75bee33f417deb6/comments",
+    "author": {
+      "login": "karpetrosyan",
+      "id": 92274156,
+      "node_id": "U_kgDOBX_97A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92274156?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/karpetrosyan",
+      "html_url": "https://github.com/karpetrosyan",
+      "followers_url": "https://api.github.com/users/karpetrosyan/followers",
+      "following_url": "https://api.github.com/users/karpetrosyan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/karpetrosyan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/karpetrosyan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/karpetrosyan/subscriptions",
+      "organizations_url": "https://api.github.com/users/karpetrosyan/orgs",
+      "repos_url": "https://api.github.com/users/karpetrosyan/repos",
+      "events_url": "https://api.github.com/users/karpetrosyan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/karpetrosyan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "725a32e607c9f6017bbb5d76a902d317f27ef374",
+        "url": "https://api.github.com/repos/encode/httpx/commits/725a32e607c9f6017bbb5d76a902d317f27ef374",
+        "html_url": "https://github.com/encode/httpx/commit/725a32e607c9f6017bbb5d76a902d317f27ef374"
+      },
+      {
+        "sha": "b471f01d668b9ef730e8843531b07b1c21b74c47",
+        "url": "https://api.github.com/repos/encode/httpx/commits/b471f01d668b9ef730e8843531b07b1c21b74c47",
+        "html_url": "https://github.com/encode/httpx/commit/b471f01d668b9ef730e8843531b07b1c21b74c47"
+      }
+    ]
+  },
+  {
+    "sha": "c7971ce17c1ef7c257d3835c4ab06391f74b7913",
+    "node_id": "C_kwDOJDFEz9oAKGM3OTcxY2UxN2MxZWY3YzI1N2QzODM1YzRhYjA2MzkxZjc0Yjc5MTM",
+    "commit": {
+      "author": {
+        "name": "karpetrosyan",
+        "email": "kar.petrosyanpy@gmail.com",
+        "date": "2023-12-11T12:38:07Z"
+      },
+      "committer": {
+        "name": "karpetrosyan",
+        "email": "kar.petrosyanpy@gmail.com",
+        "date": "2023-12-11T12:38:07Z"
+      },
+      "message": "Lint",
+      "tree": {
+        "sha": "931ff2a15ca2469fb874a0a8161a0d99a20effa2",
+        "url": "https://api.github.com/repos/encode/httpx/git/trees/931ff2a15ca2469fb874a0a8161a0d99a20effa2"
+      },
+      "url": "https://api.github.com/repos/encode/httpx/git/commits/c7971ce17c1ef7c257d3835c4ab06391f74b7913",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/encode/httpx/commits/c7971ce17c1ef7c257d3835c4ab06391f74b7913",
+    "html_url": "https://github.com/encode/httpx/commit/c7971ce17c1ef7c257d3835c4ab06391f74b7913",
+    "comments_url": "https://api.github.com/repos/encode/httpx/commits/c7971ce17c1ef7c257d3835c4ab06391f74b7913/comments",
+    "author": {
+      "login": "karpetrosyan",
+      "id": 92274156,
+      "node_id": "U_kgDOBX_97A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92274156?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/karpetrosyan",
+      "html_url": "https://github.com/karpetrosyan",
+      "followers_url": "https://api.github.com/users/karpetrosyan/followers",
+      "following_url": "https://api.github.com/users/karpetrosyan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/karpetrosyan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/karpetrosyan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/karpetrosyan/subscriptions",
+      "organizations_url": "https://api.github.com/users/karpetrosyan/orgs",
+      "repos_url": "https://api.github.com/users/karpetrosyan/repos",
+      "events_url": "https://api.github.com/users/karpetrosyan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/karpetrosyan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "karpetrosyan",
+      "id": 92274156,
+      "node_id": "U_kgDOBX_97A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92274156?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/karpetrosyan",
+      "html_url": "https://github.com/karpetrosyan",
+      "followers_url": "https://api.github.com/users/karpetrosyan/followers",
+      "following_url": "https://api.github.com/users/karpetrosyan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/karpetrosyan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/karpetrosyan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/karpetrosyan/subscriptions",
+      "organizations_url": "https://api.github.com/users/karpetrosyan/orgs",
+      "repos_url": "https://api.github.com/users/karpetrosyan/repos",
+      "events_url": "https://api.github.com/users/karpetrosyan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/karpetrosyan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "cbd63daacde03c7b3cc15594f75bee33f417deb6",
+        "url": "https://api.github.com/repos/encode/httpx/commits/cbd63daacde03c7b3cc15594f75bee33f417deb6",
+        "html_url": "https://github.com/encode/httpx/commit/cbd63daacde03c7b3cc15594f75bee33f417deb6"
+      }
+    ]
+  }
+]

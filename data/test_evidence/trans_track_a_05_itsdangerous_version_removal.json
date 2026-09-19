@@ -1,0 +1,7 @@
+{
+  "transition_id": "trans_track_a_05_itsdangerous_version_removal",
+  "audit_fingerprint": "0cf98c94845afd9cec552fcaf4c51ca5432dcbe05a18297e6d7080320edfb0ab",
+  "status": "GENERATED_HIDDEN_TEST_ONLY",
+  "verification_status": "GENERATED_HIDDEN_TEST_ONLY",
+  "evidence": "Executable hidden test verified in sandbox"
+}

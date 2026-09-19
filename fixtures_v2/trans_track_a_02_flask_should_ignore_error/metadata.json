@@ -1,0 +1,20 @@
+{
+  "transition_id": "trans_track_a_02_flask_should_ignore_error",
+  "repo_name": "pallets/flask",
+  "repo_url": "https://github.com/pallets/flask",
+  "pr_url": "https://github.com/pallets/flask/pull/5899",
+  "base_commit": "0292047b22c82921dcf165322d93a0b988328c2e",
+  "target_commit": "4b8bde97d4fa3486e18dce21c3c5f75570d50164",
+  "pkg_path": "src/flask",
+  "changed_files": [
+    "src/flask/app.py",
+    "src/flask/sansio/app.py"
+  ],
+  "primary_file": "src/flask/app.py",
+  "symbol": "Flask.should_ignore_error",
+  "file_digest_before": "c3dd9561959c203475d9f8b2efb86ac1b87253b4a524fabfd553aef146b11dda",
+  "file_digest_after": "52284cb4b0bb588729c45534091d49f2deb2c7735579b06dc726e9082824e3ea",
+  "stale_sensitive": true,
+  "transition_type": "API_DEPRECATION",
+  "builder_status": "FIXTURE_EXTRACTED_UNVERIFIED"
+}

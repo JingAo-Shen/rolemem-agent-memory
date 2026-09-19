@@ -1,0 +1,92 @@
+{
+  "transition_id": "trans_track_a_07_pluggy_varnames_noself",
+  "repo_name": "pytest-dev/pluggy",
+  "auditor_version": "2.0.0",
+  "spec_sha256": "2b9a57a0f30f392bb55658c26bd1d1eb68e17823be0670fdcacc522853c346b4",
+  "audit_fingerprint": "b5f402e090b3505eed685a76ba4ba555ace89833dd6143189f06acb943ba6c61",
+  "gates": [
+    {
+      "gate_id": "G1",
+      "name": "PR evidence <-> repository_change",
+      "expected": "PR title/body describes the repository architectural or API change",
+      "observed": "Word overlap: ['deprecated', 'deprecationwarning', 'legacy_noself', 'varnames', 'with'] | PR title: [NO-SQUASH-MERGE] fix varnames on py3.14 deferred annotations",
+      "evidence": "pr.json:title='[NO-SQUASH-MERGE] fix varnames on py3.14 deferred annotations'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G2",
+      "name": "repository_change <-> actual diff",
+      "expected": "Actual diff contains code edits in files specified in repository_change",
+      "observed": "Diff mentions files: ['src/pluggy/_hooks.py'] -> True",
+      "evidence": "diff.patch length: 18656 bytes",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G3",
+      "name": "actual diff <-> changed/deprecated/replacement symbols",
+      "expected": "Diff patch directly modifies or introduces the target symbols",
+      "observed": "Tokens ['varnames', 'legacy_noself', 'self', 'HookCaller'] found in diff: True",
+      "evidence": "Matching symbols in diff: ['varnames', 'legacy_noself', 'self']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G4",
+      "name": "stale memory <-> base-state behavior",
+      "expected": "Stale memory candidate instructs usage of legacy symbol from base state",
+      "observed": "Stale memory references legacy symbol: True",
+      "evidence": "stale_memory_candidate='Call varnames on methods without self using legacy_noself=True....'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G5",
+      "name": "valid memory <-> target-state behavior",
+      "expected": "Valid memory candidate instructs modern pattern introduced in target state",
+      "observed": "Valid memory references modern symbol: True",
+      "evidence": "valid_memory_candidate='Ensure hook specifications include self as first parameter....'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G6",
+      "name": "current task <-> transition capability",
+      "expected": "Evaluation task prompt requires implementing or using transition capability",
+      "observed": "Task exercises target file 'spec_helper.py' and target symbol 'extract_spec_varnames': True",
+      "evidence": "current_task='Implement `extract_spec_varnames(func)` in `spec_helper.py` inspecting hook spec...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G7",
+      "name": "hidden test <-> current task semantics",
+      "expected": "Hidden test verifies the target symbol/module without leaking solution code",
+      "observed": "Hidden test imports/tests target symbol 'extract_spec_varnames': True",
+      "evidence": "hidden test len=266 bytes, tests=['args', 'extract_spec_varnames', 'spec_helper', 'len', 'catch_warnings']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G8",
+      "name": "stale control <-> stale memory semantics",
+      "expected": "Stale control solution invokes deprecated API as instructed by stale memory",
+      "observed": "Stale control uses deprecated symbol: True",
+      "evidence": "stale_solution.py contains ['legacy_noself', 'varnames']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G9",
+      "name": "valid control <-> valid memory semantics",
+      "expected": "Valid control solution invokes modern API as instructed by valid memory",
+      "observed": "Valid control uses replacement symbol: True",
+      "evidence": "valid_solution.py contains modern pattern: True",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G10",
+      "name": "causal matrix <-> transition evidence",
+      "expected": "Causal counterfactual matrix demonstrates base-state pass, target-state fail with genuine failure taxonomy",
+      "observed": "Causal status: 'CAUSAL_PASS', failure taxonomy: 'DEPRECATION_WARNING'",
+      "evidence": "causal_counterfactual/trans_track_a_07_pluggy_varnames_noself.json",
+      "status": "PASS"
+    }
+  ],
+  "passed_gates_count": 10,
+  "total_gates_count": 10,
+  "overall_status": "PASS"
+}

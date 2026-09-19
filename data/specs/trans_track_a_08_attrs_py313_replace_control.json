@@ -1,0 +1,36 @@
+{
+  "transition_id": "trans_track_a_08_attrs_py313_replace_control",
+  "repo_name": "python-attrs/attrs",
+  "repo_url": "https://github.com/python-attrs/attrs",
+  "pr_url": "https://github.com/python-attrs/attrs/pull/1383",
+  "base_commit": "103d51f6efa36efcc7be4adecfd571da3f63291c",
+  "target_commit": "62bdbf234f45195e75bfc2bb0648dab6fd2f0d33",
+  "pkg_path": "src/attr",
+  "changed_files": [
+    "src/attr/_make.py",
+    "src/attr/_funcs.py"
+  ],
+  "primary_file": "src/attr/_make.py",
+  "changed_symbols": [
+    "attrs.add_replace",
+    "attr.evolve"
+  ],
+  "deprecated_symbols": [
+    "attr.evolve"
+  ],
+  "replacement_symbols": [
+    "copy.replace",
+    "__replace__"
+  ],
+  "repository_change": "Support Python 3.13 copy.replace via automatically added __replace__ on attrs classes.",
+  "stale_memory_candidate": "Use attr.evolve(instance, **changes) to clone attrs instances.",
+  "valid_memory_candidate": "Use copy.replace(instance, **changes) relying on attrs __replace__.",
+  "current_task": "Implement `create_point(x, y)` and `replace_point(pt, **changes)` in `point_manager.py` using standard copy.replace.",
+  "target_file": "point_manager.py",
+  "target_symbol": "replace_point",
+  "stale_sensitive": false,
+  "transition_type": "API_EVOLUTION",
+  "original_test_required": false,
+  "generated_hidden_test_only": true,
+  "track": "TRACK_A_API_EVOLUTION"
+}

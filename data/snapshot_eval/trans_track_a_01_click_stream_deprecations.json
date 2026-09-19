@@ -1,0 +1,7 @@
+{
+  "transition_id": "trans_track_a_01_click_stream_deprecations",
+  "audit_fingerprint": "6048f891f442317e668089eabed5824057e6378c68db9254fd1178b7664cb7ad",
+  "status": "PASS",
+  "verification_status": "PASS",
+  "details": "Snapshot SHA-256 digest purity verified against Git extract"
+}

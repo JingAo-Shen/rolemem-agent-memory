@@ -1,0 +1,8 @@
+{
+  "transition_id": "trans_track_a_04_jinja_version_deprecation",
+  "audit_fingerprint": "878bea9022c74e3b2973bab2e8d30fa954c2733861393e215757940ab8c115a9",
+  "status": "PASS",
+  "valid_control_status": "PASS",
+  "stale_control_status": "PASS",
+  "details": "valid_target=True, stale_target=False"
+}

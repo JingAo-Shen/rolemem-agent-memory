@@ -1,0 +1,37 @@
+{
+  "transition_id": "trans_track_a_01_click_stream_deprecations",
+  "repo_name": "pallets/click",
+  "repo_url": "https://github.com/pallets/click",
+  "pr_url": "https://github.com/pallets/click/pull/3695",
+  "base_commit": "7a0a3447f6ddd2c15438c5d098e289323f9f9556",
+  "target_commit": "051725fa7e0c69effc9107066d8791c5b99242c3",
+  "pkg_path": "src/click",
+  "changed_files": [
+    "src/click/utils.py",
+    "src/click/__init__.py"
+  ],
+  "primary_file": "src/click/utils.py",
+  "changed_symbols": [
+    "get_binary_stream"
+  ],
+  "deprecated_symbols": [
+    "get_binary_stream",
+    "get_text_stream"
+  ],
+  "replacement_symbols": [
+    "buffer",
+    "sys.stdin.buffer",
+    "sys.stdout.buffer"
+  ],
+  "repository_change": "click.utils.get_binary_stream and get_text_stream deprecated in favor of standard stream buffer access.",
+  "stale_memory_candidate": "Obtain binary streams using click.utils.get_binary_stream.",
+  "valid_memory_candidate": "Access standard stream buffers directly like sys.stdin.buffer or sys.stdout.buffer.",
+  "current_task": "Implement `get_io_stream(name: str)` in `stream_helper.py` obtaining standard binary streams without deprecated click utilities.",
+  "target_file": "stream_helper.py",
+  "target_symbol": "get_io_stream",
+  "stale_sensitive": true,
+  "transition_type": "API_DEPRECATION",
+  "original_test_required": false,
+  "generated_hidden_test_only": true,
+  "track": "TRACK_A_STALE_SENSITIVE"
+}

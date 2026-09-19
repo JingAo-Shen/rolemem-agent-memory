@@ -1,0 +1,8 @@
+{
+  "transition_id": "trans_track_a_07_pluggy_varnames_noself",
+  "audit_fingerprint": "b5f402e090b3505eed685a76ba4ba555ace89833dd6143189f06acb943ba6c61",
+  "status": "PASS",
+  "valid_control_status": "PASS",
+  "stale_control_status": "PASS",
+  "details": "valid_target=True, stale_target=False"
+}

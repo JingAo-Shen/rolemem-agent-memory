@@ -1,0 +1,20 @@
+{
+  "transition_id": "trans_track_a_03_werkzeug_environ_property",
+  "repo_name": "pallets/werkzeug",
+  "repo_url": "https://github.com/pallets/werkzeug",
+  "pr_url": "https://github.com/pallets/werkzeug/pull/3276",
+  "base_commit": "f97c305673ba121a1dae6764c37e8be48907a1d1",
+  "target_commit": "7641d4990f06d583425a4e6ba25e9d2f18934885",
+  "pkg_path": "src/werkzeug",
+  "changed_files": [
+    "src/werkzeug/utils.py",
+    "src/werkzeug/wrappers/request.py"
+  ],
+  "primary_file": "src/werkzeug/utils.py",
+  "symbol": "environ_property",
+  "file_digest_before": "a2e9a72d1c6ce2934d3ecb854b0ad363c932f30d1195003e306e89b4a61dfbb2",
+  "file_digest_after": "d968ce12ac66444aad034934bdc05399f0c16c1b72bf65ffc4cf5e5e90d518e2",
+  "stale_sensitive": true,
+  "transition_type": "API_DEPRECATION",
+  "builder_status": "FIXTURE_EXTRACTED_UNVERIFIED"
+}

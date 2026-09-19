@@ -1,0 +1,10 @@
+{
+  "transition_id": "trans_track_a_10_httpx_client_proxies_deprecation",
+  "audit_fingerprint": "11cf527667745e22286adc9d030cbeadc91738d339bd1d9e5235aa2f733175bc",
+  "status": "PASS",
+  "collection_status": "PASS",
+  "execution_status": "PASS",
+  "exit_code": 0,
+  "raw_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_s5n1rkoa\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_proxied_client_creation PASSED         [100%]\n\n============================== 1 passed in 0.14s ===============================\n",
+  "verification_status": "GENERATED_HIDDEN_TEST_PASS"
+}

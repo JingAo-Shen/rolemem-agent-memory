@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_track_a_07_pluggy_varnames_noself",
+  "repo_name": "pytest-dev/pluggy",
+  "pr_number": 632,
+  "pr_title": "[NO-SQUASH-MERGE] fix varnames on py3.14 deferred annotations",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "5d7bd2cc083571466f44f9683136b7d8f62b88bf",
+  "pr_base_sha": "59e66fdb231bf47ce5e0b8ed75b788820b135c34",
+  "pr_head_sha": "0258484dc180a0c28705de83783b269f4fed4873",
+  "base_commit": "dd20a85e38af556e1c818b03391eab1480438e0c",
+  "target_commit": "0258484dc180a0c28705de83783b269f4fed4873",
+  "ancestry_verified": true,
+  "merge_strategy": "fast_forward",
+  "merge_relationship_verified": true,
+  "diff_match": true,
+  "issue_required": false,
+  "issue_id_verified": null,
+  "issue_status": "NOT_APPLICABLE",
+  "spec_sha256": "2b9a57a0f30f392bb55658c26bd1d1eb68e17823be0670fdcacc522853c346b4",
+  "audit_fingerprint": "b5f402e090b3505eed685a76ba4ba555ace89833dd6143189f06acb943ba6c61",
+  "auditor_version": "3.0.0",
+  "overall_status": "PASS"
+}

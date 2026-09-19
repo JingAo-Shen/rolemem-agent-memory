@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_track_a_02_flask_should_ignore_error",
+  "repo_name": "pallets/flask",
+  "pr_number": 5899,
+  "pr_title": "deprecate `should_ignore_error`",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "4b8bde97d4fa3486e18dce21c3c5f75570d50164",
+  "pr_base_sha": "9b74a90dd3c47f792734823e8793ac36f38bc4dd",
+  "pr_head_sha": "c77a5203438fe772d41f6a47303ad3f57a4efe6d",
+  "base_commit": "0292047b22c82921dcf165322d93a0b988328c2e",
+  "target_commit": "4b8bde97d4fa3486e18dce21c3c5f75570d50164",
+  "ancestry_verified": true,
+  "merge_strategy": "merge_commit",
+  "merge_relationship_verified": true,
+  "diff_match": true,
+  "issue_required": false,
+  "issue_id_verified": null,
+  "issue_status": "NOT_APPLICABLE",
+  "spec_sha256": "f9026c01073fb61d3b1cc9629f06a6a27e3476cd6e2aa0a640a5ebb67d198d32",
+  "audit_fingerprint": "543dab13c04547b19aedef95403a9b417c15534f756e315165493b4829a140fa",
+  "auditor_version": "3.0.0",
+  "overall_status": "PASS"
+}

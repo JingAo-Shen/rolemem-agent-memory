@@ -27,14 +27,24 @@ import hashlib
 import subprocess
 import re
 
+sys.path.insert(0, "/code/rolemem-agent-memory")
+from src.fingerprint import compute_unified_audit_fingerprint, DEFAULT_AUDITOR_VERSION
+
 AUDITOR_VERSION = "2.0.0"
 
 REPO_MIRRORS = {
     "pallets/click": "/code/repo_cache/click",
     "pallets/flask": "/code/repo_cache/flask",
+    "pallets/werkzeug": "/code/repo_cache/werkzeug",
+    "pallets/jinja": "/code/repo_cache/jinja",
+    "pallets/itsdangerous": "/code/repo_cache/itsdangerous",
+    "pallets/markupsafe": "/code/repo_cache/markupsafe",
+    "pytest-dev/pluggy": "/code/repo_cache/pluggy",
+    "python-attrs/attrs": "/code/repo_cache/attrs",
+    "pypa/virtualenv": "/code/repo_cache/virtualenv",
+    "encode/httpx": "/code/repo_cache/httpx",
     "psf/requests": "/code/repo_cache/requests",
     "urllib3/urllib3": "/code/repo_cache/urllib3",
-    "pallets/werkzeug": "/code/repo_cache/werkzeug",
 }
 
 def extract_ast_names(source_code):
@@ -225,11 +235,7 @@ def audit_semantic_v2(spec_path):
     all_pass = all(g["status"] == "PASS" for g in gates)
 
     # Compute audit fingerprint
-    h = hashlib.sha256()
-    with open(spec_path, "rb") as f:
-        h.update(f.read())
-    h.update(AUDITOR_VERSION.encode("utf-8"))
-    fingerprint = h.hexdigest()
+    fingerprint = compute_unified_audit_fingerprint(spec, fixture_dir=fixture_dir, auditor_version=DEFAULT_AUDITOR_VERSION)
 
     result = {
         "transition_id": tid,
@@ -251,8 +257,11 @@ def audit_semantic_v2(spec_path):
     return result
 
 if __name__ == "__main__":
-    specs = sorted(glob.glob("/code/rolemem-agent-memory/data/specs/trans_gold_*.json"))
-    print(f"Starting Semantic Coherence V2 Audit on {len(specs)} seed specs...")
+    if len(sys.argv) > 1:
+        specs = sorted(glob.glob(sys.argv[1]))
+    else:
+        specs = sorted(glob.glob("/code/rolemem-agent-memory/data/specs/trans_track_a_*.json") + glob.glob("/code/rolemem-agent-memory/data/specs/trans_gold_*.json"))
+    print(f"Starting Semantic Coherence V2 Audit on {len(specs)} specs...")
     passed = 0
     for s in specs:
         r = audit_semantic_v2(s)

@@ -1,0 +1,20 @@
+{
+  "transition_id": "trans_track_a_01_click_stream_deprecations",
+  "repo_name": "pallets/click",
+  "repo_url": "https://github.com/pallets/click",
+  "pr_url": "https://github.com/pallets/click/pull/3695",
+  "base_commit": "7a0a3447f6ddd2c15438c5d098e289323f9f9556",
+  "target_commit": "051725fa7e0c69effc9107066d8791c5b99242c3",
+  "pkg_path": "src/click",
+  "changed_files": [
+    "src/click/utils.py",
+    "src/click/__init__.py"
+  ],
+  "primary_file": "src/click/utils.py",
+  "symbol": "get_binary_stream",
+  "file_digest_before": "2666f1ea461585ba7282b59f4368f1e8b4d3e12d5ecab15ae8b705b244841293",
+  "file_digest_after": "11006b6b5c5f14c2d18a9a2693209915156f8e3a9336b042ba8330f703f7ad4a",
+  "stale_sensitive": true,
+  "transition_type": "API_DEPRECATION",
+  "builder_status": "FIXTURE_EXTRACTED_UNVERIFIED"
+}

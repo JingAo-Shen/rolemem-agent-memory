@@ -1,0 +1,619 @@
+diff --git a/.github/workflows/check.yaml b/.github/workflows/check.yaml
+index 027a29f23..42cda831f 100644
+--- a/.github/workflows/check.yaml
++++ b/.github/workflows/check.yaml
+@@ -33,11 +33,9 @@ jobs:
+           - "3.11"
+           - "3.10"
+           - "3.9"
+-          - "3.8"
+           - pypy-3.11
+           - pypy-3.10
+           - pypy-3.9
+-          - pypy-3.8
+           - graalpy-24.1
+           - rp
+         os:
+@@ -54,7 +52,6 @@ jobs:
+           - { os: windows-2025-vs2026, py: "graalpy-24.1" }
+           - { os: windows-2025-vs2026, py: "pypy-3.10" }
+           - { os: windows-2025-vs2026, py: "pypy-3.9" }
+-          - { os: windows-2025-vs2026, py: "pypy-3.8" }
+     steps:
+       - name: 📥 Checkout code
+         uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+@@ -186,14 +183,14 @@ jobs:
+           - docs
+           - readme
+           - type
+-          - type-3.8
++          - type-3.9
+           - upgrade
+           - zipapp
+         exclude:
+           - { os: windows-2025-vs2026, tox_env: docs }
+           - { os: windows-2025-vs2026, tox_env: readme }
+           - { os: windows-2025-vs2026, tox_env: type }
+-          - { os: windows-2025-vs2026, tox_env: type-3.8 }
++          - { os: windows-2025-vs2026, tox_env: type-3.9 }
+     steps:
+       - name: 📥 Checkout code
+         uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+diff --git a/docs/changelog/3170.feature.rst b/docs/changelog/3170.feature.rst
+new file mode 100644
+index 000000000..368c5ff8e
+--- /dev/null
++++ b/docs/changelog/3170.feature.rst
+@@ -0,0 +1,4 @@
++Drop support for Python 3.8; virtualenv now requires Python 3.9 or later to run and to create environments. Remove the
++embedded ``wheel`` seed package, which virtualenv bundled only for Python 3.8. The ``--wheel`` and ``--no-wheel``
++options stay as no-ops, but now warn that virtualenv will remove them in a release after 2026-12 - by
++:user:`gaborbernat`.
+diff --git a/docs/development.rst b/docs/development.rst
+index 6c167c287..57d89fa32 100644
+--- a/docs/development.rst
++++ b/docs/development.rst
+@@ -56,7 +56,7 @@ To run tests locally execute:
+     tox -e py
+ 
+ This will run the test suite for the same Python version as under which ``tox`` is installed. Alternatively you can
+-specify a specific version of python by using the ``pyNN`` format, such as: ``py38``, ``pypy3``, etc.
++specify a specific version of python by using the ``pyNN`` format, such as: ``py314``, ``pypy3``, etc.
+ 
+ ``tox`` has been configured to forward any additional arguments it is given to ``pytest``. This enables the use of
+ pytest's `rich CLI <https://docs.pytest.org/en/latest/usage.html#specifying-tests-selecting-tests>`_. As an example, you
+@@ -107,7 +107,7 @@ This uses `ty <https://docs.astral.sh/ty/>`_ (Astral's Rust-based type checker)
+ 
+ .. code-block:: console
+ 
+-    tox -e type-3.8
++    tox -e type-3.9
+ 
+ Both environments validate that annotations are consistent and correct.
+ 
+diff --git a/docs/explanation.rst b/docs/explanation.rst
+index 35beca9d7..4d8c74819 100644
+--- a/docs/explanation.rst
++++ b/docs/explanation.rst
+@@ -86,8 +86,8 @@ target are the same interpreter.
+ Host interpreter
+ ================
+ 
+-virtualenv requires CPython or PyPy **3.8 or later** as the host interpreter. This is enforced by ``requires-python >=
+-3.8`` in the package metadata.
++virtualenv requires CPython or PyPy **3.9 or later** as the host interpreter. This is enforced by ``requires-python >=
++3.9`` in the package metadata.
+ 
+ Target interpreter
+ ==================
+@@ -104,11 +104,11 @@ it can discover on the system, provided a matching creator exists.
+       - Notes
+     - - CPython
+       - Linux, macOS, Windows
+-      - 3.8+. Free-threaded builds supported on 3.13+. Includes macOS framework, Homebrew, Microsoft Store, and Windows
++      - 3.9+. Free-threaded builds supported on 3.13+. Includes macOS framework, Homebrew, Microsoft Store, and Windows
+         debug build support.
+     - - PyPy
+       - Linux, macOS, Windows
+-      - 3.8+.
++      - 3.9+.
+     - - GraalPy
+       - Linux, macOS, Windows
+       - 24.1+. Minimal test coverage, marked experimental.
+@@ -116,7 +116,7 @@ it can discover on the system, provided a matching creator exists.
+       - Linux, macOS, Windows
+       - Minimal test coverage, marked experimental.
+ 
+-Seed packages (``pip``, ``setuptools``) are bundled for CPython 3.8 through 3.16. Target interpreters outside this range
++Seed packages (``pip``, ``setuptools``) are bundled for CPython 3.9 through 3.16. Target interpreters outside this range
+ use the highest available bundled version as a fallback, which may or may not be compatible.
+ 
+ **********************
+@@ -197,7 +197,7 @@ virtual environment's Python version, implementation (CPython, PyPy, etc.), and
+ The ``--python`` flag accepts several specifier formats:
+ 
+ **Path specifier**
+-    An absolute or relative path to a Python executable, such as ``/usr/bin/python3.8`` or ``./python``.
++    An absolute or relative path to a Python executable, such as ``/usr/bin/python3.14`` or ``./python``.
+ 
+ **Version specifier**
+     A string following the format ``{implementation}{version}{architecture}{machine}`` where:
+@@ -210,7 +210,7 @@ The ``--python`` flag accepts several specifier formats:
+ 
+     Examples:
+ 
+-    - ``python3.8.1`` - Any Python implementation with version 3.8.1
++    - ``python3.14.1`` - Any Python implementation with version 3.14.1
+     - ``3`` - Any Python implementation with major version 3
+     - ``3.13t`` - Any Python implementation version 3.13 with free-threading enabled
+     - ``cpython3`` - CPython implementation with major version 3
+@@ -333,7 +333,6 @@ within the environment. The seed packages are:
+ 
+ - ``pip`` - The package installer for Python (always installed).
+ - ``setuptools`` - Package development and installation library (disabled by default on Python 3.12+).
+-- ``wheel`` - Support for the wheel binary package format (only installed by default on Python 3.8).
+ 
+ virtualenv supports two seeding methods with dramatically different performance characteristics:
+ 
+diff --git a/docs/how-to/usage.rst b/docs/how-to/usage.rst
+index 741e5d58b..4c1fca11a 100644
+--- a/docs/how-to/usage.rst
++++ b/docs/how-to/usage.rst
+@@ -15,7 +15,7 @@ Specify a Python version by name or version number:
+ 
+ .. code-block:: console
+ 
+-    $ virtualenv -p python3.8 venv
++    $ virtualenv -p python3.14 venv
+     $ virtualenv -p 3.10 venv
+     $ virtualenv -p pypy3 venv
+     $ virtualenv -p rustpython venv
+@@ -228,7 +228,7 @@ Derive configuration keys from command-line options by stripping leading ``-`` a
+ .. code-block:: ini
+ 
+     [virtualenv]
+-    python = /opt/python-3.8/bin/python
++    python = /opt/python-3.14/bin/python
+ 
+ Multi-value options
+ ===================
+@@ -249,7 +249,7 @@ Set options using environment variables with the ``VIRTUALENV_`` prefix and uppe
+ 
+ .. code-block:: console
+ 
+-    $ export VIRTUALENV_PYTHON=/opt/python-3.8/bin/python
++    $ export VIRTUALENV_PYTHON=/opt/python-3.14/bin/python
+ 
+ For multi-value options, separate values with commas or newlines.
+ 
+@@ -348,7 +348,7 @@ Pass options as list elements:
+ 
+ .. code-block:: python
+ 
+-    cli_run(["-p", "python3.8", "--without-pip", "myenv"])
++    cli_run(["-p", "python3.14", "--without-pip", "myenv"])
+ 
+ Use the returned session object to access environment details:
+ 
+diff --git a/docs/reference/compatibility.rst b/docs/reference/compatibility.rst
+index f7d60fe6d..7f1a40712 100644
+--- a/docs/reference/compatibility.rst
++++ b/docs/reference/compatibility.rst
+@@ -14,12 +14,12 @@ version is fully supported; previous patch versions work on a best effort basis.
+ CPython
+ =======
+ 
+-``3.14 >= python_version >= 3.8``
++``3.14 >= python_version >= 3.9``
+ 
+ PyPy
+ ====
+ 
+-``3.11 >= python_version >= 3.8``
++``3.11 >= python_version >= 3.9``
+ 
+ GraalPy
+ =======
+@@ -94,4 +94,4 @@ macOS
+ Windows
+ =======
+ 
+-- `Windows Store <https://apps.microsoft.com/search?query=python>`_ Python 3.8 and later
++- `Windows Store <https://apps.microsoft.com/search?query=python>`_ Python 3.9 and later
+diff --git a/docs/tutorial/getting-started.rst b/docs/tutorial/getting-started.rst
+index 9a1611d10..b92a5c4c6 100644
+--- a/docs/tutorial/getting-started.rst
++++ b/docs/tutorial/getting-started.rst
+@@ -11,7 +11,7 @@ environment, install packages, and learn how to manage project dependencies.
+ 
+ Before starting this tutorial, you need:
+ 
+-- Python 3.8 or later installed on your system. If you use a version manager like `pyenv
++- Python 3.9 or later installed on your system. If you use a version manager like `pyenv
+   <https://github.com/pyenv/pyenv>`_, `mise <https://mise.jdx.dev/>`_, or `asdf <https://asdf-vm.com/>`_, virtualenv
+   will automatically discover the Python version they manage.
+ - virtualenv installed (see :doc:`../how-to/install`).
+diff --git a/pyproject.toml b/pyproject.toml
+index 04e9dda7a..531a662eb 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -19,7 +19,7 @@ maintainers = [
+   { name = "Bernat Gabor", email = "gaborjbernat@gmail.com" },
+   { name = "Rahul Devikar", email = "rahuldevikar5512@gmail.com" },
+ ]
+-requires-python = ">=3.8"
++requires-python = ">=3.9"
+ classifiers = [
+   "Development Status :: 5 - Production/Stable",
+   "Intended Audience :: Developers",
+@@ -28,7 +28,6 @@ classifiers = [
+   "Operating System :: Microsoft :: Windows",
+   "Operating System :: POSIX",
+   "Programming Language :: Python :: 3 :: Only",
+-  "Programming Language :: Python :: 3.8",
+   "Programming Language :: Python :: 3.9",
+   "Programming Language :: Python :: 3.10",
+   "Programming Language :: Python :: 3.11",
+@@ -48,7 +47,6 @@ dependencies = [
+   "distlib>=0.3.7,<1",
+   "filelock>=3.16.1,<=3.19.1; python_version<'3.10'",
+   "filelock>=3.24.2,<4; python_version>='3.10'",
+-  "importlib-metadata>=6.6; python_version<'3.8'",
+   "platformdirs>=3.9.1,<5",
+   "python-discovery>=1.4.2",
+   "typing-extensions>=4.13.2; python_version<'3.11'",
+diff --git a/src/virtualenv/create/via_global_ref/builtin/cpython/cpython3.py b/src/virtualenv/create/via_global_ref/builtin/cpython/cpython3.py
+index ccb7f8d27..efd02e6ae 100644
+--- a/src/virtualenv/create/via_global_ref/builtin/cpython/cpython3.py
++++ b/src/virtualenv/create/via_global_ref/builtin/cpython/cpython3.py
+@@ -4,7 +4,6 @@
+ import fnmatch
+ from operator import methodcaller as method
+ from pathlib import Path
+-from textwrap import dedent
+ from typing import TYPE_CHECKING
+ 
+ from virtualenv.create.describe import Python3Supports
+@@ -69,24 +68,6 @@ def install_venv_shared_libs(self, venv_creator: Venv) -> None:
+         ensure_dir(dest.parent)
+         copy_path(shared_lib, dest)
+ 
+-    def env_patch_text(self) -> str:
+-        text = super().env_patch_text()
+-        if self.pyvenv_launch_patch_active(self.interpreter):
+-            text += dedent(
+-                """
+-                # for https://github.com/python/cpython/pull/9516, see https://github.com/pypa/virtualenv/issues/1704
+-                import os
+-                if "__PYVENV_LAUNCHER__" in os.environ:
+-                    del os.environ["__PYVENV_LAUNCHER__"]
+-                """,
+-            )
+-        return text
+-
+-    @classmethod
+-    def pyvenv_launch_patch_active(cls, interpreter: PythonInfo) -> bool:  # drop when Python 3.8 support is dropped
+-        ver = interpreter.version_info
+-        return interpreter.platform == "darwin" and (3, 8, 3) > ver >= (3, 8)
+-
+ 
+ class CPython3Windows(CPythonWindows, CPython3):
+     """CPython 3 on Windows."""
+diff --git a/src/virtualenv/seed/embed/base_embed.py b/src/virtualenv/seed/embed/base_embed.py
+index cb344ceec..f9400ee71 100644
+--- a/src/virtualenv/seed/embed/base_embed.py
++++ b/src/virtualenv/seed/embed/base_embed.py
+@@ -31,25 +31,21 @@ def __init__(self, options: VirtualEnvOptions) -> None:
+         self.pip_version = options.pip
+         self.setuptools_version = options.setuptools
+ 
+-        # wheel version needs special handling
+-        # on Python >= 3.9, the default is None (as in not used)
+-        # so we can differentiate between explicit and implicit none
++        # virtualenv no longer bundles wheel; the parsed default stays None (unused) so the
++        # warning below fires only when you pass --wheel or --no-wheel
+         self.wheel_version = options.wheel or "none"
+ 
+         self.no_pip = options.no_pip
+         self.no_setuptools = options.no_setuptools
+-        self.no_wheel = options.no_wheel
+         self.app_data = options.app_data
+         self.periodic_update = not options.no_periodic_update
+ 
+-        if options.py_version[:2] >= (3, 9):
+-            if options.wheel is not None or options.no_wheel:
+-                LOGGER.warning(
+-                    "The --no-wheel and --wheel options are deprecated. "
+-                    "They have no effect for Python >= 3.9 as wheel is no longer "
+-                    "bundled in virtualenv.",
+-                )
+-            self.no_wheel = True
++        if options.wheel is not None or options.no_wheel:
++            LOGGER.warning(
++                "DEPRECATION: the --wheel and --no-wheel options do nothing; virtualenv no longer bundles wheel. "
++                "They will be removed in a release after 2026-12. Stop passing them.",
++            )
++        self.no_wheel = True
+ 
+         if not self.distribution_to_versions():
+             self.enabled = False
+@@ -97,9 +93,9 @@ def add_parser_arguments(cls, parser: ArgumentParser, interpreter: PythonInfo, a
+         )
+         for distribution, default in cls.distributions().items():
+             help_ = f"version of {distribution} to install as seed: embed, bundle, none or exact version"
+-            if interpreter.version_info[:2] >= (3, 12) and distribution in {"wheel", "setuptools"}:
++            if interpreter.version_info[:2] >= (3, 12) and distribution == "setuptools":
+                 default = "none"  # noqa: PLW2901
+-            if interpreter.version_info[:2] >= (3, 9) and distribution == "wheel":
++            if distribution == "wheel":
+                 default = None  # noqa: PLW2901
+                 help_ = SUPPRESS
+             parser.add_argument(
+@@ -111,7 +107,7 @@ def add_parser_arguments(cls, parser: ArgumentParser, interpreter: PythonInfo, a
+             )
+         for distribution in cls.distributions():
+             help_ = f"do not install {distribution}"
+-            if interpreter.version_info[:2] >= (3, 9) and distribution == "wheel":
++            if distribution == "wheel":
+                 help_ = SUPPRESS
+             parser.add_argument(
+                 f"--no-{distribution}",
+diff --git a/src/virtualenv/seed/wheels/embed/__init__.py b/src/virtualenv/seed/wheels/embed/__init__.py
+index 047502218..5d785d362 100644
+--- a/src/virtualenv/seed/wheels/embed/__init__.py
++++ b/src/virtualenv/seed/wheels/embed/__init__.py
+@@ -9,11 +9,6 @@
+ 
+ BUNDLE_FOLDER = Path(__file__).absolute().parent
+ BUNDLE_SUPPORT = {
+-    "3.8": {
+-        "pip": "pip-25.0.1-py3-none-any.whl",
+-        "setuptools": "setuptools-75.3.4-py3-none-any.whl",
+-        "wheel": "wheel-0.45.1-py3-none-any.whl",
+-    },
+     "3.9": {
+         "pip": "pip-26.0.1-py3-none-any.whl",
+         "setuptools": "setuptools-82.0.1-py3-none-any.whl",
+@@ -52,12 +47,9 @@
+ # SHA-256 of every bundled wheel. Verified on load so a corrupted or tampered wheel on disk fails loud instead of
+ # being handed to pip. Generated together with ``BUNDLE_SUPPORT`` by ``tasks/upgrade_wheels.py``.
+ BUNDLE_SHA256 = {
+-    "pip-25.0.1-py3-none-any.whl": "c46efd13b6aa8279f33f2864459c8ce587ea6a1a59ee20de055868d8f7688f7f",
+     "pip-26.0.1-py3-none-any.whl": "bdb1b08f4274833d62c1aa29e20907365a2ceb950410df15fc9521bad440122b",
+     "pip-26.1.2-py3-none-any.whl": "382ff9f685ee3bc25864f820aa50505825f10f5458ffff07e30a6d96e5715cab",
+-    "setuptools-75.3.4-py3-none-any.whl": "2dd50a7f42dddfa1d02a36f275dbe716f38ed250224f609d35fb60a09593d93e",
+     "setuptools-82.0.1-py3-none-any.whl": "a59e362652f08dcd477c78bb6e7bd9d80a7995bc73ce773050228a348ce2e5bb",
+-    "wheel-0.45.1-py3-none-any.whl": "708e7481cc80179af0e556bbf0cc00b8444c7321e2700b8d8580231d13017248",
+ }
+ 
+ _VERIFIED_WHEELS: set[str] = set()
+diff --git a/src/virtualenv/seed/wheels/embed/pip-25.0.1-py3-none-any.whl b/src/virtualenv/seed/wheels/embed/pip-25.0.1-py3-none-any.whl
+deleted file mode 100644
+index 8d3b0043e..000000000
+Binary files a/src/virtualenv/seed/wheels/embed/pip-25.0.1-py3-none-any.whl and /dev/null differ
+diff --git a/src/virtualenv/seed/wheels/embed/setuptools-75.3.4-py3-none-any.whl b/src/virtualenv/seed/wheels/embed/setuptools-75.3.4-py3-none-any.whl
+deleted file mode 100644
+index 4cacd34c2..000000000
+Binary files a/src/virtualenv/seed/wheels/embed/setuptools-75.3.4-py3-none-any.whl and /dev/null differ
+diff --git a/src/virtualenv/seed/wheels/embed/wheel-0.45.1-py3-none-any.whl b/src/virtualenv/seed/wheels/embed/wheel-0.45.1-py3-none-any.whl
+deleted file mode 100644
+index 589308a21..000000000
+Binary files a/src/virtualenv/seed/wheels/embed/wheel-0.45.1-py3-none-any.whl and /dev/null differ
+diff --git a/tasks/upgrade_wheels.py b/tasks/upgrade_wheels.py
+index acff72715..4a315c5ad 100644
+--- a/tasks/upgrade_wheels.py
++++ b/tasks/upgrade_wheels.py
+@@ -17,8 +17,8 @@
+ 
+ STRICT = "UPGRADE_ADVISORY" not in os.environ
+ 
+-BUNDLED = ["pip", "setuptools", "wheel"]
+-SUPPORT = [(3, i) for i in range(8, 17)]
++BUNDLED = ["pip", "setuptools"]
++SUPPORT = [(3, i) for i in range(9, 17)]
+ DEST = Path(__file__).resolve().parents[1] / "src" / "virtualenv" / "seed" / "wheels" / "embed"
+ 
+ 
+@@ -51,8 +51,6 @@ def _download_all(temp_path: Path) -> dict[Path, str]:
+         into.mkdir()
+         folders[into] = support_ver
+         for package in BUNDLED:
+-            if package == "wheel" and support >= (3, 9):
+-                continue
+             thread = Thread(target=download, args=(support_ver, str(into), package))
+             targets.append(thread)
+             thread.start()
+diff --git a/tests/unit/create/test_creator.py b/tests/unit/create/test_creator.py
+index 2e13cd40d..6d463beaa 100644
+--- a/tests/unit/create/test_creator.py
++++ b/tests/unit/create/test_creator.py
+@@ -28,7 +28,6 @@
+ from virtualenv.create.pyenv_cfg import PyEnvCfg
+ from virtualenv.create.via_global_ref import api
+ from virtualenv.create.via_global_ref.builtin.cpython.common import is_mac_os_framework, is_macos_brew
+-from virtualenv.create.via_global_ref.builtin.cpython.cpython3 import CPython3Posix
+ from virtualenv.info import IS_PYPY, IS_WIN, fs_is_case_sensitive
+ from virtualenv.run import cli_run, session_via_cli
+ from virtualenv.run.plugin.creators import CreatorSelector
+@@ -212,13 +211,6 @@ def list_to_str(iterable):
+         assert python_w.exists()
+         assert python_w.read_bytes() != creator.exe.read_bytes()
+ 
+-    if CPython3Posix.pyvenv_launch_patch_active(PythonInfo.from_exe(python)) and creator_key != "venv":
+-        result = subprocess.check_output(
+-            [str(creator.exe), "-c", 'import os; print(os.environ.get("__PYVENV_LAUNCHER__"))'],
+-            text=True,
+-        ).strip()
+-        assert result == "None"
+-
+     git_ignore = (dest / ".gitignore").read_text(encoding="utf-8")
+     assert git_ignore.splitlines() == ["# created by virtualenv automatically", "*"]
+ 
+diff --git a/tests/unit/seed/embed/test_base_embed.py b/tests/unit/seed/embed/test_base_embed.py
+index 4dd83756a..612cca6e6 100644
+--- a/tests/unit/seed/embed/test_base_embed.py
++++ b/tests/unit/seed/embed/test_base_embed.py
+@@ -20,7 +20,6 @@ def test_download_cli_flag(args, download, tmp_path) -> None:
+     assert session.seeder.download is download
+ 
+ 
+-@pytest.mark.skipif(sys.version_info[:2] == (3, 8), reason="We still bundle wheel for Python 3.8")
+ @pytest.mark.parametrize("flag", ["--no-wheel", "--wheel=none", "--wheel=embed", "--wheel=bundle"])
+ def test_wheel_cli_flags_do_nothing(tmp_path, flag) -> None:
+     session = session_via_cli([flag, str(tmp_path)])
+@@ -31,35 +30,23 @@ def test_wheel_cli_flags_do_nothing(tmp_path, flag) -> None:
+     assert session.seeder.distribution_to_versions() == expected
+ 
+ 
+-@pytest.mark.skipif(sys.version_info[:2] == (3, 8), reason="We still bundle wheel for Python 3.8")
+ @pytest.mark.parametrize("flag", ["--no-wheel", "--wheel=none", "--wheel=embed", "--wheel=bundle"])
+ def test_wheel_cli_flags_warn(tmp_path, flag, capsys) -> None:
+     session_via_cli([flag, str(tmp_path)])
+     out, err = capsys.readouterr()
+-    assert "The --no-wheel and --wheel options are deprecated." in out + err
++    assert "the --wheel and --no-wheel options do nothing" in out + err
+ 
+ 
+-@pytest.mark.skipif(sys.version_info[:2] == (3, 8), reason="We still bundle wheel for Python 3.8")
+ def test_unused_wheel_cli_flags_dont_warn(tmp_path, capsys) -> None:
+     session_via_cli([str(tmp_path)])
+     out, err = capsys.readouterr()
+-    assert "The --no-wheel and --wheel options are deprecated." not in out + err
+-
+-
+-@pytest.mark.skipif(sys.version_info[:2] != (3, 8), reason="We only bundle wheel for Python 3.8")
+-@pytest.mark.parametrize("flag", ["--no-wheel", "--wheel=none", "--wheel=embed", "--wheel=bundle"])
+-def test_wheel_cli_flags_dont_warn_on_38(tmp_path, flag, capsys) -> None:
+-    session_via_cli([flag, str(tmp_path)])
+-    out, err = capsys.readouterr()
+-    assert "The --no-wheel and --wheel options are deprecated." not in out + err
++    assert "the --wheel and --no-wheel options do nothing" not in out + err
+ 
+ 
+ def test_embed_wheel_versions(tmp_path: Path) -> None:
+     session = session_via_cli([str(tmp_path)])
+     if sys.version_info[:2] >= (3, 12):
+         expected = {"pip": "bundle"}
+-    elif sys.version_info[:2] >= (3, 9):
+-        expected = {"pip": "bundle", "setuptools": "bundle"}
+     else:
+-        expected = {"pip": "bundle", "setuptools": "bundle", "wheel": "bundle"}
++        expected = {"pip": "bundle", "setuptools": "bundle"}
+     assert session.seeder.distribution_to_versions() == expected
+diff --git a/tests/unit/seed/embed/test_bootstrap_link_via_app_data.py b/tests/unit/seed/embed/test_bootstrap_link_via_app_data.py
+index 99b6cef36..8957f3b83 100644
+--- a/tests/unit/seed/embed/test_bootstrap_link_via_app_data.py
++++ b/tests/unit/seed/embed/test_bootstrap_link_via_app_data.py
+@@ -27,7 +27,7 @@
+ 
+ @pytest.mark.slow
+ @pytest.mark.parametrize("copies", [False, True] if fs_supports_symlink() else [True])
+-def test_seed_link_via_app_data(tmp_path, coverage_env, current_fastest, copies, for_py_version) -> None:  # noqa: PLR0915
++def test_seed_link_via_app_data(tmp_path, coverage_env, current_fastest, copies) -> None:
+     current = PythonInfo.current_system()
+     bundle_ver = BUNDLE_SUPPORT[current.version_release_str]
+     create_cmd = [
+@@ -47,8 +47,6 @@ def test_seed_link_via_app_data(tmp_path, coverage_env, current_fastest, copies,
+         current_fastest,
+         "-vv",
+     ]
+-    if for_py_version == "3.8":
+-        create_cmd += ["--wheel", bundle_ver["wheel"].split("-")[1]]
+     if not copies:
+         create_cmd.append("--symlink-app-data")
+     result = cli_run(create_cmd)
+@@ -212,20 +210,13 @@ def test_populated_read_only_cache_and_copied_app_data(tmp_path, current_fastest
+ 
+ 
+ @pytest.mark.slow
+-@pytest.mark.parametrize("pkg", ["pip", "setuptools", "wheel"])
++@pytest.mark.parametrize("pkg", ["pip", "setuptools"])
+ @pytest.mark.usefixtures("session_app_data", "current_fastest", "coverage_env")
+-def test_base_bootstrap_link_via_app_data_no(tmp_path, pkg, for_py_version) -> None:
+-    if for_py_version != "3.8" and pkg == "wheel":
+-        msg = "wheel isn't installed on Python > 3.8"
+-        raise pytest.skip(msg)
++def test_base_bootstrap_link_via_app_data_no(tmp_path, pkg) -> None:
+     create_cmd = [str(tmp_path), "--seeder", "app-data", f"--no-{pkg}", "--setuptools", "bundle"]
+-    if for_py_version == "3.8":
+-        create_cmd += ["--wheel", "bundle"]
+     result = cli_run(create_cmd)
+     assert not (result.creator.purelib / pkg).exists()
+-    for key in {"pip", "setuptools", "wheel"} - {pkg}:
+-        if for_py_version != "3.8" and key == "wheel":
+-            continue
++    for key in {"pip", "setuptools"} - {pkg}:
+         assert (result.creator.purelib / key).exists()
+ 
+ 
+@@ -251,8 +242,6 @@ def _run_parallel_threads(tmp_path):
+     def _run(name) -> None:
+         try:
+             cmd = ["--seeder", "app-data", str(tmp_path / name), "--no-setuptools"]
+-            if sys.version_info[:2] == (3, 8):
+-                cmd.append("--no-wheel")
+             cli_run(cmd)
+         except Exception as exception:  # noqa: BLE001
+             as_str = str(exception)
+diff --git a/tests/unit/seed/embed/test_pip_invoke.py b/tests/unit/seed/embed/test_pip_invoke.py
+index 6753fc20a..7a721e196 100644
+--- a/tests/unit/seed/embed/test_pip_invoke.py
++++ b/tests/unit/seed/embed/test_pip_invoke.py
+@@ -25,7 +25,7 @@ def test_base_bootstrap_via_pip_invoke(tmp_path, coverage_env, mocker, current_f
+     def _load_embed_wheel(app_data, distribution, _for_py_version, version):
+         return load_embed_wheel(app_data, distribution, old_ver, version)
+ 
+-    old_ver = "3.8"
++    old_ver = "3.9"
+     old = BUNDLE_SUPPORT[old_ver]
+     mocker.patch("virtualenv.seed.wheels.bundle.load_embed_wheel", side_effect=_load_embed_wheel)
+ 
+@@ -50,8 +50,6 @@ def _execute(cmd, env):
+     original = PipInvoke._execute  # noqa: SLF001
+     run = mocker.patch.object(PipInvoke, "_execute", side_effect=_execute)
+     versions = {"pip": "embed", "setuptools": "bundle"}
+-    if sys.version_info[:2] == (3, 8):
+-        versions["wheel"] = new["wheel"].split("-")[1]
+ 
+     create_cmd = [
+         "--seeder",
+@@ -85,9 +83,7 @@ def _execute(cmd, env):
+         no_file = locals()[no]
+         assert no not in files_post_first_create
+ 
+-    for key in ("pip", "setuptools", "wheel"):
++    for key in ("pip", "setuptools"):
+         if key == no:
+             continue
+-        if sys.version_info[:2] >= (3, 9) and key == "wheel":
+-            continue
+         assert locals()[key] in files_post_first_create
+diff --git a/tests/unit/seed/wheels/test_periodic_update.py b/tests/unit/seed/wheels/test_periodic_update.py
+index 33524ce32..9e0b896a0 100644
+--- a/tests/unit/seed/wheels/test_periodic_update.py
++++ b/tests/unit/seed/wheels/test_periodic_update.py
+@@ -67,7 +67,7 @@ def _do_update(distribution, **_kwargs):
+         packages[args[1]["distribution"]].append(args[1]["for_py_version"])
+     packages = {key: sorted(value) for key, value in packages.items()}
+     versions = sorted(BUNDLE_SUPPORT.keys())
+-    expected = {"setuptools": versions, "wheel": ["3.8"], "pip": versions}
++    expected = {"setuptools": versions, "pip": versions}
+     assert packages == expected
+ 
+ 
+diff --git a/tests/unit/seed/wheels/test_wheels_util.py b/tests/unit/seed/wheels/test_wheels_util.py
+index f177a7d21..a89b3df81 100644
+--- a/tests/unit/seed/wheels/test_wheels_util.py
++++ b/tests/unit/seed/wheels/test_wheels_util.py
+@@ -12,7 +12,7 @@ def test_wheel_support_no_python_requires(mocker) -> None:
+     mocker.patch("virtualenv.seed.wheels.util.ZipFile", new=zip_mock)
+     zip_mock.return_value.__enter__.return_value.read = lambda _name: b""
+ 
+-    supports = wheel.support_py("3.8")
++    supports = wheel.support_py("3.9")
+     assert supports is True
+ 
+ 
+diff --git a/tox.toml b/tox.toml
+index a0158f51d..4b21f21f5 100644
+--- a/tox.toml
++++ b/tox.toml
+@@ -6,7 +6,6 @@ env_list = [
+   "3.11",
+   "3.10",
+   "3.9",
+-  "3.8",
+   "pypy3",
+   "3.13t",
+   "3.14t",
+@@ -181,7 +180,7 @@ deps = [ "packaging>=25" ]
+ commands = [ [ "python", "tasks/make_zipapp.py" ] ]
+ uv_seed = true
+ 
+-[env."type-3.8"]
+-description = "run type checker (ty) against Python 3.8"
+-commands = [ [ "python", "-m", "ty", "check", "src/virtualenv", "--python-version", "3.8" ] ]
++[env."type-3.9"]
++description = "run type checker (ty) against Python 3.9"
++commands = [ [ "python", "-m", "ty", "check", "src/virtualenv", "--python-version", "3.9" ] ]
+ base = [ "type" ]
