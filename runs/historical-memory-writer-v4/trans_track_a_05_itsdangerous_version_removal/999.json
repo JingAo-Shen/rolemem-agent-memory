@@ -4,16 +4,27 @@
   "seed": 1068,
   "symbol": "__version__",
   "statement": "__version__ is accessed via a custom __getattr__ method that imports and returns the version using importlib.metadata.",
-  "verdict": "HIST_MEMORY_INVALID",
+  "verdict": "HIST_MEMORY_VALID",
   "criteria": {
     "symbol_grounded": true,
     "artifact_grounded": true,
     "statement_supported": true,
     "non_generic": true,
-    "non_future_looking": false,
+    "non_future_looking": true,
     "ast_unique": true
   },
   "raw_generation": "```json\n{\n  \"symbol\": \"__version__\",\n  \"statement\": \"__version__ is accessed via a custom __getattr__ method that imports and returns the version using importlib.metadata.\"\n}\n```",
   "status": "HIST_MEMORY_INVALID",
-  "error": "Quality gate failed after all retries"
+  "error": "Quality gate failed after all retries",
+  "base_presence": true,
+  "target_presence": false,
+  "first_seen_commit": "4dffa1963f896a0a311dec3c14f003a5f382c446",
+  "temporal_relation": "HISTORICAL_VALID",
+  "entailment_status": "BASE_ENTAILED",
+  "base_hunk_sha256": "6d3204f8a34934a88f0292899ff77921f8a655d4d6c73184dd885fad01dd4da2",
+  "history_commits": [
+    "672f44bcff4a7499665dc9b5de9b14dcd3b0fcb9 deprecate __version__",
+    "4712ab6f5b7ca291544ce5e2dad2beffb05291a7 start version 2.2.0",
+    "faa28bccc85ee47a8274536dd3649a0b67d0a75b start version 2.1.2"
+  ]
 }

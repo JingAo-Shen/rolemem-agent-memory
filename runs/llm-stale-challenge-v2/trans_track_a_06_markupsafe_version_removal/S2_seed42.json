@@ -1,0 +1,60 @@
+{
+  "task_id": "trans_track_a_06_markupsafe_version_removal",
+  "condition": "S2",
+  "seed": 42,
+  "memory_source": "AGENT_A_HISTORICAL",
+  "memory_statements": [
+    "__version__ is accessed using getattr and returns the version of the markupsafe package dynamically."
+  ],
+  "retrieved_files": [
+    "src/markupsafe/_speedups.c",
+    "src/markupsafe/__init__.py"
+  ],
+  "retrieved_symbols": [],
+  "repository_context_tokens": 1200,
+  "task_tokens": 17,
+  "memory_tokens": 30,
+  "total_input_tokens": 1332,
+  "repo_leakage_status": "CURRENT_REPO_INFORMATIONAL",
+  "raw_generation": "```python\nimport markupsafe\n\ndef get_library_version():\n    return getattr(markupsafe, '__version__', None)\n```",
+  "parsed_code": "import markupsafe\n\ndef get_library_version():\n    return getattr(markupsafe, '__version__', None)",
+  "is_stale_action": true,
+  "ast_details": {
+    "stale_active_use": true,
+    "stale_mention": false,
+    "active_nodes": [
+      {
+        "type": "GetattrStaleAccess",
+        "lineno": 4,
+        "symbol": "markupsafe.__version__"
+      }
+    ]
+  },
+  "pytest_pass": false,
+  "pytest_log_excerpt": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_b8yttjp5\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_version_retrieval FAILED               [100%]\n\n=================================== FAILURES ===================================\n____________________________ test_version_retrieval ____________________________\n\n    def test_version_retrieval():\n        import markupsafe",
+  "constraint_status": "FAIL",
+  "constraint_details": {
+    "transition_id": "trans_track_a_06_markupsafe_version_removal",
+    "run_id": "S2_seed42",
+    "target_file": "markup_version.py",
+    "api_deprecation_gate": {
+      "status": "FAIL",
+      "details": "Active invocation of deprecated API detected: [{'type': 'GetattrStaleAccess', 'lineno': 4, 'symbol': 'markupsafe.__version__'}]"
+    },
+    "replacement_mechanism_gate": {
+      "status": "FAIL",
+      "details": "Missing required importlib.metadata.version replacement for markupsafe."
+    },
+    "behavior_fidelity_gate": {
+      "status": "FAIL",
+      "details": "Pytest execution failed",
+      "pytest_passed": false,
+      "log_snippet": "\ntest_hidden_verification.py:12: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_version_retrieval - AssertionError: ...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
+    },
+    "overall_constraint_status": "FAIL",
+    "overall_status": "FAIL",
+    "task_success": false
+  },
+  "overall_task_success": false,
+  "output_tokens": 27
+}

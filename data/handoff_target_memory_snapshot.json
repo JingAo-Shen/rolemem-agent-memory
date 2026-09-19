@@ -1,7 +1,7 @@
 {
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Rebuilt Target Memory Snapshot with verified PR bindings, diff hunk hashes, and provenance slices",
-  "snapshot_sha256": "84519b638a0e9cf840a1048a5d71293e227fe95fe84a3519775593fef12397df",
+  "snapshot_sha256": "8bdcad50a95f960260f35732c85b38df19bc736034fcf0052dffcd025aecf77a",
   "claims": {
     "trans_track_a_01_click_stream_deprecations": {
       "transition_id": "trans_track_a_01_click_stream_deprecations",
@@ -13,7 +13,8 @@
       "evidence_file": "data/external_evidence/trans_track_a_01_click_stream_deprecations/diff.patch",
       "evidence_hunk_sha256": "73be4c7c8f0f254c0ce01c1e131a142a3d4f44ed58f6a48893820e0217d4de7a",
       "evidence_excerpt_hash": "35919c3e3b95771337c7dd0df4f2fa5ce0be8c2017b6b13de5a504f41f0a56f2",
-      "ground_truth_audit_hash": "9d9aa5ed9030f0e5e70c036b789292f06551cdc1a6b4d1da5810b0d008d122e4"
+      "ground_truth_audit_hash": "7e016c5a2fbadb979f451a077296cba193379722be8c40a12805adf17979dfdc",
+      "artifact": "src/click/utils.py"
     },
     "trans_track_a_02_flask_should_ignore_error": {
       "transition_id": "trans_track_a_02_flask_should_ignore_error",
@@ -25,7 +26,8 @@
       "evidence_file": "data/external_evidence/trans_track_a_02_flask_should_ignore_error/diff.patch",
       "evidence_hunk_sha256": "acb6b40b2fc02064becdd64d757e847540413a20edc1b4b4973d3e1c4d950228",
       "evidence_excerpt_hash": "6346e11aab64d32845c5deda8677d532820ba1f393f5527ce78d40e1688d22cb",
-      "ground_truth_audit_hash": "76b22c788791d6622af63519d707dd70ec5741a8efe698c664813f2589c1abeb"
+      "ground_truth_audit_hash": "7d908ae73339ad948c8458f74d9408fd60958868ce70f28888677e19616f158f",
+      "artifact": "src/flask/app.py"
     },
     "trans_track_a_03_werkzeug_environ_property": {
       "transition_id": "trans_track_a_03_werkzeug_environ_property",
@@ -37,7 +39,8 @@
       "evidence_file": "data/external_evidence/trans_track_a_03_werkzeug_environ_property/diff.patch",
       "evidence_hunk_sha256": "1eb158ee3ebaa71b5c22fa132fd44a204b0728fe81acc1f4d778463810526635",
       "evidence_excerpt_hash": "be0e52c47d2a6b75969927462969deda6e19b0d74560948fb60265cb6c17c812",
-      "ground_truth_audit_hash": "9ca4a9e4b25f9cf4a65bb76ab43bae2f542e58aaf776369033949265ca06bb4a"
+      "ground_truth_audit_hash": "f752e494499aafcb9888bcc288ac67c697b2edbaf37adc17704be7a0f38b2318",
+      "artifact": "src/werkzeug/utils.py"
     },
     "trans_track_a_04_jinja_version_deprecation": {
       "transition_id": "trans_track_a_04_jinja_version_deprecation",
@@ -49,7 +52,8 @@
       "evidence_file": "data/external_evidence/trans_track_a_04_jinja_version_deprecation/diff.patch",
       "evidence_hunk_sha256": "22803df9e0368a8d2cb807c3e8d7f0cca845eb0c23d1659de8185d4cc021dd55",
       "evidence_excerpt_hash": "300feaeef646f4e0413b97aa220aa770a25dc19fcdffea90f0a2c3d739aebd33",
-      "ground_truth_audit_hash": "6f45269c8b86fbcf4c5b4bbabaff60019552b4abc348a5d6738fe841df0789b8"
+      "ground_truth_audit_hash": "c06f8355a771d1c2bb06ba4f92d9b11c39991c3d5667c8da9acd265660d4ea62",
+      "artifact": "src/jinja2/__init__.py"
     },
     "trans_track_a_05_itsdangerous_version_removal": {
       "transition_id": "trans_track_a_05_itsdangerous_version_removal",
@@ -61,7 +65,8 @@
       "evidence_file": "data/external_evidence/trans_track_a_05_itsdangerous_version_removal/diff.patch",
       "evidence_hunk_sha256": "ae1274b39b1121a69df102d788eff9361ade1b1cc426dd23908064c4feaffb83",
       "evidence_excerpt_hash": "8718fe06e4ed90a1a18ede204ca4847ecfb14b47f8fdf8c0ca96d20b75a7bedd",
-      "ground_truth_audit_hash": "15eddb9553a0bf4e389a769d4a7c463c65f79190908271b54ff0d55bf12f3e96"
+      "ground_truth_audit_hash": "446b5d4eac8d9cbd66e885cb1a4299fb6add7709328a6a223fd1c8ec8f7a8aa3",
+      "artifact": "src/itsdangerous/__init__.py"
     },
     "trans_track_a_06_markupsafe_version_removal": {
       "transition_id": "trans_track_a_06_markupsafe_version_removal",
@@ -73,7 +78,8 @@
       "evidence_file": "data/external_evidence/trans_track_a_06_markupsafe_version_removal/diff.patch",
       "evidence_hunk_sha256": "87f63e417b2d4a94801f78548ab07e0e313dcaab91f2a185001e02639d1e0896",
       "evidence_excerpt_hash": "d11bbf02cf05cc961f192b1eebe6ba759b8017fc246dbadb90c4055a86b72471",
-      "ground_truth_audit_hash": "b1856a6285a884a12678522b85d727e04cf3c4da9766d2e9357939fbc83e78e2"
+      "ground_truth_audit_hash": "0ebdb56ae863de1d7ab10b67c6918d31eb6a51ff2fbee865b99d678bcbddaa9f",
+      "artifact": "src/markupsafe/__init__.py"
     },
     "trans_track_a_07_pluggy_varnames_noself": {
       "transition_id": "trans_track_a_07_pluggy_varnames_noself",
@@ -85,7 +91,8 @@
       "evidence_file": "data/external_evidence/trans_track_a_07_pluggy_varnames_noself/diff.patch",
       "evidence_hunk_sha256": "23385d32d73ed9bc80fddba8c561c3f02b268c4ed21f8778ab345ec7f69ba850",
       "evidence_excerpt_hash": "ff398ea7533ec09e6f3882cac66bf9e28a6cc23894a93aabe7aa4290e736d228",
-      "ground_truth_audit_hash": "6cc4213ee192bba2914ff47fe790b244d4bc06331fdefd56a61969e7ba6ddf40"
+      "ground_truth_audit_hash": "eb0fa613f5b184099c35da146d26c183457bfdab16a58541f7fcfe98828e7700",
+      "artifact": "src/pluggy/_hooks.py"
     },
     "trans_track_a_08_attrs_py313_replace_control": {
       "transition_id": "trans_track_a_08_attrs_py313_replace_control",
@@ -97,7 +104,8 @@
       "evidence_file": "data/external_evidence/trans_track_a_08_attrs_py313_replace_control/diff.patch",
       "evidence_hunk_sha256": "55e9914ee3f9329a631f4e7a070a79fa6b7e5168740b38e459249bb70753b673",
       "evidence_excerpt_hash": "2d09b45f3dfd38ec6abc0e12cbc197924a01b432e4df5965e769fff41c1dd8b5",
-      "ground_truth_audit_hash": "08e4229a4f472c4056665f95059fab3f1e2dcd64bb688087977a2ea02d23a477"
+      "ground_truth_audit_hash": "2d6493114221ff95d6bc5ad57eb64298b84372780b9ffa8f539f47e1d296e47a",
+      "artifact": "src/attr/_make.py"
     },
     "trans_track_a_09_virtualenv_drop_py38_control": {
       "transition_id": "trans_track_a_09_virtualenv_drop_py38_control",
@@ -109,7 +117,8 @@
       "evidence_file": "data/external_evidence/trans_track_a_09_virtualenv_drop_py38_control/diff.patch",
       "evidence_hunk_sha256": "1f6f3850e403dd7e400dfea77545f5002531b6a75d0b155a585330485c9ee4d2",
       "evidence_excerpt_hash": "81e23693f4ab11edbea169783aee01021a9615d52d186b27718bde01cbc9af7c",
-      "ground_truth_audit_hash": "7f1a4d31234125d21af48e80d5e0191f8321d6b4a1380132166b935a32af6a0e"
+      "ground_truth_audit_hash": "624b8acab07dc912d6e20f1d68e30186535dda5ef407c0be7146cb62ca7f64bd",
+      "artifact": "src/virtualenv/create/via_global_ref/builtin/cpython/cpython3.py"
     },
     "trans_track_a_10_httpx_client_proxies_deprecation": {
       "transition_id": "trans_track_a_10_httpx_client_proxies_deprecation",
@@ -121,7 +130,8 @@
       "evidence_file": "data/external_evidence/trans_track_a_10_httpx_client_proxies_deprecation/diff.patch",
       "evidence_hunk_sha256": "83135973f37ca8225b6314a3c7f89a641a9c424fa722cd02a41bab66091c8ae5",
       "evidence_excerpt_hash": "1fc27d5bb38eafe527a3d66bfa67f117209df7704aa4f7d10bad927655ec2f15",
-      "ground_truth_audit_hash": "eb2285ad3a69147e303feb2ea27a9eabc79bdccd8859985b26566b18785b963e"
+      "ground_truth_audit_hash": "c7985b74343f9ced3b5ade391d2c956d6bef7171ff2a84a2ea53daf151ded437",
+      "artifact": "httpx/_client.py"
     }
   }
 }

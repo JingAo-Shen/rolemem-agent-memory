@@ -1,0 +1,22 @@
+{
+  "transition_id": "trans_track_a_08_attrs_py313_replace_control",
+  "run_id": "test_valid_trans_track_a_08_attrs_py313_replace_control",
+  "target_file": "point_manager.py",
+  "api_deprecation_gate": {
+    "status": "NOT_APPLICABLE_CONTROL",
+    "details": "Attrs evolution control: API deprecation check not applicable."
+  },
+  "replacement_mechanism_gate": {
+    "status": "NOT_APPLICABLE_CONTROL",
+    "details": "Attrs evolution control: Replacement mechanism not applicable (attr.evolve is valid)."
+  },
+  "behavior_fidelity_gate": {
+    "status": "PASS",
+    "details": "Pytest execution passed",
+    "pytest_passed": true,
+    "log_snippet": "naconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_twzz0iv9\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_replace_behavior PASSED                [100%]\n\n============================== 1 passed in 0.03s ===============================\n"
+  },
+  "overall_constraint_status": "PASS",
+  "overall_status": "PASS",
+  "task_success": true
+}

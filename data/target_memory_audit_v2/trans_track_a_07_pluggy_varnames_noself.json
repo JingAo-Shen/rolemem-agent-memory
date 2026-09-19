@@ -1,0 +1,31 @@
+{
+  "transition_id": "trans_track_a_07_pluggy_varnames_noself",
+  "provenance_status": "TARGET_MEMORY_VERIFIED",
+  "recomputed_hashes": {
+    "diff_hunk_sha256": "23385d32d73ed9bc80fddba8c561c3f02b268c4ed21f8778ab345ec7f69ba850",
+    "evidence_excerpt_hash": "ff398ea7533ec09e6f3882cac66bf9e28a6cc23894a93aabe7aa4290e736d228",
+    "ground_truth_audit_hash": "eb0fa613f5b184099c35da146d26c183457bfdab16a58541f7fcfe98828e7700"
+  },
+  "checks": {
+    "source_pr_matches": true,
+    "source_commit_matches": true,
+    "artifact_in_diff": true,
+    "diff_hunk_sha256_verified": true,
+    "evidence_excerpt_hash_verified": true,
+    "ground_truth_audit_hash_verified": true,
+    "statement_entailment": "ENTAILED"
+  },
+  "claim": {
+    "transition_id": "trans_track_a_07_pluggy_varnames_noself",
+    "statement": "pluggy._hooks.varnames legacy_noself=True is deprecated; define hook specifications with explicit self parameter and invoke varnames with legacy_noself=False.",
+    "symbol": "pluggy._hooks.varnames",
+    "replacement": "varnames(target, legacy_noself=False)",
+    "source_pr_url": "https://github.com/pytest-dev/pluggy/pull/632",
+    "source_commit": "0258484dc180a0c28705de83783b269f4fed4873",
+    "evidence_file": "data/external_evidence/trans_track_a_07_pluggy_varnames_noself/diff.patch",
+    "evidence_hunk_sha256": "23385d32d73ed9bc80fddba8c561c3f02b268c4ed21f8778ab345ec7f69ba850",
+    "evidence_excerpt_hash": "ff398ea7533ec09e6f3882cac66bf9e28a6cc23894a93aabe7aa4290e736d228",
+    "ground_truth_audit_hash": "eb0fa613f5b184099c35da146d26c183457bfdab16a58541f7fcfe98828e7700",
+    "artifact": "src/pluggy/_hooks.py"
+  }
+}

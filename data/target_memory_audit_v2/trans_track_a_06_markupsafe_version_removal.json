@@ -1,0 +1,31 @@
+{
+  "transition_id": "trans_track_a_06_markupsafe_version_removal",
+  "provenance_status": "TARGET_MEMORY_VERIFIED",
+  "recomputed_hashes": {
+    "diff_hunk_sha256": "87f63e417b2d4a94801f78548ab07e0e313dcaab91f2a185001e02639d1e0896",
+    "evidence_excerpt_hash": "d11bbf02cf05cc961f192b1eebe6ba759b8017fc246dbadb90c4055a86b72471",
+    "ground_truth_audit_hash": "0ebdb56ae863de1d7ab10b67c6918d31eb6a51ff2fbee865b99d678bcbddaa9f"
+  },
+  "checks": {
+    "source_pr_matches": true,
+    "source_commit_matches": true,
+    "artifact_in_diff": true,
+    "diff_hunk_sha256_verified": true,
+    "evidence_excerpt_hash_verified": true,
+    "ground_truth_audit_hash_verified": true,
+    "statement_entailment": "ENTAILED"
+  },
+  "claim": {
+    "transition_id": "trans_track_a_06_markupsafe_version_removal",
+    "statement": "markupsafe.__version__ has been removed in MarkupSafe 3.1; use importlib.metadata.version(\"markupsafe\") instead.",
+    "symbol": "markupsafe.__version__",
+    "replacement": "importlib.metadata.version(\"markupsafe\")",
+    "source_pr_url": "https://github.com/pallets/markupsafe/pull/499",
+    "source_commit": "dfa58162f6ba9a0afebab7e924af362cd0bede66",
+    "evidence_file": "data/external_evidence/trans_track_a_06_markupsafe_version_removal/diff.patch",
+    "evidence_hunk_sha256": "87f63e417b2d4a94801f78548ab07e0e313dcaab91f2a185001e02639d1e0896",
+    "evidence_excerpt_hash": "d11bbf02cf05cc961f192b1eebe6ba759b8017fc246dbadb90c4055a86b72471",
+    "ground_truth_audit_hash": "0ebdb56ae863de1d7ab10b67c6918d31eb6a51ff2fbee865b99d678bcbddaa9f",
+    "artifact": "src/markupsafe/__init__.py"
+  }
+}

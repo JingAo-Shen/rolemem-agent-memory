@@ -4,17 +4,17 @@
   "target_file": "custom_app.py",
   "api_deprecation_gate": {
     "status": "PASS",
-    "details": "Code free of deprecated symbol 'should_ignore_error'"
+    "details": "Code is free of active deprecated API invocations."
   },
   "replacement_mechanism_gate": {
     "status": "FAIL",
-    "details": "Missing required teardown_request handler registration"
+    "details": "Missing required @app.teardown_request handler registration."
   },
   "behavior_fidelity_gate": {
-    "status": "PASS",
-    "details": "Pytest execution passed",
-    "pytest_passed": true,
-    "log_snippet": "kes 'ctx: AppContext' as the first parameter. The old signature is deprecated and will not be supported in Flask 4.0.\n    class CustomApp(Flask):\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n========================= 1 passed, 1 warning in 0.09s =========================\n"
+    "status": "FAIL",
+    "details": "Pytest execution failed",
+    "pytest_passed": false,
+    "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_flask_custom_app_dispatch - assert 5...\n========================= 1 failed, 1 warning in 0.09s =========================\n\nSTDERR:\n"
   },
   "overall_constraint_status": "FAIL",
   "overall_status": "FAIL",

@@ -1,0 +1,53 @@
+{
+  "task_id": "trans_track_a_07_pluggy_varnames_noself",
+  "condition": "S2",
+  "seed": 999,
+  "memory_source": "AGENT_A_HISTORICAL",
+  "memory_statements": [
+    "The 'varnames' function retrieves the positional and keyword parameter names for a given callable, handling class methods, bound methods, and unbound methods with specific rules."
+  ],
+  "retrieved_files": [
+    "src/pluggy/_hooks.py"
+  ],
+  "retrieved_symbols": [],
+  "repository_context_tokens": 1190,
+  "task_tokens": 20,
+  "memory_tokens": 44,
+  "total_input_tokens": 1332,
+  "repo_leakage_status": "CURRENT_REPO_INFORMATIONAL",
+  "raw_generation": "```python\nimport inspect\n\ndef extract_spec_varnames(func):\n    \"\"\"\n    Extracts the positional and keyword argument names from a given function.\n\n    Args:\n    func (callable): The function from which to extract the argument names.\n\n    Returns:\n    tuple: A tuple containing two tuples - the first for positional arguments and the second for keyword arguments.\n    \"\"\"\n    sig = inspect.signature(func)\n    pos_args = []\n    kw_args = []\n\n    for param_name, param in sig.parameters.items():\n        if param.kind == inspect.Parameter.POSITIONAL_OR_KEYWORD:\n            pos_args.append(param_name)\n        elif param.kind == inspect.Parameter.KEYWORD_ONLY:\n            kw_args.append(param_name)\n\n    return tuple(pos_args), tuple(kw_args)\n```",
+  "parsed_code": "import inspect\n\ndef extract_spec_varnames(func):\n    \"\"\"\n    Extracts the positional and keyword argument names from a given function.\n\n    Args:\n    func (callable): The function from which to extract the argument names.\n\n    Returns:\n    tuple: A tuple containing two tuples - the first for positional arguments and the second for keyword arguments.\n    \"\"\"\n    sig = inspect.signature(func)\n    pos_args = []\n    kw_args = []\n\n    for param_name, param in sig.parameters.items():\n        if param.kind == inspect.Parameter.POSITIONAL_OR_KEYWORD:\n            pos_args.append(param_name)\n        elif param.kind == inspect.Parameter.KEYWORD_ONLY:\n            kw_args.append(param_name)\n\n    return tuple(pos_args), tuple(kw_args)",
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": false,
+    "active_nodes": []
+  },
+  "pytest_pass": false,
+  "pytest_log_excerpt": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_huxalolv\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_varnames_extraction FAILED             [100%]\n\n=================================== FAILURES ===================================\n___________________________ test_varnames_extraction ___________________________\n\n    def test_varnames_extraction():\n        with warnings.c",
+  "constraint_status": "FAIL",
+  "constraint_details": {
+    "transition_id": "trans_track_a_07_pluggy_varnames_noself",
+    "run_id": "S2_seed999",
+    "target_file": "spec_helper.py",
+    "api_deprecation_gate": {
+      "status": "PASS",
+      "details": "Code is free of active deprecated API invocations."
+    },
+    "replacement_mechanism_gate": {
+      "status": "PASS",
+      "details": "Modern varnames parameter inspection present without legacy_noself=True."
+    },
+    "behavior_fidelity_gate": {
+      "status": "FAIL",
+      "details": "Pytest execution failed",
+      "pytest_passed": false,
+      "log_snippet": "unc'\n\ntest_hidden_verification.py:16: TypeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_varnames_extraction - TypeError: ext...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
+    },
+    "overall_constraint_status": "FAIL",
+    "overall_status": "FAIL",
+    "task_success": false
+  },
+  "overall_task_success": false,
+  "output_tokens": 151
+}

@@ -13,5 +13,16 @@
     "non_future_looking": true,
     "ast_unique": true
   },
-  "raw_generation": "```json\n{\n  \"symbol\": \"environ_property\",\n  \"statement\": \"environ_property is a descriptor class used to map request attributes to environment variables, providing functionality similar to accessing dictionary keys but with additional handling for default values and converters.\"\n}\n```"
+  "raw_generation": "```json\n{\n  \"symbol\": \"environ_property\",\n  \"statement\": \"environ_property is a descriptor class used to map request attributes to environment variables, providing functionality similar to accessing dictionary keys but with additional handling for default values and converters.\"\n}\n```",
+  "base_presence": true,
+  "target_presence": false,
+  "first_seen_commit": "f97c305673ba121a1dae6764c37e8be48907a1d1",
+  "temporal_relation": "HISTORICAL_VALID",
+  "entailment_status": "BASE_ENTAILED",
+  "base_hunk_sha256": "f56dac9aee5d8ea83d10e1ad4a95737a4223387a7fca0f84cd537f4f5d13bb83",
+  "history_commits": [
+    "0005c79e09bae5f4cc2bd8ccd468d7dafe24a455 Merge branch 'stable'",
+    "5d39fd55ac5cefb996edce53d2b2e8b3677d8a8d add docs to address common invalid security reports",
+    "25f2a09c5bccde0103d7cea192487264bc8d4c41 consistent header capitalization"
+  ]
 }

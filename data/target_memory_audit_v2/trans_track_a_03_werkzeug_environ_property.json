@@ -1,0 +1,31 @@
+{
+  "transition_id": "trans_track_a_03_werkzeug_environ_property",
+  "provenance_status": "TARGET_MEMORY_VERIFIED",
+  "recomputed_hashes": {
+    "diff_hunk_sha256": "1eb158ee3ebaa71b5c22fa132fd44a204b0728fe81acc1f4d778463810526635",
+    "evidence_excerpt_hash": "be0e52c47d2a6b75969927462969deda6e19b0d74560948fb60265cb6c17c812",
+    "ground_truth_audit_hash": "f752e494499aafcb9888bcc288ac67c697b2edbaf37adc17704be7a0f38b2318"
+  },
+  "checks": {
+    "source_pr_matches": true,
+    "source_commit_matches": true,
+    "artifact_in_diff": true,
+    "diff_hunk_sha256_verified": true,
+    "evidence_excerpt_hash_verified": true,
+    "ground_truth_audit_hash_verified": true,
+    "statement_entailment": "ENTAILED"
+  },
+  "claim": {
+    "transition_id": "trans_track_a_03_werkzeug_environ_property",
+    "statement": "werkzeug.wsgi.environ_property is deprecated and removed; create dynamic property descriptors accessing request.environ directly.",
+    "symbol": "werkzeug.wsgi.environ_property",
+    "replacement": "property(lambda self: self.environ.get(...))",
+    "source_pr_url": "https://github.com/pallets/werkzeug/pull/3276",
+    "source_commit": "7641d4990f06d583425a4e6ba25e9d2f18934885",
+    "evidence_file": "data/external_evidence/trans_track_a_03_werkzeug_environ_property/diff.patch",
+    "evidence_hunk_sha256": "1eb158ee3ebaa71b5c22fa132fd44a204b0728fe81acc1f4d778463810526635",
+    "evidence_excerpt_hash": "be0e52c47d2a6b75969927462969deda6e19b0d74560948fb60265cb6c17c812",
+    "ground_truth_audit_hash": "f752e494499aafcb9888bcc288ac67c697b2edbaf37adc17704be7a0f38b2318",
+    "artifact": "src/werkzeug/utils.py"
+  }
+}

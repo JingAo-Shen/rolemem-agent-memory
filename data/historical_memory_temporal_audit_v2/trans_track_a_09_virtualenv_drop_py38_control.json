@@ -1,0 +1,62 @@
+{
+  "transition_id": "trans_track_a_09_virtualenv_drop_py38_control",
+  "overall_status": "TEMPORAL_VALID",
+  "reconstructed_seed_count": 3,
+  "valid_seed_count": 3,
+  "evaluations": {
+    "42": {
+      "verdict": "TEMPORAL_VALID",
+      "base_presence": true,
+      "target_presence": false,
+      "first_seen_commit": "f1f4d687b12caac079d81ffc5ee50a16d1fabc1a",
+      "temporal_relation": "HISTORICAL_VALID",
+      "entailment_status": "BASE_ENTAILED",
+      "base_source_hunk_sha256": "0bf0bd91d1785747395ee06b981f97d747b083279f2fca4fc126257c33b3c8ad",
+      "history_commits": [
+        "6a2d79cd8077035a8a9d08b8501975eead13b496 \ud83d\udc1b fix(create): debug build venvlauncher lookup on Windows 3.13+ (#3151)",
+        "61434984154e4474c478301e433071efd880ad8c \u2728 feat(create): support Windows debug builds and remove dead code (#3150)",
+        "ceaf88f8736c253ca71d155bb08b8475deebda02 \u267b\ufe0f refactor(create): remove dead code and document droppable paths (#3149)"
+      ],
+      "pr_leak": false,
+      "future_phrase_leaks": [],
+      "target_only_replacements": [],
+      "statement": "CPython3Posix.pyvenv_launch_patch_active checks if the current Python interpreter running on a POSIX system is version 3.8.3 or later but less than 3.8."
+    },
+    "123": {
+      "verdict": "TEMPORAL_VALID",
+      "base_presence": true,
+      "target_presence": false,
+      "first_seen_commit": "f1f4d687b12caac079d81ffc5ee50a16d1fabc1a",
+      "temporal_relation": "HISTORICAL_VALID",
+      "entailment_status": "BASE_ENTAILED",
+      "base_source_hunk_sha256": "0bf0bd91d1785747395ee06b981f97d747b083279f2fca4fc126257c33b3c8ad",
+      "history_commits": [
+        "6a2d79cd8077035a8a9d08b8501975eead13b496 \ud83d\udc1b fix(create): debug build venvlauncher lookup on Windows 3.13+ (#3151)",
+        "61434984154e4474c478301e433071efd880ad8c \u2728 feat(create): support Windows debug builds and remove dead code (#3150)",
+        "ceaf88f8736c253ca71d155bb08b8475deebda02 \u267b\ufe0f refactor(create): remove dead code and document droppable paths (#3149)"
+      ],
+      "pr_leak": false,
+      "future_phrase_leaks": [],
+      "target_only_replacements": [],
+      "statement": "CPython3Posix.pyvenv_launch_patch_active checks if the current Python interpreter running on a POSIX system is version 3.8.3 or later but less than 3.8."
+    },
+    "999": {
+      "verdict": "TEMPORAL_VALID",
+      "base_presence": true,
+      "target_presence": false,
+      "first_seen_commit": "f1f4d687b12caac079d81ffc5ee50a16d1fabc1a",
+      "temporal_relation": "HISTORICAL_VALID",
+      "entailment_status": "BASE_ENTAILED",
+      "base_source_hunk_sha256": "0bf0bd91d1785747395ee06b981f97d747b083279f2fca4fc126257c33b3c8ad",
+      "history_commits": [
+        "6a2d79cd8077035a8a9d08b8501975eead13b496 \ud83d\udc1b fix(create): debug build venvlauncher lookup on Windows 3.13+ (#3151)",
+        "61434984154e4474c478301e433071efd880ad8c \u2728 feat(create): support Windows debug builds and remove dead code (#3150)",
+        "ceaf88f8736c253ca71d155bb08b8475deebda02 \u267b\ufe0f refactor(create): remove dead code and document droppable paths (#3149)"
+      ],
+      "pr_leak": false,
+      "future_phrase_leaks": [],
+      "target_only_replacements": [],
+      "statement": "CPython3Posix.pyvenv_launch_patch_active checks if the current Python interpreter running on a POSIX system is version 3.8.3 or later but less than 3.8."
+    }
+  }
+}

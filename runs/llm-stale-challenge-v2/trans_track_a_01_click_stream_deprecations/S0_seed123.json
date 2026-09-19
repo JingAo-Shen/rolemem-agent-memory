@@ -1,0 +1,52 @@
+{
+  "task_id": "trans_track_a_01_click_stream_deprecations",
+  "condition": "S0",
+  "seed": 123,
+  "memory_source": "NO_MEMORY",
+  "memory_statements": [],
+  "retrieved_files": [
+    "src/click/utils.py",
+    "src/click/_compat.py"
+  ],
+  "retrieved_symbols": [],
+  "repository_context_tokens": 1200,
+  "task_tokens": 24,
+  "memory_tokens": 0,
+  "total_input_tokens": 1309,
+  "repo_leakage_status": "CURRENT_REPO_INFORMATIONAL",
+  "raw_generation": "```python\nimport sys\n\ndef get_binary_stdin() -> t.BinaryIO:\n    return sys.stdin.buffer\n\ndef get_binary_stdout() -> t.BinaryIO:\n    return sys.stdout.buffer\n\ndef get_binary_stderr() -> t.BinaryIO:\n    return sys.stderr.buffer\n\ndef get_io_stream(name: str) -> t.BinaryIO:\n    if name == 'stdin':\n        return get_binary_stdin()\n    elif name == 'stdout':\n        return get_binary_stdout()\n    elif name == 'stderr':\n        return get_binary_stderr()\n    else:\n        raise ValueError(f\"Unknown standard stream '{name}'\")\n```",
+  "parsed_code": "import sys\n\ndef get_binary_stdin() -> t.BinaryIO:\n    return sys.stdin.buffer\n\ndef get_binary_stdout() -> t.BinaryIO:\n    return sys.stdout.buffer\n\ndef get_binary_stderr() -> t.BinaryIO:\n    return sys.stderr.buffer\n\ndef get_io_stream(name: str) -> t.BinaryIO:\n    if name == 'stdin':\n        return get_binary_stdin()\n    elif name == 'stdout':\n        return get_binary_stdout()\n    elif name == 'stderr':\n        return get_binary_stderr()\n    else:\n        raise ValueError(f\"Unknown standard stream '{name}'\")",
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": false,
+    "active_nodes": []
+  },
+  "pytest_pass": false,
+  "pytest_log_excerpt": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_ngcyr2th\nplugins: anyio-4.15.1\ncollecting ... collected 0 items / 1 error\n\n==================================== ERRORS ====================================\n_________________ ERROR collecting test_hidden_verification.py _________________\ntest_hidden_verification.py:4: in <module>\n    import stream_helper\nstream_helper.py:3: in <module>\n    def get_binary_stdin() -> ",
+  "constraint_status": "FAIL",
+  "constraint_details": {
+    "transition_id": "trans_track_a_01_click_stream_deprecations",
+    "run_id": "S0_seed123",
+    "target_file": "stream_helper.py",
+    "api_deprecation_gate": {
+      "status": "PASS",
+      "details": "Code is free of active deprecated API invocations."
+    },
+    "replacement_mechanism_gate": {
+      "status": "PASS",
+      "details": "Direct standard stream buffer access present."
+    },
+    "behavior_fidelity_gate": {
+      "status": "FAIL",
+      "details": "Pytest execution failed",
+      "pytest_passed": false,
+      "log_snippet": "==== short test summary info ============================\nERROR test_hidden_verification.py - NameError: name 't' is not defined\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n=============================== 1 error in 0.05s ===============================\n\nSTDERR:\n"
+    },
+    "overall_constraint_status": "FAIL",
+    "overall_status": "FAIL",
+    "task_success": false
+  },
+  "overall_task_success": false,
+  "output_tokens": 125
+}

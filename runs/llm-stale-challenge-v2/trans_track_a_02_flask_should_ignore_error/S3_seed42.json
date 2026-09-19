@@ -1,0 +1,54 @@
+{
+  "task_id": "trans_track_a_02_flask_should_ignore_error",
+  "condition": "S3",
+  "seed": 42,
+  "memory_source": "TARGET_MEMORY_VERIFIED",
+  "memory_statements": [
+    "Flask.should_ignore_error is deprecated in Flask 2.3 and removed in 3.3; handle request errors and teardown logic via @app.teardown_request handlers."
+  ],
+  "retrieved_files": [
+    "src/flask/app.py",
+    "src/flask/sansio/app.py"
+  ],
+  "retrieved_symbols": [],
+  "repository_context_tokens": 1200,
+  "task_tokens": 23,
+  "memory_tokens": 45,
+  "total_input_tokens": 1353,
+  "repo_leakage_status": "CURRENT_REPO_INFORMATIONAL",
+  "raw_generation": "```python\nfrom flask import Flask, request, jsonify\nfrom typing import Any, Callable, Optional\n\nclass CustomApp(Flask):\n    def __init__(self, *args: Any, **kwargs: Any):\n        super().__init__(*args, **kwargs)\n        self.register_teardown_request(self.teardown_request_handler)\n\n    def teardown_request_handler(self, exception: Optional[Exception] = None) -> None:\n        # Implement custom teardown logic here\n        pass\n\n    def handle_user_exception(self, context: Any, exc: Exception) -> Any:\n        # Implement custom error handling here\n        return jsonify(error=str(exc)), 500\n\n# Example usage\nif __name__ == \"__main__\":\n    app = CustomApp(__name__)\n\n    @app.route('/')\n    def index():\n        return \"Hello, World!\"\n\n    app.run(debug=True)\n```\n\nThis solution creates a `CustomApp` class that subclasses `Flask`. It registers a teardown handler using `register_teardown_request` and implements custom error handling in `handle_user_exception`. The example usage demonstrates creating a simple Flask application with the custom app class.",
+  "parsed_code": "from flask import Flask, request, jsonify\nfrom typing import Any, Callable, Optional\n\nclass CustomApp(Flask):\n    def __init__(self, *args: Any, **kwargs: Any):\n        super().__init__(*args, **kwargs)\n        self.register_teardown_request(self.teardown_request_handler)\n\n    def teardown_request_handler(self, exception: Optional[Exception] = None) -> None:\n        # Implement custom teardown logic here\n        pass\n\n    def handle_user_exception(self, context: Any, exc: Exception) -> Any:\n        # Implement custom error handling here\n        return jsonify(error=str(exc)), 500\n\n# Example usage\nif __name__ == \"__main__\":\n    app = CustomApp(__name__)\n\n    @app.route('/')\n    def index():\n        return \"Hello, World!\"\n\n    app.run(debug=True)",
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": false,
+    "active_nodes": []
+  },
+  "pytest_pass": false,
+  "pytest_log_excerpt": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_fv8k5hu6\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_flask_custom_app_dispatch FAILED       [100%]\n\n=================================== FAILURES ===================================\n________________________ test_flask_custom_app_dispatch ________________________\n\n    def test_flask_custom_app_dispatch():\n        assert is",
+  "constraint_status": "FAIL",
+  "constraint_details": {
+    "transition_id": "trans_track_a_02_flask_should_ignore_error",
+    "run_id": "S3_seed42",
+    "target_file": "custom_app.py",
+    "api_deprecation_gate": {
+      "status": "PASS",
+      "details": "Code is free of active deprecated API invocations."
+    },
+    "replacement_mechanism_gate": {
+      "status": "PASS",
+      "details": "teardown_request handler registration present."
+    },
+    "behavior_fidelity_gate": {
+      "status": "FAIL",
+      "details": "Pytest execution failed",
+      "pytest_passed": false,
+      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_flask_custom_app_dispatch - Attribut...\n========================= 1 failed, 1 warning in 0.09s =========================\n\nSTDERR:\n"
+    },
+    "overall_constraint_status": "FAIL",
+    "overall_status": "FAIL",
+    "task_success": false
+  },
+  "overall_task_success": false,
+  "output_tokens": 232
+}

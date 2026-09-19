@@ -4,17 +4,17 @@
   "target_file": "custom_app.py",
   "api_deprecation_gate": {
     "status": "PASS",
-    "details": "Code free of deprecated symbol 'should_ignore_error'"
+    "details": "Code is free of active deprecated API invocations."
   },
   "replacement_mechanism_gate": {
     "status": "FAIL",
-    "details": "Missing required teardown_request handler registration"
+    "details": "Missing required @app.teardown_request handler registration."
   },
   "behavior_fidelity_gate": {
     "status": "FAIL",
     "details": "Pytest execution failed",
     "pytest_passed": false,
-    "log_snippet": "ster_teardown'\n\ncustom_app.py:6: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_flask_custom_app_dispatch - Attribut...\n============================== 1 failed in 0.09s ===============================\n\nSTDERR:\n"
+    "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_flask_custom_app_dispatch - Attribut...\n========================= 1 failed, 1 warning in 0.08s =========================\n\nSTDERR:\n"
   },
   "overall_constraint_status": "FAIL",
   "overall_status": "FAIL",

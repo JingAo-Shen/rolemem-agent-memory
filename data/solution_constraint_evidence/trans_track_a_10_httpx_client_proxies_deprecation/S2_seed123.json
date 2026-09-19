@@ -3,18 +3,18 @@
   "run_id": "S2_seed123",
   "target_file": "client_factory.py",
   "api_deprecation_gate": {
-    "status": "FAIL",
-    "details": "Generated code invokes deprecated symbol ')'"
+    "status": "PASS",
+    "details": "Code is free of active deprecated API invocations."
   },
   "replacement_mechanism_gate": {
     "status": "FAIL",
-    "details": "Uses deprecated proxies parameter"
+    "details": "Uses deprecated proxies parameter instead of proxy."
   },
   "behavior_fidelity_gate": {
     "status": "FAIL",
     "details": "Pytest execution failed",
     "pytest_passed": false,
-    "log_snippet": "tead.\n\nhttpx/_client.py:679: DeprecationWarning\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_proxied_client_creation - Deprecatio...\n============================== 1 failed in 0.12s ===============================\n\nSTDERR:\n"
+    "log_snippet": "tead.\n\nhttpx/_client.py:679: DeprecationWarning\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_proxied_client_creation - Deprecatio...\n============================== 1 failed in 0.13s ===============================\n\nSTDERR:\n"
   },
   "overall_constraint_status": "FAIL",
   "overall_status": "FAIL",

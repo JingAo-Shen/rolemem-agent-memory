@@ -1,0 +1,31 @@
+{
+  "transition_id": "trans_track_a_02_flask_should_ignore_error",
+  "provenance_status": "TARGET_MEMORY_VERIFIED",
+  "recomputed_hashes": {
+    "diff_hunk_sha256": "acb6b40b2fc02064becdd64d757e847540413a20edc1b4b4973d3e1c4d950228",
+    "evidence_excerpt_hash": "6346e11aab64d32845c5deda8677d532820ba1f393f5527ce78d40e1688d22cb",
+    "ground_truth_audit_hash": "7d908ae73339ad948c8458f74d9408fd60958868ce70f28888677e19616f158f"
+  },
+  "checks": {
+    "source_pr_matches": true,
+    "source_commit_matches": true,
+    "artifact_in_diff": true,
+    "diff_hunk_sha256_verified": true,
+    "evidence_excerpt_hash_verified": true,
+    "ground_truth_audit_hash_verified": true,
+    "statement_entailment": "ENTAILED"
+  },
+  "claim": {
+    "transition_id": "trans_track_a_02_flask_should_ignore_error",
+    "statement": "Flask.should_ignore_error is deprecated in Flask 2.3 and removed in 3.3; handle request errors and teardown logic via @app.teardown_request handlers.",
+    "symbol": "Flask.should_ignore_error",
+    "replacement": "@app.teardown_request",
+    "source_pr_url": "https://github.com/pallets/flask/pull/5899",
+    "source_commit": "4b8bde97d4fa3486e18dce21c3c5f75570d50164",
+    "evidence_file": "data/external_evidence/trans_track_a_02_flask_should_ignore_error/diff.patch",
+    "evidence_hunk_sha256": "acb6b40b2fc02064becdd64d757e847540413a20edc1b4b4973d3e1c4d950228",
+    "evidence_excerpt_hash": "6346e11aab64d32845c5deda8677d532820ba1f393f5527ce78d40e1688d22cb",
+    "ground_truth_audit_hash": "7d908ae73339ad948c8458f74d9408fd60958868ce70f28888677e19616f158f",
+    "artifact": "src/flask/app.py"
+  }
+}

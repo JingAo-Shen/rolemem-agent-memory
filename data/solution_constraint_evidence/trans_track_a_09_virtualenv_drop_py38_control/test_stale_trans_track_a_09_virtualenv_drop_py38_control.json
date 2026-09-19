@@ -1,0 +1,22 @@
+{
+  "transition_id": "trans_track_a_09_virtualenv_drop_py38_control",
+  "run_id": "test_stale_trans_track_a_09_virtualenv_drop_py38_control",
+  "target_file": "cpython_patch.py",
+  "api_deprecation_gate": {
+    "status": "FAIL",
+    "details": "Active invocation of deprecated API detected: [{'type': 'Attribute', 'lineno': 5, 'symbol': 'CPython3Posix.pyvenv_launch_patch_active'}]"
+  },
+  "replacement_mechanism_gate": {
+    "status": "FAIL",
+    "details": "Invokes removed pyvenv_launch_patch_active helper."
+  },
+  "behavior_fidelity_gate": {
+    "status": "FAIL",
+    "details": "Pytest execution failed",
+    "pytest_passed": false,
+    "log_snippet": "tch_active'\n\ncpython_patch.py:5: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_patch_check - AttributeError: type o...\n============================== 1 failed in 0.06s ===============================\n\nSTDERR:\n"
+  },
+  "overall_constraint_status": "FAIL",
+  "overall_status": "FAIL",
+  "task_success": false
+}

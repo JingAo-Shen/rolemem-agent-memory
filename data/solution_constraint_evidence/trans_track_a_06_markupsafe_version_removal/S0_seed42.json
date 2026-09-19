@@ -4,11 +4,11 @@
   "target_file": "markup_version.py",
   "api_deprecation_gate": {
     "status": "PASS",
-    "details": "Code free of deprecated symbol '__version__'"
+    "details": "Code is free of active deprecated API invocations."
   },
   "replacement_mechanism_gate": {
     "status": "FAIL",
-    "details": "Missing required importlib.metadata replacement"
+    "details": "Missing required importlib.metadata.version replacement for markupsafe."
   },
   "behavior_fidelity_gate": {
     "status": "FAIL",

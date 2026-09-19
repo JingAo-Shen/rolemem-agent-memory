@@ -1,0 +1,52 @@
+{
+  "task_id": "trans_track_a_02_flask_should_ignore_error",
+  "condition": "S0",
+  "seed": 42,
+  "memory_source": "NO_MEMORY",
+  "memory_statements": [],
+  "retrieved_files": [
+    "src/flask/app.py",
+    "src/flask/sansio/app.py"
+  ],
+  "retrieved_symbols": [],
+  "repository_context_tokens": 1200,
+  "task_tokens": 23,
+  "memory_tokens": 0,
+  "total_input_tokens": 1308,
+  "repo_leakage_status": "CURRENT_REPO_INFORMATIONAL",
+  "raw_generation": "```python\nfrom flask import Flask, request, jsonify\nfrom werkzeug.exceptions import HTTPException\n\nclass CustomApp(Flask):\n    def __init__(self, *args, **kwargs):\n        super().__init__(*args, **kwargs)\n        self.register_error_handler(HTTPException, self.handle_http_exception)\n\n    def handle_http_exception(self, e):\n        response = jsonify(error=str(e), status_code=e.code)\n        response.status_code = e.code\n        return response\n\n    def handle_user_exception(self, ctx, e):\n        if isinstance(e, HTTPException):\n            return self.handle_http_exception(e)\n        else:\n            return super().handle_user_exception(ctx, e)\n```\nThis solution creates a custom Flask application class `CustomApp` that inherits from `Flask`. It registers a global error handler for HTTP exceptions using the `register_error_handler` method. The `handle_http_exception` method formats the error response as JSON and sets the appropriate status code. Additionally, it overrides the `handle_user_exception` method to delegate HTTP exceptions to the custom handler while passing other exceptions to the superclass's handler. This approach avoids deprecated method overrides and manages error policies effectively.",
+  "parsed_code": "from flask import Flask, request, jsonify\nfrom werkzeug.exceptions import HTTPException\n\nclass CustomApp(Flask):\n    def __init__(self, *args, **kwargs):\n        super().__init__(*args, **kwargs)\n        self.register_error_handler(HTTPException, self.handle_http_exception)\n\n    def handle_http_exception(self, e):\n        response = jsonify(error=str(e), status_code=e.code)\n        response.status_code = e.code\n        return response\n\n    def handle_user_exception(self, ctx, e):\n        if isinstance(e, HTTPException):\n            return self.handle_http_exception(e)\n        else:\n            return super().handle_user_exception(ctx, e)",
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": false,
+    "active_nodes": []
+  },
+  "pytest_pass": true,
+  "pytest_log_excerpt": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_yul29peh\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_flask_custom_app_dispatch PASSED       [100%]\n\n=============================== warnings summary ===============================\ncustom_app.py:4\n  /tmp/rolemem_sandbox_yul29peh/custom_app.py:4: DeprecationWarning: The 'handle_http_exception' method now takes 'ctx: AppContext' a",
+  "constraint_status": "FAIL",
+  "constraint_details": {
+    "transition_id": "trans_track_a_02_flask_should_ignore_error",
+    "run_id": "S0_seed42",
+    "target_file": "custom_app.py",
+    "api_deprecation_gate": {
+      "status": "PASS",
+      "details": "Code is free of active deprecated API invocations."
+    },
+    "replacement_mechanism_gate": {
+      "status": "FAIL",
+      "details": "Missing required @app.teardown_request handler registration."
+    },
+    "behavior_fidelity_gate": {
+      "status": "PASS",
+      "details": "Pytest execution passed",
+      "pytest_passed": true,
+      "log_snippet": "kes 'ctx: AppContext' as the first parameter. The old signature is deprecated and will not be supported in Flask 4.0.\n    class CustomApp(Flask):\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n========================= 1 passed, 1 warning in 0.09s =========================\n"
+    },
+    "overall_constraint_status": "FAIL",
+    "overall_status": "FAIL",
+    "task_success": false
+  },
+  "overall_task_success": false,
+  "output_tokens": 238
+}

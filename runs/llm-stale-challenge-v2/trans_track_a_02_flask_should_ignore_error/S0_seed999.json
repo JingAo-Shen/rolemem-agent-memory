@@ -1,0 +1,52 @@
+{
+  "task_id": "trans_track_a_02_flask_should_ignore_error",
+  "condition": "S0",
+  "seed": 999,
+  "memory_source": "NO_MEMORY",
+  "memory_statements": [],
+  "retrieved_files": [
+    "src/flask/app.py",
+    "src/flask/sansio/app.py"
+  ],
+  "retrieved_symbols": [],
+  "repository_context_tokens": 1200,
+  "task_tokens": 23,
+  "memory_tokens": 0,
+  "total_input_tokens": 1308,
+  "repo_leakage_status": "CURRENT_REPO_INFORMATIONAL",
+  "raw_generation": "```python\nfrom flask import Flask, request, jsonify\nfrom werkzeug.exceptions import HTTPException\n\nclass CustomApp(Flask):\n    def __init__(self, *args, **kwargs):\n        super().__init__(*args, **kwargs)\n        self.register_error_handler(HTTPException, self.handle_http_exception)\n\n    def handle_http_exception(self, e):\n        response = jsonify({'error': str(e)})\n        response.status_code = e.code\n        return response\n\n    def handle_user_exception(self, ctx, e):\n        # Custom user exception handling logic here\n        response = jsonify({'error': 'Internal Server Error'})\n        response.status_code = 500\n        return response\n\n    def preprocess_request(self, ctx):\n        # Custom preprocessing logic here\n        if request.method == 'POST':\n            data = request.json\n            if not data or 'key' not in data:\n                raise ValueError('Invalid request data')\n        return super().preprocess_request(ctx)\n\n    def dispatch_request(self, ctx):\n        # Custom dispatch logic here\n        response = super().dispatch_request(ctx)\n        if response.status_code == 200:\n            response.headers['X-Custom-Header'] = 'Value'\n        return response\n\n    def finalize_request(self, ctx, rv, from_error_handler=False):\n        # Custom finalize request logic here\n        response = super().finalize_request(ctx, rv, from_error_handler)\n        response.headers['X-Finalized'] = 'True'\n        return response\n```\n\nThis implementation of `CustomApp` subclasses Flask and overrides several methods to customize error handling, request preprocessing, dispatch, and finalization. It also registers a custom error handler for HTTP exceptions and includes custom logic for preprocessing POST requests and adding headers to responses.",
+  "parsed_code": "from flask import Flask, request, jsonify\nfrom werkzeug.exceptions import HTTPException\n\nclass CustomApp(Flask):\n    def __init__(self, *args, **kwargs):\n        super().__init__(*args, **kwargs)\n        self.register_error_handler(HTTPException, self.handle_http_exception)\n\n    def handle_http_exception(self, e):\n        response = jsonify({'error': str(e)})\n        response.status_code = e.code\n        return response\n\n    def handle_user_exception(self, ctx, e):\n        # Custom user exception handling logic here\n        response = jsonify({'error': 'Internal Server Error'})\n        response.status_code = 500\n        return response\n\n    def preprocess_request(self, ctx):\n        # Custom preprocessing logic here\n        if request.method == 'POST':\n            data = request.json\n            if not data or 'key' not in data:\n                raise ValueError('Invalid request data')\n        return super().preprocess_request(ctx)\n\n    def dispatch_request(self, ctx):\n        # Custom dispatch logic here\n        response = super().dispatch_request(ctx)\n        if response.status_code == 200:\n            response.headers['X-Custom-Header'] = 'Value'\n        return response\n\n    def finalize_request(self, ctx, rv, from_error_handler=False):\n        # Custom finalize request logic here\n        response = super().finalize_request(ctx, rv, from_error_handler)\n        response.headers['X-Finalized'] = 'True'\n        return response",
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": false,
+    "active_nodes": []
+  },
+  "pytest_pass": false,
+  "pytest_log_excerpt": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_9u32puwe\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_flask_custom_app_dispatch FAILED       [100%]\n\n=================================== FAILURES ===================================\n________________________ test_flask_custom_app_dispatch ________________________\n\n    def test_flask_custom_app_dispatch():\n        assert is",
+  "constraint_status": "FAIL",
+  "constraint_details": {
+    "transition_id": "trans_track_a_02_flask_should_ignore_error",
+    "run_id": "S0_seed999",
+    "target_file": "custom_app.py",
+    "api_deprecation_gate": {
+      "status": "PASS",
+      "details": "Code is free of active deprecated API invocations."
+    },
+    "replacement_mechanism_gate": {
+      "status": "FAIL",
+      "details": "Missing required @app.teardown_request handler registration."
+    },
+    "behavior_fidelity_gate": {
+      "status": "FAIL",
+      "details": "Pytest execution failed",
+      "pytest_passed": false,
+      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_flask_custom_app_dispatch - assert 5...\n========================= 1 failed, 1 warning in 0.09s =========================\n\nSTDERR:\n"
+    },
+    "overall_constraint_status": "FAIL",
+    "overall_status": "FAIL",
+    "task_success": false
+  },
+  "overall_task_success": false,
+  "output_tokens": 359
+}

@@ -4,17 +4,17 @@
   "target_file": "stream_helper.py",
   "api_deprecation_gate": {
     "status": "PASS",
-    "details": "Code free of deprecated symbol 'get_binary_stream'"
+    "details": "Code is free of active deprecated API invocations."
   },
   "replacement_mechanism_gate": {
     "status": "PASS",
-    "details": "Direct stream buffer access present"
+    "details": "Direct standard stream buffer access present."
   },
   "behavior_fidelity_gate": {
     "status": "FAIL",
     "details": "Pytest execution failed",
     "pytest_passed": false,
-    "log_snippet": "o import 'sys'?\n\nstream_helper.py:14: NameError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_stream_retrieval - NameError: name '...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
+    "log_snippet": "==== short test summary info ============================\nERROR test_hidden_verification.py - NameError: name 't' is not defined\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n=============================== 1 error in 0.06s ===============================\n\nSTDERR:\n"
   },
   "overall_constraint_status": "FAIL",
   "overall_status": "FAIL",

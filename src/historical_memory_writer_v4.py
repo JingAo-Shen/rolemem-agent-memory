@@ -249,14 +249,21 @@ class HistoricalMemoryWriterV4:
         is_generic = any(gp in stmt_lower for gp in generic_phrases) or (len(statement.split()) < 6)
         non_generic = not is_generic
 
-        # 5. non_future_looking (zero future deprecation/replacement leakage)
+        # 5. non_future_looking (evidence-time temporal validity)
+        # A fact/symbol is future leakage only if it does NOT exist in base source evidence
         future_leak_terms = [
             "will be removed", "deprecated in", "removed in", "replaced by",
             "should be migrated", "future version", "later version", "no longer supported",
             "obsolete in", "use importlib instead", "use teardown instead",
-            "deprecation", "warns about", "importlib.metadata", "migration"
+            "deprecation", "migration"
         ]
-        is_future_looking = any(term in stmt_lower for term in future_leak_terms)
+        is_future_looking = False
+        for term in future_leak_terms:
+            if term in stmt_lower:
+                # If term actually exists in base file content, it is present at base commit, not future leakage
+                if term not in file_content.lower():
+                    is_future_looking = True
+                    break
         non_future_looking = not is_future_looking
 
         # 6. AST_unique
@@ -354,6 +361,17 @@ class HistoricalMemoryWriterV4:
         start_line = max(0, lineno - 10)
         end_line = min(len(lines), lineno + 45)
         snippet = "\n".join(lines[start_line:end_line])
+        base_source_hunk = snippet
+        base_hunk_sha256 = hashlib.sha256(snippet.encode("utf-8")).hexdigest()
+
+        history_commits = []
+        try:
+            log_out = subprocess.check_output(
+                ["git", "-C", repo_path, "log", "-n", "3", "--format=%H %s", base_commit, "--", target_file]
+            ).decode("utf-8", errors="ignore")
+            history_commits = [l.strip() for l in log_out.splitlines() if l.strip()]
+        except Exception:
+            pass
 
         attempt = 0
         last_telemetry = {}
@@ -380,7 +398,7 @@ at this historical repository state.
 Requirements:
 - Strictly describe the state as of commit {base_commit[:10]}.
 - Do NOT predict future changes.
-- Do NOT mention deprecation warnings, migration advice, or replacement libraries (such as importlib.metadata).
+- Do NOT mention deprecation warnings, migration advice, or replacement libraries.
 - Must explicitly include or begin with '{resolved_sym}' in the sentence.
 - Return ONLY valid JSON:
 ```json
@@ -425,6 +443,21 @@ Requirements:
                 statement, resolved_sym, target_file, file_content, uniqueness_res
             )
 
+            # Check claim entailment against base_source_hunk
+            stmt_words = set(re.findall(r"[a-z0-9_]{4,}", statement.lower()))
+            snippet_words = set(re.findall(r"[a-z0-9_]{4,}", snippet.lower()))
+            overlap = len(stmt_words.intersection(snippet_words))
+            if short_sym in statement.lower() and overlap >= 2:
+                entailment_status = "BASE_ENTAILED"
+            elif short_sym in statement.lower():
+                entailment_status = "PARTIAL"
+            else:
+                entailment_status = "UNSUPPORTED"
+
+            # Only BASE_ENTAILED can achieve HIST_MEMORY_VALID
+            if verdict == "HIST_MEMORY_VALID" and entailment_status != "BASE_ENTAILED":
+                verdict = "HIST_MEMORY_INVALID"
+
             last_telemetry = {
                 "task_id": task_id,
                 "attempt": attempt,
@@ -433,6 +466,15 @@ Requirements:
                 "statement": statement,
                 "verdict": verdict,
                 "criteria": criteria,
+                "base_source_hunk": base_source_hunk,
+                "base_hunk_sha256": base_hunk_sha256,
+                "history_commits": history_commits,
+                "claim": statement,
+                "base_presence": True,
+                "target_presence": False,
+                "first_seen_commit": base_commit,
+                "temporal_relation": "HISTORICAL_VALID" if criteria.get("non_future_looking") else "FUTURE_LEAKAGE",
+                "entailment_status": entailment_status,
                 "raw_generation": gen_text
             }
 

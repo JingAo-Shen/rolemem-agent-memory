@@ -4,17 +4,17 @@
   "target_file": "version_checker.py",
   "api_deprecation_gate": {
     "status": "FAIL",
-    "details": "Generated code invokes deprecated symbol '__version__'"
+    "details": "Active invocation of deprecated API detected: [{'type': 'ImportFrom', 'lineno': 3, 'module': 'jinja2', 'symbol': '__version__', 'matched': 'jinja2.__version__'}, {'type': 'NameStaleImported(Load)', 'lineno': 6, 'symbol': '__version__', 'matched': 'jinja2.__version__'}]"
   },
   "replacement_mechanism_gate": {
     "status": "FAIL",
-    "details": "Missing required importlib.metadata replacement"
+    "details": "Missing required importlib.metadata.version replacement for jinja2."
   },
   "behavior_fidelity_gate": {
     "status": "FAIL",
     "details": "Pytest execution failed",
     "pytest_passed": false,
-    "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_version_retrieval - AssertionError: ...\n========================= 1 failed, 1 warning in 0.07s =========================\n\nSTDERR:\n"
+    "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_version_retrieval - AssertionError: ...\n======================== 1 failed, 2 warnings in 0.07s =========================\n\nSTDERR:\n"
   },
   "overall_constraint_status": "FAIL",
   "overall_status": "FAIL",

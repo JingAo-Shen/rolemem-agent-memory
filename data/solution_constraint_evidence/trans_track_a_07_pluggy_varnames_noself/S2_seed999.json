@@ -4,11 +4,11 @@
   "target_file": "spec_helper.py",
   "api_deprecation_gate": {
     "status": "PASS",
-    "details": "Code free of deprecated symbol ', legacy_noself=True)'"
+    "details": "Code is free of active deprecated API invocations."
   },
   "replacement_mechanism_gate": {
     "status": "PASS",
-    "details": "Replacement pattern satisfied"
+    "details": "Modern varnames parameter inspection present without legacy_noself=True."
   },
   "behavior_fidelity_gate": {
     "status": "FAIL",

@@ -4,17 +4,17 @@
   "target_file": "header_proxy.py",
   "api_deprecation_gate": {
     "status": "PASS",
-    "details": "Code free of deprecated symbol 'environ_property'"
+    "details": "Code is free of active deprecated API invocations."
   },
   "replacement_mechanism_gate": {
     "status": "PASS",
-    "details": "Replacement pattern satisfied"
+    "details": "Dynamic descriptor / environ property accessor present."
   },
   "behavior_fidelity_gate": {
     "status": "FAIL",
     "details": "Pytest execution failed",
     "pytest_passed": false,
-    "log_snippet": "\ntest_hidden_verification.py:12: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_environ_property_creation - Attribut...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
+    "log_snippet": "\ntest_hidden_verification.py:12: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_environ_property_creation - Attribut...\n============================== 1 failed in 0.08s ===============================\n\nSTDERR:\n"
   },
   "overall_constraint_status": "FAIL",
   "overall_status": "FAIL",

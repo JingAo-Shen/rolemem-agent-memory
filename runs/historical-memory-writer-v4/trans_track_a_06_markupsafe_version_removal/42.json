@@ -13,5 +13,16 @@
     "non_future_looking": true,
     "ast_unique": true
   },
-  "raw_generation": "```json\n{\n  \"symbol\": \"__version__\",\n  \"statement\": \"__version__ is accessed using getattr and returns the version of the markupsafe package dynamically.\"\n}\n```"
+  "raw_generation": "```json\n{\n  \"symbol\": \"__version__\",\n  \"statement\": \"__version__ is accessed using getattr and returns the version of the markupsafe package dynamically.\"\n}\n```",
+  "base_presence": true,
+  "target_presence": false,
+  "first_seen_commit": "0c422e10b1e1ba43ca56a56f1f8a11edfb431b71",
+  "temporal_relation": "HISTORICAL_VALID",
+  "entailment_status": "BASE_ENTAILED",
+  "base_hunk_sha256": "1b22f1892aff122dcad83f9a0b4b7e2f0dbba14e6b5e35183a49eadc7030081d",
+  "history_commits": [
+    "1b54b64cab03d8af99229252e68ff02a72519f6b change to DeprecationWarning",
+    "f38ca06034499d140849d9d0715356f7e169c59a use uv",
+    "7add29c77b088299841e1017a7cd2f96133a6659 fix exact str check"
+  ]
 }

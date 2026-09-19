@@ -1,0 +1,54 @@
+{
+  "task_id": "trans_track_a_06_markupsafe_version_removal",
+  "condition": "S2",
+  "seed": 999,
+  "memory_source": "AGENT_A_HISTORICAL",
+  "memory_statements": [
+    "__version__ is accessed via a custom __getattr__ method that returns the version of the markupsafe package using importlib.metadata."
+  ],
+  "retrieved_files": [
+    "src/markupsafe/_speedups.c",
+    "src/markupsafe/__init__.py"
+  ],
+  "retrieved_symbols": [],
+  "repository_context_tokens": 1200,
+  "task_tokens": 17,
+  "memory_tokens": 38,
+  "total_input_tokens": 1340,
+  "repo_leakage_status": "CURRENT_REPO_INFORMATIONAL",
+  "raw_generation": "```python\nimport importlib.metadata\n\ndef get_library_version():\n    try:\n        version = importlib.metadata.version('markupsafe')\n        return version\n    except importlib.metadata.PackageNotFoundError:\n        return \"Markupsafe package not found\"\n```\n\nThis code defines a function `get_library_version()` that uses `importlib.metadata` to retrieve the version of the `markupsafe` package. If the package is not found, it returns a message indicating that the package was not found.",
+  "parsed_code": "import importlib.metadata\n\ndef get_library_version():\n    try:\n        version = importlib.metadata.version('markupsafe')\n        return version\n    except importlib.metadata.PackageNotFoundError:\n        return \"Markupsafe package not found\"",
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": false,
+    "active_nodes": []
+  },
+  "pytest_pass": true,
+  "pytest_log_excerpt": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_0b2ipa9o\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_version_retrieval PASSED               [100%]\n\n============================== 1 passed in 0.02s ===============================\n",
+  "constraint_status": "PASS",
+  "constraint_details": {
+    "transition_id": "trans_track_a_06_markupsafe_version_removal",
+    "run_id": "S2_seed999",
+    "target_file": "markup_version.py",
+    "api_deprecation_gate": {
+      "status": "PASS",
+      "details": "Code is free of active deprecated API invocations."
+    },
+    "replacement_mechanism_gate": {
+      "status": "PASS",
+      "details": "importlib.metadata version inspection present."
+    },
+    "behavior_fidelity_gate": {
+      "status": "PASS",
+      "details": "Pytest execution passed",
+      "pytest_passed": true,
+      "log_snippet": "naconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_ub4bsr5b\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_version_retrieval PASSED               [100%]\n\n============================== 1 passed in 0.02s ===============================\n"
+    },
+    "overall_constraint_status": "PASS",
+    "overall_status": "PASS",
+    "task_success": true
+  },
+  "overall_task_success": true,
+  "output_tokens": 102
+}

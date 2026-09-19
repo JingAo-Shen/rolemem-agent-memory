@@ -1,0 +1,31 @@
+{
+  "transition_id": "trans_track_a_05_itsdangerous_version_removal",
+  "provenance_status": "TARGET_MEMORY_VERIFIED",
+  "recomputed_hashes": {
+    "diff_hunk_sha256": "ae1274b39b1121a69df102d788eff9361ade1b1cc426dd23908064c4feaffb83",
+    "evidence_excerpt_hash": "8718fe06e4ed90a1a18ede204ca4847ecfb14b47f8fdf8c0ca96d20b75a7bedd",
+    "ground_truth_audit_hash": "446b5d4eac8d9cbd66e885cb1a4299fb6add7709328a6a223fd1c8ec8f7a8aa3"
+  },
+  "checks": {
+    "source_pr_matches": true,
+    "source_commit_matches": true,
+    "artifact_in_diff": true,
+    "diff_hunk_sha256_verified": true,
+    "evidence_excerpt_hash_verified": true,
+    "ground_truth_audit_hash_verified": true,
+    "statement_entailment": "ENTAILED"
+  },
+  "claim": {
+    "transition_id": "trans_track_a_05_itsdangerous_version_removal",
+    "statement": "itsdangerous.__version__ has been removed; retrieve the installed package version using importlib.metadata.version(\"itsdangerous\").",
+    "symbol": "itsdangerous.__version__",
+    "replacement": "importlib.metadata.version(\"itsdangerous\")",
+    "source_pr_url": "https://github.com/pallets/itsdangerous/pull/406",
+    "source_commit": "31f46a3469dbfb2ecf83dd0c4297c1efc508fcca",
+    "evidence_file": "data/external_evidence/trans_track_a_05_itsdangerous_version_removal/diff.patch",
+    "evidence_hunk_sha256": "ae1274b39b1121a69df102d788eff9361ade1b1cc426dd23908064c4feaffb83",
+    "evidence_excerpt_hash": "8718fe06e4ed90a1a18ede204ca4847ecfb14b47f8fdf8c0ca96d20b75a7bedd",
+    "ground_truth_audit_hash": "446b5d4eac8d9cbd66e885cb1a4299fb6add7709328a6a223fd1c8ec8f7a8aa3",
+    "artifact": "src/itsdangerous/__init__.py"
+  }
+}

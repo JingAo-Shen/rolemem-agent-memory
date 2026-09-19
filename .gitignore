@@ -15,6 +15,7 @@ venv/
 *.onnx
 runs/*
 !runs/llm-stale-challenge/
+!runs/llm-stale-challenge-v2/
 !runs/historical-memory-writer-v4/
 !runs/full-agent-handoff-v4/
 outputs/

@@ -13,5 +13,16 @@
     "non_future_looking": true,
     "ast_unique": true
   },
-  "raw_generation": "```json\n{\n  \"symbol\": \"get_binary_stream\",\n  \"statement\": \"get_binary_stream retrieves a system stream for byte processing based on the provided name ('stdin', 'stdout', or 'stderr').\"\n}\n```"
+  "raw_generation": "```json\n{\n  \"symbol\": \"get_binary_stream\",\n  \"statement\": \"get_binary_stream retrieves a system stream for byte processing based on the provided name ('stdin', 'stdout', or 'stderr').\"\n}\n```",
+  "base_presence": true,
+  "target_presence": false,
+  "first_seen_commit": "7a0a3447f6ddd2c15438c5d098e289323f9f9556",
+  "temporal_relation": "HISTORICAL_VALID",
+  "entailment_status": "BASE_ENTAILED",
+  "base_hunk_sha256": "7f6556471d85440455007b57171c7da5e604effc3e6dd22c25626b899cd4b759",
+  "history_commits": [
+    "7a0a3447f6ddd2c15438c5d098e289323f9f9556 Mark clearly functions private status. Deprecated Python 2 utilities.",
+    "13f075c4bd2d1343eaac528994165750671da351 Update documentation following Colorama removal",
+    "1ca1cea0f034f370bb6d95cfc9096031d017125a Merge stable into main"
+  ]
 }

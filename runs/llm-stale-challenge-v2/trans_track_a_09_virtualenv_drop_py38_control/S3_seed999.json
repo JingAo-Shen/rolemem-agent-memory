@@ -1,0 +1,55 @@
+{
+  "task_id": "trans_track_a_09_virtualenv_drop_py38_control",
+  "condition": "S3",
+  "seed": 999,
+  "memory_source": "TARGET_MEMORY_VERIFIED",
+  "memory_statements": [
+    "CPython3Posix.pyvenv_launch_patch_active has been removed as macOS Python 3.8 support was dropped; return False directly for pyvenv launcher patch requirements."
+  ],
+  "retrieved_files": [
+    "src/virtualenv/create/via_global_ref/builtin/pypy/pypy3.py",
+    "src/virtualenv/create/via_global_ref/venv.py",
+    "src/virtualenv/config/convert.py"
+  ],
+  "retrieved_symbols": [],
+  "repository_context_tokens": 1156,
+  "task_tokens": 25,
+  "memory_tokens": 47,
+  "total_input_tokens": 1307,
+  "repo_leakage_status": "CURRENT_REPO_INFORMATIONAL",
+  "raw_generation": "```python\ndef requires_pyvenv_patch(info):\n    return False\n```",
+  "parsed_code": "def requires_pyvenv_patch(info):\n    return False",
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": false,
+    "active_nodes": []
+  },
+  "pytest_pass": true,
+  "pytest_log_excerpt": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_8vhry9kw\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_patch_check PASSED                     [100%]\n\n============================== 1 passed in 0.01s ===============================\n",
+  "constraint_status": "PASS",
+  "constraint_details": {
+    "transition_id": "trans_track_a_09_virtualenv_drop_py38_control",
+    "run_id": "S3_seed999",
+    "target_file": "cpython_patch.py",
+    "api_deprecation_gate": {
+      "status": "PASS",
+      "details": "Code is free of active deprecated API invocations."
+    },
+    "replacement_mechanism_gate": {
+      "status": "PASS",
+      "details": "Direct False return present for launcher patch requirements."
+    },
+    "behavior_fidelity_gate": {
+      "status": "PASS",
+      "details": "Pytest execution passed",
+      "pytest_passed": true,
+      "log_snippet": "naconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_lmwj1gxw\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_patch_check PASSED                     [100%]\n\n============================== 1 passed in 0.01s ===============================\n"
+    },
+    "overall_constraint_status": "PASS",
+    "overall_status": "PASS",
+    "task_success": true
+  },
+  "overall_task_success": true,
+  "output_tokens": 17
+}

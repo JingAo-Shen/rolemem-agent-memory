@@ -1,0 +1,22 @@
+{
+  "transition_id": "trans_track_a_03_werkzeug_environ_property",
+  "run_id": "test_stale_trans_track_a_03_werkzeug_environ_property",
+  "target_file": "header_proxy.py",
+  "api_deprecation_gate": {
+    "status": "FAIL",
+    "details": "Active invocation of deprecated API detected: [{'type': 'Attribute', 'lineno': 5, 'symbol': 'werkzeug.utils.environ_property'}]"
+  },
+  "replacement_mechanism_gate": {
+    "status": "PASS",
+    "details": "Dynamic descriptor / environ property accessor present."
+  },
+  "behavior_fidelity_gate": {
+    "status": "FAIL",
+    "details": "Pytest execution failed",
+    "pytest_passed": false,
+    "log_snippet": "\n\nsrc/werkzeug/utils.py:696: DeprecationWarning\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_environ_property_creation - Deprecat...\n============================== 1 failed in 0.08s ===============================\n\nSTDERR:\n"
+  },
+  "overall_constraint_status": "FAIL",
+  "overall_status": "FAIL",
+  "task_success": false
+}

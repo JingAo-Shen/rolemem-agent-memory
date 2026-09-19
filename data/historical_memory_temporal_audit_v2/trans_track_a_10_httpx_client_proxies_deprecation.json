@@ -1,0 +1,62 @@
+{
+  "transition_id": "trans_track_a_10_httpx_client_proxies_deprecation",
+  "overall_status": "TEMPORAL_VALID",
+  "reconstructed_seed_count": 3,
+  "valid_seed_count": 3,
+  "evaluations": {
+    "42": {
+      "verdict": "TEMPORAL_VALID",
+      "base_presence": true,
+      "target_presence": false,
+      "first_seen_commit": "b471f01d668b9ef730e8843531b07b1c21b74c47",
+      "temporal_relation": "HISTORICAL_VALID",
+      "entailment_status": "BASE_ENTAILED",
+      "base_source_hunk_sha256": "a4022035f2da88339299879b8bb6edd83001e5fe02bdaa11f3998c756d76e5ab",
+      "history_commits": [
+        "fd60b1815cf92354d097ac46aea63ebc0f34fd21 Ruff linter: Use the default line-length (#2922)",
+        "87f39f12c9ecdd0ebcd8d017235698e72567e9c7 add missing type hints to __init__(...) (#2938)",
+        "4b5a92e88e03443c2619f0905d756b159f9f0222 set logging request lines to INFO level for async method also (#2656)"
+      ],
+      "pr_leak": false,
+      "future_phrase_leaks": [],
+      "target_only_replacements": [],
+      "statement": "The method `_get_proxy_map` processes and returns a dictionary mapping proxy keys to `Proxy` objects based on the input `proxies` parameter and whether environment proxies should be allowed."
+    },
+    "123": {
+      "verdict": "TEMPORAL_VALID",
+      "base_presence": true,
+      "target_presence": false,
+      "first_seen_commit": "b471f01d668b9ef730e8843531b07b1c21b74c47",
+      "temporal_relation": "HISTORICAL_VALID",
+      "entailment_status": "BASE_ENTAILED",
+      "base_source_hunk_sha256": "a4022035f2da88339299879b8bb6edd83001e5fe02bdaa11f3998c756d76e5ab",
+      "history_commits": [
+        "fd60b1815cf92354d097ac46aea63ebc0f34fd21 Ruff linter: Use the default line-length (#2922)",
+        "87f39f12c9ecdd0ebcd8d017235698e72567e9c7 add missing type hints to __init__(...) (#2938)",
+        "4b5a92e88e03443c2619f0905d756b159f9f0222 set logging request lines to INFO level for async method also (#2656)"
+      ],
+      "pr_leak": false,
+      "future_phrase_leaks": [],
+      "target_only_replacements": [],
+      "statement": "BaseClient._get_proxy_map.proxies is a method that processes and returns a dictionary mapping proxy keys to Proxy objects based on the input proxies parameter and whether environment proxies should be allowed."
+    },
+    "999": {
+      "verdict": "TEMPORAL_VALID",
+      "base_presence": true,
+      "target_presence": false,
+      "first_seen_commit": "b471f01d668b9ef730e8843531b07b1c21b74c47",
+      "temporal_relation": "HISTORICAL_VALID",
+      "entailment_status": "BASE_ENTAILED",
+      "base_source_hunk_sha256": "a4022035f2da88339299879b8bb6edd83001e5fe02bdaa11f3998c756d76e5ab",
+      "history_commits": [
+        "fd60b1815cf92354d097ac46aea63ebc0f34fd21 Ruff linter: Use the default line-length (#2922)",
+        "87f39f12c9ecdd0ebcd8d017235698e72567e9c7 add missing type hints to __init__(...) (#2938)",
+        "4b5a92e88e03443c2619f0905d756b159f9f0222 set logging request lines to INFO level for async method also (#2656)"
+      ],
+      "pr_leak": false,
+      "future_phrase_leaks": [],
+      "target_only_replacements": [],
+      "statement": "BaseClient._get_proxy_map.proxies is a method that processes and returns a dictionary mapping proxy keys to Proxy objects based on the provided proxies argument and whether environment proxies should be allowed."
+    }
+  }
+}

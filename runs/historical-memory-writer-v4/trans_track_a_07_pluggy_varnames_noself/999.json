@@ -13,5 +13,16 @@
     "non_future_looking": true,
     "ast_unique": true
   },
-  "raw_generation": "```json\n{\n  \"symbol\": \"varnames\",\n  \"statement\": \"The 'varnames' function retrieves the positional and keyword parameter names for a given callable, handling class methods, bound methods, and unbound methods with specific rules.\"\n}\n```"
+  "raw_generation": "```json\n{\n  \"symbol\": \"varnames\",\n  \"statement\": \"The 'varnames' function retrieves the positional and keyword parameter names for a given callable, handling class methods, bound methods, and unbound methods with specific rules.\"\n}\n```",
+  "base_presence": true,
+  "target_presence": false,
+  "first_seen_commit": "dd20a85e38af556e1c818b03391eab1480438e0c",
+  "temporal_relation": "HISTORICAL_VALID",
+  "entailment_status": "BASE_ENTAILED",
+  "base_hunk_sha256": "483ffe8895c488e0efcea6a8f0b9e13dc16089480c9462d6baf7b55e2ec874da",
+  "history_commits": [
+    "dd20a85e38af556e1c818b03391eab1480438e0c Warn from varnames for hookspec methods missing self",
+    "5631ed96fb7f9f7cec6f981483325236cd5cceee Improve varnames docstring: use 'parameter' and note keyword-only exclusion",
+    "0b7790eb2adf436c6df39c9a2256aa8a31ba3893 Fix varnames to strip self for bound methods without dotted qualname"
+  ]
 }

@@ -4,11 +4,11 @@
   "target_file": "markup_version.py",
   "api_deprecation_gate": {
     "status": "FAIL",
-    "details": "Generated code invokes deprecated symbol '__version__'"
+    "details": "Active invocation of deprecated API detected: [{'type': 'GetattrStaleAccess', 'lineno': 4, 'symbol': 'markupsafe.__version__'}]"
   },
   "replacement_mechanism_gate": {
     "status": "FAIL",
-    "details": "Missing required importlib.metadata replacement"
+    "details": "Missing required importlib.metadata.version replacement for markupsafe."
   },
   "behavior_fidelity_gate": {
     "status": "FAIL",

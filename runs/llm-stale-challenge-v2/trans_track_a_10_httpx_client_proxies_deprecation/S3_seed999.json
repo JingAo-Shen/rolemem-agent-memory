@@ -1,0 +1,55 @@
+{
+  "task_id": "trans_track_a_10_httpx_client_proxies_deprecation",
+  "condition": "S3",
+  "seed": 999,
+  "memory_source": "TARGET_MEMORY_VERIFIED",
+  "memory_statements": [
+    "Passing proxies parameter to httpx.Client is deprecated; pass singular proxy parameter instead (e.g., httpx.Client(proxy=url))."
+  ],
+  "retrieved_files": [
+    "httpx/_main.py",
+    "httpx/_client.py",
+    "httpx/_api.py"
+  ],
+  "retrieved_symbols": [],
+  "repository_context_tokens": 1153,
+  "task_tokens": 28,
+  "memory_tokens": 36,
+  "total_input_tokens": 1295,
+  "repo_leakage_status": "CURRENT_REPO_INFORMATIONAL",
+  "raw_generation": "```python\nimport httpx\n\ndef build_proxied_client(proxy_url: str) -> httpx.Client:\n    \"\"\"\n    Builds an HTTPX client configured with an HTTP proxy.\n\n    Args:\n        proxy_url (str): The URL of the HTTP proxy.\n\n    Returns:\n        httpx.Client: An HTTPX client configured with the specified proxy.\n    \"\"\"\n    return httpx.Client(proxies={\"http\": proxy_url, \"https\": proxy_url})\n```\n\nThis function creates an instance of `httpx.Client` and configures it with the provided `proxy_url`. The `proxies` parameter is a dictionary that maps both HTTP and HTTPS requests to the same proxy URL, ensuring that all outgoing requests are routed through the specified proxy. This approach aligns with the current best practices for using proxies with HTTPX.",
+  "parsed_code": "import httpx\n\ndef build_proxied_client(proxy_url: str) -> httpx.Client:\n    \"\"\"\n    Builds an HTTPX client configured with an HTTP proxy.\n\n    Args:\n        proxy_url (str): The URL of the HTTP proxy.\n\n    Returns:\n        httpx.Client: An HTTPX client configured with the specified proxy.\n    \"\"\"\n    return httpx.Client(proxies={\"http\": proxy_url, \"https\": proxy_url})",
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": false,
+    "active_nodes": []
+  },
+  "pytest_pass": false,
+  "pytest_log_excerpt": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_bmxibimj\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_proxied_client_creation FAILED         [100%]\n\n=================================== FAILURES ===================================\n_________________________ test_proxied_client_creation _________________________\n\n    def test_proxied_client_creation():\n        with warnin",
+  "constraint_status": "FAIL",
+  "constraint_details": {
+    "transition_id": "trans_track_a_10_httpx_client_proxies_deprecation",
+    "run_id": "S3_seed999",
+    "target_file": "client_factory.py",
+    "api_deprecation_gate": {
+      "status": "PASS",
+      "details": "Code is free of active deprecated API invocations."
+    },
+    "replacement_mechanism_gate": {
+      "status": "FAIL",
+      "details": "Uses deprecated proxies parameter instead of proxy."
+    },
+    "behavior_fidelity_gate": {
+      "status": "FAIL",
+      "details": "Pytest execution failed",
+      "pytest_passed": false,
+      "log_snippet": "tead.\n\nhttpx/_client.py:679: DeprecationWarning\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_proxied_client_creation - Deprecatio...\n============================== 1 failed in 0.13s ===============================\n\nSTDERR:\n"
+    },
+    "overall_constraint_status": "FAIL",
+    "overall_status": "FAIL",
+    "task_success": false
+  },
+  "overall_task_success": false,
+  "output_tokens": 167
+}

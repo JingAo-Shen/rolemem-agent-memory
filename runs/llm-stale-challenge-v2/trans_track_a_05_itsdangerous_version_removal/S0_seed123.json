@@ -1,0 +1,58 @@
+{
+  "task_id": "trans_track_a_05_itsdangerous_version_removal",
+  "condition": "S0",
+  "seed": 123,
+  "memory_source": "NO_MEMORY",
+  "memory_statements": [],
+  "retrieved_files": [
+    "src/itsdangerous/serializer.py",
+    "src/itsdangerous/signer.py"
+  ],
+  "retrieved_symbols": [],
+  "repository_context_tokens": 1200,
+  "task_tokens": 19,
+  "memory_tokens": 0,
+  "total_input_tokens": 1304,
+  "repo_leakage_status": "CURRENT_REPO_INFORMATIONAL",
+  "raw_generation": "```python\n# signer_version.py\n\nimport itsdangerous\n\ndef get_package_version():\n    return itsdangerous.__version__\n```",
+  "parsed_code": "# signer_version.py\n\nimport itsdangerous\n\ndef get_package_version():\n    return itsdangerous.__version__",
+  "is_stale_action": true,
+  "ast_details": {
+    "stale_active_use": true,
+    "stale_mention": false,
+    "active_nodes": [
+      {
+        "type": "Attribute",
+        "lineno": 6,
+        "symbol": "itsdangerous.__version__"
+      }
+    ]
+  },
+  "pytest_pass": false,
+  "pytest_log_excerpt": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_apdcdjgp\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_version_retrieval FAILED               [100%]\n\n=================================== FAILURES ===================================\n____________________________ test_version_retrieval ____________________________\n\n    def test_version_retrieval():\n        import itsdangero",
+  "constraint_status": "FAIL",
+  "constraint_details": {
+    "transition_id": "trans_track_a_05_itsdangerous_version_removal",
+    "run_id": "S0_seed123",
+    "target_file": "signer_version.py",
+    "api_deprecation_gate": {
+      "status": "FAIL",
+      "details": "Active invocation of deprecated API detected: [{'type': 'Attribute', 'lineno': 6, 'symbol': 'itsdangerous.__version__'}]"
+    },
+    "replacement_mechanism_gate": {
+      "status": "FAIL",
+      "details": "Missing required importlib.metadata.version replacement for itsdangerous."
+    },
+    "behavior_fidelity_gate": {
+      "status": "FAIL",
+      "details": "Pytest execution failed",
+      "pytest_passed": false,
+      "log_snippet": "version__'\n\nsigner_version.py:6: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_version_retrieval - AttributeError: ...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
+    },
+    "overall_constraint_status": "FAIL",
+    "overall_status": "FAIL",
+    "task_success": false
+  },
+  "overall_task_success": false,
+  "output_tokens": 28
+}

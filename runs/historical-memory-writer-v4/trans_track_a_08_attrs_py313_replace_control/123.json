@@ -13,5 +13,16 @@
     "non_future_looking": true,
     "ast_unique": true
   },
-  "raw_generation": "```json\n{\n  \"symbol\": \"Attribute.evolve\",\n  \"statement\": \"Attribute.evolve creates a copy of the current instance and applies the specified changes using the _setattrs method.\"\n}\n```"
+  "raw_generation": "```json\n{\n  \"symbol\": \"Attribute.evolve\",\n  \"statement\": \"Attribute.evolve creates a copy of the current instance and applies the specified changes using the _setattrs method.\"\n}\n```",
+  "base_presence": true,
+  "target_presence": false,
+  "first_seen_commit": "103d51f6efa36efcc7be4adecfd571da3f63291c",
+  "temporal_relation": "HISTORICAL_VALID",
+  "entailment_status": "BASE_ENTAILED",
+  "base_hunk_sha256": "6d1323f7ed2e3fb3607169d7b7717575804efa93d1a67af0a93aa3fc8cce6322",
+  "history_commits": [
+    "d18763cac8be06707eee07ec506b0f7cbb913c6b Introduce NothingType (#1358)",
+    "1e07f46897488350bb44ed88f1c70d4d7461dde0 Make attrs.converters.pipe only return a Converter instance if one is passed (#1380)",
+    "45b6b6b6c3f94d58a03d7d541aaeadf1a4e6f551 Update Ruff"
+  ]
 }

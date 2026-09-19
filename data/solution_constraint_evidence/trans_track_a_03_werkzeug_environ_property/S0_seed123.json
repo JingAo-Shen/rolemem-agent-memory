@@ -4,11 +4,11 @@
   "target_file": "header_proxy.py",
   "api_deprecation_gate": {
     "status": "PASS",
-    "details": "Code free of deprecated symbol 'environ_property'"
+    "details": "Code is free of active deprecated API invocations."
   },
   "replacement_mechanism_gate": {
     "status": "PASS",
-    "details": "Replacement pattern satisfied"
+    "details": "Dynamic descriptor / environ property accessor present."
   },
   "behavior_fidelity_gate": {
     "status": "FAIL",
