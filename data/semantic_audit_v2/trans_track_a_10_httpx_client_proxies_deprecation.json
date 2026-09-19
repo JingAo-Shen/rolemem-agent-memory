@@ -3,7 +3,7 @@
   "repo_name": "encode/httpx",
   "auditor_version": "2.0.0",
   "spec_sha256": "8760ece7d7b522f1c04afed58ab7205108318423817682b12d32d1d7d60d87df",
-  "audit_fingerprint": "11cf527667745e22286adc9d030cbeadc91738d339bd1d9e5235aa2f733175bc",
+  "audit_fingerprint": "e5abff95493d122ad6d481bbbd86304591b14958fe050da14a2d2fc5fef7da83",
   "gates": [
     {
       "gate_id": "G1",
@@ -55,10 +55,10 @@
     },
     {
       "gate_id": "G7",
-      "name": "hidden test <-> current task semantics",
-      "expected": "Hidden test verifies the target symbol/module without leaking solution code",
-      "observed": "Hidden test imports/tests target symbol 'build_proxied_client': True",
-      "evidence": "hidden test len=341 bytes, tests=['_transport', 'test_proxied_client_creation', 'client_factory', 'build_proxied_client', 'catch_warnings']",
+      "name": "hidden test strength <-> current task semantics",
+      "expected": "Hidden test verifies target capability with mutation_kill_rate >= 0.80 and zero constant-return bypass",
+      "observed": "Semantic match: True, Mutation kill rate: 100.0%, Constant return bypass: False",
+      "evidence": "test_strength/trans_track_a_10_httpx_client_proxies_deprecation.json, len=508 bytes",
       "status": "PASS"
     },
     {

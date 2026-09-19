@@ -1,8 +1,8 @@
 {
   "transition_id": "trans_gold_werkzeug_01_cached_property",
   "repo_name": "pallets/werkzeug",
-  "auditor_version": "v7.0",
-  "spec_sha256": "b60c0dfc556128e257539fb177a1cb5b70e119809a9b915950328667bd0086d6",
+  "auditor_version": "2.0.0",
+  "spec_sha256": "eb2fa3cddb4a7856d892c65a81f6aa484417118cf153211fef420373a55f0eb8",
   "audit_fingerprint": "d98d773e67e7fb8b5cb9d0530d0e93cebc729c34b37bc6db2b2b30fc25009efb",
   "gates": [
     {
@@ -55,11 +55,11 @@
     },
     {
       "gate_id": "G7",
-      "name": "hidden test <-> current task semantics",
-      "expected": "Hidden test verifies the target symbol/module without leaking solution code",
-      "observed": "Hidden test imports/tests target symbol 'reset_cached_attribute': True",
-      "evidence": "hidden test len=944 bytes, tests=['issubclass', 'DeprecationWarning', 'warnings', 'sys', 'cached_property']",
-      "status": "PASS"
+      "name": "hidden test strength <-> current task semantics",
+      "expected": "Hidden test verifies target capability with mutation_kill_rate >= 0.80 and zero constant-return bypass",
+      "observed": "Semantic match: True, Mutation kill rate: 0.0%, Constant return bypass: True",
+      "evidence": "test_strength/trans_gold_werkzeug_01_cached_property.json, len=944 bytes",
+      "status": "FAIL"
     },
     {
       "gate_id": "G8",
@@ -86,7 +86,7 @@
       "status": "PASS"
     }
   ],
-  "passed_gates_count": 10,
+  "passed_gates_count": 9,
   "total_gates_count": 10,
-  "overall_status": "PASS"
+  "overall_status": "FAIL"
 }

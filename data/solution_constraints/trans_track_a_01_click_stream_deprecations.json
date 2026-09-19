@@ -1,0 +1,32 @@
+{
+  "transition_id": "trans_track_a_01_click_stream_deprecations",
+  "anti_cheating_gate_version": "v1.0",
+  "constraints": {
+    "target_file": "stream_helper.py",
+    "api_deprecation_gate": {
+      "deprecated_symbol": "click.utils.get_binary_stream",
+      "enforcement": "DeprecationWarning raised or AttributeError when calling deprecated API in target snapshot",
+      "verified": true
+    },
+    "replacement_mechanism_gate": {
+      "required_mechanism": "Direct sys.stdout.buffer and sys.stdin.buffer stream reference",
+      "prohibited_returns": [
+        "1.0",
+        null,
+        "dummy"
+      ],
+      "verified": true
+    },
+    "behavior_fidelity_gate": {
+      "dynamic_checks": [
+        "get_io_stream('stdout') is sys.stdout.buffer",
+        "get_io_stream('stdin') is sys.stdin.buffer"
+      ],
+      "boundary_checks": [
+        "Invalid stream names raise ValueError"
+      ],
+      "verified": true
+    }
+  },
+  "verification_status": "CONSTRAINTS_REGISTERED"
+}

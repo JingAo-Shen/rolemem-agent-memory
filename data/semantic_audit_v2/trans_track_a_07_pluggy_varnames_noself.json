@@ -3,7 +3,7 @@
   "repo_name": "pytest-dev/pluggy",
   "auditor_version": "2.0.0",
   "spec_sha256": "2b9a57a0f30f392bb55658c26bd1d1eb68e17823be0670fdcacc522853c346b4",
-  "audit_fingerprint": "b5f402e090b3505eed685a76ba4ba555ace89833dd6143189f06acb943ba6c61",
+  "audit_fingerprint": "4394e79abe6dd37ef65917ec862c08fad84e3e9048d1e39dc0d5d2da4be5120e",
   "gates": [
     {
       "gate_id": "G1",
@@ -55,10 +55,10 @@
     },
     {
       "gate_id": "G7",
-      "name": "hidden test <-> current task semantics",
-      "expected": "Hidden test verifies the target symbol/module without leaking solution code",
-      "observed": "Hidden test imports/tests target symbol 'extract_spec_varnames': True",
-      "evidence": "hidden test len=266 bytes, tests=['args', 'extract_spec_varnames', 'spec_helper', 'len', 'catch_warnings']",
+      "name": "hidden test strength <-> current task semantics",
+      "expected": "Hidden test verifies target capability with mutation_kill_rate >= 0.80 and zero constant-return bypass",
+      "observed": "Semantic match: True, Mutation kill rate: 87.5%, Constant return bypass: False",
+      "evidence": "test_strength/trans_track_a_07_pluggy_varnames_noself.json, len=487 bytes",
       "status": "PASS"
     },
     {

@@ -1,0 +1,100 @@
+{
+  "transition_id": "trans_track_a_07_pluggy_varnames_noself",
+  "repo_name": "pytest-dev/pluggy",
+  "base_commit": "dd20a85e38af556e1c818b03391eab1480438e0c",
+  "target_commit": "0258484dc180a0c28705de83783b269f4fed4873",
+  "pkg_path": "src/pluggy",
+  "tree_purity_status": "TREE_PURITY_PASS",
+  "before_tree_purity": "TREE_PURITY_PASS",
+  "after_tree_purity": "TREE_PURITY_PASS",
+  "before_mismatches": [],
+  "after_mismatches": [],
+  "total_files_before": 8,
+  "total_files_after": 8,
+  "has_environment_overlay": false,
+  "before_files": [
+    {
+      "relative_path": "src/pluggy/__init__.py",
+      "size": 988,
+      "sha256": "ca04da3741c015734b63df6aca542feed3eec04fa23ef9623a60d113f851e472"
+    },
+    {
+      "relative_path": "src/pluggy/_callers.py",
+      "size": 5883,
+      "sha256": "a6e804545a34e41f975ea1b3da31a43194164f9f6bcc1b3350ebe766ef5c3d8c"
+    },
+    {
+      "relative_path": "src/pluggy/_hooks.py",
+      "size": 26713,
+      "sha256": "abffecf3558e24afb0725ae73dbc3957f278e009fc96c8802a21ceb6c38145a2"
+    },
+    {
+      "relative_path": "src/pluggy/_manager.py",
+      "size": 20261,
+      "sha256": "02575ed815292c331ebc85004488579a0957d0b78584851580e0348243d0dff4"
+    },
+    {
+      "relative_path": "src/pluggy/_result.py",
+      "size": 3116,
+      "sha256": "d9fd8241618325d804fc1507ab459ba2c4bc548a6ab8f1e7003d51f86757708f"
+    },
+    {
+      "relative_path": "src/pluggy/_tracing.py",
+      "size": 2006,
+      "sha256": "499081bfd619d3c5a3acd0a650379e3d727f4cdf1e6cd266cf398707f7b61683"
+    },
+    {
+      "relative_path": "src/pluggy/_warnings.py",
+      "size": 828,
+      "sha256": "b5dd00bd90697da9ab8820b73aab0bc31321f92cc03237e399ce7c4f9bcfde5c"
+    },
+    {
+      "relative_path": "src/pluggy/py.typed",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "after_files": [
+    {
+      "relative_path": "src/pluggy/__init__.py",
+      "size": 988,
+      "sha256": "ca04da3741c015734b63df6aca542feed3eec04fa23ef9623a60d113f851e472"
+    },
+    {
+      "relative_path": "src/pluggy/_callers.py",
+      "size": 5883,
+      "sha256": "a6e804545a34e41f975ea1b3da31a43194164f9f6bcc1b3350ebe766ef5c3d8c"
+    },
+    {
+      "relative_path": "src/pluggy/_hooks.py",
+      "size": 27245,
+      "sha256": "ee1c8cc8fefc5656f23efdc330a2b735c5bba7b7b1dfd41f6c3b0aa4aa2cd52f"
+    },
+    {
+      "relative_path": "src/pluggy/_manager.py",
+      "size": 20261,
+      "sha256": "02575ed815292c331ebc85004488579a0957d0b78584851580e0348243d0dff4"
+    },
+    {
+      "relative_path": "src/pluggy/_result.py",
+      "size": 3116,
+      "sha256": "d9fd8241618325d804fc1507ab459ba2c4bc548a6ab8f1e7003d51f86757708f"
+    },
+    {
+      "relative_path": "src/pluggy/_tracing.py",
+      "size": 2006,
+      "sha256": "499081bfd619d3c5a3acd0a650379e3d727f4cdf1e6cd266cf398707f7b61683"
+    },
+    {
+      "relative_path": "src/pluggy/_warnings.py",
+      "size": 828,
+      "sha256": "b5dd00bd90697da9ab8820b73aab0bc31321f92cc03237e399ce7c4f9bcfde5c"
+    },
+    {
+      "relative_path": "src/pluggy/py.typed",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "fixture_manifest_hash": "fd7da51d828a643d95ce0025d57f5bc3da862e426cf8d614ee8cf84d33606a0c"
+}

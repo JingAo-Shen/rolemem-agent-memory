@@ -3,7 +3,7 @@
   "repo_name": "pallets/itsdangerous",
   "auditor_version": "2.0.0",
   "spec_sha256": "5856a085c520d5dda06aebdb6214f61459a136be7fb91928e6accf1641cd66d4",
-  "audit_fingerprint": "0cf98c94845afd9cec552fcaf4c51ca5432dcbe05a18297e6d7080320edfb0ab",
+  "audit_fingerprint": "decf2acf2939bf5e4f9918d798319fae9e20aa5bdc3ff7397369de365994542c",
   "gates": [
     {
       "gate_id": "G1",
@@ -55,10 +55,10 @@
     },
     {
       "gate_id": "G7",
-      "name": "hidden test <-> current task semantics",
-      "expected": "Hidden test verifies the target symbol/module without leaking solution code",
-      "observed": "Hidden test imports/tests target symbol 'get_package_version': True",
-      "evidence": "hidden test len=167 bytes, tests=['signer_version', 'isinstance', 'get_package_version', 'str', 'test_itsdangerous_version_retrieval']",
+      "name": "hidden test strength <-> current task semantics",
+      "expected": "Hidden test verifies target capability with mutation_kill_rate >= 0.80 and zero constant-return bypass",
+      "observed": "Semantic match: True, Mutation kill rate: 100.0%, Constant return bypass: False",
+      "evidence": "test_strength/trans_track_a_05_itsdangerous_version_removal.json, len=869 bytes",
       "status": "PASS"
     },
     {

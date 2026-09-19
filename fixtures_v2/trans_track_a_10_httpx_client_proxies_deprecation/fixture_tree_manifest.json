@@ -1,0 +1,270 @@
+{
+  "transition_id": "trans_track_a_10_httpx_client_proxies_deprecation",
+  "repo_name": "encode/httpx",
+  "base_commit": "b471f01d668b9ef730e8843531b07b1c21b74c47",
+  "target_commit": "f8981f3d124f9b8db9073fd5c8afa11acb55a738",
+  "pkg_path": "httpx",
+  "tree_purity_status": "TREE_PURITY_PASS",
+  "before_tree_purity": "TREE_PURITY_PASS",
+  "after_tree_purity": "TREE_PURITY_PASS",
+  "before_mismatches": [],
+  "after_mismatches": [],
+  "total_files_before": 25,
+  "total_files_after": 25,
+  "has_environment_overlay": false,
+  "before_files": [
+    {
+      "relative_path": "httpx/__init__.py",
+      "size": 3210,
+      "sha256": "a02c5502c78f132e4313d78b846000abd1f744119950369444eb46132cdb051a"
+    },
+    {
+      "relative_path": "httpx/__version__.py",
+      "size": 108,
+      "sha256": "20090a58b094795fef9d5b4c9871fa6b4dbdacd96328ca9c162c92fd801e4eca"
+    },
+    {
+      "relative_path": "httpx/_api.py",
+      "size": 13011,
+      "sha256": "71553d12bcda5ef7b9aeaa0fa121ebf7225ba2f1ed202adcc51ef206835278ec"
+    },
+    {
+      "relative_path": "httpx/_auth.py",
+      "size": 12029,
+      "sha256": "01f13a1604b1bac6a7856c6cefaed0708434d3bceb71a834670dfeec4153755c"
+    },
+    {
+      "relative_path": "httpx/_client.py",
+      "size": 68235,
+      "sha256": "26fa1ac41dd76032d7ca52e39fde413a75064f84e0987f924a1812fb5fad97a6"
+    },
+    {
+      "relative_path": "httpx/_compat.py",
+      "size": 1563,
+      "sha256": "ac91117e31e446fbc71557e5b5b1f20957006e836c7c478dea3ff4d19d82e24f"
+    },
+    {
+      "relative_path": "httpx/_config.py",
+      "size": 12366,
+      "sha256": "51d62258489b364e05f779e7d3ec0746dae0990bbbb734dbd40a61296679c184"
+    },
+    {
+      "relative_path": "httpx/_content.py",
+      "size": 8108,
+      "sha256": "d483369e41fb65b1fdb621b7960745d6c238c1dede161f7e4c2efd8e3a30bd32"
+    },
+    {
+      "relative_path": "httpx/_decoders.py",
+      "size": 9751,
+      "sha256": "7afdfd1a423a82dec73689d1544600722b13394ccd492aecf95cf77002ac4c03"
+    },
+    {
+      "relative_path": "httpx/_exceptions.py",
+      "size": 7958,
+      "sha256": "7477376dd70d6c3e1273e9dec931cfa75aa7f6b05d95d47e7095024cef86d830"
+    },
+    {
+      "relative_path": "httpx/_main.py",
+      "size": 15795,
+      "sha256": "9dac8cfcdcfdd4020c5a9c6f3b613f819b3871fe95a6f557327ab9a6c5b96c71"
+    },
+    {
+      "relative_path": "httpx/_models.py",
+      "size": 42934,
+      "sha256": "959dde5b98bc01965f8d886a6b0b4cbb8fdb731482dd3520ca939ab5747a332d"
+    },
+    {
+      "relative_path": "httpx/_multipart.py",
+      "size": 9005,
+      "sha256": "465fbae813bc98dc5c881a5fb8aec7d5924d2234da17bd3801394a8c64b840d3"
+    },
+    {
+      "relative_path": "httpx/_status_codes.py",
+      "size": 5584,
+      "sha256": "5ca02b32b4a8a3ca0a050087745180fb0b0cd8f7124da1c4f2cbc360e51cc169"
+    },
+    {
+      "relative_path": "httpx/_transports/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "httpx/_transports/asgi.py",
+      "size": 5469,
+      "sha256": "668207cb5f96bb4f6f651923cd5cd7245830f6c8740eae5c1bccdf82da8af920"
+    },
+    {
+      "relative_path": "httpx/_transports/base.py",
+      "size": 2510,
+      "sha256": "d0133cc9964491d153e2d5d74a6d21d1d2b4712600e212e02278ff0658c6106c"
+    },
+    {
+      "relative_path": "httpx/_transports/default.py",
+      "size": 13228,
+      "sha256": "a3a678a72bcfc76e3acd0a30004632422cdb6d8af01e46e913046028b6a4fc7c"
+    },
+    {
+      "relative_path": "httpx/_transports/mock.py",
+      "size": 1179,
+      "sha256": "b03b770435dbcfcf96f78902f0e5ed1b31753d61f4cbbde1d437bb43e5e456d8"
+    },
+    {
+      "relative_path": "httpx/_transports/wsgi.py",
+      "size": 4797,
+      "sha256": "66ddc48536a0c85de8f870b6a0f329fa14f2dccde441384bd4408945cf1e5c43"
+    },
+    {
+      "relative_path": "httpx/_types.py",
+      "size": 3367,
+      "sha256": "5bf94eabfdc59c7999190b976869b9243ca41680b45a8aa19df1fdda74433464"
+    },
+    {
+      "relative_path": "httpx/_urlparse.py",
+      "size": 16735,
+      "sha256": "7fa1b6014527f567954ea5cc87770d90516b031513cd09e066d7c0b58e154575"
+    },
+    {
+      "relative_path": "httpx/_urls.py",
+      "size": 21901,
+      "sha256": "db9696b268f773113a772b6ec83e804bb4a0ac6bac75b5f96db66ad208b5fd4e"
+    },
+    {
+      "relative_path": "httpx/_utils.py",
+      "size": 14109,
+      "sha256": "ba053344198ee22ff00d74a6c9a1a13a243ac385805c2a291bebb1add9f5e9d9"
+    },
+    {
+      "relative_path": "httpx/py.typed",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "after_files": [
+    {
+      "relative_path": "httpx/__init__.py",
+      "size": 3210,
+      "sha256": "a02c5502c78f132e4313d78b846000abd1f744119950369444eb46132cdb051a"
+    },
+    {
+      "relative_path": "httpx/__version__.py",
+      "size": 108,
+      "sha256": "20090a58b094795fef9d5b4c9871fa6b4dbdacd96328ca9c162c92fd801e4eca"
+    },
+    {
+      "relative_path": "httpx/_api.py",
+      "size": 13722,
+      "sha256": "67f48d03b0f727ae99246640c038b41ea9fd60107b2552e7adaa0d369c5495f2"
+    },
+    {
+      "relative_path": "httpx/_auth.py",
+      "size": 12029,
+      "sha256": "01f13a1604b1bac6a7856c6cefaed0708434d3bceb71a834670dfeec4153755c"
+    },
+    {
+      "relative_path": "httpx/_client.py",
+      "size": 69273,
+      "sha256": "d086376600749fe0d098898828011c693134013a45a96d46150b663fd07e4102"
+    },
+    {
+      "relative_path": "httpx/_compat.py",
+      "size": 1563,
+      "sha256": "ac91117e31e446fbc71557e5b5b1f20957006e836c7c478dea3ff4d19d82e24f"
+    },
+    {
+      "relative_path": "httpx/_config.py",
+      "size": 12366,
+      "sha256": "51d62258489b364e05f779e7d3ec0746dae0990bbbb734dbd40a61296679c184"
+    },
+    {
+      "relative_path": "httpx/_content.py",
+      "size": 8108,
+      "sha256": "d483369e41fb65b1fdb621b7960745d6c238c1dede161f7e4c2efd8e3a30bd32"
+    },
+    {
+      "relative_path": "httpx/_decoders.py",
+      "size": 9751,
+      "sha256": "7afdfd1a423a82dec73689d1544600722b13394ccd492aecf95cf77002ac4c03"
+    },
+    {
+      "relative_path": "httpx/_exceptions.py",
+      "size": 7958,
+      "sha256": "7477376dd70d6c3e1273e9dec931cfa75aa7f6b05d95d47e7095024cef86d830"
+    },
+    {
+      "relative_path": "httpx/_main.py",
+      "size": 15783,
+      "sha256": "f57f425c8d7a0a1b1e75e3c1c239bb047ccb5a9ab54cf06e22ce7406c417cacb"
+    },
+    {
+      "relative_path": "httpx/_models.py",
+      "size": 42934,
+      "sha256": "959dde5b98bc01965f8d886a6b0b4cbb8fdb731482dd3520ca939ab5747a332d"
+    },
+    {
+      "relative_path": "httpx/_multipart.py",
+      "size": 9005,
+      "sha256": "465fbae813bc98dc5c881a5fb8aec7d5924d2234da17bd3801394a8c64b840d3"
+    },
+    {
+      "relative_path": "httpx/_status_codes.py",
+      "size": 5584,
+      "sha256": "5ca02b32b4a8a3ca0a050087745180fb0b0cd8f7124da1c4f2cbc360e51cc169"
+    },
+    {
+      "relative_path": "httpx/_transports/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "httpx/_transports/asgi.py",
+      "size": 5469,
+      "sha256": "668207cb5f96bb4f6f651923cd5cd7245830f6c8740eae5c1bccdf82da8af920"
+    },
+    {
+      "relative_path": "httpx/_transports/base.py",
+      "size": 2510,
+      "sha256": "d0133cc9964491d153e2d5d74a6d21d1d2b4712600e212e02278ff0658c6106c"
+    },
+    {
+      "relative_path": "httpx/_transports/default.py",
+      "size": 13428,
+      "sha256": "22af94450f98a8736d3ec9d16c44ef6e9ce1b4789e8fb580cd6587c95f3f05cf"
+    },
+    {
+      "relative_path": "httpx/_transports/mock.py",
+      "size": 1179,
+      "sha256": "b03b770435dbcfcf96f78902f0e5ed1b31753d61f4cbbde1d437bb43e5e456d8"
+    },
+    {
+      "relative_path": "httpx/_transports/wsgi.py",
+      "size": 4797,
+      "sha256": "66ddc48536a0c85de8f870b6a0f329fa14f2dccde441384bd4408945cf1e5c43"
+    },
+    {
+      "relative_path": "httpx/_types.py",
+      "size": 3391,
+      "sha256": "96f787fa75ba57754b29e63e11f7c754390ec427bde08ae0f9e6e8dcbc50d77b"
+    },
+    {
+      "relative_path": "httpx/_urlparse.py",
+      "size": 16735,
+      "sha256": "7fa1b6014527f567954ea5cc87770d90516b031513cd09e066d7c0b58e154575"
+    },
+    {
+      "relative_path": "httpx/_urls.py",
+      "size": 21901,
+      "sha256": "db9696b268f773113a772b6ec83e804bb4a0ac6bac75b5f96db66ad208b5fd4e"
+    },
+    {
+      "relative_path": "httpx/_utils.py",
+      "size": 14109,
+      "sha256": "ba053344198ee22ff00d74a6c9a1a13a243ac385805c2a291bebb1add9f5e9d9"
+    },
+    {
+      "relative_path": "httpx/py.typed",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "fixture_manifest_hash": "355cc56d3f9c94b091d3c47d8b8d51a0b1b94d5c12c6fa5f1f27468790d40261"
+}

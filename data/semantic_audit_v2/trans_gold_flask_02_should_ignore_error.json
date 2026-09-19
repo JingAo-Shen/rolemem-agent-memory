@@ -1,8 +1,8 @@
 {
   "transition_id": "trans_gold_flask_02_should_ignore_error",
   "repo_name": "pallets/flask",
-  "auditor_version": "v7.0",
-  "spec_sha256": "4d652d416161d33929216aa075f5fc79fde72f58c0701639c6c1be1b8264133f",
+  "auditor_version": "2.0.0",
+  "spec_sha256": "bbbf62796edfd9f12334479931387a5561234f04eca3d058987558949840f82e",
   "audit_fingerprint": "6519f7a565ffb5b4e39b6bb8c0cda4e9300bc059003256aeb64ce1d4e95d3ce7",
   "gates": [
     {
@@ -55,11 +55,11 @@
     },
     {
       "gate_id": "G7",
-      "name": "hidden test <-> current task semantics",
-      "expected": "Hidden test verifies the target symbol/module without leaking solution code",
-      "observed": "Hidden test imports/tests target symbol 'configure_error_policy': True",
-      "evidence": "hidden test len=791 bytes, tests=['issubclass', 'DeprecationWarning', 'warnings', 'sys', 'status_code']",
-      "status": "PASS"
+      "name": "hidden test strength <-> current task semantics",
+      "expected": "Hidden test verifies target capability with mutation_kill_rate >= 0.80 and zero constant-return bypass",
+      "observed": "Semantic match: True, Mutation kill rate: 0.0%, Constant return bypass: True",
+      "evidence": "test_strength/trans_gold_flask_02_should_ignore_error.json, len=791 bytes",
+      "status": "FAIL"
     },
     {
       "gate_id": "G8",
@@ -86,7 +86,7 @@
       "status": "PASS"
     }
   ],
-  "passed_gates_count": 10,
+  "passed_gates_count": 9,
   "total_gates_count": 10,
-  "overall_status": "PASS"
+  "overall_status": "FAIL"
 }

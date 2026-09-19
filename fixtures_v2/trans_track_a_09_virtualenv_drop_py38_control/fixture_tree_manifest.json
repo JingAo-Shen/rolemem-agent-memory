@@ -1,0 +1,1075 @@
+{
+  "transition_id": "trans_track_a_09_virtualenv_drop_py38_control",
+  "repo_name": "pypa/virtualenv",
+  "base_commit": "f1f4d687b12caac079d81ffc5ee50a16d1fabc1a",
+  "target_commit": "79ce906a2378e24c81a7b27ac506c73d5cc262d9",
+  "pkg_path": "src/virtualenv",
+  "tree_purity_status": "TREE_PURITY_PASS",
+  "before_tree_purity": "TREE_PURITY_PASS",
+  "after_tree_purity": "TREE_PURITY_PASS",
+  "before_mismatches": [],
+  "after_mismatches": [],
+  "total_files_before": 107,
+  "total_files_after": 104,
+  "has_environment_overlay": true,
+  "before_files": [
+    {
+      "relative_path": "src/virtualenv/__init__.py",
+      "size": 183,
+      "sha256": "5e0c73f9475f58cf31f166b1727f4b6f9d156a6409e95b508ba098c2748efa73"
+    },
+    {
+      "relative_path": "src/virtualenv/__main__.py",
+      "size": 3682,
+      "sha256": "d3ea8f7684e8d46b9705cd125ec22012884f16d31b04d42012e8b373c060d95a"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/__init__.py",
+      "size": 520,
+      "sha256": "69c590c620b4742c2281d8b15ab459000085d44c2aa64c03650cba1edcc4b623"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/activator.py",
+      "size": 1769,
+      "sha256": "7d524196749074a684dede5ddce8e52afebdf3000f9dbc97a915ac4c428591e3"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/bash/__init__.py",
+      "size": 868,
+      "sha256": "266db5ee2102ee80fd0a87d9695e396cc281c7c11e66b0bdf4b4b4e26a1bf298"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/bash/activate.sh",
+      "size": 3435,
+      "sha256": "cf32f13712f9112fc85533d371f1c0b0fa024a4fc6b754fb328eab872fca6f53"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/batch/__init__.py",
+      "size": 1031,
+      "sha256": "5f7d9b4d657d8ab9ed53448e177f5b79056b6ceeb44bb9ebc30049154629244b"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/batch/activate.bat",
+      "size": 1876,
+      "sha256": "2e606d833278a414ff452ff01c3f13b7bece82250355ef4ef9947bd2efb2b45f"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/batch/deactivate.bat",
+      "size": 1057,
+      "sha256": "60e4d4898eba6b3927b5965710c477801c81d6ba0f3e967b564eb4699bc96729"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/batch/pydoc.bat",
+      "size": 26,
+      "sha256": "fdc2a286f542b07cba61d093fe29ea66736aebd2100f34ec631311be6fb9f7f4"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/cshell/__init__.py",
+      "size": 512,
+      "sha256": "4b14c48432fcb52cdffb8664d5e41465603f320315beccd123a0f17b96032865"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/cshell/activate.csh",
+      "size": 2513,
+      "sha256": "03c5279e2b4c2116cb38e88428e81d75f3d5270d8247db222f79061327f3a7e5"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/fish/__init__.py",
+      "size": 793,
+      "sha256": "00abb1d6aa381dd6fd136b05c29bb37f3096ff65e9c3c176ed5cec784e1f31dd"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/fish/activate.fish",
+      "size": 3417,
+      "sha256": "680b6120750a98db36b9f6ee8c2d4b68283c07ce97999bb703aabcb0cd05f6a3"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/nushell/__init__.py",
+      "size": 1684,
+      "sha256": "f8f6a189f3410d29e36069a1d4aa4cf5de174a1c50bbe60d415701b3cec89f5e"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/nushell/activate.nu",
+      "size": 3287,
+      "sha256": "067497bc5e38f30a0220ca8c73906b440c52e62dede374e937897e1384fe657b"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/powershell/__init__.py",
+      "size": 924,
+      "sha256": "9c66ac55b281a5c2ca4a8e2dfc4da15413a0c336920265600910681565c94ca7"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/powershell/activate.ps1",
+      "size": 6865,
+      "sha256": "699adbebb044c2b3981a15c0185ee919c8777deefa644f0239a58264dd4c461a"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/python/__init__.py",
+      "size": 1065,
+      "sha256": "d56c4c0bc7d070e13a8c8367dc1fbcff4c13b71c9a778e53582eca435a4e96c8"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/python/activate_this.py",
+      "size": 1813,
+      "sha256": "7042a8f2ea3355b0356933ae7db55486bcf8d0a611f57006d728f0a94ebc381d"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/via_template.py",
+      "size": 3615,
+      "sha256": "ba619077e6fbb8a9987e64c9a186d41c5ea6ac1640ae77e6a81d8f97700dfc1a"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/xonsh/__init__.py",
+      "size": 966,
+      "sha256": "64007fccdc7966ebcb380a4276629165ce1f7e3dbe64d8fd7820aad8c278f70d"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/xonsh/activate.xsh",
+      "size": 3838,
+      "sha256": "3b4c6fff17897e5bea9e5dc8eab3977c291dde2804085394951c26d31afa4e1e"
+    },
+    {
+      "relative_path": "src/virtualenv/app_data/__init__.py",
+      "size": 2287,
+      "sha256": "2176ff885c5123aed0f9c439f4b2597a9730251c41f103e97b0d2a9a4cb50ea5"
+    },
+    {
+      "relative_path": "src/virtualenv/app_data/base.py",
+      "size": 4470,
+      "sha256": "8849ff6f037971632fd805972d2e3136e217c19b613a2957c6dd435a29dde695"
+    },
+    {
+      "relative_path": "src/virtualenv/app_data/na.py",
+      "size": 1898,
+      "sha256": "912580a76024b3d20943eb2f423f8878fef642293f778aea564e7595258ff152"
+    },
+    {
+      "relative_path": "src/virtualenv/app_data/read_only.py",
+      "size": 1299,
+      "sha256": "5e50906a5b119a5ad0ac0c88810ba82f45dbc2871039dcf36756a0652b8c6139"
+    },
+    {
+      "relative_path": "src/virtualenv/app_data/via_disk_folder.py",
+      "size": 6251,
+      "sha256": "b1d345b90a3454c11764118c4c6d01797b63e43889f4576c41ea157611a2f9d4"
+    },
+    {
+      "relative_path": "src/virtualenv/app_data/via_tempdir.py",
+      "size": 933,
+      "sha256": "1e9999f8ed673bf8c4b51bf2facd752804ee3f97b9fc2b2446a13095d15f4f6c"
+    },
+    {
+      "relative_path": "src/virtualenv/config/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/virtualenv/config/cli/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/virtualenv/config/cli/parser.py",
+      "size": 6102,
+      "sha256": "2194cd8d0508000ccce2d65378aae0e9c181b4e8feb2c338e783399109e92ad1"
+    },
+    {
+      "relative_path": "src/virtualenv/config/convert.py",
+      "size": 3197,
+      "sha256": "82d013aacddeba9c7a8b6d6c85c468e338542dbfd14f022dfbefadf81ac032f2"
+    },
+    {
+      "relative_path": "src/virtualenv/config/env_var.py",
+      "size": 1011,
+      "sha256": "ae8a26727342c2df974f04d5b6423f0412f3b5a0b9e3eed425d0577663d559d7"
+    },
+    {
+      "relative_path": "src/virtualenv/config/ini.py",
+      "size": 2926,
+      "sha256": "d37052d60811976fed6acf1ba444064b550ee11818531b1fbd3cdf734457777c"
+    },
+    {
+      "relative_path": "src/virtualenv/create/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/virtualenv/create/creator.py",
+      "size": 10899,
+      "sha256": "f6633ee78d64de4e44df5dc7913396d00c9b09e1bdf798feb2d5cb4e3364997e"
+    },
+    {
+      "relative_path": "src/virtualenv/create/debug.py",
+      "size": 2898,
+      "sha256": "2f2cd53d82bf0867558383760aa46a67d24057d6005e4bfba329a5c456a895f0"
+    },
+    {
+      "relative_path": "src/virtualenv/create/describe.py",
+      "size": 3368,
+      "sha256": "1388b659dcdc2476a1bdab774c387d0a0acb51a3da33a699b1d9555f567fa145"
+    },
+    {
+      "relative_path": "src/virtualenv/create/pyenv_cfg.py",
+      "size": 2507,
+      "sha256": "bd0c3efcb87c4d93ed0c490dafd4972e31b2d875f5e1a1886f6c4b349a8ea0c2"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/_virtualenv.py",
+      "size": 4905,
+      "sha256": "460589e83387d4dfe5fd84d41c5f6979599f5cd080983d73c832549161c80435"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/api.py",
+      "size": 5062,
+      "sha256": "b88bb96db97f473f29062d835184be4681a46bc8629d751dbad23041c21f7a63"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/builtin/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/builtin/builtin_way.py",
+      "size": 711,
+      "sha256": "5ba802161d10699e3d088292aaf933c31fdb639bcff7b9e6e3e77c391cbae6bb"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/builtin/cpython/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/builtin/cpython/common.py",
+      "size": 3416,
+      "sha256": "353754567d4394b0847d81cafd263d0167029a02ed34ccb2576f18ac4c71cec3"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/builtin/cpython/cpython3.py",
+      "size": 9453,
+      "sha256": "71bd2d1ed9e8a6b1941368e35d8c4c59018264dee809960bcf4acde12097bf7a"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/builtin/cpython/mac_os.py",
+      "size": 13064,
+      "sha256": "56424917248c0d894ea8899dd7f407041be7c31a632146110db05444dfd6a7b5"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/builtin/graalpy/__init__.py",
+      "size": 3784,
+      "sha256": "7fd9f4d2815785302fc13035b961fc23e1e148702948198af99bf1075a0b9833"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/builtin/pypy/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/builtin/pypy/common.py",
+      "size": 2274,
+      "sha256": "fea3dfcb26a0e31f0fc197d25014f43159b4b0e1068978b82f7a5016c67f0b81"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/builtin/pypy/pypy3.py",
+      "size": 2850,
+      "sha256": "2e42518efb0202e874d31e5734343fef2302de7f61d810fc7aef9b41294b4d23"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/builtin/ref.py",
+      "size": 6133,
+      "sha256": "4e50009712e7c8142803f0f79e885a77420fc676a4b8421e3f430da5a87b1fa4"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/builtin/rustpython/__init__.py",
+      "size": 1745,
+      "sha256": "aa6ab4e51e1e4e9d36cffb8231e3dfcd4ab2f18110d33827d904899011fe987d"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/builtin/via_global_self_do.py",
+      "size": 5379,
+      "sha256": "738ca1eaeaf14c289a3e8ce2bcd49650da81349a3b3b881c6ba3bddfbb07ec16"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/store.py",
+      "size": 941,
+      "sha256": "f476f7c087c1e012218398559673dd17f99df57b8b5e64feaefdeb126e8744d0"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/venv.py",
+      "size": 3876,
+      "sha256": "89e4a4c23f7d57b3fd71d96c2fc4a3218ed96714b44c78fb5aba4eab041b5538"
+    },
+    {
+      "relative_path": "src/virtualenv/discovery/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/virtualenv/discovery/builtin.py",
+      "size": 2718,
+      "sha256": "91b6734003f15584817fa260682ea0027237cb2d2d96d15af588ad3f6fd3c1a6"
+    },
+    {
+      "relative_path": "src/virtualenv/discovery/cached_py_info.py",
+      "size": 237,
+      "sha256": "7b5c7684b337a6e4766d2bacba3f9f13d27bc3c64d1d39c5d7bed9e729f0382c"
+    },
+    {
+      "relative_path": "src/virtualenv/discovery/discover.py",
+      "size": 1192,
+      "sha256": "a5d9a5d2850ffd20df7acf9c81439f0827f20c0d14b41fe68199a099110eb063"
+    },
+    {
+      "relative_path": "src/virtualenv/discovery/py_info.py",
+      "size": 199,
+      "sha256": "aa6a67d526c64aa85145e478fc22d723e55113d43fd067068f641d1790c54ed7"
+    },
+    {
+      "relative_path": "src/virtualenv/discovery/py_spec.py",
+      "size": 199,
+      "sha256": "011907d97e73425963bfe1104920277badb5dbcd7df71339a4fe306c367b0ed9"
+    },
+    {
+      "relative_path": "src/virtualenv/info.py",
+      "size": 2374,
+      "sha256": "675f7340834b604e4dda8570fd8ca8d6369c958a81b89d21895aaaa92af128af"
+    },
+    {
+      "relative_path": "src/virtualenv/py.typed",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/virtualenv/report.py",
+      "size": 1398,
+      "sha256": "813e188c661e21129c65940e6bbe25f0759258ec7ddb49d02eff6e2262a506cb"
+    },
+    {
+      "relative_path": "src/virtualenv/run/__init__.py",
+      "size": 7743,
+      "sha256": "85a6babe4ae4c422bc3819a4e7d1af6e69503d8b6f352818ee100539f89db022"
+    },
+    {
+      "relative_path": "src/virtualenv/run/plugin/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/virtualenv/run/plugin/activators.py",
+      "size": 2890,
+      "sha256": "9d5a6103233c9857e14519f93b7c219c85227ddbd1bb9eaf2779723e2fc9d71e"
+    },
+    {
+      "relative_path": "src/virtualenv/run/plugin/base.py",
+      "size": 3148,
+      "sha256": "0c74ce19e3a6285551482d6085df19df882b282624ce5fc8761bb860c8552c95"
+    },
+    {
+      "relative_path": "src/virtualenv/run/plugin/creators.py",
+      "size": 4354,
+      "sha256": "7764d8627e53a0fdf785f01d7f547d606d3b9f216c30e27c8e76b7bb2d105a16"
+    },
+    {
+      "relative_path": "src/virtualenv/run/plugin/discovery.py",
+      "size": 2025,
+      "sha256": "ff2f53d8f1fa3cda7fd581ddfa98a98b06acde7c8b9a6ffe4d9b904c20d07013"
+    },
+    {
+      "relative_path": "src/virtualenv/run/plugin/seeders.py",
+      "size": 1543,
+      "sha256": "5ba45261807332a203659dd97c5b9927baec871eba3b36abd53686934270a615"
+    },
+    {
+      "relative_path": "src/virtualenv/run/session.py",
+      "size": 3293,
+      "sha256": "c3548616395cf586419097f652d6d60bb3fb6408c4e6230936ce3cb2ea92338b"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/embed/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/embed/base_embed.py",
+      "size": 5541,
+      "sha256": "93e9c44bd60bfb1d4645ac4c813c1a8cd04f98015f2c1cb56d07276e82f5fc53"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/embed/pip_invoke.py",
+      "size": 2732,
+      "sha256": "513a2631774b270a58cbfb09889aecc0287b5c51b69abb3d52b39c4f09027e9c"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/embed/via_app_data/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/embed/via_app_data/pip_install/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/embed/via_app_data/pip_install/base.py",
+      "size": 10376,
+      "sha256": "e733c58f7aceac64a3ed87ba48dfbf5b3b66936aff003bc4bebd8327cd7f5261"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/embed/via_app_data/pip_install/copy.py",
+      "size": 1455,
+      "sha256": "e0e0ad5964e4cb0f3107e3e05dcd4af84921487a71a7017f448c42a72bd80242"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/embed/via_app_data/pip_install/symlink.py",
+      "size": 2261,
+      "sha256": "333ff11901d414812b995898201cbb13d2259f30645f6c9cd258482305ab7efd"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/embed/via_app_data/via_app_data.py",
+      "size": 6723,
+      "sha256": "0ad238766c099b2c932f01431b6f098121ff03fbece06fe90d43c6dbfd1f586e"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/seeder.py",
+      "size": 1520,
+      "sha256": "b599458e20054254e61eb8e197569b92a109bd90ebade3f8cee6ff4bba052604"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/wheels/__init__.py",
+      "size": 204,
+      "sha256": "acdebf35c9ce3abb1a2203efd7c698370a137de3f5d1cd09e468c5f2ee9632d7"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/wheels/acquire.py",
+      "size": 7825,
+      "sha256": "28472b0d32c2b141a908d1f5af7a37be7f5247201b4c25355d82a4e862dd4d19"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/wheels/bundle.py",
+      "size": 2241,
+      "sha256": "b54e1dcda90211eccaf31a967a043cb38208245f2c2dfd5cfbccdb2d9bced301"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/wheels/embed/__init__.py",
+      "size": 4649,
+      "sha256": "d1032157378ef6befa850bcf095226d2af8174c65cad5655ab8200f5f81818ac"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/wheels/embed/pip-25.0.1-py3-none-any.whl",
+      "size": 1841526,
+      "sha256": "c46efd13b6aa8279f33f2864459c8ce587ea6a1a59ee20de055868d8f7688f7f"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/wheels/embed/pip-26.0.1-py3-none-any.whl",
+      "size": 1787723,
+      "sha256": "bdb1b08f4274833d62c1aa29e20907365a2ceb950410df15fc9521bad440122b"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/wheels/embed/pip-26.1.2-py3-none-any.whl",
+      "size": 1813144,
+      "sha256": "382ff9f685ee3bc25864f820aa50505825f10f5458ffff07e30a6d96e5715cab"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/wheels/embed/setuptools-75.3.4-py3-none-any.whl",
+      "size": 1251633,
+      "sha256": "2dd50a7f42dddfa1d02a36f275dbe716f38ed250224f609d35fb60a09593d93e"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/wheels/embed/setuptools-82.0.1-py3-none-any.whl",
+      "size": 1006223,
+      "sha256": "a59e362652f08dcd477c78bb6e7bd9d80a7995bc73ce773050228a348ce2e5bb"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/wheels/embed/wheel-0.45.1-py3-none-any.whl",
+      "size": 72494,
+      "sha256": "708e7481cc80179af0e556bbf0cc00b8444c7321e2700b8d8580231d13017248"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/wheels/periodic_update.py",
+      "size": 18078,
+      "sha256": "b3777bb43e2583e7880302edb326aaf035a1fa5c055c6a0275baaa2c169791cb"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/wheels/util.py",
+      "size": 4260,
+      "sha256": "56b9f5cbc2a7479eb7c054706aff24a4c7b2761528d2463c4d51c345f280e724"
+    },
+    {
+      "relative_path": "src/virtualenv/util/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/virtualenv/util/error.py",
+      "size": 349,
+      "sha256": "4d4b898b5ddb48104ac6f772d71550b98429c86302ac95e60d4d92f551c78e80"
+    },
+    {
+      "relative_path": "src/virtualenv/util/lock.py",
+      "size": 6093,
+      "sha256": "774edc51e77ee1fdaf8342972f6846a417264899489e2c70efd3487d9bb1eeee"
+    },
+    {
+      "relative_path": "src/virtualenv/util/path/__init__.py",
+      "size": 340,
+      "sha256": "523bfab687a2cbee6ec38c8f7e71bb645be8c58b3c27824c40e893dc85a88a68"
+    },
+    {
+      "relative_path": "src/virtualenv/util/path/_permission.py",
+      "size": 779,
+      "sha256": "3f5633f61aebf9b178cd689eb9b2d604ac0f802e96fa7c3ab90ffc4228c90c62"
+    },
+    {
+      "relative_path": "src/virtualenv/util/path/_sync.py",
+      "size": 2409,
+      "sha256": "39f49fae666cd45de120d4b37bcbeae8cc95de55358f76f630ed6af0e4d40211"
+    },
+    {
+      "relative_path": "src/virtualenv/util/path/_win.py",
+      "size": 851,
+      "sha256": "d5c0de1649ccfb497e829d2671c5c17ab63008f7dbc4b6a6a080c72bfa09e24a"
+    },
+    {
+      "relative_path": "src/virtualenv/util/subprocess/__init__.py",
+      "size": 1310,
+      "sha256": "828086d261880cd18ef16cd45ab17eb2cf65ffacea84274acd4d61e568e29c35"
+    },
+    {
+      "relative_path": "src/virtualenv/util/zipapp.py",
+      "size": 1482,
+      "sha256": "aacdbd2019ad66c0f9b2cac7a578e28a1c92127926859de1400f5dad3086a476"
+    }
+  ],
+  "after_files": [
+    {
+      "relative_path": "src/virtualenv/__init__.py",
+      "size": 183,
+      "sha256": "5e0c73f9475f58cf31f166b1727f4b6f9d156a6409e95b508ba098c2748efa73"
+    },
+    {
+      "relative_path": "src/virtualenv/__main__.py",
+      "size": 3682,
+      "sha256": "d3ea8f7684e8d46b9705cd125ec22012884f16d31b04d42012e8b373c060d95a"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/__init__.py",
+      "size": 520,
+      "sha256": "69c590c620b4742c2281d8b15ab459000085d44c2aa64c03650cba1edcc4b623"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/activator.py",
+      "size": 1769,
+      "sha256": "7d524196749074a684dede5ddce8e52afebdf3000f9dbc97a915ac4c428591e3"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/bash/__init__.py",
+      "size": 868,
+      "sha256": "266db5ee2102ee80fd0a87d9695e396cc281c7c11e66b0bdf4b4b4e26a1bf298"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/bash/activate.sh",
+      "size": 3435,
+      "sha256": "cf32f13712f9112fc85533d371f1c0b0fa024a4fc6b754fb328eab872fca6f53"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/batch/__init__.py",
+      "size": 1031,
+      "sha256": "5f7d9b4d657d8ab9ed53448e177f5b79056b6ceeb44bb9ebc30049154629244b"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/batch/activate.bat",
+      "size": 1876,
+      "sha256": "2e606d833278a414ff452ff01c3f13b7bece82250355ef4ef9947bd2efb2b45f"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/batch/deactivate.bat",
+      "size": 1057,
+      "sha256": "60e4d4898eba6b3927b5965710c477801c81d6ba0f3e967b564eb4699bc96729"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/batch/pydoc.bat",
+      "size": 26,
+      "sha256": "fdc2a286f542b07cba61d093fe29ea66736aebd2100f34ec631311be6fb9f7f4"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/cshell/__init__.py",
+      "size": 512,
+      "sha256": "4b14c48432fcb52cdffb8664d5e41465603f320315beccd123a0f17b96032865"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/cshell/activate.csh",
+      "size": 2513,
+      "sha256": "03c5279e2b4c2116cb38e88428e81d75f3d5270d8247db222f79061327f3a7e5"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/fish/__init__.py",
+      "size": 793,
+      "sha256": "00abb1d6aa381dd6fd136b05c29bb37f3096ff65e9c3c176ed5cec784e1f31dd"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/fish/activate.fish",
+      "size": 3417,
+      "sha256": "680b6120750a98db36b9f6ee8c2d4b68283c07ce97999bb703aabcb0cd05f6a3"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/nushell/__init__.py",
+      "size": 1684,
+      "sha256": "f8f6a189f3410d29e36069a1d4aa4cf5de174a1c50bbe60d415701b3cec89f5e"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/nushell/activate.nu",
+      "size": 3287,
+      "sha256": "067497bc5e38f30a0220ca8c73906b440c52e62dede374e937897e1384fe657b"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/powershell/__init__.py",
+      "size": 924,
+      "sha256": "9c66ac55b281a5c2ca4a8e2dfc4da15413a0c336920265600910681565c94ca7"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/powershell/activate.ps1",
+      "size": 6865,
+      "sha256": "699adbebb044c2b3981a15c0185ee919c8777deefa644f0239a58264dd4c461a"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/python/__init__.py",
+      "size": 1065,
+      "sha256": "d56c4c0bc7d070e13a8c8367dc1fbcff4c13b71c9a778e53582eca435a4e96c8"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/python/activate_this.py",
+      "size": 1813,
+      "sha256": "7042a8f2ea3355b0356933ae7db55486bcf8d0a611f57006d728f0a94ebc381d"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/via_template.py",
+      "size": 3615,
+      "sha256": "ba619077e6fbb8a9987e64c9a186d41c5ea6ac1640ae77e6a81d8f97700dfc1a"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/xonsh/__init__.py",
+      "size": 966,
+      "sha256": "64007fccdc7966ebcb380a4276629165ce1f7e3dbe64d8fd7820aad8c278f70d"
+    },
+    {
+      "relative_path": "src/virtualenv/activation/xonsh/activate.xsh",
+      "size": 3838,
+      "sha256": "3b4c6fff17897e5bea9e5dc8eab3977c291dde2804085394951c26d31afa4e1e"
+    },
+    {
+      "relative_path": "src/virtualenv/app_data/__init__.py",
+      "size": 2287,
+      "sha256": "2176ff885c5123aed0f9c439f4b2597a9730251c41f103e97b0d2a9a4cb50ea5"
+    },
+    {
+      "relative_path": "src/virtualenv/app_data/base.py",
+      "size": 4470,
+      "sha256": "8849ff6f037971632fd805972d2e3136e217c19b613a2957c6dd435a29dde695"
+    },
+    {
+      "relative_path": "src/virtualenv/app_data/na.py",
+      "size": 1898,
+      "sha256": "912580a76024b3d20943eb2f423f8878fef642293f778aea564e7595258ff152"
+    },
+    {
+      "relative_path": "src/virtualenv/app_data/read_only.py",
+      "size": 1299,
+      "sha256": "5e50906a5b119a5ad0ac0c88810ba82f45dbc2871039dcf36756a0652b8c6139"
+    },
+    {
+      "relative_path": "src/virtualenv/app_data/via_disk_folder.py",
+      "size": 6251,
+      "sha256": "b1d345b90a3454c11764118c4c6d01797b63e43889f4576c41ea157611a2f9d4"
+    },
+    {
+      "relative_path": "src/virtualenv/app_data/via_tempdir.py",
+      "size": 933,
+      "sha256": "1e9999f8ed673bf8c4b51bf2facd752804ee3f97b9fc2b2446a13095d15f4f6c"
+    },
+    {
+      "relative_path": "src/virtualenv/config/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/virtualenv/config/cli/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/virtualenv/config/cli/parser.py",
+      "size": 6102,
+      "sha256": "2194cd8d0508000ccce2d65378aae0e9c181b4e8feb2c338e783399109e92ad1"
+    },
+    {
+      "relative_path": "src/virtualenv/config/convert.py",
+      "size": 3197,
+      "sha256": "82d013aacddeba9c7a8b6d6c85c468e338542dbfd14f022dfbefadf81ac032f2"
+    },
+    {
+      "relative_path": "src/virtualenv/config/env_var.py",
+      "size": 1011,
+      "sha256": "ae8a26727342c2df974f04d5b6423f0412f3b5a0b9e3eed425d0577663d559d7"
+    },
+    {
+      "relative_path": "src/virtualenv/config/ini.py",
+      "size": 2926,
+      "sha256": "d37052d60811976fed6acf1ba444064b550ee11818531b1fbd3cdf734457777c"
+    },
+    {
+      "relative_path": "src/virtualenv/create/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/virtualenv/create/creator.py",
+      "size": 10899,
+      "sha256": "f6633ee78d64de4e44df5dc7913396d00c9b09e1bdf798feb2d5cb4e3364997e"
+    },
+    {
+      "relative_path": "src/virtualenv/create/debug.py",
+      "size": 2898,
+      "sha256": "2f2cd53d82bf0867558383760aa46a67d24057d6005e4bfba329a5c456a895f0"
+    },
+    {
+      "relative_path": "src/virtualenv/create/describe.py",
+      "size": 3368,
+      "sha256": "1388b659dcdc2476a1bdab774c387d0a0acb51a3da33a699b1d9555f567fa145"
+    },
+    {
+      "relative_path": "src/virtualenv/create/pyenv_cfg.py",
+      "size": 2507,
+      "sha256": "bd0c3efcb87c4d93ed0c490dafd4972e31b2d875f5e1a1886f6c4b349a8ea0c2"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/_virtualenv.py",
+      "size": 4905,
+      "sha256": "460589e83387d4dfe5fd84d41c5f6979599f5cd080983d73c832549161c80435"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/api.py",
+      "size": 5062,
+      "sha256": "b88bb96db97f473f29062d835184be4681a46bc8629d751dbad23041c21f7a63"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/builtin/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/builtin/builtin_way.py",
+      "size": 711,
+      "sha256": "5ba802161d10699e3d088292aaf933c31fdb639bcff7b9e6e3e77c391cbae6bb"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/builtin/cpython/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/builtin/cpython/common.py",
+      "size": 3416,
+      "sha256": "353754567d4394b0847d81cafd263d0167029a02ed34ccb2576f18ac4c71cec3"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/builtin/cpython/cpython3.py",
+      "size": 8672,
+      "sha256": "2aa480656e204a1f6eb9aa3ede39b68296f6fb976db30c25387c48bcf57eed2f"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/builtin/cpython/mac_os.py",
+      "size": 13064,
+      "sha256": "56424917248c0d894ea8899dd7f407041be7c31a632146110db05444dfd6a7b5"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/builtin/graalpy/__init__.py",
+      "size": 3784,
+      "sha256": "7fd9f4d2815785302fc13035b961fc23e1e148702948198af99bf1075a0b9833"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/builtin/pypy/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/builtin/pypy/common.py",
+      "size": 2274,
+      "sha256": "fea3dfcb26a0e31f0fc197d25014f43159b4b0e1068978b82f7a5016c67f0b81"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/builtin/pypy/pypy3.py",
+      "size": 2850,
+      "sha256": "2e42518efb0202e874d31e5734343fef2302de7f61d810fc7aef9b41294b4d23"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/builtin/ref.py",
+      "size": 6133,
+      "sha256": "4e50009712e7c8142803f0f79e885a77420fc676a4b8421e3f430da5a87b1fa4"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/builtin/rustpython/__init__.py",
+      "size": 1745,
+      "sha256": "aa6ab4e51e1e4e9d36cffb8231e3dfcd4ab2f18110d33827d904899011fe987d"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/builtin/via_global_self_do.py",
+      "size": 5379,
+      "sha256": "738ca1eaeaf14c289a3e8ce2bcd49650da81349a3b3b881c6ba3bddfbb07ec16"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/store.py",
+      "size": 941,
+      "sha256": "f476f7c087c1e012218398559673dd17f99df57b8b5e64feaefdeb126e8744d0"
+    },
+    {
+      "relative_path": "src/virtualenv/create/via_global_ref/venv.py",
+      "size": 3876,
+      "sha256": "89e4a4c23f7d57b3fd71d96c2fc4a3218ed96714b44c78fb5aba4eab041b5538"
+    },
+    {
+      "relative_path": "src/virtualenv/discovery/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/virtualenv/discovery/builtin.py",
+      "size": 2718,
+      "sha256": "91b6734003f15584817fa260682ea0027237cb2d2d96d15af588ad3f6fd3c1a6"
+    },
+    {
+      "relative_path": "src/virtualenv/discovery/cached_py_info.py",
+      "size": 237,
+      "sha256": "7b5c7684b337a6e4766d2bacba3f9f13d27bc3c64d1d39c5d7bed9e729f0382c"
+    },
+    {
+      "relative_path": "src/virtualenv/discovery/discover.py",
+      "size": 1192,
+      "sha256": "a5d9a5d2850ffd20df7acf9c81439f0827f20c0d14b41fe68199a099110eb063"
+    },
+    {
+      "relative_path": "src/virtualenv/discovery/py_info.py",
+      "size": 199,
+      "sha256": "aa6a67d526c64aa85145e478fc22d723e55113d43fd067068f641d1790c54ed7"
+    },
+    {
+      "relative_path": "src/virtualenv/discovery/py_spec.py",
+      "size": 199,
+      "sha256": "011907d97e73425963bfe1104920277badb5dbcd7df71339a4fe306c367b0ed9"
+    },
+    {
+      "relative_path": "src/virtualenv/info.py",
+      "size": 2374,
+      "sha256": "675f7340834b604e4dda8570fd8ca8d6369c958a81b89d21895aaaa92af128af"
+    },
+    {
+      "relative_path": "src/virtualenv/py.typed",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/virtualenv/report.py",
+      "size": 1398,
+      "sha256": "813e188c661e21129c65940e6bbe25f0759258ec7ddb49d02eff6e2262a506cb"
+    },
+    {
+      "relative_path": "src/virtualenv/run/__init__.py",
+      "size": 7743,
+      "sha256": "85a6babe4ae4c422bc3819a4e7d1af6e69503d8b6f352818ee100539f89db022"
+    },
+    {
+      "relative_path": "src/virtualenv/run/plugin/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/virtualenv/run/plugin/activators.py",
+      "size": 2890,
+      "sha256": "9d5a6103233c9857e14519f93b7c219c85227ddbd1bb9eaf2779723e2fc9d71e"
+    },
+    {
+      "relative_path": "src/virtualenv/run/plugin/base.py",
+      "size": 3148,
+      "sha256": "0c74ce19e3a6285551482d6085df19df882b282624ce5fc8761bb860c8552c95"
+    },
+    {
+      "relative_path": "src/virtualenv/run/plugin/creators.py",
+      "size": 4354,
+      "sha256": "7764d8627e53a0fdf785f01d7f547d606d3b9f216c30e27c8e76b7bb2d105a16"
+    },
+    {
+      "relative_path": "src/virtualenv/run/plugin/discovery.py",
+      "size": 2025,
+      "sha256": "ff2f53d8f1fa3cda7fd581ddfa98a98b06acde7c8b9a6ffe4d9b904c20d07013"
+    },
+    {
+      "relative_path": "src/virtualenv/run/plugin/seeders.py",
+      "size": 1543,
+      "sha256": "5ba45261807332a203659dd97c5b9927baec871eba3b36abd53686934270a615"
+    },
+    {
+      "relative_path": "src/virtualenv/run/session.py",
+      "size": 3293,
+      "sha256": "c3548616395cf586419097f652d6d60bb3fb6408c4e6230936ce3cb2ea92338b"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/embed/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/embed/base_embed.py",
+      "size": 5323,
+      "sha256": "4b592aa3a72bc511f9f2c0d5474ad7319460e6293f1b4b427d896bea5a167d64"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/embed/pip_invoke.py",
+      "size": 2732,
+      "sha256": "513a2631774b270a58cbfb09889aecc0287b5c51b69abb3d52b39c4f09027e9c"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/embed/via_app_data/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/embed/via_app_data/pip_install/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/embed/via_app_data/pip_install/base.py",
+      "size": 10376,
+      "sha256": "e733c58f7aceac64a3ed87ba48dfbf5b3b66936aff003bc4bebd8327cd7f5261"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/embed/via_app_data/pip_install/copy.py",
+      "size": 1455,
+      "sha256": "e0e0ad5964e4cb0f3107e3e05dcd4af84921487a71a7017f448c42a72bd80242"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/embed/via_app_data/pip_install/symlink.py",
+      "size": 2261,
+      "sha256": "333ff11901d414812b995898201cbb13d2259f30645f6c9cd258482305ab7efd"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/embed/via_app_data/via_app_data.py",
+      "size": 6723,
+      "sha256": "0ad238766c099b2c932f01431b6f098121ff03fbece06fe90d43c6dbfd1f586e"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/seeder.py",
+      "size": 1520,
+      "sha256": "b599458e20054254e61eb8e197569b92a109bd90ebade3f8cee6ff4bba052604"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/wheels/__init__.py",
+      "size": 204,
+      "sha256": "acdebf35c9ce3abb1a2203efd7c698370a137de3f5d1cd09e468c5f2ee9632d7"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/wheels/acquire.py",
+      "size": 7825,
+      "sha256": "28472b0d32c2b141a908d1f5af7a37be7f5247201b4c25355d82a4e862dd4d19"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/wheels/bundle.py",
+      "size": 2241,
+      "sha256": "b54e1dcda90211eccaf31a967a043cb38208245f2c2dfd5cfbccdb2d9bced301"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/wheels/embed/__init__.py",
+      "size": 4155,
+      "sha256": "a7eb562e170cedb9f26edc9a21d8cad28121daf7ce45d4958727cd479fac55ce"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/wheels/embed/pip-26.0.1-py3-none-any.whl",
+      "size": 1787723,
+      "sha256": "bdb1b08f4274833d62c1aa29e20907365a2ceb950410df15fc9521bad440122b"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/wheels/embed/pip-26.1.2-py3-none-any.whl",
+      "size": 1813144,
+      "sha256": "382ff9f685ee3bc25864f820aa50505825f10f5458ffff07e30a6d96e5715cab"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/wheels/embed/setuptools-82.0.1-py3-none-any.whl",
+      "size": 1006223,
+      "sha256": "a59e362652f08dcd477c78bb6e7bd9d80a7995bc73ce773050228a348ce2e5bb"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/wheels/periodic_update.py",
+      "size": 18078,
+      "sha256": "b3777bb43e2583e7880302edb326aaf035a1fa5c055c6a0275baaa2c169791cb"
+    },
+    {
+      "relative_path": "src/virtualenv/seed/wheels/util.py",
+      "size": 4260,
+      "sha256": "56b9f5cbc2a7479eb7c054706aff24a4c7b2761528d2463c4d51c345f280e724"
+    },
+    {
+      "relative_path": "src/virtualenv/util/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/virtualenv/util/error.py",
+      "size": 349,
+      "sha256": "4d4b898b5ddb48104ac6f772d71550b98429c86302ac95e60d4d92f551c78e80"
+    },
+    {
+      "relative_path": "src/virtualenv/util/lock.py",
+      "size": 6093,
+      "sha256": "774edc51e77ee1fdaf8342972f6846a417264899489e2c70efd3487d9bb1eeee"
+    },
+    {
+      "relative_path": "src/virtualenv/util/path/__init__.py",
+      "size": 340,
+      "sha256": "523bfab687a2cbee6ec38c8f7e71bb645be8c58b3c27824c40e893dc85a88a68"
+    },
+    {
+      "relative_path": "src/virtualenv/util/path/_permission.py",
+      "size": 779,
+      "sha256": "3f5633f61aebf9b178cd689eb9b2d604ac0f802e96fa7c3ab90ffc4228c90c62"
+    },
+    {
+      "relative_path": "src/virtualenv/util/path/_sync.py",
+      "size": 2409,
+      "sha256": "39f49fae666cd45de120d4b37bcbeae8cc95de55358f76f630ed6af0e4d40211"
+    },
+    {
+      "relative_path": "src/virtualenv/util/path/_win.py",
+      "size": 851,
+      "sha256": "d5c0de1649ccfb497e829d2671c5c17ab63008f7dbc4b6a6a080c72bfa09e24a"
+    },
+    {
+      "relative_path": "src/virtualenv/util/subprocess/__init__.py",
+      "size": 1310,
+      "sha256": "828086d261880cd18ef16cd45ab17eb2cf65ffacea84274acd4d61e568e29c35"
+    },
+    {
+      "relative_path": "src/virtualenv/util/zipapp.py",
+      "size": 1482,
+      "sha256": "aacdbd2019ad66c0f9b2cac7a578e28a1c92127926859de1400f5dad3086a476"
+    }
+  ],
+  "fixture_manifest_hash": "b36dea8aa98ca903bf56ee9ba50dbcc61c7a50c15c11b06906f4448b1d2aa30f"
+}

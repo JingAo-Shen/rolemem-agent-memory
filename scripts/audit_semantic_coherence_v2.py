@@ -183,15 +183,22 @@ def audit_semantic_v2(spec_path):
         "status": "PASS" if g6_pass else "FAIL"
     })
 
-    # G7: hidden test <-> current task semantics
+    # G7: hidden test strength & current task semantics
+    test_strength_path = f"/code/rolemem-agent-memory/data/test_strength/{tid}.json"
+    ts_data = json.load(open(test_strength_path)) if os.path.exists(test_strength_path) else {}
+    mutation_kill_rate = ts_data.get("mutation_kill_rate", 0.0)
+    constant_return_bypass = ts_data.get("constant_return_bypass", True)
+
     test_names = extract_ast_names(hidden_test_code)
-    g7_pass = (target_short in test_names) or (target_file.replace(".py", "") in hidden_test_code) or (target_short in hidden_test_code)
+    semantic_match = (target_short in test_names) or (target_file.replace(".py", "") in hidden_test_code) or (target_short in hidden_test_code)
+    strength_pass = (mutation_kill_rate >= 0.80) and (not constant_return_bypass)
+    g7_pass = semantic_match and strength_pass
     gates.append({
         "gate_id": "G7",
-        "name": "hidden test <-> current task semantics",
-        "expected": "Hidden test verifies the target symbol/module without leaking solution code",
-        "observed": f"Hidden test imports/tests target symbol '{target_short}': {g7_pass}",
-        "evidence": f"hidden test len={len(hidden_test_code)} bytes, tests={list(test_names)[:5]}",
+        "name": "hidden test strength <-> current task semantics",
+        "expected": "Hidden test verifies target capability with mutation_kill_rate >= 0.80 and zero constant-return bypass",
+        "observed": f"Semantic match: {semantic_match}, Mutation kill rate: {mutation_kill_rate*100:.1f}%, Constant return bypass: {constant_return_bypass}",
+        "evidence": f"test_strength/{tid}.json, len={len(hidden_test_code)} bytes",
         "status": "PASS" if g7_pass else "FAIL"
     })
 

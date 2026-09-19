@@ -1,0 +1,69 @@
+{
+  "transition_id": "trans_track_a_10_httpx_client_proxies_deprecation",
+  "audit_fingerprint": "e5abff95493d122ad6d481bbbd86304591b14958fe050da14a2d2fc5fef7da83",
+  "total_mutants": 8,
+  "killed_mutants": 8,
+  "mutation_kill_rate": 1.0,
+  "constant_return_killed": true,
+  "constant_return_bypass": false,
+  "meets_kill_rate_threshold": true,
+  "audit_status": "PASS",
+  "mutants": {
+    "M1_return_none": {
+      "description": "return None",
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "\ntest_hidden_verification.py:11: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_proxied_client_creation - AssertionE...\n============================== 1 failed in 0.12s ===============================\n\nSTDERR:\n"
+    },
+    "M2_constant_return": {
+      "description": "return constant string",
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "\ntest_hidden_verification.py:10: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_proxied_client_creation - AssertionE...\n============================== 1 failed in 0.12s ===============================\n\nSTDERR:\n"
+    },
+    "M3_noop_pass": {
+      "description": "pass / no-op",
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "\ntest_hidden_verification.py:11: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_proxied_client_creation - AssertionE...\n============================== 1 failed in 0.12s ===============================\n\nSTDERR:\n"
+    },
+    "M4_try_except_dummy": {
+      "description": "try/except return dummy",
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "\ntest_hidden_verification.py:11: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_proxied_client_creation - AssertionE...\n============================== 1 failed in 0.11s ===============================\n\nSTDERR:\n"
+    },
+    "M5_stale_solution": {
+      "description": "calls deprecated proxies param",
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "tead.\n\nhttpx/_client.py:679: DeprecationWarning\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_proxied_client_creation - Deprecatio...\n============================== 1 failed in 0.13s ===============================\n\nSTDERR:\n"
+    },
+    "M6_mismatched_signature": {
+      "description": "wrong signature",
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "given\n\ntest_hidden_verification.py:9: TypeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_proxied_client_creation - TypeError:...\n============================== 1 failed in 0.12s ===============================\n\nSTDERR:\n"
+    },
+    "M7_missing_attribute": {
+      "description": "missing function",
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "\n\ntest_hidden_verification.py:9: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_proxied_client_creation - AttributeE...\n============================== 1 failed in 0.11s ===============================\n\nSTDERR:\n"
+    },
+    "M8_static_mock": {
+      "description": "fake client mock",
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "\ntest_hidden_verification.py:11: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_proxied_client_creation - AssertionE...\n============================== 1 failed in 0.12s ===============================\n\nSTDERR:\n"
+    }
+  }
+}

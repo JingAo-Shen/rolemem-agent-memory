@@ -3,7 +3,7 @@
   "repo_name": "pallets/flask",
   "auditor_version": "2.0.0",
   "spec_sha256": "f9026c01073fb61d3b1cc9629f06a6a27e3476cd6e2aa0a640a5ebb67d198d32",
-  "audit_fingerprint": "543dab13c04547b19aedef95403a9b417c15534f756e315165493b4829a140fa",
+  "audit_fingerprint": "9333ad87157ee15f87fbc35f040bdd93084a3dcefb3a376717ebd01f5ad279de",
   "gates": [
     {
       "gate_id": "G1",
@@ -55,10 +55,10 @@
     },
     {
       "gate_id": "G7",
-      "name": "hidden test <-> current task semantics",
-      "expected": "Hidden test verifies the target symbol/module without leaking solution code",
-      "observed": "Hidden test imports/tests target symbol 'CustomApp': True",
-      "evidence": "hidden test len=401 bytes, tests=['get', 'test_flask_custom_app_dispatch', 'res', 'CustomApp', 'route']",
+      "name": "hidden test strength <-> current task semantics",
+      "expected": "Hidden test verifies target capability with mutation_kill_rate >= 0.80 and zero constant-return bypass",
+      "observed": "Semantic match: True, Mutation kill rate: 87.5%, Constant return bypass: False",
+      "evidence": "test_strength/trans_track_a_02_flask_should_ignore_error.json, len=648 bytes",
       "status": "PASS"
     },
     {

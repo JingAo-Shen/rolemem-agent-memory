@@ -2,8 +2,8 @@
   "transition_id": "trans_track_a_09_virtualenv_drop_py38_control",
   "repo_name": "pypa/virtualenv",
   "auditor_version": "2.0.0",
-  "spec_sha256": "b2bdcc0bb19e16237b1f63a387e8039971449e5b381e3906d19f1b06ba9c5e77",
-  "audit_fingerprint": "1be2caefaba0e6e322f67fc2bd4b8047dae223e1508208771c7a8382ac51a7a1",
+  "spec_sha256": "094655d043c3bba380e17a0feb7d1d752e9031c765ab047062f40fc8dcc1b082",
+  "audit_fingerprint": "137a54beeb4f32c8301c548932541af176d0a8531c2a5c94e4c493efec5be1c2",
   "gates": [
     {
       "gate_id": "G1",
@@ -55,10 +55,10 @@
     },
     {
       "gate_id": "G7",
-      "name": "hidden test <-> current task semantics",
-      "expected": "Hidden test verifies the target symbol/module without leaking solution code",
-      "observed": "Hidden test imports/tests target symbol 'requires_pyvenv_patch': True",
-      "evidence": "hidden test len=225 bytes, tests=['test_patch_check', 'requires_pyvenv_patch', 'res', 'version_info', 'DummyInfo']",
+      "name": "hidden test strength <-> current task semantics",
+      "expected": "Hidden test verifies target capability with mutation_kill_rate >= 0.80 and zero constant-return bypass",
+      "observed": "Semantic match: True, Mutation kill rate: 100.0%, Constant return bypass: False",
+      "evidence": "test_strength/trans_track_a_09_virtualenv_drop_py38_control.json, len=449 bytes",
       "status": "PASS"
     },
     {

@@ -1,8 +1,8 @@
 {
   "transition_id": "trans_gold_requests_02_pool_key_overrides",
   "repo_name": "psf/requests",
-  "auditor_version": "v7.0",
-  "spec_sha256": "706adc2176285c82a2e577dbcfb054199ed6bd191b4686d8f47c02b780d8bd69",
+  "auditor_version": "2.0.0",
+  "spec_sha256": "3d8b0b97a73db0d636f529599adbd296aeeb6307b38674f26bb90c40535021f1",
   "audit_fingerprint": "838a0a4327dea8ece1e9da22fa8abd912b8eace68a8d0a9f62624ae3135849c4",
   "gates": [
     {
@@ -55,11 +55,11 @@
     },
     {
       "gate_id": "G7",
-      "name": "hidden test <-> current task semantics",
-      "expected": "Hidden test verifies the target symbol/module without leaking solution code",
-      "observed": "Hidden test imports/tests target symbol 'get_pool_key_attributes': True",
-      "evidence": "hidden test len=587 bytes, tests=['verify', 'isinstance', 'PreparedRequest', 'HTTPAdapter', 'sys']",
-      "status": "PASS"
+      "name": "hidden test strength <-> current task semantics",
+      "expected": "Hidden test verifies target capability with mutation_kill_rate >= 0.80 and zero constant-return bypass",
+      "observed": "Semantic match: True, Mutation kill rate: 0.0%, Constant return bypass: True",
+      "evidence": "test_strength/trans_gold_requests_02_pool_key_overrides.json, len=587 bytes",
+      "status": "FAIL"
     },
     {
       "gate_id": "G8",
@@ -86,7 +86,7 @@
       "status": "PASS"
     }
   ],
-  "passed_gates_count": 10,
+  "passed_gates_count": 9,
   "total_gates_count": 10,
-  "overall_status": "PASS"
+  "overall_status": "FAIL"
 }

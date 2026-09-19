@@ -3,7 +3,7 @@
   "repo_name": "pallets/jinja",
   "auditor_version": "2.0.0",
   "spec_sha256": "ef6ac360aabed5e6310a252c5bfd5a9353fc5edd37b91043f8b4850515e125be",
-  "audit_fingerprint": "878bea9022c74e3b2973bab2e8d30fa954c2733861393e215757940ab8c115a9",
+  "audit_fingerprint": "f8eb8d4c5f5a81e848edc785fe451353f2babfed90f1911aef10817e6c62169c",
   "gates": [
     {
       "gate_id": "G1",
@@ -55,10 +55,10 @@
     },
     {
       "gate_id": "G7",
-      "name": "hidden test <-> current task semantics",
-      "expected": "Hidden test verifies the target symbol/module without leaking solution code",
-      "observed": "Hidden test imports/tests target symbol 'get_engine_version': True",
-      "evidence": "hidden test len=270 bytes, tests=['test_jinja_version', 'get_engine_version', 'version_checker', 'isinstance', 'str']",
+      "name": "hidden test strength <-> current task semantics",
+      "expected": "Hidden test verifies target capability with mutation_kill_rate >= 0.80 and zero constant-return bypass",
+      "observed": "Semantic match: True, Mutation kill rate: 100.0%, Constant return bypass: False",
+      "evidence": "test_strength/trans_track_a_04_jinja_version_deprecation.json, len=1255 bytes",
       "status": "PASS"
     },
     {

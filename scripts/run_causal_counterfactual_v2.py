@@ -33,19 +33,32 @@ VENVS_ROOT = "/code/rolemem-agent-memory/.venvs"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 
-def load_workspace(directory: str) -> Dict[str, str]:
+def load_workspace(directory: str, overlay_dir: str = None) -> Dict[str, str]:
     files = {}
-    if not os.path.exists(directory):
-        return files
-    for root, _, filenames in os.walk(directory):
-        for fn in filenames:
-            abs_p = os.path.join(root, fn)
-            rel_p = os.path.relpath(abs_p, directory)
-            try:
-                with open(abs_p, "r", encoding="utf-8", errors="ignore") as f:
-                    files[rel_p] = f.read()
-            except Exception:
-                pass
+    if os.path.exists(directory):
+        for root, _, filenames in os.walk(directory):
+            for fn in filenames:
+                abs_p = os.path.join(root, fn)
+                rel_p = os.path.relpath(abs_p, directory)
+                try:
+                    with open(abs_p, "r", encoding="utf-8", errors="ignore") as f:
+                        files[rel_p] = f.read()
+                except Exception:
+                    pass
+    if overlay_dir is None:
+        candidate_overlay = os.path.join(os.path.dirname(directory), "environment_overlay", "files")
+        if os.path.isdir(candidate_overlay):
+            overlay_dir = candidate_overlay
+    if overlay_dir and os.path.isdir(overlay_dir):
+        for root, _, filenames in os.walk(overlay_dir):
+            for fn in filenames:
+                abs_p = os.path.join(root, fn)
+                rel_p = os.path.relpath(abs_p, overlay_dir)
+                try:
+                    with open(abs_p, "r", encoding="utf-8", errors="ignore") as f:
+                        files[rel_p] = f.read()
+                except Exception:
+                    pass
     return files
 
 

@@ -1,0 +1,129 @@
+{
+  "version": "1.0.0",
+  "total_screened": 10,
+  "qualified_stale_challenges": 9,
+  "evolution_controls": 1,
+  "stale_insensitive_disqualified": 0,
+  "results": {
+    "trans_track_a_01_click_stream_deprecations": {
+      "transition_id": "trans_track_a_01_click_stream_deprecations",
+      "track": "TRACK_A_STALE_SENSITIVE",
+      "audit_fingerprint": "4790e68eb830baf90fa52289c53ab2f433ce3fb6ab402484a9995df0fbc49f4b",
+      "h0_baseline_pass": false,
+      "h2_stale_injected_pass": false,
+      "h2_failure_type": "DEPRECATION_WARNING",
+      "h3_target_memory_pass": true,
+      "frozen_target_claim": "click.utils.get_binary_stream is deprecated in Click 8.1; use sys.stdin.buffer and sys.stdout.buffer directly for standard binary IO streams.",
+      "qualification_verdict": "QUALIFIED_STALE_CHALLENGE",
+      "screen_status": "PASS"
+    },
+    "trans_track_a_02_flask_should_ignore_error": {
+      "transition_id": "trans_track_a_02_flask_should_ignore_error",
+      "track": "TRACK_A_STALE_SENSITIVE",
+      "audit_fingerprint": "9333ad87157ee15f87fbc35f040bdd93084a3dcefb3a376717ebd01f5ad279de",
+      "h0_baseline_pass": false,
+      "h2_stale_injected_pass": false,
+      "h2_failure_type": "DEPRECATION_WARNING",
+      "h3_target_memory_pass": true,
+      "frozen_target_claim": "Flask.should_ignore_error is deprecated in Flask 2.3 and removed in 3.3; handle request errors and teardown logic via @app.teardown_request handlers.",
+      "qualification_verdict": "QUALIFIED_STALE_CHALLENGE",
+      "screen_status": "PASS"
+    },
+    "trans_track_a_03_werkzeug_environ_property": {
+      "transition_id": "trans_track_a_03_werkzeug_environ_property",
+      "track": "TRACK_A_STALE_SENSITIVE",
+      "audit_fingerprint": "195e4ab63ad200d4659f7e2ab2b67025633160f92bf24f5dc125b3c20c01bec0",
+      "h0_baseline_pass": false,
+      "h2_stale_injected_pass": false,
+      "h2_failure_type": "DEPRECATION_WARNING",
+      "h3_target_memory_pass": true,
+      "frozen_target_claim": "werkzeug.wsgi.environ_property is deprecated and removed; create dynamic property descriptors accessing request.environ directly.",
+      "qualification_verdict": "QUALIFIED_STALE_CHALLENGE",
+      "screen_status": "PASS"
+    },
+    "trans_track_a_04_jinja_version_deprecation": {
+      "transition_id": "trans_track_a_04_jinja_version_deprecation",
+      "track": "TRACK_A_STALE_SENSITIVE",
+      "audit_fingerprint": "f8eb8d4c5f5a81e848edc785fe451353f2babfed90f1911aef10817e6c62169c",
+      "h0_baseline_pass": false,
+      "h2_stale_injected_pass": false,
+      "h2_failure_type": "DEPRECATION_WARNING",
+      "h3_target_memory_pass": true,
+      "frozen_target_claim": "jinja2.__version__ is deprecated; use importlib.metadata.version(\"jinja2\") to inspect package version at runtime.",
+      "qualification_verdict": "QUALIFIED_STALE_CHALLENGE",
+      "screen_status": "PASS"
+    },
+    "trans_track_a_05_itsdangerous_version_removal": {
+      "transition_id": "trans_track_a_05_itsdangerous_version_removal",
+      "track": "TRACK_A_STALE_SENSITIVE",
+      "audit_fingerprint": "decf2acf2939bf5e4f9918d798319fae9e20aa5bdc3ff7397369de365994542c",
+      "h0_baseline_pass": false,
+      "h2_stale_injected_pass": false,
+      "h2_failure_type": "API_ABSENT",
+      "h3_target_memory_pass": true,
+      "frozen_target_claim": "itsdangerous.__version__ has been removed; retrieve the installed package version using importlib.metadata.version(\"itsdangerous\").",
+      "qualification_verdict": "QUALIFIED_STALE_CHALLENGE",
+      "screen_status": "PASS"
+    },
+    "trans_track_a_06_markupsafe_version_removal": {
+      "transition_id": "trans_track_a_06_markupsafe_version_removal",
+      "track": "TRACK_A_STALE_SENSITIVE",
+      "audit_fingerprint": "88559a536cbb289f2008f2c84437151b7a403f0ed95c566824f33c66c846988a",
+      "h0_baseline_pass": false,
+      "h2_stale_injected_pass": false,
+      "h2_failure_type": "API_ABSENT",
+      "h3_target_memory_pass": true,
+      "frozen_target_claim": "markupsafe.__version__ has been removed in MarkupSafe 3.1; use importlib.metadata.version(\"markupsafe\") instead.",
+      "qualification_verdict": "QUALIFIED_STALE_CHALLENGE",
+      "screen_status": "PASS"
+    },
+    "trans_track_a_07_pluggy_varnames_noself": {
+      "transition_id": "trans_track_a_07_pluggy_varnames_noself",
+      "track": "TRACK_A_STALE_SENSITIVE",
+      "audit_fingerprint": "4394e79abe6dd37ef65917ec862c08fad84e3e9048d1e39dc0d5d2da4be5120e",
+      "h0_baseline_pass": false,
+      "h2_stale_injected_pass": false,
+      "h2_failure_type": "DEPRECATION_WARNING",
+      "h3_target_memory_pass": true,
+      "frozen_target_claim": "pluggy._hooks.varnames legacy_noself=True is deprecated; define hook specifications with explicit self parameter and invoke varnames with legacy_noself=False.",
+      "qualification_verdict": "QUALIFIED_STALE_CHALLENGE",
+      "screen_status": "PASS"
+    },
+    "trans_track_a_08_attrs_py313_replace_control": {
+      "transition_id": "trans_track_a_08_attrs_py313_replace_control",
+      "track": "TRACK_A_API_EVOLUTION",
+      "audit_fingerprint": "7db99be2638c747468ddcc6cf994d74206cbe91fe01a8a146b2ed1ef67207875",
+      "h0_baseline_pass": false,
+      "h2_stale_injected_pass": true,
+      "h2_failure_type": "NONE",
+      "h3_target_memory_pass": true,
+      "frozen_target_claim": "In attrs on Python 3.13, continue using attr.evolve(instance, **changes) to evolve immutable attribute instances.",
+      "qualification_verdict": "EVOLUTION_CONTROL_BENCHMARK",
+      "screen_status": "PASS"
+    },
+    "trans_track_a_09_virtualenv_drop_py38_control": {
+      "transition_id": "trans_track_a_09_virtualenv_drop_py38_control",
+      "track": "TRACK_A_STALE_SENSITIVE",
+      "audit_fingerprint": "137a54beeb4f32c8301c548932541af176d0a8531c2a5c94e4c493efec5be1c2",
+      "h0_baseline_pass": false,
+      "h2_stale_injected_pass": false,
+      "h2_failure_type": "API_ABSENT",
+      "h3_target_memory_pass": true,
+      "frozen_target_claim": "CPython3Posix.pyvenv_launch_patch_active has been removed as macOS Python 3.8 support was dropped; return False directly for pyvenv launcher patch requirements.",
+      "qualification_verdict": "QUALIFIED_STALE_CHALLENGE",
+      "screen_status": "PASS"
+    },
+    "trans_track_a_10_httpx_client_proxies_deprecation": {
+      "transition_id": "trans_track_a_10_httpx_client_proxies_deprecation",
+      "track": "TRACK_A_STALE_SENSITIVE",
+      "audit_fingerprint": "e5abff95493d122ad6d481bbbd86304591b14958fe050da14a2d2fc5fef7da83",
+      "h0_baseline_pass": false,
+      "h2_stale_injected_pass": false,
+      "h2_failure_type": "DEPRECATION_WARNING",
+      "h3_target_memory_pass": true,
+      "frozen_target_claim": "Passing proxies parameter to httpx.Client is deprecated; pass singular proxy parameter instead (e.g., httpx.Client(proxy=url)).",
+      "qualification_verdict": "QUALIFIED_STALE_CHALLENGE",
+      "screen_status": "PASS"
+    }
+  }
+}

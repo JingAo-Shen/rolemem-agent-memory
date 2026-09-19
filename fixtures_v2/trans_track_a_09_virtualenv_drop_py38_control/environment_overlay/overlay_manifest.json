@@ -1,0 +1,10 @@
+{
+  "overlay_reason": "Virtualenv dynamically generates src/virtualenv/version.py during setuptools_scm build; required for runtime import.",
+  "overlay_files": [
+    "src/virtualenv/version.py"
+  ],
+  "overlay_sha256": {
+    "src/virtualenv/version.py": "2d7edf11b1322513f3b158ff6a779a4b14e8a5afe417d478ca5ab17ea8f0299a"
+  },
+  "required_for_import": true
+}

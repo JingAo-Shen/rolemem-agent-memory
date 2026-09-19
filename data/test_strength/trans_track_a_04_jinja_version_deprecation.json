@@ -1,0 +1,69 @@
+{
+  "transition_id": "trans_track_a_04_jinja_version_deprecation",
+  "audit_fingerprint": "f8eb8d4c5f5a81e848edc785fe451353f2babfed90f1911aef10817e6c62169c",
+  "total_mutants": 8,
+  "killed_mutants": 8,
+  "mutation_kill_rate": 1.0,
+  "constant_return_killed": true,
+  "constant_return_bypass": false,
+  "meets_kill_rate_threshold": true,
+  "audit_status": "PASS",
+  "mutants": {
+    "M1_return_none": {
+      "description": "return None",
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "\ntest_hidden_verification.py:23: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_version_retrieval - AssertionError: ...\n============================== 1 failed in 0.07s ===============================\n\nSTDERR:\n"
+    },
+    "M2_constant_return": {
+      "description": "return constant string",
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "\ntest_hidden_verification.py:23: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_version_retrieval - AssertionError: ...\n============================== 1 failed in 0.08s ===============================\n\nSTDERR:\n"
+    },
+    "M3_noop_pass": {
+      "description": "pass / no-op",
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "\ntest_hidden_verification.py:23: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_version_retrieval - AssertionError: ...\n============================== 1 failed in 0.07s ===============================\n\nSTDERR:\n"
+    },
+    "M4_try_except_dummy": {
+      "description": "try/except return dummy",
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "\ntest_hidden_verification.py:23: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_version_retrieval - AssertionError: ...\n============================== 1 failed in 0.07s ===============================\n\nSTDERR:\n"
+    },
+    "M5_stale_solution": {
+      "description": "stale jinja2.__version__ read",
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_version_retrieval - AssertionError: ...\n========================= 1 failed, 1 warning in 0.07s =========================\n\nSTDERR:\n"
+    },
+    "M6_wrong_package_arg": {
+      "description": "metadata lookup for wrong package",
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "\ntest_hidden_verification.py:25: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_version_retrieval - AssertionError: ...\n============================== 1 failed in 0.07s ===============================\n\nSTDERR:\n"
+    },
+    "M7_missing_attribute": {
+      "description": "missing function",
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "\ntest_hidden_verification.py:22: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_version_retrieval - AttributeError: ...\n============================== 1 failed in 0.07s ===============================\n\nSTDERR:\n"
+    },
+    "M8_static_mock": {
+      "description": "static string mock bypassing metadata",
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "\ntest_hidden_verification.py:23: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_version_retrieval - AssertionError: ...\n============================== 1 failed in 0.07s ===============================\n\nSTDERR:\n"
+    }
+  }
+}

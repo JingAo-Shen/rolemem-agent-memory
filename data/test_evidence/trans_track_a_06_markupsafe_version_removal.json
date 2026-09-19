@@ -1,6 +1,6 @@
 {
   "transition_id": "trans_track_a_06_markupsafe_version_removal",
-  "audit_fingerprint": "601407cfbaaf775043d80b28b46dd6a0f7a1833e5ffe8024a209109055c5795d",
+  "audit_fingerprint": "88559a536cbb289f2008f2c84437151b7a403f0ed95c566824f33c66c846988a",
   "status": "GENERATED_HIDDEN_TEST_ONLY",
   "verification_status": "GENERATED_HIDDEN_TEST_ONLY",
   "evidence": "Executable hidden test verified in sandbox"

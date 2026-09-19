@@ -1,8 +1,8 @@
 {
   "transition_id": "trans_gold_urllib3_01_retry_allowed_methods",
   "repo_name": "urllib3/urllib3",
-  "auditor_version": "v7.0",
-  "spec_sha256": "4c9380e3b55a91590f83164e41dd0c0694a48933d6e435037370369c4858b504",
+  "auditor_version": "2.0.0",
+  "spec_sha256": "3435014496df720acfd7c7de60cfa3aa18e1efbb86a7da2168f47743a0ec2467",
   "audit_fingerprint": "d14444992b5de316a3ffc93257fab7b80eda3c4c61fe5e54238e1a1b10372e41",
   "gates": [
     {
@@ -55,11 +55,11 @@
     },
     {
       "gate_id": "G7",
-      "name": "hidden test <-> current task semantics",
-      "expected": "Hidden test verifies the target symbol/module without leaking solution code",
-      "observed": "Hidden test imports/tests target symbol 'build_custom_retry': True",
-      "evidence": "hidden test len=579 bytes, tests=['issubclass', 'DeprecationWarning', 'test_build_custom_retry', 'warnings', 'sys']",
-      "status": "PASS"
+      "name": "hidden test strength <-> current task semantics",
+      "expected": "Hidden test verifies target capability with mutation_kill_rate >= 0.80 and zero constant-return bypass",
+      "observed": "Semantic match: True, Mutation kill rate: 0.0%, Constant return bypass: True",
+      "evidence": "test_strength/trans_gold_urllib3_01_retry_allowed_methods.json, len=579 bytes",
+      "status": "FAIL"
     },
     {
       "gate_id": "G8",
@@ -86,7 +86,7 @@
       "status": "PASS"
     }
   ],
-  "passed_gates_count": 10,
+  "passed_gates_count": 9,
   "total_gates_count": 10,
-  "overall_status": "PASS"
+  "overall_status": "FAIL"
 }

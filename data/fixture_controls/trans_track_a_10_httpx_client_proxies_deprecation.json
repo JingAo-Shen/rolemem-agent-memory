@@ -1,6 +1,6 @@
 {
   "transition_id": "trans_track_a_10_httpx_client_proxies_deprecation",
-  "audit_fingerprint": "11cf527667745e22286adc9d030cbeadc91738d339bd1d9e5235aa2f733175bc",
+  "audit_fingerprint": "e5abff95493d122ad6d481bbbd86304591b14958fe050da14a2d2fc5fef7da83",
   "status": "PASS",
   "valid_control_status": "PASS",
   "stale_control_status": "PASS",

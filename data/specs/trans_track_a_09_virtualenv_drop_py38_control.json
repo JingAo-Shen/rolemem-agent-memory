@@ -27,9 +27,9 @@
   "current_task": "Implement `requires_pyvenv_patch(info)` in `cpython_patch.py` checking whether legacy macOS launcher patch is needed.",
   "target_file": "cpython_patch.py",
   "target_symbol": "requires_pyvenv_patch",
-  "stale_sensitive": false,
+  "stale_sensitive": true,
   "transition_type": "API_REMOVAL",
   "original_test_required": false,
   "generated_hidden_test_only": true,
-  "track": "TRACK_A_API_EVOLUTION"
+  "track": "TRACK_A_STALE_SENSITIVE"
 }

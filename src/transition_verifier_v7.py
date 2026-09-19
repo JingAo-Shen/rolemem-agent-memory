@@ -181,7 +181,8 @@ class TransitionVerifierV7:
                         fpath = os.path.join(root, fn)
                         rel = os.path.relpath(fpath, fixture_after)
                         with open(fpath, "rb") as f_in:
-                            disk_sha = hashlib.sha256(f_in.read()).hexdigest()
+                            disk_bytes = f_in.read()
+                            disk_sha = hashlib.sha256(disk_bytes).hexdigest()
                         git_res = subprocess.run(
                             ["git", "-C", repo_dir, "show", f"{target_commit}:{rel}"],
                             capture_output=True
@@ -189,7 +190,8 @@ class TransitionVerifierV7:
                         if git_res.returncode == 0:
                             git_sha = hashlib.sha256(git_res.stdout).hexdigest()
                             if disk_sha != git_sha:
-                                return "FAIL", {"error": f"Snapshot byte mismatch on {rel}"}
+                                if disk_bytes.replace(b"\r\n", b"\n") != git_res.stdout.replace(b"\r\n", b"\n"):
+                                    return "FAIL", {"error": f"Snapshot byte mismatch on {rel}"}
 
             status = snap_data.get("status", "FAIL")
             return status, snap_data

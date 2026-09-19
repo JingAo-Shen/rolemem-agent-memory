@@ -1,8 +1,8 @@
 {
   "transition_id": "trans_gold_requests_01_tls_context_adapter",
   "repo_name": "psf/requests",
-  "auditor_version": "v7.0",
-  "spec_sha256": "901f129d0604c1880a76d2af8a85ac7108cf1f6de4c7fa238f6598f362b5f569",
+  "auditor_version": "2.0.0",
+  "spec_sha256": "3cd2a7f4e3e420aedbdb7ad232ff8b9fb36cae4448c30e0a57217008ad092905",
   "audit_fingerprint": "71c7e221732ab138f8de6f13c4472fcf25b860608fae0aee18d07b95211bfa3f",
   "gates": [
     {
@@ -55,11 +55,11 @@
     },
     {
       "gate_id": "G7",
-      "name": "hidden test <-> current task semantics",
-      "expected": "Hidden test verifies the target symbol/module without leaking solution code",
-      "observed": "Hidden test imports/tests target symbol 'get_adapter_connection': True",
-      "evidence": "hidden test len=757 bytes, tests=['issubclass', 'DeprecationWarning', 'warnings', 'verify', 'PreparedRequest']",
-      "status": "PASS"
+      "name": "hidden test strength <-> current task semantics",
+      "expected": "Hidden test verifies target capability with mutation_kill_rate >= 0.80 and zero constant-return bypass",
+      "observed": "Semantic match: True, Mutation kill rate: 0.0%, Constant return bypass: True",
+      "evidence": "test_strength/trans_gold_requests_01_tls_context_adapter.json, len=757 bytes",
+      "status": "FAIL"
     },
     {
       "gate_id": "G8",
@@ -86,7 +86,7 @@
       "status": "PASS"
     }
   ],
-  "passed_gates_count": 10,
+  "passed_gates_count": 9,
   "total_gates_count": 10,
-  "overall_status": "PASS"
+  "overall_status": "FAIL"
 }

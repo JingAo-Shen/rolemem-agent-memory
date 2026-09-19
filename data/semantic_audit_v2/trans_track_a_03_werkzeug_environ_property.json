@@ -3,7 +3,7 @@
   "repo_name": "pallets/werkzeug",
   "auditor_version": "2.0.0",
   "spec_sha256": "d18229edf6b379106e49b3f2a5f174f845d2d369cc3496387e42e1f8c69027e7",
-  "audit_fingerprint": "a280e966e99bb776d96f710c448adc78233dd0c2b234416b7a37ce82e5665a34",
+  "audit_fingerprint": "195e4ab63ad200d4659f7e2ab2b67025633160f92bf24f5dc125b3c20c01bec0",
   "gates": [
     {
       "gate_id": "G1",
@@ -55,10 +55,10 @@
     },
     {
       "gate_id": "G7",
-      "name": "hidden test <-> current task semantics",
-      "expected": "Hidden test verifies the target symbol/module without leaking solution code",
-      "observed": "Hidden test imports/tests target symbol 'create_header_property': True",
-      "evidence": "hidden test len=452 bytes, tests=['prop', 'req', 'host', 'header_proxy', 'create_header_property']",
+      "name": "hidden test strength <-> current task semantics",
+      "expected": "Hidden test verifies target capability with mutation_kill_rate >= 0.80 and zero constant-return bypass",
+      "observed": "Semantic match: True, Mutation kill rate: 100.0%, Constant return bypass: False",
+      "evidence": "test_strength/trans_track_a_03_werkzeug_environ_property.json, len=803 bytes",
       "status": "PASS"
     },
     {

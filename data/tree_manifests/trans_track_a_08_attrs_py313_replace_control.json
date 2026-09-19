@@ -1,0 +1,250 @@
+{
+  "transition_id": "trans_track_a_08_attrs_py313_replace_control",
+  "repo_name": "python-attrs/attrs",
+  "base_commit": "103d51f6efa36efcc7be4adecfd571da3f63291c",
+  "target_commit": "62bdbf234f45195e75bfc2bb0648dab6fd2f0d33",
+  "pkg_path": "src/attr",
+  "tree_purity_status": "TREE_PURITY_PASS",
+  "before_tree_purity": "TREE_PURITY_PASS",
+  "after_tree_purity": "TREE_PURITY_PASS",
+  "before_mismatches": [],
+  "after_mismatches": [],
+  "total_files_before": 23,
+  "total_files_after": 23,
+  "has_environment_overlay": false,
+  "before_files": [
+    {
+      "relative_path": "src/attr/__init__.py",
+      "size": 2053,
+      "sha256": "51ac90b030bd66938197e307f47f0a7b79d26bdccb77cb55c35dd3cae2199cce"
+    },
+    {
+      "relative_path": "src/attr/__init__.pyi",
+      "size": 11281,
+      "sha256": "4085e79c73e8b9c9835a46e936c5933fe7202756e7f257bb0e3c916bfc1875ec"
+    },
+    {
+      "relative_path": "src/attr/_cmp.py",
+      "size": 4123,
+      "sha256": "dee987881b60b0462dbcd3fff17ad0c1309d1686485f80c4babefa37ed9add7f"
+    },
+    {
+      "relative_path": "src/attr/_cmp.pyi",
+      "size": 368,
+      "sha256": "53efd153f5193b23d4110cd713a44c61041c8e4651636e704c7f7db0dd2cecc3"
+    },
+    {
+      "relative_path": "src/attr/_compat.py",
+      "size": 2704,
+      "sha256": "e219576d685d0e34020cae85285d448276773ce88782da69e78a84d27c5a1878"
+    },
+    {
+      "relative_path": "src/attr/_config.py",
+      "size": 843,
+      "sha256": "746ab7c51e9f819105e9406dfcbd13f9e507201e22e37911987d0fdbcb09570f"
+    },
+    {
+      "relative_path": "src/attr/_funcs.py",
+      "size": 17386,
+      "sha256": "4860e6365103d53337b603bd029da67d17d5236e1710072b350b3ba367815c74"
+    },
+    {
+      "relative_path": "src/attr/_make.py",
+      "size": 91828,
+      "sha256": "991a19b4c40572ebfb5ed5ef8f552303508d53ee702398f46d70a5f852c5b1b2"
+    },
+    {
+      "relative_path": "src/attr/_next_gen.py",
+      "size": 24238,
+      "sha256": "0c7b02fb67a7073e71364d464913c3caca971f4fbcfe9d838d46d2f1fe118b83"
+    },
+    {
+      "relative_path": "src/attr/_typing_compat.pyi",
+      "size": 469,
+      "sha256": "5c33f9e13527f992a10fad9339079b9b3af0172a268540a8191a5c95be9a9510"
+    },
+    {
+      "relative_path": "src/attr/_version_info.py",
+      "size": 2121,
+      "sha256": "7b14aa6f76f913e7cc4ac819025130f5770ba448286cf391099a5c68482500ce"
+    },
+    {
+      "relative_path": "src/attr/_version_info.pyi",
+      "size": 209,
+      "sha256": "c7f3372f75ae07baff50b5c05a3c7de7db9d290e072c1f25fa1b1cd450c636f9"
+    },
+    {
+      "relative_path": "src/attr/converters.py",
+      "size": 3861,
+      "sha256": "1a50de3b33de4c581e0412db8fd1b9ec4cf994093af2e85200b45827f7b17bce"
+    },
+    {
+      "relative_path": "src/attr/converters.pyi",
+      "size": 643,
+      "sha256": "a2b5366df7fe56341ada4303caf9cc415ef7a094f6591c90bb0e19475ca6d5b1"
+    },
+    {
+      "relative_path": "src/attr/exceptions.py",
+      "size": 1977,
+      "sha256": "1d116ae22c9b9afefe0dc670ca397a3357ae33661e2552bf845c6e6811809e02"
+    },
+    {
+      "relative_path": "src/attr/exceptions.pyi",
+      "size": 539,
+      "sha256": "cd9abc6c2527280cbd983b41130e366613e1014207a1329e7434089c90fcf373"
+    },
+    {
+      "relative_path": "src/attr/filters.py",
+      "size": 1795,
+      "sha256": "64188a58ba774742df099b2aed7d75a67f565fc36c952db05cce23b272ce19cf"
+    },
+    {
+      "relative_path": "src/attr/filters.pyi",
+      "size": 208,
+      "sha256": "dc9e411be753c65b41935ffe46e351507aefdaabb5bfcbf868334043bfe689f0"
+    },
+    {
+      "relative_path": "src/attr/py.typed",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/attr/setters.py",
+      "size": 1617,
+      "sha256": "e7e75c4fadc640adf938d1334a07d70a46c1ee93e4691faabf5e669b83d54b34"
+    },
+    {
+      "relative_path": "src/attr/setters.pyi",
+      "size": 584,
+      "sha256": "367564685535041e0907c13826e5f2af34d482fb4ca63f29df005d258eee8b1e"
+    },
+    {
+      "relative_path": "src/attr/validators.py",
+      "size": 20046,
+      "sha256": "59a0751cb0071ea4475acaeffcaf47fac27b1128a5dc7dc29afd9df13b55671e"
+    },
+    {
+      "relative_path": "src/attr/validators.pyi",
+      "size": 2504,
+      "sha256": "eb20ada90beb96aa4dc260c3a05ef7a75c3ad58e9209499734e864293f6c596f"
+    }
+  ],
+  "after_files": [
+    {
+      "relative_path": "src/attr/__init__.py",
+      "size": 2057,
+      "sha256": "7ce608bedd5e192a90adee2e092dec256299d26c00b82f140faa9b6b9392f7f5"
+    },
+    {
+      "relative_path": "src/attr/__init__.pyi",
+      "size": 11281,
+      "sha256": "4085e79c73e8b9c9835a46e936c5933fe7202756e7f257bb0e3c916bfc1875ec"
+    },
+    {
+      "relative_path": "src/attr/_cmp.py",
+      "size": 4123,
+      "sha256": "dee987881b60b0462dbcd3fff17ad0c1309d1686485f80c4babefa37ed9add7f"
+    },
+    {
+      "relative_path": "src/attr/_cmp.pyi",
+      "size": 368,
+      "sha256": "53efd153f5193b23d4110cd713a44c61041c8e4651636e704c7f7db0dd2cecc3"
+    },
+    {
+      "relative_path": "src/attr/_compat.py",
+      "size": 2704,
+      "sha256": "e219576d685d0e34020cae85285d448276773ce88782da69e78a84d27c5a1878"
+    },
+    {
+      "relative_path": "src/attr/_config.py",
+      "size": 843,
+      "sha256": "746ab7c51e9f819105e9406dfcbd13f9e507201e22e37911987d0fdbcb09570f"
+    },
+    {
+      "relative_path": "src/attr/_funcs.py",
+      "size": 15854,
+      "sha256": "e7eb54289b69de1e44979e4470397a1965c5a7af1f4fc0fc53bb8244deb8f7b2"
+    },
+    {
+      "relative_path": "src/attr/_make.py",
+      "size": 93764,
+      "sha256": "25f70f6fe18ef543cd89dcdadfebb0b8e389016afa936ba87aa8b20927eecdfa"
+    },
+    {
+      "relative_path": "src/attr/_next_gen.py",
+      "size": 24395,
+      "sha256": "ec54646ed97f374d7b4ae0617ff570de6c36736a46661b4218ecda760cfbb69e"
+    },
+    {
+      "relative_path": "src/attr/_typing_compat.pyi",
+      "size": 469,
+      "sha256": "5c33f9e13527f992a10fad9339079b9b3af0172a268540a8191a5c95be9a9510"
+    },
+    {
+      "relative_path": "src/attr/_version_info.py",
+      "size": 2121,
+      "sha256": "7b14aa6f76f913e7cc4ac819025130f5770ba448286cf391099a5c68482500ce"
+    },
+    {
+      "relative_path": "src/attr/_version_info.pyi",
+      "size": 209,
+      "sha256": "c7f3372f75ae07baff50b5c05a3c7de7db9d290e072c1f25fa1b1cd450c636f9"
+    },
+    {
+      "relative_path": "src/attr/converters.py",
+      "size": 3861,
+      "sha256": "1a50de3b33de4c581e0412db8fd1b9ec4cf994093af2e85200b45827f7b17bce"
+    },
+    {
+      "relative_path": "src/attr/converters.pyi",
+      "size": 643,
+      "sha256": "a2b5366df7fe56341ada4303caf9cc415ef7a094f6591c90bb0e19475ca6d5b1"
+    },
+    {
+      "relative_path": "src/attr/exceptions.py",
+      "size": 1977,
+      "sha256": "1d116ae22c9b9afefe0dc670ca397a3357ae33661e2552bf845c6e6811809e02"
+    },
+    {
+      "relative_path": "src/attr/exceptions.pyi",
+      "size": 539,
+      "sha256": "cd9abc6c2527280cbd983b41130e366613e1014207a1329e7434089c90fcf373"
+    },
+    {
+      "relative_path": "src/attr/filters.py",
+      "size": 1795,
+      "sha256": "64188a58ba774742df099b2aed7d75a67f565fc36c952db05cce23b272ce19cf"
+    },
+    {
+      "relative_path": "src/attr/filters.pyi",
+      "size": 208,
+      "sha256": "dc9e411be753c65b41935ffe46e351507aefdaabb5bfcbf868334043bfe689f0"
+    },
+    {
+      "relative_path": "src/attr/py.typed",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/attr/setters.py",
+      "size": 1617,
+      "sha256": "e7e75c4fadc640adf938d1334a07d70a46c1ee93e4691faabf5e669b83d54b34"
+    },
+    {
+      "relative_path": "src/attr/setters.pyi",
+      "size": 584,
+      "sha256": "367564685535041e0907c13826e5f2af34d482fb4ca63f29df005d258eee8b1e"
+    },
+    {
+      "relative_path": "src/attr/validators.py",
+      "size": 20046,
+      "sha256": "59a0751cb0071ea4475acaeffcaf47fac27b1128a5dc7dc29afd9df13b55671e"
+    },
+    {
+      "relative_path": "src/attr/validators.pyi",
+      "size": 2504,
+      "sha256": "eb20ada90beb96aa4dc260c3a05ef7a75c3ad58e9209499734e864293f6c596f"
+    }
+  ],
+  "fixture_manifest_hash": "56a82f9b2e493a2b72596fe402b64eeab63edfa8f9cc7039a8ec9deb8b02cfc8"
+}

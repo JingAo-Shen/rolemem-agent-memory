@@ -1,0 +1,69 @@
+{
+  "transition_id": "trans_track_a_02_flask_should_ignore_error",
+  "audit_fingerprint": "9333ad87157ee15f87fbc35f040bdd93084a3dcefb3a376717ebd01f5ad279de",
+  "total_mutants": 8,
+  "killed_mutants": 7,
+  "mutation_kill_rate": 0.875,
+  "constant_return_killed": true,
+  "constant_return_bypass": false,
+  "meets_kill_rate_threshold": true,
+  "audit_status": "PASS",
+  "mutants": {
+    "M1_return_none": {
+      "description": "return None callable",
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "class\n\ntest_hidden_verification.py:7: TypeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_flask_custom_app_dispatch - TypeErro...\n============================== 1 failed in 0.08s ===============================\n\nSTDERR:\n"
+    },
+    "M2_constant_return": {
+      "description": "return constant string",
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "class\n\ntest_hidden_verification.py:7: TypeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_flask_custom_app_dispatch - TypeErro...\n============================== 1 failed in 0.09s ===============================\n\nSTDERR:\n"
+    },
+    "M3_noop_pass": {
+      "description": "empty class pass",
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "\n\ntest_hidden_verification.py:7: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_flask_custom_app_dispatch - Assertio...\n============================== 1 failed in 0.08s ===============================\n\nSTDERR:\n"
+    },
+    "M4_try_except_dummy": {
+      "description": "try/except return dummy",
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "class\n\ntest_hidden_verification.py:7: TypeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_flask_custom_app_dispatch - TypeErro...\n============================== 1 failed in 0.09s ===============================\n\nSTDERR:\n"
+    },
+    "M5_stale_solution": {
+      "description": "stale should_ignore_error override",
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": " errors as needed in teardown handlers instead.\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_flask_custom_app_dispatch - assert 5...\n============================== 1 failed in 0.09s ===============================\n\nSTDERR:\n"
+    },
+    "M6_wrong_method_override": {
+      "description": "wrong replacement override",
+      "passed_test": true,
+      "killed": false,
+      "status": "SURVIVED",
+      "log_snippet": "naconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_y57342ez\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_flask_custom_app_dispatch PASSED       [100%]\n\n============================== 1 passed in 0.08s ===============================\n"
+    },
+    "M7_missing_attribute": {
+      "description": "missing CustomApp class",
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "\n\ntest_hidden_verification.py:7: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_flask_custom_app_dispatch - Attribut...\n============================== 1 failed in 0.08s ===============================\n\nSTDERR:\n"
+    },
+    "M8_static_mock": {
+      "description": "mock without Flask inheritance",
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "\n\ntest_hidden_verification.py:7: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_flask_custom_app_dispatch - Assertio...\n============================== 1 failed in 0.08s ===============================\n\nSTDERR:\n"
+    }
+  }
+}

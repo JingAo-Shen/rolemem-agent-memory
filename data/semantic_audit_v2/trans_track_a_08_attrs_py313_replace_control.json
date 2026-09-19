@@ -3,7 +3,7 @@
   "repo_name": "python-attrs/attrs",
   "auditor_version": "2.0.0",
   "spec_sha256": "a82307ac82c8caab978ef8bd5195a8bdebc1f9e5d55cda94f151bfa173d17753",
-  "audit_fingerprint": "b9e86740ba7803fb4a974d300de19fe10d32967d4c0af1b7c8b6c188f688d8bd",
+  "audit_fingerprint": "7db99be2638c747468ddcc6cf994d74206cbe91fe01a8a146b2ed1ef67207875",
   "gates": [
     {
       "gate_id": "G1",
@@ -55,10 +55,10 @@
     },
     {
       "gate_id": "G7",
-      "name": "hidden test <-> current task semantics",
-      "expected": "Hidden test verifies the target symbol/module without leaking solution code",
-      "observed": "Hidden test imports/tests target symbol 'replace_point': True",
-      "evidence": "hidden test len=200 bytes, tests=['point_manager', 'replace_point', 'create_point', 'p2', 'y']",
+      "name": "hidden test strength <-> current task semantics",
+      "expected": "Hidden test verifies target capability with mutation_kill_rate >= 0.80 and zero constant-return bypass",
+      "observed": "Semantic match: True, Mutation kill rate: 87.5%, Constant return bypass: False",
+      "evidence": "test_strength/trans_track_a_08_attrs_py313_replace_control.json, len=595 bytes",
       "status": "PASS"
     },
     {

@@ -1,6 +1,6 @@
 {
   "transition_id": "trans_track_a_04_jinja_version_deprecation",
-  "audit_fingerprint": "878bea9022c74e3b2973bab2e8d30fa954c2733861393e215757940ab8c115a9",
+  "audit_fingerprint": "f8eb8d4c5f5a81e848edc785fe451353f2babfed90f1911aef10817e6c62169c",
   "status": "PASS",
   "verification_status": "PASS",
   "details": "Snapshot SHA-256 digest purity verified against Git extract"

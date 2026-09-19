@@ -1,0 +1,200 @@
+{
+  "transition_id": "trans_track_a_01_click_stream_deprecations",
+  "repo_name": "pallets/click",
+  "base_commit": "7a0a3447f6ddd2c15438c5d098e289323f9f9556",
+  "target_commit": "051725fa7e0c69effc9107066d8791c5b99242c3",
+  "pkg_path": "src/click",
+  "tree_purity_status": "TREE_PURITY_PASS",
+  "before_tree_purity": "TREE_PURITY_PASS",
+  "after_tree_purity": "TREE_PURITY_PASS",
+  "before_mismatches": [],
+  "after_mismatches": [],
+  "total_files_before": 18,
+  "total_files_after": 18,
+  "has_environment_overlay": false,
+  "before_files": [
+    {
+      "relative_path": "src/click/__init__.py",
+      "size": 5141,
+      "sha256": "ea7a2626364a9fa72483c434a0a2d1a7d88905de06be0e1c4b55b8fbcf541d0e"
+    },
+    {
+      "relative_path": "src/click/_compat.py",
+      "size": 17940,
+      "sha256": "cfec2310907334594ff205725e44a712783c096c322d5b8c0201a327fbf5f08c"
+    },
+    {
+      "relative_path": "src/click/_termui_impl.py",
+      "size": 31733,
+      "sha256": "fea952872308844c42e2b91338d0a655f1d9df04546652c0cc9f2602cc9a821d"
+    },
+    {
+      "relative_path": "src/click/_textwrap.py",
+      "size": 6270,
+      "sha256": "ed9d0ded59a7fbae933524d4c29e8e5c96dc5174666044fd87d736b9c0fca104"
+    },
+    {
+      "relative_path": "src/click/_utils.py",
+      "size": 996,
+      "sha256": "782642b7026db180f941892435627c318ffc001223cbc31cce030cc95637dab4"
+    },
+    {
+      "relative_path": "src/click/_winconsole.py",
+      "size": 8543,
+      "sha256": "292c5f35b3256116ba18e26e08b82c8363dbddd56480934fa8b24f69ef8f6b5d"
+    },
+    {
+      "relative_path": "src/click/core.py",
+      "size": 147586,
+      "sha256": "b9a7a8d45af276155d73d44d7fe3e96082fc1811a611698bbe65d15f0446d1c5"
+    },
+    {
+      "relative_path": "src/click/decorators.py",
+      "size": 21680,
+      "sha256": "16069357615691fcdfc9c794bb515f6009eb35aad6f7a76c017bdce06dae8d55"
+    },
+    {
+      "relative_path": "src/click/exceptions.py",
+      "size": 11862,
+      "sha256": "1ef498df81b86ae8ff6d8451f3e4fc094f09c2aff5f8e72c454e1ecdfa337849"
+    },
+    {
+      "relative_path": "src/click/formatting.py",
+      "size": 10444,
+      "sha256": "f125b628692f8dfcfd43535b7a88cc1ee64137471f9d0243b389aa0cfea85e6b"
+    },
+    {
+      "relative_path": "src/click/globals.py",
+      "size": 1923,
+      "sha256": "80cf8d87a0383341c1fd2824685e4ce2770618c0c773f7e51d7bbdfe88781845"
+    },
+    {
+      "relative_path": "src/click/parser.py",
+      "size": 19052,
+      "sha256": "a09f9f53fde6bf1ba022e36d1da0804d9e7a9601261d18208c9892a84818ae30"
+    },
+    {
+      "relative_path": "src/click/py.typed",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/click/shell_completion.py",
+      "size": 22605,
+      "sha256": "41c352c33254e53d938864c9129867fa7252d599bb423d7dc450f8334e6517b6"
+    },
+    {
+      "relative_path": "src/click/termui.py",
+      "size": 33817,
+      "sha256": "5daff2f733529bbd16f72f07fed28b690865bfa8f832c88146eeb50694d78a63"
+    },
+    {
+      "relative_path": "src/click/testing.py",
+      "size": 26458,
+      "sha256": "4bd23ea6ca409491f746f6495834282576fe3349eb0042735dc533ad55ec4f7e"
+    },
+    {
+      "relative_path": "src/click/types.py",
+      "size": 44840,
+      "sha256": "39f1e11d8456634076f7478e77325a9b93ccf4a44ebd546cebb011de09a5cb1e"
+    },
+    {
+      "relative_path": "src/click/utils.py",
+      "size": 21461,
+      "sha256": "2666f1ea461585ba7282b59f4368f1e8b4d3e12d5ecab15ae8b705b244841293"
+    }
+  ],
+  "after_files": [
+    {
+      "relative_path": "src/click/__init__.py",
+      "size": 5145,
+      "sha256": "5abfc54d37d47cc788b7e7a05e9514787f8c5a0b7db429d0f24d748ac89964ca"
+    },
+    {
+      "relative_path": "src/click/_compat.py",
+      "size": 17940,
+      "sha256": "cfec2310907334594ff205725e44a712783c096c322d5b8c0201a327fbf5f08c"
+    },
+    {
+      "relative_path": "src/click/_termui_impl.py",
+      "size": 31733,
+      "sha256": "fea952872308844c42e2b91338d0a655f1d9df04546652c0cc9f2602cc9a821d"
+    },
+    {
+      "relative_path": "src/click/_textwrap.py",
+      "size": 6270,
+      "sha256": "ed9d0ded59a7fbae933524d4c29e8e5c96dc5174666044fd87d736b9c0fca104"
+    },
+    {
+      "relative_path": "src/click/_utils.py",
+      "size": 996,
+      "sha256": "782642b7026db180f941892435627c318ffc001223cbc31cce030cc95637dab4"
+    },
+    {
+      "relative_path": "src/click/_winconsole.py",
+      "size": 8543,
+      "sha256": "292c5f35b3256116ba18e26e08b82c8363dbddd56480934fa8b24f69ef8f6b5d"
+    },
+    {
+      "relative_path": "src/click/core.py",
+      "size": 147586,
+      "sha256": "b9a7a8d45af276155d73d44d7fe3e96082fc1811a611698bbe65d15f0446d1c5"
+    },
+    {
+      "relative_path": "src/click/decorators.py",
+      "size": 21680,
+      "sha256": "16069357615691fcdfc9c794bb515f6009eb35aad6f7a76c017bdce06dae8d55"
+    },
+    {
+      "relative_path": "src/click/exceptions.py",
+      "size": 11862,
+      "sha256": "1ef498df81b86ae8ff6d8451f3e4fc094f09c2aff5f8e72c454e1ecdfa337849"
+    },
+    {
+      "relative_path": "src/click/formatting.py",
+      "size": 10444,
+      "sha256": "f125b628692f8dfcfd43535b7a88cc1ee64137471f9d0243b389aa0cfea85e6b"
+    },
+    {
+      "relative_path": "src/click/globals.py",
+      "size": 1923,
+      "sha256": "80cf8d87a0383341c1fd2824685e4ce2770618c0c773f7e51d7bbdfe88781845"
+    },
+    {
+      "relative_path": "src/click/parser.py",
+      "size": 19052,
+      "sha256": "a09f9f53fde6bf1ba022e36d1da0804d9e7a9601261d18208c9892a84818ae30"
+    },
+    {
+      "relative_path": "src/click/py.typed",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/click/shell_completion.py",
+      "size": 22605,
+      "sha256": "41c352c33254e53d938864c9129867fa7252d599bb423d7dc450f8334e6517b6"
+    },
+    {
+      "relative_path": "src/click/termui.py",
+      "size": 33817,
+      "sha256": "5daff2f733529bbd16f72f07fed28b690865bfa8f832c88146eeb50694d78a63"
+    },
+    {
+      "relative_path": "src/click/testing.py",
+      "size": 26458,
+      "sha256": "4bd23ea6ca409491f746f6495834282576fe3349eb0042735dc533ad55ec4f7e"
+    },
+    {
+      "relative_path": "src/click/types.py",
+      "size": 44840,
+      "sha256": "39f1e11d8456634076f7478e77325a9b93ccf4a44ebd546cebb011de09a5cb1e"
+    },
+    {
+      "relative_path": "src/click/utils.py",
+      "size": 21481,
+      "sha256": "11006b6b5c5f14c2d18a9a2693209915156f8e3a9336b042ba8330f703f7ad4a"
+    }
+  ],
+  "fixture_manifest_hash": "c050d9ad9b94ce0123fcd17d9013d938f34da235902e596085534c36c45f674f"
+}

@@ -1,0 +1,280 @@
+{
+  "transition_id": "trans_track_a_02_flask_should_ignore_error",
+  "repo_name": "pallets/flask",
+  "base_commit": "0292047b22c82921dcf165322d93a0b988328c2e",
+  "target_commit": "4b8bde97d4fa3486e18dce21c3c5f75570d50164",
+  "pkg_path": "src/flask",
+  "tree_purity_status": "TREE_PURITY_PASS",
+  "before_tree_purity": "TREE_PURITY_PASS",
+  "after_tree_purity": "TREE_PURITY_PASS",
+  "before_mismatches": [],
+  "after_mismatches": [],
+  "total_files_before": 26,
+  "total_files_after": 26,
+  "has_environment_overlay": false,
+  "before_files": [
+    {
+      "relative_path": "src/flask/__init__.py",
+      "size": 2072,
+      "sha256": "2daebda4dc29fed5cb36c912a6115a234e9a4b5f9c33fd795e4bfeffd0cc9386"
+    },
+    {
+      "relative_path": "src/flask/__main__.py",
+      "size": 30,
+      "sha256": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279"
+    },
+    {
+      "relative_path": "src/flask/app.py",
+      "size": 64270,
+      "sha256": "c3dd9561959c203475d9f8b2efb86ac1b87253b4a524fabfd553aef146b11dda"
+    },
+    {
+      "relative_path": "src/flask/blueprints.py",
+      "size": 4541,
+      "sha256": "a79404da5635f0622d6ddaff44a46967c0e8d7b8343ef4062206644940e15f69"
+    },
+    {
+      "relative_path": "src/flask/cli.py",
+      "size": 36808,
+      "sha256": "1f2e6624f5a34c86eb0e1928c6acb6b85297b19be0e039791bf0c065d2b2b7af"
+    },
+    {
+      "relative_path": "src/flask/config.py",
+      "size": 13219,
+      "sha256": "3e2a85d033da9ba1d6d051f8087d61a574c17b7d0d4b38cf10ec2bcf56fa92dd"
+    },
+    {
+      "relative_path": "src/flask/ctx.py",
+      "size": 17246,
+      "sha256": "cc66952d5f9b722fb1c7a002952fd8ebd997c4e5931fac8f7b5dbee55afd14a8"
+    },
+    {
+      "relative_path": "src/flask/debughelpers.py",
+      "size": 6070,
+      "sha256": "75c8258dc3487e1d0857dc5d3c7ca471fac1a254282570fa57e56d71aada037e"
+    },
+    {
+      "relative_path": "src/flask/globals.py",
+      "size": 2414,
+      "sha256": "1abe9a4e0a96c8bb28c232e2b08993fffdfb9bb694be2230755e54a46a40ca4d"
+    },
+    {
+      "relative_path": "src/flask/helpers.py",
+      "size": 23150,
+      "sha256": "54aaae78fc8a2901198df16e719ea67496f28a8bf20108924f4d39e2c89c2b95"
+    },
+    {
+      "relative_path": "src/flask/json/__init__.py",
+      "size": 5583,
+      "sha256": "b402bd0b89b87250f932bf4b8e2bec7af7130a8ebdc3ff5a0bba3865e9984173"
+    },
+    {
+      "relative_path": "src/flask/json/provider.py",
+      "size": 7644,
+      "sha256": "cefdd0dfdde6bb6f73e7b853aa789de432e2af52a8c920c1c2af17228235b72c"
+    },
+    {
+      "relative_path": "src/flask/json/tag.py",
+      "size": 9281,
+      "sha256": "0e168dc2e20e85db7647be28382f58e19f19a6bc4562245be5d50fe5bcb220dc"
+    },
+    {
+      "relative_path": "src/flask/logging.py",
+      "size": 2377,
+      "sha256": "f2c33758c4ee6e2d5c05bd9cfe53e45a937427c74c02aae029160b2e2d5d0952"
+    },
+    {
+      "relative_path": "src/flask/py.typed",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/flask/sansio/README.md",
+      "size": 228,
+      "sha256": "fb45f5b440a78a59b3d5ca20c7e621370e5dee0b8aec62ababf0c45763b3954d"
+    },
+    {
+      "relative_path": "src/flask/sansio/app.py",
+      "size": 39560,
+      "sha256": "e18c98c0d166114863b3ce36ebadf146579936ae8d4bcc6f41823648e386a223"
+    },
+    {
+      "relative_path": "src/flask/sansio/blueprints.py",
+      "size": 27017,
+      "sha256": "da960c5792daf2f1cef8c14113d9c95c8ce389a9689abb395fe867f4054d0ba1"
+    },
+    {
+      "relative_path": "src/flask/sansio/scaffold.py",
+      "size": 30364,
+      "sha256": "8038161a341fab058ac50676422997c7220e6d04ad9b692fc28dddcbe3dc3519"
+    },
+    {
+      "relative_path": "src/flask/sessions.py",
+      "size": 15497,
+      "sha256": "040a7061700c6752b9e72124195ad7b6f90e5c9ffd439d05ec7eccc8d5d5657b"
+    },
+    {
+      "relative_path": "src/flask/signals.py",
+      "size": 750,
+      "sha256": "57b94c530c3b0aa809d93854067d4f89ab59b506a73b2b7b399a6ed86648fb7e"
+    },
+    {
+      "relative_path": "src/flask/templating.py",
+      "size": 7191,
+      "sha256": "504723e02606d9cbf0ed8342177c46aff125b0eb992ad2f6271942a90eb91193"
+    },
+    {
+      "relative_path": "src/flask/testing.py",
+      "size": 10114,
+      "sha256": "60c60294d716a6102e9993ad8f14930ad421fde322d8d3b54c7be642acbad560"
+    },
+    {
+      "relative_path": "src/flask/typing.py",
+      "size": 3114,
+      "sha256": "ac3b0f12bf2a89e10c6b8f04d142b6103f9f1495030b8ff2c559d9952e060a00"
+    },
+    {
+      "relative_path": "src/flask/views.py",
+      "size": 6962,
+      "sha256": "c73271ea826a18495386d12085937b65018cc394c3172b91c5491e73046e0280"
+    },
+    {
+      "relative_path": "src/flask/wrappers.py",
+      "size": 9406,
+      "sha256": "8d492fe2655e93622ae21c3177846faab20c6faf41bf43c49438162e6779391a"
+    }
+  ],
+  "after_files": [
+    {
+      "relative_path": "src/flask/__init__.py",
+      "size": 2072,
+      "sha256": "2daebda4dc29fed5cb36c912a6115a234e9a4b5f9c33fd795e4bfeffd0cc9386"
+    },
+    {
+      "relative_path": "src/flask/__main__.py",
+      "size": 30,
+      "sha256": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279"
+    },
+    {
+      "relative_path": "src/flask/app.py",
+      "size": 64785,
+      "sha256": "52284cb4b0bb588729c45534091d49f2deb2c7735579b06dc726e9082824e3ea"
+    },
+    {
+      "relative_path": "src/flask/blueprints.py",
+      "size": 4541,
+      "sha256": "a79404da5635f0622d6ddaff44a46967c0e8d7b8343ef4062206644940e15f69"
+    },
+    {
+      "relative_path": "src/flask/cli.py",
+      "size": 36808,
+      "sha256": "1f2e6624f5a34c86eb0e1928c6acb6b85297b19be0e039791bf0c065d2b2b7af"
+    },
+    {
+      "relative_path": "src/flask/config.py",
+      "size": 13219,
+      "sha256": "3e2a85d033da9ba1d6d051f8087d61a574c17b7d0d4b38cf10ec2bcf56fa92dd"
+    },
+    {
+      "relative_path": "src/flask/ctx.py",
+      "size": 17246,
+      "sha256": "cc66952d5f9b722fb1c7a002952fd8ebd997c4e5931fac8f7b5dbee55afd14a8"
+    },
+    {
+      "relative_path": "src/flask/debughelpers.py",
+      "size": 6070,
+      "sha256": "75c8258dc3487e1d0857dc5d3c7ca471fac1a254282570fa57e56d71aada037e"
+    },
+    {
+      "relative_path": "src/flask/globals.py",
+      "size": 2414,
+      "sha256": "1abe9a4e0a96c8bb28c232e2b08993fffdfb9bb694be2230755e54a46a40ca4d"
+    },
+    {
+      "relative_path": "src/flask/helpers.py",
+      "size": 23150,
+      "sha256": "54aaae78fc8a2901198df16e719ea67496f28a8bf20108924f4d39e2c89c2b95"
+    },
+    {
+      "relative_path": "src/flask/json/__init__.py",
+      "size": 5583,
+      "sha256": "b402bd0b89b87250f932bf4b8e2bec7af7130a8ebdc3ff5a0bba3865e9984173"
+    },
+    {
+      "relative_path": "src/flask/json/provider.py",
+      "size": 7644,
+      "sha256": "cefdd0dfdde6bb6f73e7b853aa789de432e2af52a8c920c1c2af17228235b72c"
+    },
+    {
+      "relative_path": "src/flask/json/tag.py",
+      "size": 9281,
+      "sha256": "0e168dc2e20e85db7647be28382f58e19f19a6bc4562245be5d50fe5bcb220dc"
+    },
+    {
+      "relative_path": "src/flask/logging.py",
+      "size": 2377,
+      "sha256": "f2c33758c4ee6e2d5c05bd9cfe53e45a937427c74c02aae029160b2e2d5d0952"
+    },
+    {
+      "relative_path": "src/flask/py.typed",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/flask/sansio/README.md",
+      "size": 228,
+      "sha256": "fb45f5b440a78a59b3d5ca20c7e621370e5dee0b8aec62ababf0c45763b3954d"
+    },
+    {
+      "relative_path": "src/flask/sansio/app.py",
+      "size": 39498,
+      "sha256": "c406db13dd35ed1c923b16ff9c18180c7ba5b876a8d62e8e6ba94a29824d4781"
+    },
+    {
+      "relative_path": "src/flask/sansio/blueprints.py",
+      "size": 27017,
+      "sha256": "da960c5792daf2f1cef8c14113d9c95c8ce389a9689abb395fe867f4054d0ba1"
+    },
+    {
+      "relative_path": "src/flask/sansio/scaffold.py",
+      "size": 30364,
+      "sha256": "8038161a341fab058ac50676422997c7220e6d04ad9b692fc28dddcbe3dc3519"
+    },
+    {
+      "relative_path": "src/flask/sessions.py",
+      "size": 15497,
+      "sha256": "040a7061700c6752b9e72124195ad7b6f90e5c9ffd439d05ec7eccc8d5d5657b"
+    },
+    {
+      "relative_path": "src/flask/signals.py",
+      "size": 750,
+      "sha256": "57b94c530c3b0aa809d93854067d4f89ab59b506a73b2b7b399a6ed86648fb7e"
+    },
+    {
+      "relative_path": "src/flask/templating.py",
+      "size": 7191,
+      "sha256": "504723e02606d9cbf0ed8342177c46aff125b0eb992ad2f6271942a90eb91193"
+    },
+    {
+      "relative_path": "src/flask/testing.py",
+      "size": 10114,
+      "sha256": "60c60294d716a6102e9993ad8f14930ad421fde322d8d3b54c7be642acbad560"
+    },
+    {
+      "relative_path": "src/flask/typing.py",
+      "size": 3114,
+      "sha256": "ac3b0f12bf2a89e10c6b8f04d142b6103f9f1495030b8ff2c559d9952e060a00"
+    },
+    {
+      "relative_path": "src/flask/views.py",
+      "size": 6962,
+      "sha256": "c73271ea826a18495386d12085937b65018cc394c3172b91c5491e73046e0280"
+    },
+    {
+      "relative_path": "src/flask/wrappers.py",
+      "size": 9406,
+      "sha256": "8d492fe2655e93622ae21c3177846faab20c6faf41bf43c49438162e6779391a"
+    }
+  ],
+  "fixture_manifest_hash": "4e866c6fd6e157c6c8b68ae9a23960778db723b49a3443f9c68e9fbd536ecede"
+}

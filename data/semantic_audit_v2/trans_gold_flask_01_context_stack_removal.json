@@ -1,8 +1,8 @@
 {
   "transition_id": "trans_gold_flask_01_context_stack_removal",
   "repo_name": "pallets/flask",
-  "auditor_version": "v7.0",
-  "spec_sha256": "e28f86bac1ce31b4fa23188130f422816c1934f4340b2ff7f816759b3408d37a",
+  "auditor_version": "2.0.0",
+  "spec_sha256": "c31d9ebd508111c3c6995932e5960d8cc63798d2189aa62d361d7702b997efa7",
   "audit_fingerprint": "39480d862245581a16702ca28bb0a9c04e8a85ba094954d73833c4c5c7cbe2bf",
   "gates": [
     {
@@ -55,11 +55,11 @@
     },
     {
       "gate_id": "G7",
-      "name": "hidden test <-> current task semantics",
-      "expected": "Hidden test verifies the target symbol/module without leaking solution code",
-      "observed": "Hidden test imports/tests target symbol 'activate_application_context': True",
-      "evidence": "hidden test len=341 bytes, tests=['ctx', 'current_app', 'test_activate_ctx', 'sys', 'insert']",
-      "status": "PASS"
+      "name": "hidden test strength <-> current task semantics",
+      "expected": "Hidden test verifies target capability with mutation_kill_rate >= 0.80 and zero constant-return bypass",
+      "observed": "Semantic match: True, Mutation kill rate: 0.0%, Constant return bypass: True",
+      "evidence": "test_strength/trans_gold_flask_01_context_stack_removal.json, len=341 bytes",
+      "status": "FAIL"
     },
     {
       "gate_id": "G8",
@@ -86,7 +86,7 @@
       "status": "FAIL"
     }
   ],
-  "passed_gates_count": 9,
+  "passed_gates_count": 8,
   "total_gates_count": 10,
   "overall_status": "FAIL"
 }

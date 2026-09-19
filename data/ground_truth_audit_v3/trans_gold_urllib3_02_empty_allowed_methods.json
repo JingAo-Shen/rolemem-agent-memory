@@ -16,8 +16,8 @@
   "issue_required": false,
   "issue_id_verified": null,
   "issue_status": "NOT_APPLICABLE",
-  "spec_sha256": "6792c60771bf8f8fb1e735d7f999a329990710ec66607e6fde1696bbbe7e5501",
+  "spec_sha256": "10db534b13e02df0085f0c8e3979bb6ad954cfba42292399da89c8c6c00727d4",
   "audit_fingerprint": "4d89bbe52f7d7c9468cd913648a82ec988beffcdcc75b1659747c3eb746dcbe0",
-  "auditor_version": "v7.0",
+  "auditor_version": "3.0.0",
   "overall_status": "PASS"
 }

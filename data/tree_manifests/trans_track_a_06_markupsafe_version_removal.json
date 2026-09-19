@@ -1,0 +1,70 @@
+{
+  "transition_id": "trans_track_a_06_markupsafe_version_removal",
+  "repo_name": "pallets/markupsafe",
+  "base_commit": "0c422e10b1e1ba43ca56a56f1f8a11edfb431b71",
+  "target_commit": "dfa58162f6ba9a0afebab7e924af362cd0bede66",
+  "pkg_path": "src/markupsafe",
+  "tree_purity_status": "TREE_PURITY_PASS",
+  "before_tree_purity": "TREE_PURITY_PASS",
+  "after_tree_purity": "TREE_PURITY_PASS",
+  "before_mismatches": [],
+  "after_mismatches": [],
+  "total_files_before": 5,
+  "total_files_after": 5,
+  "has_environment_overlay": false,
+  "before_files": [
+    {
+      "relative_path": "src/markupsafe/__init__.py",
+      "size": 13248,
+      "sha256": "bb57cb70d0b1d0ff04ecb4facf73977fa8a99d29a09ba69e7e77b9cbe77ba38d"
+    },
+    {
+      "relative_path": "src/markupsafe/_native.py",
+      "size": 210,
+      "sha256": "8522ecf099b3e5aa9acae7a780927791d4f93f0369056a4aae6412762a67742f"
+    },
+    {
+      "relative_path": "src/markupsafe/_speedups.c",
+      "size": 4327,
+      "sha256": "b77b42ea8555efe6e6294aaf08ee69552932f86f000885e958c689c2436d2638"
+    },
+    {
+      "relative_path": "src/markupsafe/_speedups.pyi",
+      "size": 41,
+      "sha256": "10d7756d87bb81b0547f6cb0c9858e194a675ce1cd27e7204cda9eb655bc8799"
+    },
+    {
+      "relative_path": "src/markupsafe/py.typed",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "after_files": [
+    {
+      "relative_path": "src/markupsafe/__init__.py",
+      "size": 12736,
+      "sha256": "b6e3b472b60fb708c6fc54fdb36173abe0d4991238bff1b9b26674aaa97e11c8"
+    },
+    {
+      "relative_path": "src/markupsafe/_native.py",
+      "size": 210,
+      "sha256": "8522ecf099b3e5aa9acae7a780927791d4f93f0369056a4aae6412762a67742f"
+    },
+    {
+      "relative_path": "src/markupsafe/_speedups.c",
+      "size": 4327,
+      "sha256": "b77b42ea8555efe6e6294aaf08ee69552932f86f000885e958c689c2436d2638"
+    },
+    {
+      "relative_path": "src/markupsafe/_speedups.pyi",
+      "size": 41,
+      "sha256": "10d7756d87bb81b0547f6cb0c9858e194a675ce1cd27e7204cda9eb655bc8799"
+    },
+    {
+      "relative_path": "src/markupsafe/py.typed",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "fixture_manifest_hash": "8756499fc511ae8687c65db8592da51fd50aa683b152241ea24fe94f4dabb7c4"
+}

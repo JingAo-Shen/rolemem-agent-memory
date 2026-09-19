@@ -1,0 +1,33 @@
+{
+  "transition_id": "trans_track_a_03_werkzeug_environ_property",
+  "anti_cheating_gate_version": "v1.0",
+  "constraints": {
+    "target_file": "header_proxy.py",
+    "api_deprecation_gate": {
+      "deprecated_symbol": "werkzeug.wsgi.environ_property",
+      "enforcement": "werkzeug.wsgi.environ_property deprecated/removed in Werkzeug 2.1+",
+      "verified": true
+    },
+    "replacement_mechanism_gate": {
+      "required_mechanism": "Dynamic property descriptor accessing self.environ dictionary",
+      "prohibited_returns": [
+        "1.0",
+        null,
+        "dummy"
+      ],
+      "verified": true
+    },
+    "behavior_fidelity_gate": {
+      "dynamic_checks": [
+        "isinstance(prop, property)",
+        "Dynamic resolution of HTTP_HOST across multiple instances",
+        "Missing key fallback to empty string"
+      ],
+      "boundary_checks": [
+        "Empty environ handling"
+      ],
+      "verified": true
+    }
+  },
+  "verification_status": "CONSTRAINTS_REGISTERED"
+}

@@ -1,0 +1,280 @@
+{
+  "transition_id": "trans_track_a_04_jinja_version_deprecation",
+  "repo_name": "pallets/jinja",
+  "base_commit": "dfe82ade3dc7d112d7d166ca0d7ae7f794fe19e6",
+  "target_commit": "9e49736ae075fcffb85f731a3fe2c006cf1edca4",
+  "pkg_path": "src/jinja2",
+  "tree_purity_status": "TREE_PURITY_PASS",
+  "before_tree_purity": "TREE_PURITY_PASS",
+  "after_tree_purity": "TREE_PURITY_PASS",
+  "before_mismatches": [],
+  "after_mismatches": [],
+  "total_files_before": 26,
+  "total_files_after": 26,
+  "has_environment_overlay": false,
+  "before_files": [
+    {
+      "relative_path": "src/jinja2/__init__.py",
+      "size": 1933,
+      "sha256": "705fcc42991fcdeea57124f06144730a08d45f425a04bb6ef9bbc222e6e6b70e"
+    },
+    {
+      "relative_path": "src/jinja2/_identifier.py",
+      "size": 1958,
+      "sha256": "ff361cb4d2b346a964fe6bab4cd973ae3bb514524bed56bf223aaa77b8a2da55"
+    },
+    {
+      "relative_path": "src/jinja2/async_utils.py",
+      "size": 2816,
+      "sha256": "81f2ed3a42b7203512b0e9f61c661d0911838a9f785a14abeda1d5d650327a7a"
+    },
+    {
+      "relative_path": "src/jinja2/bccache.py",
+      "size": 13986,
+      "sha256": "d72be2f2e31a734ca2f099e08e6e4f1152939d97ccde72e418f5fbfba1d41ee7"
+    },
+    {
+      "relative_path": "src/jinja2/compiler.py",
+      "size": 73918,
+      "sha256": "cc09c15d1d9b981b226a1074c5b4ff49afb79ae459614178efcfb899adb1c8aa"
+    },
+    {
+      "relative_path": "src/jinja2/constants.py",
+      "size": 1433,
+      "sha256": "18ca05c9d045fe476969128fa0ce5c97932f8aab9544b57266d7e9e7ed7a8e0d"
+    },
+    {
+      "relative_path": "src/jinja2/debug.py",
+      "size": 5753,
+      "sha256": "7de6a5653e450fcb474dd37b8a20f0cf7ef057139e5656418f0c478b1a2639d5"
+    },
+    {
+      "relative_path": "src/jinja2/defaults.py",
+      "size": 1255,
+      "sha256": "7ae8b5b32bd66fc36a0d7e32f415a91bb3a64e7a7307f3b03876bda9d9d0880d"
+    },
+    {
+      "relative_path": "src/jinja2/environment.py",
+      "size": 60847,
+      "sha256": "31b30f0d9bf368eff55fe1a908f57d1a52f27ddf94ac9d37ade0351abc2f2b53"
+    },
+    {
+      "relative_path": "src/jinja2/exceptions.py",
+      "size": 5026,
+      "sha256": "1efacd49bb89144b578bf05076e81f1d01f513db8139a4070dc2591285de28f4"
+    },
+    {
+      "relative_path": "src/jinja2/ext.py",
+      "size": 31109,
+      "sha256": "623aff178464ee9cfba4db495224f9948e1ec85996908abffa32352382a4b859"
+    },
+    {
+      "relative_path": "src/jinja2/filters.py",
+      "size": 54599,
+      "sha256": "4710ac67c53b98a3a98182852379cd9b2a00a6e9cc957a6ac598e3767f45836f"
+    },
+    {
+      "relative_path": "src/jinja2/idtracking.py",
+      "size": 10490,
+      "sha256": "67cf1d827792f489021b4f8aa8d46d5f57a4f385bc5165fc0d4dec299b65bcef"
+    },
+    {
+      "relative_path": "src/jinja2/lexer.py",
+      "size": 29687,
+      "sha256": "36cedcead16de1c53cd16c1b65aba2861599318fb36d9b99df791c98bb186017"
+    },
+    {
+      "relative_path": "src/jinja2/loaders.py",
+      "size": 23709,
+      "sha256": "805fd7669666d5e301a955d0502e58d6bba51bb1bf77b3f049117b8d07dfb96d"
+    },
+    {
+      "relative_path": "src/jinja2/meta.py",
+      "size": 4382,
+      "sha256": "079500766434d1a218be9e93146512e2f8e11cd27e1c1dfd81f5a6e9bee96252"
+    },
+    {
+      "relative_path": "src/jinja2/nativetypes.py",
+      "size": 4205,
+      "sha256": "2345deb54f9c7ee40a098d129bf3f33264b9ad28740a943141129366f33c5203"
+    },
+    {
+      "relative_path": "src/jinja2/nodes.py",
+      "size": 34189,
+      "sha256": "8decfec152c75d6a90b052edfe434c0049256efaf79ba1d0d786adc3dc74bf0e"
+    },
+    {
+      "relative_path": "src/jinja2/optimizer.py",
+      "size": 1646,
+      "sha256": "fb18c24656c9f3230248ba7132d6f017b407c01557aed562c2b831fe8737aef8"
+    },
+    {
+      "relative_path": "src/jinja2/parser.py",
+      "size": 40095,
+      "sha256": "b3f22fe9071e83d6dadb401e747b6777399db83768d4e161c04a3ec404e25cf6"
+    },
+    {
+      "relative_path": "src/jinja2/py.typed",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/jinja2/runtime.py",
+      "size": 34148,
+      "sha256": "e245ee3a0248a9ce883e89e04d079a7de232918bf8bfd50965212a4002301341"
+    },
+    {
+      "relative_path": "src/jinja2/sandbox.py",
+      "size": 14942,
+      "sha256": "d62b0cf53172ba01780d839a9e186c227e42d1928c230564fcfa44a48066c03c"
+    },
+    {
+      "relative_path": "src/jinja2/tests.py",
+      "size": 5926,
+      "sha256": "54bb018551675a0f8fc52073d4c8519cd5a03f5a2f5e4de778ed452d031e0bd4"
+    },
+    {
+      "relative_path": "src/jinja2/utils.py",
+      "size": 24080,
+      "sha256": "a87ae5bb3365aa9009cf3f55252a7721e7ed90c350d8ad58ebd9ee03340bbd3e"
+    },
+    {
+      "relative_path": "src/jinja2/visitor.py",
+      "size": 3550,
+      "sha256": "a58a0fc9c3ed46072e28ad55677273ebf5c8c82ee46d9a81e19b64df6e2ac3d9"
+    }
+  ],
+  "after_files": [
+    {
+      "relative_path": "src/jinja2/__init__.py",
+      "size": 2465,
+      "sha256": "eb0f58170da5a4d0a844700d760611c4ccce6c987471ba3210851433462d9044"
+    },
+    {
+      "relative_path": "src/jinja2/_identifier.py",
+      "size": 1958,
+      "sha256": "ff361cb4d2b346a964fe6bab4cd973ae3bb514524bed56bf223aaa77b8a2da55"
+    },
+    {
+      "relative_path": "src/jinja2/async_utils.py",
+      "size": 2816,
+      "sha256": "81f2ed3a42b7203512b0e9f61c661d0911838a9f785a14abeda1d5d650327a7a"
+    },
+    {
+      "relative_path": "src/jinja2/bccache.py",
+      "size": 13986,
+      "sha256": "d72be2f2e31a734ca2f099e08e6e4f1152939d97ccde72e418f5fbfba1d41ee7"
+    },
+    {
+      "relative_path": "src/jinja2/compiler.py",
+      "size": 73918,
+      "sha256": "cc09c15d1d9b981b226a1074c5b4ff49afb79ae459614178efcfb899adb1c8aa"
+    },
+    {
+      "relative_path": "src/jinja2/constants.py",
+      "size": 1433,
+      "sha256": "18ca05c9d045fe476969128fa0ce5c97932f8aab9544b57266d7e9e7ed7a8e0d"
+    },
+    {
+      "relative_path": "src/jinja2/debug.py",
+      "size": 5753,
+      "sha256": "7de6a5653e450fcb474dd37b8a20f0cf7ef057139e5656418f0c478b1a2639d5"
+    },
+    {
+      "relative_path": "src/jinja2/defaults.py",
+      "size": 1255,
+      "sha256": "7ae8b5b32bd66fc36a0d7e32f415a91bb3a64e7a7307f3b03876bda9d9d0880d"
+    },
+    {
+      "relative_path": "src/jinja2/environment.py",
+      "size": 60847,
+      "sha256": "31b30f0d9bf368eff55fe1a908f57d1a52f27ddf94ac9d37ade0351abc2f2b53"
+    },
+    {
+      "relative_path": "src/jinja2/exceptions.py",
+      "size": 5026,
+      "sha256": "1efacd49bb89144b578bf05076e81f1d01f513db8139a4070dc2591285de28f4"
+    },
+    {
+      "relative_path": "src/jinja2/ext.py",
+      "size": 31109,
+      "sha256": "623aff178464ee9cfba4db495224f9948e1ec85996908abffa32352382a4b859"
+    },
+    {
+      "relative_path": "src/jinja2/filters.py",
+      "size": 54599,
+      "sha256": "4710ac67c53b98a3a98182852379cd9b2a00a6e9cc957a6ac598e3767f45836f"
+    },
+    {
+      "relative_path": "src/jinja2/idtracking.py",
+      "size": 10490,
+      "sha256": "67cf1d827792f489021b4f8aa8d46d5f57a4f385bc5165fc0d4dec299b65bcef"
+    },
+    {
+      "relative_path": "src/jinja2/lexer.py",
+      "size": 29687,
+      "sha256": "36cedcead16de1c53cd16c1b65aba2861599318fb36d9b99df791c98bb186017"
+    },
+    {
+      "relative_path": "src/jinja2/loaders.py",
+      "size": 23709,
+      "sha256": "805fd7669666d5e301a955d0502e58d6bba51bb1bf77b3f049117b8d07dfb96d"
+    },
+    {
+      "relative_path": "src/jinja2/meta.py",
+      "size": 4382,
+      "sha256": "079500766434d1a218be9e93146512e2f8e11cd27e1c1dfd81f5a6e9bee96252"
+    },
+    {
+      "relative_path": "src/jinja2/nativetypes.py",
+      "size": 4205,
+      "sha256": "2345deb54f9c7ee40a098d129bf3f33264b9ad28740a943141129366f33c5203"
+    },
+    {
+      "relative_path": "src/jinja2/nodes.py",
+      "size": 34189,
+      "sha256": "8decfec152c75d6a90b052edfe434c0049256efaf79ba1d0d786adc3dc74bf0e"
+    },
+    {
+      "relative_path": "src/jinja2/optimizer.py",
+      "size": 1646,
+      "sha256": "fb18c24656c9f3230248ba7132d6f017b407c01557aed562c2b831fe8737aef8"
+    },
+    {
+      "relative_path": "src/jinja2/parser.py",
+      "size": 40095,
+      "sha256": "b3f22fe9071e83d6dadb401e747b6777399db83768d4e161c04a3ec404e25cf6"
+    },
+    {
+      "relative_path": "src/jinja2/py.typed",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/jinja2/runtime.py",
+      "size": 34148,
+      "sha256": "e245ee3a0248a9ce883e89e04d079a7de232918bf8bfd50965212a4002301341"
+    },
+    {
+      "relative_path": "src/jinja2/sandbox.py",
+      "size": 14942,
+      "sha256": "d62b0cf53172ba01780d839a9e186c227e42d1928c230564fcfa44a48066c03c"
+    },
+    {
+      "relative_path": "src/jinja2/tests.py",
+      "size": 5926,
+      "sha256": "54bb018551675a0f8fc52073d4c8519cd5a03f5a2f5e4de778ed452d031e0bd4"
+    },
+    {
+      "relative_path": "src/jinja2/utils.py",
+      "size": 24080,
+      "sha256": "a87ae5bb3365aa9009cf3f55252a7721e7ed90c350d8ad58ebd9ee03340bbd3e"
+    },
+    {
+      "relative_path": "src/jinja2/visitor.py",
+      "size": 3550,
+      "sha256": "a58a0fc9c3ed46072e28ad55677273ebf5c8c82ee46d9a81e19b64df6e2ac3d9"
+    }
+  ],
+  "fixture_manifest_hash": "d891e40d98837a93b158698a219a654999dcc3904980755a5db617a1521cd99b"
+}
