@@ -15,15 +15,15 @@
     }
   },
   "q2_stale_memory_base_supported": {
-    "pass": false,
+    "pass": true,
     "evidence": {
       "evidence_file": "starlette/staticfiles.py",
       "base_commit": "e6f7ad1ab85efb27ab7910d8007b3f4531f7b083",
-      "entailment_status": "PARTIAL",
-      "matched_term": "False",
-      "lineno": 45,
-      "excerpt": "        directory: PathLike | None = None,\n        packages: list[str | tuple[str, str]] | None = None,\n        html: bool = False,\n        check_dir: bool = True,\n        follow_symlink: bool = False,\n    ) -> None:\n        self.directory = directory\n        self.packages = packages\n        self.al",
-      "evidence_sha256": "653bbaf487ab8cc192b64ba2cbad340aed044077cd9125e50d17fe5a977f0187"
+      "entailment_status": "ENTAILED",
+      "matched_term": "StaticFiles",
+      "lineno": 39,
+      "excerpt": "\n\nclass StaticFiles:\n    def __init__(\n        self,\n        *,\n        directory: PathLike | None = None,\n        packages: list[str | tuple[str, str]] | None = None,\n        html: bool = False,\n        check_dir: bool = True,",
+      "evidence_sha256": "1ee469373a621e9ed901cebeb4090d61d8a190fc84a9cee3c6419a7f38d1ba3f"
     }
   },
   "q3_valid_memory_target_supported": {
@@ -47,9 +47,9 @@
     }
   },
   "q5_stale_solution_asymmetry": {
-    "pass": false,
+    "pass": true,
     "evidence": {
-      "stale_on_base": false,
+      "stale_on_base": true,
       "stale_on_target": false,
       "is_control": true,
       "stale_ast_valid": true
@@ -59,7 +59,7 @@
     "pass": true,
     "evidence": {
       "valid_on_target": true,
-      "valid_on_base": false,
+      "valid_on_base": true,
       "valid_ast_valid": true
     }
   }

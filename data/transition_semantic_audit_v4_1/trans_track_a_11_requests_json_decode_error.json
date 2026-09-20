@@ -1,7 +1,7 @@
 {
   "transition_id": "trans_track_a_11_requests_json_decode_error",
-  "verdict": "REBUILD_REQUIRED",
-  "semantic_pass": false,
+  "verdict": "SEMANTIC_STRONG_PASS",
+  "semantic_pass": true,
   "task_mapping": "TASK_MAPPING_STRONG",
   "causal_schema_valid": true,
   "q1_repo_change_pr_diff": {
@@ -47,9 +47,9 @@
     }
   },
   "q5_stale_solution_asymmetry": {
-    "pass": false,
+    "pass": true,
     "evidence": {
-      "stale_on_base": false,
+      "stale_on_base": true,
       "stale_on_target": false,
       "is_control": true,
       "stale_ast_valid": true

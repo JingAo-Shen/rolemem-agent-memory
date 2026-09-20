@@ -9,20 +9,18 @@
     "fastapi/routing.py"
   ],
   "primary_file": "fastapi/routing.py",
-  "symbol": "APIRoute.on_event",
+  "symbol": "APIRouter",
   "deprecated_symbols": [
-    "False",
-    "return False"
+    "on_event"
   ],
   "replacement_symbols": [
-    "_DefaultLifespan",
-    "fastapi.routing"
+    "lifespan"
   ],
   "repository_change": "Router on_event reimplemented with lifespan compatibility for Starlette.",
-  "stale_memory_candidate": "fastapi.routing lacks _DefaultLifespan helper; return False.",
-  "valid_memory_candidate": "Inspect fastapi.routing._DefaultLifespan for lifespan handler setup.",
+  "stale_memory_candidate": "Call APIRouter.on_event to register application startup and shutdown events.",
+  "valid_memory_candidate": "Use lifespan parameter on APIRouter to register application lifespan handlers instead of on_event.",
   "transition_type": "API_DEPRECATION",
-  "stale_sensitive": false,
+  "stale_sensitive": true,
   "current_task": "Implement `has_default_lifespan()` in `app_lifecycle.py` verifying default lifespan handler presence.",
   "target_file": "app_lifecycle.py",
   "target_symbol": "has_default_lifespan",
@@ -31,5 +29,10 @@
   "hidden_test": "import pytest\nimport app_lifecycle\n\ndef test_default_lifespan():\n    assert app_lifecycle.has_default_lifespan() is True\n",
   "base_commit": "8e50c55fd90c4433ddc9096ff439da9498a8314a",
   "external_pr_url": "https://github.com/tiangolo/fastapi/pull/14851",
-  "track": "TRACK_A_STALE_SENSITIVE"
+  "track": "TRACK_A_STALE_SENSITIVE",
+  "changed_symbols": [
+    "APIRouter",
+    "on_event",
+    "lifespan"
+  ]
 }

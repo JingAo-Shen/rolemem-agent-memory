@@ -1,0 +1,12 @@
+{
+  "protocol_version": "2.0.0",
+  "status": "PILOT_INVALID_FOR_FORMAL_CLAIMS",
+  "reason": "Pilot-v1.4 legacy runs contained unfrozen commit references, synthetic mock hashes in certain category cases, and automated human reviews. All legacy numbers are retained for historical provenance but invalidated for formal paper claims.",
+  "deprecated_artifacts": [
+    "data/symbol_validity_evaluation_v3.json",
+    "data/symbol_validity_v4.json",
+    "data/memory_validity_blind_annotations/human_review.jsonl"
+  ],
+  "replacement_protocol": "experiment/protocol-v2",
+  "new_benchmark_directory": "data/memory_validity_v2/"
+}

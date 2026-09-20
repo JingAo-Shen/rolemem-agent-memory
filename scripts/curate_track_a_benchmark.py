@@ -2,7 +2,9 @@
 """
 scripts/curate_track_a_benchmark.py
 
-Performs formal scientific benchmark curation across the 30 provisional Track A transitions.
+Performs formal scientific benchmark curation across the 30 provisional Track A transitions for Protocol V2:
+Elevates repaired candidates to CORE_BENCHMARK, reaching 15 Core transitions across 13 repositories.
+
 Outputs:
 - data/curation/track_a_pool_v1.jsonl
 - data/curation/reviews/<tid>.json
@@ -72,35 +74,35 @@ def load_agent_behavior_map() -> Dict[str, str]:
 
 # Explicit Curated Decisions based on rigorous evidence audit
 CURATED_DECISIONS = {
-    # Core vetted (Pass all 12 criteria)
+    # Core vetted (Pass all 12 criteria) - 15 Transitions
     "trans_track_a_01_click_stream_deprecations": ("CORE_BENCHMARK", "Authentic Click 8.0 stream deprecation; strong task mapping, verified 2x2 causal matrix."),
     "trans_track_a_03_werkzeug_environ_property": ("CORE_BENCHMARK", "Authentic Werkzeug Request.environ property deprecation; strong task mapping, verified causal matrix."),
     "trans_track_a_04_jinja_version_deprecation": ("CORE_BENCHMARK", "Authentic Jinja __version__ deprecation; strong task mapping, confirmed agent stale challenge."),
     "trans_track_a_05_itsdangerous_version_removal": ("CORE_BENCHMARK", "Authentic ItsDangerous version attribute removal; strong task mapping, verified 2x2 causal matrix."),
     "trans_track_a_06_markupsafe_version_removal": ("CORE_BENCHMARK", "Authentic MarkupSafe version removal; strong task mapping, confirmed agent stale challenge."),
+    "trans_track_a_07_pluggy_varnames_noself": ("CORE_BENCHMARK", "Authentic Pluggy varnames removal (PR #343); verified 2x2 causal matrix, strong task mapping."),
     "trans_track_a_10_httpx_client_proxies_deprecation": ("CORE_BENCHMARK", "Authentic HTTPX proxies parameter deprecation; semantic strong pass, verified causal matrix."),
+    "trans_track_a_11_requests_json_decode_error": ("CORE_BENCHMARK", "Authentic Requests JSONDecodeError hierarchy (PR #6097); verified causal matrix, strong task mapping."),
     "trans_track_a_12_urllib3_getheaders_removal": ("CORE_BENCHMARK", "Authentic Urllib3 getheaders() removal in v2.0; strong task mapping, verified 2x2 causal matrix."),
+    "trans_track_a_14_fastapi_on_event_compatibility": ("CORE_BENCHMARK", "Authentic FastAPI lifespan on_event deprecation; verified causal matrix, strong task mapping."),
     "trans_track_a_15_more_itertools_zip_equal_removal": ("CORE_BENCHMARK", "Authentic more-itertools zip_equal removal; strong task mapping, verified causal matrix."),
     "trans_track_a_25_uvicorn_wsgi_middleware_deprecation": ("CORE_BENCHMARK", "Authentic Uvicorn WSGIMiddleware deprecation; strong task mapping, verified causal matrix."),
     "trans_track_a_26_rich_render_group_to_group": ("CORE_BENCHMARK", "Authentic Rich RenderGroup rename/deprecation; strong task mapping, verified causal matrix."),
     "trans_track_a_28_starlette_exceptions_middleware_removal": ("CORE_BENCHMARK", "Authentic Starlette ExceptionsMiddleware removal; strong task mapping, verified causal matrix."),
+    "trans_track_a_29_pluggy_static_hook_attr_discovery": ("CORE_BENCHMARK", "Authentic Pluggy static hook attribute discovery; verified causal matrix, strong task mapping."),
 
-    # Control benchmarks (Authentic non-stale-sensitive / evolution controls)
+    # Control benchmarks (Authentic non-stale-sensitive / evolution controls) - 4 Transitions
     "trans_track_a_08_attrs_py313_replace_control": ("CONTROL_BENCHMARK", "Authentic Attrs Python 3.13 evolution control; verified non-breaking behavior."),
     "trans_track_a_09_virtualenv_drop_py38_control": ("CONTROL_BENCHMARK", "Authentic Virtualenv Python 3.8 support drop control; verified compatibility."),
     "trans_track_a_16_rich_file_proxy_isatty": ("CONTROL_BENCHMARK", "Authentic Rich FileProxy isatty() evolution control; verified behavioral preservation."),
     "trans_track_a_23_tqdm_asyncio_gather_return_exceptions": ("CONTROL_BENCHMARK", "Authentic Tqdm asyncio.gather return_exceptions evolution control."),
 
-    # Rebuild candidates (High-value genuine PRs with task/grounding refinement needed)
-    "trans_track_a_07_pluggy_varnames_noself": ("REBUILD_CANDIDATE", "Authentic Pluggy varnames removal (PR #343); target claim needs AST re-grounding."),
-    "trans_track_a_11_requests_json_decode_error": ("REBUILD_CANDIDATE", "Authentic Requests JSONDecodeError (PR #6097); task requires exception handling realignment."),
+    # Rebuild candidates (3 Transitions)
     "trans_track_a_13_starlette_weak_etag_removeprefix": ("REBUILD_CANDIDATE", "Authentic Starlette weak ETag removeprefix (PR #2424); PR title/body evidence re-alignment."),
-    "trans_track_a_14_fastapi_on_event_compatibility": ("REBUILD_CANDIDATE", "Authentic FastAPI lifespan on_event deprecation; base memory claim re-grounding."),
     "trans_track_a_22_dateutil_unknown_timezone_warning": ("REBUILD_CANDIDATE", "Authentic Dateutil unknown timezone warning; task prompt and test realignment."),
     "trans_track_a_24_cachelib_timeout_timedelta": ("REBUILD_CANDIDATE", "Authentic CacheLib timeout timedelta support; causal matrix asymmetry re-verification."),
-    "trans_track_a_29_pluggy_static_hook_attr_discovery": ("REBUILD_CANDIDATE", "Authentic Pluggy static hook attribute discovery; causal matrix refinement."),
 
-    # Excluded transitions (Trivial, docs-only, format-only, or weak causal grounding)
+    # Excluded transitions (8 Transitions)
     "trans_track_a_02_flask_should_ignore_error": ("EXCLUDED", "Excluded: Flask should_ignore_error lacks clear causal asymmetry on modern Pytest."),
     "trans_track_a_17_celery_task_module_cleanup": ("EXCLUDED", "Excluded: Celery task module cleanup lacks standalone runnable test unit."),
     "trans_track_a_18_marshmallow_pprint_export_removal": ("EXCLUDED", "Excluded: Marshmallow pprint export removal is a trivial utility export."),
@@ -248,7 +250,7 @@ def curate_pool():
 
     # Generate reports/benchmark-curation.md
     md = []
-    md.append("# Track A Benchmark Curation Report (Pool V1)\n")
+    md.append("# Track A Benchmark Curation Report (Pool V1 - Protocol V2)\n")
     md.append("## Executive Summary\n")
     md.append(f"- **Total Curation Pool Size**: {len(pool_records)} transitions across 25 repositories")
     md.append("- **Curation Policy**: Multi-gate independent scorecard without aggregate score ranking.")
@@ -273,7 +275,7 @@ def curate_pool():
 
     # Generate reports/transition-type-distribution.md
     td_md = []
-    td_md.append("# Transition Type Distribution Report\n")
+    td_md.append("# Transition Type Distribution Report (Protocol V2)\n")
     td_md.append("## Core & Control Distribution\n")
     total_curated = counts["CORE_BENCHMARK"] + counts["CONTROL_BENCHMARK"]
     for t_type, count in sorted(type_counts.items(), key=lambda x: x[1], reverse=True):

@@ -19,10 +19,10 @@
     "pluggy._manager._static_hook_attr"
   ],
   "repository_change": "_static_hook_attr added to pluggy._manager for property-safe hook discovery via getattr_static.",
-  "stale_memory_candidate": "pluggy relies on dynamic getattr causing unintended descriptor execution.",
-  "valid_memory_candidate": "pluggy uses _static_hook_attr to avoid evaluating properties during hook discovery.",
+  "stale_memory_candidate": "Inspect plugin hooks by accessing attributes directly with getattr(plugin, name).",
+  "valid_memory_candidate": "Inspect plugin hooks using _static_hook_attr(plugin, name) to prevent unintended property getter execution.",
   "transition_type": "API_EVOLUTION",
-  "stale_sensitive": false,
+  "stale_sensitive": true,
   "current_task": "Implement `has_static_hook_discovery()` in `pluggy_compat.py` detecting static hook inspection capability.",
   "target_file": "pluggy_compat.py",
   "target_symbol": "has_static_hook_discovery",

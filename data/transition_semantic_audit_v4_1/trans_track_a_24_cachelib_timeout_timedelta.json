@@ -15,11 +15,11 @@
     }
   },
   "q2_stale_memory_base_supported": {
-    "pass": true,
+    "pass": false,
     "evidence": {
       "evidence_file": "src/cachelib/base.py",
       "base_commit": "5a7d98a6b54e05b6076a8c69b034ab8c35a250a1",
-      "entailment_status": "ENTAILED",
+      "entailment_status": "PARTIAL",
       "matched_term": "default_timeout",
       "lineno": 8,
       "excerpt": "    API or a superset of it.\n\n    :param default_timeout: the default timeout (in seconds) that is used if\n        no timeout is specified on :meth:`set`. A timeout\n        of 0 indicates that the cache never expires.\n    :param ignore_delete_many_errors: If False, delete_many() will raise\n        a",
@@ -47,9 +47,9 @@
     }
   },
   "q5_stale_solution_asymmetry": {
-    "pass": false,
+    "pass": true,
     "evidence": {
-      "stale_on_base": false,
+      "stale_on_base": true,
       "stale_on_target": false,
       "is_control": true,
       "stale_ast_valid": true
@@ -59,7 +59,7 @@
     "pass": true,
     "evidence": {
       "valid_on_target": true,
-      "valid_on_base": false,
+      "valid_on_base": true,
       "valid_ast_valid": true
     }
   }

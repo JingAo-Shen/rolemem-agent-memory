@@ -1,8 +1,8 @@
 {
   "transition_id": "trans_track_a_14_fastapi_on_event_compatibility",
-  "verdict": "REBUILD_REQUIRED",
-  "semantic_pass": false,
-  "task_mapping": "TASK_MAPPING_WEAK",
+  "verdict": "SEMANTIC_WEAK_PASS",
+  "semantic_pass": true,
+  "task_mapping": "TASK_MAPPING_STRONG",
   "causal_schema_valid": true,
   "q1_repo_change_pr_diff": {
     "pass": true,
@@ -15,15 +15,15 @@
     }
   },
   "q2_stale_memory_base_supported": {
-    "pass": false,
+    "pass": true,
     "evidence": {
       "evidence_file": "fastapi/routing.py",
       "base_commit": "8e50c55fd90c4433ddc9096ff439da9498a8314a",
-      "entailment_status": "PARTIAL",
-      "matched_term": "False",
-      "lineno": 96,
-      "excerpt": "        async def app(scope: Scope, receive: Receive, send: Send) -> None:\n            # Starts customization\n            response_awaited = False\n            async with AsyncExitStack() as request_stack:\n                scope[\"fastapi_inner_astack\"] = request_stack\n                async with AsyncE",
-      "evidence_sha256": "8e5987e0a9fb1ec5abeffa9cfec117c7175c0b1332cd0af88800a060e42e452e"
+      "entailment_status": "ENTAILED",
+      "matched_term": "lifespan",
+      "lineno": 146,
+      "excerpt": "\n\ndef _merge_lifespan_context(\n    original_context: Lifespan[Any], nested_context: Lifespan[Any]\n) -> Lifespan[Any]:\n    @asynccontextmanager\n    async def merged_lifespan(\n        app: AppType,\n    ) -> AsyncIterator[Optional[Mapping[str, Any]]]:\n        async with original_context(app) as maybe_o",
+      "evidence_sha256": "54b59cff755ec254fdd29f281ea7c7e6ff95264f382f87bfb6d848e83c85eaee"
     }
   },
   "q3_valid_memory_target_supported": {
@@ -32,10 +32,10 @@
       "evidence_file": "fastapi/routing.py",
       "target_commit": "f9f79926047d7f5d8e0127dd585e7683ee57e9f7",
       "entailment_status": "ENTAILED",
-      "matched_term": "routing",
-      "lineno": 68,
-      "excerpt": "    is_body_allowed_for_status_code,\n)\nfrom starlette import routing\nfrom starlette._exception_handler import wrap_app_handling_exceptions\nfrom starlette._utils import is_async_callable\nfrom starlette.concurrency import run_in_threadpool\nfrom starlette.exceptions import HTTPException\nfrom starlette.",
-      "evidence_sha256": "04cd34c9587104ff9b42768ab94081f1aac97bc422a3745043f98367973523ff"
+      "matched_term": "lifespan",
+      "lineno": 182,
+      "excerpt": "\n# Vendored from starlette.routing to avoid importing private symbols\ndef _wrap_gen_lifespan_context(\n    lifespan_context: Callable[[Any], Generator[Any, Any, Any]],\n) -> Callable[[Any], AbstractAsyncContextManager[Any]]:\n    \"\"\"\n    Wrap a generator-based lifespan context into an async context man",
+      "evidence_sha256": "0e649b6fe2b16881add35267a5699c12aa3216449bdb8c3aa37d94c039d78a65"
     }
   },
   "q4_current_task_capability": {
@@ -47,11 +47,11 @@
     }
   },
   "q5_stale_solution_asymmetry": {
-    "pass": false,
+    "pass": true,
     "evidence": {
-      "stale_on_base": false,
+      "stale_on_base": true,
       "stale_on_target": false,
-      "is_control": true,
+      "is_control": false,
       "stale_ast_valid": true
     }
   },
@@ -59,7 +59,7 @@
     "pass": true,
     "evidence": {
       "valid_on_target": true,
-      "valid_on_base": false,
+      "valid_on_base": true,
       "valid_ast_valid": true
     }
   }

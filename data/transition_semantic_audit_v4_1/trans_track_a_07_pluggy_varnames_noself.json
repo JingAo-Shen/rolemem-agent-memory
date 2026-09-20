@@ -1,8 +1,8 @@
 {
   "transition_id": "trans_track_a_07_pluggy_varnames_noself",
-  "verdict": "REBUILD_REQUIRED",
-  "semantic_pass": false,
-  "task_mapping": "TASK_MAPPING_WEAK",
+  "verdict": "SEMANTIC_WEAK_PASS",
+  "semantic_pass": true,
+  "task_mapping": "TASK_MAPPING_STRONG",
   "causal_schema_valid": true,
   "q1_repo_change_pr_diff": {
     "pass": true,
@@ -27,11 +27,11 @@
     }
   },
   "q3_valid_memory_target_supported": {
-    "pass": false,
+    "pass": true,
     "evidence": {
       "evidence_file": "src/pluggy/_hooks.py",
       "target_commit": "0258484dc180a0c28705de83783b269f4fed4873",
-      "entailment_status": "PARTIAL",
+      "entailment_status": "ENTAILED",
       "matched_term": "self",
       "lineno": 89,
       "excerpt": "    __slots__ = (\"project_name\",)\n\n    def __init__(self, project_name: str) -> None:\n        self.project_name: Final = project_name\n\n    @overload\n    def __call__(\n        self,\n        function: _F,\n        firstresult: bool = False,",

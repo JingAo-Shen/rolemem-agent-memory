@@ -2,7 +2,7 @@
   "transition_id": "trans_track_a_11_requests_json_decode_error",
   "repo_name": "psf/requests",
   "transition_authenticity": "PASS",
-  "causal_validity": "FAIL",
+  "causal_validity": "PASS",
   "task_mapping": "PASS",
   "stale_memory_grounding": "PASS",
   "valid_memory_grounding": "PASS",
@@ -10,6 +10,6 @@
   "repo_context_leakage": "PASS",
   "environment_reproducibility": "PASS",
   "agent_behavior_category": "UNTESTED_SCALE_CANDIDATE",
-  "final_curation_decision": "REBUILD_CANDIDATE",
-  "decision_rationale": "Authentic Requests JSONDecodeError (PR #6097); task requires exception handling realignment."
+  "final_curation_decision": "CORE_BENCHMARK",
+  "decision_rationale": "Authentic Requests JSONDecodeError hierarchy (PR #6097); verified causal matrix, strong task mapping."
 }

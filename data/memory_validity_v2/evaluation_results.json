@@ -1,0 +1,107 @@
+{
+  "benchmark_summary": {
+    "total_cases": 126,
+    "valid_cases": 65,
+    "stale_cases": 61,
+    "category_distribution": {
+      "CAT_A_FILE_CHG_SYM_SAME_VALID": 51,
+      "CAT_D_SYM_CHG_OR_REM_STALE": 46,
+      "CAT_B_SYM_CHG_MEMORY_VALID": 14,
+      "CAT_C_SYM_SAME_MEMORY_STALE": 15
+    }
+  },
+  "mechanisms": {
+    "File_Level_Baseline": {
+      "TP": 61,
+      "TN": 0,
+      "FP": 65,
+      "FN": 0,
+      "ABSTAIN": 0,
+      "Coverage": 1.0,
+      "Accuracy_Decided": 0.48412698412698413,
+      "Accuracy_Overall": 0.48412698412698413,
+      "Precision": 0.48412698412698413,
+      "Recall": 1.0,
+      "F1": 0.6524064171122994,
+      "False_Invalidation_Rate_FIR": 1.0,
+      "Stale_Exposure_Rate_SER": 0.0,
+      "Valid_Memory_Recall": 0.0,
+      "Stale_Memory_Recall": 1.0,
+      "Per_Category_Accuracy": {
+        "CAT_A_FILE_CHG_SYM_SAME_VALID": 0.0,
+        "CAT_D_SYM_CHG_OR_REM_STALE": 1.0,
+        "CAT_B_SYM_CHG_MEMORY_VALID": 0.0,
+        "CAT_C_SYM_SAME_MEMORY_STALE": 1.0
+      }
+    },
+    "Pure_Symbol_AST_Baseline": {
+      "TP": 33,
+      "TN": 57,
+      "FP": 8,
+      "FN": 28,
+      "ABSTAIN": 0,
+      "Coverage": 1.0,
+      "Accuracy_Decided": 0.7142857142857143,
+      "Accuracy_Overall": 0.7142857142857143,
+      "Precision": 0.8048780487804879,
+      "Recall": 0.5409836065573771,
+      "F1": 0.6470588235294118,
+      "False_Invalidation_Rate_FIR": 0.12307692307692308,
+      "Stale_Exposure_Rate_SER": 0.45901639344262296,
+      "Valid_Memory_Recall": 0.8769230769230769,
+      "Stale_Memory_Recall": 0.5409836065573771,
+      "Per_Category_Accuracy": {
+        "CAT_A_FILE_CHG_SYM_SAME_VALID": 0.8823529411764706,
+        "CAT_D_SYM_CHG_OR_REM_STALE": 0.717391304347826,
+        "CAT_B_SYM_CHG_MEMORY_VALID": 0.8571428571428571,
+        "CAT_C_SYM_SAME_MEMORY_STALE": 0.0
+      }
+    },
+    "RoleMem_Hybrid_No_Abstain": {
+      "TP": 57,
+      "TN": 16,
+      "FP": 49,
+      "FN": 4,
+      "ABSTAIN": 0,
+      "Coverage": 1.0,
+      "Accuracy_Decided": 0.5793650793650794,
+      "Accuracy_Overall": 0.5793650793650794,
+      "Precision": 0.5377358490566038,
+      "Recall": 0.9344262295081968,
+      "F1": 0.6826347305389222,
+      "False_Invalidation_Rate_FIR": 0.7538461538461538,
+      "Stale_Exposure_Rate_SER": 0.06557377049180328,
+      "Valid_Memory_Recall": 0.24615384615384617,
+      "Stale_Memory_Recall": 0.9344262295081968,
+      "Per_Category_Accuracy": {
+        "CAT_A_FILE_CHG_SYM_SAME_VALID": 0.23529411764705882,
+        "CAT_D_SYM_CHG_OR_REM_STALE": 0.9130434782608695,
+        "CAT_B_SYM_CHG_MEMORY_VALID": 0.2857142857142857,
+        "CAT_C_SYM_SAME_MEMORY_STALE": 1.0
+      }
+    },
+    "RoleMem_Hybrid_With_Abstain": {
+      "TP": 57,
+      "TN": 10,
+      "FP": 49,
+      "FN": 4,
+      "ABSTAIN": 6,
+      "Coverage": 0.9523809523809523,
+      "Accuracy_Decided": 0.5583333333333333,
+      "Accuracy_Overall": 0.5317460317460317,
+      "Precision": 0.5377358490566038,
+      "Recall": 0.9344262295081968,
+      "F1": 0.6826347305389222,
+      "False_Invalidation_Rate_FIR": 0.7538461538461538,
+      "Stale_Exposure_Rate_SER": 0.06557377049180328,
+      "Valid_Memory_Recall": 0.15384615384615385,
+      "Stale_Memory_Recall": 0.9344262295081968,
+      "Per_Category_Accuracy": {
+        "CAT_A_FILE_CHG_SYM_SAME_VALID": 0.13333333333333333,
+        "CAT_D_SYM_CHG_OR_REM_STALE": 0.9130434782608695,
+        "CAT_B_SYM_CHG_MEMORY_VALID": 0.2857142857142857,
+        "CAT_C_SYM_SAME_MEMORY_STALE": 1.0
+      }
+    }
+  }
+}
