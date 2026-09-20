@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_29_pluggy_static_hook_attr_discovery",
+  "provenance_status": "TARGET_MEMORY_VERIFIED",
+  "checks": {
+    "source_commit_matches": true,
+    "source_pr_matches": true,
+    "supporting_hunk_non_empty": true,
+    "evidence_excerpt_non_empty": true,
+    "hunk_in_diff_patch": true,
+    "evidence_hunk_sha256_verified": true,
+    "diff_patch_sha256_verified": true,
+    "evidence_excerpt_hash_verified": true,
+    "statement_entailed": true
+  },
+  "recomputed_hashes": {
+    "diff_hunk_sha256": "f98212b5a87c1a667eee635c09329ca0a365bc1e5720979d96f222e463fa9e6f",
+    "diff_patch_sha256": "e1d37885a28dabf9eb5010b468224fc5cccff24d6a90dbf163429d4bcb33bced",
+    "evidence_excerpt_hash": "8d05bb1820eaf51787bbde66c7f64043b0b43e036b2e8d80fd61e2f10c26488c"
+  },
+  "claim": {
+    "transition_id": "trans_track_a_29_pluggy_static_hook_attr_discovery",
+    "statement": "pluggy uses _static_hook_attr to avoid evaluating properties during hook discovery.",
+    "symbol": "pluggy._manager._static_hook_attr",
+    "replacement": "_static_hook_attr, pluggy._manager._static_hook_attr",
+    "source_pr_url": "https://github.com/pytest-dev/pluggy/pull/701",
+    "source_commit": "bc9bcac68b9f3c670481661ddc50e5a0217e71d1",
+    "evidence_file": "src/pluggy/_manager.py",
+    "supporting_hunk": "@@ -50,6 +50,82 @@ def _warn_for_function(warning: Warning, function: Callable[..., object]) -> Non\n     )\n \n \n+_ABSENT: Final = object()\n+\n+\n+def _instance_dict(obj: object) -> dict[str, Any]:\n+    \"\"\"Return ``obj``'s own ``__dict__``, without going through ``getattr``.\"\"\"\n+    try:\n+        instance_dict = object.__getattribute__(obj, \"__dict__\")\n+    except AttributeError:\n+        return {}\n+    return instance_dict if isinstance(instance_dict, dict) else {}\n+\n+\n+def _static_hook_attr(\n+    obj: object, name: str\n+) -> tuple[object, Callable[..., object]] | None:\n+    \"\"\"Return ``(marker_holder, function)`` for ``name`` on ``obj``, else None.\n+\n+    Lookup avoids ``getattr()`` so that properties, ``cached_property`` and\n+    other descriptors are skipped instead of being evaluated -- hooks provided\n+    through such a descriptor (or only through ``__getattr__``) are not\n+    supported. Only plain functions, :class:`classmethod`, :class:`staticmethod`\n+    and already-bound :class:`~types.MethodType` objects are hookable.\n+\n+    ``marker_holder`` is the object that may carry the hookimpl/hookspec\n+    options: the ``classmethod``/``staticmethod`` wrapper when the marker was\n+    applied above it, the underlying function otherwise. ``function`` is bound\n+    exactly the way ``getattr()`` would have bound it.\n+    \"\"\"\n+    if not (inspect.isclass(obj) or inspect.ismodule(obj)):\n+        # Values stored on the instance itself -- in ``__dict__`` or in a\n+        # ``__slots__`` slot -- are handed out by ``getattr()`` as they are,\n+        # bypassing the descriptor protocol, so they must not be bound here.\n+        value = _instance_dict(obj).get(name, _ABSENT)\n+        if value is _ABSENT:\n+            slot = inspect.getattr_static(obj, name, None)\n+            if isinstance(slot, types.MemberDescriptorType):\n+                # Reading a slot runs no user code.\n+                try:\n+                    value = slot.__get__(obj, type(obj))\n+                except AttributeError:\n+                    value = _ABSENT\n+        if value is not _ABSENT:\n+            if isinstance(value, types.MethodType):\n+                return value.__func__, value\n+            if inspect.isfunction(value):\n+                return value, value\n+            return None\n+\n+    static: object = inspect.getattr_static(obj, name, None)\n+    if isinstance(static, staticmethod):\n+        return static, static.__func__\n+    if isinstance(static, classmethod):\n+        owner = obj if inspect.isclass(obj) else type(obj)\n+        return static, cast(Callable[..., object], static.__get__(owner, owner))\n+    if isinstance(static, types.MethodType):\n+        return static.__func__, static\n+    if inspect.isfunction(static):\n+        if inspect.isclass(obj) or inspect.ismodule(obj):\n+            return static, static\n+        return static, static.__get__(obj, type(obj))\n+    return None\n+\n+\n+def _get_marker_opts(holder: object, attrname: str) -> dict[str, Any] | None:\n+    \"\"\"Read marker options from ``holder``, falling back to ``__func__``.\"\"\"\n+    opts = getattr(holder, attrname, None)\n+    if opts is not None:\n+        return opts if isinstance(opts, dict) else None\n+    func = getattr(holder, \"__func__\", None)\n+    if func is not None:\n+        opts = getattr(func, attrname, None)\n+        if opts is not None:\n+            return opts if isinstance(opts, dict) else None\n+    return None\n+\n+\n class PluginValidationError(Exception):\n     \"\"\"Plugin failed validation.\n \n",
+    "evidence_hunk_sha256": "f98212b5a87c1a667eee635c09329ca0a365bc1e5720979d96f222e463fa9e6f",
+    "diff_patch_sha256": "e1d37885a28dabf9eb5010b468224fc5cccff24d6a90dbf163429d4bcb33bced",
+    "evidence_excerpt": "@@ -50,6 +50,82 @@ def _warn_for_function(warning: Warning, function: Callable[..., object]) -> Non\n+_ABSENT: Final = object()\n+\n+\n+def _instance_dict(obj: object) -> dict[str, Any]:\n+    \"\"\"Return ``obj``'s own ``__dict__``, without going through ``getattr``.\"\"\"\n+    try:\n+        instance_dict = object.__getattribute__(obj, \"__dict__\")\n+    except AttributeError:\n+        return {}\n+    return instance_dict if isinstance(instance_dict, dict) else {}\n+\n+\n+def _static_hook_attr(\n+    obj: object, name: str",
+    "evidence_excerpt_hash": "8d05bb1820eaf51787bbde66c7f64043b0b43e036b2e8d80fd61e2f10c26488c",
+    "artifact": "src/pluggy/_manager.py"
+  }
+}

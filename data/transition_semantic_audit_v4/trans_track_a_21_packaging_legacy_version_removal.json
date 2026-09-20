@@ -1,0 +1,62 @@
+{
+  "transition_id": "trans_track_a_21_packaging_legacy_version_removal",
+  "verdict": "SEMANTIC_STRONG_PASS",
+  "semantic_pass": true,
+  "q1_repo_change_pr_diff": {
+    "pass": true,
+    "evidence": {
+      "diff_bytes": 54507,
+      "diff_mentions_symbol": true,
+      "pr_title": "Drop `LegacySpecifier` and `LegacyVersion`",
+      "pr_mentions_concept": true
+    }
+  },
+  "q2_stale_memory_base_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "packaging/version.py",
+      "base_commit": "4f42225e91a0be634625c09e84dd29ea82b85e27",
+      "matched_term": "LegacyVersion",
+      "lineno": 13,
+      "excerpt": "from ._structures import Infinity, InfinityType, NegativeInfinity, NegativeInfinityType\n\n__all__ = [\"parse\", \"Version\", \"LegacyVersion\", \"InvalidVersion\", \"VERSION_PATTERN\"]\n\nInfiniteTypes = Union[InfinityType, NegativeInfinityType]\nPrePostDevType = Union[InfiniteTypes, Tuple[str, int]]\nSubLocalType",
+      "evidence_sha256": "adf3e73e35fc727e2b79a481a1b3dc25ecfffa7e9a54be26c700c8cbf11ddbc3"
+    }
+  },
+  "q3_valid_memory_target_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "packaging/version.py",
+      "target_commit": "237ff3aa348486cf835a980592af3a59fccd6101",
+      "matched_term": "Version",
+      "lineno": 1,
+      "excerpt": "# This file is dual licensed under the terms of the Apache License, Version\n# 2.0, and the BSD License. See the LICENSE file in the root of this repository\n# for complete details.\n\nimport collections\nimport itertools\nimport re\nfrom typing import Callable, Optional, SupportsInt, Tuple, Union",
+      "evidence_sha256": "8ab273e07baf1edb67b95aec07c0e9c376a87ac70c2bad8c2af9618d3e5502d0"
+    }
+  },
+  "q4_current_task_capability": {
+    "pass": true,
+    "evidence": {
+      "current_task": "Implement `parse_version_safely(v: str)` in `version_parser.py` returning standard Version string or 'INVALID'.",
+      "target_symbol": "parse_version_safely",
+      "symbol_in_hidden_test": true
+    }
+  },
+  "q5_stale_solution_asymmetry": {
+    "pass": true,
+    "evidence": {
+      "base_stale_pass": true,
+      "target_stale_pass": false,
+      "target_stale_is_stale": true,
+      "stale_ast_valid": true
+    }
+  },
+  "q6_valid_solution_target_pass": {
+    "pass": true,
+    "evidence": {
+      "target_valid_pass": true,
+      "base_valid_pass": false,
+      "is_evolution_control": false,
+      "valid_ast_valid": true
+    }
+  }
+}

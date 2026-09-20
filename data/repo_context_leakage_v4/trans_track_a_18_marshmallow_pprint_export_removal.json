@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_18_marshmallow_pprint_export_removal",
+  "leakage_level": "REPO_CONTEXT_HINTED",
+  "retrieved_tokens": 1200,
+  "retrieved_files": [],
+  "hinted_terms_found": [
+    "fields"
+  ],
+  "target_func_def_found": false,
+  "near_solution_found": false,
+  "retrieved_context_excerpt": "[REPOSITORY CONTEXT (RETRIEVED)]\n# File: src/marshmallow/schema.py (Lines 321-360)\n            class MySchema(Schema):\n                class Meta:\n                    fields = (\"id\", \"email\", \"date_created\")\n                    exclude = (\"password\", \"secret_attribute\")\n\n        .. admonition:: A note on type checking\n\n            Type checkers will only check the attributes of the `Meta <marshmallow.Schema.Meta>`\n            class if you explicitly subclass `marshmallow.Schema.Meta`.\n\n         "
+}

@@ -1,7 +1,9 @@
 {
   "task_id": "trans_track_a_24_cachelib_timeout_timedelta",
   "condition": "S2",
-  "seed": 123,
+  "requested_seed": 123,
+  "actual_generation_seed": 146,
+  "attempt": 1,
   "memory_source": "AGENT_A_HISTORICAL",
   "statement": "BaseCache is a base class for cache systems, providing methods like get, delete, and get_many with configurable default timeout and error handling options.",
   "overall_task_success": true,

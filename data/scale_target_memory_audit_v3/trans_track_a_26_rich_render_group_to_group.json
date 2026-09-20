@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_26_rich_render_group_to_group",
+  "provenance_status": "TARGET_MEMORY_VERIFIED",
+  "checks": {
+    "source_commit_matches": true,
+    "source_pr_matches": true,
+    "supporting_hunk_non_empty": true,
+    "evidence_excerpt_non_empty": true,
+    "hunk_in_diff_patch": true,
+    "evidence_hunk_sha256_verified": true,
+    "diff_patch_sha256_verified": true,
+    "evidence_excerpt_hash_verified": true,
+    "statement_entailed": true
+  },
+  "recomputed_hashes": {
+    "diff_hunk_sha256": "e58b59c90f11a41db4226227ef3e30234bb212d77499d7743328d68627ef2a7c",
+    "diff_patch_sha256": "6dd6c14657e09d2e7d74818962bd6d55f85aeb7e531ed43a9f82c9a2796ea1a8",
+    "evidence_excerpt_hash": "61bc41dd4ab7c97edad8a23c84c635f314320171bd9959ffb44fee3e9ba56e09"
+  },
+  "claim": {
+    "transition_id": "trans_track_a_26_rich_render_group_to_group",
+    "statement": "Import and instantiate rich.console.Group to group renderable objects.",
+    "symbol": "rich.console.RenderGroup",
+    "replacement": "Group, rich.console.Group",
+    "source_pr_url": "https://github.com/Textualize/rich/pull/1819",
+    "source_commit": "44a715dec2b08277742939598fa28d056d6faef9",
+    "evidence_file": "rich/console.py",
+    "supporting_hunk": "@@ -475,9 +476,6 @@ class Group:\n         yield from self.renderables\n \n \n-RenderGroup = Group  # TODO: deprecate at some point\n-\n-\n def group(fit: bool = True) -> Callable[..., Callable[..., Group]]:\n     \"\"\"A decorator that turns an iterable of renderables in to a group.\n \n",
+    "evidence_hunk_sha256": "e58b59c90f11a41db4226227ef3e30234bb212d77499d7743328d68627ef2a7c",
+    "diff_patch_sha256": "6dd6c14657e09d2e7d74818962bd6d55f85aeb7e531ed43a9f82c9a2796ea1a8",
+    "evidence_excerpt": "@@ -475,9 +476,6 @@ class Group:\n-RenderGroup = Group  # TODO: deprecate at some point\n-\n-\n def group(fit: bool = True) -> Callable[..., Callable[..., Group]]:",
+    "evidence_excerpt_hash": "61bc41dd4ab7c97edad8a23c84c635f314320171bd9959ffb44fee3e9ba56e09",
+    "artifact": "rich/console.py"
+  }
+}

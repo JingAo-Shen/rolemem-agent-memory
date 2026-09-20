@@ -1,0 +1,62 @@
+{
+  "transition_id": "trans_track_a_22_dateutil_unknown_timezone_warning",
+  "verdict": "SEMANTIC_STRONG_PASS",
+  "semantic_pass": true,
+  "q1_repo_change_pr_diff": {
+    "pass": true,
+    "evidence": {
+      "diff_bytes": 3631,
+      "diff_mentions_symbol": true,
+      "pr_title": "Warn on unidentified tz",
+      "pr_mentions_concept": true
+    }
+  },
+  "q2_stale_memory_base_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "dateutil/parser/__init__.py",
+      "base_commit": "1a7ebd70371a95ae61f95cdcde6d6cbb5dd7f68c",
+      "matched_term": "def ",
+      "lineno": 18,
+      "excerpt": "\n\ndef __deprecated_private_func(f):\n    from functools import wraps\n    import warnings\n\n    msg = ('{name} is a private function and may break without warning, '\n           'it will be moved and or renamed in future versions.')\n    msg = msg.format(name=f.__name__)\n",
+      "evidence_sha256": "4a465fc9062adfe76cf97a86b818edf56a758063c766a9d4acd5b0e2da366925"
+    }
+  },
+  "q3_valid_memory_target_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "dateutil/parser/__init__.py",
+      "target_commit": "65d66b28ff201ae7bf59cf4128462e1c2d839da8",
+      "matched_term": "UnknownTimezoneWarning",
+      "lineno": 4,
+      "excerpt": "from ._parser import parse, parser, parserinfo\nfrom ._parser import DEFAULTPARSER, DEFAULTTZPARSER\nfrom ._parser import UnknownTimezoneWarning\n\nfrom ._parser import __doc__\n\nfrom .isoparser import isoparser, isoparse\n\n__all__ = ['parse', 'parser', 'parserinfo',\n           'isoparse', 'isoparser',",
+      "evidence_sha256": "2faf7aa57c6df4ab68da667a90738107192a9cbf1afad48837a1486ae627ee8b"
+    }
+  },
+  "q4_current_task_capability": {
+    "pass": true,
+    "evidence": {
+      "current_task": "Implement `get_tz_warning_name()` in `tz_checker.py` returning warning name used for unparseable timezones.",
+      "target_symbol": "get_tz_warning_name",
+      "symbol_in_hidden_test": true
+    }
+  },
+  "q5_stale_solution_asymmetry": {
+    "pass": true,
+    "evidence": {
+      "base_stale_pass": true,
+      "target_stale_pass": false,
+      "target_stale_is_stale": true,
+      "stale_ast_valid": true
+    }
+  },
+  "q6_valid_solution_target_pass": {
+    "pass": true,
+    "evidence": {
+      "target_valid_pass": true,
+      "base_valid_pass": false,
+      "is_evolution_control": true,
+      "valid_ast_valid": true
+    }
+  }
+}

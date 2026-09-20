@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_16_rich_file_proxy_isatty",
+  "provenance_status": "TARGET_MEMORY_VERIFIED",
+  "checks": {
+    "source_commit_matches": true,
+    "source_pr_matches": true,
+    "supporting_hunk_non_empty": true,
+    "evidence_excerpt_non_empty": true,
+    "hunk_in_diff_patch": true,
+    "evidence_hunk_sha256_verified": true,
+    "diff_patch_sha256_verified": true,
+    "evidence_excerpt_hash_verified": true,
+    "statement_entailed": true
+  },
+  "recomputed_hashes": {
+    "diff_hunk_sha256": "195aad95e34a45b44d2b222f8b13d0b55f4934d11b0412441700e010cd21e765",
+    "diff_patch_sha256": "19aca55f3f2038c43a1575dfa520ab6be220552027e53ce21a6df0f599ef2a8a",
+    "evidence_excerpt_hash": "5be96a295392897a51b3afca7972b9d5c990def41eadda1750a32bf2c9d875b5"
+  },
+  "claim": {
+    "transition_id": "trans_track_a_16_rich_file_proxy_isatty",
+    "statement": "Call proxy.isatty() directly on rich FileProxy instances.",
+    "symbol": "FileProxy.isatty",
+    "replacement": "isatty, proxy.isatty",
+    "source_pr_url": "https://github.com/Textualize/rich/pull/4077",
+    "source_commit": "19c67b9a3479841e9133bea94607c89ee931d3fc",
+    "evidence_file": "rich/file_proxy.py",
+    "supporting_hunk": "@@ -55,3 +55,6 @@ class FileProxy(io.TextIOBase):\n \n     def fileno(self) -> int:\n         return self.__file.fileno()\n+\n+    def isatty(self) -> bool:\n+        return self.__file.isatty()\n",
+    "evidence_hunk_sha256": "195aad95e34a45b44d2b222f8b13d0b55f4934d11b0412441700e010cd21e765",
+    "diff_patch_sha256": "19aca55f3f2038c43a1575dfa520ab6be220552027e53ce21a6df0f599ef2a8a",
+    "evidence_excerpt": "@@ -55,3 +55,6 @@ class FileProxy(io.TextIOBase):\n     def fileno(self) -> int:\n+\n+    def isatty(self) -> bool:\n+        return self.__file.isatty()",
+    "evidence_excerpt_hash": "5be96a295392897a51b3afca7972b9d5c990def41eadda1750a32bf2c9d875b5",
+    "artifact": "rich/file_proxy.py"
+  }
+}

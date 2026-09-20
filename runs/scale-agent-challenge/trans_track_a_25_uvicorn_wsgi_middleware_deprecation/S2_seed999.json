@@ -1,7 +1,9 @@
 {
   "task_id": "trans_track_a_25_uvicorn_wsgi_middleware_deprecation",
   "condition": "S2",
-  "seed": 999,
+  "requested_seed": 999,
+  "actual_generation_seed": 1022,
+  "attempt": 1,
   "memory_source": "AGENT_A_HISTORICAL",
   "statement": "WSGIMiddleware is a class that wraps an ASGI application and allows it to be run within a WSGI environment using a ThreadPoolExecutor for asynchronous processing.",
   "overall_task_success": false,

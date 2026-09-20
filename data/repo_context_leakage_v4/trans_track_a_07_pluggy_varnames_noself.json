@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_07_pluggy_varnames_noself",
+  "leakage_level": "REPO_CONTEXT_HINTED",
+  "retrieved_tokens": 1200,
+  "retrieved_files": [],
+  "hinted_terms_found": [
+    "self"
+  ],
+  "target_func_def_found": false,
+  "near_solution_found": false,
+  "retrieved_context_excerpt": "[REPOSITORY CONTEXT (RETRIEVED)]\n# File: src/pluggy/_hooks.py (Lines 241-280)\n            earlier hook wrapper calls). The return value of the function\n            becomes the return value of the hook, and a raised exception becomes\n            the exception of the hook. See :ref:`hookwrapper`.\n\n        :param hookwrapper:\n            If ``True`` (\"old-style hook wrapper\"), the hook implementation\n            needs to execute exactly one ``yield``. The code before the\n            ``yield`` is ru"
+}

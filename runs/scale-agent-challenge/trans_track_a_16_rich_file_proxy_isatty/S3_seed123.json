@@ -1,7 +1,9 @@
 {
   "task_id": "trans_track_a_16_rich_file_proxy_isatty",
   "condition": "S3",
-  "seed": 123,
+  "requested_seed": 123,
+  "actual_generation_seed": 123,
+  "attempt": 0,
   "memory_source": "TARGET_MEMORY_VERIFIED",
   "statement": "Call proxy.isatty() directly on rich FileProxy instances.",
   "overall_task_success": true,

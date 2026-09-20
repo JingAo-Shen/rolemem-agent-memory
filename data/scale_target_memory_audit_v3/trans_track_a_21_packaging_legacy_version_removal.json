@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_21_packaging_legacy_version_removal",
+  "provenance_status": "TARGET_MEMORY_VERIFIED",
+  "checks": {
+    "source_commit_matches": true,
+    "source_pr_matches": true,
+    "supporting_hunk_non_empty": true,
+    "evidence_excerpt_non_empty": true,
+    "hunk_in_diff_patch": true,
+    "evidence_hunk_sha256_verified": true,
+    "diff_patch_sha256_verified": true,
+    "evidence_excerpt_hash_verified": true,
+    "statement_entailed": true
+  },
+  "recomputed_hashes": {
+    "diff_hunk_sha256": "de5a1bc2cdfe3142f51b93b532029372f2336af6750ba748f59f8bce1f4fda27",
+    "diff_patch_sha256": "d5b997fcf8d32766a745272edf9fa0577edb880d2f1397ba12bd958aa1b27db5",
+    "evidence_excerpt_hash": "e55654ae7c93f7439e6912ca9e238f717b79575f829cbf3dc5d9da819890cb85"
+  },
+  "claim": {
+    "transition_id": "trans_track_a_21_packaging_legacy_version_removal",
+    "statement": "Parse versions using packaging.version.Version; non-PEP440 raises InvalidVersion.",
+    "symbol": "packaging.version.LegacyVersion",
+    "replacement": "Version, packaging.version.Version",
+    "source_pr_url": "https://github.com/pypa/packaging/pull/407",
+    "source_commit": "237ff3aa348486cf835a980592af3a59fccd6101",
+    "evidence_file": "packaging/version.py",
+    "supporting_hunk": "@@ -5,12 +5,11 @@\n import collections\n import itertools\n import re\n-import warnings\n-from typing import Callable, Iterator, List, Optional, SupportsInt, Tuple, Union\n+from typing import Callable, Optional, SupportsInt, Tuple, Union\n \n from ._structures import Infinity, InfinityType, NegativeInfinity, NegativeInfinityType\n \n-__all__ = [\"parse\", \"Version\", \"LegacyVersion\", \"InvalidVersion\", \"VERSION_PATTERN\"]\n+__all__ = [\"parse\", \"Version\", \"InvalidVersion\", \"VERSION_PATTERN\"]\n \n InfiniteTypes = Union[InfinityType, NegativeInfinityType]\n PrePostDevType = Union[InfiniteTypes, Tuple[str, int]]\n",
+    "evidence_hunk_sha256": "de5a1bc2cdfe3142f51b93b532029372f2336af6750ba748f59f8bce1f4fda27",
+    "diff_patch_sha256": "d5b997fcf8d32766a745272edf9fa0577edb880d2f1397ba12bd958aa1b27db5",
+    "evidence_excerpt": "-import warnings\n-from typing import Callable, Iterator, List, Optional, SupportsInt, Tuple, Union\n+from typing import Callable, Optional, SupportsInt, Tuple, Union\n-__all__ = [\"parse\", \"Version\", \"LegacyVersion\", \"InvalidVersion\", \"VERSION_PATTERN\"]\n+__all__ = [\"parse\", \"Version\", \"InvalidVersion\", \"VERSION_PATTERN\"]",
+    "evidence_excerpt_hash": "e55654ae7c93f7439e6912ca9e238f717b79575f829cbf3dc5d9da819890cb85",
+    "artifact": "packaging/version.py"
+  }
+}

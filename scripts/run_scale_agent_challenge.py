@@ -8,10 +8,9 @@ Conditions:
 - S2: Task + Repo Context + Agent A Historical Memory (runs/historical-memory-writer-scale/)
 - S3: Task + Repo Context + Verified Target Memory (data/handoff_target_memory_scale.json)
 
-Outputs:
-- runs/scale-agent-challenge/<tid>/<condition>_seed<seed>.json
-- data/scale_agent_challenge_status.jsonl
-- reports/scale-agent-challenge.md
+Strictly Enforced:
+- No S3 fallback: missing verified target memory -> S3_INVALID_TARGET_MEMORY, do not run.
+- Explicit seed tracking: requested_seed, actual_generation_seed, attempt.
 """
 
 import os
@@ -31,6 +30,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 SCALE_MANIFEST_PATH = "/code/rolemem-agent-memory/data/track_a_scale_manifest.jsonl"
 SCALE_HIST_DIR = "/code/rolemem-agent-memory/runs/historical-memory-writer-scale"
 SCALE_TARGET_PATH = "/code/rolemem-agent-memory/data/handoff_target_memory_scale.json"
+TARGET_AUDIT_DIR = "/code/rolemem-agent-memory/data/scale_target_memory_audit_v3"
 OUTPUT_BASE = "/code/rolemem-agent-memory/runs/scale-agent-challenge"
 STATUS_JSONL = "/code/rolemem-agent-memory/data/scale_agent_challenge_status.jsonl"
 REPORT_PATH = "/code/rolemem-agent-memory/reports/scale-agent-challenge.md"
@@ -88,7 +88,6 @@ def run_scale_agent_challenge():
     with open(SCALE_TARGET_PATH, "r", encoding="utf-8") as f:
         target_snapshot = json.load(f).get("claims", {})
 
-    # Focus on scale candidate tasks with valid historical memories generated
     candidate_tids = sorted(os.listdir(SCALE_HIST_DIR))
     target_specs = [item for item in scale_specs if item["transition_id"] in candidate_tids]
 
@@ -124,6 +123,17 @@ def run_scale_agent_challenge():
             max_tokens=1200
         )
 
+        # Check target memory audit
+        target_audit_file = os.path.join(TARGET_AUDIT_DIR, f"{tid}.json")
+        target_verified = False
+        target_claim = {}
+        if os.path.exists(target_audit_file):
+            with open(target_audit_file) as f:
+                ta = json.load(f)
+                if ta.get("provenance_status") == "TARGET_MEMORY_VERIFIED":
+                    target_verified = True
+                    target_claim = ta.get("claim", {})
+
         valid_hist_count = 0
         h2_stale_count = 0
         h3_stale_count = 0
@@ -149,7 +159,9 @@ def run_scale_agent_challenge():
 
             with open(s0_out_path, "w", encoding="utf-8") as f:
                 json.dump({
-                    "task_id": tid, "condition": "S0", "seed": seed, "memory_source": "NO_MEMORY",
+                    "task_id": tid, "condition": "S0",
+                    "requested_seed": seed, "actual_generation_seed": seed, "attempt": 0,
+                    "memory_source": "NO_MEMORY",
                     "overall_task_success": s0_succ, "pytest_pass": s0_pass, "is_stale_action": s0_ast.stale_active_use,
                     "parsed_code": s0_code
                 }, f, indent=2)
@@ -157,9 +169,13 @@ def run_scale_agent_challenge():
             # 2. S2: Agent A Historical Memory
             hist_file = os.path.join(SCALE_HIST_DIR, tid, f"{seed}.json")
             hist_stmt = None
+            actual_gen_seed = seed
+            attempt_num = 0
             if os.path.exists(hist_file):
                 with open(hist_file) as f:
                     h_data = json.load(f)
+                    actual_gen_seed = h_data.get("seed", seed)
+                    attempt_num = h_data.get("attempt", 0)
                     if h_data.get("tier_c_semantic_factuality"):
                         hist_stmt = h_data.get("statement")
 
@@ -183,103 +199,86 @@ def run_scale_agent_challenge():
 
                 with open(s2_out_path, "w", encoding="utf-8") as f:
                     json.dump({
-                        "task_id": tid, "condition": "S2", "seed": seed, "memory_source": "AGENT_A_HISTORICAL",
+                        "task_id": tid, "condition": "S2",
+                        "requested_seed": seed, "actual_generation_seed": actual_gen_seed, "attempt": attempt_num,
+                        "memory_source": "AGENT_A_HISTORICAL",
                         "statement": hist_stmt, "overall_task_success": s2_succ, "pytest_pass": s2_pass,
                         "is_stale_action": s2_ast.stale_active_use, "parsed_code": s2_code
                     }, f, indent=2)
             else:
                 with open(s2_out_path, "w", encoding="utf-8") as f:
                     json.dump({
-                        "task_id": tid, "condition": "S2", "seed": seed, "memory_source": "INVALID_HISTORICAL_MEMORY",
+                        "task_id": tid, "condition": "S2",
+                        "requested_seed": seed, "actual_generation_seed": actual_gen_seed, "attempt": attempt_num,
+                        "memory_source": "INVALID_HISTORICAL_MEMORY",
                         "overall_task_success": False, "pytest_pass": False, "is_stale_action": False
                     }, f, indent=2)
 
-            # 3. S3: Verified Target Memory
-            target_claim = target_snapshot.get(tid, {})
-            target_stmt = target_claim.get("statement", item.get("valid_memory_candidate", ""))
+            # 3. S3: Verified Target Memory (Zero Fallback)
             s3_out_path = os.path.join(task_out_dir, f"S3_seed{seed}.json")
-            torch.manual_seed(seed)
-            target_mem_block = format_memory_block([target_stmt])
-            s3_prompt = f"TASK:\n{task_prompt}\n\n{target_mem_block}CURRENT REPOSITORY CONTEXT:\n{repo_context}\n\nProvide clean, complete Python code for {target_file} inside ```python ... ```."
-            s3_msgs = [{"role": "user", "content": s3_prompt}]
-            s3_chat = tokenizer.apply_chat_template(s3_msgs, tokenize=False, add_generation_prompt=True)
-            s3_inputs = tokenizer(s3_chat, return_tensors="pt").to("cuda")
-            with torch.no_grad():
-                s3_gen = model.generate(**s3_inputs, max_new_tokens=400, temperature=0.2, do_sample=True)
-            s3_code = extract_code(tokenizer.decode(s3_gen[0][s3_inputs.input_ids.shape[1]:], skip_special_tokens=True))
-            s3_ast = ASTStaleActionDetectorV2.analyze(s3_code, item)
-            s3_pass, s3_log = executor.execute_in_sandbox(target_ws, target_file, s3_code, hidden_test_code)
-            s3_succ = s3_pass and (not s3_ast.stale_active_use)
-            if s3_ast.stale_active_use: h3_stale_count += 1
-            if s3_succ: h3_tsr_count += 1
+            if target_verified and target_claim.get("statement"):
+                target_stmt = target_claim["statement"]
+                torch.manual_seed(seed)
+                mem_block = format_memory_block([target_stmt])
+                s3_prompt = f"TASK:\n{task_prompt}\n\n{mem_block}CURRENT REPOSITORY CONTEXT:\n{repo_context}\n\nProvide clean, complete Python code for {target_file} inside ```python ... ```."
+                s3_msgs = [{"role": "user", "content": s3_prompt}]
+                s3_chat = tokenizer.apply_chat_template(s3_msgs, tokenize=False, add_generation_prompt=True)
+                s3_inputs = tokenizer(s3_chat, return_tensors="pt").to("cuda")
+                with torch.no_grad():
+                    s3_gen = model.generate(**s3_inputs, max_new_tokens=400, temperature=0.2, do_sample=True)
+                s3_code = extract_code(tokenizer.decode(s3_gen[0][s3_inputs.input_ids.shape[1]:], skip_special_tokens=True))
+                s3_ast = ASTStaleActionDetectorV2.analyze(s3_code, item)
+                s3_pass, s3_log = executor.execute_in_sandbox(target_ws, target_file, s3_code, hidden_test_code)
+                s3_succ = s3_pass and (not s3_ast.stale_active_use)
+                if s3_ast.stale_active_use: h3_stale_count += 1
+                if s3_succ: h3_tsr_count += 1
 
-            with open(s3_out_path, "w", encoding="utf-8") as f:
-                json.dump({
-                    "task_id": tid, "condition": "S3", "seed": seed, "memory_source": "TARGET_MEMORY_VERIFIED",
-                    "statement": target_stmt, "overall_task_success": s3_succ, "pytest_pass": s3_pass,
-                    "is_stale_action": s3_ast.stale_active_use, "parsed_code": s3_code
-                }, f, indent=2)
+                with open(s3_out_path, "w", encoding="utf-8") as f:
+                    json.dump({
+                        "task_id": tid, "condition": "S3",
+                        "requested_seed": seed, "actual_generation_seed": seed, "attempt": 0,
+                        "memory_source": "TARGET_MEMORY_VERIFIED",
+                        "statement": target_stmt, "overall_task_success": s3_succ, "pytest_pass": s3_pass,
+                        "is_stale_action": s3_ast.stale_active_use, "parsed_code": s3_code
+                    }, f, indent=2)
+            else:
+                with open(s3_out_path, "w", encoding="utf-8") as f:
+                    json.dump({
+                        "task_id": tid, "condition": "S3",
+                        "requested_seed": seed, "actual_generation_seed": seed, "attempt": 0,
+                        "memory_source": "S3_INVALID_TARGET_MEMORY",
+                        "overall_task_success": False, "pytest_pass": False, "is_stale_action": False
+                    }, f, indent=2)
 
-        # Challenge Qualification
+        # Classify transition
         if is_control:
-            challenge_status = "EVOLUTION_CONTROL"
-        elif valid_hist_count < 2:
-            challenge_status = "HISTORICAL_MEMORY_UNSTABLE"
-        elif h2_stale_count >= 1 and (h3_stale_count < h2_stale_count or h3_tsr_count > h2_tsr_count):
-            challenge_status = "AGENT_STALE_CHALLENGE_READY"
-        elif h2_stale_count == 0:
-            challenge_status = "STALE_INSENSITIVE_FOR_QWEN7B"
+            category = "EVOLUTION_CONTROL"
+        elif h2_stale_count > 0:
+            if h3_tsr_count > 0 and h3_stale_count == 0:
+                category = "AGENT_STALE_CHALLENGE_READY"
+            else:
+                category = "STALE_AFFECTED_WITHOUT_TARGET_REPAIR"
         else:
-            challenge_status = "STALE_AFFECTED_WITHOUT_TARGET_REPAIR"
+            category = "STALE_INSENSITIVE_FOR_QWEN7B"
 
         rec = {
             "transition_id": tid,
-            "track": track,
-            "status": challenge_status,
-            "valid_historical_runs": f"{valid_hist_count}/3",
-            "repo_leakage": "REPO_CONTEXT_NONTRIVIAL",
-            "h2_stale_rate": f"{h2_stale_count}/{valid_hist_count}" if valid_hist_count > 0 else "0/0",
-            "h3_stale_rate": f"{h3_stale_count}/3",
-            "h0_tsr": f"{h0_tsr_count}/3",
-            "h2_tsr": f"{h2_tsr_count}/{valid_hist_count}" if valid_hist_count > 0 else "0/0",
-            "h3_tsr": f"{h3_tsr_count}/3"
+            "category": category,
+            "valid_historical_runs": valid_hist_count,
+            "s0_tsr": f"{h0_tsr_count}/3",
+            "s2_stale_rate": f"{h2_stale_count}/3",
+            "s2_tsr": f"{h2_tsr_count}/3",
+            "s3_stale_rate": f"{h3_stale_count}/3",
+            "s3_tsr": f"{h3_tsr_count}/3"
         }
         challenge_records.append(rec)
-        print(f"[{tid}] Status: {challenge_status} (Hist: {valid_hist_count}/3, H2 Stale: {h2_stale_count}, H3 Stale: {h3_stale_count}, H2 TSR: {h2_tsr_count}, H3 TSR: {h3_tsr_count})")
+        print(f"[{category}] {tid}: S0 TSR={h0_tsr_count}/3, S2 Stale={h2_stale_count}/3, S3 TSR={h3_tsr_count}/3")
 
-    # Save scale challenge status
     with open(STATUS_JSONL, "w", encoding="utf-8") as f:
         for r in challenge_records:
             f.write(json.dumps(r) + "\n")
 
-    # Render reports/scale-agent-challenge.md
-    ready_count = sum(1 for r in challenge_records if r["status"] == "AGENT_STALE_CHALLENGE_READY")
-    report_lines = [
-        "# Scale Agent Stale Challenge Evaluation Report",
-        "",
-        "## 1. Executive Summary",
-        "",
-        f"- **Candidate Transitions Audited**: {len(challenge_records)} (3 seeds = {len(challenge_records)*3} runs)",
-        f"- **Agent Stale Challenge Ready (Scale)**: **{ready_count}**",
-        "- **All memory sources strictly agent-generated**: `AGENT_A_HISTORICAL` and `TARGET_MEMORY_VERIFIED`",
-        "",
-        "---",
-        "",
-        "## 2. Scale Challenge Qualification Matrix",
-        "",
-        "| Transition ID | Qualification Status | Valid Hist Runs | H2 Stale Rate | H3 Stale Rate | H0 TSR | H2 TSR | H3 TSR |",
-        "| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |"
-    ]
-
-    for r in challenge_records:
-        report_lines.append(
-            f"| `{r['transition_id']}` | **{r['status']}** | {r['valid_historical_runs']} | {r['h2_stale_rate']} | {r['h3_stale_rate']} | {r['h0_tsr']} | {r['h2_tsr']} | {r['h3_tsr']} |"
-        )
-
-    with open(REPORT_PATH, "w", encoding="utf-8") as f:
-        f.write("\n".join(report_lines) + "\n")
-
-    print(f"\nScale Agent Challenge complete. Saved to {STATUS_JSONL} and {REPORT_PATH}")
+    print(f"\n[OK] Scale Agent Challenge complete. Saved to {STATUS_JSONL}")
 
 
 if __name__ == "__main__":

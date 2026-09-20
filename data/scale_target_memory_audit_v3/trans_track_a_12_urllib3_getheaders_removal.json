@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_12_urllib3_getheaders_removal",
+  "provenance_status": "TARGET_MEMORY_VERIFIED",
+  "checks": {
+    "source_commit_matches": true,
+    "source_pr_matches": true,
+    "supporting_hunk_non_empty": true,
+    "evidence_excerpt_non_empty": true,
+    "hunk_in_diff_patch": true,
+    "evidence_hunk_sha256_verified": true,
+    "diff_patch_sha256_verified": true,
+    "evidence_excerpt_hash_verified": true,
+    "statement_entailed": true
+  },
+  "recomputed_hashes": {
+    "diff_hunk_sha256": "04f849db182cb0cf8fa82147e393d4972c08861223c37dfae179377f5fa788c3",
+    "diff_patch_sha256": "d5e88228b8f0b1752cf044dd88da99ca098aa3d742319e1c614a7431d59ce4f5",
+    "evidence_excerpt_hash": "0a20aff1a18e4cbbfde6a3d350121c5233f9ed447612bc311fe1ef6d07e020a2"
+  },
+  "claim": {
+    "transition_id": "trans_track_a_12_urllib3_getheaders_removal",
+    "statement": "Access response headers directly via response.headers.",
+    "symbol": "HTTPResponse.getheaders",
+    "replacement": "response.headers, headers",
+    "source_pr_url": "https://github.com/urllib3/urllib3/pull/3622",
+    "source_commit": "4587fd6d477f22022be08de597c3a5acd5185c0a",
+    "evidence_file": "src/urllib3/response.py",
+    "supporting_hunk": "@@ -539,25 +538,6 @@ class BaseHTTPResponse(io.IOBase):\n             b[: len(temp)] = temp\n             return len(temp)\n \n-    # Compatibility methods for http.client.HTTPResponse\n-    def getheaders(self) -> HTTPHeaderDict:\n-        warnings.warn(\n-            \"HTTPResponse.getheaders() is deprecated and will be removed \"\n-            \"in urllib3 v2.6.0. Instead access HTTPResponse.headers directly.\",\n-            category=DeprecationWarning,\n-            stacklevel=2,\n-        )\n-        return self.headers\n-\n-    def getheader(self, name: str, default: str | None = None) -> str | None:\n-        warnings.warn(\n-            \"HTTPResponse.getheader() is deprecated and will be removed \"\n-            \"in urllib3 v2.6.0. Instead use HTTPResponse.headers.get(name, default).\",\n-            category=DeprecationWarning,\n-            stacklevel=2,\n-        )\n-        return self.headers.get(name, default)\n-\n     # Compatibility method for http.cookiejar\n     def info(self) -> HTTPHeaderDict:\n         return self.headers\n",
+    "evidence_hunk_sha256": "04f849db182cb0cf8fa82147e393d4972c08861223c37dfae179377f5fa788c3",
+    "diff_patch_sha256": "d5e88228b8f0b1752cf044dd88da99ca098aa3d742319e1c614a7431d59ce4f5",
+    "evidence_excerpt": "@@ -539,25 +538,6 @@ class BaseHTTPResponse(io.IOBase):\n-    # Compatibility methods for http.client.HTTPResponse\n-    def getheaders(self) -> HTTPHeaderDict:\n-        warnings.warn(\n-            \"HTTPResponse.getheaders() is deprecated and will be removed \"\n-            \"in urllib3 v2.6.0. Instead access HTTPResponse.headers directly.\",\n-            category=DeprecationWarning,\n-            stacklevel=2,\n-        )\n-        return self.headers\n-\n-    def getheader(self, name: str, default: str | None = None) -> str | None:\n-        warnings.warn(\n-            \"HTTPResponse.getheader() is deprecated and will be removed \"\n-            \"in urllib3 v2.6.0. Instead use HTTPResponse.headers.get(name, default).\",",
+    "evidence_excerpt_hash": "0a20aff1a18e4cbbfde6a3d350121c5233f9ed447612bc311fe1ef6d07e020a2",
+    "artifact": "src/urllib3/response.py"
+  }
+}

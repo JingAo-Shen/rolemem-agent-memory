@@ -1,0 +1,10 @@
+{
+  "transition_id": "trans_track_a_27_marshmallow_ipaddress_type_mapping",
+  "leakage_level": "REPO_CONTEXT_NONTRIVIAL",
+  "retrieved_tokens": 1200,
+  "retrieved_files": [],
+  "hinted_terms_found": [],
+  "target_func_def_found": false,
+  "near_solution_found": false,
+  "retrieved_context_excerpt": "[REPOSITORY CONTEXT (RETRIEVED)]\n# File: src/marshmallow/fields.py (Lines 401-440)\n            class TitleCase(Field):\n                def _serialize(self, value, attr, obj, **kwargs):\n                    if not value:\n                        return \"\"\n                    return str(value).title()\n\n        :param value: The value to be serialized.\n        :param attr: The attribute or key on the object to be serialized.\n        :param obj: The object the value was pulled from.\n        :param kwa"
+}

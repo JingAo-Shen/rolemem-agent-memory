@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_22_dateutil_unknown_timezone_warning",
+  "provenance_status": "TARGET_MEMORY_VERIFIED",
+  "checks": {
+    "source_commit_matches": true,
+    "source_pr_matches": true,
+    "supporting_hunk_non_empty": true,
+    "evidence_excerpt_non_empty": true,
+    "hunk_in_diff_patch": true,
+    "evidence_hunk_sha256_verified": true,
+    "diff_patch_sha256_verified": true,
+    "evidence_excerpt_hash_verified": true,
+    "statement_entailed": true
+  },
+  "recomputed_hashes": {
+    "diff_hunk_sha256": "2e0ddb5050a0829f21f02332da06fdced4bc5253fca8f3993f1f70a04e08dc4c",
+    "diff_patch_sha256": "5a1640cd72da15742fcd0db53f8772490470a4466289f73eaa15d183fca0bb3f",
+    "evidence_excerpt_hash": "4954bc66685b966507868c69ed433abb12ea19e9a4cf9f260a0604cad9470890"
+  },
+  "claim": {
+    "transition_id": "trans_track_a_22_dateutil_unknown_timezone_warning",
+    "statement": "Catch dateutil.parser.UnknownTimezoneWarning when parsing date strings with unknown timezones.",
+    "symbol": "dateutil.parser.UnknownTimezoneWarning",
+    "replacement": "UnknownTimezoneWarning, dateutil.parser.UnknownTimezoneWarning",
+    "source_pr_url": "https://github.com/dateutil/dateutil/pull/540",
+    "source_commit": "65d66b28ff201ae7bf59cf4128462e1c2d839da8",
+    "evidence_file": "dateutil/parser/__init__.py",
+    "supporting_hunk": "@@ -1,13 +1,15 @@\n # -*- coding: utf-8 -*-\n from ._parser import parse, parser, parserinfo\n from ._parser import DEFAULTPARSER, DEFAULTTZPARSER\n+from ._parser import UnknownTimezoneWarning\n \n from ._parser import __doc__\n \n from .isoparser import isoparser, isoparse\n \n __all__ = ['parse', 'parser', 'parserinfo',\n-           'isoparse', 'isoparser']\n+           'isoparse', 'isoparser',\n+           'UnknownTimezoneWarning']\n \n \n ###\n",
+    "evidence_hunk_sha256": "2e0ddb5050a0829f21f02332da06fdced4bc5253fca8f3993f1f70a04e08dc4c",
+    "diff_patch_sha256": "5a1640cd72da15742fcd0db53f8772490470a4466289f73eaa15d183fca0bb3f",
+    "evidence_excerpt": "+from ._parser import UnknownTimezoneWarning\n-           'isoparse', 'isoparser']\n+           'isoparse', 'isoparser',\n+           'UnknownTimezoneWarning']",
+    "evidence_excerpt_hash": "4954bc66685b966507868c69ed433abb12ea19e9a4cf9f260a0604cad9470890",
+    "artifact": "dateutil/parser/__init__.py"
+  }
+}

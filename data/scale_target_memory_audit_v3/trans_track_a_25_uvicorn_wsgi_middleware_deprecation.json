@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_25_uvicorn_wsgi_middleware_deprecation",
+  "provenance_status": "TARGET_MEMORY_VERIFIED",
+  "checks": {
+    "source_commit_matches": true,
+    "source_pr_matches": true,
+    "supporting_hunk_non_empty": true,
+    "evidence_excerpt_non_empty": true,
+    "hunk_in_diff_patch": true,
+    "evidence_hunk_sha256_verified": true,
+    "diff_patch_sha256_verified": true,
+    "evidence_excerpt_hash_verified": true,
+    "statement_entailed": true
+  },
+  "recomputed_hashes": {
+    "diff_hunk_sha256": "0bcb461ab4ac16c4b6ea33850251a11ad1ae50b88c1b53b91e70d93ed75d8be6",
+    "diff_patch_sha256": "d37847000282f285548bb7f4d696466318be65059e61df802e34c52e32af41a4",
+    "evidence_excerpt_hash": "8666628e610abdb6182903e5f2520ff30e64611321a11ce9d31d55b038e35c9f"
+  },
+  "claim": {
+    "transition_id": "trans_track_a_25_uvicorn_wsgi_middleware_deprecation",
+    "statement": "Native WSGIMiddleware is deprecated in uvicorn; migrate to a2wsgi.WSGIMiddleware.",
+    "symbol": "uvicorn.middleware.wsgi.WSGIMiddleware",
+    "replacement": "a2wsgi, a2wsgi.WSGIMiddleware",
+    "source_pr_url": "https://github.com/encode/uvicorn/pull/1825",
+    "source_commit": "2351d5ff2b068d7bcba6eaccde83bc90b0727c89",
+    "evidence_file": "uvicorn/middleware/wsgi.py",
+    "supporting_hunk": "@@ -73,8 +74,13 @@ def build_environ(\n     return environ\n \n \n-class WSGIMiddleware:\n+class _WSGIMiddleware:\n     def __init__(self, app: WSGIApp, workers: int = 10):\n+        warnings.warn(\n+            \"Uvicorn's native WSGI implementation is deprecated, you \"\n+            \"should switch to a2wsgi (`pip install a2wsgi`).\",\n+            DeprecationWarning,\n+        )\n         self.app = app\n         self.executor = concurrent.futures.ThreadPoolExecutor(max_workers=workers)\n \n",
+    "evidence_hunk_sha256": "0bcb461ab4ac16c4b6ea33850251a11ad1ae50b88c1b53b91e70d93ed75d8be6",
+    "diff_patch_sha256": "d37847000282f285548bb7f4d696466318be65059e61df802e34c52e32af41a4",
+    "evidence_excerpt": "@@ -73,8 +74,13 @@ def build_environ(\n-class WSGIMiddleware:\n+class _WSGIMiddleware:\n     def __init__(self, app: WSGIApp, workers: int = 10):\n+        warnings.warn(\n+            \"Uvicorn's native WSGI implementation is deprecated, you \"\n+            \"should switch to a2wsgi (`pip install a2wsgi`).\",\n+            DeprecationWarning,\n+        )",
+    "evidence_excerpt_hash": "8666628e610abdb6182903e5f2520ff30e64611321a11ce9d31d55b038e35c9f",
+    "artifact": "uvicorn/middleware/wsgi.py"
+  }
+}

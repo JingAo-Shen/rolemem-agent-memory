@@ -67,17 +67,23 @@ class RoleMemStoreV1:
                 self._propagate_invalidation(rec.memory_id, timestamp, visited)
 
 
-    def selective_artifact_invalidation(self, workspace_files: Dict[str, str]) -> Set[str]:
+    def selective_artifact_invalidation(self, workspace_files: Dict[str, str], validity_mode: str = "symbol") -> Set[str]:
         """
-        Check physical artifact digests against current workspace files.
-        Only memories referencing modified files are invalidated.
+        Check physical artifact/symbol digests against current workspace files.
+        If validity_mode == 'file': invalidate if artifact_digest differs.
+        If validity_mode == 'symbol': invalidate only if target symbol is modified/removed.
         """
         invalidated_ids: Set[str] = set()
         for rec_id, rec in self.records.items():
-            if rec.status == "ACTIVE" and rec.artifact_digest and rec.artifact_uri:
-                if not rec.is_artifact_valid(workspace_files):
-                    rec.status = "INVALIDATED_BY_ARTIFACT"
-                    invalidated_ids.add(rec_id)
+            if rec.status == "ACTIVE":
+                if validity_mode == "file":
+                    if not rec.is_artifact_valid(workspace_files):
+                        rec.status = "INVALIDATED_BY_ARTIFACT"
+                        invalidated_ids.add(rec_id)
+                else:
+                    if not rec.is_symbol_valid(workspace_files):
+                        rec.status = "INVALIDATED_BY_ARTIFACT"
+                        invalidated_ids.add(rec_id)
         return invalidated_ids
 
     def retrieve(
@@ -89,6 +95,7 @@ class RoleMemStoreV1:
         top_k: int = 5,
         use_validity: bool = True,
         use_artifact_hash: bool = True,
+        validity_mode: str = "symbol",
         use_role_bonus: bool = True,
         role_bonus_weight: float = 2.0
     ) -> List[MemoryRecordV1]:
@@ -96,7 +103,7 @@ class RoleMemStoreV1:
         
         # Step 1: Selective Invalidation
         if use_artifact_hash:
-            self.selective_artifact_invalidation(workspace_files)
+            self.selective_artifact_invalidation(workspace_files, validity_mode=validity_mode)
 
         candidates: List[MemoryRecordV1] = []
         for rec in self.records.values():
@@ -107,10 +114,14 @@ class RoleMemStoreV1:
                 if not (rec.valid_from <= current_time < rec.valid_to):
                     continue
             
-            # Artifact hash verification
+            # Artifact hash / symbol verification
             if use_artifact_hash:
-                if not rec.is_artifact_valid(workspace_files):
-                    continue
+                if validity_mode == "file":
+                    if not rec.is_artifact_valid(workspace_files):
+                        continue
+                else:
+                    if not rec.is_symbol_valid(workspace_files):
+                        continue
 
             candidates.append(rec)
 

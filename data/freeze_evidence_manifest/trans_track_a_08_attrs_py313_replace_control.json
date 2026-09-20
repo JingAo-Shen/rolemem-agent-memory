@@ -1,0 +1,27 @@
+{
+  "transition_id": "trans_track_a_08_attrs_py313_replace_control",
+  "freeze_status": "TRANSITION_SEED_FREEZE_READY",
+  "evidence_hashes": {
+    "spec_sha256": "be9baa09f06dc15ef7626c7406331d76d4671e433bb5051b1267ca2e811a5ecc",
+    "tree_manifest_sha256": "e9b80627656e31bcf12641d194eeade69242db025f0cd53d8ad148effb9fd39f",
+    "verifier_sha256": "8c3aadd82e718c7ce035a65ff481c86fda179189a177dd32469d81a851d48169",
+    "hidden_test_evidence_sha256": "9d2998bbe001fe4403e6735b47245a57810c3b583eafb17313b78a75613ca768",
+    "mutation_evidence_sha256": "e99c1884a2768d700ac72f8363cb30209ab12a655c4dd10d499e5e6bbb7b30d1",
+    "controls_evidence_sha256": "871abc4b6954ed5ff653e9687ad464881b34e8ec3053537fe3bbefc6c54cc868",
+    "causal_evidence_sha256": "f67fcadb2a8ad042ce025ed78bf1ea50ff71fa4822c57f41b4a5c9317cf67658",
+    "ground_truth_sha256": "2d6493114221ff95d6bc5ad57eb64298b84372780b9ffa8f539f47e1d296e47a",
+    "semantic_v4_sha256": "10c9d21d4544cebf1e362a02444f6e0769c4b5c3c216cadf8f0727fad7431e5c"
+  },
+  "checks": {
+    "spec_valid": true,
+    "tree_pure": true,
+    "verifier_accept": true,
+    "hidden_test_pass": true,
+    "mutants_killed": true,
+    "controls_pass": true,
+    "causal_pass": true,
+    "ground_truth_pass": true,
+    "semantic_v4_pass": true,
+    "semantic_v4_verdict": "SEMANTIC_STRONG_PASS"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_15_more_itertools_zip_equal_removal",
+  "leakage_level": "REPO_CONTEXT_HINTED",
+  "retrieved_tokens": 1194,
+  "retrieved_files": [],
+  "hinted_terms_found": [
+    "zip"
+  ],
+  "target_func_def_found": false,
+  "near_solution_found": false,
+  "retrieved_context_excerpt": "[REPOSITORY CONTEXT (RETRIEVED)]\n# File: more_itertools/more.py (Lines 1281-1320)\n    >>> list(interleave_evenly(iterables, lengths=lengths))\n    [(0, 1), (0, 2), 'a', (0, 3), (1, 2), 'b', (1, 3), (2, 3), 'c']\n\n    Based on Bresenham's algorithm.\n    \"\"\"\n    if lengths is None:\n        try:\n            lengths = [len(it) for it in iterables]\n        except TypeError:\n            raise ValueError(\n                'Iterable lengths could not be determined automatically. '\n                'Specify "
+}

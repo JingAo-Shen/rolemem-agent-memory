@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_13_starlette_weak_etag_removeprefix",
+  "provenance_status": "TARGET_MEMORY_VERIFIED",
+  "checks": {
+    "source_commit_matches": true,
+    "source_pr_matches": true,
+    "supporting_hunk_non_empty": true,
+    "evidence_excerpt_non_empty": true,
+    "hunk_in_diff_patch": true,
+    "evidence_hunk_sha256_verified": true,
+    "diff_patch_sha256_verified": true,
+    "evidence_excerpt_hash_verified": true,
+    "statement_entailed": true
+  },
+  "recomputed_hashes": {
+    "diff_hunk_sha256": "9468be67575b17181ee05731a5a282e827e69df69654b6e9203223eb7d655f41",
+    "diff_patch_sha256": "e0b03a6b1b419d7a2fef3371311e7af67e90d89bdd0ccd621dd450b153798932",
+    "evidence_excerpt_hash": "ea3b877ba54ae0e6a44ffe92bd9dcbd60f869cc0fc9ac058a44254a6751360d7"
+  },
+  "claim": {
+    "transition_id": "trans_track_a_13_starlette_weak_etag_removeprefix",
+    "statement": "Call StaticFiles.is_not_modified to verify weak etag matches.",
+    "symbol": "StaticFiles.is_not_modified",
+    "replacement": "StaticFiles, is_not_modified",
+    "source_pr_url": "https://github.com/encode/starlette/pull/3193",
+    "source_commit": "37309255b4c1b9c381a2d24a1eaf83100984a16a",
+    "evidence_file": "starlette/staticfiles.py",
+    "supporting_hunk": "@@ -210,7 +210,7 @@ class StaticFiles:\n         if if_none_match := request_headers.get(\"if-none-match\"):\n             # The \"etag\" header is added by FileResponse, so it's always present.\n             etag = response_headers[\"etag\"]\n-            return etag in [tag.strip(\" W/\") for tag in if_none_match.split(\",\")]\n+            return etag in [tag.strip().removeprefix(\"W/\") for tag in if_none_match.split(\",\")]\n \n         try:\n             if_modified_since = parsedate(request_headers[\"if-modified-since\"])\n",
+    "evidence_hunk_sha256": "9468be67575b17181ee05731a5a282e827e69df69654b6e9203223eb7d655f41",
+    "diff_patch_sha256": "e0b03a6b1b419d7a2fef3371311e7af67e90d89bdd0ccd621dd450b153798932",
+    "evidence_excerpt": "@@ -210,7 +210,7 @@ class StaticFiles:\n-            return etag in [tag.strip(\" W/\") for tag in if_none_match.split(\",\")]\n+            return etag in [tag.strip().removeprefix(\"W/\") for tag in if_none_match.split(\",\")]",
+    "evidence_excerpt_hash": "ea3b877ba54ae0e6a44ffe92bd9dcbd60f869cc0fc9ac058a44254a6751360d7",
+    "artifact": "starlette/staticfiles.py"
+  }
+}

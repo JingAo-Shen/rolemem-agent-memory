@@ -1,0 +1,62 @@
+{
+  "transition_id": "trans_track_a_09_virtualenv_drop_py38_control",
+  "verdict": "SEMANTIC_STRONG_PASS",
+  "semantic_pass": true,
+  "q1_repo_change_pr_diff": {
+    "pass": true,
+    "evidence": {
+      "diff_bytes": 27935,
+      "diff_mentions_symbol": true,
+      "pr_title": "\u2728 feat: drop Python 3.8 support",
+      "pr_mentions_concept": true
+    }
+  },
+  "q2_stale_memory_base_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "src/virtualenv/create/via_global_ref/builtin/cpython/cpython3.py",
+      "base_commit": "f1f4d687b12caac079d81ffc5ee50a16d1fabc1a",
+      "matched_term": "pyvenv_launch_patch_active",
+      "lineno": 74,
+      "excerpt": "    def env_patch_text(self) -> str:\n        text = super().env_patch_text()\n        if self.pyvenv_launch_patch_active(self.interpreter):\n            text += dedent(\n                \"\"\"\n                # for https://github.com/python/cpython/pull/9516, see https://github.com/pypa/virtualenv/issues/",
+      "evidence_sha256": "cbb87c27ca834fa4e09d96f37feda315584e6ce8acb1999ce86a482dbcd50505"
+    }
+  },
+  "q3_valid_memory_target_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "src/virtualenv/create/via_global_ref/builtin/cpython/cpython3.py",
+      "target_commit": "79ce906a2378e24c81a7b27ac506c73d5cc262d9",
+      "matched_term": "False",
+      "lineno": 35,
+      "excerpt": "    def can_describe(cls, interpreter: PythonInfo) -> bool:\n        return (\n            is_mac_os_framework(interpreter) is False\n            and is_macos_brew(interpreter) is False\n            and super().can_describe(interpreter)\n        )\n\n    @classmethod\n    def sources(cls, interpreter: Pytho",
+      "evidence_sha256": "8af8f3ea9cd88f2edc44e0ac95272d5846d82bca92dc4fdd5294a4adc2528303"
+    }
+  },
+  "q4_current_task_capability": {
+    "pass": true,
+    "evidence": {
+      "current_task": "Implement `requires_pyvenv_patch(info)` in `cpython_patch.py` checking whether legacy macOS launcher patch is needed.",
+      "target_symbol": "requires_pyvenv_patch",
+      "symbol_in_hidden_test": true
+    }
+  },
+  "q5_stale_solution_asymmetry": {
+    "pass": true,
+    "evidence": {
+      "base_stale_pass": true,
+      "target_stale_pass": false,
+      "target_stale_is_stale": true,
+      "stale_ast_valid": true
+    }
+  },
+  "q6_valid_solution_target_pass": {
+    "pass": true,
+    "evidence": {
+      "target_valid_pass": true,
+      "base_valid_pass": false,
+      "is_evolution_control": true,
+      "valid_ast_valid": true
+    }
+  }
+}

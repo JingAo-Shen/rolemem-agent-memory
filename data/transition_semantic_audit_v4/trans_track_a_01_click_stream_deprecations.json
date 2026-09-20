@@ -1,0 +1,62 @@
+{
+  "transition_id": "trans_track_a_01_click_stream_deprecations",
+  "verdict": "SEMANTIC_STRONG_PASS",
+  "semantic_pass": true,
+  "q1_repo_change_pr_diff": {
+    "pass": true,
+    "evidence": {
+      "diff_bytes": 18855,
+      "diff_mentions_symbol": true,
+      "pr_title": "Mark clearly functions private status. Deprecated Python 2 utilities.",
+      "pr_mentions_concept": true
+    }
+  },
+  "q2_stale_memory_base_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "src/click/utils.py",
+      "base_commit": "7a0a3447f6ddd2c15438c5d098e289323f9f9556",
+      "matched_term": "get_binary_stream",
+      "lineno": 352,
+      "excerpt": "\n\ndef get_binary_stream(name: t.Literal[\"stdin\", \"stdout\", \"stderr\"]) -> t.BinaryIO:\n    \"\"\"Returns a system stream for byte processing.\n\n    .. deprecated:: 8.5\n        Will be removed in Click 9.0.\n\n    :param name: the name of the stream to open.  Valid names are ``'stdin'``,\n                 ``'",
+      "evidence_sha256": "d021e807c03fb7e72a93023d8d6f0dfda43384404a074e7a304e8568b4bd20de"
+    }
+  },
+  "q3_valid_memory_target_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "src/click/utils.py",
+      "target_commit": "051725fa7e0c69effc9107066d8791c5b99242c3",
+      "matched_term": "get_binary_stream",
+      "lineno": 349,
+      "excerpt": "\n\ndef _get_binary_stream(name: t.Literal[\"stdin\", \"stdout\", \"stderr\"]) -> t.BinaryIO:\n    \"\"\"Returns a system stream for byte processing.\n\n    .. deprecated:: 8.5.0\n        Will be removed in Click 9.0.\n\n    :param name: the name of the stream to open.  Valid names are ``'stdin'``,\n                 ",
+      "evidence_sha256": "958c0cc667b672fed04f553c025498bf8f157023035733e412cda3d2a35e160f"
+    }
+  },
+  "q4_current_task_capability": {
+    "pass": true,
+    "evidence": {
+      "current_task": "Implement `get_io_stream(name: str)` in `stream_helper.py` obtaining standard binary streams without deprecated click utilities.",
+      "target_symbol": "get_io_stream",
+      "symbol_in_hidden_test": true
+    }
+  },
+  "q5_stale_solution_asymmetry": {
+    "pass": true,
+    "evidence": {
+      "base_stale_pass": true,
+      "target_stale_pass": false,
+      "target_stale_is_stale": true,
+      "stale_ast_valid": true
+    }
+  },
+  "q6_valid_solution_target_pass": {
+    "pass": true,
+    "evidence": {
+      "target_valid_pass": true,
+      "base_valid_pass": false,
+      "is_evolution_control": false,
+      "valid_ast_valid": true
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "transition_id": "trans_track_a_27_marshmallow_ipaddress_type_mapping",
+  "verdict": "SEMANTIC_STRONG_PASS",
+  "semantic_pass": true,
+  "q1_repo_change_pr_diff": {
+    "pass": true,
+    "evidence": {
+      "diff_bytes": 1345,
+      "diff_mentions_symbol": true,
+      "pr_title": "Add ipaddress types to Schema.TYPE_MAPPING",
+      "pr_mentions_concept": true
+    }
+  },
+  "q2_stale_memory_base_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "src/marshmallow/schema.py",
+      "base_commit": "3bc191ab3c8cac8356839bcde0918cb6aed4d3a1",
+      "matched_term": "String",
+      "lineno": 32,
+      "excerpt": ")\nfrom marshmallow.error_store import ErrorStore\nfrom marshmallow.exceptions import SCHEMA, StringNotCollectionError, ValidationError\nfrom marshmallow.orderedset import OrderedSet\nfrom marshmallow.utils import (\n    get_value,\n    is_collection,\n    is_sequence_but_not_string,\n    set_value,\n)",
+      "evidence_sha256": "043b6b04d5bab5145f713fcdcefd5cafbad43cfb45726fd840ecc4154587f1fa"
+    }
+  },
+  "q3_valid_memory_target_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "src/marshmallow/schema.py",
+      "target_commit": "c38b48ec3b8bb44315036d0c8a07bc8477eb5094",
+      "matched_term": "TYPE_MAPPING",
+      "lineno": 279,
+      "excerpt": "    \"\"\"\n\n    TYPE_MAPPING: dict[type, type[Field]] = {\n        str: ma_fields.String,\n        bytes: ma_fields.String,\n        dt.datetime: ma_fields.DateTime,\n        float: ma_fields.Float,\n        bool: ma_fields.Boolean,\n        tuple: ma_fields.Raw,\n        list: ma_fields.Raw,",
+      "evidence_sha256": "c730c8ce07a917b1fe2086ad457a8d08152eaa94dd9ea90d8c52681dd59987db"
+    }
+  },
+  "q4_current_task_capability": {
+    "pass": true,
+    "evidence": {
+      "current_task": "Implement `get_ip_field_type(ip_cls)` in `ip_schema_helper.py` resolving corresponding schema field class.",
+      "target_symbol": "get_ip_field_type",
+      "symbol_in_hidden_test": true
+    }
+  },
+  "q5_stale_solution_asymmetry": {
+    "pass": true,
+    "evidence": {
+      "base_stale_pass": true,
+      "target_stale_pass": false,
+      "target_stale_is_stale": true,
+      "stale_ast_valid": true
+    }
+  },
+  "q6_valid_solution_target_pass": {
+    "pass": true,
+    "evidence": {
+      "target_valid_pass": true,
+      "base_valid_pass": false,
+      "is_evolution_control": true,
+      "valid_ast_valid": true
+    }
+  }
+}

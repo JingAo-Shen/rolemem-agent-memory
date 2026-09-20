@@ -1,0 +1,62 @@
+{
+  "transition_id": "trans_track_a_10_httpx_client_proxies_deprecation",
+  "verdict": "SEMANTIC_STRONG_PASS",
+  "semantic_pass": true,
+  "q1_repo_change_pr_diff": {
+    "pass": true,
+    "evidence": {
+      "diff_bytes": 33277,
+      "diff_mentions_symbol": true,
+      "pr_title": "Add the 'proxy' parameter and deprecate 'proxies'.",
+      "pr_mentions_concept": true
+    }
+  },
+  "q2_stale_memory_base_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "httpx/_client.py",
+      "base_commit": "b471f01d668b9ef730e8843531b07b1c21b74c47",
+      "matched_term": "proxies",
+      "lineno": 53,
+      "excerpt": "    Timer,\n    URLPattern,\n    get_environment_proxies,\n    is_https_redirect,\n    same_origin,\n)\n\n# The type annotation for @classmethod and context managers here follows PEP 484\n# https://www.python.org/dev/peps/pep-0484/#annotating-instance-and-class-methods\nT = typing.TypeVar(\"T\", bound=\"Client\"",
+      "evidence_sha256": "97805227e4d5b964739cba8cb0b855c98f1b6f8da4641176541249127566f765"
+    }
+  },
+  "q3_valid_memory_target_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "httpx/_client.py",
+      "target_commit": "f8981f3d124f9b8db9073fd5c8afa11acb55a738",
+      "matched_term": "proxies",
+      "lineno": 54,
+      "excerpt": "    Timer,\n    URLPattern,\n    get_environment_proxies,\n    is_https_redirect,\n    same_origin,\n)\n\n# The type annotation for @classmethod and context managers here follows PEP 484\n# https://www.python.org/dev/peps/pep-0484/#annotating-instance-and-class-methods\nT = typing.TypeVar(\"T\", bound=\"Client\"",
+      "evidence_sha256": "97805227e4d5b964739cba8cb0b855c98f1b6f8da4641176541249127566f765"
+    }
+  },
+  "q4_current_task_capability": {
+    "pass": true,
+    "evidence": {
+      "current_task": "Implement `build_proxied_client(proxy_url: str)` in `client_factory.py` configuring an HTTPX Client with an HTTP proxy.",
+      "target_symbol": "build_proxied_client",
+      "symbol_in_hidden_test": true
+    }
+  },
+  "q5_stale_solution_asymmetry": {
+    "pass": true,
+    "evidence": {
+      "base_stale_pass": true,
+      "target_stale_pass": false,
+      "target_stale_is_stale": true,
+      "stale_ast_valid": true
+    }
+  },
+  "q6_valid_solution_target_pass": {
+    "pass": true,
+    "evidence": {
+      "target_valid_pass": true,
+      "base_valid_pass": false,
+      "is_evolution_control": false,
+      "valid_ast_valid": true
+    }
+  }
+}

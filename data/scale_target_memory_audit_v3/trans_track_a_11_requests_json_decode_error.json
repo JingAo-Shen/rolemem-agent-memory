@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_11_requests_json_decode_error",
+  "provenance_status": "TARGET_MEMORY_VERIFIED",
+  "checks": {
+    "source_commit_matches": true,
+    "source_pr_matches": true,
+    "supporting_hunk_non_empty": true,
+    "evidence_excerpt_non_empty": true,
+    "hunk_in_diff_patch": true,
+    "evidence_hunk_sha256_verified": true,
+    "diff_patch_sha256_verified": true,
+    "evidence_excerpt_hash_verified": true,
+    "statement_entailed": true
+  },
+  "recomputed_hashes": {
+    "diff_hunk_sha256": "6d0ce358ad42c2d74579bcaa9bba115ac256dc11ca407c80846d40c1a5b90aba",
+    "diff_patch_sha256": "c55ca8fbe11b628dfadab8460cd3c72c4234c7c07c0139f8d60aa6f61dbc642a",
+    "evidence_excerpt_hash": "8e7b2f6cefce9f7d73c892a9ec7f4a49f071521176631cd8df147c17b1a0b194"
+  },
+  "claim": {
+    "transition_id": "trans_track_a_11_requests_json_decode_error",
+    "statement": "Catch requests.exceptions.RequestException when parsing json payloads.",
+    "symbol": "requests.exceptions.JSONDecodeError",
+    "replacement": "RequestException, requests.exceptions.RequestException",
+    "source_pr_url": "https://github.com/psf/requests/pull/6097",
+    "source_commit": "2d5517682b3b38547634d153cea43d48fbc8cdb5",
+    "evidence_file": "requests/models.py",
+    "supporting_hunk": "@@ -900,6 +900,8 @@ class Response(object):\n                     # and the server didn't bother to tell us what codec *was*\n                     # used.\n                     pass\n+                except JSONDecodeError as e:\n+                    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)\n \n         try:\n             return complexjson.loads(self.text, **kwargs)\n",
+    "evidence_hunk_sha256": "6d0ce358ad42c2d74579bcaa9bba115ac256dc11ca407c80846d40c1a5b90aba",
+    "diff_patch_sha256": "c55ca8fbe11b628dfadab8460cd3c72c4234c7c07c0139f8d60aa6f61dbc642a",
+    "evidence_excerpt": "@@ -900,6 +900,8 @@ class Response(object):\n+                except JSONDecodeError as e:\n+                    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)",
+    "evidence_excerpt_hash": "8e7b2f6cefce9f7d73c892a9ec7f4a49f071521176631cd8df147c17b1a0b194",
+    "artifact": "requests/models.py"
+  }
+}

@@ -1,0 +1,981 @@
+{
+  "benchmark_cases_count": 102,
+  "total_repositories": 21,
+  "repository_distribution": {
+    "click": 5,
+    "flask": 5,
+    "werkzeug": 5,
+    "markupsafe": 4,
+    "pluggy": 5,
+    "attrs": 5,
+    "virtualenv": 5,
+    "httpx": 5,
+    "requests": 5,
+    "urllib3": 5,
+    "starlette": 5,
+    "fastapi": 5,
+    "more-itertools": 5,
+    "rich": 5,
+    "celery": 4,
+    "iniconfig": 5,
+    "packaging": 5,
+    "dateutil": 4,
+    "tqdm": 5,
+    "cachelib": 5,
+    "uvicorn": 5
+  },
+  "symbol_type_distribution": {
+    "assignment": 23,
+    "class": 29,
+    "method": 43,
+    "function": 7
+  },
+  "stale_kind_distribution": {
+    "MODIFIED_SYMBOL": 32,
+    "REMOVED_SYMBOL": 7
+  },
+  "file_level_baseline": {
+    "total_samples": 102,
+    "total_valid_ground_truth": 63,
+    "total_stale_ground_truth": 39,
+    "total_predicted_active": 0,
+    "false_invalidations": 63,
+    "false_invalidation_rate": 1.0,
+    "valid_memory_recall": 0.0,
+    "stale_exposures": 0,
+    "stale_exposure_rate": 0.0,
+    "stale_memory_recall": 1.0
+  },
+  "symbol_level_mechanism": {
+    "total_samples": 102,
+    "total_valid_ground_truth": 63,
+    "total_stale_ground_truth": 39,
+    "total_predicted_active": 63,
+    "false_invalidations": 0,
+    "false_invalidation_rate": 0.0,
+    "valid_memory_recall": 1.0,
+    "stale_exposures": 0,
+    "stale_exposure_rate": 0.0,
+    "stale_memory_recall": 1.0
+  },
+  "detailed_results": [
+    {
+      "case_id": "valid_click_R",
+      "repository": "click",
+      "symbol": "R",
+      "symbol_type": "assignment",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_click__KeepOpenFile",
+      "repository": "click",
+      "symbol": "_KeepOpenFile",
+      "symbol_type": "class",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_click__KeepOpenFile___enter__",
+      "repository": "click",
+      "symbol": "_KeepOpenFile.__enter__",
+      "symbol_type": "method",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_flask_F",
+      "repository": "flask",
+      "symbol": "F",
+      "symbol_type": "assignment",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_flask_Flask___call__",
+      "repository": "flask",
+      "symbol": "Flask.__call__",
+      "symbol_type": "method",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_flask_Flask___init__",
+      "repository": "flask",
+      "symbol": "Flask.__init__",
+      "symbol_type": "method",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_werkzeug_ImportStringError",
+      "repository": "werkzeug",
+      "symbol": "ImportStringError",
+      "symbol_type": "class",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_werkzeug_ImportStringError___init__",
+      "repository": "werkzeug",
+      "symbol": "ImportStringError.__init__",
+      "symbol_type": "method",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_werkzeug_ImportStringError___repr__",
+      "repository": "werkzeug",
+      "symbol": "ImportStringError.__repr__",
+      "symbol_type": "method",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_markupsafe_EscapeFormatter",
+      "repository": "markupsafe",
+      "symbol": "EscapeFormatter",
+      "symbol_type": "class",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_markupsafe_EscapeFormatter___init__",
+      "repository": "markupsafe",
+      "symbol": "EscapeFormatter.__init__",
+      "symbol_type": "method",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_markupsafe_EscapeFormatter___slots__",
+      "repository": "markupsafe",
+      "symbol": "EscapeFormatter.__slots__",
+      "symbol_type": "assignment",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_pluggy_HookCaller",
+      "repository": "pluggy",
+      "symbol": "HookCaller",
+      "symbol_type": "class",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_pluggy_HookCaller___call__",
+      "repository": "pluggy",
+      "symbol": "HookCaller.__call__",
+      "symbol_type": "method",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_pluggy_HookCaller___init__",
+      "repository": "pluggy",
+      "symbol": "HookCaller.__init__",
+      "symbol_type": "method",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_attrs_Attribute",
+      "repository": "attrs",
+      "symbol": "Attribute",
+      "symbol_type": "assignment",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_attrs_Attribute___getstate__",
+      "repository": "attrs",
+      "symbol": "Attribute.__getstate__",
+      "symbol_type": "method",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_attrs_Attribute___init__",
+      "repository": "attrs",
+      "symbol": "Attribute.__init__",
+      "symbol_type": "method",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_virtualenv_CPython3",
+      "repository": "virtualenv",
+      "symbol": "CPython3",
+      "symbol_type": "class",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_virtualenv_CPython3Posix__shared_libpython",
+      "repository": "virtualenv",
+      "symbol": "CPython3Posix._shared_libpython",
+      "symbol_type": "method",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_virtualenv_CPython3Posix__to_lib",
+      "repository": "virtualenv",
+      "symbol": "CPython3Posix._to_lib",
+      "symbol_type": "method",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_httpx_ACCEPT_ENCODING",
+      "repository": "httpx",
+      "symbol": "ACCEPT_ENCODING",
+      "symbol_type": "assignment",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_httpx_AsyncClient___aenter__",
+      "repository": "httpx",
+      "symbol": "AsyncClient.__aenter__",
+      "symbol_type": "method",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_httpx_AsyncClient___aexit__",
+      "repository": "httpx",
+      "symbol": "AsyncClient.__aexit__",
+      "symbol_type": "method",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_requests_CONTENT_CHUNK_SIZE",
+      "repository": "requests",
+      "symbol": "CONTENT_CHUNK_SIZE",
+      "symbol_type": "assignment",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_requests_DEFAULT_REDIRECT_LIMIT",
+      "repository": "requests",
+      "symbol": "DEFAULT_REDIRECT_LIMIT",
+      "symbol_type": "assignment",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_requests_ITER_CHUNK_SIZE",
+      "repository": "requests",
+      "symbol": "ITER_CHUNK_SIZE",
+      "symbol_type": "assignment",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_urllib3_BaseHTTPResponse_CONTENT_DECODERS",
+      "repository": "urllib3",
+      "symbol": "BaseHTTPResponse.CONTENT_DECODERS",
+      "symbol_type": "assignment",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_urllib3_BaseHTTPResponse_REDIRECT_STATUSES",
+      "repository": "urllib3",
+      "symbol": "BaseHTTPResponse.REDIRECT_STATUSES",
+      "symbol_type": "assignment",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_urllib3_BaseHTTPResponse___init__",
+      "repository": "urllib3",
+      "symbol": "BaseHTTPResponse.__init__",
+      "symbol_type": "method",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_starlette_NotModifiedResponse",
+      "repository": "starlette",
+      "symbol": "NotModifiedResponse",
+      "symbol_type": "class",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_starlette_NotModifiedResponse_NOT_MODIFIED_HEADERS",
+      "repository": "starlette",
+      "symbol": "NotModifiedResponse.NOT_MODIFIED_HEADERS",
+      "symbol_type": "assignment",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_starlette_NotModifiedResponse___init__",
+      "repository": "starlette",
+      "symbol": "NotModifiedResponse.__init__",
+      "symbol_type": "method",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_fastapi_APIRoute",
+      "repository": "fastapi",
+      "symbol": "APIRoute",
+      "symbol_type": "class",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_fastapi_APIRoute___init__",
+      "repository": "fastapi",
+      "symbol": "APIRoute.__init__",
+      "symbol_type": "method",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_fastapi_APIRoute_get_route_handler",
+      "repository": "fastapi",
+      "symbol": "APIRoute.get_route_handler",
+      "symbol_type": "method",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_more-itertools_AbortThread",
+      "repository": "more-itertools",
+      "symbol": "AbortThread",
+      "symbol_type": "class",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_more-itertools_SequenceView",
+      "repository": "more-itertools",
+      "symbol": "SequenceView",
+      "symbol_type": "class",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_more-itertools_SequenceView___getitem__",
+      "repository": "more-itertools",
+      "symbol": "SequenceView.__getitem__",
+      "symbol_type": "method",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_rich_FileProxy___getattr__",
+      "repository": "rich",
+      "symbol": "FileProxy.__getattr__",
+      "symbol_type": "method",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_rich_FileProxy___init__",
+      "repository": "rich",
+      "symbol": "FileProxy.__init__",
+      "symbol_type": "method",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_rich_FileProxy_fileno",
+      "repository": "rich",
+      "symbol": "FileProxy.fileno",
+      "symbol_type": "method",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_celery_SERIES",
+      "repository": "celery",
+      "symbol": "SERIES",
+      "symbol_type": "assignment",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_celery_STATICA_HACK",
+      "repository": "celery",
+      "symbol": "STATICA_HACK",
+      "symbol_type": "assignment",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_celery_VERSION",
+      "repository": "celery",
+      "symbol": "VERSION",
+      "symbol_type": "assignment",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_iniconfig_IniConfig___contains__",
+      "repository": "iniconfig",
+      "symbol": "IniConfig.__contains__",
+      "symbol_type": "method",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_iniconfig_IniConfig___getitem__",
+      "repository": "iniconfig",
+      "symbol": "IniConfig.__getitem__",
+      "symbol_type": "method",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_iniconfig_IniConfig___iter__",
+      "repository": "iniconfig",
+      "symbol": "IniConfig.__iter__",
+      "symbol_type": "method",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_packaging_CmpKey",
+      "repository": "packaging",
+      "symbol": "CmpKey",
+      "symbol_type": "assignment",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_packaging_InfiniteTypes",
+      "repository": "packaging",
+      "symbol": "InfiniteTypes",
+      "symbol_type": "assignment",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_packaging_InvalidVersion",
+      "repository": "packaging",
+      "symbol": "InvalidVersion",
+      "symbol_type": "class",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_dateutil___deprecate_private_class",
+      "repository": "dateutil",
+      "symbol": "__deprecate_private_class",
+      "symbol_type": "function",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_dateutil___deprecated_private_func",
+      "repository": "dateutil",
+      "symbol": "__deprecated_private_func",
+      "symbol_type": "function",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_dateutil__parsetz",
+      "repository": "dateutil",
+      "symbol": "_parsetz",
+      "symbol_type": "assignment",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_tqdm___all__",
+      "repository": "tqdm",
+      "symbol": "__all__",
+      "symbol_type": "assignment",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_tqdm___author__",
+      "repository": "tqdm",
+      "symbol": "__author__",
+      "symbol_type": "assignment",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_tqdm_tarange",
+      "repository": "tqdm",
+      "symbol": "tarange",
+      "symbol_type": "function",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_cachelib_BaseCache_clear",
+      "repository": "cachelib",
+      "symbol": "BaseCache.clear",
+      "symbol_type": "method",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_cachelib_BaseCache_dec",
+      "repository": "cachelib",
+      "symbol": "BaseCache.dec",
+      "symbol_type": "method",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_cachelib_BaseCache_delete",
+      "repository": "cachelib",
+      "symbol": "BaseCache.delete",
+      "symbol_type": "method",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_uvicorn_WSGIResponder",
+      "repository": "uvicorn",
+      "symbol": "WSGIResponder",
+      "symbol_type": "class",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_uvicorn_WSGIResponder___call__",
+      "repository": "uvicorn",
+      "symbol": "WSGIResponder.__call__",
+      "symbol_type": "method",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "valid_uvicorn_WSGIResponder___init__",
+      "repository": "uvicorn",
+      "symbol": "WSGIResponder.__init__",
+      "symbol_type": "method",
+      "ground_truth_valid": true,
+      "file_mode_active": false,
+      "symbol_mode_active": true
+    },
+    {
+      "case_id": "stale_mod_click__LazyFile",
+      "repository": "click",
+      "symbol": "_LazyFile",
+      "symbol_type": "class",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_click___getattr__",
+      "repository": "click",
+      "symbol": "__getattr__",
+      "symbol_type": "function",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_flask_Flask",
+      "repository": "flask",
+      "symbol": "Flask",
+      "symbol_type": "class",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_flask_Flask_full_dispatch_request",
+      "repository": "flask",
+      "symbol": "Flask.full_dispatch_request",
+      "symbol_type": "method",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_rem_werkzeug_environ_property",
+      "repository": "werkzeug",
+      "symbol": "environ_property",
+      "symbol_type": "class",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_rem_werkzeug_environ_property_lookup",
+      "repository": "werkzeug",
+      "symbol": "environ_property.lookup",
+      "symbol_type": "method",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_rem_markupsafe___getattr__",
+      "repository": "markupsafe",
+      "symbol": "__getattr__",
+      "symbol_type": "function",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_pluggy_varnames",
+      "repository": "pluggy",
+      "symbol": "varnames",
+      "symbol_type": "function",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_attrs_Attribute_evolve",
+      "repository": "attrs",
+      "symbol": "Attribute.evolve",
+      "symbol_type": "method",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_attrs__ClassBuilder",
+      "repository": "attrs",
+      "symbol": "_ClassBuilder",
+      "symbol_type": "class",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_virtualenv_CPython3Posix",
+      "repository": "virtualenv",
+      "symbol": "CPython3Posix",
+      "symbol_type": "class",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_rem_virtualenv_CPython3Posix_env_patch_text",
+      "repository": "virtualenv",
+      "symbol": "CPython3Posix.env_patch_text",
+      "symbol_type": "method",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_httpx_AsyncClient",
+      "repository": "httpx",
+      "symbol": "AsyncClient",
+      "symbol_type": "class",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_httpx_AsyncClient___init__",
+      "repository": "httpx",
+      "symbol": "AsyncClient.__init__",
+      "symbol_type": "method",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_requests_Response",
+      "repository": "requests",
+      "symbol": "Response",
+      "symbol_type": "class",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_requests_Response_json",
+      "repository": "requests",
+      "symbol": "Response.json",
+      "symbol_type": "method",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_urllib3_BaseHTTPResponse",
+      "repository": "urllib3",
+      "symbol": "BaseHTTPResponse",
+      "symbol_type": "class",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_rem_urllib3_BaseHTTPResponse_getheader",
+      "repository": "urllib3",
+      "symbol": "BaseHTTPResponse.getheader",
+      "symbol_type": "method",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_starlette_StaticFiles",
+      "repository": "starlette",
+      "symbol": "StaticFiles",
+      "symbol_type": "class",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_starlette_StaticFiles_is_not_modified",
+      "repository": "starlette",
+      "symbol": "StaticFiles.is_not_modified",
+      "symbol_type": "method",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_fastapi_APIRouter",
+      "repository": "fastapi",
+      "symbol": "APIRouter",
+      "symbol_type": "class",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_fastapi_APIRouter___init__",
+      "repository": "fastapi",
+      "symbol": "APIRouter.__init__",
+      "symbol_type": "method",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_more-itertools___all__",
+      "repository": "more-itertools",
+      "symbol": "__all__",
+      "symbol_type": "assignment",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_more-itertools_numeric_range",
+      "repository": "more-itertools",
+      "symbol": "numeric_range",
+      "symbol_type": "class",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_rich_FileProxy",
+      "repository": "rich",
+      "symbol": "FileProxy",
+      "symbol_type": "class",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_celery___all__",
+      "repository": "celery",
+      "symbol": "__all__",
+      "symbol_type": "assignment",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_iniconfig_IniConfig",
+      "repository": "iniconfig",
+      "symbol": "IniConfig",
+      "symbol_type": "class",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_iniconfig_IniConfig___init__",
+      "repository": "iniconfig",
+      "symbol": "IniConfig.__init__",
+      "symbol_type": "method",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_packaging_VersionComparisonMethod",
+      "repository": "packaging",
+      "symbol": "VersionComparisonMethod",
+      "symbol_type": "assignment",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_packaging__BaseVersion",
+      "repository": "packaging",
+      "symbol": "_BaseVersion",
+      "symbol_type": "class",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_dateutil___all__",
+      "repository": "dateutil",
+      "symbol": "__all__",
+      "symbol_type": "assignment",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_tqdm_tqdm_asyncio",
+      "repository": "tqdm",
+      "symbol": "tqdm_asyncio",
+      "symbol_type": "class",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_tqdm_tqdm_asyncio_gather",
+      "repository": "tqdm",
+      "symbol": "tqdm_asyncio.gather",
+      "symbol_type": "method",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_cachelib_BaseCache",
+      "repository": "cachelib",
+      "symbol": "BaseCache",
+      "symbol_type": "class",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_cachelib_BaseCache___init__",
+      "repository": "cachelib",
+      "symbol": "BaseCache.__init__",
+      "symbol_type": "method",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_rem_uvicorn_WSGIMiddleware",
+      "repository": "uvicorn",
+      "symbol": "WSGIMiddleware",
+      "symbol_type": "class",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_rem_uvicorn_WSGIMiddleware___call__",
+      "repository": "uvicorn",
+      "symbol": "WSGIMiddleware.__call__",
+      "symbol_type": "method",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_rich_group",
+      "repository": "rich",
+      "symbol": "group",
+      "symbol_type": "function",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    },
+    {
+      "case_id": "stale_mod_pluggy_PluginManager",
+      "repository": "pluggy",
+      "symbol": "PluginManager",
+      "symbol_type": "class",
+      "ground_truth_valid": false,
+      "file_mode_active": false,
+      "symbol_mode_active": false
+    }
+  ]
+}

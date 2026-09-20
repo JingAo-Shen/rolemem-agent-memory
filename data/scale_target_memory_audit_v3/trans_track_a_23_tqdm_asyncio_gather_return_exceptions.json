@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_23_tqdm_asyncio_gather_return_exceptions",
+  "provenance_status": "TARGET_MEMORY_VERIFIED",
+  "checks": {
+    "source_commit_matches": true,
+    "source_pr_matches": true,
+    "supporting_hunk_non_empty": true,
+    "evidence_excerpt_non_empty": true,
+    "hunk_in_diff_patch": true,
+    "evidence_hunk_sha256_verified": true,
+    "diff_patch_sha256_verified": true,
+    "evidence_excerpt_hash_verified": true,
+    "statement_entailed": true
+  },
+  "recomputed_hashes": {
+    "diff_hunk_sha256": "2dc4937ba698e2f305304235a670a088b7e050c7cbb2ca15357955692eeae47b",
+    "diff_patch_sha256": "c1f045b8c3cd176d9c3665c062026d79eb241fd45805f948a89f7ddb77eb0ef5",
+    "evidence_excerpt_hash": "989c7c6c992259a08d851dac5cb824592020aca86947e08b613be1a10da5cdbd"
+  },
+  "claim": {
+    "transition_id": "trans_track_a_23_tqdm_asyncio_gather_return_exceptions",
+    "statement": "Pass return_exceptions=True directly to tqdm_asyncio.gather.",
+    "symbol": "tqdm.asyncio.tqdm_asyncio.gather",
+    "replacement": "return_exceptions, tqdm_asyncio.gather(*fs, return_exceptions=...)",
+    "source_pr_url": "https://github.com/tqdm/tqdm/pull/1776",
+    "source_commit": "99615b978702dcf61986de62dfd252d82720af76",
+    "evidence_file": "tqdm/asyncio.py",
+    "supporting_hunk": "@@ -68,12 +68,18 @@ class tqdm_asyncio(std_tqdm):\n                        total=total, **tqdm_kwargs)\n \n     @classmethod\n-    async def gather(cls, *fs, loop=None, timeout=None, total=None, **tqdm_kwargs):\n+    async def gather(cls, *fs, loop=None, timeout=None, total=None, return_exceptions=False,\n+                     **tqdm_kwargs):\n         \"\"\"\n         Wrapper for `asyncio.gather`.\n         \"\"\"\n         async def wrap_awaitable(i, f):\n-            return i, await f\n+            try:\n+                return i, await f\n+            except Exception as e:  # noqa: BLE001\n+                if return_exceptions:\n+                    return i, e\n+                raise\n \n         ifs = [wrap_awaitable(i, f) for i, f in enumerate(fs)]\n         res = [await f for f in cls.as_completed(ifs, loop=loop, timeout=timeout,\n",
+    "evidence_hunk_sha256": "2dc4937ba698e2f305304235a670a088b7e050c7cbb2ca15357955692eeae47b",
+    "diff_patch_sha256": "c1f045b8c3cd176d9c3665c062026d79eb241fd45805f948a89f7ddb77eb0ef5",
+    "evidence_excerpt": "@@ -68,12 +68,18 @@ class tqdm_asyncio(std_tqdm):\n-    async def gather(cls, *fs, loop=None, timeout=None, total=None, **tqdm_kwargs):\n+    async def gather(cls, *fs, loop=None, timeout=None, total=None, return_exceptions=False,\n+                     **tqdm_kwargs):\n         async def wrap_awaitable(i, f):\n-            return i, await f\n+            try:\n+                return i, await f\n+            except Exception as e:  # noqa: BLE001\n+                if return_exceptions:\n+                    return i, e\n+                raise",
+    "evidence_excerpt_hash": "989c7c6c992259a08d851dac5cb824592020aca86947e08b613be1a10da5cdbd",
+    "artifact": "tqdm/asyncio.py"
+  }
+}

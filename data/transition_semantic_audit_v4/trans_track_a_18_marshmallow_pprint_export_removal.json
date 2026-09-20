@@ -1,0 +1,62 @@
+{
+  "transition_id": "trans_track_a_18_marshmallow_pprint_export_removal",
+  "verdict": "SEMANTIC_STRONG_PASS",
+  "semantic_pass": true,
+  "q1_repo_change_pr_diff": {
+    "pass": true,
+    "evidence": {
+      "diff_bytes": 1647,
+      "diff_mentions_symbol": true,
+      "pr_title": "Fix incorrect export by removing 'pprint' from __all__.",
+      "pr_mentions_concept": true
+    }
+  },
+  "q2_stale_memory_base_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "src/marshmallow/__init__.py",
+      "base_commit": "ad24f89100c95d3bf99ba17714d457c7c93e0b53",
+      "matched_term": "pprint",
+      "lineno": 26,
+      "excerpt": "    \"post_dump\",\n    \"post_load\",\n    \"pprint\",\n    \"pre_dump\",\n    \"pre_load\",\n    \"validates\",\n    \"validates_schema\",\n]",
+      "evidence_sha256": "93fda333d27627f0a0289542f43452bdbdb68d4951d958dcae3d592bd383d15b"
+    }
+  },
+  "q3_valid_memory_target_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "src/marshmallow/__init__.py",
+      "target_commit": "5429f0d4c6e346dc751599073cab67d66eefbcb2",
+      "matched_term": "fields",
+      "lineno": 13,
+      "excerpt": "from marshmallow.schema import Schema, SchemaOpts\n\nfrom . import fields\n\n__all__ = [\n    \"EXCLUDE\",\n    \"INCLUDE\",\n    \"RAISE\",\n    \"Schema\",\n    \"SchemaOpts\",",
+      "evidence_sha256": "344ce9c1b49eca18ab65f45a96005bbaa0350f9df1146f8ecc3409a5be8f4c50"
+    }
+  },
+  "q4_current_task_capability": {
+    "pass": true,
+    "evidence": {
+      "current_task": "Implement `check_marshmallow_export()` in `debug_dumper.py` checking export presence.",
+      "target_symbol": "check_marshmallow_export",
+      "symbol_in_hidden_test": true
+    }
+  },
+  "q5_stale_solution_asymmetry": {
+    "pass": true,
+    "evidence": {
+      "base_stale_pass": true,
+      "target_stale_pass": false,
+      "target_stale_is_stale": true,
+      "stale_ast_valid": true
+    }
+  },
+  "q6_valid_solution_target_pass": {
+    "pass": true,
+    "evidence": {
+      "target_valid_pass": true,
+      "base_valid_pass": false,
+      "is_evolution_control": false,
+      "valid_ast_valid": true
+    }
+  }
+}

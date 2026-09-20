@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_05_itsdangerous_version_removal",
+  "leakage_level": "REPO_CONTEXT_HINTED",
+  "retrieved_tokens": 1200,
+  "retrieved_files": [],
+  "hinted_terms_found": [
+    "version"
+  ],
+  "target_func_def_found": false,
+  "near_solution_found": false,
+  "retrieved_context_excerpt": "[REPOSITORY CONTEXT (RETRIEVED)]\n# File: src/itsdangerous/serializer.py (Lines 361-400)\n        pickle serializer).\n\n        .. versionadded:: 0.15\n        \"\"\"\n        return self._loads_unsafe_impl(s, salt)\n\n    def _loads_unsafe_impl(\n        self,\n        s: str | bytes,\n        salt: str | bytes | None,\n        load_kwargs: dict[str, t.Any] | None = None,\n        load_payload_kwargs: dict[str, t.Any] | None = None,\n    ) -> tuple[bool, t.Any]:\n        \"\"\"Low level helper function to implemen"
+}

@@ -1,0 +1,27 @@
+{
+  "transition_id": "trans_track_a_30_fastapi_pydantic_v1_deprecation",
+  "freeze_status": "TRANSITION_SEED_FREEZE_READY",
+  "evidence_hashes": {
+    "spec_sha256": "966b56e0471f865713903add5ae34c84ab28c25ddc4a519288f8b1c8ce914387",
+    "tree_manifest_sha256": "8b834f98967fb97fe86cd62bb2ad7f76a921007e673f2eaa0c92a8cd9e85811b",
+    "verifier_sha256": "5c32f65b89d258b271fc301f2d2ab26624d1b18db2df85be7859f7e8915c0080",
+    "hidden_test_evidence_sha256": "9713153a9db15e1840f3fd5543550eabe56e21f93e5f8a80abe92a854d32e247",
+    "mutation_evidence_sha256": "c8782cb6eddba93ccea2d45ef61376f8a8680c8fb7e5aeb1aa461a52d02178dd",
+    "controls_evidence_sha256": "881e4dcaf35f9be9c7a620c6c6223ee53b9b381e370df8f05a50d51b49ec03fa",
+    "causal_evidence_sha256": "0a31201eca06f999744c8cebd7e63daa8c3633c872adbd76e8e2be7f36641c59",
+    "ground_truth_sha256": "2f6a30377326de0c7822fe9c0ff5a3baa71bfb99f8b408c630f8770bb05ee5ae",
+    "semantic_v4_sha256": "601547b35c6afee61dc641510f878467594e69dc31ae8c7dbab340a7ba79423e"
+  },
+  "checks": {
+    "spec_valid": true,
+    "tree_pure": true,
+    "verifier_accept": true,
+    "hidden_test_pass": true,
+    "mutants_killed": true,
+    "controls_pass": true,
+    "causal_pass": true,
+    "ground_truth_pass": true,
+    "semantic_v4_pass": true,
+    "semantic_v4_verdict": "SEMANTIC_STRONG_PASS"
+  }
+}

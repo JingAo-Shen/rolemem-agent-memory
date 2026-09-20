@@ -1,0 +1,62 @@
+{
+  "transition_id": "trans_track_a_14_fastapi_on_event_compatibility",
+  "verdict": "SEMANTIC_STRONG_PASS",
+  "semantic_pass": true,
+  "q1_repo_change_pr_diff": {
+    "pass": true,
+    "evidence": {
+      "diff_bytes": 9865,
+      "diff_mentions_symbol": true,
+      "pr_title": "\u267b\ufe0f Re-implement `on_event` in FastAPI for compatibility with the next Starlette, while keeping backwards compatibility",
+      "pr_mentions_concept": true
+    }
+  },
+  "q2_stale_memory_base_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "fastapi/routing.py",
+      "base_commit": "8e50c55fd90c4433ddc9096ff439da9498a8314a",
+      "matched_term": "False",
+      "lineno": 96,
+      "excerpt": "        async def app(scope: Scope, receive: Receive, send: Send) -> None:\n            # Starts customization\n            response_awaited = False\n            async with AsyncExitStack() as request_stack:\n                scope[\"fastapi_inner_astack\"] = request_stack\n                async with AsyncE",
+      "evidence_sha256": "8e5987e0a9fb1ec5abeffa9cfec117c7175c0b1332cd0af88800a060e42e452e"
+    }
+  },
+  "q3_valid_memory_target_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "fastapi/routing.py",
+      "target_commit": "f9f79926047d7f5d8e0127dd585e7683ee57e9f7",
+      "matched_term": "routing",
+      "lineno": 68,
+      "excerpt": "    is_body_allowed_for_status_code,\n)\nfrom starlette import routing\nfrom starlette._exception_handler import wrap_app_handling_exceptions\nfrom starlette._utils import is_async_callable\nfrom starlette.concurrency import run_in_threadpool\nfrom starlette.exceptions import HTTPException\nfrom starlette.",
+      "evidence_sha256": "04cd34c9587104ff9b42768ab94081f1aac97bc422a3745043f98367973523ff"
+    }
+  },
+  "q4_current_task_capability": {
+    "pass": true,
+    "evidence": {
+      "current_task": "Implement `has_default_lifespan()` in `app_lifecycle.py` verifying default lifespan handler presence.",
+      "target_symbol": "has_default_lifespan",
+      "symbol_in_hidden_test": true
+    }
+  },
+  "q5_stale_solution_asymmetry": {
+    "pass": true,
+    "evidence": {
+      "base_stale_pass": true,
+      "target_stale_pass": false,
+      "target_stale_is_stale": true,
+      "stale_ast_valid": true
+    }
+  },
+  "q6_valid_solution_target_pass": {
+    "pass": true,
+    "evidence": {
+      "target_valid_pass": true,
+      "base_valid_pass": false,
+      "is_evolution_control": true,
+      "valid_ast_valid": true
+    }
+  }
+}

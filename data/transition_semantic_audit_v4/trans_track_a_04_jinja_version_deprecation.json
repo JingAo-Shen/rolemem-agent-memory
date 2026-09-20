@@ -1,0 +1,62 @@
+{
+  "transition_id": "trans_track_a_04_jinja_version_deprecation",
+  "verdict": "SEMANTIC_STRONG_PASS",
+  "semantic_pass": true,
+  "q1_repo_change_pr_diff": {
+    "pass": true,
+    "evidence": {
+      "diff_bytes": 2461,
+      "diff_mentions_symbol": true,
+      "pr_title": "deprecate `__version__`",
+      "pr_mentions_concept": true
+    }
+  },
+  "q2_stale_memory_base_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "src/jinja2/__init__.py",
+      "base_commit": "dfe82ade3dc7d112d7d166ca0d7ae7f794fe19e6",
+      "matched_term": "__version__",
+      "lineno": 38,
+      "excerpt": "from .utils import select_autoescape as select_autoescape\n\n__version__ = \"3.2.0.dev0\"",
+      "evidence_sha256": "15648277fd1142e33b032f9ca8dc37b7bcc6fbdc964108270c8b2885db9a02b7"
+    }
+  },
+  "q3_valid_memory_target_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "src/jinja2/__init__.py",
+      "target_commit": "9e49736ae075fcffb85f731a3fe2c006cf1edca4",
+      "matched_term": "__version__",
+      "lineno": 44,
+      "excerpt": "\ndef __getattr__(name: str) -> t.Any:\n    if name == \"__version__\":\n        import importlib.metadata\n        import warnings\n\n        warnings.warn(\n            \"The `__version__` attribute is deprecated and will be removed in\"\n            \" Werkzeug 3.3. Use feature detection or\"\n            ' `im",
+      "evidence_sha256": "4814e1cb15edda226747b2ed6017079bb808d5c82e38dcb022c02f525f8ec9d5"
+    }
+  },
+  "q4_current_task_capability": {
+    "pass": true,
+    "evidence": {
+      "current_task": "Implement `get_engine_version()` in `version_checker.py` retrieving Jinja2 version cleanly without deprecated attributes.",
+      "target_symbol": "get_engine_version",
+      "symbol_in_hidden_test": true
+    }
+  },
+  "q5_stale_solution_asymmetry": {
+    "pass": true,
+    "evidence": {
+      "base_stale_pass": true,
+      "target_stale_pass": false,
+      "target_stale_is_stale": true,
+      "stale_ast_valid": true
+    }
+  },
+  "q6_valid_solution_target_pass": {
+    "pass": true,
+    "evidence": {
+      "target_valid_pass": true,
+      "base_valid_pass": false,
+      "is_evolution_control": false,
+      "valid_ast_valid": true
+    }
+  }
+}

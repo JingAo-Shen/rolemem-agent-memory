@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_28_starlette_exceptions_middleware_removal",
+  "provenance_status": "TARGET_MEMORY_VERIFIED",
+  "checks": {
+    "source_commit_matches": true,
+    "source_pr_matches": true,
+    "supporting_hunk_non_empty": true,
+    "evidence_excerpt_non_empty": true,
+    "hunk_in_diff_patch": true,
+    "evidence_hunk_sha256_verified": true,
+    "diff_patch_sha256_verified": true,
+    "evidence_excerpt_hash_verified": true,
+    "statement_entailed": true
+  },
+  "recomputed_hashes": {
+    "diff_hunk_sha256": "d0430e5eb05af609c32147f9730c15f68ef4d08e1a335eccf858fd489374d00b",
+    "diff_patch_sha256": "10d2fa2236c68fc78cb66537c550d81b5f91bf2f2964fc68b5515acacfdf2dca",
+    "evidence_excerpt_hash": "2f08cf9a4d9d823392255ad9225088fcb661bf79044a4b2ebaaad30689d87c66"
+  },
+  "claim": {
+    "transition_id": "trans_track_a_28_starlette_exceptions_middleware_removal",
+    "statement": "Import ExceptionMiddleware from starlette.middleware.exceptions.",
+    "symbol": "starlette.exceptions.ExceptionMiddleware",
+    "replacement": "starlette.middleware.exceptions.ExceptionMiddleware",
+    "source_pr_url": "https://github.com/encode/starlette/pull/2826",
+    "source_commit": "856c904a6dcf7368a999dd791e2f98a7c3812f0f",
+    "evidence_file": "starlette/exceptions.py",
+    "supporting_hunk": "@@ -39,24 +31,3 @@ class WebSocketException(Exception):\n     def __repr__(self) -> str:\n         class_name = self.__class__.__name__\n         return f\"{class_name}(code={self.code!r}, reason={self.reason!r})\"\n-\n-\n-__deprecated__ = \"ExceptionMiddleware\"\n-\n-\n-def __getattr__(name: str) -> typing.Any:  # pragma: no cover\n-    if name == __deprecated__:\n-        from starlette.middleware.exceptions import ExceptionMiddleware\n-\n-        warnings.warn(\n-            f\"{__deprecated__} is deprecated on `starlette.exceptions`. \"\n-            f\"Import it from `starlette.middleware.exceptions` instead.\",\n-            category=DeprecationWarning,\n-            stacklevel=3,\n-        )\n-        return ExceptionMiddleware\n-    raise AttributeError(f\"module '{__name__}' has no attribute '{name}'\")\n-\n-\n-def __dir__() -> list[str]:\n-    return sorted(list(__all__) + [__deprecated__])  # pragma: no cover\n",
+    "evidence_hunk_sha256": "d0430e5eb05af609c32147f9730c15f68ef4d08e1a335eccf858fd489374d00b",
+    "diff_patch_sha256": "10d2fa2236c68fc78cb66537c550d81b5f91bf2f2964fc68b5515acacfdf2dca",
+    "evidence_excerpt": "@@ -39,24 +31,3 @@ class WebSocketException(Exception):\n     def __repr__(self) -> str:\n-\n-\n-__deprecated__ = \"ExceptionMiddleware\"\n-\n-\n-def __getattr__(name: str) -> typing.Any:  # pragma: no cover\n-    if name == __deprecated__:\n-        from starlette.middleware.exceptions import ExceptionMiddleware\n-\n-        warnings.warn(\n-            f\"{__deprecated__} is deprecated on `starlette.exceptions`. \"\n-            f\"Import it from `starlette.middleware.exceptions` instead.\",\n-            category=DeprecationWarning,",
+    "evidence_excerpt_hash": "2f08cf9a4d9d823392255ad9225088fcb661bf79044a4b2ebaaad30689d87c66",
+    "artifact": "starlette/exceptions.py"
+  }
+}

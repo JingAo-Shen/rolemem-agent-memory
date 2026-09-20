@@ -1,0 +1,13 @@
+{
+  "transition_id": "trans_track_a_03_werkzeug_environ_property",
+  "leakage_level": "REPO_CONTEXT_HINTED",
+  "retrieved_tokens": 1200,
+  "retrieved_files": [],
+  "hinted_terms_found": [
+    "environ",
+    "deprecated"
+  ],
+  "target_func_def_found": false,
+  "near_solution_found": false,
+  "retrieved_context_excerpt": "[REPOSITORY CONTEXT (RETRIEVED)]\n# File: src/werkzeug/datastructures/csp.py (Lines 81-120)\n        \"\"\"Used internally by the accessor properties.\"\"\"\n        if deprecated is not None:\n            import warnings\n\n            warnings.warn(\n                f\"The CSP '{key}' directive is deprecated and will be removed\"\n                f\" in Werkzeug {deprecated}.\",\n                DeprecationWarning,\n                stacklevel=3,\n            )\n\n        return self.get(key)\n\n    def _set_value(\n   "
+}

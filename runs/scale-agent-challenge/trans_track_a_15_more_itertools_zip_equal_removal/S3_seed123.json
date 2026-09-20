@@ -1,7 +1,9 @@
 {
   "task_id": "trans_track_a_15_more_itertools_zip_equal_removal",
   "condition": "S3",
-  "seed": 123,
+  "requested_seed": 123,
+  "actual_generation_seed": 123,
+  "attempt": 0,
   "memory_source": "TARGET_MEMORY_VERIFIED",
   "statement": "Use Python built-in zip(..., strict=True) to pair iterables with strict length check.",
   "overall_task_success": false,

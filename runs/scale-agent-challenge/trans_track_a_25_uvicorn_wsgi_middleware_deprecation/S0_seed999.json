@@ -1,7 +1,9 @@
 {
   "task_id": "trans_track_a_25_uvicorn_wsgi_middleware_deprecation",
   "condition": "S0",
-  "seed": 999,
+  "requested_seed": 999,
+  "actual_generation_seed": 999,
+  "attempt": 0,
   "memory_source": "NO_MEMORY",
   "overall_task_success": false,
   "pytest_pass": false,

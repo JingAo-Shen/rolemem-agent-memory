@@ -1,7 +1,9 @@
 {
   "task_id": "trans_track_a_16_rich_file_proxy_isatty",
   "condition": "S0",
-  "seed": 42,
+  "requested_seed": 42,
+  "actual_generation_seed": 42,
+  "attempt": 0,
   "memory_source": "NO_MEMORY",
   "overall_task_success": false,
   "pytest_pass": false,

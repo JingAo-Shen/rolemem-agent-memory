@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_02_flask_should_ignore_error",
+  "leakage_level": "REPO_CONTEXT_HINTED",
+  "retrieved_tokens": 1185,
+  "retrieved_files": [],
+  "hinted_terms_found": [
+    "deprecated"
+  ],
+  "target_func_def_found": false,
+  "near_solution_found": false,
+  "retrieved_context_excerpt": "[REPOSITORY CONTEXT (RETRIEVED)]\n# File: src/flask/app.py (Lines 681-720)\n\n        .. versionchanged:: 1.0\n            If installed, python-dotenv will be used to load environment\n            variables from :file:`.env` and :file:`.flaskenv` files.\n\n            The :envvar:`FLASK_DEBUG` environment variable will override :attr:`debug`.\n\n            Threaded mode is enabled by default.\n\n        .. versionchanged:: 0.10\n            The default port is now picked from the ``SERVER_NAME``\n          "
+}

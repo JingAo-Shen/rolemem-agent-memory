@@ -1,0 +1,27 @@
+{
+  "transition_id": "trans_track_a_10_httpx_client_proxies_deprecation",
+  "freeze_status": "TRANSITION_SEED_FREEZE_READY",
+  "evidence_hashes": {
+    "spec_sha256": "efbc9f98712552b512a249887fd4c808fe504bd5772fb33c37dd0b9154f3c5c6",
+    "tree_manifest_sha256": "a1465c95163f7112298a20ffb48b5a8b8187cdd87f922ced1cdfef19ec109793",
+    "verifier_sha256": "4b7d6fddb72579ce63d287cce649b2291f0d743e6d509f2afc657b5131cc3ecf",
+    "hidden_test_evidence_sha256": "5708c25cc331f59a5c45fb50350af89f5049b2871393b4fc68f9f6b335cdabd6",
+    "mutation_evidence_sha256": "cc097a32f034e4b881287d603d01f5d060b03811f87d1483eed9161f38e8af07",
+    "controls_evidence_sha256": "e28a4811f19622c629fcf93c849e4d3d30df14aaccfb2198d25860d16557729c",
+    "causal_evidence_sha256": "89ed62ca94c0bf0f4c2a34726b0c70f7a4d34dd5b7a598bea1e14c2908c9cdb6",
+    "ground_truth_sha256": "c7985b74343f9ced3b5ade391d2c956d6bef7171ff2a84a2ea53daf151ded437",
+    "semantic_v4_sha256": "5d2dbf965e91a3c2e958765145dbf4f572c9f22aa57202880ba25ccc46d7c302"
+  },
+  "checks": {
+    "spec_valid": true,
+    "tree_pure": true,
+    "verifier_accept": true,
+    "hidden_test_pass": true,
+    "mutants_killed": true,
+    "controls_pass": true,
+    "causal_pass": true,
+    "ground_truth_pass": true,
+    "semantic_v4_pass": true,
+    "semantic_v4_verdict": "SEMANTIC_STRONG_PASS"
+  }
+}

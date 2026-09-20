@@ -1,7 +1,9 @@
 {
   "task_id": "trans_track_a_24_cachelib_timeout_timedelta",
   "condition": "S3",
-  "seed": 123,
+  "requested_seed": 123,
+  "actual_generation_seed": 123,
+  "attempt": 0,
   "memory_source": "TARGET_MEMORY_VERIFIED",
   "statement": "Pass datetime.timedelta timeouts directly to BaseCache relying on _normalize_timeout.",
   "overall_task_success": true,

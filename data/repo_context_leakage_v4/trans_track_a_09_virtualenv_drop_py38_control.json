@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_09_virtualenv_drop_py38_control",
+  "leakage_level": "REPO_CONTEXT_HINTED",
+  "retrieved_tokens": 1200,
+  "retrieved_files": [],
+  "hinted_terms_found": [
+    "False"
+  ],
+  "target_func_def_found": false,
+  "near_solution_found": false,
+  "retrieved_context_excerpt": "[REPOSITORY CONTEXT (RETRIEVED)]\n# File: src/virtualenv/create/via_global_ref/builtin/pypy/pypy3.py (Lines 41-79)\n    @classmethod\n    def sources(cls, interpreter: PythonInfo) -> Generator[PathRef]:\n        yield from super().sources(interpreter)\n        # PyPy >= 3.8 supports a standard prefix installation, where older versions always used a portable/development\n        # style installation. If this is a standard prefix installation, skip the below:\n        if interpreter.system_prefix == \"/us"
+}

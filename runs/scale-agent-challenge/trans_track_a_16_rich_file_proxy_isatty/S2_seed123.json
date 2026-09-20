@@ -1,7 +1,9 @@
 {
   "task_id": "trans_track_a_16_rich_file_proxy_isatty",
   "condition": "S2",
-  "seed": 123,
+  "requested_seed": 123,
+  "actual_generation_seed": 146,
+  "attempt": 1,
   "memory_source": "AGENT_A_HISTORICAL",
   "statement": "FileProxy is a class that wraps a file object and redirects its writes to a console, handling ANSI escape codes and buffering text before printing.",
   "overall_task_success": false,

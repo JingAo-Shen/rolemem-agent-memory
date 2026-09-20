@@ -1,7 +1,9 @@
 {
   "task_id": "trans_track_a_16_rich_file_proxy_isatty",
   "condition": "S2",
-  "seed": 42,
+  "requested_seed": 42,
+  "actual_generation_seed": 65,
+  "attempt": 1,
   "memory_source": "AGENT_A_HISTORICAL",
   "statement": "FileProxy wraps a file object and redirects its writes to a console, handling text encoding and buffering.",
   "overall_task_success": false,

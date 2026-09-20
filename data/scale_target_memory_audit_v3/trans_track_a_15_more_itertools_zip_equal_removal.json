@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_15_more_itertools_zip_equal_removal",
+  "provenance_status": "TARGET_MEMORY_VERIFIED",
+  "checks": {
+    "source_commit_matches": true,
+    "source_pr_matches": true,
+    "supporting_hunk_non_empty": true,
+    "evidence_excerpt_non_empty": true,
+    "hunk_in_diff_patch": true,
+    "evidence_hunk_sha256_verified": true,
+    "diff_patch_sha256_verified": true,
+    "evidence_excerpt_hash_verified": true,
+    "statement_entailed": true
+  },
+  "recomputed_hashes": {
+    "diff_hunk_sha256": "738217ecfa764969b365ad7fcdb2719307ec9620eab829dbe07ad43a207a3770",
+    "diff_patch_sha256": "c88ffcbc2d06767c5c4275e4ea6e752a6e4640713347263932910818490c975f",
+    "evidence_excerpt_hash": "3e2857d9db9e305326a9c6bbd7576a1487f98aab19829724dc2499aa60f727ed"
+  },
+  "claim": {
+    "transition_id": "trans_track_a_15_more_itertools_zip_equal_removal",
+    "statement": "Use Python built-in zip(..., strict=True) to pair iterables with strict length check.",
+    "symbol": "more_itertools.zip_equal",
+    "replacement": "zip(*iterables, strict=True), zip(..., strict=True)",
+    "source_pr_url": "https://github.com/more-itertools/more-itertools/pull/1076",
+    "source_commit": "8fa3b81c8dd90c3b3f6648add2228aaaebb42884",
+    "evidence_file": "more_itertools/more.py",
+    "supporting_hunk": "@@ -37,13 +36,11 @@ from operator import (\n     sub,\n     gt,\n )\n-from sys import hexversion, maxsize\n+from sys import maxsize\n from time import monotonic\n \n from .recipes import (\n     _marker,\n-    _zip_equal,\n-    UnequalIterablesError,\n     consume,\n     first_true,\n     flatten,\n",
+    "evidence_hunk_sha256": "738217ecfa764969b365ad7fcdb2719307ec9620eab829dbe07ad43a207a3770",
+    "diff_patch_sha256": "c88ffcbc2d06767c5c4275e4ea6e752a6e4640713347263932910818490c975f",
+    "evidence_excerpt": "-from sys import hexversion, maxsize\n+from sys import maxsize\n-    _zip_equal,\n-    UnequalIterablesError,",
+    "evidence_excerpt_hash": "3e2857d9db9e305326a9c6bbd7576a1487f98aab19829724dc2499aa60f727ed",
+    "artifact": "more_itertools/more.py"
+  }
+}

@@ -1,7 +1,9 @@
 {
   "task_id": "trans_track_a_24_cachelib_timeout_timedelta",
   "condition": "S0",
-  "seed": 999,
+  "requested_seed": 999,
+  "actual_generation_seed": 999,
+  "attempt": 0,
   "memory_source": "NO_MEMORY",
   "overall_task_success": true,
   "pytest_pass": true,

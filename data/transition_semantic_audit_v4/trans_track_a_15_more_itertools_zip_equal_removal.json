@@ -1,0 +1,62 @@
+{
+  "transition_id": "trans_track_a_15_more_itertools_zip_equal_removal",
+  "verdict": "SEMANTIC_STRONG_PASS",
+  "semantic_pass": true,
+  "q1_repo_change_pr_diff": {
+    "pass": true,
+    "evidence": {
+      "diff_bytes": 24509,
+      "diff_mentions_symbol": true,
+      "pr_title": "Set minimum version to 3.10",
+      "pr_mentions_concept": true
+    }
+  },
+  "q2_stale_memory_base_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "more_itertools/more.py",
+      "base_commit": "8c1a6ef241b51ff055e89219f050ccf4f15f37f6",
+      "matched_term": "zip_equal",
+      "lineno": 45,
+      "excerpt": "from .recipes import (\n    _marker,\n    _zip_equal,\n    UnequalIterablesError,\n    consume,\n    first_true,\n    flatten,\n    is_prime,\n    nth,\n    powerset,",
+      "evidence_sha256": "9e400a74b022a111f4b921f99c4e542a5f58c4c2498a1ed2e1868cab646035c7"
+    }
+  },
+  "q3_valid_memory_target_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "more_itertools/more.py",
+      "target_commit": "8fa3b81c8dd90c3b3f6648add2228aaaebb42884",
+      "matched_term": ", strict=True)",
+      "lineno": 3938,
+      "excerpt": "    >>> is_sorted([1, 2, 2])\n    True\n    >>> is_sorted([1, 2, 2], strict=True)\n    False\n\n    The function returns ``False`` after encountering the first out-of-order\n    item, which means it may produce results that differ from the built-in\n    :func:`sorted` function for objects with unusual comp",
+      "evidence_sha256": "0088e2cdab7997304cff055d6ab86614b30c58c2a40bff4a8fccea56d2553f8c"
+    }
+  },
+  "q4_current_task_capability": {
+    "pass": true,
+    "evidence": {
+      "current_task": "Implement `pair_strictly(iter1, iter2)` in `pair_helper.py` pairing two iterables and raising ValueError if lengths differ.",
+      "target_symbol": "pair_strictly",
+      "symbol_in_hidden_test": true
+    }
+  },
+  "q5_stale_solution_asymmetry": {
+    "pass": true,
+    "evidence": {
+      "base_stale_pass": true,
+      "target_stale_pass": false,
+      "target_stale_is_stale": true,
+      "stale_ast_valid": true
+    }
+  },
+  "q6_valid_solution_target_pass": {
+    "pass": true,
+    "evidence": {
+      "target_valid_pass": true,
+      "base_valid_pass": false,
+      "is_evolution_control": false,
+      "valid_ast_valid": true
+    }
+  }
+}

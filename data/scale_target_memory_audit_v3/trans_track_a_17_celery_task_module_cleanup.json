@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_17_celery_task_module_cleanup",
+  "provenance_status": "TARGET_MEMORY_VERIFIED",
+  "checks": {
+    "source_commit_matches": true,
+    "source_pr_matches": true,
+    "supporting_hunk_non_empty": true,
+    "evidence_excerpt_non_empty": true,
+    "hunk_in_diff_patch": true,
+    "evidence_hunk_sha256_verified": true,
+    "diff_patch_sha256_verified": true,
+    "evidence_excerpt_hash_verified": true,
+    "statement_entailed": true
+  },
+  "recomputed_hashes": {
+    "diff_hunk_sha256": "2ea15dcb232ace51d1e11730830b2b28bc4703d12bd87b6981734edd6b4b5551",
+    "diff_patch_sha256": "037e7400cad0f4bbea5d7ad881c5eb7908e19c419b754f7812d2233da538ce4e",
+    "evidence_excerpt_hash": "8369f934d58eda28428d84a0b61bc23a3c2fbfeb1d715e804cd6bd3c7652d6e4"
+  },
+  "claim": {
+    "transition_id": "trans_track_a_17_celery_task_module_cleanup",
+    "statement": "Check Task export presence in celery.__all__.",
+    "symbol": "celery.task",
+    "replacement": "Task, from celery import Task",
+    "source_pr_url": "https://github.com/celery/celery/pull/6869",
+    "source_commit": "3cf5072ee5f95744024f60e0f4a77eb2edb8959f",
+    "evidence_file": "celery/__init__.py",
+    "supporting_hunk": "@@ -27,7 +27,7 @@ __keywords__ = 'task job queue distributed messaging actor'\n # -eof meta-\n \n __all__ = (\n-    'Celery', 'bugreport', 'shared_task', 'task', 'Task',\n+    'Celery', 'bugreport', 'shared_task', 'Task',\n     'current_app', 'current_task', 'maybe_signature',\n     'chain', 'chord', 'chunks', 'group', 'signature',\n     'xmap', 'xstarmap', 'uuid',\n",
+    "evidence_hunk_sha256": "2ea15dcb232ace51d1e11730830b2b28bc4703d12bd87b6981734edd6b4b5551",
+    "diff_patch_sha256": "037e7400cad0f4bbea5d7ad881c5eb7908e19c419b754f7812d2233da538ce4e",
+    "evidence_excerpt": "-    'Celery', 'bugreport', 'shared_task', 'task', 'Task',\n+    'Celery', 'bugreport', 'shared_task', 'Task',",
+    "evidence_excerpt_hash": "8369f934d58eda28428d84a0b61bc23a3c2fbfeb1d715e804cd6bd3c7652d6e4",
+    "artifact": "celery/__init__.py"
+  }
+}

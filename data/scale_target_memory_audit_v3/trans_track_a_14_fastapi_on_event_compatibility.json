@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_14_fastapi_on_event_compatibility",
+  "provenance_status": "TARGET_MEMORY_VERIFIED",
+  "checks": {
+    "source_commit_matches": true,
+    "source_pr_matches": true,
+    "supporting_hunk_non_empty": true,
+    "evidence_excerpt_non_empty": true,
+    "hunk_in_diff_patch": true,
+    "evidence_hunk_sha256_verified": true,
+    "diff_patch_sha256_verified": true,
+    "evidence_excerpt_hash_verified": true,
+    "statement_entailed": true
+  },
+  "recomputed_hashes": {
+    "diff_hunk_sha256": "efae0dd75f62faba533eadf012245f18967a83660c8f5243c3c8db75b8f08952",
+    "diff_patch_sha256": "372477ad6ad9c175b576fd511f4c9e4a67c51ff6a185c528b03bda70d4806387",
+    "evidence_excerpt_hash": "0e177e0d2eae16f21aabe3f4752a77b39c9d897c119b2c57c2f4c3bfdef1aaa6"
+  },
+  "claim": {
+    "transition_id": "trans_track_a_14_fastapi_on_event_compatibility",
+    "statement": "Inspect fastapi.routing._DefaultLifespan for lifespan handler setup.",
+    "symbol": "APIRoute.on_event",
+    "replacement": "_DefaultLifespan, fastapi.routing",
+    "source_pr_url": "https://github.com/tiangolo/fastapi/pull/14851",
+    "source_commit": "f9f79926047d7f5d8e0127dd585e7683ee57e9f7",
+    "evidence_file": "fastapi/routing.py",
+    "supporting_hunk": "@@ -4473,6 +4570,58 @@ class APIRouter(routing.Router):\n             generate_unique_id_function=generate_unique_id_function,\n         )\n \n+    # TODO: remove this once the lifespan (or alternative) interface is improved\n+    async def _startup(self) -> None:\n+        \"\"\"\n+        Run any `.on_startup` event handlers.\n+\n+        This method is kept for backward compatibility after Starlette removed\n+        support for on_startup/on_shutdown handlers.\n+\n+        Ref: https://github.com/Kludex/starlette/pull/3117\n+        \"\"\"\n+        for handler in self.on_startup:\n+            if is_async_callable(handler):\n+                await handler()\n+            else:\n+                handler()\n+\n+    # TODO: remove this once the lifespan (or alternative) interface is improved\n+    async def _shutdown(self) -> None:\n+        \"\"\"\n+        Run any `.on_shutdown` event handlers.\n+\n+        This method is kept for backward compatibility after Starlette removed\n+        support for on_startup/on_shutdown handlers.\n+\n+        Ref: https://github.com/Kludex/starlette/pull/3117\n+        \"\"\"\n+        for handler in self.on_shutdown:\n+            if is_async_callable(handler):\n+                await handler()\n+            else:\n+                handler()\n+\n+    # TODO: remove this once the lifespan (or alternative) interface is improved\n+    def add_event_handler(\n+        self,\n+        event_type: str,\n+        func: Callable[[], Any],\n+    ) -> None:\n+        \"\"\"\n+        Add an event handler function for startup or shutdown.\n+\n+        This method is kept for backward compatibility after Starlette removed\n+        support for on_startup/on_shutdown handlers.\n+\n+        Ref: https://github.com/Kludex/starlette/pull/3117\n+        \"\"\"\n+        assert event_type in (\"startup\", \"shutdown\")\n+        if event_type == \"startup\":\n+            self.on_startup.append(func)\n+        else:\n+            self.on_shutdown.append(func)\n+\n     @deprecated(\n         \"\"\"\n         on_event is deprecated, use lifespan event handlers instead.\n",
+    "evidence_hunk_sha256": "efae0dd75f62faba533eadf012245f18967a83660c8f5243c3c8db75b8f08952",
+    "diff_patch_sha256": "372477ad6ad9c175b576fd511f4c9e4a67c51ff6a185c528b03bda70d4806387",
+    "evidence_excerpt": "@@ -4473,6 +4570,58 @@ class APIRouter(routing.Router):\n+    # TODO: remove this once the lifespan (or alternative) interface is improved\n+    async def _startup(self) -> None:\n+        \"\"\"\n+        Run any `.on_startup` event handlers.\n+\n+        This method is kept for backward compatibility after Starlette removed\n+        support for on_startup/on_shutdown handlers.\n+\n+        Ref: https://github.com/Kludex/starlette/pull/3117\n+        \"\"\"\n+        for handler in self.on_startup:\n+            if is_async_callable(handler):\n+                await handler()\n+            else:",
+    "evidence_excerpt_hash": "0e177e0d2eae16f21aabe3f4752a77b39c9d897c119b2c57c2f4c3bfdef1aaa6",
+    "artifact": "fastapi/routing.py"
+  }
+}

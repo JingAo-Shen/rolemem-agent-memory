@@ -1,7 +1,9 @@
 {
   "task_id": "trans_track_a_26_rich_render_group_to_group",
   "condition": "S2",
-  "seed": 999,
+  "requested_seed": 999,
+  "actual_generation_seed": 1022,
+  "attempt": 1,
   "memory_source": "AGENT_A_HISTORICAL",
   "statement": "RenderGroup is a class used for grouping multiple renderables together and can be configured with fit behavior.",
   "overall_task_success": true,

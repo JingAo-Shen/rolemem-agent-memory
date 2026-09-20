@@ -1,0 +1,62 @@
+{
+  "transition_id": "trans_track_a_08_attrs_py313_replace_control",
+  "verdict": "SEMANTIC_STRONG_PASS",
+  "semantic_pass": true,
+  "q1_repo_change_pr_diff": {
+    "pass": true,
+    "evidence": {
+      "diff_bytes": 9716,
+      "diff_mentions_symbol": true,
+      "pr_title": "Implement __replace__ on 3.13",
+      "pr_mentions_concept": true
+    }
+  },
+  "q2_stale_memory_base_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "src/attr/_make.py",
+      "base_commit": "103d51f6efa36efcc7be4adecfd571da3f63291c",
+      "matched_term": "evolve",
+      "lineno": 327,
+      "excerpt": "                continue\n\n            a = a.evolve(inherited=True)  # noqa: PLW2901\n            base_attrs.append(a)\n            base_attr_map[a.name] = base_cls\n\n    # For each name, only keep the freshest definition i.e. the furthest at the\n    # back.  base_attr_map is fine because it gets overwr",
+      "evidence_sha256": "feb32b294695b88b631b346e062688d676bdfbc3bf2af30c9f5ef6708eeadaf3"
+    }
+  },
+  "q3_valid_memory_target_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "src/attr/_make.py",
+      "target_commit": "62bdbf234f45195e75bfc2bb0648dab6fd2f0d33",
+      "matched_term": "replace",
+      "lineno": 143,
+      "excerpt": "    .. deprecated:: 17.4.0 *convert*\n    .. versionadded:: 17.4.0\n       *converter* as a replacement for the deprecated *convert* to achieve\n       consistency with other noun-based arguments.\n    .. versionadded:: 18.1.0\n       ``factory=f`` is syntactic sugar for ``default=attr.Factory(f)``.\n    ",
+      "evidence_sha256": "88da42014b6abaaff371f97a608b697846091b50830fac1bbfc2911e6240672b"
+    }
+  },
+  "q4_current_task_capability": {
+    "pass": true,
+    "evidence": {
+      "current_task": "Implement `create_point(x, y)` and `replace_point(pt, **changes)` in `point_manager.py` using standard copy.replace.",
+      "target_symbol": "replace_point",
+      "symbol_in_hidden_test": true
+    }
+  },
+  "q5_stale_solution_asymmetry": {
+    "pass": true,
+    "evidence": {
+      "base_stale_pass": true,
+      "target_stale_pass": false,
+      "target_stale_is_stale": true,
+      "stale_ast_valid": true
+    }
+  },
+  "q6_valid_solution_target_pass": {
+    "pass": true,
+    "evidence": {
+      "target_valid_pass": true,
+      "base_valid_pass": false,
+      "is_evolution_control": true,
+      "valid_ast_valid": true
+    }
+  }
+}

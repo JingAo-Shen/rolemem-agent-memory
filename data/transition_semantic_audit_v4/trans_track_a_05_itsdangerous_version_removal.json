@@ -1,0 +1,62 @@
+{
+  "transition_id": "trans_track_a_05_itsdangerous_version_removal",
+  "verdict": "SEMANTIC_STRONG_PASS",
+  "semantic_pass": true,
+  "q1_repo_change_pr_diff": {
+    "pass": true,
+    "evidence": {
+      "diff_bytes": 1398,
+      "diff_mentions_symbol": true,
+      "pr_title": "remove previously deprecated code",
+      "pr_mentions_concept": true
+    }
+  },
+  "q2_stale_memory_base_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "src/itsdangerous/__init__.py",
+      "base_commit": "4dffa1963f896a0a311dec3c14f003a5f382c446",
+      "matched_term": "__version__",
+      "lineno": 25,
+      "excerpt": "\ndef __getattr__(name: str) -> t.Any:\n    if name == \"__version__\":\n        import importlib.metadata\n        import warnings\n\n        warnings.warn(\n            \"The '__version__' attribute is deprecated and will be removed in\"\n            \" ItsDangerous 2.3. Use feature detection or\"\n            \"",
+      "evidence_sha256": "6f3665f125bff5dfc9382044ac7e1e14f8856de9f48c0443874ca537a483fb38"
+    }
+  },
+  "q3_valid_memory_target_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "src/itsdangerous/__init__.py",
+      "target_commit": "31f46a3469dbfb2ecf83dd0c4297c1efc508fcca",
+      "matched_term": "__version__",
+      "lineno": 32,
+      "excerpt": "-\n-def __getattr__(name: str) -> t.Any:\n-    if name == \"__version__\":\n-        import importlib.metadata\n-        import warnings\n-\n-        warnings.warn(\n-            \"The '__version__' attribute is deprecated and will be removed in\"\n-            \" ItsDangerous 2.3. Use feature detection or\"\n-   ",
+      "evidence_sha256": "e985291eb77aaec40d673c35cf210611e20a765419df3807fab4c5d639464b09"
+    }
+  },
+  "q4_current_task_capability": {
+    "pass": true,
+    "evidence": {
+      "current_task": "Implement `get_package_version()` in `signer_version.py` retrieving ItsDangerous version.",
+      "target_symbol": "get_package_version",
+      "symbol_in_hidden_test": true
+    }
+  },
+  "q5_stale_solution_asymmetry": {
+    "pass": true,
+    "evidence": {
+      "base_stale_pass": true,
+      "target_stale_pass": false,
+      "target_stale_is_stale": true,
+      "stale_ast_valid": true
+    }
+  },
+  "q6_valid_solution_target_pass": {
+    "pass": true,
+    "evidence": {
+      "target_valid_pass": true,
+      "base_valid_pass": false,
+      "is_evolution_control": false,
+      "valid_ast_valid": true
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_21_packaging_legacy_version_removal",
+  "leakage_level": "REPO_CONTEXT_HINTED",
+  "retrieved_tokens": 1200,
+  "retrieved_files": [],
+  "hinted_terms_found": [
+    "Version"
+  ],
+  "target_func_def_found": false,
+  "near_solution_found": false,
+  "retrieved_context_excerpt": "[REPOSITORY CONTEXT (RETRIEVED)]\n# File: packaging/_manylinux.py (Lines 121-160)\n\n# If glibc ever changes its major version, we need to know what the last\n# minor version was, so we can build the complete list of all versions.\n# For now, guess what the highest minor version might be, assume it will\n# be 50 for testing. Once this actually happens, update the dictionary\n# with the actual value.\n_LAST_GLIBC_MINOR: Dict[int, int] = collections.defaultdict(lambda: 50)\n\n\nclass _GLibCVersion(NamedTuple"
+}

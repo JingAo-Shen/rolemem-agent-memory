@@ -1,7 +1,9 @@
 {
   "task_id": "trans_track_a_26_rich_render_group_to_group",
   "condition": "S3",
-  "seed": 42,
+  "requested_seed": 42,
+  "actual_generation_seed": 42,
+  "attempt": 0,
   "memory_source": "TARGET_MEMORY_VERIFIED",
   "statement": "Import and instantiate rich.console.Group to group renderable objects.",
   "overall_task_success": true,

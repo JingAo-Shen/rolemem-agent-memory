@@ -81,10 +81,12 @@ class HistoricalClaimFactualityAuditorV2:
             if short in stmt_lower and short in base_content.lower():
                 matched_symbols.append(sym)
 
-        # Basic grounding requires at least one matched symbol in base content
-        is_grounded = len(matched_symbols) > 0 or any(
-            w in base_content.lower() for w in re.findall(r"[a-z0-9_]{5,}", stmt_lower)
-        )
+        if symbols:
+            is_grounded = len(matched_symbols) > 0
+        else:
+            is_grounded = any(
+                w in base_content.lower() for w in re.findall(r"[a-z0-9_]{5,}", stmt_lower)
+            )
         return (is_grounded, matched_symbols)
 
     def evaluate_deterministic_contradiction(

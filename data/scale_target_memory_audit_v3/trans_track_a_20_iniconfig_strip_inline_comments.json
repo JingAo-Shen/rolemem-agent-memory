@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_20_iniconfig_strip_inline_comments",
+  "provenance_status": "TARGET_MEMORY_VERIFIED",
+  "checks": {
+    "source_commit_matches": true,
+    "source_pr_matches": true,
+    "supporting_hunk_non_empty": true,
+    "evidence_excerpt_non_empty": true,
+    "hunk_in_diff_patch": true,
+    "evidence_hunk_sha256_verified": true,
+    "diff_patch_sha256_verified": true,
+    "evidence_excerpt_hash_verified": true,
+    "statement_entailed": true
+  },
+  "recomputed_hashes": {
+    "diff_hunk_sha256": "0d4c2ccf01dba94be912ab874130642a5b5bce5bddd9591669cce9a36f0a7946",
+    "diff_patch_sha256": "c4eff902d7ea406a61571cd5ffa8f0656a3c01ea03bebb6a09ff5058077be90e",
+    "evidence_excerpt_hash": "9884799ef5514919180b57bb6665c1c6367b0b52ad3901a95410c6f4015c7ed8"
+  },
+  "claim": {
+    "transition_id": "trans_track_a_20_iniconfig_strip_inline_comments",
+    "statement": "Load INI configurations via IniConfig.parse to strip inline comments cleanly.",
+    "symbol": "IniConfig.parse",
+    "replacement": "IniConfig.parse, strip_inline_comments",
+    "source_pr_url": "https://github.com/pytest-dev/iniconfig/pull/70",
+    "source_commit": "7faed13ae50bad7c5da3f5782f254a8a7736bb84",
+    "evidence_file": "src/iniconfig/__init__.py",
+    "supporting_hunk": "@@ -96,33 +96,86 @@ class IniConfig:\n         path: str | os.PathLike[str],\n         data: str | None = None,\n         encoding: str = \"utf-8\",\n+        *,\n+        _sections: Mapping[str, Mapping[str, str]] | None = None,\n+        _sources: Mapping[tuple[str, str | None], int] | None = None,\n     ) -> None:\n         self.path = os.fspath(path)\n+\n+        # Determine sections and sources\n+        if _sections is not None and _sources is not None:\n+            # Use provided pre-parsed data (called from parse())\n+            sections_data = _sections\n+            sources = _sources\n+        else:\n+            # Parse the data (backward compatible path)\n+            if data is None:\n+                with open(self.path, encoding=encoding) as fp:\n+                    data = fp.read()\n+\n+            # Use old behavior (no stripping) for backward compatibility\n+            sections_data, sources = _parse.parse_ini_data(\n+                self.path, data, strip_inline_comments=False\n+            )\n+\n+        # Assign once to Final attributes\n+        self._sources = sources\n+        self.sections = sections_data\n+\n+    @classmethod\n+    def parse(\n+        cls,\n+        path: str | os.PathLike[str],\n+        data: str | None = None,\n+        encoding: str = \"utf-8\",\n+        *,\n+        strip_inline_comments: bool = True,\n+        strip_section_whitespace: bool = False,\n+    ) -> \"IniConfig\":\n+        \"\"\"Parse an INI file.\n+\n+        Args:\n+            path: Path to the INI file (used for error messages)\n+            data: Optional INI content as string. If None, reads from path.\n+            encoding: Encoding to use when reading the file (default: utf-8)\n+            strip_inline_comments: Whether to strip inline comments from values\n+                (default: True). When True, comments starting with # or ; are\n+                removed from values, matching the behavior for section comments.\n+            strip_section_whitespace: Whether to strip whitespace from section and key names\n+                (default: False). When True, strips Unicode whitespace from section and key names,\n+                addressing issue #4. When False, preserves existing behavior for backward compatibility.\n+\n+        Returns:\n+            IniConfig instance with parsed configuration\n+\n+        Example:\n+            # With comment stripping (default):\n+            config = IniConfig.parse(\"setup.cfg\")\n+            # value = \"foo\" instead of \"foo # comment\"\n+\n+            # Without comment stripping (old behavior):\n+            config = IniConfig.parse(\"setup.cfg\", strip_inline_comments=False)\n+            # value = \"foo # comment\"\n+\n+            # With section name stripping (opt-in for issue #4):\n+            config = IniConfig.parse(\"setup.cfg\", strip_section_whitespace=True)\n+            # section names and keys have Unicode whitespace stripped\n+        \"\"\"\n+        fspath = os.fspath(path)\n+\n         if data is None:\n-            with open(self.path, encoding=encoding) as fp:\n+            with open(fspath, encoding=encoding) as fp:\n                 data = fp.read()\n \n-        tokens = _parse.parse_lines(self.path, data.splitlines(True))\n-\n-        self._sources = {}\n-        sections_data: dict[str, dict[str, str]]\n-        self.sections = sections_data = {}\n-\n-        for lineno, section, name, value in tokens:\n-            if section is None:\n-                raise ParseError(self.path, lineno, \"no section header defined\")\n-            self._sources[section, name] = lineno\n-            if name is None:\n-                if section in self.sections:\n-                    raise ParseError(\n-                        self.path, lineno, f\"duplicate section {section!r}\"\n-                    )\n-                sections_data[section] = {}\n-            else:\n-                if name in self.sections[section]:\n-                    raise ParseError(self.path, lineno, f\"duplicate name {name!r}\")\n-                assert value is not None\n-                sections_data[section][name] = value\n+        sections_data, sources = _parse.parse_ini_data(\n+            fspath,\n+            data,\n+            strip_inline_comments=strip_inline_comments,\n+            strip_section_whitespace=strip_section_whitespace,\n+        )\n+\n+        # Call constructor with pre-parsed sections and sources\n+        return cls(path=fspath, _sections=sections_data, _sources=sources)\n \n     def lineof(self, section: str, name: str | None = None) -> int | None:\n         lineno = self._sources.get((section, name))\n",
+    "evidence_hunk_sha256": "0d4c2ccf01dba94be912ab874130642a5b5bce5bddd9591669cce9a36f0a7946",
+    "diff_patch_sha256": "c4eff902d7ea406a61571cd5ffa8f0656a3c01ea03bebb6a09ff5058077be90e",
+    "evidence_excerpt": "@@ -96,33 +96,86 @@ class IniConfig:\n+        *,\n+        _sections: Mapping[str, Mapping[str, str]] | None = None,\n+        _sources: Mapping[tuple[str, str | None], int] | None = None,\n+\n+        # Determine sections and sources\n+        if _sections is not None and _sources is not None:\n+            # Use provided pre-parsed data (called from parse())\n+            sections_data = _sections\n+            sources = _sources\n+        else:\n+            # Parse the data (backward compatible path)\n+            if data is None:\n+                with open(self.path, encoding=encoding) as fp:\n+                    data = fp.read()",
+    "evidence_excerpt_hash": "9884799ef5514919180b57bb6665c1c6367b0b52ad3901a95410c6f4015c7ed8",
+    "artifact": "src/iniconfig/__init__.py"
+  }
+}

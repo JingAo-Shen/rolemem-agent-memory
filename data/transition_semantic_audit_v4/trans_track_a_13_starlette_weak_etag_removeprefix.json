@@ -1,0 +1,62 @@
+{
+  "transition_id": "trans_track_a_13_starlette_weak_etag_removeprefix",
+  "verdict": "SEMANTIC_STRONG_PASS",
+  "semantic_pass": true,
+  "q1_repo_change_pr_diff": {
+    "pass": true,
+    "evidence": {
+      "diff_bytes": 1403,
+      "diff_mentions_symbol": true,
+      "pr_title": "Use `removeprefix` to strip weak ETag indicator in `is_not_modified`",
+      "pr_mentions_concept": true
+    }
+  },
+  "q2_stale_memory_base_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "starlette/staticfiles.py",
+      "base_commit": "e6f7ad1ab85efb27ab7910d8007b3f4531f7b083",
+      "matched_term": "False",
+      "lineno": 45,
+      "excerpt": "        directory: PathLike | None = None,\n        packages: list[str | tuple[str, str]] | None = None,\n        html: bool = False,\n        check_dir: bool = True,\n        follow_symlink: bool = False,\n    ) -> None:\n        self.directory = directory\n        self.packages = packages\n        self.al",
+      "evidence_sha256": "653bbaf487ab8cc192b64ba2cbad340aed044077cd9125e50d17fe5a977f0187"
+    }
+  },
+  "q3_valid_memory_target_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "starlette/staticfiles.py",
+      "target_commit": "37309255b4c1b9c381a2d24a1eaf83100984a16a",
+      "matched_term": "StaticFiles",
+      "lineno": 39,
+      "excerpt": "\n\nclass StaticFiles:\n    def __init__(\n        self,\n        *,\n        directory: PathLike | None = None,\n        packages: list[str | tuple[str, str]] | None = None,\n        html: bool = False,\n        check_dir: bool = True,",
+      "evidence_sha256": "1ee469373a621e9ed901cebeb4090d61d8a190fc84a9cee3c6419a7f38d1ba3f"
+    }
+  },
+  "q4_current_task_capability": {
+    "pass": true,
+    "evidence": {
+      "current_task": "Implement `is_etag_not_modified(etag, if_none_match)` in `etag_helper.py` verifying weak etags properly.",
+      "target_symbol": "is_etag_not_modified",
+      "symbol_in_hidden_test": true
+    }
+  },
+  "q5_stale_solution_asymmetry": {
+    "pass": true,
+    "evidence": {
+      "base_stale_pass": true,
+      "target_stale_pass": false,
+      "target_stale_is_stale": true,
+      "stale_ast_valid": true
+    }
+  },
+  "q6_valid_solution_target_pass": {
+    "pass": true,
+    "evidence": {
+      "target_valid_pass": true,
+      "base_valid_pass": false,
+      "is_evolution_control": true,
+      "valid_ast_valid": true
+    }
+  }
+}

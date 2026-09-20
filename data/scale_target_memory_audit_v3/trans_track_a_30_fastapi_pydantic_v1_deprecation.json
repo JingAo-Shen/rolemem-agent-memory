@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_30_fastapi_pydantic_v1_deprecation",
+  "provenance_status": "TARGET_MEMORY_VERIFIED",
+  "checks": {
+    "source_commit_matches": true,
+    "source_pr_matches": true,
+    "supporting_hunk_non_empty": true,
+    "evidence_excerpt_non_empty": true,
+    "hunk_in_diff_patch": true,
+    "evidence_hunk_sha256_verified": true,
+    "diff_patch_sha256_verified": true,
+    "evidence_excerpt_hash_verified": true,
+    "statement_entailed": true
+  },
+  "recomputed_hashes": {
+    "diff_hunk_sha256": "160184a1b78ee51aa10cd5eb62d399c45663f43f5c9eb1fa96a6929ff8eef85f",
+    "diff_patch_sha256": "c0e5699e4620025eb0d42dc966d9c25f3b38faadc3d7d2b704613ad6ce1fa9da",
+    "evidence_excerpt_hash": "6ac1e2588d410a4d512a2ce5bf887bc968c4b96cdfb5eec4508ea8fefa848dc8"
+  },
+  "claim": {
+    "transition_id": "trans_track_a_30_fastapi_pydantic_v1_deprecation",
+    "statement": "FastAPI warns on pydantic.v1 usage in get_dependant; migrate models to standard Pydantic v2.",
+    "symbol": "fastapi.dependencies.utils.get_dependant",
+    "replacement": "get_dependant, fastapi.dependencies.utils.get_dependant",
+    "source_pr_url": "https://github.com/tiangolo/fastapi/pull/14583",
+    "source_commit": "6e42bcd8ce2ade33d94f478310dad20ee84f8f0f",
+    "evidence_file": "fastapi/dependencies/utils.py",
+    "supporting_hunk": "@@ -322,6 +323,13 @@ def get_dependant(\n             )\n             continue\n         assert param_details.field is not None\n+        if isinstance(param_details.field, may_v1.ModelField):\n+            warnings.warn(\n+                \"pydantic.v1 is deprecated and will soon stop being supported by FastAPI.\"\n+                f\" Please update the param {param_name}: {param_details.type_annotation!r}.\",\n+                category=DeprecationWarning,\n+                stacklevel=5,\n+            )\n         if isinstance(\n             param_details.field.field_info, (params.Body, temp_pydantic_v1_params.Body)\n         ):\n",
+    "evidence_hunk_sha256": "160184a1b78ee51aa10cd5eb62d399c45663f43f5c9eb1fa96a6929ff8eef85f",
+    "diff_patch_sha256": "c0e5699e4620025eb0d42dc966d9c25f3b38faadc3d7d2b704613ad6ce1fa9da",
+    "evidence_excerpt": "@@ -322,6 +323,13 @@ def get_dependant(\n+        if isinstance(param_details.field, may_v1.ModelField):\n+            warnings.warn(\n+                \"pydantic.v1 is deprecated and will soon stop being supported by FastAPI.\"\n+                f\" Please update the param {param_name}: {param_details.type_annotation!r}.\",\n+                category=DeprecationWarning,\n+                stacklevel=5,\n+            )",
+    "evidence_excerpt_hash": "6ac1e2588d410a4d512a2ce5bf887bc968c4b96cdfb5eec4508ea8fefa848dc8",
+    "artifact": "fastapi/dependencies/utils.py"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "transition_id": "trans_track_a_22_dateutil_unknown_timezone_warning",
+  "leakage_level": "REPO_CONTEXT_HINTED",
+  "retrieved_tokens": 1156,
+  "retrieved_files": [],
+  "hinted_terms_found": [
+    "UnknownTimezoneWarning",
+    "deprecated"
+  ],
+  "target_func_def_found": false,
+  "near_solution_found": false,
+  "retrieved_context_excerpt": "[REPOSITORY CONTEXT (RETRIEVED)]\n# File: dateutil/zoneinfo/__init__.py (Lines 81-120)\n    \"\"\"\n    This is a convenience function which provides a :class:`ZoneInfoFile`\n    instance using the data provided by the ``dateutil`` package. By default, it\n    caches a single instance of the ZoneInfoFile object and returns that.\n\n    :param new_instance:\n        If ``True``, a new instance of :class:`ZoneInfoFile` is instantiated and\n        used as the cached instance for the next call. Otherwise, new "
+}

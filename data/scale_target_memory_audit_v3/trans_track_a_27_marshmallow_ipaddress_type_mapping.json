@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_27_marshmallow_ipaddress_type_mapping",
+  "provenance_status": "TARGET_MEMORY_VERIFIED",
+  "checks": {
+    "source_commit_matches": true,
+    "source_pr_matches": true,
+    "supporting_hunk_non_empty": true,
+    "evidence_excerpt_non_empty": true,
+    "hunk_in_diff_patch": true,
+    "evidence_hunk_sha256_verified": true,
+    "diff_patch_sha256_verified": true,
+    "evidence_excerpt_hash_verified": true,
+    "statement_entailed": true
+  },
+  "recomputed_hashes": {
+    "diff_hunk_sha256": "5e654e6e0c25ec9ea5998af510ce0e1a266cdcade1e194634929d59d51482c59",
+    "diff_patch_sha256": "1b01818dc7055cf0da670eb11ed2f9c986149f213e4aeef57a0a6f1efd56e3fd",
+    "evidence_excerpt_hash": "d6c3f9da8557ff2b2cc3f31509c9d727a8cd5da6b8fcf2d86fc81bf68aa5bee6"
+  },
+  "claim": {
+    "transition_id": "trans_track_a_27_marshmallow_ipaddress_type_mapping",
+    "statement": "Schema.TYPE_MAPPING contains ipaddress.IPv4Address mapping to fields.IPv4.",
+    "symbol": "Schema.TYPE_MAPPING",
+    "replacement": "TYPE_MAPPING, Schema.TYPE_MAPPING, fields.IPv4",
+    "source_pr_url": "https://github.com/marshmallow-code/marshmallow/pull/2906",
+    "source_commit": "c38b48ec3b8bb44315036d0c8a07bc8477eb5094",
+    "evidence_file": "CHANGELOG.rst",
+    "supporting_hunk": "@@ -21,6 +21,11 @@ Bug fixes:\n - Fix typing of ``error_essages`` argument to `marshmallow.fields.Field` (:pr:`1636`).\n   Thanks :user:`repole` for reporting and :user:`dhruvildarji` for the PR.\n \n+Other changes:\n+\n+- Add ``ipaddress.*`` to `marshmallow.Schema.TYPE_MAPPING` (:issue:`1695`).\n+  Thanks :user:`liberforce` for the suggestion and :user:`dhruvildarji` for the PR.\n+\n 4.2.2 (2026-02-04)\n ------------------\n \n",
+    "evidence_hunk_sha256": "5e654e6e0c25ec9ea5998af510ce0e1a266cdcade1e194634929d59d51482c59",
+    "diff_patch_sha256": "1b01818dc7055cf0da670eb11ed2f9c986149f213e4aeef57a0a6f1efd56e3fd",
+    "evidence_excerpt": "+Other changes:\n+\n+- Add ``ipaddress.*`` to `marshmallow.Schema.TYPE_MAPPING` (:issue:`1695`).\n+  Thanks :user:`liberforce` for the suggestion and :user:`dhruvildarji` for the PR.\n+",
+    "evidence_excerpt_hash": "d6c3f9da8557ff2b2cc3f31509c9d727a8cd5da6b8fcf2d86fc81bf68aa5bee6",
+    "artifact": "src/marshmallow/schema.py"
+  }
+}

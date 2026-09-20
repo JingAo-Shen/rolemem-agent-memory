@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_24_cachelib_timeout_timedelta",
+  "provenance_status": "TARGET_MEMORY_VERIFIED",
+  "checks": {
+    "source_commit_matches": true,
+    "source_pr_matches": true,
+    "supporting_hunk_non_empty": true,
+    "evidence_excerpt_non_empty": true,
+    "hunk_in_diff_patch": true,
+    "evidence_hunk_sha256_verified": true,
+    "diff_patch_sha256_verified": true,
+    "evidence_excerpt_hash_verified": true,
+    "statement_entailed": true
+  },
+  "recomputed_hashes": {
+    "diff_hunk_sha256": "d4b341fead135ff5c8480b65b0873a14f5c5277f85efe7a45f3b40216a5dc579",
+    "diff_patch_sha256": "3a7b6179a5673701ec26d74655f28cc60ca165b412339f4a2842f97718ec7ae0",
+    "evidence_excerpt_hash": "ee17564d99fb23f8fe928895f28337ca3b132936b116809f91e3647b908235c7"
+  },
+  "claim": {
+    "transition_id": "trans_track_a_24_cachelib_timeout_timedelta",
+    "statement": "Pass datetime.timedelta timeouts directly to BaseCache relying on _normalize_timeout.",
+    "symbol": "BaseCache._normalize_timeout",
+    "replacement": "_normalize_timeout, BaseCache._normalize_timeout",
+    "source_pr_url": "https://github.com/pallets-eco/cachelib/pull/510",
+    "source_commit": "d5fc7826065db284b8eda1e2fa5d2157ba1fcb9d",
+    "evidence_file": "src/cachelib/base.py",
+    "supporting_hunk": "@@ -16,15 +23,50 @@ class BaseCache:\n     \"\"\"\n \n     def __init__(\n-        self, default_timeout: int = 300, ignore_delete_many_errors: bool = True\n+        self,\n+        default_timeout: int | dt.timedelta = 300,\n+        ignore_delete_many_errors: bool = True,\n     ) -> None:\n-        self.default_timeout = default_timeout\n+        self.default_timeout = self._to_seconds(default_timeout)\n         self.ignore_delete_many_errors = ignore_delete_many_errors\n \n-    def _normalize_timeout(self, timeout: int | None) -> int:\n+    @staticmethod\n+    def _to_seconds(timeout: int | float | dt.timedelta) -> int:\n+        \"\"\"Convert a timeout to a whole number of seconds.\n+\n+        :param timeout: the timeout to convert. In case a\n+            :class:`datetime.timedelta` is passed it will round up\n+            subseconds to whole seconds (i.e. 200 milliseconds\n+            will be rounded to 1 second)\n+\n+        .. versionadded:: 0.17.0\n+\n+        .. deprecated:: 0.17.0\n+            Float timeouts are deprecated and rounded up to whole\n+            seconds. They will raise a ``TypeError`` in a future release.\n+        \"\"\"\n+        if isinstance(timeout, dt.timedelta):\n+            return math.ceil(timeout.total_seconds())\n+        if isinstance(timeout, float):\n+            warnings.warn(\n+                \"Float timeouts are deprecated and will raise a TypeError\"\n+                \" in a future release. Use a whole number of seconds or a\"\n+                \" datetime.timedelta instead.\",\n+                DeprecationWarning,\n+                stacklevel=2,\n+            )\n+            return math.ceil(timeout)\n+        if isinstance(timeout, int):\n+            return timeout\n+        raise TypeError(\n+            \"timeout must be an int or datetime.timedelta, \"\n+            f\"got {type(timeout).__name__!r}\"\n+        )\n+\n+    def _normalize_timeout(self, timeout: int | dt.timedelta | None) -> int:\n         if timeout is None:\n-            timeout = self.default_timeout\n-        return timeout\n+            return self.default_timeout\n+        return self._to_seconds(timeout)\n \n     def get(self, key: str) -> _t.Any:\n         \"\"\"Look up key in the cache and return the value for it.\n",
+    "evidence_hunk_sha256": "d4b341fead135ff5c8480b65b0873a14f5c5277f85efe7a45f3b40216a5dc579",
+    "diff_patch_sha256": "3a7b6179a5673701ec26d74655f28cc60ca165b412339f4a2842f97718ec7ae0",
+    "evidence_excerpt": "@@ -16,15 +23,50 @@ class BaseCache:\n     def __init__(\n-        self, default_timeout: int = 300, ignore_delete_many_errors: bool = True\n+        self,\n+        default_timeout: int | dt.timedelta = 300,\n+        ignore_delete_many_errors: bool = True,\n-        self.default_timeout = default_timeout\n+        self.default_timeout = self._to_seconds(default_timeout)\n-    def _normalize_timeout(self, timeout: int | None) -> int:\n+    @staticmethod\n+    def _to_seconds(timeout: int | float | dt.timedelta) -> int:\n+        \"\"\"Convert a timeout to a whole number of seconds.\n+\n+        :param timeout: the timeout to convert. In case a\n+            :class:`datetime.timedelta` is passed it will round up",
+    "evidence_excerpt_hash": "ee17564d99fb23f8fe928895f28337ca3b132936b116809f91e3647b908235c7",
+    "artifact": "src/cachelib/base.py"
+  }
+}

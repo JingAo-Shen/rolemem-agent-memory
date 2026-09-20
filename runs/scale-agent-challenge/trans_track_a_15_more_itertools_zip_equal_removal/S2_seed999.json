@@ -1,7 +1,9 @@
 {
   "task_id": "trans_track_a_15_more_itertools_zip_equal_removal",
   "condition": "S2",
-  "seed": 999,
+  "requested_seed": 999,
+  "actual_generation_seed": 1022,
+  "attempt": 1,
   "memory_source": "AGENT_A_HISTORICAL",
   "statement": "zip_equal zips multiple iterables together and raises an UnequalIterablesError if they are not all the same length.",
   "overall_task_success": false,

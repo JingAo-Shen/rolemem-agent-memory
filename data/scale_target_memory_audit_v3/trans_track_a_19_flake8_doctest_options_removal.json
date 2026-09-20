@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_19_flake8_doctest_options_removal",
+  "provenance_status": "TARGET_MEMORY_VERIFIED",
+  "checks": {
+    "source_commit_matches": true,
+    "source_pr_matches": true,
+    "supporting_hunk_non_empty": true,
+    "evidence_excerpt_non_empty": true,
+    "hunk_in_diff_patch": true,
+    "evidence_hunk_sha256_verified": true,
+    "diff_patch_sha256_verified": true,
+    "evidence_excerpt_hash_verified": true,
+    "statement_entailed": true
+  },
+  "recomputed_hashes": {
+    "diff_hunk_sha256": "055935f44dfa00e67021266d597aa623e88585579286d44b978f11f7ad0a4d24",
+    "diff_patch_sha256": "cf213d681becdff2aabba5c011d0e6d5667ff9f5545dd222e42b9b0d16faaed4",
+    "evidence_excerpt_hash": "56f333b30fd2720504e9a5ddf2ed16bc3598b0804375600e871f7752ea0503d7"
+  },
+  "claim": {
+    "transition_id": "trans_track_a_19_flake8_doctest_options_removal",
+    "statement": "Check with_doctest attribute on FlakesChecker.",
+    "symbol": "register_doctest_options",
+    "replacement": "with_doctest, --doctest",
+    "source_pr_url": "https://github.com/PyCQA/flake8/pull/1854",
+    "source_commit": "b3e251512238ad39c87e4b8d1614903fe493f7ea",
+    "evidence_file": "src/flake8/plugins/pyflakes.py",
+    "supporting_hunk": "@@ -68,34 +66,12 @@ class FlakesChecker(pyflakes.checker.Checker):\n     \"\"\"Subclass the Pyflakes checker to conform with the flake8 API.\"\"\"\n \n     with_doctest = False\n-    include_in_doctest: list[str] = []\n-    exclude_from_doctest: list[str] = []\n \n     def __init__(self, tree: ast.AST, filename: str) -> None:\n         \"\"\"Initialize the PyFlakes plugin with an AST tree and filename.\"\"\"\n-        filename = utils.normalize_path(filename)\n-        with_doctest = self.with_doctest\n-        included_by = [\n-            include\n-            for include in self.include_in_doctest\n-            if include != \"\" and filename.startswith(include)\n-        ]\n-        if included_by:\n-            with_doctest = True\n-\n-        for exclude in self.exclude_from_doctest:\n-            if exclude != \"\" and filename.startswith(exclude):\n-                with_doctest = False\n-                overlapped_by = [\n-                    include\n-                    for include in included_by\n-                    if include.startswith(exclude)\n-                ]\n-\n-                if overlapped_by:\n-                    with_doctest = True\n-\n-        super().__init__(tree, filename=filename, withDoctest=with_doctest)\n+        super().__init__(\n+            tree, filename=filename, withDoctest=self.with_doctest\n+        )\n \n     @classmethod\n     def add_options(cls, parser: OptionManager) -> None:\n",
+    "evidence_hunk_sha256": "055935f44dfa00e67021266d597aa623e88585579286d44b978f11f7ad0a4d24",
+    "diff_patch_sha256": "cf213d681becdff2aabba5c011d0e6d5667ff9f5545dd222e42b9b0d16faaed4",
+    "evidence_excerpt": "@@ -68,34 +66,12 @@ class FlakesChecker(pyflakes.checker.Checker):\n     \"\"\"Subclass the Pyflakes checker to conform with the flake8 API.\"\"\"\n-    include_in_doctest: list[str] = []\n-    exclude_from_doctest: list[str] = []\n     def __init__(self, tree: ast.AST, filename: str) -> None:\n-        filename = utils.normalize_path(filename)\n-        with_doctest = self.with_doctest\n-        included_by = [\n-            include\n-            for include in self.include_in_doctest\n-            if include != \"\" and filename.startswith(include)\n-        ]\n-        if included_by:\n-            with_doctest = True\n-",
+    "evidence_excerpt_hash": "56f333b30fd2720504e9a5ddf2ed16bc3598b0804375600e871f7752ea0503d7",
+    "artifact": "src/flake8/plugins/pyflakes.py"
+  }
+}

@@ -1,7 +1,7 @@
 {
-  "version": "2.2.0",
-  "description": "Scale Target Memory Snapshot with verified PR bindings and target diff hashes",
-  "snapshot_sha256": "54e928a1ed98ceab026bc0a9903cf261e20f2ea9f8e8b3f18d01fa450aad7e85",
+  "version": "3.0.0",
+  "description": "Scale Target Memory Snapshot with verified non-empty diff hunks, valid commits, and cryptographic SHA-256 provenance",
+  "snapshot_sha256": "5098a165d947aabd9065c1458dcf89e0854671f63e72dd3ebdbe6ad285b4eabe",
   "claims": {
     "trans_track_a_11_requests_json_decode_error": {
       "transition_id": "trans_track_a_11_requests_json_decode_error",
@@ -11,7 +11,11 @@
       "source_pr_url": "https://github.com/psf/requests/pull/6097",
       "source_commit": "2d5517682b3b38547634d153cea43d48fbc8cdb5",
       "evidence_file": "requests/models.py",
-      "evidence_hunk_sha256": "d7cc04a8ac0ed368fe259e5587f1fdcfcde68259e8b71708de47f5169019974c",
+      "supporting_hunk": "@@ -900,6 +900,8 @@ class Response(object):\n                     # and the server didn't bother to tell us what codec *was*\n                     # used.\n                     pass\n+                except JSONDecodeError as e:\n+                    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)\n \n         try:\n             return complexjson.loads(self.text, **kwargs)\n",
+      "evidence_hunk_sha256": "6d0ce358ad42c2d74579bcaa9bba115ac256dc11ca407c80846d40c1a5b90aba",
+      "diff_patch_sha256": "c55ca8fbe11b628dfadab8460cd3c72c4234c7c07c0139f8d60aa6f61dbc642a",
+      "evidence_excerpt": "@@ -900,6 +900,8 @@ class Response(object):\n+                except JSONDecodeError as e:\n+                    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)",
+      "evidence_excerpt_hash": "8e7b2f6cefce9f7d73c892a9ec7f4a49f071521176631cd8df147c17b1a0b194",
       "artifact": "requests/models.py"
     },
     "trans_track_a_12_urllib3_getheaders_removal": {
@@ -22,7 +26,11 @@
       "source_pr_url": "https://github.com/urllib3/urllib3/pull/3622",
       "source_commit": "4587fd6d477f22022be08de597c3a5acd5185c0a",
       "evidence_file": "src/urllib3/response.py",
-      "evidence_hunk_sha256": "70e1db46d3610f385be4d0ac37fa477efc68e3cc181e5cb9b1442bdc0fe65fa2",
+      "supporting_hunk": "@@ -539,25 +538,6 @@ class BaseHTTPResponse(io.IOBase):\n             b[: len(temp)] = temp\n             return len(temp)\n \n-    # Compatibility methods for http.client.HTTPResponse\n-    def getheaders(self) -> HTTPHeaderDict:\n-        warnings.warn(\n-            \"HTTPResponse.getheaders() is deprecated and will be removed \"\n-            \"in urllib3 v2.6.0. Instead access HTTPResponse.headers directly.\",\n-            category=DeprecationWarning,\n-            stacklevel=2,\n-        )\n-        return self.headers\n-\n-    def getheader(self, name: str, default: str | None = None) -> str | None:\n-        warnings.warn(\n-            \"HTTPResponse.getheader() is deprecated and will be removed \"\n-            \"in urllib3 v2.6.0. Instead use HTTPResponse.headers.get(name, default).\",\n-            category=DeprecationWarning,\n-            stacklevel=2,\n-        )\n-        return self.headers.get(name, default)\n-\n     # Compatibility method for http.cookiejar\n     def info(self) -> HTTPHeaderDict:\n         return self.headers\n",
+      "evidence_hunk_sha256": "04f849db182cb0cf8fa82147e393d4972c08861223c37dfae179377f5fa788c3",
+      "diff_patch_sha256": "d5e88228b8f0b1752cf044dd88da99ca098aa3d742319e1c614a7431d59ce4f5",
+      "evidence_excerpt": "@@ -539,25 +538,6 @@ class BaseHTTPResponse(io.IOBase):\n-    # Compatibility methods for http.client.HTTPResponse\n-    def getheaders(self) -> HTTPHeaderDict:\n-        warnings.warn(\n-            \"HTTPResponse.getheaders() is deprecated and will be removed \"\n-            \"in urllib3 v2.6.0. Instead access HTTPResponse.headers directly.\",\n-            category=DeprecationWarning,\n-            stacklevel=2,\n-        )\n-        return self.headers\n-\n-    def getheader(self, name: str, default: str | None = None) -> str | None:\n-        warnings.warn(\n-            \"HTTPResponse.getheader() is deprecated and will be removed \"\n-            \"in urllib3 v2.6.0. Instead use HTTPResponse.headers.get(name, default).\",",
+      "evidence_excerpt_hash": "0a20aff1a18e4cbbfde6a3d350121c5233f9ed447612bc311fe1ef6d07e020a2",
       "artifact": "src/urllib3/response.py"
     },
     "trans_track_a_13_starlette_weak_etag_removeprefix": {
@@ -33,7 +41,11 @@
       "source_pr_url": "https://github.com/encode/starlette/pull/3193",
       "source_commit": "37309255b4c1b9c381a2d24a1eaf83100984a16a",
       "evidence_file": "starlette/staticfiles.py",
-      "evidence_hunk_sha256": "7aa3842633bfbb2cdc85391935281972bc678641b8b8b58d2371389b019fb91e",
+      "supporting_hunk": "@@ -210,7 +210,7 @@ class StaticFiles:\n         if if_none_match := request_headers.get(\"if-none-match\"):\n             # The \"etag\" header is added by FileResponse, so it's always present.\n             etag = response_headers[\"etag\"]\n-            return etag in [tag.strip(\" W/\") for tag in if_none_match.split(\",\")]\n+            return etag in [tag.strip().removeprefix(\"W/\") for tag in if_none_match.split(\",\")]\n \n         try:\n             if_modified_since = parsedate(request_headers[\"if-modified-since\"])\n",
+      "evidence_hunk_sha256": "9468be67575b17181ee05731a5a282e827e69df69654b6e9203223eb7d655f41",
+      "diff_patch_sha256": "e0b03a6b1b419d7a2fef3371311e7af67e90d89bdd0ccd621dd450b153798932",
+      "evidence_excerpt": "@@ -210,7 +210,7 @@ class StaticFiles:\n-            return etag in [tag.strip(\" W/\") for tag in if_none_match.split(\",\")]\n+            return etag in [tag.strip().removeprefix(\"W/\") for tag in if_none_match.split(\",\")]",
+      "evidence_excerpt_hash": "ea3b877ba54ae0e6a44ffe92bd9dcbd60f869cc0fc9ac058a44254a6751360d7",
       "artifact": "starlette/staticfiles.py"
     },
     "trans_track_a_14_fastapi_on_event_compatibility": {
@@ -44,7 +56,11 @@
       "source_pr_url": "https://github.com/tiangolo/fastapi/pull/14851",
       "source_commit": "f9f79926047d7f5d8e0127dd585e7683ee57e9f7",
       "evidence_file": "fastapi/routing.py",
-      "evidence_hunk_sha256": "2b2480424c3a6b8e8270c25c5c2692a3b4966200622bc160f72c34670060d869",
+      "supporting_hunk": "@@ -4473,6 +4570,58 @@ class APIRouter(routing.Router):\n             generate_unique_id_function=generate_unique_id_function,\n         )\n \n+    # TODO: remove this once the lifespan (or alternative) interface is improved\n+    async def _startup(self) -> None:\n+        \"\"\"\n+        Run any `.on_startup` event handlers.\n+\n+        This method is kept for backward compatibility after Starlette removed\n+        support for on_startup/on_shutdown handlers.\n+\n+        Ref: https://github.com/Kludex/starlette/pull/3117\n+        \"\"\"\n+        for handler in self.on_startup:\n+            if is_async_callable(handler):\n+                await handler()\n+            else:\n+                handler()\n+\n+    # TODO: remove this once the lifespan (or alternative) interface is improved\n+    async def _shutdown(self) -> None:\n+        \"\"\"\n+        Run any `.on_shutdown` event handlers.\n+\n+        This method is kept for backward compatibility after Starlette removed\n+        support for on_startup/on_shutdown handlers.\n+\n+        Ref: https://github.com/Kludex/starlette/pull/3117\n+        \"\"\"\n+        for handler in self.on_shutdown:\n+            if is_async_callable(handler):\n+                await handler()\n+            else:\n+                handler()\n+\n+    # TODO: remove this once the lifespan (or alternative) interface is improved\n+    def add_event_handler(\n+        self,\n+        event_type: str,\n+        func: Callable[[], Any],\n+    ) -> None:\n+        \"\"\"\n+        Add an event handler function for startup or shutdown.\n+\n+        This method is kept for backward compatibility after Starlette removed\n+        support for on_startup/on_shutdown handlers.\n+\n+        Ref: https://github.com/Kludex/starlette/pull/3117\n+        \"\"\"\n+        assert event_type in (\"startup\", \"shutdown\")\n+        if event_type == \"startup\":\n+            self.on_startup.append(func)\n+        else:\n+            self.on_shutdown.append(func)\n+\n     @deprecated(\n         \"\"\"\n         on_event is deprecated, use lifespan event handlers instead.\n",
+      "evidence_hunk_sha256": "efae0dd75f62faba533eadf012245f18967a83660c8f5243c3c8db75b8f08952",
+      "diff_patch_sha256": "372477ad6ad9c175b576fd511f4c9e4a67c51ff6a185c528b03bda70d4806387",
+      "evidence_excerpt": "@@ -4473,6 +4570,58 @@ class APIRouter(routing.Router):\n+    # TODO: remove this once the lifespan (or alternative) interface is improved\n+    async def _startup(self) -> None:\n+        \"\"\"\n+        Run any `.on_startup` event handlers.\n+\n+        This method is kept for backward compatibility after Starlette removed\n+        support for on_startup/on_shutdown handlers.\n+\n+        Ref: https://github.com/Kludex/starlette/pull/3117\n+        \"\"\"\n+        for handler in self.on_startup:\n+            if is_async_callable(handler):\n+                await handler()\n+            else:",
+      "evidence_excerpt_hash": "0e177e0d2eae16f21aabe3f4752a77b39c9d897c119b2c57c2f4c3bfdef1aaa6",
       "artifact": "fastapi/routing.py"
     },
     "trans_track_a_15_more_itertools_zip_equal_removal": {
@@ -55,7 +71,11 @@
       "source_pr_url": "https://github.com/more-itertools/more-itertools/pull/1076",
       "source_commit": "8fa3b81c8dd90c3b3f6648add2228aaaebb42884",
       "evidence_file": "more_itertools/more.py",
-      "evidence_hunk_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "supporting_hunk": "@@ -37,13 +36,11 @@ from operator import (\n     sub,\n     gt,\n )\n-from sys import hexversion, maxsize\n+from sys import maxsize\n from time import monotonic\n \n from .recipes import (\n     _marker,\n-    _zip_equal,\n-    UnequalIterablesError,\n     consume,\n     first_true,\n     flatten,\n",
+      "evidence_hunk_sha256": "738217ecfa764969b365ad7fcdb2719307ec9620eab829dbe07ad43a207a3770",
+      "diff_patch_sha256": "c88ffcbc2d06767c5c4275e4ea6e752a6e4640713347263932910818490c975f",
+      "evidence_excerpt": "-from sys import hexversion, maxsize\n+from sys import maxsize\n-    _zip_equal,\n-    UnequalIterablesError,",
+      "evidence_excerpt_hash": "3e2857d9db9e305326a9c6bbd7576a1487f98aab19829724dc2499aa60f727ed",
       "artifact": "more_itertools/more.py"
     },
     "trans_track_a_16_rich_file_proxy_isatty": {
@@ -66,7 +86,11 @@
       "source_pr_url": "https://github.com/Textualize/rich/pull/4077",
       "source_commit": "19c67b9a3479841e9133bea94607c89ee931d3fc",
       "evidence_file": "rich/file_proxy.py",
-      "evidence_hunk_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "supporting_hunk": "@@ -55,3 +55,6 @@ class FileProxy(io.TextIOBase):\n \n     def fileno(self) -> int:\n         return self.__file.fileno()\n+\n+    def isatty(self) -> bool:\n+        return self.__file.isatty()\n",
+      "evidence_hunk_sha256": "195aad95e34a45b44d2b222f8b13d0b55f4934d11b0412441700e010cd21e765",
+      "diff_patch_sha256": "19aca55f3f2038c43a1575dfa520ab6be220552027e53ce21a6df0f599ef2a8a",
+      "evidence_excerpt": "@@ -55,3 +55,6 @@ class FileProxy(io.TextIOBase):\n     def fileno(self) -> int:\n+\n+    def isatty(self) -> bool:\n+        return self.__file.isatty()",
+      "evidence_excerpt_hash": "5be96a295392897a51b3afca7972b9d5c990def41eadda1750a32bf2c9d875b5",
       "artifact": "rich/file_proxy.py"
     },
     "trans_track_a_17_celery_task_module_cleanup": {
@@ -77,7 +101,11 @@
       "source_pr_url": "https://github.com/celery/celery/pull/6869",
       "source_commit": "3cf5072ee5f95744024f60e0f4a77eb2edb8959f",
       "evidence_file": "celery/__init__.py",
-      "evidence_hunk_sha256": "9c0136e8fdde4d1e6e25d9e078b3c11bb847925eec696ea4401f9c1d6cd61dda",
+      "supporting_hunk": "@@ -27,7 +27,7 @@ __keywords__ = 'task job queue distributed messaging actor'\n # -eof meta-\n \n __all__ = (\n-    'Celery', 'bugreport', 'shared_task', 'task', 'Task',\n+    'Celery', 'bugreport', 'shared_task', 'Task',\n     'current_app', 'current_task', 'maybe_signature',\n     'chain', 'chord', 'chunks', 'group', 'signature',\n     'xmap', 'xstarmap', 'uuid',\n",
+      "evidence_hunk_sha256": "2ea15dcb232ace51d1e11730830b2b28bc4703d12bd87b6981734edd6b4b5551",
+      "diff_patch_sha256": "037e7400cad0f4bbea5d7ad881c5eb7908e19c419b754f7812d2233da538ce4e",
+      "evidence_excerpt": "-    'Celery', 'bugreport', 'shared_task', 'task', 'Task',\n+    'Celery', 'bugreport', 'shared_task', 'Task',",
+      "evidence_excerpt_hash": "8369f934d58eda28428d84a0b61bc23a3c2fbfeb1d715e804cd6bd3c7652d6e4",
       "artifact": "celery/__init__.py"
     },
     "trans_track_a_18_marshmallow_pprint_export_removal": {
@@ -88,7 +116,11 @@
       "source_pr_url": "https://github.com/marshmallow-code/marshmallow/pull/2823",
       "source_commit": "5429f0d4c6e346dc751599073cab67d66eefbcb2",
       "evidence_file": "src/marshmallow/__init__.py",
-      "evidence_hunk_sha256": "d8a094ae1e64401d6e07a6867762fea52c2435b6a507b6f178bfb85936f3613b",
+      "supporting_hunk": "@@ -23,7 +23,6 @@ __all__ = [\n     \"missing\",\n     \"post_dump\",\n     \"post_load\",\n-    \"pprint\",\n     \"pre_dump\",\n     \"pre_load\",\n     \"validates\",\n",
+      "evidence_hunk_sha256": "71e92029d63e404b11de9400535a4a4eedb3c3553192f8c96f1c3913925fc0e0",
+      "diff_patch_sha256": "366dd2dfda2ee718ae387c1c68f08db091b8003fb779abbba1ed98bb627985b3",
+      "evidence_excerpt": "-    \"pprint\",",
+      "evidence_excerpt_hash": "4125d9d8da3748b6080e735b678a8a457be5cdbe0acea9ec69d5863baa593e92",
       "artifact": "src/marshmallow/__init__.py"
     },
     "trans_track_a_19_flake8_doctest_options_removal": {
@@ -99,7 +131,11 @@
       "source_pr_url": "https://github.com/PyCQA/flake8/pull/1854",
       "source_commit": "b3e251512238ad39c87e4b8d1614903fe493f7ea",
       "evidence_file": "src/flake8/plugins/pyflakes.py",
-      "evidence_hunk_sha256": "58cee24a49a031b8af6d7bf5780c7e8200538431c318467611e619927dce1659",
+      "supporting_hunk": "@@ -68,34 +66,12 @@ class FlakesChecker(pyflakes.checker.Checker):\n     \"\"\"Subclass the Pyflakes checker to conform with the flake8 API.\"\"\"\n \n     with_doctest = False\n-    include_in_doctest: list[str] = []\n-    exclude_from_doctest: list[str] = []\n \n     def __init__(self, tree: ast.AST, filename: str) -> None:\n         \"\"\"Initialize the PyFlakes plugin with an AST tree and filename.\"\"\"\n-        filename = utils.normalize_path(filename)\n-        with_doctest = self.with_doctest\n-        included_by = [\n-            include\n-            for include in self.include_in_doctest\n-            if include != \"\" and filename.startswith(include)\n-        ]\n-        if included_by:\n-            with_doctest = True\n-\n-        for exclude in self.exclude_from_doctest:\n-            if exclude != \"\" and filename.startswith(exclude):\n-                with_doctest = False\n-                overlapped_by = [\n-                    include\n-                    for include in included_by\n-                    if include.startswith(exclude)\n-                ]\n-\n-                if overlapped_by:\n-                    with_doctest = True\n-\n-        super().__init__(tree, filename=filename, withDoctest=with_doctest)\n+        super().__init__(\n+            tree, filename=filename, withDoctest=self.with_doctest\n+        )\n \n     @classmethod\n     def add_options(cls, parser: OptionManager) -> None:\n",
+      "evidence_hunk_sha256": "055935f44dfa00e67021266d597aa623e88585579286d44b978f11f7ad0a4d24",
+      "diff_patch_sha256": "cf213d681becdff2aabba5c011d0e6d5667ff9f5545dd222e42b9b0d16faaed4",
+      "evidence_excerpt": "@@ -68,34 +66,12 @@ class FlakesChecker(pyflakes.checker.Checker):\n     \"\"\"Subclass the Pyflakes checker to conform with the flake8 API.\"\"\"\n-    include_in_doctest: list[str] = []\n-    exclude_from_doctest: list[str] = []\n     def __init__(self, tree: ast.AST, filename: str) -> None:\n-        filename = utils.normalize_path(filename)\n-        with_doctest = self.with_doctest\n-        included_by = [\n-            include\n-            for include in self.include_in_doctest\n-            if include != \"\" and filename.startswith(include)\n-        ]\n-        if included_by:\n-            with_doctest = True\n-",
+      "evidence_excerpt_hash": "56f333b30fd2720504e9a5ddf2ed16bc3598b0804375600e871f7752ea0503d7",
       "artifact": "src/flake8/plugins/pyflakes.py"
     },
     "trans_track_a_20_iniconfig_strip_inline_comments": {
@@ -110,7 +146,11 @@
       "source_pr_url": "https://github.com/pytest-dev/iniconfig/pull/70",
       "source_commit": "7faed13ae50bad7c5da3f5782f254a8a7736bb84",
       "evidence_file": "src/iniconfig/__init__.py",
-      "evidence_hunk_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "supporting_hunk": "@@ -96,33 +96,86 @@ class IniConfig:\n         path: str | os.PathLike[str],\n         data: str | None = None,\n         encoding: str = \"utf-8\",\n+        *,\n+        _sections: Mapping[str, Mapping[str, str]] | None = None,\n+        _sources: Mapping[tuple[str, str | None], int] | None = None,\n     ) -> None:\n         self.path = os.fspath(path)\n+\n+        # Determine sections and sources\n+        if _sections is not None and _sources is not None:\n+            # Use provided pre-parsed data (called from parse())\n+            sections_data = _sections\n+            sources = _sources\n+        else:\n+            # Parse the data (backward compatible path)\n+            if data is None:\n+                with open(self.path, encoding=encoding) as fp:\n+                    data = fp.read()\n+\n+            # Use old behavior (no stripping) for backward compatibility\n+            sections_data, sources = _parse.parse_ini_data(\n+                self.path, data, strip_inline_comments=False\n+            )\n+\n+        # Assign once to Final attributes\n+        self._sources = sources\n+        self.sections = sections_data\n+\n+    @classmethod\n+    def parse(\n+        cls,\n+        path: str | os.PathLike[str],\n+        data: str | None = None,\n+        encoding: str = \"utf-8\",\n+        *,\n+        strip_inline_comments: bool = True,\n+        strip_section_whitespace: bool = False,\n+    ) -> \"IniConfig\":\n+        \"\"\"Parse an INI file.\n+\n+        Args:\n+            path: Path to the INI file (used for error messages)\n+            data: Optional INI content as string. If None, reads from path.\n+            encoding: Encoding to use when reading the file (default: utf-8)\n+            strip_inline_comments: Whether to strip inline comments from values\n+                (default: True). When True, comments starting with # or ; are\n+                removed from values, matching the behavior for section comments.\n+            strip_section_whitespace: Whether to strip whitespace from section and key names\n+                (default: False). When True, strips Unicode whitespace from section and key names,\n+                addressing issue #4. When False, preserves existing behavior for backward compatibility.\n+\n+        Returns:\n+            IniConfig instance with parsed configuration\n+\n+        Example:\n+            # With comment stripping (default):\n+            config = IniConfig.parse(\"setup.cfg\")\n+            # value = \"foo\" instead of \"foo # comment\"\n+\n+            # Without comment stripping (old behavior):\n+            config = IniConfig.parse(\"setup.cfg\", strip_inline_comments=False)\n+            # value = \"foo # comment\"\n+\n+            # With section name stripping (opt-in for issue #4):\n+            config = IniConfig.parse(\"setup.cfg\", strip_section_whitespace=True)\n+            # section names and keys have Unicode whitespace stripped\n+        \"\"\"\n+        fspath = os.fspath(path)\n+\n         if data is None:\n-            with open(self.path, encoding=encoding) as fp:\n+            with open(fspath, encoding=encoding) as fp:\n                 data = fp.read()\n \n-        tokens = _parse.parse_lines(self.path, data.splitlines(True))\n-\n-        self._sources = {}\n-        sections_data: dict[str, dict[str, str]]\n-        self.sections = sections_data = {}\n-\n-        for lineno, section, name, value in tokens:\n-            if section is None:\n-                raise ParseError(self.path, lineno, \"no section header defined\")\n-            self._sources[section, name] = lineno\n-            if name is None:\n-                if section in self.sections:\n-                    raise ParseError(\n-                        self.path, lineno, f\"duplicate section {section!r}\"\n-                    )\n-                sections_data[section] = {}\n-            else:\n-                if name in self.sections[section]:\n-                    raise ParseError(self.path, lineno, f\"duplicate name {name!r}\")\n-                assert value is not None\n-                sections_data[section][name] = value\n+        sections_data, sources = _parse.parse_ini_data(\n+            fspath,\n+            data,\n+            strip_inline_comments=strip_inline_comments,\n+            strip_section_whitespace=strip_section_whitespace,\n+        )\n+\n+        # Call constructor with pre-parsed sections and sources\n+        return cls(path=fspath, _sections=sections_data, _sources=sources)\n \n     def lineof(self, section: str, name: str | None = None) -> int | None:\n         lineno = self._sources.get((section, name))\n",
+      "evidence_hunk_sha256": "0d4c2ccf01dba94be912ab874130642a5b5bce5bddd9591669cce9a36f0a7946",
+      "diff_patch_sha256": "c4eff902d7ea406a61571cd5ffa8f0656a3c01ea03bebb6a09ff5058077be90e",
+      "evidence_excerpt": "@@ -96,33 +96,86 @@ class IniConfig:\n+        *,\n+        _sections: Mapping[str, Mapping[str, str]] | None = None,\n+        _sources: Mapping[tuple[str, str | None], int] | None = None,\n+\n+        # Determine sections and sources\n+        if _sections is not None and _sources is not None:\n+            # Use provided pre-parsed data (called from parse())\n+            sections_data = _sections\n+            sources = _sources\n+        else:\n+            # Parse the data (backward compatible path)\n+            if data is None:\n+                with open(self.path, encoding=encoding) as fp:\n+                    data = fp.read()",
+      "evidence_excerpt_hash": "9884799ef5514919180b57bb6665c1c6367b0b52ad3901a95410c6f4015c7ed8",
       "artifact": "src/iniconfig/__init__.py"
     },
     "trans_track_a_21_packaging_legacy_version_removal": {
@@ -121,7 +161,11 @@
       "source_pr_url": "https://github.com/pypa/packaging/pull/407",
       "source_commit": "237ff3aa348486cf835a980592af3a59fccd6101",
       "evidence_file": "packaging/version.py",
-      "evidence_hunk_sha256": "3bb9e062cb5faae251eb65dcc17f36ce97f88e0b9f690b024949d049f4bf132e",
+      "supporting_hunk": "@@ -5,12 +5,11 @@\n import collections\n import itertools\n import re\n-import warnings\n-from typing import Callable, Iterator, List, Optional, SupportsInt, Tuple, Union\n+from typing import Callable, Optional, SupportsInt, Tuple, Union\n \n from ._structures import Infinity, InfinityType, NegativeInfinity, NegativeInfinityType\n \n-__all__ = [\"parse\", \"Version\", \"LegacyVersion\", \"InvalidVersion\", \"VERSION_PATTERN\"]\n+__all__ = [\"parse\", \"Version\", \"InvalidVersion\", \"VERSION_PATTERN\"]\n \n InfiniteTypes = Union[InfinityType, NegativeInfinityType]\n PrePostDevType = Union[InfiniteTypes, Tuple[str, int]]\n",
+      "evidence_hunk_sha256": "de5a1bc2cdfe3142f51b93b532029372f2336af6750ba748f59f8bce1f4fda27",
+      "diff_patch_sha256": "d5b997fcf8d32766a745272edf9fa0577edb880d2f1397ba12bd958aa1b27db5",
+      "evidence_excerpt": "-import warnings\n-from typing import Callable, Iterator, List, Optional, SupportsInt, Tuple, Union\n+from typing import Callable, Optional, SupportsInt, Tuple, Union\n-__all__ = [\"parse\", \"Version\", \"LegacyVersion\", \"InvalidVersion\", \"VERSION_PATTERN\"]\n+__all__ = [\"parse\", \"Version\", \"InvalidVersion\", \"VERSION_PATTERN\"]",
+      "evidence_excerpt_hash": "e55654ae7c93f7439e6912ca9e238f717b79575f829cbf3dc5d9da819890cb85",
       "artifact": "packaging/version.py"
     },
     "trans_track_a_22_dateutil_unknown_timezone_warning": {
@@ -132,7 +176,11 @@
       "source_pr_url": "https://github.com/dateutil/dateutil/pull/540",
       "source_commit": "65d66b28ff201ae7bf59cf4128462e1c2d839da8",
       "evidence_file": "dateutil/parser/__init__.py",
-      "evidence_hunk_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "supporting_hunk": "@@ -1,13 +1,15 @@\n # -*- coding: utf-8 -*-\n from ._parser import parse, parser, parserinfo\n from ._parser import DEFAULTPARSER, DEFAULTTZPARSER\n+from ._parser import UnknownTimezoneWarning\n \n from ._parser import __doc__\n \n from .isoparser import isoparser, isoparse\n \n __all__ = ['parse', 'parser', 'parserinfo',\n-           'isoparse', 'isoparser']\n+           'isoparse', 'isoparser',\n+           'UnknownTimezoneWarning']\n \n \n ###\n",
+      "evidence_hunk_sha256": "2e0ddb5050a0829f21f02332da06fdced4bc5253fca8f3993f1f70a04e08dc4c",
+      "diff_patch_sha256": "5a1640cd72da15742fcd0db53f8772490470a4466289f73eaa15d183fca0bb3f",
+      "evidence_excerpt": "+from ._parser import UnknownTimezoneWarning\n-           'isoparse', 'isoparser']\n+           'isoparse', 'isoparser',\n+           'UnknownTimezoneWarning']",
+      "evidence_excerpt_hash": "4954bc66685b966507868c69ed433abb12ea19e9a4cf9f260a0604cad9470890",
       "artifact": "dateutil/parser/__init__.py"
     },
     "trans_track_a_23_tqdm_asyncio_gather_return_exceptions": {
@@ -143,7 +191,11 @@
       "source_pr_url": "https://github.com/tqdm/tqdm/pull/1776",
       "source_commit": "99615b978702dcf61986de62dfd252d82720af76",
       "evidence_file": "tqdm/asyncio.py",
-      "evidence_hunk_sha256": "7514e99e8e841ecfc11d077797282cb5389bbb549551369a8b889e95bf0e7096",
+      "supporting_hunk": "@@ -68,12 +68,18 @@ class tqdm_asyncio(std_tqdm):\n                        total=total, **tqdm_kwargs)\n \n     @classmethod\n-    async def gather(cls, *fs, loop=None, timeout=None, total=None, **tqdm_kwargs):\n+    async def gather(cls, *fs, loop=None, timeout=None, total=None, return_exceptions=False,\n+                     **tqdm_kwargs):\n         \"\"\"\n         Wrapper for `asyncio.gather`.\n         \"\"\"\n         async def wrap_awaitable(i, f):\n-            return i, await f\n+            try:\n+                return i, await f\n+            except Exception as e:  # noqa: BLE001\n+                if return_exceptions:\n+                    return i, e\n+                raise\n \n         ifs = [wrap_awaitable(i, f) for i, f in enumerate(fs)]\n         res = [await f for f in cls.as_completed(ifs, loop=loop, timeout=timeout,\n",
+      "evidence_hunk_sha256": "2dc4937ba698e2f305304235a670a088b7e050c7cbb2ca15357955692eeae47b",
+      "diff_patch_sha256": "c1f045b8c3cd176d9c3665c062026d79eb241fd45805f948a89f7ddb77eb0ef5",
+      "evidence_excerpt": "@@ -68,12 +68,18 @@ class tqdm_asyncio(std_tqdm):\n-    async def gather(cls, *fs, loop=None, timeout=None, total=None, **tqdm_kwargs):\n+    async def gather(cls, *fs, loop=None, timeout=None, total=None, return_exceptions=False,\n+                     **tqdm_kwargs):\n         async def wrap_awaitable(i, f):\n-            return i, await f\n+            try:\n+                return i, await f\n+            except Exception as e:  # noqa: BLE001\n+                if return_exceptions:\n+                    return i, e\n+                raise",
+      "evidence_excerpt_hash": "989c7c6c992259a08d851dac5cb824592020aca86947e08b613be1a10da5cdbd",
       "artifact": "tqdm/asyncio.py"
     },
     "trans_track_a_24_cachelib_timeout_timedelta": {
@@ -154,7 +206,11 @@
       "source_pr_url": "https://github.com/pallets-eco/cachelib/pull/510",
       "source_commit": "d5fc7826065db284b8eda1e2fa5d2157ba1fcb9d",
       "evidence_file": "src/cachelib/base.py",
-      "evidence_hunk_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "supporting_hunk": "@@ -16,15 +23,50 @@ class BaseCache:\n     \"\"\"\n \n     def __init__(\n-        self, default_timeout: int = 300, ignore_delete_many_errors: bool = True\n+        self,\n+        default_timeout: int | dt.timedelta = 300,\n+        ignore_delete_many_errors: bool = True,\n     ) -> None:\n-        self.default_timeout = default_timeout\n+        self.default_timeout = self._to_seconds(default_timeout)\n         self.ignore_delete_many_errors = ignore_delete_many_errors\n \n-    def _normalize_timeout(self, timeout: int | None) -> int:\n+    @staticmethod\n+    def _to_seconds(timeout: int | float | dt.timedelta) -> int:\n+        \"\"\"Convert a timeout to a whole number of seconds.\n+\n+        :param timeout: the timeout to convert. In case a\n+            :class:`datetime.timedelta` is passed it will round up\n+            subseconds to whole seconds (i.e. 200 milliseconds\n+            will be rounded to 1 second)\n+\n+        .. versionadded:: 0.17.0\n+\n+        .. deprecated:: 0.17.0\n+            Float timeouts are deprecated and rounded up to whole\n+            seconds. They will raise a ``TypeError`` in a future release.\n+        \"\"\"\n+        if isinstance(timeout, dt.timedelta):\n+            return math.ceil(timeout.total_seconds())\n+        if isinstance(timeout, float):\n+            warnings.warn(\n+                \"Float timeouts are deprecated and will raise a TypeError\"\n+                \" in a future release. Use a whole number of seconds or a\"\n+                \" datetime.timedelta instead.\",\n+                DeprecationWarning,\n+                stacklevel=2,\n+            )\n+            return math.ceil(timeout)\n+        if isinstance(timeout, int):\n+            return timeout\n+        raise TypeError(\n+            \"timeout must be an int or datetime.timedelta, \"\n+            f\"got {type(timeout).__name__!r}\"\n+        )\n+\n+    def _normalize_timeout(self, timeout: int | dt.timedelta | None) -> int:\n         if timeout is None:\n-            timeout = self.default_timeout\n-        return timeout\n+            return self.default_timeout\n+        return self._to_seconds(timeout)\n \n     def get(self, key: str) -> _t.Any:\n         \"\"\"Look up key in the cache and return the value for it.\n",
+      "evidence_hunk_sha256": "d4b341fead135ff5c8480b65b0873a14f5c5277f85efe7a45f3b40216a5dc579",
+      "diff_patch_sha256": "3a7b6179a5673701ec26d74655f28cc60ca165b412339f4a2842f97718ec7ae0",
+      "evidence_excerpt": "@@ -16,15 +23,50 @@ class BaseCache:\n     def __init__(\n-        self, default_timeout: int = 300, ignore_delete_many_errors: bool = True\n+        self,\n+        default_timeout: int | dt.timedelta = 300,\n+        ignore_delete_many_errors: bool = True,\n-        self.default_timeout = default_timeout\n+        self.default_timeout = self._to_seconds(default_timeout)\n-    def _normalize_timeout(self, timeout: int | None) -> int:\n+    @staticmethod\n+    def _to_seconds(timeout: int | float | dt.timedelta) -> int:\n+        \"\"\"Convert a timeout to a whole number of seconds.\n+\n+        :param timeout: the timeout to convert. In case a\n+            :class:`datetime.timedelta` is passed it will round up",
+      "evidence_excerpt_hash": "ee17564d99fb23f8fe928895f28337ca3b132936b116809f91e3647b908235c7",
       "artifact": "src/cachelib/base.py"
     },
     "trans_track_a_25_uvicorn_wsgi_middleware_deprecation": {
@@ -165,7 +221,11 @@
       "source_pr_url": "https://github.com/encode/uvicorn/pull/1825",
       "source_commit": "2351d5ff2b068d7bcba6eaccde83bc90b0727c89",
       "evidence_file": "uvicorn/middleware/wsgi.py",
-      "evidence_hunk_sha256": "66294f0fc9fc463751c7cb4e7069f801120c3d4f129469679dab424d9c5c7677",
+      "supporting_hunk": "@@ -73,8 +74,13 @@ def build_environ(\n     return environ\n \n \n-class WSGIMiddleware:\n+class _WSGIMiddleware:\n     def __init__(self, app: WSGIApp, workers: int = 10):\n+        warnings.warn(\n+            \"Uvicorn's native WSGI implementation is deprecated, you \"\n+            \"should switch to a2wsgi (`pip install a2wsgi`).\",\n+            DeprecationWarning,\n+        )\n         self.app = app\n         self.executor = concurrent.futures.ThreadPoolExecutor(max_workers=workers)\n \n",
+      "evidence_hunk_sha256": "0bcb461ab4ac16c4b6ea33850251a11ad1ae50b88c1b53b91e70d93ed75d8be6",
+      "diff_patch_sha256": "d37847000282f285548bb7f4d696466318be65059e61df802e34c52e32af41a4",
+      "evidence_excerpt": "@@ -73,8 +74,13 @@ def build_environ(\n-class WSGIMiddleware:\n+class _WSGIMiddleware:\n     def __init__(self, app: WSGIApp, workers: int = 10):\n+        warnings.warn(\n+            \"Uvicorn's native WSGI implementation is deprecated, you \"\n+            \"should switch to a2wsgi (`pip install a2wsgi`).\",\n+            DeprecationWarning,\n+        )",
+      "evidence_excerpt_hash": "8666628e610abdb6182903e5f2520ff30e64611321a11ce9d31d55b038e35c9f",
       "artifact": "uvicorn/middleware/wsgi.py"
     },
     "trans_track_a_26_rich_render_group_to_group": {
@@ -176,7 +236,11 @@
       "source_pr_url": "https://github.com/Textualize/rich/pull/1819",
       "source_commit": "44a715dec2b08277742939598fa28d056d6faef9",
       "evidence_file": "rich/console.py",
-      "evidence_hunk_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "supporting_hunk": "@@ -475,9 +476,6 @@ class Group:\n         yield from self.renderables\n \n \n-RenderGroup = Group  # TODO: deprecate at some point\n-\n-\n def group(fit: bool = True) -> Callable[..., Callable[..., Group]]:\n     \"\"\"A decorator that turns an iterable of renderables in to a group.\n \n",
+      "evidence_hunk_sha256": "e58b59c90f11a41db4226227ef3e30234bb212d77499d7743328d68627ef2a7c",
+      "diff_patch_sha256": "6dd6c14657e09d2e7d74818962bd6d55f85aeb7e531ed43a9f82c9a2796ea1a8",
+      "evidence_excerpt": "@@ -475,9 +476,6 @@ class Group:\n-RenderGroup = Group  # TODO: deprecate at some point\n-\n-\n def group(fit: bool = True) -> Callable[..., Callable[..., Group]]:",
+      "evidence_excerpt_hash": "61bc41dd4ab7c97edad8a23c84c635f314320171bd9959ffb44fee3e9ba56e09",
       "artifact": "rich/console.py"
     },
     "trans_track_a_27_marshmallow_ipaddress_type_mapping": {
@@ -186,8 +250,12 @@
       "replacement": "TYPE_MAPPING, Schema.TYPE_MAPPING, fields.IPv4",
       "source_pr_url": "https://github.com/marshmallow-code/marshmallow/pull/2906",
       "source_commit": "c38b48ec3b8bb44315036d0c8a07bc8477eb5094",
-      "evidence_file": "src/marshmallow/schema.py",
-      "evidence_hunk_sha256": "03769443a4996dabe95bb8b5241c5efe0f6aa4de1dec7287034689368cdd87ca",
+      "evidence_file": "CHANGELOG.rst",
+      "supporting_hunk": "@@ -21,6 +21,11 @@ Bug fixes:\n - Fix typing of ``error_essages`` argument to `marshmallow.fields.Field` (:pr:`1636`).\n   Thanks :user:`repole` for reporting and :user:`dhruvildarji` for the PR.\n \n+Other changes:\n+\n+- Add ``ipaddress.*`` to `marshmallow.Schema.TYPE_MAPPING` (:issue:`1695`).\n+  Thanks :user:`liberforce` for the suggestion and :user:`dhruvildarji` for the PR.\n+\n 4.2.2 (2026-02-04)\n ------------------\n \n",
+      "evidence_hunk_sha256": "5e654e6e0c25ec9ea5998af510ce0e1a266cdcade1e194634929d59d51482c59",
+      "diff_patch_sha256": "1b01818dc7055cf0da670eb11ed2f9c986149f213e4aeef57a0a6f1efd56e3fd",
+      "evidence_excerpt": "+Other changes:\n+\n+- Add ``ipaddress.*`` to `marshmallow.Schema.TYPE_MAPPING` (:issue:`1695`).\n+  Thanks :user:`liberforce` for the suggestion and :user:`dhruvildarji` for the PR.\n+",
+      "evidence_excerpt_hash": "d6c3f9da8557ff2b2cc3f31509c9d727a8cd5da6b8fcf2d86fc81bf68aa5bee6",
       "artifact": "src/marshmallow/schema.py"
     },
     "trans_track_a_28_starlette_exceptions_middleware_removal": {
@@ -198,7 +266,11 @@
       "source_pr_url": "https://github.com/encode/starlette/pull/2826",
       "source_commit": "856c904a6dcf7368a999dd791e2f98a7c3812f0f",
       "evidence_file": "starlette/exceptions.py",
-      "evidence_hunk_sha256": "0f48a507b640565c117007aa911c81cd7ba9f0b935e4e6977ce78a3f0aa3a998",
+      "supporting_hunk": "@@ -39,24 +31,3 @@ class WebSocketException(Exception):\n     def __repr__(self) -> str:\n         class_name = self.__class__.__name__\n         return f\"{class_name}(code={self.code!r}, reason={self.reason!r})\"\n-\n-\n-__deprecated__ = \"ExceptionMiddleware\"\n-\n-\n-def __getattr__(name: str) -> typing.Any:  # pragma: no cover\n-    if name == __deprecated__:\n-        from starlette.middleware.exceptions import ExceptionMiddleware\n-\n-        warnings.warn(\n-            f\"{__deprecated__} is deprecated on `starlette.exceptions`. \"\n-            f\"Import it from `starlette.middleware.exceptions` instead.\",\n-            category=DeprecationWarning,\n-            stacklevel=3,\n-        )\n-        return ExceptionMiddleware\n-    raise AttributeError(f\"module '{__name__}' has no attribute '{name}'\")\n-\n-\n-def __dir__() -> list[str]:\n-    return sorted(list(__all__) + [__deprecated__])  # pragma: no cover\n",
+      "evidence_hunk_sha256": "d0430e5eb05af609c32147f9730c15f68ef4d08e1a335eccf858fd489374d00b",
+      "diff_patch_sha256": "10d2fa2236c68fc78cb66537c550d81b5f91bf2f2964fc68b5515acacfdf2dca",
+      "evidence_excerpt": "@@ -39,24 +31,3 @@ class WebSocketException(Exception):\n     def __repr__(self) -> str:\n-\n-\n-__deprecated__ = \"ExceptionMiddleware\"\n-\n-\n-def __getattr__(name: str) -> typing.Any:  # pragma: no cover\n-    if name == __deprecated__:\n-        from starlette.middleware.exceptions import ExceptionMiddleware\n-\n-        warnings.warn(\n-            f\"{__deprecated__} is deprecated on `starlette.exceptions`. \"\n-            f\"Import it from `starlette.middleware.exceptions` instead.\",\n-            category=DeprecationWarning,",
+      "evidence_excerpt_hash": "2f08cf9a4d9d823392255ad9225088fcb661bf79044a4b2ebaaad30689d87c66",
       "artifact": "starlette/exceptions.py"
     },
     "trans_track_a_29_pluggy_static_hook_attr_discovery": {
@@ -209,7 +281,11 @@
       "source_pr_url": "https://github.com/pytest-dev/pluggy/pull/701",
       "source_commit": "bc9bcac68b9f3c670481661ddc50e5a0217e71d1",
       "evidence_file": "src/pluggy/_manager.py",
-      "evidence_hunk_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "supporting_hunk": "@@ -50,6 +50,82 @@ def _warn_for_function(warning: Warning, function: Callable[..., object]) -> Non\n     )\n \n \n+_ABSENT: Final = object()\n+\n+\n+def _instance_dict(obj: object) -> dict[str, Any]:\n+    \"\"\"Return ``obj``'s own ``__dict__``, without going through ``getattr``.\"\"\"\n+    try:\n+        instance_dict = object.__getattribute__(obj, \"__dict__\")\n+    except AttributeError:\n+        return {}\n+    return instance_dict if isinstance(instance_dict, dict) else {}\n+\n+\n+def _static_hook_attr(\n+    obj: object, name: str\n+) -> tuple[object, Callable[..., object]] | None:\n+    \"\"\"Return ``(marker_holder, function)`` for ``name`` on ``obj``, else None.\n+\n+    Lookup avoids ``getattr()`` so that properties, ``cached_property`` and\n+    other descriptors are skipped instead of being evaluated -- hooks provided\n+    through such a descriptor (or only through ``__getattr__``) are not\n+    supported. Only plain functions, :class:`classmethod`, :class:`staticmethod`\n+    and already-bound :class:`~types.MethodType` objects are hookable.\n+\n+    ``marker_holder`` is the object that may carry the hookimpl/hookspec\n+    options: the ``classmethod``/``staticmethod`` wrapper when the marker was\n+    applied above it, the underlying function otherwise. ``function`` is bound\n+    exactly the way ``getattr()`` would have bound it.\n+    \"\"\"\n+    if not (inspect.isclass(obj) or inspect.ismodule(obj)):\n+        # Values stored on the instance itself -- in ``__dict__`` or in a\n+        # ``__slots__`` slot -- are handed out by ``getattr()`` as they are,\n+        # bypassing the descriptor protocol, so they must not be bound here.\n+        value = _instance_dict(obj).get(name, _ABSENT)\n+        if value is _ABSENT:\n+            slot = inspect.getattr_static(obj, name, None)\n+            if isinstance(slot, types.MemberDescriptorType):\n+                # Reading a slot runs no user code.\n+                try:\n+                    value = slot.__get__(obj, type(obj))\n+                except AttributeError:\n+                    value = _ABSENT\n+        if value is not _ABSENT:\n+            if isinstance(value, types.MethodType):\n+                return value.__func__, value\n+            if inspect.isfunction(value):\n+                return value, value\n+            return None\n+\n+    static: object = inspect.getattr_static(obj, name, None)\n+    if isinstance(static, staticmethod):\n+        return static, static.__func__\n+    if isinstance(static, classmethod):\n+        owner = obj if inspect.isclass(obj) else type(obj)\n+        return static, cast(Callable[..., object], static.__get__(owner, owner))\n+    if isinstance(static, types.MethodType):\n+        return static.__func__, static\n+    if inspect.isfunction(static):\n+        if inspect.isclass(obj) or inspect.ismodule(obj):\n+            return static, static\n+        return static, static.__get__(obj, type(obj))\n+    return None\n+\n+\n+def _get_marker_opts(holder: object, attrname: str) -> dict[str, Any] | None:\n+    \"\"\"Read marker options from ``holder``, falling back to ``__func__``.\"\"\"\n+    opts = getattr(holder, attrname, None)\n+    if opts is not None:\n+        return opts if isinstance(opts, dict) else None\n+    func = getattr(holder, \"__func__\", None)\n+    if func is not None:\n+        opts = getattr(func, attrname, None)\n+        if opts is not None:\n+            return opts if isinstance(opts, dict) else None\n+    return None\n+\n+\n class PluginValidationError(Exception):\n     \"\"\"Plugin failed validation.\n \n",
+      "evidence_hunk_sha256": "f98212b5a87c1a667eee635c09329ca0a365bc1e5720979d96f222e463fa9e6f",
+      "diff_patch_sha256": "e1d37885a28dabf9eb5010b468224fc5cccff24d6a90dbf163429d4bcb33bced",
+      "evidence_excerpt": "@@ -50,6 +50,82 @@ def _warn_for_function(warning: Warning, function: Callable[..., object]) -> Non\n+_ABSENT: Final = object()\n+\n+\n+def _instance_dict(obj: object) -> dict[str, Any]:\n+    \"\"\"Return ``obj``'s own ``__dict__``, without going through ``getattr``.\"\"\"\n+    try:\n+        instance_dict = object.__getattribute__(obj, \"__dict__\")\n+    except AttributeError:\n+        return {}\n+    return instance_dict if isinstance(instance_dict, dict) else {}\n+\n+\n+def _static_hook_attr(\n+    obj: object, name: str",
+      "evidence_excerpt_hash": "8d05bb1820eaf51787bbde66c7f64043b0b43e036b2e8d80fd61e2f10c26488c",
       "artifact": "src/pluggy/_manager.py"
     },
     "trans_track_a_30_fastapi_pydantic_v1_deprecation": {
@@ -220,7 +296,11 @@
       "source_pr_url": "https://github.com/tiangolo/fastapi/pull/14583",
       "source_commit": "6e42bcd8ce2ade33d94f478310dad20ee84f8f0f",
       "evidence_file": "fastapi/dependencies/utils.py",
-      "evidence_hunk_sha256": "ac1ea8be20fbdaefa97c8eef0c02cffc6c01665450ccea70f21e82ecd9fdd4ae",
+      "supporting_hunk": "@@ -322,6 +323,13 @@ def get_dependant(\n             )\n             continue\n         assert param_details.field is not None\n+        if isinstance(param_details.field, may_v1.ModelField):\n+            warnings.warn(\n+                \"pydantic.v1 is deprecated and will soon stop being supported by FastAPI.\"\n+                f\" Please update the param {param_name}: {param_details.type_annotation!r}.\",\n+                category=DeprecationWarning,\n+                stacklevel=5,\n+            )\n         if isinstance(\n             param_details.field.field_info, (params.Body, temp_pydantic_v1_params.Body)\n         ):\n",
+      "evidence_hunk_sha256": "160184a1b78ee51aa10cd5eb62d399c45663f43f5c9eb1fa96a6929ff8eef85f",
+      "diff_patch_sha256": "c0e5699e4620025eb0d42dc966d9c25f3b38faadc3d7d2b704613ad6ce1fa9da",
+      "evidence_excerpt": "@@ -322,6 +323,13 @@ def get_dependant(\n+        if isinstance(param_details.field, may_v1.ModelField):\n+            warnings.warn(\n+                \"pydantic.v1 is deprecated and will soon stop being supported by FastAPI.\"\n+                f\" Please update the param {param_name}: {param_details.type_annotation!r}.\",\n+                category=DeprecationWarning,\n+                stacklevel=5,\n+            )",
+      "evidence_excerpt_hash": "6ac1e2588d410a4d512a2ce5bf887bc968c4b96cdfb5eec4508ea8fefa848dc8",
       "artifact": "fastapi/dependencies/utils.py"
     }
   }

@@ -155,7 +155,7 @@ class SymbolLevelValidityEvaluator:
 
 
 class ValidityMetricsCalculator:
-    """Computes False Invalidation Rate, Stale Exposure Rate, and Recall."""
+    """Computes False Invalidation Rate, Stale Exposure Rate, Valid Memory Recall, and Stale Memory Recall."""
 
     @staticmethod
     def compute(
@@ -171,21 +171,27 @@ class ValidityMetricsCalculator:
         false_invalidations = sum(1 for g, p in zip(ground_truth_valid, predicted_active) if g and not p)
         false_invalidation_rate = (false_invalidations / total_valid) if total_valid > 0 else 0.0
 
-        # Stale Exposure: truly stale, but mechanism kept ACTIVE
-        stale_exposures = sum(1 for g, p in zip(ground_truth_valid, predicted_active) if not g and p)
-        stale_exposure_rate = (stale_exposures / total_active) if total_active > 0 else 0.0
-
         # Valid Memory Recall: truly valid and kept ACTIVE / total valid
         valid_recalled = sum(1 for g, p in zip(ground_truth_valid, predicted_active) if g and p)
         valid_memory_recall = (valid_recalled / total_valid) if total_valid > 0 else 0.0
+
+        # Stale Exposure: truly stale, but mechanism kept ACTIVE / total stale
+        stale_exposures = sum(1 for g, p in zip(ground_truth_valid, predicted_active) if not g and p)
+        stale_exposure_rate = (stale_exposures / total_stale) if total_stale > 0 else 0.0
+
+        # Stale Memory Recall: truly stale, correctly invalidated / total stale
+        stale_invalidated = sum(1 for g, p in zip(ground_truth_valid, predicted_active) if not g and not p)
+        stale_memory_recall = (stale_invalidated / total_stale) if total_stale > 0 else 0.0
 
         return {
             "total_samples": len(ground_truth_valid),
             "total_valid_ground_truth": total_valid,
             "total_stale_ground_truth": total_stale,
+            "total_predicted_active": total_active,
             "false_invalidations": false_invalidations,
             "false_invalidation_rate": false_invalidation_rate,
+            "valid_memory_recall": valid_memory_recall,
             "stale_exposures": stale_exposures,
             "stale_exposure_rate": stale_exposure_rate,
-            "valid_memory_recall": valid_memory_recall
+            "stale_memory_recall": stale_memory_recall
         }

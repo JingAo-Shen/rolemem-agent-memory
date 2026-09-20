@@ -27,6 +27,9 @@ class MemoryRecordV1:
     role_tags: List[str] = field(default_factory=lambda: ["coder", "reviewer"])
     statement: str = ""
     artifact_digest: Optional[str] = None
+    symbol_qualified_name: Optional[str] = None
+    symbol_digest: Optional[str] = None
+    validity_granularity: str = "file"  # 'file' | 'symbol'
 
     def compute_hash(self, content: str) -> str:
         """Compute standard SHA-256 digest of file content."""
@@ -35,7 +38,7 @@ class MemoryRecordV1:
     def is_artifact_valid(self, workspace_files: Dict[str, str]) -> bool:
         """
         Verify artifact validity against current workspace files.
-        Selective invalidation: If artifact_uri exists in workspace, compute its real SHA-256.
+        File-level invalidation: If artifact_uri exists in workspace, compute its real SHA-256.
         If hash differs from recorded artifact_digest, this memory is invalidated.
         """
         if not self.artifact_digest or not self.artifact_uri:
@@ -49,12 +52,39 @@ class MemoryRecordV1:
         current_digest = hashlib.sha256(current_content.encode('utf-8')).hexdigest()
         return current_digest == self.artifact_digest
 
+    def is_symbol_valid(self, workspace_files: Dict[str, str]) -> bool:
+        """
+        Verify symbol-level validity against current workspace files.
+        Symbol-level invalidation: Check if symbol_qualified_name exists with matching symbol_digest.
+        """
+        if not self.artifact_uri:
+            return True
+        if not self.artifact_digest and not self.symbol_digest:
+            return True
+        current_content = workspace_files.get(self.artifact_uri)
+        if current_content is None:
+            return False
+        if not self.symbol_qualified_name or not self.symbol_digest:
+            return self.is_artifact_valid(workspace_files)
+
+        from src.symbol_validity import SymbolDigestExtractor
+        digests = SymbolDigestExtractor.extract_symbol_digests(current_content)
+        qname = self.symbol_qualified_name
+        short_name = qname.split(".")[-1]
+        target_info = digests.get(qname) or digests.get(short_name)
+        if not target_info:
+            return False
+        return target_info["symbol_digest"] == self.symbol_digest
+
     def to_dict(self) -> Dict[str, Any]:
         return {
             "memory_id": self.memory_id,
             "artifact_uri": self.artifact_uri,
             "artifact_type": self.artifact_type,
             "symbol": self.symbol,
+            "symbol_qualified_name": self.symbol_qualified_name,
+            "symbol_digest": self.symbol_digest,
+            "validity_granularity": self.validity_granularity,
             "source_commit": self.source_commit,
             "observed_at": self.observed_at,
             "evidence_type": self.evidence_type,

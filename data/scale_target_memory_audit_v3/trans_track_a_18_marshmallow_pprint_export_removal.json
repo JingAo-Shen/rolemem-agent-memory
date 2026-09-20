@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_18_marshmallow_pprint_export_removal",
+  "provenance_status": "TARGET_MEMORY_VERIFIED",
+  "checks": {
+    "source_commit_matches": true,
+    "source_pr_matches": true,
+    "supporting_hunk_non_empty": true,
+    "evidence_excerpt_non_empty": true,
+    "hunk_in_diff_patch": true,
+    "evidence_hunk_sha256_verified": true,
+    "diff_patch_sha256_verified": true,
+    "evidence_excerpt_hash_verified": true,
+    "statement_entailed": true
+  },
+  "recomputed_hashes": {
+    "diff_hunk_sha256": "71e92029d63e404b11de9400535a4a4eedb3c3553192f8c96f1c3913925fc0e0",
+    "diff_patch_sha256": "366dd2dfda2ee718ae387c1c68f08db091b8003fb779abbba1ed98bb627985b3",
+    "evidence_excerpt_hash": "4125d9d8da3748b6080e735b678a8a457be5cdbe0acea9ec69d5863baa593e92"
+  },
+  "claim": {
+    "transition_id": "trans_track_a_18_marshmallow_pprint_export_removal",
+    "statement": "Check fields export presence in marshmallow.__all__.",
+    "symbol": "marshmallow.pprint",
+    "replacement": "fields, marshmallow.fields",
+    "source_pr_url": "https://github.com/marshmallow-code/marshmallow/pull/2823",
+    "source_commit": "5429f0d4c6e346dc751599073cab67d66eefbcb2",
+    "evidence_file": "src/marshmallow/__init__.py",
+    "supporting_hunk": "@@ -23,7 +23,6 @@ __all__ = [\n     \"missing\",\n     \"post_dump\",\n     \"post_load\",\n-    \"pprint\",\n     \"pre_dump\",\n     \"pre_load\",\n     \"validates\",\n",
+    "evidence_hunk_sha256": "71e92029d63e404b11de9400535a4a4eedb3c3553192f8c96f1c3913925fc0e0",
+    "diff_patch_sha256": "366dd2dfda2ee718ae387c1c68f08db091b8003fb779abbba1ed98bb627985b3",
+    "evidence_excerpt": "-    \"pprint\",",
+    "evidence_excerpt_hash": "4125d9d8da3748b6080e735b678a8a457be5cdbe0acea9ec69d5863baa593e92",
+    "artifact": "src/marshmallow/__init__.py"
+  }
+}

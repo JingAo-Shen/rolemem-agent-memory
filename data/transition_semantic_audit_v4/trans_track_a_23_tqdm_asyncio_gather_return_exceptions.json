@@ -1,0 +1,62 @@
+{
+  "transition_id": "trans_track_a_23_tqdm_asyncio_gather_return_exceptions",
+  "verdict": "SEMANTIC_STRONG_PASS",
+  "semantic_pass": true,
+  "q1_repo_change_pr_diff": {
+    "pass": true,
+    "evidence": {
+      "diff_bytes": 1686,
+      "diff_mentions_symbol": true,
+      "pr_title": "feat(asyncio): add return_exceptions to gather wrapper",
+      "pr_mentions_concept": true
+    }
+  },
+  "q2_stale_memory_base_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "tqdm/asyncio.py",
+      "base_commit": "53d096e77c28005b4f9fe1e9d6274ae311bf87e7",
+      "matched_term": "gather",
+      "lineno": 71,
+      "excerpt": "\n    @classmethod\n    async def gather(cls, *fs, loop=None, timeout=None, total=None, **tqdm_kwargs):\n        \"\"\"\n        Wrapper for `asyncio.gather`.\n        \"\"\"\n        async def wrap_awaitable(i, f):\n            return i, await f\n\n        ifs = [wrap_awaitable(i, f) for i, f in enumerate(fs)]",
+      "evidence_sha256": "78db907554acc3a6ac11a3587604b0dfb758473cc49c22ccca3b510ae051ccf5"
+    }
+  },
+  "q3_valid_memory_target_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "tqdm/asyncio.py",
+      "target_commit": "99615b978702dcf61986de62dfd252d82720af76",
+      "matched_term": "gather",
+      "lineno": 71,
+      "excerpt": "\n    @classmethod\n    async def gather(cls, *fs, loop=None, timeout=None, total=None, return_exceptions=False,\n                     **tqdm_kwargs):\n        \"\"\"\n        Wrapper for `asyncio.gather`.\n        \"\"\"\n        async def wrap_awaitable(i, f):\n            try:\n                return i, await f",
+      "evidence_sha256": "78fe1b63c5f4b8a8444c34be3704d708a0e6e2084d91c09b5653c498c650de21"
+    }
+  },
+  "q4_current_task_capability": {
+    "pass": true,
+    "evidence": {
+      "current_task": "Implement `run_gather_tasks(tasks)` in `async_helper.py` executing coroutine tasks with tqdm_asyncio.gather returning exception objects without raising.",
+      "target_symbol": "run_gather_tasks",
+      "symbol_in_hidden_test": true
+    }
+  },
+  "q5_stale_solution_asymmetry": {
+    "pass": true,
+    "evidence": {
+      "base_stale_pass": true,
+      "target_stale_pass": false,
+      "target_stale_is_stale": true,
+      "stale_ast_valid": true
+    }
+  },
+  "q6_valid_solution_target_pass": {
+    "pass": true,
+    "evidence": {
+      "target_valid_pass": true,
+      "base_valid_pass": false,
+      "is_evolution_control": true,
+      "valid_ast_valid": true
+    }
+  }
+}

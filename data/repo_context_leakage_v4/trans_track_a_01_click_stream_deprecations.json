@@ -1,0 +1,13 @@
+{
+  "transition_id": "trans_track_a_01_click_stream_deprecations",
+  "leakage_level": "REPO_CONTEXT_HINTED",
+  "retrieved_tokens": 1200,
+  "retrieved_files": [],
+  "hinted_terms_found": [
+    "buffer",
+    "deprecated"
+  ],
+  "target_func_def_found": false,
+  "near_solution_found": false,
+  "retrieved_context_excerpt": "[REPOSITORY CONTEXT (RETRIEVED)]\n# File: src/click/utils.py (Lines 361-400)\n    if opener is None:\n        raise TypeError(_(\"Unknown standard stream '{name}'\").format(name=name))\n    return opener()\n\n\ndef _get_text_stream(\n    name: t.Literal[\"stdin\", \"stdout\", \"stderr\"],\n    encoding: str | None = None,\n    errors: str | None = \"strict\",\n) -> t.TextIO:\n    \"\"\"Returns a system stream for text processing.\n\n    .. deprecated:: 8.5.0\n        Will be removed in Click 9.0.\n\n    This usually returns "
+}
