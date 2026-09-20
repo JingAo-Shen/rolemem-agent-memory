@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_d_rem_markupsafe___getattr__",
+  "repository": "markupsafe",
+  "file_path": "src/markupsafe/__init__.py",
+  "symbol_qualified_name": "__getattr__",
+  "memory_statement": "Symbol __getattr__ is available in src/markupsafe/__init__.py.",
+  "base_source_excerpt": "// File: src/markupsafe/__init__.py (Commit: 0c422e10)\n// Symbol: __getattr__\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: src/markupsafe/__init__.py (Commit: dfa58162)\n// Symbol: __getattr__\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting src/markupsafe/__init__.py in markupsafe.",
+  "relevant_tests": "Verify behavioral stability or deprecation for __getattr__."
+}

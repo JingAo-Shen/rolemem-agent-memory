@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_d_rem_virtualenv_CPython3Posix_env_patch_text",
+  "repository": "virtualenv",
+  "file_path": "src/virtualenv/create/via_global_ref/builtin/cpython/cpython3.py",
+  "symbol_qualified_name": "CPython3Posix.env_patch_text",
+  "memory_statement": "Symbol CPython3Posix.env_patch_text is available in src/virtualenv/create/via_global_ref/builtin/cpython/cpython3.py.",
+  "base_source_excerpt": "// File: src/virtualenv/create/via_global_ref/builtin/cpython/cpython3.py (Commit: f1f4d687)\n// Symbol: CPython3Posix.env_patch_text\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: src/virtualenv/create/via_global_ref/builtin/cpython/cpython3.py (Commit: 79ce906a)\n// Symbol: CPython3Posix.env_patch_text\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting src/virtualenv/create/via_global_ref/builtin/cpython/cpython3.py in virtualenv.",
+  "relevant_tests": "Verify behavioral stability or deprecation for CPython3Posix.env_patch_text."
+}

@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_14_fastapi_on_event_compatibility",
+  "repo_name": "tiangolo/fastapi",
+  "transition_authenticity": "PASS",
+  "causal_validity": "FAIL",
+  "task_mapping": "WEAK",
+  "stale_memory_grounding": "WEAK",
+  "valid_memory_grounding": "PASS",
+  "hidden_test_strength": "PASS",
+  "repo_context_leakage": "PASS",
+  "environment_reproducibility": "PASS",
+  "agent_behavior_category": "UNTESTED_SCALE_CANDIDATE",
+  "final_curation_decision": "REBUILD_CANDIDATE",
+  "decision_rationale": "Authentic FastAPI lifespan on_event deprecation; base memory claim re-grounding."
+}

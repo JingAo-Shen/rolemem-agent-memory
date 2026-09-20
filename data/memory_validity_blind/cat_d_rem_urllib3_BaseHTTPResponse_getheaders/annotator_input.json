@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_d_rem_urllib3_BaseHTTPResponse_getheaders",
+  "repository": "urllib3",
+  "file_path": "src/urllib3/response.py",
+  "symbol_qualified_name": "BaseHTTPResponse.getheaders",
+  "memory_statement": "Symbol BaseHTTPResponse.getheaders is available in src/urllib3/response.py.",
+  "base_source_excerpt": "// File: src/urllib3/response.py (Commit: dd2daef3)\n// Symbol: BaseHTTPResponse.getheaders\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: src/urllib3/response.py (Commit: 4587fd6d)\n// Symbol: BaseHTTPResponse.getheaders\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting src/urllib3/response.py in urllib3.",
+  "relevant_tests": "Verify behavioral stability or deprecation for BaseHTTPResponse.getheaders."
+}

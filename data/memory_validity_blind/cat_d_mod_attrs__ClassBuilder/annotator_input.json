@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_d_mod_attrs__ClassBuilder",
+  "repository": "attrs",
+  "file_path": "src/attr/_make.py",
+  "symbol_qualified_name": "_ClassBuilder",
+  "memory_statement": "Symbol _ClassBuilder accepts legacy arguments in src/attr/_make.py.",
+  "base_source_excerpt": "// File: src/attr/_make.py (Commit: 103d51f6)\n// Symbol: _ClassBuilder\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: src/attr/_make.py (Commit: 62bdbf23)\n// Symbol: _ClassBuilder\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting src/attr/_make.py in attrs.",
+  "relevant_tests": "Verify behavioral stability or deprecation for _ClassBuilder."
+}

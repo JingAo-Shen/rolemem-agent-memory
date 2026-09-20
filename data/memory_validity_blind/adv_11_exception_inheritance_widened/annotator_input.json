@@ -1,0 +1,11 @@
+{
+  "case_id": "adv_11_exception_inheritance_widened",
+  "repository": "requests",
+  "file_path": "src/requests/exceptions.py",
+  "symbol_qualified_name": "requests.widened",
+  "memory_statement": "JSONDecodeError in requests inherits directly from RequestException.",
+  "base_source_excerpt": "class JSONDecodeError(RequestException):\n    pass",
+  "target_source_excerpt": "class JSONDecodeError(RequestException, ValueError):\n    pass",
+  "relevant_pr_evidence": "Make requests.exceptions.JSONDecodeError inherit from standard ValueError as well as RequestException.",
+  "relevant_tests": "def test_json_decode_error():\n    assert issubclass(JSONDecodeError, RequestException)\n    assert issubclass(JSONDecodeError, ValueError)"
+}

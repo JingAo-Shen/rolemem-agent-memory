@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_c_starlette_servererrormiddleware_external_break",
+  "repository": "starlette",
+  "file_path": "starlette/middleware/errors.py",
+  "symbol_qualified_name": "starlette.ServerErrorMiddleware",
+  "memory_statement": "ServerErrorMiddleware catches starlette.types.Receive errors.",
+  "base_source_excerpt": "// File: starlette/middleware/errors.py (Commit: HEAD~5)\n// Symbol: starlette.ServerErrorMiddleware\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: starlette/middleware/errors.py (Commit: HEAD)\n// Symbol: starlette.ServerErrorMiddleware\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting starlette/middleware/errors.py in starlette.",
+  "relevant_tests": "Verify behavioral stability or deprecation for starlette.ServerErrorMiddleware."
+}

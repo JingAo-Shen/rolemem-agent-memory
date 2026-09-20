@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_d_rem_werkzeug_environ_property",
+  "repository": "werkzeug",
+  "file_path": "src/werkzeug/utils.py",
+  "symbol_qualified_name": "environ_property",
+  "memory_statement": "Symbol environ_property is available in src/werkzeug/utils.py.",
+  "base_source_excerpt": "// File: src/werkzeug/utils.py (Commit: f97c3056)\n// Symbol: environ_property\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: src/werkzeug/utils.py (Commit: 7641d499)\n// Symbol: environ_property\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting src/werkzeug/utils.py in werkzeug.",
+  "relevant_tests": "Verify behavioral stability or deprecation for environ_property."
+}

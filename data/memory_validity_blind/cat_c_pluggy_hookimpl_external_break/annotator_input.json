@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_c_pluggy_hookimpl_external_break",
+  "repository": "pluggy",
+  "file_path": "src/pluggy/_hooks.py",
+  "symbol_qualified_name": "pluggy.HookImpl",
+  "memory_statement": "HookImpl discovers hooks using static attribute varnames inspect.",
+  "base_source_excerpt": "// File: src/pluggy/_hooks.py (Commit: HEAD~5)\n// Symbol: pluggy.HookImpl\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: src/pluggy/_hooks.py (Commit: HEAD)\n// Symbol: pluggy.HookImpl\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting src/pluggy/_hooks.py in pluggy.",
+  "relevant_tests": "Verify behavioral stability or deprecation for pluggy.HookImpl."
+}

@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_18_marshmallow_pprint_export_removal",
+  "repo_name": "marshmallow-code/marshmallow",
+  "repo_url": "https://github.com/marshmallow-code/marshmallow",
+  "pr_url": "https://github.com/marshmallow-code/marshmallow/pull/2823",
+  "target_commit": "5429f0d4c6e346dc751599073cab67d66eefbcb2",
+  "pkg_path": "src/marshmallow",
+  "changed_files": [
+    "src/marshmallow/__init__.py"
+  ],
+  "primary_file": "src/marshmallow/__init__.py",
+  "symbol": "marshmallow.pprint",
+  "deprecated_symbols": [
+    "pprint",
+    "marshmallow.pprint"
+  ],
+  "replacement_symbols": [
+    "fields",
+    "marshmallow.fields"
+  ],
+  "repository_change": "pprint removed from marshmallow __all__ and package root export.",
+  "stale_memory_candidate": "Check pprint export presence in marshmallow.__all__.",
+  "valid_memory_candidate": "Check fields export presence in marshmallow.__all__.",
+  "transition_type": "API_REMOVAL",
+  "stale_sensitive": true,
+  "current_task": "Implement `check_marshmallow_export()` in `debug_dumper.py` checking export presence.",
+  "target_file": "debug_dumper.py",
+  "target_symbol": "check_marshmallow_export",
+  "stale_solution": "import marshmallow\n\ndef check_marshmallow_export():\n    return \"pprint\" in marshmallow.__all__\n",
+  "valid_solution": "import marshmallow\n\ndef check_marshmallow_export():\n    return \"fields\" in marshmallow.__all__\n",
+  "hidden_test": "import pytest\nimport debug_dumper\n\ndef test_export():\n    assert debug_dumper.check_marshmallow_export() is True\n",
+  "base_commit": "ad24f89100c95d3bf99ba17714d457c7c93e0b53",
+  "external_pr_url": "https://github.com/marshmallow-code/marshmallow/pull/2823",
+  "track": "TRACK_A_STALE_SENSITIVE"
+}

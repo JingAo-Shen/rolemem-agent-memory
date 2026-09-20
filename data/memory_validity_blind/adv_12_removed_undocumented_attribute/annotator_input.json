@@ -1,0 +1,11 @@
+{
+  "case_id": "adv_12_removed_undocumented_attribute",
+  "repository": "pluggy",
+  "file_path": "src/pluggy/_hooks.py",
+  "symbol_qualified_name": "pluggy.attribute",
+  "memory_statement": "HookImpl instances store inspected function argument names on the varnames attribute.",
+  "base_source_excerpt": "class HookImpl:\n    def __init__(self, function, plugin, ...):\n        self.function = function\n        self.varnames = tuple(arg_names)",
+  "target_source_excerpt": "class HookImpl:\n    def __init__(self, function, plugin, ...):\n        self.function = function\n        self.argnames = tuple(arg_names)",
+  "relevant_pr_evidence": "Remove internal HookImpl.varnames attribute in favor of argnames.",
+  "relevant_tests": "def test_hookimpl_argnames():\n    h = HookImpl(lambda x: x, 'p')\n    assert hasattr(h, 'argnames')\n    assert not hasattr(h, 'varnames')"
+}

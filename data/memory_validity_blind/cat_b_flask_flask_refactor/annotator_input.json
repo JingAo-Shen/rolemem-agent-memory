@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_b_flask_flask_refactor",
+  "repository": "flask",
+  "file_path": "src/flask/app.py",
+  "symbol_qualified_name": "flask.Flask",
+  "memory_statement": "Flask WSGI application manages routing, configuration, and views.",
+  "base_source_excerpt": "// File: src/flask/app.py (Commit: HEAD~5)\n// Symbol: flask.Flask\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: src/flask/app.py (Commit: HEAD)\n// Symbol: flask.Flask\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting src/flask/app.py in flask.",
+  "relevant_tests": "Verify behavioral stability or deprecation for flask.Flask."
+}

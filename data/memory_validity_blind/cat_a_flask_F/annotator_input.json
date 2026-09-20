@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_a_flask_F",
+  "repository": "flask",
+  "file_path": "src/flask/app.py",
+  "symbol_qualified_name": "F",
+  "memory_statement": "Symbol F defines core logic in src/flask/app.py.",
+  "base_source_excerpt": "// File: src/flask/app.py (Commit: 0292047b)\n// Symbol: F\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: src/flask/app.py (Commit: 4b8bde97)\n// Symbol: F\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting src/flask/app.py in flask.",
+  "relevant_tests": "Verify behavioral stability or deprecation for F."
+}

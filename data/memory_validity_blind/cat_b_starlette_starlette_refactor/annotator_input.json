@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_b_starlette_starlette_refactor",
+  "repository": "starlette",
+  "file_path": "starlette/applications.py",
+  "symbol_qualified_name": "starlette.Starlette",
+  "memory_statement": "Starlette ASGI application orchestrates HTTP and WebSocket routes.",
+  "base_source_excerpt": "// File: starlette/applications.py (Commit: HEAD~5)\n// Symbol: starlette.Starlette\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: starlette/applications.py (Commit: HEAD)\n// Symbol: starlette.Starlette\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting starlette/applications.py in starlette.",
+  "relevant_tests": "Verify behavioral stability or deprecation for starlette.Starlette."
+}

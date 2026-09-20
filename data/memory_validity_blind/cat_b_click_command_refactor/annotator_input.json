@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_b_click_command_refactor",
+  "repository": "click",
+  "file_path": "src/click/core.py",
+  "symbol_qualified_name": "click.Command",
+  "memory_statement": "Command represents a CLI command with params and callback.",
+  "base_source_excerpt": "// File: src/click/core.py (Commit: HEAD~5)\n// Symbol: click.Command\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: src/click/core.py (Commit: HEAD)\n// Symbol: click.Command\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting src/click/core.py in click.",
+  "relevant_tests": "Verify behavioral stability or deprecation for click.Command."
+}

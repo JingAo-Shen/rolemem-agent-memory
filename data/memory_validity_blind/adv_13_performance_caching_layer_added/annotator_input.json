@@ -1,0 +1,11 @@
+{
+  "case_id": "adv_13_performance_caching_layer_added",
+  "repository": "werkzeug",
+  "file_path": "src/werkzeug/routing/matcher.py",
+  "symbol_qualified_name": "werkzeug.added",
+  "memory_statement": "RuleMatcher.match evaluates WSGI environment path against compiled regex rules.",
+  "base_source_excerpt": "class RuleMatcher:\n    def match(self, path, method):\n        for rule in self.rules:\n            if rule.matches(path):\n                return rule",
+  "target_source_excerpt": "class RuleMatcher:\n    @lru_cache(maxsize=1024)\n    def match(self, path, method):\n        for rule in self.rules:\n            if rule.matches(path):\n                return rule",
+  "relevant_pr_evidence": "Add lru_cache to RuleMatcher.match to improve routing performance.",
+  "relevant_tests": "def test_matcher_cache():\n    m = RuleMatcher()\n    assert m.match('/home', 'GET') is not None"
+}

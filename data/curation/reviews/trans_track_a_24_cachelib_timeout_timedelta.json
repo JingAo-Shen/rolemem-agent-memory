@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_24_cachelib_timeout_timedelta",
+  "repo_name": "pallets/cachelib",
+  "transition_authenticity": "PASS",
+  "causal_validity": "FAIL",
+  "task_mapping": "WEAK",
+  "stale_memory_grounding": "PASS",
+  "valid_memory_grounding": "PASS",
+  "hidden_test_strength": "PASS",
+  "repo_context_leakage": "PASS",
+  "environment_reproducibility": "PASS",
+  "agent_behavior_category": "STALE_INSENSITIVE_FOR_QWEN7B",
+  "final_curation_decision": "REBUILD_CANDIDATE",
+  "decision_rationale": "Authentic CacheLib timeout timedelta support; causal matrix asymmetry re-verification."
+}

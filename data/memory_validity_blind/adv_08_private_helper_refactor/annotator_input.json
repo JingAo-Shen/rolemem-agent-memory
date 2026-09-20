@@ -1,0 +1,11 @@
+{
+  "case_id": "adv_08_private_helper_refactor",
+  "repository": "httpx",
+  "file_path": "httpx/_models.py",
+  "symbol_qualified_name": "httpx.refactor",
+  "memory_statement": "Response object exposes json() method to decode JSON response body.",
+  "base_source_excerpt": "class Response:\n    def json(self, **kwargs):\n        return json.loads(self.content, **kwargs)",
+  "target_source_excerpt": "class Response:\n    def json(self, **kwargs):\n        return _json_loads(self.content, **kwargs)",
+  "relevant_pr_evidence": "Refactor json decoding into internal _json_loads helper with custom encoding fallback.",
+  "relevant_tests": "def test_response_json():\n    r = Response(content=b'{\"a\": 1}')\n    assert r.json() == {'a': 1}"
+}

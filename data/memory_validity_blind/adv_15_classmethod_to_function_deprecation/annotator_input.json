@@ -1,0 +1,11 @@
+{
+  "case_id": "adv_15_classmethod_to_function_deprecation",
+  "repository": "markupsafe",
+  "file_path": "src/markupsafe/__init__.py",
+  "symbol_qualified_name": "markupsafe.deprecation",
+  "memory_statement": "Markup.escape(s) is the recommended way to HTML-escape untrusted input strings.",
+  "base_source_excerpt": "class Markup(str):\n    @classmethod\n    def escape(cls, s):\n        return escape(s)",
+  "target_source_excerpt": "class Markup(str):\n    @classmethod\n    def escape(cls, s):\n        warnings.warn('Markup.escape is deprecated, import escape directly', DeprecationWarning, stacklevel=2)\n        return escape(s)",
+  "relevant_pr_evidence": "Deprecate Markup.escape classmethod in favor of top-level escape() function.",
+  "relevant_tests": "def test_markup_escape_deprecation():\n    with pytest.deprecated_call():\n        Markup.escape('<b>')"
+}

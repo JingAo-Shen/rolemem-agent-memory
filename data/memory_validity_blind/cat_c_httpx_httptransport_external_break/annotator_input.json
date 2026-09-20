@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_c_httpx_httptransport_external_break",
+  "repository": "httpx",
+  "file_path": "httpx/_transports/default.py",
+  "symbol_qualified_name": "httpx.HTTPTransport",
+  "memory_statement": "HTTPTransport passes proxies dict directly to httpcore connection pool.",
+  "base_source_excerpt": "// File: httpx/_transports/default.py (Commit: HEAD~5)\n// Symbol: httpx.HTTPTransport\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: httpx/_transports/default.py (Commit: HEAD)\n// Symbol: httpx.HTTPTransport\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting httpx/_transports/default.py in httpx.",
+  "relevant_tests": "Verify behavioral stability or deprecation for httpx.HTTPTransport."
+}

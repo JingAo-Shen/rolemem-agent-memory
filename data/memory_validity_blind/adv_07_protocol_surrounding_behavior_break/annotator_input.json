@@ -1,0 +1,11 @@
+{
+  "case_id": "adv_07_protocol_surrounding_behavior_break",
+  "repository": "starlette",
+  "file_path": "starlette/middleware/base.py",
+  "symbol_qualified_name": "starlette.break",
+  "memory_statement": "BaseHTTPMiddleware can process request and response streams by overriding dispatch(request, call_next).",
+  "base_source_excerpt": "class BaseHTTPMiddleware:\n    async def dispatch(self, request, call_next):\n        return await call_next(request)",
+  "target_source_excerpt": "class BaseHTTPMiddleware:\n    async def dispatch(self, request, call_next):\n        return await call_next(request)",
+  "relevant_pr_evidence": "ASGI 3.0 lifespan protocol changes prevent BaseHTTPMiddleware from intercepting websocket connect packets.",
+  "relevant_tests": "def test_base_http_middleware_websocket_warning():\n    # WebSocket routes bypass BaseHTTPMiddleware"
+}

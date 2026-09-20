@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_c_requests_httpadapter_external_break",
+  "repository": "requests",
+  "file_path": "src/requests/adapters.py",
+  "symbol_qualified_name": "requests.HTTPAdapter",
+  "memory_statement": "HTTPAdapter delegates SSL context to urllib3.util.ssl_.create_urllib3_context.",
+  "base_source_excerpt": "// File: src/requests/adapters.py (Commit: HEAD~5)\n// Symbol: requests.HTTPAdapter\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: src/requests/adapters.py (Commit: HEAD)\n// Symbol: requests.HTTPAdapter\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting src/requests/adapters.py in requests.",
+  "relevant_tests": "Verify behavioral stability or deprecation for requests.HTTPAdapter."
+}

@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_17_celery_task_module_cleanup",
+  "repo_name": "celery/celery",
+  "repo_url": "https://github.com/celery/celery",
+  "pr_url": "https://github.com/celery/celery/pull/6869",
+  "target_commit": "3cf5072ee5f95744024f60e0f4a77eb2edb8959f",
+  "pkg_path": "celery",
+  "changed_files": [
+    "celery/__init__.py"
+  ],
+  "primary_file": "celery/__init__.py",
+  "symbol": "celery.task",
+  "deprecated_symbols": [
+    "task",
+    "celery.task"
+  ],
+  "replacement_symbols": [
+    "Task",
+    "from celery import Task"
+  ],
+  "repository_change": "celery.task module imports deprecated in favor of direct imports from celery package root.",
+  "stale_memory_candidate": "Check task presence in celery.__all__.",
+  "valid_memory_candidate": "Check Task export presence in celery.__all__.",
+  "transition_type": "API_DEPRECATION",
+  "stale_sensitive": true,
+  "current_task": "Implement `check_task_export()` in `task_helper.py` verifying task export status.",
+  "target_file": "task_helper.py",
+  "target_symbol": "check_task_export",
+  "stale_solution": "import celery\n\ndef check_task_export():\n    return \"task\" in celery.__all__\n",
+  "valid_solution": "import celery\n\ndef check_task_export():\n    return \"Task\" in celery.__all__\n",
+  "hidden_test": "import pytest\nimport task_helper\n\ndef test_task_export():\n    assert task_helper.check_task_export() is True\n",
+  "base_commit": "846066a34413509695434ed5a661280d7db4f993",
+  "external_pr_url": "https://github.com/celery/celery/pull/6869",
+  "track": "TRACK_A_STALE_SENSITIVE"
+}

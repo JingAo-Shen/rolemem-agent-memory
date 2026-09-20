@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_d_mod_flask_Flask_full_dispatch_request",
+  "repository": "flask",
+  "file_path": "src/flask/app.py",
+  "symbol_qualified_name": "Flask.full_dispatch_request",
+  "memory_statement": "Symbol Flask.full_dispatch_request accepts legacy arguments in src/flask/app.py.",
+  "base_source_excerpt": "// File: src/flask/app.py (Commit: 0292047b)\n// Symbol: Flask.full_dispatch_request\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: src/flask/app.py (Commit: 4b8bde97)\n// Symbol: Flask.full_dispatch_request\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting src/flask/app.py in flask.",
+  "relevant_tests": "Verify behavioral stability or deprecation for Flask.full_dispatch_request."
+}

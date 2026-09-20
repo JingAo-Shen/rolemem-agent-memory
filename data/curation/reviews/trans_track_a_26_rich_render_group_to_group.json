@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_26_rich_render_group_to_group",
+  "repo_name": "Textualize/rich",
+  "transition_authenticity": "PASS",
+  "causal_validity": "PASS",
+  "task_mapping": "PASS",
+  "stale_memory_grounding": "PASS",
+  "valid_memory_grounding": "PASS",
+  "hidden_test_strength": "PASS",
+  "repo_context_leakage": "WEAK",
+  "environment_reproducibility": "PASS",
+  "agent_behavior_category": "STALE_INSENSITIVE_FOR_QWEN7B",
+  "final_curation_decision": "CORE_BENCHMARK",
+  "decision_rationale": "Authentic Rich RenderGroup rename/deprecation; strong task mapping, verified causal matrix."
+}

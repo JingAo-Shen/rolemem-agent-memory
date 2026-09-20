@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_b_requests_session_refactor",
+  "repository": "requests",
+  "file_path": "src/requests/sessions.py",
+  "symbol_qualified_name": "requests.Session",
+  "memory_statement": "Session object provides cookie persistence and connection pooling.",
+  "base_source_excerpt": "// File: src/requests/sessions.py (Commit: HEAD~5)\n// Symbol: requests.Session\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: src/requests/sessions.py (Commit: HEAD)\n// Symbol: requests.Session\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting src/requests/sessions.py in requests.",
+  "relevant_tests": "Verify behavioral stability or deprecation for requests.Session."
+}

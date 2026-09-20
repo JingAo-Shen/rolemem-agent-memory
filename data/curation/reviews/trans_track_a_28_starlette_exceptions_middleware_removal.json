@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_28_starlette_exceptions_middleware_removal",
+  "repo_name": "encode/starlette",
+  "transition_authenticity": "PASS",
+  "causal_validity": "PASS",
+  "task_mapping": "PASS",
+  "stale_memory_grounding": "PASS",
+  "valid_memory_grounding": "PASS",
+  "hidden_test_strength": "PASS",
+  "repo_context_leakage": "PASS",
+  "environment_reproducibility": "PASS",
+  "agent_behavior_category": "UNTESTED_SCALE_CANDIDATE",
+  "final_curation_decision": "CORE_BENCHMARK",
+  "decision_rationale": "Authentic Starlette ExceptionsMiddleware removal; strong task mapping, verified causal matrix."
+}

@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_d_mod_click__safecall",
+  "repository": "click",
+  "file_path": "src/click/utils.py",
+  "symbol_qualified_name": "_safecall",
+  "memory_statement": "Symbol _safecall accepts legacy arguments in src/click/utils.py.",
+  "base_source_excerpt": "// File: src/click/utils.py (Commit: 7a0a3447)\n// Symbol: _safecall\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: src/click/utils.py (Commit: 051725fa)\n// Symbol: _safecall\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting src/click/utils.py in click.",
+  "relevant_tests": "Verify behavioral stability or deprecation for _safecall."
+}

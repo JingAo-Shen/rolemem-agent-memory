@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_c_click_clirunner_external_break",
+  "repository": "click",
+  "file_path": "src/click/testing.py",
+  "symbol_qualified_name": "click.CliRunner",
+  "memory_statement": "CliRunner requires click._unicodefun to handle terminal streams.",
+  "base_source_excerpt": "// File: src/click/testing.py (Commit: HEAD~5)\n// Symbol: click.CliRunner\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: src/click/testing.py (Commit: HEAD)\n// Symbol: click.CliRunner\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting src/click/testing.py in click.",
+  "relevant_tests": "Verify behavioral stability or deprecation for click.CliRunner."
+}

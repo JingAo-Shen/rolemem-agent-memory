@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_c_flask_render_template_external_break",
+  "repository": "flask",
+  "file_path": "src/flask/templating.py",
+  "symbol_qualified_name": "flask.render_template",
+  "memory_statement": "render_template relies on jinja2.Markup for string safety.",
+  "base_source_excerpt": "// File: src/flask/templating.py (Commit: HEAD~5)\n// Symbol: flask.render_template\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: src/flask/templating.py (Commit: HEAD)\n// Symbol: flask.render_template\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting src/flask/templating.py in flask.",
+  "relevant_tests": "Verify behavioral stability or deprecation for flask.render_template."
+}

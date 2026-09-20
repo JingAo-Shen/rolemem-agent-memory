@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_c_urllib3_httpresponse_external_break",
+  "repository": "urllib3",
+  "file_path": "src/urllib3/response.py",
+  "symbol_qualified_name": "urllib3.HTTPResponse",
+  "memory_statement": "HTTPResponse exposes getheaders() method for header inspection.",
+  "base_source_excerpt": "// File: src/urllib3/response.py (Commit: HEAD~5)\n// Symbol: urllib3.HTTPResponse\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: src/urllib3/response.py (Commit: HEAD)\n// Symbol: urllib3.HTTPResponse\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting src/urllib3/response.py in urllib3.",
+  "relevant_tests": "Verify behavioral stability or deprecation for urllib3.HTTPResponse."
+}

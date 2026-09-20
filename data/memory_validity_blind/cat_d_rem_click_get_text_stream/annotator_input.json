@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_d_rem_click_get_text_stream",
+  "repository": "click",
+  "file_path": "src/click/utils.py",
+  "symbol_qualified_name": "get_text_stream",
+  "memory_statement": "Symbol get_text_stream is available in src/click/utils.py.",
+  "base_source_excerpt": "// File: src/click/utils.py (Commit: 7a0a3447)\n// Symbol: get_text_stream\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: src/click/utils.py (Commit: 051725fa)\n// Symbol: get_text_stream\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting src/click/utils.py in click.",
+  "relevant_tests": "Verify behavioral stability or deprecation for get_text_stream."
+}

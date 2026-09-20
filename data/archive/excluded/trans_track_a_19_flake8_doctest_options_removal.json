@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_19_flake8_doctest_options_removal",
+  "repo_name": "PyCQA/flake8",
+  "repo_url": "https://github.com/PyCQA/flake8",
+  "pr_url": "https://github.com/PyCQA/flake8/pull/1854",
+  "target_commit": "b3e251512238ad39c87e4b8d1614903fe493f7ea",
+  "pkg_path": "src/flake8",
+  "changed_files": [
+    "src/flake8/plugins/pyflakes.py"
+  ],
+  "primary_file": "src/flake8/plugins/pyflakes.py",
+  "symbol": "register_doctest_options",
+  "deprecated_symbols": [
+    "include_in_doctest",
+    "--include-in-doctest"
+  ],
+  "replacement_symbols": [
+    "with_doctest",
+    "--doctest"
+  ],
+  "repository_change": "CLI options --include-in-doctest and --exclude-in-doctest removed.",
+  "stale_memory_candidate": "Check include_in_doctest attribute on FlakesChecker.",
+  "valid_memory_candidate": "Check with_doctest attribute on FlakesChecker.",
+  "transition_type": "API_REMOVAL",
+  "stale_sensitive": true,
+  "current_task": "Implement `check_doctest_filtering()` in `flake8_config.py` checking doctest filtering support.",
+  "target_file": "flake8_config.py",
+  "target_symbol": "check_doctest_filtering",
+  "stale_solution": "from flake8.plugins.pyflakes import FlakesChecker\n\ndef check_doctest_filtering():\n    return hasattr(FlakesChecker, \"include_in_doctest\")\n",
+  "valid_solution": "from flake8.plugins.pyflakes import FlakesChecker\n\ndef check_doctest_filtering():\n    return hasattr(FlakesChecker, \"with_doctest\")\n",
+  "hidden_test": "import pytest\nimport flake8_config\n\ndef test_doctest_filtering():\n    assert flake8_config.check_doctest_filtering() is True\n",
+  "base_commit": "15f45696701bc234494fbc0e803f8fdee712b945",
+  "external_pr_url": "https://github.com/PyCQA/flake8/pull/1854",
+  "track": "TRACK_A_STALE_SENSITIVE"
+}

@@ -1,0 +1,11 @@
+{
+  "case_id": "adv_04_default_parameter_change",
+  "repository": "werkzeug",
+  "file_path": "src/werkzeug/security.py",
+  "symbol_qualified_name": "werkzeug.change",
+  "memory_statement": "generate_password_hash defaults to pbkdf2:sha256 algorithm with 150000 iterations.",
+  "base_source_excerpt": "def generate_password_hash(password, method='pbkdf2:sha256:150000', salt_length=8):\n    return _hash_internal(method, salt_length, password)",
+  "target_source_excerpt": "def generate_password_hash(password, method='scrypt', salt_length=16):\n    return _hash_internal(method, salt_length, password)",
+  "relevant_pr_evidence": "Update default password hashing algorithm to scrypt with 16-byte salt for increased security.",
+  "relevant_tests": "def test_default_hash():\n    h = generate_password_hash('secret')\n    assert h.startswith('scrypt:')"
+}

@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_d_mod_pluggy_varnames",
+  "repository": "pluggy",
+  "file_path": "src/pluggy/_hooks.py",
+  "symbol_qualified_name": "varnames",
+  "memory_statement": "Symbol varnames accepts legacy arguments in src/pluggy/_hooks.py.",
+  "base_source_excerpt": "// File: src/pluggy/_hooks.py (Commit: dd20a85e)\n// Symbol: varnames\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: src/pluggy/_hooks.py (Commit: 0258484d)\n// Symbol: varnames\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting src/pluggy/_hooks.py in pluggy.",
+  "relevant_tests": "Verify behavioral stability or deprecation for varnames."
+}

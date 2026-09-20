@@ -1,0 +1,36 @@
+{
+  "transition_id": "trans_track_a_30_fastapi_pydantic_v1_deprecation",
+  "repo_name": "tiangolo/fastapi",
+  "repo_url": "https://github.com/tiangolo/fastapi",
+  "pr_url": "https://github.com/tiangolo/fastapi/pull/14583",
+  "target_commit": "6e42bcd8ce2ade33d94f478310dad20ee84f8f0f",
+  "pkg_path": "fastapi",
+  "changed_files": [
+    "fastapi/dependencies/utils.py",
+    "fastapi/routing.py"
+  ],
+  "primary_file": "fastapi/dependencies/utils.py",
+  "symbol": "fastapi.dependencies.utils.get_dependant",
+  "deprecated_symbols": [
+    "pydantic.v1",
+    "v1"
+  ],
+  "replacement_symbols": [
+    "get_dependant",
+    "fastapi.dependencies.utils.get_dependant"
+  ],
+  "repository_change": "FastAPI emits deprecation warnings when route parameters or request models rely on pydantic.v1 compatibility layer.",
+  "stale_memory_candidate": "Define FastAPI routes with pydantic.v1 models without deprecation warnings.",
+  "valid_memory_candidate": "FastAPI warns on pydantic.v1 usage in get_dependant; migrate models to standard Pydantic v2.",
+  "transition_type": "API_EVOLUTION",
+  "stale_sensitive": false,
+  "current_task": "Implement `is_pydantic_v1_deprecated()` in `fastapi_pydantic_auditor.py` detecting if FastAPI warns on pydantic.v1 usage.",
+  "target_file": "fastapi_pydantic_auditor.py",
+  "target_symbol": "is_pydantic_v1_deprecated",
+  "stale_solution": "def is_pydantic_v1_deprecated() -> bool:\n    # Stale: pydantic.v1 is not deprecated\n    return False\n",
+  "valid_solution": "import inspect\nimport fastapi.dependencies.utils\n\ndef is_pydantic_v1_deprecated() -> bool:\n    src = inspect.getsource(fastapi.dependencies.utils.get_dependant)\n    assert \"pydantic.v1 is deprecated\" in src\n    return True\n",
+  "hidden_test": "import pytest\nimport fastapi_pydantic_auditor\n\ndef test_pydantic_v1_deprecated():\n    assert fastapi_pydantic_auditor.is_pydantic_v1_deprecated() is True\n",
+  "base_commit": "6513d4daa16a536d17743de6a292f49bd06388a4",
+  "external_pr_url": "https://github.com/tiangolo/fastapi/pull/14583",
+  "track": "TRACK_A_STALE_SENSITIVE"
+}

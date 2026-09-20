@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_01_click_stream_deprecations",
+  "repo_name": "pallets/click",
+  "transition_authenticity": "PASS",
+  "causal_validity": "PASS",
+  "task_mapping": "PASS",
+  "stale_memory_grounding": "PASS",
+  "valid_memory_grounding": "PASS",
+  "hidden_test_strength": "PASS",
+  "repo_context_leakage": "PASS",
+  "environment_reproducibility": "PASS",
+  "agent_behavior_category": "UNTESTED_SCALE_CANDIDATE",
+  "final_curation_decision": "CORE_BENCHMARK",
+  "decision_rationale": "Authentic Click 8.0 stream deprecation; strong task mapping, verified 2x2 causal matrix."
+}

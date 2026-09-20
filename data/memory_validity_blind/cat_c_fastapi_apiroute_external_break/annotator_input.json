@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_c_fastapi_apiroute_external_break",
+  "repository": "fastapi",
+  "file_path": "fastapi/routing.py",
+  "symbol_qualified_name": "fastapi.APIRoute",
+  "memory_statement": "APIRoute uses pydantic.v1.BaseModel validation for input schemas.",
+  "base_source_excerpt": "// File: fastapi/routing.py (Commit: HEAD~5)\n// Symbol: fastapi.APIRoute\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: fastapi/routing.py (Commit: HEAD)\n// Symbol: fastapi.APIRoute\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting fastapi/routing.py in fastapi.",
+  "relevant_tests": "Verify behavioral stability or deprecation for fastapi.APIRoute."
+}

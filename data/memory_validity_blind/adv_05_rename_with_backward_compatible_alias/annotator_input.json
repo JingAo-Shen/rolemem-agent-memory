@@ -1,0 +1,11 @@
+{
+  "case_id": "adv_05_rename_with_backward_compatible_alias",
+  "repository": "rich",
+  "file_path": "rich/console.py",
+  "symbol_qualified_name": "rich.alias",
+  "memory_statement": "RenderGroup is available in rich.console to group renderables together.",
+  "base_source_excerpt": "class RenderGroup:\n    def __init__(self, *renderables):\n        self._renderables = renderables",
+  "target_source_excerpt": "class Group:\n    def __init__(self, *renderables):\n        self._renderables = renderables\n\nRenderGroup = Group",
+  "relevant_pr_evidence": "Rename RenderGroup to Group; preserve RenderGroup as backward-compatible alias.",
+  "relevant_tests": "def test_render_group_alias():\n    assert RenderGroup is Group"
+}

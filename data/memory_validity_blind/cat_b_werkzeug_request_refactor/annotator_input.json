@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_b_werkzeug_request_refactor",
+  "repository": "werkzeug",
+  "file_path": "src/werkzeug/wrappers/request.py",
+  "symbol_qualified_name": "werkzeug.Request",
+  "memory_statement": "Request object wraps WSGI environment dictionary.",
+  "base_source_excerpt": "// File: src/werkzeug/wrappers/request.py (Commit: HEAD~5)\n// Symbol: werkzeug.Request\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: src/werkzeug/wrappers/request.py (Commit: HEAD)\n// Symbol: werkzeug.Request\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting src/werkzeug/wrappers/request.py in werkzeug.",
+  "relevant_tests": "Verify behavioral stability or deprecation for werkzeug.Request."
+}

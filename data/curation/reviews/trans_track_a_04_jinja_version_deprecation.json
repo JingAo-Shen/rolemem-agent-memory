@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_04_jinja_version_deprecation",
+  "repo_name": "pallets/jinja",
+  "transition_authenticity": "PASS",
+  "causal_validity": "PASS",
+  "task_mapping": "PASS",
+  "stale_memory_grounding": "PASS",
+  "valid_memory_grounding": "PASS",
+  "hidden_test_strength": "PASS",
+  "repo_context_leakage": "PASS",
+  "environment_reproducibility": "PASS",
+  "agent_behavior_category": "CONFIRMED_AGENT_STALE_CHALLENGE_READY",
+  "final_curation_decision": "CORE_BENCHMARK",
+  "decision_rationale": "Authentic Jinja __version__ deprecation; strong task mapping, confirmed agent stale challenge."
+}

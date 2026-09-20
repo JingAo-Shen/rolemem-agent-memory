@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_c_celery_task_external_break",
+  "repository": "celery",
+  "file_path": "celery/app/task.py",
+  "symbol_qualified_name": "celery.Task",
+  "memory_statement": "Task inspects celery.task module for global registry discovery.",
+  "base_source_excerpt": "// File: celery/app/task.py (Commit: HEAD~5)\n// Symbol: celery.Task\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: celery/app/task.py (Commit: HEAD)\n// Symbol: celery.Task\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting celery/app/task.py in celery.",
+  "relevant_tests": "Verify behavioral stability or deprecation for celery.Task."
+}

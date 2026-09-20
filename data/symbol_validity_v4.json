@@ -1,0 +1,78 @@
+{
+  "dataset_summary": {
+    "total_cases": 75,
+    "valid_cases": 60,
+    "stale_cases": 15,
+    "adversarial_cases": 15
+  },
+  "mechanisms": {
+    "File_Level_Baseline": {
+      "TP": 15,
+      "TN": 10,
+      "FP": 50,
+      "FN": 0,
+      "ABSTAIN": 0,
+      "Coverage": 1.0,
+      "Accuracy_Decided": 0.3333333333333333,
+      "Overall_Accuracy": 0.3333333333333333,
+      "Precision": 0.23076923076923078,
+      "Recall": 1.0,
+      "F1": 0.375,
+      "False_Invalidation_Rate_FIR": 0.8333333333333334,
+      "Stale_Exposure_Rate_SER": 0.0,
+      "Valid_Memory_Recall": 0.16666666666666666,
+      "Stale_Memory_Recall": 1.0
+    },
+    "Pure_Symbol_AST_Baseline": {
+      "TP": 14,
+      "TN": 31,
+      "FP": 29,
+      "FN": 1,
+      "ABSTAIN": 0,
+      "Coverage": 1.0,
+      "Accuracy_Decided": 0.6,
+      "Overall_Accuracy": 0.6,
+      "Precision": 0.32558139534883723,
+      "Recall": 0.9333333333333333,
+      "F1": 0.4827586206896553,
+      "False_Invalidation_Rate_FIR": 0.48333333333333334,
+      "Stale_Exposure_Rate_SER": 0.06666666666666667,
+      "Valid_Memory_Recall": 0.5166666666666667,
+      "Stale_Memory_Recall": 0.9333333333333333
+    },
+    "RoleMem_Hybrid_No_Abstain": {
+      "TP": 14,
+      "TN": 59,
+      "FP": 1,
+      "FN": 1,
+      "ABSTAIN": 0,
+      "Coverage": 1.0,
+      "Accuracy_Decided": 0.9733333333333334,
+      "Overall_Accuracy": 0.9733333333333334,
+      "Precision": 0.9333333333333333,
+      "Recall": 0.9333333333333333,
+      "F1": 0.9333333333333333,
+      "False_Invalidation_Rate_FIR": 0.016666666666666666,
+      "Stale_Exposure_Rate_SER": 0.06666666666666667,
+      "Valid_Memory_Recall": 0.9833333333333333,
+      "Stale_Memory_Recall": 0.9333333333333333
+    },
+    "RoleMem_Hybrid_With_Abstain": {
+      "TP": 13,
+      "TN": 59,
+      "FP": 0,
+      "FN": 0,
+      "ABSTAIN": 3,
+      "Coverage": 0.96,
+      "Accuracy_Decided": 1.0,
+      "Overall_Accuracy": 0.96,
+      "Precision": 1.0,
+      "Recall": 1.0,
+      "F1": 1.0,
+      "False_Invalidation_Rate_FIR": 0.0,
+      "Stale_Exposure_Rate_SER": 0.0,
+      "Valid_Memory_Recall": 1.0,
+      "Stale_Memory_Recall": 1.0
+    }
+  }
+}

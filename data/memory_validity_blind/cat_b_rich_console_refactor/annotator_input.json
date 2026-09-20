@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_b_rich_console_refactor",
+  "repository": "rich",
+  "file_path": "rich/console.py",
+  "symbol_qualified_name": "rich.Console",
+  "memory_statement": "Console coordinates formatted terminal output and styling.",
+  "base_source_excerpt": "// File: rich/console.py (Commit: HEAD~5)\n// Symbol: rich.Console\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: rich/console.py (Commit: HEAD)\n// Symbol: rich.Console\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting rich/console.py in rich.",
+  "relevant_tests": "Verify behavioral stability or deprecation for rich.Console."
+}

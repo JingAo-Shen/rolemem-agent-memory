@@ -1,0 +1,11 @@
+{
+  "case_id": "adv_06_subclass_signature_kwonly_change",
+  "repository": "attrs",
+  "file_path": "src/attr/_make.py",
+  "symbol_qualified_name": "attrs.change",
+  "memory_statement": "Factory accepts a callable factory and passes takes_self=False by default.",
+  "base_source_excerpt": "class Factory:\n    def __init__(self, factory, takes_self=False):\n        self.factory = factory\n        self.takes_self = takes_self",
+  "target_source_excerpt": "class Factory:\n    def __init__(self, factory, *, takes_self=False):\n        self.factory = factory\n        self.takes_self = takes_self",
+  "relevant_pr_evidence": "Make takes_self a keyword-only argument in Factory.__init__.",
+  "relevant_tests": "def test_factory_kwonly():\n    with pytest.raises(TypeError):\n        Factory(list, True)"
+}

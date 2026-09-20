@@ -1,0 +1,59 @@
+# RoleMem Benchmark v1.0 Formal Experiment Configuration
+benchmark_version: "1.0.0"
+benchmark_scope: "TRACK_A_CURATED_V1"
+
+model_config:
+  model_name: "Qwen/Qwen2.5-Coder-7B-Instruct"
+  model_path: "/code/rolemem-agent-memory/models/qwen2.5-coder-7b"
+  torch_dtype: "float16"
+  device_map: "cuda"
+  temperature: 0.2
+  do_sample: true
+  max_new_tokens: 450
+
+sampling_config:
+  seeds: [42, 123, 999]
+  unit_of_analysis: "transition_cluster"
+  repeated_measures_per_transition: 3
+
+context_budgets:
+  repo_context_tokens: 1200
+  memory_tokens: 300
+  prompt_header_tokens: 100
+
+retriever_config:
+  retriever_type: "RepoBM25Retriever"
+  k1: 1.5
+  b: 0.75
+  chunk_lines: 40
+
+sandbox_config:
+  executor: "SecureSandboxExecutor"
+  isolation: "Bubblewrap"
+  timeout_seconds: 30
+  venvs_root: "/code/rolemem-agent-memory/.venvs"
+
+evaluation_policy:
+  task_success: "pytest_pass and (not stale_action) and solution_constraint_pass"
+  stale_action_detector: "ASTStaleActionDetectorV2"
+  solution_constraint_evaluator: "SolutionConstraintEvaluatorV2"
+  validity_mode: "symbol_hybrid"
+  selective_abstention: true
+
+conditions:
+  S0:
+    name: "NO_MEMORY_BASELINE"
+    memory_source: "NONE"
+    includes_repo_context: true
+  S1:
+    name: "RAW_HISTORICAL_MEMORY"
+    memory_source: "UNFILTERED_HISTORICAL_STORE"
+    includes_repo_context: true
+  S2:
+    name: "AGENT_A_HISTORICAL_MEMORY"
+    memory_source: "PROVENANCE_ENTAILED_HISTORICAL"
+    includes_repo_context: true
+  S3:
+    name: "ROLEMEM_VALIDATED_TARGET_MEMORY"
+    memory_source: "TARGET_MEMORY_VERIFIED"
+    includes_repo_context: true

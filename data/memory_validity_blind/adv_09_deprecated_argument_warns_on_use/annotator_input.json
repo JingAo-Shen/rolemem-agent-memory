@@ -1,0 +1,11 @@
+{
+  "case_id": "adv_09_deprecated_argument_warns_on_use",
+  "repository": "click",
+  "file_path": "src/click/utils.py",
+  "symbol_qualified_name": "click.use",
+  "memory_statement": "get_binary_stream(name) returns a binary stream for stdin, stdout, or stderr.",
+  "base_source_excerpt": "def get_binary_stream(name):\n    return _find_binary_stream(name)",
+  "target_source_excerpt": "def get_binary_stream(name):\n    warnings.warn('get_binary_stream is deprecated, use get_io_stream instead', DeprecationWarning, stacklevel=2)\n    return _find_binary_stream(name)",
+  "relevant_pr_evidence": "Deprecate get_binary_stream in Click 8.0; emit DeprecationWarning on invocation.",
+  "relevant_tests": "def test_get_binary_stream_deprecated():\n    with pytest.deprecated_call():\n        get_binary_stream('stdin')"
+}

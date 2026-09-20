@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_12_urllib3_getheaders_removal",
+  "repo_name": "urllib3/urllib3",
+  "transition_authenticity": "PASS",
+  "causal_validity": "PASS",
+  "task_mapping": "PASS",
+  "stale_memory_grounding": "PASS",
+  "valid_memory_grounding": "PASS",
+  "hidden_test_strength": "PASS",
+  "repo_context_leakage": "PASS",
+  "environment_reproducibility": "PASS",
+  "agent_behavior_category": "UNTESTED_SCALE_CANDIDATE",
+  "final_curation_decision": "CORE_BENCHMARK",
+  "decision_rationale": "Authentic Urllib3 getheaders() removal in v2.0; strong task mapping, verified 2x2 causal matrix."
+}

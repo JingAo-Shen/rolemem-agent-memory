@@ -1,0 +1,11 @@
+{
+  "case_id": "adv_10_pure_formatting_and_comments",
+  "repository": "urllib3",
+  "file_path": "src/urllib3/util/retry.py",
+  "symbol_qualified_name": "urllib3.comments",
+  "memory_statement": "Retry object manages retry logic for failed HTTP requests.",
+  "base_source_excerpt": "class Retry:\n    # Manage retries\n    def __init__(self, total=10, connect=None, read=None):\n        self.total = total",
+  "target_source_excerpt": "class Retry:\n    \"\"\"Retry configuration.\"\"\"\n\n    def __init__(\n        self,\n        total: int = 10,\n        connect: Optional[int] = None,\n        read: Optional[int] = None,\n    ) -> None:\n        # Format with black\n        self.total = total",
+  "relevant_pr_evidence": "Reformat urllib3/util/retry.py with Black code formatter.",
+  "relevant_tests": "def test_retry_init():\n    r = Retry(total=3)\n    assert r.total == 3"
+}

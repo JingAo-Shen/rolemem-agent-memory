@@ -1,0 +1,11 @@
+{
+  "case_id": "adv_14_enum_member_deprecation",
+  "repository": "fastapi",
+  "file_path": "fastapi/openapi/models.py",
+  "symbol_qualified_name": "fastapi.deprecation",
+  "memory_statement": "SecuritySchemeType exposes 'oauth2', 'http', 'apiKey', and 'openIdConnect' string values.",
+  "base_source_excerpt": "class SecuritySchemeType(str, Enum):\n    apiKey = 'apiKey'\n    http = 'http'\n    oauth2 = 'oauth2'\n    openIdConnect = 'openIdConnect'",
+  "target_source_excerpt": "class SecuritySchemeType(str, Enum):\n    apiKey = 'apiKey'\n    http = 'http'\n    oauth2 = 'oauth2'\n    openIdConnect = 'openIdConnect'\n    mutualTLS = 'mutualTLS'",
+  "relevant_pr_evidence": "Add mutualTLS to OpenAPI SecuritySchemeType enum.",
+  "relevant_tests": "def test_security_scheme_types():\n    assert SecuritySchemeType.apiKey == 'apiKey'"
+}

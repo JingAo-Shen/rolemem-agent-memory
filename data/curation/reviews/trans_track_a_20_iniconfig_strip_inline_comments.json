@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_20_iniconfig_strip_inline_comments",
+  "repo_name": "pytest-dev/iniconfig",
+  "transition_authenticity": "PASS",
+  "causal_validity": "FAIL",
+  "task_mapping": "FAIL",
+  "stale_memory_grounding": "FAIL",
+  "valid_memory_grounding": "FAIL",
+  "hidden_test_strength": "PASS",
+  "repo_context_leakage": "PASS",
+  "environment_reproducibility": "PASS",
+  "agent_behavior_category": "TARGET_MEMORY_STALE_REGRESSION",
+  "final_curation_decision": "EXCLUDED",
+  "decision_rationale": "Excluded: IniConfig inline comments change has ambiguous syntax boundary."
+}

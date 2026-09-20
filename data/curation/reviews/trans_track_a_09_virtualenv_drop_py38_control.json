@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_09_virtualenv_drop_py38_control",
+  "repo_name": "pypa/virtualenv",
+  "transition_authenticity": "PASS",
+  "causal_validity": "PASS",
+  "task_mapping": "WEAK",
+  "stale_memory_grounding": "PASS",
+  "valid_memory_grounding": "FAIL",
+  "hidden_test_strength": "PASS",
+  "repo_context_leakage": "PASS",
+  "environment_reproducibility": "PASS",
+  "agent_behavior_category": "UNTESTED_SCALE_CANDIDATE",
+  "final_curation_decision": "CONTROL_BENCHMARK",
+  "decision_rationale": "Authentic Virtualenv Python 3.8 support drop control; verified compatibility."
+}

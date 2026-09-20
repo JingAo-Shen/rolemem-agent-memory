@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_a_werkzeug_ImportStringError",
+  "repository": "werkzeug",
+  "file_path": "src/werkzeug/utils.py",
+  "symbol_qualified_name": "ImportStringError",
+  "memory_statement": "Symbol ImportStringError defines core logic in src/werkzeug/utils.py.",
+  "base_source_excerpt": "// File: src/werkzeug/utils.py (Commit: f97c3056)\n// Symbol: ImportStringError\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: src/werkzeug/utils.py (Commit: 7641d499)\n// Symbol: ImportStringError\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting src/werkzeug/utils.py in werkzeug.",
+  "relevant_tests": "Verify behavioral stability or deprecation for ImportStringError."
+}

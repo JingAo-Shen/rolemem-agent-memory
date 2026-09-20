@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_d_rem_more-itertools_zip_equal",
+  "repository": "more-itertools",
+  "file_path": "more_itertools/more.py",
+  "symbol_qualified_name": "zip_equal",
+  "memory_statement": "Symbol zip_equal is available in more_itertools/more.py.",
+  "base_source_excerpt": "// File: more_itertools/more.py (Commit: 8c1a6ef2)\n// Symbol: zip_equal\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: more_itertools/more.py (Commit: 8fa3b81c)\n// Symbol: zip_equal\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting more_itertools/more.py in more-itertools.",
+  "relevant_tests": "Verify behavioral stability or deprecation for zip_equal."
+}

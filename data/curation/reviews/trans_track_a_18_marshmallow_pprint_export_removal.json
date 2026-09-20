@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_18_marshmallow_pprint_export_removal",
+  "repo_name": "marshmallow-code/marshmallow",
+  "transition_authenticity": "PASS",
+  "causal_validity": "PASS",
+  "task_mapping": "FAIL",
+  "stale_memory_grounding": "FAIL",
+  "valid_memory_grounding": "FAIL",
+  "hidden_test_strength": "PASS",
+  "repo_context_leakage": "PASS",
+  "environment_reproducibility": "PASS",
+  "agent_behavior_category": "UNTESTED_SCALE_CANDIDATE",
+  "final_curation_decision": "EXCLUDED",
+  "decision_rationale": "Excluded: Marshmallow pprint export removal is a trivial utility export."
+}

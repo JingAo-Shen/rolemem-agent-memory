@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_a_click__KeepOpenFile___enter__",
+  "repository": "click",
+  "file_path": "src/click/utils.py",
+  "symbol_qualified_name": "_KeepOpenFile.__enter__",
+  "memory_statement": "Symbol _KeepOpenFile.__enter__ defines core logic in src/click/utils.py.",
+  "base_source_excerpt": "// File: src/click/utils.py (Commit: 7a0a3447)\n// Symbol: _KeepOpenFile.__enter__\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: src/click/utils.py (Commit: 051725fa)\n// Symbol: _KeepOpenFile.__enter__\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting src/click/utils.py in click.",
+  "relevant_tests": "Verify behavioral stability or deprecation for _KeepOpenFile.__enter__."
+}

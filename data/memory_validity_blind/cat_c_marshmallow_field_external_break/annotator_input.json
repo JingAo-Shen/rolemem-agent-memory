@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_c_marshmallow_field_external_break",
+  "repository": "marshmallow",
+  "file_path": "src/marshmallow/fields.py",
+  "symbol_qualified_name": "marshmallow.Field",
+  "memory_statement": "Field uses marshmallow.pprint for debugging serialization.",
+  "base_source_excerpt": "// File: src/marshmallow/fields.py (Commit: HEAD~5)\n// Symbol: marshmallow.Field\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: src/marshmallow/fields.py (Commit: HEAD)\n// Symbol: marshmallow.Field\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting src/marshmallow/fields.py in marshmallow.",
+  "relevant_tests": "Verify behavioral stability or deprecation for marshmallow.Field."
+}

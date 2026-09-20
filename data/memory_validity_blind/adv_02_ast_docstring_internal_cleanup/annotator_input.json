@@ -1,0 +1,11 @@
+{
+  "case_id": "adv_02_ast_docstring_internal_cleanup",
+  "repository": "flask",
+  "file_path": "src/flask/config.py",
+  "symbol_qualified_name": "flask.cleanup",
+  "memory_statement": "Config object inherits from dict and provides from_envvar and from_pyfile loaders.",
+  "base_source_excerpt": "class Config(dict):\n    def from_envvar(self, variable_name, silent=False):\n        return self._load_env(variable_name, silent)",
+  "target_source_excerpt": "class Config(dict):\n    \"\"\"Extended dictionary with configuration helpers.\"\"\"\n    def from_envvar(self, variable_name: str, silent: bool = False) -> bool:\n        \"\"\"Loads config from environment variable.\"\"\"\n        rv = os.environ.get(variable_name)\n        return self.from_pyfile(rv, silent=silent)",
+  "relevant_pr_evidence": "Refactor Config docstrings and optimize environment variable loader.",
+  "relevant_tests": "def test_config_envvar():\n    c = Config()\n    assert hasattr(c, 'from_envvar')"
+}

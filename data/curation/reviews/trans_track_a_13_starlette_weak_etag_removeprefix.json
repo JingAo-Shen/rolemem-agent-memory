@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_13_starlette_weak_etag_removeprefix",
+  "repo_name": "encode/starlette",
+  "transition_authenticity": "PASS",
+  "causal_validity": "FAIL",
+  "task_mapping": "WEAK",
+  "stale_memory_grounding": "WEAK",
+  "valid_memory_grounding": "PASS",
+  "hidden_test_strength": "PASS",
+  "repo_context_leakage": "PASS",
+  "environment_reproducibility": "PASS",
+  "agent_behavior_category": "UNTESTED_SCALE_CANDIDATE",
+  "final_curation_decision": "REBUILD_CANDIDATE",
+  "decision_rationale": "Authentic Starlette weak ETag removeprefix (PR #2424); PR title/body evidence re-alignment."
+}

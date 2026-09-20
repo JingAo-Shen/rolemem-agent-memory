@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_27_marshmallow_ipaddress_type_mapping",
+  "repo_name": "marshmallow-code/marshmallow",
+  "transition_authenticity": "PASS",
+  "causal_validity": "FAIL",
+  "task_mapping": "FAIL",
+  "stale_memory_grounding": "FAIL",
+  "valid_memory_grounding": "FAIL",
+  "hidden_test_strength": "PASS",
+  "repo_context_leakage": "PASS",
+  "environment_reproducibility": "PASS",
+  "agent_behavior_category": "UNTESTED_SCALE_CANDIDATE",
+  "final_curation_decision": "EXCLUDED",
+  "decision_rationale": "Excluded: Marshmallow ipaddress type mapping lacks strong causal failure mode."
+}

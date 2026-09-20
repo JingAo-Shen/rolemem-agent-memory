@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_b_attrs_attrib_refactor",
+  "repository": "attrs",
+  "file_path": "src/attr/_make.py",
+  "symbol_qualified_name": "attrs.attrib",
+  "memory_statement": "attrib defines an attribute on an attrs-decorated class.",
+  "base_source_excerpt": "// File: src/attr/_make.py (Commit: HEAD~5)\n// Symbol: attrs.attrib\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: src/attr/_make.py (Commit: HEAD)\n// Symbol: attrs.attrib\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting src/attr/_make.py in attrs.",
+  "relevant_tests": "Verify behavioral stability or deprecation for attrs.attrib."
+}

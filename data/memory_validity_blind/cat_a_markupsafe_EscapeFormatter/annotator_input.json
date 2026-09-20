@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_a_markupsafe_EscapeFormatter",
+  "repository": "markupsafe",
+  "file_path": "src/markupsafe/__init__.py",
+  "symbol_qualified_name": "EscapeFormatter",
+  "memory_statement": "Symbol EscapeFormatter defines core logic in src/markupsafe/__init__.py.",
+  "base_source_excerpt": "// File: src/markupsafe/__init__.py (Commit: 0c422e10)\n// Symbol: EscapeFormatter\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: src/markupsafe/__init__.py (Commit: dfa58162)\n// Symbol: EscapeFormatter\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting src/markupsafe/__init__.py in markupsafe.",
+  "relevant_tests": "Verify behavioral stability or deprecation for EscapeFormatter."
+}

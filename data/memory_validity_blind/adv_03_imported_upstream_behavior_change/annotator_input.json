@@ -1,0 +1,11 @@
+{
+  "case_id": "adv_03_imported_upstream_behavior_change",
+  "repository": "requests",
+  "file_path": "src/requests/utils.py",
+  "symbol_qualified_name": "requests.change",
+  "memory_statement": "to_key_val_list accepts dictionary-like items and yields (k, v) pairs using collections.Mapping.",
+  "base_source_excerpt": "from collections import Mapping\ndef to_key_val_list(value):\n    if isinstance(value, Mapping):\n        return value.items()\n    return value",
+  "target_source_excerpt": "from collections import Mapping\ndef to_key_val_list(value):\n    if isinstance(value, Mapping):\n        return value.items()\n    return value",
+  "relevant_pr_evidence": "Python 3.10+ migration removes collections.Mapping in favor of collections.abc.Mapping causing ImportError at runtime.",
+  "relevant_tests": "def test_to_key_val_list():\n    import collections.abc\n    # collections.Mapping raises AttributeError"
+}

@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_16_rich_file_proxy_isatty",
+  "repo_name": "Textualize/rich",
+  "transition_authenticity": "PASS",
+  "causal_validity": "PASS",
+  "task_mapping": "WEAK",
+  "stale_memory_grounding": "FAIL",
+  "valid_memory_grounding": "PASS",
+  "hidden_test_strength": "PASS",
+  "repo_context_leakage": "PASS",
+  "environment_reproducibility": "PASS",
+  "agent_behavior_category": "STALE_INSENSITIVE_FOR_QWEN7B",
+  "final_curation_decision": "CONTROL_BENCHMARK",
+  "decision_rationale": "Authentic Rich FileProxy isatty() evolution control; verified behavioral preservation."
+}

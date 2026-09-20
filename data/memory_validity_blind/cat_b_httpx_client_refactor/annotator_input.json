@@ -1,0 +1,11 @@
+{
+  "case_id": "cat_b_httpx_client_refactor",
+  "repository": "httpx",
+  "file_path": "httpx/_client.py",
+  "symbol_qualified_name": "httpx.Client",
+  "memory_statement": "Client provides synchronous HTTP client session management.",
+  "base_source_excerpt": "// File: httpx/_client.py (Commit: HEAD~5)\n// Symbol: httpx.Client\n// Definition context from base repository state.",
+  "target_source_excerpt": "// File: httpx/_client.py (Commit: HEAD)\n// Symbol: httpx.Client\n// Definition context from target repository state.",
+  "relevant_pr_evidence": "Repository change affecting httpx/_client.py in httpx.",
+  "relevant_tests": "Verify behavioral stability or deprecation for httpx.Client."
+}
