@@ -1,0 +1,11 @@
+{
+  "task_id": "trans_track_a_24_cachelib_timeout_timedelta",
+  "condition": "S3",
+  "seed": 42,
+  "memory_source": "TARGET_MEMORY_VERIFIED",
+  "statement": "Pass datetime.timedelta timeouts directly to BaseCache relying on _normalize_timeout.",
+  "overall_task_success": true,
+  "pytest_pass": true,
+  "is_stale_action": false,
+  "parsed_code": "# cache_helper.py\n\nfrom cachelib.base import BaseCache\nimport datetime as dt\n\ndef normalize_timeout_value(cache: BaseCache, timeout: int | dt.timedelta) -> int:\n    \"\"\"\n    Normalize the timeout value to an integer number of seconds using the provided cache instance.\n\n    :param cache: An instance of a cache class from cachelib.\n    :param timeout: The timeout value to normalize. Can be an integer (in seconds) or a datetime.timedelta.\n    :return: Normalized integer timeout in seconds.\n    \"\"\"\n    return cache._to_seconds(timeout)"
+}

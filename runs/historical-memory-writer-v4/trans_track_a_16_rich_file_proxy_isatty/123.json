@@ -1,0 +1,30 @@
+{
+  "task_id": "trans_track_a_16_rich_file_proxy_isatty",
+  "attempt": 1,
+  "seed": 146,
+  "symbol": "FileProxy",
+  "statement": "FileProxy is a class that wraps a file object and redirects its writes to a console, handling ANSI escape codes and buffering text before printing.",
+  "verdict": "HIST_MEMORY_VALID",
+  "criteria": {
+    "symbol_grounded": true,
+    "artifact_grounded": true,
+    "statement_supported": true,
+    "non_generic": true,
+    "non_future_looking": true,
+    "ast_unique": true
+  },
+  "base_source_hunk": "from typing import IO, TYPE_CHECKING, Any, List\n\nfrom .ansi import AnsiDecoder\nfrom .text import Text\n\nif TYPE_CHECKING:\n    from .console import Console\n\n\nclass FileProxy(io.TextIOBase):\n    \"\"\"Wraps a file (e.g. sys.stdout) and redirects writes to a console.\"\"\"\n\n    def __init__(self, console: \"Console\", file: IO[str]) -> None:\n        self.__console = console\n        self.__file = file\n        self.__buffer: List[str] = []\n        self.__ansi_decoder = AnsiDecoder()\n\n    @property\n    def rich_proxied_file(self) -> IO[str]:\n        \"\"\"Get proxied file.\"\"\"\n        return self.__file\n\n    def __getattr__(self, name: str) -> Any:\n        return getattr(self.__file, name)\n\n    def write(self, text: str) -> int:\n        if not isinstance(text, str):\n            raise TypeError(f\"write() argument must be str, not {type(text).__name__}\")\n        buffer = self.__buffer\n        lines: List[str] = []\n        while text:\n            line, new_line, text = text.partition(\"\\n\")\n            if new_line:\n                lines.append(\"\".join(buffer) + line)\n                buffer.clear()\n            else:\n                buffer.append(line)\n                break\n        if lines:\n            console = self.__console\n            with console:\n                output = Text(\"\\n\").join(\n                    self.__ansi_decoder.decode_line(line) for line in lines\n                )\n                console.print(output)\n        return len(text)\n\n    def flush(self) -> None:\n        output = \"\".join(self.__buffer)\n        if output:\n            self.__console.print(output)\n        del self.__buffer[:]\n\n    def fileno(self) -> int:",
+  "base_hunk_sha256": "e9360d3517661f22d9b653e5bfc3c9562ddc60b4d11e1a56af08d99e63375e50",
+  "history_commits": [
+    "59303577618eec9f49f2285f3c406c1dea0dba1d Merge pull request #2603 from henryiii/henryiii/chore/refurb",
+    "c3a24505978756e7e5802cbb22dc2aecc8c1b136 fix for fileno",
+    "a9344d22ba91a89abe06e3e58a5b9940181a38a3 chore: apply some refurb suggestions"
+  ],
+  "claim": "FileProxy is a class that wraps a file object and redirects its writes to a console, handling ANSI escape codes and buffering text before printing.",
+  "base_presence": true,
+  "target_presence": false,
+  "first_seen_commit": "58ac15120fe254886c10d6253667733c83604cb4",
+  "temporal_relation": "HISTORICAL_VALID",
+  "entailment_status": "BASE_ENTAILED",
+  "raw_generation": "```json\n{\n  \"symbol\": \"FileProxy\",\n  \"statement\": \"FileProxy is a class that wraps a file object and redirects its writes to a console, handling ANSI escape codes and buffering text before printing.\"\n}\n```"
+}

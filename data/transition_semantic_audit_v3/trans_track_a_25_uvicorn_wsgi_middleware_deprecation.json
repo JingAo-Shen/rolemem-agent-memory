@@ -1,0 +1,16 @@
+{
+  "transition_id": "trans_track_a_25_uvicorn_wsgi_middleware_deprecation",
+  "repo_name": "encode/uvicorn",
+  "transition_type": "API_DEPRECATION",
+  "semantic_status": "SEMANTIC_WEAK_PASS",
+  "questions": {
+    "q1_repo_change_accurate": true,
+    "q2_stale_memory_plausible": true,
+    "q3_valid_memory_accurate": false,
+    "q4_task_natural": false,
+    "q5_stale_solution_plausible": true,
+    "q6_valid_solution_depends": true
+  },
+  "pass_count": "4/6",
+  "notes": []
+}

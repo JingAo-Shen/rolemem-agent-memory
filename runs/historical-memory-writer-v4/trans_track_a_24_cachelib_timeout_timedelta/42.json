@@ -1,0 +1,30 @@
+{
+  "task_id": "trans_track_a_24_cachelib_timeout_timedelta",
+  "attempt": 1,
+  "seed": 65,
+  "symbol": "BaseCache",
+  "statement": "BaseCache is a base class for cache systems, providing methods like get, delete, and get_many which can be overridden by subclasses to implement specific caching mechanisms.",
+  "verdict": "HIST_MEMORY_VALID",
+  "criteria": {
+    "symbol_grounded": true,
+    "artifact_grounded": true,
+    "statement_supported": true,
+    "non_generic": true,
+    "non_future_looking": true,
+    "ast_unique": true
+  },
+  "base_source_hunk": "import typing as _t\n\n\nclass BaseCache:\n    \"\"\"Base class for the cache systems.  All the cache systems implement this\n    API or a superset of it.\n\n    :param default_timeout: the default timeout (in seconds) that is used if\n        no timeout is specified on :meth:`set`. A timeout\n        of 0 indicates that the cache never expires.\n    :param ignore_delete_many_errors: If False, delete_many() will raise\n        a RuntimeError if any key fails to delete. Keys that do not\n        exist are considered successfully deleted and do not raise.\n\n        .. versionadded:: 0.16.0\n    \"\"\"\n\n    def __init__(\n        self, default_timeout: int = 300, ignore_delete_many_errors: bool = True\n    ) -> None:\n        self.default_timeout = default_timeout\n        self.ignore_delete_many_errors = ignore_delete_many_errors\n\n    def _normalize_timeout(self, timeout: int | None) -> int:\n        if timeout is None:\n            timeout = self.default_timeout\n        return timeout\n\n    def get(self, key: str) -> _t.Any:\n        \"\"\"Look up key in the cache and return the value for it.\n\n        :param key: the key to be looked up.\n        :returns: The value if it exists and is readable, else ``None``.\n        \"\"\"\n        return None\n\n    def delete(self, key: str) -> bool:\n        \"\"\"Delete ``key`` from the cache.\n\n        :param key: the key to delete.\n        :returns: Whether the key existed and has been deleted.\n        \"\"\"\n        return True\n\n    def get_many(self, *keys: str) -> list[_t.Any]:\n        \"\"\"Returns a list of values for the given keys.\n        For each key an item in the list is created::\n\n            foo, bar = cache.get_many(\"foo\", \"bar\")",
+  "base_hunk_sha256": "db7a79f98a1674c01dcf1dae920e7990b45a354933efd7936194308a5ca5ae3c",
+  "history_commits": [
+    "a7fd308f7f8bd13473000efe2498e294627599ae Add ignore delete many errors flag",
+    "868e35054045d7d2bbe6979c086c9fe448b7e8a2 add sphinx copy and spellcheck extensions, fix all spellcheck issues, fix all sphinx referneces issues",
+    "4ced1ae6389acb7643cd193646fb350240671c96 remove python3.8, 3.9, 3.10 support and do not filter pytest warnings"
+  ],
+  "claim": "BaseCache is a base class for cache systems, providing methods like get, delete, and get_many which can be overridden by subclasses to implement specific caching mechanisms.",
+  "base_presence": true,
+  "target_presence": false,
+  "first_seen_commit": "5a7d98a6b54e05b6076a8c69b034ab8c35a250a1",
+  "temporal_relation": "HISTORICAL_VALID",
+  "entailment_status": "BASE_ENTAILED",
+  "raw_generation": "```json\n{\n  \"symbol\": \"BaseCache\",\n  \"statement\": \"BaseCache is a base class for cache systems, providing methods like get, delete, and get_many which can be overridden by subclasses to implement specific caching mechanisms.\"\n}\n```"
+}

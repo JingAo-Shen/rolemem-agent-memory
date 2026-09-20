@@ -1,0 +1,35 @@
+{
+  "task_id": "trans_track_a_15_more_itertools_zip_equal_removal",
+  "attempt": 1,
+  "seed": 146,
+  "symbol": "zip_equal",
+  "statement": "zip_equal zips multiple iterables together and raises an UnequalIterablesError if they are not all the same length.",
+  "verdict": "HIST_MEMORY_VALID",
+  "criteria": {
+    "symbol_grounded": true,
+    "artifact_grounded": true,
+    "statement_supported": true,
+    "non_generic": true,
+    "non_future_looking": true,
+    "ast_unique": true
+  },
+  "base_source_hunk": "\n    \"\"\"\n    children = tee(iterable, len(offsets))\n\n    return zip_offset(\n        *children, offsets=offsets, longest=longest, fillvalue=fillvalue\n    )\n\n\ndef zip_equal(*iterables):\n    \"\"\"``zip`` the input *iterables* together but raise\n    ``UnequalIterablesError`` if they aren't all the same length.\n\n        >>> it_1 = range(3)\n        >>> it_2 = iter('abc')\n        >>> list(zip_equal(it_1, it_2))\n        [(0, 'a'), (1, 'b'), (2, 'c')]\n\n        >>> it_1 = range(3)\n        >>> it_2 = iter('abcd')\n        >>> list(zip_equal(it_1, it_2)) # doctest: +IGNORE_EXCEPTION_DETAIL\n        Traceback (most recent call last):\n        ...\n        more_itertools.more.UnequalIterablesError: Iterables have different\n        lengths\n\n    \"\"\"\n    if hexversion >= 0x30A00A6:\n        warnings.warn(\n            (\n                'zip_equal will be removed in a future version of '\n                'more-itertools. Use the builtin zip function with '\n                'strict=True instead.'\n            ),\n            DeprecationWarning,\n        )\n\n    return _zip_equal(*iterables)\n\n\ndef zip_offset(*iterables, offsets, longest=False, fillvalue=None):\n    \"\"\"``zip`` the input *iterables* together, but offset the `i`-th iterable\n    by the `i`-th item in *offsets*.\n\n        >>> list(zip_offset('0123', 'abcdef', offsets=(0, 1)))\n        [('0', 'b'), ('1', 'c'), ('2', 'd'), ('3', 'e')]\n\n    This can be used as a lightweight alternative to SciPy or pandas to analyze\n    data sets in which some series have a lead or lag relationship.\n\n    By default, the sequence will end when the shortest iterable is exhausted.\n    To continue until the longest iterable is exhausted, set *longest* to\n    ``True``.\n\n        >>> list(zip_offset('0123', 'abcdef', offsets=(0, 1), longest=True))",
+  "base_hunk_sha256": "0ebd4b904986d490d81d4b015d1f4610e32a0bd7eb595ed73c34250f4f9e0312",
+  "history_commits": [
+    "24be4400152530567fc308578ce5e8072ad77982 Add note for issue 1054",
+    "3dd5980a6d73bb9902a4ab1fb1eb05d512081f86 Add a note for issue 1063",
+    "2ce52d104921364729df909c03f52ae7e2085f82 Update docs for 10.8.0"
+  ],
+  "claim": "zip_equal zips multiple iterables together and raises an UnequalIterablesError if they are not all the same length.",
+  "base_presence": true,
+  "target_presence": false,
+  "first_seen_commit": "8c1a6ef241b51ff055e89219f050ccf4f15f37f6",
+  "temporal_relation": "HISTORICAL_VALID",
+  "entailment_status": "BASE_ENTAILED",
+  "raw_generation": "```json\n{\n  \"symbol\": \"zip_equal\",\n  \"statement\": \"zip_equal zips multiple iterables together and raises an UnequalIterablesError if they are not all the same length.\"\n}\n```",
+  "tier_a_temporal_isolation": true,
+  "tier_b_structural_grounding": true,
+  "tier_c_semantic_factuality": true,
+  "factuality_status": "FACTUALLY_SUPPORTED",
+  "factuality_explanation": "The historical source code provides a docstring for the `zip_equal` function that states its behavior accurately."
+}

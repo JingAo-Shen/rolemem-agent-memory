@@ -1,0 +1,10 @@
+{
+  "task_id": "trans_track_a_24_cachelib_timeout_timedelta",
+  "condition": "S0",
+  "seed": 123,
+  "memory_source": "NO_MEMORY",
+  "overall_task_success": false,
+  "pytest_pass": false,
+  "is_stale_action": false,
+  "parsed_code": "# cache_helper.py\n\ndef normalize_timeout_value(cache, timeout):\n    \"\"\"\n    Normalize the timeout value to ensure it is an integer representing seconds.\n\n    :param cache: An instance of a cache class from cachelib.\n    :param timeout: The timeout value to normalize. Can be an integer, float, or timedelta.\n    :return: Normalized integer seconds.\n    \"\"\"\n    if isinstance(timeout, dt.timedelta):\n        timeout = cache._to_seconds(timeout)\n    elif not isinstance(timeout, int):\n        raise ValueError(\"Timeout must be an integer or a timedelta\")\n    \n    return int(timeout)"
+}

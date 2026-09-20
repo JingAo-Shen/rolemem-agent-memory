@@ -1,0 +1,13 @@
+{
+  "transition_id": "trans_track_a_29_pluggy_static_hook_attr_discovery",
+  "repo_name": "pluggy",
+  "leakage_status": "REPO_CONTEXT_NONTRIVIAL",
+  "checks": {
+    "contains_target_wrapper": false,
+    "contains_near_solution_pattern": false,
+    "contains_replacement_hint": false,
+    "has_migration_comment": false,
+    "has_replacement_invocation": false
+  },
+  "retrieved_files": []
+}

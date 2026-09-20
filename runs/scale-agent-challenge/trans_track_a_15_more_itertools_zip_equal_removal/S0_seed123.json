@@ -1,0 +1,10 @@
+{
+  "task_id": "trans_track_a_15_more_itertools_zip_equal_removal",
+  "condition": "S0",
+  "seed": 123,
+  "memory_source": "NO_MEMORY",
+  "overall_task_success": false,
+  "pytest_pass": false,
+  "is_stale_action": false,
+  "parsed_code": "def pair_strictly(iter1, iter2):\n    \"\"\"\n    Pair elements from two iterables strictly. Raise ValueError if lengths differ.\n    \n    Args:\n    iter1 (iterable): The first iterable.\n    iter2 (iterable): The second iterable.\n    \n    Returns:\n    generator: A generator yielding pairs of elements from iter1 and iter2.\n    \n    Raises:\n    ValueError: If the lengths of iter1 and iter2 differ.\n    \"\"\"\n    # Convert iterators to lists to allow multiple traversals\n    list1, list2 = list(iter1), list(iter2)\n    \n    # Check if lengths are equal\n    if len(list1) != len(list2):\n        raise ValueError(\"The lengths of the two iterables must be the same.\")\n    \n    # Yield pairs of elements from both iterables\n    for item1, item2 in zip(list1, list2):\n        yield (item1, item2)"
+}

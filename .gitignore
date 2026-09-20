@@ -19,6 +19,8 @@ runs/*
 !runs/historical-memory-writer-v4/
 !runs/full-agent-handoff-v4/
 !runs/scale-behavior-prescreen/
+!runs/historical-memory-writer-scale/
+!runs/scale-agent-challenge/
 outputs/
 
 

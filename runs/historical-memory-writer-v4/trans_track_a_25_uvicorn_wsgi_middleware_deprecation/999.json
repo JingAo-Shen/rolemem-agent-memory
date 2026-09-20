@@ -1,0 +1,30 @@
+{
+  "task_id": "trans_track_a_25_uvicorn_wsgi_middleware_deprecation",
+  "attempt": 1,
+  "seed": 1022,
+  "symbol": "WSGIMiddleware",
+  "statement": "WSGIMiddleware is a class that wraps an ASGI application and allows it to be run within a WSGI environment using a ThreadPoolExecutor for asynchronous processing.",
+  "verdict": "HIST_MEMORY_VALID",
+  "criteria": {
+    "symbol_grounded": true,
+    "artifact_grounded": true,
+    "statement_supported": true,
+    "non_generic": true,
+    "non_future_looking": true,
+    "ast_unique": true
+  },
+  "base_source_hunk": "        value_str: str = value.decode(\"latin1\")\n        if corrected_name in environ:\n            corrected_name_environ = environ[corrected_name]\n            assert isinstance(corrected_name_environ, str)\n            value_str = corrected_name_environ + \",\" + value_str\n        environ[corrected_name] = value_str\n    return environ\n\n\nclass WSGIMiddleware:\n    def __init__(self, app: WSGIApp, workers: int = 10):\n        self.app = app\n        self.executor = concurrent.futures.ThreadPoolExecutor(max_workers=workers)\n\n    async def __call__(\n        self,\n        scope: \"HTTPScope\",\n        receive: \"ASGIReceiveCallable\",\n        send: \"ASGISendCallable\",\n    ) -> None:\n        assert scope[\"type\"] == \"http\"\n        instance = WSGIResponder(self.app, self.executor, scope)\n        await instance(receive, send)\n\n\nclass WSGIResponder:\n    def __init__(\n        self,\n        app: WSGIApp,\n        executor: concurrent.futures.ThreadPoolExecutor,\n        scope: \"HTTPScope\",\n    ):\n        self.app = app\n        self.executor = executor\n        self.scope = scope\n        self.status = None\n        self.response_headers = None\n        self.send_event = asyncio.Event()\n        self.send_queue: Deque[Optional[\"ASGISendEvent\"]] = deque()\n        self.loop: asyncio.AbstractEventLoop = asyncio.get_event_loop()\n        self.response_started = False\n        self.exc_info: Optional[ExcInfo] = None\n\n    async def __call__(\n        self, receive: \"ASGIReceiveCallable\", send: \"ASGISendCallable\"\n    ) -> None:\n        message: HTTPRequestEvent = await receive()  # type: ignore[assignment]\n        body = io.BytesIO(message.get(\"body\", b\"\"))\n        more_body = message.get(\"more_body\", False)\n        if more_body:\n            body.seek(0, io.SEEK_END)\n            while more_body:\n                body_message: \"HTTPRequestEvent\" = (\n                    await receive()  # type: ignore[assignment]\n                )",
+  "base_hunk_sha256": "84c94bb62630e2f413fdca8f3e88e33cf745c08c0eaedb575502cc5077e47faf",
+  "history_commits": [
+    "b22c9506b282e9c81591ed7f48781dc5759df0e0 Remove `asgiref` dependency (#1532)",
+    "a694ee4a09380b26d681bcdf91bdc3258804e107 Fix WSGI middleware not to explode quadratically in the case of a larger body (#1329)",
+    "23fe50f821b1ebf3db5379d8c4eb8ae5600af0e6 [middleware/wsgi.py] Replace list with deque for `send_queue` (#1214)"
+  ],
+  "claim": "WSGIMiddleware is a class that wraps an ASGI application and allows it to be run within a WSGI environment using a ThreadPoolExecutor for asynchronous processing.",
+  "base_presence": true,
+  "target_presence": false,
+  "first_seen_commit": "23b9f05a389a476aee151698cede171d915f6c53",
+  "temporal_relation": "HISTORICAL_VALID",
+  "entailment_status": "BASE_ENTAILED",
+  "raw_generation": "```json\n{\n  \"symbol\": \"WSGIMiddleware\",\n  \"statement\": \"WSGIMiddleware is a class that wraps an ASGI application and allows it to be run within a WSGI environment using a ThreadPoolExecutor for asynchronous processing.\"\n}\n```"
+}

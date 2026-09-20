@@ -1,0 +1,35 @@
+{
+  "task_id": "trans_track_a_20_iniconfig_strip_inline_comments",
+  "attempt": 1,
+  "seed": 65,
+  "symbol": "IniConfig",
+  "statement": "IniConfig is a class that parses INI files and provides methods to access configuration values and their line numbers.",
+  "verdict": "HIST_MEMORY_VALID",
+  "criteria": {
+    "symbol_grounded": true,
+    "artifact_grounded": true,
+    "statement_supported": true,
+    "non_generic": true,
+    "non_future_looking": true,
+    "ast_unique": true
+  },
+  "base_source_hunk": "            return self.config.lineof(self.name, key)  # type: ignore[return-value]\n\n        yield from sorted(section, key=lineof)\n\n    def items(self) -> Iterator[tuple[str, str]]:\n        for name in self:\n            yield name, self[name]\n\n\nclass IniConfig:\n    path: Final[str]\n    sections: Final[Mapping[str, Mapping[str, str]]]\n    _sources: Final[Mapping[tuple[str, str | None], int]]\n\n    def __init__(\n        self,\n        path: str | os.PathLike[str],\n        data: str | None = None,\n        encoding: str = \"utf-8\",\n    ) -> None:\n        self.path = os.fspath(path)\n        if data is None:\n            with open(self.path, encoding=encoding) as fp:\n                data = fp.read()\n\n        tokens = _parse.parse_lines(self.path, data.splitlines(True))\n\n        self._sources = {}\n        sections_data: dict[str, dict[str, str]]\n        self.sections = sections_data = {}\n\n        for lineno, section, name, value in tokens:\n            if section is None:\n                raise ParseError(self.path, lineno, \"no section header defined\")\n            self._sources[section, name] = lineno\n            if name is None:\n                if section in self.sections:\n                    raise ParseError(\n                        self.path, lineno, f\"duplicate section {section!r}\"\n                    )\n                sections_data[section] = {}\n            else:\n                if name in self.sections[section]:\n                    raise ParseError(self.path, lineno, f\"duplicate name {name!r}\")\n                assert value is not None\n                sections_data[section][name] = value\n\n    def lineof(self, section: str, name: str | None = None) -> int | None:\n        lineno = self._sources.get((section, name))\n        return None if lineno is None else lineno + 1\n\n    @overload\n    def get(\n        self,\n        section: str,",
+  "base_hunk_sha256": "aa7c676bf9bcc6449b88a990bffa66c82edb6ff6143586e0143cc70c90d595f1",
+  "history_commits": [
+    "306fd862817de17a47fec0890fc0c89c5cb61dee type annotate _sources of IniConfig for clarity",
+    "7fc4089c33d8cccc219c82fc2d973c3eb3af7069 Remove Python 3.10+ redundant patterns",
+    "1dab01a81f78dd6154833b27217a038d06b5c2eb Migrate from black + pyupgrade to ruff"
+  ],
+  "claim": "IniConfig is a class that parses INI files and provides methods to access configuration values and their line numbers.",
+  "base_presence": true,
+  "target_presence": false,
+  "first_seen_commit": "57b7ed9c7a5950f9c57b2cfbe641ff4cc04baf1c",
+  "temporal_relation": "HISTORICAL_VALID",
+  "entailment_status": "BASE_ENTAILED",
+  "raw_generation": "```json\n{\n  \"symbol\": \"IniConfig\",\n  \"statement\": \"IniConfig is a class that parses INI files and provides methods to access configuration values and their line numbers.\"\n}\n```",
+  "tier_a_temporal_isolation": true,
+  "tier_b_structural_grounding": true,
+  "tier_c_semantic_factuality": true,
+  "factuality_status": "FACTUALLY_SUPPORTED",
+  "factuality_explanation": "The historical source code shows that IniConfig is initialized with a file path and optionally data. It reads the file or uses provided data to parse lines using a function `_parse.parse_lines`. The parsed tokens include line numbers, section headers, names, and values. The class has methods `items` to iterate over configuration items and appears to store sources (line numbers) associated with each item."
+}

@@ -1,0 +1,11 @@
+{
+  "task_id": "trans_track_a_15_more_itertools_zip_equal_removal",
+  "condition": "S3",
+  "seed": 999,
+  "memory_source": "TARGET_MEMORY_VERIFIED",
+  "statement": "Use Python built-in zip(..., strict=True) to pair iterables with strict length check.",
+  "overall_task_success": false,
+  "pytest_pass": false,
+  "is_stale_action": false,
+  "parsed_code": "# pair_helper.py\n\ndef pair_strictly(iter1, iter2):\n    \"\"\"\n    Pair elements from two iterables together. Raise ValueError if the lengths of the iterables differ.\n    \n    Args:\n    iter1 (iterable): The first iterable to pair.\n    iter2 (iterable): The second iterable to pair.\n    \n    Returns:\n    iterator: An iterator over pairs of elements from iter1 and iter2.\n    \n    Raises:\n    ValueError: If the lengths of iter1 and iter2 are not equal.\n    \"\"\"\n    try:\n        paired_iter = zip(iter1, iter2, strict=True)\n    except ValueError as e:\n        raise ValueError(\"Iterables have different lengths.\") from e\n    \n    return paired_iter"
+}

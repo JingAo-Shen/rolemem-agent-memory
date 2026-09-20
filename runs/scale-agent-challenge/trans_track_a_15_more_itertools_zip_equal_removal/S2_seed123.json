@@ -1,0 +1,11 @@
+{
+  "task_id": "trans_track_a_15_more_itertools_zip_equal_removal",
+  "condition": "S2",
+  "seed": 123,
+  "memory_source": "AGENT_A_HISTORICAL",
+  "statement": "zip_equal zips multiple iterables together and raises an UnequalIterablesError if they are not all the same length.",
+  "overall_task_success": false,
+  "pytest_pass": false,
+  "is_stale_action": false,
+  "parsed_code": "from itertools import zip_longest\n\ndef pair_strictly(iter1, iter2):\n    \"\"\"\n    Pair elements from two iterables strictly, raising ValueError if lengths differ.\n    \n    Args:\n    iter1 (iterable): The first iterable.\n    iter2 (iterable): The second iterable.\n    \n    Returns:\n    iterator: An iterator over pairs of elements from iter1 and iter2.\n    \n    Raises:\n    ValueError: If the lengths of iter1 and iter2 differ.\n    \"\"\"\n    paired_elements = zip_longest(iter1, iter2, fillvalue=None)\n    for idx, (item1, item2) in enumerate(paired_elements):\n        if item1 is None or item2 is None:\n            raise ValueError(f\"Iterables have different lengths at index {idx}\")\n        yield (item1, item2)"
+}

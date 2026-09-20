@@ -1,0 +1,18 @@
+{
+  "transition_id": "trans_track_a_11_requests_json_decode_error",
+  "repo_name": "psf/requests",
+  "transition_type": "API_EVOLUTION",
+  "semantic_status": "SEMANTIC_WEAK_PASS",
+  "questions": {
+    "q1_repo_change_accurate": true,
+    "q2_stale_memory_plausible": true,
+    "q3_valid_memory_accurate": true,
+    "q4_task_natural": true,
+    "q5_stale_solution_plausible": true,
+    "q6_valid_solution_depends": true
+  },
+  "pass_count": "6/6",
+  "notes": [
+    "Requests #6097 Audit: PR 6097 added JSONDecodeError wrapper. Current task uses generic RequestException; valid_solution is sound but does not specifically assert JSONDecodeError subclass hierarchy."
+  ]
+}

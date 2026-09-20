@@ -1,0 +1,11 @@
+{
+  "task_id": "trans_track_a_25_uvicorn_wsgi_middleware_deprecation",
+  "condition": "S3",
+  "seed": 123,
+  "memory_source": "TARGET_MEMORY_VERIFIED",
+  "statement": "Native WSGIMiddleware is deprecated in uvicorn; migrate to a2wsgi.WSGIMiddleware.",
+  "overall_task_success": false,
+  "pytest_pass": false,
+  "is_stale_action": true,
+  "parsed_code": "import warnings\nfrom a2wsgi import WSGIMiddleware\n\ndef wrap_wsgi_application(app):\n    \"\"\"\n    Wraps a WSGI application with a2wsgi.WSGIMiddleware to avoid unhandled deprecation warnings.\n    \n    Args:\n    app (callable): The original WSGI application to be wrapped.\n    \n    Returns:\n    callable: A new WSGI application that wraps the original one using a2wsgi.WSGIMiddleware.\n    \"\"\"\n    return WSGIMiddleware(app)"
+}

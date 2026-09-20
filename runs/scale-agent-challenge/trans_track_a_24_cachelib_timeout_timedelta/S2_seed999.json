@@ -1,0 +1,11 @@
+{
+  "task_id": "trans_track_a_24_cachelib_timeout_timedelta",
+  "condition": "S2",
+  "seed": 999,
+  "memory_source": "AGENT_A_HISTORICAL",
+  "statement": "BaseCache is a base class for cache systems, providing methods like get, delete, and get_many which can be overridden by subclasses.",
+  "overall_task_success": true,
+  "pytest_pass": true,
+  "is_stale_action": false,
+  "parsed_code": "# cache_helper.py\n\nfrom cachelib.base import BaseCache\nimport datetime as dt\n\ndef normalize_timeout_value(cache: BaseCache, timeout: int | dt.timedelta) -> int:\n    \"\"\"Normalize the timeout value to ensure it is an integer number of seconds.\"\"\"\n    return cache._to_seconds(timeout)"
+}

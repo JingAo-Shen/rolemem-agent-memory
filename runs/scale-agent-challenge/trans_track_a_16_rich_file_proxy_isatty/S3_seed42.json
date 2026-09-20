@@ -1,0 +1,11 @@
+{
+  "task_id": "trans_track_a_16_rich_file_proxy_isatty",
+  "condition": "S3",
+  "seed": 42,
+  "memory_source": "TARGET_MEMORY_VERIFIED",
+  "statement": "Call proxy.isatty() directly on rich FileProxy instances.",
+  "overall_task_success": true,
+  "pytest_pass": true,
+  "is_stale_action": false,
+  "parsed_code": "from rich.console import Console\nfrom rich.file_proxy import FileProxy\n\ndef check_proxy_interactive(proxy):\n    \"\"\"\n    Check if the proxy file is a tty.\n\n    Args:\n        proxy (FileProxy): The proxy file to check.\n\n    Returns:\n        bool: True if the proxy file is a tty, otherwise False.\n    \"\"\"\n    return proxy.isatty()"
+}

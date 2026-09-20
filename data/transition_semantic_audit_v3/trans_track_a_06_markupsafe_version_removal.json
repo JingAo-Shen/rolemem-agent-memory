@@ -1,0 +1,16 @@
+{
+  "transition_id": "trans_track_a_06_markupsafe_version_removal",
+  "repo_name": "pallets/markupsafe",
+  "transition_type": "API_REMOVAL",
+  "semantic_status": "SEMANTIC_STRONG_PASS",
+  "questions": {
+    "q1_repo_change_accurate": true,
+    "q2_stale_memory_plausible": true,
+    "q3_valid_memory_accurate": true,
+    "q4_task_natural": true,
+    "q5_stale_solution_plausible": true,
+    "q6_valid_solution_depends": true
+  },
+  "pass_count": "6/6",
+  "notes": []
+}

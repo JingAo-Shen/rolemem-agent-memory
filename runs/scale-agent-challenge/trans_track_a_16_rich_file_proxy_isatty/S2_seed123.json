@@ -1,0 +1,11 @@
+{
+  "task_id": "trans_track_a_16_rich_file_proxy_isatty",
+  "condition": "S2",
+  "seed": 123,
+  "memory_source": "AGENT_A_HISTORICAL",
+  "statement": "FileProxy is a class that wraps a file object and redirects its writes to a console, handling ANSI escape codes and buffering text before printing.",
+  "overall_task_success": false,
+  "pytest_pass": false,
+  "is_stale_action": false,
+  "parsed_code": "import os\n\nclass FileProxy:\n    def __init__(self, file):\n        self.file = file\n\n    @property\n    def is_tty(self):\n        return os.isatty(self.file.fileno())\n\ndef check_proxy_interactive(proxy):\n    return proxy.is_tty"
+}

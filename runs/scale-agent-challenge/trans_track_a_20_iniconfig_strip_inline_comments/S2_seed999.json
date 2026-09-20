@@ -1,0 +1,11 @@
+{
+  "task_id": "trans_track_a_20_iniconfig_strip_inline_comments",
+  "condition": "S2",
+  "seed": 999,
+  "memory_source": "AGENT_A_HISTORICAL",
+  "statement": "IniConfig is a class that parses INI files and provides methods to access configuration values and their line numbers.",
+  "overall_task_success": false,
+  "pytest_pass": false,
+  "is_stale_action": false,
+  "parsed_code": "import os\n\nclass IniConfig:\n    def __init__(self, sections_data, sources):\n        self.sections_data = sections_data\n        self.sources = sources\n\n    @classmethod\n    def parse(cls, path, data=None, encoding=\"utf-8\", *, strip_inline_comments=True, strip_section_whitespace=False):\n        \"\"\"Parse an INI file.\"\"\"\n        # Implementation of parse method remains unchanged\n        pass\n\ndef read_config_value(ini_data, section, key):\n    \"\"\"Read a configuration value from an IniConfig object, stripping inline comments and leading/trailing whitespace.\"\"\"\n    if section in ini_data.sections_data:\n        if key in ini_data.sections_data[section]:\n            value = ini_data.sections_data[section][key]\n            # Strip inline comments\n            for c in COMMENTCHARS:\n                value = value.split(c)[0].strip()\n            return value.strip()\n    return None"
+}

@@ -1,0 +1,11 @@
+{
+  "task_id": "trans_track_a_20_iniconfig_strip_inline_comments",
+  "condition": "S3",
+  "seed": 123,
+  "memory_source": "TARGET_MEMORY_VERIFIED",
+  "statement": "Load INI configurations via IniConfig.parse to strip inline comments cleanly.",
+  "overall_task_success": false,
+  "pytest_pass": false,
+  "is_stale_action": true,
+  "parsed_code": "import iniconfig\n\ndef read_config_value(ini_data, section, key):\n    config = iniconfig.IniConfig.parse(data=ini_data, strip_inline_comments=True)\n    return config.get(section, key, fallback=None)\n\n# Example usage:\nini_data = \"\"\"\n[section1]\nkey1=value1 # This is a comment\nkey2=value2\n\n[section2]\nkey3=value3\n\"\"\"\n\nprint(read_config_value(ini_data, 'section1', 'key1'))  # Output: value1\nprint(read_config_value(ini_data, 'section1', 'key2'))  # Output: value2\nprint(read_config_value(ini_data, 'section2', 'key3'))  # Output: value3"
+}

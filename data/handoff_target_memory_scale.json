@@ -1,0 +1,227 @@
+{
+  "version": "2.2.0",
+  "description": "Scale Target Memory Snapshot with verified PR bindings and target diff hashes",
+  "snapshot_sha256": "54e928a1ed98ceab026bc0a9903cf261e20f2ea9f8e8b3f18d01fa450aad7e85",
+  "claims": {
+    "trans_track_a_11_requests_json_decode_error": {
+      "transition_id": "trans_track_a_11_requests_json_decode_error",
+      "statement": "Catch requests.exceptions.RequestException when parsing json payloads.",
+      "symbol": "requests.exceptions.JSONDecodeError",
+      "replacement": "RequestException, requests.exceptions.RequestException",
+      "source_pr_url": "https://github.com/psf/requests/pull/6097",
+      "source_commit": "2d5517682b3b38547634d153cea43d48fbc8cdb5",
+      "evidence_file": "requests/models.py",
+      "evidence_hunk_sha256": "d7cc04a8ac0ed368fe259e5587f1fdcfcde68259e8b71708de47f5169019974c",
+      "artifact": "requests/models.py"
+    },
+    "trans_track_a_12_urllib3_getheaders_removal": {
+      "transition_id": "trans_track_a_12_urllib3_getheaders_removal",
+      "statement": "Access response headers directly via response.headers.",
+      "symbol": "HTTPResponse.getheaders",
+      "replacement": "response.headers, headers",
+      "source_pr_url": "https://github.com/urllib3/urllib3/pull/3622",
+      "source_commit": "4587fd6d477f22022be08de597c3a5acd5185c0a",
+      "evidence_file": "src/urllib3/response.py",
+      "evidence_hunk_sha256": "70e1db46d3610f385be4d0ac37fa477efc68e3cc181e5cb9b1442bdc0fe65fa2",
+      "artifact": "src/urllib3/response.py"
+    },
+    "trans_track_a_13_starlette_weak_etag_removeprefix": {
+      "transition_id": "trans_track_a_13_starlette_weak_etag_removeprefix",
+      "statement": "Call StaticFiles.is_not_modified to verify weak etag matches.",
+      "symbol": "StaticFiles.is_not_modified",
+      "replacement": "StaticFiles, is_not_modified",
+      "source_pr_url": "https://github.com/encode/starlette/pull/3193",
+      "source_commit": "37309255b4c1b9c381a2d24a1eaf83100984a16a",
+      "evidence_file": "starlette/staticfiles.py",
+      "evidence_hunk_sha256": "7aa3842633bfbb2cdc85391935281972bc678641b8b8b58d2371389b019fb91e",
+      "artifact": "starlette/staticfiles.py"
+    },
+    "trans_track_a_14_fastapi_on_event_compatibility": {
+      "transition_id": "trans_track_a_14_fastapi_on_event_compatibility",
+      "statement": "Inspect fastapi.routing._DefaultLifespan for lifespan handler setup.",
+      "symbol": "APIRoute.on_event",
+      "replacement": "_DefaultLifespan, fastapi.routing",
+      "source_pr_url": "https://github.com/tiangolo/fastapi/pull/14851",
+      "source_commit": "f9f79926047d7f5d8e0127dd585e7683ee57e9f7",
+      "evidence_file": "fastapi/routing.py",
+      "evidence_hunk_sha256": "2b2480424c3a6b8e8270c25c5c2692a3b4966200622bc160f72c34670060d869",
+      "artifact": "fastapi/routing.py"
+    },
+    "trans_track_a_15_more_itertools_zip_equal_removal": {
+      "transition_id": "trans_track_a_15_more_itertools_zip_equal_removal",
+      "statement": "Use Python built-in zip(..., strict=True) to pair iterables with strict length check.",
+      "symbol": "more_itertools.zip_equal",
+      "replacement": "zip(*iterables, strict=True), zip(..., strict=True)",
+      "source_pr_url": "https://github.com/more-itertools/more-itertools/pull/1076",
+      "source_commit": "8fa3b81c8dd90c3b3f6648add2228aaaebb42884",
+      "evidence_file": "more_itertools/more.py",
+      "evidence_hunk_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifact": "more_itertools/more.py"
+    },
+    "trans_track_a_16_rich_file_proxy_isatty": {
+      "transition_id": "trans_track_a_16_rich_file_proxy_isatty",
+      "statement": "Call proxy.isatty() directly on rich FileProxy instances.",
+      "symbol": "FileProxy.isatty",
+      "replacement": "isatty, proxy.isatty",
+      "source_pr_url": "https://github.com/Textualize/rich/pull/4077",
+      "source_commit": "19c67b9a3479841e9133bea94607c89ee931d3fc",
+      "evidence_file": "rich/file_proxy.py",
+      "evidence_hunk_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifact": "rich/file_proxy.py"
+    },
+    "trans_track_a_17_celery_task_module_cleanup": {
+      "transition_id": "trans_track_a_17_celery_task_module_cleanup",
+      "statement": "Check Task export presence in celery.__all__.",
+      "symbol": "celery.task",
+      "replacement": "Task, from celery import Task",
+      "source_pr_url": "https://github.com/celery/celery/pull/6869",
+      "source_commit": "3cf5072ee5f95744024f60e0f4a77eb2edb8959f",
+      "evidence_file": "celery/__init__.py",
+      "evidence_hunk_sha256": "9c0136e8fdde4d1e6e25d9e078b3c11bb847925eec696ea4401f9c1d6cd61dda",
+      "artifact": "celery/__init__.py"
+    },
+    "trans_track_a_18_marshmallow_pprint_export_removal": {
+      "transition_id": "trans_track_a_18_marshmallow_pprint_export_removal",
+      "statement": "Check fields export presence in marshmallow.__all__.",
+      "symbol": "marshmallow.pprint",
+      "replacement": "fields, marshmallow.fields",
+      "source_pr_url": "https://github.com/marshmallow-code/marshmallow/pull/2823",
+      "source_commit": "5429f0d4c6e346dc751599073cab67d66eefbcb2",
+      "evidence_file": "src/marshmallow/__init__.py",
+      "evidence_hunk_sha256": "d8a094ae1e64401d6e07a6867762fea52c2435b6a507b6f178bfb85936f3613b",
+      "artifact": "src/marshmallow/__init__.py"
+    },
+    "trans_track_a_19_flake8_doctest_options_removal": {
+      "transition_id": "trans_track_a_19_flake8_doctest_options_removal",
+      "statement": "Check with_doctest attribute on FlakesChecker.",
+      "symbol": "register_doctest_options",
+      "replacement": "with_doctest, --doctest",
+      "source_pr_url": "https://github.com/PyCQA/flake8/pull/1854",
+      "source_commit": "b3e251512238ad39c87e4b8d1614903fe493f7ea",
+      "evidence_file": "src/flake8/plugins/pyflakes.py",
+      "evidence_hunk_sha256": "58cee24a49a031b8af6d7bf5780c7e8200538431c318467611e619927dce1659",
+      "artifact": "src/flake8/plugins/pyflakes.py"
+    },
+    "trans_track_a_20_iniconfig_strip_inline_comments": {
+      "transition_id": "trans_track_a_20_iniconfig_strip_inline_comments",
+      "statement": "Load INI configurations via IniConfig.parse to strip inline comments cleanly.",
+      "symbol": "IniConfig.parse",
+      "replacement": "IniConfig.parse, strip_inline_comments",
+      "source_pr_url": "https://github.com/pytest-dev/iniconfig/pull/70",
+      "source_commit": "7faed13ae50bad7c5da3f5782f254a8a7736bb84",
+      "evidence_file": "src/iniconfig/__init__.py",
+      "evidence_hunk_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifact": "src/iniconfig/__init__.py"
+    },
+    "trans_track_a_21_packaging_legacy_version_removal": {
+      "transition_id": "trans_track_a_21_packaging_legacy_version_removal",
+      "statement": "Parse versions using packaging.version.Version; non-PEP440 raises InvalidVersion.",
+      "symbol": "packaging.version.LegacyVersion",
+      "replacement": "Version, packaging.version.Version",
+      "source_pr_url": "https://github.com/pypa/packaging/pull/407",
+      "source_commit": "237ff3aa348486cf835a980592af3a59fccd6101",
+      "evidence_file": "packaging/version.py",
+      "evidence_hunk_sha256": "3bb9e062cb5faae251eb65dcc17f36ce97f88e0b9f690b024949d049f4bf132e",
+      "artifact": "packaging/version.py"
+    },
+    "trans_track_a_22_dateutil_unknown_timezone_warning": {
+      "transition_id": "trans_track_a_22_dateutil_unknown_timezone_warning",
+      "statement": "Catch dateutil.parser.UnknownTimezoneWarning when parsing date strings with unknown timezones.",
+      "symbol": "dateutil.parser.UnknownTimezoneWarning",
+      "replacement": "UnknownTimezoneWarning, dateutil.parser.UnknownTimezoneWarning",
+      "source_pr_url": "https://github.com/dateutil/dateutil/pull/540",
+      "source_commit": "65d66b28ff201ae7bf59cf4128462e1c2d839da8",
+      "evidence_file": "dateutil/parser/__init__.py",
+      "evidence_hunk_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifact": "dateutil/parser/__init__.py"
+    },
+    "trans_track_a_23_tqdm_asyncio_gather_return_exceptions": {
+      "transition_id": "trans_track_a_23_tqdm_asyncio_gather_return_exceptions",
+      "statement": "Pass return_exceptions=True directly to tqdm_asyncio.gather.",
+      "symbol": "tqdm.asyncio.tqdm_asyncio.gather",
+      "replacement": "return_exceptions, tqdm_asyncio.gather(*fs, return_exceptions=...)",
+      "source_pr_url": "https://github.com/tqdm/tqdm/pull/1776",
+      "source_commit": "99615b978702dcf61986de62dfd252d82720af76",
+      "evidence_file": "tqdm/asyncio.py",
+      "evidence_hunk_sha256": "7514e99e8e841ecfc11d077797282cb5389bbb549551369a8b889e95bf0e7096",
+      "artifact": "tqdm/asyncio.py"
+    },
+    "trans_track_a_24_cachelib_timeout_timedelta": {
+      "transition_id": "trans_track_a_24_cachelib_timeout_timedelta",
+      "statement": "Pass datetime.timedelta timeouts directly to BaseCache relying on _normalize_timeout.",
+      "symbol": "BaseCache._normalize_timeout",
+      "replacement": "_normalize_timeout, BaseCache._normalize_timeout",
+      "source_pr_url": "https://github.com/pallets-eco/cachelib/pull/510",
+      "source_commit": "d5fc7826065db284b8eda1e2fa5d2157ba1fcb9d",
+      "evidence_file": "src/cachelib/base.py",
+      "evidence_hunk_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifact": "src/cachelib/base.py"
+    },
+    "trans_track_a_25_uvicorn_wsgi_middleware_deprecation": {
+      "transition_id": "trans_track_a_25_uvicorn_wsgi_middleware_deprecation",
+      "statement": "Native WSGIMiddleware is deprecated in uvicorn; migrate to a2wsgi.WSGIMiddleware.",
+      "symbol": "uvicorn.middleware.wsgi.WSGIMiddleware",
+      "replacement": "a2wsgi, a2wsgi.WSGIMiddleware",
+      "source_pr_url": "https://github.com/encode/uvicorn/pull/1825",
+      "source_commit": "2351d5ff2b068d7bcba6eaccde83bc90b0727c89",
+      "evidence_file": "uvicorn/middleware/wsgi.py",
+      "evidence_hunk_sha256": "66294f0fc9fc463751c7cb4e7069f801120c3d4f129469679dab424d9c5c7677",
+      "artifact": "uvicorn/middleware/wsgi.py"
+    },
+    "trans_track_a_26_rich_render_group_to_group": {
+      "transition_id": "trans_track_a_26_rich_render_group_to_group",
+      "statement": "Import and instantiate rich.console.Group to group renderable objects.",
+      "symbol": "rich.console.RenderGroup",
+      "replacement": "Group, rich.console.Group",
+      "source_pr_url": "https://github.com/Textualize/rich/pull/1819",
+      "source_commit": "44a715dec2b08277742939598fa28d056d6faef9",
+      "evidence_file": "rich/console.py",
+      "evidence_hunk_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifact": "rich/console.py"
+    },
+    "trans_track_a_27_marshmallow_ipaddress_type_mapping": {
+      "transition_id": "trans_track_a_27_marshmallow_ipaddress_type_mapping",
+      "statement": "Schema.TYPE_MAPPING contains ipaddress.IPv4Address mapping to fields.IPv4.",
+      "symbol": "Schema.TYPE_MAPPING",
+      "replacement": "TYPE_MAPPING, Schema.TYPE_MAPPING, fields.IPv4",
+      "source_pr_url": "https://github.com/marshmallow-code/marshmallow/pull/2906",
+      "source_commit": "c38b48ec3b8bb44315036d0c8a07bc8477eb5094",
+      "evidence_file": "src/marshmallow/schema.py",
+      "evidence_hunk_sha256": "03769443a4996dabe95bb8b5241c5efe0f6aa4de1dec7287034689368cdd87ca",
+      "artifact": "src/marshmallow/schema.py"
+    },
+    "trans_track_a_28_starlette_exceptions_middleware_removal": {
+      "transition_id": "trans_track_a_28_starlette_exceptions_middleware_removal",
+      "statement": "Import ExceptionMiddleware from starlette.middleware.exceptions.",
+      "symbol": "starlette.exceptions.ExceptionMiddleware",
+      "replacement": "starlette.middleware.exceptions.ExceptionMiddleware",
+      "source_pr_url": "https://github.com/encode/starlette/pull/2826",
+      "source_commit": "856c904a6dcf7368a999dd791e2f98a7c3812f0f",
+      "evidence_file": "starlette/exceptions.py",
+      "evidence_hunk_sha256": "0f48a507b640565c117007aa911c81cd7ba9f0b935e4e6977ce78a3f0aa3a998",
+      "artifact": "starlette/exceptions.py"
+    },
+    "trans_track_a_29_pluggy_static_hook_attr_discovery": {
+      "transition_id": "trans_track_a_29_pluggy_static_hook_attr_discovery",
+      "statement": "pluggy uses _static_hook_attr to avoid evaluating properties during hook discovery.",
+      "symbol": "pluggy._manager._static_hook_attr",
+      "replacement": "_static_hook_attr, pluggy._manager._static_hook_attr",
+      "source_pr_url": "https://github.com/pytest-dev/pluggy/pull/701",
+      "source_commit": "bc9bcac68b9f3c670481661ddc50e5a0217e71d1",
+      "evidence_file": "src/pluggy/_manager.py",
+      "evidence_hunk_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifact": "src/pluggy/_manager.py"
+    },
+    "trans_track_a_30_fastapi_pydantic_v1_deprecation": {
+      "transition_id": "trans_track_a_30_fastapi_pydantic_v1_deprecation",
+      "statement": "FastAPI warns on pydantic.v1 usage in get_dependant; migrate models to standard Pydantic v2.",
+      "symbol": "fastapi.dependencies.utils.get_dependant",
+      "replacement": "get_dependant, fastapi.dependencies.utils.get_dependant",
+      "source_pr_url": "https://github.com/tiangolo/fastapi/pull/14583",
+      "source_commit": "6e42bcd8ce2ade33d94f478310dad20ee84f8f0f",
+      "evidence_file": "fastapi/dependencies/utils.py",
+      "evidence_hunk_sha256": "ac1ea8be20fbdaefa97c8eef0c02cffc6c01665450ccea70f21e82ecd9fdd4ae",
+      "artifact": "fastapi/dependencies/utils.py"
+    }
+  }
+}

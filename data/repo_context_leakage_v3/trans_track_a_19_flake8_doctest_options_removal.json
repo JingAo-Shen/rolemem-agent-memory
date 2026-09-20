@@ -1,0 +1,13 @@
+{
+  "transition_id": "trans_track_a_19_flake8_doctest_options_removal",
+  "repo_name": "flake8",
+  "leakage_status": "REPO_CONTEXT_NONTRIVIAL",
+  "checks": {
+    "contains_target_wrapper": false,
+    "contains_near_solution_pattern": false,
+    "contains_replacement_hint": false,
+    "has_migration_comment": false,
+    "has_replacement_invocation": false
+  },
+  "retrieved_files": []
+}

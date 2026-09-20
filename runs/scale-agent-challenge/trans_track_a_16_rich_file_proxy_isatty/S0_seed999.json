@@ -1,0 +1,10 @@
+{
+  "task_id": "trans_track_a_16_rich_file_proxy_isatty",
+  "condition": "S0",
+  "seed": 999,
+  "memory_source": "NO_MEMORY",
+  "overall_task_success": false,
+  "pytest_pass": false,
+  "is_stale_action": false,
+  "parsed_code": "import os\n\ndef check_proxy_interactive(proxy):\n    \"\"\"\n    Check if the proxy file is a tty.\n\n    Args:\n        proxy (str): The path to the proxy file.\n\n    Returns:\n        bool: True if the proxy file is a tty, otherwise False.\n    \"\"\"\n    return os.isatty(proxy)"
+}

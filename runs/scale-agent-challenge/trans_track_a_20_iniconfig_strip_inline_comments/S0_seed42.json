@@ -1,0 +1,10 @@
+{
+  "task_id": "trans_track_a_20_iniconfig_strip_inline_comments",
+  "condition": "S0",
+  "seed": 42,
+  "memory_source": "NO_MEMORY",
+  "overall_task_success": false,
+  "pytest_pass": false,
+  "is_stale_action": false,
+  "parsed_code": "import os\n\ndef read_config_value(ini_data, section, key):\n    \"\"\"\n    Read a configuration value from an INI data dictionary without inline comments.\n\n    Args:\n        ini_data (dict): The parsed INI data dictionary.\n        section (str): The section name.\n        key (str): The key name within the section.\n\n    Returns:\n        str: The stripped value associated with the key, or None if not found.\n    \"\"\"\n    if section in ini_data:\n        section_data = ini_data[section]\n        if key in section_data:\n            value = section_data[key]\n            # Strip inline comments from the value\n            for c in COMMENTCHARS:\n                value = value.split(c)[0].rstrip()\n            return value.strip()\n    return None\n\n# Example usage:\n# Assuming you have already parsed your INI data into a dictionary named 'parsed_ini'\n# parsed_ini = IniConfig.parse(\"path/to/config.ini\").sections\n# value = read_config_value(parsed_ini, \"SectionName\", \"KeyName\")"
+}

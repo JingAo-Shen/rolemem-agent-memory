@@ -1,0 +1,16 @@
+{
+  "transition_id": "trans_track_a_16_rich_file_proxy_isatty",
+  "repo_name": "Textualize/rich",
+  "transition_type": "API_EVOLUTION",
+  "semantic_status": "SEMANTIC_WEAK_PASS",
+  "questions": {
+    "q1_repo_change_accurate": false,
+    "q2_stale_memory_plausible": true,
+    "q3_valid_memory_accurate": true,
+    "q4_task_natural": false,
+    "q5_stale_solution_plausible": true,
+    "q6_valid_solution_depends": true
+  },
+  "pass_count": "4/6",
+  "notes": []
+}

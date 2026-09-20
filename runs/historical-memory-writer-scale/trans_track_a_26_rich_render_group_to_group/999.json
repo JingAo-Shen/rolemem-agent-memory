@@ -1,0 +1,35 @@
+{
+  "task_id": "trans_track_a_26_rich_render_group_to_group",
+  "attempt": 1,
+  "seed": 1022,
+  "symbol": "RenderGroup",
+  "statement": "RenderGroup is a class used for grouping multiple renderables together and can be configured with fit behavior.",
+  "verdict": "HIST_MEMORY_VALID",
+  "criteria": {
+    "symbol_grounded": true,
+    "artifact_grounded": true,
+    "statement_supported": true,
+    "non_generic": true,
+    "non_future_looking": true,
+    "ast_unique": true
+  },
+  "base_source_hunk": "        else:\n            return Measurement(options.max_width, options.max_width)\n\n    def __rich_console__(\n        self, console: \"Console\", options: \"ConsoleOptions\"\n    ) -> RenderResult:\n        yield from self.renderables\n\n\nRenderGroup = Group  # TODO: deprecate at some point\n\n\ndef group(fit: bool = True) -> Callable[..., Callable[..., Group]]:\n    \"\"\"A decorator that turns an iterable of renderables in to a group.\n\n    Args:\n        fit (bool, optional): Fit dimension of group to contents, or fill available space. Defaults to True.\n    \"\"\"\n\n    def decorator(\n        method: Callable[..., Iterable[RenderableType]]\n    ) -> Callable[..., Group]:\n        \"\"\"Convert a method that returns an iterable of renderables in to a RenderGroup.\"\"\"\n\n        @wraps(method)\n        def _replace(*args: Any, **kwargs: Any) -> Group:\n            renderables = method(*args, **kwargs)\n            return Group(*renderables, fit=fit)\n\n        return _replace\n\n    return decorator\n\n\nrender_group = group\n\n\ndef _is_jupyter() -> bool:  # pragma: no cover\n    \"\"\"Check if we're running in a Jupyter notebook.\"\"\"\n    try:\n        get_ipython  # type: ignore\n    except NameError:\n        return False\n    ipython = get_ipython()  # type: ignore\n    shell = ipython.__class__.__name__\n    if \"google.colab\" in str(ipython.__class__) or shell == \"ZMQInteractiveShell\":\n        return True  # Jupyter notebook or qtconsole\n    elif shell == \"TerminalInteractiveShell\":\n        return False  # Terminal running IPython\n    else:\n        return False  # Other type (?)\n\n\nCOLOR_SYSTEMS = {\n    \"standard\": ColorSystem.STANDARD,",
+  "base_hunk_sha256": "8668ddd2acba259954698fa1a0eed11fa0d973fc43d97e07a9c85de407a892b2",
+  "history_commits": [
+    "03f40a93d68d4518e2c2b7bc23b9a94ca2527ed0 rever thread safety issue",
+    "07d51ffc1aee6f16bd2e5a25b4e82850fb9ed778 race condition and tests",
+    "55e11902ab7d1c959122baaee4f98966fd30209f optimizations"
+  ],
+  "claim": "RenderGroup is a class used for grouping multiple renderables together and can be configured with fit behavior.",
+  "base_presence": true,
+  "target_presence": false,
+  "first_seen_commit": "d65c3bd53da234a4047c469aa7740e03d1a622f7",
+  "temporal_relation": "HISTORICAL_VALID",
+  "entailment_status": "BASE_ENTAILED",
+  "raw_generation": "```json\n{\n  \"symbol\": \"RenderGroup\",\n  \"statement\": \"RenderGroup is a class used for grouping multiple renderables together and can be configured with fit behavior.\"\n}\n```",
+  "tier_a_temporal_isolation": true,
+  "tier_b_structural_grounding": true,
+  "tier_c_semantic_factuality": true,
+  "factuality_status": "FACTUALLY_SUPPORTED",
+  "factuality_explanation": "The historical source code defines `RenderGroup` as a class and provides a decorator `group` that allows creating instances of `RenderGroup` with configurable fit behavior."
+}

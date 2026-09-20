@@ -1,0 +1,16 @@
+{
+  "transition_id": "trans_track_a_22_dateutil_unknown_timezone_warning",
+  "repo_name": "dateutil/dateutil",
+  "transition_type": "API_EVOLUTION",
+  "semantic_status": "SEMANTIC_WEAK_PASS",
+  "questions": {
+    "q1_repo_change_accurate": false,
+    "q2_stale_memory_plausible": true,
+    "q3_valid_memory_accurate": true,
+    "q4_task_natural": true,
+    "q5_stale_solution_plausible": true,
+    "q6_valid_solution_depends": true
+  },
+  "pass_count": "5/6",
+  "notes": []
+}

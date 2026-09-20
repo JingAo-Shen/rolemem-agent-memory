@@ -1,0 +1,10 @@
+{
+  "task_id": "trans_track_a_25_uvicorn_wsgi_middleware_deprecation",
+  "condition": "S0",
+  "seed": 999,
+  "memory_source": "NO_MEMORY",
+  "overall_task_success": false,
+  "pytest_pass": false,
+  "is_stale_action": false,
+  "parsed_code": "import warnings\nfrom typing import Callable, Any\n\ndef wrap_wsgi_application(app: Callable[[Any], Any]) -> Callable[[Any], Any]:\n    \"\"\"\n    Wraps a WSGI application to suppress unhandled deprecation warnings.\n    \n    Args:\n    app (Callable[[Any], Any]): The original WSGI application to be wrapped.\n    \n    Returns:\n    Callable[[Any], Any]: A new WSGI application that wraps the original one and suppresses deprecation warnings.\n    \"\"\"\n    def wrapped_app(environ: Any, start_response: Any) -> Any:\n        with warnings.catch_warnings():\n            warnings.filterwarnings(\"ignore\", category=DeprecationWarning)\n            return app(environ, start_response)\n    \n    return wrapped_app"
+}
