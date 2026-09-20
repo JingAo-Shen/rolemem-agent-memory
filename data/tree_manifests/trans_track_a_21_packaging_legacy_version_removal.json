@@ -1,0 +1,150 @@
+{
+  "transition_id": "trans_track_a_21_packaging_legacy_version_removal",
+  "repo_name": "pypa/packaging",
+  "base_commit": "4f42225e91a0be634625c09e84dd29ea82b85e27",
+  "target_commit": "237ff3aa348486cf835a980592af3a59fccd6101",
+  "pkg_path": "packaging",
+  "tree_purity_status": "TREE_PURITY_PASS",
+  "before_tree_purity": "TREE_PURITY_PASS",
+  "after_tree_purity": "TREE_PURITY_PASS",
+  "before_mismatches": [],
+  "after_mismatches": [],
+  "total_files_before": 13,
+  "total_files_after": 13,
+  "has_environment_overlay": false,
+  "before_files": [
+    {
+      "relative_path": "packaging/__about__.py",
+      "size": 666,
+      "sha256": "c0193374d14f9ffa08e4930395ce3d9bdb110483127bd39bb76656db72872ae1"
+    },
+    {
+      "relative_path": "packaging/__init__.py",
+      "size": 497,
+      "sha256": "6fd2a4e4c17b2b18612e07039a2516ba437e2dab561713dd36e8348e83e11d29"
+    },
+    {
+      "relative_path": "packaging/_manylinux.py",
+      "size": 11488,
+      "sha256": "5dc6e25c1faa723bf76dca21a7a37df1332938fe3f8f79be88e03ca6d2b61966"
+    },
+    {
+      "relative_path": "packaging/_musllinux.py",
+      "size": 4558,
+      "sha256": "f3a3116f4d8e4ae0ed98c96c04d87e11c7aa58ab066016b2144542514bcea390"
+    },
+    {
+      "relative_path": "packaging/_structures.py",
+      "size": 1431,
+      "sha256": "ab77953666d62461bf4b40e2b7f4b7028f2a42acffe4f6135c500a0597b9cabe"
+    },
+    {
+      "relative_path": "packaging/markers.py",
+      "size": 10320,
+      "sha256": "dcfb5f717d3bc58b41001a62c0319daeffe5b1d4e8606819fdab2cd2ca4b9e30"
+    },
+    {
+      "relative_path": "packaging/metadata.py",
+      "size": 5661,
+      "sha256": "36274af7db1fd93f60d15685316417cae5859aec34873335fac5b98bc88ffec4"
+    },
+    {
+      "relative_path": "packaging/py.typed",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "packaging/requirements.py",
+      "size": 5140,
+      "sha256": "50df0cad42544a8594ee0a1ac8973e9ca434e44808e009c23f0e2b3d261ab36c"
+    },
+    {
+      "relative_path": "packaging/specifiers.py",
+      "size": 30397,
+      "sha256": "375c4efb73d9582aa0b8f099875720e4cd8a6daac5526a670535a4cb8e2900f5"
+    },
+    {
+      "relative_path": "packaging/tags.py",
+      "size": 16379,
+      "sha256": "c83398e49e62b159c6cd562ac5346cabd9278cd07a1d549f01457c2da776bb39"
+    },
+    {
+      "relative_path": "packaging/utils.py",
+      "size": 4355,
+      "sha256": "7acd1c09eccab29ceb890fb757cf21df2273c73d36f1eb95dac53033ad6413ea"
+    },
+    {
+      "relative_path": "packaging/version.py",
+      "size": 14665,
+      "sha256": "fdf2d136b16bc5870755fca8f2f93d8fcb3a24cf0dff1b12c5516be91272728f"
+    }
+  ],
+  "after_files": [
+    {
+      "relative_path": "packaging/__about__.py",
+      "size": 666,
+      "sha256": "c0193374d14f9ffa08e4930395ce3d9bdb110483127bd39bb76656db72872ae1"
+    },
+    {
+      "relative_path": "packaging/__init__.py",
+      "size": 497,
+      "sha256": "6fd2a4e4c17b2b18612e07039a2516ba437e2dab561713dd36e8348e83e11d29"
+    },
+    {
+      "relative_path": "packaging/_manylinux.py",
+      "size": 11488,
+      "sha256": "5dc6e25c1faa723bf76dca21a7a37df1332938fe3f8f79be88e03ca6d2b61966"
+    },
+    {
+      "relative_path": "packaging/_musllinux.py",
+      "size": 4558,
+      "sha256": "f3a3116f4d8e4ae0ed98c96c04d87e11c7aa58ab066016b2144542514bcea390"
+    },
+    {
+      "relative_path": "packaging/_structures.py",
+      "size": 1431,
+      "sha256": "ab77953666d62461bf4b40e2b7f4b7028f2a42acffe4f6135c500a0597b9cabe"
+    },
+    {
+      "relative_path": "packaging/markers.py",
+      "size": 10320,
+      "sha256": "dcfb5f717d3bc58b41001a62c0319daeffe5b1d4e8606819fdab2cd2ca4b9e30"
+    },
+    {
+      "relative_path": "packaging/metadata.py",
+      "size": 5661,
+      "sha256": "36274af7db1fd93f60d15685316417cae5859aec34873335fac5b98bc88ffec4"
+    },
+    {
+      "relative_path": "packaging/py.typed",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "packaging/requirements.py",
+      "size": 4994,
+      "sha256": "d9b3e6c755a836e17b581eaa5fbefb2094aa37dcb661167dc2df266636c49152"
+    },
+    {
+      "relative_path": "packaging/specifiers.py",
+      "size": 26171,
+      "sha256": "1a797c9d66e9ccdb348a20646f44bd174ee17c4d56361ce2941740789cbc3bab"
+    },
+    {
+      "relative_path": "packaging/tags.py",
+      "size": 16379,
+      "sha256": "c83398e49e62b159c6cd562ac5346cabd9278cd07a1d549f01457c2da776bb39"
+    },
+    {
+      "relative_path": "packaging/utils.py",
+      "size": 4355,
+      "sha256": "7acd1c09eccab29ceb890fb757cf21df2273c73d36f1eb95dac53033ad6413ea"
+    },
+    {
+      "relative_path": "packaging/version.py",
+      "size": 11498,
+      "sha256": "e16a2a70195cea197633c3a32852c6a2d3dc1e11bb5220200735cfb1b8f96994"
+    }
+  ],
+  "fixture_manifest_hash": "5bf5126d3996c06335077ebc8bcd9ccb6a72bdf85cc99c53f678e9f492debbf6"
+}

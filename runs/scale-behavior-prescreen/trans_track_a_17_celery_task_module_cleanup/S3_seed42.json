@@ -1,0 +1,21 @@
+{
+  "task_id": "trans_track_a_17_celery_task_module_cleanup",
+  "condition": "S3",
+  "seed": 42,
+  "memory_source": "VALID_MEMORY_CANDIDATE",
+  "memory_statements": [
+    "Check Task export presence in celery.__all__."
+  ],
+  "retrieved_files": [],
+  "repository_context_tokens": 1200,
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": true,
+    "active_nodes": []
+  },
+  "pytest_pass": false,
+  "pytest_log_excerpt": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_95kyzpgy\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_task_export FAILED                     [100%]\n\n======================",
+  "overall_task_success": false,
+  "parsed_code": "# task_helper.py\n\ndef check_task_export():\n    \"\"\"\n    Checks if 'check_task_export' is present in celery.__all__.\n\n    Returns:\n        bool: True if 'check_task_export' is in celery.__all__, False otherwise.\n    \"\"\"\n    import celery\n    return 'check_task_export' in celery.__all__"
+}

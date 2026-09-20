@@ -1,0 +1,34 @@
+{
+  "transition_id": "trans_track_a_14_fastapi_on_event_compatibility",
+  "provenance_status": "TARGET_MEMORY_PROVENANCE_FAIL",
+  "recomputed_hashes": {
+    "diff_hunk_sha256": "bbdae667981dc1162433ff243df7f0021c3d0882cb51a11c32957c2b22844480",
+    "evidence_excerpt_hash": "da04697f50726796813c67f7bdd73dc85e366c5430f4ce247fa11bd5532db1ef",
+    "ground_truth_audit_hash": "fb852f125be634376aa41edb8786d40e699c14ebefce9a0b9e3c7bd4e719d783"
+  },
+  "checks": {
+    "source_pr_matches": true,
+    "source_commit_matches": true,
+    "artifact_in_diff": true,
+    "diff_hunk_sha256_verified": true,
+    "diff_patch_sha256_verified": true,
+    "evidence_excerpt_hash_verified": false,
+    "ground_truth_audit_hash_verified": false,
+    "statement_entailment": "PARTIAL"
+  },
+  "claim": {
+    "transition_id": "trans_track_a_14_fastapi_on_event_compatibility",
+    "statement": "Router on_event reimplemented with lifespan compatibility for Starlette.",
+    "symbol": "APIRoute.on_event",
+    "replacement": "lifespan, RouterEventManager",
+    "source_pr_url": "https://github.com/tiangolo/fastapi/pull/14851",
+    "source_commit": "f9f79926047d7f5d8e0127dd585e7683ee57e9f7",
+    "evidence_file": "data/external_evidence/trans_track_a_14_fastapi_on_event_compatibility/diff.patch",
+    "supporting_hunk": "@@ -241,3 +241,79 @@ def test_merged_mixed_state_lifespans() -> None:\n \n     with TestClient(app) as client:\n         assert client.app_state == {\"router\": True}\n+\n+\n+@pytest.mark.filterwarnings(\n+    r\"ignore:\\s*on_event is deprecated, use lifespan event handlers instead.*:DeprecationWarning\"\n+)\n+def test_router_async_shutdown_handler(state: State) -> None:\n+    \"\"\"Test that async on_shutdown event handlers are called correctly, for coverage.\"\"\"\n+    app = FastAPI()\n+\n+    @app.get(\"/\")\n+    de",
+    "evidence_hunk_sha256": "bbdae667981dc1162433ff243df7f0021c3d0882cb51a11c32957c2b22844480",
+    "diff_patch_sha256": "372477ad6ad9c175b576fd511f4c9e4a67c51ff6a185c528b03bda70d4806387",
+    "evidence_excerpt_hash": "fc4879ded87058a042a6b108d8e58cf4ec2d484d7feaf7c6077777626beaf82a",
+    "ground_truth_audit_hash": "",
+    "artifact": "fastapi/routing.py"
+  }
+}

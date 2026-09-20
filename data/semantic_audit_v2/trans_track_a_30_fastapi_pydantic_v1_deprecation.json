@@ -1,0 +1,92 @@
+{
+  "transition_id": "trans_track_a_30_fastapi_pydantic_v1_deprecation",
+  "repo_name": "tiangolo/fastapi",
+  "auditor_version": "2.0.0",
+  "spec_sha256": "966b56e0471f865713903add5ae34c84ab28c25ddc4a519288f8b1c8ce914387",
+  "audit_fingerprint": "e17b1a6e8e7af1187bf3642f95ab187038df2065faba3d974ce86b6f7dc9b555",
+  "gates": [
+    {
+      "gate_id": "G1",
+      "name": "PR evidence <-> repository_change",
+      "expected": "PR title/body describes the repository architectural or API change",
+      "observed": "Word overlap: ['deprecation', 'pydantic', 'warnings', 'when'] | PR title: \ud83d\udd0a Add deprecation warnings when using `pydantic.v1`",
+      "evidence": "pr.json:title='\ud83d\udd0a Add deprecation warnings when using `pydantic.v1`'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G2",
+      "name": "repository_change <-> actual diff",
+      "expected": "Actual diff contains code edits in files specified in repository_change",
+      "observed": "Diff mentions files: ['fastapi/dependencies/utils.py', 'fastapi/routing.py'] -> True",
+      "evidence": "diff.patch length: 63575 bytes",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G3",
+      "name": "actual diff <-> changed/deprecated/replacement symbols",
+      "expected": "Diff patch directly modifies or introduces the target symbols",
+      "observed": "Tokens ['v1', 'v1', 'get_dependant', 'get_dependant'] found in diff: True",
+      "evidence": "Matching symbols in diff: ['v1', 'v1', 'get_dependant', 'get_dependant']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G4",
+      "name": "stale memory <-> base-state behavior",
+      "expected": "Stale memory candidate instructs usage of legacy symbol from base state",
+      "observed": "Stale memory references legacy symbol: True",
+      "evidence": "stale_memory_candidate='Define FastAPI routes with pydantic.v1 models without deprecation warnings....'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G5",
+      "name": "valid memory <-> target-state behavior",
+      "expected": "Valid memory candidate instructs modern pattern introduced in target state",
+      "observed": "Valid memory references modern symbol: True",
+      "evidence": "valid_memory_candidate='FastAPI warns on pydantic.v1 usage in get_dependant; migrate models to standard ...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G6",
+      "name": "current task <-> transition capability",
+      "expected": "Evaluation task prompt requires implementing or using transition capability",
+      "observed": "Task exercises target file 'fastapi_pydantic_auditor.py' and target symbol 'is_pydantic_v1_deprecated': True",
+      "evidence": "current_task='Implement `is_pydantic_v1_deprecated()` in `fastapi_pydantic_auditor.py` detecti...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G7",
+      "name": "hidden test strength <-> current task semantics",
+      "expected": "Hidden test verifies target capability with mutation_kill_rate >= 0.80 and zero constant-return bypass",
+      "observed": "Semantic match: True, Mutation kill rate: 100.0%, Constant return bypass: False",
+      "evidence": "test_strength/trans_track_a_30_fastapi_pydantic_v1_deprecation.json, len=154 bytes",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G8",
+      "name": "stale control <-> stale memory semantics",
+      "expected": "Stale control solution invokes deprecated API as instructed by stale memory",
+      "observed": "Stale control uses deprecated symbol: True",
+      "evidence": "stale_solution.py contains ['v1', 'v1']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G9",
+      "name": "valid control <-> valid memory semantics",
+      "expected": "Valid control solution invokes modern API as instructed by valid memory",
+      "observed": "Valid control uses replacement symbol: True",
+      "evidence": "valid_solution.py contains modern pattern: True",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G10",
+      "name": "causal matrix <-> transition evidence",
+      "expected": "Causal counterfactual matrix demonstrates base-state pass, target-state fail with genuine failure taxonomy",
+      "observed": "Causal status: 'CAUSAL_PASS', failure taxonomy: 'DEPRECATION_WARNING'",
+      "evidence": "causal_counterfactual/trans_track_a_30_fastapi_pydantic_v1_deprecation.json",
+      "status": "PASS"
+    }
+  ],
+  "passed_gates_count": 10,
+  "total_gates_count": 10,
+  "overall_status": "PASS"
+}

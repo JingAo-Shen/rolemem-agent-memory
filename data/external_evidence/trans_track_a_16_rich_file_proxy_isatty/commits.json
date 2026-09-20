@@ -1,0 +1,166 @@
+[
+  {
+    "sha": "0e952c3cb760168f9e9af626b9a8b2c4d8188f6a",
+    "node_id": "C_kwDODSlIsdoAKDBlOTUyYzNjYjc2MDE2OGY5ZTlhZjYyNmI5YThiMmM0ZDgxODhmNmE",
+    "commit": {
+      "author": {
+        "name": "Will McGugan",
+        "email": "willmcgugan@gmail.com",
+        "date": "2026-04-12T04:05:57Z"
+      },
+      "committer": {
+        "name": "Will McGugan",
+        "email": "willmcgugan@gmail.com",
+        "date": "2026-04-12T04:05:57Z"
+      },
+      "message": "proxy isatty",
+      "tree": {
+        "sha": "c2b3929c4f12c64fc5e073a3e9ed5a028cc18ce5",
+        "url": "https://api.github.com/repos/Textualize/rich/git/trees/c2b3929c4f12c64fc5e073a3e9ed5a028cc18ce5"
+      },
+      "url": "https://api.github.com/repos/Textualize/rich/git/commits/0e952c3cb760168f9e9af626b9a8b2c4d8188f6a",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/Textualize/rich/commits/0e952c3cb760168f9e9af626b9a8b2c4d8188f6a",
+    "html_url": "https://github.com/Textualize/rich/commit/0e952c3cb760168f9e9af626b9a8b2c4d8188f6a",
+    "comments_url": "https://api.github.com/repos/Textualize/rich/commits/0e952c3cb760168f9e9af626b9a8b2c4d8188f6a/comments",
+    "author": {
+      "login": "willmcgugan",
+      "id": 554369,
+      "node_id": "MDQ6VXNlcjU1NDM2OQ==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/554369?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/willmcgugan",
+      "html_url": "https://github.com/willmcgugan",
+      "followers_url": "https://api.github.com/users/willmcgugan/followers",
+      "following_url": "https://api.github.com/users/willmcgugan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/willmcgugan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/willmcgugan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/willmcgugan/subscriptions",
+      "organizations_url": "https://api.github.com/users/willmcgugan/orgs",
+      "repos_url": "https://api.github.com/users/willmcgugan/repos",
+      "events_url": "https://api.github.com/users/willmcgugan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/willmcgugan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "willmcgugan",
+      "id": 554369,
+      "node_id": "MDQ6VXNlcjU1NDM2OQ==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/554369?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/willmcgugan",
+      "html_url": "https://github.com/willmcgugan",
+      "followers_url": "https://api.github.com/users/willmcgugan/followers",
+      "following_url": "https://api.github.com/users/willmcgugan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/willmcgugan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/willmcgugan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/willmcgugan/subscriptions",
+      "organizations_url": "https://api.github.com/users/willmcgugan/orgs",
+      "repos_url": "https://api.github.com/users/willmcgugan/repos",
+      "events_url": "https://api.github.com/users/willmcgugan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/willmcgugan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "58ac15120fe254886c10d6253667733c83604cb4",
+        "url": "https://api.github.com/repos/Textualize/rich/commits/58ac15120fe254886c10d6253667733c83604cb4",
+        "html_url": "https://github.com/Textualize/rich/commit/58ac15120fe254886c10d6253667733c83604cb4"
+      }
+    ]
+  },
+  {
+    "sha": "494b795031782c694297d2db78bd04fb8c82f590",
+    "node_id": "C_kwDODSlIsdoAKDQ5NGI3OTUwMzE3ODJjNjk0Mjk3ZDJkYjc4YmQwNGZiOGM4MmY1OTA",
+    "commit": {
+      "author": {
+        "name": "Will McGugan",
+        "email": "willmcgugan@gmail.com",
+        "date": "2026-04-12T04:06:55Z"
+      },
+      "committer": {
+        "name": "Will McGugan",
+        "email": "willmcgugan@gmail.com",
+        "date": "2026-04-12T04:06:55Z"
+      },
+      "message": "changelog",
+      "tree": {
+        "sha": "377db504b576ecd055025b260c341bf714f42c30",
+        "url": "https://api.github.com/repos/Textualize/rich/git/trees/377db504b576ecd055025b260c341bf714f42c30"
+      },
+      "url": "https://api.github.com/repos/Textualize/rich/git/commits/494b795031782c694297d2db78bd04fb8c82f590",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/Textualize/rich/commits/494b795031782c694297d2db78bd04fb8c82f590",
+    "html_url": "https://github.com/Textualize/rich/commit/494b795031782c694297d2db78bd04fb8c82f590",
+    "comments_url": "https://api.github.com/repos/Textualize/rich/commits/494b795031782c694297d2db78bd04fb8c82f590/comments",
+    "author": {
+      "login": "willmcgugan",
+      "id": 554369,
+      "node_id": "MDQ6VXNlcjU1NDM2OQ==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/554369?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/willmcgugan",
+      "html_url": "https://github.com/willmcgugan",
+      "followers_url": "https://api.github.com/users/willmcgugan/followers",
+      "following_url": "https://api.github.com/users/willmcgugan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/willmcgugan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/willmcgugan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/willmcgugan/subscriptions",
+      "organizations_url": "https://api.github.com/users/willmcgugan/orgs",
+      "repos_url": "https://api.github.com/users/willmcgugan/repos",
+      "events_url": "https://api.github.com/users/willmcgugan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/willmcgugan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "willmcgugan",
+      "id": 554369,
+      "node_id": "MDQ6VXNlcjU1NDM2OQ==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/554369?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/willmcgugan",
+      "html_url": "https://github.com/willmcgugan",
+      "followers_url": "https://api.github.com/users/willmcgugan/followers",
+      "following_url": "https://api.github.com/users/willmcgugan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/willmcgugan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/willmcgugan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/willmcgugan/subscriptions",
+      "organizations_url": "https://api.github.com/users/willmcgugan/orgs",
+      "repos_url": "https://api.github.com/users/willmcgugan/repos",
+      "events_url": "https://api.github.com/users/willmcgugan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/willmcgugan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "0e952c3cb760168f9e9af626b9a8b2c4d8188f6a",
+        "url": "https://api.github.com/repos/Textualize/rich/commits/0e952c3cb760168f9e9af626b9a8b2c4d8188f6a",
+        "html_url": "https://github.com/Textualize/rich/commit/0e952c3cb760168f9e9af626b9a8b2c4d8188f6a"
+      }
+    ]
+  }
+]

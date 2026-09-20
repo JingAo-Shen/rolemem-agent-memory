@@ -1,0 +1,7 @@
+{
+  "transition_id": "trans_track_a_14_fastapi_on_event_compatibility",
+  "audit_fingerprint": "40deb3e345cb3ba492b6a9928c04ac297b4e8585542715b0482d7b89ba87e6e7",
+  "status": "GENERATED_HIDDEN_TEST_ONLY",
+  "verification_status": "GENERATED_HIDDEN_TEST_ONLY",
+  "evidence": "Executable hidden test verified in sandbox"
+}

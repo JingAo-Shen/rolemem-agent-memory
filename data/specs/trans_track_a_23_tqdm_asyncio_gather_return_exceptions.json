@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_23_tqdm_asyncio_gather_return_exceptions",
+  "repo_name": "tqdm/tqdm",
+  "repo_url": "https://github.com/tqdm/tqdm",
+  "pr_url": "https://github.com/tqdm/tqdm/pull/1776",
+  "target_commit": "99615b978702dcf61986de62dfd252d82720af76",
+  "pkg_path": "tqdm",
+  "changed_files": [
+    "tqdm/asyncio.py"
+  ],
+  "primary_file": "tqdm/asyncio.py",
+  "symbol": "tqdm.asyncio.tqdm_asyncio.gather",
+  "deprecated_symbols": [
+    "gather",
+    "tqdm_asyncio.gather"
+  ],
+  "replacement_symbols": [
+    "return_exceptions",
+    "tqdm_asyncio.gather(*fs, return_exceptions=...)"
+  ],
+  "repository_change": "tqdm.asyncio.tqdm_asyncio.gather supports return_exceptions parameter matching standard asyncio.gather.",
+  "stale_memory_candidate": "tqdm_asyncio.gather does not support return_exceptions; omit argument and catch exceptions manually.",
+  "valid_memory_candidate": "Pass return_exceptions=True directly to tqdm_asyncio.gather.",
+  "transition_type": "API_EVOLUTION",
+  "stale_sensitive": false,
+  "current_task": "Implement `run_gather_tasks(tasks)` in `async_helper.py` executing coroutine tasks with tqdm_asyncio.gather returning exception objects without raising.",
+  "target_file": "async_helper.py",
+  "target_symbol": "run_gather_tasks",
+  "stale_solution": "import asyncio\nfrom tqdm.asyncio import tqdm_asyncio\n\ndef run_gather_tasks(tasks):\n    # Stale: gather does not support return_exceptions\n    return asyncio.run(tqdm_asyncio.gather(*tasks))\n",
+  "valid_solution": "import asyncio\nfrom tqdm.asyncio import tqdm_asyncio\n\ndef run_gather_tasks(tasks):\n    return asyncio.run(tqdm_asyncio.gather(*tasks, return_exceptions=True))\n",
+  "hidden_test": "import pytest\nimport asyncio\nimport async_helper\n\nasync def t_ok():\n    return \"ok_result\"\n\nasync def t_err():\n    raise RuntimeError(\"task_failure\")\n\ndef test_gather():\n    results = async_helper.run_gather_tasks([t_ok(), t_err()])\n    assert results[0] == \"ok_result\"\n    assert isinstance(results[1], RuntimeError)\n",
+  "base_commit": "53d096e77c28005b4f9fe1e9d6274ae311bf87e7",
+  "external_pr_url": "https://github.com/tqdm/tqdm/pull/1776",
+  "track": "TRACK_A_STALE_SENSITIVE"
+}

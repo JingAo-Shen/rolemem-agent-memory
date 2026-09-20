@@ -1,0 +1,8 @@
+{
+  "transition_id": "trans_track_a_28_starlette_exceptions_middleware_removal",
+  "audit_fingerprint": "de4898e9cd5118a9ce3d053d2441fc767b57ffb6f2e3c67a9ad6fd3868030593",
+  "status": "PASS",
+  "valid_control_status": "PASS",
+  "stale_control_status": "PASS",
+  "details": "valid_target=True, stale_target=False"
+}

@@ -1,0 +1,37 @@
+{
+  "transition_id": "trans_track_a_27_marshmallow_ipaddress_type_mapping",
+  "repo_name": "marshmallow-code/marshmallow",
+  "repo_url": "https://github.com/marshmallow-code/marshmallow",
+  "pr_url": "https://github.com/marshmallow-code/marshmallow/pull/2906",
+  "target_commit": "c38b48ec3b8bb44315036d0c8a07bc8477eb5094",
+  "pkg_path": "src/marshmallow",
+  "changed_files": [
+    "src/marshmallow/schema.py",
+    "CHANGELOG.rst"
+  ],
+  "primary_file": "src/marshmallow/schema.py",
+  "symbol": "Schema.TYPE_MAPPING",
+  "deprecated_symbols": [
+    "fields.String",
+    "String"
+  ],
+  "replacement_symbols": [
+    "TYPE_MAPPING",
+    "Schema.TYPE_MAPPING",
+    "fields.IPv4"
+  ],
+  "repository_change": "Standard library ipaddress types mapped to fields.IPv4 and fields.IPv6 in Schema.TYPE_MAPPING.",
+  "stale_memory_candidate": "Schema.TYPE_MAPPING does not contain ipaddress types; map them manually to fields.String.",
+  "valid_memory_candidate": "Schema.TYPE_MAPPING contains ipaddress.IPv4Address mapping to fields.IPv4.",
+  "transition_type": "API_EVOLUTION",
+  "stale_sensitive": false,
+  "current_task": "Implement `get_ip_field_type(ip_cls)` in `ip_schema_helper.py` resolving corresponding schema field class.",
+  "target_file": "ip_schema_helper.py",
+  "target_symbol": "get_ip_field_type",
+  "stale_solution": "from marshmallow import fields\n\ndef get_ip_field_type(ip_cls):\n    return fields.String\n",
+  "valid_solution": "from marshmallow.schema import Schema\n\ndef get_ip_field_type(ip_cls):\n    return Schema.TYPE_MAPPING[ip_cls]\n",
+  "hidden_test": "import pytest\nimport ipaddress\nfrom marshmallow import fields\nimport ip_schema_helper\n\ndef test_ip_field():\n    f_cls = ip_schema_helper.get_ip_field_type(ipaddress.IPv4Address)\n    assert f_cls is fields.IPv4\n    assert f_cls is not fields.String\n",
+  "base_commit": "3bc191ab3c8cac8356839bcde0918cb6aed4d3a1",
+  "external_pr_url": "https://github.com/marshmallow-code/marshmallow/pull/2906",
+  "track": "TRACK_A_STALE_SENSITIVE"
+}

@@ -1,0 +1,7 @@
+{
+  "transition_id": "trans_track_a_18_marshmallow_pprint_export_removal",
+  "audit_fingerprint": "df6818145478492112a827c2d11d43f6f4a6cdc5c9f6a43dd39ad1f9e655fb95",
+  "status": "GENERATED_HIDDEN_TEST_ONLY",
+  "verification_status": "GENERATED_HIDDEN_TEST_ONLY",
+  "evidence": "Executable hidden test verified in sandbox"
+}

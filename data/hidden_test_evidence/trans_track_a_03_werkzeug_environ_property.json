@@ -5,6 +5,6 @@
   "collection_status": "PASS",
   "execution_status": "PASS",
   "exit_code": 0,
-  "raw_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_44o_zad3\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_environ_property_creation PASSED       [100%]\n\n============================== 1 passed in 0.01s ===============================\n",
+  "raw_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_98zkaeh_\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_environ_property_creation PASSED       [100%]\n\n============================== 1 passed in 0.01s ===============================\n",
   "verification_status": "GENERATED_HIDDEN_TEST_PASS"
 }

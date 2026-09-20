@@ -1,0 +1,7 @@
+{
+  "transition_id": "trans_track_a_12_urllib3_getheaders_removal",
+  "audit_fingerprint": "c4f944df43362c814dbdb791e198d2f8d3ba6672bb52690cc9fc8e2b1279bbbd",
+  "status": "PASS",
+  "verification_status": "PASS",
+  "details": "Snapshot SHA-256 digest purity verified against Git extract"
+}

@@ -1,0 +1,92 @@
+{
+  "transition_id": "trans_track_a_20_iniconfig_strip_inline_comments",
+  "repo_name": "pytest-dev/iniconfig",
+  "auditor_version": "2.0.0",
+  "spec_sha256": "2829e08c1e34d0089d03971d2860be133a8a83c89604e2f2e89c069199a0145f",
+  "audit_fingerprint": "cdee3d662feb376afacc931a5b75b017b07283b9e018615a7a3637d999fecccb",
+  "gates": [
+    {
+      "gate_id": "G1",
+      "name": "PR evidence <-> repository_change",
+      "expected": "PR title/body describes the repository architectural or API change",
+      "observed": "Word overlap: ['added', 'automatically', 'comments', 'from', 'iniconfig'] | PR title: Add IniConfig.parse() with inline comment stripping and Unicode whitespace handling",
+      "evidence": "pr.json:title='Add IniConfig.parse() with inline comment stripping and Unicode whitespace handling'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G2",
+      "name": "repository_change <-> actual diff",
+      "expected": "Actual diff contains code edits in files specified in repository_change",
+      "observed": "Diff mentions files: ['src/iniconfig/__init__.py', 'src/iniconfig/_parse.py'] -> True",
+      "evidence": "diff.patch length: 15362 bytes",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G3",
+      "name": "actual diff <-> changed/deprecated/replacement symbols",
+      "expected": "Diff patch directly modifies or introduces the target symbols",
+      "observed": "Tokens ['IniConfig', 'IniConfig(path', 'parse', 'strip_inline_comments'] found in diff: True",
+      "evidence": "Matching symbols in diff: ['IniConfig', 'parse', 'strip_inline_comments']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G4",
+      "name": "stale memory <-> base-state behavior",
+      "expected": "Stale memory candidate instructs usage of legacy symbol from base state",
+      "observed": "Stale memory references legacy symbol: True",
+      "evidence": "stale_memory_candidate='Load INI configurations via standard IniConfig constructor without comment strip...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G5",
+      "name": "valid memory <-> target-state behavior",
+      "expected": "Valid memory candidate instructs modern pattern introduced in target state",
+      "observed": "Valid memory references modern symbol: True",
+      "evidence": "valid_memory_candidate='Load INI configurations via IniConfig.parse to strip inline comments cleanly....'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G6",
+      "name": "current task <-> transition capability",
+      "expected": "Evaluation task prompt requires implementing or using transition capability",
+      "observed": "Task exercises target file 'config_reader.py' and target symbol 'read_config_value': True",
+      "evidence": "current_task='Implement `read_config_value(ini_data, section, key)` in `config_reader.py` retu...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G7",
+      "name": "hidden test strength <-> current task semantics",
+      "expected": "Hidden test verifies target capability with mutation_kill_rate >= 0.80 and zero constant-return bypass",
+      "observed": "Semantic match: True, Mutation kill rate: 100.0%, Constant return bypass: False",
+      "evidence": "test_strength/trans_track_a_20_iniconfig_strip_inline_comments.json, len=217 bytes",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G8",
+      "name": "stale control <-> stale memory semantics",
+      "expected": "Stale control solution invokes deprecated API as instructed by stale memory",
+      "observed": "Stale control uses deprecated symbol: True",
+      "evidence": "stale_solution.py contains ['IniConfig']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G9",
+      "name": "valid control <-> valid memory semantics",
+      "expected": "Valid control solution invokes modern API as instructed by valid memory",
+      "observed": "Valid control uses replacement symbol: True",
+      "evidence": "valid_solution.py contains modern pattern: True",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G10",
+      "name": "causal matrix <-> transition evidence",
+      "expected": "Causal counterfactual matrix demonstrates base-state pass, target-state fail with genuine failure taxonomy",
+      "observed": "Causal status: 'CAUSAL_PASS', failure taxonomy: 'BEHAVIOR_MISMATCH'",
+      "evidence": "causal_counterfactual/trans_track_a_20_iniconfig_strip_inline_comments.json",
+      "status": "PASS"
+    }
+  ],
+  "passed_gates_count": 10,
+  "total_gates_count": 10,
+  "overall_status": "PASS"
+}

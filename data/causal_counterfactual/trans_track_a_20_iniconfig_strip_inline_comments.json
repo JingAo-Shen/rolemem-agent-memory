@@ -1,0 +1,29 @@
+{
+  "transition_id": "trans_track_a_20_iniconfig_strip_inline_comments",
+  "audit_fingerprint": "cdee3d662feb376afacc931a5b75b017b07283b9e018615a7a3637d999fecccb",
+  "stale_base": false,
+  "stale_target": false,
+  "valid_base": false,
+  "valid_target": true,
+  "matrix": {
+    "stale_on_base": false,
+    "stale_on_target": false,
+    "valid_on_base": false,
+    "valid_on_target": true
+  },
+  "failure_taxonomy": {
+    "stale_base_failure": "BEHAVIOR_MISMATCH",
+    "stale_target_failure": "BEHAVIOR_MISMATCH",
+    "valid_base_failure": "API_ABSENT",
+    "valid_target_failure": "NONE"
+  },
+  "causality_status": "CAUSAL_PASS",
+  "is_causal": true,
+  "rationale": "Feature introduction: valid action impossible on base (API_ABSENT), succeeds on target",
+  "execution_logs": {
+    "stale_base_preview": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_fj_kf9o2\nplugins:",
+    "stale_target_preview": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_zsiv1yee\nplugins:",
+    "valid_base_preview": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_i_xbccl0\nplugins:",
+    "valid_target_preview": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_s3vazdd7\nplugins: anyio-4"
+  }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "sha": "9ad3527b94ce034bb3967b3bf0969403118d4284",
+    "filename": "starlette/exceptions.py",
+    "status": "modified",
+    "additions": 2,
+    "deletions": 31,
+    "changes": 33,
+    "blob_url": "https://github.com/Kludex/starlette/blob/53c544e4a0dab93d5d0766c0ba16325a534ce69e/starlette%2Fexceptions.py",
+    "raw_url": "https://github.com/Kludex/starlette/raw/53c544e4a0dab93d5d0766c0ba16325a534ce69e/starlette%2Fexceptions.py",
+    "contents_url": "https://api.github.com/repos/Kludex/starlette/contents/starlette%2Fexceptions.py?ref=53c544e4a0dab93d5d0766c0ba16325a534ce69e",
+    "patch": "@@ -1,19 +1,11 @@\n from __future__ import annotations\n \n import http\n-import typing\n-import warnings\n-\n-__all__ = (\"HTTPException\", \"WebSocketException\")\n+from collections.abc import Mapping\n \n \n class HTTPException(Exception):\n-    def __init__(\n-        self,\n-        status_code: int,\n-        detail: str | None = None,\n-        headers: typing.Mapping[str, str] | None = None,\n-    ) -> None:\n+    def __init__(self, status_code: int, detail: str | None = None, headers: Mapping[str, str] | None = None) -> None:\n         if detail is None:\n             detail = http.HTTPStatus(status_code).phrase\n         self.status_code = status_code\n@@ -39,24 +31,3 @@ def __str__(self) -> str:\n     def __repr__(self) -> str:\n         class_name = self.__class__.__name__\n         return f\"{class_name}(code={self.code!r}, reason={self.reason!r})\"\n-\n-\n-__deprecated__ = \"ExceptionMiddleware\"\n-\n-\n-def __getattr__(name: str) -> typing.Any:  # pragma: no cover\n-    if name == __deprecated__:\n-        from starlette.middleware.exceptions import ExceptionMiddleware\n-\n-        warnings.warn(\n-            f\"{__deprecated__} is deprecated on `starlette.exceptions`. \"\n-            f\"Import it from `starlette.middleware.exceptions` instead.\",\n-            category=DeprecationWarning,\n-            stacklevel=3,\n-        )\n-        return ExceptionMiddleware\n-    raise AttributeError(f\"module '{__name__}' has no attribute '{name}'\")\n-\n-\n-def __dir__() -> list[str]:\n-    return sorted(list(__all__) + [__deprecated__])  # pragma: no cover"
+  },
+  {
+    "sha": "fe5da0ba685ffb9160fd59711d30f351ea49e79c",
+    "filename": "tests/test_exceptions.py",
+    "status": "modified",
+    "additions": 0,
+    "deletions": 14,
+    "changes": 14,
+    "blob_url": "https://github.com/Kludex/starlette/blob/53c544e4a0dab93d5d0766c0ba16325a534ce69e/tests%2Ftest_exceptions.py",
+    "raw_url": "https://github.com/Kludex/starlette/raw/53c544e4a0dab93d5d0766c0ba16325a534ce69e/tests%2Ftest_exceptions.py",
+    "contents_url": "https://api.github.com/repos/Kludex/starlette/contents/tests%2Ftest_exceptions.py?ref=53c544e4a0dab93d5d0766c0ba16325a534ce69e",
+    "patch": "@@ -1,4 +1,3 @@\n-import warnings\n from collections.abc import Generator\n \n import pytest\n@@ -181,19 +180,6 @@ class CustomWebSocketException(WebSocketException):\n     )\n \n \n-def test_exception_middleware_deprecation() -> None:\n-    # this test should be removed once the deprecation shim is removed\n-    with pytest.warns(DeprecationWarning):\n-        from starlette.exceptions import ExceptionMiddleware  # noqa: F401\n-\n-    with warnings.catch_warnings():\n-        warnings.simplefilter(\"error\")\n-        import starlette.exceptions\n-\n-    with pytest.warns(DeprecationWarning):\n-        starlette.exceptions.ExceptionMiddleware\n-\n-\n def test_request_in_app_and_handler_is_the_same_object(client: TestClient) -> None:\n     response = client.post(\"/consume_body_in_endpoint_and_handler\", content=b\"Hello!\")\n     assert response.status_code == 422"
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "transition_id": "trans_track_a_20_cryptography_decrepit_blowfish",
+  "audit_fingerprint": "92a84f66b0be2136e4885b4df959e9c345e3b4a19dedf1a1dbd20e2533e798ce",
+  "status": "FAIL",
+  "collection_status": "FAIL",
+  "execution_status": "FAIL",
+  "exit_code": 1,
+  "raw_stdout": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_qotmvwmn\nplugins: anyio-4.15.1\ncollecting ... collected 0 items / 1 error\n\n==================================== ERRORS ====================================\n_________________ ERROR collecting test_hidden_verification.py _________________\nImportError while importing te",
+  "verification_status": "FAIL"
+}

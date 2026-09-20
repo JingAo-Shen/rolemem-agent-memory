@@ -1,0 +1,92 @@
+{
+  "transition_id": "trans_track_a_21_packaging_legacy_version_removal",
+  "repo_name": "pypa/packaging",
+  "auditor_version": "2.0.0",
+  "spec_sha256": "97cba6864c657b7129a18dcd54aac8ada626553a2813ee8221afb559e43e86c0",
+  "audit_fingerprint": "6f64a0a58d87b416d5a4702aba1fda06bf76bafae15e98099e6ad866a654e235",
+  "gates": [
+    {
+      "gate_id": "G1",
+      "name": "PR evidence <-> repository_change",
+      "expected": "PR title/body describes the repository architectural or API change",
+      "observed": "Word overlap: ['legacyversion', 'removed', 'version'] | PR title: Drop `LegacySpecifier` and `LegacyVersion`",
+      "evidence": "pr.json:title='Drop `LegacySpecifier` and `LegacyVersion`'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G2",
+      "name": "repository_change <-> actual diff",
+      "expected": "Actual diff contains code edits in files specified in repository_change",
+      "observed": "Diff mentions files: ['packaging/version.py', 'packaging/specifiers.py'] -> True",
+      "evidence": "diff.patch length: 54507 bytes",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G3",
+      "name": "actual diff <-> changed/deprecated/replacement symbols",
+      "expected": "Diff patch directly modifies or introduces the target symbols",
+      "observed": "Tokens ['LegacyVersion', 'LegacyVersion', 'Version', 'Version'] found in diff: True",
+      "evidence": "Matching symbols in diff: ['LegacyVersion', 'LegacyVersion', 'Version', 'Version']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G4",
+      "name": "stale memory <-> base-state behavior",
+      "expected": "Stale memory candidate instructs usage of legacy symbol from base state",
+      "observed": "Stale memory references legacy symbol: True",
+      "evidence": "stale_memory_candidate='Parse non-PEP440 versions into packaging.version.LegacyVersion....'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G5",
+      "name": "valid memory <-> target-state behavior",
+      "expected": "Valid memory candidate instructs modern pattern introduced in target state",
+      "observed": "Valid memory references modern symbol: True",
+      "evidence": "valid_memory_candidate='Parse versions using packaging.version.Version; non-PEP440 raises InvalidVersion...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G6",
+      "name": "current task <-> transition capability",
+      "expected": "Evaluation task prompt requires implementing or using transition capability",
+      "observed": "Task exercises target file 'version_parser.py' and target symbol 'parse_version_safely': True",
+      "evidence": "current_task='Implement `parse_version_safely(v: str)` in `version_parser.py` returning standa...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G7",
+      "name": "hidden test strength <-> current task semantics",
+      "expected": "Hidden test verifies target capability with mutation_kill_rate >= 0.80 and zero constant-return bypass",
+      "observed": "Semantic match: True, Mutation kill rate: 100.0%, Constant return bypass: False",
+      "evidence": "test_strength/trans_track_a_21_packaging_legacy_version_removal.json, len=137 bytes",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G8",
+      "name": "stale control <-> stale memory semantics",
+      "expected": "Stale control solution invokes deprecated API as instructed by stale memory",
+      "observed": "Stale control uses deprecated symbol: True",
+      "evidence": "stale_solution.py contains ['LegacyVersion', 'LegacyVersion']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G9",
+      "name": "valid control <-> valid memory semantics",
+      "expected": "Valid control solution invokes modern API as instructed by valid memory",
+      "observed": "Valid control uses replacement symbol: True",
+      "evidence": "valid_solution.py contains modern pattern: True",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G10",
+      "name": "causal matrix <-> transition evidence",
+      "expected": "Causal counterfactual matrix demonstrates base-state pass, target-state fail with genuine failure taxonomy",
+      "observed": "Causal status: 'CAUSAL_PASS', failure taxonomy: 'IMPORT_FAILURE'",
+      "evidence": "causal_counterfactual/trans_track_a_21_packaging_legacy_version_removal.json",
+      "status": "PASS"
+    }
+  ],
+  "passed_gates_count": 10,
+  "total_gates_count": 10,
+  "overall_status": "PASS"
+}

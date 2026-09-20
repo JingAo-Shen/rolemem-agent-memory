@@ -2,7 +2,7 @@
   "transition_id": "trans_track_a_02_flask_should_ignore_error",
   "provenance_status": "TARGET_MEMORY_VERIFIED",
   "recomputed_hashes": {
-    "diff_hunk_sha256": "acb6b40b2fc02064becdd64d757e847540413a20edc1b4b4973d3e1c4d950228",
+    "diff_hunk_sha256": "f3c864ccfb3413e3a035ebf551625dae2326023ce7d47bd71d872350dbd485dc",
     "evidence_excerpt_hash": "6346e11aab64d32845c5deda8677d532820ba1f393f5527ce78d40e1688d22cb",
     "ground_truth_audit_hash": "7d908ae73339ad948c8458f74d9408fd60958868ce70f28888677e19616f158f"
   },
@@ -11,6 +11,7 @@
     "source_commit_matches": true,
     "artifact_in_diff": true,
     "diff_hunk_sha256_verified": true,
+    "diff_patch_sha256_verified": true,
     "evidence_excerpt_hash_verified": true,
     "ground_truth_audit_hash_verified": true,
     "statement_entailment": "ENTAILED"
@@ -23,9 +24,11 @@
     "source_pr_url": "https://github.com/pallets/flask/pull/5899",
     "source_commit": "4b8bde97d4fa3486e18dce21c3c5f75570d50164",
     "evidence_file": "data/external_evidence/trans_track_a_02_flask_should_ignore_error/diff.patch",
-    "evidence_hunk_sha256": "acb6b40b2fc02064becdd64d757e847540413a20edc1b4b4973d3e1c4d950228",
+    "evidence_hunk_sha256": "f3c864ccfb3413e3a035ebf551625dae2326023ce7d47bd71d872350dbd485dc",
     "evidence_excerpt_hash": "6346e11aab64d32845c5deda8677d532820ba1f393f5527ce78d40e1688d22cb",
     "ground_truth_audit_hash": "7d908ae73339ad948c8458f74d9408fd60958868ce70f28888677e19616f158f",
-    "artifact": "src/flask/app.py"
+    "artifact": "src/flask/app.py",
+    "supporting_hunk": "@@ -14,6 +14,8 @@ Unreleased\n     If subclasses were overriding these methods, the old signature is detected,\n     shows a deprecation warning, and will continue to work during the\n     deprecation period. :issue:`5815`\n+-   The ``should_ignore_error`` is deprecated. Handle errors as needed in\n+    teardown handlers instead. :issue:`5816`\n -   ``template_filter``, ``template_test``, and ``template_global`` decorators\n     can be used without parentheses. :issue:`5729`\n -   ``redirect`` returns a ``303`` status code by default instead of ``302``.",
+    "diff_patch_sha256": "acb6b40b2fc02064becdd64d757e847540413a20edc1b4b4973d3e1c4d950228"
   }
 }

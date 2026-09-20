@@ -1,0 +1,13 @@
+{
+  "transition_id": "trans_track_a_20_iniconfig_strip_inline_comments",
+  "repo_name": "pytest-dev/iniconfig",
+  "leakage_class": "REPO_CONTEXT_HINTED",
+  "rationale": "Context contains replacement symbols ['IniConfig.parse', 'strip_inline_comments'] or migration comments, but no task implementation.",
+  "retrieved_tokens": 1117,
+  "found_replacements": [
+    "IniConfig.parse",
+    "strip_inline_comments"
+  ],
+  "target_implementation_found": false,
+  "migration_comments_found": []
+}

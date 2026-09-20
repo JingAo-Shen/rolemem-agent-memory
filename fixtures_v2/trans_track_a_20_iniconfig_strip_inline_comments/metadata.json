@@ -1,0 +1,20 @@
+{
+  "transition_id": "trans_track_a_20_iniconfig_strip_inline_comments",
+  "repo_name": "pytest-dev/iniconfig",
+  "repo_url": "https://github.com/pytest-dev/iniconfig",
+  "pr_url": "https://github.com/pytest-dev/iniconfig/pull/70",
+  "base_commit": "57b7ed9c7a5950f9c57b2cfbe641ff4cc04baf1c",
+  "target_commit": "7faed13ae50bad7c5da3f5782f254a8a7736bb84",
+  "pkg_path": "src/iniconfig",
+  "changed_files": [
+    "src/iniconfig/__init__.py",
+    "src/iniconfig/_parse.py"
+  ],
+  "primary_file": "src/iniconfig/__init__.py",
+  "symbol": "IniConfig.parse",
+  "file_digest_before": "54d78711f7f17b2aa2a6c1593da464d91a0bf8da08c875fb3df2242b0ac0db1a",
+  "file_digest_after": "5cbe5ea94623e26b2400ea2b6798df4408a726f2734c8f9f271a4fe317d7b5ac",
+  "stale_sensitive": false,
+  "transition_type": "API_EVOLUTION",
+  "builder_status": "FIXTURE_EXTRACTED_UNVERIFIED"
+}

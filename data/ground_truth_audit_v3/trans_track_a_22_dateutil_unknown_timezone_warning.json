@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_track_a_22_dateutil_unknown_timezone_warning",
+  "repo_name": "dateutil/dateutil",
+  "pr_number": 540,
+  "pr_title": "Warn on unidentified tz",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "65d66b28ff201ae7bf59cf4128462e1c2d839da8",
+  "pr_base_sha": "1a7ebd70371a95ae61f95cdcde6d6cbb5dd7f68c",
+  "pr_head_sha": "7b242e287492dc029c29f54267a810e5839ffbc1",
+  "base_commit": "1a7ebd70371a95ae61f95cdcde6d6cbb5dd7f68c",
+  "target_commit": "65d66b28ff201ae7bf59cf4128462e1c2d839da8",
+  "ancestry_verified": true,
+  "merge_strategy": "merge_commit",
+  "merge_relationship_verified": true,
+  "diff_match": true,
+  "issue_required": false,
+  "issue_id_verified": null,
+  "issue_status": "NOT_APPLICABLE",
+  "spec_sha256": "0eeed66c52fb31a895e7bc3b3a6a6b9b76bcca67be479155bb025ea6ee90545c",
+  "audit_fingerprint": "65edf737dbd4e85de79e4293057178ae54834e8ed1cf69e22a6897c2f6218de0",
+  "auditor_version": "3.0.0",
+  "overall_status": "PASS"
+}

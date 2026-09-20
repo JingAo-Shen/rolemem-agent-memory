@@ -1,0 +1,576 @@
+[
+  {
+    "sha": "17d9be4d3ebed8b3a86683ef49b74a718268d909",
+    "node_id": "C_kwDOCZduT9oAKDE3ZDliZTRkM2ViZWQ4YjNhODY2ODNlZjQ5Yjc0YTcxODI2OGQ5MDk",
+    "commit": {
+      "author": {
+        "name": "Sebasti\u00e1n Ram\u00edrez",
+        "email": "tiangolo@gmail.com",
+        "date": "2025-12-21T15:23:01Z"
+      },
+      "committer": {
+        "name": "Sebasti\u00e1n Ram\u00edrez",
+        "email": "tiangolo@gmail.com",
+        "date": "2025-12-21T15:23:01Z"
+      },
+      "message": "\ud83d\udd0a Add warnings when using Pydantic v1",
+      "tree": {
+        "sha": "fc7f5857709c48981f6b3119c3eb5c4c5edea65c",
+        "url": "https://api.github.com/repos/fastapi/fastapi/git/trees/fc7f5857709c48981f6b3119c3eb5c4c5edea65c"
+      },
+      "url": "https://api.github.com/repos/fastapi/fastapi/git/commits/17d9be4d3ebed8b3a86683ef49b74a718268d909",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/fastapi/fastapi/commits/17d9be4d3ebed8b3a86683ef49b74a718268d909",
+    "html_url": "https://github.com/fastapi/fastapi/commit/17d9be4d3ebed8b3a86683ef49b74a718268d909",
+    "comments_url": "https://api.github.com/repos/fastapi/fastapi/commits/17d9be4d3ebed8b3a86683ef49b74a718268d909/comments",
+    "author": {
+      "login": "tiangolo",
+      "id": 1326112,
+      "node_id": "MDQ6VXNlcjEzMjYxMTI=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1326112?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tiangolo",
+      "html_url": "https://github.com/tiangolo",
+      "followers_url": "https://api.github.com/users/tiangolo/followers",
+      "following_url": "https://api.github.com/users/tiangolo/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tiangolo/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tiangolo/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tiangolo/subscriptions",
+      "organizations_url": "https://api.github.com/users/tiangolo/orgs",
+      "repos_url": "https://api.github.com/users/tiangolo/repos",
+      "events_url": "https://api.github.com/users/tiangolo/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tiangolo/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "tiangolo",
+      "id": 1326112,
+      "node_id": "MDQ6VXNlcjEzMjYxMTI=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1326112?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tiangolo",
+      "html_url": "https://github.com/tiangolo",
+      "followers_url": "https://api.github.com/users/tiangolo/followers",
+      "following_url": "https://api.github.com/users/tiangolo/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tiangolo/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tiangolo/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tiangolo/subscriptions",
+      "organizations_url": "https://api.github.com/users/tiangolo/orgs",
+      "repos_url": "https://api.github.com/users/tiangolo/repos",
+      "events_url": "https://api.github.com/users/tiangolo/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tiangolo/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "6513d4daa16a536d17743de6a292f49bd06388a4",
+        "url": "https://api.github.com/repos/fastapi/fastapi/commits/6513d4daa16a536d17743de6a292f49bd06388a4",
+        "html_url": "https://github.com/fastapi/fastapi/commit/6513d4daa16a536d17743de6a292f49bd06388a4"
+      }
+    ]
+  },
+  {
+    "sha": "b32b4bfefb77112fb354d0be8d9442ab0df78ff3",
+    "node_id": "C_kwDOCZduT9oAKGIzMmI0YmZlZmI3NzExMmZiMzU0ZDBiZThkOTQ0MmFiMGRmNzhmZjM",
+    "commit": {
+      "author": {
+        "name": "Sebasti\u00e1n Ram\u00edrez",
+        "email": "tiangolo@gmail.com",
+        "date": "2025-12-21T15:24:11Z"
+      },
+      "committer": {
+        "name": "Sebasti\u00e1n Ram\u00edrez",
+        "email": "tiangolo@gmail.com",
+        "date": "2025-12-21T15:24:11Z"
+      },
+      "message": "\ud83d\udd07 Filter warnings for tests with Pydantic v1",
+      "tree": {
+        "sha": "15a274af9300152fd6ce6062104315ae13b1b488",
+        "url": "https://api.github.com/repos/fastapi/fastapi/git/trees/15a274af9300152fd6ce6062104315ae13b1b488"
+      },
+      "url": "https://api.github.com/repos/fastapi/fastapi/git/commits/b32b4bfefb77112fb354d0be8d9442ab0df78ff3",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/fastapi/fastapi/commits/b32b4bfefb77112fb354d0be8d9442ab0df78ff3",
+    "html_url": "https://github.com/fastapi/fastapi/commit/b32b4bfefb77112fb354d0be8d9442ab0df78ff3",
+    "comments_url": "https://api.github.com/repos/fastapi/fastapi/commits/b32b4bfefb77112fb354d0be8d9442ab0df78ff3/comments",
+    "author": {
+      "login": "tiangolo",
+      "id": 1326112,
+      "node_id": "MDQ6VXNlcjEzMjYxMTI=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1326112?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tiangolo",
+      "html_url": "https://github.com/tiangolo",
+      "followers_url": "https://api.github.com/users/tiangolo/followers",
+      "following_url": "https://api.github.com/users/tiangolo/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tiangolo/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tiangolo/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tiangolo/subscriptions",
+      "organizations_url": "https://api.github.com/users/tiangolo/orgs",
+      "repos_url": "https://api.github.com/users/tiangolo/repos",
+      "events_url": "https://api.github.com/users/tiangolo/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tiangolo/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "tiangolo",
+      "id": 1326112,
+      "node_id": "MDQ6VXNlcjEzMjYxMTI=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1326112?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tiangolo",
+      "html_url": "https://github.com/tiangolo",
+      "followers_url": "https://api.github.com/users/tiangolo/followers",
+      "following_url": "https://api.github.com/users/tiangolo/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tiangolo/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tiangolo/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tiangolo/subscriptions",
+      "organizations_url": "https://api.github.com/users/tiangolo/orgs",
+      "repos_url": "https://api.github.com/users/tiangolo/repos",
+      "events_url": "https://api.github.com/users/tiangolo/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tiangolo/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "17d9be4d3ebed8b3a86683ef49b74a718268d909",
+        "url": "https://api.github.com/repos/fastapi/fastapi/commits/17d9be4d3ebed8b3a86683ef49b74a718268d909",
+        "html_url": "https://github.com/fastapi/fastapi/commit/17d9be4d3ebed8b3a86683ef49b74a718268d909"
+      }
+    ]
+  },
+  {
+    "sha": "0acd31576ba172c71ddaeb581e46d923e29d081f",
+    "node_id": "C_kwDOCZduT9oAKDBhY2QzMTU3NmJhMTcyYzcxZGRhZWI1ODFlNDZkOTIzZTI5ZDA4MWY",
+    "commit": {
+      "author": {
+        "name": "Sebasti\u00e1n Ram\u00edrez",
+        "email": "tiangolo@gmail.com",
+        "date": "2025-12-21T15:31:11Z"
+      },
+      "committer": {
+        "name": "Sebasti\u00e1n Ram\u00edrez",
+        "email": "tiangolo@gmail.com",
+        "date": "2025-12-21T15:31:11Z"
+      },
+      "message": "\u2705 Add test for warnings",
+      "tree": {
+        "sha": "a2a74389fd3a64c93a471c62133019be095769cd",
+        "url": "https://api.github.com/repos/fastapi/fastapi/git/trees/a2a74389fd3a64c93a471c62133019be095769cd"
+      },
+      "url": "https://api.github.com/repos/fastapi/fastapi/git/commits/0acd31576ba172c71ddaeb581e46d923e29d081f",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/fastapi/fastapi/commits/0acd31576ba172c71ddaeb581e46d923e29d081f",
+    "html_url": "https://github.com/fastapi/fastapi/commit/0acd31576ba172c71ddaeb581e46d923e29d081f",
+    "comments_url": "https://api.github.com/repos/fastapi/fastapi/commits/0acd31576ba172c71ddaeb581e46d923e29d081f/comments",
+    "author": {
+      "login": "tiangolo",
+      "id": 1326112,
+      "node_id": "MDQ6VXNlcjEzMjYxMTI=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1326112?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tiangolo",
+      "html_url": "https://github.com/tiangolo",
+      "followers_url": "https://api.github.com/users/tiangolo/followers",
+      "following_url": "https://api.github.com/users/tiangolo/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tiangolo/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tiangolo/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tiangolo/subscriptions",
+      "organizations_url": "https://api.github.com/users/tiangolo/orgs",
+      "repos_url": "https://api.github.com/users/tiangolo/repos",
+      "events_url": "https://api.github.com/users/tiangolo/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tiangolo/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "tiangolo",
+      "id": 1326112,
+      "node_id": "MDQ6VXNlcjEzMjYxMTI=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1326112?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tiangolo",
+      "html_url": "https://github.com/tiangolo",
+      "followers_url": "https://api.github.com/users/tiangolo/followers",
+      "following_url": "https://api.github.com/users/tiangolo/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tiangolo/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tiangolo/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tiangolo/subscriptions",
+      "organizations_url": "https://api.github.com/users/tiangolo/orgs",
+      "repos_url": "https://api.github.com/users/tiangolo/repos",
+      "events_url": "https://api.github.com/users/tiangolo/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tiangolo/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "b32b4bfefb77112fb354d0be8d9442ab0df78ff3",
+        "url": "https://api.github.com/repos/fastapi/fastapi/commits/b32b4bfefb77112fb354d0be8d9442ab0df78ff3",
+        "html_url": "https://github.com/fastapi/fastapi/commit/b32b4bfefb77112fb354d0be8d9442ab0df78ff3"
+      }
+    ]
+  },
+  {
+    "sha": "247e86daf227dd19a7dc27e07e091005f194c75f",
+    "node_id": "C_kwDOCZduT9oAKDI0N2U4NmRhZjIyN2RkMTlhN2RjMjdlMDdlMDkxMDA1ZjE5NGM3NWY",
+    "commit": {
+      "author": {
+        "name": "Sebasti\u00e1n Ram\u00edrez",
+        "email": "tiangolo@gmail.com",
+        "date": "2025-12-21T15:50:33Z"
+      },
+      "committer": {
+        "name": "Sebasti\u00e1n Ram\u00edrez",
+        "email": "tiangolo@gmail.com",
+        "date": "2025-12-21T15:50:33Z"
+      },
+      "message": "\u2705 Update tests to filter warnings",
+      "tree": {
+        "sha": "15f332b3ed42b6dea1b7d3a5526e54acf7a09a22",
+        "url": "https://api.github.com/repos/fastapi/fastapi/git/trees/15f332b3ed42b6dea1b7d3a5526e54acf7a09a22"
+      },
+      "url": "https://api.github.com/repos/fastapi/fastapi/git/commits/247e86daf227dd19a7dc27e07e091005f194c75f",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/fastapi/fastapi/commits/247e86daf227dd19a7dc27e07e091005f194c75f",
+    "html_url": "https://github.com/fastapi/fastapi/commit/247e86daf227dd19a7dc27e07e091005f194c75f",
+    "comments_url": "https://api.github.com/repos/fastapi/fastapi/commits/247e86daf227dd19a7dc27e07e091005f194c75f/comments",
+    "author": {
+      "login": "tiangolo",
+      "id": 1326112,
+      "node_id": "MDQ6VXNlcjEzMjYxMTI=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1326112?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tiangolo",
+      "html_url": "https://github.com/tiangolo",
+      "followers_url": "https://api.github.com/users/tiangolo/followers",
+      "following_url": "https://api.github.com/users/tiangolo/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tiangolo/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tiangolo/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tiangolo/subscriptions",
+      "organizations_url": "https://api.github.com/users/tiangolo/orgs",
+      "repos_url": "https://api.github.com/users/tiangolo/repos",
+      "events_url": "https://api.github.com/users/tiangolo/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tiangolo/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "tiangolo",
+      "id": 1326112,
+      "node_id": "MDQ6VXNlcjEzMjYxMTI=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1326112?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tiangolo",
+      "html_url": "https://github.com/tiangolo",
+      "followers_url": "https://api.github.com/users/tiangolo/followers",
+      "following_url": "https://api.github.com/users/tiangolo/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tiangolo/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tiangolo/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tiangolo/subscriptions",
+      "organizations_url": "https://api.github.com/users/tiangolo/orgs",
+      "repos_url": "https://api.github.com/users/tiangolo/repos",
+      "events_url": "https://api.github.com/users/tiangolo/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tiangolo/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "0acd31576ba172c71ddaeb581e46d923e29d081f",
+        "url": "https://api.github.com/repos/fastapi/fastapi/commits/0acd31576ba172c71ddaeb581e46d923e29d081f",
+        "html_url": "https://github.com/fastapi/fastapi/commit/0acd31576ba172c71ddaeb581e46d923e29d081f"
+      }
+    ]
+  },
+  {
+    "sha": "eea02ddeea978ef88a1c64479c5182bc4f770a23",
+    "node_id": "C_kwDOCZduT9oAKGVlYTAyZGRlZWE5NzhlZjg4YTFjNjQ0NzljNTE4MmJjNGY3NzBhMjM",
+    "commit": {
+      "author": {
+        "name": "Sebasti\u00e1n Ram\u00edrez",
+        "email": "tiangolo@gmail.com",
+        "date": "2025-12-21T15:58:41Z"
+      },
+      "committer": {
+        "name": "Sebasti\u00e1n Ram\u00edrez",
+        "email": "tiangolo@gmail.com",
+        "date": "2025-12-21T15:58:41Z"
+      },
+      "message": "\u2705 Update tests to capture warnings",
+      "tree": {
+        "sha": "2115ff14b30e3a0ddff6066188da39e152a66a2d",
+        "url": "https://api.github.com/repos/fastapi/fastapi/git/trees/2115ff14b30e3a0ddff6066188da39e152a66a2d"
+      },
+      "url": "https://api.github.com/repos/fastapi/fastapi/git/commits/eea02ddeea978ef88a1c64479c5182bc4f770a23",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/fastapi/fastapi/commits/eea02ddeea978ef88a1c64479c5182bc4f770a23",
+    "html_url": "https://github.com/fastapi/fastapi/commit/eea02ddeea978ef88a1c64479c5182bc4f770a23",
+    "comments_url": "https://api.github.com/repos/fastapi/fastapi/commits/eea02ddeea978ef88a1c64479c5182bc4f770a23/comments",
+    "author": {
+      "login": "tiangolo",
+      "id": 1326112,
+      "node_id": "MDQ6VXNlcjEzMjYxMTI=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1326112?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tiangolo",
+      "html_url": "https://github.com/tiangolo",
+      "followers_url": "https://api.github.com/users/tiangolo/followers",
+      "following_url": "https://api.github.com/users/tiangolo/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tiangolo/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tiangolo/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tiangolo/subscriptions",
+      "organizations_url": "https://api.github.com/users/tiangolo/orgs",
+      "repos_url": "https://api.github.com/users/tiangolo/repos",
+      "events_url": "https://api.github.com/users/tiangolo/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tiangolo/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "tiangolo",
+      "id": 1326112,
+      "node_id": "MDQ6VXNlcjEzMjYxMTI=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1326112?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tiangolo",
+      "html_url": "https://github.com/tiangolo",
+      "followers_url": "https://api.github.com/users/tiangolo/followers",
+      "following_url": "https://api.github.com/users/tiangolo/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tiangolo/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tiangolo/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tiangolo/subscriptions",
+      "organizations_url": "https://api.github.com/users/tiangolo/orgs",
+      "repos_url": "https://api.github.com/users/tiangolo/repos",
+      "events_url": "https://api.github.com/users/tiangolo/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tiangolo/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "247e86daf227dd19a7dc27e07e091005f194c75f",
+        "url": "https://api.github.com/repos/fastapi/fastapi/commits/247e86daf227dd19a7dc27e07e091005f194c75f",
+        "html_url": "https://github.com/fastapi/fastapi/commit/247e86daf227dd19a7dc27e07e091005f194c75f"
+      }
+    ]
+  },
+  {
+    "sha": "05bd28cfc1f1f5f535e7ce38d687a28b5a9aeefe",
+    "node_id": "C_kwDOCZduT9oAKDA1YmQyOGNmYzFmMWY1ZjUzNWU3Y2UzOGQ2ODdhMjhiNWE5YWVlZmU",
+    "commit": {
+      "author": {
+        "name": "Sebasti\u00e1n Ram\u00edrez",
+        "email": "tiangolo@gmail.com",
+        "date": "2025-12-21T16:11:33Z"
+      },
+      "committer": {
+        "name": "Sebasti\u00e1n Ram\u00edrez",
+        "email": "tiangolo@gmail.com",
+        "date": "2025-12-21T16:11:33Z"
+      },
+      "message": "\ud83d\udd07 Add filter warnings for benchmark tests",
+      "tree": {
+        "sha": "edad26f6b53cb1c7da31cc206d8f91f18078c5f4",
+        "url": "https://api.github.com/repos/fastapi/fastapi/git/trees/edad26f6b53cb1c7da31cc206d8f91f18078c5f4"
+      },
+      "url": "https://api.github.com/repos/fastapi/fastapi/git/commits/05bd28cfc1f1f5f535e7ce38d687a28b5a9aeefe",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/fastapi/fastapi/commits/05bd28cfc1f1f5f535e7ce38d687a28b5a9aeefe",
+    "html_url": "https://github.com/fastapi/fastapi/commit/05bd28cfc1f1f5f535e7ce38d687a28b5a9aeefe",
+    "comments_url": "https://api.github.com/repos/fastapi/fastapi/commits/05bd28cfc1f1f5f535e7ce38d687a28b5a9aeefe/comments",
+    "author": {
+      "login": "tiangolo",
+      "id": 1326112,
+      "node_id": "MDQ6VXNlcjEzMjYxMTI=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1326112?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tiangolo",
+      "html_url": "https://github.com/tiangolo",
+      "followers_url": "https://api.github.com/users/tiangolo/followers",
+      "following_url": "https://api.github.com/users/tiangolo/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tiangolo/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tiangolo/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tiangolo/subscriptions",
+      "organizations_url": "https://api.github.com/users/tiangolo/orgs",
+      "repos_url": "https://api.github.com/users/tiangolo/repos",
+      "events_url": "https://api.github.com/users/tiangolo/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tiangolo/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "tiangolo",
+      "id": 1326112,
+      "node_id": "MDQ6VXNlcjEzMjYxMTI=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1326112?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tiangolo",
+      "html_url": "https://github.com/tiangolo",
+      "followers_url": "https://api.github.com/users/tiangolo/followers",
+      "following_url": "https://api.github.com/users/tiangolo/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tiangolo/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tiangolo/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tiangolo/subscriptions",
+      "organizations_url": "https://api.github.com/users/tiangolo/orgs",
+      "repos_url": "https://api.github.com/users/tiangolo/repos",
+      "events_url": "https://api.github.com/users/tiangolo/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tiangolo/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "eea02ddeea978ef88a1c64479c5182bc4f770a23",
+        "url": "https://api.github.com/repos/fastapi/fastapi/commits/eea02ddeea978ef88a1c64479c5182bc4f770a23",
+        "html_url": "https://github.com/fastapi/fastapi/commit/eea02ddeea978ef88a1c64479c5182bc4f770a23"
+      }
+    ]
+  },
+  {
+    "sha": "a3f929f27640e1ce8255256d1b6b6c1c5c6a3328",
+    "node_id": "C_kwDOCZduT9oAKGEzZjkyOWYyNzY0MGUxY2U4MjU1MjU2ZDFiNmI2YzFjNWM2YTMzMjg",
+    "commit": {
+      "author": {
+        "name": "Sebasti\u00e1n Ram\u00edrez",
+        "email": "tiangolo@gmail.com",
+        "date": "2025-12-21T16:33:24Z"
+      },
+      "committer": {
+        "name": "Sebasti\u00e1n Ram\u00edrez",
+        "email": "tiangolo@gmail.com",
+        "date": "2025-12-21T16:33:24Z"
+      },
+      "message": "\u2705 Add calls for coverage",
+      "tree": {
+        "sha": "9d09851d329c1783103b3204b0f66b23728b9556",
+        "url": "https://api.github.com/repos/fastapi/fastapi/git/trees/9d09851d329c1783103b3204b0f66b23728b9556"
+      },
+      "url": "https://api.github.com/repos/fastapi/fastapi/git/commits/a3f929f27640e1ce8255256d1b6b6c1c5c6a3328",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/fastapi/fastapi/commits/a3f929f27640e1ce8255256d1b6b6c1c5c6a3328",
+    "html_url": "https://github.com/fastapi/fastapi/commit/a3f929f27640e1ce8255256d1b6b6c1c5c6a3328",
+    "comments_url": "https://api.github.com/repos/fastapi/fastapi/commits/a3f929f27640e1ce8255256d1b6b6c1c5c6a3328/comments",
+    "author": {
+      "login": "tiangolo",
+      "id": 1326112,
+      "node_id": "MDQ6VXNlcjEzMjYxMTI=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1326112?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tiangolo",
+      "html_url": "https://github.com/tiangolo",
+      "followers_url": "https://api.github.com/users/tiangolo/followers",
+      "following_url": "https://api.github.com/users/tiangolo/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tiangolo/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tiangolo/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tiangolo/subscriptions",
+      "organizations_url": "https://api.github.com/users/tiangolo/orgs",
+      "repos_url": "https://api.github.com/users/tiangolo/repos",
+      "events_url": "https://api.github.com/users/tiangolo/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tiangolo/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "tiangolo",
+      "id": 1326112,
+      "node_id": "MDQ6VXNlcjEzMjYxMTI=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1326112?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tiangolo",
+      "html_url": "https://github.com/tiangolo",
+      "followers_url": "https://api.github.com/users/tiangolo/followers",
+      "following_url": "https://api.github.com/users/tiangolo/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tiangolo/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tiangolo/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tiangolo/subscriptions",
+      "organizations_url": "https://api.github.com/users/tiangolo/orgs",
+      "repos_url": "https://api.github.com/users/tiangolo/repos",
+      "events_url": "https://api.github.com/users/tiangolo/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tiangolo/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "05bd28cfc1f1f5f535e7ce38d687a28b5a9aeefe",
+        "url": "https://api.github.com/repos/fastapi/fastapi/commits/05bd28cfc1f1f5f535e7ce38d687a28b5a9aeefe",
+        "html_url": "https://github.com/fastapi/fastapi/commit/05bd28cfc1f1f5f535e7ce38d687a28b5a9aeefe"
+      }
+    ]
+  }
+]

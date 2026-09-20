@@ -33,6 +33,12 @@ def get_mutants_for_transition(tid: str, fixture_dir: str) -> Dict[str, Dict[str
     with open(os.path.join(fixture_dir, "controls", "stale_solution.py"), "r", encoding="utf-8") as f:
         stale_code = f.read()
 
+    spec_path = os.path.join(DATA_DIR, "specs", f"{tid}.json")
+    spec = {}
+    if os.path.exists(spec_path):
+        with open(spec_path, "r", encoding="utf-8") as f:
+            spec = json.load(f)
+
     mutants = {}
 
     if tid == "trans_track_a_01_click_stream_deprecations":
@@ -146,6 +152,18 @@ def get_mutants_for_transition(tid: str, fixture_dir: str) -> Dict[str, Dict[str
             "M7_missing_attribute": {"desc": "missing function", "code": "def other(): pass\n"},
             "M8_static_mock": {"desc": "fake client mock", "code": "class DummyClient:\n    _transport = 'dummy'\ndef build_proxied_client(proxy_url: str):\n    return DummyClient()\n"},
         }
+    else:
+        sym = spec.get("target_symbol", "solution").split(".")[-1]
+        mutants = {
+            "M1_return_none": {"desc": "return None", "code": f"def {sym}(*args, **kwargs):\n    return None\n"},
+            "M2_constant_return": {"desc": "return constant string", "code": f"def {sym}(*args, **kwargs):\n    return '1.0'\n"},
+            "M3_noop_pass": {"desc": "pass / no-op", "code": f"def {sym}(*args, **kwargs):\n    pass\n"},
+            "M4_try_except_dummy": {"desc": "try/except return dummy", "code": f"def {sym}(*args, **kwargs):\n    try:\n        return None\n    except Exception:\n        return 'dummy'\n"},
+            "M5_stale_solution": {"desc": "stale solution", "code": stale_code},
+            "M6_mismatched_signature": {"desc": "wrong signature", "code": f"def {sym}():\n    return 'wrong'\n"},
+            "M7_missing_attribute": {"desc": "missing function", "code": "def other_unrelated():\n    pass\n"},
+            "M8_static_mock": {"desc": "static mock", "code": f"class MockObj:\n    pass\ndef {sym}(*args, **kwargs):\n    return MockObj()\n"},
+        }
 
     return mutants
 
@@ -153,10 +171,13 @@ def get_mutants_for_transition(tid: str, fixture_dir: str) -> Dict[str, Dict[str
 def run_mutation_audit():
     print("=== Running Hidden-Test Strength & Mutation Testing Audit (Bubblewrap) ===")
     specs = []
-    with open(MANIFEST_PATH, "r") as f:
-        for line in f:
-            if line.strip():
-                specs.append(json.loads(line))
+    manifests = [MANIFEST_PATH, os.path.join(DATA_DIR, "track_a_scale_manifest.jsonl")]
+    for mf in manifests:
+        if os.path.exists(mf):
+            with open(mf, "r") as f:
+                for line in f:
+                    if line.strip():
+                        specs.append(json.loads(line))
 
     all_results = {}
     constant_return_bypasses = 0

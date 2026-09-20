@@ -1,0 +1,80 @@
+diff --git a/starlette/exceptions.py b/starlette/exceptions.py
+index c48f083..9ad3527 100644
+--- a/starlette/exceptions.py
++++ b/starlette/exceptions.py
+@@ -1,19 +1,11 @@
+ from __future__ import annotations
+ 
+ import http
+-import typing
+-import warnings
+-
+-__all__ = ("HTTPException", "WebSocketException")
++from collections.abc import Mapping
+ 
+ 
+ class HTTPException(Exception):
+-    def __init__(
+-        self,
+-        status_code: int,
+-        detail: str | None = None,
+-        headers: typing.Mapping[str, str] | None = None,
+-    ) -> None:
++    def __init__(self, status_code: int, detail: str | None = None, headers: Mapping[str, str] | None = None) -> None:
+         if detail is None:
+             detail = http.HTTPStatus(status_code).phrase
+         self.status_code = status_code
+@@ -39,24 +31,3 @@ class WebSocketException(Exception):
+     def __repr__(self) -> str:
+         class_name = self.__class__.__name__
+         return f"{class_name}(code={self.code!r}, reason={self.reason!r})"
+-
+-
+-__deprecated__ = "ExceptionMiddleware"
+-
+-
+-def __getattr__(name: str) -> typing.Any:  # pragma: no cover
+-    if name == __deprecated__:
+-        from starlette.middleware.exceptions import ExceptionMiddleware
+-
+-        warnings.warn(
+-            f"{__deprecated__} is deprecated on `starlette.exceptions`. "
+-            f"Import it from `starlette.middleware.exceptions` instead.",
+-            category=DeprecationWarning,
+-            stacklevel=3,
+-        )
+-        return ExceptionMiddleware
+-    raise AttributeError(f"module '{__name__}' has no attribute '{name}'")
+-
+-
+-def __dir__() -> list[str]:
+-    return sorted(list(__all__) + [__deprecated__])  # pragma: no cover
+diff --git a/tests/test_exceptions.py b/tests/test_exceptions.py
+index ff29132..fe5da0b 100644
+--- a/tests/test_exceptions.py
++++ b/tests/test_exceptions.py
+@@ -1,4 +1,3 @@
+-import warnings
+ from collections.abc import Generator
+ 
+ import pytest
+@@ -181,19 +180,6 @@ def test_websocket_repr() -> None:
+     )
+ 
+ 
+-def test_exception_middleware_deprecation() -> None:
+-    # this test should be removed once the deprecation shim is removed
+-    with pytest.warns(DeprecationWarning):
+-        from starlette.exceptions import ExceptionMiddleware  # noqa: F401
+-
+-    with warnings.catch_warnings():
+-        warnings.simplefilter("error")
+-        import starlette.exceptions
+-
+-    with pytest.warns(DeprecationWarning):
+-        starlette.exceptions.ExceptionMiddleware
+-
+-
+ def test_request_in_app_and_handler_is_the_same_object(client: TestClient) -> None:
+     response = client.post("/consume_body_in_endpoint_and_handler", content=b"Hello!")
+     assert response.status_code == 422

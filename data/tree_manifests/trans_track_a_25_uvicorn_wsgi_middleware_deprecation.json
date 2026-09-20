@@ -1,0 +1,420 @@
+{
+  "transition_id": "trans_track_a_25_uvicorn_wsgi_middleware_deprecation",
+  "repo_name": "encode/uvicorn",
+  "base_commit": "23b9f05a389a476aee151698cede171d915f6c53",
+  "target_commit": "2351d5ff2b068d7bcba6eaccde83bc90b0727c89",
+  "pkg_path": "uvicorn",
+  "tree_purity_status": "TREE_PURITY_PASS",
+  "before_tree_purity": "TREE_PURITY_PASS",
+  "after_tree_purity": "TREE_PURITY_PASS",
+  "before_mismatches": [],
+  "after_mismatches": [],
+  "total_files_before": 40,
+  "total_files_after": 40,
+  "has_environment_overlay": false,
+  "before_files": [
+    {
+      "relative_path": "uvicorn/__init__.py",
+      "size": 147,
+      "sha256": "8bd75fb993627fd4675c554dacd45fb438bbd79020ee87ee53756baf2f82570c"
+    },
+    {
+      "relative_path": "uvicorn/__main__.py",
+      "size": 62,
+      "sha256": "0d08b3cba9ca3f4cb084fa6708782644360831f72a64a544ccd2164198eab554"
+    },
+    {
+      "relative_path": "uvicorn/_subprocess.py",
+      "size": 2403,
+      "sha256": "ce2a7b92a22558bfc61bb7419e5f5d56ecd27278c3b7ded5249347e4f24572db"
+    },
+    {
+      "relative_path": "uvicorn/_types.py",
+      "size": 423,
+      "sha256": "8f2b24f03bf54b6daa814f4fe295602f3f17c33ed53bad4018255c090af87de6"
+    },
+    {
+      "relative_path": "uvicorn/config.py",
+      "size": 21508,
+      "sha256": "36ff959202d402e85ebc66fa0a0262b57dd533fb6b19fb345e7a05d55a09441d"
+    },
+    {
+      "relative_path": "uvicorn/importer.py",
+      "size": 1166,
+      "sha256": "686c1bd27ca06339eb8dda290e47266f25951d7759008a2e9cf1cf110db8e479"
+    },
+    {
+      "relative_path": "uvicorn/lifespan/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "uvicorn/lifespan/off.py",
+      "size": 232,
+      "sha256": "c23c1b8185181f04d490c4153adfb09cd492984be7aeb720beaeadbb1ff10f6a"
+    },
+    {
+      "relative_path": "uvicorn/lifespan/on.py",
+      "size": 5192,
+      "sha256": "8de9eacc38e212e66d44f2491241347a5140a4666479b6d3d6f70f30a0416e64"
+    },
+    {
+      "relative_path": "uvicorn/logging.py",
+      "size": 4397,
+      "sha256": "91ca9ff8a56b7ee9016739cf08950fea89aa50f5b8e10818596ffe68b7d5c58e"
+    },
+    {
+      "relative_path": "uvicorn/loops/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "uvicorn/loops/asyncio.py",
+      "size": 327,
+      "sha256": "f921e3ca0c7828244610a6948ba9f61944a554f5a6633cf1b2caf1e6abe454c8"
+    },
+    {
+      "relative_path": "uvicorn/loops/auto.py",
+      "size": 400,
+      "sha256": "05656ad7c71ef52a054e8df3e73356d88536f39d2edad46b73a5b22bb89db1d2"
+    },
+    {
+      "relative_path": "uvicorn/loops/uvloop.py",
+      "size": 148,
+      "sha256": "2b84326d8571b4af42d9e9838433d40a40574785cc4f939fbfd04f14fa17d289"
+    },
+    {
+      "relative_path": "uvicorn/main.py",
+      "size": 16351,
+      "sha256": "8dac9a769c3fbfd6f7db86d7f0865a832d5dd91d389c2707c678bc328629b4c3"
+    },
+    {
+      "relative_path": "uvicorn/middleware/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "uvicorn/middleware/asgi2.py",
+      "size": 472,
+      "sha256": "1af7b99755bbfc8c629c90cb10f939aa6c1ca0213b6b0a5ed31f9df4acede0a6"
+    },
+    {
+      "relative_path": "uvicorn/middleware/message_logger.py",
+      "size": 2925,
+      "sha256": "a4b85b7a23f179e1ff1fba246dde51c52f71f58725b9995c08808aa651e1a6c6"
+    },
+    {
+      "relative_path": "uvicorn/middleware/proxy_headers.py",
+      "size": 3072,
+      "sha256": "c7915d4141538b9f878f01a6b0730c888a82dd772014e09ff3799b64e9819464"
+    },
+    {
+      "relative_path": "uvicorn/middleware/wsgi.py",
+      "size": 6718,
+      "sha256": "41e2e13d50bcc7c2202b9f34ed1a206defcc7b5c0d4d6e633754e30f14682600"
+    },
+    {
+      "relative_path": "uvicorn/protocols/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "uvicorn/protocols/http/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "uvicorn/protocols/http/auto.py",
+      "size": 391,
+      "sha256": "7ef626960a83de87247958f5dc786373790c581bbcce3d83d27a5441cbc8ada3"
+    },
+    {
+      "relative_path": "uvicorn/protocols/http/flow_control.py",
+      "size": 1844,
+      "sha256": "d6581cc9d21e3e2e7d7e8f28a8dc717bac2aa6532ba856c1274df240dc810fb5"
+    },
+    {
+      "relative_path": "uvicorn/protocols/http/h11_impl.py",
+      "size": 20049,
+      "sha256": "f0371c6608ea0bafc58b08e0eb40a9337b1f8ac19ea227e905e8a304dcc70d84"
+    },
+    {
+      "relative_path": "uvicorn/protocols/http/httptools_impl.py",
+      "size": 21644,
+      "sha256": "86538941ca16a4955f8c3df21f443d280549b988cbc77391ae84c3d7695fbc84"
+    },
+    {
+      "relative_path": "uvicorn/protocols/utils.py",
+      "size": 1876,
+      "sha256": "27ca59afd01f28433bb65b146fe0d249bb343339ae1ab736eabb2961c73f2277"
+    },
+    {
+      "relative_path": "uvicorn/protocols/websockets/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "uvicorn/protocols/websockets/auto.py",
+      "size": 539,
+      "sha256": "163f81b9f9f2f52cb0f5ccf4317cd92b86a31a4ad348c8352afc2c91f5a3bb27"
+    },
+    {
+      "relative_path": "uvicorn/protocols/websockets/websockets_impl.py",
+      "size": 13623,
+      "sha256": "54a8cfab45d8ddde433ba1f484ef7c846295569127a37db8b23410a1e8d9e6a6"
+    },
+    {
+      "relative_path": "uvicorn/protocols/websockets/wsproto_impl.py",
+      "size": 13326,
+      "sha256": "f14af72c28fc2c34bcbabb972b0ef5bcc6dd813442cf9e90dd64ff5b224a3c6c"
+    },
+    {
+      "relative_path": "uvicorn/py.typed",
+      "size": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "relative_path": "uvicorn/server.py",
+      "size": 11104,
+      "sha256": "86a5d50aa1f8b38b96af265962c3eef0ef9ad5f944e5ff27d84ccacfef5b8b68"
+    },
+    {
+      "relative_path": "uvicorn/supervisors/__init__.py",
+      "size": 670,
+      "sha256": "6121f49f6062ab23799b741a4ff400912d03905136c571e92837383916e1f36a"
+    },
+    {
+      "relative_path": "uvicorn/supervisors/basereload.py",
+      "size": 3341,
+      "sha256": "9b6a055831dd9cc6569c0030ba8af4458dba37de64997d706e83598567916a7c"
+    },
+    {
+      "relative_path": "uvicorn/supervisors/multiprocess.py",
+      "size": 2231,
+      "sha256": "4dd2cccb5171a50a7887b2fbc28c7d9f742ce4aacdac4071b0d645b8cedd389d"
+    },
+    {
+      "relative_path": "uvicorn/supervisors/statreload.py",
+      "size": 1580,
+      "sha256": "a78ffa811f70396453ea4d380c18b0b5097a188370b8a7684d9273e9a7c0ad3e"
+    },
+    {
+      "relative_path": "uvicorn/supervisors/watchfilesreload.py",
+      "size": 2902,
+      "sha256": "e603b796b3e0682eadf2a21600d5b6762017662f292cb63735b425b32c4189ab"
+    },
+    {
+      "relative_path": "uvicorn/supervisors/watchgodreload.py",
+      "size": 5491,
+      "sha256": "fa1b4d213c1501c482068d99855966fec919d7d4bbbb0890cab2547ef1caafc7"
+    },
+    {
+      "relative_path": "uvicorn/workers.py",
+      "size": 3675,
+      "sha256": "5ca0f1b19e2aac273769db5687ac2d977a90944c563d2d0418eb1d04ebe6d718"
+    }
+  ],
+  "after_files": [
+    {
+      "relative_path": "uvicorn/__init__.py",
+      "size": 147,
+      "sha256": "8bd75fb993627fd4675c554dacd45fb438bbd79020ee87ee53756baf2f82570c"
+    },
+    {
+      "relative_path": "uvicorn/__main__.py",
+      "size": 62,
+      "sha256": "0d08b3cba9ca3f4cb084fa6708782644360831f72a64a544ccd2164198eab554"
+    },
+    {
+      "relative_path": "uvicorn/_subprocess.py",
+      "size": 2403,
+      "sha256": "ce2a7b92a22558bfc61bb7419e5f5d56ecd27278c3b7ded5249347e4f24572db"
+    },
+    {
+      "relative_path": "uvicorn/_types.py",
+      "size": 423,
+      "sha256": "8f2b24f03bf54b6daa814f4fe295602f3f17c33ed53bad4018255c090af87de6"
+    },
+    {
+      "relative_path": "uvicorn/config.py",
+      "size": 21508,
+      "sha256": "36ff959202d402e85ebc66fa0a0262b57dd533fb6b19fb345e7a05d55a09441d"
+    },
+    {
+      "relative_path": "uvicorn/importer.py",
+      "size": 1166,
+      "sha256": "686c1bd27ca06339eb8dda290e47266f25951d7759008a2e9cf1cf110db8e479"
+    },
+    {
+      "relative_path": "uvicorn/lifespan/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "uvicorn/lifespan/off.py",
+      "size": 232,
+      "sha256": "c23c1b8185181f04d490c4153adfb09cd492984be7aeb720beaeadbb1ff10f6a"
+    },
+    {
+      "relative_path": "uvicorn/lifespan/on.py",
+      "size": 5192,
+      "sha256": "8de9eacc38e212e66d44f2491241347a5140a4666479b6d3d6f70f30a0416e64"
+    },
+    {
+      "relative_path": "uvicorn/logging.py",
+      "size": 4397,
+      "sha256": "91ca9ff8a56b7ee9016739cf08950fea89aa50f5b8e10818596ffe68b7d5c58e"
+    },
+    {
+      "relative_path": "uvicorn/loops/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "uvicorn/loops/asyncio.py",
+      "size": 327,
+      "sha256": "f921e3ca0c7828244610a6948ba9f61944a554f5a6633cf1b2caf1e6abe454c8"
+    },
+    {
+      "relative_path": "uvicorn/loops/auto.py",
+      "size": 400,
+      "sha256": "05656ad7c71ef52a054e8df3e73356d88536f39d2edad46b73a5b22bb89db1d2"
+    },
+    {
+      "relative_path": "uvicorn/loops/uvloop.py",
+      "size": 148,
+      "sha256": "2b84326d8571b4af42d9e9838433d40a40574785cc4f939fbfd04f14fa17d289"
+    },
+    {
+      "relative_path": "uvicorn/main.py",
+      "size": 16351,
+      "sha256": "8dac9a769c3fbfd6f7db86d7f0865a832d5dd91d389c2707c678bc328629b4c3"
+    },
+    {
+      "relative_path": "uvicorn/middleware/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "uvicorn/middleware/asgi2.py",
+      "size": 472,
+      "sha256": "1af7b99755bbfc8c629c90cb10f939aa6c1ca0213b6b0a5ed31f9df4acede0a6"
+    },
+    {
+      "relative_path": "uvicorn/middleware/message_logger.py",
+      "size": 2925,
+      "sha256": "a4b85b7a23f179e1ff1fba246dde51c52f71f58725b9995c08808aa651e1a6c6"
+    },
+    {
+      "relative_path": "uvicorn/middleware/proxy_headers.py",
+      "size": 3072,
+      "sha256": "c7915d4141538b9f878f01a6b0730c888a82dd772014e09ff3799b64e9819464"
+    },
+    {
+      "relative_path": "uvicorn/middleware/wsgi.py",
+      "size": 7078,
+      "sha256": "2a12f2fe3d821314899296a2d800e14bb3c85e229daecaf2b25040912f27958e"
+    },
+    {
+      "relative_path": "uvicorn/protocols/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "uvicorn/protocols/http/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "uvicorn/protocols/http/auto.py",
+      "size": 391,
+      "sha256": "7ef626960a83de87247958f5dc786373790c581bbcce3d83d27a5441cbc8ada3"
+    },
+    {
+      "relative_path": "uvicorn/protocols/http/flow_control.py",
+      "size": 1844,
+      "sha256": "d6581cc9d21e3e2e7d7e8f28a8dc717bac2aa6532ba856c1274df240dc810fb5"
+    },
+    {
+      "relative_path": "uvicorn/protocols/http/h11_impl.py",
+      "size": 20049,
+      "sha256": "f0371c6608ea0bafc58b08e0eb40a9337b1f8ac19ea227e905e8a304dcc70d84"
+    },
+    {
+      "relative_path": "uvicorn/protocols/http/httptools_impl.py",
+      "size": 21644,
+      "sha256": "86538941ca16a4955f8c3df21f443d280549b988cbc77391ae84c3d7695fbc84"
+    },
+    {
+      "relative_path": "uvicorn/protocols/utils.py",
+      "size": 1876,
+      "sha256": "27ca59afd01f28433bb65b146fe0d249bb343339ae1ab736eabb2961c73f2277"
+    },
+    {
+      "relative_path": "uvicorn/protocols/websockets/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "uvicorn/protocols/websockets/auto.py",
+      "size": 539,
+      "sha256": "163f81b9f9f2f52cb0f5ccf4317cd92b86a31a4ad348c8352afc2c91f5a3bb27"
+    },
+    {
+      "relative_path": "uvicorn/protocols/websockets/websockets_impl.py",
+      "size": 13623,
+      "sha256": "54a8cfab45d8ddde433ba1f484ef7c846295569127a37db8b23410a1e8d9e6a6"
+    },
+    {
+      "relative_path": "uvicorn/protocols/websockets/wsproto_impl.py",
+      "size": 13326,
+      "sha256": "f14af72c28fc2c34bcbabb972b0ef5bcc6dd813442cf9e90dd64ff5b224a3c6c"
+    },
+    {
+      "relative_path": "uvicorn/py.typed",
+      "size": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "relative_path": "uvicorn/server.py",
+      "size": 11104,
+      "sha256": "86a5d50aa1f8b38b96af265962c3eef0ef9ad5f944e5ff27d84ccacfef5b8b68"
+    },
+    {
+      "relative_path": "uvicorn/supervisors/__init__.py",
+      "size": 670,
+      "sha256": "6121f49f6062ab23799b741a4ff400912d03905136c571e92837383916e1f36a"
+    },
+    {
+      "relative_path": "uvicorn/supervisors/basereload.py",
+      "size": 3341,
+      "sha256": "9b6a055831dd9cc6569c0030ba8af4458dba37de64997d706e83598567916a7c"
+    },
+    {
+      "relative_path": "uvicorn/supervisors/multiprocess.py",
+      "size": 2231,
+      "sha256": "4dd2cccb5171a50a7887b2fbc28c7d9f742ce4aacdac4071b0d645b8cedd389d"
+    },
+    {
+      "relative_path": "uvicorn/supervisors/statreload.py",
+      "size": 1580,
+      "sha256": "a78ffa811f70396453ea4d380c18b0b5097a188370b8a7684d9273e9a7c0ad3e"
+    },
+    {
+      "relative_path": "uvicorn/supervisors/watchfilesreload.py",
+      "size": 2902,
+      "sha256": "e603b796b3e0682eadf2a21600d5b6762017662f292cb63735b425b32c4189ab"
+    },
+    {
+      "relative_path": "uvicorn/supervisors/watchgodreload.py",
+      "size": 5491,
+      "sha256": "fa1b4d213c1501c482068d99855966fec919d7d4bbbb0890cab2547ef1caafc7"
+    },
+    {
+      "relative_path": "uvicorn/workers.py",
+      "size": 3675,
+      "sha256": "5ca0f1b19e2aac273769db5687ac2d977a90944c563d2d0418eb1d04ebe6d718"
+    }
+  ],
+  "fixture_manifest_hash": "f0d4be2f01a2d783f534589700c49c02596f61107745d39f378edcfe4546ef7b"
+}

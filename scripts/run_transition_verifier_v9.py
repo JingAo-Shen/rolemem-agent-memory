@@ -31,30 +31,47 @@ from src.fingerprint import DEFAULT_AUDITOR_VERSION
 DATA_DIR = "/code/rolemem-agent-memory/data"
 SPECS_DIR = os.path.join(DATA_DIR, "specs")
 VERIFIER_DIR = os.path.join(DATA_DIR, "verifier_verdicts")
-MANIFEST_PATH = os.path.join(DATA_DIR, "track_a_reconstructed_manifest.jsonl")
+DEFAULT_MANIFEST = os.path.join(DATA_DIR, "track_a_reconstructed_manifest.jsonl")
+SCALE_MANIFEST = os.path.join(DATA_DIR, "track_a_scale_manifest.jsonl")
 
 os.makedirs(VERIFIER_DIR, exist_ok=True)
 
 
-def run_verifier():
+def run_verifier(target_manifest=None):
     print("=== Running TransitionVerifierV9 Persistence ===")
     v9 = TransitionVerifierV9(auditor_version=DEFAULT_AUDITOR_VERSION)
 
-    # Load from manifest for canonical ordering
-    specs = []
-    with open(MANIFEST_PATH, "r", encoding="utf-8") as f:
-        for line in f:
-            if line.strip():
-                item = json.loads(line)
-                # Load corresponding spec JSON
-                spec_path = os.path.join(SPECS_DIR, f"{item['transition_id']}.json")
-                if os.path.exists(spec_path):
-                    with open(spec_path, "r", encoding="utf-8") as sf:
-                        specs.append(json.load(sf))
-                else:
-                    specs.append(item)
+    manifest_files = []
+    if target_manifest:
+        manifest_files.append(target_manifest)
+    elif len(sys.argv) > 1:
+        manifest_files.append(sys.argv[1])
+    else:
+        manifest_files.append(DEFAULT_MANIFEST)
+        if os.path.exists(SCALE_MANIFEST):
+            manifest_files.append(SCALE_MANIFEST)
 
-    print(f"Loaded {len(specs)} transitions to verify.")
+    specs = []
+    seen_tids = set()
+    for mf in manifest_files:
+        if not os.path.exists(mf):
+            continue
+        with open(mf, "r", encoding="utf-8") as f:
+            for line in f:
+                if line.strip():
+                    item = json.loads(line)
+                    tid = item.get("transition_id")
+                    if tid in seen_tids:
+                        continue
+                    seen_tids.add(tid)
+                    spec_path = os.path.join(SPECS_DIR, f"{tid}.json")
+                    if os.path.exists(spec_path):
+                        with open(spec_path, "r", encoding="utf-8") as sf:
+                            specs.append(json.load(sf))
+                    else:
+                        specs.append(item)
+
+    print(f"Loaded {len(specs)} transitions to verify from {manifest_files}.")
 
     verdict_summary = {}
     accept_count = 0

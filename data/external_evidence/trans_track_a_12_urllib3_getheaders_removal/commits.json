@@ -1,0 +1,422 @@
+[
+  {
+    "sha": "52716781e0b3f98086a096ebeb26ec573af8bef3",
+    "node_id": "C_kwDODWjjrtoAKDUyNzE2NzgxZTBiM2Y5ODA4NmEwOTZlYmViMjZlYzU3M2FmOGJlZjM",
+    "commit": {
+      "author": {
+        "name": "Quentin Pradet",
+        "email": "quentin.pradet@gmail.com",
+        "date": "2025-06-16T07:51:18Z"
+      },
+      "committer": {
+        "name": "Quentin Pradet",
+        "email": "quentin.pradet@gmail.com",
+        "date": "2025-06-16T07:51:18Z"
+      },
+      "message": "Remove getheader and getheaders methods",
+      "tree": {
+        "sha": "5d3720625dd6ba1c3f732eeff648e94c847ff997",
+        "url": "https://api.github.com/repos/urllib3/urllib3/git/trees/5d3720625dd6ba1c3f732eeff648e94c847ff997"
+      },
+      "url": "https://api.github.com/repos/urllib3/urllib3/git/commits/52716781e0b3f98086a096ebeb26ec573af8bef3",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEENVQrucDAHV5UeLreamGvhUVBMgMFAmhPzPwACgkQamGvhUVB\nMgNlvA/8Dw5gJjbwJtjciDabekqvcRfm8EtP7s34rAyR8CoXsVmhFkSHfqISreKP\nABW/TCRWoyX6oRTWSQhxCgT4z588lC2Gpx04FTspA6B0mjg4ByjXUNzmNAsF2pJ/\n+u2DE42M7INvjVyhtYx6pIto+HhFoQBHn293umRiG4Cxno55lJV78wbmdHsfk5jI\nJxWK1ULIz6vFcVkiPCM7cW0mc+S/1+xfnIeCMTURfcwWCvTcY+53lh9xEeJQccmV\nzlIyLp2bIf3IELEHPFYf3VstGb4M3YzAqIiJ589v8OE57fhU6FSLm+JVIsneFpob\nfXWaj4uFFwNUsWT+yQsHQJLPIgIdDgto4dOzYbE7ccTR/pdeksKJsMAbWEUa1C8x\nJMYcSlH9BUHKg6M2Cen+zkZVPqvw9N/7V13irkLD+nFjIirSwmELeYKR3x57hphv\n4kD22zWwfFkMtagcNgVh3o4ZOVwDhQI4GvszmdqUIJoop1Oc417s6zT8bKeWrTb4\n9XCzWbtmvJb3HMUgCL9TEJcqQ4dKGjrXR520xRz6NQkGVIdJz5OgZSWffvI3QO0u\neH6MNH96+l0pVwgELzli9CA3PF4M+jXaHwxQGK3fc/esHf8Z/evOpEF96jERA08I\nUkFIo8ykdsTisk4/cIYkBxEXgbap6nIdfCiWntg2Ek4anmhBZfI=\n=4zaq\n-----END PGP SIGNATURE-----",
+        "payload": "tree 5d3720625dd6ba1c3f732eeff648e94c847ff997\nparent 8e32e60d9024c05bc6f7adda08bdf6c539d0b0d4\nauthor Quentin Pradet <quentin.pradet@gmail.com> 1750060278 +0400\ncommitter Quentin Pradet <quentin.pradet@gmail.com> 1750060278 +0400\n\nRemove getheader and getheaders methods\n",
+        "verified_at": "2025-06-16T07:51:53Z"
+      }
+    },
+    "url": "https://api.github.com/repos/urllib3/urllib3/commits/52716781e0b3f98086a096ebeb26ec573af8bef3",
+    "html_url": "https://github.com/urllib3/urllib3/commit/52716781e0b3f98086a096ebeb26ec573af8bef3",
+    "comments_url": "https://api.github.com/repos/urllib3/urllib3/commits/52716781e0b3f98086a096ebeb26ec573af8bef3/comments",
+    "author": {
+      "login": "pquentin",
+      "id": 42327,
+      "node_id": "MDQ6VXNlcjQyMzI3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/42327?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pquentin",
+      "html_url": "https://github.com/pquentin",
+      "followers_url": "https://api.github.com/users/pquentin/followers",
+      "following_url": "https://api.github.com/users/pquentin/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pquentin/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pquentin/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pquentin/subscriptions",
+      "organizations_url": "https://api.github.com/users/pquentin/orgs",
+      "repos_url": "https://api.github.com/users/pquentin/repos",
+      "events_url": "https://api.github.com/users/pquentin/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pquentin/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "pquentin",
+      "id": 42327,
+      "node_id": "MDQ6VXNlcjQyMzI3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/42327?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pquentin",
+      "html_url": "https://github.com/pquentin",
+      "followers_url": "https://api.github.com/users/pquentin/followers",
+      "following_url": "https://api.github.com/users/pquentin/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pquentin/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pquentin/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pquentin/subscriptions",
+      "organizations_url": "https://api.github.com/users/pquentin/orgs",
+      "repos_url": "https://api.github.com/users/pquentin/repos",
+      "events_url": "https://api.github.com/users/pquentin/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pquentin/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "8e32e60d9024c05bc6f7adda08bdf6c539d0b0d4",
+        "url": "https://api.github.com/repos/urllib3/urllib3/commits/8e32e60d9024c05bc6f7adda08bdf6c539d0b0d4",
+        "html_url": "https://github.com/urllib3/urllib3/commit/8e32e60d9024c05bc6f7adda08bdf6c539d0b0d4"
+      }
+    ]
+  },
+  {
+    "sha": "e9cd778408b477b40921c6b60e0f017898ef54fe",
+    "node_id": "C_kwDODWjjrtoAKGU5Y2Q3Nzg0MDhiNDc3YjQwOTIxYzZiNjBlMGYwMTc4OThlZjU0ZmU",
+    "commit": {
+      "author": {
+        "name": "Quentin Pradet",
+        "email": "quentin.pradet@gmail.com",
+        "date": "2025-06-16T07:52:56Z"
+      },
+      "committer": {
+        "name": "Quentin Pradet",
+        "email": "quentin.pradet@gmail.com",
+        "date": "2025-06-16T07:52:56Z"
+      },
+      "message": "Add changelog entry",
+      "tree": {
+        "sha": "f866066e8149e43c924bb16ffc7b769cc7379fe5",
+        "url": "https://api.github.com/repos/urllib3/urllib3/git/trees/f866066e8149e43c924bb16ffc7b769cc7379fe5"
+      },
+      "url": "https://api.github.com/repos/urllib3/urllib3/git/commits/e9cd778408b477b40921c6b60e0f017898ef54fe",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEENVQrucDAHV5UeLreamGvhUVBMgMFAmhPzVsACgkQamGvhUVB\nMgPAqg/+LuOi3l8klccKI0yXrtXE8O9i6krCzPelyIeJ8kQ6Uhn31k+GEeYL7OQn\nJwY82Ogkqzz68MjclOyxWo+ORzjgKD8Q7nItp5CtsuzTKz83ards1PuQe8fCcLTG\nlUedMEId1OhBvhOUAfjvglDuD9v/ni3XiBX1eUEE/Qm2qevl4HapekoiiUSKD80c\nsu203A2YZgatsy82dN9+/q5ewzTn5j98DlZ2IjH7PkJ7L+IThc1lMSaYY1xl3bX/\nGGq39UXCNSLWSYBbN27UquLHr3yx/nfy1lm2DgNmQpa0aDeaFq1r/y6fnWUEhnkY\nlTJvZlteEBduQEPnblgMJsdh0OQiT+rOUJAAFk3Y6iU1FSSEKYaAP7zaeSc0vqpd\nclxoEsr2CQc1dP/UPuphfORhu1FlolPhGS47bSB8B5OF6iEvlKEEGAFYV+4+OHv9\n70nOuE1XD+ulhD/7vtBsQpemsnE3oEaR0WfsyVlZ5Sx9krcpTGciEt9vW243ZfYX\nL7U33QINoLYeb0jeH8PcSb4tsbDDvCKHp92FVq+EmmDGbRfCSovj5nSU4p0ui+LM\n3zy4UW/UXbDsSx2KS9+p7pqpID9rTptFMnPAF0KyvaXjcO1r07tYG05uT5uNyguB\n8PfIFx1X+ZgvplJRVWZcKt16hHhbBTmE9qCi9qLPA5ms994FrB4=\n=hGbC\n-----END PGP SIGNATURE-----",
+        "payload": "tree f866066e8149e43c924bb16ffc7b769cc7379fe5\nparent 52716781e0b3f98086a096ebeb26ec573af8bef3\nauthor Quentin Pradet <quentin.pradet@gmail.com> 1750060376 +0400\ncommitter Quentin Pradet <quentin.pradet@gmail.com> 1750060376 +0400\n\nAdd changelog entry\n",
+        "verified_at": "2025-06-16T07:53:05Z"
+      }
+    },
+    "url": "https://api.github.com/repos/urllib3/urllib3/commits/e9cd778408b477b40921c6b60e0f017898ef54fe",
+    "html_url": "https://github.com/urllib3/urllib3/commit/e9cd778408b477b40921c6b60e0f017898ef54fe",
+    "comments_url": "https://api.github.com/repos/urllib3/urllib3/commits/e9cd778408b477b40921c6b60e0f017898ef54fe/comments",
+    "author": {
+      "login": "pquentin",
+      "id": 42327,
+      "node_id": "MDQ6VXNlcjQyMzI3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/42327?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pquentin",
+      "html_url": "https://github.com/pquentin",
+      "followers_url": "https://api.github.com/users/pquentin/followers",
+      "following_url": "https://api.github.com/users/pquentin/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pquentin/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pquentin/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pquentin/subscriptions",
+      "organizations_url": "https://api.github.com/users/pquentin/orgs",
+      "repos_url": "https://api.github.com/users/pquentin/repos",
+      "events_url": "https://api.github.com/users/pquentin/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pquentin/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "pquentin",
+      "id": 42327,
+      "node_id": "MDQ6VXNlcjQyMzI3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/42327?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pquentin",
+      "html_url": "https://github.com/pquentin",
+      "followers_url": "https://api.github.com/users/pquentin/followers",
+      "following_url": "https://api.github.com/users/pquentin/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pquentin/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pquentin/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pquentin/subscriptions",
+      "organizations_url": "https://api.github.com/users/pquentin/orgs",
+      "repos_url": "https://api.github.com/users/pquentin/repos",
+      "events_url": "https://api.github.com/users/pquentin/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pquentin/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "52716781e0b3f98086a096ebeb26ec573af8bef3",
+        "url": "https://api.github.com/repos/urllib3/urllib3/commits/52716781e0b3f98086a096ebeb26ec573af8bef3",
+        "html_url": "https://github.com/urllib3/urllib3/commit/52716781e0b3f98086a096ebeb26ec573af8bef3"
+      }
+    ]
+  },
+  {
+    "sha": "2cf0f432879e7e65fc99a69f6d726264add52b6a",
+    "node_id": "C_kwDODWjjrtoAKDJjZjBmNDMyODc5ZTdlNjVmYzk5YTY5ZjZkNzI2MjY0YWRkNTJiNmE",
+    "commit": {
+      "author": {
+        "name": "Quentin Pradet",
+        "email": "quentin.pradet@gmail.com",
+        "date": "2025-06-16T10:43:57Z"
+      },
+      "committer": {
+        "name": "Quentin Pradet",
+        "email": "quentin.pradet@gmail.com",
+        "date": "2025-06-16T10:43:57Z"
+      },
+      "message": "Fix lint",
+      "tree": {
+        "sha": "d6b0cd93e08089f9546e2698650271026721dc6d",
+        "url": "https://api.github.com/repos/urllib3/urllib3/git/trees/d6b0cd93e08089f9546e2698650271026721dc6d"
+      },
+      "url": "https://api.github.com/repos/urllib3/urllib3/git/commits/2cf0f432879e7e65fc99a69f6d726264add52b6a",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEENVQrucDAHV5UeLreamGvhUVBMgMFAmhP9XwACgkQamGvhUVB\nMgPp7A//WVJmj4w6QTgmANfJWyYhPjt6vcJtyNeNUn9zR/o/RrgDcHxuRGq11DmJ\nmCrgzVYnjQakakbx2t+adM3vRG8SR/broOXHTIwlQODahHVbJJqV+fmyzbnRgAzG\nNgNt/YBq2Xe2ksu0NLgZRlxRnxZ5YDegI0mYIKDYr5Gys7DL1azlpzhXvx3uIDMs\nxUoHOTW7tkeQKRmiA2VTzH/qG0eP0/5MKur72sQGlfMHfea0TgWB4oyXWlpq6XyF\n1Hn1gHAszNpGB+m6mRxVrcYpbHCDfy+udDzzNhNb67FFgGG7z1dnkQNAmrosChP5\nkV4Y2PwH/vqSveTCC0a25XWsJlCGeMzreUS/SZ2KU4FB9roYgQU6NoH+qQ5JMz/F\n4OzBB9fWg4HeMXcEP3pZFB4d+ajJb4d2mjYTaesz0UsmtOTnaRDBqgfLNEyO164E\nyCuQg5KFE7eboM/mYVmKgdeZkszojpaNFRCKX/q0aUKRQzHhN6l++fVNhqd/FuTs\nnQ9HB6uoKzwnxobz9aukkgM0E1YjUfQkRAxaENm3FD03FLyJtGa6ijjgUIeTEspt\n6FBGOFIWNEmRg+9YWkUvQDKxnEoytgSrRW0l883i81d2w04UipivWH1Iw1jgU6UP\nXreb5jcxOuUZFD9jiMTqkHq7j2ZYQJ7aUfDjUHIc9pns9cyey88=\n=mlhX\n-----END PGP SIGNATURE-----",
+        "payload": "tree d6b0cd93e08089f9546e2698650271026721dc6d\nparent e9cd778408b477b40921c6b60e0f017898ef54fe\nauthor Quentin Pradet <quentin.pradet@gmail.com> 1750070637 +0400\ncommitter Quentin Pradet <quentin.pradet@gmail.com> 1750070637 +0400\n\nFix lint\n",
+        "verified_at": "2025-06-16T10:44:19Z"
+      }
+    },
+    "url": "https://api.github.com/repos/urllib3/urllib3/commits/2cf0f432879e7e65fc99a69f6d726264add52b6a",
+    "html_url": "https://github.com/urllib3/urllib3/commit/2cf0f432879e7e65fc99a69f6d726264add52b6a",
+    "comments_url": "https://api.github.com/repos/urllib3/urllib3/commits/2cf0f432879e7e65fc99a69f6d726264add52b6a/comments",
+    "author": {
+      "login": "pquentin",
+      "id": 42327,
+      "node_id": "MDQ6VXNlcjQyMzI3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/42327?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pquentin",
+      "html_url": "https://github.com/pquentin",
+      "followers_url": "https://api.github.com/users/pquentin/followers",
+      "following_url": "https://api.github.com/users/pquentin/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pquentin/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pquentin/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pquentin/subscriptions",
+      "organizations_url": "https://api.github.com/users/pquentin/orgs",
+      "repos_url": "https://api.github.com/users/pquentin/repos",
+      "events_url": "https://api.github.com/users/pquentin/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pquentin/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "pquentin",
+      "id": 42327,
+      "node_id": "MDQ6VXNlcjQyMzI3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/42327?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pquentin",
+      "html_url": "https://github.com/pquentin",
+      "followers_url": "https://api.github.com/users/pquentin/followers",
+      "following_url": "https://api.github.com/users/pquentin/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pquentin/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pquentin/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pquentin/subscriptions",
+      "organizations_url": "https://api.github.com/users/pquentin/orgs",
+      "repos_url": "https://api.github.com/users/pquentin/repos",
+      "events_url": "https://api.github.com/users/pquentin/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pquentin/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "e9cd778408b477b40921c6b60e0f017898ef54fe",
+        "url": "https://api.github.com/repos/urllib3/urllib3/commits/e9cd778408b477b40921c6b60e0f017898ef54fe",
+        "html_url": "https://github.com/urllib3/urllib3/commit/e9cd778408b477b40921c6b60e0f017898ef54fe"
+      }
+    ]
+  },
+  {
+    "sha": "7c97fad07f4ff5b31d1bd3d6ef3ffb0f48f61709",
+    "node_id": "C_kwDODWjjrtoAKDdjOTdmYWQwN2Y0ZmY1YjMxZDFiZDNkNmVmM2ZmYjBmNDhmNjE3MDk",
+    "commit": {
+      "author": {
+        "name": "Quentin Pradet",
+        "email": "quentin.pradet@gmail.com",
+        "date": "2025-06-23T06:01:40Z"
+      },
+      "committer": {
+        "name": "Quentin Pradet",
+        "email": "quentin.pradet@gmail.com",
+        "date": "2025-06-23T06:01:40Z"
+      },
+      "message": "Merge remote-tracking branch 'origin/main' into remove-getheaders",
+      "tree": {
+        "sha": "226c46f4b78872c43f0a04000266ab5d203282c7",
+        "url": "https://api.github.com/repos/urllib3/urllib3/git/trees/226c46f4b78872c43f0a04000266ab5d203282c7"
+      },
+      "url": "https://api.github.com/repos/urllib3/urllib3/git/commits/7c97fad07f4ff5b31d1bd3d6ef3ffb0f48f61709",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEENVQrucDAHV5UeLreamGvhUVBMgMFAmhY7cUACgkQamGvhUVB\nMgMKiw//XB5UGUuSrgiN43xYCvTL2yIow8h/kUWRtR/I4RUDhqjQ8S2AdBE6iiHX\nPUKDV8LehG9e83rJw70DxBz28Fe/YEC6Bi0qIIqLlm4k4Xpywe28PrPKlsAEDky/\niFMk6u+6ejx0y1ZK3RnC8hCtMu4Px0m6qxpmFgs4Q1qLT4uCf/1nMFdQH7x1rHpb\nzdSheusp50QsmzVM7t2NFLA5bCcNPdaG6qSvIFfFkdh+EwjN/eQkMJvlkofviKeu\nFPrvhEbEq+La2pWRbodhqddrcQavZeVFE9nARM2xe23cQ4m9djpRo+LUMgKtGJRa\nHB6drpXova8AIzfNvxdAuBpxVVAwi35dmg0jitxQvx42Dqg4+0DIqgb6FgPPQUVM\niZbIzWte7bBpd1LE8SxtSNWUjK/ZEmKyAVcJ1UgnHojTRTDyHpSVl4a/Gd0VNp4p\nIYM0AWYVRdZnCfSeMwhsJ6cKYxysfqSPBHjugYZJink96aCZeH4EoKCKgYQKRjOy\nkBdE1ujWEjTMpcN58gIFukoaOCvIlkwFGHb/p+6hYE6obH/aPSb5dGjqSgL2QEmd\n0SAGHVvlCgUsZzJJS0kULSexuZ/fhX4jm38a+VbFYMeJyTJSTviarb+2lcb8VGXO\nXZSK3EMnAfwGG+c8c66/Z+kq9b1xgRv+k5g+ktFZ4QdaXT4sn5k=\n=VyjF\n-----END PGP SIGNATURE-----",
+        "payload": "tree 226c46f4b78872c43f0a04000266ab5d203282c7\nparent 2cf0f432879e7e65fc99a69f6d726264add52b6a\nparent f80d281fe53dfe93004b856ba8b9adb3fa37da77\nauthor Quentin Pradet <quentin.pradet@gmail.com> 1750658500 +0400\ncommitter Quentin Pradet <quentin.pradet@gmail.com> 1750658500 +0400\n\nMerge remote-tracking branch 'origin/main' into remove-getheaders\n",
+        "verified_at": "2025-06-23T06:01:46Z"
+      }
+    },
+    "url": "https://api.github.com/repos/urllib3/urllib3/commits/7c97fad07f4ff5b31d1bd3d6ef3ffb0f48f61709",
+    "html_url": "https://github.com/urllib3/urllib3/commit/7c97fad07f4ff5b31d1bd3d6ef3ffb0f48f61709",
+    "comments_url": "https://api.github.com/repos/urllib3/urllib3/commits/7c97fad07f4ff5b31d1bd3d6ef3ffb0f48f61709/comments",
+    "author": {
+      "login": "pquentin",
+      "id": 42327,
+      "node_id": "MDQ6VXNlcjQyMzI3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/42327?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pquentin",
+      "html_url": "https://github.com/pquentin",
+      "followers_url": "https://api.github.com/users/pquentin/followers",
+      "following_url": "https://api.github.com/users/pquentin/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pquentin/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pquentin/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pquentin/subscriptions",
+      "organizations_url": "https://api.github.com/users/pquentin/orgs",
+      "repos_url": "https://api.github.com/users/pquentin/repos",
+      "events_url": "https://api.github.com/users/pquentin/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pquentin/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "pquentin",
+      "id": 42327,
+      "node_id": "MDQ6VXNlcjQyMzI3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/42327?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pquentin",
+      "html_url": "https://github.com/pquentin",
+      "followers_url": "https://api.github.com/users/pquentin/followers",
+      "following_url": "https://api.github.com/users/pquentin/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pquentin/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pquentin/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pquentin/subscriptions",
+      "organizations_url": "https://api.github.com/users/pquentin/orgs",
+      "repos_url": "https://api.github.com/users/pquentin/repos",
+      "events_url": "https://api.github.com/users/pquentin/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pquentin/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "2cf0f432879e7e65fc99a69f6d726264add52b6a",
+        "url": "https://api.github.com/repos/urllib3/urllib3/commits/2cf0f432879e7e65fc99a69f6d726264add52b6a",
+        "html_url": "https://github.com/urllib3/urllib3/commit/2cf0f432879e7e65fc99a69f6d726264add52b6a"
+      },
+      {
+        "sha": "f80d281fe53dfe93004b856ba8b9adb3fa37da77",
+        "url": "https://api.github.com/repos/urllib3/urllib3/commits/f80d281fe53dfe93004b856ba8b9adb3fa37da77",
+        "html_url": "https://github.com/urllib3/urllib3/commit/f80d281fe53dfe93004b856ba8b9adb3fa37da77"
+      }
+    ]
+  },
+  {
+    "sha": "a7ed3452b5aeb831a887479ac82d5be780cb59ac",
+    "node_id": "C_kwDODWjjrtoAKGE3ZWQzNDUyYjVhZWI4MzFhODg3NDc5YWM4MmQ1YmU3ODBjYjU5YWM",
+    "commit": {
+      "author": {
+        "name": "Quentin Pradet",
+        "email": "quentin.pradet@gmail.com",
+        "date": "2025-08-06T04:17:10Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2025-08-06T04:17:10Z"
+      },
+      "message": "Merge branch 'main' into remove-getheaders",
+      "tree": {
+        "sha": "30108d2ad8e5735db39e83736109f7f37a4e0d1e",
+        "url": "https://api.github.com/repos/urllib3/urllib3/git/trees/30108d2ad8e5735db39e83736109f7f37a4e0d1e"
+      },
+      "url": "https://api.github.com/repos/urllib3/urllib3/git/commits/a7ed3452b5aeb831a887479ac82d5be780cb59ac",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJoktdHCRC1aQ7uu5UhlAAAfl8QAJKbgNRZWEfo/2ldZnequSCy\nUbknFIDd9sIabk5Px5KCEVrNiOh3gb+sx0yQI6fCaFQZTR4sKPfqq7aryOw/mP6C\nGDbKIfQLBxWNuGvus2TVfK8UZ/tW0iZT6Njh4NZjfsGb65/qVpNFVxhL4eY9OsJe\nLmJuwchHczoHCsP4EZYLjrYTgB7BPAotZAZCXM66jlQohj4JMvP8YkgADj7D4GMa\nNyi6fG4LjWtd3rCESsnSmCU20PJ31gjuE5LPXQPsUF4xkvuCYRQ9yyQUCX36ZHP0\n+O38WQ3CNmfsmi438z2sOyNrpqQT9elPuAYY/BjzCoyBE9+NxoT12rqRK5uwSGKJ\neH12hEHbYwDsnnCQ6kgl2lth0TsT9hPKS+BMC5R5blAyDk4Y0LenGzFV75qY9UrN\n0PUnoFOwYL07TRlQaah9ye/KXuba5jn4Z+ghSi9hpZjuSs+g6qujkIUYtictJODm\nkReoizZIiSu5q4gCEdZi8/FarwFn9J47butgFhTEqzdBZOrUAbpPMgc6Drdz8RjC\n3XxXK+is+sa6AawN8cqqZJ/VA2rhVliCmUB4htjvglj7MqmZxlRvP3CC/wB9QvoC\nGM+ryTmF6QKGGEJdxdkAwHBdj/5dnNJlpJrzeg91KuwYY2aFW99KQb/ohCTuv6Ty\ntWFL9X8sO/7atqe+IuKY\n=CxEh\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 30108d2ad8e5735db39e83736109f7f37a4e0d1e\nparent 7c97fad07f4ff5b31d1bd3d6ef3ffb0f48f61709\nparent 7e5bcfc46a6c14e16f1ea3ccd6884f6d9d9a15c3\nauthor Quentin Pradet <quentin.pradet@gmail.com> 1754453830 +0400\ncommitter GitHub <noreply@github.com> 1754453830 +0400\n\nMerge branch 'main' into remove-getheaders",
+        "verified_at": "2025-08-06T04:17:11Z"
+      }
+    },
+    "url": "https://api.github.com/repos/urllib3/urllib3/commits/a7ed3452b5aeb831a887479ac82d5be780cb59ac",
+    "html_url": "https://github.com/urllib3/urllib3/commit/a7ed3452b5aeb831a887479ac82d5be780cb59ac",
+    "comments_url": "https://api.github.com/repos/urllib3/urllib3/commits/a7ed3452b5aeb831a887479ac82d5be780cb59ac/comments",
+    "author": {
+      "login": "pquentin",
+      "id": 42327,
+      "node_id": "MDQ6VXNlcjQyMzI3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/42327?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pquentin",
+      "html_url": "https://github.com/pquentin",
+      "followers_url": "https://api.github.com/users/pquentin/followers",
+      "following_url": "https://api.github.com/users/pquentin/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pquentin/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pquentin/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pquentin/subscriptions",
+      "organizations_url": "https://api.github.com/users/pquentin/orgs",
+      "repos_url": "https://api.github.com/users/pquentin/repos",
+      "events_url": "https://api.github.com/users/pquentin/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pquentin/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "7c97fad07f4ff5b31d1bd3d6ef3ffb0f48f61709",
+        "url": "https://api.github.com/repos/urllib3/urllib3/commits/7c97fad07f4ff5b31d1bd3d6ef3ffb0f48f61709",
+        "html_url": "https://github.com/urllib3/urllib3/commit/7c97fad07f4ff5b31d1bd3d6ef3ffb0f48f61709"
+      },
+      {
+        "sha": "7e5bcfc46a6c14e16f1ea3ccd6884f6d9d9a15c3",
+        "url": "https://api.github.com/repos/urllib3/urllib3/commits/7e5bcfc46a6c14e16f1ea3ccd6884f6d9d9a15c3",
+        "html_url": "https://github.com/urllib3/urllib3/commit/7e5bcfc46a6c14e16f1ea3ccd6884f6d9d9a15c3"
+      }
+    ]
+  }
+]

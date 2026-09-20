@@ -1,0 +1,40 @@
+{
+  "task_id": "trans_track_a_15_more_itertools_zip_equal_removal",
+  "condition": "S2",
+  "seed": 42,
+  "memory_source": "STALE_MEMORY_CANDIDATE",
+  "memory_statements": [
+    "Use more_itertools.zip_equal to pair iterables with length equality validation."
+  ],
+  "retrieved_files": [],
+  "repository_context_tokens": 1194,
+  "is_stale_action": true,
+  "ast_details": {
+    "stale_active_use": true,
+    "stale_mention": false,
+    "active_nodes": [
+      {
+        "type": "ImportFrom",
+        "lineno": 1,
+        "module": "more_itertools",
+        "symbol": "zip_equal"
+      },
+      {
+        "type": "CallStaleImported",
+        "lineno": 18,
+        "symbol": "zip_equal",
+        "matched": "zip_equal"
+      },
+      {
+        "type": "NameStaleImported(Load)",
+        "lineno": 18,
+        "symbol": "zip_equal",
+        "matched": "zip_equal"
+      }
+    ]
+  },
+  "pytest_pass": false,
+  "pytest_log_excerpt": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_xxge0y7k\nplugins: anyio-4.15.1\ncollecting ... collected 0 items / 1 error\n\n==================================== ERRORS ====================================\n___________",
+  "overall_task_success": false,
+  "parsed_code": "from more_itertools import zip_equal\n\ndef pair_strictly(iter1, iter2):\n    \"\"\"\n    Pair elements from two iterables, raising ValueError if lengths differ.\n    \n    Args:\n    iter1 (iterable): The first iterable to pair.\n    iter2 (iterable): The second iterable to pair.\n    \n    Returns:\n    iterator: An iterator over pairs of elements from iter1 and iter2.\n    \n    Raises:\n    ValueError: If the lengths of iter1 and iter2 are not equal.\n    \"\"\"\n    try:\n        paired_iter = zip_equal(iter1, iter2)\n    except ValueError as e:\n        raise ValueError(\"Iterables have different lengths\") from e\n    \n    return paired_iter"
+}

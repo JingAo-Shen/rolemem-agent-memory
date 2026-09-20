@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_13_starlette_weak_etag_removeprefix",
+  "repo_name": "encode/starlette",
+  "repo_url": "https://github.com/encode/starlette",
+  "pr_url": "https://github.com/encode/starlette/pull/3193",
+  "target_commit": "37309255b4c1b9c381a2d24a1eaf83100984a16a",
+  "pkg_path": "starlette",
+  "changed_files": [
+    "starlette/staticfiles.py"
+  ],
+  "primary_file": "starlette/staticfiles.py",
+  "symbol": "StaticFiles.is_not_modified",
+  "deprecated_symbols": [
+    "False",
+    "return False"
+  ],
+  "replacement_symbols": [
+    "StaticFiles",
+    "is_not_modified"
+  ],
+  "repository_change": "Weak ETag stripping upgraded to use str.removeprefix to prevent stripping valid W characters.",
+  "stale_memory_candidate": "StaticFiles.is_not_modified mishandles weak etags starting with W; return False.",
+  "valid_memory_candidate": "Call StaticFiles.is_not_modified to verify weak etag matches.",
+  "transition_type": "API_EVOLUTION",
+  "stale_sensitive": false,
+  "current_task": "Implement `is_etag_not_modified(etag, if_none_match)` in `etag_helper.py` verifying weak etags properly.",
+  "target_file": "etag_helper.py",
+  "target_symbol": "is_etag_not_modified",
+  "stale_solution": "def is_etag_not_modified(etag: str, if_none_match: str) -> bool:\n    return False\n",
+  "valid_solution": "from starlette.staticfiles import StaticFiles\n\ndef is_etag_not_modified(etag: str, if_none_match: str) -> bool:\n    sf = StaticFiles(directory=\".\")\n    return sf.is_not_modified({\"etag\": etag}, {\"if-none-match\": if_none_match})\n",
+  "hidden_test": "import pytest\nimport etag_helper\n\ndef test_etag_normalization():\n    assert etag_helper.is_etag_not_modified(\"W123\", \"W123\") is True\n",
+  "base_commit": "e6f7ad1ab85efb27ab7910d8007b3f4531f7b083",
+  "external_pr_url": "https://github.com/encode/starlette/pull/3193",
+  "track": "TRACK_A_STALE_SENSITIVE"
+}

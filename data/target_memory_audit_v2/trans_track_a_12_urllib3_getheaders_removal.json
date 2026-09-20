@@ -1,0 +1,34 @@
+{
+  "transition_id": "trans_track_a_12_urllib3_getheaders_removal",
+  "provenance_status": "TARGET_MEMORY_PROVENANCE_FAIL",
+  "recomputed_hashes": {
+    "diff_hunk_sha256": "85bdbefbde717940f904ae118f1e7ce654954e370fd975304f3767caee1152b7",
+    "evidence_excerpt_hash": "6cd817b9db026dedacbb95ff390b65682b58f4e445b6c70b232bf6fba33d34f3",
+    "ground_truth_audit_hash": "ec46c8a7c114b4ecc66c9291c6da4fb5af02b0b09168883a2eddb5f2dbb3cd17"
+  },
+  "checks": {
+    "source_pr_matches": true,
+    "source_commit_matches": true,
+    "artifact_in_diff": true,
+    "diff_hunk_sha256_verified": true,
+    "diff_patch_sha256_verified": true,
+    "evidence_excerpt_hash_verified": false,
+    "ground_truth_audit_hash_verified": false,
+    "statement_entailment": "ENTAILED"
+  },
+  "claim": {
+    "transition_id": "trans_track_a_12_urllib3_getheaders_removal",
+    "statement": "HTTPResponse.getheaders() and getheader() removed in favor of response.headers mapping.",
+    "symbol": "HTTPResponse.getheaders",
+    "replacement": "response.headers, headers",
+    "source_pr_url": "https://github.com/urllib3/urllib3/pull/3622",
+    "source_commit": "4587fd6d477f22022be08de597c3a5acd5185c0a",
+    "evidence_file": "data/external_evidence/trans_track_a_12_urllib3_getheaders_removal/diff.patch",
+    "supporting_hunk": "@@ -0,0 +1,2 @@\n+Removed the ``HTTPResponse.getheaders()`` method in favor of ``HTTPResponse.headers``.\n+Removed the ``HTTPResponse.getheader(name, default)`` method in favor of ``HTTPResponse.headers.get(name, default)``.",
+    "evidence_hunk_sha256": "85bdbefbde717940f904ae118f1e7ce654954e370fd975304f3767caee1152b7",
+    "diff_patch_sha256": "d5e88228b8f0b1752cf044dd88da99ca098aa3d742319e1c614a7431d59ce4f5",
+    "evidence_excerpt_hash": "bdbd832ed19e1d90f661d828bbae5fb21736e86d47cc8bbc2711f78b616b6a73",
+    "ground_truth_audit_hash": "",
+    "artifact": "src/urllib3/response.py"
+  }
+}

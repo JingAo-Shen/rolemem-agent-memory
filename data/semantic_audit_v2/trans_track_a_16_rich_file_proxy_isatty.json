@@ -1,0 +1,92 @@
+{
+  "transition_id": "trans_track_a_16_rich_file_proxy_isatty",
+  "repo_name": "Textualize/rich",
+  "auditor_version": "2.0.0",
+  "spec_sha256": "9bc6219bb00eabffa2aed8c4f0d7b96d34b83cbcb15e3d70f3a8e6d0cbdc0978",
+  "audit_fingerprint": "18b49fdf87464a1b1d525f6b4867b07aaf307e51b42119faf46562fa3e6560b0",
+  "gates": [
+    {
+      "gate_id": "G1",
+      "name": "PR evidence <-> repository_change",
+      "expected": "PR title/body describes the repository architectural or API change",
+      "observed": "Word overlap: ['isatty'] | PR title: proxy isatty",
+      "evidence": "pr.json:title='proxy isatty'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G2",
+      "name": "repository_change <-> actual diff",
+      "expected": "Actual diff contains code edits in files specified in repository_change",
+      "observed": "Diff mentions files: ['rich/file_proxy.py'] -> True",
+      "evidence": "diff.patch length: 1439 bytes",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G3",
+      "name": "actual diff <-> changed/deprecated/replacement symbols",
+      "expected": "Diff patch directly modifies or introduces the target symbols",
+      "observed": "Tokens ['False', 'return False', 'isatty', 'isatty'] found in diff: True",
+      "evidence": "Matching symbols in diff: ['isatty', 'isatty']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G4",
+      "name": "stale memory <-> base-state behavior",
+      "expected": "Stale memory candidate instructs usage of legacy symbol from base state",
+      "observed": "Stale memory references legacy symbol: True",
+      "evidence": "stale_memory_candidate='FileProxy lacks isatty method; return False directly....'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G5",
+      "name": "valid memory <-> target-state behavior",
+      "expected": "Valid memory candidate instructs modern pattern introduced in target state",
+      "observed": "Valid memory references modern symbol: True",
+      "evidence": "valid_memory_candidate='Call proxy.isatty() directly on rich FileProxy instances....'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G6",
+      "name": "current task <-> transition capability",
+      "expected": "Evaluation task prompt requires implementing or using transition capability",
+      "observed": "Task exercises target file 'proxy_checker.py' and target symbol 'check_proxy_interactive': True",
+      "evidence": "current_task='Implement `check_proxy_interactive(proxy)` in `proxy_checker.py` returning bool ...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G7",
+      "name": "hidden test strength <-> current task semantics",
+      "expected": "Hidden test verifies target capability with mutation_kill_rate >= 0.80 and zero constant-return bypass",
+      "observed": "Semantic match: True, Mutation kill rate: 100.0%, Constant return bypass: False",
+      "evidence": "test_strength/trans_track_a_16_rich_file_proxy_isatty.json, len=360 bytes",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G8",
+      "name": "stale control <-> stale memory semantics",
+      "expected": "Stale control solution invokes deprecated API as instructed by stale memory",
+      "observed": "Stale control uses deprecated symbol: True",
+      "evidence": "stale_solution.py contains ['False', 'return False']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G9",
+      "name": "valid control <-> valid memory semantics",
+      "expected": "Valid control solution invokes modern API as instructed by valid memory",
+      "observed": "Valid control uses replacement symbol: True",
+      "evidence": "valid_solution.py contains modern pattern: True",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G10",
+      "name": "causal matrix <-> transition evidence",
+      "expected": "Causal counterfactual matrix demonstrates base-state pass, target-state fail with genuine failure taxonomy",
+      "observed": "Causal status: 'CAUSAL_PASS', failure taxonomy: 'BEHAVIOR_MISMATCH'",
+      "evidence": "causal_counterfactual/trans_track_a_16_rich_file_proxy_isatty.json",
+      "status": "PASS"
+    }
+  ],
+  "passed_gates_count": 10,
+  "total_gates_count": 10,
+  "overall_status": "PASS"
+}

@@ -1,0 +1,8 @@
+{
+  "transition_id": "trans_track_a_25_uvicorn_wsgi_middleware_deprecation",
+  "audit_fingerprint": "77c6d3910d6f91fa8d9ab559d3b7f32e1a82ff322dcf20cc03214ed868c5b881",
+  "status": "PASS",
+  "valid_control_status": "PASS",
+  "stale_control_status": "PASS",
+  "details": "valid_target=True, stale_target=False"
+}

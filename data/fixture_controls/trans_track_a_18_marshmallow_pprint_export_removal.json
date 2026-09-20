@@ -1,0 +1,8 @@
+{
+  "transition_id": "trans_track_a_18_marshmallow_pprint_export_removal",
+  "audit_fingerprint": "df6818145478492112a827c2d11d43f6f4a6cdc5c9f6a43dd39ad1f9e655fb95",
+  "status": "PASS",
+  "valid_control_status": "PASS",
+  "stale_control_status": "PASS",
+  "details": "valid_target=True, stale_target=False"
+}

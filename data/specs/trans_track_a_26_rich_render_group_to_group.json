@@ -1,0 +1,36 @@
+{
+  "transition_id": "trans_track_a_26_rich_render_group_to_group",
+  "repo_name": "Textualize/rich",
+  "repo_url": "https://github.com/Textualize/rich",
+  "pr_url": "https://github.com/Textualize/rich/pull/1819",
+  "target_commit": "44a715dec2b08277742939598fa28d056d6faef9",
+  "pkg_path": "rich",
+  "changed_files": [
+    "rich/console.py",
+    "CHANGELOG.md"
+  ],
+  "primary_file": "rich/console.py",
+  "symbol": "rich.console.RenderGroup",
+  "deprecated_symbols": [
+    "RenderGroup",
+    "rich.console.RenderGroup"
+  ],
+  "replacement_symbols": [
+    "Group",
+    "rich.console.Group"
+  ],
+  "repository_change": "rich.console.RenderGroup removed from rich.console in favor of rich.console.Group.",
+  "stale_memory_candidate": "Import and instantiate rich.console.RenderGroup to group renderable objects.",
+  "valid_memory_candidate": "Import and instantiate rich.console.Group to group renderable objects.",
+  "transition_type": "API_REMOVAL",
+  "stale_sensitive": true,
+  "current_task": "Implement `create_render_group(*items)` in `group_factory.py` creating a consolidated renderable group.",
+  "target_file": "group_factory.py",
+  "target_symbol": "create_render_group",
+  "stale_solution": "from rich.console import RenderGroup\n\ndef create_render_group(*items):\n    return RenderGroup(*items)\n",
+  "valid_solution": "from rich.console import Group\n\ndef create_render_group(*items):\n    return Group(*items)\n",
+  "hidden_test": "import pytest\nfrom rich.console import Group\nimport group_factory\n\ndef test_create_render_group():\n    grp = group_factory.create_render_group(\"item1\", \"item2\")\n    assert isinstance(grp, Group)\n    assert list(grp.renderables) == [\"item1\", \"item2\"]\n",
+  "base_commit": "d65c3bd53da234a4047c469aa7740e03d1a622f7",
+  "external_pr_url": "https://github.com/Textualize/rich/pull/1819",
+  "track": "TRACK_A_STALE_SENSITIVE"
+}

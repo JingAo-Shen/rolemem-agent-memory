@@ -1,0 +1,92 @@
+{
+  "transition_id": "trans_track_a_15_more_itertools_zip_equal_removal",
+  "repo_name": "more-itertools/more-itertools",
+  "auditor_version": "2.0.0",
+  "spec_sha256": "765115632fb36f11993f5176ddd877f9edecaab39e9b637505085896f4e87215",
+  "audit_fingerprint": "759728f6870b2ddd9ddd1db05fb1e4c691a0bab3203fa48b9901dd587ea8f90d",
+  "gates": [
+    {
+      "gate_id": "G1",
+      "name": "PR evidence <-> repository_change",
+      "expected": "PR title/body describes the repository architectural or API change",
+      "observed": "Word overlap: ['built', 'more_itertools', 'python', 'removed', 'zip'] | PR title: Set minimum version to 3.10",
+      "evidence": "pr.json:title='Set minimum version to 3.10'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G2",
+      "name": "repository_change <-> actual diff",
+      "expected": "Actual diff contains code edits in files specified in repository_change",
+      "observed": "Diff mentions files: ['more_itertools/more.py', 'more_itertools/recipes.py'] -> True",
+      "evidence": "diff.patch length: 24509 bytes",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G3",
+      "name": "actual diff <-> changed/deprecated/replacement symbols",
+      "expected": "Diff patch directly modifies or introduces the target symbols",
+      "observed": "Tokens ['from more_itertools import zip_equal', 'zip_equal', 'zip(*iterables, strict=True)', ', strict=True)'] found in diff: True",
+      "evidence": "Matching symbols in diff: ['zip_equal', ', strict=True)']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G4",
+      "name": "stale memory <-> base-state behavior",
+      "expected": "Stale memory candidate instructs usage of legacy symbol from base state",
+      "observed": "Stale memory references legacy symbol: True",
+      "evidence": "stale_memory_candidate='Use more_itertools.zip_equal to pair iterables with length equality validation....'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G5",
+      "name": "valid memory <-> target-state behavior",
+      "expected": "Valid memory candidate instructs modern pattern introduced in target state",
+      "observed": "Valid memory references modern symbol: True",
+      "evidence": "valid_memory_candidate='Use Python built-in zip(..., strict=True) to pair iterables with strict length c...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G6",
+      "name": "current task <-> transition capability",
+      "expected": "Evaluation task prompt requires implementing or using transition capability",
+      "observed": "Task exercises target file 'pair_helper.py' and target symbol 'pair_strictly': True",
+      "evidence": "current_task='Implement `pair_strictly(iter1, iter2)` in `pair_helper.py` pairing two iterable...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G7",
+      "name": "hidden test strength <-> current task semantics",
+      "expected": "Hidden test verifies target capability with mutation_kill_rate >= 0.80 and zero constant-return bypass",
+      "observed": "Semantic match: True, Mutation kill rate: 100.0%, Constant return bypass: False",
+      "evidence": "test_strength/trans_track_a_15_more_itertools_zip_equal_removal.json, len=234 bytes",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G8",
+      "name": "stale control <-> stale memory semantics",
+      "expected": "Stale control solution invokes deprecated API as instructed by stale memory",
+      "observed": "Stale control uses deprecated symbol: True",
+      "evidence": "stale_solution.py contains ['from more_itertools import zip_equal', 'zip_equal']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G9",
+      "name": "valid control <-> valid memory semantics",
+      "expected": "Valid control solution invokes modern API as instructed by valid memory",
+      "observed": "Valid control uses replacement symbol: True",
+      "evidence": "valid_solution.py contains modern pattern: True",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G10",
+      "name": "causal matrix <-> transition evidence",
+      "expected": "Causal counterfactual matrix demonstrates base-state pass, target-state fail with genuine failure taxonomy",
+      "observed": "Causal status: 'CAUSAL_PASS', failure taxonomy: 'IMPORT_FAILURE'",
+      "evidence": "causal_counterfactual/trans_track_a_15_more_itertools_zip_equal_removal.json",
+      "status": "PASS"
+    }
+  ],
+  "passed_gates_count": 10,
+  "total_gates_count": 10,
+  "overall_status": "PASS"
+}

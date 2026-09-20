@@ -2,7 +2,7 @@
   "transition_id": "trans_track_a_09_virtualenv_drop_py38_control",
   "provenance_status": "TARGET_MEMORY_VERIFIED",
   "recomputed_hashes": {
-    "diff_hunk_sha256": "1f6f3850e403dd7e400dfea77545f5002531b6a75d0b155a585330485c9ee4d2",
+    "diff_hunk_sha256": "41bb32d43932e23dc497140287fc85919a4465e4a44e4738ca322a08bd7104f1",
     "evidence_excerpt_hash": "81e23693f4ab11edbea169783aee01021a9615d52d186b27718bde01cbc9af7c",
     "ground_truth_audit_hash": "624b8acab07dc912d6e20f1d68e30186535dda5ef407c0be7146cb62ca7f64bd"
   },
@@ -11,6 +11,7 @@
     "source_commit_matches": true,
     "artifact_in_diff": true,
     "diff_hunk_sha256_verified": true,
+    "diff_patch_sha256_verified": true,
     "evidence_excerpt_hash_verified": true,
     "ground_truth_audit_hash_verified": true,
     "statement_entailment": "ENTAILED"
@@ -23,9 +24,11 @@
     "source_pr_url": "https://github.com/pypa/virtualenv/pull/3170",
     "source_commit": "79ce906a2378e24c81a7b27ac506c73d5cc262d9",
     "evidence_file": "data/external_evidence/trans_track_a_09_virtualenv_drop_py38_control/diff.patch",
-    "evidence_hunk_sha256": "1f6f3850e403dd7e400dfea77545f5002531b6a75d0b155a585330485c9ee4d2",
+    "evidence_hunk_sha256": "41bb32d43932e23dc497140287fc85919a4465e4a44e4738ca322a08bd7104f1",
     "evidence_excerpt_hash": "81e23693f4ab11edbea169783aee01021a9615d52d186b27718bde01cbc9af7c",
     "ground_truth_audit_hash": "624b8acab07dc912d6e20f1d68e30186535dda5ef407c0be7146cb62ca7f64bd",
-    "artifact": "src/virtualenv/create/via_global_ref/builtin/cpython/cpython3.py"
+    "artifact": "src/virtualenv/create/via_global_ref/builtin/cpython/cpython3.py",
+    "supporting_hunk": "@@ -69,24 +68,6 @@ def install_venv_shared_libs(self, venv_creator: Venv) -> None:\n         ensure_dir(dest.parent)\n         copy_path(shared_lib, dest)\n \n-    def env_patch_text(self) -> str:\n-        text = super().env_patch_text()\n-        if self.pyvenv_launch_patch_active(self.interpreter):\n-            text += dedent(\n-                \"\"\"\n-                # for https://github.com/python/cpython/pull/9516, see https://github.com/pypa/virtualenv/issues/1704\n-                import os\n-                if \"__PYVENV_LAUNCHER__\" in os.environ:\n-                    del os.environ[\"__PYVENV_LAUNCHER__\"]\n-                \"\"\",\n-            )\n-        return text\n-\n-    @classmethod\n-    def pyvenv_launch_patch_active(cls, interpreter: PythonInfo) -> bool:  # drop when Python 3.8 support is dropped\n-        ver = interpreter.version_info\n-        return interpreter.platform == \"darwin\" and (3, 8, 3) > ver >= (3, 8)\n-\n \n class CPython3Windows(CPythonWindows, CPython3):\n     \"\"\"CPython 3 on Windows.\"\"\"",
+    "diff_patch_sha256": "1f6f3850e403dd7e400dfea77545f5002531b6a75d0b155a585330485c9ee4d2"
   }
 }

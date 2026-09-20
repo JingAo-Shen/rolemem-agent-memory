@@ -1,0 +1,21 @@
+{
+  "task_id": "trans_track_a_19_flake8_doctest_options_removal",
+  "condition": "S3",
+  "seed": 42,
+  "memory_source": "VALID_MEMORY_CANDIDATE",
+  "memory_statements": [
+    "Check with_doctest attribute on FlakesChecker."
+  ],
+  "retrieved_files": [],
+  "repository_context_tokens": 1115,
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": false,
+    "active_nodes": []
+  },
+  "pytest_pass": false,
+  "pytest_log_excerpt": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_8mo3uj_5\nplugins: anyio-4.15.1\ncollecting ... collected 0 items / 1 error\n\n==================================== ERRORS ====================================\n___________",
+  "overall_task_success": false,
+  "parsed_code": "from typing import Optional\nimport logging\n\nLOG = logging.getLogger(__name__)\n\nclass FlakesChecker:\n    def __init__(self, options: argparse.Namespace) -> None:\n        self.options = options\n        self.doctest_filtering_enabled: Optional[bool] = None\n\n    def start(self) -> None:\n        LOG.info(\"Starting FlakesChecker\")\n        self.doctest_filtering_enabled = self.options.doctest_filtering\n\n    def stop(self) -> None:\n        LOG.info(\"Stopping FlakesChecker\")\n\n    @property\n    def check_doctest_filtering(self) -> bool:\n        return self.doctest_filtering_enabled or False\n\n# Assuming argparse is imported elsewhere in your codebase\nimport argparse\n\ndef main():\n    parser = argparse.ArgumentParser(description=\"Flake8 Configuration Example\")\n    parser.add_argument(\"--doctest-filtering\", action=\"store_true\", help=\"Enable doctest filtering\")\n    args = parser.parse_args()\n\n    checker = FlakesChecker(args)\n    checker.start()\n    print(f\"Doctest Filtering Enabled: {checker.check_doctest_filtering}\")\n    checker.stop()\n\nif __name__ == \"__main__\":\n    main()"
+}

@@ -1,0 +1,92 @@
+{
+  "transition_id": "trans_track_a_11_requests_json_decode_error",
+  "repo_name": "psf/requests",
+  "auditor_version": "2.0.0",
+  "spec_sha256": "3de2b76170b6508a0d8f6e229c97f2cb1a1ae9e39ac9ab10ada498965582cbc4",
+  "audit_fingerprint": "725c56bae97825a5a8d6e9969b84a0c8ea2d4c0876e8785129553e73b2412685",
+  "gates": [
+    {
+      "gate_id": "G1",
+      "name": "PR evidence <-> repository_change",
+      "expected": "PR title/body describes the repository architectural or API change",
+      "observed": "Word overlap: ['catch', 'exceptions', 'json', 'jsondecodeerror', 'requests'] | PR title: Fix inconsistent exception for JSONDecode error",
+      "evidence": "pr.json:title='Fix inconsistent exception for JSONDecode error'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G2",
+      "name": "repository_change <-> actual diff",
+      "expected": "Actual diff contains code edits in files specified in repository_change",
+      "observed": "Diff mentions files: ['requests/models.py'] -> True",
+      "evidence": "diff.patch length: 1871 bytes",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G3",
+      "name": "actual diff <-> changed/deprecated/replacement symbols",
+      "expected": "Diff patch directly modifies or introduces the target symbols",
+      "observed": "Tokens ['None', 'return None', 'RequestException', 'RequestException'] found in diff: True",
+      "evidence": "Matching symbols in diff: ['None', 'RequestException', 'RequestException']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G4",
+      "name": "stale memory <-> base-state behavior",
+      "expected": "Stale memory candidate instructs usage of legacy symbol from base state",
+      "observed": "Stale memory references legacy symbol: True",
+      "evidence": "stale_memory_candidate='Catching RequestException on response.json() is unsupported; return None on fail...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G5",
+      "name": "valid memory <-> target-state behavior",
+      "expected": "Valid memory candidate instructs modern pattern introduced in target state",
+      "observed": "Valid memory references modern symbol: True",
+      "evidence": "valid_memory_candidate='Catch requests.exceptions.RequestException when parsing json payloads....'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G6",
+      "name": "current task <-> transition capability",
+      "expected": "Evaluation task prompt requires implementing or using transition capability",
+      "observed": "Task exercises target file 'client_parser.py' and target symbol 'parse_api_response': True",
+      "evidence": "current_task='Implement `parse_api_response(resp)` in `client_parser.py` extracting json and c...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G7",
+      "name": "hidden test strength <-> current task semantics",
+      "expected": "Hidden test verifies target capability with mutation_kill_rate >= 0.80 and zero constant-return bypass",
+      "observed": "Semantic match: True, Mutation kill rate: 100.0%, Constant return bypass: False",
+      "evidence": "test_strength/trans_track_a_11_requests_json_decode_error.json, len=261 bytes",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G8",
+      "name": "stale control <-> stale memory semantics",
+      "expected": "Stale control solution invokes deprecated API as instructed by stale memory",
+      "observed": "Stale control uses deprecated symbol: True",
+      "evidence": "stale_solution.py contains ['None', 'return None']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G9",
+      "name": "valid control <-> valid memory semantics",
+      "expected": "Valid control solution invokes modern API as instructed by valid memory",
+      "observed": "Valid control uses replacement symbol: True",
+      "evidence": "valid_solution.py contains modern pattern: True",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G10",
+      "name": "causal matrix <-> transition evidence",
+      "expected": "Causal counterfactual matrix demonstrates base-state pass, target-state fail with genuine failure taxonomy",
+      "observed": "Causal status: 'CAUSAL_PASS', failure taxonomy: 'BEHAVIOR_MISMATCH'",
+      "evidence": "causal_counterfactual/trans_track_a_11_requests_json_decode_error.json",
+      "status": "PASS"
+    }
+  ],
+  "passed_gates_count": 10,
+  "total_gates_count": 10,
+  "overall_status": "PASS"
+}

@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_track_a_23_tqdm_asyncio_gather_return_exceptions",
+  "repo_name": "tqdm/tqdm",
+  "pr_number": 1776,
+  "pr_title": "feat(asyncio): add return_exceptions to gather wrapper",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "99615b978702dcf61986de62dfd252d82720af76",
+  "pr_base_sha": "53d096e77c28005b4f9fe1e9d6274ae311bf87e7",
+  "pr_head_sha": "651be40e7747d2d01e839730fd399eabe22237de",
+  "base_commit": "53d096e77c28005b4f9fe1e9d6274ae311bf87e7",
+  "target_commit": "99615b978702dcf61986de62dfd252d82720af76",
+  "ancestry_verified": true,
+  "merge_strategy": "merge_commit",
+  "merge_relationship_verified": true,
+  "diff_match": true,
+  "issue_required": false,
+  "issue_id_verified": null,
+  "issue_status": "NOT_APPLICABLE",
+  "spec_sha256": "fb124e4f0ebed5b441d98754009b7a219791af8365bfeabd5a672f925742994e",
+  "audit_fingerprint": "7469188a1fa3a1c3cd5bf14163506300b7eaf8d50180613f3df9492219f35d96",
+  "auditor_version": "3.0.0",
+  "overall_status": "PASS"
+}

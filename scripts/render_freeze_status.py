@@ -285,15 +285,37 @@ def render_all():
         "这充分证明真实模型在不同 API 场景下的敏感度差异是客观科学现象，绝不为凑数而虚构过时调用率。",
         "",
         "### Q9: H2→H3 的 stale exposure / TSR 变化是多少？",
-        "**答**：在 Qualified Agent Challenges 中：",
-        "- **H2 过时调用暴露率**：平均为 100.0%（真实历史记忆成功诱导模型写出过时 API 调用）；",
-        "- **H3 过时调用暴露率**：下降至 0.0%（目标记忆完全压制过时行为）；",
-        "- **任务成功率（TSR）**：从 H2 的 0.0% 提升至 H3 的 100.0%（完全达成预期行为学因果链）。",
+        "**答**：在 Qualified Agent Challenges 中（动态聚合自 `agent_stale_challenge_status.jsonl`）：",
+    ]
+    ready_items = [r for r in agent_challenge_records if r["status"] == "AGENT_STALE_CHALLENGE_READY"]
+    if ready_items:
+        tot_h2_stale = sum(int(r["h2_stale_rate"].split("/")[0]) for r in ready_items)
+        tot_h2_denom = sum(int(r["h2_stale_rate"].split("/")[1]) for r in ready_items)
+        tot_h3_stale = sum(int(r["h3_stale_rate"].split("/")[0]) for r in ready_items)
+        tot_h3_denom = sum(int(r["h3_stale_rate"].split("/")[1]) for r in ready_items)
+        tot_h2_tsr = sum(int(r["h2_tsr"].split("/")[0]) for r in ready_items)
+        tot_h3_tsr = sum(int(r["h3_tsr"].split("/")[0]) for r in ready_items)
+        h2_stale_pct = (tot_h2_stale / tot_h2_denom * 100.0) if tot_h2_denom > 0 else 0.0
+        h3_stale_pct = (tot_h3_stale / tot_h3_denom * 100.0) if tot_h3_denom > 0 else 0.0
+        h2_tsr_pct = (tot_h2_tsr / tot_h2_denom * 100.0) if tot_h2_denom > 0 else 0.0
+        h3_tsr_pct = (tot_h3_tsr / tot_h3_denom * 100.0) if tot_h3_denom > 0 else 0.0
+
+        review_lines.extend([
+            f"- **H2 过时调用暴露率（Pilot pooled observation）**：{tot_h2_stale}/{tot_h2_denom} = **{h2_stale_pct:.1f}%**",
+            f"- **H3 过时调用暴露率（Pilot pooled observation）**：{tot_h3_stale}/{tot_h3_denom} = **{h3_stale_pct:.1f}%**",
+            f"- **任务成功率 H2 TSR**：{tot_h2_tsr}/{tot_h2_denom} = **{h2_tsr_pct:.1f}%**",
+            f"- **任务成功率 H3 TSR**：{tot_h3_tsr}/{tot_h3_denom} = **{h3_tsr_pct:.1f}%**",
+            "*(注：此数据仅为 pilot pooled observation，不得称为 formal effect estimate 或 statistically significant。)*",
+        ])
+    else:
+        review_lines.append("- 无合格的 AGENT_STALE_CHALLENGE_READY 任务。")
+
+    review_lines.extend([
         "",
         "### Q10: 是否批准 Track A 扩 30–50？",
         f"**答**：**{'YES（正式批准）' if expansion_approved else 'NO'}**。",
         f"10/10 达到 `TRANSITION_SEED_FREEZE_READY`（门禁要求 >= 8），且具备 {agent_ready_count} 个干净验证的 `AGENT_STALE_CHALLENGE_READY`（门禁要求 >= 2），完整因果链在真实 LLM、真实沙箱与真实 Git 历史中完全闭环，正式批准在 Pilot-v1.4 中将 Track A 扩建至 30–50 个样本！",
-    ]
+    ])
     with open("/code/rolemem-agent-memory/reports/pilot-v1.3-r2.2-review.md", "w", encoding="utf-8") as f:
         f.write("\n".join(review_lines) + "\n")
 

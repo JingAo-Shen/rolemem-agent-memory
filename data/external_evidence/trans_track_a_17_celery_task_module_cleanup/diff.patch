@@ -1,0 +1,399 @@
+diff --git a/celery/__init__.py b/celery/__init__.py
+index 1169a2d55..cc6b3dca8 100644
+--- a/celery/__init__.py
++++ b/celery/__init__.py
+@@ -27,7 +27,7 @@ __keywords__ = 'task job queue distributed messaging actor'
+ # -eof meta-
+ 
+ __all__ = (
+-    'Celery', 'bugreport', 'shared_task', 'task', 'Task',
++    'Celery', 'bugreport', 'shared_task', 'Task',
+     'current_app', 'current_task', 'maybe_signature',
+     'chain', 'chord', 'chunks', 'group', 'signature',
+     'xmap', 'xstarmap', 'uuid',
+@@ -161,7 +161,6 @@ old_module, new_module = local.recreate_module(  # pragma: no cover
+         ],
+         'celery.utils': ['uuid'],
+     },
+-    direct={'task': 'celery.task'},
+     __package__='celery', __file__=__file__,
+     __path__=__path__, __doc__=__doc__, __version__=__version__,
+     __author__=__author__, __contact__=__contact__,
+diff --git a/celery/app/control.py b/celery/app/control.py
+index 8bde53aeb..551ae68bf 100644
+--- a/celery/app/control.py
++++ b/celery/app/control.py
+@@ -536,7 +536,7 @@ class Control:
+             task_name (str): Name of task to change rate limit for.
+             rate_limit (int, str): The rate limit as tasks per second,
+                 or a rate limit string (`'100/m'`, etc.
+-                see :attr:`celery.task.base.Task.rate_limit` for
++                see :attr:`celery.app.task.Task.rate_limit` for
+                 more information).
+ 
+         See Also:
+diff --git a/celery/app/registry.py b/celery/app/registry.py
+index 574457a6c..707567d15 100644
+--- a/celery/app/registry.py
++++ b/celery/app/registry.py
+@@ -36,7 +36,7 @@ class TaskRegistry(dict):
+ 
+         Arguments:
+             name (str): name of the task to unregister, or a
+-                :class:`celery.task.base.Task` with a valid `name` attribute.
++                :class:`celery.app.task.Task` with a valid `name` attribute.
+ 
+         Raises:
+             celery.exceptions.NotRegistered: if the task is not registered.
+diff --git a/celery/app/task.py b/celery/app/task.py
+index 726bb103f..88f348892 100644
+--- a/celery/app/task.py
++++ b/celery/app/task.py
+@@ -881,7 +881,7 @@ class Task:
+         .. versionadded:: 4.0
+ 
+         Arguments:
+-            sig (~@Signature): signature to replace with.
++            sig (Signature): signature to replace with.
+ 
+         Raises:
+             ~@Ignore: This is always raised when called in asynchronous context.
+@@ -941,7 +941,7 @@ class Task:
+         Currently only supported by the Redis result backend.
+ 
+         Arguments:
+-            sig (~@Signature): Signature to extend chord with.
++            sig (Signature): Signature to extend chord with.
+             lazy (bool): If enabled the new task won't actually be called,
+                 and ``sig.delay()`` must be called manually.
+         """
+diff --git a/celery/backends/base.py b/celery/backends/base.py
+index 4ad6de469..6c046028c 100644
+--- a/celery/backends/base.py
++++ b/celery/backends/base.py
+@@ -620,11 +620,7 @@ class Backend:
+         return self._delete_group(group_id)
+ 
+     def cleanup(self):
+-        """Backend cleanup.
+-
+-        Note:
+-            This is run by :class:`celery.task.DeleteExpiredTaskMetaTask`.
+-        """
++        """Backend cleanup."""
+ 
+     def process_cleanup(self):
+         """Cleanup actions to do at the end of a task worker process."""
+diff --git a/celery/local.py b/celery/local.py
+index f3803f40b..6eed19194 100644
+--- a/celery/local.py
++++ b/celery/local.py
+@@ -399,20 +399,11 @@ def getappattr(path):
+     return current_app._rgetattr(path)
+ 
+ 
+-def _compat_periodic_task_decorator(*args, **kwargs):
+-    from celery.task import periodic_task
+-    return periodic_task(*args, **kwargs)
+-
+-
+ COMPAT_MODULES = {
+     'celery': {
+         'execute': {
+             'send_task': 'send_task',
+         },
+-        'decorators': {
+-            'task': 'task',
+-            'periodic_task': _compat_periodic_task_decorator,
+-        },
+         'log': {
+             'get_default_logger': 'log.get_default_logger',
+             'setup_logger': 'log.setup_logger',
+@@ -428,19 +419,6 @@ COMPAT_MODULES = {
+             'tasks': 'tasks',
+         },
+     },
+-    'celery.task': {
+-        'control': {
+-            'broadcast': 'control.broadcast',
+-            'rate_limit': 'control.rate_limit',
+-            'time_limit': 'control.time_limit',
+-            'ping': 'control.ping',
+-            'revoke': 'control.revoke',
+-            'discard_all': 'control.purge',
+-            'inspect': 'control.inspect',
+-        },
+-        'schedules': 'celery.schedules',
+-        'chords': 'celery.canvas',
+-    }
+ }
+ 
+ #: We exclude these from dir(celery)
+diff --git a/celery/worker/control.py b/celery/worker/control.py
+index 9dd00d22a..2518948f1 100644
+--- a/celery/worker/control.py
++++ b/celery/worker/control.py
+@@ -187,7 +187,7 @@ def rate_limit(state, task_name, rate_limit, **kwargs):
+     """Tell worker(s) to modify the rate limit for a task by type.
+ 
+     See Also:
+-        :attr:`celery.task.base.Task.rate_limit`.
++        :attr:`celery.app.task.Task.rate_limit`.
+ 
+     Arguments:
+         task_name (str): Type of task to set rate limit for.
+diff --git a/docs/conf.py b/docs/conf.py
+index d5c4c9276..f28a5c9c7 100644
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -27,10 +27,8 @@ globals().update(conf.build_config(
+     },
+     apicheck_ignore_modules=[
+         'celery.__main__',
+-        'celery.task',
+         'celery.contrib.testing',
+         'celery.contrib.testing.tasks',
+-        'celery.task.base',
+         'celery.bin',
+         'celery.bin.celeryd_detach',
+         'celery.contrib',
+diff --git a/docs/internals/app-overview.rst b/docs/internals/app-overview.rst
+index 3634a5f80..965a148cc 100644
+--- a/docs/internals/app-overview.rst
++++ b/docs/internals/app-overview.rst
+@@ -100,18 +100,7 @@ Deprecated
+ Aliases (Pending deprecation)
+ =============================
+ 
+-* ``celery.task.base``
+-    * ``.Task`` -> {``app.Task`` / :class:`celery.app.task.Task`}
+-
+-* ``celery.task.sets``
+-    * ``.TaskSet`` -> {``app.TaskSet``}
+-
+-* ``celery.decorators`` / ``celery.task``
+-    * ``.task`` -> {``app.task``}
+-
+ * ``celery.execute``
+-    * ``.apply_async`` -> {``task.apply_async``}
+-    * ``.apply`` -> {``task.apply``}
+     * ``.send_task`` -> {``app.send_task``}
+     * ``.delay_task`` -> *no alternative*
+ 
+@@ -146,14 +135,6 @@ Aliases (Pending deprecation)
+ 
+     * ``.get_queues`` -> {``app.amqp.get_queues``}
+ 
+-* ``celery.task.control``
+-    * ``.broadcast`` -> {``app.control.broadcast``}
+-    * ``.rate_limit`` -> {``app.control.rate_limit``}
+-    * ``.ping`` -> {``app.control.ping``}
+-    * ``.revoke`` -> {``app.control.revoke``}
+-    * ``.discard_all`` -> {``app.control.discard_all``}
+-    * ``.inspect`` -> {``app.control.inspect``}
+-
+ * ``celery.utils.info``
+     * ``.humanize_seconds`` -> ``celery.utils.time.humanize_seconds``
+     * ``.textindent`` -> ``celery.utils.textindent``
+diff --git a/docs/userguide/application.rst b/docs/userguide/application.rst
+index 4fb6c665e..502353d10 100644
+--- a/docs/userguide/application.rst
++++ b/docs/userguide/application.rst
+@@ -360,19 +360,15 @@ Finalizing the object will:
+ .. topic:: The "default app"
+ 
+     Celery didn't always have applications, it used to be that
+-    there was only a module-based API, and for backwards compatibility
+-    the old API is still there until the release of Celery 5.0.
++    there was only a module-based API. A compatibility API was
++    available at the old location until the release of Celery 5.0,
++    but has been removed.
+ 
+     Celery always creates a special app - the "default app",
+     and this is used if no custom application has been instantiated.
+ 
+-    The :mod:`celery.task` module is there to accommodate the old API,
+-    and shouldn't be used if you use a custom app. You should
+-    always use the methods on the app instance, not the module based API.
+-
+-    For example, the old Task base class enables many compatibility
+-    features where some may be incompatible with newer features, such
+-    as task methods:
++    The :mod:`celery.task` module is no longer available. Use the
++    methods on the app instance, not the module based API:
+ 
+     .. code-block:: python
+ 
+@@ -380,9 +376,6 @@ Finalizing the object will:
+ 
+         from celery import Task        # << NEW base class.
+ 
+-    The new base class is recommended even if you use the old
+-    module-based API.
+-
+ 
+ Breaking the chain
+ ==================
+@@ -456,7 +449,7 @@ chain breaks:
+ 
+     .. code-block:: python
+ 
+-        from celery.task import Task
++        from celery import Task
+         from celery.registry import tasks
+ 
+         class Hello(Task):
+@@ -475,16 +468,16 @@ chain breaks:
+ 
+     .. code-block:: python
+ 
+-        from celery.task import task
++        from celery import app
+ 
+-        @task(queue='hipri')
++        @app.task(queue='hipri')
+         def hello(to):
+             return 'hello {0}'.format(to)
+ 
+ Abstract Tasks
+ ==============
+ 
+-All tasks created using the :meth:`~@task` decorator
++All tasks created using the :meth:`@task` decorator
+ will inherit from the application's base :attr:`~@Task` class.
+ 
+ You can specify a different base class using the ``base`` argument:
+@@ -513,7 +506,7 @@ class: :class:`celery.Task`.
+ 
+     If you override the task's ``__call__`` method, then it's very important
+     that you also call ``self.run`` to execute the body of the task.  Do not
+-    call ``super().__call__``.  The ``__call__`` method of the neutral base 
++    call ``super().__call__``.  The ``__call__`` method of the neutral base
+     class :class:`celery.Task` is only present for reference.  For optimization,
+     this has been unrolled into ``celery.app.trace.build_tracer.trace_task``
+     which calls ``run`` directly on the custom task class if no ``__call__``
+diff --git a/docs/userguide/configuration.rst b/docs/userguide/configuration.rst
+index 14fa89df2..e225eb1fe 100644
+--- a/docs/userguide/configuration.rst
++++ b/docs/userguide/configuration.rst
+@@ -484,7 +484,7 @@ you can set :setting:`task_store_errors_even_if_ignored`.
+ Default: Disabled.
+ 
+ If set, the worker stores all task errors in the result store even if
+-:attr:`Task.ignore_result <celery.task.base.Task.ignore_result>` is on.
++:attr:`Task.ignore_result <celery.app.task.Task.ignore_result>` is on.
+ 
+ .. setting:: task_track_started
+ 
+@@ -2132,7 +2132,7 @@ the final message options will be:
+     immediate=False, exchange='video', routing_key='video.compress'
+ 
+ (and any default message options defined in the
+-:class:`~celery.task.base.Task` class)
++:class:`~celery.app.task.Task` class)
+ 
+ Values defined in :setting:`task_routes` have precedence over values defined in
+ :setting:`task_queues` when merging the two.
+diff --git a/docs/userguide/periodic-tasks.rst b/docs/userguide/periodic-tasks.rst
+index dcc360972..718f4c8af 100644
+--- a/docs/userguide/periodic-tasks.rst
++++ b/docs/userguide/periodic-tasks.rst
+@@ -106,19 +106,19 @@ beat schedule list.
+     @app.task
+     def test(arg):
+         print(arg)
+-        
++
+     @app.task
+     def add(x, y):
+         z = x + y
+-        print(z) 
++        print(z)
+ 
+ 
+ 
+ Setting these up from within the :data:`~@on_after_configure` handler means
+-that we'll not evaluate the app at module level when using ``test.s()``. Note that 
++that we'll not evaluate the app at module level when using ``test.s()``. Note that
+ :data:`~@on_after_configure` is sent after the app is set up, so tasks outside the
+-module where the app is declared (e.g. in a `tasks.py` file located by 
+-:meth:`celery.Celery.autodiscover_tasks`) must use a later signal, such as 
++module where the app is declared (e.g. in a `tasks.py` file located by
++:meth:`celery.Celery.autodiscover_tasks`) must use a later signal, such as
+ :data:`~@on_after_finalize`.
+ 
+ The :meth:`~@add_periodic_task` function will add the entry to the
+@@ -192,7 +192,7 @@ Available Fields
+     Execution options (:class:`dict`).
+ 
+     This can be any argument supported by
+-    :meth:`~celery.task.base.Task.apply_async` --
++    :meth:`~celery.app.task.Task.apply_async` --
+     `exchange`, `routing_key`, `expires`, and so on.
+ 
+ * `relative`
+diff --git a/docs/userguide/routing.rst b/docs/userguide/routing.rst
+index ab1a0d6c2..1dbac6807 100644
+--- a/docs/userguide/routing.rst
++++ b/docs/userguide/routing.rst
+@@ -636,7 +636,7 @@ Specifying task destination
+ The destination for a task is decided by the following (in order):
+ 
+ 1. The routing arguments to :func:`Task.apply_async`.
+-2. Routing related attributes defined on the :class:`~celery.task.base.Task`
++2. Routing related attributes defined on the :class:`~celery.app.task.Task`
+    itself.
+ 3. The :ref:`routers` defined in :setting:`task_routes`.
+ 
+diff --git a/docs/userguide/tasks.rst b/docs/userguide/tasks.rst
+index b32ba11c8..afa259394 100644
+--- a/docs/userguide/tasks.rst
++++ b/docs/userguide/tasks.rst
+@@ -92,7 +92,7 @@ Basics
+ ======
+ 
+ You can easily create a task from any callable by using
+-the :meth:`~@task` decorator:
++the :meth:`@task` decorator:
+ 
+ .. code-block:: python
+ 
+@@ -743,7 +743,7 @@ Sometimes you just want to retry a task whenever a particular exception
+ is raised.
+ 
+ Fortunately, you can tell Celery to automatically retry a task using
+-`autoretry_for` argument in the :meth:`~@Celery.task` decorator:
++`autoretry_for` argument in the :meth:`@task` decorator:
+ 
+ .. code-block:: python
+ 
+@@ -754,7 +754,7 @@ Fortunately, you can tell Celery to automatically retry a task using
+         return twitter.refresh_timeline(user)
+ 
+ If you want to specify custom arguments for an internal :meth:`~@Task.retry`
+-call, pass `retry_kwargs` argument to :meth:`~@Celery.task` decorator:
++call, pass `retry_kwargs` argument to :meth:`@task` decorator:
+ 
+ .. code-block:: python
+ 
+diff --git a/docs/whatsnew-5.1.rst b/docs/whatsnew-5.1.rst
+index a59bb0d15..bdd35f077 100644
+--- a/docs/whatsnew-5.1.rst
++++ b/docs/whatsnew-5.1.rst
+@@ -357,7 +357,7 @@ Documentation: :setting:`worker_cancel_long_running_tasks_on_connection_loss`
+ -----------------------------------------------------------------------
+ 
+ `task.apply_async` now supports passing `ignore_result` which will act the same
+-as using `@app.task(ignore_result=True)`.
++as using ``@app.task(ignore_result=True)``.
+ 
+ Use a thread-safe implementation of `cached_property`
+ -----------------------------------------------------
+@@ -372,6 +372,7 @@ Tasks can now have required kwargs at any order
+ Tasks can now be defined like this:
+ 
+ .. code-block:: python
++
+     from celery import shared_task
+ 
+     @shared_task

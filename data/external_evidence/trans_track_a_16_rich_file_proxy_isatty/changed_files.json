@@ -1,0 +1,38 @@
+[
+  {
+    "sha": "d2e790600423485d21250cd603489d721d3e8f48",
+    "filename": "CHANGELOG.md",
+    "status": "modified",
+    "additions": 1,
+    "deletions": 0,
+    "changes": 1,
+    "blob_url": "https://github.com/Textualize/rich/blob/494b795031782c694297d2db78bd04fb8c82f590/CHANGELOG.md",
+    "raw_url": "https://github.com/Textualize/rich/raw/494b795031782c694297d2db78bd04fb8c82f590/CHANGELOG.md",
+    "contents_url": "https://api.github.com/repos/Textualize/rich/contents/CHANGELOG.md?ref=494b795031782c694297d2db78bd04fb8c82f590",
+    "patch": "@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0\n \n - Fixed empty print ignoring the `end` parameter\n - Fixed `Text.from_ansi` removing newlines https://github.com/Textualize/rich/pull/4076\n+- Fixed `FileProxy.isatty` not proxying https://github.com/Textualize/rich/pull/4077\n \n ## [14.3.4] - 2026-04-11\n "
+  },
+  {
+    "sha": "e32523bd6ba366b8e354e602888c6d49532de7a6",
+    "filename": "rich/file_proxy.py",
+    "status": "modified",
+    "additions": 3,
+    "deletions": 0,
+    "changes": 3,
+    "blob_url": "https://github.com/Textualize/rich/blob/494b795031782c694297d2db78bd04fb8c82f590/rich%2Ffile_proxy.py",
+    "raw_url": "https://github.com/Textualize/rich/raw/494b795031782c694297d2db78bd04fb8c82f590/rich%2Ffile_proxy.py",
+    "contents_url": "https://api.github.com/repos/Textualize/rich/contents/rich%2Ffile_proxy.py?ref=494b795031782c694297d2db78bd04fb8c82f590",
+    "patch": "@@ -55,3 +55,6 @@ def flush(self) -> None:\n \n     def fileno(self) -> int:\n         return self.__file.fileno()\n+\n+    def isatty(self) -> bool:\n+        return self.__file.isatty()"
+  },
+  {
+    "sha": "c73b23fe1773393f80c313f2cbd55b745d70b477",
+    "filename": "tests/test_file_proxy.py",
+    "status": "modified",
+    "additions": 17,
+    "deletions": 0,
+    "changes": 17,
+    "blob_url": "https://github.com/Textualize/rich/blob/494b795031782c694297d2db78bd04fb8c82f590/tests%2Ftest_file_proxy.py",
+    "raw_url": "https://github.com/Textualize/rich/raw/494b795031782c694297d2db78bd04fb8c82f590/tests%2Ftest_file_proxy.py",
+    "contents_url": "https://api.github.com/repos/Textualize/rich/contents/tests%2Ftest_file_proxy.py?ref=494b795031782c694297d2db78bd04fb8c82f590",
+    "patch": "@@ -35,3 +35,20 @@ def test_new_lines():\n     assert file.getvalue() == \"-\\n\"\n     file_proxy.flush()\n     assert file.getvalue() == \"-\\n-\\n\"\n+\n+\n+def test_isatty():\n+    \"\"\"Check isatty is proxied\n+\n+    Regression test for https://github.com/Textualize/rich/issues/4041\n+\n+    \"\"\"\n+\n+    class TTYFile:\n+        def isatty(self) -> bool:\n+            return True\n+\n+    file = TTYFile()\n+    console = Console()\n+    file_proxy = FileProxy(console, file)\n+    assert file_proxy.isatty()"
+  }
+]

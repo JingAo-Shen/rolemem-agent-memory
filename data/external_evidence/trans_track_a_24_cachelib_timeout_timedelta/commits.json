@@ -1,0 +1,335 @@
+[
+  {
+    "sha": "73210dccef8a5bba252bad9a25cc008bc0c000c2",
+    "node_id": "C_kwDOUAb6r9oAKDczMjEwZGNjZWY4YTViYmEyNTJiYWQ5YTI1Y2MwMDhiYzBjMDAwYzI",
+    "commit": {
+      "author": {
+        "name": "Peter Justin",
+        "email": "peter.justin@outlook.com",
+        "date": "2026-08-22T09:03:51Z"
+      },
+      "committer": {
+        "name": "Peter Justin",
+        "email": "peter.justin@outlook.com",
+        "date": "2026-08-22T09:03:51Z"
+      },
+      "message": "Add support for specifying timeouts as timedelta\n\nThis is partly related to pallets-eco/flask-caching#266",
+      "tree": {
+        "sha": "578af4246cf623ad07f3c549fa229f7180ca7b0b",
+        "url": "https://api.github.com/repos/pallets-eco/cachelib/git/trees/578af4246cf623ad07f3c549fa229f7180ca7b0b"
+      },
+      "url": "https://api.github.com/repos/pallets-eco/cachelib/git/commits/73210dccef8a5bba252bad9a25cc008bc0c000c2",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/pallets-eco/cachelib/commits/73210dccef8a5bba252bad9a25cc008bc0c000c2",
+    "html_url": "https://github.com/pallets-eco/cachelib/commit/73210dccef8a5bba252bad9a25cc008bc0c000c2",
+    "comments_url": "https://api.github.com/repos/pallets-eco/cachelib/commits/73210dccef8a5bba252bad9a25cc008bc0c000c2/comments",
+    "author": {
+      "login": "sh4nks",
+      "id": 1510708,
+      "node_id": "MDQ6VXNlcjE1MTA3MDg=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1510708?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/sh4nks",
+      "html_url": "https://github.com/sh4nks",
+      "followers_url": "https://api.github.com/users/sh4nks/followers",
+      "following_url": "https://api.github.com/users/sh4nks/following{/other_user}",
+      "gists_url": "https://api.github.com/users/sh4nks/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/sh4nks/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/sh4nks/subscriptions",
+      "organizations_url": "https://api.github.com/users/sh4nks/orgs",
+      "repos_url": "https://api.github.com/users/sh4nks/repos",
+      "events_url": "https://api.github.com/users/sh4nks/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/sh4nks/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "sh4nks",
+      "id": 1510708,
+      "node_id": "MDQ6VXNlcjE1MTA3MDg=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1510708?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/sh4nks",
+      "html_url": "https://github.com/sh4nks",
+      "followers_url": "https://api.github.com/users/sh4nks/followers",
+      "following_url": "https://api.github.com/users/sh4nks/following{/other_user}",
+      "gists_url": "https://api.github.com/users/sh4nks/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/sh4nks/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/sh4nks/subscriptions",
+      "organizations_url": "https://api.github.com/users/sh4nks/orgs",
+      "repos_url": "https://api.github.com/users/sh4nks/repos",
+      "events_url": "https://api.github.com/users/sh4nks/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/sh4nks/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "f959712994e685b5e85dc2ec187205348ad3a233",
+        "url": "https://api.github.com/repos/pallets-eco/cachelib/commits/f959712994e685b5e85dc2ec187205348ad3a233",
+        "html_url": "https://github.com/pallets-eco/cachelib/commit/f959712994e685b5e85dc2ec187205348ad3a233"
+      }
+    ]
+  },
+  {
+    "sha": "293e63368018cbfb60d24bcc1c59016e30cf6a5c",
+    "node_id": "C_kwDOUAb6r9oAKDI5M2U2MzM2ODAxOGNiZmI2MGQyNGJjYzFjNTkwMTZlMzBjZjZhNWM",
+    "commit": {
+      "author": {
+        "name": "pre-commit-ci[bot]",
+        "email": "66853113+pre-commit-ci[bot]@users.noreply.github.com",
+        "date": "2026-08-22T09:10:31Z"
+      },
+      "committer": {
+        "name": "pre-commit-ci[bot]",
+        "email": "66853113+pre-commit-ci[bot]@users.noreply.github.com",
+        "date": "2026-08-22T09:10:31Z"
+      },
+      "message": "[pre-commit.ci] auto fixes from pre-commit.com hooks\n\nfor more information, see https://pre-commit.ci",
+      "tree": {
+        "sha": "5d967ce8286c076d0b2c4d57104663b16589baed",
+        "url": "https://api.github.com/repos/pallets-eco/cachelib/git/trees/5d967ce8286c076d0b2c4d57104663b16589baed"
+      },
+      "url": "https://api.github.com/repos/pallets-eco/cachelib/git/commits/293e63368018cbfb60d24bcc1c59016e30cf6a5c",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/pallets-eco/cachelib/commits/293e63368018cbfb60d24bcc1c59016e30cf6a5c",
+    "html_url": "https://github.com/pallets-eco/cachelib/commit/293e63368018cbfb60d24bcc1c59016e30cf6a5c",
+    "comments_url": "https://api.github.com/repos/pallets-eco/cachelib/commits/293e63368018cbfb60d24bcc1c59016e30cf6a5c/comments",
+    "author": {
+      "login": "pre-commit-ci[bot]",
+      "id": 66853113,
+      "node_id": "MDM6Qm90NjY4NTMxMTM=",
+      "avatar_url": "https://avatars.githubusercontent.com/in/68672?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D",
+      "html_url": "https://github.com/apps/pre-commit-ci",
+      "followers_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/followers",
+      "following_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/subscriptions",
+      "organizations_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/orgs",
+      "repos_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/repos",
+      "events_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/received_events",
+      "type": "Bot",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "pre-commit-ci[bot]",
+      "id": 66853113,
+      "node_id": "MDM6Qm90NjY4NTMxMTM=",
+      "avatar_url": "https://avatars.githubusercontent.com/in/68672?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D",
+      "html_url": "https://github.com/apps/pre-commit-ci",
+      "followers_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/followers",
+      "following_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/subscriptions",
+      "organizations_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/orgs",
+      "repos_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/repos",
+      "events_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/received_events",
+      "type": "Bot",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "73210dccef8a5bba252bad9a25cc008bc0c000c2",
+        "url": "https://api.github.com/repos/pallets-eco/cachelib/commits/73210dccef8a5bba252bad9a25cc008bc0c000c2",
+        "html_url": "https://github.com/pallets-eco/cachelib/commit/73210dccef8a5bba252bad9a25cc008bc0c000c2"
+      }
+    ]
+  },
+  {
+    "sha": "e9afb65a4954f678e1a352c735db3b4b4532478d",
+    "node_id": "C_kwDOUAb6r9oAKGU5YWZiNjVhNDk1NGY2NzhlMWEzNTJjNzM1ZGIzYjRiNDUzMjQ3OGQ",
+    "commit": {
+      "author": {
+        "name": "John Aziz",
+        "email": "johnaziz269@gmail.com",
+        "date": "2026-08-22T22:40:01Z"
+      },
+      "committer": {
+        "name": "John Aziz",
+        "email": "johnaziz269@gmail.com",
+        "date": "2026-08-22T22:40:01Z"
+      },
+      "message": "review and refine",
+      "tree": {
+        "sha": "01927c2a77c73fa546a63fbe33e63e0d6e844571",
+        "url": "https://api.github.com/repos/pallets-eco/cachelib/git/trees/01927c2a77c73fa546a63fbe33e63e0d6e844571"
+      },
+      "url": "https://api.github.com/repos/pallets-eco/cachelib/git/commits/e9afb65a4954f678e1a352c735db3b4b4532478d",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/pallets-eco/cachelib/commits/e9afb65a4954f678e1a352c735db3b4b4532478d",
+    "html_url": "https://github.com/pallets-eco/cachelib/commit/e9afb65a4954f678e1a352c735db3b4b4532478d",
+    "comments_url": "https://api.github.com/repos/pallets-eco/cachelib/commits/e9afb65a4954f678e1a352c735db3b4b4532478d/comments",
+    "author": {
+      "login": "john0isaac",
+      "id": 64026625,
+      "node_id": "MDQ6VXNlcjY0MDI2NjI1",
+      "avatar_url": "https://avatars.githubusercontent.com/u/64026625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/john0isaac",
+      "html_url": "https://github.com/john0isaac",
+      "followers_url": "https://api.github.com/users/john0isaac/followers",
+      "following_url": "https://api.github.com/users/john0isaac/following{/other_user}",
+      "gists_url": "https://api.github.com/users/john0isaac/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/john0isaac/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/john0isaac/subscriptions",
+      "organizations_url": "https://api.github.com/users/john0isaac/orgs",
+      "repos_url": "https://api.github.com/users/john0isaac/repos",
+      "events_url": "https://api.github.com/users/john0isaac/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/john0isaac/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "john0isaac",
+      "id": 64026625,
+      "node_id": "MDQ6VXNlcjY0MDI2NjI1",
+      "avatar_url": "https://avatars.githubusercontent.com/u/64026625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/john0isaac",
+      "html_url": "https://github.com/john0isaac",
+      "followers_url": "https://api.github.com/users/john0isaac/followers",
+      "following_url": "https://api.github.com/users/john0isaac/following{/other_user}",
+      "gists_url": "https://api.github.com/users/john0isaac/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/john0isaac/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/john0isaac/subscriptions",
+      "organizations_url": "https://api.github.com/users/john0isaac/orgs",
+      "repos_url": "https://api.github.com/users/john0isaac/repos",
+      "events_url": "https://api.github.com/users/john0isaac/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/john0isaac/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "293e63368018cbfb60d24bcc1c59016e30cf6a5c",
+        "url": "https://api.github.com/repos/pallets-eco/cachelib/commits/293e63368018cbfb60d24bcc1c59016e30cf6a5c",
+        "html_url": "https://github.com/pallets-eco/cachelib/commit/293e63368018cbfb60d24bcc1c59016e30cf6a5c"
+      }
+    ]
+  },
+  {
+    "sha": "3807308808e4da4f0eb25754488a91e73fd72f5b",
+    "node_id": "C_kwDOUAb6r9oAKDM4MDczMDg4MDhlNGRhNGYwZWIyNTc1NDQ4OGE5MWU3M2ZkNzJmNWI",
+    "commit": {
+      "author": {
+        "name": "John Aziz",
+        "email": "johnaziz269@gmail.com",
+        "date": "2026-08-22T22:43:12Z"
+      },
+      "committer": {
+        "name": "John Aziz",
+        "email": "johnaziz269@gmail.com",
+        "date": "2026-08-22T22:43:12Z"
+      },
+      "message": "Merge branch 'main' into timeout-timedelta",
+      "tree": {
+        "sha": "606bb833945d808ce40f2c0c6f2d15eac529c107",
+        "url": "https://api.github.com/repos/pallets-eco/cachelib/git/trees/606bb833945d808ce40f2c0c6f2d15eac529c107"
+      },
+      "url": "https://api.github.com/repos/pallets-eco/cachelib/git/commits/3807308808e4da4f0eb25754488a91e73fd72f5b",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/pallets-eco/cachelib/commits/3807308808e4da4f0eb25754488a91e73fd72f5b",
+    "html_url": "https://github.com/pallets-eco/cachelib/commit/3807308808e4da4f0eb25754488a91e73fd72f5b",
+    "comments_url": "https://api.github.com/repos/pallets-eco/cachelib/commits/3807308808e4da4f0eb25754488a91e73fd72f5b/comments",
+    "author": {
+      "login": "john0isaac",
+      "id": 64026625,
+      "node_id": "MDQ6VXNlcjY0MDI2NjI1",
+      "avatar_url": "https://avatars.githubusercontent.com/u/64026625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/john0isaac",
+      "html_url": "https://github.com/john0isaac",
+      "followers_url": "https://api.github.com/users/john0isaac/followers",
+      "following_url": "https://api.github.com/users/john0isaac/following{/other_user}",
+      "gists_url": "https://api.github.com/users/john0isaac/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/john0isaac/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/john0isaac/subscriptions",
+      "organizations_url": "https://api.github.com/users/john0isaac/orgs",
+      "repos_url": "https://api.github.com/users/john0isaac/repos",
+      "events_url": "https://api.github.com/users/john0isaac/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/john0isaac/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "john0isaac",
+      "id": 64026625,
+      "node_id": "MDQ6VXNlcjY0MDI2NjI1",
+      "avatar_url": "https://avatars.githubusercontent.com/u/64026625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/john0isaac",
+      "html_url": "https://github.com/john0isaac",
+      "followers_url": "https://api.github.com/users/john0isaac/followers",
+      "following_url": "https://api.github.com/users/john0isaac/following{/other_user}",
+      "gists_url": "https://api.github.com/users/john0isaac/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/john0isaac/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/john0isaac/subscriptions",
+      "organizations_url": "https://api.github.com/users/john0isaac/orgs",
+      "repos_url": "https://api.github.com/users/john0isaac/repos",
+      "events_url": "https://api.github.com/users/john0isaac/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/john0isaac/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "e9afb65a4954f678e1a352c735db3b4b4532478d",
+        "url": "https://api.github.com/repos/pallets-eco/cachelib/commits/e9afb65a4954f678e1a352c735db3b4b4532478d",
+        "html_url": "https://github.com/pallets-eco/cachelib/commit/e9afb65a4954f678e1a352c735db3b4b4532478d"
+      },
+      {
+        "sha": "5a7d98a6b54e05b6076a8c69b034ab8c35a250a1",
+        "url": "https://api.github.com/repos/pallets-eco/cachelib/commits/5a7d98a6b54e05b6076a8c69b034ab8c35a250a1",
+        "html_url": "https://github.com/pallets-eco/cachelib/commit/5a7d98a6b54e05b6076a8c69b034ab8c35a250a1"
+      }
+    ]
+  }
+]

@@ -2,7 +2,7 @@
   "transition_id": "trans_track_a_05_itsdangerous_version_removal",
   "provenance_status": "TARGET_MEMORY_VERIFIED",
   "recomputed_hashes": {
-    "diff_hunk_sha256": "ae1274b39b1121a69df102d788eff9361ade1b1cc426dd23908064c4feaffb83",
+    "diff_hunk_sha256": "79f8e48a062d67336338a95afaa6446826b19cdffb6b6407bcfedd7b1022c494",
     "evidence_excerpt_hash": "8718fe06e4ed90a1a18ede204ca4847ecfb14b47f8fdf8c0ca96d20b75a7bedd",
     "ground_truth_audit_hash": "446b5d4eac8d9cbd66e885cb1a4299fb6add7709328a6a223fd1c8ec8f7a8aa3"
   },
@@ -11,6 +11,7 @@
     "source_commit_matches": true,
     "artifact_in_diff": true,
     "diff_hunk_sha256_verified": true,
+    "diff_patch_sha256_verified": true,
     "evidence_excerpt_hash_verified": true,
     "ground_truth_audit_hash_verified": true,
     "statement_entailment": "ENTAILED"
@@ -23,9 +24,11 @@
     "source_pr_url": "https://github.com/pallets/itsdangerous/pull/406",
     "source_commit": "31f46a3469dbfb2ecf83dd0c4297c1efc508fcca",
     "evidence_file": "data/external_evidence/trans_track_a_05_itsdangerous_version_removal/diff.patch",
-    "evidence_hunk_sha256": "ae1274b39b1121a69df102d788eff9361ade1b1cc426dd23908064c4feaffb83",
+    "evidence_hunk_sha256": "79f8e48a062d67336338a95afaa6446826b19cdffb6b6407bcfedd7b1022c494",
     "evidence_excerpt_hash": "8718fe06e4ed90a1a18ede204ca4847ecfb14b47f8fdf8c0ca96d20b75a7bedd",
     "ground_truth_audit_hash": "446b5d4eac8d9cbd66e885cb1a4299fb6add7709328a6a223fd1c8ec8f7a8aa3",
-    "artifact": "src/itsdangerous/__init__.py"
+    "artifact": "src/itsdangerous/__init__.py",
+    "supporting_hunk": "@@ -19,20 +15,3 @@\n from .timed import TimestampSigner as TimestampSigner\n from .url_safe import URLSafeSerializer as URLSafeSerializer\n from .url_safe import URLSafeTimedSerializer as URLSafeTimedSerializer\n-\n-\n-def __getattr__(name: str) -> t.Any:\n-    if name == \"__version__\":\n-        import importlib.metadata\n-        import warnings\n-\n-        warnings.warn(\n-            \"The '__version__' attribute is deprecated and will be removed in\"\n-            \" ItsDangerous 2.3. Use feature detection or\"\n-            \" 'importlib.metadata.version(\\\"itsdangerous\\\")' instead.\",\n-            DeprecationWarning,\n-            stacklevel=2,\n-        )\n-        return importlib.metadata.version(\"itsdangerous\")\n-\n-    raise AttributeError(name)",
+    "diff_patch_sha256": "ae1274b39b1121a69df102d788eff9361ade1b1cc426dd23908064c4feaffb83"
   }
 }

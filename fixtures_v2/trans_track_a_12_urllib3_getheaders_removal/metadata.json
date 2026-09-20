@@ -1,0 +1,19 @@
+{
+  "transition_id": "trans_track_a_12_urllib3_getheaders_removal",
+  "repo_name": "urllib3/urllib3",
+  "repo_url": "https://github.com/urllib3/urllib3",
+  "pr_url": "https://github.com/urllib3/urllib3/pull/3622",
+  "base_commit": "dd2daef3611ea09f60260391e6a698bb9933dd17",
+  "target_commit": "4587fd6d477f22022be08de597c3a5acd5185c0a",
+  "pkg_path": "src/urllib3",
+  "changed_files": [
+    "src/urllib3/response.py"
+  ],
+  "primary_file": "src/urllib3/response.py",
+  "symbol": "HTTPResponse.getheaders",
+  "file_digest_before": "410fd0dbe9767b100391aad3fa68b6a51b012d20516fd274059af86294a7035d",
+  "file_digest_after": "96fb034838422e9b8f5782b569d3f70a674ecf26a2f6195f137406c6fc798332",
+  "stale_sensitive": true,
+  "transition_type": "API_REMOVAL",
+  "builder_status": "FIXTURE_EXTRACTED_UNVERIFIED"
+}

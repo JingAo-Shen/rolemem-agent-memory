@@ -1,0 +1,253 @@
+[
+  {
+    "sha": "199e4c2d978f26e9d489c935739dcf7f2128a702",
+    "node_id": "C_kwDORrDnANoAKDE5OWU0YzJkOTc4ZjI2ZTlkNDg5YzkzNTczOWRjZjdmMjEyOGE3MDI",
+    "commit": {
+      "author": {
+        "name": "gnosyslambda",
+        "email": "gnosyslambda@gmail.com",
+        "date": "2026-03-19T06:51:10Z"
+      },
+      "committer": {
+        "name": "gnosyslambda",
+        "email": "gnosyslambda@gmail.com",
+        "date": "2026-03-19T06:51:10Z"
+      },
+      "message": "Fix incorrect ETag weak indicator stripping in is_not_modified\n\nstrip(\" W/\") removes individual characters from the set {' ', 'W', '/'}\nfrom both ends of the string, which can mangle ETag values that happen\nto end with those characters. Use strip() + removeprefix(\"W/\") instead\nto only strip whitespace and then remove the literal W/ prefix.\n\nSigned-off-by: gnosyslambda <gnosyslambda@gmail.com>",
+      "tree": {
+        "sha": "0a046f34971e8013e8dfb953d5642b7e9058f02e",
+        "url": "https://api.github.com/repos/Kludex/starlette/git/trees/0a046f34971e8013e8dfb953d5642b7e9058f02e"
+      },
+      "url": "https://api.github.com/repos/Kludex/starlette/git/commits/199e4c2d978f26e9d489c935739dcf7f2128a702",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niJEEABYKADkWIQQR7CsbRH2dMOE9YZFdrhDOk1jOhwUCabuc3hsUgAAAAAAEAA5t\nYW51MiwyLjUrMS4xMiwwLDMACgkQXa4QzpNYzocSAwD+JGulvRU+1EZWbSnmNtHN\nRa1LpDqIoEu6pFsaSEYR998A/RXMsKYr8R2+yASDN7g1VTTNtv8qEZTUg/xT0p+V\nJ0YP\n=eTYD\n-----END PGP SIGNATURE-----",
+        "payload": "tree 0a046f34971e8013e8dfb953d5642b7e9058f02e\nparent 9ee951980bae776103715b66305f807d9e8245da\nauthor gnosyslambda <gnosyslambda@gmail.com> 1773903070 +0900\ncommitter gnosyslambda <gnosyslambda@gmail.com> 1773903070 +0900\n\nFix incorrect ETag weak indicator stripping in is_not_modified\n\nstrip(\" W/\") removes individual characters from the set {' ', 'W', '/'}\nfrom both ends of the string, which can mangle ETag values that happen\nto end with those characters. Use strip() + removeprefix(\"W/\") instead\nto only strip whitespace and then remove the literal W/ prefix.\n\nSigned-off-by: gnosyslambda <gnosyslambda@gmail.com>\n",
+        "verified_at": "2026-03-19T06:51:18Z"
+      }
+    },
+    "url": "https://api.github.com/repos/Kludex/starlette/commits/199e4c2d978f26e9d489c935739dcf7f2128a702",
+    "html_url": "https://github.com/Kludex/starlette/commit/199e4c2d978f26e9d489c935739dcf7f2128a702",
+    "comments_url": "https://api.github.com/repos/Kludex/starlette/commits/199e4c2d978f26e9d489c935739dcf7f2128a702/comments",
+    "author": {
+      "login": "gnosyslambda",
+      "id": 266641789,
+      "node_id": "U_kgDOD-ShfQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/266641789?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/gnosyslambda",
+      "html_url": "https://github.com/gnosyslambda",
+      "followers_url": "https://api.github.com/users/gnosyslambda/followers",
+      "following_url": "https://api.github.com/users/gnosyslambda/following{/other_user}",
+      "gists_url": "https://api.github.com/users/gnosyslambda/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/gnosyslambda/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/gnosyslambda/subscriptions",
+      "organizations_url": "https://api.github.com/users/gnosyslambda/orgs",
+      "repos_url": "https://api.github.com/users/gnosyslambda/repos",
+      "events_url": "https://api.github.com/users/gnosyslambda/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/gnosyslambda/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "gnosyslambda",
+      "id": 266641789,
+      "node_id": "U_kgDOD-ShfQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/266641789?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/gnosyslambda",
+      "html_url": "https://github.com/gnosyslambda",
+      "followers_url": "https://api.github.com/users/gnosyslambda/followers",
+      "following_url": "https://api.github.com/users/gnosyslambda/following{/other_user}",
+      "gists_url": "https://api.github.com/users/gnosyslambda/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/gnosyslambda/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/gnosyslambda/subscriptions",
+      "organizations_url": "https://api.github.com/users/gnosyslambda/orgs",
+      "repos_url": "https://api.github.com/users/gnosyslambda/repos",
+      "events_url": "https://api.github.com/users/gnosyslambda/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/gnosyslambda/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "9ee951980bae776103715b66305f807d9e8245da",
+        "url": "https://api.github.com/repos/Kludex/starlette/commits/9ee951980bae776103715b66305f807d9e8245da",
+        "html_url": "https://github.com/Kludex/starlette/commit/9ee951980bae776103715b66305f807d9e8245da"
+      }
+    ]
+  },
+  {
+    "sha": "f78a0d85449a1f51a5c5a1de93170009b9c09b11",
+    "node_id": "C_kwDORrDnANoAKGY3OGEwZDg1NDQ5YTFmNTFhNWM1YTFkZTkzMTcwMDA5YjljMDliMTE",
+    "commit": {
+      "author": {
+        "name": "Marcelo Trylesinski",
+        "email": "marcelotryle@gmail.com",
+        "date": "2026-06-10T11:11:36Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2026-06-10T11:11:36Z"
+      },
+      "message": "Merge branch 'main' into fix/etag-weak-indicator-parsing",
+      "tree": {
+        "sha": "ccd439111963e540adb955bcc7b2fb0935fd7b2e",
+        "url": "https://api.github.com/repos/Kludex/starlette/git/trees/ccd439111963e540adb955bcc7b2fb0935fd7b2e"
+      },
+      "url": "https://api.github.com/repos/Kludex/starlette/git/commits/f78a0d85449a1f51a5c5a1de93170009b9c09b11",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqKUZoCRC1aQ7uu5UhlAAAwHYQAEnv0t5eh95XLTQS6VGmOTto\n12E9QccycmPnrNEYnH/l3yFozbtkKfvVSrlsi5OYpi7JpEzZjkpUmbmISiLDQzHv\nO87FS62IyYo4Qknnrv2ljFXXFfVauKJ0EKJRIrgo5vbbjJnLKAJcwDYzUMPZfMjq\nBwEqK0F8oHJBMYEJpHtqkMMsyUFcbw7QIuT2A0d2yNeYErR8C6zdnDdYiIVkRbIP\nnCCJ4g4EvVafcfa+e4XPqEk6cyGds4/35jbAxQ22xfr6yaXCPxDJIwtLSGKQalT3\npUjcw64ZdNfBj8brKu0rullJEa/xGa+4nvcDK+hfwWXGPWxmY+unlocC19Z+4Ky+\nJvXYElI+7lHHB3DdWK5xkryEz1IBE7d7KUHWSfAWTBoNp1Jn+WDnxsIWq61+ajSa\nCy6RrD0AUzuSxKHe/HaaYKgzC/VQZ5KAEnuS3iMI5I9zs2NAO4vzjy/fqCq6uwX2\nM2CEbFw/BWIEPn/pcw7C3dYsExCSOJF/+85qT0wBijApX9y7IrGCgnwrweZUtYYv\nAZodsM1C/TEbpX0YjAT6Gy7oAGIQvqLTHtq186iua1jyiGGqQSdElOVJEwIqRs6q\nj8VLwTbqCCVZeEcxdsJiwxnChJ4bcXZDiwASlYPE69FH3PxeEDudpSYJfS7IBPnP\nqwNDh0gQEAHHrxgz2fb7\n=3S4k\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree ccd439111963e540adb955bcc7b2fb0935fd7b2e\nparent 199e4c2d978f26e9d489c935739dcf7f2128a702\nparent e6f7ad1ab85efb27ab7910d8007b3f4531f7b083\nauthor Marcelo Trylesinski <marcelotryle@gmail.com> 1781089896 +0200\ncommitter GitHub <noreply@github.com> 1781089896 +0200\n\nMerge branch 'main' into fix/etag-weak-indicator-parsing",
+        "verified_at": "2026-06-10T11:11:36Z"
+      }
+    },
+    "url": "https://api.github.com/repos/Kludex/starlette/commits/f78a0d85449a1f51a5c5a1de93170009b9c09b11",
+    "html_url": "https://github.com/Kludex/starlette/commit/f78a0d85449a1f51a5c5a1de93170009b9c09b11",
+    "comments_url": "https://api.github.com/repos/Kludex/starlette/commits/f78a0d85449a1f51a5c5a1de93170009b9c09b11/comments",
+    "author": {
+      "login": "Kludex",
+      "id": 7353520,
+      "node_id": "MDQ6VXNlcjczNTM1MjA=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7353520?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Kludex",
+      "html_url": "https://github.com/Kludex",
+      "followers_url": "https://api.github.com/users/Kludex/followers",
+      "following_url": "https://api.github.com/users/Kludex/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Kludex/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Kludex/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Kludex/subscriptions",
+      "organizations_url": "https://api.github.com/users/Kludex/orgs",
+      "repos_url": "https://api.github.com/users/Kludex/repos",
+      "events_url": "https://api.github.com/users/Kludex/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Kludex/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "199e4c2d978f26e9d489c935739dcf7f2128a702",
+        "url": "https://api.github.com/repos/Kludex/starlette/commits/199e4c2d978f26e9d489c935739dcf7f2128a702",
+        "html_url": "https://github.com/Kludex/starlette/commit/199e4c2d978f26e9d489c935739dcf7f2128a702"
+      },
+      {
+        "sha": "e6f7ad1ab85efb27ab7910d8007b3f4531f7b083",
+        "url": "https://api.github.com/repos/Kludex/starlette/commits/e6f7ad1ab85efb27ab7910d8007b3f4531f7b083",
+        "html_url": "https://github.com/Kludex/starlette/commit/e6f7ad1ab85efb27ab7910d8007b3f4531f7b083"
+      }
+    ]
+  },
+  {
+    "sha": "f1cb5b480b7b4596402f9b7b0eefde0f5079cdde",
+    "node_id": "C_kwDORrDnANoAKGYxY2I1YjQ4MGI3YjQ1OTY0MDJmOWI3YjBlZWZkZTBmNTA3OWNkZGU",
+    "commit": {
+      "author": {
+        "name": "Marcelo Trylesinski",
+        "email": "marcelotryle@gmail.com",
+        "date": "2026-06-10T11:13:53Z"
+      },
+      "committer": {
+        "name": "Marcelo Trylesinski",
+        "email": "marcelotryle@gmail.com",
+        "date": "2026-06-10T11:13:53Z"
+      },
+      "message": "Add test for tab-separated If-None-Match list",
+      "tree": {
+        "sha": "0e6fb95b0cff4676805015b3b5d305732a0b3376",
+        "url": "https://api.github.com/repos/Kludex/starlette/git/trees/0e6fb95b0cff4676805015b3b5d305732a0b3376"
+      },
+      "url": "https://api.github.com/repos/Kludex/starlette/git/commits/f1cb5b480b7b4596402f9b7b0eefde0f5079cdde",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/Kludex/starlette/commits/f1cb5b480b7b4596402f9b7b0eefde0f5079cdde",
+    "html_url": "https://github.com/Kludex/starlette/commit/f1cb5b480b7b4596402f9b7b0eefde0f5079cdde",
+    "comments_url": "https://api.github.com/repos/Kludex/starlette/commits/f1cb5b480b7b4596402f9b7b0eefde0f5079cdde/comments",
+    "author": {
+      "login": "Kludex",
+      "id": 7353520,
+      "node_id": "MDQ6VXNlcjczNTM1MjA=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7353520?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Kludex",
+      "html_url": "https://github.com/Kludex",
+      "followers_url": "https://api.github.com/users/Kludex/followers",
+      "following_url": "https://api.github.com/users/Kludex/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Kludex/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Kludex/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Kludex/subscriptions",
+      "organizations_url": "https://api.github.com/users/Kludex/orgs",
+      "repos_url": "https://api.github.com/users/Kludex/repos",
+      "events_url": "https://api.github.com/users/Kludex/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Kludex/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "Kludex",
+      "id": 7353520,
+      "node_id": "MDQ6VXNlcjczNTM1MjA=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7353520?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Kludex",
+      "html_url": "https://github.com/Kludex",
+      "followers_url": "https://api.github.com/users/Kludex/followers",
+      "following_url": "https://api.github.com/users/Kludex/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Kludex/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Kludex/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Kludex/subscriptions",
+      "organizations_url": "https://api.github.com/users/Kludex/orgs",
+      "repos_url": "https://api.github.com/users/Kludex/repos",
+      "events_url": "https://api.github.com/users/Kludex/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Kludex/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "f78a0d85449a1f51a5c5a1de93170009b9c09b11",
+        "url": "https://api.github.com/repos/Kludex/starlette/commits/f78a0d85449a1f51a5c5a1de93170009b9c09b11",
+        "html_url": "https://github.com/Kludex/starlette/commit/f78a0d85449a1f51a5c5a1de93170009b9c09b11"
+      }
+    ]
+  }
+]

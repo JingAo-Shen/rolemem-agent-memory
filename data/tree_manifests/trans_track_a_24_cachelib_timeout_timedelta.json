@@ -1,0 +1,150 @@
+{
+  "transition_id": "trans_track_a_24_cachelib_timeout_timedelta",
+  "repo_name": "pallets/cachelib",
+  "base_commit": "5a7d98a6b54e05b6076a8c69b034ab8c35a250a1",
+  "target_commit": "d5fc7826065db284b8eda1e2fa5d2157ba1fcb9d",
+  "pkg_path": "src/cachelib",
+  "tree_purity_status": "TREE_PURITY_PASS",
+  "before_tree_purity": "TREE_PURITY_PASS",
+  "after_tree_purity": "TREE_PURITY_PASS",
+  "before_mismatches": [],
+  "after_mismatches": [],
+  "total_files_before": 13,
+  "total_files_after": 13,
+  "has_environment_overlay": false,
+  "before_files": [
+    {
+      "relative_path": "src/cachelib/__init__.py",
+      "size": 638,
+      "sha256": "20b1602b9766334af271c705061d801a302b7a2fc885773158a2b60f0e0c14b5"
+    },
+    {
+      "relative_path": "src/cachelib/base.py",
+      "size": 7195,
+      "sha256": "c9870915e4b63d3f9c680ececea51aa11e93f7f264547c5eda05a27aa0646cfd"
+    },
+    {
+      "relative_path": "src/cachelib/dynamodb.py",
+      "size": 9930,
+      "sha256": "9efc9c99a67604228f8622e4972e540f98cc1c0d1a4cc828eef8e61bb6474f79"
+    },
+    {
+      "relative_path": "src/cachelib/file.py",
+      "size": 11978,
+      "sha256": "6371f084672874cec4492976346478e8ae6c896a2501c749e4e32394af171fe8"
+    },
+    {
+      "relative_path": "src/cachelib/memcached.py",
+      "size": 11089,
+      "sha256": "37898aa5ba046854fdd5a2e56ddd413f23065722e5977c04604884bc94b9275c"
+    },
+    {
+      "relative_path": "src/cachelib/mongodb.py",
+      "size": 8117,
+      "sha256": "b2585d4e4acd4348514d2721891c7ccfa5fac738e534d05549bceb02c2dc7469"
+    },
+    {
+      "relative_path": "src/cachelib/py.typed",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/cachelib/redis.py",
+      "size": 3095,
+      "sha256": "c34bc0b376727806e735e8d50f360755c95724312514ce9f23ef84015096378c"
+    },
+    {
+      "relative_path": "src/cachelib/redis_base.py",
+      "size": 5910,
+      "sha256": "1e13e25fcf10b6661ed0f67b000e66a154d9bbb14dd51b8f0cc3b9aa58e7015a"
+    },
+    {
+      "relative_path": "src/cachelib/serializers.py",
+      "size": 5270,
+      "sha256": "3f1b413cbe6380a3bf71fa8a92c0aab5cd919467faadd0fd344e55b34c069123"
+    },
+    {
+      "relative_path": "src/cachelib/simple.py",
+      "size": 4253,
+      "sha256": "6a31b5caa5e90d24c82f2b74853e1752a5288250577fe3900277ac2cded4c24b"
+    },
+    {
+      "relative_path": "src/cachelib/uwsgi.py",
+      "size": 2921,
+      "sha256": "51a12d14175101c64f91c0a096f6c5052af7f4afbce13f26bfce4ea762f43d6c"
+    },
+    {
+      "relative_path": "src/cachelib/valkey.py",
+      "size": 3807,
+      "sha256": "5529080471f7e529727051409ab626d961bdeac58bee605acb40f0195a458afd"
+    }
+  ],
+  "after_files": [
+    {
+      "relative_path": "src/cachelib/__init__.py",
+      "size": 638,
+      "sha256": "20b1602b9766334af271c705061d801a302b7a2fc885773158a2b60f0e0c14b5"
+    },
+    {
+      "relative_path": "src/cachelib/base.py",
+      "size": 9006,
+      "sha256": "fbc62a24d58a904db511f84cce29e94b484e87b57079c87fda6e463e634e9ca3"
+    },
+    {
+      "relative_path": "src/cachelib/dynamodb.py",
+      "size": 10233,
+      "sha256": "9483b3da2292ff08a0f473027b5023a05690eaab4c369463d3305a5c6951d7be"
+    },
+    {
+      "relative_path": "src/cachelib/file.py",
+      "size": 12307,
+      "sha256": "9a2fd22dedfc7ed1beecd415029c3c4de2eeb1fd901528611c3d262558b5959f"
+    },
+    {
+      "relative_path": "src/cachelib/memcached.py",
+      "size": 11631,
+      "sha256": "2a1e2dc5450590b49d5370a2913bd142be41f2ed0821e4b1b8ea6b6869f03b1b"
+    },
+    {
+      "relative_path": "src/cachelib/mongodb.py",
+      "size": 8450,
+      "sha256": "9261730e818cf1d8f01e704d0d71a205d8c0a75ed65e71ce32f0e79c1a1fa4d9"
+    },
+    {
+      "relative_path": "src/cachelib/py.typed",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/cachelib/redis.py",
+      "size": 3288,
+      "sha256": "3cb59df994a0a0d973d850ffdb213a74d99f8060fc00a72e557ae95c0b6b41ee"
+    },
+    {
+      "relative_path": "src/cachelib/redis_base.py",
+      "size": 6437,
+      "sha256": "3d8739c517479f1a16d391eec8cc62b05777592a2c023a581c79c6e79265b1a8"
+    },
+    {
+      "relative_path": "src/cachelib/serializers.py",
+      "size": 5270,
+      "sha256": "3f1b413cbe6380a3bf71fa8a92c0aab5cd919467faadd0fd344e55b34c069123"
+    },
+    {
+      "relative_path": "src/cachelib/simple.py",
+      "size": 4574,
+      "sha256": "6d2099d815b5330d96d0ef2e9d07711c7de8be7be306cf64ce773cf65cb2fb40"
+    },
+    {
+      "relative_path": "src/cachelib/uwsgi.py",
+      "size": 3147,
+      "sha256": "7c7039722806f99b5d041f2be5c1d21a1f8d6e9bc635d051f8e17a262dd38805"
+    },
+    {
+      "relative_path": "src/cachelib/valkey.py",
+      "size": 4048,
+      "sha256": "7156b439ce728eb2c1628b701e5a4620886a91c312deb5cac1ba8c8f3b8952f1"
+    }
+  ],
+  "fixture_manifest_hash": "0cdd243d9d8dc45782939963e755a0f21d45aaf84fb25f985d64437851b29497"
+}

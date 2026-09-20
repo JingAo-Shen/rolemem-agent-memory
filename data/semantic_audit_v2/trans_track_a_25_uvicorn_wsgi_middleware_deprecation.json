@@ -1,0 +1,92 @@
+{
+  "transition_id": "trans_track_a_25_uvicorn_wsgi_middleware_deprecation",
+  "repo_name": "encode/uvicorn",
+  "auditor_version": "2.0.0",
+  "spec_sha256": "4793b3a85ebb852200a27eccaa7f44644dd7db9f1460f75e3b3e482f9d5daa67",
+  "audit_fingerprint": "77c6d3910d6f91fa8d9ab559d3b7f32e1a82ff322dcf20cc03214ed868c5b881",
+  "gates": [
+    {
+      "gate_id": "G1",
+      "name": "PR evidence <-> repository_change",
+      "expected": "PR title/body describes the repository architectural or API change",
+      "observed": "Word overlap: ['a2wsgi', 'deprecated', 'deprecationwarning', 'with', 'wsgimiddleware'] | PR title: Replace current WSGIMiddleware implementation by a2wsgi one",
+      "evidence": "pr.json:title='Replace current WSGIMiddleware implementation by a2wsgi one'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G2",
+      "name": "repository_change <-> actual diff",
+      "expected": "Actual diff contains code edits in files specified in repository_change",
+      "observed": "Diff mentions files: ['uvicorn/middleware/wsgi.py'] -> True",
+      "evidence": "diff.patch length: 7004 bytes",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G3",
+      "name": "actual diff <-> changed/deprecated/replacement symbols",
+      "expected": "Diff patch directly modifies or introduces the target symbols",
+      "observed": "Tokens ['native WSGIMiddleware', 'WSGIMiddleware', 'a2wsgi', 'WSGIMiddleware'] found in diff: True",
+      "evidence": "Matching symbols in diff: ['WSGIMiddleware', 'a2wsgi', 'WSGIMiddleware']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G4",
+      "name": "stale memory <-> base-state behavior",
+      "expected": "Stale memory candidate instructs usage of legacy symbol from base state",
+      "observed": "Stale memory references legacy symbol: True",
+      "evidence": "stale_memory_candidate='Use uvicorn.middleware.wsgi.WSGIMiddleware directly without deprecation warning....'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G5",
+      "name": "valid memory <-> target-state behavior",
+      "expected": "Valid memory candidate instructs modern pattern introduced in target state",
+      "observed": "Valid memory references modern symbol: True",
+      "evidence": "valid_memory_candidate='Native WSGIMiddleware is deprecated in uvicorn; migrate to a2wsgi.WSGIMiddleware...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G6",
+      "name": "current task <-> transition capability",
+      "expected": "Evaluation task prompt requires implementing or using transition capability",
+      "observed": "Task exercises target file 'wsgi_inspector.py' and target symbol 'wrap_wsgi_application': True",
+      "evidence": "current_task='Implement `wrap_wsgi_application(app)` in `wsgi_inspector.py` wrapping WSGI app ...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G7",
+      "name": "hidden test strength <-> current task semantics",
+      "expected": "Hidden test verifies target capability with mutation_kill_rate >= 0.80 and zero constant-return bypass",
+      "observed": "Semantic match: True, Mutation kill rate: 100.0%, Constant return bypass: False",
+      "evidence": "test_strength/trans_track_a_25_uvicorn_wsgi_middleware_deprecation.json, len=459 bytes",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G8",
+      "name": "stale control <-> stale memory semantics",
+      "expected": "Stale control solution invokes deprecated API as instructed by stale memory",
+      "observed": "Stale control uses deprecated symbol: True",
+      "evidence": "stale_solution.py contains ['WSGIMiddleware']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G9",
+      "name": "valid control <-> valid memory semantics",
+      "expected": "Valid control solution invokes modern API as instructed by valid memory",
+      "observed": "Valid control uses replacement symbol: True",
+      "evidence": "valid_solution.py contains modern pattern: True",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G10",
+      "name": "causal matrix <-> transition evidence",
+      "expected": "Causal counterfactual matrix demonstrates base-state pass, target-state fail with genuine failure taxonomy",
+      "observed": "Causal status: 'CAUSAL_PASS', failure taxonomy: 'DEPRECATION_WARNING'",
+      "evidence": "causal_counterfactual/trans_track_a_25_uvicorn_wsgi_middleware_deprecation.json",
+      "status": "PASS"
+    }
+  ],
+  "passed_gates_count": 10,
+  "total_gates_count": 10,
+  "overall_status": "PASS"
+}

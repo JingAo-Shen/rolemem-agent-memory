@@ -1,0 +1,10 @@
+{
+  "transition_id": "trans_track_a_16_pytest_yield_fixture_deprecation",
+  "audit_fingerprint": "9ee2d858e03159a0d50955eb3df67851d699506bc721f4dbff3d0be8057c8075",
+  "status": "FAIL",
+  "collection_status": "PASS",
+  "execution_status": "FAIL",
+  "exit_code": 1,
+  "raw_stdout": "STDOUT:\n\nSTDERR:\nTraceback (most recent call last):\n  File \"/root/anaconda3/bin/pytest\", line 7, in <module>\n    from pytest import console_main\n  File \"/root/anaconda3/lib/python3.13/site-packages/pytest/__init__.py\", line 9, in <module>\n    from _pytest.assertion import register_assert_rewrite\n  File \"/tmp/rolemem_sandbox_f_9krsb3/src/_pytest/assertion/__init__.py\", line 12, in <module>\n    from _pytest.assertion import rewrite\n  File \"/tmp/rolemem_sandbox_f_9krsb3/src/_pytest/assertion/rewrit",
+  "verification_status": "FAIL"
+}

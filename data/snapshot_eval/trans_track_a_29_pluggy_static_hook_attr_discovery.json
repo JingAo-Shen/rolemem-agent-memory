@@ -1,0 +1,7 @@
+{
+  "transition_id": "trans_track_a_29_pluggy_static_hook_attr_discovery",
+  "audit_fingerprint": "34bea0240942eff5c388adb1b15eda2fb8ca19567a9095ad65942fc216c9f209",
+  "status": "PASS",
+  "verification_status": "PASS",
+  "details": "Snapshot SHA-256 digest purity verified against Git extract"
+}

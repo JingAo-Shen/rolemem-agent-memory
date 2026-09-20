@@ -1,0 +1,406 @@
+diff --git a/changelog/701.bugfix.rst b/changelog/701.bugfix.rst
+new file mode 100644
+index 0000000..c612073
+--- /dev/null
++++ b/changelog/701.bugfix.rst
+@@ -0,0 +1,9 @@
++Hookimpls and hookspecs are now discovered via :func:`inspect.getattr_static`, so
++properties, ``cached_property`` and other descriptors are no longer executed while
++scanning a plugin. Hooks declared through such a descriptor are not supported.
++
++As a side effect, ``@hookimpl``/``@hookspec`` applied *above* ``@classmethod`` or
++``@staticmethod`` is now picked up; previously the marker sat on the wrapper where
++``getattr()`` never saw it. Callables stored directly on a plugin instance -- in its
++``__dict__`` or in a ``__slots__`` slot -- keep being called exactly as ``getattr()``
++returned them, i.e. without an implicit ``self``.
+diff --git a/src/pluggy/_manager.py b/src/pluggy/_manager.py
+index 325388a..b265aec 100644
+--- a/src/pluggy/_manager.py
++++ b/src/pluggy/_manager.py
+@@ -50,6 +50,82 @@ def _warn_for_function(warning: Warning, function: Callable[..., object]) -> Non
+     )
+ 
+ 
++_ABSENT: Final = object()
++
++
++def _instance_dict(obj: object) -> dict[str, Any]:
++    """Return ``obj``'s own ``__dict__``, without going through ``getattr``."""
++    try:
++        instance_dict = object.__getattribute__(obj, "__dict__")
++    except AttributeError:
++        return {}
++    return instance_dict if isinstance(instance_dict, dict) else {}
++
++
++def _static_hook_attr(
++    obj: object, name: str
++) -> tuple[object, Callable[..., object]] | None:
++    """Return ``(marker_holder, function)`` for ``name`` on ``obj``, else None.
++
++    Lookup avoids ``getattr()`` so that properties, ``cached_property`` and
++    other descriptors are skipped instead of being evaluated -- hooks provided
++    through such a descriptor (or only through ``__getattr__``) are not
++    supported. Only plain functions, :class:`classmethod`, :class:`staticmethod`
++    and already-bound :class:`~types.MethodType` objects are hookable.
++
++    ``marker_holder`` is the object that may carry the hookimpl/hookspec
++    options: the ``classmethod``/``staticmethod`` wrapper when the marker was
++    applied above it, the underlying function otherwise. ``function`` is bound
++    exactly the way ``getattr()`` would have bound it.
++    """
++    if not (inspect.isclass(obj) or inspect.ismodule(obj)):
++        # Values stored on the instance itself -- in ``__dict__`` or in a
++        # ``__slots__`` slot -- are handed out by ``getattr()`` as they are,
++        # bypassing the descriptor protocol, so they must not be bound here.
++        value = _instance_dict(obj).get(name, _ABSENT)
++        if value is _ABSENT:
++            slot = inspect.getattr_static(obj, name, None)
++            if isinstance(slot, types.MemberDescriptorType):
++                # Reading a slot runs no user code.
++                try:
++                    value = slot.__get__(obj, type(obj))
++                except AttributeError:
++                    value = _ABSENT
++        if value is not _ABSENT:
++            if isinstance(value, types.MethodType):
++                return value.__func__, value
++            if inspect.isfunction(value):
++                return value, value
++            return None
++
++    static: object = inspect.getattr_static(obj, name, None)
++    if isinstance(static, staticmethod):
++        return static, static.__func__
++    if isinstance(static, classmethod):
++        owner = obj if inspect.isclass(obj) else type(obj)
++        return static, cast(Callable[..., object], static.__get__(owner, owner))
++    if isinstance(static, types.MethodType):
++        return static.__func__, static
++    if inspect.isfunction(static):
++        if inspect.isclass(obj) or inspect.ismodule(obj):
++            return static, static
++        return static, static.__get__(obj, type(obj))
++    return None
++
++
++def _get_marker_opts(holder: object, attrname: str) -> dict[str, Any] | None:
++    """Read marker options from ``holder``, falling back to ``__func__``."""
++    opts = getattr(holder, attrname, None)
++    if opts is not None:
++        return opts if isinstance(opts, dict) else None
++    func = getattr(holder, "__func__", None)
++    if func is not None:
++        opts = getattr(func, attrname, None)
++        if opts is not None:
++            return opts if isinstance(opts, dict) else None
++    return None
++
++
+ class PluginValidationError(Exception):
+     """Plugin failed validation.
+ 
+@@ -145,7 +221,13 @@ class PluginManager:
+             hookimpl_opts = self.parse_hookimpl_opts(plugin, attr_name)
+             if hookimpl_opts is not None:
+                 normalize_hookimpl_opts(hookimpl_opts)
+-                method: _HookImplFunction[object] = getattr(plugin, attr_name)
++                found = _static_hook_attr(plugin, attr_name)
++                # Only reachable when a subclass overrode parse_hookimpl_opts
++                # to claim an attribute pluggy cannot bind.
++                assert found is not None, (
++                    f"{plugin!r}.{attr_name} is not a hookable attribute"
++                )
++                method: _HookImplFunction[object] = found[1]
+                 hookimpl = HookImpl(plugin, plugin_name, method, hookimpl_opts)
+                 hook_name = hookimpl_opts.get("specname") or attr_name
+                 hook: HookCaller | None = getattr(self.hook, hook_name, None)
+@@ -168,20 +250,18 @@ class PluginManager:
+         This method can be overridden by ``PluginManager`` subclasses to
+         customize how hook implementation are picked up. By default, returns the
+         options for items decorated with :class:`HookimplMarker`.
++
++        Discovery uses :func:`inspect.getattr_static` so properties and other
++        descriptors are not executed. Only functions, classmethods,
++        staticmethods, and bound methods are considered.
+         """
+-        method: object = getattr(plugin, name)
+-        if not inspect.isroutine(method):
++        found = _static_hook_attr(plugin, name)
++        if found is None:
+             return None
+-        try:
+-            res: HookimplOpts | None = getattr(
+-                method, self.project_name + "_impl", None
+-            )
+-        except Exception:  # pragma: no cover
+-            res = {}  # type: ignore[assignment] #pragma: no cover
+-        if res is not None and not isinstance(res, dict):
+-            # false positive
+-            res = None  # type:ignore[unreachable] #pragma: no cover
+-        return res
++        return cast(
++            HookimplOpts | None,
++            _get_marker_opts(found[0], self.project_name + "_impl"),
++        )
+ 
+     def unregister(
+         self, plugin: _Plugin | None = None, name: str | None = None
+@@ -273,10 +353,18 @@ class PluginManager:
+         This method can be overridden by ``PluginManager`` subclasses to
+         customize how hook specifications are picked up. By default, returns the
+         options for items decorated with :class:`HookspecMarker`.
++
++        Discovery uses :func:`inspect.getattr_static` so properties and other
++        descriptors are not executed. Only functions, classmethods,
++        staticmethods, and bound methods are considered.
+         """
+-        method = getattr(module_or_class, name)
+-        opts: HookspecOpts | None = getattr(method, self.project_name + "_spec", None)
+-        return opts
++        found = _static_hook_attr(module_or_class, name)
++        if found is None:
++            return None
++        return cast(
++            HookspecOpts | None,
++            _get_marker_opts(found[0], self.project_name + "_spec"),
++        )
+ 
+     def get_plugins(self) -> set[Any]:
+         """Return a set of all registered plugin objects."""
+diff --git a/testing/test_pluginmanager.py b/testing/test_pluginmanager.py
+index dd39595..43c2f73 100644
+--- a/testing/test_pluginmanager.py
++++ b/testing/test_pluginmanager.py
+@@ -3,6 +3,7 @@
+ """
+ 
+ import importlib.metadata
++import types
+ from typing import Any
+ from typing import cast
+ 
+@@ -125,6 +126,216 @@ def test_set_blocked(pm: PluginManager) -> None:
+     assert pm.register(A(), "somename")
+ 
+ 
++def test_register_ignores_properties(he_pm: PluginManager) -> None:
++    class ClassWithProperties:
++        property_was_executed: bool = False
++
++        @property
++        def some_func(self):
++            self.property_was_executed = True  # pragma: no cover
++
++    # Registering the class is harmless (getattr returns the property object).
++    he_pm.register(ClassWithProperties)
++    # Registering an instance must not evaluate the property getter.
++    test_plugin = ClassWithProperties()
++    he_pm.register(test_plugin)
++    assert not test_plugin.property_was_executed
++
++
++def test_register_ignores_cached_property(he_pm: PluginManager) -> None:
++    from functools import cached_property
++
++    class ClassWithCachedProperty:
++        cached_was_executed: bool = False
++
++        @cached_property
++        def some_func(self) -> None:
++            self.cached_was_executed = True  # pragma: no cover
++
++    test_plugin = ClassWithCachedProperty()
++    he_pm.register(test_plugin)
++    assert not test_plugin.cached_was_executed
++    assert "some_func" not in test_plugin.__dict__
++
++
++def test_register_ignores_raising_descriptors(he_pm: PluginManager) -> None:
++    """Descriptor attrs are skipped without accessing them via getattr."""
++
++    class RaisingDescriptor:
++        def __get__(self, obj: object, owner: type | None = None) -> object:
++            raise AttributeError("descriptor access failed")
++
++    class PluginWithRaisingDescriptor:
++        weird_attr = RaisingDescriptor()
++
++        @hookimpl
++        def he_method1(self, arg: object) -> list[object]:
++            return [arg]
++
++    plugin = PluginWithRaisingDescriptor()
++    assert "weird_attr" in dir(plugin)
++    with pytest.raises(AttributeError):
++        _ = plugin.weird_attr
++
++    he_pm.register(plugin)
++    assert he_pm.hook.he_method1(arg=1) == [[1]]
++
++
++def test_register_hookimpl_above_classmethod(he_pm: PluginManager) -> None:
++    """@hookimpl applied above @classmethod is discoverable via static lookup."""
++
++    class Plugin:
++        @hookimpl
++        @classmethod
++        def he_method1(cls, arg: object) -> list[object]:
++            return [arg]
++
++    he_pm.register(Plugin())
++    assert he_pm.hook.he_method1(arg=1) == [[1]]
++
++
++def test_register_hookimpl_above_staticmethod(he_pm: PluginManager) -> None:
++    """@hookimpl applied above @staticmethod is discoverable via static lookup."""
++
++    class Plugin:
++        @hookimpl
++        @staticmethod
++        def he_method1(arg: object) -> list[object]:
++            return [arg]
++
++    he_pm.register(Plugin())
++    assert he_pm.hook.he_method1(arg=1) == [[1]]
++
++
++def test_register_instance_attribute_function_is_not_bound(
++    he_pm: PluginManager,
++) -> None:
++    """A function stored on the instance is called unbound, as ``getattr`` does."""
++
++    class Plugin:
++        def __init__(self) -> None:
++            @hookimpl
++            def he_method1(arg: object) -> list[object]:
++                return [arg]
++
++            # Instance attributes bypass the descriptor protocol, so no ``self``
++            # is injected and the hook must keep its declared signature.
++            self.he_method1 = he_method1
++
++    he_pm.register(Plugin())
++    assert he_pm.hook.he_method1(arg=1) == [[1]]
++
++
++def test_register_instance_attribute_bound_method(he_pm: PluginManager) -> None:
++    """A bound method stored on the instance stays bound to its own object."""
++
++    class Impl:
++        @hookimpl
++        def he_method1(self, arg: object) -> list[object]:
++            return [self, arg]
++
++    impl = Impl()
++
++    class Plugin:
++        pass
++
++    plugin = Plugin()
++    plugin.he_method1 = impl.he_method1  # type: ignore[attr-defined]
++
++    he_pm.register(plugin)
++    assert he_pm.hook.he_method1(arg=1) == [[impl, 1]]
++
++
++def test_register_slot_attribute_function_is_not_bound(he_pm: PluginManager) -> None:
++    """A function stored in a ``__slots__`` slot is found and called unbound."""
++
++    class Plugin:
++        __slots__ = ("he_method1", "unset")
++
++        def __init__(self) -> None:
++            @hookimpl
++            def he_method1(arg: object) -> list[object]:
++                return [arg]
++
++            self.he_method1 = he_method1
++
++    plugin = Plugin()
++    # ``dir()`` lists ``unset`` too; an unassigned slot must be skipped quietly.
++    assert "unset" in dir(plugin)
++    he_pm.register(plugin)
++    assert he_pm.hook.he_method1(arg=1) == [[1]]
++
++
++def test_register_module_level_bound_method(he_pm: PluginManager) -> None:
++    """A bound method assigned onto a module namespace is hookable."""
++
++    class Impl:
++        @hookimpl
++        def he_method1(self, arg: object) -> list[object]:
++            return [self, arg]
++
++    impl = Impl()
++    module = types.ModuleType("module_plugin")
++    module.he_method1 = impl.he_method1  # type: ignore[attr-defined]
++
++    he_pm.register(module)
++    assert he_pm.hook.he_method1(arg=1) == [[impl, 1]]
++
++
++def test_register_ignores_unmarked_class_and_static_methods(
++    he_pm: PluginManager,
++) -> None:
++    """Undecorated classmethods/staticmethods carry no marker on either side."""
++
++    class Plugin:
++        @classmethod
++        def not_a_hook_cm(cls) -> None: ...
++
++        @staticmethod
++        def not_a_hook_sm() -> None: ...
++
++        @hookimpl
++        def he_method1(self, arg: object) -> list[object]:
++            return [arg]
++
++    plugin = Plugin()
++    assert he_pm.parse_hookimpl_opts(plugin, "not_a_hook_cm") is None
++    assert he_pm.parse_hookimpl_opts(plugin, "not_a_hook_sm") is None
++
++    he_pm.register(plugin)
++    assert he_pm.hook.he_method1(arg=1) == [[1]]
++
++
++def test_register_ignores_non_callable_instance_attributes(pm: PluginManager) -> None:
++    """Instance attributes that are not routines are never hook candidates."""
++
++    class Plugin:
++        def __init__(self) -> None:
++            self.some_value = 42
++
++    assert pm.parse_hookimpl_opts(Plugin(), "some_value") is None
++
++
++def test_hookspec_lookup_ignores_properties(pm: PluginManager) -> None:
++    """Hookspec discovery must not evaluate descriptors either."""
++
++    class Spec:
++        was_executed = False
++
++        @property
++        def not_a_spec(self) -> None:
++            type(self).was_executed = True  # pragma: no cover
++
++        @hookspec
++        def he_method1(self, arg: object) -> object: ...
++
++    # Spec instances are supported at runtime, see the ``he_pm`` fixture.
++    spec = cast(Any, Spec())
++    pm.add_hookspecs(spec)
++    assert not Spec.was_executed
++    assert pm.parse_hookspec_opts(spec, "not_a_spec") is None
++
++
+ def test_register_mismatch_method(he_pm: PluginManager) -> None:
+     class hello:
+         @hookimpl
+@@ -893,3 +1104,6 @@ def test_get_hookcallers_no_duplicates(pm: PluginManager) -> None:
+     assert len(hookcallers) == 2
+     caller_names = {hc.name for hc in hookcallers}
+     assert caller_names == {"hello", "goodbye"}
++    # Both hello impls are still wired up, and each caller works.
++    assert pm.hook.hello(arg=1) == [101, 2]
++    assert pm.hook.goodbye(arg=1) == [201]

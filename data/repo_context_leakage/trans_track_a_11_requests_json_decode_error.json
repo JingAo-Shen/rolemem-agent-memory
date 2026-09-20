@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_11_requests_json_decode_error",
+  "repo_name": "psf/requests",
+  "leakage_class": "REPO_CONTEXT_HINTED",
+  "rationale": "Context contains replacement symbols ['RequestException'] or migration comments, but no task implementation.",
+  "retrieved_tokens": 1193,
+  "found_replacements": [
+    "RequestException"
+  ],
+  "target_implementation_found": false,
+  "migration_comments_found": []
+}

@@ -1,0 +1,92 @@
+{
+  "transition_id": "trans_track_a_29_pluggy_static_hook_attr_discovery",
+  "repo_name": "pytest-dev/pluggy",
+  "auditor_version": "2.0.0",
+  "spec_sha256": "2fe6b5c651e8f9a03711f9c6c7b767a232fba577b0348f9aeada0712af2f0941",
+  "audit_fingerprint": "34bea0240942eff5c388adb1b15eda2fb8ca19567a9095ad65942fc216c9f209",
+  "gates": [
+    {
+      "gate_id": "G1",
+      "name": "PR evidence <-> repository_change",
+      "expected": "PR title/body describes the repository architectural or API change",
+      "observed": "Word overlap: ['_manager', '_static_hook_attr', 'added', 'discovery', 'for'] | PR title: Discover hooks via inspect.getattr_static",
+      "evidence": "pr.json:title='Discover hooks via inspect.getattr_static'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G2",
+      "name": "repository_change <-> actual diff",
+      "expected": "Actual diff contains code edits in files specified in repository_change",
+      "observed": "Diff mentions files: ['src/pluggy/_manager.py'] -> True",
+      "evidence": "diff.patch length: 15249 bytes",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G3",
+      "name": "actual diff <-> changed/deprecated/replacement symbols",
+      "expected": "Diff patch directly modifies or introduces the target symbols",
+      "observed": "Tokens ['getattr', 'getattr', '_static_hook_attr', '_static_hook_attr'] found in diff: True",
+      "evidence": "Matching symbols in diff: ['getattr', 'getattr', '_static_hook_attr', '_static_hook_attr']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G4",
+      "name": "stale memory <-> base-state behavior",
+      "expected": "Stale memory candidate instructs usage of legacy symbol from base state",
+      "observed": "Stale memory references legacy symbol: True",
+      "evidence": "stale_memory_candidate='pluggy relies on dynamic getattr causing unintended descriptor execution....'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G5",
+      "name": "valid memory <-> target-state behavior",
+      "expected": "Valid memory candidate instructs modern pattern introduced in target state",
+      "observed": "Valid memory references modern symbol: True",
+      "evidence": "valid_memory_candidate='pluggy uses _static_hook_attr to avoid evaluating properties during hook discove...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G6",
+      "name": "current task <-> transition capability",
+      "expected": "Evaluation task prompt requires implementing or using transition capability",
+      "observed": "Task exercises target file 'pluggy_compat.py' and target symbol 'has_static_hook_discovery': True",
+      "evidence": "current_task='Implement `has_static_hook_discovery()` in `pluggy_compat.py` detecting static h...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G7",
+      "name": "hidden test strength <-> current task semantics",
+      "expected": "Hidden test verifies target capability with mutation_kill_rate >= 0.80 and zero constant-return bypass",
+      "observed": "Semantic match: True, Mutation kill rate: 100.0%, Constant return bypass: False",
+      "evidence": "test_strength/trans_track_a_29_pluggy_static_hook_attr_discovery.json, len=126 bytes",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G8",
+      "name": "stale control <-> stale memory semantics",
+      "expected": "Stale control solution invokes deprecated API as instructed by stale memory",
+      "observed": "Stale control uses deprecated symbol: True",
+      "evidence": "stale_solution.py contains ['getattr', 'getattr']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G9",
+      "name": "valid control <-> valid memory semantics",
+      "expected": "Valid control solution invokes modern API as instructed by valid memory",
+      "observed": "Valid control uses replacement symbol: True",
+      "evidence": "valid_solution.py contains modern pattern: True",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G10",
+      "name": "causal matrix <-> transition evidence",
+      "expected": "Causal counterfactual matrix demonstrates base-state pass, target-state fail with genuine failure taxonomy",
+      "observed": "Causal status: 'CAUSAL_PASS', failure taxonomy: 'BEHAVIOR_MISMATCH'",
+      "evidence": "causal_counterfactual/trans_track_a_29_pluggy_static_hook_attr_discovery.json",
+      "status": "PASS"
+    }
+  ],
+  "passed_gates_count": 10,
+  "total_gates_count": 10,
+  "overall_status": "PASS"
+}

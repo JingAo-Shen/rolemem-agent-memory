@@ -1,0 +1,7 @@
+{
+  "transition_id": "trans_track_a_23_tqdm_asyncio_gather_return_exceptions",
+  "audit_fingerprint": "7469188a1fa3a1c3cd5bf14163506300b7eaf8d50180613f3df9492219f35d96",
+  "status": "GENERATED_HIDDEN_TEST_ONLY",
+  "verification_status": "GENERATED_HIDDEN_TEST_ONLY",
+  "evidence": "Executable hidden test verified in sandbox"
+}

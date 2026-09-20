@@ -1,0 +1,50 @@
+diff --git a/AUTHORS.rst b/AUTHORS.rst
+index 4606313..2f1e93e 100644
+--- a/AUTHORS.rst
++++ b/AUTHORS.rst
+@@ -178,3 +178,4 @@ Contributors (chronological)
+ - Fares Abubaker `@Fares-Abubaker <https://github.com/Fares-Abubaker>`_
+ - Dharanikumar Sekar `@dharani7998 <https://github.com/dharani7998>`_
+ - Nicolas Simonds `@0xDEC0DE <https://github.com/0xDEC0DE>`_
++- Florian Laport `@Florian-Laport <https://github.com/Florian-Laport>`_
+diff --git a/CHANGELOG.rst b/CHANGELOG.rst
+index 75a35e3..f6443f2 100644
+--- a/CHANGELOG.rst
++++ b/CHANGELOG.rst
+@@ -1,6 +1,15 @@
+ Changelog
+ ---------
+ 
++(unreleased)
++++++++++++++
++
++Bug fixes:
++
++- Fix wildcard import of ``from marshmallow import *`` (:pr:`2823`).
++  Thanks :user:`Florian-Laport` for the PR.
++
++
+ 4.0.0 (2025-04-16)
+ ******************
+ 
+@@ -150,7 +159,7 @@ Features:
+ 
+ Bug fixes:
+ 
+-- Respect ``data_key`` when schema validators raise a `ValidationError <marshmallow.exceptions.ValidationError>` 
++- Respect ``data_key`` when schema validators raise a `ValidationError <marshmallow.exceptions.ValidationError>`
+   with a ``field_name`` argument (:issue:`2170`). Thanks :user:`matejsp` for reporting.
+ - Correctly handle multiple `@post_load <marshmallow.post_load>` methods where one method appends to
+   the data and another passes ``pass_original=True`` (:issue:`1755`).
+diff --git a/src/marshmallow/__init__.py b/src/marshmallow/__init__.py
+index 36890a4..60825ab 100644
+--- a/src/marshmallow/__init__.py
++++ b/src/marshmallow/__init__.py
+@@ -23,7 +23,6 @@ __all__ = [
+     "missing",
+     "post_dump",
+     "post_load",
+-    "pprint",
+     "pre_dump",
+     "pre_load",
+     "validates",

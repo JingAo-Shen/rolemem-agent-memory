@@ -1,0 +1,92 @@
+{
+  "transition_id": "trans_track_a_14_fastapi_on_event_compatibility",
+  "repo_name": "tiangolo/fastapi",
+  "auditor_version": "2.0.0",
+  "spec_sha256": "c0aeeb8277e93138bcbca4c4b9446b010b6351afaa03b50cd5a63e06b1c8025f",
+  "audit_fingerprint": "40deb3e345cb3ba492b6a9928c04ac297b4e8585542715b0482d7b89ba87e6e7",
+  "gates": [
+    {
+      "gate_id": "G1",
+      "name": "PR evidence <-> repository_change",
+      "expected": "PR title/body describes the repository architectural or API change",
+      "observed": "Word overlap: ['compatibility', 'for', 'lifespan', 'on_event', 'starlette'] | PR title: \u267b\ufe0f Re-implement `on_event` in FastAPI for compatibility with the next Starlette, while keeping backwards compatibility",
+      "evidence": "pr.json:title='\u267b\ufe0f Re-implement `on_event` in FastAPI for compatibility with the next Starlette, while keeping backwards compatibility'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G2",
+      "name": "repository_change <-> actual diff",
+      "expected": "Actual diff contains code edits in files specified in repository_change",
+      "observed": "Diff mentions files: ['fastapi/routing.py'] -> True",
+      "evidence": "diff.patch length: 9865 bytes",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G3",
+      "name": "actual diff <-> changed/deprecated/replacement symbols",
+      "expected": "Diff patch directly modifies or introduces the target symbols",
+      "observed": "Tokens ['False', 'return False', '_DefaultLifespan', 'routing'] found in diff: True",
+      "evidence": "Matching symbols in diff: ['False', '_DefaultLifespan', 'routing']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G4",
+      "name": "stale memory <-> base-state behavior",
+      "expected": "Stale memory candidate instructs usage of legacy symbol from base state",
+      "observed": "Stale memory references legacy symbol: True",
+      "evidence": "stale_memory_candidate='fastapi.routing lacks _DefaultLifespan helper; return False....'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G5",
+      "name": "valid memory <-> target-state behavior",
+      "expected": "Valid memory candidate instructs modern pattern introduced in target state",
+      "observed": "Valid memory references modern symbol: True",
+      "evidence": "valid_memory_candidate='Inspect fastapi.routing._DefaultLifespan for lifespan handler setup....'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G6",
+      "name": "current task <-> transition capability",
+      "expected": "Evaluation task prompt requires implementing or using transition capability",
+      "observed": "Task exercises target file 'app_lifecycle.py' and target symbol 'has_default_lifespan': True",
+      "evidence": "current_task='Implement `has_default_lifespan()` in `app_lifecycle.py` verifying default lifes...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G7",
+      "name": "hidden test strength <-> current task semantics",
+      "expected": "Hidden test verifies target capability with mutation_kill_rate >= 0.80 and zero constant-return bypass",
+      "observed": "Semantic match: True, Mutation kill rate: 100.0%, Constant return bypass: False",
+      "evidence": "test_strength/trans_track_a_14_fastapi_on_event_compatibility.json, len=121 bytes",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G8",
+      "name": "stale control <-> stale memory semantics",
+      "expected": "Stale control solution invokes deprecated API as instructed by stale memory",
+      "observed": "Stale control uses deprecated symbol: True",
+      "evidence": "stale_solution.py contains ['False', 'return False']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G9",
+      "name": "valid control <-> valid memory semantics",
+      "expected": "Valid control solution invokes modern API as instructed by valid memory",
+      "observed": "Valid control uses replacement symbol: True",
+      "evidence": "valid_solution.py contains modern pattern: True",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G10",
+      "name": "causal matrix <-> transition evidence",
+      "expected": "Causal counterfactual matrix demonstrates base-state pass, target-state fail with genuine failure taxonomy",
+      "observed": "Causal status: 'CAUSAL_PASS', failure taxonomy: 'BEHAVIOR_MISMATCH'",
+      "evidence": "causal_counterfactual/trans_track_a_14_fastapi_on_event_compatibility.json",
+      "status": "PASS"
+    }
+  ],
+  "passed_gates_count": 10,
+  "total_gates_count": 10,
+  "overall_status": "PASS"
+}

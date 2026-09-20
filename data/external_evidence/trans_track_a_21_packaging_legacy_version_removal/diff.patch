@@ -1,0 +1,1509 @@
+diff --git a/docs/specifiers.rst b/docs/specifiers.rst
+index 83299a8..253c510 100644
+--- a/docs/specifiers.rst
++++ b/docs/specifiers.rst
+@@ -54,10 +54,8 @@ Reference
+     can be passed a single specifier (``>=3.0``), a comma-separated list of
+     specifiers (``>=3.0,!=3.1``), or no specifier at all. Each individual
+     specifier will be attempted to be parsed as a PEP 440 specifier
+-    (:class:`Specifier`) or as a legacy, setuptools style specifier
+-    (deprecated :class:`LegacySpecifier`). You may combine
+-    :class:`SpecifierSet` instances using the ``&`` operator
+-    (``SpecifierSet(">2") & SpecifierSet("<4")``).
++    (:class:`Specifier`). You may combine :class:`SpecifierSet` instances using
++    the ``&`` operator (``SpecifierSet(">2") & SpecifierSet("<4")``).
+ 
+     Both the membership tests and the combination support using raw strings
+     in place of already instantiated objects.
+@@ -91,8 +89,7 @@ Reference
+     .. method:: contains(version, prereleases=None)
+ 
+         Determines if ``version``, which can be either a version string, a
+-        :class:`Version`, or a deprecated :class:`LegacyVersion` object, is
+-        contained within this set of specifiers.
++        :class:`Version` is contained within this set of specifiers.
+ 
+         This will either match or not match prereleases based on the
+         ``prereleases`` parameter. When ``prereleases`` is set to ``None``
+@@ -106,15 +103,14 @@ Reference
+ 
+     .. method:: __iter__()
+ 
+-        Returns an iterator over all the underlying :class:`Specifier` (or
+-        deprecated :class:`LegacySpecifier`) instances in this specifier set.
++        Returns an iterator over all the underlying :class:`Specifier` instances
++        in this specifier set.
+ 
+     .. method:: filter(iterable, prereleases=None)
+ 
+         Takes an iterable that can contain version strings, :class:`~.Version`,
+-        and deprecated :class:`~.LegacyVersion` instances and will then filter
+-        it, returning an iterable that contains only items which match the
+-        rules of this specifier object.
++        instances and will then filter them, returning an iterable that contains
++        only items which match the rules of this specifier object.
+ 
+         This method is smarter than just
+         ``filter(Specifier().contains, [...])`` because it implements the rule
+@@ -169,50 +165,6 @@ Reference
+         See :meth:`SpecifierSet.filter()`.
+ 
+ 
+-.. class:: LegacySpecifier(specifier, prereleases=None)
+-
+-    .. deprecated:: 20.5
+-
+-        Use :class:`Specifier` instead.
+-
+-    This class abstracts the handling of a single legacy, setuptools style
+-    specifier. It is generally not required to instantiate this manually,
+-    preferring instead to work with :class:`SpecifierSet`.
+-
+-    :param str specifier: The string representation of a specifier which will
+-                          be parsed and normalized before use.
+-    :param bool prereleases: This tells the specifier if it should accept
+-                             prerelease versions if applicable or not. The
+-                             default of ``None`` will autodetect it from the
+-                             given specifiers.
+-    :raises InvalidSpecifier: If the ``specifier`` is not parseable then this
+-                              will be raised.
+-
+-    .. attribute:: operator
+-
+-        The string value of the operator part of this specifier.
+-
+-    .. attribute:: version
+-
+-        The string version of the version part of this specifier.
+-
+-    .. attribute:: prereleases
+-
+-        See :attr:`SpecifierSet.prereleases`.
+-
+-    .. method:: __contains__(version)
+-
+-        See :meth:`SpecifierSet.__contains__()`.
+-
+-    .. method:: contains(version, prereleases=None)
+-
+-        See :meth:`SpecifierSet.contains()`.
+-
+-    .. method:: filter(iterable, prereleases=None)
+-
+-        See :meth:`SpecifierSet.filter()`.
+-
+-
+ .. exception:: InvalidSpecifier
+ 
+     Raised when attempting to create a :class:`Specifier` with a specifier
+diff --git a/docs/version.rst b/docs/version.rst
+index a43cf78..73a2a01 100644
+--- a/docs/version.rst
++++ b/docs/version.rst
+@@ -50,8 +50,8 @@ Reference
+ .. function:: parse(version)
+ 
+     This function takes a version string and will parse it as a
+-    :class:`Version` if the version is a valid PEP 440 version, otherwise it
+-    will parse it as a deprecated :class:`LegacyVersion`.
++    :class:`Version` if the version is a valid PEP 440 version.
++    Otherwise, raises :class:`InvalidVersion`.
+ 
+ 
+ .. class:: Version(version)
+@@ -138,140 +138,6 @@ Reference
+         represents a post-release.
+ 
+ 
+-.. class:: LegacyVersion(version)
+-
+-    .. deprecated:: 20.5
+-
+-        Use :class:`Version` instead.
+-
+-    This class abstracts handling of a project's versions if they are not
+-    compatible with the scheme defined in `PEP 440`_. It implements a similar
+-    interface to that of :class:`Version`.
+-
+-    This class implements the previous de facto sorting algorithm used by
+-    setuptools, however it will always sort as less than a :class:`Version`
+-    instance.
+-
+-    :param str version: The string representation of a version which will be
+-                        used as is.
+-
+-    .. note::
+-
+-        :class:`LegacyVersion` instances are always ordered lower than :class:`Version` instances.
+-
+-        >>> from packaging.version import Version, LegacyVersion
+-        >>> v1 = Version("1.0")
+-        >>> v2 = LegacyVersion("1.0")
+-        >>> v1 > v2
+-        True
+-        >>> v3 = LegacyVersion("1.3")
+-        >>> v1 > v3
+-        True
+-
+-        Also note that some strings are still valid PEP 440 strings (:class:`Version`), even if they look very similar to
+-        other versions that are not (:class:`LegacyVersion`). Examples include versions with `Pre-release spelling`_ and
+-        `Post-release spelling`_.
+-
+-        >>> from packaging.version import parse
+-        >>> v1 = parse('0.9.8a')
+-        >>> v2 = parse('0.9.8beta')
+-        >>> v3 = parse('0.9.8r')
+-        >>> v4 = parse('0.9.8rev')
+-        >>> v5 = parse('0.9.8t')
+-        >>> v1
+-        <Version('0.9.8a0')>
+-        >>> v1.is_prerelease
+-        True
+-        >>> v2
+-        <Version('0.9.8b0')>
+-        >>> v2.is_prerelease
+-        True
+-        >>> v3
+-        <Version('0.9.8.post0')>
+-        >>> v3.is_postrelease
+-        True
+-        >>> v4
+-        <Version('0.9.8.post0')>
+-        >>> v4.is_postrelease
+-        True
+-        >>> v5
+-        <LegacyVersion('0.9.8t')>
+-        >>> v5.is_prerelease
+-        False
+-        >>> v5.is_postrelease
+-        False
+-
+-    .. attribute:: public
+-
+-        A string representing the public version portion of this
+-        :class:`LegacyVersion`. This will always be the entire version string.
+-
+-    .. attribute:: base_version
+-
+-        A string representing the base version portion of this
+-        :class:`LegacyVersion` instance. This will always be the entire version
+-        string.
+-
+-    .. attribute:: epoch
+-
+-        This will always be ``-1`` since without `PEP 440`_ we do not have the
+-        concept of version epochs.  The value reflects the fact that
+-        :class:`LegacyVersion` instances always compare less than
+-        :class:`Version` instances.
+-
+-    .. attribute:: release
+-
+-        This will always be ``None`` since without `PEP 440`_ we do not have
+-        the concept of a release segment or its components.  It exists
+-        primarily to allow a :class:`LegacyVersion` to be used as a stand in
+-        for a :class:`Version`.
+-
+-    .. attribute:: local
+-
+-        This will always be ``None`` since without `PEP 440`_ we do not have
+-        the concept of a local version. It exists primarily to allow a
+-        :class:`LegacyVersion` to be used as a stand in for a :class:`Version`.
+-
+-    .. attribute:: pre
+-
+-        This will always be ``None`` since without `PEP 440`_ we do not have
+-        the concept of a prerelease. It exists primarily to allow a
+-        :class:`LegacyVersion` to be used as a stand in for a :class:`Version`.
+-
+-    .. attribute:: is_prerelease
+-
+-        A boolean value indicating whether this :class:`LegacyVersion`
+-        represents a prerelease and/or development release.  Since without
+-        `PEP 440`_ there is no concept of pre or dev releases this will
+-        always be `False` and exists for compatibility with :class:`Version`.
+-
+-    .. attribute:: dev
+-
+-        This will always be ``None`` since without `PEP 440`_ we do not have
+-        the concept of a development release. It exists primarily to allow a
+-        :class:`LegacyVersion` to be used as a stand in for a :class:`Version`.
+-
+-    .. attribute:: is_devrelease
+-
+-        A boolean value indicating whether this :class:`LegacyVersion`
+-        represents a development release.  Since without `PEP 440`_ there is
+-        no concept of dev releases this will always be `False` and exists for
+-        compatibility with :class:`Version`.
+-
+-    .. attribute:: post
+-
+-        This will always be ``None`` since without `PEP 440`_ we do not have
+-        the concept of a postrelease. It exists primarily to allow a
+-        :class:`LegacyVersion` to be used as a stand in for a :class:`Version`.
+-
+-    .. attribute:: is_postrelease
+-
+-        A boolean value indicating whether this :class:`LegacyVersion`
+-        represents a post-release. Since without `PEP 440`_ there is no concept
+-        of post-releases this will always be ``False`` and exists for
+-        compatibility with :class:`Version`.
+-
+-
+ .. exception:: InvalidVersion
+ 
+     Raised when attempting to create a :class:`Version` with a version string
+diff --git a/packaging/requirements.py b/packaging/requirements.py
+index bc0b17c..79a044f 100644
+--- a/packaging/requirements.py
++++ b/packaging/requirements.py
+@@ -21,7 +21,7 @@ from pyparsing import (  # noqa
+ )
+ 
+ from .markers import MARKER_EXPR as _MARKER_EXPR, Marker
+-from .specifiers import LegacySpecifier, Specifier, SpecifierSet
++from .specifiers import Specifier, SpecifierSet
+ 
+ 
+ class InvalidRequirement(ValueError):
+@@ -53,10 +53,7 @@ URL = AT + URI
+ EXTRAS_LIST = EXTRA + ZeroOrMore(COMMA + EXTRA)
+ EXTRAS = (LBRACKET + Optional(EXTRAS_LIST) + RBRACKET)("extras")
+ 
+-VERSION_PEP440 = Regex(Specifier._regex_str, re.VERBOSE | re.IGNORECASE)
+-VERSION_LEGACY = Regex(LegacySpecifier._regex_str, re.VERBOSE | re.IGNORECASE)
+-
+-VERSION_ONE = VERSION_PEP440 ^ VERSION_LEGACY
++VERSION_ONE = Regex(Specifier._regex_str, re.VERBOSE | re.IGNORECASE)
+ VERSION_MANY = Combine(
+     VERSION_ONE + ZeroOrMore(COMMA + VERSION_ONE), joinString=",", adjacent=False
+ )("_raw_spec")
+diff --git a/packaging/specifiers.py b/packaging/specifiers.py
+index a2d51b0..dab49ee 100644
+--- a/packaging/specifiers.py
++++ b/packaging/specifiers.py
+@@ -3,31 +3,21 @@
+ # for complete details.
+ 
+ import abc
+-import functools
+ import itertools
+ import re
+-import warnings
+-from typing import (
+-    Callable,
+-    Dict,
+-    Iterable,
+-    Iterator,
+-    List,
+-    Optional,
+-    Pattern,
+-    Set,
+-    Tuple,
+-    TypeVar,
+-    Union,
+-)
++from typing import Callable, Iterable, Iterator, List, Optional, Set, Tuple, Union
+ 
+ from .utils import canonicalize_version
+-from .version import LegacyVersion, Version, parse
++from .version import Version
+ 
+-ParsedVersion = Union[Version, LegacyVersion]
+-UnparsedVersion = Union[Version, LegacyVersion, str]
+-VersionTypeVar = TypeVar("VersionTypeVar", bound=UnparsedVersion)
+-CallableOperator = Callable[[ParsedVersion, str], bool]
++UnparsedVersion = Union[Version, str]
++CallableOperator = Callable[[Version, str], bool]
++
++
++def _coerce_version(version: UnparsedVersion) -> Version:
++    if not isinstance(version, Version):
++        version = Version(version)
++    return version
+ 
+ 
+ class InvalidSpecifier(ValueError):
+@@ -80,228 +70,15 @@ class BaseSpecifier(metaclass=abc.ABCMeta):
+ 
+     @abc.abstractmethod
+     def filter(
+-        self, iterable: Iterable[VersionTypeVar], prereleases: Optional[bool] = None
+-    ) -> Iterable[VersionTypeVar]:
++        self, iterable: Iterable[UnparsedVersion], prereleases: Optional[bool] = None
++    ) -> Iterable[UnparsedVersion]:
+         """
+         Takes an iterable of items and filters them so that only items which
+         are contained within this specifier are allowed in it.
+         """
+ 
+ 
+-class _IndividualSpecifier(BaseSpecifier):
+-
+-    _operators: Dict[str, str] = {}
+-    _regex: Pattern[str]
+-
+-    def __init__(self, spec: str = "", prereleases: Optional[bool] = None) -> None:
+-        match = self._regex.search(spec)
+-        if not match:
+-            raise InvalidSpecifier(f"Invalid specifier: '{spec}'")
+-
+-        self._spec: Tuple[str, str] = (
+-            match.group("operator").strip(),
+-            match.group("version").strip(),
+-        )
+-
+-        # Store whether or not this Specifier should accept prereleases
+-        self._prereleases = prereleases
+-
+-    def __repr__(self) -> str:
+-        pre = (
+-            f", prereleases={self.prereleases!r}"
+-            if self._prereleases is not None
+-            else ""
+-        )
+-
+-        return f"<{self.__class__.__name__}({str(self)!r}{pre})>"
+-
+-    def __str__(self) -> str:
+-        return "{}{}".format(*self._spec)
+-
+-    @property
+-    def _canonical_spec(self) -> Tuple[str, str]:
+-        canonical_version = canonicalize_version(
+-            self._spec[1],
+-            strip_trailing_zero=(self._spec[0] != "~="),
+-        )
+-        return self._spec[0], canonical_version
+-
+-    def __hash__(self) -> int:
+-        return hash(self._canonical_spec)
+-
+-    def __eq__(self, other: object) -> bool:
+-        if isinstance(other, str):
+-            try:
+-                other = self.__class__(str(other))
+-            except InvalidSpecifier:
+-                return NotImplemented
+-        elif not isinstance(other, self.__class__):
+-            return NotImplemented
+-
+-        return self._canonical_spec == other._canonical_spec
+-
+-    def _get_operator(self, op: str) -> CallableOperator:
+-        operator_callable: CallableOperator = getattr(
+-            self, f"_compare_{self._operators[op]}"
+-        )
+-        return operator_callable
+-
+-    def _coerce_version(self, version: UnparsedVersion) -> ParsedVersion:
+-        if not isinstance(version, (LegacyVersion, Version)):
+-            version = parse(version)
+-        return version
+-
+-    @property
+-    def operator(self) -> str:
+-        return self._spec[0]
+-
+-    @property
+-    def version(self) -> str:
+-        return self._spec[1]
+-
+-    @property
+-    def prereleases(self) -> Optional[bool]:
+-        return self._prereleases
+-
+-    @prereleases.setter
+-    def prereleases(self, value: bool) -> None:
+-        self._prereleases = value
+-
+-    def __contains__(self, item: str) -> bool:
+-        return self.contains(item)
+-
+-    def contains(
+-        self, item: UnparsedVersion, prereleases: Optional[bool] = None
+-    ) -> bool:
+-
+-        # Determine if prereleases are to be allowed or not.
+-        if prereleases is None:
+-            prereleases = self.prereleases
+-
+-        # Normalize item to a Version or LegacyVersion, this allows us to have
+-        # a shortcut for ``"2.0" in Specifier(">=2")
+-        normalized_item = self._coerce_version(item)
+-
+-        # Determine if we should be supporting prereleases in this specifier
+-        # or not, if we do not support prereleases than we can short circuit
+-        # logic if this version is a prereleases.
+-        if normalized_item.is_prerelease and not prereleases:
+-            return False
+-
+-        # Actually do the comparison to determine if this item is contained
+-        # within this Specifier or not.
+-        operator_callable: CallableOperator = self._get_operator(self.operator)
+-        return operator_callable(normalized_item, self.version)
+-
+-    def filter(
+-        self, iterable: Iterable[VersionTypeVar], prereleases: Optional[bool] = None
+-    ) -> Iterable[VersionTypeVar]:
+-
+-        yielded = False
+-        found_prereleases = []
+-
+-        kw = {"prereleases": prereleases if prereleases is not None else True}
+-
+-        # Attempt to iterate over all the values in the iterable and if any of
+-        # them match, yield them.
+-        for version in iterable:
+-            parsed_version = self._coerce_version(version)
+-
+-            if self.contains(parsed_version, **kw):
+-                # If our version is a prerelease, and we were not set to allow
+-                # prereleases, then we'll store it for later in case nothing
+-                # else matches this specifier.
+-                if parsed_version.is_prerelease and not (
+-                    prereleases or self.prereleases
+-                ):
+-                    found_prereleases.append(version)
+-                # Either this is not a prerelease, or we should have been
+-                # accepting prereleases from the beginning.
+-                else:
+-                    yielded = True
+-                    yield version
+-
+-        # Now that we've iterated over everything, determine if we've yielded
+-        # any values, and if we have not and we have any prereleases stored up
+-        # then we will go ahead and yield the prereleases.
+-        if not yielded and found_prereleases:
+-            for version in found_prereleases:
+-                yield version
+-
+-
+-class LegacySpecifier(_IndividualSpecifier):
+-
+-    _regex_str = r"""
+-        (?P<operator>(==|!=|<=|>=|<|>))
+-        \s*
+-        (?P<version>
+-            [^,;\s)]* # Since this is a "legacy" specifier, and the version
+-                      # string can be just about anything, we match everything
+-                      # except for whitespace, a semi-colon for marker support,
+-                      # a closing paren since versions can be enclosed in
+-                      # them, and a comma since it's a version separator.
+-        )
+-        """
+-
+-    _regex = re.compile(r"^\s*" + _regex_str + r"\s*$", re.VERBOSE | re.IGNORECASE)
+-
+-    _operators = {
+-        "==": "equal",
+-        "!=": "not_equal",
+-        "<=": "less_than_equal",
+-        ">=": "greater_than_equal",
+-        "<": "less_than",
+-        ">": "greater_than",
+-    }
+-
+-    def __init__(self, spec: str = "", prereleases: Optional[bool] = None) -> None:
+-        super().__init__(spec, prereleases)
+-
+-        warnings.warn(
+-            "Creating a LegacyVersion has been deprecated and will be "
+-            "removed in the next major release",
+-            DeprecationWarning,
+-        )
+-
+-    def _coerce_version(self, version: UnparsedVersion) -> LegacyVersion:
+-        if not isinstance(version, LegacyVersion):
+-            version = LegacyVersion(str(version))
+-        return version
+-
+-    def _compare_equal(self, prospective: LegacyVersion, spec: str) -> bool:
+-        return prospective == self._coerce_version(spec)
+-
+-    def _compare_not_equal(self, prospective: LegacyVersion, spec: str) -> bool:
+-        return prospective != self._coerce_version(spec)
+-
+-    def _compare_less_than_equal(self, prospective: LegacyVersion, spec: str) -> bool:
+-        return prospective <= self._coerce_version(spec)
+-
+-    def _compare_greater_than_equal(
+-        self, prospective: LegacyVersion, spec: str
+-    ) -> bool:
+-        return prospective >= self._coerce_version(spec)
+-
+-    def _compare_less_than(self, prospective: LegacyVersion, spec: str) -> bool:
+-        return prospective < self._coerce_version(spec)
+-
+-    def _compare_greater_than(self, prospective: LegacyVersion, spec: str) -> bool:
+-        return prospective > self._coerce_version(spec)
+-
+-
+-def _require_version_compare(
+-    fn: Callable[["Specifier", ParsedVersion, str], bool]
+-) -> Callable[["Specifier", ParsedVersion, str], bool]:
+-    @functools.wraps(fn)
+-    def wrapped(self: "Specifier", prospective: ParsedVersion, spec: str) -> bool:
+-        if not isinstance(prospective, Version):
+-            return False
+-        return fn(self, prospective, spec)
+-
+-    return wrapped
+-
+-
+-class Specifier(_IndividualSpecifier):
++class Specifier(BaseSpecifier):
+ 
+     _regex_str = r"""
+         (?P<operator>(~=|==|!=|<=|>=|<|>|===))
+@@ -341,10 +118,10 @@ class Specifier(_IndividualSpecifier):
+                 # You cannot use a wild card and a dev or local version
+                 # together so group them with a | and make them optional.
+                 (?:
++                    \.\*  # Wild card syntax of .*
++                    |
+                     (?:[-_\.]?dev[-_\.]?[0-9]*)?         # dev release
+                     (?:\+[a-z0-9]+(?:[-_\.][a-z0-9]+)*)? # local
+-                    |
+-                    \.\*  # Wild card syntax of .*
+                 )?
+             )
+             |
+@@ -409,8 +186,60 @@ class Specifier(_IndividualSpecifier):
+         "===": "arbitrary",
+     }
+ 
+-    @_require_version_compare
+-    def _compare_compatible(self, prospective: ParsedVersion, spec: str) -> bool:
++    def __init__(self, spec: str = "", prereleases: Optional[bool] = None) -> None:
++        match = self._regex.search(spec)
++        if not match:
++            raise InvalidSpecifier(f"Invalid specifier: '{spec}'")
++
++        self._spec: Tuple[str, str] = (
++            match.group("operator").strip(),
++            match.group("version").strip(),
++        )
++
++        # Store whether or not this Specifier should accept prereleases
++        self._prereleases = prereleases
++
++    def __repr__(self) -> str:
++        pre = (
++            f", prereleases={self.prereleases!r}"
++            if self._prereleases is not None
++            else ""
++        )
++
++        return f"<{self.__class__.__name__}({str(self)!r}{pre})>"
++
++    def __str__(self) -> str:
++        return "{}{}".format(*self._spec)
++
++    @property
++    def _canonical_spec(self) -> Tuple[str, str]:
++        canonical_version = canonicalize_version(
++            self._spec[1],
++            strip_trailing_zero=(self._spec[0] != "~="),
++        )
++        return self._spec[0], canonical_version
++
++    def __hash__(self) -> int:
++        return hash(self._canonical_spec)
++
++    def __eq__(self, other: object) -> bool:
++        if isinstance(other, str):
++            try:
++                other = self.__class__(str(other))
++            except InvalidSpecifier:
++                return NotImplemented
++        elif not isinstance(other, self.__class__):
++            return NotImplemented
++
++        return self._canonical_spec == other._canonical_spec
++
++    def _get_operator(self, op: str) -> CallableOperator:
++        operator_callable: CallableOperator = getattr(
++            self, f"_compare_{self._operators[op]}"
++        )
++        return operator_callable
++
++    def _compare_compatible(self, prospective: Version, spec: str) -> bool:
+ 
+         # Compatible releases have an equivalent combination of >= and ==. That
+         # is that ~=2.2 is equivalent to >=2.2,==2.*. This allows us to
+@@ -431,8 +260,7 @@ class Specifier(_IndividualSpecifier):
+             prospective, prefix
+         )
+ 
+-    @_require_version_compare
+-    def _compare_equal(self, prospective: ParsedVersion, spec: str) -> bool:
++    def _compare_equal(self, prospective: Version, spec: str) -> bool:
+ 
+         # We need special logic to handle prefix matching
+         if spec.endswith(".*"):
+@@ -471,30 +299,24 @@ class Specifier(_IndividualSpecifier):
+ 
+             return prospective == spec_version
+ 
+-    @_require_version_compare
+-    def _compare_not_equal(self, prospective: ParsedVersion, spec: str) -> bool:
++    def _compare_not_equal(self, prospective: Version, spec: str) -> bool:
+         return not self._compare_equal(prospective, spec)
+ 
+-    @_require_version_compare
+-    def _compare_less_than_equal(self, prospective: ParsedVersion, spec: str) -> bool:
++    def _compare_less_than_equal(self, prospective: Version, spec: str) -> bool:
+ 
+         # NB: Local version identifiers are NOT permitted in the version
+         # specifier, so local version labels can be universally removed from
+         # the prospective version.
+         return Version(prospective.public) <= Version(spec)
+ 
+-    @_require_version_compare
+-    def _compare_greater_than_equal(
+-        self, prospective: ParsedVersion, spec: str
+-    ) -> bool:
++    def _compare_greater_than_equal(self, prospective: Version, spec: str) -> bool:
+ 
+         # NB: Local version identifiers are NOT permitted in the version
+         # specifier, so local version labels can be universally removed from
+         # the prospective version.
+         return Version(prospective.public) >= Version(spec)
+ 
+-    @_require_version_compare
+-    def _compare_less_than(self, prospective: ParsedVersion, spec_str: str) -> bool:
++    def _compare_less_than(self, prospective: Version, spec_str: str) -> bool:
+ 
+         # Convert our spec to a Version instance, since we'll want to work with
+         # it as a version.
+@@ -519,8 +341,7 @@ class Specifier(_IndividualSpecifier):
+         # version in the spec.
+         return True
+ 
+-    @_require_version_compare
+-    def _compare_greater_than(self, prospective: ParsedVersion, spec_str: str) -> bool:
++    def _compare_greater_than(self, prospective: Version, spec_str: str) -> bool:
+ 
+         # Convert our spec to a Version instance, since we'll want to work with
+         # it as a version.
+@@ -554,6 +375,75 @@ class Specifier(_IndividualSpecifier):
+     def _compare_arbitrary(self, prospective: Version, spec: str) -> bool:
+         return str(prospective).lower() == str(spec).lower()
+ 
++    @property
++    def operator(self) -> str:
++        return self._spec[0]
++
++    @property
++    def version(self) -> str:
++        return self._spec[1]
++
++    def __contains__(self, item: str) -> bool:
++        return self.contains(item)
++
++    def contains(
++        self, item: UnparsedVersion, prereleases: Optional[bool] = None
++    ) -> bool:
++
++        # Determine if prereleases are to be allowed or not.
++        if prereleases is None:
++            prereleases = self.prereleases
++
++        # Normalize item to a Version, this allows us to have a shortcut for
++        # "2.0" in Specifier(">=2")
++        normalized_item = _coerce_version(item)
++
++        # Determine if we should be supporting prereleases in this specifier
++        # or not, if we do not support prereleases than we can short circuit
++        # logic if this version is a prereleases.
++        if normalized_item.is_prerelease and not prereleases:
++            return False
++
++        # Actually do the comparison to determine if this item is contained
++        # within this Specifier or not.
++        operator_callable: CallableOperator = self._get_operator(self.operator)
++        return operator_callable(normalized_item, self.version)
++
++    def filter(
++        self, iterable: Iterable[UnparsedVersion], prereleases: Optional[bool] = None
++    ) -> Iterable[UnparsedVersion]:
++
++        yielded = False
++        found_prereleases = []
++
++        kw = {"prereleases": prereleases if prereleases is not None else True}
++
++        # Attempt to iterate over all the values in the iterable and if any of
++        # them match, yield them.
++        for version in iterable:
++            parsed_version = _coerce_version(version)
++
++            if self.contains(parsed_version, **kw):
++                # If our version is a prerelease, and we were not set to allow
++                # prereleases, then we'll store it for later incase nothing
++                # else matches this specifier.
++                if parsed_version.is_prerelease and not (
++                    prereleases or self.prereleases
++                ):
++                    found_prereleases.append(version)
++                # Either this is not a prerelease, or we should have been
++                # accepting prereleases from the beginning.
++                else:
++                    yielded = True
++                    yield version
++
++        # Now that we've iterated over everything, determine if we've yielded
++        # any values, and if we have not and we have any prereleases stored up
++        # then we will go ahead and yield the prereleases.
++        if not yielded and found_prereleases:
++            for version in found_prereleases:
++                yield version
++
+     @property
+     def prereleases(self) -> bool:
+ 
+@@ -574,7 +464,7 @@ class Specifier(_IndividualSpecifier):
+ 
+             # Parse the version, and if it is a pre-release than this
+             # specifier allows pre-releases.
+-            if parse(version).is_prerelease:
++            if Version(version).is_prerelease:
+                 return True
+ 
+         return False
+@@ -632,13 +522,10 @@ class SpecifierSet(BaseSpecifier):
+         split_specifiers = [s.strip() for s in specifiers.split(",") if s.strip()]
+ 
+         # Parsed each individual specifier, attempting first to make it a
+-        # Specifier and falling back to a LegacySpecifier.
+-        parsed: Set[_IndividualSpecifier] = set()
++        # Specifier.
++        parsed: Set[Specifier] = set()
+         for specifier in split_specifiers:
+-            try:
+-                parsed.add(Specifier(specifier))
+-            except InvalidSpecifier:
+-                parsed.add(LegacySpecifier(specifier))
++            parsed.add(Specifier(specifier))
+ 
+         # Turn our parsed specifiers into a frozen set and save them for later.
+         self._specs = frozenset(parsed)
+@@ -686,7 +573,7 @@ class SpecifierSet(BaseSpecifier):
+         return specifier
+ 
+     def __eq__(self, other: object) -> bool:
+-        if isinstance(other, (str, _IndividualSpecifier)):
++        if isinstance(other, (str, Specifier)):
+             other = SpecifierSet(str(other))
+         elif not isinstance(other, SpecifierSet):
+             return NotImplemented
+@@ -696,7 +583,7 @@ class SpecifierSet(BaseSpecifier):
+     def __len__(self) -> int:
+         return len(self._specs)
+ 
+-    def __iter__(self) -> Iterator[_IndividualSpecifier]:
++    def __iter__(self) -> Iterator[Specifier]:
+         return iter(self._specs)
+ 
+     @property
+@@ -731,9 +618,9 @@ class SpecifierSet(BaseSpecifier):
+         installed: Optional[bool] = None,
+     ) -> bool:
+ 
+-        # Ensure that our item is a Version or LegacyVersion instance.
+-        if not isinstance(item, (LegacyVersion, Version)):
+-            item = parse(item)
++        # Ensure that our item is a Version instance.
++        if not isinstance(item, Version):
++            item = Version(item)
+ 
+         # Determine if we're forcing a prerelease or not, if we're not forcing
+         # one for this particular filter call, then we'll use whatever the
+@@ -751,7 +638,7 @@ class SpecifierSet(BaseSpecifier):
+             return False
+ 
+         if installed and item.is_prerelease:
+-            item = parse(item.base_version)
++            item = Version(item.base_version)
+ 
+         # We simply dispatch to the underlying specs here to make sure that the
+         # given version is contained within all of them.
+@@ -760,8 +647,8 @@ class SpecifierSet(BaseSpecifier):
+         return all(s.contains(item, prereleases=prereleases) for s in self._specs)
+ 
+     def filter(
+-        self, iterable: Iterable[VersionTypeVar], prereleases: Optional[bool] = None
+-    ) -> Iterable[VersionTypeVar]:
++        self, iterable: Iterable[UnparsedVersion], prereleases: Optional[bool] = None
++    ) -> Iterable[UnparsedVersion]:
+ 
+         # Determine if we're forcing a prerelease or not, if we're not forcing
+         # one for this particular filter call, then we'll use whatever the
+@@ -778,24 +665,13 @@ class SpecifierSet(BaseSpecifier):
+             return iterable
+         # If we do not have any specifiers, then we need to have a rough filter
+         # which will filter out any pre-releases, unless there are no final
+-        # releases, and which will filter out LegacyVersion in general.
++        # releases.
+         else:
+-            filtered: List[VersionTypeVar] = []
+-            found_prereleases: List[VersionTypeVar] = []
+-
+-            item: UnparsedVersion
+-            parsed_version: Union[Version, LegacyVersion]
++            filtered: List[UnparsedVersion] = []
++            found_prereleases: List[UnparsedVersion] = []
+ 
+             for item in iterable:
+-                # Ensure that we some kind of Version class for this item.
+-                if not isinstance(item, (LegacyVersion, Version)):
+-                    parsed_version = parse(item)
+-                else:
+-                    parsed_version = item
+-
+-                # Filter out any item which is parsed as a LegacyVersion
+-                if isinstance(parsed_version, LegacyVersion):
+-                    continue
++                parsed_version = _coerce_version(item)
+ 
+                 # Store any item which is a pre-release for later unless we've
+                 # already found a final version or we are accepting prereleases
+diff --git a/packaging/version.py b/packaging/version.py
+index de9a09a..9a23b8e 100644
+--- a/packaging/version.py
++++ b/packaging/version.py
+@@ -5,12 +5,11 @@
+ import collections
+ import itertools
+ import re
+-import warnings
+-from typing import Callable, Iterator, List, Optional, SupportsInt, Tuple, Union
++from typing import Callable, Optional, SupportsInt, Tuple, Union
+ 
+ from ._structures import Infinity, InfinityType, NegativeInfinity, NegativeInfinityType
+ 
+-__all__ = ["parse", "Version", "LegacyVersion", "InvalidVersion", "VERSION_PATTERN"]
++__all__ = ["parse", "Version", "InvalidVersion", "VERSION_PATTERN"]
+ 
+ InfiniteTypes = Union[InfinityType, NegativeInfinityType]
+ PrePostDevType = Union[InfiniteTypes, Tuple[str, int]]
+@@ -29,26 +28,22 @@ LocalType = Union[
+ CmpKey = Tuple[
+     int, Tuple[int, ...], PrePostDevType, PrePostDevType, PrePostDevType, LocalType
+ ]
+-LegacyCmpKey = Tuple[int, Tuple[str, ...]]
+-VersionComparisonMethod = Callable[
+-    [Union[CmpKey, LegacyCmpKey], Union[CmpKey, LegacyCmpKey]], bool
+-]
++VersionComparisonMethod = Callable[[CmpKey, CmpKey], bool]
+ 
+ _Version = collections.namedtuple(
+     "_Version", ["epoch", "release", "dev", "pre", "post", "local"]
+ )
+ 
+ 
+-def parse(version: str) -> Union["LegacyVersion", "Version"]:
++def parse(version: str) -> "Version":
+     """
+-    Parse the given version string and return either a :class:`Version` object
+-    or a :class:`LegacyVersion` object depending on if the given version is
+-    a valid PEP 440 version or a legacy version.
++    Parse the given version string.
++
++    Returns a :class:`Version` object, if the given version is a valid PEP 440 version.
++
++    Raises :class:`InvalidVersion` otherwise.
+     """
+-    try:
+-        return Version(version)
+-    except InvalidVersion:
+-        return LegacyVersion(version)
++    return Version(version)
+ 
+ 
+ class InvalidVersion(ValueError):
+@@ -58,7 +53,7 @@ class InvalidVersion(ValueError):
+ 
+ 
+ class _BaseVersion:
+-    _key: Union[CmpKey, LegacyCmpKey]
++    _key: CmpKey
+ 
+     def __hash__(self) -> int:
+         return hash(self._key)
+@@ -103,123 +98,6 @@ class _BaseVersion:
+         return self._key != other._key
+ 
+ 
+-class LegacyVersion(_BaseVersion):
+-    def __init__(self, version: str) -> None:
+-        self._version = str(version)
+-        self._key = _legacy_cmpkey(self._version)
+-
+-        warnings.warn(
+-            "Creating a LegacyVersion has been deprecated and will be "
+-            "removed in the next major release",
+-            DeprecationWarning,
+-        )
+-
+-    def __str__(self) -> str:
+-        return self._version
+-
+-    def __repr__(self) -> str:
+-        return f"<LegacyVersion('{self}')>"
+-
+-    @property
+-    def public(self) -> str:
+-        return self._version
+-
+-    @property
+-    def base_version(self) -> str:
+-        return self._version
+-
+-    @property
+-    def epoch(self) -> int:
+-        return -1
+-
+-    @property
+-    def release(self) -> None:
+-        return None
+-
+-    @property
+-    def pre(self) -> None:
+-        return None
+-
+-    @property
+-    def post(self) -> None:
+-        return None
+-
+-    @property
+-    def dev(self) -> None:
+-        return None
+-
+-    @property
+-    def local(self) -> None:
+-        return None
+-
+-    @property
+-    def is_prerelease(self) -> bool:
+-        return False
+-
+-    @property
+-    def is_postrelease(self) -> bool:
+-        return False
+-
+-    @property
+-    def is_devrelease(self) -> bool:
+-        return False
+-
+-
+-_legacy_version_component_re = re.compile(r"(\d+ | [a-z]+ | \.| -)", re.VERBOSE)
+-
+-_legacy_version_replacement_map = {
+-    "pre": "c",
+-    "preview": "c",
+-    "-": "final-",
+-    "rc": "c",
+-    "dev": "@",
+-}
+-
+-
+-def _parse_version_parts(s: str) -> Iterator[str]:
+-    for part in _legacy_version_component_re.split(s):
+-        part = _legacy_version_replacement_map.get(part, part)
+-
+-        if not part or part == ".":
+-            continue
+-
+-        if part[:1] in "0123456789":
+-            # pad for numeric comparison
+-            yield part.zfill(8)
+-        else:
+-            yield "*" + part
+-
+-    # ensure that alpha/beta/candidate are before final
+-    yield "*final"
+-
+-
+-def _legacy_cmpkey(version: str) -> LegacyCmpKey:
+-
+-    # We hardcode an epoch of -1 here. A PEP 440 version can only have a epoch
+-    # greater than or equal to 0. This will effectively put the LegacyVersion,
+-    # which uses the defacto standard originally implemented by setuptools,
+-    # as before all PEP 440 versions.
+-    epoch = -1
+-
+-    # This scheme is taken from pkg_resources.parse_version setuptools prior to
+-    # it's adoption of the packaging library.
+-    parts: List[str] = []
+-    for part in _parse_version_parts(version.lower()):
+-        if part.startswith("*"):
+-            # remove "-" before a prerelease tag
+-            if part < "*final":
+-                while parts and parts[-1] == "*final-":
+-                    parts.pop()
+-
+-            # remove trailing zeros from each series of numeric parts
+-            while parts and parts[-1] == "00000000":
+-                parts.pop()
+-
+-        parts.append(part)
+-
+-    return epoch, tuple(parts)
+-
+-
+ # Deliberately not anchored to the start and end of the string, to make it
+ # easier for 3rd party code to reuse
+ VERSION_PATTERN = r"""
+diff --git a/tests/test_requirements.py b/tests/test_requirements.py
+index ad07de7..5e4059d 100644
+--- a/tests/test_requirements.py
++++ b/tests/test_requirements.py
+@@ -60,14 +60,12 @@ class TestRequirements:
+         self._assert_requirement(req, "name", specifier=">=3")
+ 
+     def test_with_legacy_version(self):
+-        req = Requirement("name==1.0.org1")
+-        self._assert_requirement(req, "name", specifier="==1.0.org1")
++        with pytest.raises(InvalidRequirement):
++            Requirement("name==1.0.org1")
+ 
+     def test_with_legacy_version_and_marker(self):
+-        req = Requirement("name>=1.x.y;python_version=='2.6'")
+-        self._assert_requirement(
+-            req, "name", specifier=">=1.x.y", marker='python_version == "2.6"'
+-        )
++        with pytest.raises(InvalidRequirement):
++            Requirement("name>=1.x.y;python_version=='2.6'")
+ 
+     def test_version_with_parens_and_whitespace(self):
+         req = Requirement("name (==4)")
+diff --git a/tests/test_specifiers.py b/tests/test_specifiers.py
+index 5949ebf..92d04eb 100644
+--- a/tests/test_specifiers.py
++++ b/tests/test_specifiers.py
+@@ -4,19 +4,13 @@
+ 
+ import itertools
+ import operator
+-import warnings
+ 
+ import pytest
+ 
+-from packaging.specifiers import (
+-    InvalidSpecifier,
+-    LegacySpecifier,
+-    Specifier,
+-    SpecifierSet,
+-)
+-from packaging.version import LegacyVersion, Version, parse
++from packaging.specifiers import InvalidSpecifier, Specifier, SpecifierSet
++from packaging.version import Version, parse
+ 
+-from .test_version import LEGACY_VERSIONS, VERSIONS
++from .test_version import VERSIONS
+ 
+ LEGACY_SPECIFIERS = [
+     "==2.1.0.3",
+@@ -37,7 +31,6 @@ SPECIFIERS = [
+     ">=7.9a1",
+     "<1.0.dev1",
+     ">2.0.post1",
+-    "===lolwat",
+ ]
+ 
+ 
+@@ -489,12 +482,10 @@ class TestSpecifier:
+     @pytest.mark.parametrize(
+         ("version", "spec", "expected"),
+         [
++            ("1.0.0", "===1.0", False),
++            ("1.0.dev0", "===1.0", False),
+             # Test identity comparison by itself
+-            ("lolwat", "===lolwat", True),
+-            ("Lolwat", "===lolwat", True),
+             ("1.0", "===1.0", True),
+-            ("nope", "===lolwat", False),
+-            ("1.0.0", "===1.0", False),
+             ("1.0.dev0", "===1.0.dev0", True),
+         ],
+     )
+@@ -567,10 +558,6 @@ class TestSpecifier:
+ 
+         assert list(spec.filter(input, **kwargs)) == expected
+ 
+-    @pytest.mark.xfail
+-    def test_specifier_explicit_legacy(self):
+-        assert Specifier("==1.0").contains(LegacyVersion("1.0"))
+-
+     @pytest.mark.parametrize(
+         ("spec", "op"),
+         [
+@@ -583,6 +570,7 @@ class TestSpecifier:
+             (">=7.9a1", ">="),
+             ("<1.0.dev1", "<"),
+             (">2.0.post1", ">"),
++            # === is an escape hatch in PEP 440
+             ("===lolwat", "==="),
+         ],
+     )
+@@ -601,6 +589,7 @@ class TestSpecifier:
+             (">=7.9a1", "7.9a1"),
+             ("<1.0.dev1", "1.0.dev1"),
+             (">2.0.post1", "2.0.post1"),
++            # === is an escape hatch in PEP 440
+             ("===lolwat", "lolwat"),
+         ],
+     )
+@@ -637,141 +626,8 @@ class TestSpecifier:
+         assert hash(Specifier("~=1.18.0")) != hash(Specifier("~=1.18"))
+ 
+ 
+-class TestLegacySpecifier:
+-    def test_legacy_specifier_is_deprecated(self):
+-        with warnings.catch_warnings(record=True) as w:
+-            LegacySpecifier(">=some-legacy-version")
+-            assert len(w) == 1
+-            assert issubclass(w[0].category, DeprecationWarning)
+-
+-    @pytest.mark.parametrize(
+-        ("version", "spec", "expected"),
+-        [
+-            (v, s, True)
+-            for v, s in [
+-                # Test the equality operation
+-                ("2.0", "==2"),
+-                ("2.0", "==2.0"),
+-                ("2.0", "==2.0.0"),
+-                # Test the in-equality operation
+-                ("2.1", "!=2"),
+-                ("2.1", "!=2.0"),
+-                ("2.0.1", "!=2"),
+-                ("2.0.1", "!=2.0"),
+-                ("2.0.1", "!=2.0.0"),
+-                # Test the greater than equal operation
+-                ("2.0", ">=2"),
+-                ("2.0", ">=2.0"),
+-                ("2.0", ">=2.0.0"),
+-                ("2.0.post1", ">=2"),
+-                ("2.0.post1.dev1", ">=2"),
+-                ("3", ">=2"),
+-                # Test the less than equal operation
+-                ("2.0", "<=2"),
+-                ("2.0", "<=2.0"),
+-                ("2.0", "<=2.0.0"),
+-                ("2.0.dev1", "<=2"),
+-                ("2.0a1", "<=2"),
+-                ("2.0a1.dev1", "<=2"),
+-                ("2.0b1", "<=2"),
+-                ("2.0b1.post1", "<=2"),
+-                ("2.0c1", "<=2"),
+-                ("2.0c1.post1.dev1", "<=2"),
+-                ("2.0rc1", "<=2"),
+-                ("1", "<=2"),
+-                # Test the greater than operation
+-                ("3", ">2"),
+-                ("2.1", ">2.0"),
+-                # Test the less than operation
+-                ("1", "<2"),
+-                ("2.0", "<2.1"),
+-            ]
+-        ]
+-        + [
+-            (v, s, False)
+-            for v, s in [
+-                # Test the equality operation
+-                ("2.1", "==2"),
+-                ("2.1", "==2.0"),
+-                ("2.1", "==2.0.0"),
+-                # Test the in-equality operation
+-                ("2.0", "!=2"),
+-                ("2.0", "!=2.0"),
+-                ("2.0", "!=2.0.0"),
+-                # Test the greater than equal operation
+-                ("2.0.dev1", ">=2"),
+-                ("2.0a1", ">=2"),
+-                ("2.0a1.dev1", ">=2"),
+-                ("2.0b1", ">=2"),
+-                ("2.0b1.post1", ">=2"),
+-                ("2.0c1", ">=2"),
+-                ("2.0c1.post1.dev1", ">=2"),
+-                ("2.0rc1", ">=2"),
+-                ("1", ">=2"),
+-                # Test the less than equal operation
+-                ("2.0.post1", "<=2"),
+-                ("2.0.post1.dev1", "<=2"),
+-                ("3", "<=2"),
+-                # Test the greater than operation
+-                ("1", ">2"),
+-                ("2.0.dev1", ">2"),
+-                ("2.0a1", ">2"),
+-                ("2.0a1.post1", ">2"),
+-                ("2.0b1", ">2"),
+-                ("2.0b1.dev1", ">2"),
+-                ("2.0c1", ">2"),
+-                ("2.0c1.post1.dev1", ">2"),
+-                ("2.0rc1", ">2"),
+-                ("2.0", ">2"),
+-                # Test the less than operation
+-                ("3", "<2"),
+-            ]
+-        ],
+-    )
+-    def test_specifiers(self, version, spec, expected):
+-        spec = LegacySpecifier(spec, prereleases=True)
+-
+-        if expected:
+-            # Test that the plain string form works
+-            assert version in spec
+-            assert spec.contains(version)
+-
+-            # Test that the version instance form works
+-            assert LegacyVersion(version) in spec
+-            assert spec.contains(LegacyVersion(version))
+-        else:
+-            # Test that the plain string form works
+-            assert version not in spec
+-            assert not spec.contains(version)
+-
+-            # Test that the version instance form works
+-            assert LegacyVersion(version) not in spec
+-            assert not spec.contains(LegacyVersion(version))
+-
+-    def test_specifier_explicit_prereleases(self):
+-        spec = LegacySpecifier(">=1.0")
+-        assert not spec.prereleases
+-        spec.prereleases = True
+-        assert spec.prereleases
+-
+-        spec = LegacySpecifier(">=1.0", prereleases=False)
+-        assert not spec.prereleases
+-        spec.prereleases = True
+-        assert spec.prereleases
+-
+-        spec = LegacySpecifier(">=1.0", prereleases=True)
+-        assert spec.prereleases
+-        spec.prereleases = False
+-        assert not spec.prereleases
+-
+-        spec = LegacySpecifier(">=1.0", prereleases=True)
+-        assert spec.prereleases
+-        spec.prereleases = None
+-        assert not spec.prereleases
+-
+-
+ class TestSpecifierSet:
+-    @pytest.mark.parametrize("version", VERSIONS + LEGACY_VERSIONS)
++    @pytest.mark.parametrize("version", VERSIONS)
+     def test_empty_specifier(self, version):
+         spec = SpecifierSet(prereleases=True)
+ 
+@@ -836,7 +692,6 @@ class TestSpecifierSet:
+             (">=1.0.dev1", None, None, ["1.0", "2.0a1"], ["1.0", "2.0a1"]),
+             ("", None, None, ["1.0a1"], ["1.0a1"]),
+             ("", None, None, ["1.0", Version("2.0")], ["1.0", Version("2.0")]),
+-            ("", None, None, ["2.0dog", "1.0"], ["1.0"]),
+             # Test overriding with the prereleases parameter on filter
+             ("", None, False, ["1.0a1"], []),
+             (">=1.0.dev1", None, False, ["1.0", "2.0a1"], ["1.0"]),
+@@ -862,10 +717,6 @@ class TestSpecifierSet:
+ 
+         assert list(spec.filter(input, **kwargs)) == expected
+ 
+-    def test_legacy_specifiers_combined(self):
+-        spec = SpecifierSet("<3,>1-1-1")
+-        assert "2.0" in spec
+-
+     @pytest.mark.parametrize(
+         ("specifier", "expected"),
+         [
+diff --git a/tests/test_utils.py b/tests/test_utils.py
+index 84a8b38..a6c6711 100644
+--- a/tests/test_utils.py
++++ b/tests/test_utils.py
+@@ -49,7 +49,9 @@ def test_canonicalize_name(name, expected):
+         ("1.0a0", "1a0"),
+         ("1.0rc0", "1rc0"),
+         ("100!0.0", "100!0"),
+-        ("1.0.1-test7", "1.0.1-test7"),  # LegacyVersion is unchanged
++        # improper version strings are unchanged
++        ("lolwat", "lolwat"),
++        ("1.0.1-test7", "1.0.1-test7"),
+     ],
+ )
+ def test_canonicalize_version(version, expected):
+diff --git a/tests/test_version.py b/tests/test_version.py
+index 5f2251e..8004c0c 100644
+--- a/tests/test_version.py
++++ b/tests/test_version.py
+@@ -4,19 +4,20 @@
+ 
+ import itertools
+ import operator
+-import warnings
+ 
+ import pretend
+ import pytest
+ 
+-from packaging.version import InvalidVersion, LegacyVersion, Version, parse
++from packaging.version import InvalidVersion, Version, parse
+ 
+ 
+-@pytest.mark.parametrize(
+-    ("version", "klass"), [("1.0", Version), ("1-1-1", LegacyVersion)]
+-)
+-def test_parse(version, klass):
+-    assert isinstance(parse(version), klass)
++def test_parse():
++    assert isinstance(parse("1.0"), Version)
++
++
++def test_parse_raises():
++    with pytest.raises(InvalidVersion):
++        parse("lolwat")
+ 
+ 
+ # This list must be in the correct sorting order
+@@ -759,10 +760,6 @@ class TestVersion:
+ 
+         assert getattr(operator, op)(Version("1"), other) is expected
+ 
+-    def test_compare_legacyversion_version(self):
+-        result = sorted([Version("0"), LegacyVersion("1")])
+-        assert result == [LegacyVersion("1"), Version("0")]
+-
+     def test_major_version(self):
+         assert Version("2.1.0").major == 2
+ 
+@@ -774,131 +771,3 @@ class TestVersion:
+         assert Version("2.1.3").micro == 3
+         assert Version("2.1").micro == 0
+         assert Version("2").micro == 0
+-
+-
+-LEGACY_VERSIONS = ["foobar", "a cat is fine too", "lolwut", "1-0", "2.0-a1"]
+-
+-
+-class TestLegacyVersion:
+-    def test_legacy_version_is_deprecated(self):
+-        with warnings.catch_warnings(record=True) as w:
+-            LegacyVersion("some-legacy-version")
+-            assert len(w) == 1
+-            assert issubclass(w[0].category, DeprecationWarning)
+-
+-    @pytest.mark.parametrize("version", VERSIONS + LEGACY_VERSIONS)
+-    def test_valid_legacy_versions(self, version):
+-        LegacyVersion(version)
+-
+-    @pytest.mark.parametrize("version", VERSIONS + LEGACY_VERSIONS)
+-    def test_legacy_version_str_repr(self, version):
+-        assert str(LegacyVersion(version)) == version
+-        assert repr(LegacyVersion(version)) == "<LegacyVersion({})>".format(
+-            repr(version)
+-        )
+-
+-    @pytest.mark.parametrize("version", VERSIONS + LEGACY_VERSIONS)
+-    def test_legacy_version_hash(self, version):
+-        assert hash(LegacyVersion(version)) == hash(LegacyVersion(version))
+-
+-    @pytest.mark.parametrize("version", VERSIONS + LEGACY_VERSIONS)
+-    def test_legacy_version_public(self, version):
+-        assert LegacyVersion(version).public == version
+-
+-    @pytest.mark.parametrize("version", VERSIONS + LEGACY_VERSIONS)
+-    def test_legacy_version_base_version(self, version):
+-        assert LegacyVersion(version).base_version == version
+-
+-    @pytest.mark.parametrize("version", VERSIONS + LEGACY_VERSIONS)
+-    def test_legacy_version_epoch(self, version):
+-        assert LegacyVersion(version).epoch == -1
+-
+-    @pytest.mark.parametrize("version", VERSIONS + LEGACY_VERSIONS)
+-    def test_legacy_version_release(self, version):
+-        assert LegacyVersion(version).release is None
+-
+-    @pytest.mark.parametrize("version", VERSIONS + LEGACY_VERSIONS)
+-    def test_legacy_version_local(self, version):
+-        assert LegacyVersion(version).local is None
+-
+-    @pytest.mark.parametrize("version", VERSIONS + LEGACY_VERSIONS)
+-    def test_legacy_version_pre(self, version):
+-        assert LegacyVersion(version).pre is None
+-
+-    @pytest.mark.parametrize("version", VERSIONS + LEGACY_VERSIONS)
+-    def test_legacy_version_is_prerelease(self, version):
+-        assert not LegacyVersion(version).is_prerelease
+-
+-    @pytest.mark.parametrize("version", VERSIONS + LEGACY_VERSIONS)
+-    def test_legacy_version_dev(self, version):
+-        assert LegacyVersion(version).dev is None
+-
+-    @pytest.mark.parametrize("version", VERSIONS + LEGACY_VERSIONS)
+-    def test_legacy_version_is_devrelease(self, version):
+-        assert not LegacyVersion(version).is_devrelease
+-
+-    @pytest.mark.parametrize("version", VERSIONS + LEGACY_VERSIONS)
+-    def test_legacy_version_post(self, version):
+-        assert LegacyVersion(version).post is None
+-
+-    @pytest.mark.parametrize("version", VERSIONS + LEGACY_VERSIONS)
+-    def test_legacy_version_is_postrelease(self, version):
+-        assert not LegacyVersion(version).is_postrelease
+-
+-    @pytest.mark.parametrize(
+-        ("left", "right", "op"),
+-        # Below we'll generate every possible combination of
+-        # VERSIONS + LEGACY_VERSIONS that should be True for the given operator
+-        itertools.chain(
+-            *
+-            # Verify that the equal (==) operator works correctly
+-            [[(x, x, operator.eq) for x in VERSIONS + LEGACY_VERSIONS]]
+-            +
+-            # Verify that the not equal (!=) operator works correctly
+-            [
+-                [
+-                    (x, y, operator.ne)
+-                    for j, y in enumerate(VERSIONS + LEGACY_VERSIONS)
+-                    if i != j
+-                ]
+-                for i, x in enumerate(VERSIONS + LEGACY_VERSIONS)
+-            ]
+-        ),
+-    )
+-    def test_comparison_true(self, left, right, op):
+-        assert op(LegacyVersion(left), LegacyVersion(right))
+-
+-    @pytest.mark.parametrize(
+-        ("left", "right", "op"),
+-        # Below we'll generate every possible combination of
+-        # VERSIONS + LEGACY_VERSIONS that should be False for the given
+-        # operator
+-        itertools.chain(
+-            *
+-            # Verify that the equal (==) operator works correctly
+-            [
+-                [
+-                    (x, y, operator.eq)
+-                    for j, y in enumerate(VERSIONS + LEGACY_VERSIONS)
+-                    if i != j
+-                ]
+-                for i, x in enumerate(VERSIONS + LEGACY_VERSIONS)
+-            ]
+-            +
+-            # Verify that the not equal (!=) operator works correctly
+-            [[(x, x, operator.ne) for x in VERSIONS + LEGACY_VERSIONS]]
+-        ),
+-    )
+-    def test_comparison_false(self, left, right, op):
+-        assert not op(LegacyVersion(left), LegacyVersion(right))
+-
+-    @pytest.mark.parametrize("op", ["lt", "le", "eq", "ge", "gt", "ne"])
+-    def test_dunder_op_returns_notimplemented(self, op):
+-        method = getattr(LegacyVersion, f"__{op}__")
+-        assert method(LegacyVersion("1"), 1) is NotImplemented
+-
+-    @pytest.mark.parametrize(("op", "expected"), [("eq", False), ("ne", True)])
+-    def test_compare_other(self, op, expected):
+-        other = pretend.stub(**{f"__{op}__": lambda other: NotImplemented})
+-
+-        assert getattr(operator, op)(LegacyVersion("1"), other) is expected

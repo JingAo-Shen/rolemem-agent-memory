@@ -1,0 +1,200 @@
+{
+  "transition_id": "trans_track_a_11_requests_json_decode_error",
+  "repo_name": "psf/requests",
+  "base_commit": "8bce583b9547c7b82d44c8e97f37cf9a16cbe758",
+  "target_commit": "2d5517682b3b38547634d153cea43d48fbc8cdb5",
+  "pkg_path": "requests",
+  "tree_purity_status": "TREE_PURITY_PASS",
+  "before_tree_purity": "TREE_PURITY_PASS",
+  "after_tree_purity": "TREE_PURITY_PASS",
+  "before_mismatches": [],
+  "after_mismatches": [],
+  "total_files_before": 18,
+  "total_files_after": 18,
+  "has_environment_overlay": false,
+  "before_files": [
+    {
+      "relative_path": "requests/__init__.py",
+      "size": 4924,
+      "sha256": "060341ac062bdc3751583b64735230a12ada541073d7bd7673f797e06f21f9a9"
+    },
+    {
+      "relative_path": "requests/__version__.py",
+      "size": 441,
+      "sha256": "abc9a23906a898ebf74bbe252b8790b35cd9e63c1c9cebacc8453e33689d86db"
+    },
+    {
+      "relative_path": "requests/_internal_utils.py",
+      "size": 1004,
+      "sha256": "4e8c9ad4a249f45df32aaf45f99a1c1ee0e7c5fe548c059d28c04d0a9c3f5f6e"
+    },
+    {
+      "relative_path": "requests/adapters.py",
+      "size": 21378,
+      "sha256": "ea125fbd058eb2a89c1d3a0959d379f93602b8a25db9b5cc5dea748ef68e26f3"
+    },
+    {
+      "relative_path": "requests/api.py",
+      "size": 6402,
+      "sha256": "863ba83fbf48004997e83cacaf0f2dd37d9c2dfc0b1f16c8ff0338802e46f6dd"
+    },
+    {
+      "relative_path": "requests/auth.py",
+      "size": 10207,
+      "sha256": "38ca092152b244bcbd4c7afdd72f2bc72b19b9c9703c1f8ad57835cc1a265214"
+    },
+    {
+      "relative_path": "requests/certs.py",
+      "size": 453,
+      "sha256": "74e079ad5d83675ddd121abd0546bfe21779900aa0e7d7bfcd4641d347da633f"
+    },
+    {
+      "relative_path": "requests/compat.py",
+      "size": 1399,
+      "sha256": "11d3890192fb2db21fe1801bbf556a4d60efe022dde62c60f002424ffce1336e"
+    },
+    {
+      "relative_path": "requests/cookies.py",
+      "size": 18430,
+      "sha256": "63e6ca5fa4ef5b716762513a02ed125ed55559c68d745bee030431c3e1b48932"
+    },
+    {
+      "relative_path": "requests/exceptions.py",
+      "size": 3875,
+      "sha256": "3b8f45144b2e8cb703183450e33b0ae10b57455ef405fc03b7f1276f7c6ce976"
+    },
+    {
+      "relative_path": "requests/help.py",
+      "size": 3970,
+      "sha256": "69c3946a72195d5284ac6caeb458889a435ad53351e23655e25f1517946dbce0"
+    },
+    {
+      "relative_path": "requests/hooks.py",
+      "size": 757,
+      "sha256": "411786cb2d1b45caf9ae4c02b8e6cd6a46d8b1cec492229e0701b8a877a4af64"
+    },
+    {
+      "relative_path": "requests/models.py",
+      "size": 34578,
+      "sha256": "5a56c98845f38bdfbb9ef343292bef6b9289a210e576aa694dc20d5f1f8bb333"
+    },
+    {
+      "relative_path": "requests/packages.py",
+      "size": 932,
+      "sha256": "92bf49f5d619afd11fe099b01db084520c158b0702c8e50f81f5d9bc82fce0eb"
+    },
+    {
+      "relative_path": "requests/sessions.py",
+      "size": 29786,
+      "sha256": "b310d8fa993e5eb75dd62f7e46b9beb99e8072709355b2d5da6838a4a7c6896a"
+    },
+    {
+      "relative_path": "requests/status_codes.py",
+      "size": 4188,
+      "sha256": "813efd3dbb3f7108c1829f9fbeb520835767d8340edf66c38f84c89e39cc3d27"
+    },
+    {
+      "relative_path": "requests/structures.py",
+      "size": 3005,
+      "sha256": "9ac02dafd9aad49c4777e251ca220b7dd165a5b270bef16e3f7adf5104ff4311"
+    },
+    {
+      "relative_path": "requests/utils.py",
+      "size": 33116,
+      "sha256": "42e380d917c62e5f3d8d18021ebccd730f8ef6eea00cf9a9f83fdbdc0e522d70"
+    }
+  ],
+  "after_files": [
+    {
+      "relative_path": "requests/__init__.py",
+      "size": 4924,
+      "sha256": "060341ac062bdc3751583b64735230a12ada541073d7bd7673f797e06f21f9a9"
+    },
+    {
+      "relative_path": "requests/__version__.py",
+      "size": 441,
+      "sha256": "abc9a23906a898ebf74bbe252b8790b35cd9e63c1c9cebacc8453e33689d86db"
+    },
+    {
+      "relative_path": "requests/_internal_utils.py",
+      "size": 1004,
+      "sha256": "4e8c9ad4a249f45df32aaf45f99a1c1ee0e7c5fe548c059d28c04d0a9c3f5f6e"
+    },
+    {
+      "relative_path": "requests/adapters.py",
+      "size": 21378,
+      "sha256": "ea125fbd058eb2a89c1d3a0959d379f93602b8a25db9b5cc5dea748ef68e26f3"
+    },
+    {
+      "relative_path": "requests/api.py",
+      "size": 6402,
+      "sha256": "863ba83fbf48004997e83cacaf0f2dd37d9c2dfc0b1f16c8ff0338802e46f6dd"
+    },
+    {
+      "relative_path": "requests/auth.py",
+      "size": 10207,
+      "sha256": "38ca092152b244bcbd4c7afdd72f2bc72b19b9c9703c1f8ad57835cc1a265214"
+    },
+    {
+      "relative_path": "requests/certs.py",
+      "size": 453,
+      "sha256": "74e079ad5d83675ddd121abd0546bfe21779900aa0e7d7bfcd4641d347da633f"
+    },
+    {
+      "relative_path": "requests/compat.py",
+      "size": 1399,
+      "sha256": "11d3890192fb2db21fe1801bbf556a4d60efe022dde62c60f002424ffce1336e"
+    },
+    {
+      "relative_path": "requests/cookies.py",
+      "size": 18430,
+      "sha256": "63e6ca5fa4ef5b716762513a02ed125ed55559c68d745bee030431c3e1b48932"
+    },
+    {
+      "relative_path": "requests/exceptions.py",
+      "size": 3875,
+      "sha256": "3b8f45144b2e8cb703183450e33b0ae10b57455ef405fc03b7f1276f7c6ce976"
+    },
+    {
+      "relative_path": "requests/help.py",
+      "size": 3970,
+      "sha256": "69c3946a72195d5284ac6caeb458889a435ad53351e23655e25f1517946dbce0"
+    },
+    {
+      "relative_path": "requests/hooks.py",
+      "size": 757,
+      "sha256": "411786cb2d1b45caf9ae4c02b8e6cd6a46d8b1cec492229e0701b8a877a4af64"
+    },
+    {
+      "relative_path": "requests/models.py",
+      "size": 34694,
+      "sha256": "97e2643e03b1c1910c4c63885a1c9aedf18816d11eaea3ce70c65db43e567d8e"
+    },
+    {
+      "relative_path": "requests/packages.py",
+      "size": 932,
+      "sha256": "92bf49f5d619afd11fe099b01db084520c158b0702c8e50f81f5d9bc82fce0eb"
+    },
+    {
+      "relative_path": "requests/sessions.py",
+      "size": 29786,
+      "sha256": "b310d8fa993e5eb75dd62f7e46b9beb99e8072709355b2d5da6838a4a7c6896a"
+    },
+    {
+      "relative_path": "requests/status_codes.py",
+      "size": 4188,
+      "sha256": "813efd3dbb3f7108c1829f9fbeb520835767d8340edf66c38f84c89e39cc3d27"
+    },
+    {
+      "relative_path": "requests/structures.py",
+      "size": 3005,
+      "sha256": "9ac02dafd9aad49c4777e251ca220b7dd165a5b270bef16e3f7adf5104ff4311"
+    },
+    {
+      "relative_path": "requests/utils.py",
+      "size": 33116,
+      "sha256": "42e380d917c62e5f3d8d18021ebccd730f8ef6eea00cf9a9f83fdbdc0e522d70"
+    }
+  ],
+  "fixture_manifest_hash": "5e8522542efa046070254a1b0e9d8d32d964b0e9404991daa9483fc1d9c866f4"
+}

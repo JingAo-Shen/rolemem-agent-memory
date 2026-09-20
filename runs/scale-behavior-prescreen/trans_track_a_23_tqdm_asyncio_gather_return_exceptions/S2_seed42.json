@@ -1,0 +1,27 @@
+{
+  "task_id": "trans_track_a_23_tqdm_asyncio_gather_return_exceptions",
+  "condition": "S2",
+  "seed": 42,
+  "memory_source": "STALE_MEMORY_CANDIDATE",
+  "memory_statements": [
+    "tqdm_asyncio.gather does not support return_exceptions; omit argument and catch exceptions manually."
+  ],
+  "retrieved_files": [],
+  "repository_context_tokens": 1175,
+  "is_stale_action": true,
+  "ast_details": {
+    "stale_active_use": true,
+    "stale_mention": false,
+    "active_nodes": [
+      {
+        "type": "Attribute",
+        "lineno": 16,
+        "symbol": "tqdm_asyncio.gather"
+      }
+    ]
+  },
+  "pytest_pass": false,
+  "pytest_log_excerpt": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_7ub09pm7\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_gather FAILED                          [100%]\n\n======================",
+  "overall_task_success": false,
+  "parsed_code": "import asyncio\nfrom tqdm.asyncio import tqdm_asyncio\n\nasync def run_gather_tasks(tasks):\n    results = []\n    errors = []\n    \n    async def wrapper(task):\n        try:\n            result = await task\n            results.append(result)\n        except Exception as e:\n            errors.append(e)\n    \n    wrapped_tasks = [wrapper(task) for task in tasks]\n    await tqdm_asyncio.gather(*wrapped_tasks)\n    \n    return results, errors"
+}

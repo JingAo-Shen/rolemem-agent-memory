@@ -1,0 +1,8 @@
+{
+  "transition_id": "trans_track_a_26_rich_render_group_to_group",
+  "audit_fingerprint": "45d4e519fd5bfd0f51cbd5e524b5896e0249db1299dc6d0d463b6a80483d0170",
+  "status": "PASS",
+  "valid_control_status": "PASS",
+  "stale_control_status": "PASS",
+  "details": "valid_target=True, stale_target=False"
+}

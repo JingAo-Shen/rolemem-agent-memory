@@ -1,0 +1,19 @@
+{
+  "task_id": "trans_track_a_27_marshmallow_ipaddress_type_mapping",
+  "condition": "S0",
+  "seed": 42,
+  "memory_source": "NO_MEMORY",
+  "memory_statements": [],
+  "retrieved_files": [],
+  "repository_context_tokens": 1200,
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": false,
+    "active_nodes": []
+  },
+  "pytest_pass": false,
+  "pytest_log_excerpt": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_h_rjxah4\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_ip_field FAILED                        [100%]\n\n======================",
+  "overall_task_success": false,
+  "parsed_code": "from marshmallow.fields import Field\n\ndef get_ip_field_type(ip_cls):\n    \"\"\"\n    Determines the appropriate schema field class based on the IP address class provided.\n\n    Args:\n    ip_cls (str): A string representing the IP address class ('IPv4' or 'IPv6').\n\n    Returns:\n    Field: An instance of the appropriate schema field class.\n    \"\"\"\n    if ip_cls == 'IPv4':\n        return IPv4Address()\n    elif ip_cls == 'IPv6':\n        return IPv6Address()\n    else:\n        raise ValueError(\"Unsupported IP address class\")\n\nclass IPv4Address(Field):\n    \"\"\"\n    Custom field for handling IPv4 addresses.\n    \"\"\"\n    def _serialize(self, value, attr, obj, **kwargs):\n        return value\n\n    def _deserialize(self, value, attr, data, **kwargs):\n        # Add custom deserialization logic here if needed\n        return value\n\nclass IPv6Address(Field):\n    \"\"\"\n    Custom field for handling IPv6 addresses.\n    \"\"\"\n    def _serialize(self, value, attr, obj, **kwargs):\n        return value\n\n    def _deserialize(self, value, attr, data, **kwargs):\n        # Add custom deserialization logic here if needed\n        return value"
+}

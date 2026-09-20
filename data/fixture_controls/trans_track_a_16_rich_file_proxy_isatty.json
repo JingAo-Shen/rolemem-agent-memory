@@ -1,0 +1,8 @@
+{
+  "transition_id": "trans_track_a_16_rich_file_proxy_isatty",
+  "audit_fingerprint": "18b49fdf87464a1b1d525f6b4867b07aaf307e51b42119faf46562fa3e6560b0",
+  "status": "PASS",
+  "valid_control_status": "PASS",
+  "stale_control_status": "PASS",
+  "details": "valid_target=True, stale_target=False"
+}

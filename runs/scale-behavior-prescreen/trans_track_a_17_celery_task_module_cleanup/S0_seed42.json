@@ -1,0 +1,19 @@
+{
+  "task_id": "trans_track_a_17_celery_task_module_cleanup",
+  "condition": "S0",
+  "seed": 42,
+  "memory_source": "NO_MEMORY",
+  "memory_statements": [],
+  "retrieved_files": [],
+  "repository_context_tokens": 1200,
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": true,
+    "active_nodes": []
+  },
+  "pytest_pass": false,
+  "pytest_log_excerpt": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_qgysajsm\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_task_export FAILED                     [100%]\n\n======================",
+  "overall_task_success": false,
+  "parsed_code": "# task_helper.py\n\ndef check_task_export(task_id, backend):\n    \"\"\"\n    Check the export status of a task using the provided backend.\n\n    Args:\n    task_id (str): The ID of the task to check.\n    backend: An instance of a Celery backend that supports exporting task results.\n\n    Returns:\n    bool: True if the task has been exported, False otherwise.\n    \"\"\"\n    try:\n        task_meta = backend.get_task_meta(task_id)\n        return task_meta['status'] == 'SUCCESS'\n    except KeyError:\n        return False"
+}

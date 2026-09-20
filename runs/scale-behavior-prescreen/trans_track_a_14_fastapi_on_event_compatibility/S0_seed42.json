@@ -1,0 +1,19 @@
+{
+  "task_id": "trans_track_a_14_fastapi_on_event_compatibility",
+  "condition": "S0",
+  "seed": 42,
+  "memory_source": "NO_MEMORY",
+  "memory_statements": [],
+  "retrieved_files": [],
+  "repository_context_tokens": 1146,
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": false,
+    "active_nodes": []
+  },
+  "pytest_pass": false,
+  "pytest_log_excerpt": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_3algntic\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_default_lifespan FAILED                [100%]\n\n======================",
+  "overall_task_success": false,
+  "parsed_code": "from typing import Optional, Sequence, Callable\n\nclass AppLifecycle:\n    def __init__(self):\n        self.on_startup: Optional[Sequence[Callable[[], Any]]] = None\n        self.on_shutdown: Optional[Sequence[Callable[[], Any]]] = None\n        self.lifespan: Optional['Lifespan'] = None\n\n    def has_default_lifespan(self) -> bool:\n        # Check if either on_startup, on_shutdown, or lifespan is set\n        return self.on_startup is not None or self.on_shutdown is not None or self.lifespan is not None\n\nclass Lifespan:\n    async def __aenter__(self):\n        pass\n\n    async def __aexit__(self, exc_type, exc_val, exc_tb):\n        pass"
+}

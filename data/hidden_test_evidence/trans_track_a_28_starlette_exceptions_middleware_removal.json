@@ -1,0 +1,10 @@
+{
+  "transition_id": "trans_track_a_28_starlette_exceptions_middleware_removal",
+  "audit_fingerprint": "de4898e9cd5118a9ce3d053d2441fc767b57ffb6f2e3c67a9ad6fd3868030593",
+  "status": "PASS",
+  "collection_status": "PASS",
+  "execution_status": "PASS",
+  "exit_code": 0,
+  "raw_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_rylf651q\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_build PASSED                           [100%]\n\n============================== 1 passed in 0.03s ===============================\n",
+  "verification_status": "GENERATED_HIDDEN_TEST_PASS"
+}

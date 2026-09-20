@@ -1,0 +1,26 @@
+[
+  {
+    "sha": "df0f8b3e1352b8c54ead80514fa8962b7b88b150",
+    "filename": "requests/models.py",
+    "status": "modified",
+    "additions": 2,
+    "deletions": 0,
+    "changes": 2,
+    "blob_url": "https://github.com/psf/requests/blob/4290acf5e71f292f13ed09c0bb05fd501015e264/requests%2Fmodels.py",
+    "raw_url": "https://github.com/psf/requests/raw/4290acf5e71f292f13ed09c0bb05fd501015e264/requests%2Fmodels.py",
+    "contents_url": "https://api.github.com/repos/psf/requests/contents/requests%2Fmodels.py?ref=4290acf5e71f292f13ed09c0bb05fd501015e264",
+    "patch": "@@ -900,6 +900,8 @@ def json(self, **kwargs):\n                     # and the server didn't bother to tell us what codec *was*\n                     # used.\n                     pass\n+                except JSONDecodeError as e:\n+                    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)\n \n         try:\n             return complexjson.loads(self.text, **kwargs)"
+  },
+  {
+    "sha": "1d8cbde64af085cc44badcf1855fee07e08957f2",
+    "filename": "tests/test_lowlevel.py",
+    "status": "modified",
+    "additions": 24,
+    "deletions": 0,
+    "changes": 24,
+    "blob_url": "https://github.com/psf/requests/blob/4290acf5e71f292f13ed09c0bb05fd501015e264/tests%2Ftest_lowlevel.py",
+    "raw_url": "https://github.com/psf/requests/raw/4290acf5e71f292f13ed09c0bb05fd501015e264/tests%2Ftest_lowlevel.py",
+    "contents_url": "https://api.github.com/repos/psf/requests/contents/tests%2Ftest_lowlevel.py?ref=4290acf5e71f292f13ed09c0bb05fd501015e264",
+    "patch": "@@ -6,6 +6,7 @@\n \n from tests.testserver.server import Server, consume_socket_content\n \n+from requests.compat import JSONDecodeError\n from .utils import override_environ\n \n \n@@ -403,3 +404,26 @@ def response_handler(sock):\n         assert r.url == 'http://{}:{}/final-url/#relevant-section'.format(host, port)\n \n         close_server.set()\n+\n+def test_json_decode_compatibility_for_alt_utf_encodings():\n+\n+    def response_handler(sock):\n+        consume_socket_content(sock, timeout=0.5)\n+        sock.send(\n+            b'HTTP/1.1 200 OK\\r\\n'\n+            b'Content-Length: 18\\r\\n\\r\\n'\n+            b'\\xff\\xfe{\\x00\"\\x00K0\"\\x00=\\x00\"\\x00\\xab0\"\\x00\\r\\n'\n+        )\n+\n+    close_server = threading.Event()\n+    server = Server(response_handler, wait_to_close_event=close_server)\n+\n+    with server as (host, port):\n+        url = 'http://{}:{}/'.format(host, port)\n+        r = requests.get(url)\n+    r.encoding = None\n+    with pytest.raises(requests.exceptions.JSONDecodeError) as excinfo:\n+        r.json()\n+    assert isinstance(excinfo.value, requests.exceptions.RequestException)\n+    assert isinstance(excinfo.value, JSONDecodeError)\n+    assert r.text not in str(excinfo.value)"
+  }
+]

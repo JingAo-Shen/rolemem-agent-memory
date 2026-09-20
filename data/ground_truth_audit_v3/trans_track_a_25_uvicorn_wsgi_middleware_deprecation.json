@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_track_a_25_uvicorn_wsgi_middleware_deprecation",
+  "repo_name": "encode/uvicorn",
+  "pr_number": 1825,
+  "pr_title": "Replace current WSGIMiddleware implementation by a2wsgi one",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "2351d5ff2b068d7bcba6eaccde83bc90b0727c89",
+  "pr_base_sha": "23b9f05a389a476aee151698cede171d915f6c53",
+  "pr_head_sha": "0db9f30d93f46870762d7df65e38262cd366f2dc",
+  "base_commit": "23b9f05a389a476aee151698cede171d915f6c53",
+  "target_commit": "2351d5ff2b068d7bcba6eaccde83bc90b0727c89",
+  "ancestry_verified": true,
+  "merge_strategy": "merge_commit",
+  "merge_relationship_verified": true,
+  "diff_match": true,
+  "issue_required": false,
+  "issue_id_verified": null,
+  "issue_status": "NOT_APPLICABLE",
+  "spec_sha256": "4793b3a85ebb852200a27eccaa7f44644dd7db9f1460f75e3b3e482f9d5daa67",
+  "audit_fingerprint": "77c6d3910d6f91fa8d9ab559d3b7f32e1a82ff322dcf20cc03214ed868c5b881",
+  "auditor_version": "3.0.0",
+  "overall_status": "PASS"
+}

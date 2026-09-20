@@ -1,0 +1,320 @@
+{
+  "transition_id": "trans_track_a_22_dateutil_unknown_timezone_warning",
+  "repo_name": "dateutil/dateutil",
+  "base_commit": "1a7ebd70371a95ae61f95cdcde6d6cbb5dd7f68c",
+  "target_commit": "65d66b28ff201ae7bf59cf4128462e1c2d839da8",
+  "pkg_path": "dateutil",
+  "tree_purity_status": "TREE_PURITY_PASS",
+  "before_tree_purity": "TREE_PURITY_PASS",
+  "after_tree_purity": "TREE_PURITY_PASS",
+  "before_mismatches": [],
+  "after_mismatches": [],
+  "total_files_before": 30,
+  "total_files_after": 30,
+  "has_environment_overlay": false,
+  "before_files": [
+    {
+      "relative_path": "dateutil/__init__.py",
+      "size": 222,
+      "sha256": "957125012ab0606c2a96b49649e5f5f49c05e417bdb4d79c0daf5e6e4fb48269"
+    },
+    {
+      "relative_path": "dateutil/_common.py",
+      "size": 932,
+      "sha256": "efbc34cb2b64af19586d29fefa50d53d431a6d45d147d237941bffbd0454a946"
+    },
+    {
+      "relative_path": "dateutil/easter.py",
+      "size": 2684,
+      "sha256": "d25895b20a92c7e34f85a15ebce25a62011bad2bb6a10436a3d9bf38405d73eb"
+    },
+    {
+      "relative_path": "dateutil/parser/__init__.py",
+      "size": 1646,
+      "sha256": "4cf11bf4feadb8e8458baa4f2227a849443a60e2de82bc1ea00fa6c5c2a43200"
+    },
+    {
+      "relative_path": "dateutil/parser/_parser.py",
+      "size": 54729,
+      "sha256": "74c0294502dbcc2cdda676e74bddff185529d87336d583ebc616c4957fbd5e59"
+    },
+    {
+      "relative_path": "dateutil/parser/isoparser.py",
+      "size": 12845,
+      "sha256": "ce70259bcd07502f389b47a5db03e06a938d6cf5b34cdf56bca7993365966ce0"
+    },
+    {
+      "relative_path": "dateutil/relativedelta.py",
+      "size": 24493,
+      "sha256": "985cd23301c8c4b5999d0a5b25a9d6a2b299c68ea8bc75d346efd58ee3c31a4a"
+    },
+    {
+      "relative_path": "dateutil/rrule.py",
+      "size": 63905,
+      "sha256": "01d13dc3fb62124e5d8c5694177cad5445e98fa7ddde512b8e39ef51bd77dc63"
+    },
+    {
+      "relative_path": "dateutil/test/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "dateutil/test/_common.py",
+      "size": 8397,
+      "sha256": "f1c5e353490d26a15db4ac4b134a85d63932ac535cfa843124d42fb953c04d15"
+    },
+    {
+      "relative_path": "dateutil/test/test_easter.py",
+      "size": 4430,
+      "sha256": "6631234035b170d671a6280beb107f0374ba280456e5f2018acdc58ab90645d5"
+    },
+    {
+      "relative_path": "dateutil/test/test_import_star.py",
+      "size": 1238,
+      "sha256": "029320eff582bc9f536dd7799b74a8a4266636f330f6d19f74a3386ac7079969"
+    },
+    {
+      "relative_path": "dateutil/test/test_imports.py",
+      "size": 5097,
+      "sha256": "494f4d39534b5bd5c44b49b69e60ccbce8a4b4c663bea91da4871f7f1a031699"
+    },
+    {
+      "relative_path": "dateutil/test/test_internals.py",
+      "size": 2500,
+      "sha256": "7c4606d8b04baf060477d2ed79392aa8d968a79e0b1413732204173d01de4de5"
+    },
+    {
+      "relative_path": "dateutil/test/test_isoparser.py",
+      "size": 17172,
+      "sha256": "e38e4272dad7c2787737aa2bf0ac71c9658d53db0755bc443640ca3699af05d8"
+    },
+    {
+      "relative_path": "dateutil/test/test_parser.py",
+      "size": 40409,
+      "sha256": "c729d18715f60aeead5e540a9368caa5eac39ae7783da94c17f70f65dc923b40"
+    },
+    {
+      "relative_path": "dateutil/test/test_relativedelta.py",
+      "size": 26213,
+      "sha256": "adf5f0ad0d5e2f601a36fb73fbb822cfececb716cd7d7c42eff26d23f965d87d"
+    },
+    {
+      "relative_path": "dateutil/test/test_rrule.py",
+      "size": 211758,
+      "sha256": "429306262af8d7927d09f81de2deb2c35e7d98b077be2700c53d5241990be219"
+    },
+    {
+      "relative_path": "dateutil/test/test_tz.py",
+      "size": 93643,
+      "sha256": "22ff2b1b31fcc8a088be7274d8882cd2f9235b6dca9ae8bdff87f8f228035d02"
+    },
+    {
+      "relative_path": "dateutil/test/test_utils.py",
+      "size": 1711,
+      "sha256": "a79f00bbc3feb0c3ba76ee8d32d71bf462c97f4113058f28bfa3b4a101dad1ae"
+    },
+    {
+      "relative_path": "dateutil/tz/__init__.py",
+      "size": 503,
+      "sha256": "e39c6eaad4525625f39ef926cfc27139d9f8a28de14a61af9cfd8739b9f814ab"
+    },
+    {
+      "relative_path": "dateutil/tz/_common.py",
+      "size": 12892,
+      "sha256": "54047edd67767f81586722a0d3d7ba3c59df95c1a13440012d806fff08d2f93f"
+    },
+    {
+      "relative_path": "dateutil/tz/_factories.py",
+      "size": 1434,
+      "sha256": "2549e55fd79f3a9ba14e7a797c348cfdeeb6730372ed6e641dc6692470e16c51"
+    },
+    {
+      "relative_path": "dateutil/tz/tz.py",
+      "size": 56299,
+      "sha256": "aa2f917383de179e3d78e9069a3d5be45b9ebdde9a0ee076c549aae6cef5387f"
+    },
+    {
+      "relative_path": "dateutil/tz/win.py",
+      "size": 11318,
+      "sha256": "33aed7e1bdf1e9122f7924740e5d7d077d0ec3c368ecb91cf87778c5dbcdcfc4"
+    },
+    {
+      "relative_path": "dateutil/tzwin.py",
+      "size": 59,
+      "sha256": "ec0af8bdd4029e733498a4773148db20ab19ac155f1e0770b0965cfe619845ec"
+    },
+    {
+      "relative_path": "dateutil/utils.py",
+      "size": 1841,
+      "sha256": "0ca24a1a06cffceb9d0a301c975db14fdda7d3e0b273f85c480221dbb2fa601a"
+    },
+    {
+      "relative_path": "dateutil/zoneinfo/__init__.py",
+      "size": 5889,
+      "sha256": "298834a6d842323729e4c5d21220499f79cc8d978d65abfbae5270e7eb73d52e"
+    },
+    {
+      "relative_path": "dateutil/zoneinfo/dateutil-zoneinfo.tar.gz",
+      "size": 139057,
+      "sha256": "62d3144c80240163ef8ba24b89df33617c7c7a3a7c4e6381098f32de7dcf3a33"
+    },
+    {
+      "relative_path": "dateutil/zoneinfo/rebuild.py",
+      "size": 1719,
+      "sha256": "dae1494225b7165f1f56882b4978ac24ca4b787235cc6c29bc1145e3741d785d"
+    }
+  ],
+  "after_files": [
+    {
+      "relative_path": "dateutil/__init__.py",
+      "size": 222,
+      "sha256": "957125012ab0606c2a96b49649e5f5f49c05e417bdb4d79c0daf5e6e4fb48269"
+    },
+    {
+      "relative_path": "dateutil/_common.py",
+      "size": 932,
+      "sha256": "efbc34cb2b64af19586d29fefa50d53d431a6d45d147d237941bffbd0454a946"
+    },
+    {
+      "relative_path": "dateutil/easter.py",
+      "size": 2684,
+      "sha256": "d25895b20a92c7e34f85a15ebce25a62011bad2bb6a10436a3d9bf38405d73eb"
+    },
+    {
+      "relative_path": "dateutil/parser/__init__.py",
+      "size": 1727,
+      "sha256": "79f159f6003723ce57f08810fd1aba89ccf8ad876451ebdf2bc3b17a49f7b985"
+    },
+    {
+      "relative_path": "dateutil/parser/_parser.py",
+      "size": 55401,
+      "sha256": "08fd2d3c7fc15c674db5ad5399ea6ac375bb30107914eb6e75da58766b1a3fbd"
+    },
+    {
+      "relative_path": "dateutil/parser/isoparser.py",
+      "size": 12845,
+      "sha256": "ce70259bcd07502f389b47a5db03e06a938d6cf5b34cdf56bca7993365966ce0"
+    },
+    {
+      "relative_path": "dateutil/relativedelta.py",
+      "size": 24493,
+      "sha256": "985cd23301c8c4b5999d0a5b25a9d6a2b299c68ea8bc75d346efd58ee3c31a4a"
+    },
+    {
+      "relative_path": "dateutil/rrule.py",
+      "size": 63905,
+      "sha256": "01d13dc3fb62124e5d8c5694177cad5445e98fa7ddde512b8e39ef51bd77dc63"
+    },
+    {
+      "relative_path": "dateutil/test/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "dateutil/test/_common.py",
+      "size": 8397,
+      "sha256": "f1c5e353490d26a15db4ac4b134a85d63932ac535cfa843124d42fb953c04d15"
+    },
+    {
+      "relative_path": "dateutil/test/test_easter.py",
+      "size": 4430,
+      "sha256": "6631234035b170d671a6280beb107f0374ba280456e5f2018acdc58ab90645d5"
+    },
+    {
+      "relative_path": "dateutil/test/test_import_star.py",
+      "size": 1238,
+      "sha256": "029320eff582bc9f536dd7799b74a8a4266636f330f6d19f74a3386ac7079969"
+    },
+    {
+      "relative_path": "dateutil/test/test_imports.py",
+      "size": 5097,
+      "sha256": "494f4d39534b5bd5c44b49b69e60ccbce8a4b4c663bea91da4871f7f1a031699"
+    },
+    {
+      "relative_path": "dateutil/test/test_internals.py",
+      "size": 2500,
+      "sha256": "7c4606d8b04baf060477d2ed79392aa8d968a79e0b1413732204173d01de4de5"
+    },
+    {
+      "relative_path": "dateutil/test/test_isoparser.py",
+      "size": 17172,
+      "sha256": "e38e4272dad7c2787737aa2bf0ac71c9658d53db0755bc443640ca3699af05d8"
+    },
+    {
+      "relative_path": "dateutil/test/test_parser.py",
+      "size": 40581,
+      "sha256": "28a9f4401ec032013633b8e6d9119803308f72777997518e1fb58c2f4a1810db"
+    },
+    {
+      "relative_path": "dateutil/test/test_relativedelta.py",
+      "size": 26213,
+      "sha256": "adf5f0ad0d5e2f601a36fb73fbb822cfececb716cd7d7c42eff26d23f965d87d"
+    },
+    {
+      "relative_path": "dateutil/test/test_rrule.py",
+      "size": 211758,
+      "sha256": "429306262af8d7927d09f81de2deb2c35e7d98b077be2700c53d5241990be219"
+    },
+    {
+      "relative_path": "dateutil/test/test_tz.py",
+      "size": 93643,
+      "sha256": "22ff2b1b31fcc8a088be7274d8882cd2f9235b6dca9ae8bdff87f8f228035d02"
+    },
+    {
+      "relative_path": "dateutil/test/test_utils.py",
+      "size": 1711,
+      "sha256": "a79f00bbc3feb0c3ba76ee8d32d71bf462c97f4113058f28bfa3b4a101dad1ae"
+    },
+    {
+      "relative_path": "dateutil/tz/__init__.py",
+      "size": 503,
+      "sha256": "e39c6eaad4525625f39ef926cfc27139d9f8a28de14a61af9cfd8739b9f814ab"
+    },
+    {
+      "relative_path": "dateutil/tz/_common.py",
+      "size": 12892,
+      "sha256": "54047edd67767f81586722a0d3d7ba3c59df95c1a13440012d806fff08d2f93f"
+    },
+    {
+      "relative_path": "dateutil/tz/_factories.py",
+      "size": 1434,
+      "sha256": "2549e55fd79f3a9ba14e7a797c348cfdeeb6730372ed6e641dc6692470e16c51"
+    },
+    {
+      "relative_path": "dateutil/tz/tz.py",
+      "size": 56299,
+      "sha256": "aa2f917383de179e3d78e9069a3d5be45b9ebdde9a0ee076c549aae6cef5387f"
+    },
+    {
+      "relative_path": "dateutil/tz/win.py",
+      "size": 11318,
+      "sha256": "33aed7e1bdf1e9122f7924740e5d7d077d0ec3c368ecb91cf87778c5dbcdcfc4"
+    },
+    {
+      "relative_path": "dateutil/tzwin.py",
+      "size": 59,
+      "sha256": "ec0af8bdd4029e733498a4773148db20ab19ac155f1e0770b0965cfe619845ec"
+    },
+    {
+      "relative_path": "dateutil/utils.py",
+      "size": 1841,
+      "sha256": "0ca24a1a06cffceb9d0a301c975db14fdda7d3e0b273f85c480221dbb2fa601a"
+    },
+    {
+      "relative_path": "dateutil/zoneinfo/__init__.py",
+      "size": 5889,
+      "sha256": "298834a6d842323729e4c5d21220499f79cc8d978d65abfbae5270e7eb73d52e"
+    },
+    {
+      "relative_path": "dateutil/zoneinfo/dateutil-zoneinfo.tar.gz",
+      "size": 139057,
+      "sha256": "62d3144c80240163ef8ba24b89df33617c7c7a3a7c4e6381098f32de7dcf3a33"
+    },
+    {
+      "relative_path": "dateutil/zoneinfo/rebuild.py",
+      "size": 1719,
+      "sha256": "dae1494225b7165f1f56882b4978ac24ca4b787235cc6c29bc1145e3741d785d"
+    }
+  ],
+  "fixture_manifest_hash": "b9e4ed96075f810e37d6d21f63f31772857e2a8d6eddc361642fc52deba9f77c"
+}

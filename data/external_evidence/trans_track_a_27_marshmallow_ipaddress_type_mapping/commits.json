@@ -1,0 +1,335 @@
+[
+  {
+    "sha": "a1ef65d8aa192f15cd3cfd94de1db715b9725daf",
+    "node_id": "C_kwDORY2vx9oAKGExZWY2NWQ4YWExOTJmMTVjZDNjZmQ5NGRlMWRiNzE1Yjk3MjVkYWY",
+    "commit": {
+      "author": {
+        "name": "Dhruvil Darji",
+        "email": "dhruvildarji1409@gmail.com",
+        "date": "2026-02-25T18:49:01Z"
+      },
+      "committer": {
+        "name": "Dhruvil Darji",
+        "email": "dhruvildarji1409@gmail.com",
+        "date": "2026-02-25T18:49:01Z"
+      },
+      "message": "Add ipaddress types to Schema.TYPE_MAPPING\n\nMap ipaddress.IPv4Address, IPv6Address, IPv4Interface, and\nIPv6Interface to their corresponding marshmallow field classes\nin Schema.TYPE_MAPPING, enabling automatic field resolution\nfor libraries like marshmallow_dataclass.\n\nCloses #1695\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>",
+      "tree": {
+        "sha": "4f576da6a0eb70aa7aa4df156dc73300a9dc8506",
+        "url": "https://api.github.com/repos/marshmallow-code/marshmallow/git/trees/4f576da6a0eb70aa7aa4df156dc73300a9dc8506"
+      },
+      "url": "https://api.github.com/repos/marshmallow-code/marshmallow/git/commits/a1ef65d8aa192f15cd3cfd94de1db715b9725daf",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/marshmallow-code/marshmallow/commits/a1ef65d8aa192f15cd3cfd94de1db715b9725daf",
+    "html_url": "https://github.com/marshmallow-code/marshmallow/commit/a1ef65d8aa192f15cd3cfd94de1db715b9725daf",
+    "comments_url": "https://api.github.com/repos/marshmallow-code/marshmallow/commits/a1ef65d8aa192f15cd3cfd94de1db715b9725daf/comments",
+    "author": {
+      "login": "dhruvildarji",
+      "id": 25696982,
+      "node_id": "MDQ6VXNlcjI1Njk2OTgy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/25696982?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dhruvildarji",
+      "html_url": "https://github.com/dhruvildarji",
+      "followers_url": "https://api.github.com/users/dhruvildarji/followers",
+      "following_url": "https://api.github.com/users/dhruvildarji/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dhruvildarji/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dhruvildarji/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dhruvildarji/subscriptions",
+      "organizations_url": "https://api.github.com/users/dhruvildarji/orgs",
+      "repos_url": "https://api.github.com/users/dhruvildarji/repos",
+      "events_url": "https://api.github.com/users/dhruvildarji/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dhruvildarji/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "dhruvildarji",
+      "id": 25696982,
+      "node_id": "MDQ6VXNlcjI1Njk2OTgy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/25696982?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dhruvildarji",
+      "html_url": "https://github.com/dhruvildarji",
+      "followers_url": "https://api.github.com/users/dhruvildarji/followers",
+      "following_url": "https://api.github.com/users/dhruvildarji/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dhruvildarji/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dhruvildarji/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dhruvildarji/subscriptions",
+      "organizations_url": "https://api.github.com/users/dhruvildarji/orgs",
+      "repos_url": "https://api.github.com/users/dhruvildarji/repos",
+      "events_url": "https://api.github.com/users/dhruvildarji/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dhruvildarji/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "2a3812d5049c83e98db60a0869919521f97cd77d",
+        "url": "https://api.github.com/repos/marshmallow-code/marshmallow/commits/2a3812d5049c83e98db60a0869919521f97cd77d",
+        "html_url": "https://github.com/marshmallow-code/marshmallow/commit/2a3812d5049c83e98db60a0869919521f97cd77d"
+      }
+    ]
+  },
+  {
+    "sha": "7038badbcae8ba4e3d703e492767d14a9e945f96",
+    "node_id": "C_kwDORY2vx9oAKDcwMzhiYWRiY2FlOGJhNGUzZDcwM2U0OTI3NjdkMTRhOWU5NDVmOTY",
+    "commit": {
+      "author": {
+        "name": "Steven Loria",
+        "email": "git@stevenloria.com",
+        "date": "2026-03-25T23:19:02Z"
+      },
+      "committer": {
+        "name": "Steven Loria",
+        "email": "git@stevenloria.com",
+        "date": "2026-03-25T23:19:02Z"
+      },
+      "message": "remove unnecessary test",
+      "tree": {
+        "sha": "4416bd889eacbf804dd2cd8c28d0b23625b3d690",
+        "url": "https://api.github.com/repos/marshmallow-code/marshmallow/git/trees/4416bd889eacbf804dd2cd8c28d0b23625b3d690"
+      },
+      "url": "https://api.github.com/repos/marshmallow-code/marshmallow/git/commits/7038badbcae8ba4e3d703e492767d14a9e945f96",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/marshmallow-code/marshmallow/commits/7038badbcae8ba4e3d703e492767d14a9e945f96",
+    "html_url": "https://github.com/marshmallow-code/marshmallow/commit/7038badbcae8ba4e3d703e492767d14a9e945f96",
+    "comments_url": "https://api.github.com/repos/marshmallow-code/marshmallow/commits/7038badbcae8ba4e3d703e492767d14a9e945f96/comments",
+    "author": {
+      "login": "sloria",
+      "id": 2379650,
+      "node_id": "MDQ6VXNlcjIzNzk2NTA=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2379650?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/sloria",
+      "html_url": "https://github.com/sloria",
+      "followers_url": "https://api.github.com/users/sloria/followers",
+      "following_url": "https://api.github.com/users/sloria/following{/other_user}",
+      "gists_url": "https://api.github.com/users/sloria/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/sloria/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/sloria/subscriptions",
+      "organizations_url": "https://api.github.com/users/sloria/orgs",
+      "repos_url": "https://api.github.com/users/sloria/repos",
+      "events_url": "https://api.github.com/users/sloria/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/sloria/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "sloria",
+      "id": 2379650,
+      "node_id": "MDQ6VXNlcjIzNzk2NTA=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2379650?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/sloria",
+      "html_url": "https://github.com/sloria",
+      "followers_url": "https://api.github.com/users/sloria/followers",
+      "following_url": "https://api.github.com/users/sloria/following{/other_user}",
+      "gists_url": "https://api.github.com/users/sloria/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/sloria/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/sloria/subscriptions",
+      "organizations_url": "https://api.github.com/users/sloria/orgs",
+      "repos_url": "https://api.github.com/users/sloria/repos",
+      "events_url": "https://api.github.com/users/sloria/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/sloria/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "a1ef65d8aa192f15cd3cfd94de1db715b9725daf",
+        "url": "https://api.github.com/repos/marshmallow-code/marshmallow/commits/a1ef65d8aa192f15cd3cfd94de1db715b9725daf",
+        "html_url": "https://github.com/marshmallow-code/marshmallow/commit/a1ef65d8aa192f15cd3cfd94de1db715b9725daf"
+      }
+    ]
+  },
+  {
+    "sha": "6657b1e2559431a0f344ab45b1e326cc2f8c551a",
+    "node_id": "C_kwDORY2vx9oAKDY2NTdiMWUyNTU5NDMxYTBmMzQ0YWI0NWIxZTMyNmNjMmY4YzU1MWE",
+    "commit": {
+      "author": {
+        "name": "Steven Loria",
+        "email": "git@stevenloria.com",
+        "date": "2026-03-25T23:19:11Z"
+      },
+      "committer": {
+        "name": "Steven Loria",
+        "email": "git@stevenloria.com",
+        "date": "2026-03-25T23:19:11Z"
+      },
+      "message": "Merge branch 'dev' into fix/ip-type-mapping",
+      "tree": {
+        "sha": "3eae12844f5d8d00f9e9df14e26bb07616777444",
+        "url": "https://api.github.com/repos/marshmallow-code/marshmallow/git/trees/3eae12844f5d8d00f9e9df14e26bb07616777444"
+      },
+      "url": "https://api.github.com/repos/marshmallow-code/marshmallow/git/commits/6657b1e2559431a0f344ab45b1e326cc2f8c551a",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/marshmallow-code/marshmallow/commits/6657b1e2559431a0f344ab45b1e326cc2f8c551a",
+    "html_url": "https://github.com/marshmallow-code/marshmallow/commit/6657b1e2559431a0f344ab45b1e326cc2f8c551a",
+    "comments_url": "https://api.github.com/repos/marshmallow-code/marshmallow/commits/6657b1e2559431a0f344ab45b1e326cc2f8c551a/comments",
+    "author": {
+      "login": "sloria",
+      "id": 2379650,
+      "node_id": "MDQ6VXNlcjIzNzk2NTA=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2379650?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/sloria",
+      "html_url": "https://github.com/sloria",
+      "followers_url": "https://api.github.com/users/sloria/followers",
+      "following_url": "https://api.github.com/users/sloria/following{/other_user}",
+      "gists_url": "https://api.github.com/users/sloria/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/sloria/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/sloria/subscriptions",
+      "organizations_url": "https://api.github.com/users/sloria/orgs",
+      "repos_url": "https://api.github.com/users/sloria/repos",
+      "events_url": "https://api.github.com/users/sloria/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/sloria/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "sloria",
+      "id": 2379650,
+      "node_id": "MDQ6VXNlcjIzNzk2NTA=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2379650?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/sloria",
+      "html_url": "https://github.com/sloria",
+      "followers_url": "https://api.github.com/users/sloria/followers",
+      "following_url": "https://api.github.com/users/sloria/following{/other_user}",
+      "gists_url": "https://api.github.com/users/sloria/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/sloria/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/sloria/subscriptions",
+      "organizations_url": "https://api.github.com/users/sloria/orgs",
+      "repos_url": "https://api.github.com/users/sloria/repos",
+      "events_url": "https://api.github.com/users/sloria/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/sloria/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "7038badbcae8ba4e3d703e492767d14a9e945f96",
+        "url": "https://api.github.com/repos/marshmallow-code/marshmallow/commits/7038badbcae8ba4e3d703e492767d14a9e945f96",
+        "html_url": "https://github.com/marshmallow-code/marshmallow/commit/7038badbcae8ba4e3d703e492767d14a9e945f96"
+      },
+      {
+        "sha": "3bc191ab3c8cac8356839bcde0918cb6aed4d3a1",
+        "url": "https://api.github.com/repos/marshmallow-code/marshmallow/commits/3bc191ab3c8cac8356839bcde0918cb6aed4d3a1",
+        "html_url": "https://github.com/marshmallow-code/marshmallow/commit/3bc191ab3c8cac8356839bcde0918cb6aed4d3a1"
+      }
+    ]
+  },
+  {
+    "sha": "3b4df805e6c2134b82f8787ee748348e20242543",
+    "node_id": "C_kwDORY2vx9oAKDNiNGRmODA1ZTZjMjEzNGI4MmY4Nzg3ZWU3NDgzNDhlMjAyNDI1NDM",
+    "commit": {
+      "author": {
+        "name": "Steven Loria",
+        "email": "git@stevenloria.com",
+        "date": "2026-03-25T23:22:54Z"
+      },
+      "committer": {
+        "name": "Steven Loria",
+        "email": "git@stevenloria.com",
+        "date": "2026-03-25T23:22:54Z"
+      },
+      "message": "update changelog",
+      "tree": {
+        "sha": "30b49a6ec2e81b751140fb16b23c99a8cbb76346",
+        "url": "https://api.github.com/repos/marshmallow-code/marshmallow/git/trees/30b49a6ec2e81b751140fb16b23c99a8cbb76346"
+      },
+      "url": "https://api.github.com/repos/marshmallow-code/marshmallow/git/commits/3b4df805e6c2134b82f8787ee748348e20242543",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/marshmallow-code/marshmallow/commits/3b4df805e6c2134b82f8787ee748348e20242543",
+    "html_url": "https://github.com/marshmallow-code/marshmallow/commit/3b4df805e6c2134b82f8787ee748348e20242543",
+    "comments_url": "https://api.github.com/repos/marshmallow-code/marshmallow/commits/3b4df805e6c2134b82f8787ee748348e20242543/comments",
+    "author": {
+      "login": "sloria",
+      "id": 2379650,
+      "node_id": "MDQ6VXNlcjIzNzk2NTA=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2379650?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/sloria",
+      "html_url": "https://github.com/sloria",
+      "followers_url": "https://api.github.com/users/sloria/followers",
+      "following_url": "https://api.github.com/users/sloria/following{/other_user}",
+      "gists_url": "https://api.github.com/users/sloria/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/sloria/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/sloria/subscriptions",
+      "organizations_url": "https://api.github.com/users/sloria/orgs",
+      "repos_url": "https://api.github.com/users/sloria/repos",
+      "events_url": "https://api.github.com/users/sloria/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/sloria/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "sloria",
+      "id": 2379650,
+      "node_id": "MDQ6VXNlcjIzNzk2NTA=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2379650?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/sloria",
+      "html_url": "https://github.com/sloria",
+      "followers_url": "https://api.github.com/users/sloria/followers",
+      "following_url": "https://api.github.com/users/sloria/following{/other_user}",
+      "gists_url": "https://api.github.com/users/sloria/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/sloria/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/sloria/subscriptions",
+      "organizations_url": "https://api.github.com/users/sloria/orgs",
+      "repos_url": "https://api.github.com/users/sloria/repos",
+      "events_url": "https://api.github.com/users/sloria/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/sloria/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "6657b1e2559431a0f344ab45b1e326cc2f8c551a",
+        "url": "https://api.github.com/repos/marshmallow-code/marshmallow/commits/6657b1e2559431a0f344ab45b1e326cc2f8c551a",
+        "html_url": "https://github.com/marshmallow-code/marshmallow/commit/6657b1e2559431a0f344ab45b1e326cc2f8c551a"
+      }
+    ]
+  }
+]

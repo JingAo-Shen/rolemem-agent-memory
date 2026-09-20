@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_track_a_16_rich_file_proxy_isatty",
+  "repo_name": "Textualize/rich",
+  "pr_number": 4077,
+  "pr_title": "proxy isatty",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "19c67b9a3479841e9133bea94607c89ee931d3fc",
+  "pr_base_sha": "58ac15120fe254886c10d6253667733c83604cb4",
+  "pr_head_sha": "494b795031782c694297d2db78bd04fb8c82f590",
+  "base_commit": "58ac15120fe254886c10d6253667733c83604cb4",
+  "target_commit": "19c67b9a3479841e9133bea94607c89ee931d3fc",
+  "ancestry_verified": true,
+  "merge_strategy": "merge_commit",
+  "merge_relationship_verified": true,
+  "diff_match": true,
+  "issue_required": false,
+  "issue_id_verified": null,
+  "issue_status": "NOT_APPLICABLE",
+  "spec_sha256": "9bc6219bb00eabffa2aed8c4f0d7b96d34b83cbcb15e3d70f3a8e6d0cbdc0978",
+  "audit_fingerprint": "18b49fdf87464a1b1d525f6b4867b07aaf307e51b42119faf46562fa3e6560b0",
+  "auditor_version": "3.0.0",
+  "overall_status": "PASS"
+}

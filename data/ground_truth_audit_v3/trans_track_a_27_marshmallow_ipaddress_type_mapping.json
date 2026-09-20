@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_track_a_27_marshmallow_ipaddress_type_mapping",
+  "repo_name": "marshmallow-code/marshmallow",
+  "pr_number": 2906,
+  "pr_title": "Add ipaddress types to Schema.TYPE_MAPPING",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "c38b48ec3b8bb44315036d0c8a07bc8477eb5094",
+  "pr_base_sha": "3bc191ab3c8cac8356839bcde0918cb6aed4d3a1",
+  "pr_head_sha": "3b4df805e6c2134b82f8787ee748348e20242543",
+  "base_commit": "3bc191ab3c8cac8356839bcde0918cb6aed4d3a1",
+  "target_commit": "c38b48ec3b8bb44315036d0c8a07bc8477eb5094",
+  "ancestry_verified": true,
+  "merge_strategy": "merge_commit",
+  "merge_relationship_verified": true,
+  "diff_match": true,
+  "issue_required": false,
+  "issue_id_verified": null,
+  "issue_status": "NOT_APPLICABLE",
+  "spec_sha256": "4b33633f511490bdc1778a388de78719a8b9bf4aece4e4bd5bf38ef0d57a27fd",
+  "audit_fingerprint": "916670cc622b00a11abc30134181665eaaa4c403ae240c203f005467d54d903a",
+  "auditor_version": "3.0.0",
+  "overall_status": "PASS"
+}

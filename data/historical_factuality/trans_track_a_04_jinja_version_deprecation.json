@@ -1,0 +1,49 @@
+{
+  "transition_id": "trans_track_a_04_jinja_version_deprecation",
+  "repo_name": "pallets/jinja",
+  "base_commit": "dfe82ade3dc7d112d7d166ca0d7ae7f794fe19e6",
+  "claims": [
+    {
+      "statement": "__version__ is set to '3.2.0.dev0', indicating the development version of Jinja2 at this commit.",
+      "temporal_isolation_pass": true,
+      "temporal_leaks": [],
+      "structural_evidence_grounded": true,
+      "matched_symbols": [
+        "jinja2.__version__",
+        "jinja2.__version__"
+      ],
+      "semantic_factuality_status": "FACTUALLY_SUPPORTED",
+      "semantic_factuality_pass": true,
+      "explanation": "__version__ is explicitly set to '3.2.0.dev0' in the historical source code.",
+      "seed": 42
+    },
+    {
+      "statement": "__version__ is set to '3.2.0.dev0', indicating the development version of Jinja2 at this commit.",
+      "temporal_isolation_pass": true,
+      "temporal_leaks": [],
+      "structural_evidence_grounded": true,
+      "matched_symbols": [
+        "jinja2.__version__",
+        "jinja2.__version__"
+      ],
+      "semantic_factuality_status": "FACTUALLY_SUPPORTED",
+      "semantic_factuality_pass": true,
+      "explanation": "__version__ is explicitly set to '3.2.0.dev0' in the historical source code.",
+      "seed": 123
+    },
+    {
+      "statement": "__version__ is set to '3.2.0.dev0', indicating the development version of Jinja2 at this commit.",
+      "temporal_isolation_pass": true,
+      "temporal_leaks": [],
+      "structural_evidence_grounded": true,
+      "matched_symbols": [
+        "jinja2.__version__",
+        "jinja2.__version__"
+      ],
+      "semantic_factuality_status": "FACTUALLY_SUPPORTED",
+      "semantic_factuality_pass": true,
+      "explanation": "__version__ is explicitly set to '3.2.0.dev0' in the historical source code.",
+      "seed": 999
+    }
+  ]
+}

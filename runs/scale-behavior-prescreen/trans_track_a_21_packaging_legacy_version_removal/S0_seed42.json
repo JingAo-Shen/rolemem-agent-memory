@@ -1,0 +1,19 @@
+{
+  "task_id": "trans_track_a_21_packaging_legacy_version_removal",
+  "condition": "S0",
+  "seed": 42,
+  "memory_source": "NO_MEMORY",
+  "memory_statements": [],
+  "retrieved_files": [],
+  "repository_context_tokens": 1200,
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": false,
+    "active_nodes": []
+  },
+  "pytest_pass": true,
+  "pytest_log_excerpt": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_hehkgzpj\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_parse_version_safely PASSED            [100%]\n\n==============================",
+  "overall_task_success": true,
+  "parsed_code": "import re\nfrom typing import Optional\n\ndef parse_version_safely(v: str) -> str:\n    # Regular expression pattern to match valid version strings\n    pattern = r'^\\d+(\\.\\d+)*(\\.\\d+[a-zA-Z0-9]+)?$'\n    \n    # Check if the input string matches the pattern\n    if re.match(pattern, v):\n        return v\n    else:\n        return 'INVALID'\n\n# Test cases\nprint(parse_version_safely(\"1.2.3\"))  # Valid version\nprint(parse_version_safely(\"1.2.3a\"))  # Valid version with prerelease\nprint(parse_version_safely(\"1.2.a\"))  # Invalid version\nprint(parse_version_safely(\"abc\"))  # Invalid version"
+}

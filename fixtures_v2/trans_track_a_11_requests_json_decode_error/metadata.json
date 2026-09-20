@@ -1,0 +1,19 @@
+{
+  "transition_id": "trans_track_a_11_requests_json_decode_error",
+  "repo_name": "psf/requests",
+  "repo_url": "https://github.com/psf/requests",
+  "pr_url": "https://github.com/psf/requests/pull/6097",
+  "base_commit": "8bce583b9547c7b82d44c8e97f37cf9a16cbe758",
+  "target_commit": "2d5517682b3b38547634d153cea43d48fbc8cdb5",
+  "pkg_path": "requests",
+  "changed_files": [
+    "requests/models.py"
+  ],
+  "primary_file": "requests/models.py",
+  "symbol": "requests.exceptions.JSONDecodeError",
+  "file_digest_before": "5a56c98845f38bdfbb9ef343292bef6b9289a210e576aa694dc20d5f1f8bb333",
+  "file_digest_after": "97e2643e03b1c1910c4c63885a1c9aedf18816d11eaea3ce70c65db43e567d8e",
+  "stale_sensitive": false,
+  "transition_type": "API_EVOLUTION",
+  "builder_status": "FIXTURE_EXTRACTED_UNVERIFIED"
+}

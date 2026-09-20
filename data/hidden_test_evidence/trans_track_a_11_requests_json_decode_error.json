@@ -1,0 +1,10 @@
+{
+  "transition_id": "trans_track_a_11_requests_json_decode_error",
+  "audit_fingerprint": "725c56bae97825a5a8d6e9969b84a0c8ea2d4c0876e8785129553e73b2412685",
+  "status": "PASS",
+  "collection_status": "PASS",
+  "execution_status": "PASS",
+  "exit_code": 0,
+  "raw_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_jno9bnpo\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_safe_parse PASSED                      [100%]\n\n=============================== warnings summary ===============================\nrequests/__init__.py:102\n  /tmp/rolemem_sandbox_j",
+  "verification_status": "GENERATED_HIDDEN_TEST_PASS"
+}

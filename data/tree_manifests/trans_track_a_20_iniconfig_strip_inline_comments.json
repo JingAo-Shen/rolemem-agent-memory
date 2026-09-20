@@ -1,0 +1,60 @@
+{
+  "transition_id": "trans_track_a_20_iniconfig_strip_inline_comments",
+  "repo_name": "pytest-dev/iniconfig",
+  "base_commit": "57b7ed9c7a5950f9c57b2cfbe641ff4cc04baf1c",
+  "target_commit": "7faed13ae50bad7c5da3f5782f254a8a7736bb84",
+  "pkg_path": "src/iniconfig",
+  "tree_purity_status": "TREE_PURITY_PASS",
+  "before_tree_purity": "TREE_PURITY_PASS",
+  "after_tree_purity": "TREE_PURITY_PASS",
+  "before_mismatches": [],
+  "after_mismatches": [],
+  "total_files_before": 4,
+  "total_files_after": 4,
+  "has_environment_overlay": false,
+  "before_files": [
+    {
+      "relative_path": "src/iniconfig/__init__.py",
+      "size": 5383,
+      "sha256": "54d78711f7f17b2aa2a6c1593da464d91a0bf8da08c875fb3df2242b0ac0db1a"
+    },
+    {
+      "relative_path": "src/iniconfig/_parse.py",
+      "size": 2405,
+      "sha256": "255a021dfa214a10a9c05fda985c1dd6f364eb4869bbbda9cd618668cc927e3b"
+    },
+    {
+      "relative_path": "src/iniconfig/exceptions.py",
+      "size": 399,
+      "sha256": "9a2a50fda3310fd0af4af156375a135d8e10b919ca00c6757f7b027668c34d4d"
+    },
+    {
+      "relative_path": "src/iniconfig/py.typed",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "after_files": [
+    {
+      "relative_path": "src/iniconfig/__init__.py",
+      "size": 7497,
+      "sha256": "5cbe5ea94623e26b2400ea2b6798df4408a726f2734c8f9f271a4fe317d7b5ac"
+    },
+    {
+      "relative_path": "src/iniconfig/_parse.py",
+      "size": 5223,
+      "sha256": "e6770197b30042268f367a51aecf45478b7a1ba0e480e52ce39f0e63fd42476f"
+    },
+    {
+      "relative_path": "src/iniconfig/exceptions.py",
+      "size": 399,
+      "sha256": "9a2a50fda3310fd0af4af156375a135d8e10b919ca00c6757f7b027668c34d4d"
+    },
+    {
+      "relative_path": "src/iniconfig/py.typed",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "fixture_manifest_hash": "facb4b7d2143d918153a672a879a274bd79d1260e65f62052d4919cd0ad8ef2f"
+}

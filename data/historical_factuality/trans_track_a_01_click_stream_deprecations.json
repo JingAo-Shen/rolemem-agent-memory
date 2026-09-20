@@ -1,0 +1,49 @@
+{
+  "transition_id": "trans_track_a_01_click_stream_deprecations",
+  "repo_name": "pallets/click",
+  "base_commit": "7a0a3447f6ddd2c15438c5d098e289323f9f9556",
+  "claims": [
+    {
+      "statement": "get_binary_stream retrieves a system stream for byte processing based on the provided name ('stdin', 'stdout', or 'stderr').",
+      "temporal_isolation_pass": true,
+      "temporal_leaks": [],
+      "structural_evidence_grounded": true,
+      "matched_symbols": [
+        "get_binary_stream",
+        "get_binary_stream"
+      ],
+      "semantic_factuality_status": "FACTUALLY_SUPPORTED",
+      "semantic_factuality_pass": true,
+      "explanation": "**Created Question**:\nEvaluate whether the following CLAIM about a Python function is supported by the HISTORICAL SOURCE CODE.\nDo not make assumptions beyond what is stated in the code.\n\nHISTORICAL SOURCE CODE:\n```python\ndef calculate_area(radius):\n    pi = 3.14159\n    area = pi * radius * radius\n    return area\n```\n\nHISTORICAL COMMITS:\n- No commits found related to this function.\n\nCLAIM:\n\"The `calculate_area` function computes the area of a circle using the formula \\( \\pi r^2 \\",
+      "seed": 42
+    },
+    {
+      "statement": "get_binary_stream opens a system stream for byte processing based on the provided name ('stdin', 'stdout', or 'stderr').",
+      "temporal_isolation_pass": true,
+      "temporal_leaks": [],
+      "structural_evidence_grounded": true,
+      "matched_symbols": [
+        "get_binary_stream",
+        "get_binary_stream"
+      ],
+      "semantic_factuality_status": "FACTUALLY_SUPPORTED",
+      "semantic_factuality_pass": true,
+      "explanation": ":",
+      "seed": 123
+    },
+    {
+      "statement": "get_binary_stream opens a system stream for byte processing based on the provided name ('stdin', 'stdout', or 'stderr').",
+      "temporal_isolation_pass": true,
+      "temporal_leaks": [],
+      "structural_evidence_grounded": true,
+      "matched_symbols": [
+        "get_binary_stream",
+        "get_binary_stream"
+      ],
+      "semantic_factuality_status": "FACTUALLY_SUPPORTED",
+      "semantic_factuality_pass": true,
+      "explanation": ":",
+      "seed": 999
+    }
+  ]
+}

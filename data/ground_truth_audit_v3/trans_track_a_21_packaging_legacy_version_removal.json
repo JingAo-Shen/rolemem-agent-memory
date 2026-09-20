@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_track_a_21_packaging_legacy_version_removal",
+  "repo_name": "pypa/packaging",
+  "pr_number": 407,
+  "pr_title": "Drop `LegacySpecifier` and `LegacyVersion`",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "237ff3aa348486cf835a980592af3a59fccd6101",
+  "pr_base_sha": "4f42225e91a0be634625c09e84dd29ea82b85e27",
+  "pr_head_sha": "5943a3800db12302f3be328a1bac9ad32f4f26eb",
+  "base_commit": "4f42225e91a0be634625c09e84dd29ea82b85e27",
+  "target_commit": "237ff3aa348486cf835a980592af3a59fccd6101",
+  "ancestry_verified": true,
+  "merge_strategy": "merge_commit",
+  "merge_relationship_verified": true,
+  "diff_match": true,
+  "issue_required": false,
+  "issue_id_verified": null,
+  "issue_status": "NOT_APPLICABLE",
+  "spec_sha256": "97cba6864c657b7129a18dcd54aac8ada626553a2813ee8221afb559e43e86c0",
+  "audit_fingerprint": "6f64a0a58d87b416d5a4702aba1fda06bf76bafae15e98099e6ad866a654e235",
+  "auditor_version": "3.0.0",
+  "overall_status": "PASS"
+}

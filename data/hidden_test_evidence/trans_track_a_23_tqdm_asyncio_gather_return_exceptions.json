@@ -1,0 +1,10 @@
+{
+  "transition_id": "trans_track_a_23_tqdm_asyncio_gather_return_exceptions",
+  "audit_fingerprint": "7469188a1fa3a1c3cd5bf14163506300b7eaf8d50180613f3df9492219f35d96",
+  "status": "PASS",
+  "collection_status": "PASS",
+  "execution_status": "PASS",
+  "exit_code": 0,
+  "raw_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_hbv3ff0h\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_gather PASSED                          [100%]\n\n============================== 1 passed in 0.02s ===============================\n",
+  "verification_status": "GENERATED_HIDDEN_TEST_PASS"
+}

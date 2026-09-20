@@ -1,0 +1,27 @@
+{
+  "task_id": "trans_track_a_23_tqdm_asyncio_gather_return_exceptions",
+  "condition": "S3",
+  "seed": 42,
+  "memory_source": "VALID_MEMORY_CANDIDATE",
+  "memory_statements": [
+    "Pass return_exceptions=True directly to tqdm_asyncio.gather."
+  ],
+  "retrieved_files": [],
+  "repository_context_tokens": 1175,
+  "is_stale_action": true,
+  "ast_details": {
+    "stale_active_use": true,
+    "stale_mention": false,
+    "active_nodes": [
+      {
+        "type": "Attribute",
+        "lineno": 5,
+        "symbol": "tqdm_asyncio.gather"
+      }
+    ]
+  },
+  "pytest_pass": false,
+  "pytest_log_excerpt": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_2ya3snms\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_gather FAILED                          [100%]\n\n======================",
+  "overall_task_success": false,
+  "parsed_code": "import asyncio\nfrom tqdm.asyncio import tqdm_asyncio\n\nasync def run_gather_tasks(tasks):\n    results = await tqdm_asyncio.gather(*tasks, return_exceptions=True)\n    return results"
+}

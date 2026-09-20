@@ -1,0 +1,84 @@
+[
+  {
+    "sha": "4290acf5e71f292f13ed09c0bb05fd501015e264",
+    "node_id": "C_kwDOA7BMyNoAKDQyOTBhY2Y1ZTcxZjI5MmYxM2VkMDljMGJiMDVmZDUwMTAxNWUyNjQ",
+    "commit": {
+      "author": {
+        "name": "Nate Prewitt",
+        "email": "nate.prewitt@gmail.com",
+        "date": "2022-03-28T17:46:57Z"
+      },
+      "committer": {
+        "name": "Nate Prewitt",
+        "email": "nate.prewitt@gmail.com",
+        "date": "2022-03-28T18:12:29Z"
+      },
+      "message": "Fix inconsistent exception for JSONDecode error\n\nWhen calling .json() it was possible to raise a\nrequests.exceptions.JSONDecodeError or ValueError\ndepending on whether the encoding is set.",
+      "tree": {
+        "sha": "7c69ff569860f96c96b0ae07c0e6cdf7c0b6e93d",
+        "url": "https://api.github.com/repos/psf/requests/git/trees/7c69ff569860f96c96b0ae07c0e6cdf7c0b6e93d"
+      },
+      "url": "https://api.github.com/repos/psf/requests/git/commits/4290acf5e71f292f13ed09c0bb05fd501015e264",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEEhyJ+Ka2c/1z6w+pqRNP/l7gNyGQFAmJB+o8ACgkQRNP/l7gN\nyGSHLA/9FNJhE73+J8pHhZno5XGB9ghD4OXF/1Gum8aOpHLEFSaWope7yXdFA92w\n4ojOoJXN/vC4Z5KgqlxZNRz8eYL9OroFpcLlpXiT4uWfJilpykCTk3IaCuSMKOKF\nyriN350lpc9r9VMXfrDnz+6hr55cQzWyqGD0SoDt1f5A/9nC1Js6PwNlzoiXyE55\nYphZiek8hDHrm8PZ9UVxwEUfgyECifNntL7iJ+j6CY8DlhXYqMXhMUtBionoQ1ss\ngwuqIrqOiatJ/WLjsmtRix1EXb5kGwzX/ShRRevSbdPIDliGThRlw6eIzA/kmQ7y\nWJ0CSHVgfbFQDOXz5WIiH2Awacb4/lRodirxCq4Ait3lYIXGjGR4kwbRPcOAkYbD\no840MqlfHNLgUcoxz4fTTotdGCbGPCjAvGJRIr5/gSfNTSCiPN4ArqsPaKgpVNBz\n7515q7mrmkyE4ENfoh8tE/abBq0bQufSdfI39zBuyFILicl73Mm+09Zm/lExYlx6\nVlmN8jQURaYH3+yLTH2GBVg0qle1Lie/IvhpoxFO/+yK5txi4JfPZOZZFGuGoWvv\n/ukPk2/jXsE9G7IjJolY7FbDfpjai73XKv/dRkItwHCqyA0SIIrwcoot+JNavpup\n6nB/7OB2tal1ctvc53kJ3LzQlL+mZiwzrqicBHeyqONmnDATodE=\n=f6My\n-----END PGP SIGNATURE-----",
+        "payload": "tree 7c69ff569860f96c96b0ae07c0e6cdf7c0b6e93d\nparent 8bce583b9547c7b82d44c8e97f37cf9a16cbe758\nauthor Nate Prewitt <nate.prewitt@gmail.com> 1648489617 -0600\ncommitter Nate Prewitt <nate.prewitt@gmail.com> 1648491149 -0600\n\nFix inconsistent exception for JSONDecode error\n\nWhen calling .json() it was possible to raise a\nrequests.exceptions.JSONDecodeError or ValueError\ndepending on whether the encoding is set.\n",
+        "verified_at": "2024-11-07T11:57:34Z"
+      }
+    },
+    "url": "https://api.github.com/repos/psf/requests/commits/4290acf5e71f292f13ed09c0bb05fd501015e264",
+    "html_url": "https://github.com/psf/requests/commit/4290acf5e71f292f13ed09c0bb05fd501015e264",
+    "comments_url": "https://api.github.com/repos/psf/requests/commits/4290acf5e71f292f13ed09c0bb05fd501015e264/comments",
+    "author": {
+      "login": "nateprewitt",
+      "id": 5271761,
+      "node_id": "MDQ6VXNlcjUyNzE3NjE=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5271761?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/nateprewitt",
+      "html_url": "https://github.com/nateprewitt",
+      "followers_url": "https://api.github.com/users/nateprewitt/followers",
+      "following_url": "https://api.github.com/users/nateprewitt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/nateprewitt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/nateprewitt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/nateprewitt/subscriptions",
+      "organizations_url": "https://api.github.com/users/nateprewitt/orgs",
+      "repos_url": "https://api.github.com/users/nateprewitt/repos",
+      "events_url": "https://api.github.com/users/nateprewitt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/nateprewitt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "nateprewitt",
+      "id": 5271761,
+      "node_id": "MDQ6VXNlcjUyNzE3NjE=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5271761?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/nateprewitt",
+      "html_url": "https://github.com/nateprewitt",
+      "followers_url": "https://api.github.com/users/nateprewitt/followers",
+      "following_url": "https://api.github.com/users/nateprewitt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/nateprewitt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/nateprewitt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/nateprewitt/subscriptions",
+      "organizations_url": "https://api.github.com/users/nateprewitt/orgs",
+      "repos_url": "https://api.github.com/users/nateprewitt/repos",
+      "events_url": "https://api.github.com/users/nateprewitt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/nateprewitt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "8bce583b9547c7b82d44c8e97f37cf9a16cbe758",
+        "url": "https://api.github.com/repos/psf/requests/commits/8bce583b9547c7b82d44c8e97f37cf9a16cbe758",
+        "html_url": "https://github.com/psf/requests/commit/8bce583b9547c7b82d44c8e97f37cf9a16cbe758"
+      }
+    ]
+  }
+]

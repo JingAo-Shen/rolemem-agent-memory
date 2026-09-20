@@ -1,0 +1,26 @@
+[
+  {
+    "sha": "ac39acc436a4118d99ffa7e1e4b38e21edb2837a",
+    "filename": "starlette/staticfiles.py",
+    "status": "modified",
+    "additions": 1,
+    "deletions": 1,
+    "changes": 2,
+    "blob_url": "https://github.com/Kludex/starlette/blob/f1cb5b480b7b4596402f9b7b0eefde0f5079cdde/starlette%2Fstaticfiles.py",
+    "raw_url": "https://github.com/Kludex/starlette/raw/f1cb5b480b7b4596402f9b7b0eefde0f5079cdde/starlette%2Fstaticfiles.py",
+    "contents_url": "https://api.github.com/repos/Kludex/starlette/contents/starlette%2Fstaticfiles.py?ref=f1cb5b480b7b4596402f9b7b0eefde0f5079cdde",
+    "patch": "@@ -210,7 +210,7 @@ def is_not_modified(self, response_headers: Headers, request_headers: Headers) -\n         if if_none_match := request_headers.get(\"if-none-match\"):\n             # The \"etag\" header is added by FileResponse, so it's always present.\n             etag = response_headers[\"etag\"]\n-            return etag in [tag.strip(\" W/\") for tag in if_none_match.split(\",\")]\n+            return etag in [tag.strip().removeprefix(\"W/\") for tag in if_none_match.split(\",\")]\n \n         try:\n             if_modified_since = parsedate(request_headers[\"if-modified-since\"])"
+  },
+  {
+    "sha": "4b377f771fcc4bac18469ab887ff8641c7bf471c",
+    "filename": "tests/test_staticfiles.py",
+    "status": "modified",
+    "additions": 3,
+    "deletions": 0,
+    "changes": 3,
+    "blob_url": "https://github.com/Kludex/starlette/blob/f1cb5b480b7b4596402f9b7b0eefde0f5079cdde/tests%2Ftest_staticfiles.py",
+    "raw_url": "https://github.com/Kludex/starlette/raw/f1cb5b480b7b4596402f9b7b0eefde0f5079cdde/tests%2Ftest_staticfiles.py",
+    "contents_url": "https://api.github.com/repos/Kludex/starlette/contents/tests%2Ftest_staticfiles.py?ref=f1cb5b480b7b4596402f9b7b0eefde0f5079cdde",
+    "patch": "@@ -214,6 +214,9 @@ def test_staticfiles_304_with_etag_match(tmpdir: Path, test_client_factory: Test\n     second_resp = client.get(\"/example.txt\", headers={\"if-none-match\": f'W/{last_etag}, \"123\"'})\n     assert second_resp.status_code == 304\n     assert second_resp.content == b\"\"\n+    second_resp = client.get(\"/example.txt\", headers={\"if-none-match\": f'\"123\",\\tW/{last_etag}'})\n+    assert second_resp.status_code == 304\n+    assert second_resp.content == b\"\"\n \n \n def test_staticfiles_200_with_etag_mismatch(tmpdir: Path, test_client_factory: TestClientFactory) -> None:"
+  }
+]

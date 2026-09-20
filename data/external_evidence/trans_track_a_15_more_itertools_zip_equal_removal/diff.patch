@@ -1,0 +1,695 @@
+diff --git a/.github/workflows/python-app.yml b/.github/workflows/python-app.yml
+index 8ce8191..57f63c0 100644
+--- a/.github/workflows/python-app.yml
++++ b/.github/workflows/python-app.yml
+@@ -8,7 +8,7 @@ jobs:
+     runs-on: ubuntu-latest
+     strategy:
+       matrix:
+-        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13", "3.14.0-rc.2", "pypy-3.10"]
++        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14.0-rc.2", "pypy-3.10"]
+ 
+     steps:
+     - uses: actions/checkout@v4
+@@ -22,16 +22,16 @@ jobs:
+     - name: Run tests
+       run: make coverage
+     - name: Static checks
+-      if: "matrix.python-version == '3.9'"
++      if: "matrix.python-version == '3.10'"
+       run: make check
+     - name: Build docs with sphinx
+-      if: "matrix.python-version == '3.9'"
++      if: "matrix.python-version == '3.10'"
+       run: make docs
+     - name: Build packages
+-      if: "matrix.python-version == '3.9'"
++      if: "matrix.python-version == '3.10'"
+       run: make package
+     - name: Upload packages
+-      if: "matrix.python-version == '3.9'"
++      if: "matrix.python-version == '3.10'"
+       uses: actions/upload-artifact@v4
+       with:
+         name: more-itertools-packages
+diff --git a/README.rst b/README.rst
+index 17faf60..619a708 100644
+--- a/README.rst
++++ b/README.rst
+@@ -39,7 +39,6 @@ Python iterables.
+ |                        | `substrings_indexes <https://more-itertools.readthedocs.io/en/stable/api.html#more_itertools.substrings_indexes>`_,                                                         |
+ |                        | `stagger <https://more-itertools.readthedocs.io/en/stable/api.html#more_itertools.stagger>`_,                                                                               |
+ |                        | `windowed_complete <https://more-itertools.readthedocs.io/en/stable/api.html#more_itertools.windowed_complete>`_,                                                           |
+-|                        | `pairwise <https://more-itertools.readthedocs.io/en/stable/api.html#more_itertools.pairwise>`_,                                                                             |
+ |                        | `triplewise <https://more-itertools.readthedocs.io/en/stable/api.html#more_itertools.triplewise>`_,                                                                         |
+ |                        | `sliding_window <https://more-itertools.readthedocs.io/en/stable/api.html#more_itertools.sliding_window>`_,                                                                 |
+ |                        | `subslices <https://more-itertools.readthedocs.io/en/stable/api.html#more_itertools.subslices>`_                                                                            |
+@@ -62,7 +61,6 @@ Python iterables.
+ |                        | `interleave_evenly <https://more-itertools.readthedocs.io/en/stable/api.html#more_itertools.interleave_evenly>`_,                                                           |
+ |                        | `interleave_randomly <https://more-itertools.readthedocs.io/en/stable/api.html#more_itertools.interleave_randomly>`_,                                                       |
+ |                        | `zip_offset <https://more-itertools.readthedocs.io/en/stable/api.html#more_itertools.zip_offset>`_,                                                                         |
+-|                        | `zip_equal <https://more-itertools.readthedocs.io/en/stable/api.html#more_itertools.zip_equal>`_,                                                                           |
+ |                        | `zip_broadcast <https://more-itertools.readthedocs.io/en/stable/api.html#more_itertools.zip_broadcast>`_,                                                                   |
+ |                        | `flatten <https://more-itertools.readthedocs.io/en/stable/api.html#more_itertools.flatten>`_,                                                                               |
+ |                        | `roundrobin <https://more-itertools.readthedocs.io/en/stable/api.html#more_itertools.roundrobin>`_,                                                                         |
+diff --git a/docs/api.rst b/docs/api.rst
+index 320e97f..9568d58 100644
+--- a/docs/api.rst
++++ b/docs/api.rst
+@@ -72,7 +72,6 @@ These tools yield windows of items from an iterable.
+ 
+ **Itertools recipes**
+ 
+-.. autofunction:: pairwise
+ .. autofunction:: triplewise
+ .. autofunction:: sliding_window
+ .. autofunction:: subslices
+@@ -123,7 +122,6 @@ These tools combine multiple iterables.
+ .. autofunction:: sort_together
+ .. autofunction:: value_chain
+ .. autofunction:: zip_offset(*iterables, offsets, longest=False, fillvalue=None)
+-.. autofunction:: zip_equal
+ .. autofunction:: zip_broadcast(*objects, scalar_types=(str, bytes), strict=False)
+ 
+ ----
+diff --git a/more_itertools/more.py b/more_itertools/more.py
+index bf50195..8a5d23f 100755
+--- a/more_itertools/more.py
++++ b/more_itertools/more.py
+@@ -1,7 +1,6 @@
+ import math
+-import warnings
+ 
+-from collections import Counter, defaultdict, deque, abc
++from collections import Counter, defaultdict, deque
+ from collections.abc import Sequence
+ from contextlib import suppress
+ from functools import cached_property, partial, reduce, wraps
+@@ -37,13 +36,11 @@ from operator import (
+     sub,
+     gt,
+ )
+-from sys import hexversion, maxsize
++from sys import maxsize
+ from time import monotonic
+ 
+ from .recipes import (
+     _marker,
+-    _zip_equal,
+-    UnequalIterablesError,
+     consume,
+     first_true,
+     flatten,
+@@ -60,7 +57,6 @@ from .recipes import (
+ __all__ = [
+     'AbortThread',
+     'SequenceView',
+-    'UnequalIterablesError',
+     'adjacent',
+     'all_unique',
+     'always_iterable',
+@@ -172,7 +168,6 @@ __all__ = [
+     'windowed_complete',
+     'with_iter',
+     'zip_broadcast',
+-    'zip_equal',
+     'zip_offset',
+ ]
+ 
+@@ -1853,37 +1848,6 @@ def stagger(iterable, offsets=(-1, 0, 1), longest=False, fillvalue=None):
+     )
+ 
+ 
+-def zip_equal(*iterables):
+-    """``zip`` the input *iterables* together but raise
+-    ``UnequalIterablesError`` if they aren't all the same length.
+-
+-        >>> it_1 = range(3)
+-        >>> it_2 = iter('abc')
+-        >>> list(zip_equal(it_1, it_2))
+-        [(0, 'a'), (1, 'b'), (2, 'c')]
+-
+-        >>> it_1 = range(3)
+-        >>> it_2 = iter('abcd')
+-        >>> list(zip_equal(it_1, it_2)) # doctest: +IGNORE_EXCEPTION_DETAIL
+-        Traceback (most recent call last):
+-        ...
+-        more_itertools.more.UnequalIterablesError: Iterables have different
+-        lengths
+-
+-    """
+-    if hexversion >= 0x30A00A6:
+-        warnings.warn(
+-            (
+-                'zip_equal will be removed in a future version of '
+-                'more-itertools. Use the builtin zip function with '
+-                'strict=True instead.'
+-            ),
+-            DeprecationWarning,
+-        )
+-
+-    return _zip_equal(*iterables)
+-
+-
+ def zip_offset(*iterables, offsets, longest=False, fillvalue=None):
+     """``zip`` the input *iterables* together, but offset the `i`-th iterable
+     by the `i`-th item in *offsets*.
+@@ -1965,7 +1929,7 @@ def sort_together(
+         [(3, 2, 1), ('a', 'b', 'c')]
+ 
+     If the *strict* keyword argument is ``True``, then
+-    ``UnequalIterablesError`` will be raised if any of the iterables have
++    ``ValueError`` will be raised if any of the iterables have
+     different lengths.
+ 
+     """
+@@ -1990,10 +1954,10 @@ def sort_together(
+                 *get_key_items(zipped_items)
+             )
+ 
+-    zipper = zip_equal if strict else zip
+-    return list(
+-        zipper(*sorted(zipper(*iterables), key=key_argument, reverse=reverse))
+-    )
++    transposed = zip(*iterables, strict=strict)
++    reordered = sorted(transposed, key=key_argument, reverse=reverse)
++    untransposed = zip(*reordered, strict=strict)
++    return list(untransposed)
+ 
+ 
+ def unzip(iterable):
+@@ -2225,7 +2189,7 @@ def groupby_transform(iterable, keyfunc=None, valuefunc=None, reducefunc=None):
+     return ret
+ 
+ 
+-class numeric_range(abc.Sequence, abc.Hashable):
++class numeric_range(Sequence):
+     """An extension of the built-in ``range()`` function whose arguments can
+     be any orderable numeric type.
+ 
+@@ -4407,7 +4371,6 @@ def combination_index(element, iterable):
+ 
+     n, _ = last(pool, default=(n, None))
+ 
+-    # Python versions below 3.8 don't have math.comb
+     index = 1
+     for i, j in enumerate(reversed(indexes), start=1):
+         j = n - j
+@@ -4598,7 +4561,7 @@ def zip_broadcast(*objects, scalar_types=(str, bytes), strict=False):
+     [('a', 0, 'x'), ('b', 0, 'y'), ('c', 0, 'z')]
+ 
+     If the *strict* keyword argument is ``True``, then
+-    ``UnequalIterablesError`` will be raised if any of the iterables have
++    ``ValueError`` will be raised if any of the iterables have
+     different lengths.
+     """
+ 
+@@ -4629,8 +4592,7 @@ def zip_broadcast(*objects, scalar_types=(str, bytes), strict=False):
+         yield tuple(objects)
+         return
+ 
+-    zipper = _zip_equal if strict else zip
+-    for item in zipper(*iterables):
++    for item in zip(*iterables, strict=strict):
+         for i, new_item[i] in zip(iterable_positions, item):
+             pass
+         yield tuple(new_item)
+diff --git a/more_itertools/more.pyi b/more_itertools/more.pyi
+index b5e33f8..710336c 100644
+--- a/more_itertools/more.pyi
++++ b/more_itertools/more.pyi
+@@ -29,7 +29,6 @@ from typing_extensions import Protocol
+ __all__ = [
+     'AbortThread',
+     'SequenceView',
+-    'UnequalIterablesError',
+     'adjacent',
+     'all_unique',
+     'always_iterable',
+@@ -141,7 +140,6 @@ __all__ = [
+     'windowed_complete',
+     'with_iter',
+     'zip_broadcast',
+-    'zip_equal',
+     'zip_offset',
+ ]
+ 
+@@ -344,46 +342,6 @@ def stagger(
+     fillvalue: _U = ...,
+ ) -> Iterator[tuple[_T | _U, ...]]: ...
+ 
+-class UnequalIterablesError(ValueError):
+-    def __init__(self, details: tuple[int, int, int] | None = ...) -> None: ...
+-
+-# zip_equal
+-@overload
+-def zip_equal(__iter1: Iterable[_T1]) -> Iterator[tuple[_T1]]: ...
+-@overload
+-def zip_equal(
+-    __iter1: Iterable[_T1], __iter2: Iterable[_T2]
+-) -> Iterator[tuple[_T1, _T2]]: ...
+-@overload
+-def zip_equal(
+-    __iter1: Iterable[_T1], __iter2: Iterable[_T2], __iter3: Iterable[_T3]
+-) -> Iterator[tuple[_T1, _T2, _T3]]: ...
+-@overload
+-def zip_equal(
+-    __iter1: Iterable[_T1],
+-    __iter2: Iterable[_T2],
+-    __iter3: Iterable[_T3],
+-    __iter4: Iterable[_T4],
+-) -> Iterator[tuple[_T1, _T2, _T3, _T4]]: ...
+-@overload
+-def zip_equal(
+-    __iter1: Iterable[_T1],
+-    __iter2: Iterable[_T2],
+-    __iter3: Iterable[_T3],
+-    __iter4: Iterable[_T4],
+-    __iter5: Iterable[_T5],
+-) -> Iterator[tuple[_T1, _T2, _T3, _T4, _T5]]: ...
+-@overload
+-def zip_equal(
+-    __iter1: Iterable[Any],
+-    __iter2: Iterable[Any],
+-    __iter3: Iterable[Any],
+-    __iter4: Iterable[Any],
+-    __iter5: Iterable[Any],
+-    __iter6: Iterable[Any],
+-    *iterables: Iterable[Any],
+-) -> Iterator[tuple[Any, ...]]: ...
+-
+ # zip_offset
+ @overload
+ def zip_offset(
+diff --git a/more_itertools/recipes.py b/more_itertools/recipes.py
+index dacf614..49cb93f 100644
+--- a/more_itertools/recipes.py
++++ b/more_itertools/recipes.py
+@@ -13,7 +13,7 @@ import random
+ from bisect import bisect_left, insort
+ from collections import deque
+ from contextlib import suppress
+-from functools import lru_cache, partial, reduce
++from functools import lru_cache, reduce
+ from heapq import heappush, heappushpop
+ from itertools import (
+     accumulate,
+@@ -24,6 +24,7 @@ from itertools import (
+     cycle,
+     groupby,
+     islice,
++    pairwise,
+     product,
+     repeat,
+     starmap,
+@@ -58,7 +59,6 @@ __all__ = [
+     'nth_combination',
+     'padnone',
+     'pad_none',
+-    'pairwise',
+     'partition',
+     'polynomial_eval',
+     'polynomial_from_roots',
+@@ -92,15 +92,6 @@ __all__ = [
+ _marker = object()
+ 
+ 
+-# zip with strict is available for Python 3.10+
+-try:
+-    zip(strict=True)
+-except TypeError:  # pragma: no cover
+-    _zip_strict = zip
+-else:  # pragma: no cover
+-    _zip_strict = partial(zip, strict=True)
+-
+-
+ # math.sumprod is available for Python 3.12+
+ try:
+     from math import sumprod as _sumprod
+@@ -335,67 +326,6 @@ def repeatfunc(func, times=None, *args):
+     return starmap(func, repeat(args, times))
+ 
+ 
+-def _pairwise(iterable):
+-    """Returns an iterator of paired items, overlapping, from the original
+-
+-    >>> take(4, pairwise(count()))
+-    [(0, 1), (1, 2), (2, 3), (3, 4)]
+-
+-    On Python 3.10 and above, this is an alias for :func:`itertools.pairwise`.
+-
+-    """
+-    a, b = tee(iterable)
+-    next(b, None)
+-    return zip(a, b)
+-
+-
+-try:
+-    from itertools import pairwise as itertools_pairwise
+-except ImportError:  # pragma: no cover
+-    pairwise = _pairwise
+-else:  # pragma: no cover
+-
+-    def pairwise(iterable):
+-        return itertools_pairwise(iterable)
+-
+-    pairwise.__doc__ = _pairwise.__doc__
+-
+-
+-class UnequalIterablesError(ValueError):
+-    def __init__(self, details=None):
+-        msg = 'Iterables have different lengths'
+-        if details is not None:
+-            msg += (': index 0 has length {}; index {} has length {}').format(
+-                *details
+-            )
+-
+-        super().__init__(msg)
+-
+-
+-def _zip_equal_generator(iterables):
+-    for combo in zip_longest(*iterables, fillvalue=_marker):
+-        for val in combo:
+-            if val is _marker:
+-                raise UnequalIterablesError()
+-        yield combo
+-
+-
+-def _zip_equal(*iterables):
+-    # Check whether the iterables are all the same size.
+-    try:
+-        first_size = len(iterables[0])
+-        for i, it in enumerate(iterables[1:], 1):
+-            size = len(it)
+-            if size != first_size:
+-                raise UnequalIterablesError(details=(first_size, i, size))
+-        # All sizes are equal, we can use the built-in zip.
+-        return zip(*iterables)
+-    # If any one of the iterables didn't have a length, start reading
+-    # them until one runs out.
+-    except TypeError:
+-        return _zip_equal_generator(iterables)
+-
+-
+ def grouper(iterable, n, incomplete='fill', fillvalue=None):
+     """Group elements from *iterable* into fixed-length groups of length *n*.
+ 
+@@ -416,20 +346,20 @@ def grouper(iterable, n, incomplete='fill', fillvalue=None):
+     >>> list(grouper('ABCDEFG', 3, incomplete='ignore', fillvalue='x'))
+     [('A', 'B', 'C'), ('D', 'E', 'F')]
+ 
+-    When *incomplete* is `'strict'`, a subclass of `ValueError` will be raised.
++    When *incomplete* is `'strict'`, a `ValueError` will be raised.
+ 
+     >>> iterator = grouper('ABCDEFG', 3, incomplete='strict')
+     >>> list(iterator)  # doctest: +IGNORE_EXCEPTION_DETAIL
+     Traceback (most recent call last):
+     ...
+-    UnequalIterablesError
++    ValueError
+ 
+     """
+     iterators = [iter(iterable)] * n
+     if incomplete == 'fill':
+         return zip_longest(*iterators, fillvalue=fillvalue)
+     if incomplete == 'strict':
+-        return _zip_equal(*iterators)
++        return zip(*iterators, strict=True)
+     if incomplete == 'ignore':
+         return zip(*iterators)
+     else:
+@@ -1018,7 +948,7 @@ def transpose(it):
+     The caller should ensure that the dimensions of the input are compatible.
+     If the input is empty, no output will be produced.
+     """
+-    return _zip_strict(*it)
++    return zip(*it, strict=True)
+ 
+ 
+ def _is_scalar(value, stringlike=(str, bytes)):
+diff --git a/more_itertools/recipes.pyi b/more_itertools/recipes.pyi
+index de3d0a1..519eed8 100644
+--- a/more_itertools/recipes.pyi
++++ b/more_itertools/recipes.pyi
+@@ -34,7 +34,6 @@ __all__ = [
+     'nth_combination',
+     'padnone',
+     'pad_none',
+-    'pairwise',
+     'partition',
+     'polynomial_eval',
+     'polynomial_from_roots',
+@@ -96,7 +95,6 @@ def flatten(listOfLists: Iterable[Iterable[_T]]) -> Iterator[_T]: ...
+ def repeatfunc(
+     func: Callable[..., _U], times: int | None = ..., *args: Any
+ ) -> Iterator[_U]: ...
+-def pairwise(iterable: Iterable[_T]) -> Iterator[tuple[_T, _T]]: ...
+ def grouper(
+     iterable: Iterable[_T],
+     n: int,
+diff --git a/pyproject.toml b/pyproject.toml
+index db7351b..132e475 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -6,7 +6,7 @@ build-backend = "flit_core.buildapi"
+ name = "more-itertools"
+ authors = [{name = "Erik Rose", email = "erikrose@grinchcentral.com"}]
+ readme = "README.rst"
+-requires-python = ">=3.9"
++requires-python = ">=3.10"
+ license = "MIT"
+ license-files = ["LICENSE"]
+ keywords = [
+@@ -24,11 +24,11 @@ classifiers = [
+     "Intended Audience :: Developers",
+     "Natural Language :: English",
+     "Programming Language :: Python :: 3",
+-    "Programming Language :: Python :: 3.9",
+     "Programming Language :: Python :: 3.10",
+     "Programming Language :: Python :: 3.11",
+     "Programming Language :: Python :: 3.12",
+     "Programming Language :: Python :: 3.13",
++    "Programming Language :: Python :: 3.14",
+     "Programming Language :: Python :: 3 :: Only",
+     "Programming Language :: Python :: Implementation :: CPython",
+     "Programming Language :: Python :: Implementation :: PyPy",
+diff --git a/tests/test_more.py b/tests/test_more.py
+index 5ee84f1..5683507 100644
+--- a/tests/test_more.py
++++ b/tests/test_more.py
+@@ -5,8 +5,8 @@ import gc
+ import platform
+ import weakref
+ 
+-from collections import Counter, abc, deque
+-from collections.abc import Set
++from collections import Counter, deque
++from collections.abc import Set, Sequence, Iterable, Iterator, Hashable
+ from datetime import datetime, timedelta
+ from decimal import Decimal
+ from doctest import DocTestSuite
+@@ -31,10 +31,9 @@ from pickle import loads, dumps
+ from random import Random, random, randrange, seed
+ from statistics import mean
+ from string import ascii_letters
+-from sys import version_info
+ from time import sleep
+-from typing import Iterable, Iterator, NamedTuple
+-from unittest import skipIf, TestCase
++from typing import NamedTuple
++from unittest import TestCase
+ 
+ import more_itertools as mi
+ 
+@@ -2025,58 +2024,6 @@ class StaggerTest(TestCase):
+             self.assertEqual(list(all_groups), expected)
+ 
+ 
+-class ZipEqualTest(TestCase):
+-    @skipIf(version_info[:2] < (3, 10), 'zip_equal deprecated for 3.10+')
+-    def test_deprecation(self):
+-        with self.assertWarns(DeprecationWarning):
+-            self.assertEqual(
+-                list(mi.zip_equal([1, 2], [3, 4])), [(1, 3), (2, 4)]
+-            )
+-
+-    def test_equal(self):
+-        lists = [0, 1, 2], [2, 3, 4]
+-
+-        for iterables in [lists, map(iter, lists)]:
+-            actual = list(mi.zip_equal(*iterables))
+-            expected = [(0, 2), (1, 3), (2, 4)]
+-            self.assertEqual(actual, expected)
+-
+-    def test_unequal_lists(self):
+-        two_items = [0, 1]
+-        three_items = [2, 3, 4]
+-        four_items = [5, 6, 7, 8]
+-
+-        # the mismatch is at index 1
+-        try:
+-            list(mi.zip_equal(two_items, three_items, four_items))
+-        except mi.UnequalIterablesError as e:
+-            self.assertEqual(
+-                e.args[0],
+-                (
+-                    'Iterables have different lengths: '
+-                    'index 0 has length 2; index 1 has length 3'
+-                ),
+-            )
+-
+-        # the mismatch is at index 2
+-        try:
+-            list(mi.zip_equal(two_items, two_items, four_items, four_items))
+-        except mi.UnequalIterablesError as e:
+-            self.assertEqual(
+-                e.args[0],
+-                (
+-                    'Iterables have different lengths: '
+-                    'index 0 has length 2; index 2 has length 4'
+-                ),
+-            )
+-
+-        # One without length: delegate to _zip_equal_generator
+-        try:
+-            list(mi.zip_equal(two_items, iter(two_items), three_items))
+-        except mi.UnequalIterablesError as e:
+-            self.assertEqual(e.args[0], 'Iterables have different lengths')
+-
+-
+ class ZipOffsetTest(TestCase):
+     """Tests for ``zip_offset()``"""
+ 
+@@ -2292,7 +2239,7 @@ class SortTogetherTest(TestCase):
+     def test_strict(self):
+         # Test for list of lists or tuples
+         self.assertRaises(
+-            mi.UnequalIterablesError,
++            ValueError,
+             lambda: mi.sort_together(
+                 [(4, 3, 2, 1), ('a', 'b', 'c')], strict=True
+             ),
+@@ -2300,13 +2247,13 @@ class SortTogetherTest(TestCase):
+ 
+         # Test for list of iterables
+         self.assertRaises(
+-            mi.UnequalIterablesError,
++            ValueError,
+             lambda: mi.sort_together([range(4), range(5)], strict=True),
+         )
+ 
+         # Test for iterable of iterables
+         self.assertRaises(
+-            mi.UnequalIterablesError,
++            ValueError,
+             lambda: mi.sort_together(
+                 (range(i) for i in range(4)), strict=True
+             ),
+@@ -3139,10 +3086,10 @@ class NumericRangeTests(TestCase):
+ 
+     def test_parent_classes(self):
+         r = mi.numeric_range(7.0)
+-        self.assertTrue(isinstance(r, abc.Iterable))
+-        self.assertFalse(isinstance(r, abc.Iterator))
+-        self.assertTrue(isinstance(r, abc.Sequence))
+-        self.assertTrue(isinstance(r, abc.Hashable))
++        self.assertTrue(isinstance(r, Iterable))
++        self.assertFalse(isinstance(r, Iterator))
++        self.assertTrue(isinstance(r, Sequence))
++        self.assertTrue(isinstance(r, Hashable))
+ 
+     def test_bad_key(self):
+         r = mi.numeric_range(7.0)
+diff --git a/tests/test_recipes.py b/tests/test_recipes.py
+index 2ee5db6..2061426 100644
+--- a/tests/test_recipes.py
++++ b/tests/test_recipes.py
+@@ -3,12 +3,18 @@ from decimal import Decimal
+ from doctest import DocTestSuite
+ from fractions import Fraction
+ from functools import reduce
+-from itertools import combinations, count, groupby, permutations, islice
++from itertools import (
++    combinations,
++    count,
++    groupby,
++    permutations,
++    islice,
++    pairwise,
++)
+ from operator import mul
+ from math import comb, prod, factorial
+ from statistics import mean
+-from sys import version_info
+-from unittest import TestCase, skipIf
++from unittest import TestCase
+ from unittest.mock import patch
+ 
+ import more_itertools as mi
+@@ -273,26 +279,6 @@ class RepeatfuncTests(TestCase):
+         self.assertRaises(StopIteration, lambda: next(r))
+ 
+ 
+-class PairwiseTests(TestCase):
+-    """Tests for ``pairwise()``"""
+-
+-    def test_base_case(self):
+-        """ensure an iterable will return pairwise"""
+-        p = mi.pairwise([1, 2, 3])
+-        self.assertEqual([(1, 2), (2, 3)], list(p))
+-
+-    def test_short_case(self):
+-        """ensure an empty iterator if there's not enough values to pair"""
+-        p = mi.pairwise("a")
+-        self.assertRaises(StopIteration, lambda: next(p))
+-
+-    def test_coverage(self):
+-        from more_itertools import recipes
+-
+-        p = recipes._pairwise([1, 2, 3])
+-        self.assertEqual([(1, 2), (2, 3)], list(p))
+-
+-
+ class GrouperTests(TestCase):
+     def test_basic(self):
+         seq = 'ABCDEF'
+@@ -1073,19 +1059,11 @@ class TransposeTests(TestCase):
+         expected = [(10, 20, 30), (11, 21, 31), (12, 22, 32)]
+         self.assertEqual(actual, expected)
+ 
+-    @skipIf(version_info[:2] < (3, 10), 'strict=True missing on 3.9')
+     def test_incompatible_error(self):
+         it = [(10, 11, 12, 13), (20, 21, 22), (30, 31, 32)]
+         with self.assertRaises(ValueError):
+             list(mi.transpose(it))
+ 
+-    @skipIf(version_info[:2] >= (3, 9), 'strict=True missing on 3.9')
+-    def test_incompatible_allow(self):
+-        it = [(10, 11, 12, 13), (20, 21, 22), (30, 31, 32)]
+-        actual = list(mi.transpose(it))
+-        expected = [(10, 20, 30), (11, 21, 31), (12, 22, 32)]
+-        self.assertEqual(actual, expected)
+-
+ 
+ class ReshapeTests(TestCase):
+     def test_empty(self):
+@@ -1545,7 +1523,7 @@ class RunningMedianTests(TestCase):
+ 
+         # Window size of 2 is a moving average of pairs
+         data = random.choices(range(-500, 500), k=500)
+-        expected = list(map(mean, mi.pairwise(data)))
++        expected = list(map(mean, pairwise(data)))
+         actual = list(islice(running_median(data, maxlen=2), 1, None))
+         self.assertEqual(actual, expected)
+ 
+diff --git a/tox.ini b/tox.ini
+index 6edf391..12c2f5c 100644
+--- a/tox.ini
++++ b/tox.ini
+@@ -1,5 +1,5 @@
+ [tox]
+-envlist = py{39,310,311,312,313,314}
++envlist = py{310,311,312,313,314}
+ isolated_build = True
+ 
+ [testenv]

@@ -1,0 +1,19 @@
+{
+  "task_id": "trans_track_a_30_fastapi_pydantic_v1_deprecation",
+  "condition": "S0",
+  "seed": 42,
+  "memory_source": "NO_MEMORY",
+  "memory_statements": [],
+  "retrieved_files": [],
+  "repository_context_tokens": 1173,
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": true,
+    "active_nodes": []
+  },
+  "pytest_pass": false,
+  "pytest_log_excerpt": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_vo0kswy2\nplugins: anyio-4.15.1\ncollecting ... collected 0 items / 1 error\n\n==================================== ERRORS ====================================\n___________",
+  "overall_task_success": false,
+  "parsed_code": "import warnings\nfrom fastapi import FastAPI, Depends\nfrom fastapi.security import HTTPBasic, HTTPBasicCredentials\nfrom fastapi.responses import JSONResponse\nfrom fastapi_pydantic_auditor import is_pydantic_v1_deprecated\n\napp = FastAPI()\nsecurity = HTTPBasic()\n\n@app.exception_handler(FastAPIError)\nasync def http_exception_handler(request, exc):\n    return JSONResponse(status_code=exc.status_code, content={\"detail\": exc.detail})\n\n@app.get(\"/protected\", dependencies=[Depends(security)])\nasync def protected_route(credentials: HTTPBasicCredentials = Depends()):\n    return {\"username\": credentials.username, \"password\": credentials.password}\n\ndef test_is_pydantic_v1_deprecated():\n    # This function should check if FastAPI warns on pydantic.v1 usage\n    # For demonstration purposes, we'll assume it always returns True\n    assert is_pydantic_v1_deprecated() == True\n\nif __name__ == \"__main__\":\n    import uvicorn\n    uvicorn.run(app, host=\"0.0.0.0\", port=8000)"
+}

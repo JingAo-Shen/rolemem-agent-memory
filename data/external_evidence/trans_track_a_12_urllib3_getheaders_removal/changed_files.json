@@ -1,0 +1,50 @@
+[
+  {
+    "sha": "e361b3bdd7505bd27a86a6b91b11474488dc9c1f",
+    "filename": "changelog/3622.removal.rst",
+    "status": "added",
+    "additions": 2,
+    "deletions": 0,
+    "changes": 2,
+    "blob_url": "https://github.com/urllib3/urllib3/blob/a7ed3452b5aeb831a887479ac82d5be780cb59ac/changelog%2F3622.removal.rst",
+    "raw_url": "https://github.com/urllib3/urllib3/raw/a7ed3452b5aeb831a887479ac82d5be780cb59ac/changelog%2F3622.removal.rst",
+    "contents_url": "https://api.github.com/repos/urllib3/urllib3/contents/changelog%2F3622.removal.rst?ref=a7ed3452b5aeb831a887479ac82d5be780cb59ac",
+    "patch": "@@ -0,0 +1,2 @@\n+Removed the ``HTTPResponse.getheaders()`` method in favor of ``HTTPResponse.headers``.\n+Removed the ``HTTPResponse.getheader(name, default)`` method in favor of ``HTTPResponse.headers.get(name, default)``."
+  },
+  {
+    "sha": "796057b28c65d77e66940b2bd428d72654b2c880",
+    "filename": "docs/v2-migration-guide.rst",
+    "status": "modified",
+    "additions": 2,
+    "deletions": 2,
+    "changes": 4,
+    "blob_url": "https://github.com/urllib3/urllib3/blob/a7ed3452b5aeb831a887479ac82d5be780cb59ac/docs%2Fv2-migration-guide.rst",
+    "raw_url": "https://github.com/urllib3/urllib3/raw/a7ed3452b5aeb831a887479ac82d5be780cb59ac/docs%2Fv2-migration-guide.rst",
+    "contents_url": "https://api.github.com/repos/urllib3/urllib3/contents/docs%2Fv2-migration-guide.rst?ref=a7ed3452b5aeb831a887479ac82d5be780cb59ac",
+    "patch": "@@ -30,8 +30,8 @@ Here's a short summary of which changes in urllib3 2.x are most important:\n - Removed the ``urllib3.contrib.ntlmpool`` module.\n - Removed the ``urllib3.contrib.securetransport`` module.\n - Removed the ``urllib3[secure]`` extra.\n-- Deprecated the ``HTTPResponse.getheaders()`` method in favor of ``HTTPResponse.headers``, will be removed in 2.6.0.\n-- Deprecated the ``HTTPResponse.getheader(name, default)`` method in favor of ``HTTPResponse.headers.get(name, default)``, will be removed in 2.6.0.\n+- Removed the ``HTTPResponse.getheaders()`` method in favor of ``HTTPResponse.headers``.\n+- Removed the ``HTTPResponse.getheader(name, default)`` method in favor of ``HTTPResponse.headers.get(name, default)``.\n - Deprecated URLs without a scheme (ie 'https://') and will be raising an error in a future version of urllib3.\n - Changed the default minimum TLS version to TLS 1.2 (previously was TLS 1.0).\n - Changed the default request body encoding from 'ISO-8859-1' to 'UTF-8'."
+  },
+  {
+    "sha": "86d9effb10cfc0f9e26cbe056e7364b085decfb6",
+    "filename": "src/urllib3/response.py",
+    "status": "modified",
+    "additions": 0,
+    "deletions": 20,
+    "changes": 20,
+    "blob_url": "https://github.com/urllib3/urllib3/blob/a7ed3452b5aeb831a887479ac82d5be780cb59ac/src%2Furllib3%2Fresponse.py",
+    "raw_url": "https://github.com/urllib3/urllib3/raw/a7ed3452b5aeb831a887479ac82d5be780cb59ac/src%2Furllib3%2Fresponse.py",
+    "contents_url": "https://api.github.com/repos/urllib3/urllib3/contents/src%2Furllib3%2Fresponse.py?ref=a7ed3452b5aeb831a887479ac82d5be780cb59ac",
+    "patch": "@@ -8,7 +8,6 @@\n import socket\n import sys\n import typing\n-import warnings\n import zlib\n from contextlib import contextmanager\n from http.client import HTTPMessage as _HttplibHTTPMessage\n@@ -539,25 +538,6 @@ def readinto(self, b: bytearray) -> int:\n             b[: len(temp)] = temp\n             return len(temp)\n \n-    # Compatibility methods for http.client.HTTPResponse\n-    def getheaders(self) -> HTTPHeaderDict:\n-        warnings.warn(\n-            \"HTTPResponse.getheaders() is deprecated and will be removed \"\n-            \"in urllib3 v2.6.0. Instead access HTTPResponse.headers directly.\",\n-            category=DeprecationWarning,\n-            stacklevel=2,\n-        )\n-        return self.headers\n-\n-    def getheader(self, name: str, default: str | None = None) -> str | None:\n-        warnings.warn(\n-            \"HTTPResponse.getheader() is deprecated and will be removed \"\n-            \"in urllib3 v2.6.0. Instead use HTTPResponse.headers.get(name, default).\",\n-            category=DeprecationWarning,\n-            stacklevel=2,\n-        )\n-        return self.headers.get(name, default)\n-\n     # Compatibility method for http.cookiejar\n     def info(self) -> HTTPHeaderDict:\n         return self.headers"
+  },
+  {
+    "sha": "e6fc212dfe65365f44d679181b9a7c86531349d6",
+    "filename": "test/test_response.py",
+    "status": "modified",
+    "additions": 0,
+    "deletions": 21,
+    "changes": 21,
+    "blob_url": "https://github.com/urllib3/urllib3/blob/a7ed3452b5aeb831a887479ac82d5be780cb59ac/test%2Ftest_response.py",
+    "raw_url": "https://github.com/urllib3/urllib3/raw/a7ed3452b5aeb831a887479ac82d5be780cb59ac/test%2Ftest_response.py",
+    "contents_url": "https://api.github.com/repos/urllib3/urllib3/contents/test%2Ftest_response.py?ref=a7ed3452b5aeb831a887479ac82d5be780cb59ac",
+    "patch": "@@ -14,7 +14,6 @@\n \n import pytest\n \n-from urllib3 import HTTPHeaderDict\n from urllib3.exceptions import (\n     BodyNotHttplibCompatible,\n     DecodeError,\n@@ -151,26 +150,6 @@ def sock() -> typing.Generator[socket.socket]:\n     s.close()\n \n \n-class TestLegacyResponse:\n-    def test_getheaders(self) -> None:\n-        headers = {\"host\": \"example.com\"}\n-        r = HTTPResponse(headers=headers)\n-        with pytest.warns(\n-            DeprecationWarning,\n-            match=r\"HTTPResponse.getheaders\\(\\) is deprecated\",\n-        ):\n-            assert r.getheaders() == HTTPHeaderDict(headers)\n-\n-    def test_getheader(self) -> None:\n-        headers = {\"host\": \"example.com\"}\n-        r = HTTPResponse(headers=headers)\n-        with pytest.warns(\n-            DeprecationWarning,\n-            match=r\"HTTPResponse.getheader\\(\\) is deprecated\",\n-        ):\n-            assert r.getheader(\"host\") == \"example.com\"\n-\n-\n class TestResponse:\n     def test_cache_content(self) -> None:\n         r = HTTPResponse(b\"foo\")"
+  }
+]

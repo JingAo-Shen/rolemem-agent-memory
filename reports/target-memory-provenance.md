@@ -1,7 +1,7 @@
 # RoleMem Pilot-v1.3-r2.2 — Target Memory Provenance Audit Report (V2)
 
 > **Auditor Engine**: `scripts/audit_target_memory_snapshot_v2.py`  
-> **Target Memory Snapshot**: `data/handoff_target_memory_snapshot.json` (SHA-256: `8bdcad50a95f9602...`)  
+> **Target Memory Snapshot**: `data/handoff_target_memory_snapshot.json` (SHA-256: `bcf0a44d4538c1f8...`)  
 > **Audit Result**: **10 / 10 TARGET_MEMORY_VERIFIED**  
 
 ---

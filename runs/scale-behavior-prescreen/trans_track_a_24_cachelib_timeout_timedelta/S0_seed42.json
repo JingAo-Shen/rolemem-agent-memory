@@ -1,0 +1,19 @@
+{
+  "task_id": "trans_track_a_24_cachelib_timeout_timedelta",
+  "condition": "S0",
+  "seed": 42,
+  "memory_source": "NO_MEMORY",
+  "memory_statements": [],
+  "retrieved_files": [],
+  "repository_context_tokens": 1200,
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": false,
+    "active_nodes": []
+  },
+  "pytest_pass": true,
+  "pytest_log_excerpt": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_bak7mhwj\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_normalize PASSED                       [100%]\n\n==============================",
+  "overall_task_success": true,
+  "parsed_code": "# cache_helper.py\n\ndef normalize_timeout_value(cache, timeout):\n    \"\"\"\n    Normalize the timeout value to an integer number of seconds using the cache instance.\n\n    :param cache: An instance of a cache class from cachelib.\n    :param timeout: The timeout value to normalize. Can be an integer, float, or datetime.timedelta.\n    :return: Normalized integer seconds.\n    \"\"\"\n    return cache._to_seconds(timeout)"
+}

@@ -1,0 +1,79 @@
+{
+  "transition_id": "trans_track_a_23_tqdm_asyncio_gather_return_exceptions",
+  "audit_fingerprint": "7469188a1fa3a1c3cd5bf14163506300b7eaf8d50180613f3df9492219f35d96",
+  "total_mutants": 8,
+  "invalid_mutants_count": 8,
+  "invalid_mutants_killed": 8,
+  "killed_mutants": 8,
+  "mutation_kill_rate": 1.0,
+  "constant_return_killed": true,
+  "constant_return_bypass": false,
+  "meets_kill_rate_threshold": true,
+  "audit_status": "PASS",
+  "mutants": {
+    "M1_return_none": {
+      "description": "return None",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_gather - TypeError: 'NoneType' objec...\n======================== 1 failed, 2 warnings in 0.02s =========================\n\nSTDERR:\n"
+    },
+    "M2_constant_return": {
+      "description": "return constant string",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_gather - AssertionError: assert '1' ...\n======================== 1 failed, 2 warnings in 0.01s =========================\n\nSTDERR:\n"
+    },
+    "M3_noop_pass": {
+      "description": "pass / no-op",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_gather - TypeError: 'NoneType' objec...\n======================== 1 failed, 2 warnings in 0.02s =========================\n\nSTDERR:\n"
+    },
+    "M4_try_except_dummy": {
+      "description": "try/except return dummy",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_gather - TypeError: 'NoneType' objec...\n======================== 1 failed, 2 warnings in 0.02s =========================\n\nSTDERR:\n"
+    },
+    "M5_stale_solution": {
+      "description": "stale solution",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "s]\n 50%|\u2588\u2588\u2588\u2588\u2588     | 1/2 [00:00<00:00, 12985.46it/s]\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_gather - RuntimeError: task_failure\n============================== 1 failed in 0.05s ===============================\n\nSTDERR:\n"
+    },
+    "M6_mismatched_signature": {
+      "description": "wrong signature",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_gather - TypeError: run_gather_tasks...\n======================== 1 failed, 2 warnings in 0.02s =========================\n\nSTDERR:\n"
+    },
+    "M7_missing_attribute": {
+      "description": "missing function",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "\ntest_hidden_verification.py:12: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_gather - AttributeError: module 'asy...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
+    },
+    "M8_static_mock": {
+      "description": "static mock",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_gather - TypeError: 'MockObj' object...\n======================== 1 failed, 2 warnings in 0.02s =========================\n\nSTDERR:\n"
+    }
+  }
+}

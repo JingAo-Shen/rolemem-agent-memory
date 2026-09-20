@@ -1,0 +1,41 @@
+{
+  "task_id": "trans_track_a_28_starlette_exceptions_middleware_removal",
+  "condition": "S2",
+  "seed": 42,
+  "memory_source": "STALE_MEMORY_CANDIDATE",
+  "memory_statements": [
+    "Import ExceptionMiddleware from starlette.exceptions."
+  ],
+  "retrieved_files": [],
+  "repository_context_tokens": 1200,
+  "is_stale_action": true,
+  "ast_details": {
+    "stale_active_use": true,
+    "stale_mention": false,
+    "active_nodes": [
+      {
+        "type": "ImportFrom",
+        "lineno": 1,
+        "module": "starlette.middleware",
+        "symbol": "ExceptionMiddleware",
+        "matched": "starlette.exceptions.ExceptionMiddleware"
+      },
+      {
+        "type": "CallStaleImported",
+        "lineno": 4,
+        "symbol": "ExceptionMiddleware",
+        "matched": "starlette.exceptions.ExceptionMiddleware"
+      },
+      {
+        "type": "NameStaleImported(Load)",
+        "lineno": 4,
+        "symbol": "ExceptionMiddleware",
+        "matched": "starlette.exceptions.ExceptionMiddleware"
+      }
+    ]
+  },
+  "pytest_pass": false,
+  "pytest_log_excerpt": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_b50iw6g1\nplugins: anyio-4.15.1\ncollecting ... collected 0 items / 1 error\n\n==================================== ERRORS ====================================\n___________",
+  "overall_task_success": false,
+  "parsed_code": "from starlette.middleware import ExceptionMiddleware\n\ndef build_exception_middleware(app):\n    return ExceptionMiddleware(app)"
+}

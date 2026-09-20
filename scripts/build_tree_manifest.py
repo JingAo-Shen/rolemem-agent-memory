@@ -35,6 +35,24 @@ REPO_MIRRORS = {
     "encode/httpx": "/code/repo_cache/httpx",
     "psf/requests": "/code/repo_cache/requests",
     "urllib3/urllib3": "/code/repo_cache/urllib3",
+    "encode/starlette": "/code/repo_cache/starlette",
+    "tiangolo/fastapi": "/code/repo_cache/fastapi",
+    "pydantic/pydantic": "/code/repo_cache/pydantic",
+    "pytest-dev/pytest": "/code/repo_cache/pytest",
+    "celery/celery": "/code/repo_cache/celery",
+    "marshmallow-code/marshmallow": "/code/repo_cache/marshmallow",
+    "PyCQA/flake8": "/code/repo_cache/flake8",
+    "pyca/cryptography": "/code/repo_cache/cryptography",
+    "Textualize/rich": "/code/repo_cache/rich",
+    "pytest-dev/iniconfig": "/code/repo_cache/iniconfig",
+    "sqlalchemy/sqlalchemy": "/code/repo_cache/sqlalchemy",
+    "more-itertools/more-itertools": "/code/repo_cache/more-itertools",
+    "pypa/packaging": "/code/repo_cache/packaging",
+    "dateutil/dateutil": "/code/repo_cache/dateutil",
+    "tqdm/tqdm": "/code/repo_cache/tqdm",
+    "encode/uvicorn": "/code/repo_cache/uvicorn",
+    "pallets/cachelib": "/code/repo_cache/cachelib",
+    "pallets-eco/cachelib": "/code/repo_cache/cachelib"
 }
 
 OUT_DIR = "/code/rolemem-agent-memory/data/tree_manifests"

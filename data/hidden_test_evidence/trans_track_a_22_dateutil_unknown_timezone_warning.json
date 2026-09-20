@@ -1,0 +1,10 @@
+{
+  "transition_id": "trans_track_a_22_dateutil_unknown_timezone_warning",
+  "audit_fingerprint": "65edf737dbd4e85de79e4293057178ae54834e8ed1cf69e22a6897c2f6218de0",
+  "status": "PASS",
+  "collection_status": "PASS",
+  "execution_status": "PASS",
+  "exit_code": 0,
+  "raw_stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_psbex5hs\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_tz_warning_name PASSED                 [100%]\n\n=============================== warnings summary ===============================\ndateutil/tz/tz.py:32\n  /tmp/rolemem_sandbox_psbex",
+  "verification_status": "GENERATED_HIDDEN_TEST_PASS"
+}

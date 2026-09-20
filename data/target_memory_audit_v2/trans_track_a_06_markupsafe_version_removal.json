@@ -2,7 +2,7 @@
   "transition_id": "trans_track_a_06_markupsafe_version_removal",
   "provenance_status": "TARGET_MEMORY_VERIFIED",
   "recomputed_hashes": {
-    "diff_hunk_sha256": "87f63e417b2d4a94801f78548ab07e0e313dcaab91f2a185001e02639d1e0896",
+    "diff_hunk_sha256": "571a09586873ae34601dc6891db88b5b43b7b9dae699a425f0e8f9f27f2aea4a",
     "evidence_excerpt_hash": "d11bbf02cf05cc961f192b1eebe6ba759b8017fc246dbadb90c4055a86b72471",
     "ground_truth_audit_hash": "0ebdb56ae863de1d7ab10b67c6918d31eb6a51ff2fbee865b99d678bcbddaa9f"
   },
@@ -11,6 +11,7 @@
     "source_commit_matches": true,
     "artifact_in_diff": true,
     "diff_hunk_sha256_verified": true,
+    "diff_patch_sha256_verified": true,
     "evidence_excerpt_hash_verified": true,
     "ground_truth_audit_hash_verified": true,
     "statement_entailment": "ENTAILED"
@@ -23,9 +24,11 @@
     "source_pr_url": "https://github.com/pallets/markupsafe/pull/499",
     "source_commit": "dfa58162f6ba9a0afebab7e924af362cd0bede66",
     "evidence_file": "data/external_evidence/trans_track_a_06_markupsafe_version_removal/diff.patch",
-    "evidence_hunk_sha256": "87f63e417b2d4a94801f78548ab07e0e313dcaab91f2a185001e02639d1e0896",
+    "evidence_hunk_sha256": "571a09586873ae34601dc6891db88b5b43b7b9dae699a425f0e8f9f27f2aea4a",
     "evidence_excerpt_hash": "d11bbf02cf05cc961f192b1eebe6ba759b8017fc246dbadb90c4055a86b72471",
     "ground_truth_audit_hash": "0ebdb56ae863de1d7ab10b67c6918d31eb6a51ff2fbee865b99d678bcbddaa9f",
-    "artifact": "src/markupsafe/__init__.py"
+    "artifact": "src/markupsafe/__init__.py",
+    "supporting_hunk": "@@ -377,20 +377,3 @@ def __int__(self, /) -> int:\n \n     def __float__(self, /) -> float:\n         return float(self.obj)\n-\n-\n-def __getattr__(name: str) -> t.Any:\n-    if name == \"__version__\":\n-        import importlib.metadata\n-        import warnings\n-\n-        warnings.warn(\n-            \"The '__version__' attribute is deprecated and will be removed in\"\n-            \" MarkupSafe 3.1. Use feature detection, or\"\n-            ' `importlib.metadata.version(\"markupsafe\")`, instead.',\n-            DeprecationWarning,\n-            stacklevel=2,\n-        )\n-        return importlib.metadata.version(\"markupsafe\")\n-\n-    raise AttributeError(name)",
+    "diff_patch_sha256": "87f63e417b2d4a94801f78548ab07e0e313dcaab91f2a185001e02639d1e0896"
   }
 }

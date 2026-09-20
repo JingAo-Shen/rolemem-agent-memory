@@ -1,0 +1,13 @@
+{
+  "transition_id": "trans_track_a_04_jinja_version_deprecation",
+  "repo_name": "pallets/jinja",
+  "leakage_class": "REPO_CONTEXT_HINTED",
+  "rationale": "Context contains replacement symbols ['importlib.metadata.version', 'importlib.metadata'] or migration comments, but no task implementation.",
+  "retrieved_tokens": 1200,
+  "found_replacements": [
+    "importlib.metadata.version",
+    "importlib.metadata"
+  ],
+  "target_implementation_found": false,
+  "migration_comments_found": []
+}

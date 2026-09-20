@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_23_tqdm_asyncio_gather_return_exceptions",
+  "repo_name": "tqdm/tqdm",
+  "leakage_class": "REPO_CONTEXT_HINTED",
+  "rationale": "Context contains replacement symbols ['return_exceptions'] or migration comments, but no task implementation.",
+  "retrieved_tokens": 1175,
+  "found_replacements": [
+    "return_exceptions"
+  ],
+  "target_implementation_found": false,
+  "migration_comments_found": []
+}

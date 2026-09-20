@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_track_a_19_flake8_doctest_options_removal",
+  "repo_name": "PyCQA/flake8",
+  "pr_number": 1854,
+  "pr_title": "remove --include-in-doctest and --exclude-in-doctest",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "faef3587480ab621dd2fd2d87ec36fc479749a90",
+  "pr_base_sha": "15f45696701bc234494fbc0e803f8fdee712b945",
+  "pr_head_sha": "b3e251512238ad39c87e4b8d1614903fe493f7ea",
+  "base_commit": "15f45696701bc234494fbc0e803f8fdee712b945",
+  "target_commit": "b3e251512238ad39c87e4b8d1614903fe493f7ea",
+  "ancestry_verified": true,
+  "merge_strategy": "fast_forward",
+  "merge_relationship_verified": true,
+  "diff_match": true,
+  "issue_required": false,
+  "issue_id_verified": null,
+  "issue_status": "NOT_APPLICABLE",
+  "spec_sha256": "0bcf88bbcc9039800b2cbecd7fc42bec01ef97eeb9014eeedf76c63e7f560f90",
+  "audit_fingerprint": "533bc103a5ccf4d9be5a90477bfda5615cffdde455751b62a20de520d605bbab",
+  "auditor_version": "3.0.0",
+  "overall_status": "PASS"
+}

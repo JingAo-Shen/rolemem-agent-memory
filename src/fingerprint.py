@@ -32,6 +32,7 @@ REPO_DIR_MAP = {
     "pallets/markupsafe": os.path.join(REPO_CACHE_ROOT, "markupsafe"),
     "encode/httpx": os.path.join(REPO_CACHE_ROOT, "httpx"),
     "encode/starlette": os.path.join(REPO_CACHE_ROOT, "starlette"),
+    "tiangolo/fastapi": os.path.join(REPO_CACHE_ROOT, "fastapi"),
     "Textualize/rich": os.path.join(REPO_CACHE_ROOT, "rich"),
     "marshmallow-code/marshmallow": os.path.join(REPO_CACHE_ROOT, "marshmallow"),
     "pytest-dev/pluggy": os.path.join(REPO_CACHE_ROOT, "pluggy"),
@@ -40,6 +41,17 @@ REPO_DIR_MAP = {
     "python-attrs/attrs": os.path.join(REPO_CACHE_ROOT, "attrs"),
     "pypa/virtualenv": os.path.join(REPO_CACHE_ROOT, "virtualenv"),
     "pydantic/pydantic": os.path.join(REPO_CACHE_ROOT, "pydantic"),
+    "more-itertools/more-itertools": os.path.join(REPO_CACHE_ROOT, "more-itertools"),
+    "celery/celery": os.path.join(REPO_CACHE_ROOT, "celery"),
+    "sqlalchemy/sqlalchemy": os.path.join(REPO_CACHE_ROOT, "sqlalchemy"),
+    "pypa/packaging": os.path.join(REPO_CACHE_ROOT, "packaging"),
+    "dateutil/dateutil": os.path.join(REPO_CACHE_ROOT, "dateutil"),
+    "tqdm/tqdm": os.path.join(REPO_CACHE_ROOT, "tqdm"),
+    "encode/uvicorn": os.path.join(REPO_CACHE_ROOT, "uvicorn"),
+    "pallets/cachelib": os.path.join(REPO_CACHE_ROOT, "cachelib"),
+    "pallets-eco/cachelib": os.path.join(REPO_CACHE_ROOT, "cachelib"),
+    "pytest-dev/pytest": os.path.join(REPO_CACHE_ROOT, "pytest"),
+    "pyca/cryptography": os.path.join(REPO_CACHE_ROOT, "cryptography"),
 }
 
 

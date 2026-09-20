@@ -1,0 +1,49 @@
+{
+  "transition_id": "trans_track_a_10_httpx_client_proxies_deprecation",
+  "repo_name": "encode/httpx",
+  "base_commit": "b471f01d668b9ef730e8843531b07b1c21b74c47",
+  "claims": [
+    {
+      "statement": "The method `_get_proxy_map` processes and returns a dictionary mapping proxy keys to `Proxy` objects based on the input `proxies` parameter and whether environment proxies should be allowed.",
+      "temporal_isolation_pass": true,
+      "temporal_leaks": [],
+      "structural_evidence_grounded": true,
+      "matched_symbols": [
+        "Client.__init__.proxies",
+        "Client.__init__.proxies"
+      ],
+      "semantic_factuality_status": "CONTRADICTED",
+      "semantic_factuality_pass": false,
+      "explanation": "_get_proxy_map is not defined in the provided source code.",
+      "seed": 42
+    },
+    {
+      "statement": "BaseClient._get_proxy_map.proxies is a method that processes and returns a dictionary mapping proxy keys to Proxy objects based on the input proxies parameter and whether environment proxies should be allowed.",
+      "temporal_isolation_pass": true,
+      "temporal_leaks": [],
+      "structural_evidence_grounded": true,
+      "matched_symbols": [
+        "Client.__init__.proxies",
+        "Client.__init__.proxies"
+      ],
+      "semantic_factuality_status": "CONTRADICTED",
+      "semantic_factuality_pass": false,
+      "explanation": "The historical source code does not contain any information about a method named _get_proxy_map or a Proxy class.",
+      "seed": 123
+    },
+    {
+      "statement": "BaseClient._get_proxy_map.proxies is a method that processes and returns a dictionary mapping proxy keys to Proxy objects based on the provided proxies argument and whether environment proxies should be allowed.",
+      "temporal_isolation_pass": true,
+      "temporal_leaks": [],
+      "structural_evidence_grounded": true,
+      "matched_symbols": [
+        "Client.__init__.proxies",
+        "Client.__init__.proxies"
+      ],
+      "semantic_factuality_status": "CONTRADICTED",
+      "semantic_factuality_pass": false,
+      "explanation": "The historical source code does not contain any information about a method named _get_proxy_map or a Proxy class.",
+      "seed": 999
+    }
+  ]
+}

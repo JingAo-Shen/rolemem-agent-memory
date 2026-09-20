@@ -1,0 +1,27 @@
+{
+  "transition_id": "trans_track_a_20_iniconfig_strip_inline_comments",
+  "integrity_status": "PASS",
+  "benchmark_eligibility": "TRACK_A_CONTROL_ELIGIBLE",
+  "overall_status": "ACCEPT",
+  "audit_fingerprint": "cdee3d662feb376afacc931a5b75b017b07283b9e018615a7a3637d999fecccb",
+  "gates": {
+    "gate1_commit_verification": "PASS",
+    "gate2_causality_counterfactual": "PASS",
+    "gate3_original_test_verification": "GENERATED_HIDDEN_TEST_ONLY",
+    "gate4_hidden_test_verification": "PASS",
+    "gate5_fixture_control_verification": "PASS",
+    "gate6_snapshot_hash_verification": "PASS",
+    "gate7_external_ground_truth_v3": "PASS",
+    "gate8_semantic_coherence_v2": "PASS"
+  },
+  "evidence_manifest": {
+    "causal_counterfactual": "/code/rolemem-agent-memory/data/causal_counterfactual/trans_track_a_20_iniconfig_strip_inline_comments.json",
+    "hidden_test_evidence": "/code/rolemem-agent-memory/data/hidden_test_evidence/trans_track_a_20_iniconfig_strip_inline_comments.json",
+    "fixture_controls": "/code/rolemem-agent-memory/data/fixture_controls/trans_track_a_20_iniconfig_strip_inline_comments.json",
+    "snapshot_eval": "/code/rolemem-agent-memory/data/snapshot_eval/trans_track_a_20_iniconfig_strip_inline_comments.json",
+    "ground_truth_audit_v3": "/code/rolemem-agent-memory/data/ground_truth_audit_v3/trans_track_a_20_iniconfig_strip_inline_comments.json",
+    "semantic_audit_v2": "/code/rolemem-agent-memory/data/semantic_audit_v2/trans_track_a_20_iniconfig_strip_inline_comments.json"
+  },
+  "verifier_version": "v9.0.0",
+  "verified_at": "2026-09-20T02:32:06.428646+00:00"
+}

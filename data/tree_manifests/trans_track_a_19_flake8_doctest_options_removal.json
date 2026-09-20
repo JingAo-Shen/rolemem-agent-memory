@@ -1,0 +1,350 @@
+{
+  "transition_id": "trans_track_a_19_flake8_doctest_options_removal",
+  "repo_name": "PyCQA/flake8",
+  "base_commit": "15f45696701bc234494fbc0e803f8fdee712b945",
+  "target_commit": "b3e251512238ad39c87e4b8d1614903fe493f7ea",
+  "pkg_path": "src/flake8",
+  "tree_purity_status": "TREE_PURITY_PASS",
+  "before_tree_purity": "TREE_PURITY_PASS",
+  "after_tree_purity": "TREE_PURITY_PASS",
+  "before_mismatches": [],
+  "after_mismatches": [],
+  "total_files_before": 33,
+  "total_files_after": 33,
+  "has_environment_overlay": false,
+  "before_files": [
+    {
+      "relative_path": "src/flake8/__init__.py",
+      "size": 1943,
+      "sha256": "8ee49ed0904fd50fe66ce15d0d3b74bfbaf7d5c4167ef4fccafa66c6fb3f7188"
+    },
+    {
+      "relative_path": "src/flake8/__main__.py",
+      "size": 178,
+      "sha256": "964c694165978c0a607ac531655616df14c64d3f6ed258f60e915e40ed7e756b"
+    },
+    {
+      "relative_path": "src/flake8/_compat.py",
+      "size": 330,
+      "sha256": "dbdec88661eb68c56442585e5f84c64dd1af24c25c1b074040c7e57fc4c91199"
+    },
+    {
+      "relative_path": "src/flake8/api/__init__.py",
+      "size": 241,
+      "sha256": "c606aa1f97a117911e67a237e5b3f9ba3f4ecc04aff5ae00705347c41e285ee4"
+    },
+    {
+      "relative_path": "src/flake8/api/legacy.py",
+      "size": 6898,
+      "sha256": "53673391949cb95867309f4ccc30659e0e2a7e0f4b1ac108d2f8e8b17beb5cf6"
+    },
+    {
+      "relative_path": "src/flake8/checker.py",
+      "size": 22581,
+      "sha256": "ba8a8446904b194da3d28ed9bce96d0103d9748b231be0a87474300c20ec3da7"
+    },
+    {
+      "relative_path": "src/flake8/defaults.py",
+      "size": 1109,
+      "sha256": "6a5d08159eab39d22f6bf5e0b9e1861aa74c69ff5f4ed1f0958dddb0077fd85a"
+    },
+    {
+      "relative_path": "src/flake8/discover_files.py",
+      "size": 2581,
+      "sha256": "3d74723c1e2512836ca7c1e3aa4b1286c554cd6ecfd62f0941d70949fa8dedb9"
+    },
+    {
+      "relative_path": "src/flake8/exceptions.py",
+      "size": 2393,
+      "sha256": "925a248e8bc99251e88cdc27f8d15394ca7f3c454b300617cdcf6e98843e6c8f"
+    },
+    {
+      "relative_path": "src/flake8/formatting/__init__.py",
+      "size": 97,
+      "sha256": "19e53eec8c1fdd39c61e219db7792c54c6dbb3a6bac5ad9fde4f7092a63ee960"
+    },
+    {
+      "relative_path": "src/flake8/formatting/_windows_color.py",
+      "size": 2022,
+      "sha256": "674cf47ec28e36399bf59d790fc0427411a6f672796a67ef08176ccb51553b5b"
+    },
+    {
+      "relative_path": "src/flake8/formatting/base.py",
+      "size": 7356,
+      "sha256": "09d115401598a44c95f4dc5aad716f70ca68a660034f82ccbf67569663f04b05"
+    },
+    {
+      "relative_path": "src/flake8/formatting/default.py",
+      "size": 3057,
+      "sha256": "b9b642050b30773f9cabaeb504ccc7442214e721a9786a3fe642aa9a1a8f557b"
+    },
+    {
+      "relative_path": "src/flake8/main/__init__.py",
+      "size": 98,
+      "sha256": "9abe183c954e0d51119bfd27cfbb26b2413546e568a69d4b4bb37e045546c2e9"
+    },
+    {
+      "relative_path": "src/flake8/main/application.py",
+      "size": 7949,
+      "sha256": "16c6f98270156918b9e38ed3a6d09e848f7709fc7342b43659e396ee3c0787c3"
+    },
+    {
+      "relative_path": "src/flake8/main/cli.py",
+      "size": 599,
+      "sha256": "e1f8bc0724214a53a4a60ac979cef6c6d63c158174b9ce2bf5ea142108a873ef"
+    },
+    {
+      "relative_path": "src/flake8/main/debug.py",
+      "size": 911,
+      "sha256": "59c9f510d9bfc6b0a8a6cbfcff0ef8e24b7ee70700e5cce8e24c96d7c3018ebc"
+    },
+    {
+      "relative_path": "src/flake8/main/options.py",
+      "size": 11008,
+      "sha256": "0e5fbbfc6b9b0e87868f550d6f9283664e2ac13a43a4df9eb69f99dd4f66a74d"
+    },
+    {
+      "relative_path": "src/flake8/options/__init__.py",
+      "size": 496,
+      "sha256": "729c503e31bc81c072809e0207c6d180385284f9dcc0e4f966ae77e78efd074d"
+    },
+    {
+      "relative_path": "src/flake8/options/aggregator.py",
+      "size": 1963,
+      "sha256": "b1db5337366e50c8ae702ba9b35dc41d9b03bdf6d43d4749570872c78492e45f"
+    },
+    {
+      "relative_path": "src/flake8/options/config.py",
+      "size": 4572,
+      "sha256": "3a3f8e3bcf596cd42d1541dc1c3676e317884f68137c05eb72eb76727795873e"
+    },
+    {
+      "relative_path": "src/flake8/options/manager.py",
+      "size": 11525,
+      "sha256": "61fddadf096887ac3a6ec2421ab65c524201a6edba9481a556944e05965ba775"
+    },
+    {
+      "relative_path": "src/flake8/options/parse_args.py",
+      "size": 2162,
+      "sha256": "b438e8098faa6bd2e595a89b83d454d10067d9a03dadab6f931a204140316785"
+    },
+    {
+      "relative_path": "src/flake8/plugins/__init__.py",
+      "size": 92,
+      "sha256": "f44685d8c5feb69f54f5bc81caf985d3946c8201f4e351fac8f1f7d50e0efa57"
+    },
+    {
+      "relative_path": "src/flake8/plugins/finder.py",
+      "size": 11154,
+      "sha256": "5e93d2be714fb508bb8daea8e515012072bd239b16d0b35fd0fb6e5c35ffc42f"
+    },
+    {
+      "relative_path": "src/flake8/plugins/pycodestyle.py",
+      "size": 5680,
+      "sha256": "5714cbcce6d716c57c6d693a330599fc123370dfce4467ffd5437d03cd8e2eb4"
+    },
+    {
+      "relative_path": "src/flake8/plugins/pyflakes.py",
+      "size": 6717,
+      "sha256": "3fd53ab2d996c2590c998f3e1aa1deac635c387cb7c8cae0ef42334ee5201b4f"
+    },
+    {
+      "relative_path": "src/flake8/plugins/reporter.py",
+      "size": 1241,
+      "sha256": "d23af750a7a1cc06a4757f6cc7e67cb7484070a3c6b534f0361e217628caaa01"
+    },
+    {
+      "relative_path": "src/flake8/processor.py",
+      "size": 15983,
+      "sha256": "e5e9f5260f9c8ebee35439391671ac2e3773449493df3e3d3b9324aece9c76b8"
+    },
+    {
+      "relative_path": "src/flake8/statistics.py",
+      "size": 4358,
+      "sha256": "9d259975cebcbc874650da7734966be629e5a93ab9e9d1c98b436526022b498f"
+    },
+    {
+      "relative_path": "src/flake8/style_guide.py",
+      "size": 14432,
+      "sha256": "3c08c4817b7fc25ab96e72f70461647b4c6e409883889322e5d46589d09ba683"
+    },
+    {
+      "relative_path": "src/flake8/utils.py",
+      "size": 8168,
+      "sha256": "ea666ff9e36a6c7f426c64a69d5ce20a4b354dd59e36035fa57c085521ff995b"
+    },
+    {
+      "relative_path": "src/flake8/violation.py",
+      "size": 2039,
+      "sha256": "b52808a1cee27459a3cef4a6f037d4e1a7cd31eb708d89fc167186bd862b1eb7"
+    }
+  ],
+  "after_files": [
+    {
+      "relative_path": "src/flake8/__init__.py",
+      "size": 1943,
+      "sha256": "8ee49ed0904fd50fe66ce15d0d3b74bfbaf7d5c4167ef4fccafa66c6fb3f7188"
+    },
+    {
+      "relative_path": "src/flake8/__main__.py",
+      "size": 178,
+      "sha256": "964c694165978c0a607ac531655616df14c64d3f6ed258f60e915e40ed7e756b"
+    },
+    {
+      "relative_path": "src/flake8/_compat.py",
+      "size": 330,
+      "sha256": "dbdec88661eb68c56442585e5f84c64dd1af24c25c1b074040c7e57fc4c91199"
+    },
+    {
+      "relative_path": "src/flake8/api/__init__.py",
+      "size": 241,
+      "sha256": "c606aa1f97a117911e67a237e5b3f9ba3f4ecc04aff5ae00705347c41e285ee4"
+    },
+    {
+      "relative_path": "src/flake8/api/legacy.py",
+      "size": 6898,
+      "sha256": "53673391949cb95867309f4ccc30659e0e2a7e0f4b1ac108d2f8e8b17beb5cf6"
+    },
+    {
+      "relative_path": "src/flake8/checker.py",
+      "size": 22581,
+      "sha256": "ba8a8446904b194da3d28ed9bce96d0103d9748b231be0a87474300c20ec3da7"
+    },
+    {
+      "relative_path": "src/flake8/defaults.py",
+      "size": 1109,
+      "sha256": "6a5d08159eab39d22f6bf5e0b9e1861aa74c69ff5f4ed1f0958dddb0077fd85a"
+    },
+    {
+      "relative_path": "src/flake8/discover_files.py",
+      "size": 2581,
+      "sha256": "3d74723c1e2512836ca7c1e3aa4b1286c554cd6ecfd62f0941d70949fa8dedb9"
+    },
+    {
+      "relative_path": "src/flake8/exceptions.py",
+      "size": 2393,
+      "sha256": "925a248e8bc99251e88cdc27f8d15394ca7f3c454b300617cdcf6e98843e6c8f"
+    },
+    {
+      "relative_path": "src/flake8/formatting/__init__.py",
+      "size": 97,
+      "sha256": "19e53eec8c1fdd39c61e219db7792c54c6dbb3a6bac5ad9fde4f7092a63ee960"
+    },
+    {
+      "relative_path": "src/flake8/formatting/_windows_color.py",
+      "size": 2022,
+      "sha256": "674cf47ec28e36399bf59d790fc0427411a6f672796a67ef08176ccb51553b5b"
+    },
+    {
+      "relative_path": "src/flake8/formatting/base.py",
+      "size": 7356,
+      "sha256": "09d115401598a44c95f4dc5aad716f70ca68a660034f82ccbf67569663f04b05"
+    },
+    {
+      "relative_path": "src/flake8/formatting/default.py",
+      "size": 3057,
+      "sha256": "b9b642050b30773f9cabaeb504ccc7442214e721a9786a3fe642aa9a1a8f557b"
+    },
+    {
+      "relative_path": "src/flake8/main/__init__.py",
+      "size": 98,
+      "sha256": "9abe183c954e0d51119bfd27cfbb26b2413546e568a69d4b4bb37e045546c2e9"
+    },
+    {
+      "relative_path": "src/flake8/main/application.py",
+      "size": 7949,
+      "sha256": "16c6f98270156918b9e38ed3a6d09e848f7709fc7342b43659e396ee3c0787c3"
+    },
+    {
+      "relative_path": "src/flake8/main/cli.py",
+      "size": 599,
+      "sha256": "e1f8bc0724214a53a4a60ac979cef6c6d63c158174b9ce2bf5ea142108a873ef"
+    },
+    {
+      "relative_path": "src/flake8/main/debug.py",
+      "size": 911,
+      "sha256": "59c9f510d9bfc6b0a8a6cbfcff0ef8e24b7ee70700e5cce8e24c96d7c3018ebc"
+    },
+    {
+      "relative_path": "src/flake8/main/options.py",
+      "size": 11008,
+      "sha256": "0e5fbbfc6b9b0e87868f550d6f9283664e2ac13a43a4df9eb69f99dd4f66a74d"
+    },
+    {
+      "relative_path": "src/flake8/options/__init__.py",
+      "size": 496,
+      "sha256": "729c503e31bc81c072809e0207c6d180385284f9dcc0e4f966ae77e78efd074d"
+    },
+    {
+      "relative_path": "src/flake8/options/aggregator.py",
+      "size": 1963,
+      "sha256": "b1db5337366e50c8ae702ba9b35dc41d9b03bdf6d43d4749570872c78492e45f"
+    },
+    {
+      "relative_path": "src/flake8/options/config.py",
+      "size": 4572,
+      "sha256": "3a3f8e3bcf596cd42d1541dc1c3676e317884f68137c05eb72eb76727795873e"
+    },
+    {
+      "relative_path": "src/flake8/options/manager.py",
+      "size": 11525,
+      "sha256": "61fddadf096887ac3a6ec2421ab65c524201a6edba9481a556944e05965ba775"
+    },
+    {
+      "relative_path": "src/flake8/options/parse_args.py",
+      "size": 2162,
+      "sha256": "b438e8098faa6bd2e595a89b83d454d10067d9a03dadab6f931a204140316785"
+    },
+    {
+      "relative_path": "src/flake8/plugins/__init__.py",
+      "size": 92,
+      "sha256": "f44685d8c5feb69f54f5bc81caf985d3946c8201f4e351fac8f1f7d50e0efa57"
+    },
+    {
+      "relative_path": "src/flake8/plugins/finder.py",
+      "size": 11154,
+      "sha256": "5e93d2be714fb508bb8daea8e515012072bd239b16d0b35fd0fb6e5c35ffc42f"
+    },
+    {
+      "relative_path": "src/flake8/plugins/pycodestyle.py",
+      "size": 5680,
+      "sha256": "5714cbcce6d716c57c6d693a330599fc123370dfce4467ffd5437d03cd8e2eb4"
+    },
+    {
+      "relative_path": "src/flake8/plugins/pyflakes.py",
+      "size": 3814,
+      "sha256": "58186b5b62b6d992448796f8b46852f7ee2f7184682553608ce1c02ba592bece"
+    },
+    {
+      "relative_path": "src/flake8/plugins/reporter.py",
+      "size": 1241,
+      "sha256": "d23af750a7a1cc06a4757f6cc7e67cb7484070a3c6b534f0361e217628caaa01"
+    },
+    {
+      "relative_path": "src/flake8/processor.py",
+      "size": 15983,
+      "sha256": "e5e9f5260f9c8ebee35439391671ac2e3773449493df3e3d3b9324aece9c76b8"
+    },
+    {
+      "relative_path": "src/flake8/statistics.py",
+      "size": 4358,
+      "sha256": "9d259975cebcbc874650da7734966be629e5a93ab9e9d1c98b436526022b498f"
+    },
+    {
+      "relative_path": "src/flake8/style_guide.py",
+      "size": 14432,
+      "sha256": "3c08c4817b7fc25ab96e72f70461647b4c6e409883889322e5d46589d09ba683"
+    },
+    {
+      "relative_path": "src/flake8/utils.py",
+      "size": 8168,
+      "sha256": "ea666ff9e36a6c7f426c64a69d5ce20a4b354dd59e36035fa57c085521ff995b"
+    },
+    {
+      "relative_path": "src/flake8/violation.py",
+      "size": 2039,
+      "sha256": "b52808a1cee27459a3cef4a6f037d4e1a7cd31eb708d89fc167186bd862b1eb7"
+    }
+  ],
+  "fixture_manifest_hash": "03b99bee2c4f6b0faafa4f3f967635c313249441ef9ea512019d1026e1d77f91"
+}

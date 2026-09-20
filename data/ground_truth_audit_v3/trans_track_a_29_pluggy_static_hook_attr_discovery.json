@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_track_a_29_pluggy_static_hook_attr_discovery",
+  "repo_name": "pytest-dev/pluggy",
+  "pr_number": 701,
+  "pr_title": "Discover hooks via inspect.getattr_static",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "bc9bcac68b9f3c670481661ddc50e5a0217e71d1",
+  "pr_base_sha": "6a7f8960eb4009b551f14030233cea7a64ccaf5d",
+  "pr_head_sha": "aa6e1f43a240b4aea292c576994d214d5aa1d4ff",
+  "base_commit": "6a7f8960eb4009b551f14030233cea7a64ccaf5d",
+  "target_commit": "bc9bcac68b9f3c670481661ddc50e5a0217e71d1",
+  "ancestry_verified": true,
+  "merge_strategy": "merge_commit",
+  "merge_relationship_verified": true,
+  "diff_match": true,
+  "issue_required": false,
+  "issue_id_verified": null,
+  "issue_status": "NOT_APPLICABLE",
+  "spec_sha256": "2fe6b5c651e8f9a03711f9c6c7b767a232fba577b0348f9aeada0712af2f0941",
+  "audit_fingerprint": "34bea0240942eff5c388adb1b15eda2fb8ca19567a9095ad65942fc216c9f209",
+  "auditor_version": "3.0.0",
+  "overall_status": "PASS"
+}

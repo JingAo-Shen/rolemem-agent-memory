@@ -1,0 +1,19 @@
+{
+  "transition_id": "trans_track_a_25_uvicorn_wsgi_middleware_deprecation",
+  "repo_name": "encode/uvicorn",
+  "repo_url": "https://github.com/encode/uvicorn",
+  "pr_url": "https://github.com/encode/uvicorn/pull/1825",
+  "base_commit": "23b9f05a389a476aee151698cede171d915f6c53",
+  "target_commit": "2351d5ff2b068d7bcba6eaccde83bc90b0727c89",
+  "pkg_path": "uvicorn",
+  "changed_files": [
+    "uvicorn/middleware/wsgi.py"
+  ],
+  "primary_file": "uvicorn/middleware/wsgi.py",
+  "symbol": "uvicorn.middleware.wsgi.WSGIMiddleware",
+  "file_digest_before": "41e2e13d50bcc7c2202b9f34ed1a206defcc7b5c0d4d6e633754e30f14682600",
+  "file_digest_after": "2a12f2fe3d821314899296a2d800e14bb3c85e229daecaf2b25040912f27958e",
+  "stale_sensitive": true,
+  "transition_type": "API_DEPRECATION",
+  "builder_status": "FIXTURE_EXTRACTED_UNVERIFIED"
+}

@@ -1,0 +1,36 @@
+{
+  "transition_id": "trans_track_a_15_more_itertools_zip_equal_removal",
+  "repo_name": "more-itertools/more-itertools",
+  "repo_url": "https://github.com/more-itertools/more-itertools",
+  "pr_url": "https://github.com/more-itertools/more-itertools/pull/1076",
+  "target_commit": "8fa3b81c8dd90c3b3f6648add2228aaaebb42884",
+  "pkg_path": "more_itertools",
+  "changed_files": [
+    "more_itertools/more.py",
+    "more_itertools/recipes.py"
+  ],
+  "primary_file": "more_itertools/more.py",
+  "symbol": "more_itertools.zip_equal",
+  "deprecated_symbols": [
+    "from more_itertools import zip_equal",
+    "zip_equal"
+  ],
+  "replacement_symbols": [
+    "zip(*iterables, strict=True)",
+    "zip(..., strict=True)"
+  ],
+  "repository_change": "more_itertools.zip_equal removed in favor of Python 3.10+ built-in zip(..., strict=True).",
+  "stale_memory_candidate": "Use more_itertools.zip_equal to pair iterables with length equality validation.",
+  "valid_memory_candidate": "Use Python built-in zip(..., strict=True) to pair iterables with strict length check.",
+  "transition_type": "API_REMOVAL",
+  "stale_sensitive": true,
+  "current_task": "Implement `pair_strictly(iter1, iter2)` in `pair_helper.py` pairing two iterables and raising ValueError if lengths differ.",
+  "target_file": "pair_helper.py",
+  "target_symbol": "pair_strictly",
+  "stale_solution": "from more_itertools import zip_equal\n\ndef pair_strictly(iter1, iter2):\n    return list(zip_equal(iter1, iter2))\n",
+  "valid_solution": "def pair_strictly(iter1, iter2):\n    return list(zip(iter1, iter2, strict=True))\n",
+  "hidden_test": "import pytest\nimport pair_helper\n\ndef test_pair_strictly():\n    assert pair_helper.pair_strictly([1, 2], [\"a\", \"b\"]) == [(1, \"a\"), (2, \"b\")]\n    with pytest.raises(ValueError):\n        pair_helper.pair_strictly([1, 2, 3], [\"a\", \"b\"])\n",
+  "base_commit": "8c1a6ef241b51ff055e89219f050ccf4f15f37f6",
+  "external_pr_url": "https://github.com/more-itertools/more-itertools/pull/1076",
+  "track": "TRACK_A_STALE_SENSITIVE"
+}

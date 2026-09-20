@@ -1,0 +1,26 @@
+[
+  {
+    "sha": "877c6da362f238500881f476af974065a020fdec",
+    "filename": "tests/tests_asyncio.py",
+    "status": "modified",
+    "additions": 17,
+    "deletions": 0,
+    "changes": 17,
+    "blob_url": "https://github.com/tqdm/tqdm/blob/651be40e7747d2d01e839730fd399eabe22237de/tests%2Ftests_asyncio.py",
+    "raw_url": "https://github.com/tqdm/tqdm/raw/651be40e7747d2d01e839730fd399eabe22237de/tests%2Ftests_asyncio.py",
+    "contents_url": "https://api.github.com/repos/tqdm/tqdm/contents/tests%2Ftests_asyncio.py?ref=651be40e7747d2d01e839730fd399eabe22237de",
+    "patch": "@@ -131,3 +131,20 @@ async def test_gather(capsys):\n     _, err = capsys.readouterr()\n     assert '30/30' in err\n     assert res == list(range(0, 30 * 2, 2))\n+\n+\n+async def raise_exc(i):\n+    if i == 1:\n+        raise ValueError(\"test\")\n+    return i * 2\n+\n+\n+@mark.asyncio\n+async def test_gather_exceptions(capsys):\n+    \"\"\"Test asyncio gather return_exceptions\"\"\"\n+    res = await gather(*map(raise_exc, range(3)), return_exceptions=True)\n+    _, err = capsys.readouterr()\n+    assert '3/3' in err\n+    assert isinstance(res[1], ValueError)\n+    assert res[0] == 0\n+    assert res[2] == 4"
+  },
+  {
+    "sha": "72cef23e3c2fd3c17c5829844b6644b520e156e8",
+    "filename": "tqdm/asyncio.py",
+    "status": "modified",
+    "additions": 8,
+    "deletions": 2,
+    "changes": 10,
+    "blob_url": "https://github.com/tqdm/tqdm/blob/651be40e7747d2d01e839730fd399eabe22237de/tqdm%2Fasyncio.py",
+    "raw_url": "https://github.com/tqdm/tqdm/raw/651be40e7747d2d01e839730fd399eabe22237de/tqdm%2Fasyncio.py",
+    "contents_url": "https://api.github.com/repos/tqdm/tqdm/contents/tqdm%2Fasyncio.py?ref=651be40e7747d2d01e839730fd399eabe22237de",
+    "patch": "@@ -68,12 +68,18 @@ def as_completed(cls, fs, *, loop=None, timeout=None, total=None, **tqdm_kwargs)\n                        total=total, **tqdm_kwargs)\n \n     @classmethod\n-    async def gather(cls, *fs, loop=None, timeout=None, total=None, **tqdm_kwargs):\n+    async def gather(cls, *fs, loop=None, timeout=None, total=None, return_exceptions=False,\n+                     **tqdm_kwargs):\n         \"\"\"\n         Wrapper for `asyncio.gather`.\n         \"\"\"\n         async def wrap_awaitable(i, f):\n-            return i, await f\n+            try:\n+                return i, await f\n+            except Exception as e:  # noqa: BLE001\n+                if return_exceptions:\n+                    return i, e\n+                raise\n \n         ifs = [wrap_awaitable(i, f) for i, f in enumerate(fs)]\n         res = [await f for f in cls.as_completed(ifs, loop=loop, timeout=timeout,"
+  }
+]

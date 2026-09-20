@@ -1,0 +1,248 @@
+[
+  {
+    "sha": "041541ec3d30db5d7462b8db6f03842521e11dae",
+    "node_id": "C_kwDOTZujItoAKDA0MTU0MWVjM2QzMGRiNWQ3NDYyYjhkYjZmMDM4NDI1MjFlMTFkYWU",
+    "commit": {
+      "author": {
+        "name": "SoMika00",
+        "email": "michail.berjaoui@gmail.com",
+        "date": "2026-07-15T21:20:58Z"
+      },
+      "committer": {
+        "name": "SoMika00",
+        "email": "michail.berjaoui@gmail.com",
+        "date": "2026-07-15T21:20:58Z"
+      },
+      "message": "feat(asyncio): add return_exceptions to gather wrapper\n\nRelated to #1286\nAdd support for return_exceptions param in tqdm.asyncio.gather to match asyncio.gather behaviour, update wrap_awaitable and add test.",
+      "tree": {
+        "sha": "53f64acd173ed4a28e322b09fae2183adbc4da44",
+        "url": "https://api.github.com/repos/tqdm/tqdm/git/trees/53f64acd173ed4a28e322b09fae2183adbc4da44"
+      },
+      "url": "https://api.github.com/repos/tqdm/tqdm/git/commits/041541ec3d30db5d7462b8db6f03842521e11dae",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/tqdm/tqdm/commits/041541ec3d30db5d7462b8db6f03842521e11dae",
+    "html_url": "https://github.com/tqdm/tqdm/commit/041541ec3d30db5d7462b8db6f03842521e11dae",
+    "comments_url": "https://api.github.com/repos/tqdm/tqdm/commits/041541ec3d30db5d7462b8db6f03842521e11dae/comments",
+    "author": {
+      "login": "SoMika00",
+      "id": 151918178,
+      "node_id": "U_kgDOCQ4WYg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/151918178?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/SoMika00",
+      "html_url": "https://github.com/SoMika00",
+      "followers_url": "https://api.github.com/users/SoMika00/followers",
+      "following_url": "https://api.github.com/users/SoMika00/following{/other_user}",
+      "gists_url": "https://api.github.com/users/SoMika00/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/SoMika00/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/SoMika00/subscriptions",
+      "organizations_url": "https://api.github.com/users/SoMika00/orgs",
+      "repos_url": "https://api.github.com/users/SoMika00/repos",
+      "events_url": "https://api.github.com/users/SoMika00/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/SoMika00/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "SoMika00",
+      "id": 151918178,
+      "node_id": "U_kgDOCQ4WYg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/151918178?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/SoMika00",
+      "html_url": "https://github.com/SoMika00",
+      "followers_url": "https://api.github.com/users/SoMika00/followers",
+      "following_url": "https://api.github.com/users/SoMika00/following{/other_user}",
+      "gists_url": "https://api.github.com/users/SoMika00/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/SoMika00/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/SoMika00/subscriptions",
+      "organizations_url": "https://api.github.com/users/SoMika00/orgs",
+      "repos_url": "https://api.github.com/users/SoMika00/repos",
+      "events_url": "https://api.github.com/users/SoMika00/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/SoMika00/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "53d096e77c28005b4f9fe1e9d6274ae311bf87e7",
+        "url": "https://api.github.com/repos/tqdm/tqdm/commits/53d096e77c28005b4f9fe1e9d6274ae311bf87e7",
+        "html_url": "https://github.com/tqdm/tqdm/commit/53d096e77c28005b4f9fe1e9d6274ae311bf87e7"
+      }
+    ]
+  },
+  {
+    "sha": "daf4a74427383ffab32e05c598907cc195d10c89",
+    "node_id": "C_kwDOTZujItoAKGRhZjRhNzQ0MjczODNmZmFiMzJlMDVjNTk4OTA3Y2MxOTVkMTBjODk",
+    "commit": {
+      "author": {
+        "name": "pre-commit-ci[bot]",
+        "email": "66853113+pre-commit-ci[bot]@users.noreply.github.com",
+        "date": "2026-07-16T10:18:21Z"
+      },
+      "committer": {
+        "name": "pre-commit-ci[bot]",
+        "email": "66853113+pre-commit-ci[bot]@users.noreply.github.com",
+        "date": "2026-07-16T10:18:22Z"
+      },
+      "message": "[pre-commit.ci] auto fixes from pre-commit.com hooks\n\nfor more information, see https://pre-commit.ci",
+      "tree": {
+        "sha": "a06ff96f496faf98cb1a79d06d7834653cabb29e",
+        "url": "https://api.github.com/repos/tqdm/tqdm/git/trees/a06ff96f496faf98cb1a79d06d7834653cabb29e"
+      },
+      "url": "https://api.github.com/repos/tqdm/tqdm/git/commits/daf4a74427383ffab32e05c598907cc195d10c89",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/tqdm/tqdm/commits/daf4a74427383ffab32e05c598907cc195d10c89",
+    "html_url": "https://github.com/tqdm/tqdm/commit/daf4a74427383ffab32e05c598907cc195d10c89",
+    "comments_url": "https://api.github.com/repos/tqdm/tqdm/commits/daf4a74427383ffab32e05c598907cc195d10c89/comments",
+    "author": {
+      "login": "pre-commit-ci[bot]",
+      "id": 66853113,
+      "node_id": "MDM6Qm90NjY4NTMxMTM=",
+      "avatar_url": "https://avatars.githubusercontent.com/in/68672?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D",
+      "html_url": "https://github.com/apps/pre-commit-ci",
+      "followers_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/followers",
+      "following_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/subscriptions",
+      "organizations_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/orgs",
+      "repos_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/repos",
+      "events_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/received_events",
+      "type": "Bot",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "pre-commit-ci[bot]",
+      "id": 66853113,
+      "node_id": "MDM6Qm90NjY4NTMxMTM=",
+      "avatar_url": "https://avatars.githubusercontent.com/in/68672?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D",
+      "html_url": "https://github.com/apps/pre-commit-ci",
+      "followers_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/followers",
+      "following_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/subscriptions",
+      "organizations_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/orgs",
+      "repos_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/repos",
+      "events_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pre-commit-ci%5Bbot%5D/received_events",
+      "type": "Bot",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "041541ec3d30db5d7462b8db6f03842521e11dae",
+        "url": "https://api.github.com/repos/tqdm/tqdm/commits/041541ec3d30db5d7462b8db6f03842521e11dae",
+        "html_url": "https://github.com/tqdm/tqdm/commit/041541ec3d30db5d7462b8db6f03842521e11dae"
+      }
+    ]
+  },
+  {
+    "sha": "651be40e7747d2d01e839730fd399eabe22237de",
+    "node_id": "C_kwDOTZujItoAKDY1MWJlNDBlNzc0N2QyZDAxZTgzOTczMGZkMzk5ZWFiZTIyMjM3ZGU",
+    "commit": {
+      "author": {
+        "name": "Casper da Costa-Luis",
+        "email": "tqdm@cdcl.ml",
+        "date": "2026-07-17T17:44:16Z"
+      },
+      "committer": {
+        "name": "Casper da Costa-Luis",
+        "email": "tqdm@cdcl.ml",
+        "date": "2026-07-17T17:47:09Z"
+      },
+      "message": "minor tidy",
+      "tree": {
+        "sha": "2f78dc2ff3837d0154706ba728640ea6559aa0ac",
+        "url": "https://api.github.com/repos/tqdm/tqdm/git/trees/2f78dc2ff3837d0154706ba728640ea6559aa0ac"
+      },
+      "url": "https://api.github.com/repos/tqdm/tqdm/git/commits/651be40e7747d2d01e839730fd399eabe22237de",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEEo5mT6J3EiRZfAwaW9RJuX70lEq0FAmpaaqMACgkQ9RJuX70l\nEq0Tzw/+PkL3A4OE/Y4QGuLWytM2q1Iv5JFKVTdxIO1bjQVBdy8w7JTEtADM11m8\nHWlFp/Qn/aostT7/rDbRhg/6otJI1x8G3MKgQCVzGoYYR5UF5A0ywtmpIIbgwgAX\n502e/xfLHBWTDO0sO0n9ETTndD5ddej9BEcK87T4Wb1O4IgKz599BBuSkpdc2f1W\nQCDxk6D2I+Do0X395kUQCBx3KpNE5PoucuQyy5kCu0eukKjuVBkvGp9zFlvkKq9Z\nFpr7JNFInjodvm0C5anHi/heawKX+s3MFbwh0BYjZ9YJhYcWOc+DQllmp6ZPAI/v\n2nbGCk4FG31hh9smoNm4cnei4dExNOlMJJPE+VMr7xOcpVBtzS8caMHwPl2+rybZ\nboOXiWO7EAtBmqaVA5VPJLas8LXDMSpWRpMOu5J9a9wEpKAGFYj7cGHRWXQ2Smlv\nsZP3LMj8Ffsg+dYAdH/c/R+zrJWScwFvqrvCgpER3hFB0RUtbodvrL7yQTuJjR2a\nM71INuvcCKy3swDWtHQrFeG0+S/i17kv/a/bndG8XgfP6r2aktUG8pIQhLkZu7la\nRnVK2I+Nc1edIVmW386CK/+AsIedfc8cOmsRNB3ozBMQc85lbk1ux3VqgLg2g04M\n6VFRx877s3KnoHhm0tKYZBy4KHKKM0oVi/6PMLSHu6z4L3OdVC8=\n=7uRM\n-----END PGP SIGNATURE-----",
+        "payload": "tree 2f78dc2ff3837d0154706ba728640ea6559aa0ac\nparent daf4a74427383ffab32e05c598907cc195d10c89\nauthor Casper da Costa-Luis <tqdm@cdcl.ml> 1784310256 +0100\ncommitter Casper da Costa-Luis <tqdm@cdcl.ml> 1784310429 +0100\n\nminor tidy\n",
+        "verified_at": "2026-07-17T17:47:08Z"
+      }
+    },
+    "url": "https://api.github.com/repos/tqdm/tqdm/commits/651be40e7747d2d01e839730fd399eabe22237de",
+    "html_url": "https://github.com/tqdm/tqdm/commit/651be40e7747d2d01e839730fd399eabe22237de",
+    "comments_url": "https://api.github.com/repos/tqdm/tqdm/commits/651be40e7747d2d01e839730fd399eabe22237de/comments",
+    "author": {
+      "login": "casperdcl",
+      "id": 10780059,
+      "node_id": "MDQ6VXNlcjEwNzgwMDU5",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10780059?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/casperdcl",
+      "html_url": "https://github.com/casperdcl",
+      "followers_url": "https://api.github.com/users/casperdcl/followers",
+      "following_url": "https://api.github.com/users/casperdcl/following{/other_user}",
+      "gists_url": "https://api.github.com/users/casperdcl/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/casperdcl/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/casperdcl/subscriptions",
+      "organizations_url": "https://api.github.com/users/casperdcl/orgs",
+      "repos_url": "https://api.github.com/users/casperdcl/repos",
+      "events_url": "https://api.github.com/users/casperdcl/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/casperdcl/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "casperdcl",
+      "id": 10780059,
+      "node_id": "MDQ6VXNlcjEwNzgwMDU5",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10780059?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/casperdcl",
+      "html_url": "https://github.com/casperdcl",
+      "followers_url": "https://api.github.com/users/casperdcl/followers",
+      "following_url": "https://api.github.com/users/casperdcl/following{/other_user}",
+      "gists_url": "https://api.github.com/users/casperdcl/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/casperdcl/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/casperdcl/subscriptions",
+      "organizations_url": "https://api.github.com/users/casperdcl/orgs",
+      "repos_url": "https://api.github.com/users/casperdcl/repos",
+      "events_url": "https://api.github.com/users/casperdcl/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/casperdcl/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "daf4a74427383ffab32e05c598907cc195d10c89",
+        "url": "https://api.github.com/repos/tqdm/tqdm/commits/daf4a74427383ffab32e05c598907cc195d10c89",
+        "html_url": "https://github.com/tqdm/tqdm/commit/daf4a74427383ffab32e05c598907cc195d10c89"
+      }
+    ]
+  }
+]

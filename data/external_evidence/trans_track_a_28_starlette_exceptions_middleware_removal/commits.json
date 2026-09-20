@@ -1,0 +1,166 @@
+[
+  {
+    "sha": "37981d14d6d1ffa24bc4980943963be4dc6843ab",
+    "node_id": "C_kwDOCELT_NoAKDM3OTgxZDE0ZDZkMWZmYTI0YmM0OTgwOTQzOTYzYmU0ZGM2ODQzYWI",
+    "commit": {
+      "author": {
+        "name": "Marcelo Trylesinski",
+        "email": "marcelotryle@gmail.com",
+        "date": "2024-12-28T21:03:06Z"
+      },
+      "committer": {
+        "name": "Marcelo Trylesinski",
+        "email": "marcelotryle@gmail.com",
+        "date": "2024-12-28T21:03:06Z"
+      },
+      "message": "Remove `ExceptionMiddleware` proxy from `starlette.exceptions` module",
+      "tree": {
+        "sha": "e4f809e956c7fbed48825ecdc8193997a6a55e43",
+        "url": "https://api.github.com/repos/Kludex/starlette/git/trees/e4f809e956c7fbed48825ecdc8193997a6a55e43"
+      },
+      "url": "https://api.github.com/repos/Kludex/starlette/git/commits/37981d14d6d1ffa24bc4980943963be4dc6843ab",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/Kludex/starlette/commits/37981d14d6d1ffa24bc4980943963be4dc6843ab",
+    "html_url": "https://github.com/Kludex/starlette/commit/37981d14d6d1ffa24bc4980943963be4dc6843ab",
+    "comments_url": "https://api.github.com/repos/Kludex/starlette/commits/37981d14d6d1ffa24bc4980943963be4dc6843ab/comments",
+    "author": {
+      "login": "Kludex",
+      "id": 7353520,
+      "node_id": "MDQ6VXNlcjczNTM1MjA=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7353520?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Kludex",
+      "html_url": "https://github.com/Kludex",
+      "followers_url": "https://api.github.com/users/Kludex/followers",
+      "following_url": "https://api.github.com/users/Kludex/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Kludex/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Kludex/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Kludex/subscriptions",
+      "organizations_url": "https://api.github.com/users/Kludex/orgs",
+      "repos_url": "https://api.github.com/users/Kludex/repos",
+      "events_url": "https://api.github.com/users/Kludex/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Kludex/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "Kludex",
+      "id": 7353520,
+      "node_id": "MDQ6VXNlcjczNTM1MjA=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7353520?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Kludex",
+      "html_url": "https://github.com/Kludex",
+      "followers_url": "https://api.github.com/users/Kludex/followers",
+      "following_url": "https://api.github.com/users/Kludex/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Kludex/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Kludex/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Kludex/subscriptions",
+      "organizations_url": "https://api.github.com/users/Kludex/orgs",
+      "repos_url": "https://api.github.com/users/Kludex/repos",
+      "events_url": "https://api.github.com/users/Kludex/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Kludex/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "2c98fe335888beda9a67235c79c41d754df3c99c",
+        "url": "https://api.github.com/repos/Kludex/starlette/commits/2c98fe335888beda9a67235c79c41d754df3c99c",
+        "html_url": "https://github.com/Kludex/starlette/commit/2c98fe335888beda9a67235c79c41d754df3c99c"
+      }
+    ]
+  },
+  {
+    "sha": "53c544e4a0dab93d5d0766c0ba16325a534ce69e",
+    "node_id": "C_kwDOCELT_NoAKDUzYzU0NGU0YTBkYWI5M2Q1ZDA3NjZjMGJhMTYzMjVhNTM0Y2U2OWU",
+    "commit": {
+      "author": {
+        "name": "Marcelo Trylesinski",
+        "email": "marcelotryle@gmail.com",
+        "date": "2024-12-28T21:05:36Z"
+      },
+      "committer": {
+        "name": "Marcelo Trylesinski",
+        "email": "marcelotryle@gmail.com",
+        "date": "2024-12-28T21:05:36Z"
+      },
+      "message": "remove test",
+      "tree": {
+        "sha": "731f2429e0f9690dfeba0620ec51f4a472ba12f5",
+        "url": "https://api.github.com/repos/Kludex/starlette/git/trees/731f2429e0f9690dfeba0620ec51f4a472ba12f5"
+      },
+      "url": "https://api.github.com/repos/Kludex/starlette/git/commits/53c544e4a0dab93d5d0766c0ba16325a534ce69e",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/Kludex/starlette/commits/53c544e4a0dab93d5d0766c0ba16325a534ce69e",
+    "html_url": "https://github.com/Kludex/starlette/commit/53c544e4a0dab93d5d0766c0ba16325a534ce69e",
+    "comments_url": "https://api.github.com/repos/Kludex/starlette/commits/53c544e4a0dab93d5d0766c0ba16325a534ce69e/comments",
+    "author": {
+      "login": "Kludex",
+      "id": 7353520,
+      "node_id": "MDQ6VXNlcjczNTM1MjA=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7353520?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Kludex",
+      "html_url": "https://github.com/Kludex",
+      "followers_url": "https://api.github.com/users/Kludex/followers",
+      "following_url": "https://api.github.com/users/Kludex/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Kludex/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Kludex/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Kludex/subscriptions",
+      "organizations_url": "https://api.github.com/users/Kludex/orgs",
+      "repos_url": "https://api.github.com/users/Kludex/repos",
+      "events_url": "https://api.github.com/users/Kludex/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Kludex/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "Kludex",
+      "id": 7353520,
+      "node_id": "MDQ6VXNlcjczNTM1MjA=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7353520?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Kludex",
+      "html_url": "https://github.com/Kludex",
+      "followers_url": "https://api.github.com/users/Kludex/followers",
+      "following_url": "https://api.github.com/users/Kludex/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Kludex/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Kludex/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Kludex/subscriptions",
+      "organizations_url": "https://api.github.com/users/Kludex/orgs",
+      "repos_url": "https://api.github.com/users/Kludex/repos",
+      "events_url": "https://api.github.com/users/Kludex/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Kludex/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "37981d14d6d1ffa24bc4980943963be4dc6843ab",
+        "url": "https://api.github.com/repos/Kludex/starlette/commits/37981d14d6d1ffa24bc4980943963be4dc6843ab",
+        "html_url": "https://github.com/Kludex/starlette/commit/37981d14d6d1ffa24bc4980943963be4dc6843ab"
+      }
+    ]
+  }
+]

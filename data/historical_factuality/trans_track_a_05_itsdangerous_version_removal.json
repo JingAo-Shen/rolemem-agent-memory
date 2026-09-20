@@ -1,0 +1,49 @@
+{
+  "transition_id": "trans_track_a_05_itsdangerous_version_removal",
+  "repo_name": "pallets/itsdangerous",
+  "base_commit": "4dffa1963f896a0a311dec3c14f003a5f382c446",
+  "claims": [
+    {
+      "statement": "__version__ is accessed via a custom __getattr__ method that returns the version using importlib.metadata.",
+      "temporal_isolation_pass": true,
+      "temporal_leaks": [],
+      "structural_evidence_grounded": true,
+      "matched_symbols": [
+        "itsdangerous.__version__",
+        "itsdangerous.__version__"
+      ],
+      "semantic_factuality_status": "FACTUALLY_SUPPORTED",
+      "semantic_factuality_pass": true,
+      "explanation": ":",
+      "seed": 42
+    },
+    {
+      "statement": "__version__ is accessed via a custom __getattr__ method that returns the version using importlib.metadata.",
+      "temporal_isolation_pass": true,
+      "temporal_leaks": [],
+      "structural_evidence_grounded": true,
+      "matched_symbols": [
+        "itsdangerous.__version__",
+        "itsdangerous.__version__"
+      ],
+      "semantic_factuality_status": "FACTUALLY_SUPPORTED",
+      "semantic_factuality_pass": true,
+      "explanation": ":",
+      "seed": 123
+    },
+    {
+      "statement": "__version__ is accessed via a custom __getattr__ method that imports and returns the version using importlib.metadata.",
+      "temporal_isolation_pass": true,
+      "temporal_leaks": [],
+      "structural_evidence_grounded": true,
+      "matched_symbols": [
+        "itsdangerous.__version__",
+        "itsdangerous.__version__"
+      ],
+      "semantic_factuality_status": "FACTUALLY_SUPPORTED",
+      "semantic_factuality_pass": true,
+      "explanation": ":",
+      "seed": 999
+    }
+  ]
+}

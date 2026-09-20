@@ -1,0 +1,79 @@
+{
+  "transition_id": "trans_track_a_14_fastapi_on_event_compatibility",
+  "audit_fingerprint": "40deb3e345cb3ba492b6a9928c04ac297b4e8585542715b0482d7b89ba87e6e7",
+  "total_mutants": 8,
+  "invalid_mutants_count": 8,
+  "invalid_mutants_killed": 8,
+  "killed_mutants": 8,
+  "mutation_kill_rate": 1.0,
+  "constant_return_killed": true,
+  "constant_return_bypass": false,
+  "meets_kill_rate_threshold": true,
+  "audit_status": "PASS",
+  "mutants": {
+    "M1_return_none": {
+      "description": "return None",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "n\n\ntest_hidden_verification.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_default_lifespan - assert None is True\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
+    },
+    "M2_constant_return": {
+      "description": "return constant string",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "\n\ntest_hidden_verification.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_default_lifespan - AssertionError: a...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
+    },
+    "M3_noop_pass": {
+      "description": "pass / no-op",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "n\n\ntest_hidden_verification.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_default_lifespan - assert None is True\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
+    },
+    "M4_try_except_dummy": {
+      "description": "try/except return dummy",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "n\n\ntest_hidden_verification.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_default_lifespan - assert None is True\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
+    },
+    "M5_stale_solution": {
+      "description": "stale solution",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "\n\ntest_hidden_verification.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_default_lifespan - assert False is True\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
+    },
+    "M6_mismatched_signature": {
+      "description": "wrong signature",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "\n\ntest_hidden_verification.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_default_lifespan - AssertionError: a...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
+    },
+    "M7_missing_attribute": {
+      "description": "missing function",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "\n\ntest_hidden_verification.py:5: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_default_lifespan - AttributeError: m...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
+    },
+    "M8_static_mock": {
+      "description": "static mock",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "\n\ntest_hidden_verification.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_default_lifespan - assert <app_lifec...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
+    }
+  }
+}

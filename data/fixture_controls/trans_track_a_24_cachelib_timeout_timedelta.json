@@ -1,0 +1,8 @@
+{
+  "transition_id": "trans_track_a_24_cachelib_timeout_timedelta",
+  "audit_fingerprint": "7d1c63019ffc33a2950dc45b051cdab722fa3b78223e16f7ab7e192efe27bbd8",
+  "status": "PASS",
+  "valid_control_status": "PASS",
+  "stale_control_status": "PASS",
+  "details": "valid_target=True, stale_target=False"
+}

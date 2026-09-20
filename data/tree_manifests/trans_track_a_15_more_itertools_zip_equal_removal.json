@@ -1,0 +1,90 @@
+{
+  "transition_id": "trans_track_a_15_more_itertools_zip_equal_removal",
+  "repo_name": "more-itertools/more-itertools",
+  "base_commit": "8c1a6ef241b51ff055e89219f050ccf4f15f37f6",
+  "target_commit": "8fa3b81c8dd90c3b3f6648add2228aaaebb42884",
+  "pkg_path": "more_itertools",
+  "tree_purity_status": "TREE_PURITY_PASS",
+  "before_tree_purity": "TREE_PURITY_PASS",
+  "after_tree_purity": "TREE_PURITY_PASS",
+  "before_mismatches": [],
+  "after_mismatches": [],
+  "total_files_before": 7,
+  "total_files_after": 7,
+  "has_environment_overlay": false,
+  "before_files": [
+    {
+      "relative_path": "more_itertools/__init__.py",
+      "size": 149,
+      "sha256": "e45ec4ff3a6819c1015bf4ffdd613459862df23fa0268748ba205c389c6b3aff"
+    },
+    {
+      "relative_path": "more_itertools/__init__.pyi",
+      "size": 43,
+      "sha256": "e41dde4f338dd4106e38ba1bd6f09f97211bda549deaeb17410f82bfe85791e0"
+    },
+    {
+      "relative_path": "more_itertools/more.py",
+      "size": 163690,
+      "sha256": "98d3ca2aee5423b9512f8eb4be09b441309616218c542328b123f15527626e8b"
+    },
+    {
+      "relative_path": "more_itertools/more.pyi",
+      "size": 27119,
+      "sha256": "7e9120357dceebac18e5c9d3face5560328d52901c682c94de23fce08b7738e3"
+    },
+    {
+      "relative_path": "more_itertools/py.typed",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "more_itertools/recipes.py",
+      "size": 41811,
+      "sha256": "31afa4b813590c585a4036c82604669eb1bce96cdaba96cec94577bfc8dedf1c"
+    },
+    {
+      "relative_path": "more_itertools/recipes.pyi",
+      "size": 6226,
+      "sha256": "2cd47037e38bde790c7d002ac7e3cf7357c169eb5439b6ff67a99d78fcb38757"
+    }
+  ],
+  "after_files": [
+    {
+      "relative_path": "more_itertools/__init__.py",
+      "size": 149,
+      "sha256": "e45ec4ff3a6819c1015bf4ffdd613459862df23fa0268748ba205c389c6b3aff"
+    },
+    {
+      "relative_path": "more_itertools/__init__.pyi",
+      "size": 43,
+      "sha256": "e41dde4f338dd4106e38ba1bd6f09f97211bda549deaeb17410f82bfe85791e0"
+    },
+    {
+      "relative_path": "more_itertools/more.py",
+      "size": 162578,
+      "sha256": "96c243943842abaa67f96a91b2d43b271ccf32cfffd9747bf14817c802013574"
+    },
+    {
+      "relative_path": "more_itertools/more.pyi",
+      "size": 25949,
+      "sha256": "58be38990dd9a1f236e1c7e615376238ae06dac21e9bf68f8b71a5b7f1afea42"
+    },
+    {
+      "relative_path": "more_itertools/py.typed",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "more_itertools/recipes.py",
+      "size": 39867,
+      "sha256": "53099d650fe64512b106cb240dc63195dca23898a98bec39d0c1ec94897f47a5"
+    },
+    {
+      "relative_path": "more_itertools/recipes.pyi",
+      "size": 6141,
+      "sha256": "ccfcad1797fa9a89af977f9bd71fa880b8954acb612943b202fa9a2411d40f2e"
+    }
+  ],
+  "fixture_manifest_hash": "8e4a04f39be31e7595e261b0d700cfb58a040f49d287f455bd2b2c2bc7aa7ae1"
+}

@@ -1,0 +1,19 @@
+{
+  "transition_id": "trans_track_a_24_cachelib_timeout_timedelta",
+  "repo_name": "pallets/cachelib",
+  "repo_url": "https://github.com/pallets-eco/cachelib",
+  "pr_url": "https://github.com/pallets-eco/cachelib/pull/510",
+  "base_commit": "5a7d98a6b54e05b6076a8c69b034ab8c35a250a1",
+  "target_commit": "d5fc7826065db284b8eda1e2fa5d2157ba1fcb9d",
+  "pkg_path": "src/cachelib",
+  "changed_files": [
+    "src/cachelib/base.py"
+  ],
+  "primary_file": "src/cachelib/base.py",
+  "symbol": "BaseCache._normalize_timeout",
+  "file_digest_before": "c9870915e4b63d3f9c680ececea51aa11e93f7f264547c5eda05a27aa0646cfd",
+  "file_digest_after": "fbc62a24d58a904db511f84cce29e94b484e87b57079c87fda6e463e634e9ca3",
+  "stale_sensitive": false,
+  "transition_type": "API_EVOLUTION",
+  "builder_status": "FIXTURE_EXTRACTED_UNVERIFIED"
+}

@@ -1,0 +1,350 @@
+{
+  "transition_id": "trans_track_a_23_tqdm_asyncio_gather_return_exceptions",
+  "repo_name": "tqdm/tqdm",
+  "base_commit": "53d096e77c28005b4f9fe1e9d6274ae311bf87e7",
+  "target_commit": "99615b978702dcf61986de62dfd252d82720af76",
+  "pkg_path": "tqdm",
+  "tree_purity_status": "TREE_PURITY_PASS",
+  "before_tree_purity": "TREE_PURITY_PASS",
+  "after_tree_purity": "TREE_PURITY_PASS",
+  "before_mismatches": [],
+  "after_mismatches": [],
+  "total_files_before": 33,
+  "total_files_after": 33,
+  "has_environment_overlay": false,
+  "before_files": [
+    {
+      "relative_path": "tqdm/__init__.py",
+      "size": 1572,
+      "sha256": "f6640d6124aa3fdf496acb9b102d4f3892cc9a1924047e9c259c4f211e46da94"
+    },
+    {
+      "relative_path": "tqdm/__main__.py",
+      "size": 30,
+      "sha256": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279"
+    },
+    {
+      "relative_path": "tqdm/_main.py",
+      "size": 283,
+      "sha256": "f724af8268bfd92c38080a395035b44367717d3af26e8116187a217c2273d2c0"
+    },
+    {
+      "relative_path": "tqdm/_monitor.py",
+      "size": 4013,
+      "sha256": "d5571abeea2d61237a2bed636e936ecba1d8b6bde6c28e4d87f8d9310fa38370"
+    },
+    {
+      "relative_path": "tqdm/_tqdm.py",
+      "size": 283,
+      "sha256": "2df2c2b89e9ba6c568f718a59ad057c849b5bc69d4085ae5896f398f727e9c3e"
+    },
+    {
+      "relative_path": "tqdm/_tqdm_gui.py",
+      "size": 287,
+      "sha256": "d371dcf0a6b2c49bde89e239fb4fb6346883a4bbf0f6365e9287c9515ec20b09"
+    },
+    {
+      "relative_path": "tqdm/_tqdm_notebook.py",
+      "size": 307,
+      "sha256": "06e1e22eec6eeae11f64568f256dd13e93dac5a55cb44400de47522520cbd61c"
+    },
+    {
+      "relative_path": "tqdm/_tqdm_pandas.py",
+      "size": 888,
+      "sha256": "73d8e9b5482280de9ac510e145de1189ff7c4e6c5ea297359c5345848a5b1541"
+    },
+    {
+      "relative_path": "tqdm/_utils.py",
+      "size": 559,
+      "sha256": "09f2f3b71158f9046235fc500aa01bd8df04d77b9ab8833de5149088595a12e1"
+    },
+    {
+      "relative_path": "tqdm/asyncio.py",
+      "size": 2758,
+      "sha256": "77abd9f3c645abaceaded016a64227076c484d528234405a92e766ffef17b5ff"
+    },
+    {
+      "relative_path": "tqdm/auto.py",
+      "size": 871,
+      "sha256": "9c365f963ea9db32a48c108d068babae14bcd7361f672d7f750bdb724add5bca"
+    },
+    {
+      "relative_path": "tqdm/autonotebook.py",
+      "size": 1440,
+      "sha256": "da9360182243b1eb0d372627992bdef013502e2192828f7b4ac3e83170ab3514"
+    },
+    {
+      "relative_path": "tqdm/cli.py",
+      "size": 11011,
+      "sha256": "b758ff3ea2344ae3328491a807130f09763e5136df8dc89a010631014fdffd5d"
+    },
+    {
+      "relative_path": "tqdm/completion.sh",
+      "size": 946,
+      "sha256": "8fbf4a6d29a9223fc4d758df4df057ac69d44f3297569435bc6550becc83465e"
+    },
+    {
+      "relative_path": "tqdm/contrib/__init__.py",
+      "size": 2479,
+      "sha256": "d46318604f3ae960af94783931d9b33af3ec423e19b8c957cf3f317117090fad"
+    },
+    {
+      "relative_path": "tqdm/contrib/bells.py",
+      "size": 921,
+      "sha256": "21ac42d985b9ef11c38a7c5d503407bd27a0a341d24dd0d313141010dbd207f9"
+    },
+    {
+      "relative_path": "tqdm/contrib/concurrent.py",
+      "size": 3986,
+      "sha256": "2b5ca3968292e5644d1728cb46d8740e65393c09c36c5d00f860f6ecdf89e1af"
+    },
+    {
+      "relative_path": "tqdm/contrib/discord.py",
+      "size": 5337,
+      "sha256": "2cf8f10db99f898b70dce026fd686dc1b5fd05560394f73c949f7a698dd86431"
+    },
+    {
+      "relative_path": "tqdm/contrib/itertools.py",
+      "size": 2949,
+      "sha256": "300f7e26f6f74e8b1ea69227bdebf6885e1ba2437b190cb84382e08d4c98740e"
+    },
+    {
+      "relative_path": "tqdm/contrib/logging.py",
+      "size": 3791,
+      "sha256": "7255be03168dc1aca7c3d4065950728ca801dd62542daa1ca06ffd0b7709faa7"
+    },
+    {
+      "relative_path": "tqdm/contrib/slack.py",
+      "size": 4049,
+      "sha256": "b02d7cdafef10647c67ed9c379499000b30e7f043353766235fd50fd70350e32"
+    },
+    {
+      "relative_path": "tqdm/contrib/telegram.py",
+      "size": 5081,
+      "sha256": "c9b4eb6868d4431e66e38dd3b17ea927b531ae9b21d66e1ae3705359597fe1ee"
+    },
+    {
+      "relative_path": "tqdm/contrib/utils_worker.py",
+      "size": 1199,
+      "sha256": "bdac722726a06303824172d431df3a6c26c8e2c3ea672b2e3066c34869af116a"
+    },
+    {
+      "relative_path": "tqdm/dask.py",
+      "size": 1319,
+      "sha256": "f448b9f1e56a4e8b2c44b8407d6c9414276e5d82a398b9b091a5c8cbe08761fb"
+    },
+    {
+      "relative_path": "tqdm/gui.py",
+      "size": 5481,
+      "sha256": "99a43b8e007995e587c313256c1bf4f21a5ee65cadbe61f4844011bb6d8645d5"
+    },
+    {
+      "relative_path": "tqdm/keras.py",
+      "size": 4396,
+      "sha256": "ba077cd3ec42c4caa7adbc7f0c43a99a3e9cd92875c6856d43c57df9bc36f5ea"
+    },
+    {
+      "relative_path": "tqdm/notebook.py",
+      "size": 10888,
+      "sha256": "eb19144dc611b05c4de3f052518619e75900808ef27274f41cba4ff47ba412a8"
+    },
+    {
+      "relative_path": "tqdm/rich.py",
+      "size": 5021,
+      "sha256": "63230f9041d5c98515511dda74929b557dba89398d2a934c7f70c4aa69be9bad"
+    },
+    {
+      "relative_path": "tqdm/std.py",
+      "size": 57943,
+      "sha256": "3cce14fa56452b7d3bb97cc73dc1ed72fe5c7bec62d86f3f997daaa16888d2cd"
+    },
+    {
+      "relative_path": "tqdm/tk.py",
+      "size": 6702,
+      "sha256": "dd5b01d4c0c090222d696bbb0a631bd82a132cc8aa98388480d8b7ca2a90e466"
+    },
+    {
+      "relative_path": "tqdm/tqdm.1",
+      "size": 7538,
+      "sha256": "30b83daa37874e16693c441b595adfe4fe6039730a1c4fd7eb4e8548e048f5e5"
+    },
+    {
+      "relative_path": "tqdm/utils.py",
+      "size": 9746,
+      "sha256": "a3f7f4577d87ff0ae7d179919e8de3f6927dc65a79c4bd1f1d3de0b6a2fe939f"
+    },
+    {
+      "relative_path": "tqdm/version.py",
+      "size": 233,
+      "sha256": "d2e1f84cb7bc23c1fbd71dbd7659ad11904e6cb4f76f9216fa7cad177574215c"
+    }
+  ],
+  "after_files": [
+    {
+      "relative_path": "tqdm/__init__.py",
+      "size": 1572,
+      "sha256": "f6640d6124aa3fdf496acb9b102d4f3892cc9a1924047e9c259c4f211e46da94"
+    },
+    {
+      "relative_path": "tqdm/__main__.py",
+      "size": 30,
+      "sha256": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279"
+    },
+    {
+      "relative_path": "tqdm/_main.py",
+      "size": 283,
+      "sha256": "f724af8268bfd92c38080a395035b44367717d3af26e8116187a217c2273d2c0"
+    },
+    {
+      "relative_path": "tqdm/_monitor.py",
+      "size": 4013,
+      "sha256": "d5571abeea2d61237a2bed636e936ecba1d8b6bde6c28e4d87f8d9310fa38370"
+    },
+    {
+      "relative_path": "tqdm/_tqdm.py",
+      "size": 283,
+      "sha256": "2df2c2b89e9ba6c568f718a59ad057c849b5bc69d4085ae5896f398f727e9c3e"
+    },
+    {
+      "relative_path": "tqdm/_tqdm_gui.py",
+      "size": 287,
+      "sha256": "d371dcf0a6b2c49bde89e239fb4fb6346883a4bbf0f6365e9287c9515ec20b09"
+    },
+    {
+      "relative_path": "tqdm/_tqdm_notebook.py",
+      "size": 307,
+      "sha256": "06e1e22eec6eeae11f64568f256dd13e93dac5a55cb44400de47522520cbd61c"
+    },
+    {
+      "relative_path": "tqdm/_tqdm_pandas.py",
+      "size": 888,
+      "sha256": "73d8e9b5482280de9ac510e145de1189ff7c4e6c5ea297359c5345848a5b1541"
+    },
+    {
+      "relative_path": "tqdm/_utils.py",
+      "size": 559,
+      "sha256": "09f2f3b71158f9046235fc500aa01bd8df04d77b9ab8833de5149088595a12e1"
+    },
+    {
+      "relative_path": "tqdm/asyncio.py",
+      "size": 2968,
+      "sha256": "00cd67c94cdf79055cd48417516dabe17c6c764919b07831bb5627d81dfc19df"
+    },
+    {
+      "relative_path": "tqdm/auto.py",
+      "size": 871,
+      "sha256": "9c365f963ea9db32a48c108d068babae14bcd7361f672d7f750bdb724add5bca"
+    },
+    {
+      "relative_path": "tqdm/autonotebook.py",
+      "size": 1440,
+      "sha256": "da9360182243b1eb0d372627992bdef013502e2192828f7b4ac3e83170ab3514"
+    },
+    {
+      "relative_path": "tqdm/cli.py",
+      "size": 11011,
+      "sha256": "b758ff3ea2344ae3328491a807130f09763e5136df8dc89a010631014fdffd5d"
+    },
+    {
+      "relative_path": "tqdm/completion.sh",
+      "size": 946,
+      "sha256": "8fbf4a6d29a9223fc4d758df4df057ac69d44f3297569435bc6550becc83465e"
+    },
+    {
+      "relative_path": "tqdm/contrib/__init__.py",
+      "size": 2479,
+      "sha256": "d46318604f3ae960af94783931d9b33af3ec423e19b8c957cf3f317117090fad"
+    },
+    {
+      "relative_path": "tqdm/contrib/bells.py",
+      "size": 921,
+      "sha256": "21ac42d985b9ef11c38a7c5d503407bd27a0a341d24dd0d313141010dbd207f9"
+    },
+    {
+      "relative_path": "tqdm/contrib/concurrent.py",
+      "size": 3986,
+      "sha256": "2b5ca3968292e5644d1728cb46d8740e65393c09c36c5d00f860f6ecdf89e1af"
+    },
+    {
+      "relative_path": "tqdm/contrib/discord.py",
+      "size": 5337,
+      "sha256": "2cf8f10db99f898b70dce026fd686dc1b5fd05560394f73c949f7a698dd86431"
+    },
+    {
+      "relative_path": "tqdm/contrib/itertools.py",
+      "size": 2949,
+      "sha256": "300f7e26f6f74e8b1ea69227bdebf6885e1ba2437b190cb84382e08d4c98740e"
+    },
+    {
+      "relative_path": "tqdm/contrib/logging.py",
+      "size": 3791,
+      "sha256": "7255be03168dc1aca7c3d4065950728ca801dd62542daa1ca06ffd0b7709faa7"
+    },
+    {
+      "relative_path": "tqdm/contrib/slack.py",
+      "size": 4049,
+      "sha256": "b02d7cdafef10647c67ed9c379499000b30e7f043353766235fd50fd70350e32"
+    },
+    {
+      "relative_path": "tqdm/contrib/telegram.py",
+      "size": 5081,
+      "sha256": "c9b4eb6868d4431e66e38dd3b17ea927b531ae9b21d66e1ae3705359597fe1ee"
+    },
+    {
+      "relative_path": "tqdm/contrib/utils_worker.py",
+      "size": 1199,
+      "sha256": "bdac722726a06303824172d431df3a6c26c8e2c3ea672b2e3066c34869af116a"
+    },
+    {
+      "relative_path": "tqdm/dask.py",
+      "size": 1319,
+      "sha256": "f448b9f1e56a4e8b2c44b8407d6c9414276e5d82a398b9b091a5c8cbe08761fb"
+    },
+    {
+      "relative_path": "tqdm/gui.py",
+      "size": 5481,
+      "sha256": "99a43b8e007995e587c313256c1bf4f21a5ee65cadbe61f4844011bb6d8645d5"
+    },
+    {
+      "relative_path": "tqdm/keras.py",
+      "size": 4396,
+      "sha256": "ba077cd3ec42c4caa7adbc7f0c43a99a3e9cd92875c6856d43c57df9bc36f5ea"
+    },
+    {
+      "relative_path": "tqdm/notebook.py",
+      "size": 10888,
+      "sha256": "eb19144dc611b05c4de3f052518619e75900808ef27274f41cba4ff47ba412a8"
+    },
+    {
+      "relative_path": "tqdm/rich.py",
+      "size": 5021,
+      "sha256": "63230f9041d5c98515511dda74929b557dba89398d2a934c7f70c4aa69be9bad"
+    },
+    {
+      "relative_path": "tqdm/std.py",
+      "size": 57943,
+      "sha256": "3cce14fa56452b7d3bb97cc73dc1ed72fe5c7bec62d86f3f997daaa16888d2cd"
+    },
+    {
+      "relative_path": "tqdm/tk.py",
+      "size": 6702,
+      "sha256": "dd5b01d4c0c090222d696bbb0a631bd82a132cc8aa98388480d8b7ca2a90e466"
+    },
+    {
+      "relative_path": "tqdm/tqdm.1",
+      "size": 7538,
+      "sha256": "30b83daa37874e16693c441b595adfe4fe6039730a1c4fd7eb4e8548e048f5e5"
+    },
+    {
+      "relative_path": "tqdm/utils.py",
+      "size": 9746,
+      "sha256": "a3f7f4577d87ff0ae7d179919e8de3f6927dc65a79c4bd1f1d3de0b6a2fe939f"
+    },
+    {
+      "relative_path": "tqdm/version.py",
+      "size": 233,
+      "sha256": "d2e1f84cb7bc23c1fbd71dbd7659ad11904e6cb4f76f9216fa7cad177574215c"
+    }
+  ],
+  "fixture_manifest_hash": "9e3e45b45f4b619c0727f984cab4e7cd441383021cb1e90c9a1a23b5e35dcd49"
+}

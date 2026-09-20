@@ -2,7 +2,7 @@
   "transition_id": "trans_track_a_08_attrs_py313_replace_control",
   "provenance_status": "TARGET_MEMORY_VERIFIED",
   "recomputed_hashes": {
-    "diff_hunk_sha256": "55e9914ee3f9329a631f4e7a070a79fa6b7e5168740b38e459249bb70753b673",
+    "diff_hunk_sha256": "f9449ae5fe372ffee49df68f4b6417e6580f8f46b227f46cb760d11596ced831",
     "evidence_excerpt_hash": "2d09b45f3dfd38ec6abc0e12cbc197924a01b432e4df5965e769fff41c1dd8b5",
     "ground_truth_audit_hash": "2d6493114221ff95d6bc5ad57eb64298b84372780b9ffa8f539f47e1d296e47a"
   },
@@ -11,6 +11,7 @@
     "source_commit_matches": true,
     "artifact_in_diff": true,
     "diff_hunk_sha256_verified": true,
+    "diff_patch_sha256_verified": true,
     "evidence_excerpt_hash_verified": true,
     "ground_truth_audit_hash_verified": true,
     "statement_entailment": "ENTAILED"
@@ -23,9 +24,11 @@
     "source_pr_url": "https://github.com/python-attrs/attrs/pull/1383",
     "source_commit": "62bdbf234f45195e75bfc2bb0648dab6fd2f0d33",
     "evidence_file": "data/external_evidence/trans_track_a_08_attrs_py313_replace_control/diff.patch",
-    "evidence_hunk_sha256": "55e9914ee3f9329a631f4e7a070a79fa6b7e5168740b38e459249bb70753b673",
+    "evidence_hunk_sha256": "f9449ae5fe372ffee49df68f4b6417e6580f8f46b227f46cb760d11596ced831",
     "evidence_excerpt_hash": "2d09b45f3dfd38ec6abc0e12cbc197924a01b432e4df5965e769fff41c1dd8b5",
     "ground_truth_audit_hash": "2d6493114221ff95d6bc5ad57eb64298b84372780b9ffa8f539f47e1d296e47a",
-    "artifact": "src/attr/_make.py"
+    "artifact": "src/attr/_make.py",
+    "supporting_hunk": "@@ -10,7 +10,7 @@\n from . import converters, exceptions, filters, setters, validators\n from ._cmp import cmp_using\n from ._config import get_run_validators, set_run_validators\n-from ._funcs import asdict, assoc, astuple, evolve, has, resolve_types\n+from ._funcs import asdict, assoc, astuple, has, resolve_types\n from ._make import (\n     NOTHING,\n     Attribute,",
+    "diff_patch_sha256": "55e9914ee3f9329a631f4e7a070a79fa6b7e5168740b38e459249bb70753b673"
   }
 }

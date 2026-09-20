@@ -1,0 +1,100 @@
+diff --git a/changelog/3622.removal.rst b/changelog/3622.removal.rst
+new file mode 100644
+index 00000000..e361b3bd
+--- /dev/null
++++ b/changelog/3622.removal.rst
+@@ -0,0 +1,2 @@
++Removed the ``HTTPResponse.getheaders()`` method in favor of ``HTTPResponse.headers``.
++Removed the ``HTTPResponse.getheader(name, default)`` method in favor of ``HTTPResponse.headers.get(name, default)``.
+diff --git a/docs/v2-migration-guide.rst b/docs/v2-migration-guide.rst
+index c7a664e3..796057b2 100644
+--- a/docs/v2-migration-guide.rst
++++ b/docs/v2-migration-guide.rst
+@@ -30,8 +30,8 @@ Here's a short summary of which changes in urllib3 2.x are most important:
+ - Removed the ``urllib3.contrib.ntlmpool`` module.
+ - Removed the ``urllib3.contrib.securetransport`` module.
+ - Removed the ``urllib3[secure]`` extra.
+-- Deprecated the ``HTTPResponse.getheaders()`` method in favor of ``HTTPResponse.headers``, will be removed in 2.6.0.
+-- Deprecated the ``HTTPResponse.getheader(name, default)`` method in favor of ``HTTPResponse.headers.get(name, default)``, will be removed in 2.6.0.
++- Removed the ``HTTPResponse.getheaders()`` method in favor of ``HTTPResponse.headers``.
++- Removed the ``HTTPResponse.getheader(name, default)`` method in favor of ``HTTPResponse.headers.get(name, default)``.
+ - Deprecated URLs without a scheme (ie 'https://') and will be raising an error in a future version of urllib3.
+ - Changed the default minimum TLS version to TLS 1.2 (previously was TLS 1.0).
+ - Changed the default request body encoding from 'ISO-8859-1' to 'UTF-8'.
+diff --git a/src/urllib3/response.py b/src/urllib3/response.py
+index e0608032..86d9effb 100644
+--- a/src/urllib3/response.py
++++ b/src/urllib3/response.py
+@@ -8,7 +8,6 @@ import re
+ import socket
+ import sys
+ import typing
+-import warnings
+ import zlib
+ from contextlib import contextmanager
+ from http.client import HTTPMessage as _HttplibHTTPMessage
+@@ -539,25 +538,6 @@ class BaseHTTPResponse(io.IOBase):
+             b[: len(temp)] = temp
+             return len(temp)
+ 
+-    # Compatibility methods for http.client.HTTPResponse
+-    def getheaders(self) -> HTTPHeaderDict:
+-        warnings.warn(
+-            "HTTPResponse.getheaders() is deprecated and will be removed "
+-            "in urllib3 v2.6.0. Instead access HTTPResponse.headers directly.",
+-            category=DeprecationWarning,
+-            stacklevel=2,
+-        )
+-        return self.headers
+-
+-    def getheader(self, name: str, default: str | None = None) -> str | None:
+-        warnings.warn(
+-            "HTTPResponse.getheader() is deprecated and will be removed "
+-            "in urllib3 v2.6.0. Instead use HTTPResponse.headers.get(name, default).",
+-            category=DeprecationWarning,
+-            stacklevel=2,
+-        )
+-        return self.headers.get(name, default)
+-
+     # Compatibility method for http.cookiejar
+     def info(self) -> HTTPHeaderDict:
+         return self.headers
+diff --git a/test/test_response.py b/test/test_response.py
+index 9552689f..e6fc212d 100644
+--- a/test/test_response.py
++++ b/test/test_response.py
+@@ -14,7 +14,6 @@ from unittest import mock
+ 
+ import pytest
+ 
+-from urllib3 import HTTPHeaderDict
+ from urllib3.exceptions import (
+     BodyNotHttplibCompatible,
+     DecodeError,
+@@ -151,26 +150,6 @@ def sock() -> typing.Generator[socket.socket]:
+     s.close()
+ 
+ 
+-class TestLegacyResponse:
+-    def test_getheaders(self) -> None:
+-        headers = {"host": "example.com"}
+-        r = HTTPResponse(headers=headers)
+-        with pytest.warns(
+-            DeprecationWarning,
+-            match=r"HTTPResponse.getheaders\(\) is deprecated",
+-        ):
+-            assert r.getheaders() == HTTPHeaderDict(headers)
+-
+-    def test_getheader(self) -> None:
+-        headers = {"host": "example.com"}
+-        r = HTTPResponse(headers=headers)
+-        with pytest.warns(
+-            DeprecationWarning,
+-            match=r"HTTPResponse.getheader\(\) is deprecated",
+-        ):
+-            assert r.getheader("host") == "example.com"
+-
+-
+ class TestResponse:
+     def test_cache_content(self) -> None:
+         r = HTTPResponse(b"foo")

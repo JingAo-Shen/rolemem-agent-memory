@@ -57,7 +57,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\ntest_hidden_verification.py:25: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_version_retrieval - AssertionError: ...\n============================== 1 failed in 0.08s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:25: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_version_retrieval - AssertionError: ...\n============================== 1 failed in 0.07s ===============================\n\nSTDERR:\n"
     },
     "M7_missing_attribute": {
       "description": "missing function",

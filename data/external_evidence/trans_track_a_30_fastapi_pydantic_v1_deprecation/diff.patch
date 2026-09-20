@@ -1,0 +1,1781 @@
+diff --git a/fastapi/dependencies/utils.py b/fastapi/dependencies/utils.py
+index 0ba93524c..39d0bd89c 100644
+--- a/fastapi/dependencies/utils.py
++++ b/fastapi/dependencies/utils.py
+@@ -1,6 +1,7 @@
+ import dataclasses
+ import inspect
+ import sys
++import warnings
+ from collections.abc import Coroutine, Mapping, Sequence
+ from contextlib import AsyncExitStack, contextmanager
+ from copy import copy, deepcopy
+@@ -322,6 +323,13 @@ def get_dependant(
+             )
+             continue
+         assert param_details.field is not None
++        if isinstance(param_details.field, may_v1.ModelField):
++            warnings.warn(
++                "pydantic.v1 is deprecated and will soon stop being supported by FastAPI."
++                f" Please update the param {param_name}: {param_details.type_annotation!r}.",
++                category=DeprecationWarning,
++                stacklevel=5,
++            )
+         if isinstance(
+             param_details.field.field_info, (params.Body, temp_pydantic_v1_params.Body)
+         ):
+diff --git a/fastapi/routing.py b/fastapi/routing.py
+index a1f2e44bb..2770e3253 100644
+--- a/fastapi/routing.py
++++ b/fastapi/routing.py
+@@ -2,6 +2,7 @@ import email.message
+ import functools
+ import inspect
+ import json
++import warnings
+ from collections.abc import (
+     AsyncIterator,
+     Awaitable,
+@@ -28,6 +29,7 @@ from fastapi._compat import (
+     _get_model_config,
+     _model_dump,
+     _normalize_errors,
++    annotation_is_pydantic_v1,
+     lenient_issubclass,
+     may_v1,
+ )
+@@ -634,6 +636,13 @@ class APIRoute(routing.Route):
+                 f"Status code {status_code} must not have a response body"
+             )
+             response_name = "Response_" + self.unique_id
++            if annotation_is_pydantic_v1(self.response_model):
++                warnings.warn(
++                    "pydantic.v1 is deprecated and will soon stop being supported by FastAPI."
++                    f" Please update the response model {self.response_model!r}.",
++                    category=DeprecationWarning,
++                    stacklevel=4,
++                )
+             self.response_field = create_model_field(
+                 name=response_name,
+                 type_=self.response_model,
+@@ -667,6 +676,13 @@ class APIRoute(routing.Route):
+                     f"Status code {additional_status_code} must not have a response body"
+                 )
+                 response_name = f"Response_{additional_status_code}_{self.unique_id}"
++                if annotation_is_pydantic_v1(model):
++                    warnings.warn(
++                        "pydantic.v1 is deprecated and will soon stop being supported by FastAPI."
++                        f" In responses={{}}, please update {model}.",
++                        category=DeprecationWarning,
++                        stacklevel=4,
++                    )
+                 response_field = create_model_field(
+                     name=response_name, type_=model, mode="serialization"
+                 )
+diff --git a/tests/benchmarks/test_general_performance.py b/tests/benchmarks/test_general_performance.py
+index dca3613d0..2da74b95c 100644
+--- a/tests/benchmarks/test_general_performance.py
++++ b/tests/benchmarks/test_general_performance.py
+@@ -1,5 +1,6 @@
+ import json
+ import sys
++import warnings
+ from collections.abc import Iterator
+ from typing import Annotated, Any
+ 
+@@ -84,96 +85,103 @@ def app(basemodel_class: type[Any]) -> FastAPI:
+ 
+     app = FastAPI()
+ 
+-    @app.post("/sync/validated", response_model=ItemOut)
+-    def sync_validated(item: ItemIn, dep: Annotated[int, Depends(dep_b)]):
+-        return ItemOut(name=item.name, value=item.value, dep=dep)
+-
+-    @app.get("/sync/dict-no-response-model")
+-    def sync_dict_no_response_model():
+-        return {"name": "foo", "value": 123}
+-
+-    @app.get("/sync/dict-with-response-model", response_model=ItemOut)
+-    def sync_dict_with_response_model(
+-        dep: Annotated[int, Depends(dep_b)],
+-    ):
+-        return {"name": "foo", "value": 123, "dep": dep}
+-
+-    @app.get("/sync/model-no-response-model")
+-    def sync_model_no_response_model(dep: Annotated[int, Depends(dep_b)]):
+-        return ItemOut(name="foo", value=123, dep=dep)
+-
+-    @app.get("/sync/model-with-response-model", response_model=ItemOut)
+-    def sync_model_with_response_model(dep: Annotated[int, Depends(dep_b)]):
+-        return ItemOut(name="foo", value=123, dep=dep)
+-
+-    @app.post("/async/validated", response_model=ItemOut)
+-    async def async_validated(
+-        item: ItemIn,
+-        dep: Annotated[int, Depends(dep_b)],
+-    ):
+-        return ItemOut(name=item.name, value=item.value, dep=dep)
+-
+-    @app.post("/sync/large-receive")
+-    def sync_large_receive(payload: LargeIn):
+-        return {"received": len(payload.items)}
+-
+-    @app.post("/async/large-receive")
+-    async def async_large_receive(payload: LargeIn):
+-        return {"received": len(payload.items)}
+-
+-    @app.get("/sync/large-dict-no-response-model")
+-    def sync_large_dict_no_response_model():
+-        return LARGE_PAYLOAD
+-
+-    @app.get("/sync/large-dict-with-response-model", response_model=LargeOut)
+-    def sync_large_dict_with_response_model():
+-        return LARGE_PAYLOAD
+-
+-    @app.get("/sync/large-model-no-response-model")
+-    def sync_large_model_no_response_model():
+-        return LargeOut(items=LARGE_ITEMS, metadata=LARGE_METADATA)
+-
+-    @app.get("/sync/large-model-with-response-model", response_model=LargeOut)
+-    def sync_large_model_with_response_model():
+-        return LargeOut(items=LARGE_ITEMS, metadata=LARGE_METADATA)
+-
+-    @app.get("/async/large-dict-no-response-model")
+-    async def async_large_dict_no_response_model():
+-        return LARGE_PAYLOAD
+-
+-    @app.get("/async/large-dict-with-response-model", response_model=LargeOut)
+-    async def async_large_dict_with_response_model():
+-        return LARGE_PAYLOAD
+-
+-    @app.get("/async/large-model-no-response-model")
+-    async def async_large_model_no_response_model():
+-        return LargeOut(items=LARGE_ITEMS, metadata=LARGE_METADATA)
+-
+-    @app.get("/async/large-model-with-response-model", response_model=LargeOut)
+-    async def async_large_model_with_response_model():
+-        return LargeOut(items=LARGE_ITEMS, metadata=LARGE_METADATA)
+-
+-    @app.get("/async/dict-no-response-model")
+-    async def async_dict_no_response_model():
+-        return {"name": "foo", "value": 123}
+-
+-    @app.get("/async/dict-with-response-model", response_model=ItemOut)
+-    async def async_dict_with_response_model(
+-        dep: Annotated[int, Depends(dep_b)],
+-    ):
+-        return {"name": "foo", "value": 123, "dep": dep}
+-
+-    @app.get("/async/model-no-response-model")
+-    async def async_model_no_response_model(
+-        dep: Annotated[int, Depends(dep_b)],
+-    ):
+-        return ItemOut(name="foo", value=123, dep=dep)
+-
+-    @app.get("/async/model-with-response-model", response_model=ItemOut)
+-    async def async_model_with_response_model(
+-        dep: Annotated[int, Depends(dep_b)],
+-    ):
+-        return ItemOut(name="foo", value=123, dep=dep)
++    with warnings.catch_warnings(record=True):
++        warnings.filterwarnings(
++            "ignore",
++            message=r"pydantic\.v1 is deprecated and will soon stop being supported by FastAPI\..*",
++            category=DeprecationWarning,
++        )
++
++        @app.post("/sync/validated", response_model=ItemOut)
++        def sync_validated(item: ItemIn, dep: Annotated[int, Depends(dep_b)]):
++            return ItemOut(name=item.name, value=item.value, dep=dep)
++
++        @app.get("/sync/dict-no-response-model")
++        def sync_dict_no_response_model():
++            return {"name": "foo", "value": 123}
++
++        @app.get("/sync/dict-with-response-model", response_model=ItemOut)
++        def sync_dict_with_response_model(
++            dep: Annotated[int, Depends(dep_b)],
++        ):
++            return {"name": "foo", "value": 123, "dep": dep}
++
++        @app.get("/sync/model-no-response-model")
++        def sync_model_no_response_model(dep: Annotated[int, Depends(dep_b)]):
++            return ItemOut(name="foo", value=123, dep=dep)
++
++        @app.get("/sync/model-with-response-model", response_model=ItemOut)
++        def sync_model_with_response_model(dep: Annotated[int, Depends(dep_b)]):
++            return ItemOut(name="foo", value=123, dep=dep)
++
++        @app.post("/async/validated", response_model=ItemOut)
++        async def async_validated(
++            item: ItemIn,
++            dep: Annotated[int, Depends(dep_b)],
++        ):
++            return ItemOut(name=item.name, value=item.value, dep=dep)
++
++        @app.post("/sync/large-receive")
++        def sync_large_receive(payload: LargeIn):
++            return {"received": len(payload.items)}
++
++        @app.post("/async/large-receive")
++        async def async_large_receive(payload: LargeIn):
++            return {"received": len(payload.items)}
++
++        @app.get("/sync/large-dict-no-response-model")
++        def sync_large_dict_no_response_model():
++            return LARGE_PAYLOAD
++
++        @app.get("/sync/large-dict-with-response-model", response_model=LargeOut)
++        def sync_large_dict_with_response_model():
++            return LARGE_PAYLOAD
++
++        @app.get("/sync/large-model-no-response-model")
++        def sync_large_model_no_response_model():
++            return LargeOut(items=LARGE_ITEMS, metadata=LARGE_METADATA)
++
++        @app.get("/sync/large-model-with-response-model", response_model=LargeOut)
++        def sync_large_model_with_response_model():
++            return LargeOut(items=LARGE_ITEMS, metadata=LARGE_METADATA)
++
++        @app.get("/async/large-dict-no-response-model")
++        async def async_large_dict_no_response_model():
++            return LARGE_PAYLOAD
++
++        @app.get("/async/large-dict-with-response-model", response_model=LargeOut)
++        async def async_large_dict_with_response_model():
++            return LARGE_PAYLOAD
++
++        @app.get("/async/large-model-no-response-model")
++        async def async_large_model_no_response_model():
++            return LargeOut(items=LARGE_ITEMS, metadata=LARGE_METADATA)
++
++        @app.get("/async/large-model-with-response-model", response_model=LargeOut)
++        async def async_large_model_with_response_model():
++            return LargeOut(items=LARGE_ITEMS, metadata=LARGE_METADATA)
++
++        @app.get("/async/dict-no-response-model")
++        async def async_dict_no_response_model():
++            return {"name": "foo", "value": 123}
++
++        @app.get("/async/dict-with-response-model", response_model=ItemOut)
++        async def async_dict_with_response_model(
++            dep: Annotated[int, Depends(dep_b)],
++        ):
++            return {"name": "foo", "value": 123, "dep": dep}
++
++        @app.get("/async/model-no-response-model")
++        async def async_model_no_response_model(
++            dep: Annotated[int, Depends(dep_b)],
++        ):
++            return ItemOut(name="foo", value=123, dep=dep)
++
++        @app.get("/async/model-with-response-model", response_model=ItemOut)
++        async def async_model_with_response_model(
++            dep: Annotated[int, Depends(dep_b)],
++        ):
++            return ItemOut(name="foo", value=123, dep=dep)
+ 
+     return app
+ 
+diff --git a/tests/test_compat_params_v1.py b/tests/test_compat_params_v1.py
+index b4ca861be..2ac96993a 100644
+--- a/tests/test_compat_params_v1.py
++++ b/tests/test_compat_params_v1.py
+@@ -1,4 +1,5 @@
+ import sys
++import warnings
+ from typing import Optional
+ 
+ import pytest
+@@ -33,94 +34,90 @@ class Item(BaseModel):
+ 
+ app = FastAPI()
+ 
+-
+-@app.get("/items/{item_id}")
+-def get_item_with_path(
+-    item_id: Annotated[int, Path(title="The ID of the item", ge=1, le=1000)],
+-):
+-    return {"item_id": item_id}
+-
+-
+-@app.get("/items/")
+-def get_items_with_query(
+-    q: Annotated[
+-        Optional[str], Query(min_length=3, max_length=50, pattern="^[a-zA-Z0-9 ]+$")
+-    ] = None,
+-    skip: Annotated[int, Query(ge=0)] = 0,
+-    limit: Annotated[int, Query(ge=1, le=100, examples=[5])] = 10,
+-):
+-    return {"q": q, "skip": skip, "limit": limit}
+-
+-
+-@app.get("/users/")
+-def get_user_with_header(
+-    x_custom: Annotated[Optional[str], Header()] = None,
+-    x_token: Annotated[Optional[str], Header(convert_underscores=True)] = None,
+-):
+-    return {"x_custom": x_custom, "x_token": x_token}
+-
+-
+-@app.get("/cookies/")
+-def get_cookies(
+-    session_id: Annotated[Optional[str], Cookie()] = None,
+-    tracking_id: Annotated[Optional[str], Cookie(min_length=10)] = None,
+-):
+-    return {"session_id": session_id, "tracking_id": tracking_id}
+-
+-
+-@app.post("/items/")
+-def create_item(
+-    item: Annotated[
+-        Item,
+-        Body(examples=[{"name": "Foo", "price": 35.4, "description": "The Foo item"}]),
+-    ],
+-):
+-    return {"item": item}
+-
+-
+-@app.post("/items-embed/")
+-def create_item_embed(
+-    item: Annotated[Item, Body(embed=True)],
+-):
+-    return {"item": item}
+-
+-
+-@app.put("/items/{item_id}")
+-def update_item(
+-    item_id: Annotated[int, Path(ge=1)],
+-    item: Annotated[Item, Body()],
+-    importance: Annotated[int, Body(gt=0, le=10)],
+-):
+-    return {"item": item, "importance": importance}
+-
+-
+-@app.post("/form-data/")
+-def submit_form(
+-    username: Annotated[str, Form(min_length=3, max_length=50)],
+-    password: Annotated[str, Form(min_length=8)],
+-    email: Annotated[Optional[str], Form()] = None,
+-):
+-    return {"username": username, "password": password, "email": email}
+-
+-
+-@app.post("/upload/")
+-def upload_file(
+-    file: Annotated[bytes, File()],
+-    description: Annotated[Optional[str], Form()] = None,
+-):
+-    return {"file_size": len(file), "description": description}
+-
+-
+-@app.post("/upload-multiple/")
+-def upload_multiple_files(
+-    files: Annotated[list[bytes], File()],
+-    note: Annotated[str, Form()] = "",
+-):
+-    return {
+-        "file_count": len(files),
+-        "total_size": sum(len(f) for f in files),
+-        "note": note,
+-    }
++with warnings.catch_warnings(record=True):
++    warnings.simplefilter("always")
++
++    @app.get("/items/{item_id}")
++    def get_item_with_path(
++        item_id: Annotated[int, Path(title="The ID of the item", ge=1, le=1000)],
++    ):
++        return {"item_id": item_id}
++
++    @app.get("/items/")
++    def get_items_with_query(
++        q: Annotated[
++            Optional[str],
++            Query(min_length=3, max_length=50, pattern="^[a-zA-Z0-9 ]+$"),
++        ] = None,
++        skip: Annotated[int, Query(ge=0)] = 0,
++        limit: Annotated[int, Query(ge=1, le=100, examples=[5])] = 10,
++    ):
++        return {"q": q, "skip": skip, "limit": limit}
++
++    @app.get("/users/")
++    def get_user_with_header(
++        x_custom: Annotated[Optional[str], Header()] = None,
++        x_token: Annotated[Optional[str], Header(convert_underscores=True)] = None,
++    ):
++        return {"x_custom": x_custom, "x_token": x_token}
++
++    @app.get("/cookies/")
++    def get_cookies(
++        session_id: Annotated[Optional[str], Cookie()] = None,
++        tracking_id: Annotated[Optional[str], Cookie(min_length=10)] = None,
++    ):
++        return {"session_id": session_id, "tracking_id": tracking_id}
++
++    @app.post("/items/")
++    def create_item(
++        item: Annotated[
++            Item,
++            Body(
++                examples=[{"name": "Foo", "price": 35.4, "description": "The Foo item"}]
++            ),
++        ],
++    ):
++        return {"item": item}
++
++    @app.post("/items-embed/")
++    def create_item_embed(
++        item: Annotated[Item, Body(embed=True)],
++    ):
++        return {"item": item}
++
++    @app.put("/items/{item_id}")
++    def update_item(
++        item_id: Annotated[int, Path(ge=1)],
++        item: Annotated[Item, Body()],
++        importance: Annotated[int, Body(gt=0, le=10)],
++    ):
++        return {"item": item, "importance": importance}
++
++    @app.post("/form-data/")
++    def submit_form(
++        username: Annotated[str, Form(min_length=3, max_length=50)],
++        password: Annotated[str, Form(min_length=8)],
++        email: Annotated[Optional[str], Form()] = None,
++    ):
++        return {"username": username, "password": password, "email": email}
++
++    @app.post("/upload/")
++    def upload_file(
++        file: Annotated[bytes, File()],
++        description: Annotated[Optional[str], Form()] = None,
++    ):
++        return {"file_size": len(file), "description": description}
++
++    @app.post("/upload-multiple/")
++    def upload_multiple_files(
++        files: Annotated[list[bytes], File()],
++        note: Annotated[str, Form()] = "",
++    ):
++        return {
++            "file_count": len(files),
++            "total_size": sum(len(f) for f in files),
++            "note": note,
++        }
+ 
+ 
+ client = TestClient(app)
+@@ -211,10 +208,10 @@ def test_header_params_none():
+ 
+ # Cookie parameter tests
+ def test_cookie_params():
+-    with TestClient(app) as client:
+-        client.cookies.set("session_id", "abc123")
+-        client.cookies.set("tracking_id", "1234567890abcdef")
+-        response = client.get("/cookies/")
++    with TestClient(app) as test_client:
++        test_client.cookies.set("session_id", "abc123")
++        test_client.cookies.set("tracking_id", "1234567890abcdef")
++        response = test_client.get("/cookies/")
+     assert response.status_code == 200
+     assert response.json() == {
+         "session_id": "abc123",
+@@ -223,9 +220,9 @@ def test_cookie_params():
+ 
+ 
+ def test_cookie_tracking_id_too_short():
+-    with TestClient(app) as client:
+-        client.cookies.set("tracking_id", "short")
+-        response = client.get("/cookies/")
++    with TestClient(app) as test_client:
++        test_client.cookies.set("tracking_id", "short")
++        response = test_client.get("/cookies/")
+     assert response.status_code == 422
+     assert response.json() == snapshot(
+         {
+diff --git a/tests/test_datetime_custom_encoder.py b/tests/test_datetime_custom_encoder.py
+index 822651f4f..56b6780f0 100644
+--- a/tests/test_datetime_custom_encoder.py
++++ b/tests/test_datetime_custom_encoder.py
+@@ -1,3 +1,4 @@
++import warnings
+ from datetime import datetime, timezone
+ 
+ from fastapi import FastAPI
+@@ -48,9 +49,12 @@ def test_pydanticv1():
+     app = FastAPI()
+     model = ModelWithDatetimeField(dt_field=datetime(2019, 1, 1, 8))
+ 
+-    @app.get("/model", response_model=ModelWithDatetimeField)
+-    def get_model():
+-        return model
++    with warnings.catch_warnings(record=True):
++        warnings.simplefilter("always")
++
++        @app.get("/model", response_model=ModelWithDatetimeField)
++        def get_model():
++            return model
+ 
+     client = TestClient(app)
+     with client:
+diff --git a/tests/test_filter_pydantic_sub_model/app_pv1.py b/tests/test_filter_pydantic_sub_model/app_pv1.py
+index 0b6ab53e0..d6f2ce7d2 100644
+--- a/tests/test_filter_pydantic_sub_model/app_pv1.py
++++ b/tests/test_filter_pydantic_sub_model/app_pv1.py
+@@ -1,3 +1,4 @@
++import warnings
+ from typing import Optional
+ 
+ from fastapi import Depends, FastAPI
+@@ -31,11 +32,14 @@ async def get_model_c() -> ModelC:
+     return ModelC(username="test-user", password="test-password")
+ 
+ 
+-@app.get("/model/{name}", response_model=ModelA)
+-async def get_model_a(name: str, model_c=Depends(get_model_c)):
+-    return {
+-        "name": name,
+-        "description": "model-a-desc",
+-        "model_b": model_c,
+-        "tags": {"key1": "value1", "key2": "value2"},
+-    }
++with warnings.catch_warnings(record=True):
++    warnings.simplefilter("always")
++
++    @app.get("/model/{name}", response_model=ModelA)
++    async def get_model_a(name: str, model_c=Depends(get_model_c)):
++        return {
++            "name": name,
++            "description": "model-a-desc",
++            "model_b": model_c,
++            "tags": {"key1": "value1", "key2": "value2"},
++        }
+diff --git a/tests/test_get_model_definitions_formfeed_escape.py b/tests/test_get_model_definitions_formfeed_escape.py
+index 50d799a57..dee595554 100644
+--- a/tests/test_get_model_definitions_formfeed_escape.py
++++ b/tests/test_get_model_definitions_formfeed_escape.py
+@@ -1,3 +1,5 @@
++import warnings
++
+ import pytest
+ from fastapi import FastAPI
+ from fastapi.testclient import TestClient
+@@ -36,12 +38,28 @@ def client_fixture(request: pytest.FixtureRequest) -> TestClient:
+ 
+     app = FastAPI()
+ 
+-    @app.get("/facilities/{facility_id}")
+-    def get_facility(facility_id: str) -> Facility:
+-        return Facility(
+-            id=facility_id,
+-            address=Address(line_1="123 Main St", city="Anytown", state_province="CA"),
+-        )
++    if request.param == "pydantic-v1":
++        with warnings.catch_warnings(record=True):
++            warnings.simplefilter("always")
++
++            @app.get("/facilities/{facility_id}")
++            def get_facility(facility_id: str) -> Facility:
++                return Facility(
++                    id=facility_id,
++                    address=Address(
++                        line_1="123 Main St", city="Anytown", state_province="CA"
++                    ),
++                )
++    else:
++
++        @app.get("/facilities/{facility_id}")
++        def get_facility(facility_id: str) -> Facility:
++            return Facility(
++                id=facility_id,
++                address=Address(
++                    line_1="123 Main St", city="Anytown", state_province="CA"
++                ),
++            )
+ 
+     client = TestClient(app)
+     return client
+diff --git a/tests/test_pydantic_v1_deprecation_warnings.py b/tests/test_pydantic_v1_deprecation_warnings.py
+new file mode 100644
+index 000000000..e0008e218
+--- /dev/null
++++ b/tests/test_pydantic_v1_deprecation_warnings.py
+@@ -0,0 +1,98 @@
++import sys
++
++import pytest
++
++from tests.utils import skip_module_if_py_gte_314
++
++if sys.version_info >= (3, 14):
++    skip_module_if_py_gte_314()
++
++from fastapi import FastAPI
++from fastapi._compat.v1 import BaseModel
++from fastapi.testclient import TestClient
++
++
++def test_warns_pydantic_v1_model_in_endpoint_param() -> None:
++    class ParamModelV1(BaseModel):
++        name: str
++
++    app = FastAPI()
++
++    with pytest.warns(
++        DeprecationWarning,
++        match=r"pydantic\.v1 is deprecated.*Please update the param data:",
++    ):
++
++        @app.post("/param")
++        def endpoint(data: ParamModelV1):
++            return data
++
++    client = TestClient(app)
++    response = client.post("/param", json={"name": "test"})
++    assert response.status_code == 200, response.text
++    assert response.json() == {"name": "test"}
++
++
++def test_warns_pydantic_v1_model_in_return_type() -> None:
++    class ReturnModelV1(BaseModel):
++        name: str
++
++    app = FastAPI()
++
++    with pytest.warns(
++        DeprecationWarning,
++        match=r"pydantic\.v1 is deprecated.*Please update the response model",
++    ):
++
++        @app.get("/return")
++        def endpoint() -> ReturnModelV1:
++            return ReturnModelV1(name="test")
++
++    client = TestClient(app)
++    response = client.get("/return")
++    assert response.status_code == 200, response.text
++    assert response.json() == {"name": "test"}
++
++
++def test_warns_pydantic_v1_model_in_response_model() -> None:
++    class ResponseModelV1(BaseModel):
++        name: str
++
++    app = FastAPI()
++
++    with pytest.warns(
++        DeprecationWarning,
++        match=r"pydantic\.v1 is deprecated.*Please update the response model",
++    ):
++
++        @app.get("/response-model", response_model=ResponseModelV1)
++        def endpoint():
++            return {"name": "test"}
++
++    client = TestClient(app)
++    response = client.get("/response-model")
++    assert response.status_code == 200, response.text
++    assert response.json() == {"name": "test"}
++
++
++def test_warns_pydantic_v1_model_in_additional_responses_model() -> None:
++    class ErrorModelV1(BaseModel):
++        detail: str
++
++    app = FastAPI()
++
++    with pytest.warns(
++        DeprecationWarning,
++        match=r"pydantic\.v1 is deprecated.*In responses=\{\}, please update",
++    ):
++
++        @app.get(
++            "/responses", response_model=None, responses={400: {"model": ErrorModelV1}}
++        )
++        def endpoint():
++            return {"ok": True}
++
++    client = TestClient(app)
++    response = client.get("/responses")
++    assert response.status_code == 200, response.text
++    assert response.json() == {"ok": True}
+diff --git a/tests/test_pydantic_v1_v2_01.py b/tests/test_pydantic_v1_v2_01.py
+index 83536cafa..4868e5d22 100644
+--- a/tests/test_pydantic_v1_v2_01.py
++++ b/tests/test_pydantic_v1_v2_01.py
+@@ -1,4 +1,5 @@
+ import sys
++import warnings
+ from typing import Any, Union
+ 
+ from tests.utils import skip_module_if_py_gte_314
+@@ -26,30 +27,29 @@ class Item(BaseModel):
+ 
+ app = FastAPI()
+ 
+-
+-@app.post("/simple-model")
+-def handle_simple_model(data: SubItem) -> SubItem:
+-    return data
+-
+-
+-@app.post("/simple-model-filter", response_model=SubItem)
+-def handle_simple_model_filter(data: SubItem) -> Any:
+-    extended_data = data.dict()
+-    extended_data.update({"secret_price": 42})
+-    return extended_data
+-
+-
+-@app.post("/item")
+-def handle_item(data: Item) -> Item:
+-    return data
+-
+-
+-@app.post("/item-filter", response_model=Item)
+-def handle_item_filter(data: Item) -> Any:
+-    extended_data = data.dict()
+-    extended_data.update({"secret_data": "classified", "internal_id": 12345})
+-    extended_data["sub"].update({"internal_id": 67890})
+-    return extended_data
++with warnings.catch_warnings(record=True):
++    warnings.simplefilter("always")
++
++    @app.post("/simple-model")
++    def handle_simple_model(data: SubItem) -> SubItem:
++        return data
++
++    @app.post("/simple-model-filter", response_model=SubItem)
++    def handle_simple_model_filter(data: SubItem) -> Any:
++        extended_data = data.dict()
++        extended_data.update({"secret_price": 42})
++        return extended_data
++
++    @app.post("/item")
++    def handle_item(data: Item) -> Item:
++        return data
++
++    @app.post("/item-filter", response_model=Item)
++    def handle_item_filter(data: Item) -> Any:
++        extended_data = data.dict()
++        extended_data.update({"secret_data": "classified", "internal_id": 12345})
++        extended_data["sub"].update({"internal_id": 67890})
++        return extended_data
+ 
+ 
+ client = TestClient(app)
+diff --git a/tests/test_pydantic_v1_v2_list.py b/tests/test_pydantic_v1_v2_list.py
+index 4ddcbf240..108f231fa 100644
+--- a/tests/test_pydantic_v1_v2_list.py
++++ b/tests/test_pydantic_v1_v2_list.py
+@@ -1,4 +1,5 @@
+ import sys
++import warnings
+ from typing import Any, Union
+ 
+ from tests.utils import skip_module_if_py_gte_314
+@@ -27,49 +28,47 @@ class Item(BaseModel):
+ app = FastAPI()
+ 
+ 
+-@app.post("/item")
+-def handle_item(data: Item) -> list[Item]:
+-    return [data, data]
++with warnings.catch_warnings(record=True):
++    warnings.simplefilter("always")
+ 
++    @app.post("/item")
++    def handle_item(data: Item) -> list[Item]:
++        return [data, data]
+ 
+-@app.post("/item-filter", response_model=list[Item])
+-def handle_item_filter(data: Item) -> Any:
+-    extended_data = data.dict()
+-    extended_data.update({"secret_data": "classified", "internal_id": 12345})
+-    extended_data["sub"].update({"internal_id": 67890})
+-    return [extended_data, extended_data]
+-
+-
+-@app.post("/item-list")
+-def handle_item_list(data: list[Item]) -> Item:
+-    if data:
+-        return data[0]
+-    return Item(title="", size=0, sub=SubItem(name=""))
+-
+-
+-@app.post("/item-list-filter", response_model=Item)
+-def handle_item_list_filter(data: list[Item]) -> Any:
+-    if data:
+-        extended_data = data[0].dict()
+-        extended_data.update({"secret_data": "classified", "internal_id": 12345})
+-        extended_data["sub"].update({"internal_id": 67890})
+-        return extended_data
+-    return Item(title="", size=0, sub=SubItem(name=""))
+-
+-
+-@app.post("/item-list-to-list")
+-def handle_item_list_to_list(data: list[Item]) -> list[Item]:
+-    return data
+-
+-
+-@app.post("/item-list-to-list-filter", response_model=list[Item])
+-def handle_item_list_to_list_filter(data: list[Item]) -> Any:
+-    if data:
+-        extended_data = data[0].dict()
++    @app.post("/item-filter", response_model=list[Item])
++    def handle_item_filter(data: Item) -> Any:
++        extended_data = data.dict()
+         extended_data.update({"secret_data": "classified", "internal_id": 12345})
+         extended_data["sub"].update({"internal_id": 67890})
+         return [extended_data, extended_data]
+-    return []
++
++    @app.post("/item-list")
++    def handle_item_list(data: list[Item]) -> Item:
++        if data:
++            return data[0]
++        return Item(title="", size=0, sub=SubItem(name=""))
++
++    @app.post("/item-list-filter", response_model=Item)
++    def handle_item_list_filter(data: list[Item]) -> Any:
++        if data:
++            extended_data = data[0].dict()
++            extended_data.update({"secret_data": "classified", "internal_id": 12345})
++            extended_data["sub"].update({"internal_id": 67890})
++            return extended_data
++        return Item(title="", size=0, sub=SubItem(name=""))
++
++    @app.post("/item-list-to-list")
++    def handle_item_list_to_list(data: list[Item]) -> list[Item]:
++        return data
++
++    @app.post("/item-list-to-list-filter", response_model=list[Item])
++    def handle_item_list_to_list_filter(data: list[Item]) -> Any:
++        if data:
++            extended_data = data[0].dict()
++            extended_data.update({"secret_data": "classified", "internal_id": 12345})
++            extended_data["sub"].update({"internal_id": 67890})
++            return [extended_data, extended_data]
++        return []
+ 
+ 
+ client = TestClient(app)
+diff --git a/tests/test_pydantic_v1_v2_mixed.py b/tests/test_pydantic_v1_v2_mixed.py
+index 61e5bb582..895835a4c 100644
+--- a/tests/test_pydantic_v1_v2_mixed.py
++++ b/tests/test_pydantic_v1_v2_mixed.py
+@@ -1,4 +1,5 @@
+ import sys
++import warnings
+ from typing import Any, Union
+ 
+ from tests.utils import skip_module_if_py_gte_314
+@@ -39,179 +40,181 @@ class NewItem(NewBaseModel):
+ 
+ app = FastAPI()
+ 
++with warnings.catch_warnings(record=True):
++    warnings.simplefilter("always")
+ 
+-@app.post("/v1-to-v2/item")
+-def handle_v1_item_to_v2(data: Item) -> NewItem:
+-    return NewItem(
+-        new_title=data.title,
+-        new_size=data.size,
+-        new_description=data.description,
+-        new_sub=NewSubItem(new_sub_name=data.sub.name),
+-        new_multi=[NewSubItem(new_sub_name=s.name) for s in data.multi],
+-    )
+-
+-
+-@app.post("/v1-to-v2/item-filter", response_model=NewItem)
+-def handle_v1_item_to_v2_filter(data: Item) -> Any:
+-    result = {
+-        "new_title": data.title,
+-        "new_size": data.size,
+-        "new_description": data.description,
+-        "new_sub": {"new_sub_name": data.sub.name, "new_sub_secret": "sub_hidden"},
+-        "new_multi": [
+-            {"new_sub_name": s.name, "new_sub_secret": "sub_hidden"} for s in data.multi
+-        ],
+-        "secret": "hidden_v1_to_v2",
+-    }
+-    return result
+-
+-
+-@app.post("/v2-to-v1/item")
+-def handle_v2_item_to_v1(data: NewItem) -> Item:
+-    return Item(
+-        title=data.new_title,
+-        size=data.new_size,
+-        description=data.new_description,
+-        sub=SubItem(name=data.new_sub.new_sub_name),
+-        multi=[SubItem(name=s.new_sub_name) for s in data.new_multi],
+-    )
+-
+-
+-@app.post("/v2-to-v1/item-filter", response_model=Item)
+-def handle_v2_item_to_v1_filter(data: NewItem) -> Any:
+-    result = {
+-        "title": data.new_title,
+-        "size": data.new_size,
+-        "description": data.new_description,
+-        "sub": {"name": data.new_sub.new_sub_name, "sub_secret": "sub_hidden"},
+-        "multi": [
+-            {"name": s.new_sub_name, "sub_secret": "sub_hidden"} for s in data.new_multi
+-        ],
+-        "secret": "hidden_v2_to_v1",
+-    }
+-    return result
+-
++    @app.post("/v1-to-v2/item")
++    def handle_v1_item_to_v2(data: Item) -> NewItem:
++        return NewItem(
++            new_title=data.title,
++            new_size=data.size,
++            new_description=data.description,
++            new_sub=NewSubItem(new_sub_name=data.sub.name),
++            new_multi=[NewSubItem(new_sub_name=s.name) for s in data.multi],
++        )
+ 
+-@app.post("/v1-to-v2/item-to-list")
+-def handle_v1_item_to_v2_list(data: Item) -> list[NewItem]:
+-    converted = NewItem(
+-        new_title=data.title,
+-        new_size=data.size,
+-        new_description=data.description,
+-        new_sub=NewSubItem(new_sub_name=data.sub.name),
+-        new_multi=[NewSubItem(new_sub_name=s.name) for s in data.multi],
+-    )
+-    return [converted, converted]
++    @app.post("/v1-to-v2/item-filter", response_model=NewItem)
++    def handle_v1_item_to_v2_filter(data: Item) -> Any:
++        result = {
++            "new_title": data.title,
++            "new_size": data.size,
++            "new_description": data.description,
++            "new_sub": {
++                "new_sub_name": data.sub.name,
++                "new_sub_secret": "sub_hidden",
++            },
++            "new_multi": [
++                {"new_sub_name": s.name, "new_sub_secret": "sub_hidden"}
++                for s in data.multi
++            ],
++            "secret": "hidden_v1_to_v2",
++        }
++        return result
+ 
++    @app.post("/v2-to-v1/item")
++    def handle_v2_item_to_v1(data: NewItem) -> Item:
++        return Item(
++            title=data.new_title,
++            size=data.new_size,
++            description=data.new_description,
++            sub=SubItem(name=data.new_sub.new_sub_name),
++            multi=[SubItem(name=s.new_sub_name) for s in data.new_multi],
++        )
+ 
+-@app.post("/v1-to-v2/list-to-list")
+-def handle_v1_list_to_v2_list(data: list[Item]) -> list[NewItem]:
+-    result = []
+-    for item in data:
+-        result.append(
+-            NewItem(
++    @app.post("/v2-to-v1/item-filter", response_model=Item)
++    def handle_v2_item_to_v1_filter(data: NewItem) -> Any:
++        result = {
++            "title": data.new_title,
++            "size": data.new_size,
++            "description": data.new_description,
++            "sub": {"name": data.new_sub.new_sub_name, "sub_secret": "sub_hidden"},
++            "multi": [
++                {"name": s.new_sub_name, "sub_secret": "sub_hidden"}
++                for s in data.new_multi
++            ],
++            "secret": "hidden_v2_to_v1",
++        }
++        return result
++
++    @app.post("/v1-to-v2/item-to-list")
++    def handle_v1_item_to_v2_list(data: Item) -> list[NewItem]:
++        converted = NewItem(
++            new_title=data.title,
++            new_size=data.size,
++            new_description=data.description,
++            new_sub=NewSubItem(new_sub_name=data.sub.name),
++            new_multi=[NewSubItem(new_sub_name=s.name) for s in data.multi],
++        )
++        return [converted, converted]
++
++    @app.post("/v1-to-v2/list-to-list")
++    def handle_v1_list_to_v2_list(data: list[Item]) -> list[NewItem]:
++        result = []
++        for item in data:
++            result.append(
++                NewItem(
++                    new_title=item.title,
++                    new_size=item.size,
++                    new_description=item.description,
++                    new_sub=NewSubItem(new_sub_name=item.sub.name),
++                    new_multi=[NewSubItem(new_sub_name=s.name) for s in item.multi],
++                )
++            )
++        return result
++
++    @app.post("/v1-to-v2/list-to-list-filter", response_model=list[NewItem])
++    def handle_v1_list_to_v2_list_filter(data: list[Item]) -> Any:
++        result = []
++        for item in data:
++            converted = {
++                "new_title": item.title,
++                "new_size": item.size,
++                "new_description": item.description,
++                "new_sub": {
++                    "new_sub_name": item.sub.name,
++                    "new_sub_secret": "sub_hidden",
++                },
++                "new_multi": [
++                    {"new_sub_name": s.name, "new_sub_secret": "sub_hidden"}
++                    for s in item.multi
++                ],
++                "secret": "hidden_v2_to_v1",
++            }
++            result.append(converted)
++        return result
++
++    @app.post("/v1-to-v2/list-to-item")
++    def handle_v1_list_to_v2_item(data: list[Item]) -> NewItem:
++        if data:
++            item = data[0]
++            return NewItem(
+                 new_title=item.title,
+                 new_size=item.size,
+                 new_description=item.description,
+                 new_sub=NewSubItem(new_sub_name=item.sub.name),
+                 new_multi=[NewSubItem(new_sub_name=s.name) for s in item.multi],
+             )
++        return NewItem(new_title="", new_size=0, new_sub=NewSubItem(new_sub_name=""))
++
++    @app.post("/v2-to-v1/item-to-list")
++    def handle_v2_item_to_v1_list(data: NewItem) -> list[Item]:
++        converted = Item(
++            title=data.new_title,
++            size=data.new_size,
++            description=data.new_description,
++            sub=SubItem(name=data.new_sub.new_sub_name),
++            multi=[SubItem(name=s.new_sub_name) for s in data.new_multi],
+         )
+-    return result
+-
+-
+-@app.post("/v1-to-v2/list-to-list-filter", response_model=list[NewItem])
+-def handle_v1_list_to_v2_list_filter(data: list[Item]) -> Any:
+-    result = []
+-    for item in data:
+-        converted = {
+-            "new_title": item.title,
+-            "new_size": item.size,
+-            "new_description": item.description,
+-            "new_sub": {"new_sub_name": item.sub.name, "new_sub_secret": "sub_hidden"},
+-            "new_multi": [
+-                {"new_sub_name": s.name, "new_sub_secret": "sub_hidden"}
+-                for s in item.multi
+-            ],
+-            "secret": "hidden_v2_to_v1",
+-        }
+-        result.append(converted)
+-    return result
+-
+-
+-@app.post("/v1-to-v2/list-to-item")
+-def handle_v1_list_to_v2_item(data: list[Item]) -> NewItem:
+-    if data:
+-        item = data[0]
+-        return NewItem(
+-            new_title=item.title,
+-            new_size=item.size,
+-            new_description=item.description,
+-            new_sub=NewSubItem(new_sub_name=item.sub.name),
+-            new_multi=[NewSubItem(new_sub_name=s.name) for s in item.multi],
+-        )
+-    return NewItem(new_title="", new_size=0, new_sub=NewSubItem(new_sub_name=""))
+-
+-
+-@app.post("/v2-to-v1/item-to-list")
+-def handle_v2_item_to_v1_list(data: NewItem) -> list[Item]:
+-    converted = Item(
+-        title=data.new_title,
+-        size=data.new_size,
+-        description=data.new_description,
+-        sub=SubItem(name=data.new_sub.new_sub_name),
+-        multi=[SubItem(name=s.new_sub_name) for s in data.new_multi],
+-    )
+-    return [converted, converted]
+-
+-
+-@app.post("/v2-to-v1/list-to-list")
+-def handle_v2_list_to_v1_list(data: list[NewItem]) -> list[Item]:
+-    result = []
+-    for item in data:
+-        result.append(
+-            Item(
++        return [converted, converted]
++
++    @app.post("/v2-to-v1/list-to-list")
++    def handle_v2_list_to_v1_list(data: list[NewItem]) -> list[Item]:
++        result = []
++        for item in data:
++            result.append(
++                Item(
++                    title=item.new_title,
++                    size=item.new_size,
++                    description=item.new_description,
++                    sub=SubItem(name=item.new_sub.new_sub_name),
++                    multi=[SubItem(name=s.new_sub_name) for s in item.new_multi],
++                )
++            )
++        return result
++
++    @app.post("/v2-to-v1/list-to-list-filter", response_model=list[Item])
++    def handle_v2_list_to_v1_list_filter(data: list[NewItem]) -> Any:
++        result = []
++        for item in data:
++            converted = {
++                "title": item.new_title,
++                "size": item.new_size,
++                "description": item.new_description,
++                "sub": {
++                    "name": item.new_sub.new_sub_name,
++                    "sub_secret": "sub_hidden",
++                },
++                "multi": [
++                    {"name": s.new_sub_name, "sub_secret": "sub_hidden"}
++                    for s in item.new_multi
++                ],
++                "secret": "hidden_v2_to_v1",
++            }
++            result.append(converted)
++        return result
++
++    @app.post("/v2-to-v1/list-to-item")
++    def handle_v2_list_to_v1_item(data: list[NewItem]) -> Item:
++        if data:
++            item = data[0]
++            return Item(
+                 title=item.new_title,
+                 size=item.new_size,
+                 description=item.new_description,
+                 sub=SubItem(name=item.new_sub.new_sub_name),
+                 multi=[SubItem(name=s.new_sub_name) for s in item.new_multi],
+             )
+-        )
+-    return result
+-
+-
+-@app.post("/v2-to-v1/list-to-list-filter", response_model=list[Item])
+-def handle_v2_list_to_v1_list_filter(data: list[NewItem]) -> Any:
+-    result = []
+-    for item in data:
+-        converted = {
+-            "title": item.new_title,
+-            "size": item.new_size,
+-            "description": item.new_description,
+-            "sub": {"name": item.new_sub.new_sub_name, "sub_secret": "sub_hidden"},
+-            "multi": [
+-                {"name": s.new_sub_name, "sub_secret": "sub_hidden"}
+-                for s in item.new_multi
+-            ],
+-            "secret": "hidden_v2_to_v1",
+-        }
+-        result.append(converted)
+-    return result
+-
+-
+-@app.post("/v2-to-v1/list-to-item")
+-def handle_v2_list_to_v1_item(data: list[NewItem]) -> Item:
+-    if data:
+-        item = data[0]
+-        return Item(
+-            title=item.new_title,
+-            size=item.new_size,
+-            description=item.new_description,
+-            sub=SubItem(name=item.new_sub.new_sub_name),
+-            multi=[SubItem(name=s.new_sub_name) for s in item.new_multi],
+-        )
+-    return Item(title="", size=0, sub=SubItem(name=""))
++        return Item(title="", size=0, sub=SubItem(name=""))
+ 
+ 
+ client = TestClient(app)
+diff --git a/tests/test_pydantic_v1_v2_multifile/main.py b/tests/test_pydantic_v1_v2_multifile/main.py
+index 9397368ab..4180ec3bf 100644
+--- a/tests/test_pydantic_v1_v2_multifile/main.py
++++ b/tests/test_pydantic_v1_v2_multifile/main.py
+@@ -1,140 +1,137 @@
++import warnings
++
+ from fastapi import FastAPI
+ 
+ from . import modelsv1, modelsv2, modelsv2b
+ 
+ app = FastAPI()
+ 
++with warnings.catch_warnings(record=True):
++    warnings.simplefilter("always")
+ 
+-@app.post("/v1-to-v2/item")
+-def handle_v1_item_to_v2(data: modelsv1.Item) -> modelsv2.Item:
+-    return modelsv2.Item(
+-        new_title=data.title,
+-        new_size=data.size,
+-        new_description=data.description,
+-        new_sub=modelsv2.SubItem(new_sub_name=data.sub.name),
+-        new_multi=[modelsv2.SubItem(new_sub_name=s.name) for s in data.multi],
+-    )
+-
+-
+-@app.post("/v2-to-v1/item")
+-def handle_v2_item_to_v1(data: modelsv2.Item) -> modelsv1.Item:
+-    return modelsv1.Item(
+-        title=data.new_title,
+-        size=data.new_size,
+-        description=data.new_description,
+-        sub=modelsv1.SubItem(name=data.new_sub.new_sub_name),
+-        multi=[modelsv1.SubItem(name=s.new_sub_name) for s in data.new_multi],
+-    )
+-
++    @app.post("/v1-to-v2/item")
++    def handle_v1_item_to_v2(data: modelsv1.Item) -> modelsv2.Item:
++        return modelsv2.Item(
++            new_title=data.title,
++            new_size=data.size,
++            new_description=data.description,
++            new_sub=modelsv2.SubItem(new_sub_name=data.sub.name),
++            new_multi=[modelsv2.SubItem(new_sub_name=s.name) for s in data.multi],
++        )
+ 
+-@app.post("/v1-to-v2/item-to-list")
+-def handle_v1_item_to_v2_list(data: modelsv1.Item) -> list[modelsv2.Item]:
+-    converted = modelsv2.Item(
+-        new_title=data.title,
+-        new_size=data.size,
+-        new_description=data.description,
+-        new_sub=modelsv2.SubItem(new_sub_name=data.sub.name),
+-        new_multi=[modelsv2.SubItem(new_sub_name=s.name) for s in data.multi],
+-    )
+-    return [converted, converted]
++    @app.post("/v2-to-v1/item")
++    def handle_v2_item_to_v1(data: modelsv2.Item) -> modelsv1.Item:
++        return modelsv1.Item(
++            title=data.new_title,
++            size=data.new_size,
++            description=data.new_description,
++            sub=modelsv1.SubItem(name=data.new_sub.new_sub_name),
++            multi=[modelsv1.SubItem(name=s.new_sub_name) for s in data.new_multi],
++        )
+ 
++    @app.post("/v1-to-v2/item-to-list")
++    def handle_v1_item_to_v2_list(data: modelsv1.Item) -> list[modelsv2.Item]:
++        converted = modelsv2.Item(
++            new_title=data.title,
++            new_size=data.size,
++            new_description=data.description,
++            new_sub=modelsv2.SubItem(new_sub_name=data.sub.name),
++            new_multi=[modelsv2.SubItem(new_sub_name=s.name) for s in data.multi],
++        )
++        return [converted, converted]
++
++    @app.post("/v1-to-v2/list-to-list")
++    def handle_v1_list_to_v2_list(data: list[modelsv1.Item]) -> list[modelsv2.Item]:
++        result = []
++        for item in data:
++            result.append(
++                modelsv2.Item(
++                    new_title=item.title,
++                    new_size=item.size,
++                    new_description=item.description,
++                    new_sub=modelsv2.SubItem(new_sub_name=item.sub.name),
++                    new_multi=[
++                        modelsv2.SubItem(new_sub_name=s.name) for s in item.multi
++                    ],
++                )
++            )
++        return result
+ 
+-@app.post("/v1-to-v2/list-to-list")
+-def handle_v1_list_to_v2_list(data: list[modelsv1.Item]) -> list[modelsv2.Item]:
+-    result = []
+-    for item in data:
+-        result.append(
+-            modelsv2.Item(
++    @app.post("/v1-to-v2/list-to-item")
++    def handle_v1_list_to_v2_item(data: list[modelsv1.Item]) -> modelsv2.Item:
++        if data:
++            item = data[0]
++            return modelsv2.Item(
+                 new_title=item.title,
+                 new_size=item.size,
+                 new_description=item.description,
+                 new_sub=modelsv2.SubItem(new_sub_name=item.sub.name),
+                 new_multi=[modelsv2.SubItem(new_sub_name=s.name) for s in item.multi],
+             )
+-        )
+-    return result
+-
+-
+-@app.post("/v1-to-v2/list-to-item")
+-def handle_v1_list_to_v2_item(data: list[modelsv1.Item]) -> modelsv2.Item:
+-    if data:
+-        item = data[0]
+         return modelsv2.Item(
+-            new_title=item.title,
+-            new_size=item.size,
+-            new_description=item.description,
+-            new_sub=modelsv2.SubItem(new_sub_name=item.sub.name),
+-            new_multi=[modelsv2.SubItem(new_sub_name=s.name) for s in item.multi],
++            new_title="", new_size=0, new_sub=modelsv2.SubItem(new_sub_name="")
+         )
+-    return modelsv2.Item(
+-        new_title="", new_size=0, new_sub=modelsv2.SubItem(new_sub_name="")
+-    )
+-
+-
+-@app.post("/v2-to-v1/item-to-list")
+-def handle_v2_item_to_v1_list(data: modelsv2.Item) -> list[modelsv1.Item]:
+-    converted = modelsv1.Item(
+-        title=data.new_title,
+-        size=data.new_size,
+-        description=data.new_description,
+-        sub=modelsv1.SubItem(name=data.new_sub.new_sub_name),
+-        multi=[modelsv1.SubItem(name=s.new_sub_name) for s in data.new_multi],
+-    )
+-    return [converted, converted]
+ 
++    @app.post("/v2-to-v1/item-to-list")
++    def handle_v2_item_to_v1_list(data: modelsv2.Item) -> list[modelsv1.Item]:
++        converted = modelsv1.Item(
++            title=data.new_title,
++            size=data.new_size,
++            description=data.new_description,
++            sub=modelsv1.SubItem(name=data.new_sub.new_sub_name),
++            multi=[modelsv1.SubItem(name=s.new_sub_name) for s in data.new_multi],
++        )
++        return [converted, converted]
++
++    @app.post("/v2-to-v1/list-to-list")
++    def handle_v2_list_to_v1_list(data: list[modelsv2.Item]) -> list[modelsv1.Item]:
++        result = []
++        for item in data:
++            result.append(
++                modelsv1.Item(
++                    title=item.new_title,
++                    size=item.new_size,
++                    description=item.new_description,
++                    sub=modelsv1.SubItem(name=item.new_sub.new_sub_name),
++                    multi=[
++                        modelsv1.SubItem(name=s.new_sub_name) for s in item.new_multi
++                    ],
++                )
++            )
++        return result
+ 
+-@app.post("/v2-to-v1/list-to-list")
+-def handle_v2_list_to_v1_list(data: list[modelsv2.Item]) -> list[modelsv1.Item]:
+-    result = []
+-    for item in data:
+-        result.append(
+-            modelsv1.Item(
++    @app.post("/v2-to-v1/list-to-item")
++    def handle_v2_list_to_v1_item(data: list[modelsv2.Item]) -> modelsv1.Item:
++        if data:
++            item = data[0]
++            return modelsv1.Item(
+                 title=item.new_title,
+                 size=item.new_size,
+                 description=item.new_description,
+                 sub=modelsv1.SubItem(name=item.new_sub.new_sub_name),
+                 multi=[modelsv1.SubItem(name=s.new_sub_name) for s in item.new_multi],
+             )
+-        )
+-    return result
+-
++        return modelsv1.Item(title="", size=0, sub=modelsv1.SubItem(name=""))
+ 
+-@app.post("/v2-to-v1/list-to-item")
+-def handle_v2_list_to_v1_item(data: list[modelsv2.Item]) -> modelsv1.Item:
+-    if data:
+-        item = data[0]
++    @app.post("/v2-to-v1/same-name")
++    def handle_v2_same_name_to_v1(
++        item1: modelsv2.Item, item2: modelsv2b.Item
++    ) -> modelsv1.Item:
+         return modelsv1.Item(
+-            title=item.new_title,
+-            size=item.new_size,
+-            description=item.new_description,
+-            sub=modelsv1.SubItem(name=item.new_sub.new_sub_name),
+-            multi=[modelsv1.SubItem(name=s.new_sub_name) for s in item.new_multi],
++            title=item1.new_title,
++            size=item2.dup_size,
++            description=item1.new_description,
++            sub=modelsv1.SubItem(name=item1.new_sub.new_sub_name),
++            multi=[modelsv1.SubItem(name=s.dup_sub_name) for s in item2.dup_multi],
+         )
+-    return modelsv1.Item(title="", size=0, sub=modelsv1.SubItem(name=""))
+-
+-
+-@app.post("/v2-to-v1/same-name")
+-def handle_v2_same_name_to_v1(
+-    item1: modelsv2.Item, item2: modelsv2b.Item
+-) -> modelsv1.Item:
+-    return modelsv1.Item(
+-        title=item1.new_title,
+-        size=item2.dup_size,
+-        description=item1.new_description,
+-        sub=modelsv1.SubItem(name=item1.new_sub.new_sub_name),
+-        multi=[modelsv1.SubItem(name=s.dup_sub_name) for s in item2.dup_multi],
+-    )
+-
+ 
+-@app.post("/v2-to-v1/list-of-items-to-list-of-items")
+-def handle_v2_items_in_list_to_v1_item_in_list(
+-    data1: list[modelsv2.ItemInList], data2: list[modelsv2b.ItemInList]
+-) -> list[modelsv1.ItemInList]:
+-    result = []
+-    item1 = data1[0]
+-    item2 = data2[0]
+-    result = [
+-        modelsv1.ItemInList(name1=item1.name2),
+-        modelsv1.ItemInList(name1=item2.dup_name2),
+-    ]
+-    return result
++    @app.post("/v2-to-v1/list-of-items-to-list-of-items")
++    def handle_v2_items_in_list_to_v1_item_in_list(
++        data1: list[modelsv2.ItemInList], data2: list[modelsv2b.ItemInList]
++    ) -> list[modelsv1.ItemInList]:
++        item1 = data1[0]
++        item2 = data2[0]
++        return [
++            modelsv1.ItemInList(name1=item1.name2),
++            modelsv1.ItemInList(name1=item2.dup_name2),
++        ]
+diff --git a/tests/test_pydantic_v1_v2_noneable.py b/tests/test_pydantic_v1_v2_noneable.py
+index 2cb6c3d6b..ba98b5653 100644
+--- a/tests/test_pydantic_v1_v2_noneable.py
++++ b/tests/test_pydantic_v1_v2_noneable.py
+@@ -1,4 +1,5 @@
+ import sys
++import warnings
+ from typing import Any, Union
+ 
+ from tests.utils import skip_module_if_py_gte_314
+@@ -39,65 +40,69 @@ class NewItem(NewBaseModel):
+ 
+ app = FastAPI()
+ 
+-
+-@app.post("/v1-to-v2/")
+-def handle_v1_item_to_v2(data: Item) -> Union[NewItem, None]:
+-    if data.size < 0:
+-        return None
+-    return NewItem(
+-        new_title=data.title,
+-        new_size=data.size,
+-        new_description=data.description,
+-        new_sub=NewSubItem(new_sub_name=data.sub.name),
+-        new_multi=[NewSubItem(new_sub_name=s.name) for s in data.multi],
+-    )
+-
+-
+-@app.post("/v1-to-v2/item-filter", response_model=Union[NewItem, None])
+-def handle_v1_item_to_v2_filter(data: Item) -> Any:
+-    if data.size < 0:
+-        return None
+-    result = {
+-        "new_title": data.title,
+-        "new_size": data.size,
+-        "new_description": data.description,
+-        "new_sub": {"new_sub_name": data.sub.name, "new_sub_secret": "sub_hidden"},
+-        "new_multi": [
+-            {"new_sub_name": s.name, "new_sub_secret": "sub_hidden"} for s in data.multi
+-        ],
+-        "secret": "hidden_v1_to_v2",
+-    }
+-    return result
+-
+-
+-@app.post("/v2-to-v1/item")
+-def handle_v2_item_to_v1(data: NewItem) -> Union[Item, None]:
+-    if data.new_size < 0:
+-        return None
+-    return Item(
+-        title=data.new_title,
+-        size=data.new_size,
+-        description=data.new_description,
+-        sub=SubItem(name=data.new_sub.new_sub_name),
+-        multi=[SubItem(name=s.new_sub_name) for s in data.new_multi],
+-    )
+-
+-
+-@app.post("/v2-to-v1/item-filter", response_model=Union[Item, None])
+-def handle_v2_item_to_v1_filter(data: NewItem) -> Any:
+-    if data.new_size < 0:
+-        return None
+-    result = {
+-        "title": data.new_title,
+-        "size": data.new_size,
+-        "description": data.new_description,
+-        "sub": {"name": data.new_sub.new_sub_name, "sub_secret": "sub_hidden"},
+-        "multi": [
+-            {"name": s.new_sub_name, "sub_secret": "sub_hidden"} for s in data.new_multi
+-        ],
+-        "secret": "hidden_v2_to_v1",
+-    }
+-    return result
++with warnings.catch_warnings(record=True):
++    warnings.simplefilter("always")
++
++    @app.post("/v1-to-v2/")
++    def handle_v1_item_to_v2(data: Item) -> Union[NewItem, None]:
++        if data.size < 0:
++            return None
++        return NewItem(
++            new_title=data.title,
++            new_size=data.size,
++            new_description=data.description,
++            new_sub=NewSubItem(new_sub_name=data.sub.name),
++            new_multi=[NewSubItem(new_sub_name=s.name) for s in data.multi],
++        )
++
++    @app.post("/v1-to-v2/item-filter", response_model=Union[NewItem, None])
++    def handle_v1_item_to_v2_filter(data: Item) -> Any:
++        if data.size < 0:
++            return None
++        result = {
++            "new_title": data.title,
++            "new_size": data.size,
++            "new_description": data.description,
++            "new_sub": {
++                "new_sub_name": data.sub.name,
++                "new_sub_secret": "sub_hidden",
++            },
++            "new_multi": [
++                {"new_sub_name": s.name, "new_sub_secret": "sub_hidden"}
++                for s in data.multi
++            ],
++            "secret": "hidden_v1_to_v2",
++        }
++        return result
++
++    @app.post("/v2-to-v1/item")
++    def handle_v2_item_to_v1(data: NewItem) -> Union[Item, None]:
++        if data.new_size < 0:
++            return None
++        return Item(
++            title=data.new_title,
++            size=data.new_size,
++            description=data.new_description,
++            sub=SubItem(name=data.new_sub.new_sub_name),
++            multi=[SubItem(name=s.new_sub_name) for s in data.new_multi],
++        )
++
++    @app.post("/v2-to-v1/item-filter", response_model=Union[Item, None])
++    def handle_v2_item_to_v1_filter(data: NewItem) -> Any:
++        if data.new_size < 0:
++            return None
++        result = {
++            "title": data.new_title,
++            "size": data.new_size,
++            "description": data.new_description,
++            "sub": {"name": data.new_sub.new_sub_name, "sub_secret": "sub_hidden"},
++            "multi": [
++                {"name": s.new_sub_name, "sub_secret": "sub_hidden"}
++                for s in data.new_multi
++            ],
++            "secret": "hidden_v2_to_v1",
++        }
++        return result
+ 
+ 
+ client = TestClient(app)
+diff --git a/tests/test_read_with_orm_mode.py b/tests/test_read_with_orm_mode.py
+index 5858f8e80..a195634b8 100644
+--- a/tests/test_read_with_orm_mode.py
++++ b/tests/test_read_with_orm_mode.py
+@@ -1,3 +1,4 @@
++import warnings
+ from typing import Any
+ 
+ from fastapi import FastAPI
+@@ -73,10 +74,13 @@ def test_read_with_orm_mode_pv1() -> None:
+ 
+     app = FastAPI()
+ 
+-    @app.post("/people/", response_model=PersonRead)
+-    def create_person(person: PersonCreate) -> Any:
+-        db_person = Person.from_orm(person)
+-        return db_person
++    with warnings.catch_warnings(record=True):
++        warnings.simplefilter("always")
++
++        @app.post("/people/", response_model=PersonRead)
++        def create_person(person: PersonCreate) -> Any:
++            db_person = Person.from_orm(person)
++            return db_person
+ 
+     client = TestClient(app)
+ 
+diff --git a/tests/test_response_model_as_return_annotation.py b/tests/test_response_model_as_return_annotation.py
+index 44e882a76..9e527d6a0 100644
+--- a/tests/test_response_model_as_return_annotation.py
++++ b/tests/test_response_model_as_return_annotation.py
+@@ -1,3 +1,4 @@
++import warnings
+ from typing import Union
+ 
+ import pytest
+@@ -521,11 +522,14 @@ def test_invalid_response_model_field_pv1():
+     class Model(v1.BaseModel):
+         foo: str
+ 
+-    with pytest.raises(FastAPIError) as e:
++    with warnings.catch_warnings(record=True):
++        warnings.simplefilter("always")
+ 
+-        @app.get("/")
+-        def read_root() -> Union[Response, Model, None]:
+-            return Response(content="Foo")  # pragma: no cover
++        with pytest.raises(FastAPIError) as e:
++
++            @app.get("/")
++            def read_root() -> Union[Response, Model, None]:
++                return Response(content="Foo")  # pragma: no cover
+ 
+     assert "valid Pydantic field type" in e.value.args[0]
+     assert "parameter response_model=None" in e.value.args[0]
+diff --git a/tests/test_tutorial/test_pydantic_v1_in_v2/test_tutorial002.py b/tests/test_tutorial/test_pydantic_v1_in_v2/test_tutorial002.py
+index 266d25944..ab7e1d8a7 100644
+--- a/tests/test_tutorial/test_pydantic_v1_in_v2/test_tutorial002.py
++++ b/tests/test_tutorial/test_pydantic_v1_in_v2/test_tutorial002.py
+@@ -1,4 +1,5 @@
+ import sys
++import warnings
+ 
+ import pytest
+ from inline_snapshot import snapshot
+@@ -24,7 +25,13 @@ from ...utils import needs_py310
+     ],
+ )
+ def get_client(request: pytest.FixtureRequest):
+-    mod = importlib.import_module(f"docs_src.pydantic_v1_in_v2.{request.param}")
++    with warnings.catch_warnings(record=True):
++        warnings.filterwarnings(
++            "ignore",
++            message=r"pydantic\.v1 is deprecated and will soon stop being supported by FastAPI\..*",
++            category=DeprecationWarning,
++        )
++        mod = importlib.import_module(f"docs_src.pydantic_v1_in_v2.{request.param}")
+ 
+     c = TestClient(mod.app)
+     return c
+diff --git a/tests/test_tutorial/test_pydantic_v1_in_v2/test_tutorial003.py b/tests/test_tutorial/test_pydantic_v1_in_v2/test_tutorial003.py
+index 693c3ba29..c45e04248 100644
+--- a/tests/test_tutorial/test_pydantic_v1_in_v2/test_tutorial003.py
++++ b/tests/test_tutorial/test_pydantic_v1_in_v2/test_tutorial003.py
+@@ -1,4 +1,5 @@
+ import sys
++import warnings
+ 
+ import pytest
+ from inline_snapshot import snapshot
+@@ -24,7 +25,13 @@ from ...utils import needs_py310
+     ],
+ )
+ def get_client(request: pytest.FixtureRequest):
+-    mod = importlib.import_module(f"docs_src.pydantic_v1_in_v2.{request.param}")
++    with warnings.catch_warnings(record=True):
++        warnings.filterwarnings(
++            "ignore",
++            message=r"pydantic\.v1 is deprecated and will soon stop being supported by FastAPI\..*",
++            category=DeprecationWarning,
++        )
++        mod = importlib.import_module(f"docs_src.pydantic_v1_in_v2.{request.param}")
+ 
+     c = TestClient(mod.app)
+     return c
+diff --git a/tests/test_tutorial/test_pydantic_v1_in_v2/test_tutorial004.py b/tests/test_tutorial/test_pydantic_v1_in_v2/test_tutorial004.py
+index 0fd084c84..f3da849e0 100644
+--- a/tests/test_tutorial/test_pydantic_v1_in_v2/test_tutorial004.py
++++ b/tests/test_tutorial/test_pydantic_v1_in_v2/test_tutorial004.py
+@@ -1,4 +1,5 @@
+ import sys
++import warnings
+ 
+ import pytest
+ from inline_snapshot import snapshot
+@@ -24,7 +25,13 @@ from ...utils import needs_py310
+     ],
+ )
+ def get_client(request: pytest.FixtureRequest):
+-    mod = importlib.import_module(f"docs_src.pydantic_v1_in_v2.{request.param}")
++    with warnings.catch_warnings(record=True):
++        warnings.filterwarnings(
++            "ignore",
++            message=r"pydantic\.v1 is deprecated and will soon stop being supported by FastAPI\..*",
++            category=DeprecationWarning,
++        )
++        mod = importlib.import_module(f"docs_src.pydantic_v1_in_v2.{request.param}")
+ 
+     c = TestClient(mod.app)
+     return c
+diff --git a/tests/test_tutorial/test_request_form_models/test_tutorial002_pv1.py b/tests/test_tutorial/test_request_form_models/test_tutorial002_pv1.py
+index 9ab30086b..515a5a8d7 100644
+--- a/tests/test_tutorial/test_request_form_models/test_tutorial002_pv1.py
++++ b/tests/test_tutorial/test_request_form_models/test_tutorial002_pv1.py
+@@ -1,4 +1,5 @@
+ import importlib
++import warnings
+ 
+ import pytest
+ from fastapi.testclient import TestClient
+@@ -14,7 +15,13 @@ from ...utils import needs_pydanticv1
+     ],
+ )
+ def get_client(request: pytest.FixtureRequest):
+-    mod = importlib.import_module(f"docs_src.request_form_models.{request.param}")
++    with warnings.catch_warnings(record=True):
++        warnings.filterwarnings(
++            "ignore",
++            message=r"pydantic\.v1 is deprecated and will soon stop being supported by FastAPI\..*",
++            category=DeprecationWarning,
++        )
++        mod = importlib.import_module(f"docs_src.request_form_models.{request.param}")
+ 
+     client = TestClient(mod.app)
+     return client
+diff --git a/tests/test_tutorial/test_schema_extra_example/test_tutorial001_pv1.py b/tests/test_tutorial/test_schema_extra_example/test_tutorial001_pv1.py
+index 605996289..c5526b19c 100644
+--- a/tests/test_tutorial/test_schema_extra_example/test_tutorial001_pv1.py
++++ b/tests/test_tutorial/test_schema_extra_example/test_tutorial001_pv1.py
+@@ -1,4 +1,5 @@
+ import importlib
++import warnings
+ 
+ import pytest
+ from fastapi.testclient import TestClient
+@@ -15,7 +16,13 @@ from ...utils import needs_py310, needs_pydanticv1
+     ],
+ )
+ def get_client(request: pytest.FixtureRequest):
+-    mod = importlib.import_module(f"docs_src.schema_extra_example.{request.param}")
++    with warnings.catch_warnings(record=True):
++        warnings.filterwarnings(
++            "ignore",
++            message=r"pydantic\.v1 is deprecated and will soon stop being supported by FastAPI\..*",
++            category=DeprecationWarning,
++        )
++        mod = importlib.import_module(f"docs_src.schema_extra_example.{request.param}")
+ 
+     client = TestClient(mod.app)
+     return client

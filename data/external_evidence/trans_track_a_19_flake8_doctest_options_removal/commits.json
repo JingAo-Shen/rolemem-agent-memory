@@ -1,0 +1,84 @@
+[
+  {
+    "sha": "b3e251512238ad39c87e4b8d1614903fe493f7ea",
+    "node_id": "C_kwDOAW43CdoAKGIzZTI1MTUxMjIzOGFkMzljODdlNGI4ZDE2MTQ5MDNmZTQ5M2Y3ZWE",
+    "commit": {
+      "author": {
+        "name": "Anthony Sottile",
+        "email": "asottile@umich.edu",
+        "date": "2023-07-29T19:53:22Z"
+      },
+      "committer": {
+        "name": "Anthony Sottile",
+        "email": "asottile@umich.edu",
+        "date": "2023-07-29T19:55:41Z"
+      },
+      "message": "remove --include-in-doctest and --exclude-in-doctest",
+      "tree": {
+        "sha": "0f0eee56674fbb89c6b169ad97a7acc103449ec8",
+        "url": "https://api.github.com/repos/PyCQA/flake8/git/trees/0f0eee56674fbb89c6b169ad97a7acc103449ec8"
+      },
+      "url": "https://api.github.com/repos/PyCQA/flake8/git/commits/b3e251512238ad39c87e4b8d1614903fe493f7ea",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/PyCQA/flake8/commits/b3e251512238ad39c87e4b8d1614903fe493f7ea",
+    "html_url": "https://github.com/PyCQA/flake8/commit/b3e251512238ad39c87e4b8d1614903fe493f7ea",
+    "comments_url": "https://api.github.com/repos/PyCQA/flake8/commits/b3e251512238ad39c87e4b8d1614903fe493f7ea/comments",
+    "author": {
+      "login": "asottile",
+      "id": 1810591,
+      "node_id": "MDQ6VXNlcjE4MTA1OTE=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1810591?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/asottile",
+      "html_url": "https://github.com/asottile",
+      "followers_url": "https://api.github.com/users/asottile/followers",
+      "following_url": "https://api.github.com/users/asottile/following{/other_user}",
+      "gists_url": "https://api.github.com/users/asottile/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/asottile/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/asottile/subscriptions",
+      "organizations_url": "https://api.github.com/users/asottile/orgs",
+      "repos_url": "https://api.github.com/users/asottile/repos",
+      "events_url": "https://api.github.com/users/asottile/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/asottile/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "asottile",
+      "id": 1810591,
+      "node_id": "MDQ6VXNlcjE4MTA1OTE=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1810591?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/asottile",
+      "html_url": "https://github.com/asottile",
+      "followers_url": "https://api.github.com/users/asottile/followers",
+      "following_url": "https://api.github.com/users/asottile/following{/other_user}",
+      "gists_url": "https://api.github.com/users/asottile/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/asottile/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/asottile/subscriptions",
+      "organizations_url": "https://api.github.com/users/asottile/orgs",
+      "repos_url": "https://api.github.com/users/asottile/repos",
+      "events_url": "https://api.github.com/users/asottile/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/asottile/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "15f45696701bc234494fbc0e803f8fdee712b945",
+        "url": "https://api.github.com/repos/PyCQA/flake8/commits/15f45696701bc234494fbc0e803f8fdee712b945",
+        "html_url": "https://github.com/PyCQA/flake8/commit/15f45696701bc234494fbc0e803f8fdee712b945"
+      }
+    ]
+  }
+]

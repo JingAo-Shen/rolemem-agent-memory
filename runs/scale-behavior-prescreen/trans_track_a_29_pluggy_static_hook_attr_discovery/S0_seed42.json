@@ -1,0 +1,19 @@
+{
+  "task_id": "trans_track_a_29_pluggy_static_hook_attr_discovery",
+  "condition": "S0",
+  "seed": 42,
+  "memory_source": "NO_MEMORY",
+  "memory_statements": [],
+  "retrieved_files": [],
+  "repository_context_tokens": 1116,
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": false,
+    "active_nodes": []
+  },
+  "pytest_pass": false,
+  "pytest_log_excerpt": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_pmmg4ahz\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_static_discovery FAILED                [100%]\n\n======================",
+  "overall_task_success": false,
+  "parsed_code": "import inspect\nfrom typing import Any, Callable, Optional, TypeVar\n\nT = TypeVar('T')\n\ndef has_static_hook_discovery(obj: T) -> bool:\n    \"\"\"\n    Detects if the given object has static hook inspection capability.\n    \n    Args:\n    obj: The object to check for static hook inspection capability.\n    \n    Returns:\n    True if the object has static hook inspection capability, False otherwise.\n    \"\"\"\n    # Check if the object is a class or module\n    if not (inspect.isclass(obj) or inspect.ismodule(obj)):\n        return False\n    \n    # Try to get the attribute statically\n    static_attr = inspect.getattr_static(obj, 'static', None)\n    \n    # Check if the attribute is a staticmethod\n    if isinstance(static_attr, staticmethod):\n        return True\n    \n    # Check if the attribute is a classmethod\n    if isinstance(static_attr, classmethod):\n        return True\n    \n    # Check if the attribute is a method\n    if isinstance(static_attr, types.MethodType):\n        return True\n    \n    # Check if the attribute is a function\n    if inspect.isfunction(static_attr):\n        return True\n    \n    return False"
+}

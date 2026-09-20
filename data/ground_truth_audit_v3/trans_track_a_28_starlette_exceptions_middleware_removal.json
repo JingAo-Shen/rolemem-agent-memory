@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_track_a_28_starlette_exceptions_middleware_removal",
+  "repo_name": "encode/starlette",
+  "pr_number": 2826,
+  "pr_title": "Remove `ExceptionMiddleware` import proxy from `starlette.exceptions` module",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "856c904a6dcf7368a999dd791e2f98a7c3812f0f",
+  "pr_base_sha": "2c98fe335888beda9a67235c79c41d754df3c99c",
+  "pr_head_sha": "53c544e4a0dab93d5d0766c0ba16325a534ce69e",
+  "base_commit": "2c98fe335888beda9a67235c79c41d754df3c99c",
+  "target_commit": "856c904a6dcf7368a999dd791e2f98a7c3812f0f",
+  "ancestry_verified": true,
+  "merge_strategy": "merge_commit",
+  "merge_relationship_verified": true,
+  "diff_match": true,
+  "issue_required": false,
+  "issue_id_verified": null,
+  "issue_status": "NOT_APPLICABLE",
+  "spec_sha256": "8e21e8d3467f3b5f75b520d4cfa52673b2394c3d001bce951a57514602350cc1",
+  "audit_fingerprint": "de4898e9cd5118a9ce3d053d2441fc767b57ffb6f2e3c67a9ad6fd3868030593",
+  "auditor_version": "3.0.0",
+  "overall_status": "PASS"
+}

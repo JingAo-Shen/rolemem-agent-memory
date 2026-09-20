@@ -219,11 +219,13 @@ def run_counterfactual_matrix(spec: Dict[str, Any]) -> Dict[str, Any]:
 def main():
     print(f"=== Running 2×2 Causal Counterfactual Matrix V2 on Track A Cohort ===")
     specs = []
-    if os.path.exists(MANIFEST_PATH):
-        with open(MANIFEST_PATH, "r") as f:
-            for line in f:
-                if line.strip():
-                    specs.append(json.loads(line))
+    manifests = [MANIFEST_PATH, os.path.join(DATA_DIR, "track_a_scale_manifest.jsonl")]
+    for mf in manifests:
+        if os.path.exists(mf):
+            with open(mf, "r") as f:
+                for line in f:
+                    if line.strip():
+                        specs.append(json.loads(line))
 
     print(f"Loaded {len(specs)} reconstructed specifications.\n")
     passed = 0

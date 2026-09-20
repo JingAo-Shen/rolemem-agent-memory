@@ -1,0 +1,1600 @@
+{
+  "transition_id": "trans_track_a_17_celery_task_module_cleanup",
+  "repo_name": "celery/celery",
+  "base_commit": "846066a34413509695434ed5a661280d7db4f993",
+  "target_commit": "3cf5072ee5f95744024f60e0f4a77eb2edb8959f",
+  "pkg_path": "celery",
+  "tree_purity_status": "TREE_PURITY_PASS",
+  "before_tree_purity": "TREE_PURITY_PASS",
+  "after_tree_purity": "TREE_PURITY_PASS",
+  "before_mismatches": [],
+  "after_mismatches": [],
+  "total_files_before": 158,
+  "total_files_after": 158,
+  "has_environment_overlay": false,
+  "before_files": [
+    {
+      "relative_path": "celery/__init__.py",
+      "size": 6024,
+      "sha256": "800ac3a448b38cfccfcb2e70faee9eb7f14a1ab8ab8445e3d1c6a4ab8bbc5bb6"
+    },
+    {
+      "relative_path": "celery/__main__.py",
+      "size": 401,
+      "sha256": "fb6b083202b4ffedb6b7a8b5f7ae39bc0f827c116f1e7cc8b99f257ace0099d1"
+    },
+    {
+      "relative_path": "celery/_state.py",
+      "size": 5029,
+      "sha256": "93b4fd0b37984793d94abd0c8d256f16ceb3a5f9196a5f41ae5f31bbebcfa579"
+    },
+    {
+      "relative_path": "celery/app/__init__.py",
+      "size": 2459,
+      "sha256": "89a76107fa661d8ae5a9a38c81ef9a3b608b40ac651b5f321da358b621cbfb76"
+    },
+    {
+      "relative_path": "celery/app/amqp.py",
+      "size": 22992,
+      "sha256": "dc281b75c9fde7ab6c4b327e6b23e61806948eb3feae67a97898c7a42ea01001"
+    },
+    {
+      "relative_path": "celery/app/annotations.py",
+      "size": 1445,
+      "sha256": "f77cee28d084ee970c0f72b9b4ce4731e54243995f251ff486d169a2db6039e5"
+    },
+    {
+      "relative_path": "celery/app/autoretry.py",
+      "size": 2288,
+      "sha256": "9320505c8ef9fbde8635bbb5b8d7d4d77e5282868423fd30d06e158cbb1f1dd1"
+    },
+    {
+      "relative_path": "celery/app/backends.py",
+      "size": 2765,
+      "sha256": "06bc50977652f0eb65d2df5c0ceda148994aa0288bb8de630a16f618eb0b3b05"
+    },
+    {
+      "relative_path": "celery/app/base.py",
+      "size": 47365,
+      "sha256": "ee8c2d40072286b9c40ff1df6a3280d320994ac69f1acb79c9114cf68b6af421"
+    },
+    {
+      "relative_path": "celery/app/builtins.py",
+      "size": 6673,
+      "sha256": "8273b2134eccf338316ad4e66f40f4bcacedc75b1065a462fe13bf77e14b354b"
+    },
+    {
+      "relative_path": "celery/app/control.py",
+      "size": 27842,
+      "sha256": "4951f30e97e5ebbc3ff72a5634c050e96538f50135227b0969a10c5fc9eb110e"
+    },
+    {
+      "relative_path": "celery/app/defaults.py",
+      "size": 14590,
+      "sha256": "405fb2bbc696230a1483174ee32d87c9cd8721d7ac45466a8211acf9bfe57b89"
+    },
+    {
+      "relative_path": "celery/app/events.py",
+      "size": 1326,
+      "sha256": "f59ca3761515bebb7ac4b74e30e5533cdee08f274b59018daf886f1683eba2e0"
+    },
+    {
+      "relative_path": "celery/app/log.py",
+      "size": 9161,
+      "sha256": "c6d820cbbbd83dc48f48b1698aff01943a4d4fa6bb7e4db3dfb10206d4b0f783"
+    },
+    {
+      "relative_path": "celery/app/registry.py",
+      "size": 2002,
+      "sha256": "45dc0e5a9ada8ccae0e1f1cc7916dcac7e5580730d44292cdf8c61ae85d908f0"
+    },
+    {
+      "relative_path": "celery/app/routes.py",
+      "size": 4527,
+      "sha256": "0cc76be679849ea2565e42c5233596c4cdaccfd658780fbef057926b129c0428"
+    },
+    {
+      "relative_path": "celery/app/task.py",
+      "size": 40898,
+      "sha256": "6e28ad3bf4d695aa194a6897960e7186e3d6e06c2fda68f6d26e283971e60c2b"
+    },
+    {
+      "relative_path": "celery/app/trace.py",
+      "size": 27021,
+      "sha256": "9b4b16fba9fcfdde3f509bc99f16830a3cd124bbd7f97b748d3a674664fbc578"
+    },
+    {
+      "relative_path": "celery/app/utils.py",
+      "size": 13185,
+      "sha256": "b06aa201cd740523968bf7e6b60be2c68d386dab550f0b85af64853eb8839325"
+    },
+    {
+      "relative_path": "celery/apps/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "celery/apps/beat.py",
+      "size": 5145,
+      "sha256": "8e9f191cc7a7ce6689e9634db0b7225f14a4ff9b12c91090a352b2badd547de8"
+    },
+    {
+      "relative_path": "celery/apps/multi.py",
+      "size": 16398,
+      "sha256": "3134708d935fbdef19331750957c92d7a037885633aedd436d2f637a88cf6fc5"
+    },
+    {
+      "relative_path": "celery/apps/worker.py",
+      "size": 13474,
+      "sha256": "95a8ca872640ba88e2aedcdffe98d71f61211987a54abf30941117419f525bea"
+    },
+    {
+      "relative_path": "celery/backends/__init__.py",
+      "size": 23,
+      "sha256": "d6437dd9d7f58c3a77802ea6ac6119236784fa438450829d38e1d101daf2d9ad"
+    },
+    {
+      "relative_path": "celery/backends/arangodb.py",
+      "size": 7642,
+      "sha256": "579c89de1e0e29322183e53dee4b64a0df90e14da974ab3684c5584361705b4d"
+    },
+    {
+      "relative_path": "celery/backends/asynchronous.py",
+      "size": 9464,
+      "sha256": "83143a2d69a8d9a20569987e3aee9838949d5b6eff4c122eb9eb548692d2e598"
+    },
+    {
+      "relative_path": "celery/backends/azureblockblob.py",
+      "size": 4124,
+      "sha256": "ce226c4b82b09ee5abc6cc54bcca555c4bcbbf26af623b17f3664b6e1cdfdb38"
+    },
+    {
+      "relative_path": "celery/backends/base.py",
+      "size": 40446,
+      "sha256": "2f16de4a04aa1cdc51bc874bf3e262a47526af4ae9d4240c5ad16d783f134c27"
+    },
+    {
+      "relative_path": "celery/backends/cache.py",
+      "size": 4817,
+      "sha256": "26aa7b7ff962912f1acc9ba99e348daecb43a29a7245ca5919db665607246def"
+    },
+    {
+      "relative_path": "celery/backends/cassandra.py",
+      "size": 7890,
+      "sha256": "5ede23c3c7616917514083b7e87d9925d7ad6699e2f3e9ebcb520025a103525a"
+    },
+    {
+      "relative_path": "celery/backends/consul.py",
+      "size": 3113,
+      "sha256": "489e2f4c81e25f2114a90286fa0bb8a852d4379c5e3461bfa68996f099597797"
+    },
+    {
+      "relative_path": "celery/backends/cosmosdbsql.py",
+      "size": 6839,
+      "sha256": "8ccbe855d131341b19d6c78b86f4e11196691ff09c628d805ad249af2f576548"
+    },
+    {
+      "relative_path": "celery/backends/couchbase.py",
+      "size": 3173,
+      "sha256": "c51c3899b8237f236d7ddd57d66a31ddc3db711e3e7a6789e917b9e85f97d069"
+    },
+    {
+      "relative_path": "celery/backends/couchdb.py",
+      "size": 2935,
+      "sha256": "33fcf4ce03453f0170f3da5a6b990843dc7da3b5513f0b8a08b660a058450e90"
+    },
+    {
+      "relative_path": "celery/backends/database/__init__.py",
+      "size": 7771,
+      "sha256": "ba43450323b53caf05f5b9bd4bd5730f274225580007737ea522ee7d8cae4228"
+    },
+    {
+      "relative_path": "celery/backends/database/models.py",
+      "size": 3351,
+      "sha256": "ffa59932fe77c7c2358814426b8858df92da05478b2192730eeb23bd2fbc6808"
+    },
+    {
+      "relative_path": "celery/backends/database/session.py",
+      "size": 3011,
+      "sha256": "df3bbb5f0628139d9a4ba76c4a625a9ea96f4bab2c8deb7b8523546e58b09cba"
+    },
+    {
+      "relative_path": "celery/backends/dynamodb.py",
+      "size": 17254,
+      "sha256": "a57d2a028d4789a8dbce759dd04ca457db2e427dcee3d06ac41f515f0233375a"
+    },
+    {
+      "relative_path": "celery/backends/elasticsearch.py",
+      "size": 8453,
+      "sha256": "2a82236b6cfdffd0173586449dbe0c13a540d7ce8a5271c5fd5f0f8d51aa5a51"
+    },
+    {
+      "relative_path": "celery/backends/filesystem.py",
+      "size": 3054,
+      "sha256": "59e46435a39c47ade7e86cfcf60a242be15841e240ecc2044eb5096ada5c8b0f"
+    },
+    {
+      "relative_path": "celery/backends/mongodb.py",
+      "size": 11092,
+      "sha256": "e1add05de269f2a7624764498d498b55e519d20d2abefa1c788baaab99c16980"
+    },
+    {
+      "relative_path": "celery/backends/redis.py",
+      "size": 25844,
+      "sha256": "5c7ac851c924e7a07672b312e3bf128b6c3eb0bc40b1977137fb60d26ceb1ca3"
+    },
+    {
+      "relative_path": "celery/backends/rpc.py",
+      "size": 12077,
+      "sha256": "3dfce3a73ef39ce7e61d1111b907ce9535be7a7b40b25f34de8735f845a99d36"
+    },
+    {
+      "relative_path": "celery/backends/s3.py",
+      "size": 2752,
+      "sha256": "3142f8f9b10709c4cbe775d7c9bd36d33c8b613af8e030e33a1e815ed929f654"
+    },
+    {
+      "relative_path": "celery/beat.py",
+      "size": 24421,
+      "sha256": "a981e3ff8bcc72834bfd552b8286451c2971f08310ebc0c62580dd33808fe4ac"
+    },
+    {
+      "relative_path": "celery/bin/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "celery/bin/amqp.py",
+      "size": 10030,
+      "sha256": "191caab011ed478b9b11d8e33d80fc7291a0e2e3e41c9f3cf70b734a4951c4c8"
+    },
+    {
+      "relative_path": "celery/bin/base.py",
+      "size": 7814,
+      "sha256": "daa3d0aa7e22a725b2ccadda1018c205b36d7417ef28f7626a0787b531e7050d"
+    },
+    {
+      "relative_path": "celery/bin/beat.py",
+      "size": 2583,
+      "sha256": "2329fc433f2f54278f0b0e6384b0b75fe631c733a5c06da660ab7a56acae0d61"
+    },
+    {
+      "relative_path": "celery/bin/call.py",
+      "size": 2338,
+      "sha256": "e7acee7cb4e9f830b2695512ed516a2cc9f7f09fdaba1879e39577175b50ba07"
+    },
+    {
+      "relative_path": "celery/bin/celery.py",
+      "size": 6684,
+      "sha256": "56605923b04c734f28b2e134e0010a31dc7464ced4327203b8979ca56ec83cdd"
+    },
+    {
+      "relative_path": "celery/bin/control.py",
+      "size": 7089,
+      "sha256": "d2bebd6c25d40c68f2fd623f988d438fefbf88ff1bc88ecb8efaf18f6b414bd6"
+    },
+    {
+      "relative_path": "celery/bin/events.py",
+      "size": 2825,
+      "sha256": "286abf45d4a92e361dd709327a58903d664f5f0c4ca2cab5fc593d71bb6c1b63"
+    },
+    {
+      "relative_path": "celery/bin/graph.py",
+      "size": 5796,
+      "sha256": "2ddd9d292c487561f1157ae3b135c05018fa8dbd360151b24cf5c351903f82fa"
+    },
+    {
+      "relative_path": "celery/bin/list.py",
+      "size": 1058,
+      "sha256": "d8e28f8979fab20ba6ff4d911f577f4c1a1772935c36ca284fdf07b7da56b9a6"
+    },
+    {
+      "relative_path": "celery/bin/logtool.py",
+      "size": 4267,
+      "sha256": "b2a2b82dfb80b47b950fb393b0a6ca7ef0763a47ce0fe2b7eda73d8bf17c348b"
+    },
+    {
+      "relative_path": "celery/bin/migrate.py",
+      "size": 2139,
+      "sha256": "dc172e3628a0a2ab04f0f36d318b99df5eb62d8795f5bdc82cfd95820032474a"
+    },
+    {
+      "relative_path": "celery/bin/multi.py",
+      "size": 15364,
+      "sha256": "00a28c9e6fffe5bda32223ad641784b07503ad72c113945394979331093a22bf"
+    },
+    {
+      "relative_path": "celery/bin/purge.py",
+      "size": 2578,
+      "sha256": "5ae76838e44e708877c8555bdaf1f267da5192ba4aa1e6c4fe0149cf8ad7431c"
+    },
+    {
+      "relative_path": "celery/bin/result.py",
+      "size": 1007,
+      "sha256": "4cada4f3832a8759d0dd720e4ff10ddd8e18de1e59709207f0c114f982202481"
+    },
+    {
+      "relative_path": "celery/bin/shell.py",
+      "size": 4809,
+      "sha256": "1f14a8c85229c0463dbe9e9bb7aff95c337847685f9b46d53bb4a46b663b47ad"
+    },
+    {
+      "relative_path": "celery/bin/upgrade.py",
+      "size": 3095,
+      "sha256": "4bd4231ba0eaf3b1b4244de1ae8dd18bfd407b141d76a97fe17e8572c8ffdf8d"
+    },
+    {
+      "relative_path": "celery/bin/worker.py",
+      "size": 12759,
+      "sha256": "2527346356112ca5142c459ef186b5485242523c6c1dddaaed1615c6c96a066e"
+    },
+    {
+      "relative_path": "celery/bootsteps.py",
+      "size": 12297,
+      "sha256": "75daf1183442736adadae8345f9341108ddfa8f8e44a5351898497836bc60aad"
+    },
+    {
+      "relative_path": "celery/canvas.py",
+      "size": 61593,
+      "sha256": "7baaf2083537d33ddca127cecfa67a8cfbc415653a67c3abab889abc3bfd8071"
+    },
+    {
+      "relative_path": "celery/concurrency/__init__.py",
+      "size": 995,
+      "sha256": "55b99c5d820b6ceeb05186884b7ce8714fd785402b5fc3eddfac97baa14924a6"
+    },
+    {
+      "relative_path": "celery/concurrency/asynpool.py",
+      "size": 50630,
+      "sha256": "33ed7295744880c05caffbea468dab8ebb08d80644c99e92236d24012bca8727"
+    },
+    {
+      "relative_path": "celery/concurrency/base.py",
+      "size": 4373,
+      "sha256": "3178c6d407edef87171b973b54bd5a7e60c0ebc641cf41eaba7851483e792551"
+    },
+    {
+      "relative_path": "celery/concurrency/eventlet.py",
+      "size": 4132,
+      "sha256": "1d996a65f05818b0b7c0cf69f116b06d0ba5fa18905a748563da8516ecdf82ba"
+    },
+    {
+      "relative_path": "celery/concurrency/gevent.py",
+      "size": 3407,
+      "sha256": "02467c567d02c7c9b91a4ee3d4e28fd0373c341a455be87273ec97af01810abb"
+    },
+    {
+      "relative_path": "celery/concurrency/prefork.py",
+      "size": 5680,
+      "sha256": "a7be236d62d97358233352402f7639a628a983d95f2bcb661c84f6d10757c10d"
+    },
+    {
+      "relative_path": "celery/concurrency/solo.py",
+      "size": 693,
+      "sha256": "59c3a2d21e2c26513b59b47b0db1f06621d1135fa397030f5bfe0435c91014a9"
+    },
+    {
+      "relative_path": "celery/concurrency/thread.py",
+      "size": 1248,
+      "sha256": "9feedac8aa7233cd2744841cc54549a35c992decc8e27e488d691f917a9303a8"
+    },
+    {
+      "relative_path": "celery/contrib/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "celery/contrib/abortable.py",
+      "size": 5091,
+      "sha256": "ba0106496d003b5d0279ee6c16b64c2cbd87dabd5bfee6db09771b24d323cb0d"
+    },
+    {
+      "relative_path": "celery/contrib/migrate.py",
+      "size": 14163,
+      "sha256": "fa40a9e81e02ebe1dd2bd6060f18d20f244e17fd152c85793f35495e68492abc"
+    },
+    {
+      "relative_path": "celery/contrib/pytest.py",
+      "size": 6748,
+      "sha256": "e2953e03b3f64ae39c6db9cddf32f74b0f4ccdc609318959dd1f7ee58082048a"
+    },
+    {
+      "relative_path": "celery/contrib/rdb.py",
+      "size": 5021,
+      "sha256": "ae33229ec32ede82f6f0ea55fffa689ad0147b4fcecb41eb56c6dcbe62768b61"
+    },
+    {
+      "relative_path": "celery/contrib/sphinx.py",
+      "size": 3410,
+      "sha256": "daa2ccb8aa4a9b92b0b6f8dfc7f6eb0c38e89c831a669b72a4c32e8435928517"
+    },
+    {
+      "relative_path": "celery/contrib/testing/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "celery/contrib/testing/app.py",
+      "size": 3017,
+      "sha256": "9ce7088f11a57921a9d471bd83736a91ea8ea6f07f277ef406a465758d60f7ba"
+    },
+    {
+      "relative_path": "celery/contrib/testing/manager.py",
+      "size": 7723,
+      "sha256": "d4009339adf99f0508a8a0eaf566690469c15d9a60b3ac8339594aaad0166985"
+    },
+    {
+      "relative_path": "celery/contrib/testing/mocks.py",
+      "size": 3500,
+      "sha256": "a5b610913cb56761f0dbbb62b697ad2c01b5739d40b6e4d94cbced8a5215039c"
+    },
+    {
+      "relative_path": "celery/contrib/testing/tasks.py",
+      "size": 208,
+      "sha256": "a4933769a6f0eee75ca69cf840d794835fba9e59db925ad3fa13f925798bfa03"
+    },
+    {
+      "relative_path": "celery/contrib/testing/worker.py",
+      "size": 5569,
+      "sha256": "130cf3f076517c2e666200e93ac632c7d5077b06ea3b8c497067609ad88ed695"
+    },
+    {
+      "relative_path": "celery/events/__init__.py",
+      "size": 477,
+      "sha256": "f5dd9cbe20b0e7322c67702f409931efb1cf4e5c665486a1451ed06b9e274275"
+    },
+    {
+      "relative_path": "celery/events/cursesmon.py",
+      "size": 18050,
+      "sha256": "a433d5d6ba143f4f33a3f228ebef283f442bd4a4acd5e3b53e9eac077038ddf0"
+    },
+    {
+      "relative_path": "celery/events/dispatcher.py",
+      "size": 8987,
+      "sha256": "edbdfedddffaba4bd135a8f27e21cc5f562fa16348cda07acd2dfecc4510846e"
+    },
+    {
+      "relative_path": "celery/events/dumper.py",
+      "size": 3116,
+      "sha256": "ef339598055f1b61d75bbf45bafa68ff40b6723ced4f38085e76a251ce0d2fc7"
+    },
+    {
+      "relative_path": "celery/events/event.py",
+      "size": 1736,
+      "sha256": "9edd72454cc3ad8a7d60b6ec2090f77a8fc0a0c853e6c42d6405febc492ae10f"
+    },
+    {
+      "relative_path": "celery/events/receiver.py",
+      "size": 4998,
+      "sha256": "edd56f7b36240503adc88fab1fbefee500c9ced3cb07ddf7545ecd8267b34ae5"
+    },
+    {
+      "relative_path": "celery/events/snapshot.py",
+      "size": 3294,
+      "sha256": "38b42ec71d5a7f6f4b2a760a0e84deb273df2bfe5d171df3099ec949d83db7b0"
+    },
+    {
+      "relative_path": "celery/events/state.py",
+      "size": 25742,
+      "sha256": "f6437ecb75e4b9e5352d483b0d8fb053b5e3435af71594a3f9c0b0b0f921ebab"
+    },
+    {
+      "relative_path": "celery/exceptions.py",
+      "size": 9030,
+      "sha256": "b820f64a76cbe9a39cc8c180e44d44ab0d08583194cd0f85264b6e2e5a2beed1"
+    },
+    {
+      "relative_path": "celery/fixups/__init__.py",
+      "size": 14,
+      "sha256": "edcb4d68a1e239ad9f55e3dc74a3d4f49fbf6d0d24d631476a86650875d8d2f5"
+    },
+    {
+      "relative_path": "celery/fixups/django.py",
+      "size": 6588,
+      "sha256": "4a50be01dc415a43184281fa4c1e00e1d70830881951ba5da092c9ac96c64395"
+    },
+    {
+      "relative_path": "celery/loaders/__init__.py",
+      "size": 490,
+      "sha256": "2e74535a4f29cf6afb0548f655426206cb4f8d207008fd205034646dc8465b6e"
+    },
+    {
+      "relative_path": "celery/loaders/app.py",
+      "size": 199,
+      "sha256": "c6a4694432641a64d6db537fef3c7917835af860936cdb3a43ab467c89e76675"
+    },
+    {
+      "relative_path": "celery/loaders/base.py",
+      "size": 8731,
+      "sha256": "bc899884a23735f4bdee043da4832655901adac3deaa6ec403c9cd01f2d985c6"
+    },
+    {
+      "relative_path": "celery/loaders/default.py",
+      "size": 1520,
+      "sha256": "4d9abacd1e2d83fdb4b15240b92c1204b5511d1c9f7af1e41e1518acd4589135"
+    },
+    {
+      "relative_path": "celery/local.py",
+      "size": 17016,
+      "sha256": "396e0e52bf40f9d6c7facca4d596dfcd7073fad68c7389ac9acfab4d5e4e6d75"
+    },
+    {
+      "relative_path": "celery/platforms.py",
+      "size": 25196,
+      "sha256": "1dc640ff57955a6bee14476fd617457c22368eae319af29cfef79d71015aa2fa"
+    },
+    {
+      "relative_path": "celery/result.py",
+      "size": 34193,
+      "sha256": "52cd6b4e740d452117c54d4dadbf28271aaca6d4eb7344c33ab43b086a12f85b"
+    },
+    {
+      "relative_path": "celery/schedules.py",
+      "size": 29251,
+      "sha256": "a5defa69f4e50a0b764bd05a4d2997fdcca5ce5bd3aebbff8fa6916102279950"
+    },
+    {
+      "relative_path": "celery/security/__init__.py",
+      "size": 2274,
+      "sha256": "05db4f37c3f255b372b627eacf9af17cb8d0c7996d171268f16c0cf8c48b0ad3"
+    },
+    {
+      "relative_path": "celery/security/certificate.py",
+      "size": 2997,
+      "sha256": "0afe394dd2e4800b4413fcbaf2ec7e700e06f08a52864b26cc8290a686d58e30"
+    },
+    {
+      "relative_path": "celery/security/key.py",
+      "size": 1042,
+      "sha256": "00ffbc9017ea693f1ae88a59b1fdaa00b4c2541dfa46ca2a37b7b9e79545ea6c"
+    },
+    {
+      "relative_path": "celery/security/serialization.py",
+      "size": 4206,
+      "sha256": "6ce3e2fee832f448669de2e38c02efb7e66bc050ad3ea4301fb7f8cdca9dab72"
+    },
+    {
+      "relative_path": "celery/security/utils.py",
+      "size": 845,
+      "sha256": "549b96c4b645297417ce505cceec68f78c1759250b9d7c1b3bfe6e97f870b1ed"
+    },
+    {
+      "relative_path": "celery/signals.py",
+      "size": 4273,
+      "sha256": "0a09f0a5950d31966a28828eac28ec0e79b10921d2360457223645674baa96de"
+    },
+    {
+      "relative_path": "celery/states.py",
+      "size": 3260,
+      "sha256": "88805d774d943f00ca4c8626f4c1a52201c6066aebf40cc682f6de0643e04b25"
+    },
+    {
+      "relative_path": "celery/utils/__init__.py",
+      "size": 935,
+      "sha256": "948263071bd70aca42fa26fe5dab1d10f941d31010735e8fd1e38f6f4816b0bd"
+    },
+    {
+      "relative_path": "celery/utils/abstract.py",
+      "size": 2874,
+      "sha256": "c4dd90afe4c4a75d8ff0060ee968a0c45af9a7c9093d451bd1fe545f716d1e32"
+    },
+    {
+      "relative_path": "celery/utils/collections.py",
+      "size": 25635,
+      "sha256": "4164ccc097f4b16bc4d5002469443014d7d29c3a38e1a143a42bab294e3c088c"
+    },
+    {
+      "relative_path": "celery/utils/debug.py",
+      "size": 4709,
+      "sha256": "f60e54d0d953be53fd385c23c5fc9782285fcc3f8a93f7dccbb4038e192a6a9c"
+    },
+    {
+      "relative_path": "celery/utils/deprecated.py",
+      "size": 3620,
+      "sha256": "e1ab0f7b6db64d6261f2670be7739be98ed744e3e0aafdb79c247e1141c9a01a"
+    },
+    {
+      "relative_path": "celery/utils/dispatch/LICENSE.python",
+      "size": 12767,
+      "sha256": "8129570d0752f342973e176c87123b7b7199b6f8a907a4b6704d4473b3dd2d3b"
+    },
+    {
+      "relative_path": "celery/utils/dispatch/__init__.py",
+      "size": 74,
+      "sha256": "b34fd9a6f1565f0d5c79c12e7b5be3f8ca4e3d050f138d60e6cf98b239d7ea6a"
+    },
+    {
+      "relative_path": "celery/utils/dispatch/license.txt",
+      "size": 1720,
+      "sha256": "9c173c7295873fd2e7e4c4d6b4b65c612b55a037fccbe7ade638ab46807ba7b4"
+    },
+    {
+      "relative_path": "celery/utils/dispatch/signal.py",
+      "size": 13603,
+      "sha256": "2dc99f05a6e7440391fb08800d641f053fa03772f38b6f49a40702bcc2cd357e"
+    },
+    {
+      "relative_path": "celery/utils/functional.py",
+      "size": 11761,
+      "sha256": "304af9fc49b92d14e15a0f1007bf5151902d1dd78af16b047e70c2b4b6ca9590"
+    },
+    {
+      "relative_path": "celery/utils/graph.py",
+      "size": 9041,
+      "sha256": "a0fdb9617b107cd0fe57017e306a253865f419b45e23355cf5225f20fd6b5087"
+    },
+    {
+      "relative_path": "celery/utils/imports.py",
+      "size": 4826,
+      "sha256": "ab5929bf9f4953958e81b3c7ed83442869f4603ccaaccfada7376aeadea49ef8"
+    },
+    {
+      "relative_path": "celery/utils/iso8601.py",
+      "size": 2776,
+      "sha256": "19a6229638d6042e362353172b6c258cedabba9a653c889b21c9d21966fb3f3b"
+    },
+    {
+      "relative_path": "celery/utils/log.py",
+      "size": 8855,
+      "sha256": "6bb21532794884aec0eaca137d82e00e4cf20f19a2af1b708203006728c8efc9"
+    },
+    {
+      "relative_path": "celery/utils/nodenames.py",
+      "size": 2858,
+      "sha256": "51107076d591fc217c2dd7fab63c44e32eeb9742b11450f7e878e365caf04396"
+    },
+    {
+      "relative_path": "celery/utils/objects.py",
+      "size": 4215,
+      "sha256": "359fcdc747a1ac9badf75b2bb802369151b28e1683411fe7b53985f4e9bf488f"
+    },
+    {
+      "relative_path": "celery/utils/saferepr.py",
+      "size": 9175,
+      "sha256": "4801717a1d3fa2ab8f2452b30039254f5b7009e8b81a726cbc085d4f4f5f3ef3"
+    },
+    {
+      "relative_path": "celery/utils/serialization.py",
+      "size": 8053,
+      "sha256": "b029162832681bb0f06a7c4a5db62e012cfaa421c3d94eeb9eebc319b3f79e74"
+    },
+    {
+      "relative_path": "celery/utils/static/__init__.py",
+      "size": 299,
+      "sha256": "2b00eaf2103e5ddef6d4795dc09277e04c70ac81329e0128488cde027a9ce420"
+    },
+    {
+      "relative_path": "celery/utils/static/celery_128.png",
+      "size": 2556,
+      "sha256": "f0d999c4200b40fa772953ac38f7c955a34bbf0c0b62a892e5588e73ac744865"
+    },
+    {
+      "relative_path": "celery/utils/sysinfo.py",
+      "size": 1085,
+      "sha256": "2d8746cf16c5df9ecfad8370df5ffd7fc084beb95db5bd1501620572506d0a70"
+    },
+    {
+      "relative_path": "celery/utils/term.py",
+      "size": 4568,
+      "sha256": "887b38d8ebb8344bf9ee0c4b597a8335e4f6d58a2e8632b4daf2746db96d0f99"
+    },
+    {
+      "relative_path": "celery/utils/text.py",
+      "size": 5814,
+      "sha256": "c0506834bbf7d4432d77087f12410ead304bc295e38d0b5909b65cc987b72f79"
+    },
+    {
+      "relative_path": "celery/utils/threads.py",
+      "size": 9592,
+      "sha256": "62c75033d679d5736dae143697eb3f78ddad622698f48fa5aa1e56ecc9affcb3"
+    },
+    {
+      "relative_path": "celery/utils/time.py",
+      "size": 12375,
+      "sha256": "2e879ec24e5882d4291275781366ae560ce6dcb19654bfec71c3abd97349a119"
+    },
+    {
+      "relative_path": "celery/utils/timer2.py",
+      "size": 4826,
+      "sha256": "aca949ab2a2f4beaf2fa0fbec87f8b69d4c4bcb370a500fe03be8a7de9bf037a"
+    },
+    {
+      "relative_path": "celery/worker/__init__.py",
+      "size": 95,
+      "sha256": "10a52058e32aff50df59bf8e6805afe2b34b77b822f756a275e7cc8c7328c732"
+    },
+    {
+      "relative_path": "celery/worker/autoscale.py",
+      "size": 4593,
+      "sha256": "9336f5193c11cb0f436458f022f1eb70b749c6e20623c1da1ddb6fb6bdf58bd0"
+    },
+    {
+      "relative_path": "celery/worker/components.py",
+      "size": 7517,
+      "sha256": "665bb923499a0c2685d6a48db704bc8c97b6a24212b10739285bdfbb306266fb"
+    },
+    {
+      "relative_path": "celery/worker/consumer/__init__.py",
+      "size": 391,
+      "sha256": "c8a68666d07360a00364ccdb4aad78fc0518a53e10018f6745109fef70c386a7"
+    },
+    {
+      "relative_path": "celery/worker/consumer/agent.py",
+      "size": 525,
+      "sha256": "6d3852f1955ebb26c0caa35ef2399d37a460689843ab49657b0a2c1ab3bce7e7"
+    },
+    {
+      "relative_path": "celery/worker/consumer/connection.py",
+      "size": 1026,
+      "sha256": "6bb836df09b37af90488c8e38c3f0ab78b1c8a17ff36092947881cba4b32b3d3"
+    },
+    {
+      "relative_path": "celery/worker/consumer/consumer.py",
+      "size": 22769,
+      "sha256": "2e4854f9ceb5ba2515bc510146c01b63f40e42ff0b4b2d5076780fbedad2f4a1"
+    },
+    {
+      "relative_path": "celery/worker/consumer/control.py",
+      "size": 946,
+      "sha256": "d0d889f4ff801ddbf5df899792046053d85f85d27f3fb1ca6fbcfd0385ea6b64"
+    },
+    {
+      "relative_path": "celery/worker/consumer/events.py",
+      "size": 2054,
+      "sha256": "1600f06d5d096e3f5a58f6d5dca014b6c5d9ab826f6447eb59f9eb620be4320a"
+    },
+    {
+      "relative_path": "celery/worker/consumer/gossip.py",
+      "size": 6833,
+      "sha256": "83e5892f6aebfeaf5a33f49a4d4ad094f8f638d7fcbc7b362ef9b2450b433045"
+    },
+    {
+      "relative_path": "celery/worker/consumer/heart.py",
+      "size": 930,
+      "sha256": "21e9e492588a93ab009366b535f63287e76834396615619189a25de5ef002e92"
+    },
+    {
+      "relative_path": "celery/worker/consumer/mingle.py",
+      "size": 2519,
+      "sha256": "506f0aeac5c5d4a5095cd889e1e30750c220e3fecad6d0d6a9844d7ddf4dcfd9"
+    },
+    {
+      "relative_path": "celery/worker/consumer/tasks.py",
+      "size": 1959,
+      "sha256": "9588e7f8cb7666e950c8ed65c12a0c47308a79677c7fde791ff55f186d3e7328"
+    },
+    {
+      "relative_path": "celery/worker/control.py",
+      "size": 16792,
+      "sha256": "0ea9a094db70957f088eae6ed98d927e54226fe940ad8c6d2a4b5fa384ec7d71"
+    },
+    {
+      "relative_path": "celery/worker/heartbeat.py",
+      "size": 2107,
+      "sha256": "b1357f774441f4ceb3b1722f2d9ed553ab5e51f5f720ad484f29c3a71312dbdf"
+    },
+    {
+      "relative_path": "celery/worker/loops.py",
+      "size": 3857,
+      "sha256": "ccb2aac3f0172884fbee905bb546bbbba9fc8968557f7732ed62c88bb335d032"
+    },
+    {
+      "relative_path": "celery/worker/pidbox.py",
+      "size": 3630,
+      "sha256": "2dc42c28391df19f779d0c64d1238bba507c18b11f2233e437e274a4693b75f3"
+    },
+    {
+      "relative_path": "celery/worker/request.py",
+      "size": 24689,
+      "sha256": "3d75046e3831eaf1748c92220fe6b5f080307f6d0e01fcd16e5d9b9844907edd"
+    },
+    {
+      "relative_path": "celery/worker/state.py",
+      "size": 8177,
+      "sha256": "0a3c4fccd96b3753c9d7346ccf433ad7a2992240a14b527307ef1769b6a2ce1d"
+    },
+    {
+      "relative_path": "celery/worker/strategy.py",
+      "size": 7165,
+      "sha256": "a7f3a8309b9e92e6c0455b5f34ade4007fd665762e4a0299794c2f532c69aff8"
+    },
+    {
+      "relative_path": "celery/worker/worker.py",
+      "size": 14513,
+      "sha256": "c555aa77cf19480822ea4abf656bb0988239844e58150b7eb4e46152c76c0e97"
+    }
+  ],
+  "after_files": [
+    {
+      "relative_path": "celery/__init__.py",
+      "size": 5980,
+      "sha256": "7ced07269ebd08f84b963ac38ff1842cb69471edeabb3dfa7db98fed10ff2e3d"
+    },
+    {
+      "relative_path": "celery/__main__.py",
+      "size": 401,
+      "sha256": "fb6b083202b4ffedb6b7a8b5f7ae39bc0f827c116f1e7cc8b99f257ace0099d1"
+    },
+    {
+      "relative_path": "celery/_state.py",
+      "size": 5029,
+      "sha256": "93b4fd0b37984793d94abd0c8d256f16ceb3a5f9196a5f41ae5f31bbebcfa579"
+    },
+    {
+      "relative_path": "celery/app/__init__.py",
+      "size": 2459,
+      "sha256": "89a76107fa661d8ae5a9a38c81ef9a3b608b40ac651b5f321da358b621cbfb76"
+    },
+    {
+      "relative_path": "celery/app/amqp.py",
+      "size": 22992,
+      "sha256": "dc281b75c9fde7ab6c4b327e6b23e61806948eb3feae67a97898c7a42ea01001"
+    },
+    {
+      "relative_path": "celery/app/annotations.py",
+      "size": 1445,
+      "sha256": "f77cee28d084ee970c0f72b9b4ce4731e54243995f251ff486d169a2db6039e5"
+    },
+    {
+      "relative_path": "celery/app/autoretry.py",
+      "size": 2288,
+      "sha256": "9320505c8ef9fbde8635bbb5b8d7d4d77e5282868423fd30d06e158cbb1f1dd1"
+    },
+    {
+      "relative_path": "celery/app/backends.py",
+      "size": 2765,
+      "sha256": "06bc50977652f0eb65d2df5c0ceda148994aa0288bb8de630a16f618eb0b3b05"
+    },
+    {
+      "relative_path": "celery/app/base.py",
+      "size": 47365,
+      "sha256": "ee8c2d40072286b9c40ff1df6a3280d320994ac69f1acb79c9114cf68b6af421"
+    },
+    {
+      "relative_path": "celery/app/builtins.py",
+      "size": 6673,
+      "sha256": "8273b2134eccf338316ad4e66f40f4bcacedc75b1065a462fe13bf77e14b354b"
+    },
+    {
+      "relative_path": "celery/app/control.py",
+      "size": 27841,
+      "sha256": "acdcff405f170eb0f32b6e8f9a134cf011555009d4fd7951e77401387f5c3391"
+    },
+    {
+      "relative_path": "celery/app/defaults.py",
+      "size": 14590,
+      "sha256": "405fb2bbc696230a1483174ee32d87c9cd8721d7ac45466a8211acf9bfe57b89"
+    },
+    {
+      "relative_path": "celery/app/events.py",
+      "size": 1326,
+      "sha256": "f59ca3761515bebb7ac4b74e30e5533cdee08f274b59018daf886f1683eba2e0"
+    },
+    {
+      "relative_path": "celery/app/log.py",
+      "size": 9161,
+      "sha256": "c6d820cbbbd83dc48f48b1698aff01943a4d4fa6bb7e4db3dfb10206d4b0f783"
+    },
+    {
+      "relative_path": "celery/app/registry.py",
+      "size": 2001,
+      "sha256": "8a67465056fd092e22899d69c40c1c4006ded4928a8f2bfd593cbde2a1c742f9"
+    },
+    {
+      "relative_path": "celery/app/routes.py",
+      "size": 4527,
+      "sha256": "0cc76be679849ea2565e42c5233596c4cdaccfd658780fbef057926b129c0428"
+    },
+    {
+      "relative_path": "celery/app/task.py",
+      "size": 40894,
+      "sha256": "c7dd0d96ee08c092ccf68b863d8d030ebe32a542b6070cf4389439ef4add8391"
+    },
+    {
+      "relative_path": "celery/app/trace.py",
+      "size": 27021,
+      "sha256": "9b4b16fba9fcfdde3f509bc99f16830a3cd124bbd7f97b748d3a674664fbc578"
+    },
+    {
+      "relative_path": "celery/app/utils.py",
+      "size": 13185,
+      "sha256": "b06aa201cd740523968bf7e6b60be2c68d386dab550f0b85af64853eb8839325"
+    },
+    {
+      "relative_path": "celery/apps/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "celery/apps/beat.py",
+      "size": 5145,
+      "sha256": "8e9f191cc7a7ce6689e9634db0b7225f14a4ff9b12c91090a352b2badd547de8"
+    },
+    {
+      "relative_path": "celery/apps/multi.py",
+      "size": 16398,
+      "sha256": "3134708d935fbdef19331750957c92d7a037885633aedd436d2f637a88cf6fc5"
+    },
+    {
+      "relative_path": "celery/apps/worker.py",
+      "size": 13474,
+      "sha256": "95a8ca872640ba88e2aedcdffe98d71f61211987a54abf30941117419f525bea"
+    },
+    {
+      "relative_path": "celery/backends/__init__.py",
+      "size": 23,
+      "sha256": "d6437dd9d7f58c3a77802ea6ac6119236784fa438450829d38e1d101daf2d9ad"
+    },
+    {
+      "relative_path": "celery/backends/arangodb.py",
+      "size": 7642,
+      "sha256": "579c89de1e0e29322183e53dee4b64a0df90e14da974ab3684c5584361705b4d"
+    },
+    {
+      "relative_path": "celery/backends/asynchronous.py",
+      "size": 9464,
+      "sha256": "83143a2d69a8d9a20569987e3aee9838949d5b6eff4c122eb9eb548692d2e598"
+    },
+    {
+      "relative_path": "celery/backends/azureblockblob.py",
+      "size": 4124,
+      "sha256": "ce226c4b82b09ee5abc6cc54bcca555c4bcbbf26af623b17f3664b6e1cdfdb38"
+    },
+    {
+      "relative_path": "celery/backends/base.py",
+      "size": 40347,
+      "sha256": "b1d0e1c9f98748edf7264712f6a9cc87284489dae8fb51cfcf0a7e5054521cee"
+    },
+    {
+      "relative_path": "celery/backends/cache.py",
+      "size": 4817,
+      "sha256": "26aa7b7ff962912f1acc9ba99e348daecb43a29a7245ca5919db665607246def"
+    },
+    {
+      "relative_path": "celery/backends/cassandra.py",
+      "size": 7890,
+      "sha256": "5ede23c3c7616917514083b7e87d9925d7ad6699e2f3e9ebcb520025a103525a"
+    },
+    {
+      "relative_path": "celery/backends/consul.py",
+      "size": 3113,
+      "sha256": "489e2f4c81e25f2114a90286fa0bb8a852d4379c5e3461bfa68996f099597797"
+    },
+    {
+      "relative_path": "celery/backends/cosmosdbsql.py",
+      "size": 6839,
+      "sha256": "8ccbe855d131341b19d6c78b86f4e11196691ff09c628d805ad249af2f576548"
+    },
+    {
+      "relative_path": "celery/backends/couchbase.py",
+      "size": 3173,
+      "sha256": "c51c3899b8237f236d7ddd57d66a31ddc3db711e3e7a6789e917b9e85f97d069"
+    },
+    {
+      "relative_path": "celery/backends/couchdb.py",
+      "size": 2935,
+      "sha256": "33fcf4ce03453f0170f3da5a6b990843dc7da3b5513f0b8a08b660a058450e90"
+    },
+    {
+      "relative_path": "celery/backends/database/__init__.py",
+      "size": 7771,
+      "sha256": "ba43450323b53caf05f5b9bd4bd5730f274225580007737ea522ee7d8cae4228"
+    },
+    {
+      "relative_path": "celery/backends/database/models.py",
+      "size": 3351,
+      "sha256": "ffa59932fe77c7c2358814426b8858df92da05478b2192730eeb23bd2fbc6808"
+    },
+    {
+      "relative_path": "celery/backends/database/session.py",
+      "size": 3011,
+      "sha256": "df3bbb5f0628139d9a4ba76c4a625a9ea96f4bab2c8deb7b8523546e58b09cba"
+    },
+    {
+      "relative_path": "celery/backends/dynamodb.py",
+      "size": 17254,
+      "sha256": "a57d2a028d4789a8dbce759dd04ca457db2e427dcee3d06ac41f515f0233375a"
+    },
+    {
+      "relative_path": "celery/backends/elasticsearch.py",
+      "size": 8453,
+      "sha256": "2a82236b6cfdffd0173586449dbe0c13a540d7ce8a5271c5fd5f0f8d51aa5a51"
+    },
+    {
+      "relative_path": "celery/backends/filesystem.py",
+      "size": 3054,
+      "sha256": "59e46435a39c47ade7e86cfcf60a242be15841e240ecc2044eb5096ada5c8b0f"
+    },
+    {
+      "relative_path": "celery/backends/mongodb.py",
+      "size": 11092,
+      "sha256": "e1add05de269f2a7624764498d498b55e519d20d2abefa1c788baaab99c16980"
+    },
+    {
+      "relative_path": "celery/backends/redis.py",
+      "size": 25844,
+      "sha256": "5c7ac851c924e7a07672b312e3bf128b6c3eb0bc40b1977137fb60d26ceb1ca3"
+    },
+    {
+      "relative_path": "celery/backends/rpc.py",
+      "size": 12077,
+      "sha256": "3dfce3a73ef39ce7e61d1111b907ce9535be7a7b40b25f34de8735f845a99d36"
+    },
+    {
+      "relative_path": "celery/backends/s3.py",
+      "size": 2752,
+      "sha256": "3142f8f9b10709c4cbe775d7c9bd36d33c8b613af8e030e33a1e815ed929f654"
+    },
+    {
+      "relative_path": "celery/beat.py",
+      "size": 24421,
+      "sha256": "a981e3ff8bcc72834bfd552b8286451c2971f08310ebc0c62580dd33808fe4ac"
+    },
+    {
+      "relative_path": "celery/bin/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "celery/bin/amqp.py",
+      "size": 10030,
+      "sha256": "191caab011ed478b9b11d8e33d80fc7291a0e2e3e41c9f3cf70b734a4951c4c8"
+    },
+    {
+      "relative_path": "celery/bin/base.py",
+      "size": 7814,
+      "sha256": "daa3d0aa7e22a725b2ccadda1018c205b36d7417ef28f7626a0787b531e7050d"
+    },
+    {
+      "relative_path": "celery/bin/beat.py",
+      "size": 2583,
+      "sha256": "2329fc433f2f54278f0b0e6384b0b75fe631c733a5c06da660ab7a56acae0d61"
+    },
+    {
+      "relative_path": "celery/bin/call.py",
+      "size": 2338,
+      "sha256": "e7acee7cb4e9f830b2695512ed516a2cc9f7f09fdaba1879e39577175b50ba07"
+    },
+    {
+      "relative_path": "celery/bin/celery.py",
+      "size": 6684,
+      "sha256": "56605923b04c734f28b2e134e0010a31dc7464ced4327203b8979ca56ec83cdd"
+    },
+    {
+      "relative_path": "celery/bin/control.py",
+      "size": 7089,
+      "sha256": "d2bebd6c25d40c68f2fd623f988d438fefbf88ff1bc88ecb8efaf18f6b414bd6"
+    },
+    {
+      "relative_path": "celery/bin/events.py",
+      "size": 2825,
+      "sha256": "286abf45d4a92e361dd709327a58903d664f5f0c4ca2cab5fc593d71bb6c1b63"
+    },
+    {
+      "relative_path": "celery/bin/graph.py",
+      "size": 5796,
+      "sha256": "2ddd9d292c487561f1157ae3b135c05018fa8dbd360151b24cf5c351903f82fa"
+    },
+    {
+      "relative_path": "celery/bin/list.py",
+      "size": 1058,
+      "sha256": "d8e28f8979fab20ba6ff4d911f577f4c1a1772935c36ca284fdf07b7da56b9a6"
+    },
+    {
+      "relative_path": "celery/bin/logtool.py",
+      "size": 4267,
+      "sha256": "b2a2b82dfb80b47b950fb393b0a6ca7ef0763a47ce0fe2b7eda73d8bf17c348b"
+    },
+    {
+      "relative_path": "celery/bin/migrate.py",
+      "size": 2139,
+      "sha256": "dc172e3628a0a2ab04f0f36d318b99df5eb62d8795f5bdc82cfd95820032474a"
+    },
+    {
+      "relative_path": "celery/bin/multi.py",
+      "size": 15364,
+      "sha256": "00a28c9e6fffe5bda32223ad641784b07503ad72c113945394979331093a22bf"
+    },
+    {
+      "relative_path": "celery/bin/purge.py",
+      "size": 2578,
+      "sha256": "5ae76838e44e708877c8555bdaf1f267da5192ba4aa1e6c4fe0149cf8ad7431c"
+    },
+    {
+      "relative_path": "celery/bin/result.py",
+      "size": 1007,
+      "sha256": "4cada4f3832a8759d0dd720e4ff10ddd8e18de1e59709207f0c114f982202481"
+    },
+    {
+      "relative_path": "celery/bin/shell.py",
+      "size": 4809,
+      "sha256": "1f14a8c85229c0463dbe9e9bb7aff95c337847685f9b46d53bb4a46b663b47ad"
+    },
+    {
+      "relative_path": "celery/bin/upgrade.py",
+      "size": 3095,
+      "sha256": "4bd4231ba0eaf3b1b4244de1ae8dd18bfd407b141d76a97fe17e8572c8ffdf8d"
+    },
+    {
+      "relative_path": "celery/bin/worker.py",
+      "size": 12759,
+      "sha256": "2527346356112ca5142c459ef186b5485242523c6c1dddaaed1615c6c96a066e"
+    },
+    {
+      "relative_path": "celery/bootsteps.py",
+      "size": 12297,
+      "sha256": "75daf1183442736adadae8345f9341108ddfa8f8e44a5351898497836bc60aad"
+    },
+    {
+      "relative_path": "celery/canvas.py",
+      "size": 61593,
+      "sha256": "7baaf2083537d33ddca127cecfa67a8cfbc415653a67c3abab889abc3bfd8071"
+    },
+    {
+      "relative_path": "celery/concurrency/__init__.py",
+      "size": 995,
+      "sha256": "55b99c5d820b6ceeb05186884b7ce8714fd785402b5fc3eddfac97baa14924a6"
+    },
+    {
+      "relative_path": "celery/concurrency/asynpool.py",
+      "size": 50630,
+      "sha256": "33ed7295744880c05caffbea468dab8ebb08d80644c99e92236d24012bca8727"
+    },
+    {
+      "relative_path": "celery/concurrency/base.py",
+      "size": 4373,
+      "sha256": "3178c6d407edef87171b973b54bd5a7e60c0ebc641cf41eaba7851483e792551"
+    },
+    {
+      "relative_path": "celery/concurrency/eventlet.py",
+      "size": 4132,
+      "sha256": "1d996a65f05818b0b7c0cf69f116b06d0ba5fa18905a748563da8516ecdf82ba"
+    },
+    {
+      "relative_path": "celery/concurrency/gevent.py",
+      "size": 3407,
+      "sha256": "02467c567d02c7c9b91a4ee3d4e28fd0373c341a455be87273ec97af01810abb"
+    },
+    {
+      "relative_path": "celery/concurrency/prefork.py",
+      "size": 5680,
+      "sha256": "a7be236d62d97358233352402f7639a628a983d95f2bcb661c84f6d10757c10d"
+    },
+    {
+      "relative_path": "celery/concurrency/solo.py",
+      "size": 693,
+      "sha256": "59c3a2d21e2c26513b59b47b0db1f06621d1135fa397030f5bfe0435c91014a9"
+    },
+    {
+      "relative_path": "celery/concurrency/thread.py",
+      "size": 1248,
+      "sha256": "9feedac8aa7233cd2744841cc54549a35c992decc8e27e488d691f917a9303a8"
+    },
+    {
+      "relative_path": "celery/contrib/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "celery/contrib/abortable.py",
+      "size": 5091,
+      "sha256": "ba0106496d003b5d0279ee6c16b64c2cbd87dabd5bfee6db09771b24d323cb0d"
+    },
+    {
+      "relative_path": "celery/contrib/migrate.py",
+      "size": 14163,
+      "sha256": "fa40a9e81e02ebe1dd2bd6060f18d20f244e17fd152c85793f35495e68492abc"
+    },
+    {
+      "relative_path": "celery/contrib/pytest.py",
+      "size": 6748,
+      "sha256": "e2953e03b3f64ae39c6db9cddf32f74b0f4ccdc609318959dd1f7ee58082048a"
+    },
+    {
+      "relative_path": "celery/contrib/rdb.py",
+      "size": 5021,
+      "sha256": "ae33229ec32ede82f6f0ea55fffa689ad0147b4fcecb41eb56c6dcbe62768b61"
+    },
+    {
+      "relative_path": "celery/contrib/sphinx.py",
+      "size": 3410,
+      "sha256": "daa2ccb8aa4a9b92b0b6f8dfc7f6eb0c38e89c831a669b72a4c32e8435928517"
+    },
+    {
+      "relative_path": "celery/contrib/testing/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "celery/contrib/testing/app.py",
+      "size": 3017,
+      "sha256": "9ce7088f11a57921a9d471bd83736a91ea8ea6f07f277ef406a465758d60f7ba"
+    },
+    {
+      "relative_path": "celery/contrib/testing/manager.py",
+      "size": 7723,
+      "sha256": "d4009339adf99f0508a8a0eaf566690469c15d9a60b3ac8339594aaad0166985"
+    },
+    {
+      "relative_path": "celery/contrib/testing/mocks.py",
+      "size": 3500,
+      "sha256": "a5b610913cb56761f0dbbb62b697ad2c01b5739d40b6e4d94cbced8a5215039c"
+    },
+    {
+      "relative_path": "celery/contrib/testing/tasks.py",
+      "size": 208,
+      "sha256": "a4933769a6f0eee75ca69cf840d794835fba9e59db925ad3fa13f925798bfa03"
+    },
+    {
+      "relative_path": "celery/contrib/testing/worker.py",
+      "size": 5569,
+      "sha256": "130cf3f076517c2e666200e93ac632c7d5077b06ea3b8c497067609ad88ed695"
+    },
+    {
+      "relative_path": "celery/events/__init__.py",
+      "size": 477,
+      "sha256": "f5dd9cbe20b0e7322c67702f409931efb1cf4e5c665486a1451ed06b9e274275"
+    },
+    {
+      "relative_path": "celery/events/cursesmon.py",
+      "size": 18050,
+      "sha256": "a433d5d6ba143f4f33a3f228ebef283f442bd4a4acd5e3b53e9eac077038ddf0"
+    },
+    {
+      "relative_path": "celery/events/dispatcher.py",
+      "size": 8987,
+      "sha256": "edbdfedddffaba4bd135a8f27e21cc5f562fa16348cda07acd2dfecc4510846e"
+    },
+    {
+      "relative_path": "celery/events/dumper.py",
+      "size": 3116,
+      "sha256": "ef339598055f1b61d75bbf45bafa68ff40b6723ced4f38085e76a251ce0d2fc7"
+    },
+    {
+      "relative_path": "celery/events/event.py",
+      "size": 1736,
+      "sha256": "9edd72454cc3ad8a7d60b6ec2090f77a8fc0a0c853e6c42d6405febc492ae10f"
+    },
+    {
+      "relative_path": "celery/events/receiver.py",
+      "size": 4998,
+      "sha256": "edd56f7b36240503adc88fab1fbefee500c9ced3cb07ddf7545ecd8267b34ae5"
+    },
+    {
+      "relative_path": "celery/events/snapshot.py",
+      "size": 3294,
+      "sha256": "38b42ec71d5a7f6f4b2a760a0e84deb273df2bfe5d171df3099ec949d83db7b0"
+    },
+    {
+      "relative_path": "celery/events/state.py",
+      "size": 25742,
+      "sha256": "f6437ecb75e4b9e5352d483b0d8fb053b5e3435af71594a3f9c0b0b0f921ebab"
+    },
+    {
+      "relative_path": "celery/exceptions.py",
+      "size": 9030,
+      "sha256": "b820f64a76cbe9a39cc8c180e44d44ab0d08583194cd0f85264b6e2e5a2beed1"
+    },
+    {
+      "relative_path": "celery/fixups/__init__.py",
+      "size": 14,
+      "sha256": "edcb4d68a1e239ad9f55e3dc74a3d4f49fbf6d0d24d631476a86650875d8d2f5"
+    },
+    {
+      "relative_path": "celery/fixups/django.py",
+      "size": 6588,
+      "sha256": "4a50be01dc415a43184281fa4c1e00e1d70830881951ba5da092c9ac96c64395"
+    },
+    {
+      "relative_path": "celery/loaders/__init__.py",
+      "size": 490,
+      "sha256": "2e74535a4f29cf6afb0548f655426206cb4f8d207008fd205034646dc8465b6e"
+    },
+    {
+      "relative_path": "celery/loaders/app.py",
+      "size": 199,
+      "sha256": "c6a4694432641a64d6db537fef3c7917835af860936cdb3a43ab467c89e76675"
+    },
+    {
+      "relative_path": "celery/loaders/base.py",
+      "size": 8731,
+      "sha256": "bc899884a23735f4bdee043da4832655901adac3deaa6ec403c9cd01f2d985c6"
+    },
+    {
+      "relative_path": "celery/loaders/default.py",
+      "size": 1520,
+      "sha256": "4d9abacd1e2d83fdb4b15240b92c1204b5511d1c9f7af1e41e1518acd4589135"
+    },
+    {
+      "relative_path": "celery/local.py",
+      "size": 16312,
+      "sha256": "b53de3f9a3166da921ef04ae01e3f5133823bb182d5c7341b4e4605af2d77cbf"
+    },
+    {
+      "relative_path": "celery/platforms.py",
+      "size": 25196,
+      "sha256": "1dc640ff57955a6bee14476fd617457c22368eae319af29cfef79d71015aa2fa"
+    },
+    {
+      "relative_path": "celery/result.py",
+      "size": 34193,
+      "sha256": "52cd6b4e740d452117c54d4dadbf28271aaca6d4eb7344c33ab43b086a12f85b"
+    },
+    {
+      "relative_path": "celery/schedules.py",
+      "size": 29251,
+      "sha256": "a5defa69f4e50a0b764bd05a4d2997fdcca5ce5bd3aebbff8fa6916102279950"
+    },
+    {
+      "relative_path": "celery/security/__init__.py",
+      "size": 2274,
+      "sha256": "05db4f37c3f255b372b627eacf9af17cb8d0c7996d171268f16c0cf8c48b0ad3"
+    },
+    {
+      "relative_path": "celery/security/certificate.py",
+      "size": 2997,
+      "sha256": "0afe394dd2e4800b4413fcbaf2ec7e700e06f08a52864b26cc8290a686d58e30"
+    },
+    {
+      "relative_path": "celery/security/key.py",
+      "size": 1042,
+      "sha256": "00ffbc9017ea693f1ae88a59b1fdaa00b4c2541dfa46ca2a37b7b9e79545ea6c"
+    },
+    {
+      "relative_path": "celery/security/serialization.py",
+      "size": 4206,
+      "sha256": "6ce3e2fee832f448669de2e38c02efb7e66bc050ad3ea4301fb7f8cdca9dab72"
+    },
+    {
+      "relative_path": "celery/security/utils.py",
+      "size": 845,
+      "sha256": "549b96c4b645297417ce505cceec68f78c1759250b9d7c1b3bfe6e97f870b1ed"
+    },
+    {
+      "relative_path": "celery/signals.py",
+      "size": 4273,
+      "sha256": "0a09f0a5950d31966a28828eac28ec0e79b10921d2360457223645674baa96de"
+    },
+    {
+      "relative_path": "celery/states.py",
+      "size": 3260,
+      "sha256": "88805d774d943f00ca4c8626f4c1a52201c6066aebf40cc682f6de0643e04b25"
+    },
+    {
+      "relative_path": "celery/utils/__init__.py",
+      "size": 935,
+      "sha256": "948263071bd70aca42fa26fe5dab1d10f941d31010735e8fd1e38f6f4816b0bd"
+    },
+    {
+      "relative_path": "celery/utils/abstract.py",
+      "size": 2874,
+      "sha256": "c4dd90afe4c4a75d8ff0060ee968a0c45af9a7c9093d451bd1fe545f716d1e32"
+    },
+    {
+      "relative_path": "celery/utils/collections.py",
+      "size": 25635,
+      "sha256": "4164ccc097f4b16bc4d5002469443014d7d29c3a38e1a143a42bab294e3c088c"
+    },
+    {
+      "relative_path": "celery/utils/debug.py",
+      "size": 4709,
+      "sha256": "f60e54d0d953be53fd385c23c5fc9782285fcc3f8a93f7dccbb4038e192a6a9c"
+    },
+    {
+      "relative_path": "celery/utils/deprecated.py",
+      "size": 3620,
+      "sha256": "e1ab0f7b6db64d6261f2670be7739be98ed744e3e0aafdb79c247e1141c9a01a"
+    },
+    {
+      "relative_path": "celery/utils/dispatch/LICENSE.python",
+      "size": 12767,
+      "sha256": "8129570d0752f342973e176c87123b7b7199b6f8a907a4b6704d4473b3dd2d3b"
+    },
+    {
+      "relative_path": "celery/utils/dispatch/__init__.py",
+      "size": 74,
+      "sha256": "b34fd9a6f1565f0d5c79c12e7b5be3f8ca4e3d050f138d60e6cf98b239d7ea6a"
+    },
+    {
+      "relative_path": "celery/utils/dispatch/license.txt",
+      "size": 1720,
+      "sha256": "9c173c7295873fd2e7e4c4d6b4b65c612b55a037fccbe7ade638ab46807ba7b4"
+    },
+    {
+      "relative_path": "celery/utils/dispatch/signal.py",
+      "size": 13603,
+      "sha256": "2dc99f05a6e7440391fb08800d641f053fa03772f38b6f49a40702bcc2cd357e"
+    },
+    {
+      "relative_path": "celery/utils/functional.py",
+      "size": 11761,
+      "sha256": "304af9fc49b92d14e15a0f1007bf5151902d1dd78af16b047e70c2b4b6ca9590"
+    },
+    {
+      "relative_path": "celery/utils/graph.py",
+      "size": 9041,
+      "sha256": "a0fdb9617b107cd0fe57017e306a253865f419b45e23355cf5225f20fd6b5087"
+    },
+    {
+      "relative_path": "celery/utils/imports.py",
+      "size": 4826,
+      "sha256": "ab5929bf9f4953958e81b3c7ed83442869f4603ccaaccfada7376aeadea49ef8"
+    },
+    {
+      "relative_path": "celery/utils/iso8601.py",
+      "size": 2776,
+      "sha256": "19a6229638d6042e362353172b6c258cedabba9a653c889b21c9d21966fb3f3b"
+    },
+    {
+      "relative_path": "celery/utils/log.py",
+      "size": 8855,
+      "sha256": "6bb21532794884aec0eaca137d82e00e4cf20f19a2af1b708203006728c8efc9"
+    },
+    {
+      "relative_path": "celery/utils/nodenames.py",
+      "size": 2858,
+      "sha256": "51107076d591fc217c2dd7fab63c44e32eeb9742b11450f7e878e365caf04396"
+    },
+    {
+      "relative_path": "celery/utils/objects.py",
+      "size": 4215,
+      "sha256": "359fcdc747a1ac9badf75b2bb802369151b28e1683411fe7b53985f4e9bf488f"
+    },
+    {
+      "relative_path": "celery/utils/saferepr.py",
+      "size": 9175,
+      "sha256": "4801717a1d3fa2ab8f2452b30039254f5b7009e8b81a726cbc085d4f4f5f3ef3"
+    },
+    {
+      "relative_path": "celery/utils/serialization.py",
+      "size": 8053,
+      "sha256": "b029162832681bb0f06a7c4a5db62e012cfaa421c3d94eeb9eebc319b3f79e74"
+    },
+    {
+      "relative_path": "celery/utils/static/__init__.py",
+      "size": 299,
+      "sha256": "2b00eaf2103e5ddef6d4795dc09277e04c70ac81329e0128488cde027a9ce420"
+    },
+    {
+      "relative_path": "celery/utils/static/celery_128.png",
+      "size": 2556,
+      "sha256": "f0d999c4200b40fa772953ac38f7c955a34bbf0c0b62a892e5588e73ac744865"
+    },
+    {
+      "relative_path": "celery/utils/sysinfo.py",
+      "size": 1085,
+      "sha256": "2d8746cf16c5df9ecfad8370df5ffd7fc084beb95db5bd1501620572506d0a70"
+    },
+    {
+      "relative_path": "celery/utils/term.py",
+      "size": 4568,
+      "sha256": "887b38d8ebb8344bf9ee0c4b597a8335e4f6d58a2e8632b4daf2746db96d0f99"
+    },
+    {
+      "relative_path": "celery/utils/text.py",
+      "size": 5814,
+      "sha256": "c0506834bbf7d4432d77087f12410ead304bc295e38d0b5909b65cc987b72f79"
+    },
+    {
+      "relative_path": "celery/utils/threads.py",
+      "size": 9592,
+      "sha256": "62c75033d679d5736dae143697eb3f78ddad622698f48fa5aa1e56ecc9affcb3"
+    },
+    {
+      "relative_path": "celery/utils/time.py",
+      "size": 12375,
+      "sha256": "2e879ec24e5882d4291275781366ae560ce6dcb19654bfec71c3abd97349a119"
+    },
+    {
+      "relative_path": "celery/utils/timer2.py",
+      "size": 4826,
+      "sha256": "aca949ab2a2f4beaf2fa0fbec87f8b69d4c4bcb370a500fe03be8a7de9bf037a"
+    },
+    {
+      "relative_path": "celery/worker/__init__.py",
+      "size": 95,
+      "sha256": "10a52058e32aff50df59bf8e6805afe2b34b77b822f756a275e7cc8c7328c732"
+    },
+    {
+      "relative_path": "celery/worker/autoscale.py",
+      "size": 4593,
+      "sha256": "9336f5193c11cb0f436458f022f1eb70b749c6e20623c1da1ddb6fb6bdf58bd0"
+    },
+    {
+      "relative_path": "celery/worker/components.py",
+      "size": 7517,
+      "sha256": "665bb923499a0c2685d6a48db704bc8c97b6a24212b10739285bdfbb306266fb"
+    },
+    {
+      "relative_path": "celery/worker/consumer/__init__.py",
+      "size": 391,
+      "sha256": "c8a68666d07360a00364ccdb4aad78fc0518a53e10018f6745109fef70c386a7"
+    },
+    {
+      "relative_path": "celery/worker/consumer/agent.py",
+      "size": 525,
+      "sha256": "6d3852f1955ebb26c0caa35ef2399d37a460689843ab49657b0a2c1ab3bce7e7"
+    },
+    {
+      "relative_path": "celery/worker/consumer/connection.py",
+      "size": 1026,
+      "sha256": "6bb836df09b37af90488c8e38c3f0ab78b1c8a17ff36092947881cba4b32b3d3"
+    },
+    {
+      "relative_path": "celery/worker/consumer/consumer.py",
+      "size": 22769,
+      "sha256": "2e4854f9ceb5ba2515bc510146c01b63f40e42ff0b4b2d5076780fbedad2f4a1"
+    },
+    {
+      "relative_path": "celery/worker/consumer/control.py",
+      "size": 946,
+      "sha256": "d0d889f4ff801ddbf5df899792046053d85f85d27f3fb1ca6fbcfd0385ea6b64"
+    },
+    {
+      "relative_path": "celery/worker/consumer/events.py",
+      "size": 2054,
+      "sha256": "1600f06d5d096e3f5a58f6d5dca014b6c5d9ab826f6447eb59f9eb620be4320a"
+    },
+    {
+      "relative_path": "celery/worker/consumer/gossip.py",
+      "size": 6833,
+      "sha256": "83e5892f6aebfeaf5a33f49a4d4ad094f8f638d7fcbc7b362ef9b2450b433045"
+    },
+    {
+      "relative_path": "celery/worker/consumer/heart.py",
+      "size": 930,
+      "sha256": "21e9e492588a93ab009366b535f63287e76834396615619189a25de5ef002e92"
+    },
+    {
+      "relative_path": "celery/worker/consumer/mingle.py",
+      "size": 2519,
+      "sha256": "506f0aeac5c5d4a5095cd889e1e30750c220e3fecad6d0d6a9844d7ddf4dcfd9"
+    },
+    {
+      "relative_path": "celery/worker/consumer/tasks.py",
+      "size": 1959,
+      "sha256": "9588e7f8cb7666e950c8ed65c12a0c47308a79677c7fde791ff55f186d3e7328"
+    },
+    {
+      "relative_path": "celery/worker/control.py",
+      "size": 16791,
+      "sha256": "677a9eb24f0edd545bc95452a1eaa6d8b5d4379098b06671239199818e507549"
+    },
+    {
+      "relative_path": "celery/worker/heartbeat.py",
+      "size": 2107,
+      "sha256": "b1357f774441f4ceb3b1722f2d9ed553ab5e51f5f720ad484f29c3a71312dbdf"
+    },
+    {
+      "relative_path": "celery/worker/loops.py",
+      "size": 3857,
+      "sha256": "ccb2aac3f0172884fbee905bb546bbbba9fc8968557f7732ed62c88bb335d032"
+    },
+    {
+      "relative_path": "celery/worker/pidbox.py",
+      "size": 3630,
+      "sha256": "2dc42c28391df19f779d0c64d1238bba507c18b11f2233e437e274a4693b75f3"
+    },
+    {
+      "relative_path": "celery/worker/request.py",
+      "size": 24689,
+      "sha256": "3d75046e3831eaf1748c92220fe6b5f080307f6d0e01fcd16e5d9b9844907edd"
+    },
+    {
+      "relative_path": "celery/worker/state.py",
+      "size": 8177,
+      "sha256": "0a3c4fccd96b3753c9d7346ccf433ad7a2992240a14b527307ef1769b6a2ce1d"
+    },
+    {
+      "relative_path": "celery/worker/strategy.py",
+      "size": 7165,
+      "sha256": "a7f3a8309b9e92e6c0455b5f34ade4007fd665762e4a0299794c2f532c69aff8"
+    },
+    {
+      "relative_path": "celery/worker/worker.py",
+      "size": 14513,
+      "sha256": "c555aa77cf19480822ea4abf656bb0988239844e58150b7eb4e46152c76c0e97"
+    }
+  ],
+  "fixture_manifest_hash": "2476421afb10c02d5b32b09544bbfda25e0bac4febfc518daae5b5b40592e5ff"
+}

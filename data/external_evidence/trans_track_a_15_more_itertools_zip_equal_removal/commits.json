@@ -1,0 +1,1170 @@
+[
+  {
+    "sha": "361b92567361f377489ce608d5e6280e4f6f986b",
+    "node_id": "C_kwDOAD89ktoAKDM2MWI5MjU2NzM2MWYzNzc0ODljZTYwOGQ1ZTYyODBlNGY2Zjk4NmI",
+    "commit": {
+      "author": {
+        "name": "Raymond Hettinger",
+        "email": "raymond.hettinger@gmail.com",
+        "date": "2025-08-15T15:19:55Z"
+      },
+      "committer": {
+        "name": "Raymond Hettinger",
+        "email": "raymond.hettinger@gmail.com",
+        "date": "2025-08-15T15:19:55Z"
+      },
+      "message": "Set minimum version to Py3.10. Remove deprecated zip_equal. Remove _zip_strict.",
+      "tree": {
+        "sha": "54a7dcd5072e841dfe1a40022ab78f379b19a69c",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/git/trees/54a7dcd5072e841dfe1a40022ab78f379b19a69c"
+      },
+      "url": "https://api.github.com/repos/more-itertools/more-itertools/git/commits/361b92567361f377489ce608d5e6280e4f6f986b",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/361b92567361f377489ce608d5e6280e4f6f986b",
+    "html_url": "https://github.com/more-itertools/more-itertools/commit/361b92567361f377489ce608d5e6280e4f6f986b",
+    "comments_url": "https://api.github.com/repos/more-itertools/more-itertools/commits/361b92567361f377489ce608d5e6280e4f6f986b/comments",
+    "author": {
+      "login": "rhettinger",
+      "id": 1623689,
+      "node_id": "MDQ6VXNlcjE2MjM2ODk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1623689?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/rhettinger",
+      "html_url": "https://github.com/rhettinger",
+      "followers_url": "https://api.github.com/users/rhettinger/followers",
+      "following_url": "https://api.github.com/users/rhettinger/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rhettinger/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rhettinger/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rhettinger/subscriptions",
+      "organizations_url": "https://api.github.com/users/rhettinger/orgs",
+      "repos_url": "https://api.github.com/users/rhettinger/repos",
+      "events_url": "https://api.github.com/users/rhettinger/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rhettinger/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "rhettinger",
+      "id": 1623689,
+      "node_id": "MDQ6VXNlcjE2MjM2ODk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1623689?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/rhettinger",
+      "html_url": "https://github.com/rhettinger",
+      "followers_url": "https://api.github.com/users/rhettinger/followers",
+      "following_url": "https://api.github.com/users/rhettinger/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rhettinger/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rhettinger/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rhettinger/subscriptions",
+      "organizations_url": "https://api.github.com/users/rhettinger/orgs",
+      "repos_url": "https://api.github.com/users/rhettinger/repos",
+      "events_url": "https://api.github.com/users/rhettinger/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rhettinger/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "be5078036ce823c66cfc464d7f04beb705877caf",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/be5078036ce823c66cfc464d7f04beb705877caf",
+        "html_url": "https://github.com/more-itertools/more-itertools/commit/be5078036ce823c66cfc464d7f04beb705877caf"
+      }
+    ]
+  },
+  {
+    "sha": "a94a7f52b6b921fec3cd3ffc9209791e6231433c",
+    "node_id": "C_kwDOAD89ktoAKGE5NGE3ZjUyYjZiOTIxZmVjM2NkM2ZmYzkyMDk3OTFlNjIzMTQzM2M",
+    "commit": {
+      "author": {
+        "name": "Bo Bayles",
+        "email": "bbayles@gmail.com",
+        "date": "2025-08-15T20:45:24Z"
+      },
+      "committer": {
+        "name": "Raymond Hettinger",
+        "email": "raymond.hettinger@gmail.com",
+        "date": "2025-08-16T23:51:28Z"
+      },
+      "message": "Merge tox.ini edit to add Py3.14",
+      "tree": {
+        "sha": "26e1b09c87f4d29cdaee1adc028814b23eff1c57",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/git/trees/26e1b09c87f4d29cdaee1adc028814b23eff1c57"
+      },
+      "url": "https://api.github.com/repos/more-itertools/more-itertools/git/commits/a94a7f52b6b921fec3cd3ffc9209791e6231433c",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/a94a7f52b6b921fec3cd3ffc9209791e6231433c",
+    "html_url": "https://github.com/more-itertools/more-itertools/commit/a94a7f52b6b921fec3cd3ffc9209791e6231433c",
+    "comments_url": "https://api.github.com/repos/more-itertools/more-itertools/commits/a94a7f52b6b921fec3cd3ffc9209791e6231433c/comments",
+    "author": {
+      "login": "bbayles",
+      "id": 1922815,
+      "node_id": "MDQ6VXNlcjE5MjI4MTU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1922815?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bbayles",
+      "html_url": "https://github.com/bbayles",
+      "followers_url": "https://api.github.com/users/bbayles/followers",
+      "following_url": "https://api.github.com/users/bbayles/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bbayles/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bbayles/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bbayles/subscriptions",
+      "organizations_url": "https://api.github.com/users/bbayles/orgs",
+      "repos_url": "https://api.github.com/users/bbayles/repos",
+      "events_url": "https://api.github.com/users/bbayles/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bbayles/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "rhettinger",
+      "id": 1623689,
+      "node_id": "MDQ6VXNlcjE2MjM2ODk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1623689?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/rhettinger",
+      "html_url": "https://github.com/rhettinger",
+      "followers_url": "https://api.github.com/users/rhettinger/followers",
+      "following_url": "https://api.github.com/users/rhettinger/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rhettinger/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rhettinger/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rhettinger/subscriptions",
+      "organizations_url": "https://api.github.com/users/rhettinger/orgs",
+      "repos_url": "https://api.github.com/users/rhettinger/repos",
+      "events_url": "https://api.github.com/users/rhettinger/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rhettinger/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "361b92567361f377489ce608d5e6280e4f6f986b",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/361b92567361f377489ce608d5e6280e4f6f986b",
+        "html_url": "https://github.com/more-itertools/more-itertools/commit/361b92567361f377489ce608d5e6280e4f6f986b"
+      }
+    ]
+  },
+  {
+    "sha": "396e9187e7dd144f2f7d8b7bddefd7d90c71faaf",
+    "node_id": "C_kwDOAD89ktoAKDM5NmU5MTg3ZTdkZDE0NGYyZjdkOGI3YmRkZWZkN2Q5MGM3MWZhYWY",
+    "commit": {
+      "author": {
+        "name": "pochmann3",
+        "email": "150468338+pochmann3@users.noreply.github.com",
+        "date": "2025-08-15T15:39:17Z"
+      },
+      "committer": {
+        "name": "Raymond Hettinger",
+        "email": "raymond.hettinger@gmail.com",
+        "date": "2025-08-16T23:51:47Z"
+      },
+      "message": "`unzip`: replace custom itemgetter\n\nUse the normal one and `iter_suppress` instead. See https://github.com/more-itertools/more-itertools/issues/1055",
+      "tree": {
+        "sha": "61932b2d47772ccaf73ee3428434095f42fed7e6",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/git/trees/61932b2d47772ccaf73ee3428434095f42fed7e6"
+      },
+      "url": "https://api.github.com/repos/more-itertools/more-itertools/git/commits/396e9187e7dd144f2f7d8b7bddefd7d90c71faaf",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/396e9187e7dd144f2f7d8b7bddefd7d90c71faaf",
+    "html_url": "https://github.com/more-itertools/more-itertools/commit/396e9187e7dd144f2f7d8b7bddefd7d90c71faaf",
+    "comments_url": "https://api.github.com/repos/more-itertools/more-itertools/commits/396e9187e7dd144f2f7d8b7bddefd7d90c71faaf/comments",
+    "author": {
+      "login": "pochmann3",
+      "id": 150468338,
+      "node_id": "U_kgDOCPf28g",
+      "avatar_url": "https://avatars.githubusercontent.com/u/150468338?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pochmann3",
+      "html_url": "https://github.com/pochmann3",
+      "followers_url": "https://api.github.com/users/pochmann3/followers",
+      "following_url": "https://api.github.com/users/pochmann3/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pochmann3/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pochmann3/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pochmann3/subscriptions",
+      "organizations_url": "https://api.github.com/users/pochmann3/orgs",
+      "repos_url": "https://api.github.com/users/pochmann3/repos",
+      "events_url": "https://api.github.com/users/pochmann3/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pochmann3/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "rhettinger",
+      "id": 1623689,
+      "node_id": "MDQ6VXNlcjE2MjM2ODk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1623689?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/rhettinger",
+      "html_url": "https://github.com/rhettinger",
+      "followers_url": "https://api.github.com/users/rhettinger/followers",
+      "following_url": "https://api.github.com/users/rhettinger/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rhettinger/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rhettinger/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rhettinger/subscriptions",
+      "organizations_url": "https://api.github.com/users/rhettinger/orgs",
+      "repos_url": "https://api.github.com/users/rhettinger/repos",
+      "events_url": "https://api.github.com/users/rhettinger/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rhettinger/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "a94a7f52b6b921fec3cd3ffc9209791e6231433c",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/a94a7f52b6b921fec3cd3ffc9209791e6231433c",
+        "html_url": "https://github.com/more-itertools/more-itertools/commit/a94a7f52b6b921fec3cd3ffc9209791e6231433c"
+      }
+    ]
+  },
+  {
+    "sha": "9a9c8c727fde88050f622ed048b0197606ccf7aa",
+    "node_id": "C_kwDOAD89ktoAKDlhOWM4YzcyN2ZkZTg4MDUwZjYyMmVkMDQ4YjAxOTc2MDZjY2Y3YWE",
+    "commit": {
+      "author": {
+        "name": "Raymond Hettinger",
+        "email": "rhettinger@users.noreply.github.com",
+        "date": "2025-08-21T20:30:29Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2025-08-21T20:30:29Z"
+      },
+      "message": "Merge branch 'master' into update_3_10",
+      "tree": {
+        "sha": "fa012ab1e63f530783a2a8af6678e05e6b1e22c3",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/git/trees/fa012ab1e63f530783a2a8af6678e05e6b1e22c3"
+      },
+      "url": "https://api.github.com/repos/more-itertools/more-itertools/git/commits/9a9c8c727fde88050f622ed048b0197606ccf7aa",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJop4HlCRC1aQ7uu5UhlAAA/80QAJJsEDRlWWpN0psNiDTVcJ8S\nPQHDOt1bSusRl0A/oDTmFij0om77PXu/rGC74rxHQOv0GBufLveM3+mXkfKTWsPb\ntnpNdLttD4nclgGrG9sVOglZxryVtCNLr0J2t9YiHuiDqvKDwJ6Nlj3+HiQdjUfO\n7afCBzhsYCpYpyKSXfJp3/1kDI8gNLis1M+36o4wmzSUnzYPzGlzHOqDBP4SbsCO\nWNq2+9ni8a3ng6uHyl7EPcl6JTMmiwfjsyrYBaSZb2GcSA/4aO1Yi3wqtUNPEEfo\nPf2Gl5HYu78pLangZlcqgkzuZf0wmCGROgooCdMtZ/zGDaPi7AdnWimHNNBkHmfF\nU0DOEug6y/A9tdKJRMkYjsG2bOW200/yqa7en0KlsB4zFwco4FguZ2NkOGdCCgBJ\n/0cNvERrS18CXxnNiwZ1ye2lbLOJ9zfyIx0M7BgaLjceWjzz+jcTg7IANphaaKNx\n2lGLNfaD4pnzWK6dmFHM/Z5p+doy8XdcEG3A6gBekr3hv+6QDSWOJw8nzEdgKEqB\nmVdOTP3dbydbC83H6yeAydMplGg7Bq2wvo1nMHXnU9CPPpnYPlikjpT37M2iKBC+\nAZyaYPdKgSO8x++JAiM6zY+xpZxCBDjWzyWQ9+6zPXubbG2f2QxH9LJLTXmHyugR\naHNQ/TdVxRDfpR/7u6nR\n=AUyz\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree fa012ab1e63f530783a2a8af6678e05e6b1e22c3\nparent 396e9187e7dd144f2f7d8b7bddefd7d90c71faaf\nparent 21d3d88359437146a6d8882328df4bd73edd685c\nauthor Raymond Hettinger <rhettinger@users.noreply.github.com> 1755808229 -0500\ncommitter GitHub <noreply@github.com> 1755808229 -0500\n\nMerge branch 'master' into update_3_10",
+        "verified_at": "2025-08-21T20:30:29Z"
+      }
+    },
+    "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/9a9c8c727fde88050f622ed048b0197606ccf7aa",
+    "html_url": "https://github.com/more-itertools/more-itertools/commit/9a9c8c727fde88050f622ed048b0197606ccf7aa",
+    "comments_url": "https://api.github.com/repos/more-itertools/more-itertools/commits/9a9c8c727fde88050f622ed048b0197606ccf7aa/comments",
+    "author": {
+      "login": "rhettinger",
+      "id": 1623689,
+      "node_id": "MDQ6VXNlcjE2MjM2ODk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1623689?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/rhettinger",
+      "html_url": "https://github.com/rhettinger",
+      "followers_url": "https://api.github.com/users/rhettinger/followers",
+      "following_url": "https://api.github.com/users/rhettinger/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rhettinger/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rhettinger/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rhettinger/subscriptions",
+      "organizations_url": "https://api.github.com/users/rhettinger/orgs",
+      "repos_url": "https://api.github.com/users/rhettinger/repos",
+      "events_url": "https://api.github.com/users/rhettinger/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rhettinger/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "396e9187e7dd144f2f7d8b7bddefd7d90c71faaf",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/396e9187e7dd144f2f7d8b7bddefd7d90c71faaf",
+        "html_url": "https://github.com/more-itertools/more-itertools/commit/396e9187e7dd144f2f7d8b7bddefd7d90c71faaf"
+      },
+      {
+        "sha": "21d3d88359437146a6d8882328df4bd73edd685c",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/21d3d88359437146a6d8882328df4bd73edd685c",
+        "html_url": "https://github.com/more-itertools/more-itertools/commit/21d3d88359437146a6d8882328df4bd73edd685c"
+      }
+    ]
+  },
+  {
+    "sha": "74c001a4b3736ba576a4227bddabd3e5f248945c",
+    "node_id": "C_kwDOAD89ktoAKDc0YzAwMWE0YjM3MzZiYTU3NmE0MjI3YmRkYWJkM2U1ZjI0ODk0NWM",
+    "commit": {
+      "author": {
+        "name": "Raymond Hettinger",
+        "email": "raymond.hettinger@gmail.com",
+        "date": "2025-08-26T16:27:58Z"
+      },
+      "committer": {
+        "name": "Raymond Hettinger",
+        "email": "raymond.hettinger@gmail.com",
+        "date": "2025-08-27T20:33:28Z"
+      },
+      "message": "Get coverage to 100%",
+      "tree": {
+        "sha": "e92f845a113ce8c08788d7e7b5ccb1bd71ab605d",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/git/trees/e92f845a113ce8c08788d7e7b5ccb1bd71ab605d"
+      },
+      "url": "https://api.github.com/repos/more-itertools/more-itertools/git/commits/74c001a4b3736ba576a4227bddabd3e5f248945c",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/74c001a4b3736ba576a4227bddabd3e5f248945c",
+    "html_url": "https://github.com/more-itertools/more-itertools/commit/74c001a4b3736ba576a4227bddabd3e5f248945c",
+    "comments_url": "https://api.github.com/repos/more-itertools/more-itertools/commits/74c001a4b3736ba576a4227bddabd3e5f248945c/comments",
+    "author": {
+      "login": "rhettinger",
+      "id": 1623689,
+      "node_id": "MDQ6VXNlcjE2MjM2ODk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1623689?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/rhettinger",
+      "html_url": "https://github.com/rhettinger",
+      "followers_url": "https://api.github.com/users/rhettinger/followers",
+      "following_url": "https://api.github.com/users/rhettinger/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rhettinger/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rhettinger/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rhettinger/subscriptions",
+      "organizations_url": "https://api.github.com/users/rhettinger/orgs",
+      "repos_url": "https://api.github.com/users/rhettinger/repos",
+      "events_url": "https://api.github.com/users/rhettinger/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rhettinger/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "rhettinger",
+      "id": 1623689,
+      "node_id": "MDQ6VXNlcjE2MjM2ODk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1623689?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/rhettinger",
+      "html_url": "https://github.com/rhettinger",
+      "followers_url": "https://api.github.com/users/rhettinger/followers",
+      "following_url": "https://api.github.com/users/rhettinger/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rhettinger/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rhettinger/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rhettinger/subscriptions",
+      "organizations_url": "https://api.github.com/users/rhettinger/orgs",
+      "repos_url": "https://api.github.com/users/rhettinger/repos",
+      "events_url": "https://api.github.com/users/rhettinger/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rhettinger/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "9a9c8c727fde88050f622ed048b0197606ccf7aa",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/9a9c8c727fde88050f622ed048b0197606ccf7aa",
+        "html_url": "https://github.com/more-itertools/more-itertools/commit/9a9c8c727fde88050f622ed048b0197606ccf7aa"
+      }
+    ]
+  },
+  {
+    "sha": "ca002789a2c0fdb0c602fb0987216096553809df",
+    "node_id": "C_kwDOAD89ktoAKGNhMDAyNzg5YTJjMGZkYjBjNjAyZmIwOTg3MjE2MDk2NTUzODA5ZGY",
+    "commit": {
+      "author": {
+        "name": "Raymond Hettinger",
+        "email": "raymond.hettinger@gmail.com",
+        "date": "2025-08-27T20:30:20Z"
+      },
+      "committer": {
+        "name": "Raymond Hettinger",
+        "email": "raymond.hettinger@gmail.com",
+        "date": "2025-08-27T20:33:32Z"
+      },
+      "message": "Set minimum version to Py3.10. Remove deprecated zip_equal. Remove _zip_strict.",
+      "tree": {
+        "sha": "cd3e66606fedc598ffd83520ed0f7a208b01c046",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/git/trees/cd3e66606fedc598ffd83520ed0f7a208b01c046"
+      },
+      "url": "https://api.github.com/repos/more-itertools/more-itertools/git/commits/ca002789a2c0fdb0c602fb0987216096553809df",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/ca002789a2c0fdb0c602fb0987216096553809df",
+    "html_url": "https://github.com/more-itertools/more-itertools/commit/ca002789a2c0fdb0c602fb0987216096553809df",
+    "comments_url": "https://api.github.com/repos/more-itertools/more-itertools/commits/ca002789a2c0fdb0c602fb0987216096553809df/comments",
+    "author": {
+      "login": "rhettinger",
+      "id": 1623689,
+      "node_id": "MDQ6VXNlcjE2MjM2ODk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1623689?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/rhettinger",
+      "html_url": "https://github.com/rhettinger",
+      "followers_url": "https://api.github.com/users/rhettinger/followers",
+      "following_url": "https://api.github.com/users/rhettinger/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rhettinger/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rhettinger/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rhettinger/subscriptions",
+      "organizations_url": "https://api.github.com/users/rhettinger/orgs",
+      "repos_url": "https://api.github.com/users/rhettinger/repos",
+      "events_url": "https://api.github.com/users/rhettinger/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rhettinger/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "rhettinger",
+      "id": 1623689,
+      "node_id": "MDQ6VXNlcjE2MjM2ODk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1623689?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/rhettinger",
+      "html_url": "https://github.com/rhettinger",
+      "followers_url": "https://api.github.com/users/rhettinger/followers",
+      "following_url": "https://api.github.com/users/rhettinger/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rhettinger/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rhettinger/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rhettinger/subscriptions",
+      "organizations_url": "https://api.github.com/users/rhettinger/orgs",
+      "repos_url": "https://api.github.com/users/rhettinger/repos",
+      "events_url": "https://api.github.com/users/rhettinger/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rhettinger/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "74c001a4b3736ba576a4227bddabd3e5f248945c",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/74c001a4b3736ba576a4227bddabd3e5f248945c",
+        "html_url": "https://github.com/more-itertools/more-itertools/commit/74c001a4b3736ba576a4227bddabd3e5f248945c"
+      }
+    ]
+  },
+  {
+    "sha": "196acd2325ff478338e97870173c74c15e9d41b2",
+    "node_id": "C_kwDOAD89ktoAKDE5NmFjZDIzMjVmZjQ3ODMzOGU5Nzg3MDE3M2M3NGMxNWU5ZDQxYjI",
+    "commit": {
+      "author": {
+        "name": "Raymond Hettinger",
+        "email": "raymond.hettinger@gmail.com",
+        "date": "2025-08-27T20:52:56Z"
+      },
+      "committer": {
+        "name": "Raymond Hettinger",
+        "email": "raymond.hettinger@gmail.com",
+        "date": "2025-08-27T20:52:56Z"
+      },
+      "message": "Remove pairwise()",
+      "tree": {
+        "sha": "c2a0cfecdf14ae0408048be87701fffe1d293fd4",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/git/trees/c2a0cfecdf14ae0408048be87701fffe1d293fd4"
+      },
+      "url": "https://api.github.com/repos/more-itertools/more-itertools/git/commits/196acd2325ff478338e97870173c74c15e9d41b2",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/196acd2325ff478338e97870173c74c15e9d41b2",
+    "html_url": "https://github.com/more-itertools/more-itertools/commit/196acd2325ff478338e97870173c74c15e9d41b2",
+    "comments_url": "https://api.github.com/repos/more-itertools/more-itertools/commits/196acd2325ff478338e97870173c74c15e9d41b2/comments",
+    "author": {
+      "login": "rhettinger",
+      "id": 1623689,
+      "node_id": "MDQ6VXNlcjE2MjM2ODk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1623689?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/rhettinger",
+      "html_url": "https://github.com/rhettinger",
+      "followers_url": "https://api.github.com/users/rhettinger/followers",
+      "following_url": "https://api.github.com/users/rhettinger/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rhettinger/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rhettinger/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rhettinger/subscriptions",
+      "organizations_url": "https://api.github.com/users/rhettinger/orgs",
+      "repos_url": "https://api.github.com/users/rhettinger/repos",
+      "events_url": "https://api.github.com/users/rhettinger/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rhettinger/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "rhettinger",
+      "id": 1623689,
+      "node_id": "MDQ6VXNlcjE2MjM2ODk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1623689?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/rhettinger",
+      "html_url": "https://github.com/rhettinger",
+      "followers_url": "https://api.github.com/users/rhettinger/followers",
+      "following_url": "https://api.github.com/users/rhettinger/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rhettinger/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rhettinger/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rhettinger/subscriptions",
+      "organizations_url": "https://api.github.com/users/rhettinger/orgs",
+      "repos_url": "https://api.github.com/users/rhettinger/repos",
+      "events_url": "https://api.github.com/users/rhettinger/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rhettinger/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "ca002789a2c0fdb0c602fb0987216096553809df",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/ca002789a2c0fdb0c602fb0987216096553809df",
+        "html_url": "https://github.com/more-itertools/more-itertools/commit/ca002789a2c0fdb0c602fb0987216096553809df"
+      }
+    ]
+  },
+  {
+    "sha": "7554159ff271a13416598cec16fd4e897116634f",
+    "node_id": "C_kwDOAD89ktoAKDc1NTQxNTlmZjI3MWExMzQxNjU5OGNlYzE2ZmQ0ZTg5NzExNjYzNGY",
+    "commit": {
+      "author": {
+        "name": "Raymond Hettinger",
+        "email": "raymond.hettinger@gmail.com",
+        "date": "2025-08-27T20:56:39Z"
+      },
+      "committer": {
+        "name": "Raymond Hettinger",
+        "email": "raymond.hettinger@gmail.com",
+        "date": "2025-08-27T20:56:39Z"
+      },
+      "message": "Remove outdated comment",
+      "tree": {
+        "sha": "0a3c8cbb4bf36ad070fd0f944cf725d4cffc449d",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/git/trees/0a3c8cbb4bf36ad070fd0f944cf725d4cffc449d"
+      },
+      "url": "https://api.github.com/repos/more-itertools/more-itertools/git/commits/7554159ff271a13416598cec16fd4e897116634f",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/7554159ff271a13416598cec16fd4e897116634f",
+    "html_url": "https://github.com/more-itertools/more-itertools/commit/7554159ff271a13416598cec16fd4e897116634f",
+    "comments_url": "https://api.github.com/repos/more-itertools/more-itertools/commits/7554159ff271a13416598cec16fd4e897116634f/comments",
+    "author": {
+      "login": "rhettinger",
+      "id": 1623689,
+      "node_id": "MDQ6VXNlcjE2MjM2ODk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1623689?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/rhettinger",
+      "html_url": "https://github.com/rhettinger",
+      "followers_url": "https://api.github.com/users/rhettinger/followers",
+      "following_url": "https://api.github.com/users/rhettinger/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rhettinger/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rhettinger/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rhettinger/subscriptions",
+      "organizations_url": "https://api.github.com/users/rhettinger/orgs",
+      "repos_url": "https://api.github.com/users/rhettinger/repos",
+      "events_url": "https://api.github.com/users/rhettinger/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rhettinger/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "rhettinger",
+      "id": 1623689,
+      "node_id": "MDQ6VXNlcjE2MjM2ODk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1623689?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/rhettinger",
+      "html_url": "https://github.com/rhettinger",
+      "followers_url": "https://api.github.com/users/rhettinger/followers",
+      "following_url": "https://api.github.com/users/rhettinger/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rhettinger/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rhettinger/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rhettinger/subscriptions",
+      "organizations_url": "https://api.github.com/users/rhettinger/orgs",
+      "repos_url": "https://api.github.com/users/rhettinger/repos",
+      "events_url": "https://api.github.com/users/rhettinger/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rhettinger/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "196acd2325ff478338e97870173c74c15e9d41b2",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/196acd2325ff478338e97870173c74c15e9d41b2",
+        "html_url": "https://github.com/more-itertools/more-itertools/commit/196acd2325ff478338e97870173c74c15e9d41b2"
+      }
+    ]
+  },
+  {
+    "sha": "2fd6109d4d32cadb01c822797abc6185be71aa8b",
+    "node_id": "C_kwDOAD89ktoAKDJmZDYxMDlkNGQzMmNhZGIwMWM4MjI3OTdhYmM2MTg1YmU3MWFhOGI",
+    "commit": {
+      "author": {
+        "name": "Raymond Hettinger",
+        "email": "rhettinger@users.noreply.github.com",
+        "date": "2025-08-27T21:01:04Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2025-08-27T21:01:04Z"
+      },
+      "message": "Merge branch 'master' into update_3_10",
+      "tree": {
+        "sha": "0a3c8cbb4bf36ad070fd0f944cf725d4cffc449d",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/git/trees/0a3c8cbb4bf36ad070fd0f944cf725d4cffc449d"
+      },
+      "url": "https://api.github.com/repos/more-itertools/more-itertools/git/commits/2fd6109d4d32cadb01c822797abc6185be71aa8b",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJor3IQCRC1aQ7uu5UhlAAA73EQAJBsrn9wN/SDLtGT7pjlZBPN\njycKcWm6tf7D8ZUNRXcfNJK8Te2a6zhrwdImGqAE1NVAPdrXoYyFnaJfLgO0dz0y\nxXVSc8VPzaEw6LH8aWzJH+8cFO/k0F9zh2Muzi+HsOaWFW2jqDPM3KN5A5MZAHgO\nuEl0Y6Zb+W1gSCq+eqFdyA8AEMCG9KQ9a+GcC1i44yQ+Qt0kBFlMUuwqW34qTRdZ\nMUWwwdlF6t48LMlZF7p6L4PrsYJA1jcRA2m5tpDjeNgpeR5e9NMEcRK08oxtVWxy\nMV5rgl1viMslSSsThD5cab7Sc44YI8DhzX5l6pCWpctszhPxla7TEZDoq4USilzX\n3T2n237NqZmFdfpHJgihyE+OJcNz7KoaP8fb+NMvkl4TuOe3EhSHzzpFe9zqjRYJ\ncXCyUVUyZEf2vUzB1/imfn73ThD7ylFvaZiuykhFX3LYX4CcApxuUadz0HbmS68r\nH1zolWEGjXO8QjeQE7AxeY54f5n6B49Z8VB9RWJP8iF9+xbRLUHZcBkX+wjSTqKO\nJk5YdmzCpopUczdw7ucoilLFrGV+e5+HABPziAhA11gXm+lROTDOK6ksuEKRw/Jq\njox35WlvNvBlm3S9nA64RsXvE4vulgCpfnaTZuMGj7Wl+b5ogs3w5f4v0ctpWEZZ\nEQATj9X9XW4Cfz6SHYY+\n=V9oV\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 0a3c8cbb4bf36ad070fd0f944cf725d4cffc449d\nparent 7554159ff271a13416598cec16fd4e897116634f\nparent 77127219254573f77448bfba6655b20307bfaad7\nauthor Raymond Hettinger <rhettinger@users.noreply.github.com> 1756328464 -0500\ncommitter GitHub <noreply@github.com> 1756328464 -0500\n\nMerge branch 'master' into update_3_10",
+        "verified_at": "2025-08-27T21:01:05Z"
+      }
+    },
+    "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/2fd6109d4d32cadb01c822797abc6185be71aa8b",
+    "html_url": "https://github.com/more-itertools/more-itertools/commit/2fd6109d4d32cadb01c822797abc6185be71aa8b",
+    "comments_url": "https://api.github.com/repos/more-itertools/more-itertools/commits/2fd6109d4d32cadb01c822797abc6185be71aa8b/comments",
+    "author": {
+      "login": "rhettinger",
+      "id": 1623689,
+      "node_id": "MDQ6VXNlcjE2MjM2ODk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1623689?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/rhettinger",
+      "html_url": "https://github.com/rhettinger",
+      "followers_url": "https://api.github.com/users/rhettinger/followers",
+      "following_url": "https://api.github.com/users/rhettinger/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rhettinger/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rhettinger/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rhettinger/subscriptions",
+      "organizations_url": "https://api.github.com/users/rhettinger/orgs",
+      "repos_url": "https://api.github.com/users/rhettinger/repos",
+      "events_url": "https://api.github.com/users/rhettinger/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rhettinger/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "7554159ff271a13416598cec16fd4e897116634f",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/7554159ff271a13416598cec16fd4e897116634f",
+        "html_url": "https://github.com/more-itertools/more-itertools/commit/7554159ff271a13416598cec16fd4e897116634f"
+      },
+      {
+        "sha": "77127219254573f77448bfba6655b20307bfaad7",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/77127219254573f77448bfba6655b20307bfaad7",
+        "html_url": "https://github.com/more-itertools/more-itertools/commit/77127219254573f77448bfba6655b20307bfaad7"
+      }
+    ]
+  },
+  {
+    "sha": "c2dd3e483d53bf4f6692c5d2315eaecc5516599e",
+    "node_id": "C_kwDOAD89ktoAKGMyZGQzZTQ4M2Q1M2JmNGY2NjkyYzVkMjMxNWVhZWNjNTUxNjU5OWU",
+    "commit": {
+      "author": {
+        "name": "Raymond Hettinger",
+        "email": "raymond.hettinger@gmail.com",
+        "date": "2025-08-29T14:56:02Z"
+      },
+      "committer": {
+        "name": "Raymond Hettinger",
+        "email": "raymond.hettinger@gmail.com",
+        "date": "2025-08-29T14:56:02Z"
+      },
+      "message": "Merge branch 'master' into update_3_10",
+      "tree": {
+        "sha": "93290aa898b42efc70be06cc0539e4485131b2d2",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/git/trees/93290aa898b42efc70be06cc0539e4485131b2d2"
+      },
+      "url": "https://api.github.com/repos/more-itertools/more-itertools/git/commits/c2dd3e483d53bf4f6692c5d2315eaecc5516599e",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/c2dd3e483d53bf4f6692c5d2315eaecc5516599e",
+    "html_url": "https://github.com/more-itertools/more-itertools/commit/c2dd3e483d53bf4f6692c5d2315eaecc5516599e",
+    "comments_url": "https://api.github.com/repos/more-itertools/more-itertools/commits/c2dd3e483d53bf4f6692c5d2315eaecc5516599e/comments",
+    "author": {
+      "login": "rhettinger",
+      "id": 1623689,
+      "node_id": "MDQ6VXNlcjE2MjM2ODk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1623689?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/rhettinger",
+      "html_url": "https://github.com/rhettinger",
+      "followers_url": "https://api.github.com/users/rhettinger/followers",
+      "following_url": "https://api.github.com/users/rhettinger/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rhettinger/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rhettinger/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rhettinger/subscriptions",
+      "organizations_url": "https://api.github.com/users/rhettinger/orgs",
+      "repos_url": "https://api.github.com/users/rhettinger/repos",
+      "events_url": "https://api.github.com/users/rhettinger/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rhettinger/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "rhettinger",
+      "id": 1623689,
+      "node_id": "MDQ6VXNlcjE2MjM2ODk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1623689?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/rhettinger",
+      "html_url": "https://github.com/rhettinger",
+      "followers_url": "https://api.github.com/users/rhettinger/followers",
+      "following_url": "https://api.github.com/users/rhettinger/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rhettinger/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rhettinger/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rhettinger/subscriptions",
+      "organizations_url": "https://api.github.com/users/rhettinger/orgs",
+      "repos_url": "https://api.github.com/users/rhettinger/repos",
+      "events_url": "https://api.github.com/users/rhettinger/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rhettinger/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "2fd6109d4d32cadb01c822797abc6185be71aa8b",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/2fd6109d4d32cadb01c822797abc6185be71aa8b",
+        "html_url": "https://github.com/more-itertools/more-itertools/commit/2fd6109d4d32cadb01c822797abc6185be71aa8b"
+      },
+      {
+        "sha": "0b34b647a42ed950a35ceee43b8806e8a159f696",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/0b34b647a42ed950a35ceee43b8806e8a159f696",
+        "html_url": "https://github.com/more-itertools/more-itertools/commit/0b34b647a42ed950a35ceee43b8806e8a159f696"
+      }
+    ]
+  },
+  {
+    "sha": "a734e4c87fd077191dbb1a81a41d3b0346ed48f6",
+    "node_id": "C_kwDOAD89ktoAKGE3MzRlNGM4N2ZkMDc3MTkxZGJiMWE4MWE0MWQzYjAzNDZlZDQ4ZjY",
+    "commit": {
+      "author": {
+        "name": "Raymond Hettinger",
+        "email": "raymond.hettinger@gmail.com",
+        "date": "2025-09-11T02:45:43Z"
+      },
+      "committer": {
+        "name": "Raymond Hettinger",
+        "email": "raymond.hettinger@gmail.com",
+        "date": "2025-09-11T02:45:43Z"
+      },
+      "message": "Merge branch 'master' into update_3_10",
+      "tree": {
+        "sha": "a6c7935982241de93d7bb3f2db3ef8f9ba6db7d8",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/git/trees/a6c7935982241de93d7bb3f2db3ef8f9ba6db7d8"
+      },
+      "url": "https://api.github.com/repos/more-itertools/more-itertools/git/commits/a734e4c87fd077191dbb1a81a41d3b0346ed48f6",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/a734e4c87fd077191dbb1a81a41d3b0346ed48f6",
+    "html_url": "https://github.com/more-itertools/more-itertools/commit/a734e4c87fd077191dbb1a81a41d3b0346ed48f6",
+    "comments_url": "https://api.github.com/repos/more-itertools/more-itertools/commits/a734e4c87fd077191dbb1a81a41d3b0346ed48f6/comments",
+    "author": {
+      "login": "rhettinger",
+      "id": 1623689,
+      "node_id": "MDQ6VXNlcjE2MjM2ODk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1623689?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/rhettinger",
+      "html_url": "https://github.com/rhettinger",
+      "followers_url": "https://api.github.com/users/rhettinger/followers",
+      "following_url": "https://api.github.com/users/rhettinger/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rhettinger/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rhettinger/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rhettinger/subscriptions",
+      "organizations_url": "https://api.github.com/users/rhettinger/orgs",
+      "repos_url": "https://api.github.com/users/rhettinger/repos",
+      "events_url": "https://api.github.com/users/rhettinger/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rhettinger/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "rhettinger",
+      "id": 1623689,
+      "node_id": "MDQ6VXNlcjE2MjM2ODk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1623689?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/rhettinger",
+      "html_url": "https://github.com/rhettinger",
+      "followers_url": "https://api.github.com/users/rhettinger/followers",
+      "following_url": "https://api.github.com/users/rhettinger/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rhettinger/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rhettinger/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rhettinger/subscriptions",
+      "organizations_url": "https://api.github.com/users/rhettinger/orgs",
+      "repos_url": "https://api.github.com/users/rhettinger/repos",
+      "events_url": "https://api.github.com/users/rhettinger/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rhettinger/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "c2dd3e483d53bf4f6692c5d2315eaecc5516599e",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/c2dd3e483d53bf4f6692c5d2315eaecc5516599e",
+        "html_url": "https://github.com/more-itertools/more-itertools/commit/c2dd3e483d53bf4f6692c5d2315eaecc5516599e"
+      },
+      {
+        "sha": "8c1a6ef241b51ff055e89219f050ccf4f15f37f6",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/8c1a6ef241b51ff055e89219f050ccf4f15f37f6",
+        "html_url": "https://github.com/more-itertools/more-itertools/commit/8c1a6ef241b51ff055e89219f050ccf4f15f37f6"
+      }
+    ]
+  },
+  {
+    "sha": "946323176bbcff2da0fe4c14b155f362c370edae",
+    "node_id": "C_kwDOAD89ktoAKDk0NjMyMzE3NmJiY2ZmMmRhMGZlNGMxNGIxNTVmMzYyYzM3MGVkYWU",
+    "commit": {
+      "author": {
+        "name": "Raymond Hettinger",
+        "email": "raymond.hettinger@gmail.com",
+        "date": "2025-09-12T04:15:55Z"
+      },
+      "committer": {
+        "name": "Raymond Hettinger",
+        "email": "raymond.hettinger@gmail.com",
+        "date": "2025-09-12T04:15:55Z"
+      },
+      "message": "Fix deprecated typing imports. Remove unnecessary Hashable parent.",
+      "tree": {
+        "sha": "42fb43c108cbefadefec73add9899fc5a1b0293f",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/git/trees/42fb43c108cbefadefec73add9899fc5a1b0293f"
+      },
+      "url": "https://api.github.com/repos/more-itertools/more-itertools/git/commits/946323176bbcff2da0fe4c14b155f362c370edae",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/946323176bbcff2da0fe4c14b155f362c370edae",
+    "html_url": "https://github.com/more-itertools/more-itertools/commit/946323176bbcff2da0fe4c14b155f362c370edae",
+    "comments_url": "https://api.github.com/repos/more-itertools/more-itertools/commits/946323176bbcff2da0fe4c14b155f362c370edae/comments",
+    "author": {
+      "login": "rhettinger",
+      "id": 1623689,
+      "node_id": "MDQ6VXNlcjE2MjM2ODk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1623689?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/rhettinger",
+      "html_url": "https://github.com/rhettinger",
+      "followers_url": "https://api.github.com/users/rhettinger/followers",
+      "following_url": "https://api.github.com/users/rhettinger/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rhettinger/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rhettinger/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rhettinger/subscriptions",
+      "organizations_url": "https://api.github.com/users/rhettinger/orgs",
+      "repos_url": "https://api.github.com/users/rhettinger/repos",
+      "events_url": "https://api.github.com/users/rhettinger/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rhettinger/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "rhettinger",
+      "id": 1623689,
+      "node_id": "MDQ6VXNlcjE2MjM2ODk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1623689?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/rhettinger",
+      "html_url": "https://github.com/rhettinger",
+      "followers_url": "https://api.github.com/users/rhettinger/followers",
+      "following_url": "https://api.github.com/users/rhettinger/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rhettinger/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rhettinger/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rhettinger/subscriptions",
+      "organizations_url": "https://api.github.com/users/rhettinger/orgs",
+      "repos_url": "https://api.github.com/users/rhettinger/repos",
+      "events_url": "https://api.github.com/users/rhettinger/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rhettinger/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "a734e4c87fd077191dbb1a81a41d3b0346ed48f6",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/a734e4c87fd077191dbb1a81a41d3b0346ed48f6",
+        "html_url": "https://github.com/more-itertools/more-itertools/commit/a734e4c87fd077191dbb1a81a41d3b0346ed48f6"
+      }
+    ]
+  },
+  {
+    "sha": "6d5dee985a91d3ba39d3397580054d3c08249566",
+    "node_id": "C_kwDOAD89ktoAKDZkNWRlZTk4NWE5MWQzYmEzOWQzMzk3NTgwMDU0ZDNjMDgyNDk1NjY",
+    "commit": {
+      "author": {
+        "name": "Bo Bayles",
+        "email": "bbayles@gmail.com",
+        "date": "2025-10-07T21:30:01Z"
+      },
+      "committer": {
+        "name": "Bo Bayles",
+        "email": "bbayles@gmail.com",
+        "date": "2025-10-07T21:30:01Z"
+      },
+      "message": "Fully drop Python 3.9",
+      "tree": {
+        "sha": "5478adf590586a1c6e76a6732438add62d74c27b",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/git/trees/5478adf590586a1c6e76a6732438add62d74c27b"
+      },
+      "url": "https://api.github.com/repos/more-itertools/more-itertools/git/commits/6d5dee985a91d3ba39d3397580054d3c08249566",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/6d5dee985a91d3ba39d3397580054d3c08249566",
+    "html_url": "https://github.com/more-itertools/more-itertools/commit/6d5dee985a91d3ba39d3397580054d3c08249566",
+    "comments_url": "https://api.github.com/repos/more-itertools/more-itertools/commits/6d5dee985a91d3ba39d3397580054d3c08249566/comments",
+    "author": {
+      "login": "bbayles",
+      "id": 1922815,
+      "node_id": "MDQ6VXNlcjE5MjI4MTU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1922815?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bbayles",
+      "html_url": "https://github.com/bbayles",
+      "followers_url": "https://api.github.com/users/bbayles/followers",
+      "following_url": "https://api.github.com/users/bbayles/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bbayles/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bbayles/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bbayles/subscriptions",
+      "organizations_url": "https://api.github.com/users/bbayles/orgs",
+      "repos_url": "https://api.github.com/users/bbayles/repos",
+      "events_url": "https://api.github.com/users/bbayles/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bbayles/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "bbayles",
+      "id": 1922815,
+      "node_id": "MDQ6VXNlcjE5MjI4MTU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1922815?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bbayles",
+      "html_url": "https://github.com/bbayles",
+      "followers_url": "https://api.github.com/users/bbayles/followers",
+      "following_url": "https://api.github.com/users/bbayles/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bbayles/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bbayles/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bbayles/subscriptions",
+      "organizations_url": "https://api.github.com/users/bbayles/orgs",
+      "repos_url": "https://api.github.com/users/bbayles/repos",
+      "events_url": "https://api.github.com/users/bbayles/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bbayles/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "946323176bbcff2da0fe4c14b155f362c370edae",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/946323176bbcff2da0fe4c14b155f362c370edae",
+        "html_url": "https://github.com/more-itertools/more-itertools/commit/946323176bbcff2da0fe4c14b155f362c370edae"
+      }
+    ]
+  },
+  {
+    "sha": "be68e38aa5ce201d8f34dc6060fb3e664c2da6b8",
+    "node_id": "C_kwDOAD89ktoAKGJlNjhlMzhhYTVjZTIwMWQ4ZjM0ZGM2MDYwZmIzZTY2NGMyZGE2Yjg",
+    "commit": {
+      "author": {
+        "name": "Bo Bayles",
+        "email": "bbayles@gmail.com",
+        "date": "2025-10-07T21:34:19Z"
+      },
+      "committer": {
+        "name": "Bo Bayles",
+        "email": "bbayles@gmail.com",
+        "date": "2025-10-07T21:34:19Z"
+      },
+      "message": "Drop unused import",
+      "tree": {
+        "sha": "d292c1f7974423dfaf1050c4a611d141302e8a53",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/git/trees/d292c1f7974423dfaf1050c4a611d141302e8a53"
+      },
+      "url": "https://api.github.com/repos/more-itertools/more-itertools/git/commits/be68e38aa5ce201d8f34dc6060fb3e664c2da6b8",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/be68e38aa5ce201d8f34dc6060fb3e664c2da6b8",
+    "html_url": "https://github.com/more-itertools/more-itertools/commit/be68e38aa5ce201d8f34dc6060fb3e664c2da6b8",
+    "comments_url": "https://api.github.com/repos/more-itertools/more-itertools/commits/be68e38aa5ce201d8f34dc6060fb3e664c2da6b8/comments",
+    "author": {
+      "login": "bbayles",
+      "id": 1922815,
+      "node_id": "MDQ6VXNlcjE5MjI4MTU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1922815?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bbayles",
+      "html_url": "https://github.com/bbayles",
+      "followers_url": "https://api.github.com/users/bbayles/followers",
+      "following_url": "https://api.github.com/users/bbayles/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bbayles/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bbayles/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bbayles/subscriptions",
+      "organizations_url": "https://api.github.com/users/bbayles/orgs",
+      "repos_url": "https://api.github.com/users/bbayles/repos",
+      "events_url": "https://api.github.com/users/bbayles/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bbayles/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "bbayles",
+      "id": 1922815,
+      "node_id": "MDQ6VXNlcjE5MjI4MTU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1922815?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bbayles",
+      "html_url": "https://github.com/bbayles",
+      "followers_url": "https://api.github.com/users/bbayles/followers",
+      "following_url": "https://api.github.com/users/bbayles/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bbayles/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bbayles/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bbayles/subscriptions",
+      "organizations_url": "https://api.github.com/users/bbayles/orgs",
+      "repos_url": "https://api.github.com/users/bbayles/repos",
+      "events_url": "https://api.github.com/users/bbayles/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bbayles/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "6d5dee985a91d3ba39d3397580054d3c08249566",
+        "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/6d5dee985a91d3ba39d3397580054d3c08249566",
+        "html_url": "https://github.com/more-itertools/more-itertools/commit/6d5dee985a91d3ba39d3397580054d3c08249566"
+      }
+    ]
+  }
+]

@@ -1,0 +1,780 @@
+{
+  "transition_id": "trans_track_a_26_rich_render_group_to_group",
+  "repo_name": "Textualize/rich",
+  "base_commit": "d65c3bd53da234a4047c469aa7740e03d1a622f7",
+  "target_commit": "44a715dec2b08277742939598fa28d056d6faef9",
+  "pkg_path": "rich",
+  "tree_purity_status": "TREE_PURITY_PASS",
+  "before_tree_purity": "TREE_PURITY_PASS",
+  "after_tree_purity": "TREE_PURITY_PASS",
+  "before_mismatches": [],
+  "after_mismatches": [],
+  "total_files_before": 76,
+  "total_files_after": 76,
+  "has_environment_overlay": false,
+  "before_files": [
+    {
+      "relative_path": "rich/__init__.py",
+      "size": 5780,
+      "sha256": "92ee75c5015201773a19e4ce0d5f4106e07f5d8698561668a2f2a66cc4d1a82b"
+    },
+    {
+      "relative_path": "rich/__main__.py",
+      "size": 8917,
+      "sha256": "0734cff2603a8587e4312ed2d81ea82e3d3e4d379acc95392b98b233dd5c3fbd"
+    },
+    {
+      "relative_path": "rich/_cell_widths.py",
+      "size": 10096,
+      "sha256": "da7e048898b75fdb2a22ad0ed7a91467fcf2e9460c777c457c286529f9d6d477"
+    },
+    {
+      "relative_path": "rich/_emoji_codes.py",
+      "size": 140235,
+      "sha256": "86ed552fd9db55da6926b5688a356c85195c4517bfbf7763bb7326776b0a65d6"
+    },
+    {
+      "relative_path": "rich/_emoji_replace.py",
+      "size": 1064,
+      "sha256": "9fe91c7adb04531d99526850adf78c35cfad79e1a1a6e490e45f153c1b32bc3a"
+    },
+    {
+      "relative_path": "rich/_extension.py",
+      "size": 241,
+      "sha256": "1bae8f91b1ff41d4c987a8c3f89db6f0eefa0a6027af684b42fef60a03cfbb31"
+    },
+    {
+      "relative_path": "rich/_inspect.py",
+      "size": 7444,
+      "sha256": "beae818dec3012f75d8dc053aff94272361006c2a2f76693369717c9a0391110"
+    },
+    {
+      "relative_path": "rich/_log_render.py",
+      "size": 3213,
+      "sha256": "c41282c6a88ee05664f1e1b9e9ff1cac576b989c45ac9b1013757717e7c57a47"
+    },
+    {
+      "relative_path": "rich/_loop.py",
+      "size": 1236,
+      "sha256": "855ffa08b7683e6d2f6b6d96a70e332aa334458b33dd36715e3d0fa12fbd7834"
+    },
+    {
+      "relative_path": "rich/_lru_cache.py",
+      "size": 1246,
+      "sha256": "33b1f5650177da8e92c6ba4ebabf734c88441e53574fd5e7adc761aee5261b92"
+    },
+    {
+      "relative_path": "rich/_palettes.py",
+      "size": 7063,
+      "sha256": "71d7afd4940a67426f960b95f62a478339d3767be52335050c16f422dd8fce32"
+    },
+    {
+      "relative_path": "rich/_pick.py",
+      "size": 423,
+      "sha256": "7af0edf10378945e428b0ad421794e2429ed8ad0423ac23764b3c42005512c95"
+    },
+    {
+      "relative_path": "rich/_ratio.py",
+      "size": 5460,
+      "sha256": "e9d047c62c3f49835145d719f600ca2391a701e1d9f16be64e072d36972eb665"
+    },
+    {
+      "relative_path": "rich/_spinners.py",
+      "size": 26521,
+      "sha256": "86e4f56e24e5c32a7d2e6f12edb2df573835a6c51a207e711c3c13696107561d"
+    },
+    {
+      "relative_path": "rich/_stack.py",
+      "size": 351,
+      "sha256": "f82f0e2bbaf19f7b0851d570c59041a5e1e12335f4788f9533731e9987da5e6d"
+    },
+    {
+      "relative_path": "rich/_timer.py",
+      "size": 417,
+      "sha256": "cde9716d3ea83c566736bc163e973592d51e013f957387ee15c4592d018bb4c2"
+    },
+    {
+      "relative_path": "rich/_windows.py",
+      "size": 2053,
+      "sha256": "cdf3b096e74422ac86353c517550ef1c7cd14d2c8db7a5d3df1436df8eae8f4a"
+    },
+    {
+      "relative_path": "rich/_wrap.py",
+      "size": 1804,
+      "sha256": "3ad9d2c6711192e36548cd5dfcc62d360f0a2184dc4c1937a5e835e9d0991ff5"
+    },
+    {
+      "relative_path": "rich/abc.py",
+      "size": 878,
+      "sha256": "7402cc3867ca54d7806efaaaeba2294d0c5051eaf10fb004e052b0a9dd1e40a9"
+    },
+    {
+      "relative_path": "rich/align.py",
+      "size": 10377,
+      "sha256": "1f56538bd0de675b5f3319c8da0ea5c1ac5f24eb5310f98d7bf1a65930e27126"
+    },
+    {
+      "relative_path": "rich/ansi.py",
+      "size": 6676,
+      "sha256": "41a55591fbd52fa0b73acb9623d890fa224590cb0ca218d897180c2e755310fa"
+    },
+    {
+      "relative_path": "rich/bar.py",
+      "size": 3264,
+      "sha256": "6bb503df4dc171c442ac48468df304969bf94456088a7680840baa62a854be6c"
+    },
+    {
+      "relative_path": "rich/box.py",
+      "size": 9021,
+      "sha256": "dce607f7b83d20f12a37242f78c61d9fce128a157bd566114333d6bdefa2a6f8"
+    },
+    {
+      "relative_path": "rich/cells.py",
+      "size": 4285,
+      "sha256": "35a74ddb4805c44f008fed92dc3ae7eea827f99a6c45970d9d336dc1e44beeb0"
+    },
+    {
+      "relative_path": "rich/color.py",
+      "size": 17285,
+      "sha256": "483df24dfdedf236a96fe8cebfc19808c083ab2ce98a9cd74bfd2b017852954e"
+    },
+    {
+      "relative_path": "rich/color_triplet.py",
+      "size": 1054,
+      "sha256": "de585091d25bbd63e82c33be0276089805a626f579765818342559f7b39168de"
+    },
+    {
+      "relative_path": "rich/columns.py",
+      "size": 7131,
+      "sha256": "1d45f429c326f5db0a362d757d36e233f876883b65f3248269573195a944ceaf"
+    },
+    {
+      "relative_path": "rich/console.py",
+      "size": 81291,
+      "sha256": "9cc1f73a013e132947ac5d19d57ba4b4c1ec1ae7765bf56a3f917f6e42dae121"
+    },
+    {
+      "relative_path": "rich/constrain.py",
+      "size": 1288,
+      "sha256": "d5520fb82f0082d296adc9dc42b8c1758a80dc9556cacbba8d9a35aeb87b73b4"
+    },
+    {
+      "relative_path": "rich/containers.py",
+      "size": 5497,
+      "sha256": "68a826e540c79f9366ba2e8825a29db1985b1c2961fd7ec3fbf5a0f0486bafbb"
+    },
+    {
+      "relative_path": "rich/control.py",
+      "size": 5298,
+      "sha256": "ab183a62377bf17b85d15c6d8654fc3b8769be90026302a405f9b64b8f88bc70"
+    },
+    {
+      "relative_path": "rich/default_styles.py",
+      "size": 7578,
+      "sha256": "d474e85cacc25bb3137bad0ee0992d601e5a80e7528b7f0eb95cbd6311d2f21a"
+    },
+    {
+      "relative_path": "rich/diagnose.py",
+      "size": 159,
+      "sha256": "3dad283a8c2a4bda8578571c9c8df5a7520d5f8323480659f052afcfdc76b24e"
+    },
+    {
+      "relative_path": "rich/emoji.py",
+      "size": 2465,
+      "sha256": "d634d11c5c2f431635722ba5db631d11971673b6eb7e3293f051ba6635e3e5d3"
+    },
+    {
+      "relative_path": "rich/errors.py",
+      "size": 642,
+      "sha256": "e693f729ce5de1027f734285b31adfca18e23d57bb275ccea9215b140cdc57e6"
+    },
+    {
+      "relative_path": "rich/file_proxy.py",
+      "size": 1613,
+      "sha256": "7c77917923b7549ec86c7ffdae2f8eacf61b142dd460ecde4cd8e782289639c6"
+    },
+    {
+      "relative_path": "rich/filesize.py",
+      "size": 2511,
+      "sha256": "a10267339ffbca0929ceddc6b4dab997717a82607b61a841039be975054a2f02"
+    },
+    {
+      "relative_path": "rich/highlighter.py",
+      "size": 4894,
+      "sha256": "01d8630b499e4d8b3067fc4a8246b471161d3632c004b5331c06f21774293d6a"
+    },
+    {
+      "relative_path": "rich/json.py",
+      "size": 5039,
+      "sha256": "1e3ae72b68d0906aabcb7218c5789f3e8e510db783292e6db4b16dce607bfec7"
+    },
+    {
+      "relative_path": "rich/jupyter.py",
+      "size": 3025,
+      "sha256": "e2cc4d03026ce20ddd61f5b2fde9cfc3d7e9d13767fbcdad5784fdba1f6f00e3"
+    },
+    {
+      "relative_path": "rich/layout.py",
+      "size": 13988,
+      "sha256": "36c207febfa5783b7008e91b09146f961e58d61c7b1b48907fc8cdb35e16a376"
+    },
+    {
+      "relative_path": "rich/live.py",
+      "size": 13711,
+      "sha256": "38ac4c685539b057ee47ef9c25fb466234af83554f42b8b553f0cd6548c2b2f2"
+    },
+    {
+      "relative_path": "rich/live_render.py",
+      "size": 3655,
+      "sha256": "bd27fbb2eff0ad7cd96063310210803e81898024e39a5c5c53d1b8bd28a3b9c5"
+    },
+    {
+      "relative_path": "rich/logging.py",
+      "size": 10868,
+      "sha256": "60d70248aea90a8d9683a24aa927007ba56016a79b1c19d2e670e704ee205c00"
+    },
+    {
+      "relative_path": "rich/markdown.py",
+      "size": 20616,
+      "sha256": "289ab7086c7735f9b05aa9d50830327d5c80d5a77a5e54332370a2d8f518b79c"
+    },
+    {
+      "relative_path": "rich/markup.py",
+      "size": 8034,
+      "sha256": "fe776067821cc1c7120f2a665a3766e789ee3b95e89b0eca21878ee30c2db4e2"
+    },
+    {
+      "relative_path": "rich/measure.py",
+      "size": 5258,
+      "sha256": "67be17bf32202d99b4c47f90228d6e5f9778a1a85abc77bc0fc30acb12cda8f4"
+    },
+    {
+      "relative_path": "rich/padding.py",
+      "size": 4958,
+      "sha256": "f08d5d40d4102b58828c7b46043127efc911a77a76ec6633979511dea07b7b61"
+    },
+    {
+      "relative_path": "rich/pager.py",
+      "size": 838,
+      "sha256": "54aff611f1f425db9959dc95f8a6666b4e9bbe2fd5e4f5a61c6e96ec1a226938"
+    },
+    {
+      "relative_path": "rich/palette.py",
+      "size": 3288,
+      "sha256": "02be9952b607885b7af91af693e93d17c57b87180960735daa3936bd55ec2e07"
+    },
+    {
+      "relative_path": "rich/panel.py",
+      "size": 8637,
+      "sha256": "3ba391c8884370e2d211ab138e9703be686f21ca693c609e4285e9a32708513f"
+    },
+    {
+      "relative_path": "rich/pretty.py",
+      "size": 32536,
+      "sha256": "3722e04d08c5faf00720997e497521add8a4fdc5f63a007d7d758d3b4e2fe1ed"
+    },
+    {
+      "relative_path": "rich/progress.py",
+      "size": 35926,
+      "sha256": "8dc822eda32743f6234a90264246a5c2d36c8159fd8b9e927991a9aebeedb8e9"
+    },
+    {
+      "relative_path": "rich/progress_bar.py",
+      "size": 7762,
+      "sha256": "10b8816b124e82c4582a9348ae8b7b042d1b157be67fc71377a9f1234d816cad"
+    },
+    {
+      "relative_path": "rich/prompt.py",
+      "size": 11295,
+      "sha256": "73262b96f6fb41b148d9058b3546c86dfbff1e54fc812ba4a454b944cf70d618"
+    },
+    {
+      "relative_path": "rich/protocol.py",
+      "size": 1377,
+      "sha256": "2ed1d533ab111618041659a8dcd44e81158fdf2be86296d6672284c50991923f"
+    },
+    {
+      "relative_path": "rich/py.typed",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "rich/region.py",
+      "size": 166,
+      "sha256": "acd4fdc59ad56536085d90b43589f8d42250c1835b47e29e70f3b14e042f07c6"
+    },
+    {
+      "relative_path": "rich/repr.py",
+      "size": 4297,
+      "sha256": "a154e24f93647352020ea5c64ba00c38ae8fb731bccac6525363c53bc660b162"
+    },
+    {
+      "relative_path": "rich/rule.py",
+      "size": 4185,
+      "sha256": "7d1a2fa0ac4d63904d1074ac92601c4cda9fd80e9c93c998f9e1ef122a239305"
+    },
+    {
+      "relative_path": "rich/scope.py",
+      "size": 2830,
+      "sha256": "2b43a67d4ad24c2f4c7ddf14f6a038a07bb3e2059292af1a4af7fc4d5376a699"
+    },
+    {
+      "relative_path": "rich/screen.py",
+      "size": 1579,
+      "sha256": "acbfe3db05fee127ae20e236a0e95ce35f103fd100bc3e7d1889d4984004ea34"
+    },
+    {
+      "relative_path": "rich/segment.py",
+      "size": 20913,
+      "sha256": "dac84e9deca0c7ff135bf981cf9632f40901edbf43e507ce0b000c86f434a649"
+    },
+    {
+      "relative_path": "rich/spinner.py",
+      "size": 4312,
+      "sha256": "57a756d23224e483b4ff6332c727ed41fe558c21c8d13d9c461278177d613c84"
+    },
+    {
+      "relative_path": "rich/status.py",
+      "size": 4425,
+      "sha256": "809b085c865e4a8deeacecb14548ece95ae15f9099ac0d0dc4843e7718429f0a"
+    },
+    {
+      "relative_path": "rich/style.py",
+      "size": 26469,
+      "sha256": "003d48edab5f725b050ad19e2fcae89c7d498fed3658ba7d650d9562a9a90633"
+    },
+    {
+      "relative_path": "rich/styled.py",
+      "size": 1234,
+      "sha256": "c258d5b154d76c004c319be4ce43b8dd9124ffe8abcc4b6f52243eb0d9e2910f"
+    },
+    {
+      "relative_path": "rich/syntax.py",
+      "size": 26898,
+      "sha256": "eefbd14cb66de5577c85daf299f002d8b9052c8d1ca83f3b12786de6e1acd071"
+    },
+    {
+      "relative_path": "rich/table.py",
+      "size": 35052,
+      "sha256": "8e794a063cb2375a809dcc3598f2477a213d036900aa025597b4da29e2fc39ed"
+    },
+    {
+      "relative_path": "rich/tabulate.py",
+      "size": 1688,
+      "sha256": "0781233b7a0c37be3f6df10315e51aef538691cf0448fafe602ba92f9bdeed73"
+    },
+    {
+      "relative_path": "rich/terminal_theme.py",
+      "size": 1459,
+      "sha256": "1349c8ff2705a6f7e56a6b7e295098e09e762e6523462d58e88081f847f780ca"
+    },
+    {
+      "relative_path": "rich/text.py",
+      "size": 44400,
+      "sha256": "4114c237254a9946093d80c37ea47177dbda0b4265b87c4248c9ffa8b5109ecc"
+    },
+    {
+      "relative_path": "rich/theme.py",
+      "size": 3627,
+      "sha256": "18a36d4210c164a0330da634bd0550405cdb734b967c57ba0895c0facc93ef34"
+    },
+    {
+      "relative_path": "rich/themes.py",
+      "size": 102,
+      "sha256": "d318132e8cdf69b79b62d709b43742e50917e4855411abe2a83509261e185459"
+    },
+    {
+      "relative_path": "rich/traceback.py",
+      "size": 25875,
+      "sha256": "34ee3b20a9d4403695702a56dba6578b7ccb7c2c65805218f8bdb491a48ff520"
+    },
+    {
+      "relative_path": "rich/tree.py",
+      "size": 9062,
+      "sha256": "89a53e313008c657c3c62509b394c14f9d965fbb27c4e0ef298491c93e2ca600"
+    }
+  ],
+  "after_files": [
+    {
+      "relative_path": "rich/__init__.py",
+      "size": 5780,
+      "sha256": "92ee75c5015201773a19e4ce0d5f4106e07f5d8698561668a2f2a66cc4d1a82b"
+    },
+    {
+      "relative_path": "rich/__main__.py",
+      "size": 8917,
+      "sha256": "0734cff2603a8587e4312ed2d81ea82e3d3e4d379acc95392b98b233dd5c3fbd"
+    },
+    {
+      "relative_path": "rich/_cell_widths.py",
+      "size": 10096,
+      "sha256": "da7e048898b75fdb2a22ad0ed7a91467fcf2e9460c777c457c286529f9d6d477"
+    },
+    {
+      "relative_path": "rich/_emoji_codes.py",
+      "size": 140235,
+      "sha256": "86ed552fd9db55da6926b5688a356c85195c4517bfbf7763bb7326776b0a65d6"
+    },
+    {
+      "relative_path": "rich/_emoji_replace.py",
+      "size": 1064,
+      "sha256": "9fe91c7adb04531d99526850adf78c35cfad79e1a1a6e490e45f153c1b32bc3a"
+    },
+    {
+      "relative_path": "rich/_extension.py",
+      "size": 241,
+      "sha256": "1bae8f91b1ff41d4c987a8c3f89db6f0eefa0a6027af684b42fef60a03cfbb31"
+    },
+    {
+      "relative_path": "rich/_inspect.py",
+      "size": 7444,
+      "sha256": "beae818dec3012f75d8dc053aff94272361006c2a2f76693369717c9a0391110"
+    },
+    {
+      "relative_path": "rich/_log_render.py",
+      "size": 3213,
+      "sha256": "c41282c6a88ee05664f1e1b9e9ff1cac576b989c45ac9b1013757717e7c57a47"
+    },
+    {
+      "relative_path": "rich/_loop.py",
+      "size": 1236,
+      "sha256": "855ffa08b7683e6d2f6b6d96a70e332aa334458b33dd36715e3d0fa12fbd7834"
+    },
+    {
+      "relative_path": "rich/_lru_cache.py",
+      "size": 1246,
+      "sha256": "33b1f5650177da8e92c6ba4ebabf734c88441e53574fd5e7adc761aee5261b92"
+    },
+    {
+      "relative_path": "rich/_palettes.py",
+      "size": 7063,
+      "sha256": "71d7afd4940a67426f960b95f62a478339d3767be52335050c16f422dd8fce32"
+    },
+    {
+      "relative_path": "rich/_pick.py",
+      "size": 423,
+      "sha256": "7af0edf10378945e428b0ad421794e2429ed8ad0423ac23764b3c42005512c95"
+    },
+    {
+      "relative_path": "rich/_ratio.py",
+      "size": 5460,
+      "sha256": "e9d047c62c3f49835145d719f600ca2391a701e1d9f16be64e072d36972eb665"
+    },
+    {
+      "relative_path": "rich/_spinners.py",
+      "size": 26521,
+      "sha256": "86e4f56e24e5c32a7d2e6f12edb2df573835a6c51a207e711c3c13696107561d"
+    },
+    {
+      "relative_path": "rich/_stack.py",
+      "size": 351,
+      "sha256": "f82f0e2bbaf19f7b0851d570c59041a5e1e12335f4788f9533731e9987da5e6d"
+    },
+    {
+      "relative_path": "rich/_timer.py",
+      "size": 417,
+      "sha256": "cde9716d3ea83c566736bc163e973592d51e013f957387ee15c4592d018bb4c2"
+    },
+    {
+      "relative_path": "rich/_windows.py",
+      "size": 2053,
+      "sha256": "cdf3b096e74422ac86353c517550ef1c7cd14d2c8db7a5d3df1436df8eae8f4a"
+    },
+    {
+      "relative_path": "rich/_wrap.py",
+      "size": 1804,
+      "sha256": "3ad9d2c6711192e36548cd5dfcc62d360f0a2184dc4c1937a5e835e9d0991ff5"
+    },
+    {
+      "relative_path": "rich/abc.py",
+      "size": 878,
+      "sha256": "7402cc3867ca54d7806efaaaeba2294d0c5051eaf10fb004e052b0a9dd1e40a9"
+    },
+    {
+      "relative_path": "rich/align.py",
+      "size": 10377,
+      "sha256": "1f56538bd0de675b5f3319c8da0ea5c1ac5f24eb5310f98d7bf1a65930e27126"
+    },
+    {
+      "relative_path": "rich/ansi.py",
+      "size": 6676,
+      "sha256": "41a55591fbd52fa0b73acb9623d890fa224590cb0ca218d897180c2e755310fa"
+    },
+    {
+      "relative_path": "rich/bar.py",
+      "size": 3264,
+      "sha256": "6bb503df4dc171c442ac48468df304969bf94456088a7680840baa62a854be6c"
+    },
+    {
+      "relative_path": "rich/box.py",
+      "size": 9021,
+      "sha256": "dce607f7b83d20f12a37242f78c61d9fce128a157bd566114333d6bdefa2a6f8"
+    },
+    {
+      "relative_path": "rich/cells.py",
+      "size": 4285,
+      "sha256": "35a74ddb4805c44f008fed92dc3ae7eea827f99a6c45970d9d336dc1e44beeb0"
+    },
+    {
+      "relative_path": "rich/color.py",
+      "size": 17285,
+      "sha256": "483df24dfdedf236a96fe8cebfc19808c083ab2ce98a9cd74bfd2b017852954e"
+    },
+    {
+      "relative_path": "rich/color_triplet.py",
+      "size": 1054,
+      "sha256": "de585091d25bbd63e82c33be0276089805a626f579765818342559f7b39168de"
+    },
+    {
+      "relative_path": "rich/columns.py",
+      "size": 7131,
+      "sha256": "1d45f429c326f5db0a362d757d36e233f876883b65f3248269573195a944ceaf"
+    },
+    {
+      "relative_path": "rich/console.py",
+      "size": 81200,
+      "sha256": "f15303c41fa08eccaae54d9974ed57615dbcdf1ffb60664547f856d2b90279f8"
+    },
+    {
+      "relative_path": "rich/constrain.py",
+      "size": 1288,
+      "sha256": "d5520fb82f0082d296adc9dc42b8c1758a80dc9556cacbba8d9a35aeb87b73b4"
+    },
+    {
+      "relative_path": "rich/containers.py",
+      "size": 5497,
+      "sha256": "68a826e540c79f9366ba2e8825a29db1985b1c2961fd7ec3fbf5a0f0486bafbb"
+    },
+    {
+      "relative_path": "rich/control.py",
+      "size": 5298,
+      "sha256": "ab183a62377bf17b85d15c6d8654fc3b8769be90026302a405f9b64b8f88bc70"
+    },
+    {
+      "relative_path": "rich/default_styles.py",
+      "size": 7578,
+      "sha256": "d474e85cacc25bb3137bad0ee0992d601e5a80e7528b7f0eb95cbd6311d2f21a"
+    },
+    {
+      "relative_path": "rich/diagnose.py",
+      "size": 159,
+      "sha256": "3dad283a8c2a4bda8578571c9c8df5a7520d5f8323480659f052afcfdc76b24e"
+    },
+    {
+      "relative_path": "rich/emoji.py",
+      "size": 2465,
+      "sha256": "d634d11c5c2f431635722ba5db631d11971673b6eb7e3293f051ba6635e3e5d3"
+    },
+    {
+      "relative_path": "rich/errors.py",
+      "size": 642,
+      "sha256": "e693f729ce5de1027f734285b31adfca18e23d57bb275ccea9215b140cdc57e6"
+    },
+    {
+      "relative_path": "rich/file_proxy.py",
+      "size": 1613,
+      "sha256": "7c77917923b7549ec86c7ffdae2f8eacf61b142dd460ecde4cd8e782289639c6"
+    },
+    {
+      "relative_path": "rich/filesize.py",
+      "size": 2511,
+      "sha256": "a10267339ffbca0929ceddc6b4dab997717a82607b61a841039be975054a2f02"
+    },
+    {
+      "relative_path": "rich/highlighter.py",
+      "size": 4894,
+      "sha256": "01d8630b499e4d8b3067fc4a8246b471161d3632c004b5331c06f21774293d6a"
+    },
+    {
+      "relative_path": "rich/json.py",
+      "size": 5039,
+      "sha256": "1e3ae72b68d0906aabcb7218c5789f3e8e510db783292e6db4b16dce607bfec7"
+    },
+    {
+      "relative_path": "rich/jupyter.py",
+      "size": 3025,
+      "sha256": "e2cc4d03026ce20ddd61f5b2fde9cfc3d7e9d13767fbcdad5784fdba1f6f00e3"
+    },
+    {
+      "relative_path": "rich/layout.py",
+      "size": 13988,
+      "sha256": "36c207febfa5783b7008e91b09146f961e58d61c7b1b48907fc8cdb35e16a376"
+    },
+    {
+      "relative_path": "rich/live.py",
+      "size": 13711,
+      "sha256": "38ac4c685539b057ee47ef9c25fb466234af83554f42b8b553f0cd6548c2b2f2"
+    },
+    {
+      "relative_path": "rich/live_render.py",
+      "size": 3655,
+      "sha256": "bd27fbb2eff0ad7cd96063310210803e81898024e39a5c5c53d1b8bd28a3b9c5"
+    },
+    {
+      "relative_path": "rich/logging.py",
+      "size": 10868,
+      "sha256": "60d70248aea90a8d9683a24aa927007ba56016a79b1c19d2e670e704ee205c00"
+    },
+    {
+      "relative_path": "rich/markdown.py",
+      "size": 20616,
+      "sha256": "289ab7086c7735f9b05aa9d50830327d5c80d5a77a5e54332370a2d8f518b79c"
+    },
+    {
+      "relative_path": "rich/markup.py",
+      "size": 8034,
+      "sha256": "fe776067821cc1c7120f2a665a3766e789ee3b95e89b0eca21878ee30c2db4e2"
+    },
+    {
+      "relative_path": "rich/measure.py",
+      "size": 5258,
+      "sha256": "67be17bf32202d99b4c47f90228d6e5f9778a1a85abc77bc0fc30acb12cda8f4"
+    },
+    {
+      "relative_path": "rich/padding.py",
+      "size": 4958,
+      "sha256": "f08d5d40d4102b58828c7b46043127efc911a77a76ec6633979511dea07b7b61"
+    },
+    {
+      "relative_path": "rich/pager.py",
+      "size": 838,
+      "sha256": "54aff611f1f425db9959dc95f8a6666b4e9bbe2fd5e4f5a61c6e96ec1a226938"
+    },
+    {
+      "relative_path": "rich/palette.py",
+      "size": 3288,
+      "sha256": "02be9952b607885b7af91af693e93d17c57b87180960735daa3936bd55ec2e07"
+    },
+    {
+      "relative_path": "rich/panel.py",
+      "size": 8637,
+      "sha256": "3ba391c8884370e2d211ab138e9703be686f21ca693c609e4285e9a32708513f"
+    },
+    {
+      "relative_path": "rich/pretty.py",
+      "size": 32536,
+      "sha256": "3722e04d08c5faf00720997e497521add8a4fdc5f63a007d7d758d3b4e2fe1ed"
+    },
+    {
+      "relative_path": "rich/progress.py",
+      "size": 35926,
+      "sha256": "8dc822eda32743f6234a90264246a5c2d36c8159fd8b9e927991a9aebeedb8e9"
+    },
+    {
+      "relative_path": "rich/progress_bar.py",
+      "size": 7762,
+      "sha256": "10b8816b124e82c4582a9348ae8b7b042d1b157be67fc71377a9f1234d816cad"
+    },
+    {
+      "relative_path": "rich/prompt.py",
+      "size": 11295,
+      "sha256": "73262b96f6fb41b148d9058b3546c86dfbff1e54fc812ba4a454b944cf70d618"
+    },
+    {
+      "relative_path": "rich/protocol.py",
+      "size": 1377,
+      "sha256": "2ed1d533ab111618041659a8dcd44e81158fdf2be86296d6672284c50991923f"
+    },
+    {
+      "relative_path": "rich/py.typed",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "rich/region.py",
+      "size": 166,
+      "sha256": "acd4fdc59ad56536085d90b43589f8d42250c1835b47e29e70f3b14e042f07c6"
+    },
+    {
+      "relative_path": "rich/repr.py",
+      "size": 4297,
+      "sha256": "a154e24f93647352020ea5c64ba00c38ae8fb731bccac6525363c53bc660b162"
+    },
+    {
+      "relative_path": "rich/rule.py",
+      "size": 4185,
+      "sha256": "7d1a2fa0ac4d63904d1074ac92601c4cda9fd80e9c93c998f9e1ef122a239305"
+    },
+    {
+      "relative_path": "rich/scope.py",
+      "size": 2830,
+      "sha256": "2b43a67d4ad24c2f4c7ddf14f6a038a07bb3e2059292af1a4af7fc4d5376a699"
+    },
+    {
+      "relative_path": "rich/screen.py",
+      "size": 1579,
+      "sha256": "acbfe3db05fee127ae20e236a0e95ce35f103fd100bc3e7d1889d4984004ea34"
+    },
+    {
+      "relative_path": "rich/segment.py",
+      "size": 20913,
+      "sha256": "dac84e9deca0c7ff135bf981cf9632f40901edbf43e507ce0b000c86f434a649"
+    },
+    {
+      "relative_path": "rich/spinner.py",
+      "size": 4312,
+      "sha256": "57a756d23224e483b4ff6332c727ed41fe558c21c8d13d9c461278177d613c84"
+    },
+    {
+      "relative_path": "rich/status.py",
+      "size": 4425,
+      "sha256": "809b085c865e4a8deeacecb14548ece95ae15f9099ac0d0dc4843e7718429f0a"
+    },
+    {
+      "relative_path": "rich/style.py",
+      "size": 26469,
+      "sha256": "003d48edab5f725b050ad19e2fcae89c7d498fed3658ba7d650d9562a9a90633"
+    },
+    {
+      "relative_path": "rich/styled.py",
+      "size": 1234,
+      "sha256": "c258d5b154d76c004c319be4ce43b8dd9124ffe8abcc4b6f52243eb0d9e2910f"
+    },
+    {
+      "relative_path": "rich/syntax.py",
+      "size": 26898,
+      "sha256": "eefbd14cb66de5577c85daf299f002d8b9052c8d1ca83f3b12786de6e1acd071"
+    },
+    {
+      "relative_path": "rich/table.py",
+      "size": 35052,
+      "sha256": "8e794a063cb2375a809dcc3598f2477a213d036900aa025597b4da29e2fc39ed"
+    },
+    {
+      "relative_path": "rich/tabulate.py",
+      "size": 1688,
+      "sha256": "0781233b7a0c37be3f6df10315e51aef538691cf0448fafe602ba92f9bdeed73"
+    },
+    {
+      "relative_path": "rich/terminal_theme.py",
+      "size": 1459,
+      "sha256": "1349c8ff2705a6f7e56a6b7e295098e09e762e6523462d58e88081f847f780ca"
+    },
+    {
+      "relative_path": "rich/text.py",
+      "size": 44400,
+      "sha256": "4114c237254a9946093d80c37ea47177dbda0b4265b87c4248c9ffa8b5109ecc"
+    },
+    {
+      "relative_path": "rich/theme.py",
+      "size": 3627,
+      "sha256": "18a36d4210c164a0330da634bd0550405cdb734b967c57ba0895c0facc93ef34"
+    },
+    {
+      "relative_path": "rich/themes.py",
+      "size": 102,
+      "sha256": "d318132e8cdf69b79b62d709b43742e50917e4855411abe2a83509261e185459"
+    },
+    {
+      "relative_path": "rich/traceback.py",
+      "size": 25875,
+      "sha256": "34ee3b20a9d4403695702a56dba6578b7ccb7c2c65805218f8bdb491a48ff520"
+    },
+    {
+      "relative_path": "rich/tree.py",
+      "size": 9062,
+      "sha256": "89a53e313008c657c3c62509b394c14f9d965fbb27c4e0ef298491c93e2ca600"
+    }
+  ],
+  "fixture_manifest_hash": "f6588dcf4eed9770a2882c7bf6f6a1270c1381bef550d3a7d4a1cbdc78a74690"
+}

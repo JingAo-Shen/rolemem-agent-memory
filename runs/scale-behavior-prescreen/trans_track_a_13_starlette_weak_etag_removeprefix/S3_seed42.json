@@ -1,0 +1,21 @@
+{
+  "task_id": "trans_track_a_13_starlette_weak_etag_removeprefix",
+  "condition": "S3",
+  "seed": 42,
+  "memory_source": "VALID_MEMORY_CANDIDATE",
+  "memory_statements": [
+    "Call StaticFiles.is_not_modified to verify weak etag matches."
+  ],
+  "retrieved_files": [],
+  "repository_context_tokens": 1200,
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": true,
+    "active_nodes": []
+  },
+  "pytest_pass": true,
+  "pytest_log_excerpt": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_finaa2hx\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_etag_normalization PASSED              [100%]\n\n==============================",
+  "overall_task_success": true,
+  "parsed_code": "from starlette.staticfiles import StaticFiles\n\ndef is_etag_not_modified(etag, if_none_match):\n    \"\"\"\n    Verify if the ETag provided in the request matches the ETag of the resource.\n    \n    Args:\n    etag (str): The ETag of the resource.\n    if_none_match (str): The If-None-Match header from the request.\n    \n    Returns:\n    bool: True if the ETag matches, False otherwise.\n    \"\"\"\n    if if_none_match:\n        # Split the If-None-Match header values and remove the 'W/' prefix if present\n        tags = [tag.strip().removeprefix(\"W/\") for tag in if_none_match.split(\",\")]\n        # Check if the provided ETag is in the list of tags\n        return etag in tags\n    return False"
+}

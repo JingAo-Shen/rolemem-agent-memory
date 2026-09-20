@@ -206,14 +206,37 @@ CONSTRAINTS_SPEC = {
 def generate_all_constraints():
     print("=== Generating Solution Constraints Manifest (Anti-Cheating Gate) ===")
     specs = []
-    with open(MANIFEST_PATH, "r") as f:
-        for line in f:
-            if line.strip():
-                specs.append(json.loads(line))
+    manifests = [MANIFEST_PATH, os.path.join(DATA_DIR, "track_a_scale_manifest.jsonl")]
+    for mf in manifests:
+        if os.path.exists(mf):
+            with open(mf, "r") as f:
+                for line in f:
+                    if line.strip():
+                        specs.append(json.loads(line))
 
     for spec in specs:
         tid = spec["transition_id"]
-        constraints = CONSTRAINTS_SPEC.get(tid, {})
+        if tid in CONSTRAINTS_SPEC:
+            constraints = CONSTRAINTS_SPEC[tid]
+        else:
+            constraints = {
+                "target_file": spec.get("target_file", "solution.py"),
+                "api_deprecation_gate": {
+                    "deprecated_symbol": ", ".join(spec.get("deprecated_symbols", [])),
+                    "enforcement": "Prohibits active deprecated/removed symbol invocation",
+                    "constraint_status": "SPECIFIED"
+                },
+                "replacement_mechanism_gate": {
+                    "required_mechanism": ", ".join(spec.get("replacement_symbols", [])),
+                    "prohibited_returns": ["1.0", None, "dummy"],
+                    "constraint_status": "SPECIFIED"
+                },
+                "behavior_fidelity_gate": {
+                    "dynamic_checks": ["Pytest execution passes on target workspace"],
+                    "boundary_checks": ["Valid solution execution strictly verified"],
+                    "constraint_status": "SPECIFIED"
+                }
+            }
         payload = {
             "transition_id": tid,
             "anti_cheating_gate_version": "v1.0",

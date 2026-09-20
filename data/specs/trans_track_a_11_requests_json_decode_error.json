@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_11_requests_json_decode_error",
+  "repo_name": "psf/requests",
+  "repo_url": "https://github.com/psf/requests",
+  "pr_url": "https://github.com/psf/requests/pull/6097",
+  "target_commit": "2d5517682b3b38547634d153cea43d48fbc8cdb5",
+  "pkg_path": "requests",
+  "changed_files": [
+    "requests/models.py"
+  ],
+  "primary_file": "requests/models.py",
+  "symbol": "requests.exceptions.JSONDecodeError",
+  "deprecated_symbols": [
+    "None",
+    "return None"
+  ],
+  "replacement_symbols": [
+    "RequestException",
+    "requests.exceptions.RequestException"
+  ],
+  "repository_change": "requests.exceptions.JSONDecodeError added to uniformly catch JSON decoding failures.",
+  "stale_memory_candidate": "Catching RequestException on response.json() is unsupported; return None on failure.",
+  "valid_memory_candidate": "Catch requests.exceptions.RequestException when parsing json payloads.",
+  "transition_type": "API_EVOLUTION",
+  "stale_sensitive": false,
+  "current_task": "Implement `parse_api_response(resp)` in `client_parser.py` extracting json and catching requests decoding errors safely.",
+  "target_file": "client_parser.py",
+  "target_symbol": "parse_api_response",
+  "stale_solution": "def parse_api_response(resp):\n    return None\n",
+  "valid_solution": "from requests.exceptions import RequestException\n\ndef parse_api_response(resp):\n    try:\n        return resp.json()\n    except RequestException:\n        return {\"error\": \"invalid json\"}\n",
+  "hidden_test": "import pytest\nfrom requests import Response\nimport client_parser\n\ndef test_safe_parse():\n    resp = Response()\n    resp._content = b\"not json\"\n    resp.encoding = None\n    res = client_parser.parse_api_response(resp)\n    assert res == {\"error\": \"invalid json\"}\n",
+  "base_commit": "8bce583b9547c7b82d44c8e97f37cf9a16cbe758",
+  "external_pr_url": "https://github.com/psf/requests/pull/6097",
+  "track": "TRACK_A_STALE_SENSITIVE"
+}

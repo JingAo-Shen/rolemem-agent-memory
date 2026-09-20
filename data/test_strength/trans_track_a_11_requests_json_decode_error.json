@@ -1,0 +1,79 @@
+{
+  "transition_id": "trans_track_a_11_requests_json_decode_error",
+  "audit_fingerprint": "725c56bae97825a5a8d6e9969b84a0c8ea2d4c0876e8785129553e73b2412685",
+  "total_mutants": 8,
+  "invalid_mutants_count": 8,
+  "invalid_mutants_killed": 8,
+  "killed_mutants": 8,
+  "mutation_kill_rate": 1.0,
+  "constant_return_killed": true,
+  "constant_return_bypass": false,
+  "meets_kill_rate_threshold": true,
+  "audit_status": "PASS",
+  "mutants": {
+    "M1_return_none": {
+      "description": "return None",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_safe_parse - AssertionError: assert ...\n========================= 1 failed, 1 warning in 0.07s =========================\n\nSTDERR:\n"
+    },
+    "M2_constant_return": {
+      "description": "return constant string",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_safe_parse - AssertionError: assert ...\n========================= 1 failed, 1 warning in 0.07s =========================\n\nSTDERR:\n"
+    },
+    "M3_noop_pass": {
+      "description": "pass / no-op",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_safe_parse - AssertionError: assert ...\n========================= 1 failed, 1 warning in 0.06s =========================\n\nSTDERR:\n"
+    },
+    "M4_try_except_dummy": {
+      "description": "try/except return dummy",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_safe_parse - AssertionError: assert ...\n========================= 1 failed, 1 warning in 0.07s =========================\n\nSTDERR:\n"
+    },
+    "M5_stale_solution": {
+      "description": "stale solution",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_safe_parse - AssertionError: assert ...\n========================= 1 failed, 1 warning in 0.07s =========================\n\nSTDERR:\n"
+    },
+    "M6_mismatched_signature": {
+      "description": "wrong signature",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_safe_parse - TypeError: parse_api_re...\n========================= 1 failed, 1 warning in 0.06s =========================\n\nSTDERR:\n"
+    },
+    "M7_missing_attribute": {
+      "description": "missing function",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_safe_parse - AttributeError: module ...\n========================= 1 failed, 1 warning in 0.07s =========================\n\nSTDERR:\n"
+    },
+    "M8_static_mock": {
+      "description": "static mock",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_safe_parse - AssertionError: assert ...\n========================= 1 failed, 1 warning in 0.07s =========================\n\nSTDERR:\n"
+    }
+  }
+}

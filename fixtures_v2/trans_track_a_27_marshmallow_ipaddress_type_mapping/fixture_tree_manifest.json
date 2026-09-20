@@ -1,0 +1,170 @@
+{
+  "transition_id": "trans_track_a_27_marshmallow_ipaddress_type_mapping",
+  "repo_name": "marshmallow-code/marshmallow",
+  "base_commit": "3bc191ab3c8cac8356839bcde0918cb6aed4d3a1",
+  "target_commit": "c38b48ec3b8bb44315036d0c8a07bc8477eb5094",
+  "pkg_path": "src/marshmallow",
+  "tree_purity_status": "TREE_PURITY_PASS",
+  "before_tree_purity": "TREE_PURITY_PASS",
+  "after_tree_purity": "TREE_PURITY_PASS",
+  "before_mismatches": [],
+  "after_mismatches": [],
+  "total_files_before": 15,
+  "total_files_after": 15,
+  "has_environment_overlay": false,
+  "before_files": [
+    {
+      "relative_path": "src/marshmallow/__init__.py",
+      "size": 573,
+      "sha256": "f571c1453acf99b55a53e67c096a3c9e571ff59e55be4443dfb77596e26e01a3"
+    },
+    {
+      "relative_path": "src/marshmallow/class_registry.py",
+      "size": 3029,
+      "sha256": "1d30bdb2b084691b22cb92ffbd4290b28ec841f7997915f165fcf8ff6362b683"
+    },
+    {
+      "relative_path": "src/marshmallow/constants.py",
+      "size": 415,
+      "sha256": "bfceb327d9f2c3237b7ae887430f2125292e3f27ae7e552fbf48d956d7eb7bc3"
+    },
+    {
+      "relative_path": "src/marshmallow/decorators.py",
+      "size": 10165,
+      "sha256": "99a3a8cd6d37bd0ee4f6a66a67f4ef4d8477c3efa46f435f9003b2d50d139d9d"
+    },
+    {
+      "relative_path": "src/marshmallow/error_store.py",
+      "size": 2444,
+      "sha256": "e7eeb67a5f04cb6c39f71f050e1502e5a7cfbbadcd5e3ba62a201a80018bf5b6"
+    },
+    {
+      "relative_path": "src/marshmallow/exceptions.py",
+      "size": 2273,
+      "sha256": "d4bdd91f040d7a5594e6e8c83ec38de6d67a5903e4eb8a411963727f0873eb4f"
+    },
+    {
+      "relative_path": "src/marshmallow/experimental/__init__.py",
+      "size": 147,
+      "sha256": "e7f89a5264fbfdfe9030bd8b257980df1aa093950102009e21acc7b42d465607"
+    },
+    {
+      "relative_path": "src/marshmallow/experimental/context.py",
+      "size": 2040,
+      "sha256": "ff8285eac34aea913431c932613197994de124bdad63e4cde2856613f783a1bd"
+    },
+    {
+      "relative_path": "src/marshmallow/fields.py",
+      "size": 73550,
+      "sha256": "bf3df80698a615cf8a712dda4e43ace285dfb46c864fda78434ae50623fa1e4a"
+    },
+    {
+      "relative_path": "src/marshmallow/orderedset.py",
+      "size": 2953,
+      "sha256": "69d5421b81ed7d815ec6a65386216c8b073f8b483c2cd588fdb17a723333dabd"
+    },
+    {
+      "relative_path": "src/marshmallow/py.typed",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/marshmallow/schema.py",
+      "size": 49956,
+      "sha256": "c207dd78d51296659f4d2fe8d4eb12e1ac39824c631bd429b42c9b95e81f4f17"
+    },
+    {
+      "relative_path": "src/marshmallow/types.py",
+      "size": 1418,
+      "sha256": "ff74664c24538e00e1f698c5246565c64b58da1b77b131a4581018da78f8ddb3"
+    },
+    {
+      "relative_path": "src/marshmallow/utils.py",
+      "size": 5430,
+      "sha256": "dd1af31543b66c33e971b5633d6c7cadf926a9abeb7561cbfb4241dce00ba06e"
+    },
+    {
+      "relative_path": "src/marshmallow/validate.py",
+      "size": 24178,
+      "sha256": "8ca3d68fea00cdc7e1dfee847602390403d856309bc227ff890c773499643e43"
+    }
+  ],
+  "after_files": [
+    {
+      "relative_path": "src/marshmallow/__init__.py",
+      "size": 573,
+      "sha256": "f571c1453acf99b55a53e67c096a3c9e571ff59e55be4443dfb77596e26e01a3"
+    },
+    {
+      "relative_path": "src/marshmallow/class_registry.py",
+      "size": 3029,
+      "sha256": "1d30bdb2b084691b22cb92ffbd4290b28ec841f7997915f165fcf8ff6362b683"
+    },
+    {
+      "relative_path": "src/marshmallow/constants.py",
+      "size": 415,
+      "sha256": "bfceb327d9f2c3237b7ae887430f2125292e3f27ae7e552fbf48d956d7eb7bc3"
+    },
+    {
+      "relative_path": "src/marshmallow/decorators.py",
+      "size": 10165,
+      "sha256": "99a3a8cd6d37bd0ee4f6a66a67f4ef4d8477c3efa46f435f9003b2d50d139d9d"
+    },
+    {
+      "relative_path": "src/marshmallow/error_store.py",
+      "size": 2444,
+      "sha256": "e7eeb67a5f04cb6c39f71f050e1502e5a7cfbbadcd5e3ba62a201a80018bf5b6"
+    },
+    {
+      "relative_path": "src/marshmallow/exceptions.py",
+      "size": 2273,
+      "sha256": "d4bdd91f040d7a5594e6e8c83ec38de6d67a5903e4eb8a411963727f0873eb4f"
+    },
+    {
+      "relative_path": "src/marshmallow/experimental/__init__.py",
+      "size": 147,
+      "sha256": "e7f89a5264fbfdfe9030bd8b257980df1aa093950102009e21acc7b42d465607"
+    },
+    {
+      "relative_path": "src/marshmallow/experimental/context.py",
+      "size": 2040,
+      "sha256": "ff8285eac34aea913431c932613197994de124bdad63e4cde2856613f783a1bd"
+    },
+    {
+      "relative_path": "src/marshmallow/fields.py",
+      "size": 73550,
+      "sha256": "bf3df80698a615cf8a712dda4e43ace285dfb46c864fda78434ae50623fa1e4a"
+    },
+    {
+      "relative_path": "src/marshmallow/orderedset.py",
+      "size": 2953,
+      "sha256": "69d5421b81ed7d815ec6a65386216c8b073f8b483c2cd588fdb17a723333dabd"
+    },
+    {
+      "relative_path": "src/marshmallow/py.typed",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/marshmallow/schema.py",
+      "size": 50183,
+      "sha256": "c48482bb7c6e69ac24c2b7631bf7f692991ffe519abc4f46a684c32c3e0f09f8"
+    },
+    {
+      "relative_path": "src/marshmallow/types.py",
+      "size": 1418,
+      "sha256": "ff74664c24538e00e1f698c5246565c64b58da1b77b131a4581018da78f8ddb3"
+    },
+    {
+      "relative_path": "src/marshmallow/utils.py",
+      "size": 5430,
+      "sha256": "dd1af31543b66c33e971b5633d6c7cadf926a9abeb7561cbfb4241dce00ba06e"
+    },
+    {
+      "relative_path": "src/marshmallow/validate.py",
+      "size": 24178,
+      "sha256": "8ca3d68fea00cdc7e1dfee847602390403d856309bc227ff890c773499643e43"
+    }
+  ],
+  "fixture_manifest_hash": "ed1ed579a914e6ea54454e00240d324fc58ebbb5208f0661f8584f1624faf828"
+}

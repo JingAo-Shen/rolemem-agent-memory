@@ -1,0 +1,46 @@
+{
+  "transition_id": "trans_track_a_07_pluggy_varnames_noself",
+  "repo_name": "pytest-dev/pluggy",
+  "base_commit": "dd20a85e38af556e1c818b03391eab1480438e0c",
+  "claims": [
+    {
+      "statement": "The varnames function retrieves the positional and keyword parameter names for a given callable, handling class methods, bound methods, and unbound methods appropriately.",
+      "temporal_isolation_pass": true,
+      "temporal_leaks": [],
+      "structural_evidence_grounded": true,
+      "matched_symbols": [
+        "pluggy._hooks.varnames"
+      ],
+      "semantic_factuality_status": "FACTUALLY_SUPPORTED",
+      "semantic_factuality_pass": true,
+      "explanation": "**Created Question**:\nEvaluate whether the following CLAIM about a Python module is supported by the HISTORICAL SOURCE CODE.\nDo not make assumptions beyond what is stated in the code.\n\nHISTORICAL SOURCE CODE:\n```python\nimport os\n\ndef get_file_size(file_path):\n    return os.path.getsize(file_path)\n\ndef list_files(directory):\n    return [f for f in os.listdir(directory) if os.path.isfile(os.path.join(directory, f))]\n```\n\nHISTORICAL COMMITS:\nd1a2b3c4d5e6f7g8h",
+      "seed": 42
+    },
+    {
+      "statement": "The 'varnames' function retrieves the positional and keyword parameter names for a given callable, handling class methods, bound methods, and unbound methods appropriately.",
+      "temporal_isolation_pass": true,
+      "temporal_leaks": [],
+      "structural_evidence_grounded": true,
+      "matched_symbols": [
+        "pluggy._hooks.varnames"
+      ],
+      "semantic_factuality_status": "FACTUALLY_SUPPORTED",
+      "semantic_factuality_pass": true,
+      "explanation": "**Created Question**:\nEvaluate whether the following CLAIM about a Python module is supported by the HISTORICAL SOURCE CODE.\nDo not make assumptions beyond what is stated in the code.\n\nHISTORICAL SOURCE CODE:\n```python\nimport os\n\ndef get_file_size(file_path):\n    return os.path.getsize(file_path)\n\ndef list_files(directory):\n    return [f for f in os.listdir(directory) if os.path.isfile(os.path.join(directory, f))]\n```\n\nHISTORICAL COMMITS:\nd123456789abcdef Add function to get file size",
+      "seed": 123
+    },
+    {
+      "statement": "The 'varnames' function retrieves the positional and keyword parameter names for a given callable, handling class methods, bound methods, and unbound methods with specific rules.",
+      "temporal_isolation_pass": true,
+      "temporal_leaks": [],
+      "structural_evidence_grounded": true,
+      "matched_symbols": [
+        "pluggy._hooks.varnames"
+      ],
+      "semantic_factuality_status": "FACTUALLY_SUPPORTED",
+      "semantic_factuality_pass": true,
+      "explanation": ":",
+      "seed": 999
+    }
+  ]
+}

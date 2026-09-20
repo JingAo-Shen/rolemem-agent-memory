@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_12_urllib3_getheaders_removal",
+  "repo_name": "urllib3/urllib3",
+  "leakage_class": "REPO_CONTEXT_HINTED",
+  "rationale": "Context contains replacement symbols ['headers'] or migration comments, but no task implementation.",
+  "retrieved_tokens": 1200,
+  "found_replacements": [
+    "headers"
+  ],
+  "target_implementation_found": false,
+  "migration_comments_found": []
+}

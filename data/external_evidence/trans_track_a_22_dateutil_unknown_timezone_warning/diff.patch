@@ -1,0 +1,100 @@
+diff --git a/dateutil/parser/__init__.py b/dateutil/parser/__init__.py
+index 734d829..216762c 100644
+--- a/dateutil/parser/__init__.py
++++ b/dateutil/parser/__init__.py
+@@ -1,13 +1,15 @@
+ # -*- coding: utf-8 -*-
+ from ._parser import parse, parser, parserinfo
+ from ._parser import DEFAULTPARSER, DEFAULTTZPARSER
++from ._parser import UnknownTimezoneWarning
+ 
+ from ._parser import __doc__
+ 
+ from .isoparser import isoparser, isoparse
+ 
+ __all__ = ['parse', 'parser', 'parserinfo',
+-           'isoparse', 'isoparser']
++           'isoparse', 'isoparser',
++           'UnknownTimezoneWarning']
+ 
+ 
+ ###
+diff --git a/dateutil/parser/_parser.py b/dateutil/parser/_parser.py
+index 1391437..1b5aabf 100644
+--- a/dateutil/parser/_parser.py
++++ b/dateutil/parser/_parser.py
+@@ -34,6 +34,7 @@ import datetime
+ import re
+ import string
+ import time
++import warnings
+ 
+ from calendar import monthrange
+ from io import StringIO
+@@ -1145,9 +1146,19 @@ class parser(object):
+         elif res.tzoffset:
+             aware = naive.replace(tzinfo=tz.tzoffset(res.tzname, res.tzoffset))
+ 
+-        else:
+-            # TODO: this is really only the right thing to do if no tz
+-            # information was found.
++        elif not res.tzname and not res.tzoffset:
++            # i.e. no timezone information was found.
++            aware = naive
++
++        elif res.tzname:
++            # tz-like string was parsed but we don't know what to do
++            # with it
++            warnings.warn("tzname {tzname} identified but not understood.  "
++                          "Pass `tzinfos` argument in order to correctly "
++                          "return a timezone-aware datetime.  In a future "
++                          "version, this raise an "
++                          "exception.".format(tzname=res.tzname),
++                          category=UnknownTimezoneWarning)
+             aware = naive
+ 
+         return aware
+@@ -1507,4 +1518,6 @@ DEFAULTTZPARSER = _tzparser()
+ def _parsetz(tzstr):
+     return DEFAULTTZPARSER.parse(tzstr)
+ 
++class UnknownTimezoneWarning(RuntimeWarning):
++    """Raised when the parser finds a timezone it cannot parse into a tzinfo"""
+ # vim:ts=4:sw=4:et
+diff --git a/dateutil/test/test_parser.py b/dateutil/test/test_parser.py
+index ce27e82..e3e24ba 100644
+--- a/dateutil/test/test_parser.py
++++ b/dateutil/test/test_parser.py
+@@ -9,6 +9,7 @@ import sys
+ from dateutil import tz
+ from dateutil.tz import tzoffset
+ from dateutil.parser import parse, parserinfo
++from dateutil.parser import UnknownTimezoneWarning
+ 
+ from ._common import TZEnvContext
+ 
+@@ -574,8 +575,9 @@ class ParserTest(unittest.TestCase):
+ 
+     def testFuzzyIgnoreAMPM(self):
+         s1 = "Jan 29, 1945 14:45 AM I going to see you there?"
+-
+-        self.assertEqual(parse(s1, fuzzy=True), datetime(1945, 1, 29, 14, 45))
++        with pytest.warns(UnknownTimezoneWarning):
++            res = parse(s1, fuzzy=True)
++        self.assertEqual(res, datetime(1945, 1, 29, 14, 45))
+ 
+     def testExtraSpace(self):
+         self.assertEqual(parse("  July   4 ,  1976   12:01:02   am  "),
+@@ -683,8 +685,10 @@ class ParserTest(unittest.TestCase):
+                          datetime(2003, 9, 25, 12, 8))
+ 
+     def testRandomFormat26(self):
+-        self.assertEqual(parse("5:50 A.M. on June 13, 1990"),
+-                         datetime(1990, 6, 13, 5, 50))
++        with pytest.warns(UnknownTimezoneWarning):
++            res = parse("5:50 A.M. on June 13, 1990")
++
++        self.assertEqual(res, datetime(1990, 6, 13, 5, 50))
+ 
+     def testRandomFormat27(self):
+         self.assertEqual(parse("3rd of May 2001"), datetime(2001, 5, 3))

@@ -1,0 +1,10 @@
+{
+  "transition_id": "trans_track_a_03_werkzeug_environ_property",
+  "repo_name": "pallets/werkzeug",
+  "leakage_class": "REPO_CONTEXT_NONTRIVIAL",
+  "rationale": "Retrieved repository context contains neither replacement symbols nor migration hints.",
+  "retrieved_tokens": 1200,
+  "found_replacements": [],
+  "target_implementation_found": false,
+  "migration_comments_found": []
+}

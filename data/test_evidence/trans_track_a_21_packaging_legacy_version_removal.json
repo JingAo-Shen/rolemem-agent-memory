@@ -1,0 +1,7 @@
+{
+  "transition_id": "trans_track_a_21_packaging_legacy_version_removal",
+  "audit_fingerprint": "6f64a0a58d87b416d5a4702aba1fda06bf76bafae15e98099e6ad866a654e235",
+  "status": "GENERATED_HIDDEN_TEST_ONLY",
+  "verification_status": "GENERATED_HIDDEN_TEST_ONLY",
+  "evidence": "Executable hidden test verified in sandbox"
+}

@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_track_a_18_marshmallow_pprint_export_removal",
+  "repo_name": "marshmallow-code/marshmallow",
+  "pr_number": 2823,
+  "pr_title": "Fix incorrect export by removing 'pprint' from __all__.",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "5429f0d4c6e346dc751599073cab67d66eefbcb2",
+  "pr_base_sha": "ad24f89100c95d3bf99ba17714d457c7c93e0b53",
+  "pr_head_sha": "81c4be9763c43241bc1a1ab9b5ae3900c4ce909c",
+  "base_commit": "ad24f89100c95d3bf99ba17714d457c7c93e0b53",
+  "target_commit": "5429f0d4c6e346dc751599073cab67d66eefbcb2",
+  "ancestry_verified": true,
+  "merge_strategy": "merge_commit",
+  "merge_relationship_verified": true,
+  "diff_match": true,
+  "issue_required": false,
+  "issue_id_verified": null,
+  "issue_status": "NOT_APPLICABLE",
+  "spec_sha256": "f176707d93a36485d4ba423656780fe4729fa89b9151bbdf41ebf12e1efeb861",
+  "audit_fingerprint": "df6818145478492112a827c2d11d43f6f4a6cdc5c9f6a43dd39ad1f9e655fb95",
+  "auditor_version": "3.0.0",
+  "overall_status": "PASS"
+}

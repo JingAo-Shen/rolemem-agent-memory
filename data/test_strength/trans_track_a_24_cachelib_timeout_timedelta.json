@@ -1,0 +1,79 @@
+{
+  "transition_id": "trans_track_a_24_cachelib_timeout_timedelta",
+  "audit_fingerprint": "7d1c63019ffc33a2950dc45b051cdab722fa3b78223e16f7ab7e192efe27bbd8",
+  "total_mutants": 8,
+  "invalid_mutants_count": 8,
+  "invalid_mutants_killed": 8,
+  "killed_mutants": 8,
+  "mutation_kill_rate": 1.0,
+  "constant_return_killed": true,
+  "constant_return_bypass": false,
+  "meets_kill_rate_threshold": true,
+  "audit_status": "PASS",
+  "mutants": {
+    "M1_return_none": {
+      "description": "return None",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "ne == 600\n\ntest_hidden_verification.py:9: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_normalize - assert None == 600\n============================== 1 failed in 0.03s ===============================\n\nSTDERR:\n"
+    },
+    "M2_constant_return": {
+      "description": "return constant string",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "\n\ntest_hidden_verification.py:9: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_normalize - AssertionError: assert '...\n============================== 1 failed in 0.03s ===============================\n\nSTDERR:\n"
+    },
+    "M3_noop_pass": {
+      "description": "pass / no-op",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "ne == 600\n\ntest_hidden_verification.py:9: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_normalize - assert None == 600\n============================== 1 failed in 0.03s ===============================\n\nSTDERR:\n"
+    },
+    "M4_try_except_dummy": {
+      "description": "try/except return dummy",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "ne == 600\n\ntest_hidden_verification.py:9: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_normalize - assert None == 600\n============================== 1 failed in 0.03s ===============================\n\nSTDERR:\n"
+    },
+    "M5_stale_solution": {
+      "description": "stale solution",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "100 == 600\n\ntest_hidden_verification.py:9: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_normalize - assert 100 == 600\n============================== 1 failed in 0.03s ===============================\n\nSTDERR:\n"
+    },
+    "M6_mismatched_signature": {
+      "description": "wrong signature",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "given\n\ntest_hidden_verification.py:8: TypeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_normalize - TypeError: normalize_tim...\n============================== 1 failed in 0.03s ===============================\n\nSTDERR:\n"
+    },
+    "M7_missing_attribute": {
+      "description": "missing function",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "\n\ntest_hidden_verification.py:8: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_normalize - AttributeError: module '...\n============================== 1 failed in 0.03s ===============================\n\nSTDERR:\n"
+    },
+    "M8_static_mock": {
+      "description": "static mock",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "\n\ntest_hidden_verification.py:9: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_normalize - assert <cache_helper.Moc...\n============================== 1 failed in 0.03s ===============================\n\nSTDERR:\n"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_21_packaging_legacy_version_removal",
+  "repo_name": "pypa/packaging",
+  "leakage_class": "REPO_CONTEXT_HINTED",
+  "rationale": "Context contains replacement symbols ['Version'] or migration comments, but no task implementation.",
+  "retrieved_tokens": 1200,
+  "found_replacements": [
+    "Version"
+  ],
+  "target_implementation_found": false,
+  "migration_comments_found": []
+}

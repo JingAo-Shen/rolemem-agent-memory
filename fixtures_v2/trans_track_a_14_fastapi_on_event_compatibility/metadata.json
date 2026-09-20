@@ -1,0 +1,19 @@
+{
+  "transition_id": "trans_track_a_14_fastapi_on_event_compatibility",
+  "repo_name": "tiangolo/fastapi",
+  "repo_url": "https://github.com/tiangolo/fastapi",
+  "pr_url": "https://github.com/tiangolo/fastapi/pull/14851",
+  "base_commit": "8e50c55fd90c4433ddc9096ff439da9498a8314a",
+  "target_commit": "f9f79926047d7f5d8e0127dd585e7683ee57e9f7",
+  "pkg_path": "fastapi",
+  "changed_files": [
+    "fastapi/routing.py"
+  ],
+  "primary_file": "fastapi/routing.py",
+  "symbol": "APIRoute.on_event",
+  "file_digest_before": "747656e8d2f36ef0fb8d94f637e57a7e3d48adb7bc1d1f850de881352b931c7b",
+  "file_digest_after": "cfa4b7e4c42c9a6988edfa72191e5b6aab6ee357690f3dc7d3e2dc43e8ec652c",
+  "stale_sensitive": false,
+  "transition_type": "API_DEPRECATION",
+  "builder_status": "FIXTURE_EXTRACTED_UNVERIFIED"
+}

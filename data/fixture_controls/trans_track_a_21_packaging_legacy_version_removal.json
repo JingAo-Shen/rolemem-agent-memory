@@ -1,0 +1,8 @@
+{
+  "transition_id": "trans_track_a_21_packaging_legacy_version_removal",
+  "audit_fingerprint": "6f64a0a58d87b416d5a4702aba1fda06bf76bafae15e98099e6ad866a654e235",
+  "status": "PASS",
+  "valid_control_status": "PASS",
+  "stale_control_status": "PASS",
+  "details": "valid_target=True, stale_target=False"
+}

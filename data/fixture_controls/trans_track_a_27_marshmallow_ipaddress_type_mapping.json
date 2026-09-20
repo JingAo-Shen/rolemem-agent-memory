@@ -1,0 +1,8 @@
+{
+  "transition_id": "trans_track_a_27_marshmallow_ipaddress_type_mapping",
+  "audit_fingerprint": "916670cc622b00a11abc30134181665eaaa4c403ae240c203f005467d54d903a",
+  "status": "PASS",
+  "valid_control_status": "PASS",
+  "stale_control_status": "PASS",
+  "details": "valid_target=True, stale_target=False"
+}

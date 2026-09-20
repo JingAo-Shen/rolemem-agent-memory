@@ -1,0 +1,21 @@
+{
+  "task_id": "trans_track_a_30_fastapi_pydantic_v1_deprecation",
+  "condition": "S2",
+  "seed": 42,
+  "memory_source": "STALE_MEMORY_CANDIDATE",
+  "memory_statements": [
+    "Define FastAPI routes with pydantic.v1 models without deprecation warnings."
+  ],
+  "retrieved_files": [],
+  "repository_context_tokens": 1173,
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": true,
+    "active_nodes": []
+  },
+  "pytest_pass": false,
+  "pytest_log_excerpt": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_5x79o899\nplugins: anyio-4.15.1\ncollecting ... collected 0 items / 1 error\n\n==================================== ERRORS ====================================\n___________",
+  "overall_task_success": false,
+  "parsed_code": "import warnings\nfrom fastapi import FastAPI, HTTPException\nfrom fastapi.responses import JSONResponse\nfrom fastapi.testclient import TestClient\nfrom pydantic.v1 import BaseModel, validator\n\napp = FastAPI()\n\nclass PydanticV1Model(BaseModel):\n    value: int\n\n    @validator('value')\n    def check_value(cls, v):\n        if v < 0:\n            raise ValueError('Negative values are not allowed')\n        return v\n\n@app.post('/test-pydantic-v1/')\nasync def test_pydantic_v1(model: PydanticV1Model):\n    return {'value': model.value}\n\ndef is_pydantic_v1_deprecated():\n    client = TestClient(app)\n    \n    with warnings.catch_warnings(record=True) as w:\n        response = client.post('/test-pydantic-v1/', json={'value': -1})\n        \n        if any(\"Pydantic v1 is deprecated\" in str(warning.message) for warning in w):\n            return True\n    \n    return False\n\n# Run the function to check if Pydantic v1 is deprecated\nresult = is_pydantic_v1_deprecated()\nprint(result)"
+}

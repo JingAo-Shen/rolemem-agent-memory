@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_track_a_15_more_itertools_zip_equal_removal",
+  "repo_name": "more-itertools/more-itertools",
+  "pr_number": 1076,
+  "pr_title": "Set minimum version to 3.10",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "8fa3b81c8dd90c3b3f6648add2228aaaebb42884",
+  "pr_base_sha": "8c1a6ef241b51ff055e89219f050ccf4f15f37f6",
+  "pr_head_sha": "be68e38aa5ce201d8f34dc6060fb3e664c2da6b8",
+  "base_commit": "8c1a6ef241b51ff055e89219f050ccf4f15f37f6",
+  "target_commit": "8fa3b81c8dd90c3b3f6648add2228aaaebb42884",
+  "ancestry_verified": true,
+  "merge_strategy": "merge_commit",
+  "merge_relationship_verified": true,
+  "diff_match": true,
+  "issue_required": false,
+  "issue_id_verified": null,
+  "issue_status": "NOT_APPLICABLE",
+  "spec_sha256": "765115632fb36f11993f5176ddd877f9edecaab39e9b637505085896f4e87215",
+  "audit_fingerprint": "759728f6870b2ddd9ddd1db05fb1e4c691a0bab3203fa48b9901dd587ea8f90d",
+  "auditor_version": "3.0.0",
+  "overall_status": "PASS"
+}

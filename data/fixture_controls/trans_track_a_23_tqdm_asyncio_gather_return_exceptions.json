@@ -1,0 +1,8 @@
+{
+  "transition_id": "trans_track_a_23_tqdm_asyncio_gather_return_exceptions",
+  "audit_fingerprint": "7469188a1fa3a1c3cd5bf14163506300b7eaf8d50180613f3df9492219f35d96",
+  "status": "PASS",
+  "valid_control_status": "PASS",
+  "stale_control_status": "PASS",
+  "details": "valid_target=True, stale_target=False"
+}

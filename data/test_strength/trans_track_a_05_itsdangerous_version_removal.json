@@ -33,7 +33,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\ntest_hidden_verification.py:12: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_version_retrieval - AssertionError: ...\n============================== 1 failed in 0.03s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:12: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_version_retrieval - AssertionError: ...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
     },
     "M4_try_except_dummy": {
       "description": "try/except return dummy",
@@ -41,7 +41,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\ntest_hidden_verification.py:12: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_version_retrieval - AssertionError: ...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:12: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_version_retrieval - AssertionError: ...\n============================== 1 failed in 0.03s ===============================\n\nSTDERR:\n"
     },
     "M5_stale_solution": {
       "description": "stale itsdangerous.__version__ read",
@@ -57,7 +57,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\ntest_hidden_verification.py:14: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_version_retrieval - AssertionError: ...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:14: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_version_retrieval - AssertionError: ...\n============================== 1 failed in 0.03s ===============================\n\nSTDERR:\n"
     },
     "M7_missing_attribute": {
       "description": "missing function",
@@ -65,7 +65,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\ntest_hidden_verification.py:11: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_version_retrieval - AttributeError: ...\n============================== 1 failed in 0.03s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:11: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_version_retrieval - AttributeError: ...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
     },
     "M8_static_mock": {
       "description": "static string mock bypassing metadata",

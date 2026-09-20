@@ -1,0 +1,20 @@
+{
+  "transition_id": "trans_track_a_30_fastapi_pydantic_v1_deprecation",
+  "repo_name": "tiangolo/fastapi",
+  "repo_url": "https://github.com/tiangolo/fastapi",
+  "pr_url": "https://github.com/tiangolo/fastapi/pull/14583",
+  "base_commit": "6513d4daa16a536d17743de6a292f49bd06388a4",
+  "target_commit": "6e42bcd8ce2ade33d94f478310dad20ee84f8f0f",
+  "pkg_path": "fastapi",
+  "changed_files": [
+    "fastapi/dependencies/utils.py",
+    "fastapi/routing.py"
+  ],
+  "primary_file": "fastapi/dependencies/utils.py",
+  "symbol": "fastapi.dependencies.utils.get_dependant",
+  "file_digest_before": "a284ca8152c7ea3fc2a44ab94aeabbeb19fda1da363d5bc9e45dd4def6caf995",
+  "file_digest_after": "c13666b10e9efe83d2d56eda93cf900b6b65e5eabef404cbfaf7617bb0991cb5",
+  "stale_sensitive": false,
+  "transition_type": "API_EVOLUTION",
+  "builder_status": "FIXTURE_EXTRACTED_UNVERIFIED"
+}

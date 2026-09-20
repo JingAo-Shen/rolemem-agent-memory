@@ -1,0 +1,26 @@
+[
+  {
+    "sha": "218e7badbeb23ec68b955db2a2b246478f19dcf0",
+    "filename": "CHANGELOG.rst",
+    "status": "modified",
+    "additions": 5,
+    "deletions": 0,
+    "changes": 5,
+    "blob_url": "https://github.com/marshmallow-code/marshmallow/blob/3b4df805e6c2134b82f8787ee748348e20242543/CHANGELOG.rst",
+    "raw_url": "https://github.com/marshmallow-code/marshmallow/raw/3b4df805e6c2134b82f8787ee748348e20242543/CHANGELOG.rst",
+    "contents_url": "https://api.github.com/repos/marshmallow-code/marshmallow/contents/CHANGELOG.rst?ref=3b4df805e6c2134b82f8787ee748348e20242543",
+    "patch": "@@ -21,6 +21,11 @@ Bug fixes:\n - Fix typing of ``error_essages`` argument to `marshmallow.fields.Field` (:pr:`1636`).\n   Thanks :user:`repole` for reporting and :user:`dhruvildarji` for the PR.\n \n+Other changes:\n+\n+- Add ``ipaddress.*`` to `marshmallow.Schema.TYPE_MAPPING` (:issue:`1695`).\n+  Thanks :user:`liberforce` for the suggestion and :user:`dhruvildarji` for the PR.\n+\n 4.2.2 (2026-02-04)\n ------------------\n "
+  },
+  {
+    "sha": "24efa902888cbf85287ee87204bc5decaf8281af",
+    "filename": "src/marshmallow/schema.py",
+    "status": "modified",
+    "additions": 5,
+    "deletions": 0,
+    "changes": 5,
+    "blob_url": "https://github.com/marshmallow-code/marshmallow/blob/3b4df805e6c2134b82f8787ee748348e20242543/src%2Fmarshmallow%2Fschema.py",
+    "raw_url": "https://github.com/marshmallow-code/marshmallow/raw/3b4df805e6c2134b82f8787ee748348e20242543/src%2Fmarshmallow%2Fschema.py",
+    "contents_url": "https://api.github.com/repos/marshmallow-code/marshmallow/contents/src%2Fmarshmallow%2Fschema.py?ref=3b4df805e6c2134b82f8787ee748348e20242543",
+    "patch": "@@ -8,6 +8,7 @@\n import decimal\n import functools\n import inspect\n+import ipaddress\n import json\n import operator\n import typing\n@@ -290,6 +291,10 @@ class AlbumSchema(Schema):\n         dt.date: ma_fields.Date,\n         dt.timedelta: ma_fields.TimeDelta,\n         decimal.Decimal: ma_fields.Decimal,\n+        ipaddress.IPv4Address: ma_fields.IPv4,\n+        ipaddress.IPv6Address: ma_fields.IPv6,\n+        ipaddress.IPv4Interface: ma_fields.IPv4Interface,\n+        ipaddress.IPv6Interface: ma_fields.IPv6Interface,\n     }\n     #: Overrides for default schema-level error messages\n     error_messages: dict[str, str] = {}"
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "transition_id": "trans_track_a_22_dateutil_unknown_timezone_warning",
+  "repo_name": "dateutil/dateutil",
+  "repo_url": "https://github.com/dateutil/dateutil",
+  "pr_url": "https://github.com/dateutil/dateutil/pull/540",
+  "base_commit": "1a7ebd70371a95ae61f95cdcde6d6cbb5dd7f68c",
+  "target_commit": "65d66b28ff201ae7bf59cf4128462e1c2d839da8",
+  "pkg_path": "dateutil",
+  "changed_files": [
+    "dateutil/parser/__init__.py",
+    "dateutil/parser/_parser.py"
+  ],
+  "primary_file": "dateutil/parser/__init__.py",
+  "symbol": "dateutil.parser.UnknownTimezoneWarning",
+  "file_digest_before": "4cf11bf4feadb8e8458baa4f2227a849443a60e2de82bc1ea00fa6c5c2a43200",
+  "file_digest_after": "79f159f6003723ce57f08810fd1aba89ccf8ad876451ebdf2bc3b17a49f7b985",
+  "stale_sensitive": false,
+  "transition_type": "API_EVOLUTION",
+  "builder_status": "FIXTURE_EXTRACTED_UNVERIFIED"
+}

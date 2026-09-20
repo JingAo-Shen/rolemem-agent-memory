@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_track_a_20_iniconfig_strip_inline_comments",
+  "repo_name": "pytest-dev/iniconfig",
+  "pr_number": 70,
+  "pr_title": "Add IniConfig.parse() with inline comment stripping and Unicode whitespace handling",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "7faed13ae50bad7c5da3f5782f254a8a7736bb84",
+  "pr_base_sha": "57b7ed9c7a5950f9c57b2cfbe641ff4cc04baf1c",
+  "pr_head_sha": "58c08691bbb86aee8efbf73e37293dd6d65b68b4",
+  "base_commit": "57b7ed9c7a5950f9c57b2cfbe641ff4cc04baf1c",
+  "target_commit": "7faed13ae50bad7c5da3f5782f254a8a7736bb84",
+  "ancestry_verified": true,
+  "merge_strategy": "merge_commit",
+  "merge_relationship_verified": true,
+  "diff_match": true,
+  "issue_required": false,
+  "issue_id_verified": null,
+  "issue_status": "NOT_APPLICABLE",
+  "spec_sha256": "2829e08c1e34d0089d03971d2860be133a8a83c89604e2f2e89c069199a0145f",
+  "audit_fingerprint": "cdee3d662feb376afacc931a5b75b017b07283b9e018615a7a3637d999fecccb",
+  "auditor_version": "3.0.0",
+  "overall_status": "PASS"
+}

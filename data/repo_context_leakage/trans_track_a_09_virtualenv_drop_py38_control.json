@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_09_virtualenv_drop_py38_control",
+  "repo_name": "pypa/virtualenv",
+  "leakage_class": "REPO_CONTEXT_HINTED",
+  "rationale": "Context contains replacement symbols ['False'] or migration comments, but no task implementation.",
+  "retrieved_tokens": 1200,
+  "found_replacements": [
+    "False"
+  ],
+  "target_implementation_found": false,
+  "migration_comments_found": []
+}

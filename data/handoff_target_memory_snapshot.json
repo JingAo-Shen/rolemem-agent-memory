@@ -1,7 +1,7 @@
 {
   "version": "2.1.0",
   "description": "Rebuilt Target Memory Snapshot with verified PR bindings, diff hunk hashes, and provenance slices",
-  "snapshot_sha256": "8bdcad50a95f960260f35732c85b38df19bc736034fcf0052dffcd025aecf77a",
+  "snapshot_sha256": "bcf0a44d4538c1f854e3c3c3bf6d579966ce9b25a1ad0ace144e3cb67b74d566",
   "claims": {
     "trans_track_a_01_click_stream_deprecations": {
       "transition_id": "trans_track_a_01_click_stream_deprecations",
@@ -11,10 +11,12 @@
       "source_pr_url": "https://github.com/pallets/click/pull/3695",
       "source_commit": "051725fa7e0c69effc9107066d8791c5b99242c3",
       "evidence_file": "data/external_evidence/trans_track_a_01_click_stream_deprecations/diff.patch",
-      "evidence_hunk_sha256": "73be4c7c8f0f254c0ce01c1e131a142a3d4f44ed58f6a48893820e0217d4de7a",
+      "evidence_hunk_sha256": "ebf4f8ab39eb2dcb41f888e10cf70391d3baf9463810e884dc1e17e227e1a2b7",
       "evidence_excerpt_hash": "35919c3e3b95771337c7dd0df4f2fa5ce0be8c2017b6b13de5a504f41f0a56f2",
       "ground_truth_audit_hash": "7e016c5a2fbadb979f451a077296cba193379722be8c40a12805adf17979dfdc",
-      "artifact": "src/click/utils.py"
+      "artifact": "src/click/utils.py",
+      "supporting_hunk": "@@ -32,6 +32,13 @@ Unreleased\n   `flag_value` and `default` keep their unset sentinel at construction\n   (resolved lazily on read) so `is UNSET` reliably tells a user-supplied value\n   from an auto-derived one. Behavior is unchanged. {pr}`3641`\n+- {func}`get_binary_stream` and {func}`get_text_stream` are deprecated and\n+  will be removed in Click 9.0. {issue}`3481` {pr}`3695`\n+- The following `click.utils` names were never intentionally public and are\n+  now private (`_`-prefixed). The old names remain available with a\n+  `DeprecationWarning` until Click 9.0: `LazyFile`, `KeepOpenFile`,\n+  `make_default_short_help`, `PacifyFlushWrapper`, and `safecall`.\n+  {issue}`3099` {pr}`3695`\n \n ## Version 8.4.2\n ",
+      "diff_patch_sha256": "73be4c7c8f0f254c0ce01c1e131a142a3d4f44ed58f6a48893820e0217d4de7a"
     },
     "trans_track_a_02_flask_should_ignore_error": {
       "transition_id": "trans_track_a_02_flask_should_ignore_error",
@@ -24,10 +26,12 @@
       "source_pr_url": "https://github.com/pallets/flask/pull/5899",
       "source_commit": "4b8bde97d4fa3486e18dce21c3c5f75570d50164",
       "evidence_file": "data/external_evidence/trans_track_a_02_flask_should_ignore_error/diff.patch",
-      "evidence_hunk_sha256": "acb6b40b2fc02064becdd64d757e847540413a20edc1b4b4973d3e1c4d950228",
+      "evidence_hunk_sha256": "f3c864ccfb3413e3a035ebf551625dae2326023ce7d47bd71d872350dbd485dc",
       "evidence_excerpt_hash": "6346e11aab64d32845c5deda8677d532820ba1f393f5527ce78d40e1688d22cb",
       "ground_truth_audit_hash": "7d908ae73339ad948c8458f74d9408fd60958868ce70f28888677e19616f158f",
-      "artifact": "src/flask/app.py"
+      "artifact": "src/flask/app.py",
+      "supporting_hunk": "@@ -14,6 +14,8 @@ Unreleased\n     If subclasses were overriding these methods, the old signature is detected,\n     shows a deprecation warning, and will continue to work during the\n     deprecation period. :issue:`5815`\n+-   The ``should_ignore_error`` is deprecated. Handle errors as needed in\n+    teardown handlers instead. :issue:`5816`\n -   ``template_filter``, ``template_test``, and ``template_global`` decorators\n     can be used without parentheses. :issue:`5729`\n -   ``redirect`` returns a ``303`` status code by default instead of ``302``.",
+      "diff_patch_sha256": "acb6b40b2fc02064becdd64d757e847540413a20edc1b4b4973d3e1c4d950228"
     },
     "trans_track_a_03_werkzeug_environ_property": {
       "transition_id": "trans_track_a_03_werkzeug_environ_property",
@@ -37,10 +41,12 @@
       "source_pr_url": "https://github.com/pallets/werkzeug/pull/3276",
       "source_commit": "7641d4990f06d583425a4e6ba25e9d2f18934885",
       "evidence_file": "data/external_evidence/trans_track_a_03_werkzeug_environ_property/diff.patch",
-      "evidence_hunk_sha256": "1eb158ee3ebaa71b5c22fa132fd44a204b0728fe81acc1f4d778463810526635",
+      "evidence_hunk_sha256": "3c94f7a1907c3726e33f6b9d583501a59b845f0b7234775e820d8ca2cd57c48e",
       "evidence_excerpt_hash": "be0e52c47d2a6b75969927462969deda6e19b0d74560948fb60265cb6c17c812",
       "ground_truth_audit_hash": "f752e494499aafcb9888bcc288ac67c697b2edbaf37adc17704be7a0f38b2318",
-      "artifact": "src/werkzeug/utils.py"
+      "artifact": "src/werkzeug/utils.py",
+      "supporting_hunk": "@@ -70,6 +70,10 @@ Version 3.2.0\n     ``Request.user_agent`` is a string and can be parsed directly if needed.\n     :issue:`3271`\n -   The ``testapp`` module and its ``test_app`` are deprecated.\n+-   The ``environ_property`` function, and the ``Request`` properties\n+    ``input_stream``, ``remote_user``, ``is_multithread``, ``is_multiprocess``,\n+    and ``is_run_once`` are deprecated. Access them from ``request.environ``\n+    directly instead. :issue:`3275`\n -   ``redirect`` returns a ``303`` status code by default instead of ``302``.\n     This tells the client to always switch to ``GET``, rather than only\n     switching ``POST`` to ``GET``. This preserves the current behavior of",
+      "diff_patch_sha256": "1eb158ee3ebaa71b5c22fa132fd44a204b0728fe81acc1f4d778463810526635"
     },
     "trans_track_a_04_jinja_version_deprecation": {
       "transition_id": "trans_track_a_04_jinja_version_deprecation",
@@ -50,10 +56,12 @@
       "source_pr_url": "https://github.com/pallets/jinja/pull/2098",
       "source_commit": "9e49736ae075fcffb85f731a3fe2c006cf1edca4",
       "evidence_file": "data/external_evidence/trans_track_a_04_jinja_version_deprecation/diff.patch",
-      "evidence_hunk_sha256": "22803df9e0368a8d2cb807c3e8d7f0cca845eb0c23d1659de8185d4cc021dd55",
+      "evidence_hunk_sha256": "d13822506a9ffc32fa67dd736919350868a7d0eb237c8b4f72bcc76f553ab6a6",
       "evidence_excerpt_hash": "300feaeef646f4e0413b97aa220aa770a25dc19fcdffea90f0a2c3d739aebd33",
       "ground_truth_audit_hash": "c06f8355a771d1c2bb06ba4f92d9b11c39991c3d5667c8da9acd265660d4ea62",
-      "artifact": "src/jinja2/__init__.py"
+      "artifact": "src/jinja2/__init__.py",
+      "supporting_hunk": "@@ -8,6 +8,8 @@ Unreleased\n -   Drop support for Python 3.7, 3.8, and 3.9.\n -   Update minimum MarkupSafe version to >= 3.0.\n -   Update minimum Babel version to >= 2.17.\n+-   Deprecate the ``__version__`` attribute. Use feature detection or\n+    ``importlib.metadata.version(\"jinja2\")`` instead.\n -   Use modern packaging metadata with ``pyproject.toml`` instead of ``setup.cfg``.\n     :pr:`1793`\n -   Use ``flit_core`` instead of ``setuptools`` as build backend.",
+      "diff_patch_sha256": "22803df9e0368a8d2cb807c3e8d7f0cca845eb0c23d1659de8185d4cc021dd55"
     },
     "trans_track_a_05_itsdangerous_version_removal": {
       "transition_id": "trans_track_a_05_itsdangerous_version_removal",
@@ -63,10 +71,12 @@
       "source_pr_url": "https://github.com/pallets/itsdangerous/pull/406",
       "source_commit": "31f46a3469dbfb2ecf83dd0c4297c1efc508fcca",
       "evidence_file": "data/external_evidence/trans_track_a_05_itsdangerous_version_removal/diff.patch",
-      "evidence_hunk_sha256": "ae1274b39b1121a69df102d788eff9361ade1b1cc426dd23908064c4feaffb83",
+      "evidence_hunk_sha256": "79f8e48a062d67336338a95afaa6446826b19cdffb6b6407bcfedd7b1022c494",
       "evidence_excerpt_hash": "8718fe06e4ed90a1a18ede204ca4847ecfb14b47f8fdf8c0ca96d20b75a7bedd",
       "ground_truth_audit_hash": "446b5d4eac8d9cbd66e885cb1a4299fb6add7709328a6a223fd1c8ec8f7a8aa3",
-      "artifact": "src/itsdangerous/__init__.py"
+      "artifact": "src/itsdangerous/__init__.py",
+      "supporting_hunk": "@@ -19,20 +15,3 @@\n from .timed import TimestampSigner as TimestampSigner\n from .url_safe import URLSafeSerializer as URLSafeSerializer\n from .url_safe import URLSafeTimedSerializer as URLSafeTimedSerializer\n-\n-\n-def __getattr__(name: str) -> t.Any:\n-    if name == \"__version__\":\n-        import importlib.metadata\n-        import warnings\n-\n-        warnings.warn(\n-            \"The '__version__' attribute is deprecated and will be removed in\"\n-            \" ItsDangerous 2.3. Use feature detection or\"\n-            \" 'importlib.metadata.version(\\\"itsdangerous\\\")' instead.\",\n-            DeprecationWarning,\n-            stacklevel=2,\n-        )\n-        return importlib.metadata.version(\"itsdangerous\")\n-\n-    raise AttributeError(name)",
+      "diff_patch_sha256": "ae1274b39b1121a69df102d788eff9361ade1b1cc426dd23908064c4feaffb83"
     },
     "trans_track_a_06_markupsafe_version_removal": {
       "transition_id": "trans_track_a_06_markupsafe_version_removal",
@@ -76,10 +86,12 @@
       "source_pr_url": "https://github.com/pallets/markupsafe/pull/499",
       "source_commit": "dfa58162f6ba9a0afebab7e924af362cd0bede66",
       "evidence_file": "data/external_evidence/trans_track_a_06_markupsafe_version_removal/diff.patch",
-      "evidence_hunk_sha256": "87f63e417b2d4a94801f78548ab07e0e313dcaab91f2a185001e02639d1e0896",
+      "evidence_hunk_sha256": "571a09586873ae34601dc6891db88b5b43b7b9dae699a425f0e8f9f27f2aea4a",
       "evidence_excerpt_hash": "d11bbf02cf05cc961f192b1eebe6ba759b8017fc246dbadb90c4055a86b72471",
       "ground_truth_audit_hash": "0ebdb56ae863de1d7ab10b67c6918d31eb6a51ff2fbee865b99d678bcbddaa9f",
-      "artifact": "src/markupsafe/__init__.py"
+      "artifact": "src/markupsafe/__init__.py",
+      "supporting_hunk": "@@ -377,20 +377,3 @@ def __int__(self, /) -> int:\n \n     def __float__(self, /) -> float:\n         return float(self.obj)\n-\n-\n-def __getattr__(name: str) -> t.Any:\n-    if name == \"__version__\":\n-        import importlib.metadata\n-        import warnings\n-\n-        warnings.warn(\n-            \"The '__version__' attribute is deprecated and will be removed in\"\n-            \" MarkupSafe 3.1. Use feature detection, or\"\n-            ' `importlib.metadata.version(\"markupsafe\")`, instead.',\n-            DeprecationWarning,\n-            stacklevel=2,\n-        )\n-        return importlib.metadata.version(\"markupsafe\")\n-\n-    raise AttributeError(name)",
+      "diff_patch_sha256": "87f63e417b2d4a94801f78548ab07e0e313dcaab91f2a185001e02639d1e0896"
     },
     "trans_track_a_07_pluggy_varnames_noself": {
       "transition_id": "trans_track_a_07_pluggy_varnames_noself",
@@ -89,10 +101,12 @@
       "source_pr_url": "https://github.com/pytest-dev/pluggy/pull/632",
       "source_commit": "0258484dc180a0c28705de83783b269f4fed4873",
       "evidence_file": "data/external_evidence/trans_track_a_07_pluggy_varnames_noself/diff.patch",
-      "evidence_hunk_sha256": "23385d32d73ed9bc80fddba8c561c3f02b268c4ed21f8778ab345ec7f69ba850",
+      "evidence_hunk_sha256": "07604538133a8f3f8c17d466b0c353c1daf65657c98b0cef50b5504998be16f5",
       "evidence_excerpt_hash": "ff398ea7533ec09e6f3882cac66bf9e28a6cc23894a93aabe7aa4290e736d228",
       "ground_truth_audit_hash": "eb0fa613f5b184099c35da146d26c183457bfdab16a58541f7fcfe98828e7700",
-      "artifact": "src/pluggy/_hooks.py"
+      "artifact": "src/pluggy/_hooks.py",
+      "supporting_hunk": "@@ -287,70 +288,98 @@ def normalize_hookimpl_opts(opts: HookimplOpts) -> None:\n     opts.setdefault(\"specname\", None)\n \n \n-_PYPY = hasattr(sys, \"pypy_version_info\")\n+_PYPY = sys.implementation.name == \"pypy\"\n+_IMPLICIT_NAMES = (\"self\", \"cls\", \"obj\") if _PYPY else (\"self\", \"cls\")\n+\n+# Qualnames whose missing-self deprecation warning is suppressed because\n+# their upstream code is already fixed but not yet released.\n+# Remove entries once a release with the fix is available.\n+_NOSELF_WARN_SUPPRESS: frozenset[str] = frozenset(\n+    {\n+        # pytest-timeout >=2.3.2 has the fix, but is unreleased as of 2026-05.\n+        \"TimeoutHooks.pytest_timeout_set_timer\",\n+        \"TimeoutHooks.pytest_timeout_cancel_timer\",\n+    }\n+)\n \n \n-def varnames(func: object) -> tuple[tuple[str, ...], tuple[str, ...]]:\n-    \"\"\"Return tuple of positional and keywrord argument names for a function,\n-    method, class or callable.\n+def varnames(\n+    func: object, *, legacy_noself: bool = False\n+) -> tuple[tuple[str, ...], tuple[str, ...]]:\n+    \"\"\"Return tuple of positional and keyword parameter names for a callable.\n \n     In case of a class, its ``__init__`` method is considered.\n-    For methods the ``self`` parameter is not included.\n+    For bound methods, the already-bound first parameter is not included.\n+    For unbound methods with a dotted ``__qualname__``, the first parameter is\n+    stripped only if its name is a known implicit name (``self``, ``cls``).\n+    Keyword-only parameters are not included.\n+\n+    :param legacy_noself:\n+        If ``True``, support hookspec classes whose methods omit ``self``.\n+        When the function looks like a class method but has no implicit first\n+        parameter, a :class:`DeprecationWarning` is emitted.\n     \"\"\"\n+    is_bound = False\n     if inspect.isclass(func):\n         try:\n             func = func.__init__\n         except AttributeError:  # pragma: no cover - pypy special case\n             return (), ()\n+        is_bound = True\n     elif not inspect.isroutine(func):  # callable object?\n         try:\n             func = getattr(func, \"__call__\", func)\n         except Exception:  # pragma: no cover - pypy special case\n             return (), ()\n \n+    # Track bound methods before unwrapping, since __func__ loses that info.\n+    if inspect.ismethod(func):\n+        is_bound = True\n+    func = inspect.unwrap(func)  # type: ignore[arg-type]\n+    if inspect.ismethod(func):\n+        is_bound = True\n+        func = func.__func__\n+\n     try:\n-        # func MUST be a function or method here or we won't parse any args.\n-        sig = inspect.signature(\n-            func.__func__ if inspect.ismethod(func) else func  # type:ignore[arg-type]\n-        )\n-    except TypeError:  # pragma: no cover\n+        code: types.CodeType = func.__code__  # type: ignore[attr-defined]\n+        defaults: tuple[object, ...] | None = func.__defaults__  # type: ignore[attr-defined]\n+        qualname: str = func.__qualname__  # type: ignore[attr-defined]\n+    except AttributeError:  # pragma: no cover\n         return (), ()\n \n-    _valid_param_kinds = (\n-        inspect.Parameter.POSITIONAL_ONLY,\n-        inspect.Parameter.POSITIONAL_OR_KEYWORD,\n-    )\n-    _valid_params = {\n-        name: param\n-        for name, param in sig.parameters.items()\n-        if param.kind in _valid_param_kinds\n-    }\n-    args = tuple(_valid_params)\n-    defaults = (\n-        tuple(\n-            param.default\n-            for param in _valid_params.values()\n-            if param.default is not param.empty\n-        )\n-        or None\n-    )\n+    # Get positional argument names (positional-only + positional-or-keyword)\n+    args: tuple[str, ...] = code.co_varnames[: code.co_argcount]\n \n+    # Determine which args have defaults\n+    kwargs: tuple[str, ...]\n     if defaults:\n         index = -len(defaults)\n-        args, kwargs = args[:index], tuple(args[index:])\n+        args, kwargs = args[:index], args[index:]\n     else:\n         kwargs = ()\n \n-    # strip any implicit instance arg\n-    # pypy3 uses \"obj\" instead of \"self\" for default dunder methods\n-    if not _PYPY:\n-        implicit_names: tuple[str, ...] = (\"self\",)\n-    else:\n-        implicit_names = (\"self\", \"obj\")\n+    # Strip implicit instance/class arg.\n+    # Check if this looks like a method defined in a class by examining the\n+    # qualname after the last \"<locals>.\" segment (if any). A remaining dot\n+    # means it's a class method (e.g. \"MyClass.method\" or\n+    # \"func.<locals>.MyClass.method\"), not just a nested function.\n+    _tail = qualname.rsplit(\"<locals>.\", maxsplit=1)[-1]\n+    _is_class_method = \".\" in _tail\n     if args:\n-        qualname: str = getattr(func, \"__qualname__\", \"\")\n-        if inspect.ismethod(func) or (\".\" in qualname and args[0] in implicit_names):\n+        if is_bound:\n             args = args[1:]\n+        elif _is_class_method and args[0] in _IMPLICIT_NAMES:\n+            args = args[1:]\n+        elif _is_class_method and legacy_noself:\n+            if _tail not in _NOSELF_WARN_SUPPRESS:\n+                warnings.warn(\n+                    f\"{qualname} is a method but its first parameter\"\n+                    f\" {args[0]!r} is not 'self'.\"\n+                    f\" Add 'self' as the first parameter or use @staticmethod.\"\n+                    f\" This will become an error in a future version of pluggy.\",\n+                    DeprecationWarning,\n+                    stacklevel=2,\n+                )\n \n     return args, kwargs\n ",
+      "diff_patch_sha256": "23385d32d73ed9bc80fddba8c561c3f02b268c4ed21f8778ab345ec7f69ba850"
     },
     "trans_track_a_08_attrs_py313_replace_control": {
       "transition_id": "trans_track_a_08_attrs_py313_replace_control",
@@ -102,10 +116,12 @@
       "source_pr_url": "https://github.com/python-attrs/attrs/pull/1383",
       "source_commit": "62bdbf234f45195e75bfc2bb0648dab6fd2f0d33",
       "evidence_file": "data/external_evidence/trans_track_a_08_attrs_py313_replace_control/diff.patch",
-      "evidence_hunk_sha256": "55e9914ee3f9329a631f4e7a070a79fa6b7e5168740b38e459249bb70753b673",
+      "evidence_hunk_sha256": "f9449ae5fe372ffee49df68f4b6417e6580f8f46b227f46cb760d11596ced831",
       "evidence_excerpt_hash": "2d09b45f3dfd38ec6abc0e12cbc197924a01b432e4df5965e769fff41c1dd8b5",
       "ground_truth_audit_hash": "2d6493114221ff95d6bc5ad57eb64298b84372780b9ffa8f539f47e1d296e47a",
-      "artifact": "src/attr/_make.py"
+      "artifact": "src/attr/_make.py",
+      "supporting_hunk": "@@ -10,7 +10,7 @@\n from . import converters, exceptions, filters, setters, validators\n from ._cmp import cmp_using\n from ._config import get_run_validators, set_run_validators\n-from ._funcs import asdict, assoc, astuple, evolve, has, resolve_types\n+from ._funcs import asdict, assoc, astuple, has, resolve_types\n from ._make import (\n     NOTHING,\n     Attribute,",
+      "diff_patch_sha256": "55e9914ee3f9329a631f4e7a070a79fa6b7e5168740b38e459249bb70753b673"
     },
     "trans_track_a_09_virtualenv_drop_py38_control": {
       "transition_id": "trans_track_a_09_virtualenv_drop_py38_control",
@@ -115,10 +131,12 @@
       "source_pr_url": "https://github.com/pypa/virtualenv/pull/3170",
       "source_commit": "79ce906a2378e24c81a7b27ac506c73d5cc262d9",
       "evidence_file": "data/external_evidence/trans_track_a_09_virtualenv_drop_py38_control/diff.patch",
-      "evidence_hunk_sha256": "1f6f3850e403dd7e400dfea77545f5002531b6a75d0b155a585330485c9ee4d2",
+      "evidence_hunk_sha256": "41bb32d43932e23dc497140287fc85919a4465e4a44e4738ca322a08bd7104f1",
       "evidence_excerpt_hash": "81e23693f4ab11edbea169783aee01021a9615d52d186b27718bde01cbc9af7c",
       "ground_truth_audit_hash": "624b8acab07dc912d6e20f1d68e30186535dda5ef407c0be7146cb62ca7f64bd",
-      "artifact": "src/virtualenv/create/via_global_ref/builtin/cpython/cpython3.py"
+      "artifact": "src/virtualenv/create/via_global_ref/builtin/cpython/cpython3.py",
+      "supporting_hunk": "@@ -69,24 +68,6 @@ def install_venv_shared_libs(self, venv_creator: Venv) -> None:\n         ensure_dir(dest.parent)\n         copy_path(shared_lib, dest)\n \n-    def env_patch_text(self) -> str:\n-        text = super().env_patch_text()\n-        if self.pyvenv_launch_patch_active(self.interpreter):\n-            text += dedent(\n-                \"\"\"\n-                # for https://github.com/python/cpython/pull/9516, see https://github.com/pypa/virtualenv/issues/1704\n-                import os\n-                if \"__PYVENV_LAUNCHER__\" in os.environ:\n-                    del os.environ[\"__PYVENV_LAUNCHER__\"]\n-                \"\"\",\n-            )\n-        return text\n-\n-    @classmethod\n-    def pyvenv_launch_patch_active(cls, interpreter: PythonInfo) -> bool:  # drop when Python 3.8 support is dropped\n-        ver = interpreter.version_info\n-        return interpreter.platform == \"darwin\" and (3, 8, 3) > ver >= (3, 8)\n-\n \n class CPython3Windows(CPythonWindows, CPython3):\n     \"\"\"CPython 3 on Windows.\"\"\"",
+      "diff_patch_sha256": "1f6f3850e403dd7e400dfea77545f5002531b6a75d0b155a585330485c9ee4d2"
     },
     "trans_track_a_10_httpx_client_proxies_deprecation": {
       "transition_id": "trans_track_a_10_httpx_client_proxies_deprecation",
@@ -128,10 +146,12 @@
       "source_pr_url": "https://github.com/encode/httpx/pull/2879",
       "source_commit": "f8981f3d124f9b8db9073fd5c8afa11acb55a738",
       "evidence_file": "data/external_evidence/trans_track_a_10_httpx_client_proxies_deprecation/diff.patch",
-      "evidence_hunk_sha256": "83135973f37ca8225b6314a3c7f89a641a9c424fa722cd02a41bab66091c8ae5",
+      "evidence_hunk_sha256": "7be13019a4ab80a76374aa50495e6958900382ecf8e72ddfd4c57b168c4d2061",
       "evidence_excerpt_hash": "1fc27d5bb38eafe527a3d66bfa67f117209df7704aa4f7d10bad927655ec2f15",
       "ground_truth_audit_hash": "c7985b74343f9ced3b5ade391d2c956d6bef7171ff2a84a2ea53daf151ded437",
-      "artifact": "httpx/_client.py"
+      "artifact": "httpx/_client.py",
+      "supporting_hunk": "@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).\n \n ## Unreleased\n \n+### Changed\n+\n+* The `proxies` argument is now deprecated. You should use the `proxy` argument instead, or use `mounts=` for more complex configurations. (#2879)\n+\n ### Fixed\n \n * Allow URLs where username or password contains unescaped '@'. (#2986)",
+      "diff_patch_sha256": "83135973f37ca8225b6314a3c7f89a641a9c424fa722cd02a41bab66091c8ae5"
     }
   }
 }

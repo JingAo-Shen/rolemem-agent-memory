@@ -1,0 +1,34 @@
+{
+  "transition_id": "trans_track_a_11_requests_json_decode_error",
+  "provenance_status": "TARGET_MEMORY_PROVENANCE_FAIL",
+  "recomputed_hashes": {
+    "diff_hunk_sha256": "93cf7ececb5a146429e5251afcd1a7729773b3c64f2b2b91b25b4145529bd75c",
+    "evidence_excerpt_hash": "e8f9777aed39f379e58fab151f983bf8f2e45df1cfbc1603a10fe7eaab05da1c",
+    "ground_truth_audit_hash": "b38d9926b22fbc3157e566fe000ce0be7327db6e1f4c36fdffe6f1f94b7ff6d2"
+  },
+  "checks": {
+    "source_pr_matches": true,
+    "source_commit_matches": true,
+    "artifact_in_diff": true,
+    "diff_hunk_sha256_verified": true,
+    "diff_patch_sha256_verified": true,
+    "evidence_excerpt_hash_verified": false,
+    "ground_truth_audit_hash_verified": false,
+    "statement_entailment": "PARTIAL"
+  },
+  "claim": {
+    "transition_id": "trans_track_a_11_requests_json_decode_error",
+    "statement": "Response.json() uniformly raises requests.exceptions.JSONDecodeError on invalid payloads.",
+    "symbol": "Response.json",
+    "replacement": "requests.exceptions.JSONDecodeError, JSONDecodeError",
+    "source_pr_url": "https://github.com/psf/requests/pull/6097",
+    "source_commit": "2d5517682b3b38547634d153cea43d48fbc8cdb5",
+    "evidence_file": "data/external_evidence/trans_track_a_11_requests_json_decode_error/diff.patch",
+    "supporting_hunk": "@@ -403,3 +404,26 @@ def test_fragment_update_on_redirect():\n         assert r.url == 'http://{}:{}/final-url/#relevant-section'.format(host, port)\n \n         close_server.set()\n+\n+def test_json_decode_compatibility_for_alt_utf_encodings():\n+\n+    def response_handler(sock):\n+        consume_socket_content(sock, timeout=0.5)\n+        sock.send(\n+            b'HTTP/1.1 200 OK\\r\\n'\n+            b'Content-Length: 18\\r\\n\\r\\n'\n+            b'\\xff\\xfe{\\x00\"\\x00K0\"\\x00=\\x00\"\\x00\\xab0\"\\x00\\r\\n'\n+       ",
+    "evidence_hunk_sha256": "93cf7ececb5a146429e5251afcd1a7729773b3c64f2b2b91b25b4145529bd75c",
+    "diff_patch_sha256": "c55ca8fbe11b628dfadab8460cd3c72c4234c7c07c0139f8d60aa6f61dbc642a",
+    "evidence_excerpt_hash": "fa9f8a7448a0bcb3e9c11148318696d1123f07433cc5f50ef289b840fa7c0733",
+    "ground_truth_audit_hash": "",
+    "artifact": "requests/models.py"
+  }
+}

@@ -191,6 +191,169 @@ class SolutionConstraintEvaluatorV2:
             else:
                 rep_gate_status = "PASS"
                 rep_details = "Modern proxy parameter present."
+        elif "trans_track_a_11_requests" in self.tid:
+            if "JSONDecodeError" not in generated_code:
+                rep_gate_status = "FAIL"
+                rep_details = "Missing requests.exceptions.JSONDecodeError exception handling."
+            else:
+                rep_gate_status = "PASS"
+                rep_details = "requests.exceptions.JSONDecodeError present."
+        elif "trans_track_a_12_urllib3" in self.tid:
+            if "getheaders(" in generated_code:
+                rep_gate_status = "FAIL"
+                rep_details = "Invokes removed getheaders() method."
+            elif "headers" not in generated_code:
+                rep_gate_status = "FAIL"
+                rep_details = "Missing response.headers mapping access."
+            else:
+                rep_gate_status = "PASS"
+                rep_details = "Direct response.headers access present."
+        elif "trans_track_a_13_starlette" in self.tid:
+            if "removeprefix" not in generated_code:
+                rep_gate_status = "FAIL"
+                rep_details = "Missing removeprefix method for weak etag normalization."
+            else:
+                rep_gate_status = "PASS"
+                rep_details = "removeprefix method present."
+        elif "trans_track_a_14_fastapi" in self.tid:
+            if "@app.on_event" in generated_code:
+                rep_gate_status = "FAIL"
+                rep_details = "Uses legacy @app.on_event without modern lifespan handler."
+            elif "lifespan" not in generated_code:
+                rep_gate_status = "FAIL"
+                rep_details = "Missing lifespan event handler."
+            else:
+                rep_gate_status = "PASS"
+                rep_details = "Modern lifespan event handler present."
+        elif "trans_track_a_15_pydantic" in self.tid:
+            if "string_sub_type" in generated_code:
+                rep_gate_status = "FAIL"
+                rep_details = "References removed string_sub_type error code."
+            elif "string_type" not in generated_code:
+                rep_gate_status = "FAIL"
+                rep_details = "Missing standard string_type error code."
+            else:
+                rep_gate_status = "PASS"
+                rep_details = "Standard string_type error code present."
+        elif "trans_track_a_16_rich" in self.tid:
+            if "isatty" not in generated_code:
+                rep_gate_status = "FAIL"
+                rep_details = "Missing modern FileProxy.isatty() call."
+            else:
+                rep_gate_status = "PASS"
+                rep_details = "FileProxy.isatty() call present."
+        elif "trans_track_a_17_celery" in self.tid:
+            if "celery.task" in generated_code:
+                rep_gate_status = "FAIL"
+                rep_details = "Imports from deprecated celery.task submodule."
+            elif "Task" not in generated_code:
+                rep_gate_status = "FAIL"
+                rep_details = "Missing Task base class import."
+            else:
+                rep_gate_status = "PASS"
+                rep_details = "Direct celery Task import present."
+        elif "trans_track_a_18_marshmallow" in self.tid:
+            if "from marshmallow import pprint" in generated_code:
+                rep_gate_status = "FAIL"
+                rep_details = "Imports removed pprint from marshmallow package root."
+            elif "pprint" not in generated_code:
+                rep_gate_status = "FAIL"
+                rep_details = "Missing standard library pprint import."
+            else:
+                rep_gate_status = "PASS"
+                rep_details = "Standard library pprint present."
+        elif "trans_track_a_19_flake8" in self.tid:
+            if "--include-in-doctest" in generated_code or "--exclude-in-doctest" in generated_code:
+                rep_gate_status = "FAIL"
+                rep_details = "Uses removed --include-in-doctest / --exclude-in-doctest options."
+            elif "--doctest" not in generated_code:
+                rep_gate_status = "FAIL"
+                rep_details = "Missing standard --doctest option."
+            else:
+                rep_gate_status = "PASS"
+                rep_details = "Standard --doctest option present."
+        elif "trans_track_a_20_iniconfig" in self.tid:
+            if "IniConfig.parse" not in generated_code:
+                rep_gate_status = "FAIL"
+                rep_details = "Missing IniConfig.parse call to strip comments."
+            else:
+                rep_gate_status = "PASS"
+                rep_details = "IniConfig.parse call present."
+        elif "trans_track_a_21_requests" in self.tid:
+            if "setup.py" in generated_code:
+                rep_gate_status = "FAIL"
+                rep_details = "Uses removed setup.py test command."
+            elif "pytest" not in generated_code:
+                rep_gate_status = "FAIL"
+                rep_details = "Missing pytest test runner."
+            else:
+                rep_gate_status = "PASS"
+                rep_details = "pytest test runner present."
+        elif "trans_track_a_22_urllib3" in self.tid:
+            if "PROTOCOL_TLSv1" in generated_code:
+                rep_gate_status = "FAIL"
+                rep_details = "Uses removed PROTOCOL_TLSv1 protocol."
+            elif "PROTOCOL_TLS" not in generated_code:
+                rep_gate_status = "FAIL"
+                rep_details = "Missing modern PROTOCOL_TLS constant."
+            else:
+                rep_gate_status = "PASS"
+                rep_details = "Modern PROTOCOL_TLS constant present."
+        elif "trans_track_a_23_rich" in self.tid:
+            if "justify is None" not in generated_code and "justify == None" not in generated_code:
+                rep_gate_status = "FAIL"
+                rep_details = "Missing check for justify is None alignment."
+            else:
+                rep_gate_status = "PASS"
+                rep_details = "justify is None check present."
+        elif "trans_track_a_24_marshmallow" in self.tid:
+            if "IPv4" not in generated_code and "IPv6" not in generated_code:
+                rep_gate_status = "FAIL"
+                rep_details = "Missing IPv4/IPv6 field mapping."
+            else:
+                rep_gate_status = "PASS"
+                rep_details = "IPv4/IPv6 field mapping present."
+        elif "trans_track_a_25_iniconfig" in self.tid:
+            if "ruff" not in generated_code:
+                rep_gate_status = "FAIL"
+                rep_details = "Missing ruff linter tool name."
+            else:
+                rep_gate_status = "PASS"
+                rep_details = "ruff linter tool name present."
+        elif "trans_track_a_26_iniconfig" in self.tid:
+            rep_gate_status = "PASS"
+            rep_details = "Bracket validation permitted."
+        elif "trans_track_a_27_attrs" in self.tid:
+            if "__replace__" not in generated_code and "copy.replace" not in generated_code:
+                rep_gate_status = "FAIL"
+                rep_details = "Missing __replace__ / copy.replace protocol."
+            else:
+                rep_gate_status = "PASS"
+                rep_details = "Standard replace protocol present."
+        elif "trans_track_a_28_virtualenv" in self.tid:
+            if "(3, 10)" not in generated_code and "3.10" not in generated_code:
+                rep_gate_status = "FAIL"
+                rep_details = "Missing Python 3.10 version threshold check."
+            else:
+                rep_gate_status = "PASS"
+                rep_details = "Python 3.10 version threshold check present."
+        elif "trans_track_a_29_pluggy" in self.tid:
+            if "pydantic" in generated_code:
+                rep_gate_status = "FAIL"
+                rep_details = "Uses removed pydantic validation for hookspecs."
+            elif "signature" not in generated_code and "inspect" not in generated_code:
+                rep_gate_status = "FAIL"
+                rep_details = "Missing inspect.signature parameter extraction."
+            else:
+                rep_gate_status = "PASS"
+                rep_details = "inspect.signature parameter extraction present."
+        elif "trans_track_a_30_sqlalchemy" in self.tid:
+            if "DeclarativeBase" not in generated_code:
+                rep_gate_status = "FAIL"
+                rep_details = "Missing DeclarativeBase subclassing."
+            else:
+                rep_gate_status = "PASS"
+                rep_details = "DeclarativeBase subclassing present."
         else:
             # No generic PASS!
             rep_gate_status = "FAIL"

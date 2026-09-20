@@ -1,0 +1,576 @@
+[
+  {
+    "sha": "addd5c5699a04d07ae479438f33de7fb19b70632",
+    "node_id": "C_kwDOBcnBg9oAKGFkZGQ1YzU2OTlhMDRkMDdhZTQ3OTQzOGYzM2RlN2ZiMTliNzA2MzI",
+    "commit": {
+      "author": {
+        "name": "Pradyun Gedam",
+        "email": "pradyunsg@users.noreply.github.com",
+        "date": "2022-07-08T13:48:55Z"
+      },
+      "committer": {
+        "name": "Pradyun Gedam",
+        "email": "pradyunsg@users.noreply.github.com",
+        "date": "2022-07-08T13:48:55Z"
+      },
+      "message": "Reorder `Specifier` regex groups to check wildcard matches early\n\nThis ensures that an `re.match` or `re.search` does not exclude the\nwildcard in cases where it would otherwise match. Without this\nreordering, a regex match of a wildcard specifier would only match the\nversion sections before it since both parts of the prior part of the\nunnamed group are optional, allowing the group to match an empty string\neven though it is optional as a whole.\n\nThis does not affect `Specifier` since the regex used by it gets a `$`\nadded to it, forcing the regular expression engine to backtrack in such\ncases. It does, however, affect `Requirement` since it is currently\nallowing these values through since they match the regex for\n`LegacySpecifier`.",
+      "tree": {
+        "sha": "dc08cd4bf07cfacab1a6efb15164016e3dde66bf",
+        "url": "https://api.github.com/repos/pypa/packaging/git/trees/dc08cd4bf07cfacab1a6efb15164016e3dde66bf"
+      },
+      "url": "https://api.github.com/repos/pypa/packaging/git/commits/addd5c5699a04d07ae479438f33de7fb19b70632",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEE4v76TKS90oFx2wDz/5lxDEMyJY4FAmLINi4ACgkQ/5lxDEMy\nJY5alw/8CAT1VANlduMGFd0BnUAUftKIQ2mIB0PvPzVtGIbEdo6pcWOFfKoS3oE8\n8VGzhTWfRFYI4z1fWGJ6ZJlWAKppEMQNta7Of3yYY7wHLhgrnTbOFMdIGzWx15z2\nHdFWsmxk0+fBQP7tAY8EbSVkJZjrZoHF6d06YpHotguIHgeSnyhp8qivI/RgBKGT\ndiUDBxKhk+lP/HT428LyqCbS06jDu4u8BCmtJr8wu52vUnZlX76inYQOeE75KSdK\nJfYjpRYdx633KOsHL3pMi53H+FHQm7BaWrMPa4cehgkvL8Aj5w2wt/2n2aAKBpj4\nUZE8yogdeQ7thIesT3cl0/ybt3W7CJlsCLZaJGtC5xBHuqIhBdeskWItzpDe1ivF\n7MU0cRISMSyxihu04eUwub6fqBKpRQdGCoglPtEdjlhdXcK9ctVvM8S09tA5CcbI\nzDMLUjGCSkZWX7azGwWCGL+cxRLfP5bGxJny2KN4P9X3V4yUHgglTaImblcctaGN\n6zxX+z3wdObRzo1IAb9bz+R5VFXO2LUj+1DVtpRf+paSNgySulOqLSHhCqg2uNX1\nKwkcviWOuUWAIg63KLUdHGaJgSiB6IQ2Rkg8qXbQaRkabzIL8c12xi2OXPNz7ORB\n0yyUiQMPHYO+4bX7ATeRaoDpykU1ogVEP9xPGP+DKQ5m0j8uCDo=\n=Pb1N\n-----END PGP SIGNATURE-----",
+        "payload": "tree dc08cd4bf07cfacab1a6efb15164016e3dde66bf\nparent 4f42225e91a0be634625c09e84dd29ea82b85e27\nauthor Pradyun Gedam <pradyunsg@users.noreply.github.com> 1657288135 +0100\ncommitter Pradyun Gedam <pradyunsg@users.noreply.github.com> 1657288135 +0100\n\nReorder `Specifier` regex groups to check wildcard matches early\n\nThis ensures that an `re.match` or `re.search` does not exclude the\nwildcard in cases where it would otherwise match. Without this\nreordering, a regex match of a wildcard specifier would only match the\nversion sections before it since both parts of the prior part of the\nunnamed group are optional, allowing the group to match an empty string\neven though it is optional as a whole.\n\nThis does not affect `Specifier` since the regex used by it gets a `$`\nadded to it, forcing the regular expression engine to backtrack in such\ncases. It does, however, affect `Requirement` since it is currently\nallowing these values through since they match the regex for\n`LegacySpecifier`.\n",
+        "verified_at": "2024-11-07T15:37:01Z"
+      }
+    },
+    "url": "https://api.github.com/repos/pypa/packaging/commits/addd5c5699a04d07ae479438f33de7fb19b70632",
+    "html_url": "https://github.com/pypa/packaging/commit/addd5c5699a04d07ae479438f33de7fb19b70632",
+    "comments_url": "https://api.github.com/repos/pypa/packaging/commits/addd5c5699a04d07ae479438f33de7fb19b70632/comments",
+    "author": {
+      "login": "pradyunsg",
+      "id": 3275593,
+      "node_id": "MDQ6VXNlcjMyNzU1OTM=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3275593?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pradyunsg",
+      "html_url": "https://github.com/pradyunsg",
+      "followers_url": "https://api.github.com/users/pradyunsg/followers",
+      "following_url": "https://api.github.com/users/pradyunsg/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pradyunsg/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pradyunsg/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pradyunsg/subscriptions",
+      "organizations_url": "https://api.github.com/users/pradyunsg/orgs",
+      "repos_url": "https://api.github.com/users/pradyunsg/repos",
+      "events_url": "https://api.github.com/users/pradyunsg/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pradyunsg/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "pradyunsg",
+      "id": 3275593,
+      "node_id": "MDQ6VXNlcjMyNzU1OTM=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3275593?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pradyunsg",
+      "html_url": "https://github.com/pradyunsg",
+      "followers_url": "https://api.github.com/users/pradyunsg/followers",
+      "following_url": "https://api.github.com/users/pradyunsg/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pradyunsg/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pradyunsg/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pradyunsg/subscriptions",
+      "organizations_url": "https://api.github.com/users/pradyunsg/orgs",
+      "repos_url": "https://api.github.com/users/pradyunsg/repos",
+      "events_url": "https://api.github.com/users/pradyunsg/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pradyunsg/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "4f42225e91a0be634625c09e84dd29ea82b85e27",
+        "url": "https://api.github.com/repos/pypa/packaging/commits/4f42225e91a0be634625c09e84dd29ea82b85e27",
+        "html_url": "https://github.com/pypa/packaging/commit/4f42225e91a0be634625c09e84dd29ea82b85e27"
+      }
+    ]
+  },
+  {
+    "sha": "ed45c8c19eea7a6bc5a2eff8e95eb6be9d152a73",
+    "node_id": "C_kwDOBcnBg9oAKGVkNDVjOGMxOWVlYTdhNmJjNWEyZWZmOGU5NWViNmJlOWQxNTJhNzM",
+    "commit": {
+      "author": {
+        "name": "Pradyun Gedam",
+        "email": "pradyunsg@users.noreply.github.com",
+        "date": "2022-07-08T13:50:55Z"
+      },
+      "committer": {
+        "name": "Pradyun Gedam",
+        "email": "pradyunsg@users.noreply.github.com",
+        "date": "2022-07-08T13:50:55Z"
+      },
+      "message": "Stop accepting legacy specifiers in `Requirement`",
+      "tree": {
+        "sha": "fb6da816e96950d921d8ba5bcba3b782630d6d71",
+        "url": "https://api.github.com/repos/pypa/packaging/git/trees/fb6da816e96950d921d8ba5bcba3b782630d6d71"
+      },
+      "url": "https://api.github.com/repos/pypa/packaging/git/commits/ed45c8c19eea7a6bc5a2eff8e95eb6be9d152a73",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEE4v76TKS90oFx2wDz/5lxDEMyJY4FAmLINlIACgkQ/5lxDEMy\nJY6ujw//UX34W4S1n8jpHcpnFpdEIzucnGOQLCPNhx/LifY9KzOqBOjh1iu/o7Bc\n80R/4JdplGmkPoqQsTcmT+no45SlC3BtzIbGQteD0xOX/+C0UdFQAH13LW+W7kH2\nuhJ8CoEHok7jM1S0D0tVRg0dTuZBljogrBaSrIUeJYRBHfzo0oaOKAUdaVAaXVBW\nCdiufzjpg6oCsL8B0LRnquYJIpsRMEzOwnfRLv4aPB1l6vf0YMp9mcsNq/Gkgx7S\niY9xqrenZEyQVk3sBM5I6jY96XbBbgyIC0iYE6duFztVmvC0zpZ4LbeLeTjFtwZo\nCvqHZFXYx7Javg7uqz0ciFIQEJ2eS2fNHJbMQ8mxAcOrQ5RoQ4u2c5b0nEI3LUTM\n05eB+qtphvKfSrSh6IaavEt9JajRqtkOSLBZO9+1Ey37QbmziV8W9Jpe4fTB012a\ndUuljf0OhncYk4u9l9xJT7PadCVXUKvZhTUrAi8rIn/qnWLc6mHNgcUj+D1wLzEC\nVZ3yq4zcz/DEd09SU1Y/MS3VS/zHRUMcrljM1pZw5qMzKwSlzZkJnI3a4F4R83Ie\nAtWoCxnvunLSeAheRY3GZ04jYrKgWMCr4PgGE3VSx9bhQGbaHSLcCarbqlyuh3W4\nmldMgfuBrwTH+uGL3HEd5bJuErd5erZLTrE0IRz6ZU48BAP8AJ4=\n=CaFD\n-----END PGP SIGNATURE-----",
+        "payload": "tree fb6da816e96950d921d8ba5bcba3b782630d6d71\nparent addd5c5699a04d07ae479438f33de7fb19b70632\nauthor Pradyun Gedam <pradyunsg@users.noreply.github.com> 1657288255 +0100\ncommitter Pradyun Gedam <pradyunsg@users.noreply.github.com> 1657288255 +0100\n\nStop accepting legacy specifiers in `Requirement`\n",
+        "verified_at": "2024-11-07T15:37:01Z"
+      }
+    },
+    "url": "https://api.github.com/repos/pypa/packaging/commits/ed45c8c19eea7a6bc5a2eff8e95eb6be9d152a73",
+    "html_url": "https://github.com/pypa/packaging/commit/ed45c8c19eea7a6bc5a2eff8e95eb6be9d152a73",
+    "comments_url": "https://api.github.com/repos/pypa/packaging/commits/ed45c8c19eea7a6bc5a2eff8e95eb6be9d152a73/comments",
+    "author": {
+      "login": "pradyunsg",
+      "id": 3275593,
+      "node_id": "MDQ6VXNlcjMyNzU1OTM=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3275593?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pradyunsg",
+      "html_url": "https://github.com/pradyunsg",
+      "followers_url": "https://api.github.com/users/pradyunsg/followers",
+      "following_url": "https://api.github.com/users/pradyunsg/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pradyunsg/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pradyunsg/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pradyunsg/subscriptions",
+      "organizations_url": "https://api.github.com/users/pradyunsg/orgs",
+      "repos_url": "https://api.github.com/users/pradyunsg/repos",
+      "events_url": "https://api.github.com/users/pradyunsg/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pradyunsg/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "pradyunsg",
+      "id": 3275593,
+      "node_id": "MDQ6VXNlcjMyNzU1OTM=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3275593?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pradyunsg",
+      "html_url": "https://github.com/pradyunsg",
+      "followers_url": "https://api.github.com/users/pradyunsg/followers",
+      "following_url": "https://api.github.com/users/pradyunsg/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pradyunsg/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pradyunsg/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pradyunsg/subscriptions",
+      "organizations_url": "https://api.github.com/users/pradyunsg/orgs",
+      "repos_url": "https://api.github.com/users/pradyunsg/repos",
+      "events_url": "https://api.github.com/users/pradyunsg/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pradyunsg/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "addd5c5699a04d07ae479438f33de7fb19b70632",
+        "url": "https://api.github.com/repos/pypa/packaging/commits/addd5c5699a04d07ae479438f33de7fb19b70632",
+        "html_url": "https://github.com/pypa/packaging/commit/addd5c5699a04d07ae479438f33de7fb19b70632"
+      }
+    ]
+  },
+  {
+    "sha": "2151dc0f004beed90d191d9e1c8c5538a5ac3628",
+    "node_id": "C_kwDOBcnBg9oAKDIxNTFkYzBmMDA0YmVlZDkwZDE5MWQ5ZTFjOGM1NTM4YTVhYzM2Mjg",
+    "commit": {
+      "author": {
+        "name": "Pradyun Gedam",
+        "email": "pradyunsg@users.noreply.github.com",
+        "date": "2022-07-08T13:38:52Z"
+      },
+      "committer": {
+        "name": "Pradyun Gedam",
+        "email": "pradyunsg@users.noreply.github.com",
+        "date": "2022-07-08T13:51:18Z"
+      },
+      "message": "Remove `LegacySpecifier` class\n\nThis class has been deprecated for multiple releases now.",
+      "tree": {
+        "sha": "c12e8f899dda780eb83e10b9081a4bb063afd65a",
+        "url": "https://api.github.com/repos/pypa/packaging/git/trees/c12e8f899dda780eb83e10b9081a4bb063afd65a"
+      },
+      "url": "https://api.github.com/repos/pypa/packaging/git/commits/2151dc0f004beed90d191d9e1c8c5538a5ac3628",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEE4v76TKS90oFx2wDz/5lxDEMyJY4FAmLINlYACgkQ/5lxDEMy\nJY68kg//f2q6UaCb7L2OQ6GbvvR1q5LSjNKPZ61wNzSrg2eDmgnW7osXSFcsM+BO\ndC9bhWcZnLBckyC4IWuwyokSms0ogjvNLWD9ItZjyuCr9xUnr728+1d3QBdoeYDk\nnEXCdzo8JvPeo8YQ0BuQeO1+DAKxdffo3oqnL3wHq61VIJYxqRUxy7eeXhnBtjDA\nP8k8oITglN0GaI/psRIEx4+NIhdINfooMjaBYewYZET8vy4n0vEwGMR76Bc/zQYr\nchVmlYWGqdZT/RtEBq0IiH2X5h3fiHEAmIYb7q+MumYiDe1MxkJnOGxp6SsxIh+I\nXn/OzrQ0eVtWEzH+E+M66YDjeyBwa6SAzKUkqtpXVUk0cyAm+R72pvv6xUaN6qP8\nCHLLQjYkV2N4kiCwIe6VaZ1kdXm38WKHJjA7jWuXRG2udNHrBFKxc8OAXGuEvL18\nl/VhC6PAT6Jff3i/kQa+R1kmGAX6jqnRyYq90MuBkuLQCrC/4Ydq+WvjwPC5pCh8\nXKUGzjz6ThZUUekrk1fgi4gANFsJrKkyTAmhQzEnN7XIWubFf79ZsiupII8TiA7q\ny09/HHYR2+EEJJlq962IJOkgVVZOn6eAQeS78x3Cw207PeMN9Noga/ht0Pez12nl\nijD7Pmv/h0q3gs8UMjN8L1m40W1Aaf86krprHsooFgdS7hWY6c4=\n=4LoX\n-----END PGP SIGNATURE-----",
+        "payload": "tree c12e8f899dda780eb83e10b9081a4bb063afd65a\nparent ed45c8c19eea7a6bc5a2eff8e95eb6be9d152a73\nauthor Pradyun Gedam <pradyunsg@users.noreply.github.com> 1657287532 +0100\ncommitter Pradyun Gedam <pradyunsg@users.noreply.github.com> 1657288278 +0100\n\nRemove `LegacySpecifier` class\n\nThis class has been deprecated for multiple releases now.\n",
+        "verified_at": "2024-11-07T15:37:01Z"
+      }
+    },
+    "url": "https://api.github.com/repos/pypa/packaging/commits/2151dc0f004beed90d191d9e1c8c5538a5ac3628",
+    "html_url": "https://github.com/pypa/packaging/commit/2151dc0f004beed90d191d9e1c8c5538a5ac3628",
+    "comments_url": "https://api.github.com/repos/pypa/packaging/commits/2151dc0f004beed90d191d9e1c8c5538a5ac3628/comments",
+    "author": {
+      "login": "pradyunsg",
+      "id": 3275593,
+      "node_id": "MDQ6VXNlcjMyNzU1OTM=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3275593?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pradyunsg",
+      "html_url": "https://github.com/pradyunsg",
+      "followers_url": "https://api.github.com/users/pradyunsg/followers",
+      "following_url": "https://api.github.com/users/pradyunsg/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pradyunsg/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pradyunsg/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pradyunsg/subscriptions",
+      "organizations_url": "https://api.github.com/users/pradyunsg/orgs",
+      "repos_url": "https://api.github.com/users/pradyunsg/repos",
+      "events_url": "https://api.github.com/users/pradyunsg/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pradyunsg/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "pradyunsg",
+      "id": 3275593,
+      "node_id": "MDQ6VXNlcjMyNzU1OTM=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3275593?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pradyunsg",
+      "html_url": "https://github.com/pradyunsg",
+      "followers_url": "https://api.github.com/users/pradyunsg/followers",
+      "following_url": "https://api.github.com/users/pradyunsg/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pradyunsg/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pradyunsg/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pradyunsg/subscriptions",
+      "organizations_url": "https://api.github.com/users/pradyunsg/orgs",
+      "repos_url": "https://api.github.com/users/pradyunsg/repos",
+      "events_url": "https://api.github.com/users/pradyunsg/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pradyunsg/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "ed45c8c19eea7a6bc5a2eff8e95eb6be9d152a73",
+        "url": "https://api.github.com/repos/pypa/packaging/commits/ed45c8c19eea7a6bc5a2eff8e95eb6be9d152a73",
+        "html_url": "https://github.com/pypa/packaging/commit/ed45c8c19eea7a6bc5a2eff8e95eb6be9d152a73"
+      }
+    ]
+  },
+  {
+    "sha": "2a16754afa1f69f150d1978faff2fc53e52cada6",
+    "node_id": "C_kwDOBcnBg9oAKDJhMTY3NTRhZmExZjY5ZjE1MGQxOTc4ZmFmZjJmYzUzZTUyY2FkYTY",
+    "commit": {
+      "author": {
+        "name": "Pradyun Gedam",
+        "email": "pradyunsg@users.noreply.github.com",
+        "date": "2022-07-08T13:39:09Z"
+      },
+      "committer": {
+        "name": "Pradyun Gedam",
+        "email": "pradyunsg@users.noreply.github.com",
+        "date": "2022-07-08T13:51:18Z"
+      },
+      "message": "Remove `LegacyVersion` class\n\nThis class has been deprecated for multiple releases now.",
+      "tree": {
+        "sha": "179e5d99bf846c7fabb2a0e7f5713466ad0d7d61",
+        "url": "https://api.github.com/repos/pypa/packaging/git/trees/179e5d99bf846c7fabb2a0e7f5713466ad0d7d61"
+      },
+      "url": "https://api.github.com/repos/pypa/packaging/git/commits/2a16754afa1f69f150d1978faff2fc53e52cada6",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEE4v76TKS90oFx2wDz/5lxDEMyJY4FAmLINlYACgkQ/5lxDEMy\nJY4AvRAAmjBrrcLikuFUx511Nki68FCAUBqaadKaxdfllDlhtJRcx7KylSSCiLh0\nFruMcFOWGH3SpryH0bluA/U5W0enK997qaHfeFSORk2jiIPGMauJOzgPOPkHFdoU\nAeiciIyYqxdtbrcwLr4p1CqOndqcg/M66Zz9a9RnD/QVA4/0/FvGDjE4Kxe7dXvO\n/BLJszo81OkowAurhOhgM8zxCqG623YLQ0fMUrCT84RGNeE7gB6okCnyDAaBAl5E\n2lHM6E1obyZpyCsE0SU9jG+WKpEInGHBl62ZeSid5EDFFEBhTGNnXsTLM+0U3TDG\ndph9UQa60RqQuAFjnEEy5lsm27ddhTPAIbfulqTenr3pWI/ilak/QhC0yrJ5X0JP\nQ26hqcq2KYfw3KZgFwvpKDvImVUIZvjGjsWXX9ZXHSBi2SeDdCS4dPTpycVYBMSx\nUWL1z693avzqdaZUrRfqHLgmdhqoByeAGifWYAXQDzI3YByi+HqHu+V8gWnpV8KD\n6h9UL2kgXxS8TsE84h1VMBk9mheW4FQ8DmpZVQaAFn5Mk6knPjipkKPQY+ku/cnY\nLBoExSXbRqUfy4JGjHYprIEjarAXxyaI9jYr1ip1n/DO8WdieMseDOJZLaSmjd+g\nGkzNpEBzJ1yqUMJghmjPg8HYp1E96cevz4/3eL36q+pGDE4Rjws=\n=fqH7\n-----END PGP SIGNATURE-----",
+        "payload": "tree 179e5d99bf846c7fabb2a0e7f5713466ad0d7d61\nparent 2151dc0f004beed90d191d9e1c8c5538a5ac3628\nauthor Pradyun Gedam <pradyunsg@users.noreply.github.com> 1657287549 +0100\ncommitter Pradyun Gedam <pradyunsg@users.noreply.github.com> 1657288278 +0100\n\nRemove `LegacyVersion` class\n\nThis class has been deprecated for multiple releases now.\n",
+        "verified_at": "2024-11-07T15:37:01Z"
+      }
+    },
+    "url": "https://api.github.com/repos/pypa/packaging/commits/2a16754afa1f69f150d1978faff2fc53e52cada6",
+    "html_url": "https://github.com/pypa/packaging/commit/2a16754afa1f69f150d1978faff2fc53e52cada6",
+    "comments_url": "https://api.github.com/repos/pypa/packaging/commits/2a16754afa1f69f150d1978faff2fc53e52cada6/comments",
+    "author": {
+      "login": "pradyunsg",
+      "id": 3275593,
+      "node_id": "MDQ6VXNlcjMyNzU1OTM=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3275593?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pradyunsg",
+      "html_url": "https://github.com/pradyunsg",
+      "followers_url": "https://api.github.com/users/pradyunsg/followers",
+      "following_url": "https://api.github.com/users/pradyunsg/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pradyunsg/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pradyunsg/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pradyunsg/subscriptions",
+      "organizations_url": "https://api.github.com/users/pradyunsg/orgs",
+      "repos_url": "https://api.github.com/users/pradyunsg/repos",
+      "events_url": "https://api.github.com/users/pradyunsg/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pradyunsg/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "pradyunsg",
+      "id": 3275593,
+      "node_id": "MDQ6VXNlcjMyNzU1OTM=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3275593?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pradyunsg",
+      "html_url": "https://github.com/pradyunsg",
+      "followers_url": "https://api.github.com/users/pradyunsg/followers",
+      "following_url": "https://api.github.com/users/pradyunsg/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pradyunsg/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pradyunsg/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pradyunsg/subscriptions",
+      "organizations_url": "https://api.github.com/users/pradyunsg/orgs",
+      "repos_url": "https://api.github.com/users/pradyunsg/repos",
+      "events_url": "https://api.github.com/users/pradyunsg/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pradyunsg/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "2151dc0f004beed90d191d9e1c8c5538a5ac3628",
+        "url": "https://api.github.com/repos/pypa/packaging/commits/2151dc0f004beed90d191d9e1c8c5538a5ac3628",
+        "html_url": "https://github.com/pypa/packaging/commit/2151dc0f004beed90d191d9e1c8c5538a5ac3628"
+      }
+    ]
+  },
+  {
+    "sha": "134b659bcdc956c64c9d341b8a54c9dcc1156d1d",
+    "node_id": "C_kwDOBcnBg9oAKDEzNGI2NTliY2RjOTU2YzY0YzlkMzQxYjhhNTRjOWRjYzExNTZkMWQ",
+    "commit": {
+      "author": {
+        "name": "Pradyun Gedam",
+        "email": "pradyunsg@users.noreply.github.com",
+        "date": "2021-02-28T09:56:14Z"
+      },
+      "committer": {
+        "name": "Pradyun Gedam",
+        "email": "pradyunsg@users.noreply.github.com",
+        "date": "2022-07-08T13:51:18Z"
+      },
+      "message": "Merge `_IndividualSpecifier` and `Specifier`\n\nThis also eliminates the `_IndividualSpecifier.prereleases`, which is\nno longer used.",
+      "tree": {
+        "sha": "19f76a398c1a099b2499a0e7f83777ebadce2faf",
+        "url": "https://api.github.com/repos/pypa/packaging/git/trees/19f76a398c1a099b2499a0e7f83777ebadce2faf"
+      },
+      "url": "https://api.github.com/repos/pypa/packaging/git/commits/134b659bcdc956c64c9d341b8a54c9dcc1156d1d",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEE4v76TKS90oFx2wDz/5lxDEMyJY4FAmLINlYACgkQ/5lxDEMy\nJY7k0xAAk/B65CGmpWVFHySucqj70w2jMuZogXTUKhAnCo6t8avEO65sR81eHeZ1\nYDkuFAc6ShPDM4f9nrLfoZK4juDtZbqs+z1PYVnd3UL7/zLEUuD9PEche9npj8CP\nAmCmQyv4yROVGO7j1ytKe87IOdZ37EbQNd6V+/4wFqfUrQiop+TgsUf4zJjtEZcF\nPZe9FSKN6w4jZMG1ewsIeYAb4QAHE3umpRVm8/GO3mrgGld8LcH85V4iw7DF2RKl\nTEK8P8VjAh08dJi4iJAx148jKPsn00Bs8cFFWh75T+PTvoMvl9KG/0phdVb6YIce\nmRUCNURIO0jjar8MolSz7TSbQr5twPwHL0fR5q2QzYQZO4VXtHF5DAlYxoGHvrJZ\nxXndSVTeGt2fztH4Z4WMPvag+D0cflKEbt6F10CfblUisygPzu7AYnKu5qfkDK7O\nbCdobMoRB3yEs17+cXG7x56rc9YF58wAShrn3ZxV85CGEaWo8rgSZ5FW5jYCYRUT\nTge1UyTzh+ID3qz+CLHnXvarVAoKwddUNjMIY3aEayQn/GkOep+xUChKgVBCjE4m\nBgY3DTvcKIrtN+oJo1/O35wGPaTTy5u55jYYM7VIuG5nK4LKVznKU1pVvhc/V0j+\nfSxMVuiIjRYs94ixS62nIQX1vrJE/QbpOtXoh6c+dwhHBweUCYo=\n=ut1u\n-----END PGP SIGNATURE-----",
+        "payload": "tree 19f76a398c1a099b2499a0e7f83777ebadce2faf\nparent 2a16754afa1f69f150d1978faff2fc53e52cada6\nauthor Pradyun Gedam <pradyunsg@users.noreply.github.com> 1614506174 +0000\ncommitter Pradyun Gedam <pradyunsg@users.noreply.github.com> 1657288278 +0100\n\nMerge `_IndividualSpecifier` and `Specifier`\n\nThis also eliminates the `_IndividualSpecifier.prereleases`, which is\nno longer used.\n",
+        "verified_at": "2024-11-07T15:37:01Z"
+      }
+    },
+    "url": "https://api.github.com/repos/pypa/packaging/commits/134b659bcdc956c64c9d341b8a54c9dcc1156d1d",
+    "html_url": "https://github.com/pypa/packaging/commit/134b659bcdc956c64c9d341b8a54c9dcc1156d1d",
+    "comments_url": "https://api.github.com/repos/pypa/packaging/commits/134b659bcdc956c64c9d341b8a54c9dcc1156d1d/comments",
+    "author": {
+      "login": "pradyunsg",
+      "id": 3275593,
+      "node_id": "MDQ6VXNlcjMyNzU1OTM=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3275593?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pradyunsg",
+      "html_url": "https://github.com/pradyunsg",
+      "followers_url": "https://api.github.com/users/pradyunsg/followers",
+      "following_url": "https://api.github.com/users/pradyunsg/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pradyunsg/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pradyunsg/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pradyunsg/subscriptions",
+      "organizations_url": "https://api.github.com/users/pradyunsg/orgs",
+      "repos_url": "https://api.github.com/users/pradyunsg/repos",
+      "events_url": "https://api.github.com/users/pradyunsg/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pradyunsg/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "pradyunsg",
+      "id": 3275593,
+      "node_id": "MDQ6VXNlcjMyNzU1OTM=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3275593?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pradyunsg",
+      "html_url": "https://github.com/pradyunsg",
+      "followers_url": "https://api.github.com/users/pradyunsg/followers",
+      "following_url": "https://api.github.com/users/pradyunsg/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pradyunsg/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pradyunsg/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pradyunsg/subscriptions",
+      "organizations_url": "https://api.github.com/users/pradyunsg/orgs",
+      "repos_url": "https://api.github.com/users/pradyunsg/repos",
+      "events_url": "https://api.github.com/users/pradyunsg/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pradyunsg/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "2a16754afa1f69f150d1978faff2fc53e52cada6",
+        "url": "https://api.github.com/repos/pypa/packaging/commits/2a16754afa1f69f150d1978faff2fc53e52cada6",
+        "html_url": "https://github.com/pypa/packaging/commit/2a16754afa1f69f150d1978faff2fc53e52cada6"
+      }
+    ]
+  },
+  {
+    "sha": "c63e26c62e7c499acac5d07a2eca4e82dc80c10c",
+    "node_id": "C_kwDOBcnBg9oAKGM2M2UyNmM2MmU3YzQ5OWFjYWM1ZDA3YTJlY2E0ZTgyZGM4MGMxMGM",
+    "commit": {
+      "author": {
+        "name": "Pradyun Gedam",
+        "email": "pradyunsg@users.noreply.github.com",
+        "date": "2021-02-28T10:00:21Z"
+      },
+      "committer": {
+        "name": "Pradyun Gedam",
+        "email": "pradyunsg@users.noreply.github.com",
+        "date": "2022-07-08T13:51:18Z"
+      },
+      "message": "Drop `_require_version_compare`\n\nThis enforced that a `LegacyVersion` could not match a `Specifier`.\nSince `LegacyVersion` is no longer a thing, this check is no longer\nnecessary.",
+      "tree": {
+        "sha": "30558636b522e3a24bbe4af31261dea40c941e51",
+        "url": "https://api.github.com/repos/pypa/packaging/git/trees/30558636b522e3a24bbe4af31261dea40c941e51"
+      },
+      "url": "https://api.github.com/repos/pypa/packaging/git/commits/c63e26c62e7c499acac5d07a2eca4e82dc80c10c",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEE4v76TKS90oFx2wDz/5lxDEMyJY4FAmLINlYACgkQ/5lxDEMy\nJY4rZg/+I2WltyvsdDzusvmOoP91rpgXvIyd8/R8XwEMxzu98WkmRh1Rhc/uGTQN\n+LlO9Th1X4L5sjdaLmvFQtIrrkRN5w5MqZ7qM7EFBAw9wLdFnTmLwNKxTQ6tOhPr\nQz9RzfIBOPpufiZ2h6gAmC/lYgCbs7CT8/FYraUYB5c1Ru3sg4kF3AIw28xuc0S8\nF0VTTyxVeP6fmtnQBLFL332Q7Hh/2f/ZIh0JjsJfInMsxO9XjYFHYQHLSAYMBLMx\nwZYkq8QqIo54dv+zVFlrrFWWV67nxOSY8XonCGHwEeDDJnx/FRa1IV2Y5tOwQINC\nEV4CnScGupyykFHfFTZOlwBgGExjAzMwhdg9h/KRV8rXvxgXbyiLCBsXINm4MN4t\n71spkn+gJ1aEG9E8Ov6XNqsaYyHauvW+WGku9ObLYELiMQDz9zynSsq2OFmdO1Qd\nTI6jmbJL55lmmfqD/rGjHet12qFBBwJJX5kzf8rBnpcmLmpCQHz4oPIFdMg43vdO\nsmAsaKGYDha0Jxec9QsHiqvap11ZOoURJF/gg+Jq2Z9K3NY8HNK/wI5X9nY0dWnO\nQ1b0SGAxRqlqo+ZOVScUMYvMi/4WVJghDp/13N80kOp78oU5+k4Cpdb0lgQRfymP\nAhu2fiMiHOLamJJmcCdZZHyoajwMQXdtjUtHIjphYccyl+/O1iQ=\n=OEEk\n-----END PGP SIGNATURE-----",
+        "payload": "tree 30558636b522e3a24bbe4af31261dea40c941e51\nparent 134b659bcdc956c64c9d341b8a54c9dcc1156d1d\nauthor Pradyun Gedam <pradyunsg@users.noreply.github.com> 1614506421 +0000\ncommitter Pradyun Gedam <pradyunsg@users.noreply.github.com> 1657288278 +0100\n\nDrop `_require_version_compare`\n\nThis enforced that a `LegacyVersion` could not match a `Specifier`.\nSince `LegacyVersion` is no longer a thing, this check is no longer\nnecessary.\n",
+        "verified_at": "2024-11-07T15:37:01Z"
+      }
+    },
+    "url": "https://api.github.com/repos/pypa/packaging/commits/c63e26c62e7c499acac5d07a2eca4e82dc80c10c",
+    "html_url": "https://github.com/pypa/packaging/commit/c63e26c62e7c499acac5d07a2eca4e82dc80c10c",
+    "comments_url": "https://api.github.com/repos/pypa/packaging/commits/c63e26c62e7c499acac5d07a2eca4e82dc80c10c/comments",
+    "author": {
+      "login": "pradyunsg",
+      "id": 3275593,
+      "node_id": "MDQ6VXNlcjMyNzU1OTM=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3275593?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pradyunsg",
+      "html_url": "https://github.com/pradyunsg",
+      "followers_url": "https://api.github.com/users/pradyunsg/followers",
+      "following_url": "https://api.github.com/users/pradyunsg/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pradyunsg/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pradyunsg/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pradyunsg/subscriptions",
+      "organizations_url": "https://api.github.com/users/pradyunsg/orgs",
+      "repos_url": "https://api.github.com/users/pradyunsg/repos",
+      "events_url": "https://api.github.com/users/pradyunsg/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pradyunsg/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "pradyunsg",
+      "id": 3275593,
+      "node_id": "MDQ6VXNlcjMyNzU1OTM=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3275593?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pradyunsg",
+      "html_url": "https://github.com/pradyunsg",
+      "followers_url": "https://api.github.com/users/pradyunsg/followers",
+      "following_url": "https://api.github.com/users/pradyunsg/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pradyunsg/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pradyunsg/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pradyunsg/subscriptions",
+      "organizations_url": "https://api.github.com/users/pradyunsg/orgs",
+      "repos_url": "https://api.github.com/users/pradyunsg/repos",
+      "events_url": "https://api.github.com/users/pradyunsg/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pradyunsg/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "134b659bcdc956c64c9d341b8a54c9dcc1156d1d",
+        "url": "https://api.github.com/repos/pypa/packaging/commits/134b659bcdc956c64c9d341b8a54c9dcc1156d1d",
+        "html_url": "https://github.com/pypa/packaging/commit/134b659bcdc956c64c9d341b8a54c9dcc1156d1d"
+      }
+    ]
+  },
+  {
+    "sha": "5943a3800db12302f3be328a1bac9ad32f4f26eb",
+    "node_id": "C_kwDOBcnBg9oAKDU5NDNhMzgwMGRiMTIzMDJmM2JlMzI4YTFiYWM5YWQzMmY0ZjI2ZWI",
+    "commit": {
+      "author": {
+        "name": "Pradyun Gedam",
+        "email": "pradyunsg@users.noreply.github.com",
+        "date": "2022-07-08T10:35:36Z"
+      },
+      "committer": {
+        "name": "Pradyun Gedam",
+        "email": "pradyunsg@users.noreply.github.com",
+        "date": "2022-07-08T13:51:18Z"
+      },
+      "message": "Factor out `_coerce_version` and use it to simplify a loop\n\nThis makes the loop easier to understand.",
+      "tree": {
+        "sha": "a1998f63d08b302b7cfeead4995e5e1485e12c75",
+        "url": "https://api.github.com/repos/pypa/packaging/git/trees/a1998f63d08b302b7cfeead4995e5e1485e12c75"
+      },
+      "url": "https://api.github.com/repos/pypa/packaging/git/commits/5943a3800db12302f3be328a1bac9ad32f4f26eb",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEE4v76TKS90oFx2wDz/5lxDEMyJY4FAmLINlYACgkQ/5lxDEMy\nJY7yNg/7BD2K1kAr/pD+0p8rQ/BA0plBHl03mgUnKmg6fWW0QJVB4RTGp7fLiwq2\nTAtzEm8CtmTsB7L24eo0KtTL10l/Dz5kOiTfW85BorxxDRe+HzvXoOeW9pgJNmdi\ndMXPXz4m5RN9ZkOxbYB4W70Rn0eO5AWgIwCEwTHnjswiu79qMWnuhfBcMxEvBi5P\ndIlV60Nzzha2BAuKvTXuU+jaVtzhTGw/k1U5zoMttnXCGslUjq59ULdnZb5F7ICq\nQBD9c1y5UHiygu9ehn3+uaElXiL4f93veG1RSzU/Ku2JRE9wS7RMTuFjaN9vyju/\nfQ6DNyoeDwlFrmHHsFqRaEkBCf2t5ZfFQUNarVwCLlkJX+yie+upBRXEPfUlLKNQ\nAm9Yd4ql5y39rKH2iNFCy4HoKDWEoA0izGPu5ZsSBaEJ2nakzY2+6dowXY7p0fA0\n3qTAL/FsKpSDHZEth5JZnMnpecHzHxQVtxanW6SciMQOBWkS1JEUsHVNDhMquITV\ne2c9xhcIp+cMWHWmeJwNChTHhTdCD/lZSHlKaUq0qQi0rIWiJf9DynVWeG0xOG0J\nrC+T7w/lRMXEexlz1IVKZDCHxcSvX0esfHIgnIfe1rx+rMJFefjKKAMFzTH2imLt\nOG16rQy0gyCEDedCgfQEaz1lngN82sp0zBQwDVIXgrAbYd3NVJY=\n=8oaQ\n-----END PGP SIGNATURE-----",
+        "payload": "tree a1998f63d08b302b7cfeead4995e5e1485e12c75\nparent c63e26c62e7c499acac5d07a2eca4e82dc80c10c\nauthor Pradyun Gedam <pradyunsg@users.noreply.github.com> 1657276536 +0100\ncommitter Pradyun Gedam <pradyunsg@users.noreply.github.com> 1657288278 +0100\n\nFactor out `_coerce_version` and use it to simplify a loop\n\nThis makes the loop easier to understand.\n",
+        "verified_at": "2024-11-07T15:37:01Z"
+      }
+    },
+    "url": "https://api.github.com/repos/pypa/packaging/commits/5943a3800db12302f3be328a1bac9ad32f4f26eb",
+    "html_url": "https://github.com/pypa/packaging/commit/5943a3800db12302f3be328a1bac9ad32f4f26eb",
+    "comments_url": "https://api.github.com/repos/pypa/packaging/commits/5943a3800db12302f3be328a1bac9ad32f4f26eb/comments",
+    "author": {
+      "login": "pradyunsg",
+      "id": 3275593,
+      "node_id": "MDQ6VXNlcjMyNzU1OTM=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3275593?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pradyunsg",
+      "html_url": "https://github.com/pradyunsg",
+      "followers_url": "https://api.github.com/users/pradyunsg/followers",
+      "following_url": "https://api.github.com/users/pradyunsg/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pradyunsg/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pradyunsg/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pradyunsg/subscriptions",
+      "organizations_url": "https://api.github.com/users/pradyunsg/orgs",
+      "repos_url": "https://api.github.com/users/pradyunsg/repos",
+      "events_url": "https://api.github.com/users/pradyunsg/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pradyunsg/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "pradyunsg",
+      "id": 3275593,
+      "node_id": "MDQ6VXNlcjMyNzU1OTM=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3275593?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pradyunsg",
+      "html_url": "https://github.com/pradyunsg",
+      "followers_url": "https://api.github.com/users/pradyunsg/followers",
+      "following_url": "https://api.github.com/users/pradyunsg/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pradyunsg/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pradyunsg/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pradyunsg/subscriptions",
+      "organizations_url": "https://api.github.com/users/pradyunsg/orgs",
+      "repos_url": "https://api.github.com/users/pradyunsg/repos",
+      "events_url": "https://api.github.com/users/pradyunsg/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pradyunsg/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "c63e26c62e7c499acac5d07a2eca4e82dc80c10c",
+        "url": "https://api.github.com/repos/pypa/packaging/commits/c63e26c62e7c499acac5d07a2eca4e82dc80c10c",
+        "html_url": "https://github.com/pypa/packaging/commit/c63e26c62e7c499acac5d07a2eca4e82dc80c10c"
+      }
+    ]
+  }
+]

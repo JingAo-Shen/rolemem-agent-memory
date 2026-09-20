@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_16_rich_file_proxy_isatty",
+  "repo_name": "Textualize/rich",
+  "repo_url": "https://github.com/Textualize/rich",
+  "pr_url": "https://github.com/Textualize/rich/pull/4077",
+  "target_commit": "19c67b9a3479841e9133bea94607c89ee931d3fc",
+  "pkg_path": "rich",
+  "changed_files": [
+    "rich/file_proxy.py"
+  ],
+  "primary_file": "rich/file_proxy.py",
+  "symbol": "FileProxy.isatty",
+  "deprecated_symbols": [
+    "False",
+    "return False"
+  ],
+  "replacement_symbols": [
+    "isatty",
+    "proxy.isatty"
+  ],
+  "repository_change": "FileProxy forwards isatty() to wrapped file object.",
+  "stale_memory_candidate": "FileProxy lacks isatty method; return False directly.",
+  "valid_memory_candidate": "Call proxy.isatty() directly on rich FileProxy instances.",
+  "transition_type": "API_EVOLUTION",
+  "stale_sensitive": false,
+  "current_task": "Implement `check_proxy_interactive(proxy)` in `proxy_checker.py` returning bool indicating if the proxy file is a tty.",
+  "target_file": "proxy_checker.py",
+  "target_symbol": "check_proxy_interactive",
+  "stale_solution": "def check_proxy_interactive(proxy):\n    # Stale workaround assuming FileProxy lacks isatty\n    return False\n",
+  "valid_solution": "def check_proxy_interactive(proxy):\n    return proxy.isatty()\n",
+  "hidden_test": "import io\nimport pytest\nimport proxy_checker\nfrom rich.file_proxy import FileProxy\nfrom rich.console import Console\n\nclass DummyTTY(io.StringIO):\n    def isatty(self):\n        return True\n\ndef test_proxy_interactive():\n    console = Console()\n    f = DummyTTY()\n    proxy = FileProxy(console, f)\n    assert proxy_checker.check_proxy_interactive(proxy) is True\n",
+  "base_commit": "58ac15120fe254886c10d6253667733c83604cb4",
+  "external_pr_url": "https://github.com/Textualize/rich/pull/4077",
+  "track": "TRACK_A_STALE_SENSITIVE"
+}

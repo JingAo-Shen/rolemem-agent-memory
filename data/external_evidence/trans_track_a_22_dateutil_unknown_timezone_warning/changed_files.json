@@ -1,0 +1,38 @@
+[
+  {
+    "sha": "216762c0992be1f67848266f624b44658e526f74",
+    "filename": "dateutil/parser/__init__.py",
+    "status": "modified",
+    "additions": 3,
+    "deletions": 1,
+    "changes": 4,
+    "blob_url": "https://github.com/dateutil/dateutil/blob/7b242e287492dc029c29f54267a810e5839ffbc1/dateutil%2Fparser%2F__init__.py",
+    "raw_url": "https://github.com/dateutil/dateutil/raw/7b242e287492dc029c29f54267a810e5839ffbc1/dateutil%2Fparser%2F__init__.py",
+    "contents_url": "https://api.github.com/repos/dateutil/dateutil/contents/dateutil%2Fparser%2F__init__.py?ref=7b242e287492dc029c29f54267a810e5839ffbc1",
+    "patch": "@@ -1,13 +1,15 @@\n # -*- coding: utf-8 -*-\n from ._parser import parse, parser, parserinfo\n from ._parser import DEFAULTPARSER, DEFAULTTZPARSER\n+from ._parser import UnknownTimezoneWarning\n \n from ._parser import __doc__\n \n from .isoparser import isoparser, isoparse\n \n __all__ = ['parse', 'parser', 'parserinfo',\n-           'isoparse', 'isoparser']\n+           'isoparse', 'isoparser',\n+           'UnknownTimezoneWarning']\n \n \n ###"
+  },
+  {
+    "sha": "1b5aabf1b6cdd297577fe4f7a1950502e6eb6fe5",
+    "filename": "dateutil/parser/_parser.py",
+    "status": "modified",
+    "additions": 16,
+    "deletions": 3,
+    "changes": 19,
+    "blob_url": "https://github.com/dateutil/dateutil/blob/7b242e287492dc029c29f54267a810e5839ffbc1/dateutil%2Fparser%2F_parser.py",
+    "raw_url": "https://github.com/dateutil/dateutil/raw/7b242e287492dc029c29f54267a810e5839ffbc1/dateutil%2Fparser%2F_parser.py",
+    "contents_url": "https://api.github.com/repos/dateutil/dateutil/contents/dateutil%2Fparser%2F_parser.py?ref=7b242e287492dc029c29f54267a810e5839ffbc1",
+    "patch": "@@ -34,6 +34,7 @@\n import re\n import string\n import time\n+import warnings\n \n from calendar import monthrange\n from io import StringIO\n@@ -1145,9 +1146,19 @@ def _build_tzaware(self, naive, res, tzinfos):\n         elif res.tzoffset:\n             aware = naive.replace(tzinfo=tz.tzoffset(res.tzname, res.tzoffset))\n \n-        else:\n-            # TODO: this is really only the right thing to do if no tz\n-            # information was found.\n+        elif not res.tzname and not res.tzoffset:\n+            # i.e. no timezone information was found.\n+            aware = naive\n+\n+        elif res.tzname:\n+            # tz-like string was parsed but we don't know what to do\n+            # with it\n+            warnings.warn(\"tzname {tzname} identified but not understood.  \"\n+                          \"Pass `tzinfos` argument in order to correctly \"\n+                          \"return a timezone-aware datetime.  In a future \"\n+                          \"version, this raise an \"\n+                          \"exception.\".format(tzname=res.tzname),\n+                          category=UnknownTimezoneWarning)\n             aware = naive\n \n         return aware\n@@ -1507,4 +1518,6 @@ def parse(self, tzstr):\n def _parsetz(tzstr):\n     return DEFAULTTZPARSER.parse(tzstr)\n \n+class UnknownTimezoneWarning(RuntimeWarning):\n+    \"\"\"Raised when the parser finds a timezone it cannot parse into a tzinfo\"\"\"\n # vim:ts=4:sw=4:et"
+  },
+  {
+    "sha": "e3e24ba95a169e0b2e28d410cb3dbc6e07e6178f",
+    "filename": "dateutil/test/test_parser.py",
+    "status": "modified",
+    "additions": 8,
+    "deletions": 4,
+    "changes": 12,
+    "blob_url": "https://github.com/dateutil/dateutil/blob/7b242e287492dc029c29f54267a810e5839ffbc1/dateutil%2Ftest%2Ftest_parser.py",
+    "raw_url": "https://github.com/dateutil/dateutil/raw/7b242e287492dc029c29f54267a810e5839ffbc1/dateutil%2Ftest%2Ftest_parser.py",
+    "contents_url": "https://api.github.com/repos/dateutil/dateutil/contents/dateutil%2Ftest%2Ftest_parser.py?ref=7b242e287492dc029c29f54267a810e5839ffbc1",
+    "patch": "@@ -9,6 +9,7 @@\n from dateutil import tz\n from dateutil.tz import tzoffset\n from dateutil.parser import parse, parserinfo\n+from dateutil.parser import UnknownTimezoneWarning\n \n from ._common import TZEnvContext\n \n@@ -574,8 +575,9 @@ def testFuzzyAMPMProblem(self):\n \n     def testFuzzyIgnoreAMPM(self):\n         s1 = \"Jan 29, 1945 14:45 AM I going to see you there?\"\n-\n-        self.assertEqual(parse(s1, fuzzy=True), datetime(1945, 1, 29, 14, 45))\n+        with pytest.warns(UnknownTimezoneWarning):\n+            res = parse(s1, fuzzy=True)\n+        self.assertEqual(res, datetime(1945, 1, 29, 14, 45))\n \n     def testExtraSpace(self):\n         self.assertEqual(parse(\"  July   4 ,  1976   12:01:02   am  \"),\n@@ -683,8 +685,10 @@ def testRandomFormat25(self):\n                          datetime(2003, 9, 25, 12, 8))\n \n     def testRandomFormat26(self):\n-        self.assertEqual(parse(\"5:50 A.M. on June 13, 1990\"),\n-                         datetime(1990, 6, 13, 5, 50))\n+        with pytest.warns(UnknownTimezoneWarning):\n+            res = parse(\"5:50 A.M. on June 13, 1990\")\n+\n+        self.assertEqual(res, datetime(1990, 6, 13, 5, 50))\n \n     def testRandomFormat27(self):\n         self.assertEqual(parse(\"3rd of May 2001\"), datetime(2001, 5, 3))"
+  }
+]

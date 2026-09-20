@@ -1,0 +1,48 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index f4c27de5..d2e79060 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
+ 
+ - Fixed empty print ignoring the `end` parameter
+ - Fixed `Text.from_ansi` removing newlines https://github.com/Textualize/rich/pull/4076
++- Fixed `FileProxy.isatty` not proxying https://github.com/Textualize/rich/pull/4077
+ 
+ ## [14.3.4] - 2026-04-11
+ 
+diff --git a/rich/file_proxy.py b/rich/file_proxy.py
+index 4b0b0da6..e32523bd 100644
+--- a/rich/file_proxy.py
++++ b/rich/file_proxy.py
+@@ -55,3 +55,6 @@ class FileProxy(io.TextIOBase):
+ 
+     def fileno(self) -> int:
+         return self.__file.fileno()
++
++    def isatty(self) -> bool:
++        return self.__file.isatty()
+diff --git a/tests/test_file_proxy.py b/tests/test_file_proxy.py
+index 2ec4d789..c73b23fe 100644
+--- a/tests/test_file_proxy.py
++++ b/tests/test_file_proxy.py
+@@ -35,3 +35,20 @@ def test_new_lines():
+     assert file.getvalue() == "-\n"
+     file_proxy.flush()
+     assert file.getvalue() == "-\n-\n"
++
++
++def test_isatty():
++    """Check isatty is proxied
++
++    Regression test for https://github.com/Textualize/rich/issues/4041
++
++    """
++
++    class TTYFile:
++        def isatty(self) -> bool:
++            return True
++
++    file = TTYFile()
++    console = Console()
++    file_proxy = FileProxy(console, file)
++    assert file_proxy.isatty()

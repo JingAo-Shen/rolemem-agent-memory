@@ -1,0 +1,248 @@
+[
+  {
+    "sha": "e2d89f5283cbeb4b4ca55fe88b1c353c343b4972",
+    "node_id": "C_kwDOQE_UrdoAKGUyZDg5ZjUyODNjYmViNGI0Y2E1NWZlODhiMWMzNTNjMzQzYjQ5NzI",
+    "commit": {
+      "author": {
+        "name": "Ronny Pfannschmidt",
+        "email": "opensource@ronnypfannschmidt.de",
+        "date": "2025-10-18T21:00:23Z"
+      },
+      "committer": {
+        "name": "Ronny Pfannschmidt",
+        "email": "opensource@ronnypfannschmidt.de",
+        "date": "2025-10-18T21:00:23Z"
+      },
+      "message": "Add IniConfig.parse() classmethod to fix inline comment handling\n\nFixes #55 - Inline comments were incorrectly included in parsed values\n\nThe bug: Inline comments (# or ;) were being included as part of values\ninstead of being stripped, inconsistent with how section comments are handled.\n\nExample of the bug:\n  name = value # comment\n  Result was: \"value # comment\" (incorrect)\n  Should be: \"value\" (correct)\n\nChanges:\n- Add IniConfig.parse() classmethod with strip_inline_comments parameter\n  - Default: strip_inline_comments=True (correct behavior - strips comments)\n  - Can set strip_inline_comments=False if old buggy behavior needed\n- IniConfig() constructor preserves old behavior for backward compatibility\n  (calls parse_ini_data with strip_inline_comments=False)\n- Add parse_ini_data() helper in _parse.py to avoid code duplication\n- Update _parseline() to support strip_inline_comments parameter\n- Add comprehensive tests for both correct and legacy behavior\n\nBackward compatibility: Existing code using IniConfig() continues to work\nunchanged. Users should migrate to IniConfig.parse() for correct behavior.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>",
+      "tree": {
+        "sha": "33d9f0de5262a08e51bd529456c3c37af367cab5",
+        "url": "https://api.github.com/repos/pytest-dev/iniconfig/git/trees/33d9f0de5262a08e51bd529456c3c37af367cab5"
+      },
+      "url": "https://api.github.com/repos/pytest-dev/iniconfig/git/commits/e2d89f5283cbeb4b4ca55fe88b1c353c343b4972",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/pytest-dev/iniconfig/commits/e2d89f5283cbeb4b4ca55fe88b1c353c343b4972",
+    "html_url": "https://github.com/pytest-dev/iniconfig/commit/e2d89f5283cbeb4b4ca55fe88b1c353c343b4972",
+    "comments_url": "https://api.github.com/repos/pytest-dev/iniconfig/commits/e2d89f5283cbeb4b4ca55fe88b1c353c343b4972/comments",
+    "author": {
+      "login": "RonnyPfannschmidt",
+      "id": 156838,
+      "node_id": "MDQ6VXNlcjE1NjgzOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156838?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/RonnyPfannschmidt",
+      "html_url": "https://github.com/RonnyPfannschmidt",
+      "followers_url": "https://api.github.com/users/RonnyPfannschmidt/followers",
+      "following_url": "https://api.github.com/users/RonnyPfannschmidt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/RonnyPfannschmidt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/RonnyPfannschmidt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/RonnyPfannschmidt/subscriptions",
+      "organizations_url": "https://api.github.com/users/RonnyPfannschmidt/orgs",
+      "repos_url": "https://api.github.com/users/RonnyPfannschmidt/repos",
+      "events_url": "https://api.github.com/users/RonnyPfannschmidt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/RonnyPfannschmidt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "RonnyPfannschmidt",
+      "id": 156838,
+      "node_id": "MDQ6VXNlcjE1NjgzOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156838?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/RonnyPfannschmidt",
+      "html_url": "https://github.com/RonnyPfannschmidt",
+      "followers_url": "https://api.github.com/users/RonnyPfannschmidt/followers",
+      "following_url": "https://api.github.com/users/RonnyPfannschmidt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/RonnyPfannschmidt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/RonnyPfannschmidt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/RonnyPfannschmidt/subscriptions",
+      "organizations_url": "https://api.github.com/users/RonnyPfannschmidt/orgs",
+      "repos_url": "https://api.github.com/users/RonnyPfannschmidt/repos",
+      "events_url": "https://api.github.com/users/RonnyPfannschmidt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/RonnyPfannschmidt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "57b7ed9c7a5950f9c57b2cfbe641ff4cc04baf1c",
+        "url": "https://api.github.com/repos/pytest-dev/iniconfig/commits/57b7ed9c7a5950f9c57b2cfbe641ff4cc04baf1c",
+        "html_url": "https://github.com/pytest-dev/iniconfig/commit/57b7ed9c7a5950f9c57b2cfbe641ff4cc04baf1c"
+      }
+    ]
+  },
+  {
+    "sha": "6d0af4529e4375e49dc871aa3d5ce17fe1791afe",
+    "node_id": "C_kwDOQE_UrdoAKDZkMGFmNDUyOWU0Mzc1ZTQ5ZGM4NzFhYTNkNWNlMTdmZTE3OTFhZmU",
+    "commit": {
+      "author": {
+        "name": "Ronny Pfannschmidt",
+        "email": "opensource@ronnypfannschmidt.de",
+        "date": "2025-10-18T21:43:10Z"
+      },
+      "committer": {
+        "name": "Ronny Pfannschmidt",
+        "email": "opensource@ronnypfannschmidt.de",
+        "date": "2025-10-18T21:43:10Z"
+      },
+      "message": "Add strip_section_whitespace parameter to address issue #4\n\nAdd opt-in Unicode whitespace stripping for section names (issue #4)\n\nChanges:\n- Add strip_section_whitespace parameter to IniConfig.parse()\n  - Default: False (preserves backward compatibility)\n  - When True: strips Unicode whitespace from section names\n- Document Unicode whitespace handling in CHANGELOG\n  - Python 3's str.strip() has handled Unicode since Python 3.0 (2008)\n  - iniconfig 2.0.0+ benefits from this automatically\n  - Values and key names already strip Unicode whitespace correctly\n- Add tests for Unicode whitespace handling\n\nBackground:\nSince iniconfig moved to Python 3 only in version 2.0.0, all strings are\nUnicode by default. Python 3's str.strip() handles Unicode whitespace\ncharacters (NO-BREAK SPACE, EN QUAD, IDEOGRAPHIC SPACE, etc.) automatically.\nThis addresses the core concern in issue #4 for values and key names.\n\nThe new strip_section_whitespace parameter provides opt-in stripping for\nsection names, which were not previously stripped for backward compatibility.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>",
+      "tree": {
+        "sha": "8c7da663d41981f0701d95e0b73c629ea006fa7d",
+        "url": "https://api.github.com/repos/pytest-dev/iniconfig/git/trees/8c7da663d41981f0701d95e0b73c629ea006fa7d"
+      },
+      "url": "https://api.github.com/repos/pytest-dev/iniconfig/git/commits/6d0af4529e4375e49dc871aa3d5ce17fe1791afe",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/pytest-dev/iniconfig/commits/6d0af4529e4375e49dc871aa3d5ce17fe1791afe",
+    "html_url": "https://github.com/pytest-dev/iniconfig/commit/6d0af4529e4375e49dc871aa3d5ce17fe1791afe",
+    "comments_url": "https://api.github.com/repos/pytest-dev/iniconfig/commits/6d0af4529e4375e49dc871aa3d5ce17fe1791afe/comments",
+    "author": {
+      "login": "RonnyPfannschmidt",
+      "id": 156838,
+      "node_id": "MDQ6VXNlcjE1NjgzOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156838?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/RonnyPfannschmidt",
+      "html_url": "https://github.com/RonnyPfannschmidt",
+      "followers_url": "https://api.github.com/users/RonnyPfannschmidt/followers",
+      "following_url": "https://api.github.com/users/RonnyPfannschmidt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/RonnyPfannschmidt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/RonnyPfannschmidt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/RonnyPfannschmidt/subscriptions",
+      "organizations_url": "https://api.github.com/users/RonnyPfannschmidt/orgs",
+      "repos_url": "https://api.github.com/users/RonnyPfannschmidt/repos",
+      "events_url": "https://api.github.com/users/RonnyPfannschmidt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/RonnyPfannschmidt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "RonnyPfannschmidt",
+      "id": 156838,
+      "node_id": "MDQ6VXNlcjE1NjgzOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156838?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/RonnyPfannschmidt",
+      "html_url": "https://github.com/RonnyPfannschmidt",
+      "followers_url": "https://api.github.com/users/RonnyPfannschmidt/followers",
+      "following_url": "https://api.github.com/users/RonnyPfannschmidt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/RonnyPfannschmidt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/RonnyPfannschmidt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/RonnyPfannschmidt/subscriptions",
+      "organizations_url": "https://api.github.com/users/RonnyPfannschmidt/orgs",
+      "repos_url": "https://api.github.com/users/RonnyPfannschmidt/repos",
+      "events_url": "https://api.github.com/users/RonnyPfannschmidt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/RonnyPfannschmidt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "e2d89f5283cbeb4b4ca55fe88b1c353c343b4972",
+        "url": "https://api.github.com/repos/pytest-dev/iniconfig/commits/e2d89f5283cbeb4b4ca55fe88b1c353c343b4972",
+        "html_url": "https://github.com/pytest-dev/iniconfig/commit/e2d89f5283cbeb4b4ca55fe88b1c353c343b4972"
+      }
+    ]
+  },
+  {
+    "sha": "58c08691bbb86aee8efbf73e37293dd6d65b68b4",
+    "node_id": "C_kwDOQE_UrdoAKDU4YzA4NjkxYmJiODZhZWU4ZWZiZjczZTM3MjkzZGQ2ZDY1YjY4YjQ",
+    "commit": {
+      "author": {
+        "name": "Ronny Pfannschmidt",
+        "email": "opensource@ronnypfannschmidt.de",
+        "date": "2025-10-18T21:47:45Z"
+      },
+      "committer": {
+        "name": "Ronny Pfannschmidt",
+        "email": "opensource@ronnypfannschmidt.de",
+        "date": "2025-10-18T21:47:45Z"
+      },
+      "message": "Refactor: Simplify IniConfig constructor and parse() method\n\nConsolidate __init__ to accept optional _sections and _sources parameters,\nallowing parse() to simply call the constructor.\n\nChanges:\n- Add _sections and _sources optional parameters to __init__\n- Compute sections and sources first, then assign once to Final attributes\n- When pre-parsed data provided, use it directly (called from parse())\n- Otherwise, parse the data normally (backward compatible path)\n- Simplify parse() to just call constructor with pre-parsed data\n\nThis makes the code cleaner and easier to understand while maintaining\nthe exact same functionality and backward compatibility.\n\nAll 49 tests pass.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>",
+      "tree": {
+        "sha": "737d0668e1a3028a9feedb730444da69f9396876",
+        "url": "https://api.github.com/repos/pytest-dev/iniconfig/git/trees/737d0668e1a3028a9feedb730444da69f9396876"
+      },
+      "url": "https://api.github.com/repos/pytest-dev/iniconfig/git/commits/58c08691bbb86aee8efbf73e37293dd6d65b68b4",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/pytest-dev/iniconfig/commits/58c08691bbb86aee8efbf73e37293dd6d65b68b4",
+    "html_url": "https://github.com/pytest-dev/iniconfig/commit/58c08691bbb86aee8efbf73e37293dd6d65b68b4",
+    "comments_url": "https://api.github.com/repos/pytest-dev/iniconfig/commits/58c08691bbb86aee8efbf73e37293dd6d65b68b4/comments",
+    "author": {
+      "login": "RonnyPfannschmidt",
+      "id": 156838,
+      "node_id": "MDQ6VXNlcjE1NjgzOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156838?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/RonnyPfannschmidt",
+      "html_url": "https://github.com/RonnyPfannschmidt",
+      "followers_url": "https://api.github.com/users/RonnyPfannschmidt/followers",
+      "following_url": "https://api.github.com/users/RonnyPfannschmidt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/RonnyPfannschmidt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/RonnyPfannschmidt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/RonnyPfannschmidt/subscriptions",
+      "organizations_url": "https://api.github.com/users/RonnyPfannschmidt/orgs",
+      "repos_url": "https://api.github.com/users/RonnyPfannschmidt/repos",
+      "events_url": "https://api.github.com/users/RonnyPfannschmidt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/RonnyPfannschmidt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "RonnyPfannschmidt",
+      "id": 156838,
+      "node_id": "MDQ6VXNlcjE1NjgzOA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156838?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/RonnyPfannschmidt",
+      "html_url": "https://github.com/RonnyPfannschmidt",
+      "followers_url": "https://api.github.com/users/RonnyPfannschmidt/followers",
+      "following_url": "https://api.github.com/users/RonnyPfannschmidt/following{/other_user}",
+      "gists_url": "https://api.github.com/users/RonnyPfannschmidt/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/RonnyPfannschmidt/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/RonnyPfannschmidt/subscriptions",
+      "organizations_url": "https://api.github.com/users/RonnyPfannschmidt/orgs",
+      "repos_url": "https://api.github.com/users/RonnyPfannschmidt/repos",
+      "events_url": "https://api.github.com/users/RonnyPfannschmidt/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/RonnyPfannschmidt/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "6d0af4529e4375e49dc871aa3d5ce17fe1791afe",
+        "url": "https://api.github.com/repos/pytest-dev/iniconfig/commits/6d0af4529e4375e49dc871aa3d5ce17fe1791afe",
+        "html_url": "https://github.com/pytest-dev/iniconfig/commit/6d0af4529e4375e49dc871aa3d5ce17fe1791afe"
+      }
+    ]
+  }
+]

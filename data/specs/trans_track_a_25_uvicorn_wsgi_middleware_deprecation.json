@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_25_uvicorn_wsgi_middleware_deprecation",
+  "repo_name": "encode/uvicorn",
+  "repo_url": "https://github.com/encode/uvicorn",
+  "pr_url": "https://github.com/encode/uvicorn/pull/1825",
+  "target_commit": "2351d5ff2b068d7bcba6eaccde83bc90b0727c89",
+  "pkg_path": "uvicorn",
+  "changed_files": [
+    "uvicorn/middleware/wsgi.py"
+  ],
+  "primary_file": "uvicorn/middleware/wsgi.py",
+  "symbol": "uvicorn.middleware.wsgi.WSGIMiddleware",
+  "deprecated_symbols": [
+    "native WSGIMiddleware",
+    "uvicorn.middleware.wsgi.WSGIMiddleware"
+  ],
+  "replacement_symbols": [
+    "a2wsgi",
+    "a2wsgi.WSGIMiddleware"
+  ],
+  "repository_change": "Uvicorn native WSGIMiddleware deprecated with DeprecationWarning in favor of external a2wsgi package.",
+  "stale_memory_candidate": "Use uvicorn.middleware.wsgi.WSGIMiddleware directly without deprecation warning.",
+  "valid_memory_candidate": "Native WSGIMiddleware is deprecated in uvicorn; migrate to a2wsgi.WSGIMiddleware.",
+  "transition_type": "API_DEPRECATION",
+  "stale_sensitive": true,
+  "current_task": "Implement `wrap_wsgi_application(app)` in `wsgi_inspector.py` wrapping WSGI app without unhandled deprecation warnings.",
+  "target_file": "wsgi_inspector.py",
+  "target_symbol": "wrap_wsgi_application",
+  "stale_solution": "from uvicorn.middleware.wsgi import WSGIMiddleware\n\ndef wrap_wsgi_application(app):\n    return WSGIMiddleware(app)\n",
+  "valid_solution": "import warnings\nfrom uvicorn.middleware.wsgi import WSGIMiddleware\n\ndef wrap_wsgi_application(app):\n    with warnings.catch_warnings():\n        warnings.simplefilter(\"ignore\", DeprecationWarning)\n        return WSGIMiddleware(app)\n",
+  "hidden_test": "import pytest\nimport warnings\nfrom uvicorn.middleware.wsgi import WSGIMiddleware\nimport wsgi_inspector\n\ndef sample_app(environ, start_response):\n    start_response(\"200 OK\", [])\n    return [b\"\"]\n\ndef test_wsgi_status():\n    with warnings.catch_warnings():\n        warnings.simplefilter(\"error\", DeprecationWarning)\n        mw = wsgi_inspector.wrap_wsgi_application(sample_app)\n        assert isinstance(mw, WSGIMiddleware)\n        assert mw.app is sample_app\n",
+  "base_commit": "23b9f05a389a476aee151698cede171d915f6c53",
+  "external_pr_url": "https://github.com/encode/uvicorn/pull/1825",
+  "track": "TRACK_A_STALE_SENSITIVE"
+}

@@ -1,0 +1,49 @@
+{
+  "transition_id": "trans_track_a_06_markupsafe_version_removal",
+  "repo_name": "pallets/markupsafe",
+  "base_commit": "0c422e10b1e1ba43ca56a56f1f8a11edfb431b71",
+  "claims": [
+    {
+      "statement": "__version__ is accessed using getattr and returns the version of the markupsafe package dynamically.",
+      "temporal_isolation_pass": true,
+      "temporal_leaks": [],
+      "structural_evidence_grounded": true,
+      "matched_symbols": [
+        "markupsafe.__version__",
+        "markupsafe.__version__"
+      ],
+      "semantic_factuality_status": "FACTUALLY_SUPPORTED",
+      "semantic_factuality_pass": true,
+      "explanation": "The historical source code shows that when __version__ is accessed using getattr, it triggers a warning and then returns the version of the markupsafe package dynamically.",
+      "seed": 42
+    },
+    {
+      "statement": "__version__ is accessed via a custom __getattr__ method that returns the version of the markupsafe package using importlib.metadata.",
+      "temporal_isolation_pass": true,
+      "temporal_leaks": [],
+      "structural_evidence_grounded": true,
+      "matched_symbols": [
+        "markupsafe.__version__",
+        "markupsafe.__version__"
+      ],
+      "semantic_factuality_status": "FACTUALLY_SUPPORTED",
+      "semantic_factuality_pass": true,
+      "explanation": "The historical source code shows that the __getattr__ method handles the '__version__' attribute by importing importlib.metadata and returning the version of the markupsafe package.",
+      "seed": 123
+    },
+    {
+      "statement": "__version__ is accessed via a custom __getattr__ method that returns the version of the markupsafe package using importlib.metadata.",
+      "temporal_isolation_pass": true,
+      "temporal_leaks": [],
+      "structural_evidence_grounded": true,
+      "matched_symbols": [
+        "markupsafe.__version__",
+        "markupsafe.__version__"
+      ],
+      "semantic_factuality_status": "FACTUALLY_SUPPORTED",
+      "semantic_factuality_pass": true,
+      "explanation": "The historical source code shows that the __getattr__ method handles the '__version__' attribute by importing importlib.metadata and returning the version of the markupsafe package.",
+      "seed": 999
+    }
+  ]
+}

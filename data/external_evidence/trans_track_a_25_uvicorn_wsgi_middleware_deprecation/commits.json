@@ -1,0 +1,1192 @@
+[
+  {
+    "sha": "0e4035894e4cacde2a8b50da767afb009a8bc676",
+    "node_id": "C_kwDOBYpCG9oAKDBlNDAzNTg5NGU0Y2FjZGUyYThiNTBkYTc2N2FmYjAwOWE4YmM2NzY",
+    "commit": {
+      "author": {
+        "name": "Humberto Rocha",
+        "email": "humrochagf@gmail.com",
+        "date": "2022-12-31T00:33:55Z"
+      },
+      "committer": {
+        "name": "Humberto Rocha",
+        "email": "humrochagf@gmail.com",
+        "date": "2023-01-06T13:14:57Z"
+      },
+      "message": "Replace current WSGIMiddleware implementation by a2wsgi one",
+      "tree": {
+        "sha": "5557a5465bb8aa062ebce553313442a4aa575d53",
+        "url": "https://api.github.com/repos/Kludex/uvicorn/git/trees/5557a5465bb8aa062ebce553313442a4aa575d53"
+      },
+      "url": "https://api.github.com/repos/Kludex/uvicorn/git/commits/0e4035894e4cacde2a8b50da767afb009a8bc676",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEEkZnBHsUDeJVlej7ZlSQbRIlqCfsFAmO4HtEACgkQlSQbRIlq\nCfswihAAgFUiW0nUBD1pgPNNJe6wAJR1QVFO2LPyJHWyFLNIXyAXWe/dAAtsv4pR\neP68n3AhcIYpxn6Fnr+n57Chdi3Np0Ws2UG+i0r9UvTkPTtbaQWZs9DKbRurhIG3\nB6xyF1Agm/F5B95ppE1rmDfSozf1j9QEH2YhiAlknGVUGuWrYOLCTSNXNfiWQH5a\n8pFWbg9q5PEgyveWBxG+Z4mePnniaVZrwi/o4kmCCcTe3Y0F8Eb7nSkDLy/waJWX\neLICDFLKY/hikhEcuTeEK7trspQnZ3nW/bkv2nJw2GGAYkVXeCeruAMQ4I3HhTbi\ngWzN8M4DjTql86PckfopAGZeH8lLWbMyh6m0H0v6Ia7vjEzuVh4xZ3/zHvbpNn5S\n/YjXPSGN0LK99hMA8f3OA++LNoCA2j2j/zp77sHlWixR0xFDRgWv8+96d5FGxydX\npUGMnPE0cN7KzO9Ejp0dg5kGnbvgY8OJRunBiPIzjVWXL2w7kiFgeaJpsIKJ16aW\nEq0Q0ojAio0PopkQLxQ2IXrqtRVXyKJotnCafFNaUDnPIsjpz6hTQ8Q2Khc2iCmZ\nZkRWuFrBjPP7EdlfY+/Cpnz4/khj6XI0wpjRig72Obl5Wfb2JDAENlzfzCye9bJ4\neogqJQEXxCbAlFiP8JHYRm7vbjydHg4M0OEftU0Zii33mWTP5j0=\n=0Ony\n-----END PGP SIGNATURE-----",
+        "payload": "tree 5557a5465bb8aa062ebce553313442a4aa575d53\nparent 23b9f05a389a476aee151698cede171d915f6c53\nauthor Humberto Rocha <humrochagf@gmail.com> 1672446835 -0500\ncommitter Humberto Rocha <humrochagf@gmail.com> 1673010897 -0500\n\nReplace current WSGIMiddleware implementation by a2wsgi one\n",
+        "verified_at": "2024-11-12T18:05:37Z"
+      }
+    },
+    "url": "https://api.github.com/repos/Kludex/uvicorn/commits/0e4035894e4cacde2a8b50da767afb009a8bc676",
+    "html_url": "https://github.com/Kludex/uvicorn/commit/0e4035894e4cacde2a8b50da767afb009a8bc676",
+    "comments_url": "https://api.github.com/repos/Kludex/uvicorn/commits/0e4035894e4cacde2a8b50da767afb009a8bc676/comments",
+    "author": {
+      "login": "humrochagf",
+      "id": 1223625,
+      "node_id": "MDQ6VXNlcjEyMjM2MjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1223625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/humrochagf",
+      "html_url": "https://github.com/humrochagf",
+      "followers_url": "https://api.github.com/users/humrochagf/followers",
+      "following_url": "https://api.github.com/users/humrochagf/following{/other_user}",
+      "gists_url": "https://api.github.com/users/humrochagf/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/humrochagf/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/humrochagf/subscriptions",
+      "organizations_url": "https://api.github.com/users/humrochagf/orgs",
+      "repos_url": "https://api.github.com/users/humrochagf/repos",
+      "events_url": "https://api.github.com/users/humrochagf/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/humrochagf/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "humrochagf",
+      "id": 1223625,
+      "node_id": "MDQ6VXNlcjEyMjM2MjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1223625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/humrochagf",
+      "html_url": "https://github.com/humrochagf",
+      "followers_url": "https://api.github.com/users/humrochagf/followers",
+      "following_url": "https://api.github.com/users/humrochagf/following{/other_user}",
+      "gists_url": "https://api.github.com/users/humrochagf/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/humrochagf/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/humrochagf/subscriptions",
+      "organizations_url": "https://api.github.com/users/humrochagf/orgs",
+      "repos_url": "https://api.github.com/users/humrochagf/repos",
+      "events_url": "https://api.github.com/users/humrochagf/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/humrochagf/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "23b9f05a389a476aee151698cede171d915f6c53",
+        "url": "https://api.github.com/repos/Kludex/uvicorn/commits/23b9f05a389a476aee151698cede171d915f6c53",
+        "html_url": "https://github.com/Kludex/uvicorn/commit/23b9f05a389a476aee151698cede171d915f6c53"
+      }
+    ]
+  },
+  {
+    "sha": "c0b5bddc0ee788088d5380a4954b5a8f285dfc48",
+    "node_id": "C_kwDOBYpCG9oAKGMwYjViZGRjMGVlNzg4MDg4ZDUzODBhNDk1NGI1YThmMjg1ZGZjNDg",
+    "commit": {
+      "author": {
+        "name": "Humberto Rocha",
+        "email": "humrochagf@gmail.com",
+        "date": "2023-01-06T13:14:12Z"
+      },
+      "committer": {
+        "name": "Humberto Rocha",
+        "email": "humrochagf@gmail.com",
+        "date": "2023-01-06T13:14:57Z"
+      },
+      "message": "Move a2wsgi to base dependencies and update docs accordingly",
+      "tree": {
+        "sha": "29d9ee0b144cf3c3cca24dae55f52e9637fc3781",
+        "url": "https://api.github.com/repos/Kludex/uvicorn/git/trees/29d9ee0b144cf3c3cca24dae55f52e9637fc3781"
+      },
+      "url": "https://api.github.com/repos/Kludex/uvicorn/git/commits/c0b5bddc0ee788088d5380a4954b5a8f285dfc48",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEEkZnBHsUDeJVlej7ZlSQbRIlqCfsFAmO4HtEACgkQlSQbRIlq\nCfsjpw//U+J+zScavh2IcRd12ByEts1zOT+WLW38KAAZwxuhP08Qbz79Cjz0XRuU\nWggqDObVhm2SeFx9Iqcp2Xc7oJ6XxYQ1SArCBfiBApx/Vk67EPKAN/UnfHeI75Iz\nEJbKqzp9Oq2z4EIvmjnwsFR8bJutAESruS9iWFEXvqJwKpBmu04bdfMAVU1HNMuW\n2t1j5W/fREUzCipu68O+1hQhKJWDXPWi6glU2ZPgYxVOEk3Xk7i/Gyc4IqkoWS17\n6Ki6n7uTEqScl15rDogqxw2i/wfzbahmYB6t7sHmYCd+geDqiE9ztk2XoKzDtfF0\ngsnHmCaAnYZ1jYNrwtYSsJ+0oE4uvLWA4FwqiXSEx20lGVMtpxo6J/1bdc8mWFmx\nzNMAMjx4hJ+zZUegOmxQac3iAcPV3XzowsfVZO5Z69W44qgunvsm/3f3EyLh/uEd\nl8l6JH5EU7jUo5Rsq5lUC+6iIX6r+N32EdLnq/WdD2svFqiMp5RiMf+06qRfBZRS\nHm1YnUvybmT+4nFQYCA4prggXfgMpOHKgV+wzLLwDHbG9iJzV0RgfqlQgVgKRVYD\nTX4hvC9FSxS9Syipo1Ziocsue1qoAEN3/Rv9CdUPsKmUMD70Q80Zb0dmUpc3W2aR\nXUXPBwe+sovodRXAURIdeySqbg4ITzih74iLiu6d7zmEyQGYs1s=\n=M3Kb\n-----END PGP SIGNATURE-----",
+        "payload": "tree 29d9ee0b144cf3c3cca24dae55f52e9637fc3781\nparent 0e4035894e4cacde2a8b50da767afb009a8bc676\nauthor Humberto Rocha <humrochagf@gmail.com> 1673010852 -0500\ncommitter Humberto Rocha <humrochagf@gmail.com> 1673010897 -0500\n\nMove a2wsgi to base dependencies and update docs accordingly\n",
+        "verified_at": "2024-11-12T18:05:37Z"
+      }
+    },
+    "url": "https://api.github.com/repos/Kludex/uvicorn/commits/c0b5bddc0ee788088d5380a4954b5a8f285dfc48",
+    "html_url": "https://github.com/Kludex/uvicorn/commit/c0b5bddc0ee788088d5380a4954b5a8f285dfc48",
+    "comments_url": "https://api.github.com/repos/Kludex/uvicorn/commits/c0b5bddc0ee788088d5380a4954b5a8f285dfc48/comments",
+    "author": {
+      "login": "humrochagf",
+      "id": 1223625,
+      "node_id": "MDQ6VXNlcjEyMjM2MjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1223625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/humrochagf",
+      "html_url": "https://github.com/humrochagf",
+      "followers_url": "https://api.github.com/users/humrochagf/followers",
+      "following_url": "https://api.github.com/users/humrochagf/following{/other_user}",
+      "gists_url": "https://api.github.com/users/humrochagf/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/humrochagf/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/humrochagf/subscriptions",
+      "organizations_url": "https://api.github.com/users/humrochagf/orgs",
+      "repos_url": "https://api.github.com/users/humrochagf/repos",
+      "events_url": "https://api.github.com/users/humrochagf/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/humrochagf/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "humrochagf",
+      "id": 1223625,
+      "node_id": "MDQ6VXNlcjEyMjM2MjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1223625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/humrochagf",
+      "html_url": "https://github.com/humrochagf",
+      "followers_url": "https://api.github.com/users/humrochagf/followers",
+      "following_url": "https://api.github.com/users/humrochagf/following{/other_user}",
+      "gists_url": "https://api.github.com/users/humrochagf/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/humrochagf/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/humrochagf/subscriptions",
+      "organizations_url": "https://api.github.com/users/humrochagf/orgs",
+      "repos_url": "https://api.github.com/users/humrochagf/repos",
+      "events_url": "https://api.github.com/users/humrochagf/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/humrochagf/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "0e4035894e4cacde2a8b50da767afb009a8bc676",
+        "url": "https://api.github.com/repos/Kludex/uvicorn/commits/0e4035894e4cacde2a8b50da767afb009a8bc676",
+        "html_url": "https://github.com/Kludex/uvicorn/commit/0e4035894e4cacde2a8b50da767afb009a8bc676"
+      }
+    ]
+  },
+  {
+    "sha": "c5b071f8e777710f199e92a4abe363478b995ff7",
+    "node_id": "C_kwDOBYpCG9oAKGM1YjA3MWY4ZTc3NzcxMGYxOTllOTJhNGFiZTM2MzQ3OGI5OTVmZjc",
+    "commit": {
+      "author": {
+        "name": "Humberto Rocha",
+        "email": "humrochagf@gmail.com",
+        "date": "2023-01-08T01:08:54Z"
+      },
+      "committer": {
+        "name": "Humberto Rocha",
+        "email": "humrochagf@gmail.com",
+        "date": "2023-01-08T01:08:54Z"
+      },
+      "message": "Revert wsgi removal",
+      "tree": {
+        "sha": "6f1176759046d8aa00552eb8379e699621823818",
+        "url": "https://api.github.com/repos/Kludex/uvicorn/git/trees/6f1176759046d8aa00552eb8379e699621823818"
+      },
+      "url": "https://api.github.com/repos/Kludex/uvicorn/git/commits/c5b071f8e777710f199e92a4abe363478b995ff7",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIyBAABCgAdFiEEkZnBHsUDeJVlej7ZlSQbRIlqCfsFAmO6F6YACgkQlSQbRIlq\nCftp1Q/47iOhfMvK0M4D0nLMX8Cfgxgf/9DWMlZg6kCpuZhrvC2Dgm3u9jI6gMRy\njsWA6MSpbYuyo8DV8Y3phejQkrlsOTzB+mz8ofej0OX7GVAF1U69Fl3V76qS/QDH\n0p3lL65Px3x9pXD7q+W/7V8HvjLmtjTartLUMIsBTcZq7C286nDLgGQoqBQBWMNf\nblr6oc/RZAzDDlCtkUH4YExQzsjrDaJkKB4O3wcW8rE4/+mqAdo7L1Sm8PXK0gqp\nNChJdDiXOIR18MGR9GDYQgfFswoG23q42S7QmLwzFwWO9z4iTOSKgjoHYEvZQQn4\nD5ppjB2iTJx0Y+5VXEN+PaOKRExM+tz+Itk5jluUplWMnhW8T5vGhCDsbtdwLbQT\nYVCW/Ty5m1vzsU2WwDLTW+Xwb0iBNSkDrMa4cXeuj3wBjVnFUXW081iwE2kcnax0\nfm5HS5ahWRNEC+jCrfr7PiS240ubC6BrBLS2UMPINQewQ+ngVixRv8XqfWSiOYKU\nYaLkbxW63MvBxuoCHUIYt7i1fSMoXMGeIHXoGXK8XpEW7rkS9VUuKpe8+KLf8lm8\n2nq0Lth2iwG/kgvJa5WOhNElDdr/VUhR8b5qKSYwm2bkoGoOTn/JOZOh+TRH4T56\nAZ8vqMN2zbV3GlPeJ56ImoKBEngDp4ayk3H6WVpm7Os0ZYyJ+g==\n=S6DF\n-----END PGP SIGNATURE-----",
+        "payload": "tree 6f1176759046d8aa00552eb8379e699621823818\nparent c0b5bddc0ee788088d5380a4954b5a8f285dfc48\nauthor Humberto Rocha <humrochagf@gmail.com> 1673140134 -0500\ncommitter Humberto Rocha <humrochagf@gmail.com> 1673140134 -0500\n\nRevert wsgi removal\n",
+        "verified_at": "2024-11-12T18:05:37Z"
+      }
+    },
+    "url": "https://api.github.com/repos/Kludex/uvicorn/commits/c5b071f8e777710f199e92a4abe363478b995ff7",
+    "html_url": "https://github.com/Kludex/uvicorn/commit/c5b071f8e777710f199e92a4abe363478b995ff7",
+    "comments_url": "https://api.github.com/repos/Kludex/uvicorn/commits/c5b071f8e777710f199e92a4abe363478b995ff7/comments",
+    "author": {
+      "login": "humrochagf",
+      "id": 1223625,
+      "node_id": "MDQ6VXNlcjEyMjM2MjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1223625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/humrochagf",
+      "html_url": "https://github.com/humrochagf",
+      "followers_url": "https://api.github.com/users/humrochagf/followers",
+      "following_url": "https://api.github.com/users/humrochagf/following{/other_user}",
+      "gists_url": "https://api.github.com/users/humrochagf/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/humrochagf/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/humrochagf/subscriptions",
+      "organizations_url": "https://api.github.com/users/humrochagf/orgs",
+      "repos_url": "https://api.github.com/users/humrochagf/repos",
+      "events_url": "https://api.github.com/users/humrochagf/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/humrochagf/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "humrochagf",
+      "id": 1223625,
+      "node_id": "MDQ6VXNlcjEyMjM2MjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1223625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/humrochagf",
+      "html_url": "https://github.com/humrochagf",
+      "followers_url": "https://api.github.com/users/humrochagf/followers",
+      "following_url": "https://api.github.com/users/humrochagf/following{/other_user}",
+      "gists_url": "https://api.github.com/users/humrochagf/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/humrochagf/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/humrochagf/subscriptions",
+      "organizations_url": "https://api.github.com/users/humrochagf/orgs",
+      "repos_url": "https://api.github.com/users/humrochagf/repos",
+      "events_url": "https://api.github.com/users/humrochagf/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/humrochagf/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "c0b5bddc0ee788088d5380a4954b5a8f285dfc48",
+        "url": "https://api.github.com/repos/Kludex/uvicorn/commits/c0b5bddc0ee788088d5380a4954b5a8f285dfc48",
+        "html_url": "https://github.com/Kludex/uvicorn/commit/c0b5bddc0ee788088d5380a4954b5a8f285dfc48"
+      }
+    ]
+  },
+  {
+    "sha": "f91bc3679d3308df4d80d3b0678f86eda5c07df0",
+    "node_id": "C_kwDOBYpCG9oAKGY5MWJjMzY3OWQzMzA4ZGY0ZDgwZDNiMDY3OGY4NmVkYTVjMDdkZjA",
+    "commit": {
+      "author": {
+        "name": "Humberto Rocha",
+        "email": "humrochagf@gmail.com",
+        "date": "2023-01-08T13:41:08Z"
+      },
+      "committer": {
+        "name": "Humberto Rocha",
+        "email": "humrochagf@gmail.com",
+        "date": "2023-01-08T13:41:08Z"
+      },
+      "message": "Revert tests and deprecate WSGIMiddleware",
+      "tree": {
+        "sha": "faac1cc51401c943d143d2d59ae3dd6714e591ba",
+        "url": "https://api.github.com/repos/Kludex/uvicorn/git/trees/faac1cc51401c943d143d2d59ae3dd6714e591ba"
+      },
+      "url": "https://api.github.com/repos/Kludex/uvicorn/git/commits/f91bc3679d3308df4d80d3b0678f86eda5c07df0",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEEkZnBHsUDeJVlej7ZlSQbRIlqCfsFAmO6x/QACgkQlSQbRIlq\nCfvJzQ//Vz/6vOeRElctUR9bbIDVbLj+vDHRf3fjEmALN+OYJJsICJ9+ax5nlaUy\nmzro+tJYmMREUpOTj3XrFQkcYdmHDKM8VILskeV+3VaiQmCjwMXXChPxG06twXwJ\nb3ipJyYV0sE0dCd+7p7p8/H7LJH1WiI4hgmTorXb87bSR3crJEGEhVo4ZeLHL3tZ\n5jbIEgHQbx/VdJK/LPBVx7UKBSlxFBYrkCJJWgqpDeQ2pNnx7BGMcDaXPxR46FY3\nUzu1dhxe/M7xjlNbJIxwRKXb3xTdYZ/TW9rVLiNSOh733NfPJ+DN8YEfucO5Wios\nYkCAdOxak0ZKZeQ0b8i7bcmn23ApHwR44ToZ1BT9hkPQGqUNkCLFGzLR5JGRngx1\nDtTPM2Ir483jCCdAW4iW4L7MhY4VFtkqI127HvhjghPHa06M70/lPgQL1DZlL5eu\nvw2/NalZUxIwkQAUMO1qMvXsIlLY1WHkg4ucBok1zCEVXIfh5leiUuiZEseHbhpY\n83PhVoNnIcuRr7Kp8D6Sw1wMchCrgKWbPKzU7eAY5h4vRtp1QzZ+BF/4yLdeP8vO\n7HY4NAn3MTNx2p0BiuEDKDecMiutoQ//leX52QOzeg3l5fu5MeF6YVi9lbx8Yeew\naJszn9sQD7MkvnC2c6z0txB3+uGCaVETOL26/anOnueuW4pa4Nc=\n=KH/M\n-----END PGP SIGNATURE-----",
+        "payload": "tree faac1cc51401c943d143d2d59ae3dd6714e591ba\nparent c5b071f8e777710f199e92a4abe363478b995ff7\nauthor Humberto Rocha <humrochagf@gmail.com> 1673185268 -0500\ncommitter Humberto Rocha <humrochagf@gmail.com> 1673185268 -0500\n\nRevert tests and deprecate WSGIMiddleware\n",
+        "verified_at": "2024-11-12T18:05:37Z"
+      }
+    },
+    "url": "https://api.github.com/repos/Kludex/uvicorn/commits/f91bc3679d3308df4d80d3b0678f86eda5c07df0",
+    "html_url": "https://github.com/Kludex/uvicorn/commit/f91bc3679d3308df4d80d3b0678f86eda5c07df0",
+    "comments_url": "https://api.github.com/repos/Kludex/uvicorn/commits/f91bc3679d3308df4d80d3b0678f86eda5c07df0/comments",
+    "author": {
+      "login": "humrochagf",
+      "id": 1223625,
+      "node_id": "MDQ6VXNlcjEyMjM2MjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1223625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/humrochagf",
+      "html_url": "https://github.com/humrochagf",
+      "followers_url": "https://api.github.com/users/humrochagf/followers",
+      "following_url": "https://api.github.com/users/humrochagf/following{/other_user}",
+      "gists_url": "https://api.github.com/users/humrochagf/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/humrochagf/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/humrochagf/subscriptions",
+      "organizations_url": "https://api.github.com/users/humrochagf/orgs",
+      "repos_url": "https://api.github.com/users/humrochagf/repos",
+      "events_url": "https://api.github.com/users/humrochagf/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/humrochagf/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "humrochagf",
+      "id": 1223625,
+      "node_id": "MDQ6VXNlcjEyMjM2MjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1223625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/humrochagf",
+      "html_url": "https://github.com/humrochagf",
+      "followers_url": "https://api.github.com/users/humrochagf/followers",
+      "following_url": "https://api.github.com/users/humrochagf/following{/other_user}",
+      "gists_url": "https://api.github.com/users/humrochagf/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/humrochagf/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/humrochagf/subscriptions",
+      "organizations_url": "https://api.github.com/users/humrochagf/orgs",
+      "repos_url": "https://api.github.com/users/humrochagf/repos",
+      "events_url": "https://api.github.com/users/humrochagf/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/humrochagf/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "c5b071f8e777710f199e92a4abe363478b995ff7",
+        "url": "https://api.github.com/repos/Kludex/uvicorn/commits/c5b071f8e777710f199e92a4abe363478b995ff7",
+        "html_url": "https://github.com/Kludex/uvicorn/commit/c5b071f8e777710f199e92a4abe363478b995ff7"
+      }
+    ]
+  },
+  {
+    "sha": "1c9a510cf9cd03f5829d3c00f5288e7f18bc35b4",
+    "node_id": "C_kwDOBYpCG9oAKDFjOWE1MTBjZjljZDAzZjU4MjlkM2MwMGY1Mjg4ZTdmMThiYzM1YjQ",
+    "commit": {
+      "author": {
+        "name": "Humberto Rocha",
+        "email": "humrochagf@gmail.com",
+        "date": "2023-01-08T14:24:43Z"
+      },
+      "committer": {
+        "name": "Humberto Rocha",
+        "email": "humrochagf@gmail.com",
+        "date": "2023-01-08T14:24:43Z"
+      },
+      "message": "Update tests to validate lib and non lib cases",
+      "tree": {
+        "sha": "787efc6a1096726c9bfb6a49bdf2124eb4ade5ef",
+        "url": "https://api.github.com/repos/Kludex/uvicorn/git/trees/787efc6a1096726c9bfb6a49bdf2124eb4ade5ef"
+      },
+      "url": "https://api.github.com/repos/Kludex/uvicorn/git/commits/1c9a510cf9cd03f5829d3c00f5288e7f18bc35b4",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEEkZnBHsUDeJVlej7ZlSQbRIlqCfsFAmO60isACgkQlSQbRIlq\nCfsFLw//XwiwmjChrAi1pptqOHbpG7odd7UayBpR2zC3ykT9k74BEGxjij8CXak2\n5iCzRhLLH3szKX1dukPiDN9jkge82SL/QRB/7rX3yMy506KdA5ueCVBIL2ZDxmKz\nd+9xFTGMPhYKuMynT4gn52USc5A62h1ll39XJHnvHmQZF1E5p/A70wErMP+gX41D\nlOXTeCRXqiVEWHt6AmBXh4zCN8Ts45bpiGmhDq5zHoR9XGzPZDR/eSfYczPjAoV+\nLCI2dGF9xb3FjKna+Dw8jBFerst2ti/liOyLBNJsiHngmEvjwVUpp6hOtSKoZ7BZ\nK5ANjfIxWWxi7s1piDc+Xo+CwXt0M1tBileKE89tGIX47IN+bJyAMIHwgr1sbzSz\nrX6stZh331NXe/n8Ci6lV1eHV97q3+8S1+40JRnLLc6MWVtw89e+I3xlU/hDDLzw\nMtBObEJPu0uz/QWA9CW1BmOypSycp9Ry9LmopTeVoRMB42WkXNL+XZoHOJ4eKuCK\nv8E47jbqrbE7QT17NB0hCLG6UuUD6te8A3t++Tda7ewmIHWsK7RBpLlI6J8u1YLI\nw2GF9Pu7EhIqvscWPe0otChaDktmPxPlOSr05OIT4wnrxC+60N5tx+1Fw2LXsv32\nrpFWchZQ6NHNzLQABFKJ7a5KbUO9h+BxwaaKrxfWqgNGgX4EyBE=\n=sn1f\n-----END PGP SIGNATURE-----",
+        "payload": "tree 787efc6a1096726c9bfb6a49bdf2124eb4ade5ef\nparent f91bc3679d3308df4d80d3b0678f86eda5c07df0\nauthor Humberto Rocha <humrochagf@gmail.com> 1673187883 -0500\ncommitter Humberto Rocha <humrochagf@gmail.com> 1673187883 -0500\n\nUpdate tests to validate lib and non lib cases\n",
+        "verified_at": "2024-11-12T18:05:37Z"
+      }
+    },
+    "url": "https://api.github.com/repos/Kludex/uvicorn/commits/1c9a510cf9cd03f5829d3c00f5288e7f18bc35b4",
+    "html_url": "https://github.com/Kludex/uvicorn/commit/1c9a510cf9cd03f5829d3c00f5288e7f18bc35b4",
+    "comments_url": "https://api.github.com/repos/Kludex/uvicorn/commits/1c9a510cf9cd03f5829d3c00f5288e7f18bc35b4/comments",
+    "author": {
+      "login": "humrochagf",
+      "id": 1223625,
+      "node_id": "MDQ6VXNlcjEyMjM2MjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1223625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/humrochagf",
+      "html_url": "https://github.com/humrochagf",
+      "followers_url": "https://api.github.com/users/humrochagf/followers",
+      "following_url": "https://api.github.com/users/humrochagf/following{/other_user}",
+      "gists_url": "https://api.github.com/users/humrochagf/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/humrochagf/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/humrochagf/subscriptions",
+      "organizations_url": "https://api.github.com/users/humrochagf/orgs",
+      "repos_url": "https://api.github.com/users/humrochagf/repos",
+      "events_url": "https://api.github.com/users/humrochagf/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/humrochagf/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "humrochagf",
+      "id": 1223625,
+      "node_id": "MDQ6VXNlcjEyMjM2MjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1223625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/humrochagf",
+      "html_url": "https://github.com/humrochagf",
+      "followers_url": "https://api.github.com/users/humrochagf/followers",
+      "following_url": "https://api.github.com/users/humrochagf/following{/other_user}",
+      "gists_url": "https://api.github.com/users/humrochagf/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/humrochagf/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/humrochagf/subscriptions",
+      "organizations_url": "https://api.github.com/users/humrochagf/orgs",
+      "repos_url": "https://api.github.com/users/humrochagf/repos",
+      "events_url": "https://api.github.com/users/humrochagf/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/humrochagf/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "f91bc3679d3308df4d80d3b0678f86eda5c07df0",
+        "url": "https://api.github.com/repos/Kludex/uvicorn/commits/f91bc3679d3308df4d80d3b0678f86eda5c07df0",
+        "html_url": "https://github.com/Kludex/uvicorn/commit/f91bc3679d3308df4d80d3b0678f86eda5c07df0"
+      }
+    ]
+  },
+  {
+    "sha": "27edaddba33c412012d297e4fed238bd1cc055f8",
+    "node_id": "C_kwDOBYpCG9oAKDI3ZWRhZGRiYTMzYzQxMjAxMmQyOTdlNGZlZDIzOGJkMWNjMDU1Zjg",
+    "commit": {
+      "author": {
+        "name": "Humberto Rocha",
+        "email": "humrochagf@gmail.com",
+        "date": "2023-01-08T14:26:31Z"
+      },
+      "committer": {
+        "name": "Humberto Rocha",
+        "email": "humrochagf@gmail.com",
+        "date": "2023-01-08T14:26:31Z"
+      },
+      "message": "Add a2wsgi to testing requirements",
+      "tree": {
+        "sha": "53f73cab1ba050da95ae66c1e3ec92a47ee82bf6",
+        "url": "https://api.github.com/repos/Kludex/uvicorn/git/trees/53f73cab1ba050da95ae66c1e3ec92a47ee82bf6"
+      },
+      "url": "https://api.github.com/repos/Kludex/uvicorn/git/commits/27edaddba33c412012d297e4fed238bd1cc055f8",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEEkZnBHsUDeJVlej7ZlSQbRIlqCfsFAmO60pcACgkQlSQbRIlq\nCfsKYg//UabN0dRxe82bq24myXU6gSgYGLGYt8X2aBPpp0nW+8KMvac8D060JXCc\nSw+tHUV5kUdStypphlJQ+CK28NnjIP6T3O+sevGSF570gD0x/ogi87PTgHw7FncE\n7I+wpTq3hs2Bz8xHa8gB4/R7YwMsW1N7xXJW9KPqLlqkgozjXYSjOdq5CWFeU4rQ\nPzxsW1PBGLh71SKa+ef95L91eXK0kpZX/Rd3DnoUS5qfe4G4zncE48827XavVwff\nX+gFNUcjnMEPPzJtK6vUIRuIdWeP8IqtkdiWdwy9qLchDAN+yCozgWaSYCJcqJZB\nyxsqu2a391vslh3sGjjxoSRZy3rqOVSYYnepvHYwkHXEnbO8yuetvTMyaZwRdMVM\nBf8rk0oBdkKzq3o6rMozJJ54ICOZQQx3UWxV6gimdrI9iNZipxpu9rwamDk/Pb94\nn8LjNuJRRBakipNKd/R0LsuQ/Ir73I2mpollz2GGPFBrkE+JBxB6yR28tXRiBJjp\ner01a8FrTwePN5f0GZ1nJegF5wwKze6gryMqDUh37Tb/RBRhcHaKUcJt1ac/TKOe\nU681ryO+y6nx1Vjxw+p4yZPMW6BZy/APrmfLPNzXA/IobnWfRqHtx2YiuctZ558I\nbIJzwIryMvmfGDz2L29VhijPvUzIh0KdOIfyjJzOAW+vTewr/zo=\n=PzE/\n-----END PGP SIGNATURE-----",
+        "payload": "tree 53f73cab1ba050da95ae66c1e3ec92a47ee82bf6\nparent 1c9a510cf9cd03f5829d3c00f5288e7f18bc35b4\nauthor Humberto Rocha <humrochagf@gmail.com> 1673187991 -0500\ncommitter Humberto Rocha <humrochagf@gmail.com> 1673187991 -0500\n\nAdd a2wsgi to testing requirements\n",
+        "verified_at": "2024-11-12T18:05:37Z"
+      }
+    },
+    "url": "https://api.github.com/repos/Kludex/uvicorn/commits/27edaddba33c412012d297e4fed238bd1cc055f8",
+    "html_url": "https://github.com/Kludex/uvicorn/commit/27edaddba33c412012d297e4fed238bd1cc055f8",
+    "comments_url": "https://api.github.com/repos/Kludex/uvicorn/commits/27edaddba33c412012d297e4fed238bd1cc055f8/comments",
+    "author": {
+      "login": "humrochagf",
+      "id": 1223625,
+      "node_id": "MDQ6VXNlcjEyMjM2MjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1223625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/humrochagf",
+      "html_url": "https://github.com/humrochagf",
+      "followers_url": "https://api.github.com/users/humrochagf/followers",
+      "following_url": "https://api.github.com/users/humrochagf/following{/other_user}",
+      "gists_url": "https://api.github.com/users/humrochagf/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/humrochagf/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/humrochagf/subscriptions",
+      "organizations_url": "https://api.github.com/users/humrochagf/orgs",
+      "repos_url": "https://api.github.com/users/humrochagf/repos",
+      "events_url": "https://api.github.com/users/humrochagf/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/humrochagf/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "humrochagf",
+      "id": 1223625,
+      "node_id": "MDQ6VXNlcjEyMjM2MjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1223625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/humrochagf",
+      "html_url": "https://github.com/humrochagf",
+      "followers_url": "https://api.github.com/users/humrochagf/followers",
+      "following_url": "https://api.github.com/users/humrochagf/following{/other_user}",
+      "gists_url": "https://api.github.com/users/humrochagf/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/humrochagf/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/humrochagf/subscriptions",
+      "organizations_url": "https://api.github.com/users/humrochagf/orgs",
+      "repos_url": "https://api.github.com/users/humrochagf/repos",
+      "events_url": "https://api.github.com/users/humrochagf/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/humrochagf/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "1c9a510cf9cd03f5829d3c00f5288e7f18bc35b4",
+        "url": "https://api.github.com/repos/Kludex/uvicorn/commits/1c9a510cf9cd03f5829d3c00f5288e7f18bc35b4",
+        "html_url": "https://github.com/Kludex/uvicorn/commit/1c9a510cf9cd03f5829d3c00f5288e7f18bc35b4"
+      }
+    ]
+  },
+  {
+    "sha": "124946c4031fb715dbe421611560d0a5482edf3d",
+    "node_id": "C_kwDOBYpCG9oAKDEyNDk0NmM0MDMxZmI3MTVkYmU0MjE2MTE1NjBkMGE1NDgyZWRmM2Q",
+    "commit": {
+      "author": {
+        "name": "Humberto Rocha",
+        "email": "humrochagf@gmail.com",
+        "date": "2023-01-08T14:28:32Z"
+      },
+      "committer": {
+        "name": "Humberto Rocha",
+        "email": "humrochagf@gmail.com",
+        "date": "2023-01-08T14:28:32Z"
+      },
+      "message": "Fix typo in requirements",
+      "tree": {
+        "sha": "c521a41339d59eabb3f9b7f5a9d69656967839c8",
+        "url": "https://api.github.com/repos/Kludex/uvicorn/git/trees/c521a41339d59eabb3f9b7f5a9d69656967839c8"
+      },
+      "url": "https://api.github.com/repos/Kludex/uvicorn/git/commits/124946c4031fb715dbe421611560d0a5482edf3d",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEEkZnBHsUDeJVlej7ZlSQbRIlqCfsFAmO60xAACgkQlSQbRIlq\nCfs01w/+LB6BC+N6P/yZfxzQ6RwuYslRZtC4fUYOwquGOXwReCIdDV36dsnIaom0\n4w4rLQ4rd8rAOuGfOD2S00XRJYO99Bp5mmfQFzXMth/1a3h6Y8gMLgmylclusXjG\nVLbF2BkpXyU8a9tDYwYFT4Uqv+3ErrbN+jm60gpDvu2a+wlormE1+OAQ9QEQAMCc\nO32PNv2mNPBQklhCdORVpAJB/E3M7xuYye0Tu4+RFFdKPheiNMyIBBEMioO3T0gD\nCVXIyUck7BqnNt8fw4c9Nvi3EC15lV5pp0ZnPiPMABnSmlDdTJfI9yFws9F9PZ2Z\nl09Y45qMxACGQMimTCx1EuXhgfeBCT/jApHPTKVQKZrog1HTtlLzygJowkSM3e6m\nCqTWh1gnON3d3p6KXauiQuT6FeAtEVqHPxuWaM8CHdyidO9KoOJAaSE0KGEb2cGV\nkr31vHFvFRUSkWg+ScwRjpvzmWV07ioUF/zHAhjcNHaLeFbBigqTkw4bQCtvqEB4\nBWdo1qoffq6XDfFGXIT3RDXJQiF8sWjWOqFsUuMEjpJ0WDKCaC0LZ/5OWX+QiCoE\nY7LXcGW+ropIFdBf80HDe6XRIdKsyOa7vnB3BQR4d3TgUDeBUJeK7cR2TJ7N3980\nyPeU8rRYLdmIty2ZTu+6dnWpIzXN6ZGuZKesIjRVuqI7nkhXB7o=\n=GXgD\n-----END PGP SIGNATURE-----",
+        "payload": "tree c521a41339d59eabb3f9b7f5a9d69656967839c8\nparent 27edaddba33c412012d297e4fed238bd1cc055f8\nauthor Humberto Rocha <humrochagf@gmail.com> 1673188112 -0500\ncommitter Humberto Rocha <humrochagf@gmail.com> 1673188112 -0500\n\nFix typo in requirements\n",
+        "verified_at": "2024-11-12T18:05:37Z"
+      }
+    },
+    "url": "https://api.github.com/repos/Kludex/uvicorn/commits/124946c4031fb715dbe421611560d0a5482edf3d",
+    "html_url": "https://github.com/Kludex/uvicorn/commit/124946c4031fb715dbe421611560d0a5482edf3d",
+    "comments_url": "https://api.github.com/repos/Kludex/uvicorn/commits/124946c4031fb715dbe421611560d0a5482edf3d/comments",
+    "author": {
+      "login": "humrochagf",
+      "id": 1223625,
+      "node_id": "MDQ6VXNlcjEyMjM2MjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1223625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/humrochagf",
+      "html_url": "https://github.com/humrochagf",
+      "followers_url": "https://api.github.com/users/humrochagf/followers",
+      "following_url": "https://api.github.com/users/humrochagf/following{/other_user}",
+      "gists_url": "https://api.github.com/users/humrochagf/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/humrochagf/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/humrochagf/subscriptions",
+      "organizations_url": "https://api.github.com/users/humrochagf/orgs",
+      "repos_url": "https://api.github.com/users/humrochagf/repos",
+      "events_url": "https://api.github.com/users/humrochagf/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/humrochagf/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "humrochagf",
+      "id": 1223625,
+      "node_id": "MDQ6VXNlcjEyMjM2MjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1223625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/humrochagf",
+      "html_url": "https://github.com/humrochagf",
+      "followers_url": "https://api.github.com/users/humrochagf/followers",
+      "following_url": "https://api.github.com/users/humrochagf/following{/other_user}",
+      "gists_url": "https://api.github.com/users/humrochagf/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/humrochagf/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/humrochagf/subscriptions",
+      "organizations_url": "https://api.github.com/users/humrochagf/orgs",
+      "repos_url": "https://api.github.com/users/humrochagf/repos",
+      "events_url": "https://api.github.com/users/humrochagf/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/humrochagf/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "27edaddba33c412012d297e4fed238bd1cc055f8",
+        "url": "https://api.github.com/repos/Kludex/uvicorn/commits/27edaddba33c412012d297e4fed238bd1cc055f8",
+        "html_url": "https://github.com/Kludex/uvicorn/commit/27edaddba33c412012d297e4fed238bd1cc055f8"
+      }
+    ]
+  },
+  {
+    "sha": "da713f315c25af69d1a1bf27ea527523fb1a5c8b",
+    "node_id": "C_kwDOBYpCG9oAKGRhNzEzZjMxNWMyNWFmNjlkMWExYmYyN2VhNTI3NTIzZmIxYTVjOGI",
+    "commit": {
+      "author": {
+        "name": "Humberto Rocha",
+        "email": "humrochagf@gmail.com",
+        "date": "2023-01-08T15:02:31Z"
+      },
+      "committer": {
+        "name": "Humberto Rocha",
+        "email": "humrochagf@gmail.com",
+        "date": "2023-01-08T15:02:31Z"
+      },
+      "message": "Add deprecation warning",
+      "tree": {
+        "sha": "16533b9f62f3565eb9757418dbd6bedc61025510",
+        "url": "https://api.github.com/repos/Kludex/uvicorn/git/trees/16533b9f62f3565eb9757418dbd6bedc61025510"
+      },
+      "url": "https://api.github.com/repos/Kludex/uvicorn/git/commits/da713f315c25af69d1a1bf27ea527523fb1a5c8b",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEEkZnBHsUDeJVlej7ZlSQbRIlqCfsFAmO62wcACgkQlSQbRIlq\nCfucEA//RMOHiy1wqHAN8Yb8qDWM3ga5+lg+z5fsVHa+iDKNmdIFUBpUei82Dlsr\nbavIMq61y05DJj2cTrJIunoGUATp3fHmH/7z6Tr+iZ4tj7+sQs0DDRoMwAww+A2L\nuTsXyGw8EB+cV84RH8zJJo6SBH8HzcN7XHq6u7dn+oWGeMyOJHs6zmq8AK0jGi9D\nuKjH2Gc6bIRtOzemIgHqyR3cLfM5GYX/rxiE9tWkIL7oOgHs1MkEHBQoxSPAA4Hl\nnf4qHLFAACmlVE7hd/vQY7Y9jR+6NPlYZQyEBDQVCvy/FZ0qR3TiW/y+CPtmvVGz\ntcnQNk/w6fVYvzmB+uxtGqamCHUt6q+wxPoqqWmj5txjk64EmUkCnf/6lp2zAFmx\nmfOoXK3G6LQ3jk3XKrc2z9oL81JqcqClycHrBeEGjFgMJPpuAApKjUL2p2bkXgdx\nc7WCowgYBXFWTZm7u59H3eRs0/4LtTFnTmG4wI8qy4px4JySx7nBXneghfe7DGgk\nzTCdv+mqbELo8Pi5lC3mIXTYxBWQQCJz8Ze6PAGYmX2D7RhPw9ZGq9qVljBLduJw\nzNTOskZKsZyRB5LnsdqPgn0FRSQg/qdrxDnx1zXTjA1zEail5eZN3W+oxYrksXHW\nz9TVsVbqmlugQtxDY2nv4zOTQ1tpUK9lPx1JBMOy5lxj4MTWgME=\n=1UZh\n-----END PGP SIGNATURE-----",
+        "payload": "tree 16533b9f62f3565eb9757418dbd6bedc61025510\nparent 124946c4031fb715dbe421611560d0a5482edf3d\nauthor Humberto Rocha <humrochagf@gmail.com> 1673190151 -0500\ncommitter Humberto Rocha <humrochagf@gmail.com> 1673190151 -0500\n\nAdd deprecation warning\n",
+        "verified_at": "2024-11-12T18:05:37Z"
+      }
+    },
+    "url": "https://api.github.com/repos/Kludex/uvicorn/commits/da713f315c25af69d1a1bf27ea527523fb1a5c8b",
+    "html_url": "https://github.com/Kludex/uvicorn/commit/da713f315c25af69d1a1bf27ea527523fb1a5c8b",
+    "comments_url": "https://api.github.com/repos/Kludex/uvicorn/commits/da713f315c25af69d1a1bf27ea527523fb1a5c8b/comments",
+    "author": {
+      "login": "humrochagf",
+      "id": 1223625,
+      "node_id": "MDQ6VXNlcjEyMjM2MjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1223625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/humrochagf",
+      "html_url": "https://github.com/humrochagf",
+      "followers_url": "https://api.github.com/users/humrochagf/followers",
+      "following_url": "https://api.github.com/users/humrochagf/following{/other_user}",
+      "gists_url": "https://api.github.com/users/humrochagf/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/humrochagf/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/humrochagf/subscriptions",
+      "organizations_url": "https://api.github.com/users/humrochagf/orgs",
+      "repos_url": "https://api.github.com/users/humrochagf/repos",
+      "events_url": "https://api.github.com/users/humrochagf/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/humrochagf/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "humrochagf",
+      "id": 1223625,
+      "node_id": "MDQ6VXNlcjEyMjM2MjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1223625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/humrochagf",
+      "html_url": "https://github.com/humrochagf",
+      "followers_url": "https://api.github.com/users/humrochagf/followers",
+      "following_url": "https://api.github.com/users/humrochagf/following{/other_user}",
+      "gists_url": "https://api.github.com/users/humrochagf/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/humrochagf/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/humrochagf/subscriptions",
+      "organizations_url": "https://api.github.com/users/humrochagf/orgs",
+      "repos_url": "https://api.github.com/users/humrochagf/repos",
+      "events_url": "https://api.github.com/users/humrochagf/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/humrochagf/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "124946c4031fb715dbe421611560d0a5482edf3d",
+        "url": "https://api.github.com/repos/Kludex/uvicorn/commits/124946c4031fb715dbe421611560d0a5482edf3d",
+        "html_url": "https://github.com/Kludex/uvicorn/commit/124946c4031fb715dbe421611560d0a5482edf3d"
+      }
+    ]
+  },
+  {
+    "sha": "19ca8d46a4daef876c8731e2ed9edfb3f1023e47",
+    "node_id": "C_kwDOBYpCG9oAKDE5Y2E4ZDQ2YTRkYWVmODc2Yzg3MzFlMmVkOWVkZmIzZjEwMjNlNDc",
+    "commit": {
+      "author": {
+        "name": "Humberto Rocha",
+        "email": "humrochagf@gmail.com",
+        "date": "2023-01-08T15:40:28Z"
+      },
+      "committer": {
+        "name": "Humberto Rocha",
+        "email": "humrochagf@gmail.com",
+        "date": "2023-01-08T15:40:28Z"
+      },
+      "message": "Update docs",
+      "tree": {
+        "sha": "09f123cc8c22958a610040771c46876670b0391f",
+        "url": "https://api.github.com/repos/Kludex/uvicorn/git/trees/09f123cc8c22958a610040771c46876670b0391f"
+      },
+      "url": "https://api.github.com/repos/Kludex/uvicorn/git/commits/19ca8d46a4daef876c8731e2ed9edfb3f1023e47",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEEkZnBHsUDeJVlej7ZlSQbRIlqCfsFAmO64+0ACgkQlSQbRIlq\nCfsfLQ/+OplxQJYIs5+kjw/USEEOYtsvIW1IlMQpV/yD5fGLg/H0UAeQUUWjG8JD\nlot+/81UnPnflkPZbAG2CJ9CVKoIK/F6Sj0sIxwsmq/GuZ2wI9ERXD+DjK0lElRf\nS395ohZZxWfgeqkkAQVVnsBoUW0d+YJIFaRmJE9yFCya1aV9/hQM+ir1hX3odOgf\nQKLaH4CmkZd1J+F9BPT1WJTEMVutZMta8Et7H9xK0dGX6GcT9eN6G5Rr5BgEOkRK\nM9sZMn7LqctLX+nXukZ/nctUxqRK0DNdQ19dWxDjFh9G2QKRFIBT2IlaUaOlt7Uw\nWe5OjpVzv5zg24getomLXurImzQGRmZfYRPeAVk/Omkk6BBlbU3XEjOR1oKox06c\naqGFrdpRf+rTIrZoFtu6Vger/mlzHRtGCATTQRJl58sakL5XTHY5EFENgcAwB6OM\nHVI7hq/O8h6soYTUctspiSjLpX2ffRGnW5jA1bo9j+M7OvmKqgjBrQsY76RcEe92\nm5lsYpG6XAE3mJLpgyy1L5bsSYg5FAU88XZtu0Een2iwT1zOCViKWDBV4Gv3catb\n4vClg2UJNGKEYD18Bd6gWME13OgkiAqsKDUfVfXTDCVAsXT7kxO6z7wVPPSO3mYg\nzbbLUJR5F4EDbfrwJlIjTO/Xg+HUVAiYurNXmLPDPufJRV5PrMQ=\n=9Bu1\n-----END PGP SIGNATURE-----",
+        "payload": "tree 09f123cc8c22958a610040771c46876670b0391f\nparent da713f315c25af69d1a1bf27ea527523fb1a5c8b\nauthor Humberto Rocha <humrochagf@gmail.com> 1673192428 -0500\ncommitter Humberto Rocha <humrochagf@gmail.com> 1673192428 -0500\n\nUpdate docs\n",
+        "verified_at": "2024-11-12T18:05:37Z"
+      }
+    },
+    "url": "https://api.github.com/repos/Kludex/uvicorn/commits/19ca8d46a4daef876c8731e2ed9edfb3f1023e47",
+    "html_url": "https://github.com/Kludex/uvicorn/commit/19ca8d46a4daef876c8731e2ed9edfb3f1023e47",
+    "comments_url": "https://api.github.com/repos/Kludex/uvicorn/commits/19ca8d46a4daef876c8731e2ed9edfb3f1023e47/comments",
+    "author": {
+      "login": "humrochagf",
+      "id": 1223625,
+      "node_id": "MDQ6VXNlcjEyMjM2MjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1223625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/humrochagf",
+      "html_url": "https://github.com/humrochagf",
+      "followers_url": "https://api.github.com/users/humrochagf/followers",
+      "following_url": "https://api.github.com/users/humrochagf/following{/other_user}",
+      "gists_url": "https://api.github.com/users/humrochagf/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/humrochagf/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/humrochagf/subscriptions",
+      "organizations_url": "https://api.github.com/users/humrochagf/orgs",
+      "repos_url": "https://api.github.com/users/humrochagf/repos",
+      "events_url": "https://api.github.com/users/humrochagf/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/humrochagf/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "humrochagf",
+      "id": 1223625,
+      "node_id": "MDQ6VXNlcjEyMjM2MjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1223625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/humrochagf",
+      "html_url": "https://github.com/humrochagf",
+      "followers_url": "https://api.github.com/users/humrochagf/followers",
+      "following_url": "https://api.github.com/users/humrochagf/following{/other_user}",
+      "gists_url": "https://api.github.com/users/humrochagf/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/humrochagf/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/humrochagf/subscriptions",
+      "organizations_url": "https://api.github.com/users/humrochagf/orgs",
+      "repos_url": "https://api.github.com/users/humrochagf/repos",
+      "events_url": "https://api.github.com/users/humrochagf/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/humrochagf/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "da713f315c25af69d1a1bf27ea527523fb1a5c8b",
+        "url": "https://api.github.com/repos/Kludex/uvicorn/commits/da713f315c25af69d1a1bf27ea527523fb1a5c8b",
+        "html_url": "https://github.com/Kludex/uvicorn/commit/da713f315c25af69d1a1bf27ea527523fb1a5c8b"
+      }
+    ]
+  },
+  {
+    "sha": "594733ca0c7b40be5df0cef3cd1eddc0b8d2fe80",
+    "node_id": "C_kwDOBYpCG9oAKDU5NDczM2NhMGM3YjQwYmU1ZGYwY2VmM2NkMWVkZGMwYjhkMmZlODA",
+    "commit": {
+      "author": {
+        "name": "Humberto Rocha",
+        "email": "humrochagf@gmail.com",
+        "date": "2023-01-08T15:58:59Z"
+      },
+      "committer": {
+        "name": "Humberto Rocha",
+        "email": "humrochagf@gmail.com",
+        "date": "2023-01-08T15:58:59Z"
+      },
+      "message": "Revert index docs and add note to settings interface",
+      "tree": {
+        "sha": "83366d6632c4bb842f42d73c17f8a36ae699c3a4",
+        "url": "https://api.github.com/repos/Kludex/uvicorn/git/trees/83366d6632c4bb842f42d73c17f8a36ae699c3a4"
+      },
+      "url": "https://api.github.com/repos/Kludex/uvicorn/git/commits/594733ca0c7b40be5df0cef3cd1eddc0b8d2fe80",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEEkZnBHsUDeJVlej7ZlSQbRIlqCfsFAmO66EMACgkQlSQbRIlq\nCfuH9w/+Le82EhiqDlNx+fx02OR6Fv3ku7iao8PZfxNtPtIBFUsoncH9rhLctSjf\n6i5LlbjRMdaVm0iOvy5l68xnDuL3kmQw+FzYG3xhMLOkRk6T1fmcD22Vgcz+Gigq\nFBvSliPFAxz/mlAZeDwVtiUIOhX36ohA0aAfBFTDbB58S0xG18f4ruz+NC6NoKkw\n+zqUJXiybeOpBGuYZRUhLKOP36s7R+9rtN++s2MsF6jCAAZwDkHIKZqmkNdCg7dX\nyRJEkyce3oz6FRJKVSktj+QKjBybnT2f+GAVVUQ2VosibcZUEiRFqJx8rCsrnqUj\nloi+FGA8cW2dzzTnTlr9og6Cm37WFrI7bZImR627w66Lc5zanIL8p3dNtAbjLm/L\ne+9nYkOSiKSDH3MYBiO7bbtxvVeS0Isu/iOQ/jkycCJQAy0BQFjeO57LiEF3ltRh\nDv9i9949JtVhypl+U7zB3ppCZ2OaIo0SXx+7neBRQt+yfOxcMYCjr5XDXB0Cvec7\n3cU8h2iaA119e5lCMNK42eTL/Vhulcf5otfIKV3WJbnBVF4NCZs9S46Pys6Taz+4\nNDMHzgN4q3pm/Z35gbm4haHKM1xsUhn1PFXfqCVSRJmfpNpYk31ZaBXj9Jn3UX3U\nwk5+LzeAiNF24IQs+bMIsDDCdh3AewtplGry5zVcy5XrMftis1Y=\n=8Zyw\n-----END PGP SIGNATURE-----",
+        "payload": "tree 83366d6632c4bb842f42d73c17f8a36ae699c3a4\nparent 19ca8d46a4daef876c8731e2ed9edfb3f1023e47\nauthor Humberto Rocha <humrochagf@gmail.com> 1673193539 -0500\ncommitter Humberto Rocha <humrochagf@gmail.com> 1673193539 -0500\n\nRevert index docs and add note to settings interface\n",
+        "verified_at": "2024-11-12T18:05:37Z"
+      }
+    },
+    "url": "https://api.github.com/repos/Kludex/uvicorn/commits/594733ca0c7b40be5df0cef3cd1eddc0b8d2fe80",
+    "html_url": "https://github.com/Kludex/uvicorn/commit/594733ca0c7b40be5df0cef3cd1eddc0b8d2fe80",
+    "comments_url": "https://api.github.com/repos/Kludex/uvicorn/commits/594733ca0c7b40be5df0cef3cd1eddc0b8d2fe80/comments",
+    "author": {
+      "login": "humrochagf",
+      "id": 1223625,
+      "node_id": "MDQ6VXNlcjEyMjM2MjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1223625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/humrochagf",
+      "html_url": "https://github.com/humrochagf",
+      "followers_url": "https://api.github.com/users/humrochagf/followers",
+      "following_url": "https://api.github.com/users/humrochagf/following{/other_user}",
+      "gists_url": "https://api.github.com/users/humrochagf/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/humrochagf/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/humrochagf/subscriptions",
+      "organizations_url": "https://api.github.com/users/humrochagf/orgs",
+      "repos_url": "https://api.github.com/users/humrochagf/repos",
+      "events_url": "https://api.github.com/users/humrochagf/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/humrochagf/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "humrochagf",
+      "id": 1223625,
+      "node_id": "MDQ6VXNlcjEyMjM2MjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1223625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/humrochagf",
+      "html_url": "https://github.com/humrochagf",
+      "followers_url": "https://api.github.com/users/humrochagf/followers",
+      "following_url": "https://api.github.com/users/humrochagf/following{/other_user}",
+      "gists_url": "https://api.github.com/users/humrochagf/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/humrochagf/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/humrochagf/subscriptions",
+      "organizations_url": "https://api.github.com/users/humrochagf/orgs",
+      "repos_url": "https://api.github.com/users/humrochagf/repos",
+      "events_url": "https://api.github.com/users/humrochagf/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/humrochagf/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "19ca8d46a4daef876c8731e2ed9edfb3f1023e47",
+        "url": "https://api.github.com/repos/Kludex/uvicorn/commits/19ca8d46a4daef876c8731e2ed9edfb3f1023e47",
+        "html_url": "https://github.com/Kludex/uvicorn/commit/19ca8d46a4daef876c8731e2ed9edfb3f1023e47"
+      }
+    ]
+  },
+  {
+    "sha": "0350c10265584a93ff7df244cfad166700b67453",
+    "node_id": "C_kwDOBYpCG9oAKDAzNTBjMTAyNjU1ODRhOTNmZjdkZjI0NGNmYWQxNjY3MDBiNjc0NTM",
+    "commit": {
+      "author": {
+        "name": "Humberto Rocha",
+        "email": "humrochagf@gmail.com",
+        "date": "2023-01-08T16:04:57Z"
+      },
+      "committer": {
+        "name": "Humberto Rocha",
+        "email": "humrochagf@gmail.com",
+        "date": "2023-01-08T16:04:57Z"
+      },
+      "message": "Update middleware with code change sugested",
+      "tree": {
+        "sha": "ebd1b3348bdbd8d277256fe41ab8bd59285c815d",
+        "url": "https://api.github.com/repos/Kludex/uvicorn/git/trees/ebd1b3348bdbd8d277256fe41ab8bd59285c815d"
+      },
+      "url": "https://api.github.com/repos/Kludex/uvicorn/git/commits/0350c10265584a93ff7df244cfad166700b67453",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEEkZnBHsUDeJVlej7ZlSQbRIlqCfsFAmO66akACgkQlSQbRIlq\nCfu1/BAAjegiLgQG7/vD+LRzWnOGBV8YGnPvL7Xc8q365pJMwdS7/1A0ci8+RA+S\nq94rt7ia1jtZ3NKe/XVdg4JEaAtARtC6gLLG6lW7brvuPs3Gx1XAoekO9UvYB9+M\nxGa760GvxmXPsSpl3J3MhFqHBYR/KKpbUMJfO2LHRmjE6WMrJCm8VXXV8NnAR9gj\nQx7rkssnhnl1QvSgc/0qMdhbK8CfwnPYtDW7zHhmfyS039wzaAahCK6nSdztvAGS\nY21goYZn6ht+Z2si038Pbm7zOguZca57ArJqb/6ylGFLJZG4kdWCclU80FRxRSQv\nUpmrbRe0zISwmOvHqaYsKFPaPYDurx/1bFXEjqX5/M+G7T235DtdT61j+9vLPSKx\nGI0ndIEQEObh7x3MPMf8AQWbMWQ8D+GD0IbTASfLnlnn2NhJchwzcJJ5AjNgkCae\nB7V489sItYqM1fH5bP8y7UVOQOXFcPqmIYABD+syq7N3+1mljsuclLyqGZJbX+EY\n/HUu7ZhC+GKkv8gTvhhuKm9oHxugSCBm5ZQxxdjIny9gecxTiKbYxut3gxdNWUoS\nm5jxAb5bz7ciisEEAFljL74nhyMsnqzQuYosNMx6nKE0sLKLzEh7YtJmfbJ8GtB+\nYw2nHv5aGYTVz5NBzmZWpEHp8hIYBKjtNAdxAuHwMuRnzygI+Sk=\n=pWB2\n-----END PGP SIGNATURE-----",
+        "payload": "tree ebd1b3348bdbd8d277256fe41ab8bd59285c815d\nparent 594733ca0c7b40be5df0cef3cd1eddc0b8d2fe80\nauthor Humberto Rocha <humrochagf@gmail.com> 1673193897 -0500\ncommitter Humberto Rocha <humrochagf@gmail.com> 1673193897 -0500\n\nUpdate middleware with code change sugested\n",
+        "verified_at": "2024-11-12T18:05:37Z"
+      }
+    },
+    "url": "https://api.github.com/repos/Kludex/uvicorn/commits/0350c10265584a93ff7df244cfad166700b67453",
+    "html_url": "https://github.com/Kludex/uvicorn/commit/0350c10265584a93ff7df244cfad166700b67453",
+    "comments_url": "https://api.github.com/repos/Kludex/uvicorn/commits/0350c10265584a93ff7df244cfad166700b67453/comments",
+    "author": {
+      "login": "humrochagf",
+      "id": 1223625,
+      "node_id": "MDQ6VXNlcjEyMjM2MjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1223625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/humrochagf",
+      "html_url": "https://github.com/humrochagf",
+      "followers_url": "https://api.github.com/users/humrochagf/followers",
+      "following_url": "https://api.github.com/users/humrochagf/following{/other_user}",
+      "gists_url": "https://api.github.com/users/humrochagf/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/humrochagf/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/humrochagf/subscriptions",
+      "organizations_url": "https://api.github.com/users/humrochagf/orgs",
+      "repos_url": "https://api.github.com/users/humrochagf/repos",
+      "events_url": "https://api.github.com/users/humrochagf/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/humrochagf/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "humrochagf",
+      "id": 1223625,
+      "node_id": "MDQ6VXNlcjEyMjM2MjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1223625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/humrochagf",
+      "html_url": "https://github.com/humrochagf",
+      "followers_url": "https://api.github.com/users/humrochagf/followers",
+      "following_url": "https://api.github.com/users/humrochagf/following{/other_user}",
+      "gists_url": "https://api.github.com/users/humrochagf/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/humrochagf/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/humrochagf/subscriptions",
+      "organizations_url": "https://api.github.com/users/humrochagf/orgs",
+      "repos_url": "https://api.github.com/users/humrochagf/repos",
+      "events_url": "https://api.github.com/users/humrochagf/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/humrochagf/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "594733ca0c7b40be5df0cef3cd1eddc0b8d2fe80",
+        "url": "https://api.github.com/repos/Kludex/uvicorn/commits/594733ca0c7b40be5df0cef3cd1eddc0b8d2fe80",
+        "html_url": "https://github.com/Kludex/uvicorn/commit/594733ca0c7b40be5df0cef3cd1eddc0b8d2fe80"
+      }
+    ]
+  },
+  {
+    "sha": "f4710272b612b21cc5ddac57a2458442c8f7c41b",
+    "node_id": "C_kwDOBYpCG9oAKGY0NzEwMjcyYjYxMmIyMWNjNWRkYWM1N2EyNDU4NDQyYzhmN2M0MWI",
+    "commit": {
+      "author": {
+        "name": "Humberto Rocha",
+        "email": "humrochagf@gmail.com",
+        "date": "2023-01-09T14:58:18Z"
+      },
+      "committer": {
+        "name": "Humberto Rocha",
+        "email": "humrochagf@gmail.com",
+        "date": "2023-01-09T14:58:18Z"
+      },
+      "message": "Remove import magic in tests",
+      "tree": {
+        "sha": "ce8f1e18f724da58e30eeef93bad18bd3e62725b",
+        "url": "https://api.github.com/repos/Kludex/uvicorn/git/trees/ce8f1e18f724da58e30eeef93bad18bd3e62725b"
+      },
+      "url": "https://api.github.com/repos/Kludex/uvicorn/git/commits/f4710272b612b21cc5ddac57a2458442c8f7c41b",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEEkZnBHsUDeJVlej7ZlSQbRIlqCfsFAmO8K4oACgkQlSQbRIlq\nCfvv8g/9Fp0acik0Zot69N6Bj8AoLJy5TjjPvi4EymUWnvyve9qwXabrmAJ8x3MR\n3URD583QxU4QsnT8CcDabx3c48aVgLOM12JDwzk1L/45AX4KmTxbx9wv5Ll/wu61\noAFU081dVvFaUQIRPUclpDbtzhv2PCwo6JFoL06XMFsEZ9Xl87QseqTcax+AO0pZ\nu0+YYHtfYs5fMrXU6j4+15NRJnx57OAjn+ntLqeqpSkQNv5q1fwt/IqO63uAG903\nJMIJP/1Km0VeI33h74R/o6JOARIIB5dFBhBh7vref/OBjj4e2l9YJ2EzlJgVhi/Y\nn6xczk8x/4qp3/ztgLCdyvWeIXAuyeyYAjNFLp3HSA+M1WIPDnwWGx0pwWnLZORF\nvBNSU5PQCsw+K3Ao/X12pe5bxZOAXPf8XqBWUfIhrqDSEM2MKgz2SC1fqJvT2aFk\nu0Ei6K9QU7uXXQFXFqfyu8lDpOzrPski2wx7TfUiy0NjjAq3mLnCdRbw29WcM8eX\nVs6Pl3imy5O6KrZtBwnSlO0Z/oD2dtbRpce7RCzg0PwYUbalHbd3PNfGMkxdo9Hj\n6zxfPgHrt+IDwoOO3B0E4KPSxTRFA/HJzlSBpLvcBKeE66p9b4Vr68LnGE3ziIlJ\nGdxIx5N0hc2lFotrrInyv8cncUPVj4N6hheNgKvfRs8HahJ7YFY=\n=BhwV\n-----END PGP SIGNATURE-----",
+        "payload": "tree ce8f1e18f724da58e30eeef93bad18bd3e62725b\nparent 0350c10265584a93ff7df244cfad166700b67453\nauthor Humberto Rocha <humrochagf@gmail.com> 1673276298 -0500\ncommitter Humberto Rocha <humrochagf@gmail.com> 1673276298 -0500\n\nRemove import magic in tests\n",
+        "verified_at": "2024-11-12T18:05:37Z"
+      }
+    },
+    "url": "https://api.github.com/repos/Kludex/uvicorn/commits/f4710272b612b21cc5ddac57a2458442c8f7c41b",
+    "html_url": "https://github.com/Kludex/uvicorn/commit/f4710272b612b21cc5ddac57a2458442c8f7c41b",
+    "comments_url": "https://api.github.com/repos/Kludex/uvicorn/commits/f4710272b612b21cc5ddac57a2458442c8f7c41b/comments",
+    "author": {
+      "login": "humrochagf",
+      "id": 1223625,
+      "node_id": "MDQ6VXNlcjEyMjM2MjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1223625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/humrochagf",
+      "html_url": "https://github.com/humrochagf",
+      "followers_url": "https://api.github.com/users/humrochagf/followers",
+      "following_url": "https://api.github.com/users/humrochagf/following{/other_user}",
+      "gists_url": "https://api.github.com/users/humrochagf/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/humrochagf/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/humrochagf/subscriptions",
+      "organizations_url": "https://api.github.com/users/humrochagf/orgs",
+      "repos_url": "https://api.github.com/users/humrochagf/repos",
+      "events_url": "https://api.github.com/users/humrochagf/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/humrochagf/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "humrochagf",
+      "id": 1223625,
+      "node_id": "MDQ6VXNlcjEyMjM2MjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1223625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/humrochagf",
+      "html_url": "https://github.com/humrochagf",
+      "followers_url": "https://api.github.com/users/humrochagf/followers",
+      "following_url": "https://api.github.com/users/humrochagf/following{/other_user}",
+      "gists_url": "https://api.github.com/users/humrochagf/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/humrochagf/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/humrochagf/subscriptions",
+      "organizations_url": "https://api.github.com/users/humrochagf/orgs",
+      "repos_url": "https://api.github.com/users/humrochagf/repos",
+      "events_url": "https://api.github.com/users/humrochagf/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/humrochagf/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "0350c10265584a93ff7df244cfad166700b67453",
+        "url": "https://api.github.com/repos/Kludex/uvicorn/commits/0350c10265584a93ff7df244cfad166700b67453",
+        "html_url": "https://github.com/Kludex/uvicorn/commit/0350c10265584a93ff7df244cfad166700b67453"
+      }
+    ]
+  },
+  {
+    "sha": "d2512bb976a0a8cb96b14b424bcc610ffe62511a",
+    "node_id": "C_kwDOBYpCG9oAKGQyNTEyYmI5NzZhMGE4Y2I5NmIxNGI0MjRiY2M2MTBmZmU2MjUxMWE",
+    "commit": {
+      "author": {
+        "name": "Humberto Rocha",
+        "email": "humrochagf@gmail.com",
+        "date": "2023-01-09T15:08:37Z"
+      },
+      "committer": {
+        "name": "Humberto Rocha",
+        "email": "humrochagf@gmail.com",
+        "date": "2023-01-09T15:08:37Z"
+      },
+      "message": "Update error message",
+      "tree": {
+        "sha": "35b4d35cd914a6e49dc3364721491a2b06f985d2",
+        "url": "https://api.github.com/repos/Kludex/uvicorn/git/trees/35b4d35cd914a6e49dc3364721491a2b06f985d2"
+      },
+      "url": "https://api.github.com/repos/Kludex/uvicorn/git/commits/d2512bb976a0a8cb96b14b424bcc610ffe62511a",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEEkZnBHsUDeJVlej7ZlSQbRIlqCfsFAmO8LfUACgkQlSQbRIlq\nCfvIHw//eyD7yfcnHdySRRWVGbPfcZOGF8fP+Zvy9LT1VDeRZUCAY10ARmMg7/to\npkkdp+SGx3XB8FwRADtss6Hzus9vMubXHQT2DO8KoAuFFg07O8PrbVi1M/UKkh6W\npUIWsCquAJgRc8vFMuwGiPmwz80vByy4nK/iBLARBLmSCuV2RlwQHiIQhmX0x9MY\nN9+IxZanCt5Apje4V8aM6zGkeVduGTmUVlHm1ZHEYbbro5VCnuGlaMQQBrffa0av\nMro3lkWA98L0VmECZ+CGeiiNu8WSOrpwnvM4QQuWJDkkCRRrsbwn0Zn9Vnkx1jJq\nxFLoZfeBgC7jfVCQaFzWgVeHcD7jfIp6JwFdexGAKki69T7qrt4TTn+4I1+OGdNq\n8z5yuqzXDdgi3XqTms+lAdJSdhOOJHDbKURy/5Yv2oafZzfTY/R4YtPsAKenxbLo\nyb5ZUYTuddNVYX2eMytnp6MJiwDr6W0hRdcg2wwNxCweRUMXO0cSaWBqYJKAJkRH\n5lCe2eJfPVgmLMw3VRmosKgj+b+OosVOW9VsjFGLZ4p2BfldjnpvFyeRKvdcMNqg\nFNkKzctVtEBYWkvyOg6tP1XG2PW2y1xbhxENcJgGxMKkTsPs6p8eltCGk8+jFGxV\nMU7rJBcmK0rXpFIcYKAhrvgk/iJoYK4ePNVoCVgnsmFpZnkGrSI=\n=h65G\n-----END PGP SIGNATURE-----",
+        "payload": "tree 35b4d35cd914a6e49dc3364721491a2b06f985d2\nparent f4710272b612b21cc5ddac57a2458442c8f7c41b\nauthor Humberto Rocha <humrochagf@gmail.com> 1673276917 -0500\ncommitter Humberto Rocha <humrochagf@gmail.com> 1673276917 -0500\n\nUpdate error message\n",
+        "verified_at": "2024-11-12T18:05:37Z"
+      }
+    },
+    "url": "https://api.github.com/repos/Kludex/uvicorn/commits/d2512bb976a0a8cb96b14b424bcc610ffe62511a",
+    "html_url": "https://github.com/Kludex/uvicorn/commit/d2512bb976a0a8cb96b14b424bcc610ffe62511a",
+    "comments_url": "https://api.github.com/repos/Kludex/uvicorn/commits/d2512bb976a0a8cb96b14b424bcc610ffe62511a/comments",
+    "author": {
+      "login": "humrochagf",
+      "id": 1223625,
+      "node_id": "MDQ6VXNlcjEyMjM2MjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1223625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/humrochagf",
+      "html_url": "https://github.com/humrochagf",
+      "followers_url": "https://api.github.com/users/humrochagf/followers",
+      "following_url": "https://api.github.com/users/humrochagf/following{/other_user}",
+      "gists_url": "https://api.github.com/users/humrochagf/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/humrochagf/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/humrochagf/subscriptions",
+      "organizations_url": "https://api.github.com/users/humrochagf/orgs",
+      "repos_url": "https://api.github.com/users/humrochagf/repos",
+      "events_url": "https://api.github.com/users/humrochagf/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/humrochagf/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "humrochagf",
+      "id": 1223625,
+      "node_id": "MDQ6VXNlcjEyMjM2MjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1223625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/humrochagf",
+      "html_url": "https://github.com/humrochagf",
+      "followers_url": "https://api.github.com/users/humrochagf/followers",
+      "following_url": "https://api.github.com/users/humrochagf/following{/other_user}",
+      "gists_url": "https://api.github.com/users/humrochagf/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/humrochagf/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/humrochagf/subscriptions",
+      "organizations_url": "https://api.github.com/users/humrochagf/orgs",
+      "repos_url": "https://api.github.com/users/humrochagf/repos",
+      "events_url": "https://api.github.com/users/humrochagf/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/humrochagf/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "f4710272b612b21cc5ddac57a2458442c8f7c41b",
+        "url": "https://api.github.com/repos/Kludex/uvicorn/commits/f4710272b612b21cc5ddac57a2458442c8f7c41b",
+        "html_url": "https://github.com/Kludex/uvicorn/commit/f4710272b612b21cc5ddac57a2458442c8f7c41b"
+      }
+    ]
+  },
+  {
+    "sha": "87406c4e47376ad0fbd21a76d6d809890dced0b7",
+    "node_id": "C_kwDOBYpCG9oAKDg3NDA2YzRlNDczNzZhZDBmYmQyMWE3NmQ2ZDgwOTg5MGRjZWQwYjc",
+    "commit": {
+      "author": {
+        "name": "Humberto Rocha",
+        "email": "humberto.rocha-goncalves-filho@ubisoft.com",
+        "date": "2023-01-10T14:29:18Z"
+      },
+      "committer": {
+        "name": "Humberto Rocha",
+        "email": "humberto.rocha-goncalves-filho@ubisoft.com",
+        "date": "2023-01-10T14:29:18Z"
+      },
+      "message": "Simplify tests",
+      "tree": {
+        "sha": "1c444fe0be646396dc9a45976d4ff55e39f8f9c9",
+        "url": "https://api.github.com/repos/Kludex/uvicorn/git/trees/1c444fe0be646396dc9a45976d4ff55e39f8f9c9"
+      },
+      "url": "https://api.github.com/repos/Kludex/uvicorn/git/commits/87406c4e47376ad0fbd21a76d6d809890dced0b7",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/Kludex/uvicorn/commits/87406c4e47376ad0fbd21a76d6d809890dced0b7",
+    "html_url": "https://github.com/Kludex/uvicorn/commit/87406c4e47376ad0fbd21a76d6d809890dced0b7",
+    "comments_url": "https://api.github.com/repos/Kludex/uvicorn/commits/87406c4e47376ad0fbd21a76d6d809890dced0b7/comments",
+    "author": null,
+    "committer": null,
+    "parents": [
+      {
+        "sha": "d2512bb976a0a8cb96b14b424bcc610ffe62511a",
+        "url": "https://api.github.com/repos/Kludex/uvicorn/commits/d2512bb976a0a8cb96b14b424bcc610ffe62511a",
+        "html_url": "https://github.com/Kludex/uvicorn/commit/d2512bb976a0a8cb96b14b424bcc610ffe62511a"
+      }
+    ]
+  },
+  {
+    "sha": "0db9f30d93f46870762d7df65e38262cd366f2dc",
+    "node_id": "C_kwDOBYpCG9oAKDBkYjlmMzBkOTNmNDY4NzA3NjJkN2RmNjVlMzgyNjJjZDM2NmYyZGM",
+    "commit": {
+      "author": {
+        "name": "Humberto Rocha",
+        "email": "humrochagf@gmail.com",
+        "date": "2023-01-11T14:26:44Z"
+      },
+      "committer": {
+        "name": "Humberto Rocha",
+        "email": "humrochagf@gmail.com",
+        "date": "2023-01-11T14:26:44Z"
+      },
+      "message": "Better wording in error and type ignores",
+      "tree": {
+        "sha": "42ad20f88cae6d3a6d64092bf86809334e455e4e",
+        "url": "https://api.github.com/repos/Kludex/uvicorn/git/trees/42ad20f88cae6d3a6d64092bf86809334e455e4e"
+      },
+      "url": "https://api.github.com/repos/Kludex/uvicorn/git/commits/0db9f30d93f46870762d7df65e38262cd366f2dc",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCgAdFiEEkZnBHsUDeJVlej7ZlSQbRIlqCfsFAmO+xyQACgkQlSQbRIlq\nCfsagg//fx+hKRdET0Gmtwfaqq5icLkQ7M4ZnCHl4cevJUzilonEzVkrw7PwW6SP\nf1RtNemEOs44D/GDN8ZLMC2EmlgaW0IHaGivQGI2aS1ruAdjzoJVYFN4XUtzw4Lm\nvr/ufrj6t2j2RPMTy3EATCUb8fR1ZrKjfmDjlPe0oJOHjW4yVR1OOFeJpawG+Uc3\nT1YpRl9QuXX9qhLOCiEte0zjSmzVotFF4jxWbFwE8zZjcmptR1YCeGWcEoch/FRX\nwsQwUT4Gx6Bsy/3wtStUcqoxsgOxC24OI4oxC73WQkwjvlouktYui1BIzcX5uXai\ngEvywwnjNNO55r9V5wLlrQyyjrMChIyMjPA7ynswVYPOI4eL7oNp1K8qKhaFbBMS\neymaTmQ8rmcM2yG4otFCoKyHZWBGaeybQ81ickRB+jZTqvdPK/R8sKM4gv2EIUrA\nwMTP9DUknedxe6lB4mY3oE4fTLvv7DdDJz5m8c86BqGZUg7vS1vSmuh0h10j5iaj\n5tGC6j2mlp0W9Hykr9g6pZVvD9BvO3LNJzMkGYYPdPPJetpsLidiA728bU+7MOyf\nO9skH1NxQzzHt4jBWDj8q/9aQ++HI24AGtGVz75U1Rlfk712Yhpl8AwJ8sCtAXkp\nnewKqG4XdlHonD3a6gPEBepvEn6s4bU2MrImUc9vaT/2UYT9ABU=\n=fb5l\n-----END PGP SIGNATURE-----",
+        "payload": "tree 42ad20f88cae6d3a6d64092bf86809334e455e4e\nparent 87406c4e47376ad0fbd21a76d6d809890dced0b7\nauthor Humberto Rocha <humrochagf@gmail.com> 1673447204 -0500\ncommitter Humberto Rocha <humrochagf@gmail.com> 1673447204 -0500\n\nBetter wording in error and type ignores\n",
+        "verified_at": "2024-11-12T18:05:37Z"
+      }
+    },
+    "url": "https://api.github.com/repos/Kludex/uvicorn/commits/0db9f30d93f46870762d7df65e38262cd366f2dc",
+    "html_url": "https://github.com/Kludex/uvicorn/commit/0db9f30d93f46870762d7df65e38262cd366f2dc",
+    "comments_url": "https://api.github.com/repos/Kludex/uvicorn/commits/0db9f30d93f46870762d7df65e38262cd366f2dc/comments",
+    "author": {
+      "login": "humrochagf",
+      "id": 1223625,
+      "node_id": "MDQ6VXNlcjEyMjM2MjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1223625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/humrochagf",
+      "html_url": "https://github.com/humrochagf",
+      "followers_url": "https://api.github.com/users/humrochagf/followers",
+      "following_url": "https://api.github.com/users/humrochagf/following{/other_user}",
+      "gists_url": "https://api.github.com/users/humrochagf/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/humrochagf/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/humrochagf/subscriptions",
+      "organizations_url": "https://api.github.com/users/humrochagf/orgs",
+      "repos_url": "https://api.github.com/users/humrochagf/repos",
+      "events_url": "https://api.github.com/users/humrochagf/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/humrochagf/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "humrochagf",
+      "id": 1223625,
+      "node_id": "MDQ6VXNlcjEyMjM2MjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1223625?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/humrochagf",
+      "html_url": "https://github.com/humrochagf",
+      "followers_url": "https://api.github.com/users/humrochagf/followers",
+      "following_url": "https://api.github.com/users/humrochagf/following{/other_user}",
+      "gists_url": "https://api.github.com/users/humrochagf/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/humrochagf/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/humrochagf/subscriptions",
+      "organizations_url": "https://api.github.com/users/humrochagf/orgs",
+      "repos_url": "https://api.github.com/users/humrochagf/repos",
+      "events_url": "https://api.github.com/users/humrochagf/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/humrochagf/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "87406c4e47376ad0fbd21a76d6d809890dced0b7",
+        "url": "https://api.github.com/repos/Kludex/uvicorn/commits/87406c4e47376ad0fbd21a76d6d809890dced0b7",
+        "html_url": "https://github.com/Kludex/uvicorn/commit/87406c4e47376ad0fbd21a76d6d809890dced0b7"
+      }
+    ]
+  }
+]

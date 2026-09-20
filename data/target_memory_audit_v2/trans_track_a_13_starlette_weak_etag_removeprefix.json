@@ -1,0 +1,34 @@
+{
+  "transition_id": "trans_track_a_13_starlette_weak_etag_removeprefix",
+  "provenance_status": "TARGET_MEMORY_PROVENANCE_FAIL",
+  "recomputed_hashes": {
+    "diff_hunk_sha256": "ed7d6358d48dbd6f06331d839b9fb6824fcd0788afabe3d59c45a2281d4a72ea",
+    "evidence_excerpt_hash": "551676acacbf0a8ed4efd45ed8590c1c4ac17bf0af343452fb5734130de41aca",
+    "ground_truth_audit_hash": "1b5ff21faeb79dc24a673cdb9b37d645d3e835946db3b013605f24d3baed9121"
+  },
+  "checks": {
+    "source_pr_matches": true,
+    "source_commit_matches": true,
+    "artifact_in_diff": true,
+    "diff_hunk_sha256_verified": true,
+    "diff_patch_sha256_verified": true,
+    "evidence_excerpt_hash_verified": false,
+    "ground_truth_audit_hash_verified": false,
+    "statement_entailment": "PARTIAL"
+  },
+  "claim": {
+    "transition_id": "trans_track_a_13_starlette_weak_etag_removeprefix",
+    "statement": "Weak ETag stripping upgraded to use standard str.removeprefix.",
+    "symbol": "is_not_modified",
+    "replacement": "removeprefix, etag.removeprefix('W/')",
+    "source_pr_url": "https://github.com/encode/starlette/pull/3193",
+    "source_commit": "37309255b4c1b9c381a2d24a1eaf83100984a16a",
+    "evidence_file": "data/external_evidence/trans_track_a_13_starlette_weak_etag_removeprefix/diff.patch",
+    "supporting_hunk": "@@ -210,7 +210,7 @@ class StaticFiles:\n         if if_none_match := request_headers.get(\"if-none-match\"):\n             # The \"etag\" header is added by FileResponse, so it's always present.\n             etag = response_headers[\"etag\"]\n-            return etag in [tag.strip(\" W/\") for tag in if_none_match.split(\",\")]\n+            return etag in [tag.strip().removeprefix(\"W/\") for tag in if_none_match.split(\",\")]\n \n         try:\n             if_modified_since = parsedate(request_headers[\"if-modifie",
+    "evidence_hunk_sha256": "ed7d6358d48dbd6f06331d839b9fb6824fcd0788afabe3d59c45a2281d4a72ea",
+    "diff_patch_sha256": "e0b03a6b1b419d7a2fef3371311e7af67e90d89bdd0ccd621dd450b153798932",
+    "evidence_excerpt_hash": "7259f7e360321d65f9fa464754e460095d3dcc3800ae067bc0275e7f959bdb12",
+    "ground_truth_audit_hash": "",
+    "artifact": "starlette/responses.py"
+  }
+}

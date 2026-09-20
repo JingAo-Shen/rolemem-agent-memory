@@ -17,7 +17,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\ntest_hidden_verification.py:11: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_stream_retrieval - assert None is no...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:11: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_stream_retrieval - assert None is no...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
     },
     "M2_constant_return": {
       "description": "return constant string",
@@ -25,7 +25,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\ntest_hidden_verification.py:10: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_stream_retrieval - AssertionError: A...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:10: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_stream_retrieval - AssertionError: A...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
     },
     "M3_noop_pass": {
       "description": "pass / no-op",
@@ -33,7 +33,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\ntest_hidden_verification.py:11: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_stream_retrieval - assert None is no...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:11: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_stream_retrieval - assert None is no...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
     },
     "M4_try_except_dummy": {
       "description": "try/except return dummy",
@@ -41,7 +41,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\ntest_hidden_verification.py:11: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_stream_retrieval - assert None is no...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:11: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_stream_retrieval - assert None is no...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
     },
     "M5_stale_solution": {
       "description": "deprecated API call",
@@ -65,7 +65,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\n\ntest_hidden_verification.py:9: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_stream_retrieval - AttributeError: m...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\n\ntest_hidden_verification.py:9: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_stream_retrieval - AttributeError: m...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
     },
     "M8_static_mock": {
       "description": "static mock object",

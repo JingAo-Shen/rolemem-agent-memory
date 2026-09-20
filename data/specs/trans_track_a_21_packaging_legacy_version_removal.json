@@ -1,0 +1,36 @@
+{
+  "transition_id": "trans_track_a_21_packaging_legacy_version_removal",
+  "repo_name": "pypa/packaging",
+  "repo_url": "https://github.com/pypa/packaging",
+  "pr_url": "https://github.com/pypa/packaging/pull/407",
+  "target_commit": "237ff3aa348486cf835a980592af3a59fccd6101",
+  "pkg_path": "packaging",
+  "changed_files": [
+    "packaging/version.py",
+    "packaging/specifiers.py"
+  ],
+  "primary_file": "packaging/version.py",
+  "symbol": "packaging.version.LegacyVersion",
+  "deprecated_symbols": [
+    "LegacyVersion",
+    "packaging.version.LegacyVersion"
+  ],
+  "replacement_symbols": [
+    "Version",
+    "packaging.version.Version"
+  ],
+  "repository_change": "LegacyVersion removed from packaging.version in favor of PEP 440 standard Version.",
+  "stale_memory_candidate": "Parse non-PEP440 versions into packaging.version.LegacyVersion.",
+  "valid_memory_candidate": "Parse versions using packaging.version.Version; non-PEP440 raises InvalidVersion.",
+  "transition_type": "API_REMOVAL",
+  "stale_sensitive": true,
+  "current_task": "Implement `parse_version_safely(v: str)` in `version_parser.py` returning standard Version string or 'INVALID'.",
+  "target_file": "version_parser.py",
+  "target_symbol": "parse_version_safely",
+  "stale_solution": "from packaging.version import LegacyVersion\n\ndef parse_version_safely(v: str) -> str:\n    # Stale implementation using removed LegacyVersion\n    return str(LegacyVersion(v))\n",
+  "valid_solution": "from packaging.version import Version\n\ndef parse_version_safely(v: str) -> str:\n    return str(Version(v))\n",
+  "hidden_test": "import pytest\nimport version_parser\n\ndef test_parse_version_safely():\n    assert version_parser.parse_version_safely(\"1.2.3\") == \"1.2.3\"\n",
+  "base_commit": "4f42225e91a0be634625c09e84dd29ea82b85e27",
+  "external_pr_url": "https://github.com/pypa/packaging/pull/407",
+  "track": "TRACK_A_STALE_SENSITIVE"
+}

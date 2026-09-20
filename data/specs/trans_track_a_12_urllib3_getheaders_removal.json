@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_12_urllib3_getheaders_removal",
+  "repo_name": "urllib3/urllib3",
+  "repo_url": "https://github.com/urllib3/urllib3",
+  "pr_url": "https://github.com/urllib3/urllib3/pull/3622",
+  "target_commit": "4587fd6d477f22022be08de597c3a5acd5185c0a",
+  "pkg_path": "src/urllib3",
+  "changed_files": [
+    "src/urllib3/response.py"
+  ],
+  "primary_file": "src/urllib3/response.py",
+  "symbol": "HTTPResponse.getheaders",
+  "deprecated_symbols": [
+    "HTTPResponse.getheaders",
+    "getheader"
+  ],
+  "replacement_symbols": [
+    "response.headers",
+    "headers"
+  ],
+  "repository_change": "HTTPResponse.getheaders() and getheader() removed in favor of response.headers mapping.",
+  "stale_memory_candidate": "Inspect response headers via HTTPResponse.getheaders().",
+  "valid_memory_candidate": "Access response headers directly via response.headers.",
+  "transition_type": "API_REMOVAL",
+  "stale_sensitive": true,
+  "current_task": "Implement `get_header_content_type(resp)` in `header_extractor.py` retrieving content type header safely.",
+  "target_file": "header_extractor.py",
+  "target_symbol": "get_header_content_type",
+  "stale_solution": "def get_header_content_type(resp):\n    return resp.getheader(\"content-type\")\n",
+  "valid_solution": "def get_header_content_type(resp):\n    return resp.headers.get(\"content-type\")\n",
+  "hidden_test": "import sys, types\nif \"urllib3._version\" not in sys.modules:\n    m = types.ModuleType(\"urllib3._version\")\n    m.__version__ = \"2.5.0\"\n    sys.modules[\"urllib3._version\"] = m\n\nimport pytest\nfrom urllib3.response import HTTPResponse\nimport header_extractor\n\ndef test_header_retrieval():\n    resp = HTTPResponse(headers={\"Content-Type\": \"application/json\"})\n    assert header_extractor.get_header_content_type(resp) == \"application/json\"\n",
+  "base_commit": "dd2daef3611ea09f60260391e6a698bb9933dd17",
+  "external_pr_url": "https://github.com/urllib3/urllib3/pull/3622",
+  "track": "TRACK_A_STALE_SENSITIVE"
+}

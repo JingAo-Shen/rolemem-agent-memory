@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_22_dateutil_unknown_timezone_warning",
+  "repo_name": "dateutil/dateutil",
+  "leakage_class": "REPO_CONTEXT_HINTED",
+  "rationale": "Context contains replacement symbols ['UnknownTimezoneWarning'] or migration comments, but no task implementation.",
+  "retrieved_tokens": 1156,
+  "found_replacements": [
+    "UnknownTimezoneWarning"
+  ],
+  "target_implementation_found": false,
+  "migration_comments_found": []
+}

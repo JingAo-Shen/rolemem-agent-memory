@@ -1,0 +1,39 @@
+{
+  "task_id": "trans_track_a_28_starlette_exceptions_middleware_removal",
+  "condition": "S0",
+  "seed": 42,
+  "memory_source": "NO_MEMORY",
+  "memory_statements": [],
+  "retrieved_files": [],
+  "repository_context_tokens": 1200,
+  "is_stale_action": true,
+  "ast_details": {
+    "stale_active_use": true,
+    "stale_mention": false,
+    "active_nodes": [
+      {
+        "type": "ImportFrom",
+        "lineno": 2,
+        "module": "starlette.middleware.exceptions",
+        "symbol": "ExceptionMiddleware",
+        "matched": "starlette.exceptions.ExceptionMiddleware"
+      },
+      {
+        "type": "ClassBaseStale",
+        "lineno": 7,
+        "symbol": "StarletteExceptionMiddleware",
+        "matched": "starlette.exceptions.ExceptionMiddleware"
+      },
+      {
+        "type": "NameStaleImported(Load)",
+        "lineno": 7,
+        "symbol": "StarletteExceptionMiddleware",
+        "matched": "starlette.exceptions.ExceptionMiddleware"
+      }
+    ]
+  },
+  "pytest_pass": false,
+  "pytest_log_excerpt": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_1rk7v5lo\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_build FAILED                           [100%]\n\n======================",
+  "overall_task_success": false,
+  "parsed_code": "from starlette.middleware import Middleware\nfrom starlette.middleware.exceptions import ExceptionMiddleware as StarletteExceptionMiddleware\nfrom starlette.requests import Request\nfrom starlette.responses import JSONResponse\nfrom starlette.types import Receive, Send, Scope, Message\n\nclass CustomExceptionMiddleware(StarletteExceptionMiddleware):\n    async def dispatch(self, request: Request, call_next):\n        try:\n            return await call_next(request)\n        except Exception as e:\n            response = await self.handle_exception(request, e)\n            return response\n\n    async def handle_exception(self, request: Request, exc: Exception) -> JSONResponse:\n        status_code = 500\n        detail = str(exc)\n        return JSONResponse(content={\"error\": detail}, status_code=status_code)\n\ndef build_exception_middleware(app):\n    return Middleware(CustomExceptionMiddleware, handlers={})"
+}

@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_track_a_14_fastapi_on_event_compatibility",
+  "repo_name": "tiangolo/fastapi",
+  "pr_number": 14851,
+  "pr_title": "\u267b\ufe0f Re-implement `on_event` in FastAPI for compatibility with the next Starlette, while keeping backwards compatibility",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "f9f79926047d7f5d8e0127dd585e7683ee57e9f7",
+  "pr_base_sha": "8e50c55fd90c4433ddc9096ff439da9498a8314a",
+  "pr_head_sha": "7e596af53c5dca338e62325e4bd30fd2f6ba7496",
+  "base_commit": "8e50c55fd90c4433ddc9096ff439da9498a8314a",
+  "target_commit": "f9f79926047d7f5d8e0127dd585e7683ee57e9f7",
+  "ancestry_verified": true,
+  "merge_strategy": "merge_commit",
+  "merge_relationship_verified": true,
+  "diff_match": true,
+  "issue_required": false,
+  "issue_id_verified": null,
+  "issue_status": "NOT_APPLICABLE",
+  "spec_sha256": "c0aeeb8277e93138bcbca4c4b9446b010b6351afaa03b50cd5a63e06b1c8025f",
+  "audit_fingerprint": "40deb3e345cb3ba492b6a9928c04ac297b4e8585542715b0482d7b89ba87e6e7",
+  "auditor_version": "3.0.0",
+  "overall_status": "PASS"
+}

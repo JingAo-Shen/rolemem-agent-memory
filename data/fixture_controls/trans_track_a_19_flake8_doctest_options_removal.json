@@ -1,0 +1,8 @@
+{
+  "transition_id": "trans_track_a_19_flake8_doctest_options_removal",
+  "audit_fingerprint": "533bc103a5ccf4d9be5a90477bfda5615cffdde455751b62a20de520d605bbab",
+  "status": "PASS",
+  "valid_control_status": "PASS",
+  "stale_control_status": "PASS",
+  "details": "valid_target=True, stale_target=False"
+}

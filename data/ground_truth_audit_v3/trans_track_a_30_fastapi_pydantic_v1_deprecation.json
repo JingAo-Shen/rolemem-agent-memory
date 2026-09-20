@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_track_a_30_fastapi_pydantic_v1_deprecation",
+  "repo_name": "tiangolo/fastapi",
+  "pr_number": 14583,
+  "pr_title": "\ud83d\udd0a Add deprecation warnings when using `pydantic.v1`",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "6e42bcd8ce2ade33d94f478310dad20ee84f8f0f",
+  "pr_base_sha": "6513d4daa16a536d17743de6a292f49bd06388a4",
+  "pr_head_sha": "a3f929f27640e1ce8255256d1b6b6c1c5c6a3328",
+  "base_commit": "6513d4daa16a536d17743de6a292f49bd06388a4",
+  "target_commit": "6e42bcd8ce2ade33d94f478310dad20ee84f8f0f",
+  "ancestry_verified": true,
+  "merge_strategy": "merge_commit",
+  "merge_relationship_verified": true,
+  "diff_match": true,
+  "issue_required": false,
+  "issue_id_verified": null,
+  "issue_status": "NOT_APPLICABLE",
+  "spec_sha256": "966b56e0471f865713903add5ae34c84ab28c25ddc4a519288f8b1c8ce914387",
+  "audit_fingerprint": "e17b1a6e8e7af1187bf3642f95ab187038df2065faba3d974ce86b6f7dc9b555",
+  "auditor_version": "3.0.0",
+  "overall_status": "PASS"
+}

@@ -1,0 +1,19 @@
+{
+  "transition_id": "trans_track_a_28_starlette_exceptions_middleware_removal",
+  "repo_name": "encode/starlette",
+  "repo_url": "https://github.com/encode/starlette",
+  "pr_url": "https://github.com/encode/starlette/pull/2826",
+  "base_commit": "2c98fe335888beda9a67235c79c41d754df3c99c",
+  "target_commit": "856c904a6dcf7368a999dd791e2f98a7c3812f0f",
+  "pkg_path": "starlette",
+  "changed_files": [
+    "starlette/exceptions.py"
+  ],
+  "primary_file": "starlette/exceptions.py",
+  "symbol": "starlette.exceptions.ExceptionMiddleware",
+  "file_digest_before": "1940e6fdaf92d4d528027fba5151b29437264c2fa26df5e6ca726c06960a2608",
+  "file_digest_after": "b48a619596bc12c41f2b0dfec70e49dd93751a3691e147317c92baf40776846f",
+  "stale_sensitive": true,
+  "transition_type": "API_REMOVAL",
+  "builder_status": "FIXTURE_EXTRACTED_UNVERIFIED"
+}

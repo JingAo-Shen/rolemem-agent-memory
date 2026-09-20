@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_track_a_24_cachelib_timeout_timedelta",
+  "repo_name": "pallets/cachelib",
+  "pr_number": 510,
+  "pr_title": "Add support for specifying timeouts as timedelta",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "d5fc7826065db284b8eda1e2fa5d2157ba1fcb9d",
+  "pr_base_sha": "5a7d98a6b54e05b6076a8c69b034ab8c35a250a1",
+  "pr_head_sha": "3807308808e4da4f0eb25754488a91e73fd72f5b",
+  "base_commit": "5a7d98a6b54e05b6076a8c69b034ab8c35a250a1",
+  "target_commit": "d5fc7826065db284b8eda1e2fa5d2157ba1fcb9d",
+  "ancestry_verified": true,
+  "merge_strategy": "merge_commit",
+  "merge_relationship_verified": true,
+  "diff_match": true,
+  "issue_required": false,
+  "issue_id_verified": null,
+  "issue_status": "NOT_APPLICABLE",
+  "spec_sha256": "f43b6f90bdeb659537d0767ddad2353ddecb39b37fe57c3e53b4e16607a664be",
+  "audit_fingerprint": "7d1c63019ffc33a2950dc45b051cdab722fa3b78223e16f7ab7e192efe27bbd8",
+  "auditor_version": "3.0.0",
+  "overall_status": "PASS"
+}

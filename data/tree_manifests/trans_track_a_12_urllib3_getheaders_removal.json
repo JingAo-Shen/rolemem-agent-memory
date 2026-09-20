@@ -1,0 +1,390 @@
+{
+  "transition_id": "trans_track_a_12_urllib3_getheaders_removal",
+  "repo_name": "urllib3/urllib3",
+  "base_commit": "dd2daef3611ea09f60260391e6a698bb9933dd17",
+  "target_commit": "4587fd6d477f22022be08de597c3a5acd5185c0a",
+  "pkg_path": "src/urllib3",
+  "tree_purity_status": "TREE_PURITY_PASS",
+  "before_tree_purity": "TREE_PURITY_PASS",
+  "after_tree_purity": "TREE_PURITY_PASS",
+  "before_mismatches": [],
+  "after_mismatches": [],
+  "total_files_before": 37,
+  "total_files_after": 37,
+  "has_environment_overlay": false,
+  "before_files": [
+    {
+      "relative_path": "src/urllib3/__init__.py",
+      "size": 6979,
+      "sha256": "24ca35b60d67215d40789daf10d0bf4f17e5d1ee61e86ce5f43195935ad645ba"
+    },
+    {
+      "relative_path": "src/urllib3/_base_connection.py",
+      "size": 5568,
+      "sha256": "4f57301f7461cecac187a073dc03865436e846c13bbde8a3a993d75d04d1d918"
+    },
+    {
+      "relative_path": "src/urllib3/_collections.py",
+      "size": 17295,
+      "sha256": "b4cedce89d622ad599615fd01986fcfabecdaf5e76e037a19ec6b451f87afe65"
+    },
+    {
+      "relative_path": "src/urllib3/_request_methods.py",
+      "size": 9931,
+      "sha256": "802785f3948efd45385a83f0607228cffb70f9e33f1153a42c5a7c385b02ec30"
+    },
+    {
+      "relative_path": "src/urllib3/connection.py",
+      "size": 42613,
+      "sha256": "88fe2981226da6eb17c9895e8f3367fa08a1ff0582c4c53eab2e8e53591a6a97"
+    },
+    {
+      "relative_path": "src/urllib3/connectionpool.py",
+      "size": 43371,
+      "sha256": "64486e76c6bc048b9b0f63345e8c4106c8f16ec5f0320512707ee843d8be8f56"
+    },
+    {
+      "relative_path": "src/urllib3/contrib/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/urllib3/contrib/emscripten/__init__.py",
+      "size": 733,
+      "sha256": "bba28d8338e51596ee0005daff26c247b810ef55491129c5f8821d0c0ef76ebc"
+    },
+    {
+      "relative_path": "src/urllib3/contrib/emscripten/connection.py",
+      "size": 8771,
+      "sha256": "8fc0d1fdf944ee1b2816135f8aa1cb89a3da0ac55bcc6e388e06a1c2fb10e760"
+    },
+    {
+      "relative_path": "src/urllib3/contrib/emscripten/emscripten_fetch_worker.js",
+      "size": 3655,
+      "sha256": "0837d817ff420e86edc7694689dc89d738c312fc0d4f917e75c8665565c38741"
+    },
+    {
+      "relative_path": "src/urllib3/contrib/emscripten/fetch.py",
+      "size": 23484,
+      "sha256": "91ca34ea55a843e7dd15f379d7e9f3793cb03d50441e0f3d588b2ddf71f7c5c8"
+    },
+    {
+      "relative_path": "src/urllib3/contrib/emscripten/request.py",
+      "size": 566,
+      "sha256": "98bdbcb33cb52af137349856a2be633666aba7c830a650d4fbb8301996398344"
+    },
+    {
+      "relative_path": "src/urllib3/contrib/emscripten/response.py",
+      "size": 9507,
+      "sha256": "ee854f10d6191eecc4191b46e341e89e91f9b402181ec19c1cf6c9b7667453e6"
+    },
+    {
+      "relative_path": "src/urllib3/contrib/pyopenssl.py",
+      "size": 19720,
+      "sha256": "5e9e589b4e558171a11dad02e3096eb6f1f163c4a72924ba58b6f6b79322bb4b"
+    },
+    {
+      "relative_path": "src/urllib3/contrib/socks.py",
+      "size": 7549,
+      "sha256": "fa26ab75ceb51b2a6c2730fa5bacae452eca542c9fa30710ae5ffbd7d1fb9483"
+    },
+    {
+      "relative_path": "src/urllib3/exceptions.py",
+      "size": 9938,
+      "sha256": "a738ae9877f4570c77cf882f532ee8bbc9e5336c88617d0dde5df39c475e1795"
+    },
+    {
+      "relative_path": "src/urllib3/fields.py",
+      "size": 10829,
+      "sha256": "1427fb5142d291fd7472e4d15164d0112cf1825d564fc7b6682cb791fc998a7b"
+    },
+    {
+      "relative_path": "src/urllib3/filepost.py",
+      "size": 2388,
+      "sha256": "53c78d67e9a928a1e1ae56c7104893c7180ad7a21e8e111aeeecf8db2a80fdd2"
+    },
+    {
+      "relative_path": "src/urllib3/http2/__init__.py",
+      "size": 1741,
+      "sha256": "c73ac0487ed1e4035190f24ea2de651a70133aadca2aec97cc8e36adc9f09aab"
+    },
+    {
+      "relative_path": "src/urllib3/http2/connection.py",
+      "size": 12694,
+      "sha256": "e030740e46440b7c889211a3503207075ef0ad808b68bd008396c35b6fe618f2"
+    },
+    {
+      "relative_path": "src/urllib3/http2/probe.py",
+      "size": 3014,
+      "sha256": "9e7024a9b8406a43a217be6bcfb5b4b9d677f047a1fee0fc7e357be0def71442"
+    },
+    {
+      "relative_path": "src/urllib3/poolmanager.py",
+      "size": 23866,
+      "sha256": "a0ab203f512c008e0e5602bdfbd0f70185d94b91d857cc8a512a20f906c9f13b"
+    },
+    {
+      "relative_path": "src/urllib3/py.typed",
+      "size": 93,
+      "sha256": "51a0ae3c56b71fc5006a46edfb91bc48f69c95d4ce1af26fd7ca4f8d42798036"
+    },
+    {
+      "relative_path": "src/urllib3/response.py",
+      "size": 46487,
+      "sha256": "410fd0dbe9767b100391aad3fa68b6a51b012d20516fd274059af86294a7035d"
+    },
+    {
+      "relative_path": "src/urllib3/util/__init__.py",
+      "size": 1001,
+      "sha256": "faa792d1071e8af6b3bc110a0cd142008fba00271d0ce1384ccbe8ed22cd9404"
+    },
+    {
+      "relative_path": "src/urllib3/util/connection.py",
+      "size": 4444,
+      "sha256": "2633bbdb69731e5ccb5cf4e4afd65605d86c7979cc5633126f50c92d5ad74a74"
+    },
+    {
+      "relative_path": "src/urllib3/util/proxy.py",
+      "size": 1148,
+      "sha256": "b1e3fcf90e41e9b07474cb703e3f98719650df4bc7b8ba91bbeb48d096767f3b"
+    },
+    {
+      "relative_path": "src/urllib3/util/request.py",
+      "size": 8411,
+      "sha256": "5ee02c1014f9f030196144f0a4c1f91ebdc0d4e3e830dbcd21822e9db22a6dcf"
+    },
+    {
+      "relative_path": "src/urllib3/util/response.py",
+      "size": 3374,
+      "sha256": "bd013adfdba81218f5be98c4771bb994d22124249466477ba6a965508d0164e0"
+    },
+    {
+      "relative_path": "src/urllib3/util/retry.py",
+      "size": 18459,
+      "sha256": "6e3fb6614a9b9712e5bfc4c78397f1c30f83339e1709b8e0657210ef55e2a026"
+    },
+    {
+      "relative_path": "src/urllib3/util/ssl_.py",
+      "size": 19786,
+      "sha256": "8f19d0de6b189156a8909556a87367015755b4376276b4c70deca4e74830a9a4"
+    },
+    {
+      "relative_path": "src/urllib3/util/ssl_match_hostname.py",
+      "size": 5845,
+      "sha256": "0e2ec353bce892896d6a94ff1744a3db57df631c1a4bf704e5aa4eb70b9e7b20"
+    },
+    {
+      "relative_path": "src/urllib3/util/ssltransport.py",
+      "size": 8847,
+      "sha256": "133e0ef2947fbd3f1d6a7fc5bea0584ba7600df05710c7d57ebcdc754a167e2e"
+    },
+    {
+      "relative_path": "src/urllib3/util/timeout.py",
+      "size": 10346,
+      "sha256": "e1e4f5155799654ee1ee6603d49ab639735ee1fc5e91d36f868594919bac4690"
+    },
+    {
+      "relative_path": "src/urllib3/util/url.py",
+      "size": 15205,
+      "sha256": "59187e4cc617a2c9a0a7c9bc953e07e6ca681f0e7252395c3027d4e77024a00b"
+    },
+    {
+      "relative_path": "src/urllib3/util/util.py",
+      "size": 1146,
+      "sha256": "8f795b64ad633f28b00f7e13f08809cdd5846554fee04fb4bd82098bd52378d0"
+    },
+    {
+      "relative_path": "src/urllib3/util/wait.py",
+      "size": 4423,
+      "sha256": "fe987c22b511deca8faa2d0ea29420254947e30ce419e3390a2c80ed7186b662"
+    }
+  ],
+  "after_files": [
+    {
+      "relative_path": "src/urllib3/__init__.py",
+      "size": 6979,
+      "sha256": "24ca35b60d67215d40789daf10d0bf4f17e5d1ee61e86ce5f43195935ad645ba"
+    },
+    {
+      "relative_path": "src/urllib3/_base_connection.py",
+      "size": 5568,
+      "sha256": "4f57301f7461cecac187a073dc03865436e846c13bbde8a3a993d75d04d1d918"
+    },
+    {
+      "relative_path": "src/urllib3/_collections.py",
+      "size": 17295,
+      "sha256": "b4cedce89d622ad599615fd01986fcfabecdaf5e76e037a19ec6b451f87afe65"
+    },
+    {
+      "relative_path": "src/urllib3/_request_methods.py",
+      "size": 9931,
+      "sha256": "802785f3948efd45385a83f0607228cffb70f9e33f1153a42c5a7c385b02ec30"
+    },
+    {
+      "relative_path": "src/urllib3/connection.py",
+      "size": 42613,
+      "sha256": "88fe2981226da6eb17c9895e8f3367fa08a1ff0582c4c53eab2e8e53591a6a97"
+    },
+    {
+      "relative_path": "src/urllib3/connectionpool.py",
+      "size": 43371,
+      "sha256": "64486e76c6bc048b9b0f63345e8c4106c8f16ec5f0320512707ee843d8be8f56"
+    },
+    {
+      "relative_path": "src/urllib3/contrib/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "src/urllib3/contrib/emscripten/__init__.py",
+      "size": 733,
+      "sha256": "bba28d8338e51596ee0005daff26c247b810ef55491129c5f8821d0c0ef76ebc"
+    },
+    {
+      "relative_path": "src/urllib3/contrib/emscripten/connection.py",
+      "size": 8771,
+      "sha256": "8fc0d1fdf944ee1b2816135f8aa1cb89a3da0ac55bcc6e388e06a1c2fb10e760"
+    },
+    {
+      "relative_path": "src/urllib3/contrib/emscripten/emscripten_fetch_worker.js",
+      "size": 3655,
+      "sha256": "0837d817ff420e86edc7694689dc89d738c312fc0d4f917e75c8665565c38741"
+    },
+    {
+      "relative_path": "src/urllib3/contrib/emscripten/fetch.py",
+      "size": 23484,
+      "sha256": "91ca34ea55a843e7dd15f379d7e9f3793cb03d50441e0f3d588b2ddf71f7c5c8"
+    },
+    {
+      "relative_path": "src/urllib3/contrib/emscripten/request.py",
+      "size": 566,
+      "sha256": "98bdbcb33cb52af137349856a2be633666aba7c830a650d4fbb8301996398344"
+    },
+    {
+      "relative_path": "src/urllib3/contrib/emscripten/response.py",
+      "size": 9507,
+      "sha256": "ee854f10d6191eecc4191b46e341e89e91f9b402181ec19c1cf6c9b7667453e6"
+    },
+    {
+      "relative_path": "src/urllib3/contrib/pyopenssl.py",
+      "size": 19720,
+      "sha256": "5e9e589b4e558171a11dad02e3096eb6f1f163c4a72924ba58b6f6b79322bb4b"
+    },
+    {
+      "relative_path": "src/urllib3/contrib/socks.py",
+      "size": 7549,
+      "sha256": "fa26ab75ceb51b2a6c2730fa5bacae452eca542c9fa30710ae5ffbd7d1fb9483"
+    },
+    {
+      "relative_path": "src/urllib3/exceptions.py",
+      "size": 9938,
+      "sha256": "a738ae9877f4570c77cf882f532ee8bbc9e5336c88617d0dde5df39c475e1795"
+    },
+    {
+      "relative_path": "src/urllib3/fields.py",
+      "size": 10829,
+      "sha256": "1427fb5142d291fd7472e4d15164d0112cf1825d564fc7b6682cb791fc998a7b"
+    },
+    {
+      "relative_path": "src/urllib3/filepost.py",
+      "size": 2388,
+      "sha256": "53c78d67e9a928a1e1ae56c7104893c7180ad7a21e8e111aeeecf8db2a80fdd2"
+    },
+    {
+      "relative_path": "src/urllib3/http2/__init__.py",
+      "size": 1741,
+      "sha256": "c73ac0487ed1e4035190f24ea2de651a70133aadca2aec97cc8e36adc9f09aab"
+    },
+    {
+      "relative_path": "src/urllib3/http2/connection.py",
+      "size": 12694,
+      "sha256": "e030740e46440b7c889211a3503207075ef0ad808b68bd008396c35b6fe618f2"
+    },
+    {
+      "relative_path": "src/urllib3/http2/probe.py",
+      "size": 3014,
+      "sha256": "9e7024a9b8406a43a217be6bcfb5b4b9d677f047a1fee0fc7e357be0def71442"
+    },
+    {
+      "relative_path": "src/urllib3/poolmanager.py",
+      "size": 23866,
+      "sha256": "a0ab203f512c008e0e5602bdfbd0f70185d94b91d857cc8a512a20f906c9f13b"
+    },
+    {
+      "relative_path": "src/urllib3/py.typed",
+      "size": 93,
+      "sha256": "51a0ae3c56b71fc5006a46edfb91bc48f69c95d4ce1af26fd7ca4f8d42798036"
+    },
+    {
+      "relative_path": "src/urllib3/response.py",
+      "size": 45699,
+      "sha256": "96fb034838422e9b8f5782b569d3f70a674ecf26a2f6195f137406c6fc798332"
+    },
+    {
+      "relative_path": "src/urllib3/util/__init__.py",
+      "size": 1001,
+      "sha256": "faa792d1071e8af6b3bc110a0cd142008fba00271d0ce1384ccbe8ed22cd9404"
+    },
+    {
+      "relative_path": "src/urllib3/util/connection.py",
+      "size": 4444,
+      "sha256": "2633bbdb69731e5ccb5cf4e4afd65605d86c7979cc5633126f50c92d5ad74a74"
+    },
+    {
+      "relative_path": "src/urllib3/util/proxy.py",
+      "size": 1148,
+      "sha256": "b1e3fcf90e41e9b07474cb703e3f98719650df4bc7b8ba91bbeb48d096767f3b"
+    },
+    {
+      "relative_path": "src/urllib3/util/request.py",
+      "size": 8411,
+      "sha256": "5ee02c1014f9f030196144f0a4c1f91ebdc0d4e3e830dbcd21822e9db22a6dcf"
+    },
+    {
+      "relative_path": "src/urllib3/util/response.py",
+      "size": 3374,
+      "sha256": "bd013adfdba81218f5be98c4771bb994d22124249466477ba6a965508d0164e0"
+    },
+    {
+      "relative_path": "src/urllib3/util/retry.py",
+      "size": 18459,
+      "sha256": "6e3fb6614a9b9712e5bfc4c78397f1c30f83339e1709b8e0657210ef55e2a026"
+    },
+    {
+      "relative_path": "src/urllib3/util/ssl_.py",
+      "size": 19786,
+      "sha256": "8f19d0de6b189156a8909556a87367015755b4376276b4c70deca4e74830a9a4"
+    },
+    {
+      "relative_path": "src/urllib3/util/ssl_match_hostname.py",
+      "size": 5845,
+      "sha256": "0e2ec353bce892896d6a94ff1744a3db57df631c1a4bf704e5aa4eb70b9e7b20"
+    },
+    {
+      "relative_path": "src/urllib3/util/ssltransport.py",
+      "size": 8847,
+      "sha256": "133e0ef2947fbd3f1d6a7fc5bea0584ba7600df05710c7d57ebcdc754a167e2e"
+    },
+    {
+      "relative_path": "src/urllib3/util/timeout.py",
+      "size": 10346,
+      "sha256": "e1e4f5155799654ee1ee6603d49ab639735ee1fc5e91d36f868594919bac4690"
+    },
+    {
+      "relative_path": "src/urllib3/util/url.py",
+      "size": 15205,
+      "sha256": "59187e4cc617a2c9a0a7c9bc953e07e6ca681f0e7252395c3027d4e77024a00b"
+    },
+    {
+      "relative_path": "src/urllib3/util/util.py",
+      "size": 1146,
+      "sha256": "8f795b64ad633f28b00f7e13f08809cdd5846554fee04fb4bd82098bd52378d0"
+    },
+    {
+      "relative_path": "src/urllib3/util/wait.py",
+      "size": 4423,
+      "sha256": "fe987c22b511deca8faa2d0ea29420254947e30ce419e3390a2c80ed7186b662"
+    }
+  ],
+  "fixture_manifest_hash": "b98e64a817ed839311c396a983ff3a0bd42f8d80a80652b734a6399e96b5fd4e"
+}

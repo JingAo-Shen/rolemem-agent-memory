@@ -1,0 +1,400 @@
+diff --git a/CHANGELOG b/CHANGELOG
+index eeb0245..792c126 100644
+--- a/CHANGELOG
++++ b/CHANGELOG
+@@ -1,3 +1,21 @@
++2.3.0
++=====
++
++* add IniConfig.parse() classmethod with strip_inline_comments parameter (fixes #55)
++  - by default (strip_inline_comments=True), inline comments are properly stripped from values
++  - set strip_inline_comments=False to preserve old behavior if needed
++* IniConfig() constructor maintains backward compatibility (does not strip inline comments)
++* users should migrate to IniConfig.parse() for correct comment handling
++* add strip_section_whitespace parameter to IniConfig.parse() (regarding #4)
++  - opt-in parameter to strip Unicode whitespace from section names
++  - when True, strips Unicode whitespace (U+00A0, U+2000, U+3000, etc.) from section names
++  - when False (default), preserves existing behavior for backward compatibility
++* clarify Unicode whitespace handling (regarding #4)
++  - since iniconfig 2.0.0 (Python 3 only), all strings are Unicode by default
++  - Python 3's str.strip() has handled Unicode whitespace since Python 3.0 (2008)
++  - iniconfig automatically benefits from this in all supported versions (Python >= 3.10)
++  - key names and values have Unicode whitespace properly stripped using Python's built-in methods
++
+ 2.2.0
+ =====
+ 
+diff --git a/src/iniconfig/__init__.py b/src/iniconfig/__init__.py
+index 3fadacf..b84809f 100644
+--- a/src/iniconfig/__init__.py
++++ b/src/iniconfig/__init__.py
+@@ -96,33 +96,86 @@ class IniConfig:
+         path: str | os.PathLike[str],
+         data: str | None = None,
+         encoding: str = "utf-8",
++        *,
++        _sections: Mapping[str, Mapping[str, str]] | None = None,
++        _sources: Mapping[tuple[str, str | None], int] | None = None,
+     ) -> None:
+         self.path = os.fspath(path)
++
++        # Determine sections and sources
++        if _sections is not None and _sources is not None:
++            # Use provided pre-parsed data (called from parse())
++            sections_data = _sections
++            sources = _sources
++        else:
++            # Parse the data (backward compatible path)
++            if data is None:
++                with open(self.path, encoding=encoding) as fp:
++                    data = fp.read()
++
++            # Use old behavior (no stripping) for backward compatibility
++            sections_data, sources = _parse.parse_ini_data(
++                self.path, data, strip_inline_comments=False
++            )
++
++        # Assign once to Final attributes
++        self._sources = sources
++        self.sections = sections_data
++
++    @classmethod
++    def parse(
++        cls,
++        path: str | os.PathLike[str],
++        data: str | None = None,
++        encoding: str = "utf-8",
++        *,
++        strip_inline_comments: bool = True,
++        strip_section_whitespace: bool = False,
++    ) -> "IniConfig":
++        """Parse an INI file.
++
++        Args:
++            path: Path to the INI file (used for error messages)
++            data: Optional INI content as string. If None, reads from path.
++            encoding: Encoding to use when reading the file (default: utf-8)
++            strip_inline_comments: Whether to strip inline comments from values
++                (default: True). When True, comments starting with # or ; are
++                removed from values, matching the behavior for section comments.
++            strip_section_whitespace: Whether to strip whitespace from section and key names
++                (default: False). When True, strips Unicode whitespace from section and key names,
++                addressing issue #4. When False, preserves existing behavior for backward compatibility.
++
++        Returns:
++            IniConfig instance with parsed configuration
++
++        Example:
++            # With comment stripping (default):
++            config = IniConfig.parse("setup.cfg")
++            # value = "foo" instead of "foo # comment"
++
++            # Without comment stripping (old behavior):
++            config = IniConfig.parse("setup.cfg", strip_inline_comments=False)
++            # value = "foo # comment"
++
++            # With section name stripping (opt-in for issue #4):
++            config = IniConfig.parse("setup.cfg", strip_section_whitespace=True)
++            # section names and keys have Unicode whitespace stripped
++        """
++        fspath = os.fspath(path)
++
+         if data is None:
+-            with open(self.path, encoding=encoding) as fp:
++            with open(fspath, encoding=encoding) as fp:
+                 data = fp.read()
+ 
+-        tokens = _parse.parse_lines(self.path, data.splitlines(True))
+-
+-        self._sources = {}
+-        sections_data: dict[str, dict[str, str]]
+-        self.sections = sections_data = {}
+-
+-        for lineno, section, name, value in tokens:
+-            if section is None:
+-                raise ParseError(self.path, lineno, "no section header defined")
+-            self._sources[section, name] = lineno
+-            if name is None:
+-                if section in self.sections:
+-                    raise ParseError(
+-                        self.path, lineno, f"duplicate section {section!r}"
+-                    )
+-                sections_data[section] = {}
+-            else:
+-                if name in self.sections[section]:
+-                    raise ParseError(self.path, lineno, f"duplicate name {name!r}")
+-                assert value is not None
+-                sections_data[section][name] = value
++        sections_data, sources = _parse.parse_ini_data(
++            fspath,
++            data,
++            strip_inline_comments=strip_inline_comments,
++            strip_section_whitespace=strip_section_whitespace,
++        )
++
++        # Call constructor with pre-parsed sections and sources
++        return cls(path=fspath, _sections=sections_data, _sources=sources)
+ 
+     def lineof(self, section: str, name: str | None = None) -> int | None:
+         lineno = self._sources.get((section, name))
+diff --git a/src/iniconfig/_parse.py b/src/iniconfig/_parse.py
+index a162636..57b9b44 100644
+--- a/src/iniconfig/_parse.py
++++ b/src/iniconfig/_parse.py
+@@ -1,3 +1,4 @@
++from collections.abc import Mapping
+ from typing import NamedTuple
+ 
+ from .exceptions import ParseError
+@@ -12,11 +13,67 @@ class ParsedLine(NamedTuple):
+     value: str | None
+ 
+ 
+-def parse_lines(path: str, line_iter: list[str]) -> list[ParsedLine]:
++def parse_ini_data(
++    path: str,
++    data: str,
++    *,
++    strip_inline_comments: bool,
++    strip_section_whitespace: bool = False,
++) -> tuple[Mapping[str, Mapping[str, str]], Mapping[tuple[str, str | None], int]]:
++    """Parse INI data and return sections and sources mappings.
++
++    Args:
++        path: Path for error messages
++        data: INI content as string
++        strip_inline_comments: Whether to strip inline comments from values
++        strip_section_whitespace: Whether to strip whitespace from section and key names
++            (default: False). When True, addresses issue #4 by stripping Unicode whitespace.
++
++    Returns:
++        Tuple of (sections_data, sources) where:
++        - sections_data: mapping of section -> {name -> value}
++        - sources: mapping of (section, name) -> line number
++    """
++    tokens = parse_lines(
++        path,
++        data.splitlines(True),
++        strip_inline_comments=strip_inline_comments,
++        strip_section_whitespace=strip_section_whitespace,
++    )
++
++    sources: dict[tuple[str, str | None], int] = {}
++    sections_data: dict[str, dict[str, str]] = {}
++
++    for lineno, section, name, value in tokens:
++        if section is None:
++            raise ParseError(path, lineno, "no section header defined")
++        sources[section, name] = lineno
++        if name is None:
++            if section in sections_data:
++                raise ParseError(path, lineno, f"duplicate section {section!r}")
++            sections_data[section] = {}
++        else:
++            if name in sections_data[section]:
++                raise ParseError(path, lineno, f"duplicate name {name!r}")
++            assert value is not None
++            sections_data[section][name] = value
++
++    return sections_data, sources
++
++
++def parse_lines(
++    path: str,
++    line_iter: list[str],
++    *,
++    strip_inline_comments: bool = False,
++    strip_section_whitespace: bool = False,
++) -> list[ParsedLine]:
+     result: list[ParsedLine] = []
+     section = None
+     for lineno, line in enumerate(line_iter):
+-        name, data = _parseline(path, line, lineno)
++        name, data = _parseline(
++            path, line, lineno, strip_inline_comments, strip_section_whitespace
++        )
+         # new value
+         if name is not None and data is not None:
+             result.append(ParsedLine(lineno, section, name, data))
+@@ -42,7 +99,13 @@ def parse_lines(path: str, line_iter: list[str]) -> list[ParsedLine]:
+     return result
+ 
+ 
+-def _parseline(path: str, line: str, lineno: int) -> tuple[str | None, str | None]:
++def _parseline(
++    path: str,
++    line: str,
++    lineno: int,
++    strip_inline_comments: bool,
++    strip_section_whitespace: bool,
++) -> tuple[str | None, str | None]:
+     # blank lines
+     if iscommentline(line):
+         line = ""
+@@ -56,7 +119,11 @@ def _parseline(path: str, line: str, lineno: int) -> tuple[str | None, str | Non
+         for c in COMMENTCHARS:
+             line = line.split(c)[0].rstrip()
+         if line[-1] == "]":
+-            return line[1:-1], None
++            section_name = line[1:-1]
++            # Optionally strip whitespace from section name (issue #4)
++            if strip_section_whitespace:
++                section_name = section_name.strip()
++            return section_name, None
+         return None, realline.strip()
+     # value
+     elif not line[0].isspace():
+@@ -69,10 +136,26 @@ def _parseline(path: str, line: str, lineno: int) -> tuple[str | None, str | Non
+                 name, value = line.split(":", 1)
+             except ValueError:
+                 raise ParseError(path, lineno, f"unexpected line: {line!r}") from None
+-        return name.strip(), value.strip()
++
++        # Strip key name (always for backward compatibility, optionally with unicode awareness)
++        key_name = name.strip()
++
++        # Strip value
++        value = value.strip()
++        # Strip inline comments from values if requested (issue #55)
++        if strip_inline_comments:
++            for c in COMMENTCHARS:
++                value = value.split(c)[0].rstrip()
++
++        return key_name, value
+     # continuation
+     else:
+-        return None, line.strip()
++        line = line.strip()
++        # Strip inline comments from continuations if requested (issue #55)
++        if strip_inline_comments:
++            for c in COMMENTCHARS:
++                line = line.split(c)[0].rstrip()
++        return None, line
+ 
+ 
+ def iscommentline(line: str) -> bool:
+diff --git a/testing/test_iniconfig.py b/testing/test_iniconfig.py
+index dd11c73..85193c5 100644
+--- a/testing/test_iniconfig.py
++++ b/testing/test_iniconfig.py
+@@ -125,7 +125,7 @@ def test_iniconfig_from_file(tmp_path: Path) -> None:
+     config = IniConfig(str(path), "[diff]")
+     assert list(config.sections) == ["diff"]
+     with pytest.raises(TypeError):
+-        IniConfig(data=path.read_text())  # type: ignore
++        IniConfig(data=path.read_text())  # type: ignore[call-arg]
+ 
+ 
+ def test_iniconfig_section_first() -> None:
+@@ -304,3 +304,111 @@ def test_api_import() -> None:
+ )
+ def test_iscommentline_true(line: str) -> None:
+     assert iscommentline(line)
++
++
++def test_parse_strips_inline_comments() -> None:
++    """Test that IniConfig.parse() strips inline comments from values by default."""
++    config = IniConfig.parse(
++        "test.ini",
++        data=dedent(
++            """
++            [section1]
++            name1 = value1 # this is a comment
++            name2 = value2 ; this is also a comment
++            name3 = value3# no space before comment
++            list = a, b, c # some items
++            """
++        ),
++    )
++    assert config["section1"]["name1"] == "value1"
++    assert config["section1"]["name2"] == "value2"
++    assert config["section1"]["name3"] == "value3"
++    assert config["section1"]["list"] == "a, b, c"
++
++
++def test_parse_strips_inline_comments_from_continuations() -> None:
++    """Test that inline comments are stripped from continuation lines."""
++    config = IniConfig.parse(
++        "test.ini",
++        data=dedent(
++            """
++            [section]
++            names =
++                Alice # first person
++                Bob ; second person
++                Charlie
++            """
++        ),
++    )
++    assert config["section"]["names"] == "Alice\nBob\nCharlie"
++
++
++def test_parse_preserves_inline_comments_when_disabled() -> None:
++    """Test that IniConfig.parse(strip_inline_comments=False) preserves comments."""
++    config = IniConfig.parse(
++        "test.ini",
++        data=dedent(
++            """
++            [section1]
++            name1 = value1 # this is a comment
++            name2 = value2 ; this is also a comment
++            list = a, b, c # some items
++            """
++        ),
++        strip_inline_comments=False,
++    )
++    assert config["section1"]["name1"] == "value1 # this is a comment"
++    assert config["section1"]["name2"] == "value2 ; this is also a comment"
++    assert config["section1"]["list"] == "a, b, c # some items"
++
++
++def test_constructor_preserves_inline_comments_for_backward_compatibility() -> None:
++    """Test that IniConfig() constructor preserves old behavior (no stripping)."""
++    config = IniConfig(
++        "test.ini",
++        data=dedent(
++            """
++            [section1]
++            name1 = value1 # this is a comment
++            name2 = value2 ; this is also a comment
++            """
++        ),
++    )
++    assert config["section1"]["name1"] == "value1 # this is a comment"
++    assert config["section1"]["name2"] == "value2 ; this is also a comment"
++
++
++def test_unicode_whitespace_stripped() -> None:
++    """Test that Unicode whitespace is stripped (issue #4)."""
++    config = IniConfig(
++        "test.ini",
++        data="[section]\n"
++        + "name1 = \u00a0value1\u00a0\n"  # NO-BREAK SPACE
++        + "name2 = \u2000value2\u2000\n"  # EN QUAD
++        + "name3 = \u3000value3\u3000\n",  # IDEOGRAPHIC SPACE
++    )
++    assert config["section"]["name1"] == "value1"
++    assert config["section"]["name2"] == "value2"
++    assert config["section"]["name3"] == "value3"
++
++
++def test_unicode_whitespace_in_section_names_with_opt_in() -> None:
++    """Test that Unicode whitespace can be stripped from section names with opt-in (issue #4)."""
++    config = IniConfig.parse(
++        "test.ini",
++        data="[section\u00a0]\n"  # NO-BREAK SPACE at end
++        + "key = value\n",
++        strip_section_whitespace=True,
++    )
++    assert "section" in config
++    assert config["section"]["key"] == "value"
++
++
++def test_unicode_whitespace_in_key_names() -> None:
++    """Test that Unicode whitespace is stripped from key names (issue #4)."""
++    config = IniConfig(
++        "test.ini",
++        data="[section]\n" + "key\u00a0 = value\n",  # NO-BREAK SPACE after key
++    )
++    assert "key" in config["section"]
++    assert config["section"]["key"] == "value"

@@ -1,0 +1,19 @@
+{
+  "task_id": "trans_track_a_12_urllib3_getheaders_removal",
+  "condition": "S0",
+  "seed": 42,
+  "memory_source": "NO_MEMORY",
+  "memory_statements": [],
+  "retrieved_files": [],
+  "repository_context_tokens": 1200,
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": false,
+    "active_nodes": []
+  },
+  "pytest_pass": true,
+  "pytest_log_excerpt": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_41lbu_da\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_header_retrieval PASSED                [100%]\n\n==============================",
+  "overall_task_success": true,
+  "parsed_code": "from urllib3.response import HTTPResponse\n\ndef get_header_content_type(resp: HTTPResponse) -> str:\n    \"\"\"\n    Safely retrieves the Content-Type header from the given HTTPResponse object.\n\n    Args:\n        resp (HTTPResponse): The HTTPResponse object from which to retrieve the Content-Type header.\n\n    Returns:\n        str: The value of the Content-Type header, or an empty string if it does not exist.\n    \"\"\"\n    return resp.headers.get('Content-Type', '')"
+}

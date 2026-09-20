@@ -34,10 +34,13 @@ os.makedirs(SNAP_OUT_DIR, exist_ok=True)
 def run_controls_and_snapshots():
     print("=== Running Track A Fixture Controls & Snapshot Purity Verification ===")
     specs = []
-    with open(MANIFEST_PATH, "r") as f:
-        for line in f:
-            if line.strip():
-                specs.append(json.loads(line))
+    manifests = [MANIFEST_PATH, os.path.join(DATA_DIR, "track_a_scale_manifest.jsonl")]
+    for mf in manifests:
+        if os.path.exists(mf):
+            with open(mf, "r") as f:
+                for line in f:
+                    if line.strip():
+                        specs.append(json.loads(line))
 
     ctrl_passed = 0
     snap_passed = 0

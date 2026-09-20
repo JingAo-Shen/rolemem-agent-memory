@@ -1,0 +1,38 @@
+[
+  {
+    "sha": "2f1e93e06342d1ab9ce86dc2e406c2cc47c1826d",
+    "filename": "AUTHORS.rst",
+    "status": "modified",
+    "additions": 1,
+    "deletions": 0,
+    "changes": 1,
+    "blob_url": "https://github.com/marshmallow-code/marshmallow/blob/81c4be9763c43241bc1a1ab9b5ae3900c4ce909c/AUTHORS.rst",
+    "raw_url": "https://github.com/marshmallow-code/marshmallow/raw/81c4be9763c43241bc1a1ab9b5ae3900c4ce909c/AUTHORS.rst",
+    "contents_url": "https://api.github.com/repos/marshmallow-code/marshmallow/contents/AUTHORS.rst?ref=81c4be9763c43241bc1a1ab9b5ae3900c4ce909c",
+    "patch": "@@ -178,3 +178,4 @@ Contributors (chronological)\n - Fares Abubaker `@Fares-Abubaker <https://github.com/Fares-Abubaker>`_\n - Dharanikumar Sekar `@dharani7998 <https://github.com/dharani7998>`_\n - Nicolas Simonds `@0xDEC0DE <https://github.com/0xDEC0DE>`_\n+- Florian Laport `@Florian-Laport <https://github.com/Florian-Laport>`_"
+  },
+  {
+    "sha": "f6443f2d4fd2e23edc56a80ec121202799da5ddb",
+    "filename": "CHANGELOG.rst",
+    "status": "modified",
+    "additions": 10,
+    "deletions": 1,
+    "changes": 11,
+    "blob_url": "https://github.com/marshmallow-code/marshmallow/blob/81c4be9763c43241bc1a1ab9b5ae3900c4ce909c/CHANGELOG.rst",
+    "raw_url": "https://github.com/marshmallow-code/marshmallow/raw/81c4be9763c43241bc1a1ab9b5ae3900c4ce909c/CHANGELOG.rst",
+    "contents_url": "https://api.github.com/repos/marshmallow-code/marshmallow/contents/CHANGELOG.rst?ref=81c4be9763c43241bc1a1ab9b5ae3900c4ce909c",
+    "patch": "@@ -1,6 +1,15 @@\n Changelog\n ---------\n \n+(unreleased)\n+++++++++++++\n+\n+Bug fixes:\n+\n+- Fix wildcard import of ``from marshmallow import *`` (:pr:`2823`).\n+  Thanks :user:`Florian-Laport` for the PR.\n+\n+\n 4.0.0 (2025-04-16)\n ******************\n \n@@ -150,7 +159,7 @@ Features:\n \n Bug fixes:\n \n-- Respect ``data_key`` when schema validators raise a `ValidationError <marshmallow.exceptions.ValidationError>` \n+- Respect ``data_key`` when schema validators raise a `ValidationError <marshmallow.exceptions.ValidationError>`\n   with a ``field_name`` argument (:issue:`2170`). Thanks :user:`matejsp` for reporting.\n - Correctly handle multiple `@post_load <marshmallow.post_load>` methods where one method appends to\n   the data and another passes ``pass_original=True`` (:issue:`1755`)."
+  },
+  {
+    "sha": "60825ab5f043f6b0e875ca9da8084a3e08f70e97",
+    "filename": "src/marshmallow/__init__.py",
+    "status": "modified",
+    "additions": 0,
+    "deletions": 1,
+    "changes": 1,
+    "blob_url": "https://github.com/marshmallow-code/marshmallow/blob/81c4be9763c43241bc1a1ab9b5ae3900c4ce909c/src%2Fmarshmallow%2F__init__.py",
+    "raw_url": "https://github.com/marshmallow-code/marshmallow/raw/81c4be9763c43241bc1a1ab9b5ae3900c4ce909c/src%2Fmarshmallow%2F__init__.py",
+    "contents_url": "https://api.github.com/repos/marshmallow-code/marshmallow/contents/src%2Fmarshmallow%2F__init__.py?ref=81c4be9763c43241bc1a1ab9b5ae3900c4ce909c",
+    "patch": "@@ -23,7 +23,6 @@\n     \"missing\",\n     \"post_dump\",\n     \"post_load\",\n-    \"pprint\",\n     \"pre_dump\",\n     \"pre_load\",\n     \"validates\","
+  }
+]

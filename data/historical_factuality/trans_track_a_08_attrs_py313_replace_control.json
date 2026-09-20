@@ -1,0 +1,49 @@
+{
+  "transition_id": "trans_track_a_08_attrs_py313_replace_control",
+  "repo_name": "python-attrs/attrs",
+  "base_commit": "103d51f6efa36efcc7be4adecfd571da3f63291c",
+  "claims": [
+    {
+      "statement": "Attribute.evolve creates a copy of the current instance and applies the specified changes using the _setattrs method.",
+      "temporal_isolation_pass": true,
+      "temporal_leaks": [],
+      "structural_evidence_grounded": true,
+      "matched_symbols": [
+        "attr.evolve",
+        "attr.evolve"
+      ],
+      "semantic_factuality_status": "INSUFFICIENT_EVIDENCE",
+      "semantic_factuality_pass": false,
+      "explanation": "The provided historical source code does not contain any information about the Attribute class or its evolve method.",
+      "seed": 42
+    },
+    {
+      "statement": "Attribute.evolve creates a copy of the current instance and applies the specified changes using the _setattrs method.",
+      "temporal_isolation_pass": true,
+      "temporal_leaks": [],
+      "structural_evidence_grounded": true,
+      "matched_symbols": [
+        "attr.evolve",
+        "attr.evolve"
+      ],
+      "semantic_factuality_status": "INSUFFICIENT_EVIDENCE",
+      "semantic_factuality_pass": false,
+      "explanation": "The provided historical source code does not contain any information about the Attribute class or its evolve method.",
+      "seed": 123
+    },
+    {
+      "statement": "Attribute.evolve creates a copy of the current instance and applies the specified changes using the _setattrs method.",
+      "temporal_isolation_pass": true,
+      "temporal_leaks": [],
+      "structural_evidence_grounded": true,
+      "matched_symbols": [
+        "attr.evolve",
+        "attr.evolve"
+      ],
+      "semantic_factuality_status": "INSUFFICIENT_EVIDENCE",
+      "semantic_factuality_pass": false,
+      "explanation": "The provided historical source code does not contain any information about the Attribute class or its evolve method.",
+      "seed": 999
+    }
+  ]
+}

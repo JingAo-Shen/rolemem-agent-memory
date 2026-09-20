@@ -1,0 +1,7 @@
+{
+  "transition_id": "trans_track_a_25_uvicorn_wsgi_middleware_deprecation",
+  "audit_fingerprint": "77c6d3910d6f91fa8d9ab559d3b7f32e1a82ff322dcf20cc03214ed868c5b881",
+  "status": "GENERATED_HIDDEN_TEST_ONLY",
+  "verification_status": "GENERATED_HIDDEN_TEST_ONLY",
+  "evidence": "Executable hidden test verified in sandbox"
+}

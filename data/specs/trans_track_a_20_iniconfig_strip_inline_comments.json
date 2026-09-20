@@ -1,0 +1,36 @@
+{
+  "transition_id": "trans_track_a_20_iniconfig_strip_inline_comments",
+  "repo_name": "pytest-dev/iniconfig",
+  "repo_url": "https://github.com/pytest-dev/iniconfig",
+  "pr_url": "https://github.com/pytest-dev/iniconfig/pull/70",
+  "target_commit": "7faed13ae50bad7c5da3f5782f254a8a7736bb84",
+  "pkg_path": "src/iniconfig",
+  "changed_files": [
+    "src/iniconfig/__init__.py",
+    "src/iniconfig/_parse.py"
+  ],
+  "primary_file": "src/iniconfig/__init__.py",
+  "symbol": "IniConfig.parse",
+  "deprecated_symbols": [
+    "IniConfig",
+    "IniConfig(path"
+  ],
+  "replacement_symbols": [
+    "IniConfig.parse",
+    "strip_inline_comments"
+  ],
+  "repository_change": "IniConfig.parse added to automatically strip inline comments from parsed values.",
+  "stale_memory_candidate": "Load INI configurations via standard IniConfig constructor without comment stripping.",
+  "valid_memory_candidate": "Load INI configurations via IniConfig.parse to strip inline comments cleanly.",
+  "transition_type": "API_EVOLUTION",
+  "stale_sensitive": false,
+  "current_task": "Implement `read_config_value(ini_data, section, key)` in `config_reader.py` returning stripped value without inline comments.",
+  "target_file": "config_reader.py",
+  "target_symbol": "read_config_value",
+  "stale_solution": "from iniconfig import IniConfig\n\ndef read_config_value(ini_data, section, key):\n    cfg = IniConfig(\"test.ini\", data=ini_data)\n    return cfg[section][key]\n",
+  "valid_solution": "from iniconfig import IniConfig\n\ndef read_config_value(ini_data, section, key):\n    cfg = IniConfig.parse(\"test.ini\", data=ini_data)\n    return cfg[section][key]\n",
+  "hidden_test": "import pytest\nimport config_reader\n\ndef test_read_config_strips_comments():\n    data = \"[settings]\\ntimeout = 30 # connection timeout\\n\"\n    assert config_reader.read_config_value(data, \"settings\", \"timeout\") == \"30\"\n",
+  "base_commit": "57b7ed9c7a5950f9c57b2cfbe641ff4cc04baf1c",
+  "external_pr_url": "https://github.com/pytest-dev/iniconfig/pull/70",
+  "track": "TRACK_A_STALE_SENSITIVE"
+}

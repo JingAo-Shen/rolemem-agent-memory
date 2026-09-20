@@ -1,0 +1,42 @@
+{
+  "task_id": "trans_track_a_19_flake8_doctest_options_removal",
+  "condition": "S2",
+  "seed": 42,
+  "memory_source": "STALE_MEMORY_CANDIDATE",
+  "memory_statements": [
+    "Check include_in_doctest attribute on FlakesChecker."
+  ],
+  "retrieved_files": [],
+  "repository_context_tokens": 1115,
+  "is_stale_action": true,
+  "ast_details": {
+    "stale_active_use": true,
+    "stale_mention": false,
+    "active_nodes": [
+      {
+        "type": "Attribute",
+        "lineno": 9,
+        "symbol": "include_in_doctest"
+      },
+      {
+        "type": "Attribute",
+        "lineno": 12,
+        "symbol": "include_in_doctest"
+      },
+      {
+        "type": "KeywordArg",
+        "lineno": 24,
+        "symbol": "include_in_doctest"
+      },
+      {
+        "type": "Attribute",
+        "lineno": 24,
+        "symbol": "include_in_doctest"
+      }
+    ]
+  },
+  "pytest_pass": false,
+  "pytest_log_excerpt": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_2g7nuemb\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_doctest_filtering FAILED               [100%]\n\n======================",
+  "overall_task_success": false,
+  "parsed_code": "from typing import List, Optional\nimport argparse\nfrom collections import namedtuple\n\n# Assuming necessary imports and definitions are already provided as per the repository context\n\nclass FlakesChecker:\n    def __init__(self, include_in_doctest: bool):\n        self.include_in_doctest = include_in_doctest\n\n    def check_doctest_filtering(self, filenames: List[str]) -> List[str]:\n        if self.include_in_doctest:\n            return filenames\n        else:\n            return [filename for filename in filenames if not filename.endswith('.doctest')]\n\n# Example usage\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description=\"Flake8 configuration with doctest filtering.\")\n    parser.add_argument(\"--include-in-doctest\", action='store_true', help=\"Include doctest files in checking.\")\n    parser.add_argument(\"filenames\", nargs='+', help=\"List of files to check.\")\n\n    args = parser.parse_args()\n    checker = FlakesChecker(include_in_doctest=args.include_in_doctest)\n    filtered_filenames = checker.check_doctest_filtering(args.filenames)\n    print(\"Filtered Filenames:\", filtered_filenames)"
+}

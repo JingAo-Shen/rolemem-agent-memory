@@ -48,10 +48,12 @@ FORMAL_RESULTS = NO
 这充分证明真实模型在不同 API 场景下的敏感度差异是客观科学现象，绝不为凑数而虚构过时调用率。
 
 ### Q9: H2→H3 的 stale exposure / TSR 变化是多少？
-**答**：在 Qualified Agent Challenges 中：
-- **H2 过时调用暴露率**：平均为 100.0%（真实历史记忆成功诱导模型写出过时 API 调用）；
-- **H3 过时调用暴露率**：下降至 0.0%（目标记忆完全压制过时行为）；
-- **任务成功率（TSR）**：从 H2 的 0.0% 提升至 H3 的 100.0%（完全达成预期行为学因果链）。
+**答**：在 Qualified Agent Challenges 中（动态聚合自 `agent_stale_challenge_status.jsonl`）：
+- **H2 过时调用暴露率（Pilot pooled observation）**：2/6 = **33.3%**
+- **H3 过时调用暴露率（Pilot pooled observation）**：0/6 = **0.0%**
+- **任务成功率 H2 TSR**：4/6 = **66.7%**
+- **任务成功率 H3 TSR**：6/6 = **100.0%**
+*(注：此数据仅为 pilot pooled observation，不得称为 formal effect estimate 或 statistically significant。)*
 
 ### Q10: 是否批准 Track A 扩 30–50？
 **答**：**YES（正式批准）**。

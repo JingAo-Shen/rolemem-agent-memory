@@ -33,7 +33,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\ntest_hidden_verification.py:12: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_patch_check - AssertionError: Anti-c...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:12: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_patch_check - AssertionError: Anti-c...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
     },
     "M4_try_except_dummy": {
       "description": "try/except return dummy",
@@ -41,7 +41,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\ntest_hidden_verification.py:12: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_patch_check - AssertionError: Anti-c...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:12: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_patch_check - AssertionError: Anti-c...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
     },
     "M5_stale_solution": {
       "description": "calls dropped pyvenv_launch_patch_active",
@@ -65,7 +65,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\ntest_hidden_verification.py:10: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_patch_check - AttributeError: module...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:10: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_patch_check - AttributeError: module...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
     },
     "M8_static_mock": {
       "description": "string boolean instead of bool",

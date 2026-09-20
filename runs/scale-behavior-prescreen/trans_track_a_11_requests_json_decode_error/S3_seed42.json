@@ -1,0 +1,21 @@
+{
+  "task_id": "trans_track_a_11_requests_json_decode_error",
+  "condition": "S3",
+  "seed": 42,
+  "memory_source": "VALID_MEMORY_CANDIDATE",
+  "memory_statements": [
+    "Catch requests.exceptions.RequestException when parsing json payloads."
+  ],
+  "retrieved_files": [],
+  "repository_context_tokens": 1193,
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": false,
+    "active_nodes": []
+  },
+  "pytest_pass": false,
+  "pytest_log_excerpt": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_cp663la4\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_safe_parse FAILED                      [100%]\n\n======================",
+  "overall_task_success": false,
+  "parsed_code": "import requests\nfrom requests.exceptions import RequestException, JSONDecodeError\n\ndef parse_api_response(resp):\n    try:\n        return resp.json()\n    except JSONDecodeError as e:\n        print(f\"Failed to decode JSON: {e}\")\n        return None\n    except RequestException as e:\n        print(f\"Request exception occurred: {e}\")\n        return None"
+}

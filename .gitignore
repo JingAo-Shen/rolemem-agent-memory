@@ -18,6 +18,7 @@ runs/*
 !runs/llm-stale-challenge-v2/
 !runs/historical-memory-writer-v4/
 !runs/full-agent-handoff-v4/
+!runs/scale-behavior-prescreen/
 outputs/
 
 

@@ -1,0 +1,7 @@
+{
+  "transition_id": "trans_track_a_11_requests_json_decode_error",
+  "audit_fingerprint": "725c56bae97825a5a8d6e9969b84a0c8ea2d4c0876e8785129553e73b2412685",
+  "status": "GENERATED_HIDDEN_TEST_ONLY",
+  "verification_status": "GENERATED_HIDDEN_TEST_ONLY",
+  "evidence": "Executable hidden test verified in sandbox"
+}

@@ -1,0 +1,19 @@
+{
+  "transition_id": "trans_track_a_29_pluggy_static_hook_attr_discovery",
+  "repo_name": "pytest-dev/pluggy",
+  "repo_url": "https://github.com/pytest-dev/pluggy",
+  "pr_url": "https://github.com/pytest-dev/pluggy/pull/701",
+  "base_commit": "6a7f8960eb4009b551f14030233cea7a64ccaf5d",
+  "target_commit": "bc9bcac68b9f3c670481661ddc50e5a0217e71d1",
+  "pkg_path": "src/pluggy",
+  "changed_files": [
+    "src/pluggy/_manager.py"
+  ],
+  "primary_file": "src/pluggy/_manager.py",
+  "symbol": "pluggy._manager._static_hook_attr",
+  "file_digest_before": "f8c36f016ee4a55102c3083b154cd8d3a2dc5310051992e15f4a36609b8a16ed",
+  "file_digest_after": "081d801bcbf385529b5d0d82ec7d40e4767d279452f5bfdf8ad1daf07278cca7",
+  "stale_sensitive": false,
+  "transition_type": "API_EVOLUTION",
+  "builder_status": "FIXTURE_EXTRACTED_UNVERIFIED"
+}

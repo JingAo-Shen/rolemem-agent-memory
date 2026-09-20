@@ -1,0 +1,19 @@
+{
+  "task_id": "trans_track_a_18_marshmallow_pprint_export_removal",
+  "condition": "S0",
+  "seed": 42,
+  "memory_source": "NO_MEMORY",
+  "memory_statements": [],
+  "retrieved_files": [],
+  "repository_context_tokens": 1200,
+  "is_stale_action": false,
+  "ast_details": {
+    "stale_active_use": false,
+    "stale_mention": false,
+    "active_nodes": []
+  },
+  "pytest_pass": false,
+  "pytest_log_excerpt": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_vjcxieok\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden_verification.py::test_export FAILED                          [100%]\n\n======================",
+  "overall_task_success": false,
+  "parsed_code": "import inspect\nfrom typing import Any, Callable, Dict, Optional\n\ndef check_marshmallow_export(module_path: str, class_name: str, expected_fields: Optional[Dict[str, Any]] = None) -> bool:\n    \"\"\"\n    Check if the specified class in the given module has the expected export presence.\n\n    Args:\n    module_path (str): The path to the module where the class is defined.\n    class_name (str): The name of the class to check.\n    expected_fields (Optional[Dict[str, Any]]): An optional dictionary containing expected fields and their values.\n\n    Returns:\n    bool: True if the class exists and matches the expected fields, False otherwise.\n    \"\"\"\n    try:\n        # Import the module dynamically\n        module = __import__(module_path, globals(), locals(), [], 0)\n        \n        # Get the class from the module\n        cls = getattr(module, class_name)\n        \n        # Check if the class is a subclass of marshmallow.Schema\n        if not issubclass(cls, Schema):\n            return False\n        \n        # Check if the expected fields match\n        if expected_fields is not None:\n            for field_name, expected_value in expected_fields.items():\n                field = getattr(cls, field_name, None)\n                if field is None or field != expected_value:\n                    return False\n        \n        return True\n    \n    except (ModuleNotFoundError, AttributeError):\n        return False\n\n# Example usage:\n# Assuming 'src.marshmallow.schema' is the module path and 'MySchema' is the class name\n# expected_fields = {\n#     'Meta': {\n#         'fields': ('id', 'email', 'date_created'),\n#         'exclude': ('password', 'secret_attribute')\n#     }\n# }\n\n# result = check_marshmallow_export('src.marshmallow.schema', 'MySchema', expected_fields)\n# print(result)  # Output: True or False"
+}

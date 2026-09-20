@@ -1,0 +1,92 @@
+{
+  "transition_id": "trans_track_a_27_marshmallow_ipaddress_type_mapping",
+  "repo_name": "marshmallow-code/marshmallow",
+  "auditor_version": "2.0.0",
+  "spec_sha256": "4b33633f511490bdc1778a388de78719a8b9bf4aece4e4bd5bf38ef0d57a27fd",
+  "audit_fingerprint": "916670cc622b00a11abc30134181665eaaa4c403ae240c203f005467d54d903a",
+  "gates": [
+    {
+      "gate_id": "G1",
+      "name": "PR evidence <-> repository_change",
+      "expected": "PR title/body describes the repository architectural or API change",
+      "observed": "Word overlap: ['and', 'fields', 'ipaddress', 'ipv4', 'ipv6'] | PR title: Add ipaddress types to Schema.TYPE_MAPPING",
+      "evidence": "pr.json:title='Add ipaddress types to Schema.TYPE_MAPPING'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G2",
+      "name": "repository_change <-> actual diff",
+      "expected": "Actual diff contains code edits in files specified in repository_change",
+      "observed": "Diff mentions files: ['src/marshmallow/schema.py', 'CHANGELOG.rst'] -> True",
+      "evidence": "diff.patch length: 1345 bytes",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G3",
+      "name": "actual diff <-> changed/deprecated/replacement symbols",
+      "expected": "Diff patch directly modifies or introduces the target symbols",
+      "observed": "Tokens ['String', 'String', 'TYPE_MAPPING', 'TYPE_MAPPING', 'IPv4'] found in diff: True",
+      "evidence": "Matching symbols in diff: ['TYPE_MAPPING', 'TYPE_MAPPING', 'IPv4']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G4",
+      "name": "stale memory <-> base-state behavior",
+      "expected": "Stale memory candidate instructs usage of legacy symbol from base state",
+      "observed": "Stale memory references legacy symbol: True",
+      "evidence": "stale_memory_candidate='Schema.TYPE_MAPPING does not contain ipaddress types; map them manually to field...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G5",
+      "name": "valid memory <-> target-state behavior",
+      "expected": "Valid memory candidate instructs modern pattern introduced in target state",
+      "observed": "Valid memory references modern symbol: True",
+      "evidence": "valid_memory_candidate='Schema.TYPE_MAPPING contains ipaddress.IPv4Address mapping to fields.IPv4....'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G6",
+      "name": "current task <-> transition capability",
+      "expected": "Evaluation task prompt requires implementing or using transition capability",
+      "observed": "Task exercises target file 'ip_schema_helper.py' and target symbol 'get_ip_field_type': True",
+      "evidence": "current_task='Implement `get_ip_field_type(ip_cls)` in `ip_schema_helper.py` resolving corresp...'",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G7",
+      "name": "hidden test strength <-> current task semantics",
+      "expected": "Hidden test verifies target capability with mutation_kill_rate >= 0.80 and zero constant-return bypass",
+      "observed": "Semantic match: True, Mutation kill rate: 100.0%, Constant return bypass: False",
+      "evidence": "test_strength/trans_track_a_27_marshmallow_ipaddress_type_mapping.json, len=248 bytes",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G8",
+      "name": "stale control <-> stale memory semantics",
+      "expected": "Stale control solution invokes deprecated API as instructed by stale memory",
+      "observed": "Stale control uses deprecated symbol: True",
+      "evidence": "stale_solution.py contains ['String', 'String']",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G9",
+      "name": "valid control <-> valid memory semantics",
+      "expected": "Valid control solution invokes modern API as instructed by valid memory",
+      "observed": "Valid control uses replacement symbol: True",
+      "evidence": "valid_solution.py contains modern pattern: True",
+      "status": "PASS"
+    },
+    {
+      "gate_id": "G10",
+      "name": "causal matrix <-> transition evidence",
+      "expected": "Causal counterfactual matrix demonstrates base-state pass, target-state fail with genuine failure taxonomy",
+      "observed": "Causal status: 'CAUSAL_PASS', failure taxonomy: 'BEHAVIOR_MISMATCH'",
+      "evidence": "causal_counterfactual/trans_track_a_27_marshmallow_ipaddress_type_mapping.json",
+      "status": "PASS"
+    }
+  ],
+  "passed_gates_count": 10,
+  "total_gates_count": 10,
+  "overall_status": "PASS"
+}

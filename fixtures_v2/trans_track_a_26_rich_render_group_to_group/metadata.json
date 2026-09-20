@@ -1,0 +1,20 @@
+{
+  "transition_id": "trans_track_a_26_rich_render_group_to_group",
+  "repo_name": "Textualize/rich",
+  "repo_url": "https://github.com/Textualize/rich",
+  "pr_url": "https://github.com/Textualize/rich/pull/1819",
+  "base_commit": "d65c3bd53da234a4047c469aa7740e03d1a622f7",
+  "target_commit": "44a715dec2b08277742939598fa28d056d6faef9",
+  "pkg_path": "rich",
+  "changed_files": [
+    "rich/console.py",
+    "CHANGELOG.md"
+  ],
+  "primary_file": "rich/console.py",
+  "symbol": "rich.console.RenderGroup",
+  "file_digest_before": "9cc1f73a013e132947ac5d19d57ba4b4c1ec1ae7765bf56a3f917f6e42dae121",
+  "file_digest_after": "f15303c41fa08eccaae54d9974ed57615dbcdf1ffb60664547f856d2b90279f8",
+  "stale_sensitive": true,
+  "transition_type": "API_REMOVAL",
+  "builder_status": "FIXTURE_EXTRACTED_UNVERIFIED"
+}

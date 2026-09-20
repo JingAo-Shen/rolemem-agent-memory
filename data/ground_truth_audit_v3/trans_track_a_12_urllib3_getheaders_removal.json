@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_track_a_12_urllib3_getheaders_removal",
+  "repo_name": "urllib3/urllib3",
+  "pr_number": 3622,
+  "pr_title": "Remove getheader and getheaders methods",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "4587fd6d477f22022be08de597c3a5acd5185c0a",
+  "pr_base_sha": "7e5bcfc46a6c14e16f1ea3ccd6884f6d9d9a15c3",
+  "pr_head_sha": "a7ed3452b5aeb831a887479ac82d5be780cb59ac",
+  "base_commit": "dd2daef3611ea09f60260391e6a698bb9933dd17",
+  "target_commit": "4587fd6d477f22022be08de597c3a5acd5185c0a",
+  "ancestry_verified": true,
+  "merge_strategy": "merge_commit",
+  "merge_relationship_verified": true,
+  "diff_match": true,
+  "issue_required": false,
+  "issue_id_verified": null,
+  "issue_status": "NOT_APPLICABLE",
+  "spec_sha256": "e65f86a056124a570598594cf7686d862f1165ba16a42493e5261f5635bc8ee5",
+  "audit_fingerprint": "c4f944df43362c814dbdb791e198d2f8d3ba6672bb52690cc9fc8e2b1279bbbd",
+  "auditor_version": "3.0.0",
+  "overall_status": "PASS"
+}

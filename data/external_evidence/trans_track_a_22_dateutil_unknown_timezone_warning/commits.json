@@ -1,0 +1,248 @@
+[
+  {
+    "sha": "1dfa77a2e87dcfd1cf277c69c27dea0ec8530f77",
+    "node_id": "MDY6Q29tbWl0NzYzMDYyOTc6MWRmYTc3YTJlODdkY2ZkMWNmMjc3YzY5YzI3ZGVhMGVjODUzMGY3Nw==",
+    "commit": {
+      "author": {
+        "name": "Brock Mendel",
+        "email": "jbrockmendel@gmail.com",
+        "date": "2017-12-05T16:37:08Z"
+      },
+      "committer": {
+        "name": "Paul Ganssle",
+        "email": "paul@ganssle.io",
+        "date": "2018-03-11T22:15:59Z"
+      },
+      "message": "raise on unidentified tz",
+      "tree": {
+        "sha": "5895a988aebb7ae3f4e0e0843d76bc25fde7c27a",
+        "url": "https://api.github.com/repos/dateutil/dateutil/git/trees/5895a988aebb7ae3f4e0e0843d76bc25fde7c27a"
+      },
+      "url": "https://api.github.com/repos/dateutil/dateutil/git/commits/1dfa77a2e87dcfd1cf277c69c27dea0ec8530f77",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/dateutil/dateutil/commits/1dfa77a2e87dcfd1cf277c69c27dea0ec8530f77",
+    "html_url": "https://github.com/dateutil/dateutil/commit/1dfa77a2e87dcfd1cf277c69c27dea0ec8530f77",
+    "comments_url": "https://api.github.com/repos/dateutil/dateutil/commits/1dfa77a2e87dcfd1cf277c69c27dea0ec8530f77/comments",
+    "author": {
+      "login": "jbrockmendel",
+      "id": 8078968,
+      "node_id": "MDQ6VXNlcjgwNzg5Njg=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8078968?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/jbrockmendel",
+      "html_url": "https://github.com/jbrockmendel",
+      "followers_url": "https://api.github.com/users/jbrockmendel/followers",
+      "following_url": "https://api.github.com/users/jbrockmendel/following{/other_user}",
+      "gists_url": "https://api.github.com/users/jbrockmendel/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/jbrockmendel/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/jbrockmendel/subscriptions",
+      "organizations_url": "https://api.github.com/users/jbrockmendel/orgs",
+      "repos_url": "https://api.github.com/users/jbrockmendel/repos",
+      "events_url": "https://api.github.com/users/jbrockmendel/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/jbrockmendel/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "pganssle",
+      "id": 1377457,
+      "node_id": "MDQ6VXNlcjEzNzc0NTc=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1377457?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pganssle",
+      "html_url": "https://github.com/pganssle",
+      "followers_url": "https://api.github.com/users/pganssle/followers",
+      "following_url": "https://api.github.com/users/pganssle/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pganssle/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pganssle/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pganssle/subscriptions",
+      "organizations_url": "https://api.github.com/users/pganssle/orgs",
+      "repos_url": "https://api.github.com/users/pganssle/repos",
+      "events_url": "https://api.github.com/users/pganssle/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pganssle/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "1a7ebd70371a95ae61f95cdcde6d6cbb5dd7f68c",
+        "url": "https://api.github.com/repos/dateutil/dateutil/commits/1a7ebd70371a95ae61f95cdcde6d6cbb5dd7f68c",
+        "html_url": "https://github.com/dateutil/dateutil/commit/1a7ebd70371a95ae61f95cdcde6d6cbb5dd7f68c"
+      }
+    ]
+  },
+  {
+    "sha": "87961706661f4fb95a5057ebb0ccf8ebad3f5efc",
+    "node_id": "MDY6Q29tbWl0NzYzMDYyOTc6ODc5NjE3MDY2NjFmNGZiOTVhNTA1N2ViYjBjY2Y4ZWJhZDNmNWVmYw==",
+    "commit": {
+      "author": {
+        "name": "Brock Mendel",
+        "email": "jbrockmendel@gmail.com",
+        "date": "2017-12-13T17:08:28Z"
+      },
+      "committer": {
+        "name": "Paul Ganssle",
+        "email": "paul@ganssle.io",
+        "date": "2018-03-11T22:15:59Z"
+      },
+      "message": "warn instead of raising... for now\n\nedit warning per suggestion",
+      "tree": {
+        "sha": "a8a519a5396ca7a61c600d8a5a70b40541042fe3",
+        "url": "https://api.github.com/repos/dateutil/dateutil/git/trees/a8a519a5396ca7a61c600d8a5a70b40541042fe3"
+      },
+      "url": "https://api.github.com/repos/dateutil/dateutil/git/commits/87961706661f4fb95a5057ebb0ccf8ebad3f5efc",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/dateutil/dateutil/commits/87961706661f4fb95a5057ebb0ccf8ebad3f5efc",
+    "html_url": "https://github.com/dateutil/dateutil/commit/87961706661f4fb95a5057ebb0ccf8ebad3f5efc",
+    "comments_url": "https://api.github.com/repos/dateutil/dateutil/commits/87961706661f4fb95a5057ebb0ccf8ebad3f5efc/comments",
+    "author": {
+      "login": "jbrockmendel",
+      "id": 8078968,
+      "node_id": "MDQ6VXNlcjgwNzg5Njg=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8078968?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/jbrockmendel",
+      "html_url": "https://github.com/jbrockmendel",
+      "followers_url": "https://api.github.com/users/jbrockmendel/followers",
+      "following_url": "https://api.github.com/users/jbrockmendel/following{/other_user}",
+      "gists_url": "https://api.github.com/users/jbrockmendel/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/jbrockmendel/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/jbrockmendel/subscriptions",
+      "organizations_url": "https://api.github.com/users/jbrockmendel/orgs",
+      "repos_url": "https://api.github.com/users/jbrockmendel/repos",
+      "events_url": "https://api.github.com/users/jbrockmendel/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/jbrockmendel/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "pganssle",
+      "id": 1377457,
+      "node_id": "MDQ6VXNlcjEzNzc0NTc=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1377457?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pganssle",
+      "html_url": "https://github.com/pganssle",
+      "followers_url": "https://api.github.com/users/pganssle/followers",
+      "following_url": "https://api.github.com/users/pganssle/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pganssle/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pganssle/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pganssle/subscriptions",
+      "organizations_url": "https://api.github.com/users/pganssle/orgs",
+      "repos_url": "https://api.github.com/users/pganssle/repos",
+      "events_url": "https://api.github.com/users/pganssle/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pganssle/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "1dfa77a2e87dcfd1cf277c69c27dea0ec8530f77",
+        "url": "https://api.github.com/repos/dateutil/dateutil/commits/1dfa77a2e87dcfd1cf277c69c27dea0ec8530f77",
+        "html_url": "https://github.com/dateutil/dateutil/commit/1dfa77a2e87dcfd1cf277c69c27dea0ec8530f77"
+      }
+    ]
+  },
+  {
+    "sha": "7b242e287492dc029c29f54267a810e5839ffbc1",
+    "node_id": "MDY6Q29tbWl0NzYzMDYyOTc6N2IyNDJlMjg3NDkyZGMwMjljMjlmNTQyNjdhODEwZTU4MzlmZmJjMQ==",
+    "commit": {
+      "author": {
+        "name": "Paul Ganssle",
+        "email": "paul@ganssle.io",
+        "date": "2018-03-11T19:46:39Z"
+      },
+      "committer": {
+        "name": "Paul Ganssle",
+        "email": "paul@ganssle.io",
+        "date": "2018-03-11T22:16:03Z"
+      },
+      "message": "Switch unknown timezone warning type",
+      "tree": {
+        "sha": "4ba0808a7f5e645d2d361f6adb0823cca8ab263a",
+        "url": "https://api.github.com/repos/dateutil/dateutil/git/trees/4ba0808a7f5e645d2d361f6adb0823cca8ab263a"
+      },
+      "url": "https://api.github.com/repos/dateutil/dateutil/git/commits/7b242e287492dc029c29f54267a810e5839ffbc1",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQJEBAABCAAuFiEEa0msutz2vRyiBmerzVT849lkvvsFAlqlqqMQHHBhdWxAZ2Fu\nc3NsZS5pbwAKCRDNVPzj2WS++xvyD/0bAcUBtI+wKK4Ym1NP+p3OiBSFkNIvGW8r\nWcC0Pa/eGuTT0MI8EM8cmyxD+1WBdamqffXXDO/PcLcvipzyd/kgH9mU7lTOvMGz\n0GdySviJkwze6kufk4znzJmO7wqvPfm4sOutoHvDm0MtVnv/TOz2y7oCAeAhH43X\nUlWYLOYqjauR8/OWkfeCdFSRd9/YcQ6Z2J6GYlIw7XI4B163NA7ReU1Mnk0Ea9yP\nFKaUNI0GeMFPMmkLP3EGdb8tWzgXEIZG5fFqUYr7rTVo4IMWdcme5pGPhgzOrp6F\nRBKwMa1UfIhDAu+xtyOgmfCepZAt7C1VEiNw8T4tPauQ3UOrSYJaAPdo7bVbK569\nGiUmM3bz2/YbJKgbORqljd1TxV15YF/lX17y7JIVGXHx3bkDnoctzw3ZJdgXpQyB\nE8IeJHAZnbBwgcNbsGuMFhrGQEtSH7LFe+5CYlh5Z2Njf4nb5Mz22jdodHY5HIBW\nVrS26quDFJKq9TVnkMJPUEEAYfWgBvYN0Fa3n16hr8Do0j/R7qkgC8CY4uTGmbg4\novKQY3ZcjNLLqmuvqcVdEHYnnnoJsm5f3Vnr9dNcqiMs4BKQ2sdJd8eA4/ODCukZ\nJMAju3emJB+WFS3oStba0Eyeg8niuFsNq4z5eoXNI4kPqEyWyZVaS8dm3Cj4RyGF\nhNg3bM6vVw==\n=YX4D\n-----END PGP SIGNATURE-----",
+        "payload": "tree 4ba0808a7f5e645d2d361f6adb0823cca8ab263a\nparent 87961706661f4fb95a5057ebb0ccf8ebad3f5efc\nauthor Paul Ganssle <paul@ganssle.io> 1520797599 -0400\ncommitter Paul Ganssle <paul@ganssle.io> 1520806563 -0400\n\nSwitch unknown timezone warning type\n",
+        "verified_at": "2024-11-08T03:57:49Z"
+      }
+    },
+    "url": "https://api.github.com/repos/dateutil/dateutil/commits/7b242e287492dc029c29f54267a810e5839ffbc1",
+    "html_url": "https://github.com/dateutil/dateutil/commit/7b242e287492dc029c29f54267a810e5839ffbc1",
+    "comments_url": "https://api.github.com/repos/dateutil/dateutil/commits/7b242e287492dc029c29f54267a810e5839ffbc1/comments",
+    "author": {
+      "login": "pganssle",
+      "id": 1377457,
+      "node_id": "MDQ6VXNlcjEzNzc0NTc=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1377457?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pganssle",
+      "html_url": "https://github.com/pganssle",
+      "followers_url": "https://api.github.com/users/pganssle/followers",
+      "following_url": "https://api.github.com/users/pganssle/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pganssle/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pganssle/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pganssle/subscriptions",
+      "organizations_url": "https://api.github.com/users/pganssle/orgs",
+      "repos_url": "https://api.github.com/users/pganssle/repos",
+      "events_url": "https://api.github.com/users/pganssle/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pganssle/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "pganssle",
+      "id": 1377457,
+      "node_id": "MDQ6VXNlcjEzNzc0NTc=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1377457?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pganssle",
+      "html_url": "https://github.com/pganssle",
+      "followers_url": "https://api.github.com/users/pganssle/followers",
+      "following_url": "https://api.github.com/users/pganssle/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pganssle/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pganssle/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pganssle/subscriptions",
+      "organizations_url": "https://api.github.com/users/pganssle/orgs",
+      "repos_url": "https://api.github.com/users/pganssle/repos",
+      "events_url": "https://api.github.com/users/pganssle/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pganssle/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "87961706661f4fb95a5057ebb0ccf8ebad3f5efc",
+        "url": "https://api.github.com/repos/dateutil/dateutil/commits/87961706661f4fb95a5057ebb0ccf8ebad3f5efc",
+        "html_url": "https://github.com/dateutil/dateutil/commit/87961706661f4fb95a5057ebb0ccf8ebad3f5efc"
+      }
+    ]
+  }
+]

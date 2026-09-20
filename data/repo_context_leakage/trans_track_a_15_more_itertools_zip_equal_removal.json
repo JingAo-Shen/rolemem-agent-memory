@@ -1,0 +1,10 @@
+{
+  "transition_id": "trans_track_a_15_more_itertools_zip_equal_removal",
+  "repo_name": "more-itertools/more-itertools",
+  "leakage_class": "REPO_CONTEXT_NONTRIVIAL",
+  "rationale": "Retrieved repository context contains neither replacement symbols nor migration hints.",
+  "retrieved_tokens": 1194,
+  "found_replacements": [],
+  "target_implementation_found": false,
+  "migration_comments_found": []
+}

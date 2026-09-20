@@ -1,0 +1,23 @@
+{
+  "transition_id": "trans_track_a_26_rich_render_group_to_group",
+  "repo_name": "Textualize/rich",
+  "pr_number": 1819,
+  "pr_title": "Render Group",
+  "pr_merged": true,
+  "pr_merge_commit_sha": "44a715dec2b08277742939598fa28d056d6faef9",
+  "pr_base_sha": "d65c3bd53da234a4047c469aa7740e03d1a622f7",
+  "pr_head_sha": "ad9debf2eb5a04cea709d35a7bc03f316bf0431c",
+  "base_commit": "d65c3bd53da234a4047c469aa7740e03d1a622f7",
+  "target_commit": "44a715dec2b08277742939598fa28d056d6faef9",
+  "ancestry_verified": true,
+  "merge_strategy": "merge_commit",
+  "merge_relationship_verified": true,
+  "diff_match": true,
+  "issue_required": false,
+  "issue_id_verified": null,
+  "issue_status": "NOT_APPLICABLE",
+  "spec_sha256": "bae79efe9926abf0897f980ade6c53ce54356805af2f5e8f62fbc765b8052d93",
+  "audit_fingerprint": "45d4e519fd5bfd0f51cbd5e524b5896e0249db1299dc6d0d463b6a80483d0170",
+  "auditor_version": "3.0.0",
+  "overall_status": "PASS"
+}

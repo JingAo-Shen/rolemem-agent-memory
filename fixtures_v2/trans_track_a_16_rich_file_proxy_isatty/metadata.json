@@ -1,0 +1,19 @@
+{
+  "transition_id": "trans_track_a_16_rich_file_proxy_isatty",
+  "repo_name": "Textualize/rich",
+  "repo_url": "https://github.com/Textualize/rich",
+  "pr_url": "https://github.com/Textualize/rich/pull/4077",
+  "base_commit": "58ac15120fe254886c10d6253667733c83604cb4",
+  "target_commit": "19c67b9a3479841e9133bea94607c89ee931d3fc",
+  "pkg_path": "rich",
+  "changed_files": [
+    "rich/file_proxy.py"
+  ],
+  "primary_file": "rich/file_proxy.py",
+  "symbol": "FileProxy.isatty",
+  "file_digest_before": "4e5f531cc0d9f8f9395a6f2c23580683f5390e1bac9b10fe159d1f51b714d16d",
+  "file_digest_after": "32f941ded4acb95987e2a0965caf522b74bf3a8855448733530fc5b9f9ac76df",
+  "stale_sensitive": false,
+  "transition_type": "API_EVOLUTION",
+  "builder_status": "FIXTURE_EXTRACTED_UNVERIFIED"
+}

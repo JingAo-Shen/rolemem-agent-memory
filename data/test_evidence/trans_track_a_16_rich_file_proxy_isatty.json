@@ -1,0 +1,7 @@
+{
+  "transition_id": "trans_track_a_16_rich_file_proxy_isatty",
+  "audit_fingerprint": "18b49fdf87464a1b1d525f6b4867b07aaf307e51b42119faf46562fa3e6560b0",
+  "status": "GENERATED_HIDDEN_TEST_ONLY",
+  "verification_status": "GENERATED_HIDDEN_TEST_ONLY",
+  "evidence": "Executable hidden test verified in sandbox"
+}

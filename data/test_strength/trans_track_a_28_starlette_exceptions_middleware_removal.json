@@ -1,0 +1,79 @@
+{
+  "transition_id": "trans_track_a_28_starlette_exceptions_middleware_removal",
+  "audit_fingerprint": "de4898e9cd5118a9ce3d053d2441fc767b57ffb6f2e3c67a9ad6fd3868030593",
+  "total_mutants": 8,
+  "invalid_mutants_count": 8,
+  "invalid_mutants_killed": 8,
+  "killed_mutants": 8,
+  "mutation_kill_rate": 1.0,
+  "constant_return_killed": true,
+  "constant_return_bypass": false,
+  "meets_kill_rate_threshold": true,
+  "audit_status": "PASS",
+  "mutants": {
+    "M1_return_none": {
+      "description": "return None",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "ceptionMiddleware)\n\ntest_hidden_verification.py:10: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_build - assert False\n============================== 1 failed in 0.03s ===============================\n\nSTDERR:\n"
+    },
+    "M2_constant_return": {
+      "description": "return constant string",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "e)\n\ntest_hidden_verification.py:10: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_build - AssertionError: assert False\n============================== 1 failed in 0.03s ===============================\n\nSTDERR:\n"
+    },
+    "M3_noop_pass": {
+      "description": "pass / no-op",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "ceptionMiddleware)\n\ntest_hidden_verification.py:10: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_build - assert False\n============================== 1 failed in 0.04s ===============================\n\nSTDERR:\n"
+    },
+    "M4_try_except_dummy": {
+      "description": "try/except return dummy",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "ceptionMiddleware)\n\ntest_hidden_verification.py:10: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_build - assert False\n============================== 1 failed in 0.04s ===============================\n\nSTDERR:\n"
+    },
+    "M5_stale_solution": {
+      "description": "stale solution",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "xceptions.py)\n=========================== short test summary info ============================\nERROR test_hidden_verification.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n=============================== 1 error in 0.07s ===============================\n\nSTDERR:\n"
+    },
+    "M6_mismatched_signature": {
+      "description": "wrong signature",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "given\n\ntest_hidden_verification.py:9: TypeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_build - TypeError: build_exception_m...\n============================== 1 failed in 0.03s ===============================\n\nSTDERR:\n"
+    },
+    "M7_missing_attribute": {
+      "description": "missing function",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "\n\ntest_hidden_verification.py:9: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_build - AttributeError: module 'exce...\n============================== 1 failed in 0.04s ===============================\n\nSTDERR:\n"
+    },
+    "M8_static_mock": {
+      "description": "static mock",
+      "expected_to_fail": true,
+      "passed_test": false,
+      "killed": true,
+      "status": "KILLED",
+      "log_snippet": "ceptionMiddleware)\n\ntest_hidden_verification.py:10: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_build - assert False\n============================== 1 failed in 0.04s ===============================\n\nSTDERR:\n"
+    }
+  }
+}

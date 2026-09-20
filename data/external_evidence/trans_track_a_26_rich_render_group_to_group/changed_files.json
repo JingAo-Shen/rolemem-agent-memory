@@ -1,0 +1,26 @@
+[
+  {
+    "sha": "76a9f528f87f2fa333f07fe8d5c71568e32b8a43",
+    "filename": "CHANGELOG.md",
+    "status": "modified",
+    "additions": 4,
+    "deletions": 1,
+    "changes": 5,
+    "blob_url": "https://github.com/Textualize/rich/blob/ad9debf2eb5a04cea709d35a7bc03f316bf0431c/CHANGELOG.md",
+    "raw_url": "https://github.com/Textualize/rich/raw/ad9debf2eb5a04cea709d35a7bc03f316bf0431c/CHANGELOG.md",
+    "contents_url": "https://api.github.com/repos/Textualize/rich/contents/CHANGELOG.md?ref=ad9debf2eb5a04cea709d35a7bc03f316bf0431c",
+    "patch": "@@ -5,7 +5,6 @@ All notable changes to this project will be documented in this file.\n The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),\n and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).\n \n-\n ## [11.0.0] - Unreleased\n \n ### Added\n@@ -14,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0\n - Added max_depth arg to pretty printing\n - Fix Traceback theme defaults override user supplied styles https://github.com/Textualize/rich/issues/1786\n \n+### Changed\n+\n+- **breaking** Deprecated rich.console.RenderGroup, now named rich.console.Group\n+\n ## [10.16.2] - 2021-01-02\n \n ### Fixed"
+  },
+  {
+    "sha": "fbf87bd5c16d3f97b9cbf26e0d86ef451267e614",
+    "filename": "rich/console.py",
+    "status": "modified",
+    "additions": 6,
+    "deletions": 11,
+    "changes": 17,
+    "blob_url": "https://github.com/Textualize/rich/blob/ad9debf2eb5a04cea709d35a7bc03f316bf0431c/rich%2Fconsole.py",
+    "raw_url": "https://github.com/Textualize/rich/raw/ad9debf2eb5a04cea709d35a7bc03f316bf0431c/rich%2Fconsole.py",
+    "contents_url": "https://api.github.com/repos/Textualize/rich/contents/rich%2Fconsole.py?ref=ad9debf2eb5a04cea709d35a7bc03f316bf0431c",
+    "patch": "@@ -11,9 +11,9 @@\n from html import escape\n from inspect import isclass\n from itertools import islice\n-from time import monotonic\n from threading import RLock\n-from types import FrameType, TracebackType, ModuleType\n+from time import monotonic\n+from types import FrameType, ModuleType, TracebackType\n from typing import (\n     IO,\n     TYPE_CHECKING,\n@@ -258,11 +258,12 @@ def __rich_console__(\n         ...\n \n \n+# A type that may be rendered by Console.\n RenderableType = Union[ConsoleRenderable, RichCast, str]\n-\"\"\"A type that may be rendered by Console.\"\"\"\n \n+\n+# The result of calling a __rich_console__ method.\n RenderResult = Iterable[Union[RenderableType, Segment]]\n-\"\"\"The result of calling a __rich_console__ method.\"\"\"\n \n \n _null_highlighter = NullHighlighter()\n@@ -475,9 +476,6 @@ def __rich_console__(\n         yield from self.renderables\n \n \n-RenderGroup = Group  # TODO: deprecate at some point\n-\n-\n def group(fit: bool = True) -> Callable[..., Callable[..., Group]]:\n     \"\"\"A decorator that turns an iterable of renderables in to a group.\n \n@@ -488,7 +486,7 @@ def group(fit: bool = True) -> Callable[..., Callable[..., Group]]:\n     def decorator(\n         method: Callable[..., Iterable[RenderableType]]\n     ) -> Callable[..., Group]:\n-        \"\"\"Convert a method that returns an iterable of renderables in to a RenderGroup.\"\"\"\n+        \"\"\"Convert a method that returns an iterable of renderables in to a Group.\"\"\"\n \n         @wraps(method)\n         def _replace(*args: Any, **kwargs: Any) -> Group:\n@@ -500,9 +498,6 @@ def _replace(*args: Any, **kwargs: Any) -> Group:\n     return decorator\n \n \n-render_group = group\n-\n-\n def _is_jupyter() -> bool:  # pragma: no cover\n     \"\"\"Check if we're running in a Jupyter notebook.\"\"\"\n     try:"
+  }
+]

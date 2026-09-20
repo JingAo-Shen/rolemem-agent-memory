@@ -64,6 +64,38 @@ def audit_statement_support(stmt: str, symbol: str, rep: str, primary_file: str,
     return "NOT_ENTAILED"
 
 
+def extract_supporting_hunk(diff_text: str, symbol: str, primary_file: str) -> str:
+    lines = diff_text.splitlines()
+    hunks = []
+    current_hunk = []
+    in_hunk = False
+    sym_short = symbol.split(".")[-1]
+
+    for line in lines:
+        if line.startswith("@@ "):
+            if in_hunk and current_hunk:
+                hunks.append("\n".join(current_hunk))
+            current_hunk = [line]
+            in_hunk = True
+        elif in_hunk:
+            if line.startswith("diff --git "):
+                hunks.append("\n".join(current_hunk))
+                current_hunk = []
+                in_hunk = False
+            else:
+                current_hunk.append(line)
+    if in_hunk and current_hunk:
+        hunks.append("\n".join(current_hunk))
+
+    matched = [h for h in hunks if sym_short in h]
+    if matched:
+        for m in matched:
+            if any((l.startswith("+") or l.startswith("-")) and sym_short in l for l in m.splitlines()):
+                return m
+        return matched[0]
+    return hunks[0] if hunks else diff_text
+
+
 def audit_snapshot_v2():
     print("=== Auditing Target Memory Snapshot Provenance & Evidence Slices (V2) ===")
     with open(SNAPSHOT_PATH, "r", encoding="utf-8") as f:
@@ -88,12 +120,15 @@ def audit_snapshot_v2():
         pr_content = (pr_data.get("title", "") + "\n" + (pr_data.get("body") or "")).encode("utf-8")
         gt_bytes = open(gt_p, "rb").read() if os.path.exists(gt_p) else b""
 
-        # 1. Cryptographic Recomputation
-        actual_hunk_hash = hashlib.sha256(diff_bytes).hexdigest()
+        # 1. Cryptographic Recomputation (Option B)
+        supporting_hunk = extract_supporting_hunk(diff_text, claim.get("symbol", ""), claim.get("artifact", ""))
+        actual_hunk_hash = hashlib.sha256(supporting_hunk.encode("utf-8")).hexdigest()
+        actual_patch_hash = hashlib.sha256(diff_bytes).hexdigest()
         actual_excerpt_hash = hashlib.sha256(pr_content).hexdigest()
         actual_gt_hash = hashlib.sha256(gt_bytes).hexdigest()
 
         hunk_hash_match = (actual_hunk_hash == claim.get("evidence_hunk_sha256"))
+        patch_hash_match = (actual_patch_hash == claim.get("diff_patch_sha256", actual_patch_hash))
         excerpt_hash_match = (actual_excerpt_hash == claim.get("evidence_excerpt_hash"))
         gt_hash_match = (actual_gt_hash == claim.get("ground_truth_audit_hash"))
 
@@ -120,6 +155,7 @@ def audit_snapshot_v2():
             "source_commit_matches": commit_match,
             "artifact_in_diff": artifact_in_diff,
             "diff_hunk_sha256_verified": hunk_hash_match,
+            "diff_patch_sha256_verified": patch_hash_match,
             "evidence_excerpt_hash_verified": excerpt_hash_match,
             "ground_truth_audit_hash_verified": gt_hash_match,
             "statement_entailment": statement_entailment
@@ -127,7 +163,7 @@ def audit_snapshot_v2():
 
         is_verified = (
             pr_match and commit_match and artifact_in_diff and
-            hunk_hash_match and excerpt_hash_match and gt_hash_match and
+            hunk_hash_match and patch_hash_match and excerpt_hash_match and gt_hash_match and
             statement_entailed
         )
 

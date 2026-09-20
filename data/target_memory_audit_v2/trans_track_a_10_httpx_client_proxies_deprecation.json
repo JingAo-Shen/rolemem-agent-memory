@@ -2,7 +2,7 @@
   "transition_id": "trans_track_a_10_httpx_client_proxies_deprecation",
   "provenance_status": "TARGET_MEMORY_VERIFIED",
   "recomputed_hashes": {
-    "diff_hunk_sha256": "83135973f37ca8225b6314a3c7f89a641a9c424fa722cd02a41bab66091c8ae5",
+    "diff_hunk_sha256": "7be13019a4ab80a76374aa50495e6958900382ecf8e72ddfd4c57b168c4d2061",
     "evidence_excerpt_hash": "1fc27d5bb38eafe527a3d66bfa67f117209df7704aa4f7d10bad927655ec2f15",
     "ground_truth_audit_hash": "c7985b74343f9ced3b5ade391d2c956d6bef7171ff2a84a2ea53daf151ded437"
   },
@@ -11,6 +11,7 @@
     "source_commit_matches": true,
     "artifact_in_diff": true,
     "diff_hunk_sha256_verified": true,
+    "diff_patch_sha256_verified": true,
     "evidence_excerpt_hash_verified": true,
     "ground_truth_audit_hash_verified": true,
     "statement_entailment": "ENTAILED"
@@ -23,9 +24,11 @@
     "source_pr_url": "https://github.com/encode/httpx/pull/2879",
     "source_commit": "f8981f3d124f9b8db9073fd5c8afa11acb55a738",
     "evidence_file": "data/external_evidence/trans_track_a_10_httpx_client_proxies_deprecation/diff.patch",
-    "evidence_hunk_sha256": "83135973f37ca8225b6314a3c7f89a641a9c424fa722cd02a41bab66091c8ae5",
+    "evidence_hunk_sha256": "7be13019a4ab80a76374aa50495e6958900382ecf8e72ddfd4c57b168c4d2061",
     "evidence_excerpt_hash": "1fc27d5bb38eafe527a3d66bfa67f117209df7704aa4f7d10bad927655ec2f15",
     "ground_truth_audit_hash": "c7985b74343f9ced3b5ade391d2c956d6bef7171ff2a84a2ea53daf151ded437",
-    "artifact": "httpx/_client.py"
+    "artifact": "httpx/_client.py",
+    "supporting_hunk": "@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).\n \n ## Unreleased\n \n+### Changed\n+\n+* The `proxies` argument is now deprecated. You should use the `proxy` argument instead, or use `mounts=` for more complex configurations. (#2879)\n+\n ### Fixed\n \n * Allow URLs where username or password contains unescaped '@'. (#2986)",
+    "diff_patch_sha256": "83135973f37ca8225b6314a3c7f89a641a9c424fa722cd02a41bab66091c8ae5"
   }
 }

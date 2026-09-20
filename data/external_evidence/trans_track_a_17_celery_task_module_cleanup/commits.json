@@ -1,0 +1,330 @@
+[
+  {
+    "sha": "102688619ebc8be1ab7daa3159ed0b27f8affcd5",
+    "node_id": "MDY6Q29tbWl0Mzg4NTQyNzE0OjEwMjY4ODYxOWViYzhiZTFhYjdkYWEzMTU5ZWQwYjI3ZjhhZmZjZDU=",
+    "commit": {
+      "author": {
+        "name": "FeRD (Frank Dana)",
+        "email": "ferdnyc@gmail.com",
+        "date": "2021-07-22T18:18:39Z"
+      },
+      "committer": {
+        "name": "FeRD (Frank Dana)",
+        "email": "ferdnyc@gmail.com",
+        "date": "2021-07-22T18:18:39Z"
+      },
+      "message": "Complete celery.task removal",
+      "tree": {
+        "sha": "9dada917ed4fa3f5a1c8fc69881151c86182b09f",
+        "url": "https://api.github.com/repos/celery/celery/git/trees/9dada917ed4fa3f5a1c8fc69881151c86182b09f"
+      },
+      "url": "https://api.github.com/repos/celery/celery/git/commits/102688619ebc8be1ab7daa3159ed0b27f8affcd5",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/celery/celery/commits/102688619ebc8be1ab7daa3159ed0b27f8affcd5",
+    "html_url": "https://github.com/celery/celery/commit/102688619ebc8be1ab7daa3159ed0b27f8affcd5",
+    "comments_url": "https://api.github.com/repos/celery/celery/commits/102688619ebc8be1ab7daa3159ed0b27f8affcd5/comments",
+    "author": {
+      "login": "ferdnyc",
+      "id": 538020,
+      "node_id": "MDQ6VXNlcjUzODAyMA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/538020?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/ferdnyc",
+      "html_url": "https://github.com/ferdnyc",
+      "followers_url": "https://api.github.com/users/ferdnyc/followers",
+      "following_url": "https://api.github.com/users/ferdnyc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/ferdnyc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/ferdnyc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/ferdnyc/subscriptions",
+      "organizations_url": "https://api.github.com/users/ferdnyc/orgs",
+      "repos_url": "https://api.github.com/users/ferdnyc/repos",
+      "events_url": "https://api.github.com/users/ferdnyc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/ferdnyc/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "ferdnyc",
+      "id": 538020,
+      "node_id": "MDQ6VXNlcjUzODAyMA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/538020?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/ferdnyc",
+      "html_url": "https://github.com/ferdnyc",
+      "followers_url": "https://api.github.com/users/ferdnyc/followers",
+      "following_url": "https://api.github.com/users/ferdnyc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/ferdnyc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/ferdnyc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/ferdnyc/subscriptions",
+      "organizations_url": "https://api.github.com/users/ferdnyc/orgs",
+      "repos_url": "https://api.github.com/users/ferdnyc/repos",
+      "events_url": "https://api.github.com/users/ferdnyc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/ferdnyc/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "bb8030562752dbcd1d130a878f4a0326ad93fc02",
+        "url": "https://api.github.com/repos/celery/celery/commits/bb8030562752dbcd1d130a878f4a0326ad93fc02",
+        "html_url": "https://github.com/celery/celery/commit/bb8030562752dbcd1d130a878f4a0326ad93fc02"
+      }
+    ]
+  },
+  {
+    "sha": "0a5f253763b493201b8f059ac0c2fd7507570bc7",
+    "node_id": "MDY6Q29tbWl0Mzg4NTQyNzE0OjBhNWYyNTM3NjNiNDkzMjAxYjhmMDU5YWMwYzJmZDc1MDc1NzBiYzc=",
+    "commit": {
+      "author": {
+        "name": "FeRD (Frank Dana)",
+        "email": "ferdnyc@gmail.com",
+        "date": "2021-07-22T18:18:53Z"
+      },
+      "committer": {
+        "name": "FeRD (Frank Dana)",
+        "email": "ferdnyc@gmail.com",
+        "date": "2021-08-06T12:58:25Z"
+      },
+      "message": "Update docs to remove celery.tasks",
+      "tree": {
+        "sha": "a1c6ce9fc02a5fefe7fb90c7bf12f7553f2d6b15",
+        "url": "https://api.github.com/repos/celery/celery/git/trees/a1c6ce9fc02a5fefe7fb90c7bf12f7553f2d6b15"
+      },
+      "url": "https://api.github.com/repos/celery/celery/git/commits/0a5f253763b493201b8f059ac0c2fd7507570bc7",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/celery/celery/commits/0a5f253763b493201b8f059ac0c2fd7507570bc7",
+    "html_url": "https://github.com/celery/celery/commit/0a5f253763b493201b8f059ac0c2fd7507570bc7",
+    "comments_url": "https://api.github.com/repos/celery/celery/commits/0a5f253763b493201b8f059ac0c2fd7507570bc7/comments",
+    "author": {
+      "login": "ferdnyc",
+      "id": 538020,
+      "node_id": "MDQ6VXNlcjUzODAyMA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/538020?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/ferdnyc",
+      "html_url": "https://github.com/ferdnyc",
+      "followers_url": "https://api.github.com/users/ferdnyc/followers",
+      "following_url": "https://api.github.com/users/ferdnyc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/ferdnyc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/ferdnyc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/ferdnyc/subscriptions",
+      "organizations_url": "https://api.github.com/users/ferdnyc/orgs",
+      "repos_url": "https://api.github.com/users/ferdnyc/repos",
+      "events_url": "https://api.github.com/users/ferdnyc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/ferdnyc/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "ferdnyc",
+      "id": 538020,
+      "node_id": "MDQ6VXNlcjUzODAyMA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/538020?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/ferdnyc",
+      "html_url": "https://github.com/ferdnyc",
+      "followers_url": "https://api.github.com/users/ferdnyc/followers",
+      "following_url": "https://api.github.com/users/ferdnyc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/ferdnyc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/ferdnyc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/ferdnyc/subscriptions",
+      "organizations_url": "https://api.github.com/users/ferdnyc/orgs",
+      "repos_url": "https://api.github.com/users/ferdnyc/repos",
+      "events_url": "https://api.github.com/users/ferdnyc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/ferdnyc/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "102688619ebc8be1ab7daa3159ed0b27f8affcd5",
+        "url": "https://api.github.com/repos/celery/celery/commits/102688619ebc8be1ab7daa3159ed0b27f8affcd5",
+        "html_url": "https://github.com/celery/celery/commit/102688619ebc8be1ab7daa3159ed0b27f8affcd5"
+      }
+    ]
+  },
+  {
+    "sha": "a9380708839452b88f91cf7ad47530e8b69f2de2",
+    "node_id": "MDY6Q29tbWl0Mzg4NTQyNzE0OmE5MzgwNzA4ODM5NDUyYjg4ZjkxY2Y3YWQ0NzUzMGU4YjY5ZjJkZTI=",
+    "commit": {
+      "author": {
+        "name": "FeRD (Frank Dana)",
+        "email": "ferdnyc@gmail.com",
+        "date": "2021-07-22T18:30:56Z"
+      },
+      "committer": {
+        "name": "FeRD (Frank Dana)",
+        "email": "ferdnyc@gmail.com",
+        "date": "2021-08-06T12:58:25Z"
+      },
+      "message": "docs/userguide/application: Correct reference",
+      "tree": {
+        "sha": "468c5be5998444ae09d288d817830a5f02e4eed8",
+        "url": "https://api.github.com/repos/celery/celery/git/trees/468c5be5998444ae09d288d817830a5f02e4eed8"
+      },
+      "url": "https://api.github.com/repos/celery/celery/git/commits/a9380708839452b88f91cf7ad47530e8b69f2de2",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/celery/celery/commits/a9380708839452b88f91cf7ad47530e8b69f2de2",
+    "html_url": "https://github.com/celery/celery/commit/a9380708839452b88f91cf7ad47530e8b69f2de2",
+    "comments_url": "https://api.github.com/repos/celery/celery/commits/a9380708839452b88f91cf7ad47530e8b69f2de2/comments",
+    "author": {
+      "login": "ferdnyc",
+      "id": 538020,
+      "node_id": "MDQ6VXNlcjUzODAyMA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/538020?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/ferdnyc",
+      "html_url": "https://github.com/ferdnyc",
+      "followers_url": "https://api.github.com/users/ferdnyc/followers",
+      "following_url": "https://api.github.com/users/ferdnyc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/ferdnyc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/ferdnyc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/ferdnyc/subscriptions",
+      "organizations_url": "https://api.github.com/users/ferdnyc/orgs",
+      "repos_url": "https://api.github.com/users/ferdnyc/repos",
+      "events_url": "https://api.github.com/users/ferdnyc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/ferdnyc/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "ferdnyc",
+      "id": 538020,
+      "node_id": "MDQ6VXNlcjUzODAyMA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/538020?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/ferdnyc",
+      "html_url": "https://github.com/ferdnyc",
+      "followers_url": "https://api.github.com/users/ferdnyc/followers",
+      "following_url": "https://api.github.com/users/ferdnyc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/ferdnyc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/ferdnyc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/ferdnyc/subscriptions",
+      "organizations_url": "https://api.github.com/users/ferdnyc/orgs",
+      "repos_url": "https://api.github.com/users/ferdnyc/repos",
+      "events_url": "https://api.github.com/users/ferdnyc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/ferdnyc/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "0a5f253763b493201b8f059ac0c2fd7507570bc7",
+        "url": "https://api.github.com/repos/celery/celery/commits/0a5f253763b493201b8f059ac0c2fd7507570bc7",
+        "html_url": "https://github.com/celery/celery/commit/0a5f253763b493201b8f059ac0c2fd7507570bc7"
+      }
+    ]
+  },
+  {
+    "sha": "de0d5cd27f52de01621713edd76077c4d253aab0",
+    "node_id": "MDY6Q29tbWl0Mzg4NTQyNzE0OmRlMGQ1Y2QyN2Y1MmRlMDE2MjE3MTNlZGQ3NjA3N2M0ZDI1M2FhYjA=",
+    "commit": {
+      "author": {
+        "name": "FeRD (Frank Dana)",
+        "email": "ferdnyc@gmail.com",
+        "date": "2021-08-05T21:00:35Z"
+      },
+      "committer": {
+        "name": "FeRD (Frank Dana)",
+        "email": "ferdnyc@gmail.com",
+        "date": "2021-08-06T12:58:25Z"
+      },
+      "message": "Fix bad @Signature references",
+      "tree": {
+        "sha": "480fe568a11df5f90e53630c112f132706249ae3",
+        "url": "https://api.github.com/repos/celery/celery/git/trees/480fe568a11df5f90e53630c112f132706249ae3"
+      },
+      "url": "https://api.github.com/repos/celery/celery/git/commits/de0d5cd27f52de01621713edd76077c4d253aab0",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/celery/celery/commits/de0d5cd27f52de01621713edd76077c4d253aab0",
+    "html_url": "https://github.com/celery/celery/commit/de0d5cd27f52de01621713edd76077c4d253aab0",
+    "comments_url": "https://api.github.com/repos/celery/celery/commits/de0d5cd27f52de01621713edd76077c4d253aab0/comments",
+    "author": {
+      "login": "ferdnyc",
+      "id": 538020,
+      "node_id": "MDQ6VXNlcjUzODAyMA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/538020?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/ferdnyc",
+      "html_url": "https://github.com/ferdnyc",
+      "followers_url": "https://api.github.com/users/ferdnyc/followers",
+      "following_url": "https://api.github.com/users/ferdnyc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/ferdnyc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/ferdnyc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/ferdnyc/subscriptions",
+      "organizations_url": "https://api.github.com/users/ferdnyc/orgs",
+      "repos_url": "https://api.github.com/users/ferdnyc/repos",
+      "events_url": "https://api.github.com/users/ferdnyc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/ferdnyc/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "ferdnyc",
+      "id": 538020,
+      "node_id": "MDQ6VXNlcjUzODAyMA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/538020?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/ferdnyc",
+      "html_url": "https://github.com/ferdnyc",
+      "followers_url": "https://api.github.com/users/ferdnyc/followers",
+      "following_url": "https://api.github.com/users/ferdnyc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/ferdnyc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/ferdnyc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/ferdnyc/subscriptions",
+      "organizations_url": "https://api.github.com/users/ferdnyc/orgs",
+      "repos_url": "https://api.github.com/users/ferdnyc/repos",
+      "events_url": "https://api.github.com/users/ferdnyc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/ferdnyc/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "a9380708839452b88f91cf7ad47530e8b69f2de2",
+        "url": "https://api.github.com/repos/celery/celery/commits/a9380708839452b88f91cf7ad47530e8b69f2de2",
+        "html_url": "https://github.com/celery/celery/commit/a9380708839452b88f91cf7ad47530e8b69f2de2"
+      }
+    ]
+  }
+]

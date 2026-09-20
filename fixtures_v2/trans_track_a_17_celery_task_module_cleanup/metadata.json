@@ -1,0 +1,19 @@
+{
+  "transition_id": "trans_track_a_17_celery_task_module_cleanup",
+  "repo_name": "celery/celery",
+  "repo_url": "https://github.com/celery/celery",
+  "pr_url": "https://github.com/celery/celery/pull/6869",
+  "base_commit": "846066a34413509695434ed5a661280d7db4f993",
+  "target_commit": "3cf5072ee5f95744024f60e0f4a77eb2edb8959f",
+  "pkg_path": "celery",
+  "changed_files": [
+    "celery/__init__.py"
+  ],
+  "primary_file": "celery/__init__.py",
+  "symbol": "celery.task",
+  "file_digest_before": "800ac3a448b38cfccfcb2e70faee9eb7f14a1ab8ab8445e3d1c6a4ab8bbc5bb6",
+  "file_digest_after": "7ced07269ebd08f84b963ac38ff1842cb69471edeabb3dfa7db98fed10ff2e3d",
+  "stale_sensitive": true,
+  "transition_type": "API_DEPRECATION",
+  "builder_status": "FIXTURE_EXTRACTED_UNVERIFIED"
+}

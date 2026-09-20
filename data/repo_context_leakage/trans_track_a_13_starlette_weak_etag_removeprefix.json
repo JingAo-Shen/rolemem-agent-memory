@@ -1,0 +1,13 @@
+{
+  "transition_id": "trans_track_a_13_starlette_weak_etag_removeprefix",
+  "repo_name": "encode/starlette",
+  "leakage_class": "REPO_CONTEXT_HINTED",
+  "rationale": "Context contains replacement symbols ['StaticFiles', 'is_not_modified'] or migration comments, but no task implementation.",
+  "retrieved_tokens": 1200,
+  "found_replacements": [
+    "StaticFiles",
+    "is_not_modified"
+  ],
+  "target_implementation_found": false,
+  "migration_comments_found": []
+}
