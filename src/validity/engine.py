@@ -43,7 +43,7 @@ class RoleMemValidityEngine:
         2. Symbol unchanged (digest match):
            - Dependency broken -> STALE
            - Dependency intact -> VALID
-           - Dependency uncertain -> VALID (with symbol unchanged confidence)
+           - Dependency uncertain -> UNCERTAIN (Unknown != Valid)
         3. Symbol digest changed -> UNCERTAIN (Structural edit != semantic invalidation)
         """
         # Step 1: Symbol-level AST digest check
@@ -73,7 +73,11 @@ class RoleMemValidityEngine:
                 base_source=base_source,
                 target_source=target_source,
                 symbol_qualified_name=symbol_qualified_name,
-                diff_hunk=diff_hunk or ""
+                diff_hunk=diff_hunk or "",
+                repository_root=repository_root,
+                base_commit=base_commit,
+                target_commit=target_commit,
+                file_path=file_path
             )
 
             all_evidence = list(sym_res.evidence) + list(dep_res.evidence)
@@ -89,17 +93,28 @@ class RoleMemValidityEngine:
                     symbol_removed=False,
                     dependency_changed=True
                 )
-            else:
-                # Symbol unchanged and dependencies intact/unbroken
+            elif dep_res.decision == "VALID":
                 return ValidityResult(
                     decision="VALID",
-                    confidence=min(sym_res.confidence, dep_res.confidence if dep_res.decision == "VALID" else 0.90),
+                    confidence=min(sym_res.confidence, dep_res.confidence),
                     reasons=sym_res.reasons + dep_res.reasons,
                     evidence=all_evidence,
                     file_changed=(base_source != target_source),
                     symbol_changed=False,
                     symbol_removed=False,
                     dependency_changed=False
+                )
+            else:
+                # Dependency UNCERTAIN -> Result is UNCERTAIN (Unknown != Valid)
+                return ValidityResult(
+                    decision="UNCERTAIN",
+                    confidence=0.50,
+                    reasons=sym_res.reasons + dep_res.reasons + ["External dependency resolution is uncertain."],
+                    evidence=all_evidence,
+                    file_changed=(base_source != target_source),
+                    symbol_changed=False,
+                    symbol_removed=False,
+                    dependency_changed=None
                 )
 
         # Case 3: Symbol digest changed (AST modified)
@@ -115,5 +130,5 @@ class RoleMemValidityEngine:
                 dependency_changed=None
             )
 
-        # Fallback / baseline check
+        # Fallback
         return sym_res

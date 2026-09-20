@@ -9,7 +9,9 @@ and verifies whether they remain available and valid in the target code/diff env
 Strictly general AST analysis — zero benchmark-specific keywords or hardcoded symbol tables.
 """
 
+import os
 import ast
+import subprocess
 from dataclasses import dataclass, field
 from typing import List, Dict, Set, Optional, Tuple, Any
 from .types import ValidityResult, ValidityEvidence
@@ -107,9 +109,18 @@ class ASTDependencyExtractor(ast.NodeVisitor):
 class DependencyValidityChecker:
     """Evaluates whether dependencies referenced by a symbol are broken or modified in target."""
 
+    def _read_git_file(self, repo_dir: str, commit: str, file_path: str) -> Optional[str]:
+        if not os.path.isdir(repo_dir) or not commit or not file_path:
+            return None
+        res = subprocess.run(["git", "show", f"{commit}:{file_path}"], cwd=repo_dir, capture_output=True, text=True)
+        if res.returncode == 0:
+            return res.stdout
+        return None
+
     def extract_dependencies(self, source_code: str, symbol_qualified_name: str = "") -> Tuple[List[DependencyReference], Set[str]]:
+        import textwrap
         try:
-            tree = ast.parse(source_code)
+            tree = ast.parse(textwrap.dedent(source_code))
         except Exception:
             return [], set()
 
@@ -138,7 +149,19 @@ class DependencyValidityChecker:
         target_source: str,
         symbol_qualified_name: str = "",
         diff_hunk: str = "",
+        repository_root: Optional[str] = None,
+        base_commit: Optional[str] = None,
+        target_commit: Optional[str] = None,
+        file_path: Optional[str] = None,
     ) -> ValidityResult:
+        # If repository context is provided and sources appear to be excerpts, load full files
+        if repository_root and file_path and base_commit and target_commit:
+            full_base = self._read_git_file(repository_root, base_commit, file_path)
+            full_target = self._read_git_file(repository_root, target_commit, file_path)
+            if full_base and full_target:
+                base_source = full_base
+                target_source = full_target
+
         base_deps, base_file_imports = self.extract_dependencies(base_source, symbol_qualified_name)
         target_deps, target_file_imports = self.extract_dependencies(target_source, symbol_qualified_name)
 
@@ -171,7 +194,6 @@ class DependencyValidityChecker:
 
         broken_imports = []
         for req in required_imports:
-            # Check if req is present in target_file_imports or if prefix exists
             matched = False
             for tf in target_file_imports:
                 if req == tf or req.startswith(tf + ".") or tf.startswith(req + "."):
@@ -225,20 +247,33 @@ class DependencyValidityChecker:
                             dependency_changed=True
                         )
 
+        # If base imports existed and all were verified present in target file imports
+        if base_deps:
+            return ValidityResult(
+                decision="VALID",
+                confidence=0.85,
+                reasons=["All verified static AST dependencies remain intact in target source."],
+                evidence=[
+                    ValidityEvidence(
+                        evidence_type="dependencies_intact",
+                        source="ast_dependency_analysis",
+                        detail=f"Verified {len(base_deps)} AST dependency references preserved.",
+                        confidence=0.85
+                    )
+                ],
+                file_changed=None,
+                symbol_changed=None,
+                symbol_removed=None,
+                dependency_changed=False
+            )
+
         return ValidityResult(
-            decision="VALID",
-            confidence=0.85,
-            reasons=["All verified static AST dependencies remain intact in target source."],
-            evidence=[
-                ValidityEvidence(
-                    evidence_type="dependencies_intact",
-                    source="ast_dependency_analysis",
-                    detail=f"Verified {len(base_deps)} AST dependency references preserved.",
-                    confidence=0.85
-                )
-            ],
+            decision="UNCERTAIN",
+            confidence=0.50,
+            reasons=["Static dependencies could not be definitively resolved."],
+            evidence=[],
             file_changed=None,
             symbol_changed=None,
             symbol_removed=None,
-            dependency_changed=False
+            dependency_changed=None
         )

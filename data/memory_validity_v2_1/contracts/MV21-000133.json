@@ -1,0 +1,7 @@
+{
+  "case_id": "MV21-000133",
+  "contract_code": "from starlette.applications import Starlette; app = Starlette(); assert app.debug is False",
+  "base_contract_pass": true,
+  "target_contract_pass": true,
+  "machine_verified": true
+}

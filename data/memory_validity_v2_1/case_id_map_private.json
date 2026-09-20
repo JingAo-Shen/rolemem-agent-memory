@@ -40,206 +40,6 @@
     "gold_label": "VALID"
   },
   "MV21-000006": {
-    "source_tid": "trans_track_a_01_click_stream_deprecations",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "_KeepOpenFile.__init__",
-    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
-    "gold_label": "VALID"
-  },
-  "MV21-000007": {
-    "source_tid": "trans_track_a_01_click_stream_deprecations",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "_KeepOpenFile.__iter__",
-    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
-    "gold_label": "VALID"
-  },
-  "MV21-000008": {
-    "source_tid": "trans_track_a_01_click_stream_deprecations",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "_KeepOpenFile.__repr__",
-    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
-    "gold_label": "VALID"
-  },
-  "MV21-000009": {
-    "source_tid": "trans_track_a_01_click_stream_deprecations",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "_LazyFile.__enter__",
-    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
-    "gold_label": "VALID"
-  },
-  "MV21-000010": {
-    "source_tid": "trans_track_a_01_click_stream_deprecations",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "_LazyFile.__exit__",
-    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
-    "gold_label": "VALID"
-  },
-  "MV21-000011": {
-    "source_tid": "trans_track_a_01_click_stream_deprecations",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "_LazyFile.__getattr__",
-    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
-    "gold_label": "VALID"
-  },
-  "MV21-000012": {
-    "source_tid": "trans_track_a_01_click_stream_deprecations",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "_LazyFile.__init__",
-    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
-    "gold_label": "VALID"
-  },
-  "MV21-000013": {
-    "source_tid": "trans_track_a_01_click_stream_deprecations",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "_LazyFile.__iter__",
-    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
-    "gold_label": "VALID"
-  },
-  "MV21-000014": {
-    "source_tid": "trans_track_a_01_click_stream_deprecations",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "_LazyFile.__repr__",
-    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
-    "gold_label": "VALID"
-  },
-  "MV21-000015": {
-    "source_tid": "trans_track_a_01_click_stream_deprecations",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "_LazyFile.close",
-    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
-    "gold_label": "VALID"
-  },
-  "MV21-000016": {
-    "source_tid": "trans_track_a_01_click_stream_deprecations",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "_LazyFile.close_intelligently",
-    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
-    "gold_label": "VALID"
-  },
-  "MV21-000017": {
-    "source_tid": "trans_track_a_01_click_stream_deprecations",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "_LazyFile.open",
-    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
-    "gold_label": "VALID"
-  },
-  "MV21-000018": {
-    "source_tid": "trans_track_a_01_click_stream_deprecations",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "_PacifyFlushWrapper",
-    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
-    "gold_label": "VALID"
-  },
-  "MV21-000019": {
-    "source_tid": "trans_track_a_01_click_stream_deprecations",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "_PacifyFlushWrapper.__getattr__",
-    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
-    "gold_label": "VALID"
-  },
-  "MV21-000020": {
-    "source_tid": "trans_track_a_01_click_stream_deprecations",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "_PacifyFlushWrapper.__init__",
-    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
-    "gold_label": "VALID"
-  },
-  "MV21-000021": {
-    "source_tid": "trans_track_a_01_click_stream_deprecations",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "_PacifyFlushWrapper.flush",
-    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
-    "gold_label": "VALID"
-  },
-  "MV21-000022": {
-    "source_tid": "trans_track_a_01_click_stream_deprecations",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "_detect_program_name",
-    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
-    "gold_label": "VALID"
-  },
-  "MV21-000023": {
-    "source_tid": "trans_track_a_01_click_stream_deprecations",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "_expand_args",
-    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
-    "gold_label": "VALID"
-  },
-  "MV21-000024": {
-    "source_tid": "trans_track_a_01_click_stream_deprecations",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "_make_default_short_help",
-    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
-    "gold_label": "VALID"
-  },
-  "MV21-000025": {
-    "source_tid": "trans_track_a_01_click_stream_deprecations",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "_posixify",
-    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
-    "gold_label": "VALID"
-  },
-  "MV21-000026": {
-    "source_tid": "trans_track_a_01_click_stream_deprecations",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "echo",
-    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
-    "gold_label": "VALID"
-  },
-  "MV21-000027": {
-    "source_tid": "trans_track_a_01_click_stream_deprecations",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "format_filename",
-    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
-    "gold_label": "VALID"
-  },
-  "MV21-000028": {
-    "source_tid": "trans_track_a_01_click_stream_deprecations",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "get_app_dir",
-    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
-    "gold_label": "VALID"
-  },
-  "MV21-000029": {
-    "source_tid": "trans_track_a_01_click_stream_deprecations",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "make_str",
-    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
-    "gold_label": "VALID"
-  },
-  "MV21-000030": {
-    "source_tid": "trans_track_a_01_click_stream_deprecations",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "open_file",
-    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
-    "gold_label": "VALID"
-  },
-  "MV21-000031": {
     "source_tid": "trans_track_a_02_flask_should_ignore_error",
     "repository": "flask",
     "file_path": "src/flask/app.py",
@@ -247,7 +47,7 @@
     "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
-  "MV21-000032": {
+  "MV21-000007": {
     "source_tid": "trans_track_a_02_flask_should_ignore_error",
     "repository": "flask",
     "file_path": "src/flask/app.py",
@@ -255,7 +55,7 @@
     "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
-  "MV21-000033": {
+  "MV21-000008": {
     "source_tid": "trans_track_a_02_flask_should_ignore_error",
     "repository": "flask",
     "file_path": "src/flask/app.py",
@@ -263,7 +63,7 @@
     "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
-  "MV21-000034": {
+  "MV21-000009": {
     "source_tid": "trans_track_a_02_flask_should_ignore_error",
     "repository": "flask",
     "file_path": "src/flask/app.py",
@@ -271,7 +71,7 @@
     "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
-  "MV21-000035": {
+  "MV21-000010": {
     "source_tid": "trans_track_a_02_flask_should_ignore_error",
     "repository": "flask",
     "file_path": "src/flask/app.py",
@@ -279,455 +79,1031 @@
     "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
+  "MV21-000011": {
+    "source_tid": "trans_track_a_03_werkzeug_environ_property",
+    "repository": "werkzeug",
+    "file_path": "src/werkzeug/utils.py",
+    "symbol_qualified_name": "ImportStringError",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000012": {
+    "source_tid": "trans_track_a_03_werkzeug_environ_property",
+    "repository": "werkzeug",
+    "file_path": "src/werkzeug/utils.py",
+    "symbol_qualified_name": "ImportStringError.__init__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000013": {
+    "source_tid": "trans_track_a_03_werkzeug_environ_property",
+    "repository": "werkzeug",
+    "file_path": "src/werkzeug/utils.py",
+    "symbol_qualified_name": "ImportStringError.__repr__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000014": {
+    "source_tid": "trans_track_a_03_werkzeug_environ_property",
+    "repository": "werkzeug",
+    "file_path": "src/werkzeug/utils.py",
+    "symbol_qualified_name": "_T",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000015": {
+    "source_tid": "trans_track_a_03_werkzeug_environ_property",
+    "repository": "werkzeug",
+    "file_path": "src/werkzeug/utils.py",
+    "symbol_qualified_name": "_charset_mimetypes",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000016": {
+    "source_tid": "trans_track_a_06_markupsafe_version_removal",
+    "repository": "markupsafe",
+    "file_path": "src/markupsafe/__init__.py",
+    "symbol_qualified_name": "EscapeFormatter",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000017": {
+    "source_tid": "trans_track_a_06_markupsafe_version_removal",
+    "repository": "markupsafe",
+    "file_path": "src/markupsafe/__init__.py",
+    "symbol_qualified_name": "EscapeFormatter.__init__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000018": {
+    "source_tid": "trans_track_a_06_markupsafe_version_removal",
+    "repository": "markupsafe",
+    "file_path": "src/markupsafe/__init__.py",
+    "symbol_qualified_name": "EscapeFormatter.__slots__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000019": {
+    "source_tid": "trans_track_a_06_markupsafe_version_removal",
+    "repository": "markupsafe",
+    "file_path": "src/markupsafe/__init__.py",
+    "symbol_qualified_name": "EscapeFormatter.format_field",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000020": {
+    "source_tid": "trans_track_a_06_markupsafe_version_removal",
+    "repository": "markupsafe",
+    "file_path": "src/markupsafe/__init__.py",
+    "symbol_qualified_name": "Markup",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000021": {
+    "source_tid": "trans_track_a_07_pluggy_varnames_noself",
+    "repository": "pluggy",
+    "file_path": "src/pluggy/_hooks.py",
+    "symbol_qualified_name": "HookCaller",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000022": {
+    "source_tid": "trans_track_a_07_pluggy_varnames_noself",
+    "repository": "pluggy",
+    "file_path": "src/pluggy/_hooks.py",
+    "symbol_qualified_name": "HookCaller.__call__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000023": {
+    "source_tid": "trans_track_a_07_pluggy_varnames_noself",
+    "repository": "pluggy",
+    "file_path": "src/pluggy/_hooks.py",
+    "symbol_qualified_name": "HookCaller.__init__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000024": {
+    "source_tid": "trans_track_a_07_pluggy_varnames_noself",
+    "repository": "pluggy",
+    "file_path": "src/pluggy/_hooks.py",
+    "symbol_qualified_name": "HookCaller.__repr__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000025": {
+    "source_tid": "trans_track_a_07_pluggy_varnames_noself",
+    "repository": "pluggy",
+    "file_path": "src/pluggy/_hooks.py",
+    "symbol_qualified_name": "HookCaller.__slots__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000026": {
+    "source_tid": "trans_track_a_08_attrs_py313_replace_control",
+    "repository": "attrs",
+    "file_path": "src/attr/_make.py",
+    "symbol_qualified_name": "Attribute",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000027": {
+    "source_tid": "trans_track_a_08_attrs_py313_replace_control",
+    "repository": "attrs",
+    "file_path": "src/attr/_make.py",
+    "symbol_qualified_name": "Attribute.__getstate__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000028": {
+    "source_tid": "trans_track_a_08_attrs_py313_replace_control",
+    "repository": "attrs",
+    "file_path": "src/attr/_make.py",
+    "symbol_qualified_name": "Attribute.__init__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000029": {
+    "source_tid": "trans_track_a_08_attrs_py313_replace_control",
+    "repository": "attrs",
+    "file_path": "src/attr/_make.py",
+    "symbol_qualified_name": "Attribute.__setattr__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000030": {
+    "source_tid": "trans_track_a_08_attrs_py313_replace_control",
+    "repository": "attrs",
+    "file_path": "src/attr/_make.py",
+    "symbol_qualified_name": "Attribute.__setstate__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000031": {
+    "source_tid": "trans_track_a_09_virtualenv_drop_py38_control",
+    "repository": "virtualenv",
+    "file_path": "src/virtualenv/create/via_global_ref/builtin/cpython/cpython3.py",
+    "symbol_qualified_name": "CPython3",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000032": {
+    "source_tid": "trans_track_a_09_virtualenv_drop_py38_control",
+    "repository": "virtualenv",
+    "file_path": "src/virtualenv/create/via_global_ref/builtin/cpython/cpython3.py",
+    "symbol_qualified_name": "CPython3Posix._shared_libpython",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000033": {
+    "source_tid": "trans_track_a_09_virtualenv_drop_py38_control",
+    "repository": "virtualenv",
+    "file_path": "src/virtualenv/create/via_global_ref/builtin/cpython/cpython3.py",
+    "symbol_qualified_name": "CPython3Posix._to_lib",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000034": {
+    "source_tid": "trans_track_a_09_virtualenv_drop_py38_control",
+    "repository": "virtualenv",
+    "file_path": "src/virtualenv/create/via_global_ref/builtin/cpython/cpython3.py",
+    "symbol_qualified_name": "CPython3Posix.can_describe",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000035": {
+    "source_tid": "trans_track_a_09_virtualenv_drop_py38_control",
+    "repository": "virtualenv",
+    "file_path": "src/virtualenv/create/via_global_ref/builtin/cpython/cpython3.py",
+    "symbol_qualified_name": "CPython3Posix.install_venv_shared_libs",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
   "MV21-000036": {
-    "source_tid": "trans_track_a_02_flask_should_ignore_error",
-    "repository": "flask",
-    "file_path": "src/flask/app.py",
-    "symbol_qualified_name": "Flask.async_to_sync",
+    "source_tid": "trans_track_a_10_httpx_client_proxies_deprecation",
+    "repository": "httpx",
+    "file_path": "httpx/_client.py",
+    "symbol_qualified_name": "ACCEPT_ENCODING",
     "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
   "MV21-000037": {
-    "source_tid": "trans_track_a_02_flask_should_ignore_error",
-    "repository": "flask",
-    "file_path": "src/flask/app.py",
-    "symbol_qualified_name": "Flask.create_jinja_environment",
+    "source_tid": "trans_track_a_10_httpx_client_proxies_deprecation",
+    "repository": "httpx",
+    "file_path": "httpx/_client.py",
+    "symbol_qualified_name": "AsyncClient.__aenter__",
     "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
   "MV21-000038": {
-    "source_tid": "trans_track_a_02_flask_should_ignore_error",
-    "repository": "flask",
-    "file_path": "src/flask/app.py",
-    "symbol_qualified_name": "Flask.create_url_adapter",
+    "source_tid": "trans_track_a_10_httpx_client_proxies_deprecation",
+    "repository": "httpx",
+    "file_path": "httpx/_client.py",
+    "symbol_qualified_name": "AsyncClient.__aexit__",
     "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
   "MV21-000039": {
-    "source_tid": "trans_track_a_02_flask_should_ignore_error",
-    "repository": "flask",
-    "file_path": "src/flask/app.py",
-    "symbol_qualified_name": "Flask.default_config",
+    "source_tid": "trans_track_a_10_httpx_client_proxies_deprecation",
+    "repository": "httpx",
+    "file_path": "httpx/_client.py",
+    "symbol_qualified_name": "AsyncClient._init_proxy_transport",
     "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
   "MV21-000040": {
-    "source_tid": "trans_track_a_02_flask_should_ignore_error",
-    "repository": "flask",
-    "file_path": "src/flask/app.py",
-    "symbol_qualified_name": "Flask.dispatch_request",
+    "source_tid": "trans_track_a_10_httpx_client_proxies_deprecation",
+    "repository": "httpx",
+    "file_path": "httpx/_client.py",
+    "symbol_qualified_name": "AsyncClient._init_transport",
     "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
   "MV21-000041": {
-    "source_tid": "trans_track_a_02_flask_should_ignore_error",
-    "repository": "flask",
-    "file_path": "src/flask/app.py",
-    "symbol_qualified_name": "Flask.do_teardown_appcontext",
+    "source_tid": "trans_track_a_11_requests_json_decode_error",
+    "repository": "requests",
+    "file_path": "requests/models.py",
+    "symbol_qualified_name": "CONTENT_CHUNK_SIZE",
     "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
   "MV21-000042": {
-    "source_tid": "trans_track_a_02_flask_should_ignore_error",
-    "repository": "flask",
-    "file_path": "src/flask/app.py",
-    "symbol_qualified_name": "Flask.do_teardown_request",
+    "source_tid": "trans_track_a_11_requests_json_decode_error",
+    "repository": "requests",
+    "file_path": "requests/models.py",
+    "symbol_qualified_name": "DEFAULT_REDIRECT_LIMIT",
     "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
   "MV21-000043": {
-    "source_tid": "trans_track_a_02_flask_should_ignore_error",
-    "repository": "flask",
-    "file_path": "src/flask/app.py",
-    "symbol_qualified_name": "Flask.ensure_sync",
+    "source_tid": "trans_track_a_11_requests_json_decode_error",
+    "repository": "requests",
+    "file_path": "requests/models.py",
+    "symbol_qualified_name": "ITER_CHUNK_SIZE",
     "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
   "MV21-000044": {
-    "source_tid": "trans_track_a_02_flask_should_ignore_error",
-    "repository": "flask",
-    "file_path": "src/flask/app.py",
-    "symbol_qualified_name": "Flask.finalize_request",
+    "source_tid": "trans_track_a_11_requests_json_decode_error",
+    "repository": "requests",
+    "file_path": "requests/models.py",
+    "symbol_qualified_name": "PreparedRequest",
     "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
   "MV21-000045": {
-    "source_tid": "trans_track_a_02_flask_should_ignore_error",
-    "repository": "flask",
-    "file_path": "src/flask/app.py",
-    "symbol_qualified_name": "Flask.get_send_file_max_age",
+    "source_tid": "trans_track_a_11_requests_json_decode_error",
+    "repository": "requests",
+    "file_path": "requests/models.py",
+    "symbol_qualified_name": "PreparedRequest.__init__",
     "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
   "MV21-000046": {
-    "source_tid": "trans_track_a_02_flask_should_ignore_error",
-    "repository": "flask",
-    "file_path": "src/flask/app.py",
-    "symbol_qualified_name": "Flask.handle_exception",
+    "source_tid": "trans_track_a_12_urllib3_getheaders_removal",
+    "repository": "urllib3",
+    "file_path": "src/urllib3/response.py",
+    "symbol_qualified_name": "BaseHTTPResponse.CONTENT_DECODERS",
     "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
   "MV21-000047": {
-    "source_tid": "trans_track_a_02_flask_should_ignore_error",
-    "repository": "flask",
-    "file_path": "src/flask/app.py",
-    "symbol_qualified_name": "Flask.handle_http_exception",
+    "source_tid": "trans_track_a_12_urllib3_getheaders_removal",
+    "repository": "urllib3",
+    "file_path": "src/urllib3/response.py",
+    "symbol_qualified_name": "BaseHTTPResponse.REDIRECT_STATUSES",
     "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
   "MV21-000048": {
-    "source_tid": "trans_track_a_02_flask_should_ignore_error",
-    "repository": "flask",
-    "file_path": "src/flask/app.py",
-    "symbol_qualified_name": "Flask.handle_user_exception",
+    "source_tid": "trans_track_a_12_urllib3_getheaders_removal",
+    "repository": "urllib3",
+    "file_path": "src/urllib3/response.py",
+    "symbol_qualified_name": "BaseHTTPResponse.__init__",
     "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
   "MV21-000049": {
-    "source_tid": "trans_track_a_02_flask_should_ignore_error",
-    "repository": "flask",
-    "file_path": "src/flask/app.py",
-    "symbol_qualified_name": "Flask.log_exception",
+    "source_tid": "trans_track_a_12_urllib3_getheaders_removal",
+    "repository": "urllib3",
+    "file_path": "src/urllib3/response.py",
+    "symbol_qualified_name": "BaseHTTPResponse._decode",
     "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
   "MV21-000050": {
-    "source_tid": "trans_track_a_02_flask_should_ignore_error",
-    "repository": "flask",
-    "file_path": "src/flask/app.py",
-    "symbol_qualified_name": "Flask.make_default_options_response",
+    "source_tid": "trans_track_a_12_urllib3_getheaders_removal",
+    "repository": "urllib3",
+    "file_path": "src/urllib3/response.py",
+    "symbol_qualified_name": "BaseHTTPResponse._flush_decoder",
     "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
   "MV21-000051": {
-    "source_tid": "trans_track_a_02_flask_should_ignore_error",
-    "repository": "flask",
-    "file_path": "src/flask/app.py",
-    "symbol_qualified_name": "Flask.make_response",
+    "source_tid": "trans_track_a_13_starlette_weak_etag_removeprefix",
+    "repository": "starlette",
+    "file_path": "starlette/staticfiles.py",
+    "symbol_qualified_name": "NotModifiedResponse",
     "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
   "MV21-000052": {
-    "source_tid": "trans_click_command",
-    "repository": "click",
-    "file_path": "src/click/core.py",
-    "symbol_qualified_name": "click.Command",
-    "category": "CAT_B_SYM_CHG_MEMORY_VALID",
+    "source_tid": "trans_track_a_13_starlette_weak_etag_removeprefix",
+    "repository": "starlette",
+    "file_path": "starlette/staticfiles.py",
+    "symbol_qualified_name": "NotModifiedResponse.NOT_MODIFIED_HEADERS",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
   "MV21-000053": {
-    "source_tid": "trans_werkzeug_request",
-    "repository": "werkzeug",
-    "file_path": "src/werkzeug/wrappers/request.py",
-    "symbol_qualified_name": "werkzeug.Request",
-    "category": "CAT_B_SYM_CHG_MEMORY_VALID",
+    "source_tid": "trans_track_a_13_starlette_weak_etag_removeprefix",
+    "repository": "starlette",
+    "file_path": "starlette/staticfiles.py",
+    "symbol_qualified_name": "NotModifiedResponse.__init__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
   "MV21-000054": {
-    "source_tid": "trans_attrs_attrib",
-    "repository": "attrs",
-    "file_path": "src/attr/_make.py",
-    "symbol_qualified_name": "attrs.attrib",
-    "category": "CAT_B_SYM_CHG_MEMORY_VALID",
+    "source_tid": "trans_track_a_13_starlette_weak_etag_removeprefix",
+    "repository": "starlette",
+    "file_path": "starlette/staticfiles.py",
+    "symbol_qualified_name": "PathLike",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
   "MV21-000055": {
-    "source_tid": "trans_httpx_client",
-    "repository": "httpx",
-    "file_path": "httpx/_client.py",
-    "symbol_qualified_name": "httpx.Client",
-    "category": "CAT_B_SYM_CHG_MEMORY_VALID",
+    "source_tid": "trans_track_a_13_starlette_weak_etag_removeprefix",
+    "repository": "starlette",
+    "file_path": "starlette/staticfiles.py",
+    "symbol_qualified_name": "StaticFiles.__call__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
   "MV21-000056": {
-    "source_tid": "trans_rich_console",
-    "repository": "rich",
-    "file_path": "rich/console.py",
-    "symbol_qualified_name": "rich.Console",
-    "category": "CAT_B_SYM_CHG_MEMORY_VALID",
+    "source_tid": "trans_track_a_14_fastapi_on_event_compatibility",
+    "repository": "fastapi",
+    "file_path": "fastapi/routing.py",
+    "symbol_qualified_name": "APIRoute",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
   "MV21-000057": {
-    "source_tid": "trans_urllib3_poolmanager",
-    "repository": "urllib3",
-    "file_path": "src/urllib3/poolmanager.py",
-    "symbol_qualified_name": "urllib3.PoolManager",
-    "category": "CAT_B_SYM_CHG_MEMORY_VALID",
+    "source_tid": "trans_track_a_14_fastapi_on_event_compatibility",
+    "repository": "fastapi",
+    "file_path": "fastapi/routing.py",
+    "symbol_qualified_name": "APIRoute.__init__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
   "MV21-000058": {
-    "source_tid": "trans_starlette_starlette",
-    "repository": "starlette",
-    "file_path": "starlette/applications.py",
-    "symbol_qualified_name": "starlette.Starlette",
-    "category": "CAT_B_SYM_CHG_MEMORY_VALID",
+    "source_tid": "trans_track_a_14_fastapi_on_event_compatibility",
+    "repository": "fastapi",
+    "file_path": "fastapi/routing.py",
+    "symbol_qualified_name": "APIRoute.get_route_handler",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
   "MV21-000059": {
-    "source_tid": "trans_fastapi_fastapi",
+    "source_tid": "trans_track_a_14_fastapi_on_event_compatibility",
     "repository": "fastapi",
-    "file_path": "fastapi/applications.py",
-    "symbol_qualified_name": "fastapi.FastAPI",
-    "category": "CAT_B_SYM_CHG_MEMORY_VALID",
+    "file_path": "fastapi/routing.py",
+    "symbol_qualified_name": "APIRoute.matches",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
   "MV21-000060": {
-    "source_tid": "trans_flask_flask",
-    "repository": "flask",
-    "file_path": "src/flask/app.py",
-    "symbol_qualified_name": "flask.Flask",
-    "category": "CAT_B_SYM_CHG_MEMORY_VALID",
+    "source_tid": "trans_track_a_14_fastapi_on_event_compatibility",
+    "repository": "fastapi",
+    "file_path": "fastapi/routing.py",
+    "symbol_qualified_name": "APIRouter.add_api_route",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
   "MV21-000061": {
-    "source_tid": "trans_more-itertools_chunked",
+    "source_tid": "trans_track_a_15_more_itertools_zip_equal_removal",
     "repository": "more-itertools",
     "file_path": "more_itertools/more.py",
-    "symbol_qualified_name": "more-itertools.chunked",
-    "category": "CAT_B_SYM_CHG_MEMORY_VALID",
+    "symbol_qualified_name": "AbortThread",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
   "MV21-000062": {
-    "source_tid": "trans_cachelib_basecache",
-    "repository": "cachelib",
-    "file_path": "src/cachelib/base.py",
-    "symbol_qualified_name": "cachelib.BaseCache",
-    "category": "CAT_B_SYM_CHG_MEMORY_VALID",
+    "source_tid": "trans_track_a_15_more_itertools_zip_equal_removal",
+    "repository": "more-itertools",
+    "file_path": "more_itertools/more.py",
+    "symbol_qualified_name": "SequenceView",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
   "MV21-000063": {
-    "source_tid": "trans_tqdm_tqdm",
-    "repository": "tqdm",
-    "file_path": "tqdm/std.py",
-    "symbol_qualified_name": "tqdm.tqdm",
-    "category": "CAT_B_SYM_CHG_MEMORY_VALID",
+    "source_tid": "trans_track_a_15_more_itertools_zip_equal_removal",
+    "repository": "more-itertools",
+    "file_path": "more_itertools/more.py",
+    "symbol_qualified_name": "SequenceView.__getitem__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
   "MV21-000064": {
-    "source_tid": "trans_virtualenv_virtualenvconfigparser",
-    "repository": "virtualenv",
-    "file_path": "src/virtualenv/config/cli/parser.py",
-    "symbol_qualified_name": "virtualenv.VirtualEnvConfigParser",
-    "category": "CAT_B_SYM_CHG_MEMORY_VALID",
+    "source_tid": "trans_track_a_15_more_itertools_zip_equal_removal",
+    "repository": "more-itertools",
+    "file_path": "more_itertools/more.py",
+    "symbol_qualified_name": "SequenceView.__init__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
   "MV21-000065": {
-    "source_tid": "trans_marshmallow_schema",
-    "repository": "marshmallow",
-    "file_path": "src/marshmallow/schema.py",
-    "symbol_qualified_name": "marshmallow.Schema",
-    "category": "CAT_B_SYM_CHG_MEMORY_VALID",
+    "source_tid": "trans_track_a_15_more_itertools_zip_equal_removal",
+    "repository": "more-itertools",
+    "file_path": "more_itertools/more.py",
+    "symbol_qualified_name": "SequenceView.__len__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
     "gold_label": "VALID"
   },
   "MV21-000066": {
-    "source_tid": "trans_requests_to_key_val_list",
-    "repository": "requests",
-    "file_path": "src/requests/utils.py",
-    "symbol_qualified_name": "requests.to_key_val_list",
-    "category": "CAT_C_SYM_SAME_MEMORY_STALE",
-    "gold_label": "STALE"
+    "source_tid": "trans_track_a_16_rich_file_proxy_isatty",
+    "repository": "rich",
+    "file_path": "rich/file_proxy.py",
+    "symbol_qualified_name": "FileProxy.__getattr__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
   },
   "MV21-000067": {
-    "source_tid": "trans_click_clirunner",
-    "repository": "click",
-    "file_path": "src/click/testing.py",
-    "symbol_qualified_name": "click.CliRunner",
-    "category": "CAT_C_SYM_SAME_MEMORY_STALE",
-    "gold_label": "STALE"
+    "source_tid": "trans_track_a_16_rich_file_proxy_isatty",
+    "repository": "rich",
+    "file_path": "rich/file_proxy.py",
+    "symbol_qualified_name": "FileProxy.__init__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
   },
   "MV21-000068": {
-    "source_tid": "trans_urllib3_httpresponse",
-    "repository": "urllib3",
-    "file_path": "src/urllib3/response.py",
-    "symbol_qualified_name": "urllib3.HTTPResponse",
-    "category": "CAT_C_SYM_SAME_MEMORY_STALE",
-    "gold_label": "STALE"
+    "source_tid": "trans_track_a_16_rich_file_proxy_isatty",
+    "repository": "rich",
+    "file_path": "rich/file_proxy.py",
+    "symbol_qualified_name": "FileProxy.fileno",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
   },
   "MV21-000069": {
-    "source_tid": "trans_starlette_servererrormiddleware",
-    "repository": "starlette",
-    "file_path": "starlette/middleware/errors.py",
-    "symbol_qualified_name": "starlette.ServerErrorMiddleware",
-    "category": "CAT_C_SYM_SAME_MEMORY_STALE",
-    "gold_label": "STALE"
+    "source_tid": "trans_track_a_16_rich_file_proxy_isatty",
+    "repository": "rich",
+    "file_path": "rich/file_proxy.py",
+    "symbol_qualified_name": "FileProxy.flush",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
   },
   "MV21-000070": {
+    "source_tid": "trans_track_a_16_rich_file_proxy_isatty",
+    "repository": "rich",
+    "file_path": "rich/file_proxy.py",
+    "symbol_qualified_name": "FileProxy.rich_proxied_file",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000071": {
+    "source_tid": "trans_track_a_17_celery_task_module_cleanup",
+    "repository": "celery",
+    "file_path": "celery/__init__.py",
+    "symbol_qualified_name": "SERIES",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000072": {
+    "source_tid": "trans_track_a_17_celery_task_module_cleanup",
+    "repository": "celery",
+    "file_path": "celery/__init__.py",
+    "symbol_qualified_name": "STATICA_HACK",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000073": {
+    "source_tid": "trans_track_a_17_celery_task_module_cleanup",
+    "repository": "celery",
+    "file_path": "celery/__init__.py",
+    "symbol_qualified_name": "VERSION",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000074": {
+    "source_tid": "trans_track_a_17_celery_task_module_cleanup",
+    "repository": "celery",
+    "file_path": "celery/__init__.py",
+    "symbol_qualified_name": "VERSION_BANNER",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000075": {
+    "source_tid": "trans_track_a_17_celery_task_module_cleanup",
+    "repository": "celery",
+    "file_path": "celery/__init__.py",
+    "symbol_qualified_name": "__author__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000076": {
+    "source_tid": "trans_track_a_19_flake8_doctest_options_removal",
+    "repository": "flake8",
+    "file_path": "src/flake8/plugins/pyflakes.py",
+    "symbol_qualified_name": "FLAKE8_PYFLAKES_CODES",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000077": {
+    "source_tid": "trans_track_a_19_flake8_doctest_options_removal",
+    "repository": "flake8",
+    "file_path": "src/flake8/plugins/pyflakes.py",
+    "symbol_qualified_name": "FlakesChecker.run",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000078": {
+    "source_tid": "trans_track_a_19_flake8_doctest_options_removal",
+    "repository": "flake8",
+    "file_path": "src/flake8/plugins/pyflakes.py",
+    "symbol_qualified_name": "FlakesChecker.with_doctest",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000079": {
+    "source_tid": "trans_track_a_19_flake8_doctest_options_removal",
+    "repository": "flake8",
+    "file_path": "src/flake8/plugins/pyflakes.py",
+    "symbol_qualified_name": "LOG",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000080": {
+    "source_tid": "trans_track_a_20_iniconfig_strip_inline_comments",
+    "repository": "iniconfig",
+    "file_path": "src/iniconfig/__init__.py",
+    "symbol_qualified_name": "IniConfig.__contains__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000081": {
+    "source_tid": "trans_track_a_20_iniconfig_strip_inline_comments",
+    "repository": "iniconfig",
+    "file_path": "src/iniconfig/__init__.py",
+    "symbol_qualified_name": "IniConfig.__getitem__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000082": {
+    "source_tid": "trans_track_a_20_iniconfig_strip_inline_comments",
+    "repository": "iniconfig",
+    "file_path": "src/iniconfig/__init__.py",
+    "symbol_qualified_name": "IniConfig.__iter__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000083": {
+    "source_tid": "trans_track_a_20_iniconfig_strip_inline_comments",
+    "repository": "iniconfig",
+    "file_path": "src/iniconfig/__init__.py",
+    "symbol_qualified_name": "IniConfig.get",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000084": {
+    "source_tid": "trans_track_a_20_iniconfig_strip_inline_comments",
+    "repository": "iniconfig",
+    "file_path": "src/iniconfig/__init__.py",
+    "symbol_qualified_name": "IniConfig.lineof",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000085": {
+    "source_tid": "trans_track_a_21_packaging_legacy_version_removal",
+    "repository": "packaging",
+    "file_path": "packaging/version.py",
+    "symbol_qualified_name": "CmpKey",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000086": {
+    "source_tid": "trans_track_a_21_packaging_legacy_version_removal",
+    "repository": "packaging",
+    "file_path": "packaging/version.py",
+    "symbol_qualified_name": "InfiniteTypes",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000087": {
+    "source_tid": "trans_track_a_21_packaging_legacy_version_removal",
+    "repository": "packaging",
+    "file_path": "packaging/version.py",
+    "symbol_qualified_name": "InvalidVersion",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000088": {
+    "source_tid": "trans_track_a_21_packaging_legacy_version_removal",
+    "repository": "packaging",
+    "file_path": "packaging/version.py",
+    "symbol_qualified_name": "LocalType",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000089": {
+    "source_tid": "trans_track_a_21_packaging_legacy_version_removal",
+    "repository": "packaging",
+    "file_path": "packaging/version.py",
+    "symbol_qualified_name": "PrePostDevType",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000090": {
+    "source_tid": "trans_track_a_22_dateutil_unknown_timezone_warning",
+    "repository": "dateutil",
+    "file_path": "dateutil/parser/__init__.py",
+    "symbol_qualified_name": "__deprecate_private_class",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000091": {
+    "source_tid": "trans_track_a_22_dateutil_unknown_timezone_warning",
+    "repository": "dateutil",
+    "file_path": "dateutil/parser/__init__.py",
+    "symbol_qualified_name": "__deprecated_private_func",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000092": {
+    "source_tid": "trans_track_a_22_dateutil_unknown_timezone_warning",
+    "repository": "dateutil",
+    "file_path": "dateutil/parser/__init__.py",
+    "symbol_qualified_name": "_parsetz",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000093": {
+    "source_tid": "trans_track_a_22_dateutil_unknown_timezone_warning",
+    "repository": "dateutil",
+    "file_path": "dateutil/parser/__init__.py",
+    "symbol_qualified_name": "_resultbase",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000094": {
+    "source_tid": "trans_track_a_22_dateutil_unknown_timezone_warning",
+    "repository": "dateutil",
+    "file_path": "dateutil/parser/__init__.py",
+    "symbol_qualified_name": "_timelex",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000095": {
+    "source_tid": "trans_track_a_23_tqdm_asyncio_gather_return_exceptions",
+    "repository": "tqdm",
+    "file_path": "tqdm/asyncio.py",
+    "symbol_qualified_name": "__all__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000096": {
+    "source_tid": "trans_track_a_23_tqdm_asyncio_gather_return_exceptions",
+    "repository": "tqdm",
+    "file_path": "tqdm/asyncio.py",
+    "symbol_qualified_name": "__author__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000097": {
+    "source_tid": "trans_track_a_23_tqdm_asyncio_gather_return_exceptions",
+    "repository": "tqdm",
+    "file_path": "tqdm/asyncio.py",
+    "symbol_qualified_name": "tarange",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000098": {
+    "source_tid": "trans_track_a_23_tqdm_asyncio_gather_return_exceptions",
+    "repository": "tqdm",
+    "file_path": "tqdm/asyncio.py",
+    "symbol_qualified_name": "tqdm",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000099": {
+    "source_tid": "trans_track_a_23_tqdm_asyncio_gather_return_exceptions",
+    "repository": "tqdm",
+    "file_path": "tqdm/asyncio.py",
+    "symbol_qualified_name": "tqdm_asyncio.__aiter__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000100": {
+    "source_tid": "trans_track_a_24_cachelib_timeout_timedelta",
+    "repository": "cachelib",
+    "file_path": "src/cachelib/base.py",
+    "symbol_qualified_name": "BaseCache.clear",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000101": {
+    "source_tid": "trans_track_a_24_cachelib_timeout_timedelta",
+    "repository": "cachelib",
+    "file_path": "src/cachelib/base.py",
+    "symbol_qualified_name": "BaseCache.dec",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000102": {
+    "source_tid": "trans_track_a_24_cachelib_timeout_timedelta",
+    "repository": "cachelib",
+    "file_path": "src/cachelib/base.py",
+    "symbol_qualified_name": "BaseCache.delete",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000103": {
+    "source_tid": "trans_track_a_24_cachelib_timeout_timedelta",
+    "repository": "cachelib",
+    "file_path": "src/cachelib/base.py",
+    "symbol_qualified_name": "BaseCache.delete_many",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000104": {
+    "source_tid": "trans_track_a_24_cachelib_timeout_timedelta",
+    "repository": "cachelib",
+    "file_path": "src/cachelib/base.py",
+    "symbol_qualified_name": "BaseCache.get",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000105": {
+    "source_tid": "trans_track_a_25_uvicorn_wsgi_middleware_deprecation",
+    "repository": "uvicorn",
+    "file_path": "uvicorn/middleware/wsgi.py",
+    "symbol_qualified_name": "WSGIResponder",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000106": {
+    "source_tid": "trans_track_a_25_uvicorn_wsgi_middleware_deprecation",
+    "repository": "uvicorn",
+    "file_path": "uvicorn/middleware/wsgi.py",
+    "symbol_qualified_name": "WSGIResponder.__call__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000107": {
+    "source_tid": "trans_track_a_25_uvicorn_wsgi_middleware_deprecation",
+    "repository": "uvicorn",
+    "file_path": "uvicorn/middleware/wsgi.py",
+    "symbol_qualified_name": "WSGIResponder.__init__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000108": {
+    "source_tid": "trans_track_a_25_uvicorn_wsgi_middleware_deprecation",
+    "repository": "uvicorn",
+    "file_path": "uvicorn/middleware/wsgi.py",
+    "symbol_qualified_name": "WSGIResponder.sender",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000109": {
+    "source_tid": "trans_track_a_25_uvicorn_wsgi_middleware_deprecation",
+    "repository": "uvicorn",
+    "file_path": "uvicorn/middleware/wsgi.py",
+    "symbol_qualified_name": "WSGIResponder.start_response",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000110": {
+    "source_tid": "trans_track_a_26_rich_render_group_to_group",
+    "repository": "rich",
+    "file_path": "rich/console.py",
+    "symbol_qualified_name": "COLOR_SYSTEMS",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000111": {
+    "source_tid": "trans_track_a_26_rich_render_group_to_group",
+    "repository": "rich",
+    "file_path": "rich/console.py",
+    "symbol_qualified_name": "CONSOLE_HTML_FORMAT",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000112": {
+    "source_tid": "trans_track_a_26_rich_render_group_to_group",
+    "repository": "rich",
+    "file_path": "rich/console.py",
+    "symbol_qualified_name": "Capture",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000113": {
+    "source_tid": "trans_track_a_27_marshmallow_ipaddress_type_mapping",
+    "repository": "marshmallow",
+    "file_path": "src/marshmallow/schema.py",
+    "symbol_qualified_name": "BaseSchema",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000114": {
+    "source_tid": "trans_track_a_27_marshmallow_ipaddress_type_mapping",
+    "repository": "marshmallow",
+    "file_path": "src/marshmallow/schema.py",
+    "symbol_qualified_name": "Schema.__apply_nested_option",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000115": {
+    "source_tid": "trans_track_a_27_marshmallow_ipaddress_type_mapping",
+    "repository": "marshmallow",
+    "file_path": "src/marshmallow/schema.py",
+    "symbol_qualified_name": "Schema.__init__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000116": {
+    "source_tid": "trans_track_a_27_marshmallow_ipaddress_type_mapping",
+    "repository": "marshmallow",
+    "file_path": "src/marshmallow/schema.py",
+    "symbol_qualified_name": "Schema.__repr__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000117": {
+    "source_tid": "trans_track_a_27_marshmallow_ipaddress_type_mapping",
+    "repository": "marshmallow",
+    "file_path": "src/marshmallow/schema.py",
+    "symbol_qualified_name": "Schema._bind_field",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000118": {
+    "source_tid": "trans_track_a_28_starlette_exceptions_middleware_removal",
+    "repository": "starlette",
+    "file_path": "starlette/exceptions.py",
+    "symbol_qualified_name": "HTTPException.__repr__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000119": {
+    "source_tid": "trans_track_a_28_starlette_exceptions_middleware_removal",
+    "repository": "starlette",
+    "file_path": "starlette/exceptions.py",
+    "symbol_qualified_name": "HTTPException.__str__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000120": {
+    "source_tid": "trans_track_a_28_starlette_exceptions_middleware_removal",
+    "repository": "starlette",
+    "file_path": "starlette/exceptions.py",
+    "symbol_qualified_name": "WebSocketException",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000121": {
+    "source_tid": "trans_track_a_29_pluggy_static_hook_attr_discovery",
+    "repository": "pluggy",
+    "file_path": "src/pluggy/_manager.py",
+    "symbol_qualified_name": "PluginManager.__init__",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000122": {
+    "source_tid": "trans_track_a_29_pluggy_static_hook_attr_discovery",
+    "repository": "pluggy",
+    "file_path": "src/pluggy/_manager.py",
+    "symbol_qualified_name": "PluginManager._hookexec",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000123": {
+    "source_tid": "trans_track_a_29_pluggy_static_hook_attr_discovery",
+    "repository": "pluggy",
+    "file_path": "src/pluggy/_manager.py",
+    "symbol_qualified_name": "PluginManager._verify_hook",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000124": {
+    "source_tid": "trans_track_a_30_fastapi_pydantic_v1_deprecation",
+    "repository": "fastapi",
+    "file_path": "fastapi/dependencies/utils.py",
+    "symbol_qualified_name": "ParamDetails",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000125": {
+    "source_tid": "trans_track_a_30_fastapi_pydantic_v1_deprecation",
+    "repository": "fastapi",
+    "file_path": "fastapi/dependencies/utils.py",
+    "symbol_qualified_name": "SolvedDependency",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000126": {
+    "source_tid": "trans_track_a_30_fastapi_pydantic_v1_deprecation",
+    "repository": "fastapi",
+    "file_path": "fastapi/dependencies/utils.py",
+    "symbol_qualified_name": "_extract_form_body",
+    "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000127": {
+    "source_tid": "trans_click_helpformatter",
+    "repository": "click",
+    "file_path": "src/click/formatting.py",
+    "symbol_qualified_name": "HelpFormatter",
+    "category": "CAT_B_SYM_CHG_MEMORY_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000128": {
+    "source_tid": "trans_werkzeug_request",
+    "repository": "werkzeug",
+    "file_path": "src/werkzeug/wrappers/request.py",
+    "symbol_qualified_name": "Request",
+    "category": "CAT_B_SYM_CHG_MEMORY_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000129": {
+    "source_tid": "trans_tqdm_tqdm",
+    "repository": "tqdm",
+    "file_path": "tqdm/std.py",
+    "symbol_qualified_name": "tqdm",
+    "category": "CAT_B_SYM_CHG_MEMORY_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000130": {
+    "source_tid": "trans_rich_console",
+    "repository": "rich",
+    "file_path": "rich/console.py",
+    "symbol_qualified_name": "Console",
+    "category": "CAT_B_SYM_CHG_MEMORY_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000131": {
+    "source_tid": "trans_rich_text",
+    "repository": "rich",
+    "file_path": "rich/text.py",
+    "symbol_qualified_name": "Text",
+    "category": "CAT_B_SYM_CHG_MEMORY_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000132": {
+    "source_tid": "trans_fastapi_fastapi",
+    "repository": "fastapi",
+    "file_path": "fastapi/applications.py",
+    "symbol_qualified_name": "FastAPI",
+    "category": "CAT_B_SYM_CHG_MEMORY_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000133": {
+    "source_tid": "trans_starlette_starlette",
+    "repository": "starlette",
+    "file_path": "starlette/applications.py",
+    "symbol_qualified_name": "Starlette",
+    "category": "CAT_B_SYM_CHG_MEMORY_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000134": {
+    "source_tid": "trans_urllib3_poolmanager",
+    "repository": "urllib3",
+    "file_path": "src/urllib3/poolmanager.py",
+    "symbol_qualified_name": "PoolManager",
+    "category": "CAT_B_SYM_CHG_MEMORY_VALID",
+    "gold_label": "VALID"
+  },
+  "MV21-000135": {
     "source_tid": "trans_pluggy_hookimpl",
     "repository": "pluggy",
     "file_path": "src/pluggy/_hooks.py",
-    "symbol_qualified_name": "pluggy.HookImpl",
+    "symbol_qualified_name": "HookImpl",
     "category": "CAT_C_SYM_SAME_MEMORY_STALE",
     "gold_label": "STALE"
   },
-  "MV21-000071": {
-    "source_tid": "trans_celery_task",
-    "repository": "celery",
-    "file_path": "celery/app/task.py",
-    "symbol_qualified_name": "celery.Task",
-    "category": "CAT_C_SYM_SAME_MEMORY_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000072": {
-    "source_tid": "trans_marshmallow_field",
-    "repository": "marshmallow",
-    "file_path": "src/marshmallow/fields.py",
-    "symbol_qualified_name": "marshmallow.Field",
-    "category": "CAT_C_SYM_SAME_MEMORY_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000073": {
+  "MV21-000136": {
     "source_tid": "trans_fastapi_apiroute",
     "repository": "fastapi",
     "file_path": "fastapi/routing.py",
-    "symbol_qualified_name": "fastapi.APIRoute",
+    "symbol_qualified_name": "APIRoute",
     "category": "CAT_C_SYM_SAME_MEMORY_STALE",
     "gold_label": "STALE"
   },
-  "MV21-000074": {
+  "MV21-000137": {
     "source_tid": "trans_httpx_httptransport",
     "repository": "httpx",
     "file_path": "httpx/_transports/default.py",
-    "symbol_qualified_name": "httpx.HTTPTransport",
+    "symbol_qualified_name": "HTTPTransport",
     "category": "CAT_C_SYM_SAME_MEMORY_STALE",
     "gold_label": "STALE"
   },
-  "MV21-000075": {
-    "source_tid": "trans_jinja_environment",
-    "repository": "jinja",
-    "file_path": "src/jinja2/environment.py",
-    "symbol_qualified_name": "jinja.Environment",
-    "category": "CAT_C_SYM_SAME_MEMORY_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000076": {
+  "MV21-000138": {
     "source_tid": "trans_virtualenv_pipinstall",
     "repository": "virtualenv",
     "file_path": "src/virtualenv/seed/embed/via_app_data/pip_install/base.py",
-    "symbol_qualified_name": "virtualenv.PipInstall",
+    "symbol_qualified_name": "PipInstall",
     "category": "CAT_C_SYM_SAME_MEMORY_STALE",
     "gold_label": "STALE"
   },
-  "MV21-000077": {
-    "source_tid": "trans_tqdm_gather",
-    "repository": "tqdm",
-    "file_path": "tqdm/asyncio.py",
-    "symbol_qualified_name": "tqdm.gather",
-    "category": "CAT_C_SYM_SAME_MEMORY_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000078": {
-    "source_tid": "trans_cachelib_rediscache",
-    "repository": "cachelib",
-    "file_path": "src/cachelib/redis.py",
-    "symbol_qualified_name": "cachelib.RedisCache",
-    "category": "CAT_C_SYM_SAME_MEMORY_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000079": {
-    "source_tid": "trans_werkzeug_rulematcher",
-    "repository": "werkzeug",
-    "file_path": "src/werkzeug/routing/matcher.py",
-    "symbol_qualified_name": "werkzeug.RuleMatcher",
-    "category": "CAT_C_SYM_SAME_MEMORY_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000080": {
-    "source_tid": "trans_flask_render_template",
-    "repository": "flask",
-    "file_path": "src/flask/templating.py",
-    "symbol_qualified_name": "flask.render_template",
-    "category": "CAT_C_SYM_SAME_MEMORY_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000081": {
-    "source_tid": "trans_track_a_01_click_stream_deprecations",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "_LazyFile",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000082": {
-    "source_tid": "trans_track_a_01_click_stream_deprecations",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "__getattr__",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000083": {
-    "source_tid": "trans_track_a_01_click_stream_deprecations",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "_safecall",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000084": {
-    "source_tid": "trans_track_a_01_click_stream_deprecations",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "get_binary_stream",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000085": {
-    "source_tid": "trans_track_a_01_click_stream_deprecations",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "get_text_stream",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000086": {
-    "source_tid": "trans_track_a_02_flask_should_ignore_error",
-    "repository": "flask",
-    "file_path": "src/flask/app.py",
-    "symbol_qualified_name": "Flask",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000087": {
-    "source_tid": "trans_track_a_02_flask_should_ignore_error",
-    "repository": "flask",
-    "file_path": "src/flask/app.py",
-    "symbol_qualified_name": "Flask.full_dispatch_request",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000088": {
-    "source_tid": "trans_track_a_02_flask_should_ignore_error",
-    "repository": "flask",
-    "file_path": "src/flask/app.py",
-    "symbol_qualified_name": "Flask.wsgi_app",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000089": {
-    "source_tid": "trans_track_a_03_werkzeug_environ_property",
-    "repository": "werkzeug",
-    "file_path": "src/werkzeug/utils.py",
-    "symbol_qualified_name": "environ_property",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000090": {
-    "source_tid": "trans_track_a_03_werkzeug_environ_property",
-    "repository": "werkzeug",
-    "file_path": "src/werkzeug/utils.py",
-    "symbol_qualified_name": "environ_property.lookup",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000091": {
-    "source_tid": "trans_track_a_03_werkzeug_environ_property",
-    "repository": "werkzeug",
-    "file_path": "src/werkzeug/utils.py",
-    "symbol_qualified_name": "environ_property.read_only",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000092": {
+  "MV21-000139": {
     "source_tid": "trans_track_a_04_jinja_version_deprecation",
     "repository": "jinja",
     "file_path": "src/jinja2/__init__.py",
@@ -735,7 +1111,7 @@
     "category": "CAT_D_SYM_CHG_OR_REM_STALE",
     "gold_label": "STALE"
   },
-  "MV21-000093": {
+  "MV21-000140": {
     "source_tid": "trans_track_a_05_itsdangerous_version_removal",
     "repository": "itsdangerous",
     "file_path": "src/itsdangerous/__init__.py",
@@ -743,231 +1119,7 @@
     "category": "CAT_D_SYM_CHG_OR_REM_STALE",
     "gold_label": "STALE"
   },
-  "MV21-000094": {
-    "source_tid": "trans_track_a_06_markupsafe_version_removal",
-    "repository": "markupsafe",
-    "file_path": "src/markupsafe/__init__.py",
-    "symbol_qualified_name": "__getattr__",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000095": {
-    "source_tid": "trans_track_a_07_pluggy_varnames_noself",
-    "repository": "pluggy",
-    "file_path": "src/pluggy/_hooks.py",
-    "symbol_qualified_name": "varnames",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000096": {
-    "source_tid": "trans_track_a_08_attrs_py313_replace_control",
-    "repository": "attrs",
-    "file_path": "src/attr/_make.py",
-    "symbol_qualified_name": "Attribute.evolve",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000097": {
-    "source_tid": "trans_track_a_08_attrs_py313_replace_control",
-    "repository": "attrs",
-    "file_path": "src/attr/_make.py",
-    "symbol_qualified_name": "_ClassBuilder",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000098": {
-    "source_tid": "trans_track_a_08_attrs_py313_replace_control",
-    "repository": "attrs",
-    "file_path": "src/attr/_make.py",
-    "symbol_qualified_name": "attrs",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000099": {
-    "source_tid": "trans_track_a_09_virtualenv_drop_py38_control",
-    "repository": "virtualenv",
-    "file_path": "src/virtualenv/create/via_global_ref/builtin/cpython/cpython3.py",
-    "symbol_qualified_name": "CPython3Posix",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000100": {
-    "source_tid": "trans_track_a_09_virtualenv_drop_py38_control",
-    "repository": "virtualenv",
-    "file_path": "src/virtualenv/create/via_global_ref/builtin/cpython/cpython3.py",
-    "symbol_qualified_name": "CPython3Posix.env_patch_text",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000101": {
-    "source_tid": "trans_track_a_09_virtualenv_drop_py38_control",
-    "repository": "virtualenv",
-    "file_path": "src/virtualenv/create/via_global_ref/builtin/cpython/cpython3.py",
-    "symbol_qualified_name": "CPython3Posix.pyvenv_launch_patch_active",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000102": {
-    "source_tid": "trans_track_a_10_httpx_client_proxies_deprecation",
-    "repository": "httpx",
-    "file_path": "httpx/_client.py",
-    "symbol_qualified_name": "AsyncClient",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000103": {
-    "source_tid": "trans_track_a_10_httpx_client_proxies_deprecation",
-    "repository": "httpx",
-    "file_path": "httpx/_client.py",
-    "symbol_qualified_name": "AsyncClient.__init__",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000104": {
-    "source_tid": "trans_track_a_10_httpx_client_proxies_deprecation",
-    "repository": "httpx",
-    "file_path": "httpx/_client.py",
-    "symbol_qualified_name": "Client",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000105": {
-    "source_tid": "trans_track_a_10_httpx_client_proxies_deprecation",
-    "repository": "httpx",
-    "file_path": "httpx/_client.py",
-    "symbol_qualified_name": "Client.__init__",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000106": {
-    "source_tid": "trans_track_a_11_requests_json_decode_error",
-    "repository": "requests",
-    "file_path": "requests/models.py",
-    "symbol_qualified_name": "Response",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000107": {
-    "source_tid": "trans_track_a_11_requests_json_decode_error",
-    "repository": "requests",
-    "file_path": "requests/models.py",
-    "symbol_qualified_name": "Response.json",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000108": {
-    "source_tid": "trans_track_a_12_urllib3_getheaders_removal",
-    "repository": "urllib3",
-    "file_path": "src/urllib3/response.py",
-    "symbol_qualified_name": "BaseHTTPResponse",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000109": {
-    "source_tid": "trans_track_a_12_urllib3_getheaders_removal",
-    "repository": "urllib3",
-    "file_path": "src/urllib3/response.py",
-    "symbol_qualified_name": "BaseHTTPResponse.getheader",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000110": {
-    "source_tid": "trans_track_a_12_urllib3_getheaders_removal",
-    "repository": "urllib3",
-    "file_path": "src/urllib3/response.py",
-    "symbol_qualified_name": "BaseHTTPResponse.getheaders",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000111": {
-    "source_tid": "trans_track_a_13_starlette_weak_etag_removeprefix",
-    "repository": "starlette",
-    "file_path": "starlette/staticfiles.py",
-    "symbol_qualified_name": "StaticFiles",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000112": {
-    "source_tid": "trans_track_a_13_starlette_weak_etag_removeprefix",
-    "repository": "starlette",
-    "file_path": "starlette/staticfiles.py",
-    "symbol_qualified_name": "StaticFiles.is_not_modified",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000113": {
-    "source_tid": "trans_track_a_14_fastapi_on_event_compatibility",
-    "repository": "fastapi",
-    "file_path": "fastapi/routing.py",
-    "symbol_qualified_name": "APIRouter",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000114": {
-    "source_tid": "trans_track_a_14_fastapi_on_event_compatibility",
-    "repository": "fastapi",
-    "file_path": "fastapi/routing.py",
-    "symbol_qualified_name": "APIRouter.__init__",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000115": {
-    "source_tid": "trans_track_a_15_more_itertools_zip_equal_removal",
-    "repository": "more-itertools",
-    "file_path": "more_itertools/more.py",
-    "symbol_qualified_name": "__all__",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000116": {
-    "source_tid": "trans_track_a_15_more_itertools_zip_equal_removal",
-    "repository": "more-itertools",
-    "file_path": "more_itertools/more.py",
-    "symbol_qualified_name": "numeric_range",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000117": {
-    "source_tid": "trans_track_a_15_more_itertools_zip_equal_removal",
-    "repository": "more-itertools",
-    "file_path": "more_itertools/more.py",
-    "symbol_qualified_name": "sort_together",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000118": {
-    "source_tid": "trans_track_a_15_more_itertools_zip_equal_removal",
-    "repository": "more-itertools",
-    "file_path": "more_itertools/more.py",
-    "symbol_qualified_name": "zip_broadcast",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000119": {
-    "source_tid": "trans_track_a_15_more_itertools_zip_equal_removal",
-    "repository": "more-itertools",
-    "file_path": "more_itertools/more.py",
-    "symbol_qualified_name": "zip_equal",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000120": {
-    "source_tid": "trans_track_a_16_rich_file_proxy_isatty",
-    "repository": "rich",
-    "file_path": "rich/file_proxy.py",
-    "symbol_qualified_name": "FileProxy",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000121": {
-    "source_tid": "trans_track_a_17_celery_task_module_cleanup",
-    "repository": "celery",
-    "file_path": "celery/__init__.py",
-    "symbol_qualified_name": "__all__",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000122": {
+  "MV21-000141": {
     "source_tid": "trans_track_a_18_marshmallow_pprint_export_removal",
     "repository": "marshmallow",
     "file_path": "src/marshmallow/__init__.py",
@@ -975,7 +1127,7 @@
     "category": "CAT_D_SYM_CHG_OR_REM_STALE",
     "gold_label": "STALE"
   },
-  "MV21-000123": {
+  "MV21-000142": {
     "source_tid": "trans_track_a_19_flake8_doctest_options_removal",
     "repository": "flake8",
     "file_path": "src/flake8/plugins/pyflakes.py",
@@ -983,27 +1135,59 @@
     "category": "CAT_D_SYM_CHG_OR_REM_STALE",
     "gold_label": "STALE"
   },
-  "MV21-000124": {
-    "source_tid": "trans_track_a_19_flake8_doctest_options_removal",
-    "repository": "flake8",
-    "file_path": "src/flake8/plugins/pyflakes.py",
-    "symbol_qualified_name": "FlakesChecker.__init__",
+  "MV21-000143": {
+    "source_tid": "trans_track_a_26_rich_render_group_to_group",
+    "repository": "rich",
+    "file_path": "rich/console.py",
+    "symbol_qualified_name": "group",
     "category": "CAT_D_SYM_CHG_OR_REM_STALE",
     "gold_label": "STALE"
   },
-  "MV21-000125": {
-    "source_tid": "trans_track_a_19_flake8_doctest_options_removal",
-    "repository": "flake8",
-    "file_path": "src/flake8/plugins/pyflakes.py",
-    "symbol_qualified_name": "FlakesChecker.add_options",
+  "MV21-000144": {
+    "source_tid": "trans_track_a_26_rich_render_group_to_group",
+    "repository": "rich",
+    "file_path": "rich/console.py",
+    "symbol_qualified_name": "RenderGroup",
     "category": "CAT_D_SYM_CHG_OR_REM_STALE",
     "gold_label": "STALE"
   },
-  "MV21-000126": {
-    "source_tid": "trans_track_a_19_flake8_doctest_options_removal",
-    "repository": "flake8",
-    "file_path": "src/flake8/plugins/pyflakes.py",
-    "symbol_qualified_name": "FlakesChecker.parse_options",
+  "MV21-000145": {
+    "source_tid": "trans_track_a_28_starlette_exceptions_middleware_removal",
+    "repository": "starlette",
+    "file_path": "starlette/exceptions.py",
+    "symbol_qualified_name": "HTTPException",
+    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
+    "gold_label": "STALE"
+  },
+  "MV21-000146": {
+    "source_tid": "trans_track_a_28_starlette_exceptions_middleware_removal",
+    "repository": "starlette",
+    "file_path": "starlette/exceptions.py",
+    "symbol_qualified_name": "HTTPException.__init__",
+    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
+    "gold_label": "STALE"
+  },
+  "MV21-000147": {
+    "source_tid": "trans_track_a_29_pluggy_static_hook_attr_discovery",
+    "repository": "pluggy",
+    "file_path": "src/pluggy/_manager.py",
+    "symbol_qualified_name": "PluginManager",
+    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
+    "gold_label": "STALE"
+  },
+  "MV21-000148": {
+    "source_tid": "trans_track_a_29_pluggy_static_hook_attr_discovery",
+    "repository": "pluggy",
+    "file_path": "src/pluggy/_manager.py",
+    "symbol_qualified_name": "PluginManager.parse_hookimpl_opts",
+    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
+    "gold_label": "STALE"
+  },
+  "MV21-000149": {
+    "source_tid": "trans_track_a_30_fastapi_pydantic_v1_deprecation",
+    "repository": "fastapi",
+    "file_path": "fastapi/dependencies/utils.py",
+    "symbol_qualified_name": "get_dependant",
     "category": "CAT_D_SYM_CHG_OR_REM_STALE",
     "gold_label": "STALE"
   }

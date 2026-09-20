@@ -3,26 +3,85 @@
   "repo_name": "Textualize/rich",
   "transition_type": "API_REMOVAL",
   "stale_sensitive": true,
+  "execution_status": "EXECUTED",
   "executions": {
     "stale_on_base": {
       "passed": true,
-      "output_sha256": "ef103b7a951120ccd666619c375d4e72b8c4fc4e344d28a27f864ef3ec349278",
-      "output_snippet": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_b7m80gb_\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden"
+      "duration_seconds": 0.2625,
+      "solution_hash": "d2fbff7c94e3262ee77843037df5ed4e0d703773975f96ba491df08c3d720c87",
+      "test_hash": "2098c3a3d5b4886a4f654a1640e9a3ddd0c9d281001064b7c82b6941e1949ea3",
+      "output_sha256": "07301acaa10ef083df7325e7c6f4f5b79193b60baab0bc0985462550d8e1acd6",
+      "output_snippet": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_xcyy0e_c\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden"
     },
     "stale_on_target": {
       "passed": false,
-      "output_sha256": "61f8edeeb1b614b0bf822d328dad3cc4d4677108ab6ff650b8f7e842273984ad",
-      "output_snippet": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_ojrz0vag\nplugins: anyio-4.15.1\ncollecting ... collected 0 items / 1"
+      "duration_seconds": 0.3072,
+      "solution_hash": "d2fbff7c94e3262ee77843037df5ed4e0d703773975f96ba491df08c3d720c87",
+      "test_hash": "2098c3a3d5b4886a4f654a1640e9a3ddd0c9d281001064b7c82b6941e1949ea3",
+      "output_sha256": "d2bc2d04db49d917878899710daf423a3d0d120835af011a38dcdcab253fcaf6",
+      "output_snippet": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_ydzf7w7g\nplugins: anyio-4.15.1\ncollecting ... collected 0 items / 1"
     },
     "valid_on_base": {
       "passed": true,
-      "output_sha256": "75ab6dbf13ba8d451b25f3f17ccc0e3e81489048723f32e952da8a7148e5ee8a",
-      "output_snippet": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_hfy_w3fw\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden"
+      "duration_seconds": 0.2716,
+      "solution_hash": "a48b1d14267fc1617c0a22040697097f50e63c078de613c68ef88a579d0bb95f",
+      "test_hash": "2098c3a3d5b4886a4f654a1640e9a3ddd0c9d281001064b7c82b6941e1949ea3",
+      "output_sha256": "29d949a58dc3944a26d40be000e4d10be814c8e47a564b7d07bd812f794012f2",
+      "output_snippet": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_5oxg7hv_\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden"
     },
     "valid_on_target": {
       "passed": true,
-      "output_sha256": "b3ea5da3cc319ce2da0b4831b5db465f290d9bd53385a8eea4686ff08dd1ceb1",
-      "output_snippet": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_58ypis_i\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden"
+      "duration_seconds": 0.2943,
+      "solution_hash": "a48b1d14267fc1617c0a22040697097f50e63c078de613c68ef88a579d0bb95f",
+      "test_hash": "2098c3a3d5b4886a4f654a1640e9a3ddd0c9d281001064b7c82b6941e1949ea3",
+      "output_sha256": "fbd5616b6f59ce2ec47a4eeaa5a3b7af487fdfdc5ccc596c51a48b6d1ac6fb21",
+      "output_snippet": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_fhlp_5wf\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden"
+    },
+    "matrix": {
+      "stale_on_base": true,
+      "stale_on_target": false,
+      "valid_on_base": true,
+      "valid_on_target": true
+    }
+  },
+  "reproducibility_run_2": {
+    "stale_on_base": {
+      "passed": true,
+      "duration_seconds": 0.2739,
+      "solution_hash": "d2fbff7c94e3262ee77843037df5ed4e0d703773975f96ba491df08c3d720c87",
+      "test_hash": "2098c3a3d5b4886a4f654a1640e9a3ddd0c9d281001064b7c82b6941e1949ea3",
+      "output_sha256": "bdec9d802eef1fc3887c4c518e15c5e8e4e7b6d68f6a1e37313386841d81e387",
+      "output_snippet": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_7segwc_8\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden"
+    },
+    "stale_on_target": {
+      "passed": false,
+      "duration_seconds": 0.3243,
+      "solution_hash": "d2fbff7c94e3262ee77843037df5ed4e0d703773975f96ba491df08c3d720c87",
+      "test_hash": "2098c3a3d5b4886a4f654a1640e9a3ddd0c9d281001064b7c82b6941e1949ea3",
+      "output_sha256": "de0b7e7072664ba56cbb19fcb7aacc0559d235da7984530642468bdfd4b5148f",
+      "output_snippet": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_w0s35_0h\nplugins: anyio-4.15.1\ncollecting ... collected 0 items / 1"
+    },
+    "valid_on_base": {
+      "passed": true,
+      "duration_seconds": 0.2805,
+      "solution_hash": "a48b1d14267fc1617c0a22040697097f50e63c078de613c68ef88a579d0bb95f",
+      "test_hash": "2098c3a3d5b4886a4f654a1640e9a3ddd0c9d281001064b7c82b6941e1949ea3",
+      "output_sha256": "97a05102845be05f52bd2f739935c1d14c003c3dec052cd212ab795e18c6d98c",
+      "output_snippet": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_fwuyai5h\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden"
+    },
+    "valid_on_target": {
+      "passed": true,
+      "duration_seconds": 0.2765,
+      "solution_hash": "a48b1d14267fc1617c0a22040697097f50e63c078de613c68ef88a579d0bb95f",
+      "test_hash": "2098c3a3d5b4886a4f654a1640e9a3ddd0c9d281001064b7c82b6941e1949ea3",
+      "output_sha256": "c4ed6ed7d545286b8ecd444aeae5464e3e309302d0846162923c56d47e3b9c62",
+      "output_snippet": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_pu_j3pvt\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden"
+    },
+    "matrix": {
+      "stale_on_base": true,
+      "stale_on_target": false,
+      "valid_on_base": true,
+      "valid_on_target": true
     }
   },
   "matrix": {
@@ -31,5 +90,12 @@
     "valid_on_base": true,
     "valid_on_target": true
   },
-  "causal_pass": true
+  "causal_pass": true,
+  "environment_reproducible": true,
+  "provenance": {
+    "python_executable": "/root/anaconda3/bin/python3",
+    "python_version": "3.13.5",
+    "bwrap_sandbox": true,
+    "timestamp": "2026-09-20T13:47:25Z"
+  }
 }

@@ -73,19 +73,84 @@ def test_blind_inputs_case_id_pattern():
 
 def test_blind_inputs_zero_label_leakage():
     blind_path = "/code/rolemem-agent-memory/data/memory_validity_v2_1/blind_inputs.jsonl"
-    leaked_keys = {"gold_label", "category", "gold_category", "stale_ground_truth", "valid_ground_truth"}
+    leaked_keys = {"gold_label", "category", "gold_category", "stale_ground_truth", "valid_ground_truth", "ground_truth"}
     leaked_category_substrings = ["cat_a", "cat_b", "cat_c", "cat_d", "valid_contract", "dep_stale"]
 
     with open(blind_path, "r", encoding="utf-8") as f:
-        for idx, line in enumerate(f):
+        content = f.read()
+
+    # Full serialized string scan for leakage and placeholders
+    banned_in_serialized = [
+        "\"cat_a\"", "\"cat_b\"", "\"cat_c\"", "\"cat_d\"",
+        "\"category\"", "\"gold_label\"", "\"expected_label\"", "\"ground_truth\"",
+        "digest_base", "digest_target", "mock_digest", "unknown_digest",
+    ]
+    for banned in banned_in_serialized:
+        assert banned not in content.lower(), f"Banned string '{banned}' found in serialized blind_inputs.jsonl"
+
+    for idx, line in enumerate(content.splitlines()):
+        if not line.strip():
+            continue
+        rec = json.loads(line)
+        for k in leaked_keys:
+            assert k not in rec, f"Leaked key '{k}' found in case {rec.get('case_id')}"
+        cid = rec.get("case_id", "").lower()
+        for sub in leaked_category_substrings:
+            assert sub not in cid, f"Leaked category pattern '{sub}' found in case_id '{cid}'"
+
+
+def test_prediction_script_strict_isolation():
+    pred_script = "/code/rolemem-agent-memory/scripts/run_validity_predictions_v2_1.py"
+    with open(pred_script, "r", encoding="utf-8") as f:
+        content = f.read().lower()
+
+    banned_references = [
+        "gold_labels.jsonl",
+        "case_id_map_private.json",
+        "gold_label",
+        "gold_category",
+        "expected_label",
+    ]
+    for banned in banned_references:
+        assert banned not in content, f"Prediction script contains banned reference '{banned}'"
+
+
+def test_gold_and_blind_case_id_parity():
+    blind_path = "/code/rolemem-agent-memory/data/memory_validity_v2_1/blind_inputs.jsonl"
+    gold_path = "/code/rolemem-agent-memory/data/memory_validity_v2_1/gold_labels.jsonl"
+
+    blind_ids = []
+    with open(blind_path, "r", encoding="utf-8") as f:
+        for line in f:
+            if line.strip():
+                blind_ids.append(json.loads(line)["case_id"])
+
+    gold_ids = []
+    with open(gold_path, "r", encoding="utf-8") as f:
+        for line in f:
+            if line.strip():
+                gold_ids.append(json.loads(line)["case_id"])
+
+    assert len(blind_ids) > 0, "Blind inputs cannot be empty"
+    assert len(blind_ids) == len(gold_ids), f"Blind ({len(blind_ids)}) and Gold ({len(gold_ids)}) counts differ"
+    assert blind_ids == gold_ids, "Blind case IDs and Gold case IDs must match in exact sequence"
+
+
+def test_no_mock_digests_in_gold():
+    gold_path = "/code/rolemem-agent-memory/data/memory_validity_v2_1/gold_labels.jsonl"
+    sha_regex = re.compile(r"^[0-9a-f]{64}$")
+
+    with open(gold_path, "r", encoding="utf-8") as f:
+        for line in f:
             if not line.strip():
                 continue
             rec = json.loads(line)
-            for k in leaked_keys:
-                assert k not in rec, f"Leaked key '{k}' found in case {rec.get('case_id')}"
-            cid = rec.get("case_id", "").lower()
-            for sub in leaked_category_substrings:
-                assert sub not in cid, f"Leaked category pattern '{sub}' found in case_id '{cid}'"
+            cid = rec["case_id"]
+            b_dig = rec.get("symbol_digest_base")
+            t_dig = rec.get("symbol_digest_target")
+            assert b_dig is not None and sha_regex.match(b_dig), f"Case {cid} invalid symbol_digest_base: {b_dig}"
+            if t_dig is not None and t_dig != "NONE":
+                assert sha_regex.match(t_dig), f"Case {cid} invalid symbol_digest_target: {t_dig}"
 
 
 def test_config_referenced_classes_exist():
@@ -100,3 +165,4 @@ def test_config_referenced_classes_exist():
         cls_name = cfg[engine_key]["class"]
         mod = importlib.import_module(mod_name)
         assert hasattr(mod, cls_name), f"Class {cls_name} not found in module {mod_name}"
+

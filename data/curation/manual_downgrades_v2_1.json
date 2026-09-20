@@ -1,0 +1,30 @@
+[
+  {
+    "transition_id": "trans_track_a_17_celery_task_module_cleanup",
+    "target_status": "EXCLUDED",
+    "reason": "Upstream celery.task module deprecation in Celery 5.0 with environment dependency incompatibility.",
+    "reviewer": "AUTHOR_AUDIT",
+    "date": "2026-09-20"
+  },
+  {
+    "transition_id": "trans_track_a_18_marshmallow_pprint_export_removal",
+    "target_status": "EXCLUDED",
+    "reason": "Upstream marshmallow.pprint removal with legacy packaging fixture deprecation.",
+    "reviewer": "AUTHOR_AUDIT",
+    "date": "2026-09-20"
+  },
+  {
+    "transition_id": "trans_track_a_19_flake8_doctest_options_removal",
+    "target_status": "EXCLUDED",
+    "reason": "Pyflakes/Flake8 CLI options migration with upstream test suite changes.",
+    "reviewer": "AUTHOR_AUDIT",
+    "date": "2026-09-20"
+  },
+  {
+    "transition_id": "trans_track_a_21_packaging_legacy_version_removal",
+    "target_status": "EXCLUDED",
+    "reason": "LegacyVersion removal superseded by packaging 22+ PEP 440 strict parser.",
+    "reviewer": "AUTHOR_AUDIT",
+    "date": "2026-09-20"
+  }
+]

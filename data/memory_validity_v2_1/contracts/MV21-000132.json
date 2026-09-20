@@ -1,0 +1,7 @@
+{
+  "case_id": "MV21-000132",
+  "contract_code": "from fastapi import FastAPI; app = FastAPI(); assert app.title == 'FastAPI'",
+  "base_contract_pass": true,
+  "target_contract_pass": true,
+  "machine_verified": true
+}

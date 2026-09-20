@@ -1,0 +1,7 @@
+{
+  "case_id": "MV21-000127",
+  "contract_code": "from click.formatting import HelpFormatter; hf = HelpFormatter(); hf.write_text('help'); assert 'help' in hf.getvalue()",
+  "base_contract_pass": true,
+  "target_contract_pass": true,
+  "machine_verified": true
+}

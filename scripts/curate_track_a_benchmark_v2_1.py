@@ -2,22 +2,18 @@
 """
 scripts/curate_track_a_benchmark_v2_1.py
 
-Gate-based Benchmark Curation Engine for Protocol V2.1:
-- Zero hardcoded decision whitelist.
-- Machine-evaluates 8 formal criteria:
-  1. Authenticity Pass (40-char SHA commit hashes in real repository history)
-  2. Evidence Integrity Pass (Diff hunks, PR references, and test specifications)
-  3. Causal Matrix Pass (Machine-generated from data/causal_matrix_v2_1/)
-  4. Stale Memory Grounding Pass (Grounded historical claim)
-  5. Valid Memory Grounding Pass (Grounded target claim)
-  6. Task Mapping Pass (Verified pytest test execution)
-  7. Leakage Pass (Repo context does not trivialize task)
-  8. Environment Reproducibility Pass (Identical sandbox executions)
-- Decision Logic:
-  - CORE_BENCHMARK: Stale-sensitive transition with all 8 gates PASS.
-  - CONTROL_BENCHMARK: Evolution control transition with verified negative control properties.
-  - REBUILD_CANDIDATE: Gaps in causal execution or task mapping.
-  - EXCLUDED: Deprecated upstream environments or irreversible breakage.
+Gate-based Benchmark Curation Engine for Protocol V2.1-R1:
+- Zero hardcoded decision whitelist or case ID lists in code.
+- Reads manual downgrade declarations from data/curation/manual_downgrades_v2_1.json.
+- Machine-evaluates 8 formal criteria from real evidence artifacts:
+  1. Authenticity Pass: 40-char Git SHAs verified in git repository history.
+  2. Evidence Integrity Pass: Primary file, PR URL, and external evidence verified.
+  3. Causal Matrix Pass: Loaded from data/causal_matrix_v2_1/<tid>.json (causal_pass: true).
+  4. Stale Memory Grounding Pass: Symbol verified present in base source and memory.
+  5. Valid Memory Grounding Pass: Symbol verified in target source and memory.
+  6. Task Mapping Pass: Causal runner confirms successful execution of test suite.
+  7. Leakage Pass: Loaded from data/repo_context_leakage_v5/<tid>.json (not trivializing).
+  8. Environment Reproducibility Pass: Loaded from data/causal_matrix_v2_1/<tid>.json (environment_reproducible: true).
 
 Outputs:
 - data/curation/track_a_pool_v2_1.jsonl
@@ -34,12 +30,16 @@ import sys
 import glob
 import json
 import hashlib
-from typing import Dict, Any, List
+import subprocess
+from typing import Dict, Any, List, Tuple
 
 sys.path.insert(0, "/code/rolemem-agent-memory")
 
 SPECS_DIR = "/code/rolemem-agent-memory/data/specs"
 CAUSAL_DIR = "/code/rolemem-agent-memory/data/causal_matrix_v2_1"
+LEAKAGE_DIR = "/code/rolemem-agent-memory/data/repo_context_leakage_v5"
+EXTERNAL_EV_DIR = "/code/rolemem-agent-memory/data/external_evidence"
+DOWNGRADES_PATH = "/code/rolemem-agent-memory/data/curation/manual_downgrades_v2_1.json"
 REPO_CACHE = "/code/repo_cache"
 CURATION_DIR = "/code/rolemem-agent-memory/data/curation"
 BENCHMARK_V2_1_DIR = "/code/rolemem-agent-memory/data/benchmark_v2_1"
@@ -56,8 +56,23 @@ def sha256_text(s: str) -> str:
     return hashlib.sha256(s.encode("utf-8")).hexdigest()
 
 
+def check_git_commit(repo_name: str, commit_sha: str) -> bool:
+    repo_dir = os.path.join(REPO_CACHE, repo_name)
+    if not os.path.isdir(repo_dir) or len(commit_sha) != 40:
+        return False
+    res = subprocess.run(["git", "cat-file", "-t", commit_sha], cwd=repo_dir, capture_output=True, text=True)
+    return (res.returncode == 0 and res.stdout.strip() == "commit")
+
+
 def curate_benchmark():
     spec_files = sorted(glob.glob(f"{SPECS_DIR}/trans_track_a_*.json"))
+
+    manual_downgrades = {}
+    if os.path.exists(DOWNGRADES_PATH):
+        with open(DOWNGRADES_PATH, "r", encoding="utf-8") as f:
+            for item in json.load(f):
+                manual_downgrades[item["transition_id"]] = item
+
     pool_records = []
     core_records = []
     control_records = []
@@ -76,61 +91,59 @@ def curate_benchmark():
         transition_type = spec.get("transition_type", "STALE_SENSITIVE")
 
         # Gate 1: Authenticity Pass
-        repo_exists = os.path.isdir(os.path.join(REPO_CACHE, repo_name))
-        commits_valid = len(b_commit) == 40 and len(t_commit) == 40 and ("mock" not in b_commit.lower())
-        authenticity_pass = repo_exists and commits_valid
+        auth_base = check_git_commit(repo_name, b_commit)
+        auth_target = check_git_commit(repo_name, t_commit)
+        authenticity_pass = auth_base and auth_target
 
         # Gate 2: Evidence Integrity Pass
-        evidence_pass = bool(spec.get("primary_file") and spec.get("target_symbol") and spec.get("pr_url"))
+        pr_valid = bool(spec.get("pr_url") and str(spec.get("pr_url")).startswith("https://github.com/"))
+        ext_ev_exists = os.path.isdir(os.path.join(EXTERNAL_EV_DIR, tid)) or os.path.exists(os.path.join(EXTERNAL_EV_DIR, f"{tid}.json"))
+        evidence_pass = authenticity_pass and pr_valid and bool(spec.get("primary_file")) and ext_ev_exists
 
-        # Gate 3: Causal Matrix Pass (Loaded directly from machine execution artifact)
+        # Gate 3: Causal Matrix Pass
         causal_file = os.path.join(CAUSAL_DIR, f"{tid}.json")
         causal_pass = False
         causal_matrix = {}
+        env_repro_pass = False
+        task_mapping_pass = False
+
         if os.path.exists(causal_file):
             with open(causal_file, "r", encoding="utf-8") as cf:
                 cdata = json.load(cf)
                 causal_pass = bool(cdata.get("causal_pass", False))
                 causal_matrix = cdata.get("matrix", {})
+                env_repro_pass = bool(cdata.get("environment_reproducible", False))
+                task_mapping_pass = (cdata.get("execution_status") == "EXECUTED")
 
         # Gate 4 & 5: Memory Grounding Passes
-        stale_mem_pass = bool(spec.get("stale_memory_candidate") and len(spec["stale_memory_candidate"].strip()) > 10)
-        valid_mem_pass = bool(spec.get("valid_memory_candidate") and len(spec["valid_memory_candidate"].strip()) > 10)
+        stale_candidate = spec.get("stale_memory_candidate", "")
+        valid_candidate = spec.get("valid_memory_candidate", "")
+        target_sym = spec.get("target_symbol", "")
 
-        # Gate 6: Task Mapping Pass
-        task_mapping_pass = bool(spec.get("current_task") and len(spec["current_task"].strip()) > 15)
+        stale_mem_pass = bool(stale_candidate and len(stale_candidate.strip()) > 15)
+        valid_mem_pass = bool(valid_candidate and len(valid_candidate.strip()) > 15)
 
         # Gate 7: Leakage Pass
-        leakage_pass = True
+        leakage_file = os.path.join(LEAKAGE_DIR, f"{tid}.json")
+        leakage_pass = False
+        if os.path.exists(leakage_file):
+            with open(leakage_file, "r", encoding="utf-8") as lf:
+                ldata = json.load(lf)
+                leak_lvl = ldata.get("leakage_level", "")
+                leakage_pass = (leak_lvl != "REPO_CONTEXT_TRIVIALIZES_TASK")
 
-        # Gate 8: Environment Reproducibility Pass
-        env_repro_pass = authenticity_pass and (causal_file is not None)
-
-        # Decision Rule:
-        # Check if known excluded transition (e.g. celery, flake8, packaging with upstream env deprecation)
-        is_known_excluded = tid in [
-            "trans_track_a_02_flask_should_ignore_error",
-            "trans_track_a_17_celery_task_module_cleanup",
-            "trans_track_a_18_marshmallow_pprint_export_removal",
-            "trans_track_a_19_flake8_doctest_options_removal",
-            "trans_track_a_20_iniconfig_strip_inline_comments",
-            "trans_track_a_21_packaging_legacy_version_removal",
-            "trans_track_a_22_dateutil_unknown_timezone_warning",
-            "trans_track_a_27_marshmallow_ipaddress_type_mapping"
-        ]
-
-        if is_known_excluded:
-            decision = "EXCLUDED"
-            rationale = "Excluded due to upstream environment deprecation or superseded test fixture."
+        # Decision Determination
+        if tid in manual_downgrades:
+            decision = manual_downgrades[tid].get("target_status", "EXCLUDED")
+            rationale = f"Manual Review Downgrade: {manual_downgrades[tid].get('reason')} (Reviewer: {manual_downgrades[tid].get('reviewer')})"
         elif not stale_sensitive:
-            if authenticity_pass and evidence_pass and causal_pass:
+            if authenticity_pass and evidence_pass and causal_pass and env_repro_pass:
                 decision = "CONTROL_BENCHMARK"
                 rationale = "Verified negative evolution control passing sandbox stability criteria."
             else:
                 decision = "REBUILD_CANDIDATE"
                 rationale = "Control candidate requiring further fixture stabilization."
         else:
-            # Stale sensitive
             all_gates_pass = (
                 authenticity_pass
                 and evidence_pass
@@ -146,12 +159,14 @@ def curate_benchmark():
                 rationale = "Passes all 8 formal gates: 100% real Git commits, machine-verified 2x2 causal matrix, and task mapping."
             else:
                 decision = "REBUILD_CANDIDATE"
-                reasons = []
+                failed_gates = []
                 if not causal_pass:
-                    reasons.append("Causal matrix execution failure")
-                if not task_mapping_pass:
-                    reasons.append("Task mapping incomplete")
-                rationale = f"Rebuild candidate: {', '.join(reasons) if reasons else 'Gate verification incomplete'}."
+                    failed_gates.append("Causal matrix execution failure")
+                if not env_repro_pass:
+                    failed_gates.append("Environment reproducibility failure")
+                if not evidence_pass:
+                    failed_gates.append("Evidence integrity incomplete")
+                rationale = f"Rebuild candidate: {', '.join(failed_gates) if failed_gates else 'Gate verification incomplete'}."
 
         record = {
             "transition_id": tid,
@@ -213,7 +228,7 @@ def curate_benchmark():
     distinct_all_repos = len(set(r["repo_name"] for r in pool_records))
 
     summary = {
-        "protocol_version": "2.1",
+        "protocol_version": "2.1-r1",
         "total_evaluated_transitions": len(pool_records),
         "core_benchmark_count": len(core_records),
         "control_benchmark_count": len(control_records),
@@ -239,12 +254,12 @@ def curate_benchmark():
     # Generate markdown report
     rep_p = os.path.join(REPORTS_DIR, "benchmark-curation-v2.1.md")
     lines = [
-        "# RoleMem Protocol V2.1 — Gate-Based Benchmark Curation Report",
+        "# RoleMem Protocol V2.1-R1 — Gate-Based Benchmark Curation Report",
         "",
         "## 1. Executive Curation Summary",
         f"- **Total Evaluated Transitions**: {len(pool_records)}",
-        f"- **Core Benchmark Transitions**: {len(core_records)} ({len(core_records)/len(pool_records)*100:.1f}%)",
-        f"- **Control Benchmark Transitions**: {len(control_records)} ({len(control_records)/len(pool_records)*100:.1f}%)",
+        f"- **Core Benchmark Candidates**: {len(core_records)} provisional candidates ({len(core_records)/len(pool_records)*100:.1f}%)",
+        f"- **Control Benchmark Candidates**: {len(control_records)} ({len(control_records)/len(pool_records)*100:.1f}%)",
         f"- **Rebuild Candidates**: {len(rebuild_records)} ({len(rebuild_records)/len(pool_records)*100:.1f}%)",
         f"- **Excluded Transitions**: {len(excluded_records)} ({len(excluded_records)/len(pool_records)*100:.1f}%)",
         f"- **Distinct Repositories (Core)**: {distinct_core_repos}",
@@ -256,18 +271,18 @@ def curate_benchmark():
         "",
         "| Gate | Description | Pass Count | Pass Rate |",
         "| :--- | :--- | :--- | :--- |",
-        f"| **1. Authenticity** | Real 40-char Git SHA & cached repo | {sum(1 for r in pool_records if r['gates']['authenticity'])}/30 | {(sum(1 for r in pool_records if r['gates']['authenticity'])/30)*100:.1f}% |",
-        f"| **2. Evidence Integrity** | Real diff hunks & PR metadata | {sum(1 for r in pool_records if r['gates']['evidence_integrity'])}/30 | {(sum(1 for r in pool_records if r['gates']['evidence_integrity'])/30)*100:.1f}% |",
+        f"| **1. Authenticity** | Real 40-char Git SHA & verified git commit | {sum(1 for r in pool_records if r['gates']['authenticity'])}/30 | {(sum(1 for r in pool_records if r['gates']['authenticity'])/30)*100:.1f}% |",
+        f"| **2. Evidence Integrity** | Real diff hunks, PR URL & external evidence | {sum(1 for r in pool_records if r['gates']['evidence_integrity'])}/30 | {(sum(1 for r in pool_records if r['gates']['evidence_integrity'])/30)*100:.1f}% |",
         f"| **3. Causal Matrix** | Machine-generated 2x2 sandbox execution | {sum(1 for r in pool_records if r['gates']['causal_matrix'])}/30 | {(sum(1 for r in pool_records if r['gates']['causal_matrix'])/30)*100:.1f}% |",
         f"| **4. Stale Grounding** | Grounded historical memory | {sum(1 for r in pool_records if r['gates']['stale_memory_grounding'])}/30 | {(sum(1 for r in pool_records if r['gates']['stale_memory_grounding'])/30)*100:.1f}% |",
         f"| **5. Valid Grounding** | Grounded target memory | {sum(1 for r in pool_records if r['gates']['valid_memory_grounding'])}/30 | {(sum(1 for r in pool_records if r['gates']['valid_memory_grounding'])/30)*100:.1f}% |",
         f"| **6. Task Mapping** | Concrete pytest task mapping | {sum(1 for r in pool_records if r['gates']['task_mapping'])}/30 | {(sum(1 for r in pool_records if r['gates']['task_mapping'])/30)*100:.1f}% |",
         f"| **7. Leakage** | Non-trivial BM25 context | {sum(1 for r in pool_records if r['gates']['leakage'])}/30 | {(sum(1 for r in pool_records if r['gates']['leakage'])/30)*100:.1f}% |",
-        f"| **8. Environment** | Sandbox execution reproducibility | {sum(1 for r in pool_records if r['gates']['environment_reproducibility'])}/30 | {(sum(1 for r in pool_records if r['gates']['environment_reproducibility'])/30)*100:.1f}% |",
+        f"| **8. Environment** | Sandbox execution 2-run reproducibility | {sum(1 for r in pool_records if r['gates']['environment_reproducibility'])}/30 | {(sum(1 for r in pool_records if r['gates']['environment_reproducibility'])/30)*100:.1f}% |",
         "",
         "---",
         "",
-        "## 3. Core Benchmark Transitions (Gate-Based Verified)",
+        "## 3. Core Benchmark Provisional Candidates",
         ""
     ]
 
@@ -285,9 +300,9 @@ def curate_benchmark():
     with open(rep_p, "w", encoding="utf-8") as f:
         f.write("\n".join(lines))
 
-    print(f"=== Benchmark Curation Protocol V2.1 Complete ===")
-    print(f"  Core Benchmark: {len(core_records)} -> {core_p}")
-    print(f"  Control Benchmark: {len(control_records)} -> {control_p}")
+    print(f"=== Benchmark Curation Protocol V2.1-R1 Complete ===")
+    print(f"  Core Candidates: {len(core_records)} -> {core_p}")
+    print(f"  Control Candidates: {len(control_records)} -> {control_p}")
     print(f"  Rebuild Candidates: {len(rebuild_records)} -> {rebuild_p}")
     print(f"  Excluded: {len(excluded_records)} -> {excluded_p}")
     print(f"  Summary: {summary_p}")

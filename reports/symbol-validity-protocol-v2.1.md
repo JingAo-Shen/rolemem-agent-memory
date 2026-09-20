@@ -1,15 +1,15 @@
 # Memory Validity Protocol V2.1 — Empirical Mechanism Evaluation Report
 
 ## 1. Grounded Benchmark Composition (100% Real Git Commits)
-- **Total Empirical Cases**: 126
-- **Valid Cases (True Negative for Stale)**: 65 (51.6%)
-- **Stale Cases (True Positive for Stale)**: 61 (48.4%)
+- **Total Empirical Cases**: 149
+- **Valid Cases (True Negative for Stale)**: 134 (89.9%)
+- **Stale Cases (True Positive for Stale)**: 15 (10.1%)
 
 ### Empirical Taxonomy Breakdown
-- **Category A** (File Modified / Target Symbol Unchanged / Memory Valid): 51 cases
-- **Category B** (Target Symbol Modified Internally / Memory Still Semantically Valid): 14 cases
-- **Category C** (Target Symbol Unchanged / External Interface Stale): 15 cases
-- **Category D** (Target Symbol Modified or Removed / Memory Stale): 46 cases
+- **Category A** (File Modified / Target Symbol Unchanged / Memory Valid): 126 cases
+- **Category B** (Target Symbol Modified Internally / Memory Still Semantically Valid): 8 cases
+- **Category C** (Target Symbol Unchanged / External Interface Stale): 4 cases
+- **Category D** (Target Symbol Modified or Removed / Memory Stale): 11 cases
 
 ---
 
@@ -17,11 +17,11 @@
 
 | Mechanism | Coverage | Overall Acc | Stale Prec | Stale Rec | Stale F1 | FIR (False Inval) | SER (Stale Exposure) |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **File_Level_Baseline** | 100.0% | 48.4% | 48.4% | 100.0% | 65.2% | 100.0% | 0.0% |
-| **Pure_Symbol_AST_Baseline** | 100.0% | 73.0% | 100.0% | 44.3% | 61.4% | 0.0% | 55.7% |
-| **Dependency_Validity_Baseline** | 100.0% | 57.9% | 90.0% | 14.8% | 25.4% | 1.5% | 85.2% |
-| **RoleMem_Validity_Engine** | 100.0% | 60.3% | 92.3% | 19.7% | 32.4% | 1.5% | 80.3% |
-| **RoleMem_Validity_Engine_Abstain** | 43.7% | 36.5% | 92.3% | 60.0% | 72.7% | 2.9% | 40.0% |
+| **File_Level_Baseline** | 100.0% | 10.1% | 10.1% | 100.0% | 18.3% | 100.0% | 0.0% |
+| **Pure_Symbol_AST_Baseline** | 100.0% | 93.3% | 77.8% | 46.7% | 58.3% | 1.5% | 53.3% |
+| **Dependency_Validity_Baseline** | 100.0% | 89.3% | 42.9% | 20.0% | 27.3% | 3.0% | 80.0% |
+| **RoleMem_Validity_Engine** | 100.0% | 91.3% | 100.0% | 13.3% | 23.5% | 0.0% | 86.7% |
+| **RoleMem_Validity_Engine_Abstain** | 49.7% | 48.3% | 100.0% | 50.0% | 66.7% | 0.0% | 50.0% |
 
 ---
 
@@ -30,10 +30,10 @@
 | Mechanism | Cat A (File Chg / Sym Same / Valid) | Cat B (Sym Chg / Valid) | Cat C (Sym Same / Stale) | Cat D (Sym Chg / Stale) |
 | :--- | :--- | :--- | :--- | :--- |
 | **File_Level_Baseline** | 0.0% | 0.0% | 100.0% | 100.0% |
-| **Pure_Symbol_AST_Baseline** | 100.0% | 100.0% | 6.7% | 56.5% |
-| **Dependency_Validity_Baseline** | 98.0% | 100.0% | 6.7% | 17.4% |
-| **RoleMem_Validity_Engine** | 98.0% | 100.0% | 0.0% | 26.1% |
-| **RoleMem_Validity_Engine_Abstain** | 56.9% | 35.7% | 0.0% | 26.1% |
+| **Pure_Symbol_AST_Baseline** | 99.2% | 87.5% | 0.0% | 63.6% |
+| **Dependency_Validity_Baseline** | 96.8% | 100.0% | 0.0% | 27.3% |
+| **RoleMem_Validity_Engine** | 100.0% | 100.0% | 0.0% | 18.2% |
+| **RoleMem_Validity_Engine_Abstain** | 55.6% | 0.0% | 0.0% | 18.2% |
 
 ---
 

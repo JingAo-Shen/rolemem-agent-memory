@@ -18,8 +18,8 @@ FORMAL_PAPER_RESULTS = NO
 - **Total Evaluated Transitions**: 30
 - **Core Benchmark Transitions**: 13 (100% gate-verified across 8 criteria)
 - **Control Benchmark Transitions**: 1
-- **Rebuild Candidates**: 8
-- **Excluded Transitions**: 8
+- **Rebuild Candidates**: 12
+- **Excluded Transitions**: 4
 - **Distinct Repositories (Core)**: 13
 - **Distinct Repositories (All)**: 25
 
@@ -28,8 +28,8 @@ FORMAL_PAPER_RESULTS = NO
 - **Execution Method**: Real execution inside Bubblewrap containerized sandbox with SHA256 output verification.
 
 ### C. Memory Validity Benchmark V2.1
-- **Total Empirical Cases**: 126
-- **Category Distribution**: Cat A (51), Cat B (14), Cat C (15), Cat D (46)
+- **Total Empirical Cases**: 149
+- **Category Distribution**: Cat A (126), Cat B (8), Cat C (4), Cat D (11)
 - **De-leaked Case IDs**: 100% matching `^MV21-\d{6}$` (0% category leakage).
 - **Benchmark-Specific Keyword Rules**: **0** (Zero heuristic whitelist).
 
