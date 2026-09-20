@@ -1,0 +1,66 @@
+{
+  "transition_id": "trans_track_a_21_packaging_legacy_version_removal",
+  "verdict": "REBUILD_REQUIRED",
+  "semantic_pass": false,
+  "task_mapping": "TASK_MAPPING_WEAK",
+  "causal_schema_valid": true,
+  "q1_repo_change_pr_diff": {
+    "pass": true,
+    "evidence": {
+      "diff_bytes": 54507,
+      "diff_mentions_symbol": true,
+      "pr_title": "Drop `LegacySpecifier` and `LegacyVersion`",
+      "pr_mentions_symbol": true,
+      "repo_change_matches_diff": true
+    }
+  },
+  "q2_stale_memory_base_supported": {
+    "pass": false,
+    "evidence": {
+      "evidence_file": "packaging/version.py",
+      "base_commit": "4f42225e91a0be634625c09e84dd29ea82b85e27",
+      "entailment_status": "PARTIAL",
+      "matched_term": "LegacyVersion",
+      "lineno": 13,
+      "excerpt": "from ._structures import Infinity, InfinityType, NegativeInfinity, NegativeInfinityType\n\n__all__ = [\"parse\", \"Version\", \"LegacyVersion\", \"InvalidVersion\", \"VERSION_PATTERN\"]\n\nInfiniteTypes = Union[InfinityType, NegativeInfinityType]\nPrePostDevType = Union[InfiniteTypes, Tuple[str, int]]\nSubLocalType",
+      "evidence_sha256": "adf3e73e35fc727e2b79a481a1b3dc25ecfffa7e9a54be26c700c8cbf11ddbc3"
+    }
+  },
+  "q3_valid_memory_target_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "packaging/version.py",
+      "target_commit": "237ff3aa348486cf835a980592af3a59fccd6101",
+      "entailment_status": "ENTAILED",
+      "matched_term": "Version",
+      "lineno": 1,
+      "excerpt": "# This file is dual licensed under the terms of the Apache License, Version\n# 2.0, and the BSD License. See the LICENSE file in the root of this repository\n# for complete details.\n\nimport collections\nimport itertools\nimport re\nfrom typing import Callable, Optional, SupportsInt, Tuple, Union",
+      "evidence_sha256": "8ab273e07baf1edb67b95aec07c0e9c376a87ac70c2bad8c2af9618d3e5502d0"
+    }
+  },
+  "q4_current_task_capability": {
+    "pass": true,
+    "evidence": {
+      "current_task": "Implement `parse_version_safely(v: str)` in `version_parser.py` returning standard Version string or 'INVALID'.",
+      "target_symbol": "parse_version_safely",
+      "symbol_in_hidden_test": true
+    }
+  },
+  "q5_stale_solution_asymmetry": {
+    "pass": true,
+    "evidence": {
+      "stale_on_base": true,
+      "stale_on_target": false,
+      "is_control": false,
+      "stale_ast_valid": true
+    }
+  },
+  "q6_valid_solution_target_pass": {
+    "pass": true,
+    "evidence": {
+      "valid_on_target": true,
+      "valid_on_base": true,
+      "valid_ast_valid": true
+    }
+  }
+}

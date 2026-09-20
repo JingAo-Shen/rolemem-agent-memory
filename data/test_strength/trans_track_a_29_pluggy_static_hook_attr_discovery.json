@@ -33,7 +33,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "y\n\ntest_hidden_verification.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_static_discovery - assert None is True\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
+      "log_snippet": "y\n\ntest_hidden_verification.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_static_discovery - assert None is True\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
     },
     "M4_try_except_dummy": {
       "description": "try/except return dummy",

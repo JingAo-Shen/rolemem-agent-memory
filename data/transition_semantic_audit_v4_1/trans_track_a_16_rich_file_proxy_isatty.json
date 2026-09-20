@@ -1,0 +1,66 @@
+{
+  "transition_id": "trans_track_a_16_rich_file_proxy_isatty",
+  "verdict": "REBUILD_REQUIRED",
+  "semantic_pass": false,
+  "task_mapping": "TASK_MAPPING_WEAK",
+  "causal_schema_valid": true,
+  "q1_repo_change_pr_diff": {
+    "pass": true,
+    "evidence": {
+      "diff_bytes": 1439,
+      "diff_mentions_symbol": true,
+      "pr_title": "proxy isatty",
+      "pr_mentions_symbol": true,
+      "repo_change_matches_diff": true
+    }
+  },
+  "q2_stale_memory_base_supported": {
+    "pass": false,
+    "evidence": {
+      "evidence_file": "rich/file_proxy.py",
+      "base_commit": "58ac15120fe254886c10d6253667733c83604cb4",
+      "entailment_status": "PARTIAL",
+      "matched_term": "class ",
+      "lineno": 11,
+      "excerpt": "\n\nclass FileProxy(io.TextIOBase):\n    \"\"\"Wraps a file (e.g. sys.stdout) and redirects writes to a console.\"\"\"\n\n    def __init__(self, console: \"Console\", file: IO[str]) -> None:\n        self.__console = console\n        self.__file = file\n        self.__buffer: List[str] = []\n        self.__ansi_deco",
+      "evidence_sha256": "0c0410043af00b6776e8a0e87720ea9708e96598d83cd8309c55cdf3c3c4f765"
+    }
+  },
+  "q3_valid_memory_target_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "rich/file_proxy.py",
+      "target_commit": "19c67b9a3479841e9133bea94607c89ee931d3fc",
+      "entailment_status": "ENTAILED",
+      "matched_term": "isatty",
+      "lineno": 59,
+      "excerpt": "        return self.__file.fileno()\n\n    def isatty(self) -> bool:\n        return self.__file.isatty()",
+      "evidence_sha256": "e63597571b0eecff7767915452b511ea0110687b6455dab5ea216af50e4d7132"
+    }
+  },
+  "q4_current_task_capability": {
+    "pass": true,
+    "evidence": {
+      "current_task": "Implement `check_proxy_interactive(proxy)` in `proxy_checker.py` returning bool indicating if the proxy file is a tty.",
+      "target_symbol": "check_proxy_interactive",
+      "symbol_in_hidden_test": true
+    }
+  },
+  "q5_stale_solution_asymmetry": {
+    "pass": false,
+    "evidence": {
+      "stale_on_base": false,
+      "stale_on_target": false,
+      "is_control": true,
+      "stale_ast_valid": true
+    }
+  },
+  "q6_valid_solution_target_pass": {
+    "pass": true,
+    "evidence": {
+      "valid_on_target": true,
+      "valid_on_base": false,
+      "valid_ast_valid": true
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "transition_id": "trans_track_a_19_flake8_doctest_options_removal",
+  "verdict": "REBUILD_REQUIRED",
+  "semantic_pass": false,
+  "task_mapping": "REBUILD_MAPPING",
+  "causal_schema_valid": true,
+  "q1_repo_change_pr_diff": {
+    "pass": true,
+    "evidence": {
+      "diff_bytes": 6468,
+      "diff_mentions_symbol": true,
+      "pr_title": "remove --include-in-doctest and --exclude-in-doctest",
+      "pr_mentions_symbol": true,
+      "repo_change_matches_diff": true
+    }
+  },
+  "q2_stale_memory_base_supported": {
+    "pass": false,
+    "evidence": {
+      "evidence_file": "src/flake8/plugins/pyflakes.py",
+      "base_commit": "15f45696701bc234494fbc0e803f8fdee712b945",
+      "entailment_status": "PARTIAL",
+      "matched_term": "include_in_doctest",
+      "lineno": 71,
+      "excerpt": "\n    with_doctest = False\n    include_in_doctest: list[str] = []\n    exclude_from_doctest: list[str] = []\n\n    def __init__(self, tree: ast.AST, filename: str) -> None:\n        \"\"\"Initialize the PyFlakes plugin with an AST tree and filename.\"\"\"\n        filename = utils.normalize_path(filename)\n     ",
+      "evidence_sha256": "f5722f3a97e0c4dfd03fdd3f8cc048e01a588183804b103909db7952eb269512"
+    }
+  },
+  "q3_valid_memory_target_supported": {
+    "pass": false,
+    "evidence": {
+      "evidence_file": "src/flake8/plugins/pyflakes.py",
+      "target_commit": "b3e251512238ad39c87e4b8d1614903fe493f7ea",
+      "entailment_status": "PARTIAL",
+      "matched_term": "with_doctest",
+      "lineno": 68,
+      "excerpt": "    \"\"\"Subclass the Pyflakes checker to conform with the flake8 API.\"\"\"\n\n    with_doctest = False\n\n    def __init__(self, tree: ast.AST, filename: str) -> None:\n        \"\"\"Initialize the PyFlakes plugin with an AST tree and filename.\"\"\"\n        super().__init__(\n            tree, filename=filename, ",
+      "evidence_sha256": "9158f2484e621aeed1d81f0e06563743d98a4abf569d56acc13ea097a1d99400"
+    }
+  },
+  "q4_current_task_capability": {
+    "pass": true,
+    "evidence": {
+      "current_task": "Implement `check_doctest_filtering()` in `flake8_config.py` checking doctest filtering support.",
+      "target_symbol": "check_doctest_filtering",
+      "symbol_in_hidden_test": true
+    }
+  },
+  "q5_stale_solution_asymmetry": {
+    "pass": true,
+    "evidence": {
+      "stale_on_base": true,
+      "stale_on_target": false,
+      "is_control": false,
+      "stale_ast_valid": true
+    }
+  },
+  "q6_valid_solution_target_pass": {
+    "pass": true,
+    "evidence": {
+      "valid_on_target": true,
+      "valid_on_base": true,
+      "valid_ast_valid": true
+    }
+  }
+}

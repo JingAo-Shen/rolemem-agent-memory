@@ -1,0 +1,66 @@
+{
+  "transition_id": "trans_track_a_12_urllib3_getheaders_removal",
+  "verdict": "SEMANTIC_WEAK_PASS",
+  "semantic_pass": true,
+  "task_mapping": "TASK_MAPPING_STRONG",
+  "causal_schema_valid": true,
+  "q1_repo_change_pr_diff": {
+    "pass": true,
+    "evidence": {
+      "diff_bytes": 4123,
+      "diff_mentions_symbol": true,
+      "pr_title": "Remove getheader and getheaders methods",
+      "pr_mentions_symbol": true,
+      "repo_change_matches_diff": true
+    }
+  },
+  "q2_stale_memory_base_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "src/urllib3/response.py",
+      "base_commit": "dd2daef3611ea09f60260391e6a698bb9933dd17",
+      "entailment_status": "ENTAILED",
+      "matched_term": "getheaders",
+      "lineno": 543,
+      "excerpt": "\n    # Compatibility methods for http.client.HTTPResponse\n    def getheaders(self) -> HTTPHeaderDict:\n        warnings.warn(\n            \"HTTPResponse.getheaders() is deprecated and will be removed \"\n            \"in urllib3 v2.6.0. Instead access HTTPResponse.headers directly.\",\n            category",
+      "evidence_sha256": "0431673056c63ffad8905d100c69c479528921f965617b65bb190412593b2b9a"
+    }
+  },
+  "q3_valid_memory_target_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "src/urllib3/response.py",
+      "target_commit": "4587fd6d477f22022be08de597c3a5acd5185c0a",
+      "entailment_status": "ENTAILED",
+      "matched_term": "headers",
+      "lineno": 343,
+      "excerpt": "        self,\n        *,\n        headers: typing.Mapping[str, str] | typing.Mapping[bytes, bytes] | None = None,\n        status: int,\n        version: int,\n        version_string: str,\n        reason: str | None,\n        decode_content: bool,\n        request_url: str | None,\n        retries: Retry |",
+      "evidence_sha256": "d4163b4934b5a0f2911904676040f8e140593a1f09ef62d5e3558e5967f0a0a9"
+    }
+  },
+  "q4_current_task_capability": {
+    "pass": true,
+    "evidence": {
+      "current_task": "Implement `get_header_content_type(resp)` in `header_extractor.py` retrieving content type header safely.",
+      "target_symbol": "get_header_content_type",
+      "symbol_in_hidden_test": true
+    }
+  },
+  "q5_stale_solution_asymmetry": {
+    "pass": true,
+    "evidence": {
+      "stale_on_base": true,
+      "stale_on_target": false,
+      "is_control": false,
+      "stale_ast_valid": true
+    }
+  },
+  "q6_valid_solution_target_pass": {
+    "pass": true,
+    "evidence": {
+      "valid_on_target": true,
+      "valid_on_base": true,
+      "valid_ast_valid": true
+    }
+  }
+}

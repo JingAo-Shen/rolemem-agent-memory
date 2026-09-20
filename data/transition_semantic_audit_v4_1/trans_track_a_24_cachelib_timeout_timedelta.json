@@ -1,0 +1,66 @@
+{
+  "transition_id": "trans_track_a_24_cachelib_timeout_timedelta",
+  "verdict": "REBUILD_REQUIRED",
+  "semantic_pass": false,
+  "task_mapping": "TASK_MAPPING_WEAK",
+  "causal_schema_valid": true,
+  "q1_repo_change_pr_diff": {
+    "pass": false,
+    "evidence": {
+      "diff_bytes": 43798,
+      "diff_mentions_symbol": true,
+      "pr_title": "Add support for specifying timeouts as timedelta",
+      "pr_mentions_symbol": false,
+      "repo_change_matches_diff": false
+    }
+  },
+  "q2_stale_memory_base_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "src/cachelib/base.py",
+      "base_commit": "5a7d98a6b54e05b6076a8c69b034ab8c35a250a1",
+      "entailment_status": "ENTAILED",
+      "matched_term": "default_timeout",
+      "lineno": 8,
+      "excerpt": "    API or a superset of it.\n\n    :param default_timeout: the default timeout (in seconds) that is used if\n        no timeout is specified on :meth:`set`. A timeout\n        of 0 indicates that the cache never expires.\n    :param ignore_delete_many_errors: If False, delete_many() will raise\n        a",
+      "evidence_sha256": "d121fee9224be11026ae8953006886687b4859d6a9595af639836d2ac2815965"
+    }
+  },
+  "q3_valid_memory_target_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "src/cachelib/base.py",
+      "target_commit": "d5fc7826065db284b8eda1e2fa5d2157ba1fcb9d",
+      "entailment_status": "ENTAILED",
+      "matched_term": "_normalize_timeout",
+      "lineno": 66,
+      "excerpt": "        )\n\n    def _normalize_timeout(self, timeout: int | dt.timedelta | None) -> int:\n        if timeout is None:\n            return self.default_timeout\n        return self._to_seconds(timeout)\n\n    def get(self, key: str) -> _t.Any:\n        \"\"\"Look up key in the cache and return the value for it",
+      "evidence_sha256": "1168b7ade1ea1e0c63df505dbf774c7d6b1c0ebd5652ed699ef4c48644e86ab2"
+    }
+  },
+  "q4_current_task_capability": {
+    "pass": true,
+    "evidence": {
+      "current_task": "Implement `normalize_timeout_value(cache, timeout)` in `cache_helper.py` returning normalized integer seconds using cache instance.",
+      "target_symbol": "normalize_timeout_value",
+      "symbol_in_hidden_test": true
+    }
+  },
+  "q5_stale_solution_asymmetry": {
+    "pass": false,
+    "evidence": {
+      "stale_on_base": false,
+      "stale_on_target": false,
+      "is_control": true,
+      "stale_ast_valid": true
+    }
+  },
+  "q6_valid_solution_target_pass": {
+    "pass": true,
+    "evidence": {
+      "valid_on_target": true,
+      "valid_on_base": false,
+      "valid_ast_valid": true
+    }
+  }
+}

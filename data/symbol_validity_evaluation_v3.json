@@ -1,0 +1,70 @@
+{
+  "benchmark_summary": {
+    "total_cases": 60,
+    "valid_cases": 30,
+    "stale_cases": 30,
+    "categories": {
+      "CAT_A": 20,
+      "CAT_B": 10,
+      "CAT_C": 10,
+      "CAT_D": 20
+    },
+    "repositories_count": 16
+  },
+  "mechanisms": {
+    "File_Level_Baseline": {
+      "TP": 20,
+      "TN": 0,
+      "FP": 30,
+      "FN": 10,
+      "Accuracy": 0.3333333333333333,
+      "Precision": 0.4,
+      "Recall": 0.6666666666666666,
+      "F1": 0.5,
+      "False_Invalidation_Rate_FIR": 1.0,
+      "Stale_Exposure_Rate_SER": 0.3333333333333333,
+      "Per_Category_Accuracy": {
+        "CAT_A": 0.0,
+        "CAT_B": 0.0,
+        "CAT_C": 0.0,
+        "CAT_D": 1.0
+      }
+    },
+    "Pure_Symbol_AST_Baseline": {
+      "TP": 20,
+      "TN": 20,
+      "FP": 10,
+      "FN": 10,
+      "Accuracy": 0.6666666666666666,
+      "Precision": 0.6666666666666666,
+      "Recall": 0.6666666666666666,
+      "F1": 0.6666666666666666,
+      "False_Invalidation_Rate_FIR": 0.3333333333333333,
+      "Stale_Exposure_Rate_SER": 0.3333333333333333,
+      "Per_Category_Accuracy": {
+        "CAT_A": 1.0,
+        "CAT_B": 0.0,
+        "CAT_C": 0.0,
+        "CAT_D": 1.0
+      }
+    },
+    "RoleMem_Hybrid_Validity": {
+      "TP": 30,
+      "TN": 30,
+      "FP": 0,
+      "FN": 0,
+      "Accuracy": 1.0,
+      "Precision": 1.0,
+      "Recall": 1.0,
+      "F1": 1.0,
+      "False_Invalidation_Rate_FIR": 0.0,
+      "Stale_Exposure_Rate_SER": 0.0,
+      "Per_Category_Accuracy": {
+        "CAT_A": 1.0,
+        "CAT_B": 1.0,
+        "CAT_C": 1.0,
+        "CAT_D": 1.0
+      }
+    }
+  }
+}

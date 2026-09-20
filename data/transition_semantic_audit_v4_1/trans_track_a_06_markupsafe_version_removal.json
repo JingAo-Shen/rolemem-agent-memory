@@ -1,0 +1,66 @@
+{
+  "transition_id": "trans_track_a_06_markupsafe_version_removal",
+  "verdict": "SEMANTIC_WEAK_PASS",
+  "semantic_pass": true,
+  "task_mapping": "TASK_MAPPING_STRONG",
+  "causal_schema_valid": true,
+  "q1_repo_change_pr_diff": {
+    "pass": true,
+    "evidence": {
+      "diff_bytes": 1062,
+      "diff_mentions_symbol": true,
+      "pr_title": "remove previously deprecated code",
+      "pr_mentions_symbol": true,
+      "repo_change_matches_diff": true
+    }
+  },
+  "q2_stale_memory_base_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "src/markupsafe/__init__.py",
+      "base_commit": "0c422e10b1e1ba43ca56a56f1f8a11edfb431b71",
+      "entailment_status": "ENTAILED",
+      "matched_term": "__version__",
+      "lineno": 383,
+      "excerpt": "\ndef __getattr__(name: str) -> t.Any:\n    if name == \"__version__\":\n        import importlib.metadata\n        import warnings\n\n        warnings.warn(\n            \"The '__version__' attribute is deprecated and will be removed in\"\n            \" MarkupSafe 3.1. Use feature detection, or\"\n            ' ",
+      "evidence_sha256": "95bb2e5d98ce8f85ebf98dfb0f23993d9a906342224e07ed33b38c1c7b45d1e8"
+    }
+  },
+  "q3_valid_memory_target_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "src/markupsafe/__init__.py",
+      "target_commit": "dfa58162f6ba9a0afebab7e924af362cd0bede66",
+      "entailment_status": "ENTAILED",
+      "matched_term": "version",
+      "lineno": 36,
+      "excerpt": "    \"\"\"\n    # If the object is already a plain string, skip __html__ check and string\n    # conversion. This is the most common use case.\n    # Use type(s) instead of s.__class__ because a proxy object may be reporting\n    # the __class__ of the proxied value.\n    if type(s) is str:\n        return M",
+      "evidence_sha256": "d17f908546525ce06d11f71399a904aa9759f3bdd9f6a29af35259fc439ca79e"
+    }
+  },
+  "q4_current_task_capability": {
+    "pass": true,
+    "evidence": {
+      "current_task": "Implement `get_library_version()` in `markup_version.py` retrieving MarkupSafe version.",
+      "target_symbol": "get_library_version",
+      "symbol_in_hidden_test": true
+    }
+  },
+  "q5_stale_solution_asymmetry": {
+    "pass": true,
+    "evidence": {
+      "stale_on_base": true,
+      "stale_on_target": false,
+      "is_control": false,
+      "stale_ast_valid": true
+    }
+  },
+  "q6_valid_solution_target_pass": {
+    "pass": true,
+    "evidence": {
+      "valid_on_target": true,
+      "valid_on_base": true,
+      "valid_ast_valid": true
+    }
+  }
+}

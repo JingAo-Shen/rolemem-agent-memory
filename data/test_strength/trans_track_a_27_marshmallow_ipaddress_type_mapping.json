@@ -17,7 +17,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\n\ntest_hidden_verification.py:8: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_ip_field - AssertionError: assert No...\n============================== 1 failed in 0.03s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\n\ntest_hidden_verification.py:8: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_ip_field - AssertionError: assert No...\n============================== 1 failed in 0.04s ===============================\n\nSTDERR:\n"
     },
     "M2_constant_return": {
       "description": "return constant string",
@@ -41,7 +41,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\n\ntest_hidden_verification.py:8: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_ip_field - AssertionError: assert No...\n============================== 1 failed in 0.03s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\n\ntest_hidden_verification.py:8: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_ip_field - AssertionError: assert No...\n============================== 1 failed in 0.04s ===============================\n\nSTDERR:\n"
     },
     "M5_stale_solution": {
       "description": "stale solution",
@@ -57,7 +57,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "given\n\ntest_hidden_verification.py:7: TypeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_ip_field - TypeError: get_ip_field_t...\n============================== 1 failed in 0.03s ===============================\n\nSTDERR:\n"
+      "log_snippet": "given\n\ntest_hidden_verification.py:7: TypeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_ip_field - TypeError: get_ip_field_t...\n============================== 1 failed in 0.04s ===============================\n\nSTDERR:\n"
     },
     "M7_missing_attribute": {
       "description": "missing function",
@@ -65,7 +65,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\n\ntest_hidden_verification.py:7: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_ip_field - AttributeError: module 'i...\n============================== 1 failed in 0.03s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\n\ntest_hidden_verification.py:7: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_ip_field - AttributeError: module 'i...\n============================== 1 failed in 0.04s ===============================\n\nSTDERR:\n"
     },
     "M8_static_mock": {
       "description": "static mock",
@@ -73,7 +73,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\n\ntest_hidden_verification.py:8: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_ip_field - AssertionError: assert <i...\n============================== 1 failed in 0.03s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\n\ntest_hidden_verification.py:8: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_ip_field - AssertionError: assert <i...\n============================== 1 failed in 0.04s ===============================\n\nSTDERR:\n"
     }
   }
 }

@@ -17,7 +17,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "llow_export\n\ntest_hidden_verification.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_export - assert None is True\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
+      "log_snippet": "llow_export\n\ntest_hidden_verification.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_export - assert None is True\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
     },
     "M2_constant_return": {
       "description": "return constant string",

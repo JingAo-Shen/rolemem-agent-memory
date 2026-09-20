@@ -1,0 +1,66 @@
+{
+  "transition_id": "trans_track_a_17_celery_task_module_cleanup",
+  "verdict": "REBUILD_REQUIRED",
+  "semantic_pass": false,
+  "task_mapping": "REBUILD_MAPPING",
+  "causal_schema_valid": true,
+  "q1_repo_change_pr_diff": {
+    "pass": true,
+    "evidence": {
+      "diff_bytes": 14563,
+      "diff_mentions_symbol": true,
+      "pr_title": "Remove celery.task references in modules, docs",
+      "pr_mentions_symbol": true,
+      "repo_change_matches_diff": true
+    }
+  },
+  "q2_stale_memory_base_supported": {
+    "pass": false,
+    "evidence": {
+      "evidence_file": "celery/__init__.py",
+      "base_commit": "846066a34413509695434ed5a661280d7db4f993",
+      "entailment_status": "PARTIAL",
+      "matched_term": "task",
+      "lineno": 25,
+      "excerpt": "__homepage__ = 'http://celeryproject.org'\n__docformat__ = 'restructuredtext'\n__keywords__ = 'task job queue distributed messaging actor'\n\n# -eof meta-\n\n__all__ = (\n    'Celery', 'bugreport', 'shared_task', 'task', 'Task',\n    'current_app', 'current_task', 'maybe_signature',\n    'chain', 'chord', 'c",
+      "evidence_sha256": "20da455c872a268043d4c21dcac7c8fda35608d214e6f91272772490aa8bc551"
+    }
+  },
+  "q3_valid_memory_target_supported": {
+    "pass": false,
+    "evidence": {
+      "evidence_file": "celery/__init__.py",
+      "target_commit": "3cf5072ee5f95744024f60e0f4a77eb2edb8959f",
+      "entailment_status": "PARTIAL",
+      "matched_term": "Task",
+      "lineno": 1,
+      "excerpt": "\"\"\"Distributed Task Queue.\"\"\"\n# :copyright: (c) 2016-2026 Asif Saif Uddin, celery core and individual\n#                 contributors, All rights reserved.\n# :copyright: (c) 2015-2016 Ask Solem.  All rights reserved.\n# :copyright: (c) 2012-2014 GoPivotal, Inc., All rights reserved.\n# :copyright: (c) ",
+      "evidence_sha256": "0c61427a7c230442c72253029ec554630562a27c9b2aa80b22bb6b605df93e85"
+    }
+  },
+  "q4_current_task_capability": {
+    "pass": true,
+    "evidence": {
+      "current_task": "Implement `check_task_export()` in `task_helper.py` verifying task export status.",
+      "target_symbol": "check_task_export",
+      "symbol_in_hidden_test": true
+    }
+  },
+  "q5_stale_solution_asymmetry": {
+    "pass": true,
+    "evidence": {
+      "stale_on_base": true,
+      "stale_on_target": false,
+      "is_control": false,
+      "stale_ast_valid": true
+    }
+  },
+  "q6_valid_solution_target_pass": {
+    "pass": true,
+    "evidence": {
+      "valid_on_target": true,
+      "valid_on_base": true,
+      "valid_ast_valid": true
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "transition_id": "trans_track_a_07_pluggy_varnames_noself",
+  "verdict": "REBUILD_REQUIRED",
+  "semantic_pass": false,
+  "task_mapping": "TASK_MAPPING_WEAK",
+  "causal_schema_valid": true,
+  "q1_repo_change_pr_diff": {
+    "pass": true,
+    "evidence": {
+      "diff_bytes": 18656,
+      "diff_mentions_symbol": true,
+      "pr_title": "[NO-SQUASH-MERGE] fix varnames on py3.14 deferred annotations",
+      "pr_mentions_symbol": true,
+      "repo_change_matches_diff": true
+    }
+  },
+  "q2_stale_memory_base_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "src/pluggy/_hooks.py",
+      "base_commit": "dd20a85e38af556e1c818b03391eab1480438e0c",
+      "entailment_status": "ENTAILED",
+      "matched_term": "varnames",
+      "lineno": 295,
+      "excerpt": "\n\ndef varnames(\n    func: object, *, legacy_noself: bool = False\n) -> tuple[tuple[str, ...], tuple[str, ...]]:\n    \"\"\"Return tuple of positional and keyword parameter names for a callable.\n\n    In case of a class, its ``__init__`` method is considered.\n    For bound methods, the already-bound first ",
+      "evidence_sha256": "060549afbd531fb68d0932708581e9e5d8e4620c9ec78269ed579b987bd18c11"
+    }
+  },
+  "q3_valid_memory_target_supported": {
+    "pass": false,
+    "evidence": {
+      "evidence_file": "src/pluggy/_hooks.py",
+      "target_commit": "0258484dc180a0c28705de83783b269f4fed4873",
+      "entailment_status": "PARTIAL",
+      "matched_term": "self",
+      "lineno": 89,
+      "excerpt": "    __slots__ = (\"project_name\",)\n\n    def __init__(self, project_name: str) -> None:\n        self.project_name: Final = project_name\n\n    @overload\n    def __call__(\n        self,\n        function: _F,\n        firstresult: bool = False,",
+      "evidence_sha256": "379cce8a720f4f74d7dbd33291f6e16e04f9524b1800655bd270f794badf13ac"
+    }
+  },
+  "q4_current_task_capability": {
+    "pass": true,
+    "evidence": {
+      "current_task": "Implement `extract_spec_varnames(func)` in `spec_helper.py` inspecting hook specification parameters.",
+      "target_symbol": "extract_spec_varnames",
+      "symbol_in_hidden_test": true
+    }
+  },
+  "q5_stale_solution_asymmetry": {
+    "pass": true,
+    "evidence": {
+      "stale_on_base": true,
+      "stale_on_target": false,
+      "is_control": false,
+      "stale_ast_valid": true
+    }
+  },
+  "q6_valid_solution_target_pass": {
+    "pass": true,
+    "evidence": {
+      "valid_on_target": true,
+      "valid_on_base": true,
+      "valid_ast_valid": true
+    }
+  }
+}

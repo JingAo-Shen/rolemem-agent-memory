@@ -1,0 +1,66 @@
+{
+  "transition_id": "trans_track_a_11_requests_json_decode_error",
+  "verdict": "REBUILD_REQUIRED",
+  "semantic_pass": false,
+  "task_mapping": "TASK_MAPPING_STRONG",
+  "causal_schema_valid": true,
+  "q1_repo_change_pr_diff": {
+    "pass": true,
+    "evidence": {
+      "diff_bytes": 1871,
+      "diff_mentions_symbol": true,
+      "pr_title": "Fix inconsistent exception for JSONDecode error",
+      "pr_mentions_symbol": false,
+      "repo_change_matches_diff": true
+    }
+  },
+  "q2_stale_memory_base_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "requests/models.py",
+      "base_commit": "8bce583b9547c7b82d44c8e97f37cf9a16cbe758",
+      "entailment_status": "ENTAILED",
+      "matched_term": "JSONDecodeError",
+      "lineno": 38,
+      "excerpt": "    ContentDecodingError, ConnectionError, StreamConsumedError,\n    InvalidJSONError)\nfrom .exceptions import JSONDecodeError as RequestsJSONDecodeError\nfrom .exceptions import SSLError as RequestsSSLError\nfrom ._internal_utils import to_native_string, unicode_is_ascii\nfrom .utils import (\n    guess",
+      "evidence_sha256": "0434f75d778cf705462d24f83ad4464e7657ae4906ae9d85b45144a6f0492f9a"
+    }
+  },
+  "q3_valid_memory_target_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "requests/models.py",
+      "target_commit": "2d5517682b3b38547634d153cea43d48fbc8cdb5",
+      "entailment_status": "ENTAILED",
+      "matched_term": "JSONDecodeError",
+      "lineno": 38,
+      "excerpt": "    ContentDecodingError, ConnectionError, StreamConsumedError,\n    InvalidJSONError)\nfrom .exceptions import JSONDecodeError as RequestsJSONDecodeError\nfrom .exceptions import SSLError as RequestsSSLError\nfrom ._internal_utils import to_native_string, unicode_is_ascii\nfrom .utils import (\n    guess",
+      "evidence_sha256": "0434f75d778cf705462d24f83ad4464e7657ae4906ae9d85b45144a6f0492f9a"
+    }
+  },
+  "q4_current_task_capability": {
+    "pass": true,
+    "evidence": {
+      "current_task": "Implement `parse_api_response(resp)` in `client_parser.py` extracting json and catching requests decoding errors safely.",
+      "target_symbol": "parse_api_response",
+      "symbol_in_hidden_test": true
+    }
+  },
+  "q5_stale_solution_asymmetry": {
+    "pass": false,
+    "evidence": {
+      "stale_on_base": false,
+      "stale_on_target": false,
+      "is_control": true,
+      "stale_ast_valid": true
+    }
+  },
+  "q6_valid_solution_target_pass": {
+    "pass": true,
+    "evidence": {
+      "valid_on_target": true,
+      "valid_on_base": false,
+      "valid_ast_valid": true
+    }
+  }
+}

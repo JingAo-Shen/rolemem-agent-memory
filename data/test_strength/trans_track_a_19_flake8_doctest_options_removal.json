@@ -49,7 +49,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\n\ntest_hidden_verification.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_doctest_filtering - assert False is ...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\n\ntest_hidden_verification.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_doctest_filtering - assert False is ...\n============================== 1 failed in 0.03s ===============================\n\nSTDERR:\n"
     },
     "M6_mismatched_signature": {
       "description": "wrong signature",
@@ -57,7 +57,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\n\ntest_hidden_verification.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_doctest_filtering - AssertionError: ...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\n\ntest_hidden_verification.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_doctest_filtering - AssertionError: ...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
     },
     "M7_missing_attribute": {
       "description": "missing function",

@@ -1,0 +1,20 @@
+{
+  "transition_id": "trans_track_a_28_starlette_exceptions_middleware_removal",
+  "repo_name": "encode/starlette",
+  "leakage_level": "REPO_CONTEXT_HINTED",
+  "retrieved_tokens": 1200,
+  "retrieved_files": [
+    "starlette/testclient.py",
+    "starlette/applications.py",
+    "starlette/requests.py"
+  ],
+  "hinted_terms_found": [
+    "ExceptionMiddleware",
+    "deprecated"
+  ],
+  "target_func_def_found": false,
+  "trivializes_migration": false,
+  "migration_evidence": "",
+  "near_solution_found": false,
+  "retrieved_context_excerpt": "[REPOSITORY CONTEXT (RETRIEVED)]\n# File: starlette/testclient.py (Lines 41-80)\nASGIInstance = typing.Callable[[Receive, Send], typing.Awaitable[None]]\nASGI2App = typing.Callable[[Scope], ASGIInstance]\nASGI3App = typing.Callable[[Scope, Receive, Send], typing.Awaitable[None]]\n\n\n_RequestData = typing.Mapping[str, typing.Union[str, typing.Iterable[str], bytes]]\n\n\ndef _is_asgi3(app: ASGI2App | ASGI3App) -> TypeGuard[ASGI3App]:\n    if inspect.isclass(app):\n        return hasattr(app, \"__await__\")\n   "
+}

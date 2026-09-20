@@ -65,7 +65,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\n\ntest_hidden_verification.py:5: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_pydantic_v1_deprecated - AttributeEr...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\n\ntest_hidden_verification.py:5: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_pydantic_v1_deprecated - AttributeEr...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
     },
     "M8_static_mock": {
       "description": "static mock",

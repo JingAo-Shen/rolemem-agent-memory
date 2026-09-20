@@ -49,7 +49,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": " 'all_equal'?\n=========================== short test summary info ============================\nERROR test_hidden_verification.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n=============================== 1 error in 0.06s ===============================\n\nSTDERR:\n"
+      "log_snippet": " 'all_equal'?\n=========================== short test summary info ============================\nERROR test_hidden_verification.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n=============================== 1 error in 0.07s ===============================\n\nSTDERR:\n"
     },
     "M6_mismatched_signature": {
       "description": "wrong signature",

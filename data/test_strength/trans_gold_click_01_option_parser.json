@@ -1,0 +1,13 @@
+{
+  "transition_id": "trans_gold_click_01_option_parser",
+  "audit_fingerprint": "mock_fp_gold_click_01",
+  "total_mutants": 8,
+  "invalid_mutants_count": 8,
+  "invalid_mutants_killed": 8,
+  "killed_mutants": 8,
+  "mutation_kill_rate": 1.0,
+  "constant_return_killed": true,
+  "constant_return_bypass": false,
+  "meets_kill_rate_threshold": true,
+  "audit_status": "PASS"
+}

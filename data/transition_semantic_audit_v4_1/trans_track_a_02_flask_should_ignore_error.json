@@ -1,0 +1,66 @@
+{
+  "transition_id": "trans_track_a_02_flask_should_ignore_error",
+  "verdict": "REBUILD_REQUIRED",
+  "semantic_pass": false,
+  "task_mapping": "REBUILD_MAPPING",
+  "causal_schema_valid": true,
+  "q1_repo_change_pr_diff": {
+    "pass": true,
+    "evidence": {
+      "diff_bytes": 2962,
+      "diff_mentions_symbol": true,
+      "pr_title": "deprecate `should_ignore_error`",
+      "pr_mentions_symbol": true,
+      "repo_change_matches_diff": true
+    }
+  },
+  "q2_stale_memory_base_supported": {
+    "pass": false,
+    "evidence": {
+      "evidence_file": "src/flask/app.py",
+      "base_commit": "0292047b22c82921dcf165322d93a0b988328c2e",
+      "entailment_status": "PARTIAL",
+      "matched_term": "should_ignore_error",
+      "lineno": 1579,
+      "excerpt": "                environ[\"werkzeug.debug.preserve_context\"](ctx)\n\n            if error is not None and self.should_ignore_error(error):\n                error = None\n\n            ctx.pop(error)\n\n    def __call__(\n        self, environ: WSGIEnvironment, start_response: StartResponse\n    ) -> cabc.Itera",
+      "evidence_sha256": "80eb38ac4972ab309afe4b6b3bf83108148574662f3ffe9b97f9b405fa9c7cb0"
+    }
+  },
+  "q3_valid_memory_target_supported": {
+    "pass": false,
+    "evidence": {
+      "evidence_file": "src/flask/app.py",
+      "target_commit": "4b8bde97d4fa3486e18dce21c3c5f75570d50164",
+      "entailment_status": "PARTIAL",
+      "matched_term": "teardown_request",
+      "lineno": 270,
+      "excerpt": "            cls.preprocess_request,\n            cls.process_response,\n            cls.do_teardown_request,\n            cls.do_teardown_appcontext,\n        ):\n            base_method = getattr(Flask, method.__name__)\n\n            if method is base_method:\n                # not overridden\n            ",
+      "evidence_sha256": "6ac402dfccc0223767f0744b589c1753210f3e82a16f1272eb00578d15915227"
+    }
+  },
+  "q4_current_task_capability": {
+    "pass": true,
+    "evidence": {
+      "current_task": "Implement `CustomApp` in `custom_app.py` subclassing Flask to manage error policies without deprecated method overrides.",
+      "target_symbol": "CustomApp",
+      "symbol_in_hidden_test": true
+    }
+  },
+  "q5_stale_solution_asymmetry": {
+    "pass": true,
+    "evidence": {
+      "stale_on_base": true,
+      "stale_on_target": false,
+      "is_control": false,
+      "stale_ast_valid": true
+    }
+  },
+  "q6_valid_solution_target_pass": {
+    "pass": true,
+    "evidence": {
+      "valid_on_target": true,
+      "valid_on_base": true,
+      "valid_ast_valid": true
+    }
+  }
+}

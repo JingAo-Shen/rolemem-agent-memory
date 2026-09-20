@@ -1,0 +1,17 @@
+{
+  "transition_id": "trans_track_a_29_pluggy_static_hook_attr_discovery",
+  "repo_name": "pytest-dev/pluggy",
+  "leakage_level": "REPO_CONTEXT_NONTRIVIAL",
+  "retrieved_tokens": 1116,
+  "retrieved_files": [
+    "src/pluggy/_manager.py",
+    "src/pluggy/_hooks.py",
+    "src/pluggy/_manager.py"
+  ],
+  "hinted_terms_found": [],
+  "target_func_def_found": false,
+  "trivializes_migration": false,
+  "migration_evidence": "",
+  "near_solution_found": false,
+  "retrieved_context_excerpt": "[REPOSITORY CONTEXT (RETRIEVED)]\n# File: src/pluggy/_manager.py (Lines 81-120)\n    if not (inspect.isclass(obj) or inspect.ismodule(obj)):\n        # Values stored on the instance itself -- in ``__dict__`` or in a\n        # ``__slots__`` slot -- are handed out by ``getattr()`` as they are,\n        # bypassing the descriptor protocol, so they must not be bound here.\n        value = _instance_dict(obj).get(name, _ABSENT)\n        if value is _ABSENT:\n            slot = inspect.getattr_static(obj, na"
+}

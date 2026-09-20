@@ -17,7 +17,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\ntest_hidden_verification.py:11: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_proxied_client_creation - AssertionE...\n============================== 1 failed in 0.11s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:11: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_proxied_client_creation - AssertionE...\n============================== 1 failed in 0.12s ===============================\n\nSTDERR:\n"
     },
     "M2_constant_return": {
       "description": "return constant string",
@@ -41,7 +41,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\ntest_hidden_verification.py:11: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_proxied_client_creation - AssertionE...\n============================== 1 failed in 0.12s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:11: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_proxied_client_creation - AssertionE...\n============================== 1 failed in 0.11s ===============================\n\nSTDERR:\n"
     },
     "M5_stale_solution": {
       "description": "calls deprecated proxies param",
@@ -57,7 +57,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "given\n\ntest_hidden_verification.py:9: TypeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_proxied_client_creation - TypeError:...\n============================== 1 failed in 0.12s ===============================\n\nSTDERR:\n"
+      "log_snippet": "given\n\ntest_hidden_verification.py:9: TypeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_proxied_client_creation - TypeError:...\n============================== 1 failed in 0.11s ===============================\n\nSTDERR:\n"
     },
     "M7_missing_attribute": {
       "description": "missing function",
@@ -73,7 +73,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\ntest_hidden_verification.py:11: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_proxied_client_creation - AssertionE...\n============================== 1 failed in 0.12s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:11: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_proxied_client_creation - AssertionE...\n============================== 1 failed in 0.11s ===============================\n\nSTDERR:\n"
     }
   }
 }

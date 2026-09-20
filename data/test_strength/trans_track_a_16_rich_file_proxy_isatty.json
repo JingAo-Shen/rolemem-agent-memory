@@ -41,7 +41,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\ntest_hidden_verification.py:15: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_proxy_interactive - assert None is True\n============================== 1 failed in 0.07s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:15: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_proxy_interactive - assert None is True\n============================== 1 failed in 0.06s ===============================\n\nSTDERR:\n"
     },
     "M5_stale_solution": {
       "description": "stale solution",

@@ -33,7 +33,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\ntest_hidden_verification.py:13: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_header_retrieval - AssertionError: a...\n============================== 1 failed in 0.06s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:13: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_header_retrieval - AssertionError: a...\n============================== 1 failed in 0.05s ===============================\n\nSTDERR:\n"
     },
     "M4_try_except_dummy": {
       "description": "try/except return dummy",
@@ -65,7 +65,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\ntest_hidden_verification.py:13: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_header_retrieval - AttributeError: m...\n============================== 1 failed in 0.05s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:13: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_header_retrieval - AttributeError: m...\n============================== 1 failed in 0.06s ===============================\n\nSTDERR:\n"
     },
     "M8_static_mock": {
       "description": "static mock",
@@ -73,7 +73,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\ntest_hidden_verification.py:13: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_header_retrieval - AssertionError: a...\n============================== 1 failed in 0.05s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:13: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_header_retrieval - AssertionError: a...\n============================== 1 failed in 0.06s ===============================\n\nSTDERR:\n"
     }
   }
 }

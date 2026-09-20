@@ -17,7 +17,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "class\n\ntest_hidden_verification.py:7: TypeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_flask_custom_app_dispatch - TypeErro...\n============================== 1 failed in 0.08s ===============================\n\nSTDERR:\n"
+      "log_snippet": "class\n\ntest_hidden_verification.py:7: TypeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_flask_custom_app_dispatch - TypeErro...\n============================== 1 failed in 0.09s ===============================\n\nSTDERR:\n"
     },
     "M2_constant_return": {
       "description": "return constant string",
@@ -25,7 +25,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "class\n\ntest_hidden_verification.py:7: TypeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_flask_custom_app_dispatch - TypeErro...\n============================== 1 failed in 0.09s ===============================\n\nSTDERR:\n"
+      "log_snippet": "class\n\ntest_hidden_verification.py:7: TypeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_flask_custom_app_dispatch - TypeErro...\n============================== 1 failed in 0.08s ===============================\n\nSTDERR:\n"
     },
     "M3_noop_pass": {
       "description": "empty class pass",
@@ -41,7 +41,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "class\n\ntest_hidden_verification.py:7: TypeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_flask_custom_app_dispatch - TypeErro...\n============================== 1 failed in 0.09s ===============================\n\nSTDERR:\n"
+      "log_snippet": "class\n\ntest_hidden_verification.py:7: TypeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_flask_custom_app_dispatch - TypeErro...\n============================== 1 failed in 0.08s ===============================\n\nSTDERR:\n"
     },
     "M5_stale_solution": {
       "description": "stale should_ignore_error override",
@@ -57,7 +57,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "iven\n\ntest_hidden_verification.py:14: TypeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_flask_custom_app_dispatch - TypeErro...\n============================== 1 failed in 0.09s ===============================\n\nSTDERR:\n"
+      "log_snippet": "iven\n\ntest_hidden_verification.py:14: TypeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_flask_custom_app_dispatch - TypeErro...\n============================== 1 failed in 0.08s ===============================\n\nSTDERR:\n"
     },
     "M7_missing_attribute": {
       "description": "missing CustomApp class",

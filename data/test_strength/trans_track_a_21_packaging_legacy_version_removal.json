@@ -49,7 +49,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "g/version.py)\n=========================== short test summary info ============================\nERROR test_hidden_verification.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n=============================== 1 error in 0.05s ===============================\n\nSTDERR:\n"
+      "log_snippet": "g/version.py)\n=========================== short test summary info ============================\nERROR test_hidden_verification.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n=============================== 1 error in 0.06s ===============================\n\nSTDERR:\n"
     },
     "M6_mismatched_signature": {
       "description": "wrong signature",
@@ -65,7 +65,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\n\ntest_hidden_verification.py:5: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_parse_version_safely - AttributeErro...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\n\ntest_hidden_verification.py:5: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_parse_version_safely - AttributeErro...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
     },
     "M8_static_mock": {
       "description": "static mock",

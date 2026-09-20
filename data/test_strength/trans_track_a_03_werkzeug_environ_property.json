@@ -17,7 +17,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\ntest_hidden_verification.py:14: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_environ_property_creation - Assertio...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:14: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_environ_property_creation - Assertio...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
     },
     "M2_constant_return": {
       "description": "return constant string",
@@ -33,7 +33,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\ntest_hidden_verification.py:14: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_environ_property_creation - Assertio...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:14: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_environ_property_creation - Assertio...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
     },
     "M4_try_except_dummy": {
       "description": "try/except return dummy",
@@ -41,7 +41,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\ntest_hidden_verification.py:14: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_environ_property_creation - Assertio...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:14: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_environ_property_creation - Assertio...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
     },
     "M5_stale_solution": {
       "description": "stale environ_property",
@@ -57,7 +57,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "iven\n\ntest_hidden_verification.py:12: TypeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_environ_property_creation - TypeErro...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
+      "log_snippet": "iven\n\ntest_hidden_verification.py:12: TypeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_environ_property_creation - TypeErro...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
     },
     "M7_missing_attribute": {
       "description": "missing create_header_property",
@@ -65,7 +65,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\ntest_hidden_verification.py:12: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_environ_property_creation - Attribut...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\ntest_hidden_verification.py:12: AttributeError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_environ_property_creation - Attribut...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
     },
     "M8_static_mock": {
       "description": "static string return instead of descriptor",

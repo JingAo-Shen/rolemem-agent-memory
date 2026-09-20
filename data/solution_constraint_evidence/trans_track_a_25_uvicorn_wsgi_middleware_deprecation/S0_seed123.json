@@ -1,0 +1,22 @@
+{
+  "transition_id": "trans_track_a_25_uvicorn_wsgi_middleware_deprecation",
+  "run_id": "S0_seed123",
+  "target_file": "solution.py",
+  "api_deprecation_gate": {
+    "status": "PASS",
+    "details": "Code is free of active deprecated API invocations."
+  },
+  "replacement_mechanism_gate": {
+    "status": "FAIL",
+    "details": "REPLACEMENT_GATE_NOT_IMPLEMENTED"
+  },
+  "behavior_fidelity_gate": {
+    "status": "FAIL",
+    "details": "Pytest execution failed",
+    "pytest_passed": false,
+    "log_snippet": "gi_inspector'\n=========================== short test summary info ============================\nERROR test_hidden_verification.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n=============================== 1 error in 0.08s ===============================\n\nSTDERR:\n"
+  },
+  "overall_constraint_status": "FAIL",
+  "overall_status": "FAIL",
+  "task_success": false
+}

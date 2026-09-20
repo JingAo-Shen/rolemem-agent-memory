@@ -1,0 +1,66 @@
+{
+  "transition_id": "trans_track_a_25_uvicorn_wsgi_middleware_deprecation",
+  "verdict": "SEMANTIC_WEAK_PASS",
+  "semantic_pass": true,
+  "task_mapping": "TASK_MAPPING_STRONG",
+  "causal_schema_valid": true,
+  "q1_repo_change_pr_diff": {
+    "pass": true,
+    "evidence": {
+      "diff_bytes": 7004,
+      "diff_mentions_symbol": true,
+      "pr_title": "Replace current WSGIMiddleware implementation by a2wsgi one",
+      "pr_mentions_symbol": true,
+      "repo_change_matches_diff": true
+    }
+  },
+  "q2_stale_memory_base_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "uvicorn/middleware/wsgi.py",
+      "base_commit": "23b9f05a389a476aee151698cede171d915f6c53",
+      "entailment_status": "ENTAILED",
+      "matched_term": "WSGIMiddleware",
+      "lineno": 76,
+      "excerpt": "\n\nclass WSGIMiddleware:\n    def __init__(self, app: WSGIApp, workers: int = 10):\n        self.app = app\n        self.executor = concurrent.futures.ThreadPoolExecutor(max_workers=workers)\n\n    async def __call__(\n        self,\n        scope: \"HTTPScope\",",
+      "evidence_sha256": "425e21a2b037d7771726ebfcf409d0a0a1e8491d694fb0db9798b989c278ee8f"
+    }
+  },
+  "q3_valid_memory_target_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "uvicorn/middleware/wsgi.py",
+      "target_commit": "2351d5ff2b068d7bcba6eaccde83bc90b0727c89",
+      "entailment_status": "ENTAILED",
+      "matched_term": "WSGIMiddleware",
+      "lineno": 77,
+      "excerpt": "\n\nclass _WSGIMiddleware:\n    def __init__(self, app: WSGIApp, workers: int = 10):\n        warnings.warn(\n            \"Uvicorn's native WSGI implementation is deprecated, you \"\n            \"should switch to a2wsgi (`pip install a2wsgi`).\",\n            DeprecationWarning,\n        )\n        self.app = ",
+      "evidence_sha256": "f0f415cb26daa086ad713b5a90385c6df7cff16a8c04de3be7c4650258cda494"
+    }
+  },
+  "q4_current_task_capability": {
+    "pass": true,
+    "evidence": {
+      "current_task": "Implement `wrap_wsgi_application(app)` in `wsgi_inspector.py` wrapping WSGI app without unhandled deprecation warnings.",
+      "target_symbol": "wrap_wsgi_application",
+      "symbol_in_hidden_test": true
+    }
+  },
+  "q5_stale_solution_asymmetry": {
+    "pass": true,
+    "evidence": {
+      "stale_on_base": true,
+      "stale_on_target": false,
+      "is_control": false,
+      "stale_ast_valid": true
+    }
+  },
+  "q6_valid_solution_target_pass": {
+    "pass": true,
+    "evidence": {
+      "valid_on_target": true,
+      "valid_on_base": true,
+      "valid_ast_valid": true
+    }
+  }
+}

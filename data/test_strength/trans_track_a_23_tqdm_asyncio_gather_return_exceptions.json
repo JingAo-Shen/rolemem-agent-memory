@@ -25,7 +25,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_gather - AssertionError: assert '1' ...\n======================== 1 failed, 2 warnings in 0.01s =========================\n\nSTDERR:\n"
+      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_gather - AssertionError: assert '1' ...\n======================== 1 failed, 2 warnings in 0.02s =========================\n\nSTDERR:\n"
     },
     "M3_noop_pass": {
       "description": "pass / no-op",
@@ -49,7 +49,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "s]\n 50%|\u2588\u2588\u2588\u2588\u2588     | 1/2 [00:00<00:00, 12985.46it/s]\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_gather - RuntimeError: task_failure\n============================== 1 failed in 0.05s ===============================\n\nSTDERR:\n"
+      "log_snippet": "s]\n 50%|\u2588\u2588\u2588\u2588\u2588     | 1/2 [00:00<00:00, 14266.34it/s]\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_gather - RuntimeError: task_failure\n============================== 1 failed in 0.05s ===============================\n\nSTDERR:\n"
     },
     "M6_mismatched_signature": {
       "description": "wrong signature",
@@ -57,7 +57,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_gather - TypeError: run_gather_tasks...\n======================== 1 failed, 2 warnings in 0.02s =========================\n\nSTDERR:\n"
+      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_gather - TypeError: run_gather_tasks...\n======================== 1 failed, 2 warnings in 0.01s =========================\n\nSTDERR:\n"
     },
     "M7_missing_attribute": {
       "description": "missing function",

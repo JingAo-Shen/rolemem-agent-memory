@@ -1,0 +1,66 @@
+{
+  "transition_id": "trans_track_a_13_starlette_weak_etag_removeprefix",
+  "verdict": "REBUILD_REQUIRED",
+  "semantic_pass": false,
+  "task_mapping": "TASK_MAPPING_WEAK",
+  "causal_schema_valid": true,
+  "q1_repo_change_pr_diff": {
+    "pass": false,
+    "evidence": {
+      "diff_bytes": 1403,
+      "diff_mentions_symbol": true,
+      "pr_title": "Use `removeprefix` to strip weak ETag indicator in `is_not_modified`",
+      "pr_mentions_symbol": true,
+      "repo_change_matches_diff": false
+    }
+  },
+  "q2_stale_memory_base_supported": {
+    "pass": false,
+    "evidence": {
+      "evidence_file": "starlette/staticfiles.py",
+      "base_commit": "e6f7ad1ab85efb27ab7910d8007b3f4531f7b083",
+      "entailment_status": "PARTIAL",
+      "matched_term": "False",
+      "lineno": 45,
+      "excerpt": "        directory: PathLike | None = None,\n        packages: list[str | tuple[str, str]] | None = None,\n        html: bool = False,\n        check_dir: bool = True,\n        follow_symlink: bool = False,\n    ) -> None:\n        self.directory = directory\n        self.packages = packages\n        self.al",
+      "evidence_sha256": "653bbaf487ab8cc192b64ba2cbad340aed044077cd9125e50d17fe5a977f0187"
+    }
+  },
+  "q3_valid_memory_target_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "starlette/staticfiles.py",
+      "target_commit": "37309255b4c1b9c381a2d24a1eaf83100984a16a",
+      "entailment_status": "ENTAILED",
+      "matched_term": "StaticFiles",
+      "lineno": 39,
+      "excerpt": "\n\nclass StaticFiles:\n    def __init__(\n        self,\n        *,\n        directory: PathLike | None = None,\n        packages: list[str | tuple[str, str]] | None = None,\n        html: bool = False,\n        check_dir: bool = True,",
+      "evidence_sha256": "1ee469373a621e9ed901cebeb4090d61d8a190fc84a9cee3c6419a7f38d1ba3f"
+    }
+  },
+  "q4_current_task_capability": {
+    "pass": true,
+    "evidence": {
+      "current_task": "Implement `is_etag_not_modified(etag, if_none_match)` in `etag_helper.py` verifying weak etags properly.",
+      "target_symbol": "is_etag_not_modified",
+      "symbol_in_hidden_test": true
+    }
+  },
+  "q5_stale_solution_asymmetry": {
+    "pass": false,
+    "evidence": {
+      "stale_on_base": false,
+      "stale_on_target": false,
+      "is_control": true,
+      "stale_ast_valid": true
+    }
+  },
+  "q6_valid_solution_target_pass": {
+    "pass": true,
+    "evidence": {
+      "valid_on_target": true,
+      "valid_on_base": false,
+      "valid_ast_valid": true
+    }
+  }
+}

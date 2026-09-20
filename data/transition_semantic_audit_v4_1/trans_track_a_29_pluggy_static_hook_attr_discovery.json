@@ -1,0 +1,66 @@
+{
+  "transition_id": "trans_track_a_29_pluggy_static_hook_attr_discovery",
+  "verdict": "REBUILD_REQUIRED",
+  "semantic_pass": false,
+  "task_mapping": "TASK_MAPPING_STRONG",
+  "causal_schema_valid": true,
+  "q1_repo_change_pr_diff": {
+    "pass": true,
+    "evidence": {
+      "diff_bytes": 15249,
+      "diff_mentions_symbol": true,
+      "pr_title": "Discover hooks via inspect.getattr_static",
+      "pr_mentions_symbol": true,
+      "repo_change_matches_diff": true
+    }
+  },
+  "q2_stale_memory_base_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "src/pluggy/_manager.py",
+      "base_commit": "6a7f8960eb4009b551f14030233cea7a64ccaf5d",
+      "entailment_status": "ENTAILED",
+      "matched_term": "getattr",
+      "lineno": 148,
+      "excerpt": "            if hookimpl_opts is not None:\n                normalize_hookimpl_opts(hookimpl_opts)\n                method: _HookImplFunction[object] = getattr(plugin, attr_name)\n                hookimpl = HookImpl(plugin, plugin_name, method, hookimpl_opts)\n                hook_name = hookimpl_opts.ge",
+      "evidence_sha256": "e73624677de819e23eaa955fa8021655e528ea3424381d89d149bff77f46fc22"
+    }
+  },
+  "q3_valid_memory_target_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "src/pluggy/_manager.py",
+      "target_commit": "bc9bcac68b9f3c670481661ddc50e5a0217e71d1",
+      "entailment_status": "ENTAILED",
+      "matched_term": "_static_hook_attr",
+      "lineno": 65,
+      "excerpt": "\n\ndef _static_hook_attr(\n    obj: object, name: str\n) -> tuple[object, Callable[..., object]] | None:\n    \"\"\"Return ``(marker_holder, function)`` for ``name`` on ``obj``, else None.\n\n    Lookup avoids ``getattr()`` so that properties, ``cached_property`` and\n    other descriptors are skipped instead",
+      "evidence_sha256": "c5e4c601cae51bebf64258883e4725334657233d88b68148d8c6ee5c50424364"
+    }
+  },
+  "q4_current_task_capability": {
+    "pass": true,
+    "evidence": {
+      "current_task": "Implement `has_static_hook_discovery()` in `pluggy_compat.py` detecting static hook inspection capability.",
+      "target_symbol": "has_static_hook_discovery",
+      "symbol_in_hidden_test": true
+    }
+  },
+  "q5_stale_solution_asymmetry": {
+    "pass": false,
+    "evidence": {
+      "stale_on_base": false,
+      "stale_on_target": false,
+      "is_control": true,
+      "stale_ast_valid": true
+    }
+  },
+  "q6_valid_solution_target_pass": {
+    "pass": true,
+    "evidence": {
+      "valid_on_target": true,
+      "valid_on_base": false,
+      "valid_ast_valid": true
+    }
+  }
+}

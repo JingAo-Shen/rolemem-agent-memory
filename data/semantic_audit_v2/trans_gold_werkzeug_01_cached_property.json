@@ -57,9 +57,9 @@
       "gate_id": "G7",
       "name": "hidden test strength <-> current task semantics",
       "expected": "Hidden test verifies target capability with mutation_kill_rate >= 0.80 and zero constant-return bypass",
-      "observed": "Semantic match: True, Mutation kill rate: 0.0%, Constant return bypass: True",
+      "observed": "Semantic match: True, Mutation kill rate: 100.0%, Constant return bypass: False",
       "evidence": "test_strength/trans_gold_werkzeug_01_cached_property.json, len=944 bytes",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "gate_id": "G8",
@@ -86,7 +86,7 @@
       "status": "PASS"
     }
   ],
-  "passed_gates_count": 9,
+  "passed_gates_count": 10,
   "total_gates_count": 10,
-  "overall_status": "FAIL"
+  "overall_status": "PASS"
 }

@@ -17,7 +17,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "\n\ntest_hidden_verification.py:6: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_read_config_strips_comments - Assert...\n============================== 1 failed in 0.01s ===============================\n\nSTDERR:\n"
+      "log_snippet": "\n\ntest_hidden_verification.py:6: AssertionError\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_read_config_strips_comments - Assert...\n============================== 1 failed in 0.02s ===============================\n\nSTDERR:\n"
     },
     "M2_constant_return": {
       "description": "return constant string",

@@ -17,7 +17,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_safe_parse - AssertionError: assert ...\n========================= 1 failed, 1 warning in 0.07s =========================\n\nSTDERR:\n"
+      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_safe_parse - AssertionError: assert ...\n========================= 1 failed, 1 warning in 0.09s =========================\n\nSTDERR:\n"
     },
     "M2_constant_return": {
       "description": "return constant string",
@@ -25,7 +25,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_safe_parse - AssertionError: assert ...\n========================= 1 failed, 1 warning in 0.07s =========================\n\nSTDERR:\n"
+      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_safe_parse - AssertionError: assert ...\n========================= 1 failed, 1 warning in 0.06s =========================\n\nSTDERR:\n"
     },
     "M3_noop_pass": {
       "description": "pass / no-op",
@@ -33,7 +33,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_safe_parse - AssertionError: assert ...\n========================= 1 failed, 1 warning in 0.06s =========================\n\nSTDERR:\n"
+      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_safe_parse - AssertionError: assert ...\n========================= 1 failed, 1 warning in 0.07s =========================\n\nSTDERR:\n"
     },
     "M4_try_except_dummy": {
       "description": "try/except return dummy",
@@ -65,7 +65,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_safe_parse - AttributeError: module ...\n========================= 1 failed, 1 warning in 0.07s =========================\n\nSTDERR:\n"
+      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_safe_parse - AttributeError: module ...\n========================= 1 failed, 1 warning in 0.06s =========================\n\nSTDERR:\n"
     },
     "M8_static_mock": {
       "description": "static mock",
@@ -73,7 +73,7 @@
       "passed_test": false,
       "killed": true,
       "status": "KILLED",
-      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_safe_parse - AssertionError: assert ...\n========================= 1 failed, 1 warning in 0.07s =========================\n\nSTDERR:\n"
+      "log_snippet": "test.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED test_hidden_verification.py::test_safe_parse - AssertionError: assert ...\n========================= 1 failed, 1 warning in 0.06s =========================\n\nSTDERR:\n"
     }
   }
 }

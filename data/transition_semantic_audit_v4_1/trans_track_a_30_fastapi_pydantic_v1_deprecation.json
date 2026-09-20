@@ -1,0 +1,66 @@
+{
+  "transition_id": "trans_track_a_30_fastapi_pydantic_v1_deprecation",
+  "verdict": "REBUILD_REQUIRED",
+  "semantic_pass": false,
+  "task_mapping": "TASK_MAPPING_WEAK",
+  "causal_schema_valid": true,
+  "q1_repo_change_pr_diff": {
+    "pass": false,
+    "evidence": {
+      "diff_bytes": 63575,
+      "diff_mentions_symbol": true,
+      "pr_title": "\ud83d\udd0a Add deprecation warnings when using `pydantic.v1`",
+      "pr_mentions_symbol": false,
+      "repo_change_matches_diff": false
+    }
+  },
+  "q2_stale_memory_base_supported": {
+    "pass": false,
+    "evidence": {
+      "evidence_file": "fastapi/dependencies/utils.py",
+      "base_commit": "6513d4daa16a536d17743de6a292f49bd06388a4",
+      "entailment_status": "NOT_ENTAILED",
+      "matched_term": "v1",
+      "lineno": 41,
+      "excerpt": "    is_uploadfile_sequence_annotation,\n    lenient_issubclass,\n    may_v1,\n    sequence_types,\n    serialize_sequence_value,\n    value_is_sequence,\n)\nfrom fastapi._compat.shared import annotation_is_pydantic_v1\nfrom fastapi.background import BackgroundTasks\nfrom fastapi.concurrency import (",
+      "evidence_sha256": "fabc4d0b5d8fe2a3c299c3186b5f81c275463cf33ad1d6d07059c558d8bf9dca"
+    }
+  },
+  "q3_valid_memory_target_supported": {
+    "pass": true,
+    "evidence": {
+      "evidence_file": "fastapi/dependencies/utils.py",
+      "target_commit": "6e42bcd8ce2ade33d94f478310dad20ee84f8f0f",
+      "entailment_status": "ENTAILED",
+      "matched_term": "get_dependant",
+      "lineno": 126,
+      "excerpt": "    if isinstance(depends, params.Security) and depends.scopes:\n        own_oauth_scopes.extend(depends.scopes)\n    return get_dependant(\n        path=path,\n        call=depends.dependency,\n        scope=depends.scope,\n        own_oauth_scopes=own_oauth_scopes,\n    )\n\n",
+      "evidence_sha256": "7f0fe434cdbcfabf13adc9e428717b0e1d40262c2437be5ef0acc6800cbafcde"
+    }
+  },
+  "q4_current_task_capability": {
+    "pass": true,
+    "evidence": {
+      "current_task": "Implement `is_pydantic_v1_deprecated()` in `fastapi_pydantic_auditor.py` detecting if FastAPI warns on pydantic.v1 usage.",
+      "target_symbol": "is_pydantic_v1_deprecated",
+      "symbol_in_hidden_test": true
+    }
+  },
+  "q5_stale_solution_asymmetry": {
+    "pass": false,
+    "evidence": {
+      "stale_on_base": false,
+      "stale_on_target": false,
+      "is_control": true,
+      "stale_ast_valid": true
+    }
+  },
+  "q6_valid_solution_target_pass": {
+    "pass": true,
+    "evidence": {
+      "valid_on_target": true,
+      "valid_on_base": false,
+      "valid_ast_valid": true
+    }
+  }
+}

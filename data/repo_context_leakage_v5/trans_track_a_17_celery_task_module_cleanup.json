@@ -1,0 +1,18 @@
+{
+  "transition_id": "trans_track_a_17_celery_task_module_cleanup",
+  "repo_name": "celery/celery",
+  "leakage_level": "REPO_CONTEXT_NONTRIVIAL",
+  "retrieved_tokens": 1200,
+  "retrieved_files": [
+    "celery/backends/base.py",
+    "celery/backends/base.py",
+    "celery/security/__init__.py",
+    "celery/concurrency/base.py"
+  ],
+  "hinted_terms_found": [],
+  "target_func_def_found": false,
+  "trivializes_migration": false,
+  "migration_evidence": "",
+  "near_solution_found": false,
+  "retrieved_context_excerpt": "[REPOSITORY CONTEXT (RETRIEVED)]\n# File: celery/backends/base.py (Lines 761-800)\n    key_t = ensure_bytes\n    task_keyprefix = 'celery-task-meta-'\n    group_keyprefix = 'celery-taskset-meta-'\n    chord_keyprefix = 'chord-unlock-'\n    implements_incr = False\n\n    def __init__(self, *args, **kwargs):\n        if hasattr(self.key_t, '__func__'):  # pragma: no cover\n            self.key_t = self.key_t.__func__  # remove binding\n        self._encode_prefixes()\n        super().__init__(*args, **kwargs)"
+}
