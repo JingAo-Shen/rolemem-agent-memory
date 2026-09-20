@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_26_rich_render_group_to_group",
+  "repository": "rich",
+  "base_commit": "d65c3bd53da234a4047c469aa7740e03d1a622f7",
+  "target_commit": "44a715dec2b08277742939598fa28d056d6faef9",
+  "authenticity_base": true,
+  "authenticity_target": true,
+  "authenticity_verified": true,
+  "primary_file_verified": true,
+  "diff_hunk_bytes": 1928,
+  "pr_url": "https://github.com/Textualize/rich/pull/1819",
+  "pr_url_valid": true,
+  "external_evidence_found": true,
+  "evidence_integrity_verified": true
+}

@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_08_attrs_py313_replace_control",
+  "repository": "attrs",
+  "current_task": "Implement `create_point(x, y)` and `replace_point(pt, **changes)` in `point_manager.py` using standard copy.replace.",
+  "target_symbol": "replace_point",
+  "target_file": "point_manager.py",
+  "task_mapping_verified": true,
+  "execution_status": "EXECUTED",
+  "causal_pass": true,
+  "has_hidden_test": true,
+  "has_test_evidence": true
+}

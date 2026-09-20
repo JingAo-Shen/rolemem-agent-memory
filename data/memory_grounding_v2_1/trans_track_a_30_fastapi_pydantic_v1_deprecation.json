@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_30_fastapi_pydantic_v1_deprecation",
+  "repository": "fastapi",
+  "base_commit": "6513d4daa16a536d17743de6a292f49bd06388a4",
+  "target_commit": "6e42bcd8ce2ade33d94f478310dad20ee84f8f0f",
+  "primary_file": "fastapi/dependencies/utils.py",
+  "base_grounded": true,
+  "target_grounded": true,
+  "base_symbol_found": true,
+  "target_symbol_found": true,
+  "stale_memory_candidate": "Define FastAPI routes with pydantic.v1 models without deprecation warnings.",
+  "valid_memory_candidate": "FastAPI warns on pydantic.v1 usage in get_dependant; migrate models to standard Pydantic v2.",
+  "base_file_sha256": "a284ca8152c7ea3fc2a44ab94aeabbeb19fda1da363d5bc9e45dd4def6caf995",
+  "target_file_sha256": "c13666b10e9efe83d2d56eda93cf900b6b65e5eabef404cbfaf7617bb0991cb5"
+}

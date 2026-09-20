@@ -89,8 +89,22 @@ def run_predictions():
             "evidence": [e.__dict__ for e in s_res.evidence]
         })
 
+        repo = case.get("repository", "")
+        repo_root = f"/code/repo_cache/{repo}" if repo else None
+        b_commit = case.get("base_commit")
+        t_commit = case.get("target_commit")
+
         # 3. Dependency AST baseline
-        d_res = dep_checker.evaluate(base_src, target_src, sym_name, diff_hunk=diff_hunk)
+        d_res = dep_checker.evaluate(
+            base_source=base_src,
+            target_source=target_src,
+            symbol_qualified_name=sym_name,
+            diff_hunk=diff_hunk,
+            repository_root=repo_root,
+            base_commit=b_commit,
+            target_commit=t_commit,
+            file_path=f_path
+        )
         d_pred = "STALE" if d_res.decision == "STALE" else "VALID"
         predictions_dep.append({
             "case_id": cid,
@@ -107,7 +121,10 @@ def run_predictions():
             base_source=base_src,
             target_source=target_src,
             file_path=f_path,
-            diff_hunk=diff_hunk
+            diff_hunk=diff_hunk,
+            repository_root=repo_root,
+            base_commit=b_commit,
+            target_commit=t_commit
         )
         if r_res.decision == "STALE":
             r_pred = "STALE"

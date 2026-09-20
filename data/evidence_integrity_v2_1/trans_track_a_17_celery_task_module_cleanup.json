@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_17_celery_task_module_cleanup",
+  "repository": "celery",
+  "base_commit": "846066a34413509695434ed5a661280d7db4f993",
+  "target_commit": "3cf5072ee5f95744024f60e0f4a77eb2edb8959f",
+  "authenticity_base": true,
+  "authenticity_target": true,
+  "authenticity_verified": true,
+  "primary_file_verified": true,
+  "diff_hunk_bytes": 842,
+  "pr_url": "https://github.com/celery/celery/pull/6869",
+  "pr_url_valid": true,
+  "external_evidence_found": true,
+  "evidence_integrity_verified": true
+}

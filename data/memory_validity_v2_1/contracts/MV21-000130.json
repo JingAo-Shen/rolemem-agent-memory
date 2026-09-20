@@ -1,7 +1,0 @@
-{
-  "case_id": "MV21-000130",
-  "contract_code": "from rich.console import Console; c = Console(record=True); c.print('hello'); assert 'hello' in c.export_text()",
-  "base_contract_pass": true,
-  "target_contract_pass": true,
-  "machine_verified": true
-}

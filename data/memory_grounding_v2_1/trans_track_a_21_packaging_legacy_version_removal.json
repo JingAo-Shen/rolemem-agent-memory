@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_21_packaging_legacy_version_removal",
+  "repository": "packaging",
+  "base_commit": "4f42225e91a0be634625c09e84dd29ea82b85e27",
+  "target_commit": "237ff3aa348486cf835a980592af3a59fccd6101",
+  "primary_file": "packaging/version.py",
+  "base_grounded": true,
+  "target_grounded": true,
+  "base_symbol_found": true,
+  "target_symbol_found": true,
+  "stale_memory_candidate": "Parse non-PEP440 versions into packaging.version.LegacyVersion.",
+  "valid_memory_candidate": "Parse versions using packaging.version.Version; non-PEP440 raises InvalidVersion.",
+  "base_file_sha256": "fdf2d136b16bc5870755fca8f2f93d8fcb3a24cf0dff1b12c5516be91272728f",
+  "target_file_sha256": "e16a2a70195cea197633c3a32852c6a2d3dc1e11bb5220200735cfb1b8f96994"
+}

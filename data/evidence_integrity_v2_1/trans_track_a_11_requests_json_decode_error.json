@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_11_requests_json_decode_error",
+  "repository": "requests",
+  "base_commit": "8bce583b9547c7b82d44c8e97f37cf9a16cbe758",
+  "target_commit": "2d5517682b3b38547634d153cea43d48fbc8cdb5",
+  "authenticity_base": true,
+  "authenticity_target": true,
+  "authenticity_verified": true,
+  "primary_file_verified": true,
+  "diff_hunk_bytes": 507,
+  "pr_url": "https://github.com/psf/requests/pull/6097",
+  "pr_url_valid": true,
+  "external_evidence_found": true,
+  "evidence_integrity_verified": true
+}

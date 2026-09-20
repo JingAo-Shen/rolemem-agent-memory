@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_14_fastapi_on_event_compatibility",
+  "repository": "fastapi",
+  "base_commit": "8e50c55fd90c4433ddc9096ff439da9498a8314a",
+  "target_commit": "f9f79926047d7f5d8e0127dd585e7683ee57e9f7",
+  "primary_file": "fastapi/routing.py",
+  "base_grounded": true,
+  "target_grounded": true,
+  "base_symbol_found": true,
+  "target_symbol_found": true,
+  "stale_memory_candidate": "Call APIRouter.on_event to register application startup and shutdown events.",
+  "valid_memory_candidate": "Use lifespan parameter on APIRouter to register application lifespan handlers instead of on_event.",
+  "base_file_sha256": "747656e8d2f36ef0fb8d94f637e57a7e3d48adb7bc1d1f850de881352b931c7b",
+  "target_file_sha256": "cfa4b7e4c42c9a6988edfa72191e5b6aab6ee357690f3dc7d3e2dc43e8ec652c"
+}

@@ -143,6 +143,64 @@ class DependencyValidityChecker:
         else:
             return file_extractor.dependencies, file_extractor.all_imports
 
+    def _resolve_local_module_path(self, repository_root: str, current_file: str, mod_name: str) -> List[str]:
+        """Resolves potential relative or package-level Python file paths in repository."""
+        candidates = []
+        if not mod_name or not current_file:
+            return candidates
+
+        curr_dir = os.path.dirname(current_file)
+
+        # Handle relative imports (e.g. .foo, ..bar)
+        if mod_name.startswith("."):
+            dots = len(mod_name) - len(mod_name.lstrip("."))
+            rem = mod_name.lstrip(".")
+            parts = curr_dir.split(os.sep)
+            if dots <= len(parts) + 1:
+                target_base = os.path.join(*parts[: len(parts) - (dots - 1)]) if dots > 1 else curr_dir
+                if rem:
+                    rel_sub = rem.replace(".", os.sep)
+                    candidates.append(os.path.normpath(os.path.join(target_base, f"{rel_sub}.py")))
+                    candidates.append(os.path.normpath(os.path.join(target_base, rel_sub, "__init__.py")))
+                else:
+                    candidates.append(os.path.normpath(os.path.join(target_base, "__init__.py")))
+        else:
+            # Absolute module name within repo
+            sub = mod_name.replace(".", os.sep)
+            candidates.append(f"{sub}.py")
+            candidates.append(f"{sub}/__init__.py")
+            candidates.append(f"src/{sub}.py")
+            candidates.append(f"src/{sub}/__init__.py")
+            if curr_dir:
+                candidates.append(os.path.normpath(os.path.join(curr_dir, f"{sub}.py")))
+                candidates.append(os.path.normpath(os.path.join(curr_dir, sub, "__init__.py")))
+
+        return candidates
+
+    def _symbol_exists_in_ast(self, source: str, sym_name: str) -> Optional[bool]:
+        """Checks if a symbol is defined or exported in a Python source file AST."""
+        try:
+            tree = ast.parse(source)
+        except Exception:
+            return None
+
+        # Check top-level and class-level definitions
+        for node in ast.iter_child_nodes(tree):
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+                if node.name == sym_name:
+                    return True
+            elif isinstance(node, ast.Assign):
+                for target in node.targets:
+                    if isinstance(target, ast.Name) and target.id == sym_name:
+                        return True
+            elif isinstance(node, (ast.Import, ast.ImportFrom)):
+                for alias in node.names:
+                    asname = alias.asname or alias.name
+                    if asname == sym_name:
+                        return True
+
+        return False
+
     def evaluate(
         self,
         base_source: str,
@@ -184,7 +242,7 @@ class DependencyValidityChecker:
                 dependency_changed=False
             )
 
-        # Check required imports used by the symbol
+        # 1. Check required imports used by the symbol
         required_imports = set()
         for d in base_deps:
             if d.imported_from:
@@ -222,7 +280,45 @@ class DependencyValidityChecker:
                 dependency_changed=True
             )
 
-        # Check for explicit diff-based removals of referenced attributes/symbols
+        # 2. Local Module Import Resolution: Check if referenced imported symbols actually exist in target repo files
+        if repository_root and target_commit and file_path:
+            for dep in base_deps:
+                target_mod_name = ""
+                sym_imported = ""
+                if "." in dep.qualified_name:
+                    target_mod_name, sym_imported = dep.qualified_name.rsplit(".", 1)
+                elif dep.imported_from and "." in dep.imported_from:
+                    target_mod_name, sym_imported = dep.imported_from.rsplit(".", 1)
+
+                if target_mod_name and sym_imported:
+                    cand_paths = self._resolve_local_module_path(repository_root, file_path, target_mod_name)
+                    for cp in cand_paths:
+                        target_mod_src = self._read_git_file(repository_root, target_commit, cp)
+                        if target_mod_src is not None:
+                            # Module exists in target commit, verify symbol
+                            exists = self._symbol_exists_in_ast(target_mod_src, sym_imported)
+                            if exists is False:
+                                return ValidityResult(
+                                    decision="STALE",
+                                    confidence=0.92,
+                                    reasons=[f"Symbol `{sym_imported}` in local module `{cp}` removed in target commit."],
+                                    evidence=[
+                                        ValidityEvidence(
+                                            evidence_type="local_dependency_symbol_missing",
+                                            source="target_repo_ast_resolution",
+                                            detail=f"Module `{cp}` found in target commit but symbol `{sym_imported}` is missing from its AST.",
+                                            confidence=0.92
+                                        )
+                                    ],
+                                    file_changed=None,
+                                    symbol_changed=None,
+                                    symbol_removed=None,
+                                    dependency_changed=True
+                                )
+                            break
+
+
+        # 3. Check for explicit diff-based removals of referenced attributes/symbols
         if diff_hunk:
             removed_lines = [line[1:].strip() for line in diff_hunk.splitlines() if line.startswith("-") and not line.startswith("---")]
             for dep in base_deps:
@@ -277,3 +373,4 @@ class DependencyValidityChecker:
             symbol_removed=None,
             dependency_changed=None
         )
+

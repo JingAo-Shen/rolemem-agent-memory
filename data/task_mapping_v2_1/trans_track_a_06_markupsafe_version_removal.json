@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_06_markupsafe_version_removal",
+  "repository": "markupsafe",
+  "current_task": "Implement `get_library_version()` in `markup_version.py` retrieving MarkupSafe version.",
+  "target_symbol": "get_library_version",
+  "target_file": "markup_version.py",
+  "task_mapping_verified": true,
+  "execution_status": "EXECUTED",
+  "causal_pass": true,
+  "has_hidden_test": true,
+  "has_test_evidence": true
+}

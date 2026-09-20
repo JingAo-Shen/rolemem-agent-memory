@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_12_urllib3_getheaders_removal",
+  "repository": "urllib3",
+  "base_commit": "dd2daef3611ea09f60260391e6a698bb9933dd17",
+  "target_commit": "4587fd6d477f22022be08de597c3a5acd5185c0a",
+  "authenticity_base": true,
+  "authenticity_target": true,
+  "authenticity_verified": true,
+  "primary_file_verified": true,
+  "diff_hunk_bytes": 1381,
+  "pr_url": "https://github.com/urllib3/urllib3/pull/3622",
+  "pr_url_valid": true,
+  "external_evidence_found": true,
+  "evidence_integrity_verified": true
+}

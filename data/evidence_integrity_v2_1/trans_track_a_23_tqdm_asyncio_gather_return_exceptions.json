@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_23_tqdm_asyncio_gather_return_exceptions",
+  "repository": "tqdm",
+  "base_commit": "53d096e77c28005b4f9fe1e9d6274ae311bf87e7",
+  "target_commit": "99615b978702dcf61986de62dfd252d82720af76",
+  "authenticity_base": true,
+  "authenticity_target": true,
+  "authenticity_verified": true,
+  "primary_file_verified": true,
+  "diff_hunk_bytes": 946,
+  "pr_url": "https://github.com/tqdm/tqdm/pull/1776",
+  "pr_url_valid": true,
+  "external_evidence_found": true,
+  "evidence_integrity_verified": true
+}

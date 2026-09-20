@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_12_urllib3_getheaders_removal",
+  "repository": "urllib3",
+  "current_task": "Implement `get_header_content_type(resp)` in `header_extractor.py` retrieving content type header safely.",
+  "target_symbol": "get_header_content_type",
+  "target_file": "header_extractor.py",
+  "task_mapping_verified": true,
+  "execution_status": "EXECUTED",
+  "causal_pass": true,
+  "has_hidden_test": true,
+  "has_test_evidence": true
+}

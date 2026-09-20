@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_28_starlette_exceptions_middleware_removal",
+  "repository": "starlette",
+  "base_commit": "2c98fe335888beda9a67235c79c41d754df3c99c",
+  "target_commit": "856c904a6dcf7368a999dd791e2f98a7c3812f0f",
+  "primary_file": "starlette/exceptions.py",
+  "base_grounded": true,
+  "target_grounded": true,
+  "base_symbol_found": false,
+  "target_symbol_found": true,
+  "stale_memory_candidate": "Import ExceptionMiddleware from starlette.exceptions.",
+  "valid_memory_candidate": "Import ExceptionMiddleware from starlette.middleware.exceptions.",
+  "base_file_sha256": "1940e6fdaf92d4d528027fba5151b29437264c2fa26df5e6ca726c06960a2608",
+  "target_file_sha256": "b48a619596bc12c41f2b0dfec70e49dd93751a3691e147317c92baf40776846f"
+}

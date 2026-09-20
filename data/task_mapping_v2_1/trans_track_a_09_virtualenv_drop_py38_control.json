@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_09_virtualenv_drop_py38_control",
+  "repository": "virtualenv",
+  "current_task": "Implement `requires_pyvenv_patch(info)` in `cpython_patch.py` checking whether legacy macOS launcher patch is needed.",
+  "target_symbol": "requires_pyvenv_patch",
+  "target_file": "cpython_patch.py",
+  "task_mapping_verified": true,
+  "execution_status": "EXECUTED",
+  "causal_pass": true,
+  "has_hidden_test": true,
+  "has_test_evidence": true
+}

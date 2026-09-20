@@ -1,5 +1,5 @@
 {
-  "protocol_version": "2.1-r1",
+  "protocol_version": "2.1-r2",
   "total_evaluated_transitions": 30,
   "core_benchmark_count": 13,
   "control_benchmark_count": 1,

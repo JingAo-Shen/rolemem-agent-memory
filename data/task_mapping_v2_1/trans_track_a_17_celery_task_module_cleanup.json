@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_17_celery_task_module_cleanup",
+  "repository": "celery",
+  "current_task": "Implement `check_task_export()` in `task_helper.py` verifying task export status.",
+  "target_symbol": "check_task_export",
+  "target_file": "task_helper.py",
+  "task_mapping_verified": true,
+  "execution_status": "EXECUTED",
+  "causal_pass": true,
+  "has_hidden_test": true,
+  "has_test_evidence": true
+}

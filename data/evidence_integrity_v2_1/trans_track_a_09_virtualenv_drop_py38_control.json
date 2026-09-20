@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_09_virtualenv_drop_py38_control",
+  "repository": "virtualenv",
+  "base_commit": "f1f4d687b12caac079d81ffc5ee50a16d1fabc1a",
+  "target_commit": "79ce906a2378e24c81a7b27ac506c73d5cc262d9",
+  "authenticity_base": true,
+  "authenticity_target": true,
+  "authenticity_verified": true,
+  "primary_file_verified": true,
+  "diff_hunk_bytes": 1544,
+  "pr_url": "https://github.com/pypa/virtualenv/pull/3170",
+  "pr_url_valid": true,
+  "external_evidence_found": true,
+  "evidence_integrity_verified": true
+}

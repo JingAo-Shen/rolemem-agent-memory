@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_22_dateutil_unknown_timezone_warning",
+  "repository": "dateutil",
+  "current_task": "Implement `get_tz_warning_name()` in `tz_checker.py` returning warning name used for unparseable timezones.",
+  "target_symbol": "get_tz_warning_name",
+  "target_file": "tz_checker.py",
+  "task_mapping_verified": true,
+  "execution_status": "EXECUTED",
+  "causal_pass": false,
+  "has_hidden_test": true,
+  "has_test_evidence": true
+}

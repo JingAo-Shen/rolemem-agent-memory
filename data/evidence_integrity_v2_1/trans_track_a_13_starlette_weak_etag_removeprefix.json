@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_13_starlette_weak_etag_removeprefix",
+  "repository": "starlette",
+  "base_commit": "e6f7ad1ab85efb27ab7910d8007b3f4531f7b083",
+  "target_commit": "37309255b4c1b9c381a2d24a1eaf83100984a16a",
+  "authenticity_base": true,
+  "authenticity_target": true,
+  "authenticity_verified": true,
+  "primary_file_verified": true,
+  "diff_hunk_bytes": 668,
+  "pr_url": "https://github.com/encode/starlette/pull/3193",
+  "pr_url_valid": true,
+  "external_evidence_found": true,
+  "evidence_integrity_verified": true
+}

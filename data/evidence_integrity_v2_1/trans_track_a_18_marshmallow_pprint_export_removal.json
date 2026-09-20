@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_18_marshmallow_pprint_export_removal",
+  "repository": "marshmallow",
+  "base_commit": "ad24f89100c95d3bf99ba17714d457c7c93e0b53",
+  "target_commit": "5429f0d4c6e346dc751599073cab67d66eefbcb2",
+  "authenticity_base": true,
+  "authenticity_target": true,
+  "authenticity_verified": true,
+  "primary_file_verified": true,
+  "diff_hunk_bytes": 318,
+  "pr_url": "https://github.com/marshmallow-code/marshmallow/pull/2823",
+  "pr_url_valid": true,
+  "external_evidence_found": true,
+  "evidence_integrity_verified": true
+}

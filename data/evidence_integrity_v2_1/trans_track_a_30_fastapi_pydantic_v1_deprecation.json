@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_30_fastapi_pydantic_v1_deprecation",
+  "repository": "fastapi",
+  "base_commit": "6513d4daa16a536d17743de6a292f49bd06388a4",
+  "target_commit": "6e42bcd8ce2ade33d94f478310dad20ee84f8f0f",
+  "authenticity_base": true,
+  "authenticity_target": true,
+  "authenticity_verified": true,
+  "primary_file_verified": true,
+  "diff_hunk_bytes": 1029,
+  "pr_url": "https://github.com/tiangolo/fastapi/pull/14583",
+  "pr_url_valid": true,
+  "external_evidence_found": true,
+  "evidence_integrity_verified": true
+}

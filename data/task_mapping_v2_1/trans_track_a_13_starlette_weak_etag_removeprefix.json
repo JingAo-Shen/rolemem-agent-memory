@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_13_starlette_weak_etag_removeprefix",
+  "repository": "starlette",
+  "current_task": "Implement `is_etag_not_modified(etag, if_none_match)` in `etag_helper.py` verifying weak etags properly.",
+  "target_symbol": "is_etag_not_modified",
+  "target_file": "etag_helper.py",
+  "task_mapping_verified": true,
+  "execution_status": "EXECUTED",
+  "causal_pass": false,
+  "has_hidden_test": true,
+  "has_test_evidence": true
+}

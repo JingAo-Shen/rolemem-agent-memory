@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_07_pluggy_varnames_noself",
+  "repository": "pluggy",
+  "current_task": "Implement `extract_spec_varnames(func)` in `spec_helper.py` inspecting hook specification parameters.",
+  "target_symbol": "extract_spec_varnames",
+  "target_file": "spec_helper.py",
+  "task_mapping_verified": true,
+  "execution_status": "EXECUTED",
+  "causal_pass": true,
+  "has_hidden_test": true,
+  "has_test_evidence": true
+}

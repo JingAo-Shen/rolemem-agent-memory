@@ -1,7 +1,0 @@
-{
-  "case_id": "MV21-000134",
-  "contract_code": "from urllib3.poolmanager import PoolManager; pm = PoolManager(); assert pm is not None",
-  "base_contract_pass": true,
-  "target_contract_pass": true,
-  "machine_verified": true
-}

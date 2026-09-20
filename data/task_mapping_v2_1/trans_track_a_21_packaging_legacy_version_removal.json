@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_21_packaging_legacy_version_removal",
+  "repository": "packaging",
+  "current_task": "Implement `parse_version_safely(v: str)` in `version_parser.py` returning standard Version string or 'INVALID'.",
+  "target_symbol": "parse_version_safely",
+  "target_file": "version_parser.py",
+  "task_mapping_verified": true,
+  "execution_status": "EXECUTED",
+  "causal_pass": true,
+  "has_hidden_test": true,
+  "has_test_evidence": true
+}

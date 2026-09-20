@@ -39,6 +39,9 @@ SPECS_DIR = "/code/rolemem-agent-memory/data/specs"
 CAUSAL_DIR = "/code/rolemem-agent-memory/data/causal_matrix_v2_1"
 LEAKAGE_DIR = "/code/rolemem-agent-memory/data/repo_context_leakage_v5"
 EXTERNAL_EV_DIR = "/code/rolemem-agent-memory/data/external_evidence"
+GROUNDING_DIR = "/code/rolemem-agent-memory/data/memory_grounding_v2_1"
+TASK_MAPPING_DIR = "/code/rolemem-agent-memory/data/task_mapping_v2_1"
+EVIDENCE_INTEGRITY_DIR = "/code/rolemem-agent-memory/data/evidence_integrity_v2_1"
 DOWNGRADES_PATH = "/code/rolemem-agent-memory/data/curation/manual_downgrades_v2_1.json"
 REPO_CACHE = "/code/repo_cache"
 CURATION_DIR = "/code/rolemem-agent-memory/data/curation"
@@ -90,38 +93,59 @@ def curate_benchmark():
         stale_sensitive = spec.get("stale_sensitive", True)
         transition_type = spec.get("transition_type", "STALE_SENSITIVE")
 
-        # Gate 1: Authenticity Pass
-        auth_base = check_git_commit(repo_name, b_commit)
-        auth_target = check_git_commit(repo_name, t_commit)
-        authenticity_pass = auth_base and auth_target
+        # Gate 1 & 2: Authenticity & Evidence Integrity from evidence_integrity_v2_1
+        ev_file = os.path.join(EVIDENCE_INTEGRITY_DIR, f"{tid}.json")
+        authenticity_pass = False
+        evidence_pass = False
+        if os.path.exists(ev_file):
+            with open(ev_file, "r", encoding="utf-8") as ef:
+                edata = json.load(ef)
+                authenticity_pass = bool(edata.get("authenticity_verified", False))
+                evidence_pass = bool(edata.get("evidence_integrity_verified", False))
+        else:
+            auth_base = check_git_commit(repo_name, b_commit)
+            auth_target = check_git_commit(repo_name, t_commit)
+            authenticity_pass = auth_base and auth_target
+            pr_valid = bool(spec.get("pr_url") and str(spec.get("pr_url")).startswith("https://github.com/"))
+            ext_ev_exists = os.path.isdir(os.path.join(EXTERNAL_EV_DIR, tid)) or os.path.exists(os.path.join(EXTERNAL_EV_DIR, f"{tid}.json"))
+            evidence_pass = authenticity_pass and pr_valid and bool(spec.get("primary_file")) and ext_ev_exists
 
-        # Gate 2: Evidence Integrity Pass
-        pr_valid = bool(spec.get("pr_url") and str(spec.get("pr_url")).startswith("https://github.com/"))
-        ext_ev_exists = os.path.isdir(os.path.join(EXTERNAL_EV_DIR, tid)) or os.path.exists(os.path.join(EXTERNAL_EV_DIR, f"{tid}.json"))
-        evidence_pass = authenticity_pass and pr_valid and bool(spec.get("primary_file")) and ext_ev_exists
-
-        # Gate 3: Causal Matrix Pass
+        # Gate 3 & 8: Causal Matrix & Environment Reproducibility Pass
         causal_file = os.path.join(CAUSAL_DIR, f"{tid}.json")
         causal_pass = False
         causal_matrix = {}
         env_repro_pass = False
-        task_mapping_pass = False
-
         if os.path.exists(causal_file):
             with open(causal_file, "r", encoding="utf-8") as cf:
                 cdata = json.load(cf)
                 causal_pass = bool(cdata.get("causal_pass", False))
                 causal_matrix = cdata.get("matrix", {})
                 env_repro_pass = bool(cdata.get("environment_reproducible", False))
-                task_mapping_pass = (cdata.get("execution_status") == "EXECUTED")
 
-        # Gate 4 & 5: Memory Grounding Passes
-        stale_candidate = spec.get("stale_memory_candidate", "")
-        valid_candidate = spec.get("valid_memory_candidate", "")
-        target_sym = spec.get("target_symbol", "")
+        # Gate 4 & 5: Memory Grounding Passes from memory_grounding_v2_1
+        ground_file = os.path.join(GROUNDING_DIR, f"{tid}.json")
+        stale_mem_pass = False
+        valid_mem_pass = False
+        if os.path.exists(ground_file):
+            with open(ground_file, "r", encoding="utf-8") as gf:
+                gdata = json.load(gf)
+                stale_mem_pass = bool(gdata.get("base_grounded", False))
+                valid_mem_pass = bool(gdata.get("target_grounded", False))
+        else:
+            stale_candidate = spec.get("stale_memory_candidate", "")
+            valid_candidate = spec.get("valid_memory_candidate", "")
+            stale_mem_pass = bool(stale_candidate and len(stale_candidate.strip()) > 15)
+            valid_mem_pass = bool(valid_candidate and len(valid_candidate.strip()) > 15)
 
-        stale_mem_pass = bool(stale_candidate and len(stale_candidate.strip()) > 15)
-        valid_mem_pass = bool(valid_candidate and len(valid_candidate.strip()) > 15)
+        # Gate 6: Task Mapping Pass from task_mapping_v2_1
+        tm_file = os.path.join(TASK_MAPPING_DIR, f"{tid}.json")
+        task_mapping_pass = False
+        if os.path.exists(tm_file):
+            with open(tm_file, "r", encoding="utf-8") as tf:
+                tdata = json.load(tf)
+                task_mapping_pass = bool(tdata.get("task_mapping_verified", False) and tdata.get("execution_status") == "EXECUTED")
+        else:
+            task_mapping_pass = (cdata.get("execution_status") == "EXECUTED") if os.path.exists(causal_file) else False
 
         # Gate 7: Leakage Pass
         leakage_file = os.path.join(LEAKAGE_DIR, f"{tid}.json")
@@ -228,7 +252,7 @@ def curate_benchmark():
     distinct_all_repos = len(set(r["repo_name"] for r in pool_records))
 
     summary = {
-        "protocol_version": "2.1-r1",
+        "protocol_version": "2.1-r2",
         "total_evaluated_transitions": len(pool_records),
         "core_benchmark_count": len(core_records),
         "control_benchmark_count": len(control_records),
@@ -254,7 +278,7 @@ def curate_benchmark():
     # Generate markdown report
     rep_p = os.path.join(REPORTS_DIR, "benchmark-curation-v2.1.md")
     lines = [
-        "# RoleMem Protocol V2.1-R1 — Gate-Based Benchmark Curation Report",
+        "# RoleMem Protocol V2.1-R2 — Gate-Based Benchmark Curation Report",
         "",
         "## 1. Executive Curation Summary",
         f"- **Total Evaluated Transitions**: {len(pool_records)}",

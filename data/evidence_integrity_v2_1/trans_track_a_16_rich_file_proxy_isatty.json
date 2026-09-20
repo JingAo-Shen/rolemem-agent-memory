@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_16_rich_file_proxy_isatty",
+  "repository": "rich",
+  "base_commit": "58ac15120fe254886c10d6253667733c83604cb4",
+  "target_commit": "19c67b9a3479841e9133bea94607c89ee931d3fc",
+  "authenticity_base": true,
+  "authenticity_target": true,
+  "authenticity_verified": true,
+  "primary_file_verified": true,
+  "diff_hunk_bytes": 324,
+  "pr_url": "https://github.com/Textualize/rich/pull/4077",
+  "pr_url_valid": true,
+  "external_evidence_found": true,
+  "evidence_integrity_verified": true
+}

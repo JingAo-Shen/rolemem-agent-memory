@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_06_markupsafe_version_removal",
+  "repository": "markupsafe",
+  "base_commit": "0c422e10b1e1ba43ca56a56f1f8a11edfb431b71",
+  "target_commit": "dfa58162f6ba9a0afebab7e924af362cd0bede66",
+  "authenticity_base": true,
+  "authenticity_target": true,
+  "authenticity_verified": true,
+  "primary_file_verified": true,
+  "diff_hunk_bytes": 814,
+  "pr_url": "https://github.com/pallets/markupsafe/pull/499",
+  "pr_url_valid": true,
+  "external_evidence_found": true,
+  "evidence_integrity_verified": true
+}

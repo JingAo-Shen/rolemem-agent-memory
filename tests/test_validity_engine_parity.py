@@ -29,13 +29,18 @@ def test_production_experiment_parity():
 
     for c in blind_cases:
         cid = c["case_id"]
+        repo = c.get("repository", "")
+        repo_root = f"/code/repo_cache/{repo}" if repo else None
         res = engine.evaluate(
             memory_statement=c.get("memory_statement", ""),
             symbol_qualified_name=c.get("symbol_qualified_name", ""),
             base_source=c.get("base_source_excerpt", ""),
             target_source=c.get("target_source_excerpt", ""),
             file_path=c.get("file_path", ""),
-            diff_hunk=c.get("diff_hunk", "")
+            diff_hunk=c.get("diff_hunk", ""),
+            repository_root=repo_root,
+            base_commit=c.get("base_commit"),
+            target_commit=c.get("target_commit")
         )
 
         expected_pred = "STALE" if res.decision == "STALE" else "VALID"

@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_30_fastapi_pydantic_v1_deprecation",
+  "repository": "fastapi",
+  "current_task": "Implement `is_pydantic_v1_deprecated()` in `fastapi_pydantic_auditor.py` detecting if FastAPI warns on pydantic.v1 usage.",
+  "target_symbol": "is_pydantic_v1_deprecated",
+  "target_file": "fastapi_pydantic_auditor.py",
+  "task_mapping_verified": true,
+  "execution_status": "EXECUTED",
+  "causal_pass": false,
+  "has_hidden_test": true,
+  "has_test_evidence": true
+}

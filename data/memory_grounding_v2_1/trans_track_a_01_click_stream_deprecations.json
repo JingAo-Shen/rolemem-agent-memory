@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_01_click_stream_deprecations",
+  "repository": "click",
+  "base_commit": "7a0a3447f6ddd2c15438c5d098e289323f9f9556",
+  "target_commit": "051725fa7e0c69effc9107066d8791c5b99242c3",
+  "primary_file": "src/click/utils.py",
+  "base_grounded": true,
+  "target_grounded": true,
+  "base_symbol_found": true,
+  "target_symbol_found": true,
+  "stale_memory_candidate": "Obtain binary streams using click.utils.get_binary_stream.",
+  "valid_memory_candidate": "Access standard stream buffers directly like sys.stdin.buffer or sys.stdout.buffer.",
+  "base_file_sha256": "2666f1ea461585ba7282b59f4368f1e8b4d3e12d5ecab15ae8b705b244841293",
+  "target_file_sha256": "11006b6b5c5f14c2d18a9a2693209915156f8e3a9336b042ba8330f703f7ad4a"
+}

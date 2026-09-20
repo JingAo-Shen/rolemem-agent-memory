@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_19_flake8_doctest_options_removal",
+  "repository": "flake8",
+  "current_task": "Implement `check_doctest_filtering()` in `flake8_config.py` checking doctest filtering support.",
+  "target_symbol": "check_doctest_filtering",
+  "target_file": "flake8_config.py",
+  "task_mapping_verified": true,
+  "execution_status": "EXECUTED",
+  "causal_pass": true,
+  "has_hidden_test": true,
+  "has_test_evidence": true
+}

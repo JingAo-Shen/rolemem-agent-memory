@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_20_iniconfig_strip_inline_comments",
+  "repository": "iniconfig",
+  "base_commit": "57b7ed9c7a5950f9c57b2cfbe641ff4cc04baf1c",
+  "target_commit": "7faed13ae50bad7c5da3f5782f254a8a7736bb84",
+  "authenticity_base": true,
+  "authenticity_target": true,
+  "authenticity_verified": true,
+  "primary_file_verified": true,
+  "diff_hunk_bytes": 4694,
+  "pr_url": "https://github.com/pytest-dev/iniconfig/pull/70",
+  "pr_url_valid": true,
+  "external_evidence_found": true,
+  "evidence_integrity_verified": true
+}

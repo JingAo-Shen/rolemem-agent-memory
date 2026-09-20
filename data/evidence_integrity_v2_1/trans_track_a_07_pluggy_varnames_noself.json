@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_07_pluggy_varnames_noself",
+  "repository": "pluggy",
+  "base_commit": "dd20a85e38af556e1c818b03391eab1480438e0c",
+  "target_commit": "0258484dc180a0c28705de83783b269f4fed4873",
+  "authenticity_base": true,
+  "authenticity_target": true,
+  "authenticity_verified": true,
+  "primary_file_verified": true,
+  "diff_hunk_bytes": 2300,
+  "pr_url": "https://github.com/pytest-dev/pluggy/pull/632",
+  "pr_url_valid": true,
+  "external_evidence_found": true,
+  "evidence_integrity_verified": true
+}

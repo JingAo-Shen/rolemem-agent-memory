@@ -95,8 +95,10 @@ def test_cat_b_has_behavioral_contract():
         assert os.path.exists(cpath), f"Cat B case {cid} missing contract artifact at {cpath}"
         with open(cpath, "r", encoding="utf-8") as f:
             cdata = json.load(f)
-        assert cdata.get("base_contract_pass") is True
-        assert cdata.get("target_contract_pass") is True
+        base_pass = cdata["base_execution"]["passed"] if "base_execution" in cdata else cdata.get("base_contract_pass")
+        target_pass = cdata["target_execution"]["passed"] if "target_execution" in cdata else cdata.get("target_contract_pass")
+        assert base_pass is True
+        assert target_pass is True
         assert cdata.get("machine_verified") is True
 
 
@@ -109,9 +111,12 @@ def test_cat_c_has_counterfactual_evidence():
         assert os.path.exists(cfpath), f"Cat C case {cid} missing counterfactual artifact at {cfpath}"
         with open(cfpath, "r", encoding="utf-8") as f:
             cfdata = json.load(f)
-        assert cfdata.get("old_on_base") is True
-        assert cfdata.get("old_on_target") is False
-        assert cfdata.get("new_on_target") is True
+        old_b = cfdata["old_on_base"]["passed"] if isinstance(cfdata.get("old_on_base"), dict) else cfdata.get("old_on_base")
+        old_t = cfdata["old_on_target"]["passed"] if isinstance(cfdata.get("old_on_target"), dict) else cfdata.get("old_on_target")
+        new_t = cfdata["new_on_target"]["passed"] if isinstance(cfdata.get("new_on_target"), dict) else cfdata.get("new_on_target")
+        assert old_b is True
+        assert old_t is False
+        assert new_t is True
         assert cfdata.get("machine_verified") is True
 
 

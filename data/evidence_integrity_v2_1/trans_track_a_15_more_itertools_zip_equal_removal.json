@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_15_more_itertools_zip_equal_removal",
+  "repository": "more-itertools",
+  "base_commit": "8c1a6ef241b51ff055e89219f050ccf4f15f37f6",
+  "target_commit": "8fa3b81c8dd90c3b3f6648add2228aaaebb42884",
+  "authenticity_base": true,
+  "authenticity_target": true,
+  "authenticity_verified": true,
+  "primary_file_verified": true,
+  "diff_hunk_bytes": 4420,
+  "pr_url": "https://github.com/more-itertools/more-itertools/pull/1076",
+  "pr_url_valid": true,
+  "external_evidence_found": true,
+  "evidence_integrity_verified": true
+}

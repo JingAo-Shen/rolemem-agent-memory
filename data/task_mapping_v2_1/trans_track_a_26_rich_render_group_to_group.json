@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_26_rich_render_group_to_group",
+  "repository": "rich",
+  "current_task": "Implement `create_render_group(*items)` in `group_factory.py` creating a consolidated renderable group.",
+  "target_symbol": "create_render_group",
+  "target_file": "group_factory.py",
+  "task_mapping_verified": true,
+  "execution_status": "EXECUTED",
+  "causal_pass": true,
+  "has_hidden_test": true,
+  "has_test_evidence": true
+}

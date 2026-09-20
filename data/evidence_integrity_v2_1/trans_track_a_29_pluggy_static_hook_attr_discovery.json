@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_29_pluggy_static_hook_attr_discovery",
+  "repository": "pluggy",
+  "base_commit": "6a7f8960eb4009b551f14030233cea7a64ccaf5d",
+  "target_commit": "bc9bcac68b9f3c670481661ddc50e5a0217e71d1",
+  "authenticity_base": true,
+  "authenticity_target": true,
+  "authenticity_verified": true,
+  "primary_file_verified": true,
+  "diff_hunk_bytes": 6915,
+  "pr_url": "https://github.com/pytest-dev/pluggy/pull/701",
+  "pr_url_valid": true,
+  "external_evidence_found": true,
+  "evidence_integrity_verified": true
+}

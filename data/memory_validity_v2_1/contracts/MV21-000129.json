@@ -1,7 +1,0 @@
-{
-  "case_id": "MV21-000129",
-  "contract_code": "from tqdm.std import tqdm; t = tqdm(range(5)); assert len(t) == 5",
-  "base_contract_pass": true,
-  "target_contract_pass": true,
-  "machine_verified": true
-}

@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_29_pluggy_static_hook_attr_discovery",
+  "repository": "pluggy",
+  "base_commit": "6a7f8960eb4009b551f14030233cea7a64ccaf5d",
+  "target_commit": "bc9bcac68b9f3c670481661ddc50e5a0217e71d1",
+  "primary_file": "src/pluggy/_manager.py",
+  "base_grounded": true,
+  "target_grounded": true,
+  "base_symbol_found": true,
+  "target_symbol_found": true,
+  "stale_memory_candidate": "Inspect plugin hooks by accessing attributes directly with getattr(plugin, name).",
+  "valid_memory_candidate": "Inspect plugin hooks using _static_hook_attr(plugin, name) to prevent unintended property getter execution.",
+  "base_file_sha256": "f8c36f016ee4a55102c3083b154cd8d3a2dc5310051992e15f4a36609b8a16ed",
+  "target_file_sha256": "081d801bcbf385529b5d0d82ec7d40e4767d279452f5bfdf8ad1daf07278cca7"
+}

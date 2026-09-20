@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_05_itsdangerous_version_removal",
+  "repository": "itsdangerous",
+  "base_commit": "4dffa1963f896a0a311dec3c14f003a5f382c446",
+  "target_commit": "31f46a3469dbfb2ecf83dd0c4297c1efc508fcca",
+  "authenticity_base": true,
+  "authenticity_target": true,
+  "authenticity_verified": true,
+  "primary_file_verified": true,
+  "diff_hunk_bytes": 1202,
+  "pr_url": "https://github.com/pallets/itsdangerous/pull/406",
+  "pr_url_valid": true,
+  "external_evidence_found": true,
+  "evidence_integrity_verified": true
+}

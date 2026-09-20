@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_19_flake8_doctest_options_removal",
+  "repository": "flake8",
+  "base_commit": "15f45696701bc234494fbc0e803f8fdee712b945",
+  "target_commit": "b3e251512238ad39c87e4b8d1614903fe493f7ea",
+  "authenticity_base": true,
+  "authenticity_target": true,
+  "authenticity_verified": true,
+  "primary_file_verified": true,
+  "diff_hunk_bytes": 4614,
+  "pr_url": "https://github.com/PyCQA/flake8/pull/1854",
+  "pr_url_valid": true,
+  "external_evidence_found": true,
+  "evidence_integrity_verified": true
+}

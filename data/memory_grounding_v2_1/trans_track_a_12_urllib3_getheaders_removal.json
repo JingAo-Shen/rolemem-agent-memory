@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_12_urllib3_getheaders_removal",
+  "repository": "urllib3",
+  "base_commit": "dd2daef3611ea09f60260391e6a698bb9933dd17",
+  "target_commit": "4587fd6d477f22022be08de597c3a5acd5185c0a",
+  "primary_file": "src/urllib3/response.py",
+  "base_grounded": true,
+  "target_grounded": true,
+  "base_symbol_found": true,
+  "target_symbol_found": true,
+  "stale_memory_candidate": "Inspect response headers via HTTPResponse.getheaders().",
+  "valid_memory_candidate": "Access response headers directly via response.headers.",
+  "base_file_sha256": "410fd0dbe9767b100391aad3fa68b6a51b012d20516fd274059af86294a7035d",
+  "target_file_sha256": "96fb034838422e9b8f5782b569d3f70a674ecf26a2f6195f137406c6fc798332"
+}

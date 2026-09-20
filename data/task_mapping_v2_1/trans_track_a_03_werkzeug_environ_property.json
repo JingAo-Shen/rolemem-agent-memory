@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_03_werkzeug_environ_property",
+  "repository": "werkzeug",
+  "current_task": "Implement `create_header_property(key: str)` in `header_proxy.py` returning an environ property accessor.",
+  "target_symbol": "create_header_property",
+  "target_file": "header_proxy.py",
+  "task_mapping_verified": true,
+  "execution_status": "EXECUTED",
+  "causal_pass": true,
+  "has_hidden_test": true,
+  "has_test_evidence": true
+}

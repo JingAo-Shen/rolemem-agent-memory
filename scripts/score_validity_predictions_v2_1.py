@@ -94,9 +94,19 @@ def score_predictions():
         acc_decided = (tp + tn) / decided if decided > 0 else 0.0
         acc_overall = (tp + tn) / total_cases if total_cases > 0 else 0.0
 
-        prec = tp / (tp + fp) if (tp + fp) > 0 else 0.0
-        rec = tp / (tp + fn) if (tp + fn) > 0 else 0.0
-        f1 = (2 * prec * rec) / (prec + rec) if (prec + rec) > 0 else 0.0
+        prec_stale = tp / (tp + fp) if (tp + fp) > 0 else 0.0
+        rec_stale = tp / (tp + fn) if (tp + fn) > 0 else 0.0
+        f1_stale = (2 * prec_stale * rec_stale) / (prec_stale + rec_stale) if (prec_stale + rec_stale) > 0 else 0.0
+
+        prec_valid = tn / (tn + fn) if (tn + fn) > 0 else 0.0
+        rec_valid = tn / (tn + fp) if (tn + fp) > 0 else 0.0
+        f1_valid = (2 * prec_valid * rec_valid) / (prec_valid + rec_valid) if (prec_valid + rec_valid) > 0 else 0.0
+
+        macro_f1 = (f1_stale + f1_valid) / 2.0
+        balanced_acc = (rec_stale + rec_valid) / 2.0
+
+        mcc_denom = ((tp + fp) * (tp + fn) * (tn + fp) * (tn + fn)) ** 0.5
+        mcc = ((tp * tn) - (fp * fn)) / mcc_denom if mcc_denom > 0 else 0.0
 
         fir = fp / (tn + fp) if (tn + fp) > 0 else 0.0
         ser = fn / (tp + fn) if (tp + fn) > 0 else 0.0
@@ -118,9 +128,12 @@ def score_predictions():
             "Coverage": coverage,
             "Accuracy_Decided": acc_decided,
             "Accuracy_Overall": acc_overall,
-            "Precision": prec,
-            "Recall": rec,
-            "F1": f1,
+            "Balanced_Accuracy": balanced_acc,
+            "Precision": prec_stale,
+            "Recall": rec_stale,
+            "F1": f1_stale,
+            "Macro_F1": macro_f1,
+            "MCC": mcc,
             "False_Invalidation_Rate_FIR": fir,
             "Stale_Exposure_Rate_SER": ser,
             "Valid_Memory_Recall": vmr,
@@ -130,7 +143,7 @@ def score_predictions():
 
     out_data = {
         "benchmark_summary": {
-            "protocol_version": "2.1",
+            "protocol_version": "2.1-r2",
             "total_cases": total_cases,
             "valid_cases": valid_cases,
             "stale_cases": stale_cases,

@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_24_cachelib_timeout_timedelta",
+  "repository": "cachelib",
+  "current_task": "Implement `normalize_timeout_value(cache, timeout)` in `cache_helper.py` returning normalized integer seconds using cache instance.",
+  "target_symbol": "normalize_timeout_value",
+  "target_file": "cache_helper.py",
+  "task_mapping_verified": true,
+  "execution_status": "EXECUTED",
+  "causal_pass": false,
+  "has_hidden_test": true,
+  "has_test_evidence": true
+}

@@ -1,0 +1,31 @@
+{
+  "case_id": "MV21-000042",
+  "repository": "fastapi",
+  "base_commit": "f3644b33cdaf1b14868d77f1c309e0a455c6bac8",
+  "target_commit": "5429fed84e84e32672c25a953eca3429b841ce90",
+  "base_execution": {
+    "passed": true,
+    "exit_code": 0,
+    "python_version": "3.13.5",
+    "cwd_commit": "f3644b33cdaf1b14868d77f1c309e0a455c6bac8",
+    "contract_hash": "c4baeb55d4780c46b75ab82fcb77a9d82be2b88c1ffc91b8cbf763a578b96c43",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout": "",
+    "stderr": "",
+    "timestamp": 1789918695.515175
+  },
+  "target_execution": {
+    "passed": true,
+    "exit_code": 0,
+    "python_version": "3.13.5",
+    "cwd_commit": "5429fed84e84e32672c25a953eca3429b841ce90",
+    "contract_hash": "c4baeb55d4780c46b75ab82fcb77a9d82be2b88c1ffc91b8cbf763a578b96c43",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout": "",
+    "stderr": "",
+    "timestamp": 1789918696.129289
+  },
+  "machine_verified": true
+}

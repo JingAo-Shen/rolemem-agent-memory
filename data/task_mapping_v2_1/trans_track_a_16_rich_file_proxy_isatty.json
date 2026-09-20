@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_16_rich_file_proxy_isatty",
+  "repository": "rich",
+  "current_task": "Implement `check_proxy_interactive(proxy)` in `proxy_checker.py` returning bool indicating if the proxy file is a tty.",
+  "target_symbol": "check_proxy_interactive",
+  "target_file": "proxy_checker.py",
+  "task_mapping_verified": true,
+  "execution_status": "EXECUTED",
+  "causal_pass": false,
+  "has_hidden_test": true,
+  "has_test_evidence": true
+}

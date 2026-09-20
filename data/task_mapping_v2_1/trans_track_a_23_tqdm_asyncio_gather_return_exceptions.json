@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_23_tqdm_asyncio_gather_return_exceptions",
+  "repository": "tqdm",
+  "current_task": "Implement `run_gather_tasks(tasks)` in `async_helper.py` executing coroutine tasks with tqdm_asyncio.gather returning exception objects without raising.",
+  "target_symbol": "run_gather_tasks",
+  "target_file": "async_helper.py",
+  "task_mapping_verified": true,
+  "execution_status": "EXECUTED",
+  "causal_pass": false,
+  "has_hidden_test": true,
+  "has_test_evidence": true
+}

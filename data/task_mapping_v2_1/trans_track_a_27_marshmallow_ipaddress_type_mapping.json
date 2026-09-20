@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_27_marshmallow_ipaddress_type_mapping",
+  "repository": "marshmallow",
+  "current_task": "Implement `get_ip_field_type(ip_cls)` in `ip_schema_helper.py` resolving corresponding schema field class.",
+  "target_symbol": "get_ip_field_type",
+  "target_file": "ip_schema_helper.py",
+  "task_mapping_verified": true,
+  "execution_status": "EXECUTED",
+  "causal_pass": false,
+  "has_hidden_test": true,
+  "has_test_evidence": true
+}

@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_03_werkzeug_environ_property",
+  "repository": "werkzeug",
+  "base_commit": "f97c305673ba121a1dae6764c37e8be48907a1d1",
+  "target_commit": "7641d4990f06d583425a4e6ba25e9d2f18934885",
+  "authenticity_base": true,
+  "authenticity_target": true,
+  "authenticity_verified": true,
+  "primary_file_verified": true,
+  "diff_hunk_bytes": 2034,
+  "pr_url": "https://github.com/pallets/werkzeug/pull/3276",
+  "pr_url_valid": true,
+  "external_evidence_found": true,
+  "evidence_integrity_verified": true
+}

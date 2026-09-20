@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_27_marshmallow_ipaddress_type_mapping",
+  "repository": "marshmallow",
+  "base_commit": "3bc191ab3c8cac8356839bcde0918cb6aed4d3a1",
+  "target_commit": "c38b48ec3b8bb44315036d0c8a07bc8477eb5094",
+  "authenticity_base": true,
+  "authenticity_target": true,
+  "authenticity_verified": true,
+  "primary_file_verified": true,
+  "diff_hunk_bytes": 812,
+  "pr_url": "https://github.com/marshmallow-code/marshmallow/pull/2906",
+  "pr_url_valid": true,
+  "external_evidence_found": true,
+  "evidence_integrity_verified": true
+}

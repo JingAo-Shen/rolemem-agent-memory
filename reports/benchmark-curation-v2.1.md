@@ -1,4 +1,4 @@
-# RoleMem Protocol V2.1-R1 — Gate-Based Benchmark Curation Report
+# RoleMem Protocol V2.1-R2 — Gate-Based Benchmark Curation Report
 
 ## 1. Executive Curation Summary
 - **Total Evaluated Transitions**: 30

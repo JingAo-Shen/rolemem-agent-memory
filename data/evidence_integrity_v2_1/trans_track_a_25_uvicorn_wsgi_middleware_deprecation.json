@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_25_uvicorn_wsgi_middleware_deprecation",
+  "repository": "uvicorn",
+  "base_commit": "23b9f05a389a476aee151698cede171d915f6c53",
+  "target_commit": "2351d5ff2b068d7bcba6eaccde83bc90b0727c89",
+  "authenticity_base": true,
+  "authenticity_target": true,
+  "authenticity_verified": true,
+  "primary_file_verified": true,
+  "diff_hunk_bytes": 1152,
+  "pr_url": "https://github.com/encode/uvicorn/pull/1825",
+  "pr_url_valid": true,
+  "external_evidence_found": true,
+  "evidence_integrity_verified": true
+}

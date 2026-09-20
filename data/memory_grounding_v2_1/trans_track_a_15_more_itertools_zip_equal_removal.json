@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_15_more_itertools_zip_equal_removal",
+  "repository": "more-itertools",
+  "base_commit": "8c1a6ef241b51ff055e89219f050ccf4f15f37f6",
+  "target_commit": "8fa3b81c8dd90c3b3f6648add2228aaaebb42884",
+  "primary_file": "more_itertools/more.py",
+  "base_grounded": true,
+  "target_grounded": true,
+  "base_symbol_found": true,
+  "target_symbol_found": true,
+  "stale_memory_candidate": "Use more_itertools.zip_equal to pair iterables with length equality validation.",
+  "valid_memory_candidate": "Use Python built-in zip(..., strict=True) to pair iterables with strict length check.",
+  "base_file_sha256": "98d3ca2aee5423b9512f8eb4be09b441309616218c542328b123f15527626e8b",
+  "target_file_sha256": "96c243943842abaa67f96a91b2d43b271ccf32cfffd9747bf14817c802013574"
+}

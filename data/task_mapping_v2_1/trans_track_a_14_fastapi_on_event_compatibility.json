@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_14_fastapi_on_event_compatibility",
+  "repository": "fastapi",
+  "current_task": "Implement `has_default_lifespan()` in `app_lifecycle.py` verifying default lifespan handler presence.",
+  "target_symbol": "has_default_lifespan",
+  "target_file": "app_lifecycle.py",
+  "task_mapping_verified": true,
+  "execution_status": "EXECUTED",
+  "causal_pass": false,
+  "has_hidden_test": true,
+  "has_test_evidence": true
+}

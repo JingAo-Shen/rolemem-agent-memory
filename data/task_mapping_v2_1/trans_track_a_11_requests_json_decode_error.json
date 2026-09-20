@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_11_requests_json_decode_error",
+  "repository": "requests",
+  "current_task": "Implement `parse_api_response(resp)` in `client_parser.py` extracting json and catching requests decoding errors safely.",
+  "target_symbol": "parse_api_response",
+  "target_file": "client_parser.py",
+  "task_mapping_verified": true,
+  "execution_status": "EXECUTED",
+  "causal_pass": false,
+  "has_hidden_test": true,
+  "has_test_evidence": true
+}

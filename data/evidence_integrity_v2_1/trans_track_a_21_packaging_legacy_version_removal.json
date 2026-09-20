@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_21_packaging_legacy_version_removal",
+  "repository": "packaging",
+  "base_commit": "4f42225e91a0be634625c09e84dd29ea82b85e27",
+  "target_commit": "237ff3aa348486cf835a980592af3a59fccd6101",
+  "authenticity_base": true,
+  "authenticity_target": true,
+  "authenticity_verified": true,
+  "primary_file_verified": true,
+  "diff_hunk_bytes": 5304,
+  "pr_url": "https://github.com/pypa/packaging/pull/407",
+  "pr_url_valid": true,
+  "external_evidence_found": true,
+  "evidence_integrity_verified": true
+}

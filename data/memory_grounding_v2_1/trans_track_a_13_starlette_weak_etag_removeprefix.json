@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_13_starlette_weak_etag_removeprefix",
+  "repository": "starlette",
+  "base_commit": "e6f7ad1ab85efb27ab7910d8007b3f4531f7b083",
+  "target_commit": "37309255b4c1b9c381a2d24a1eaf83100984a16a",
+  "primary_file": "starlette/staticfiles.py",
+  "base_grounded": true,
+  "target_grounded": true,
+  "base_symbol_found": true,
+  "target_symbol_found": true,
+  "stale_memory_candidate": "Call is_not_modified on StaticFiles using strip to normalize weak ETags.",
+  "valid_memory_candidate": "Call is_not_modified on StaticFiles using removeprefix to normalize weak ETags.",
+  "base_file_sha256": "d8d02e8870b93d22a22bea2fd52e8b47970d4d8dac401eb6b90ac5751e5949fe",
+  "target_file_sha256": "f063f70ca34df16dd51992113d914f4012038aa37e61a29c34dd84bda30c418c"
+}

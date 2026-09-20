@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_01_click_stream_deprecations",
+  "repository": "click",
+  "base_commit": "7a0a3447f6ddd2c15438c5d098e289323f9f9556",
+  "target_commit": "051725fa7e0c69effc9107066d8791c5b99242c3",
+  "authenticity_base": true,
+  "authenticity_target": true,
+  "authenticity_verified": true,
+  "primary_file_verified": true,
+  "diff_hunk_bytes": 2865,
+  "pr_url": "https://github.com/pallets/click/pull/3695",
+  "pr_url_valid": true,
+  "external_evidence_found": true,
+  "evidence_integrity_verified": true
+}

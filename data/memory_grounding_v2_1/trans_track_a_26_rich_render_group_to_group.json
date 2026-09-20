@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_26_rich_render_group_to_group",
+  "repository": "rich",
+  "base_commit": "d65c3bd53da234a4047c469aa7740e03d1a622f7",
+  "target_commit": "44a715dec2b08277742939598fa28d056d6faef9",
+  "primary_file": "rich/console.py",
+  "base_grounded": true,
+  "target_grounded": true,
+  "base_symbol_found": true,
+  "target_symbol_found": true,
+  "stale_memory_candidate": "Import and instantiate rich.console.RenderGroup to group renderable objects.",
+  "valid_memory_candidate": "Import and instantiate rich.console.Group to group renderable objects.",
+  "base_file_sha256": "9cc1f73a013e132947ac5d19d57ba4b4c1ec1ae7765bf56a3f917f6e42dae121",
+  "target_file_sha256": "f15303c41fa08eccaae54d9974ed57615dbcdf1ffb60664547f856d2b90279f8"
+}

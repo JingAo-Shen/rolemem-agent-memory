@@ -1,0 +1,44 @@
+{
+  "case_id": "MV21-000045",
+  "repository": "pluggy",
+  "base_commit": "dd20a85e38af556e1c818b03391eab1480438e0c",
+  "target_commit": "0258484dc180a0c28705de83783b269f4fed4873",
+  "symbol_digest_equal": true,
+  "old_on_base": {
+    "passed": true,
+    "exit_code": 0,
+    "python_version": "3.13.5",
+    "cwd_commit": "dd20a85e38af556e1c818b03391eab1480438e0c",
+    "contract_hash": "a1e71356d485a53f682751834eee8c076bd837cae86dbe5b5bec97179a5e3209",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e46778e876d8ba10b034c4f05bb09fe6a69e6dd728e303c383730bf474bf3e41",
+    "stdout": "",
+    "stderr": "<string>:6: FutureWarning: HookSpecWithoutSelf.my_hook is a method but its first parameter 'a' is not 'self'. Add 'self' as the first parameter or use @staticmethod. This will become an error in a future version of pluggy.\n",
+    "timestamp": 1789918696.913412
+  },
+  "old_on_target": {
+    "passed": false,
+    "exit_code": 1,
+    "python_version": "3.13.5",
+    "cwd_commit": "0258484dc180a0c28705de83783b269f4fed4873",
+    "contract_hash": "a1e71356d485a53f682751834eee8c076bd837cae86dbe5b5bec97179a5e3209",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "af65f4ac7d891cec823aafc8e0c416cf5694f155152876fe75689cdbf9d49059",
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 6, in <module>\n    args, kwargs = varnames(HookSpecWithoutSelf.my_hook, legacy_noself=True)\n                   ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/tmpa_9q2e0e/wt/src/pluggy/_hooks.py\", line 375, in varnames\n    warnings.warn(\n    ~~~~~~~~~~~~~^\n        f\"{qualname} is a method but its first parameter\"\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<4 lines>...\n        stacklevel=2,\n        ^^^^^^^^^^^^^\n    )\n    ^\nDeprecationWarning: HookSpecWithoutSelf.my_hook is a method but its first parameter 'a' is not 'self'. Add 'self' as the first parameter or use @staticmethod. This will become an error in a future version of pluggy.\n",
+    "timestamp": 1789918696.9706602
+  },
+  "new_on_target": {
+    "passed": true,
+    "exit_code": 0,
+    "python_version": "3.13.5",
+    "cwd_commit": "0258484dc180a0c28705de83783b269f4fed4873",
+    "contract_hash": "6f90c164112930d38bd76acc8bed4e33827ac4dd8addfbbab638297330f49dac",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout": "",
+    "stderr": "",
+    "timestamp": 1789918697.0276248
+  },
+  "machine_verified": true
+}

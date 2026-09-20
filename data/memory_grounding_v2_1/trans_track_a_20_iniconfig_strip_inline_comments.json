@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_20_iniconfig_strip_inline_comments",
+  "repository": "iniconfig",
+  "base_commit": "57b7ed9c7a5950f9c57b2cfbe641ff4cc04baf1c",
+  "target_commit": "7faed13ae50bad7c5da3f5782f254a8a7736bb84",
+  "primary_file": "src/iniconfig/__init__.py",
+  "base_grounded": true,
+  "target_grounded": true,
+  "base_symbol_found": true,
+  "target_symbol_found": true,
+  "stale_memory_candidate": "Load INI configurations via standard IniConfig constructor without comment stripping.",
+  "valid_memory_candidate": "Load INI configurations via IniConfig.parse to strip inline comments cleanly.",
+  "base_file_sha256": "54d78711f7f17b2aa2a6c1593da464d91a0bf8da08c875fb3df2242b0ac0db1a",
+  "target_file_sha256": "5cbe5ea94623e26b2400ea2b6798df4408a726f2734c8f9f271a4fe317d7b5ac"
+}

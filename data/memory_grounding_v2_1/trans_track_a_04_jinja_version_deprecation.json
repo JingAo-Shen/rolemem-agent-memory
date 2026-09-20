@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_04_jinja_version_deprecation",
+  "repository": "jinja",
+  "base_commit": "dfe82ade3dc7d112d7d166ca0d7ae7f794fe19e6",
+  "target_commit": "9e49736ae075fcffb85f731a3fe2c006cf1edca4",
+  "primary_file": "src/jinja2/__init__.py",
+  "base_grounded": true,
+  "target_grounded": true,
+  "base_symbol_found": false,
+  "target_symbol_found": true,
+  "stale_memory_candidate": "Inspect jinja2.__version__ to read template engine version.",
+  "valid_memory_candidate": "Inspect package version using importlib.metadata.version('jinja2').",
+  "base_file_sha256": "705fcc42991fcdeea57124f06144730a08d45f425a04bb6ef9bbc222e6e6b70e",
+  "target_file_sha256": "eb0f58170da5a4d0a844700d760611c4ccce6c987471ba3210851433462d9044"
+}

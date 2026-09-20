@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_09_virtualenv_drop_py38_control",
+  "repository": "virtualenv",
+  "base_commit": "f1f4d687b12caac079d81ffc5ee50a16d1fabc1a",
+  "target_commit": "79ce906a2378e24c81a7b27ac506c73d5cc262d9",
+  "primary_file": "src/virtualenv/create/via_global_ref/builtin/cpython/cpython3.py",
+  "base_grounded": true,
+  "target_grounded": true,
+  "base_symbol_found": false,
+  "target_symbol_found": true,
+  "stale_memory_candidate": "Call CPython3Posix.pyvenv_launch_patch_active to detect launcher patch necessity.",
+  "valid_memory_candidate": "Python 3.8 support is dropped; always return False without legacy launcher patches.",
+  "base_file_sha256": "71bd2d1ed9e8a6b1941368e35d8c4c59018264dee809960bcf4acde12097bf7a",
+  "target_file_sha256": "2aa480656e204a1f6eb9aa3ede39b68296f6fb976db30c25387c48bcf57eed2f"
+}

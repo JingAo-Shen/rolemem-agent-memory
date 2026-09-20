@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_07_pluggy_varnames_noself",
+  "repository": "pluggy",
+  "base_commit": "dd20a85e38af556e1c818b03391eab1480438e0c",
+  "target_commit": "0258484dc180a0c28705de83783b269f4fed4873",
+  "primary_file": "src/pluggy/_hooks.py",
+  "base_grounded": true,
+  "target_grounded": true,
+  "base_symbol_found": false,
+  "target_symbol_found": true,
+  "stale_memory_candidate": "Use varnames(func) on hook specifications without requiring self as first parameter.",
+  "valid_memory_candidate": "Use varnames(func) on hook specifications ensuring self is included as the first parameter.",
+  "base_file_sha256": "abffecf3558e24afb0725ae73dbc3957f278e009fc96c8802a21ceb6c38145a2",
+  "target_file_sha256": "ee1c8cc8fefc5656f23efdc330a2b735c5bba7b7b1dfd41f6c3b0aa4aa2cd52f"
+}

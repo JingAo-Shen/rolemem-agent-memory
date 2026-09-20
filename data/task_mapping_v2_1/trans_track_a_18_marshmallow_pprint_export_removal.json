@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_18_marshmallow_pprint_export_removal",
+  "repository": "marshmallow",
+  "current_task": "Implement `check_marshmallow_export()` in `debug_dumper.py` checking export presence.",
+  "target_symbol": "check_marshmallow_export",
+  "target_file": "debug_dumper.py",
+  "task_mapping_verified": true,
+  "execution_status": "EXECUTED",
+  "causal_pass": true,
+  "has_hidden_test": true,
+  "has_test_evidence": true
+}

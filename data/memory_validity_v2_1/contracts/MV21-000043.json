@@ -1,0 +1,31 @@
+{
+  "case_id": "MV21-000043",
+  "repository": "starlette",
+  "base_commit": "38f8999a229610b36f39d11f67d80515a15c6330",
+  "target_commit": "8a55ce12c02b4a52363f587706e39c2c71738fb3",
+  "base_execution": {
+    "passed": true,
+    "exit_code": 0,
+    "python_version": "3.13.5",
+    "cwd_commit": "38f8999a229610b36f39d11f67d80515a15c6330",
+    "contract_hash": "17ad7737790f3fc99ff501f33dd3e64ebd1bf79e1f7495aa60f91a013e8e38db",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout": "",
+    "stderr": "",
+    "timestamp": 1789918696.322986
+  },
+  "target_execution": {
+    "passed": true,
+    "exit_code": 0,
+    "python_version": "3.13.5",
+    "cwd_commit": "8a55ce12c02b4a52363f587706e39c2c71738fb3",
+    "contract_hash": "17ad7737790f3fc99ff501f33dd3e64ebd1bf79e1f7495aa60f91a013e8e38db",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout": "",
+    "stderr": "",
+    "timestamp": 1789918696.4454608
+  },
+  "machine_verified": true
+}

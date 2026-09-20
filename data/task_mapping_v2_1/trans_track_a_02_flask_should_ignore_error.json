@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_02_flask_should_ignore_error",
+  "repository": "flask",
+  "current_task": "Implement `CustomApp` in `custom_app.py` subclassing Flask to manage error policies without deprecated method overrides.",
+  "target_symbol": "CustomApp",
+  "target_file": "custom_app.py",
+  "task_mapping_verified": true,
+  "execution_status": "EXECUTED",
+  "causal_pass": true,
+  "has_hidden_test": true,
+  "has_test_evidence": true
+}

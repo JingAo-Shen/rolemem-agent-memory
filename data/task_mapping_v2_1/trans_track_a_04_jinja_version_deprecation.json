@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_04_jinja_version_deprecation",
+  "repository": "jinja",
+  "current_task": "Implement `get_engine_version()` in `version_checker.py` retrieving Jinja2 version cleanly without deprecated attributes.",
+  "target_symbol": "get_engine_version",
+  "target_file": "version_checker.py",
+  "task_mapping_verified": true,
+  "execution_status": "EXECUTED",
+  "causal_pass": true,
+  "has_hidden_test": true,
+  "has_test_evidence": true
+}

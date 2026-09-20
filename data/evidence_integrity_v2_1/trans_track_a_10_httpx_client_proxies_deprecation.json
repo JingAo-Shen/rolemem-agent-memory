@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_10_httpx_client_proxies_deprecation",
+  "repository": "httpx",
+  "base_commit": "b471f01d668b9ef730e8843531b07b1c21b74c47",
+  "target_commit": "f8981f3d124f9b8db9073fd5c8afa11acb55a738",
+  "authenticity_base": true,
+  "authenticity_target": true,
+  "authenticity_verified": true,
+  "primary_file_verified": true,
+  "diff_hunk_bytes": 4068,
+  "pr_url": "https://github.com/encode/httpx/pull/2879",
+  "pr_url_valid": true,
+  "external_evidence_found": true,
+  "evidence_integrity_verified": true
+}

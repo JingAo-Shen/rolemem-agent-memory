@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_20_iniconfig_strip_inline_comments",
+  "repository": "iniconfig",
+  "current_task": "Implement `read_config_value(ini_data, section, key)` in `config_reader.py` returning stripped value without inline comments.",
+  "target_symbol": "read_config_value",
+  "target_file": "config_reader.py",
+  "task_mapping_verified": true,
+  "execution_status": "EXECUTED",
+  "causal_pass": false,
+  "has_hidden_test": true,
+  "has_test_evidence": true
+}

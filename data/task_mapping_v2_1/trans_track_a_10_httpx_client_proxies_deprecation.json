@@ -1,0 +1,12 @@
+{
+  "transition_id": "trans_track_a_10_httpx_client_proxies_deprecation",
+  "repository": "httpx",
+  "current_task": "Implement `build_proxied_client(proxy_url: str)` in `client_factory.py` configuring an HTTPX Client with an HTTP proxy.",
+  "target_symbol": "build_proxied_client",
+  "target_file": "client_factory.py",
+  "task_mapping_verified": true,
+  "execution_status": "EXECUTED",
+  "causal_pass": true,
+  "has_hidden_test": true,
+  "has_test_evidence": true
+}

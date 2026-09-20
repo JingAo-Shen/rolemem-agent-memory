@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_04_jinja_version_deprecation",
+  "repository": "jinja",
+  "base_commit": "dfe82ade3dc7d112d7d166ca0d7ae7f794fe19e6",
+  "target_commit": "9e49736ae075fcffb85f731a3fe2c006cf1edca4",
+  "authenticity_base": true,
+  "authenticity_target": true,
+  "authenticity_verified": true,
+  "primary_file_verified": true,
+  "diff_hunk_bytes": 1260,
+  "pr_url": "https://github.com/pallets/jinja/pull/2098",
+  "pr_url_valid": true,
+  "external_evidence_found": true,
+  "evidence_integrity_verified": true
+}

@@ -1,0 +1,15 @@
+{
+  "transition_id": "trans_track_a_22_dateutil_unknown_timezone_warning",
+  "repository": "dateutil",
+  "base_commit": "1a7ebd70371a95ae61f95cdcde6d6cbb5dd7f68c",
+  "target_commit": "65d66b28ff201ae7bf59cf4128462e1c2d839da8",
+  "authenticity_base": true,
+  "authenticity_target": true,
+  "authenticity_verified": true,
+  "primary_file_verified": true,
+  "diff_hunk_bytes": 604,
+  "pr_url": "https://github.com/dateutil/dateutil/pull/540",
+  "pr_url_valid": true,
+  "external_evidence_found": true,
+  "evidence_integrity_verified": true
+}
