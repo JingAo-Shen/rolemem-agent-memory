@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_18_marshmallow_pprint_export_removal",
+  "repo_name": "marshmallow-code/marshmallow",
+  "transition_type": "API_REMOVAL",
+  "stale_sensitive": true,
+  "executions": {
+    "stale_on_base": {
+      "passed": true,
+      "output_sha256": "c4741dadcec354f7a5e6b6e7000175424b5dfa5ba41a8b3ffc6db52a49e4801e",
+      "output_snippet": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_e61ujyak\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden"
+    },
+    "stale_on_target": {
+      "passed": false,
+      "output_sha256": "854a079f29829e7751d1ae964c6abad7f8905f4be0948a314718d9702533fa98",
+      "output_snippet": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_b1l4irw_\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntes"
+    },
+    "valid_on_base": {
+      "passed": true,
+      "output_sha256": "5b5c0898c0865303bc2c422409f5bd39d2bce06a7dde5380fa5ed130b7860381",
+      "output_snippet": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_ezdifcwk\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden"
+    },
+    "valid_on_target": {
+      "passed": true,
+      "output_sha256": "4498cd540c55c65376b9fea56b1e5f89212e82547445d95acbcfceb21693feeb",
+      "output_snippet": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_1d4fvg0t\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden"
+    }
+  },
+  "matrix": {
+    "stale_on_base": true,
+    "stale_on_target": false,
+    "valid_on_base": true,
+    "valid_on_target": true
+  },
+  "causal_pass": true
+}

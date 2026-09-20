@@ -1,0 +1,54 @@
+{
+  "protocol_version": "2.1",
+  "total_evaluated_transitions": 30,
+  "core_benchmark_count": 13,
+  "control_benchmark_count": 1,
+  "rebuild_candidate_count": 8,
+  "excluded_count": 8,
+  "core_transitions": [
+    "trans_track_a_01_click_stream_deprecations",
+    "trans_track_a_03_werkzeug_environ_property",
+    "trans_track_a_04_jinja_version_deprecation",
+    "trans_track_a_05_itsdangerous_version_removal",
+    "trans_track_a_06_markupsafe_version_removal",
+    "trans_track_a_07_pluggy_varnames_noself",
+    "trans_track_a_09_virtualenv_drop_py38_control",
+    "trans_track_a_10_httpx_client_proxies_deprecation",
+    "trans_track_a_12_urllib3_getheaders_removal",
+    "trans_track_a_15_more_itertools_zip_equal_removal",
+    "trans_track_a_25_uvicorn_wsgi_middleware_deprecation",
+    "trans_track_a_26_rich_render_group_to_group",
+    "trans_track_a_28_starlette_exceptions_middleware_removal"
+  ],
+  "control_transitions": [
+    "trans_track_a_08_attrs_py313_replace_control"
+  ],
+  "rebuild_transitions": [
+    "trans_track_a_11_requests_json_decode_error",
+    "trans_track_a_13_starlette_weak_etag_removeprefix",
+    "trans_track_a_14_fastapi_on_event_compatibility",
+    "trans_track_a_16_rich_file_proxy_isatty",
+    "trans_track_a_23_tqdm_asyncio_gather_return_exceptions",
+    "trans_track_a_24_cachelib_timeout_timedelta",
+    "trans_track_a_29_pluggy_static_hook_attr_discovery",
+    "trans_track_a_30_fastapi_pydantic_v1_deprecation"
+  ],
+  "excluded_transitions": [
+    "trans_track_a_02_flask_should_ignore_error",
+    "trans_track_a_17_celery_task_module_cleanup",
+    "trans_track_a_18_marshmallow_pprint_export_removal",
+    "trans_track_a_19_flake8_doctest_options_removal",
+    "trans_track_a_20_iniconfig_strip_inline_comments",
+    "trans_track_a_21_packaging_legacy_version_removal",
+    "trans_track_a_22_dateutil_unknown_timezone_warning",
+    "trans_track_a_27_marshmallow_ipaddress_type_mapping"
+  ],
+  "distinct_repositories_core": 13,
+  "distinct_repositories_all": 25,
+  "manifest_sha256": {
+    "track_a_core.jsonl": "c49c84c7dd4cc294a14fe7f902f8c38ecfba815a892f7d01d3d3b4460500b571",
+    "track_a_controls.jsonl": "9b584aefc7ed0df5c37bc124d567bca4cbfb0ddedec2b8306f1fbe01c2e6e119",
+    "rebuild_candidates.jsonl": "94e454c05d3207bdfe4e8a9eede3e2e05759020d2018b331aaf3f83c8e35d697",
+    "excluded.jsonl": "5c45a48ea6a365e9872d27e3483cbac728c899bc2d31ef95fe16844f01e32941"
+  }
+}

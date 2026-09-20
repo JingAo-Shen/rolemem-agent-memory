@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_19_flake8_doctest_options_removal",
+  "repo_name": "PyCQA/flake8",
+  "transition_type": "API_REMOVAL",
+  "stale_sensitive": true,
+  "executions": {
+    "stale_on_base": {
+      "passed": true,
+      "output_sha256": "7315c52ff755fde4cb0f337008634dbbf8419d1717c7bc75a30840a8f8e56805",
+      "output_snippet": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_bfkd1j_4\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden"
+    },
+    "stale_on_target": {
+      "passed": false,
+      "output_sha256": "75e3013e19bc7136c1df0ce21bf328067fa648e609da36a4889c0bae518a0806",
+      "output_snippet": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_zihe6pix\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntes"
+    },
+    "valid_on_base": {
+      "passed": true,
+      "output_sha256": "6059b2894671776c5f6921f3139fa833c63f64764835cacfd56d26e2735377d2",
+      "output_snippet": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_tusmx0m9\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden"
+    },
+    "valid_on_target": {
+      "passed": true,
+      "output_sha256": "6fd648df386442e7c533341a405cd56c7326727709e876c42f64f2fbb3ab3bc5",
+      "output_snippet": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_bt19oxcj\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden"
+    }
+  },
+  "matrix": {
+    "stale_on_base": true,
+    "stale_on_target": false,
+    "valid_on_base": true,
+    "valid_on_target": true
+  },
+  "causal_pass": true
+}

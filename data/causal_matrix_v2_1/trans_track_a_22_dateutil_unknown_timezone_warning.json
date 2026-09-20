@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_22_dateutil_unknown_timezone_warning",
+  "repo_name": "dateutil/dateutil",
+  "transition_type": "API_EVOLUTION",
+  "stale_sensitive": false,
+  "executions": {
+    "stale_on_base": {
+      "passed": false,
+      "output_sha256": "1f117f2642542d66f0c03e9b061be6e462e197956b2a10480ffb37cf7c1aaa88",
+      "output_snippet": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_0pr18d7z\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntes"
+    },
+    "stale_on_target": {
+      "passed": false,
+      "output_sha256": "60b012b65ff53868ddab64d14c49abec33136decb9f88b8c8795973205bce4ba",
+      "output_snippet": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_s5lnr_ta\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntes"
+    },
+    "valid_on_base": {
+      "passed": false,
+      "output_sha256": "b52c10479a0d8b39fe54edaf8ec983c50df5a773937ed71078b59916ac6cf28e",
+      "output_snippet": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_psrdux66\nplugins: anyio-4.15.1\ncollecting ... collected 0 items / 1"
+    },
+    "valid_on_target": {
+      "passed": true,
+      "output_sha256": "a9d64a28aad214f5e926b7549a7ac9000ebeec826954e3595fad8a6b8ff16b08",
+      "output_snippet": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_qn_9n_ae\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden"
+    }
+  },
+  "matrix": {
+    "stale_on_base": false,
+    "stale_on_target": false,
+    "valid_on_base": false,
+    "valid_on_target": true
+  },
+  "causal_pass": false
+}

@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_10_httpx_client_proxies_deprecation",
+  "repo_name": "encode/httpx",
+  "transition_type": "API_DEPRECATION",
+  "stale_sensitive": true,
+  "executions": {
+    "stale_on_base": {
+      "passed": true,
+      "output_sha256": "ba215c6e81f6010361cdc2338780687849cd930a05a1b65489dabf4a6bc36c2a",
+      "output_snippet": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_77l1xigk\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden"
+    },
+    "stale_on_target": {
+      "passed": false,
+      "output_sha256": "f05a6444f64f0e8708ce7bb2d573f63dce3bbe58ca9d1dcba75204de46171c87",
+      "output_snippet": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_cy4lbvuw\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntes"
+    },
+    "valid_on_base": {
+      "passed": false,
+      "output_sha256": "18200a1846d653d576a4696b1f2d18bdbb6ba991992650bd32bd1fa1e609a820",
+      "output_snippet": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_5is6pj4j\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntes"
+    },
+    "valid_on_target": {
+      "passed": true,
+      "output_sha256": "b0ce5dd1502aad5361f04a6812234a6ab82d52bc0e54ed183b6ae52d89848eb1",
+      "output_snippet": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_l2160jw7\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden"
+    }
+  },
+  "matrix": {
+    "stale_on_base": true,
+    "stale_on_target": false,
+    "valid_on_base": false,
+    "valid_on_target": true
+  },
+  "causal_pass": true
+}

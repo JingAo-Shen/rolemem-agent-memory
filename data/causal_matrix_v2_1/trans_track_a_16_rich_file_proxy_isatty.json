@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_16_rich_file_proxy_isatty",
+  "repo_name": "Textualize/rich",
+  "transition_type": "API_EVOLUTION",
+  "stale_sensitive": false,
+  "executions": {
+    "stale_on_base": {
+      "passed": false,
+      "output_sha256": "47a718a39acc69288de38003d825fd3968ab544473d7fdb86bfcc8593aac6870",
+      "output_snippet": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_ks8bzb0j\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntes"
+    },
+    "stale_on_target": {
+      "passed": false,
+      "output_sha256": "ca1e26dcbc87561f084441d7a76fe289c792767b28bf06a0f4ba157c5a4ea387",
+      "output_snippet": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_pc0lygi3\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntes"
+    },
+    "valid_on_base": {
+      "passed": false,
+      "output_sha256": "0cd977114009a35131428cb8fb71441773dfe0eab4e96d707e0b4f60e3e93c3b",
+      "output_snippet": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_klh1pk5y\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntes"
+    },
+    "valid_on_target": {
+      "passed": true,
+      "output_sha256": "2f43cb950c2434db996f29bd968f5e685623be44e5d6631be00fe4e5acd7fa32",
+      "output_snippet": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_lxwafh4a\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden"
+    }
+  },
+  "matrix": {
+    "stale_on_base": false,
+    "stale_on_target": false,
+    "valid_on_base": false,
+    "valid_on_target": true
+  },
+  "causal_pass": false
+}

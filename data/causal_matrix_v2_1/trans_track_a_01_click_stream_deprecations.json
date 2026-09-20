@@ -1,0 +1,35 @@
+{
+  "transition_id": "trans_track_a_01_click_stream_deprecations",
+  "repo_name": "pallets/click",
+  "transition_type": "API_DEPRECATION",
+  "stale_sensitive": true,
+  "executions": {
+    "stale_on_base": {
+      "passed": true,
+      "output_sha256": "2b54ae9373282d677076ccc397d9513994328753bc753b817544cdab03b4b999",
+      "output_snippet": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_vfp8aoj4\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden"
+    },
+    "stale_on_target": {
+      "passed": false,
+      "output_sha256": "000ee8c509c469d1968af9725630b687cf98b1dfaf453c147db7beda2fd4b18a",
+      "output_snippet": "STDOUT:\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_stb84j99\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntes"
+    },
+    "valid_on_base": {
+      "passed": true,
+      "output_sha256": "27858fc0e0e3eb2811065fb246494134cce3edda76e17b50fe027ea5099dc6df",
+      "output_snippet": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_rcvhxme9\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden"
+    },
+    "valid_on_target": {
+      "passed": true,
+      "output_sha256": "6f22c4bdecf5b55e3dde32e9cfb58e4632180106da242d266985bdef70053a38",
+      "output_snippet": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /root/anaconda3/bin/python\ncachedir: .pytest_cache\nrootdir: /tmp/rolemem_sandbox_83cstoms\nplugins: anyio-4.15.1\ncollecting ... collected 1 item\n\ntest_hidden"
+    }
+  },
+  "matrix": {
+    "stale_on_base": true,
+    "stale_on_target": false,
+    "valid_on_base": true,
+    "valid_on_target": true
+  },
+  "causal_pass": true
+}

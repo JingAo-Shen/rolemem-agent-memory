@@ -1,23 +1,11 @@
 #!/usr/bin/env python3
 """
-scripts/evaluate_symbol_validity_protocol_v2.py
+LEGACY PROTOCOL V2 DEVELOPMENT EVALUATOR.
 
-Formal Scientific Evaluator for Protocol V2:
-1. Strict Phase Separation:
-   - Prediction Phase: Inputs ONLY blind_inputs.jsonl (Zero access to gold labels or category metadata).
-   - Scoring Phase: Loads gold_labels.jsonl and predictions to compute formal metrics.
-2. Mechanisms Evaluated:
-   - File_Level_Baseline (F-file)
-   - Pure_Symbol_AST_Baseline (F-symbol)
-   - RoleMem_Hybrid_No_Abstain (Deterministic Hybrid)
-   - RoleMem_Hybrid_With_Abstain (Selective Abstention under UNCERTAIN evidence)
-3. Metrics:
-   - Coverage, Accuracy, Precision, Recall, F1, False Invalidation Rate (FIR), Stale Exposure Rate (SER).
+DO NOT USE FOR FORMAL CLAIMS.
 
-Outputs:
-- data/memory_validity_v2/predictions_<mech>.jsonl
-- data/memory_validity_v2/evaluation_results.json
-- reports/symbol-validity-protocol-v2.md
+Contains benchmark-calibrated heuristics and is retained
+only for historical reproducibility.
 """
 
 import os

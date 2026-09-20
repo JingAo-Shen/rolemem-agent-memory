@@ -1,0 +1,185 @@
+# RoleMem Protocol V2.1 Formal Agent Experiment Configuration
+protocol_version: "2.1.0"
+benchmark_scope: "TRACK_A_CURATED_V2_1"
+manifest_path: "data/benchmark_v2_1/track_a_core.jsonl"
+controls_manifest_path: "data/benchmark_v2_1/track_a_controls.jsonl"
+validity_benchmark_path: "data/memory_validity_v2_1/blind_inputs.jsonl"
+
+validity_engine:
+  module: "src.validity.engine"
+  class: "RoleMemValidityEngine"
+  version: "2.1"
+
+symbol_engine:
+  module: "src.symbol_validity"
+  class: "SymbolDigestExtractor"
+
+dependency_engine:
+  module: "src.validity.dependency_validity"
+  class: "DependencyValidityChecker"
+
+file_engine:
+  module: "src.validity.file_validity"
+  class: "FileValidityChecker"
+
+model_config:
+  model_name: "Qwen/Qwen2.5-Coder-7B-Instruct"
+  model_path: "/code/rolemem-agent-memory/models/qwen2.5-coder-7b"
+  torch_dtype: "float16"
+  device_map: "auto"
+  temperature: 0.2
+  top_p: 0.95
+  do_sample: true
+  max_new_tokens: 512
+
+token_budget:
+  total_context_limit: 2048
+  breakdown:
+    system_prompt_tokens: 150
+    repo_context_tokens: 1200
+    memory_tokens_max: 400
+    task_prompt_tokens: 200
+    generation_headroom_tokens: 98
+
+sampling_config:
+  seeds: [42, 123, 999]
+  repeated_measures_per_transition: 3
+  unit_of_analysis: "transition_cluster"
+  statistical_significance:
+    bootstrap_samples: 10000
+    ci_level: 0.95
+    hypothesis_tests:
+      - "paired_mcnemar"
+      - "wilcoxon_signed_rank"
+
+retriever_config:
+  retriever_type: "RepoBM25Retriever"
+  k1: 1.5
+  b: 0.75
+  chunk_lines: 40
+  similarity_metric: "cosine_bm25_hybrid"
+
+validity_gate_config:
+  selective_abstention_threshold: 0.70
+  role_bonus_grid: [0.0, 0.25, 0.5, 1.0]
+  frozen_role_bonus_config: "configs/frozen_role_bonus.json"
+
+sandbox_config:
+  executor: "SecureSandboxExecutor"
+  isolation: "Bubblewrap"
+  timeout_seconds: 30
+  venvs_root: "/code/rolemem-agent-memory/.venvs"
+
+conditions:
+  B0:
+    name: "NO_MEMORY_BASELINE"
+    description: "No Memory (Prompt + Repo Context only)"
+    memory_source: "NONE"
+    validity_filter: "NONE"
+    role_projection: false
+    dependency_validity: false
+    selective_abstention: false
+
+  B1:
+    name: "RECENT_RAW_HISTORY"
+    description: "Recent Raw History (Unfiltered chronologically ordered buffer)"
+    memory_source: "RECENT_HISTORY_STORE"
+    validity_filter: "NONE"
+    role_projection: false
+    dependency_validity: false
+    selective_abstention: false
+
+  B2:
+    name: "ROLLING_SUMMARY"
+    description: "Rolling recursive LLM summarization of past interaction"
+    memory_source: "ROLLING_SUMMARY_STORE"
+    validity_filter: "NONE"
+    role_projection: false
+    dependency_validity: false
+    selective_abstention: false
+
+  B3:
+    name: "BM25_MEMORY_RETRIEVAL"
+    description: "Top-k BM25 similarity retrieval over memory store without validity gating"
+    memory_source: "UNFILTERED_STORE"
+    validity_filter: "NONE"
+    role_projection: false
+    dependency_validity: false
+    selective_abstention: false
+
+  B4:
+    name: "BM25_TEMPORAL_VALIDITY"
+    description: "BM25 memory retrieval with basic commit distance timestamp decay"
+    memory_source: "UNFILTERED_STORE"
+    validity_filter: "TEMPORAL_DECAY"
+    role_projection: false
+    dependency_validity: false
+    selective_abstention: false
+
+  B5:
+    name: "STRONG_STRUCTURAL_MEMORY"
+    description: "File-level git diff validity filtering baseline"
+    memory_source: "UNFILTERED_STORE"
+    validity_filter: "FILE_LEVEL"
+    role_projection: false
+    dependency_validity: false
+    selective_abstention: false
+
+  F:
+    name: "ROLEMEM_FULL"
+    description: "RoleMem Full Framework (Symbol AST + Dependency Verification + Role Projection + Selective Abstention)"
+    memory_source: "ROLE_FILTERED_STORE"
+    validity_filter: "ROLEMEM_ENGINE"
+    role_projection: true
+    dependency_validity: true
+    selective_abstention: true
+
+  A1:
+    name: "ABLATION_NO_EVIDENCE"
+    description: "RoleMem Full minus Evidence Validation"
+    memory_source: "ROLE_FILTERED_STORE"
+    validity_filter: "UNVERIFIED_HEURISTIC"
+    role_projection: true
+    dependency_validity: true
+    selective_abstention: true
+
+  A2:
+    name: "ABLATION_NO_VALIDITY_FILTERING"
+    description: "RoleMem Full minus Validity Filtering"
+    memory_source: "ROLE_FILTERED_STORE"
+    validity_filter: "NONE"
+    role_projection: true
+    dependency_validity: false
+    selective_abstention: false
+
+  A3:
+    name: "ABLATION_NO_ROLE_PROJECTION"
+    description: "RoleMem Full minus Role Projection"
+    memory_source: "UNFILTERED_STORE"
+    validity_filter: "ROLEMEM_ENGINE"
+    role_projection: false
+    dependency_validity: true
+    selective_abstention: true
+
+  A4:
+    name: "ABLATION_NO_DEPENDENCY_VALIDITY"
+    description: "RoleMem Full minus Dependency Validity (Pure Symbol AST only)"
+    memory_source: "ROLE_FILTERED_STORE"
+    validity_filter: "SYMBOL_ONLY"
+    role_projection: true
+    dependency_validity: false
+    selective_abstention: true
+
+  A5:
+    name: "ABLATION_NO_SELECTIVE_ABSTENTION"
+    description: "RoleMem Full minus Selective Abstention (Forced binary decision)"
+    memory_source: "ROLE_FILTERED_STORE"
+    validity_filter: "ROLEMEM_ENGINE"
+    role_projection: true
+    dependency_validity: true
+    selective_abstention: false
+
+evaluation_policy:
+  task_success: "pytest_pass and (not stale_action) and solution_constraint_pass"
+  stale_action_detector: "ASTStaleActionDetectorV2"
+  solution_constraint_evaluator: "SolutionConstraintEvaluatorV2"

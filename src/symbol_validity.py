@@ -57,10 +57,11 @@ class SymbolDigestExtractor:
             'lineno': int
         }
         """
+        import textwrap
         digests: Dict[str, Dict[str, Any]] = {}
         try:
-            tree = ast.parse(source_code)
-        except SyntaxError:
+            tree = ast.parse(textwrap.dedent(source_code))
+        except (SyntaxError, IndentationError):
             return digests
 
         for node in tree.body:

@@ -1,0 +1,7 @@
+{
+  "protocol_version": "2.1",
+  "total_evaluated": 30,
+  "causal_pass_count": 19,
+  "causal_fail_count": 11,
+  "pass_rate": 0.6333333333333333
+}

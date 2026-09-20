@@ -1,0 +1,6 @@
+{
+  "frozen_role_bonus": 0.5,
+  "role_bonus_grid_dev": [0.0, 0.25, 0.5, 1.0],
+  "selection_dataset": "development_calibration_set_v2_1",
+  "frozen_at": "2026-09-20T21:00:00Z"
+}
