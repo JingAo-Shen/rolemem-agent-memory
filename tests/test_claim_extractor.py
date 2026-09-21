@@ -1,7 +1,10 @@
 """
 tests/test_claim_extractor.py
 
-Unit tests for DeterministicClaimExtractor.
+Unit tests for DeterministicClaimExtractor:
+- Verifies extraction across all claim patterns.
+- Includes Marshmallow extraction regression test.
+- Verifies unparsed fallback for unparsable statements.
 """
 
 import pytest
@@ -32,9 +35,23 @@ def test_extract_attribute_exists(extractor):
 
 
 def test_extract_import_path(extractor):
+    raw = "Symbol `utils` can be imported from `click`."
+    c = extractor.extract(raw, symbol="utils")
+    assert c.claim_type == ClaimType.IMPORT_PATH_VALID
+    assert c.subject == "utils"
+    assert c.predicate == "imported_from"
+    assert c.object == "click"
+    assert c.claim_parse_status == "PARSED"
+
+
+def test_extract_marshmallow_regression(extractor):
+    """Regression test ensuring Marshmallow claim parses subject=pprint, predicate=exported_in, object=marshmallow.__all__."""
     raw = "marshmallow exports pprint in __all__ at top level."
     c = extractor.extract(raw, symbol="pprint")
     assert c.claim_type == ClaimType.IMPORT_PATH_VALID
+    assert c.subject == "pprint"
+    assert c.predicate == "exported_in"
+    assert c.object == "marshmallow.__all__"
     assert c.claim_parse_status == "PARSED"
 
 
@@ -72,8 +89,8 @@ def test_extract_behavioral_contract(extractor):
 
 
 def test_extract_dependency_contract(extractor):
-    raw = "HookSpec inspects hook functions via varnames allowing hook methods without explicit self parameter."
-    c = extractor.extract(raw, symbol="HookSpec")
+    raw = "HookCaller inspects hook functions via varnames allowing hook methods without explicit self parameter."
+    c = extractor.extract(raw, symbol="HookCaller")
     assert c.claim_type == ClaimType.DEPENDENCY_CONTRACT
     assert c.claim_parse_status == "PARSED"
 

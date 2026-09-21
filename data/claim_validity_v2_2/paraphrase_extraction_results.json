@@ -1,0 +1,60 @@
+{
+  "total_claims": 165,
+  "parse_coverage": 1.0,
+  "unresolved_rate": 0.0,
+  "claim_type_accuracy": 1.0,
+  "subject_exact_match_rate": 1.0,
+  "predicate_exact_match_rate": 1.0,
+  "object_exact_match_rate": 0.8545454545454545,
+  "full_structured_claim_exact_match_rate": 0.8545454545454545,
+  "per_claim_type_metrics": {
+    "ATTRIBUTE_EXISTS": {
+      "count": 3,
+      "type_accuracy": 1.0,
+      "subject_match_rate": 1.0,
+      "predicate_match_rate": 1.0,
+      "object_match_rate": 1.0,
+      "full_exact_match_rate": 1.0,
+      "unresolved_rate": 0.0
+    },
+    "BEHAVIORAL_CONTRACT": {
+      "count": 24,
+      "type_accuracy": 1.0,
+      "subject_match_rate": 1.0,
+      "predicate_match_rate": 1.0,
+      "object_match_rate": 0.0,
+      "full_exact_match_rate": 0.0,
+      "unresolved_rate": 0.0
+    },
+    "DEPENDENCY_CONTRACT": {
+      "count": 3,
+      "type_accuracy": 1.0,
+      "subject_match_rate": 1.0,
+      "predicate_match_rate": 1.0,
+      "object_match_rate": 1.0,
+      "full_exact_match_rate": 1.0,
+      "unresolved_rate": 0.0
+    },
+    "IMPORT_PATH_VALID": {
+      "count": 3,
+      "type_accuracy": 1.0,
+      "subject_match_rate": 1.0,
+      "predicate_match_rate": 1.0,
+      "object_match_rate": 1.0,
+      "full_exact_match_rate": 1.0,
+      "unresolved_rate": 0.0
+    },
+    "SYMBOL_EXISTS": {
+      "count": 132,
+      "type_accuracy": 1.0,
+      "subject_match_rate": 1.0,
+      "predicate_match_rate": 1.0,
+      "object_match_rate": 1.0,
+      "full_exact_match_rate": 1.0,
+      "unresolved_rate": 0.0
+    }
+  },
+  "benchmark_designation": "DEVELOPER_SEEN_PARAPHRASE_DEV",
+  "note": "Paraphrases developed in same iteration as parser. Not for scientific generalization claim.",
+  "extractor_version": "2.2-v0.2"
+}

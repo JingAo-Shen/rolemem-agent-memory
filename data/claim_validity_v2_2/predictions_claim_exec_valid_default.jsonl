@@ -1,55 +1,55 @@
-{"claim_id": "CLM-000001", "decision": "VALID"}
-{"claim_id": "CLM-000002", "decision": "VALID"}
-{"claim_id": "CLM-000003", "decision": "VALID"}
-{"claim_id": "CLM-000004", "decision": "VALID"}
-{"claim_id": "CLM-000005", "decision": "VALID"}
-{"claim_id": "CLM-000006", "decision": "VALID"}
-{"claim_id": "CLM-000007", "decision": "VALID"}
-{"claim_id": "CLM-000008", "decision": "VALID"}
-{"claim_id": "CLM-000009", "decision": "VALID"}
-{"claim_id": "CLM-000010", "decision": "VALID"}
-{"claim_id": "CLM-000011", "decision": "VALID"}
-{"claim_id": "CLM-000012", "decision": "VALID"}
-{"claim_id": "CLM-000013", "decision": "VALID"}
-{"claim_id": "CLM-000014", "decision": "VALID"}
-{"claim_id": "CLM-000015", "decision": "VALID"}
-{"claim_id": "CLM-000016", "decision": "VALID"}
-{"claim_id": "CLM-000017", "decision": "VALID"}
-{"claim_id": "CLM-000018", "decision": "VALID"}
-{"claim_id": "CLM-000019", "decision": "VALID"}
-{"claim_id": "CLM-000020", "decision": "VALID"}
-{"claim_id": "CLM-000021", "decision": "VALID"}
-{"claim_id": "CLM-000022", "decision": "VALID"}
-{"claim_id": "CLM-000023", "decision": "VALID"}
-{"claim_id": "CLM-000024", "decision": "VALID"}
-{"claim_id": "CLM-000025", "decision": "VALID"}
-{"claim_id": "CLM-000026", "decision": "VALID"}
-{"claim_id": "CLM-000027", "decision": "VALID"}
-{"claim_id": "CLM-000028", "decision": "VALID"}
-{"claim_id": "CLM-000029", "decision": "VALID"}
-{"claim_id": "CLM-000030", "decision": "VALID"}
-{"claim_id": "CLM-000031", "decision": "VALID"}
-{"claim_id": "CLM-000032", "decision": "VALID"}
-{"claim_id": "CLM-000033", "decision": "VALID"}
-{"claim_id": "CLM-000034", "decision": "VALID"}
-{"claim_id": "CLM-000035", "decision": "VALID"}
-{"claim_id": "CLM-000036", "decision": "VALID"}
-{"claim_id": "CLM-000037", "decision": "VALID"}
-{"claim_id": "CLM-000038", "decision": "VALID"}
-{"claim_id": "CLM-000039", "decision": "VALID"}
-{"claim_id": "CLM-000040", "decision": "VALID"}
-{"claim_id": "CLM-000041", "decision": "VALID"}
-{"claim_id": "CLM-000042", "decision": "VALID"}
-{"claim_id": "CLM-000043", "decision": "VALID"}
-{"claim_id": "CLM-000044", "decision": "VALID"}
-{"claim_id": "CLM-000045", "decision": "STALE"}
-{"claim_id": "CLM-000046", "decision": "STALE"}
-{"claim_id": "CLM-000047", "decision": "STALE"}
-{"claim_id": "CLM-000048", "decision": "STALE"}
-{"claim_id": "CLM-000049", "decision": "VALID"}
-{"claim_id": "CLM-000050", "decision": "VALID"}
-{"claim_id": "CLM-000051", "decision": "STALE"}
-{"claim_id": "CLM-000052", "decision": "STALE"}
-{"claim_id": "CLM-000053", "decision": "STALE"}
-{"claim_id": "CLM-000054", "decision": "STALE"}
-{"claim_id": "CLM-000055", "decision": "STALE"}
+{"claim_id": "CLM-000001", "source_case_id": "MV21-000001", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "14efd94e03c4d48f126cf7349f6aec3eeabaf378020b94c119bc93f5fd0baaa6", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000002", "source_case_id": "MV21-000002", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "ccbcffe86ab19113ff366d984d736e6ce441d6708e0415b265d47ce0f047c501", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000003", "source_case_id": "MV21-000003", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "58ff329f656f993dc39807f0850d7d09174fdc8ac1ec4aec9f0d2b87e40be422", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000004", "source_case_id": "MV21-000004", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "52762dfa8505cb5d630e44dddc4ee5afc883a164b350b2aec9f3d9670399cd6b", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000005", "source_case_id": "MV21-000005", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "fd61265949d0eda45b940dab70fc4f47ef7336d076146db5433489f787e73ddf", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000006", "source_case_id": "MV21-000006", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "64952a58d21fc75f20907a22e276134d19eb82c0836e42b6e2c09a499b780107", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000007", "source_case_id": "MV21-000007", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "ce59477cd45d35cf9d61ab2427d9ade2aeb1947aa143a13fe1c6d86db130f66f", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000008", "source_case_id": "MV21-000008", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "cc7903314d501eba4329912f6454f19d6b70bee2023cc762c51c53ce7b7d7a33", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000009", "source_case_id": "MV21-000009", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "d0740b3315accc7e05e08fa5c0ceb827ad717271fe68cbb211b3a2127ae55f2e", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000010", "source_case_id": "MV21-000010", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "03703533df9c111f39fd8420caa5a00bd91ddf00fcaec550c35e5cfa96c60600", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000011", "source_case_id": "MV21-000011", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "51754d6b46d289e3244b430ebf9ccbb2bb0d6fef2353925081dcf8ef8e9f37c5", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000012", "source_case_id": "MV21-000012", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "149de0b7bf0964fc51b7027d0b72384f7ad46055e7e8f26c5b54f3cfb60086f0", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000013", "source_case_id": "MV21-000013", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "1c8147e6af2aca5a7b072cccdeca89b72034f5c960575af350276b402fb26158", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000014", "source_case_id": "MV21-000014", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "f052819dc6c36ac116dc1fdabdec65954dcd8b4bb0e2b2b5e52f5768040e9639", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000015", "source_case_id": "MV21-000015", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "144f2740268994205dd8624b4891907c5b4bfd381829fff5db4ce89e93c79bf0", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000016", "source_case_id": "MV21-000016", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "009b872ed9867bd7994ebf188436222cdd7c5b5cafb99092569ca66c1f3ed76e", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000017", "source_case_id": "MV21-000017", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "7e01657fd9d41af2865624e64db00396643440b9fabad009be6d02c760d3a6a0", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000018", "source_case_id": "MV21-000018", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "309d5e7d20fcbdaa044fc5bdd80bd21c83f51cd4efbddbb805e249bb893c7fd3", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000019", "source_case_id": "MV21-000019", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "4bd31d1413bc4228c57f2151fc996835a77fe9671dad1011e34824ef24c38a61", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000020", "source_case_id": "MV21-000020", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "1f3915c8deee0434779222b2e3bf7de535ba91dd865453ac2b2bc44cb3df4160", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000021", "source_case_id": "MV21-000021", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "649e473c0eda8adae2f2dc0050ae2d92b7cabea51a45cbd8c109c03c5e1d802d", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000022", "source_case_id": "MV21-000022", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "3c8851998092dc92c4f827665a6336bb1e538bfd68a49eecedd32df1a25d267d", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000023", "source_case_id": "MV21-000023", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "0f25670cfc8322cbb80b651a135c7a001a4dc9c35cf56b0f9eda4d07dbcd2804", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000024", "source_case_id": "MV21-000024", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "f22a1d7ecc20cf9a57407c3bbf5629433fe8f3d1cde5dee8ed75cd2ee6818672", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000025", "source_case_id": "MV21-000025", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "da0657c3f43bfc51f2db1248a532f66017ceb60147e7cae3a1a06635dfaf4ac2", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000026", "source_case_id": "MV21-000026", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "191d57b52ef1b4b74715b6fc8ad45386622a8fd9d2b4c173d358c83e294b979e", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000027", "source_case_id": "MV21-000027", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "4e976addde89edeb77dad7dbbe33fceaf08fb2b35bd399f0bfda55a615c8cec9", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000028", "source_case_id": "MV21-000028", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "88195c8d630f44c8cbc81e276088ee5e6c64e20cbbddf0dd6af34e09887e1dfa", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000029", "source_case_id": "MV21-000029", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "83eb6129eb6297493fe8fd1254606a360baa3c9c5b168c8b63974ed63b222953", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000030", "source_case_id": "MV21-000030", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "0cbdea3165d1cbf359d909e90992a52c3a02a4d5a125c28c3035ef84dec4af48", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000031", "source_case_id": "MV21-000031", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "ead303e6ad759d4b593da4697364b0c96656f8cd793a81449461ce67f4b6ea53", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000032", "source_case_id": "MV21-000032", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "d11b94fb136e341c3990cabd705f2f1002a898b06429613d6c05695e783e4349", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000033", "source_case_id": "MV21-000033", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "5bf0e4239289fc9eb6515634be6797b7fdda3d11da8dc1c753ba51fee1e7dba8", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000034", "source_case_id": "MV21-000034", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "4c9f22b9dd2c931d4c4507d250534381d6a4a6555f529381c252ed5767eb54fd", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000035", "source_case_id": "MV21-000035", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "0633b0f8e3242d28db2ba6634164145ca1e510509fd693d5932a6d2aad3ff3db", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000036", "source_case_id": "MV21-000036", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "9f099f777cf05629b0139756da63ac33c6f6422a00ced709adb97d9b9fb8c104", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000037", "source_case_id": "MV21-000037", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "7288b8810748e897bbde93673fa2802803575f24596a40f5f88dd9e51e14e918", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000038", "source_case_id": "MV21-000038", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "00fb171414375017c9f7e7514607353117b6f71e1447a7691a07958a253b7f93", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000039", "source_case_id": "MV21-000039", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "3f9a4b19219c8d43ec4f60359fd802b5740aa3a945b2510ebe2af5a4f32998c1", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000040", "source_case_id": "MV21-000040", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "4cf72ece42ce38160ebca8c52b106d4ec3dbb20f3673d208dccc66fd24e834c0", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000041", "source_case_id": "MV21-000041", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "004704f66d43a8cec8b5bc0db9c57df482b84ae7109c64101f73beddc2476ad1", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000042", "source_case_id": "MV21-000042", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "e1094cd8a4d1b0ce42b98c0c11fd3f262d951de8d9dfd4a3c19c8a6cb21f2e86", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000043", "source_case_id": "MV21-000043", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "be70a95599aabbab4124d22ca753c7b80ec458ac45d0e337bfbda8e4475f1b18", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000044", "source_case_id": "MV21-000044", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "d5c028bedd537b56bfddbe13a6bd4a0c2478987346a522e5407a7dc6213350ff", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000045", "source_case_id": "MV21-000045", "decision": "STALE", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "984d62977dc5b9e8875bbd3b05f04f703a85446bc75dd30c027218e11a229539", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000046", "source_case_id": "MV21-000046", "decision": "STALE", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "429629be03fef9f91c5b6ed44c729e6d204b88d55e9762f175b4cc320c25db09", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000047", "source_case_id": "MV21-000047", "decision": "STALE", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "608f96b8ee1ada0d3e779885bbe51fc01f2eb1e14d6d570430f10215d7f26417", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000048", "source_case_id": "MV21-000048", "decision": "STALE", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "beaac3a46d1d8b102d71b7bd855cfa3f91005c4c82561157e91aefa105dcc2ac", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000049", "source_case_id": "MV21-000049", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "31003dfcb319364dfce12a235b3a089e28215e4f552f993aa44ce7b17317a495", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000050", "source_case_id": "MV21-000050", "decision": "VALID", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "5ac0ad10a2cc8ecfdf31defe3e07969c5303aaa995cf4a7615f3ee8c3a782b64", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000051", "source_case_id": "MV21-000051", "decision": "STALE", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "489c5b9a36d1a4451024bb5c3ed022ffbd78b87c738c4818bcc50cdcd2017f54", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000052", "source_case_id": "MV21-000052", "decision": "STALE", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "c45f8292b3cb1a21ef14e6b1513e75568273682fad21cc7e36883a2cac8b2df1", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000053", "source_case_id": "MV21-000053", "decision": "STALE", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "6ad6ef62bf761e0441a85951297b2f14a5b48c0fe21d887428884ed57b18ad1e", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000054", "source_case_id": "MV21-000054", "decision": "STALE", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "74f6b7298db441e2260c608da162b16d9eae4597b0c794c938b07f7fec6ccfb8", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}
+{"claim_id": "CLM-000055", "source_case_id": "MV21-000055", "decision": "STALE", "engine_version": "2.2-v0.2", "policy": "FORCED_VALID_DEFAULT", "input_claim_hash": "4b5ae6de10a4ad4b0e99ec44412e0bfc210f45fc4b809e93a32a6d1322730971", "evidence_mode": "CLAIM_EXECUTION_ASSISTED"}

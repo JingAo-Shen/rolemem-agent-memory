@@ -1,0 +1,25 @@
+{
+  "protocol_version": "2.2-claim-aware-v0.2",
+  "extractor_version": "2.2-v0.2",
+  "freeze_status": "FROZEN",
+  "generation_timestamp": "2026-09-21T02:06:05.342894+00:00",
+  "total_claims": 55,
+  "files": {
+    "source_v2_1_blind_inputs": {
+      "path": "data/memory_validity_v2_1/blind_inputs.jsonl",
+      "sha256": "be64cb4e3bc17606d03f7a81b186c1861b3495d5aa9888729fccf74b85ceae83"
+    },
+    "claim_extractor": {
+      "path": "src/claim_validity/claim_extractor.py",
+      "sha256": "d073035dd9fcf943d65d93f03d97b5af2fd25d33ae281f3f54e437482f94e7bb"
+    },
+    "dev_claim_inputs_v2": {
+      "path": "data/claim_validity_v2_2/dev_claim_inputs_v2.jsonl",
+      "sha256": "c68dad5ea5cfe73ffca7ecc408297eace988861715f59892af3d9f38992537e1"
+    },
+    "dev_claim_gold_v2": {
+      "path": "data/claim_validity_v2_2/dev_claim_gold_v2.jsonl",
+      "sha256": "748a1421c1a383b123727457fe005e610418c216b3027fd61c7561f5559b041f"
+    }
+  }
+}

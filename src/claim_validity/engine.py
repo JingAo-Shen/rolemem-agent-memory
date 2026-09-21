@@ -134,7 +134,10 @@ class ClaimAwareValidityEngine:
                 base_source=base_source,
                 target_source=target_source,
                 diff_hunk=diff_hunk,
-                execution_artifact=execution_artifact
+                execution_artifact=execution_artifact,
+                base_commit=base_commit or "",
+                target_commit=target_commit or "",
+                repository=target_repo_name or ""
             )
             validation_status = v_status
             all_evidences.extend(v_evidences)
