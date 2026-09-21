@@ -8,9 +8,12 @@
   "authenticity_verified": true,
   "primary_file_verified": true,
   "diff_hunk_bytes": 4694,
-  "diff_sha256": "b9c8a680aef073513ebf80615184b697aaa6596a077ae0c87686c2f2e2a4274c",
+  "recomputed_diff_sha256": "b9c8a680aef073513ebf80615184b697aaa6596a077ae0c87686c2f2e2a4274c",
+  "stored_diff_sha256": "b9c8a680aef073513ebf80615184b697aaa6596a077ae0c87686c2f2e2a4274c",
+  "diff_hash_match": true,
   "pr_url": "https://github.com/pytest-dev/iniconfig/pull/70",
   "pr_url_valid": true,
+  "pr_commit_relation": "VERIFIED",
   "external_evidence_found": true,
   "evidence_integrity_verified": true,
   "evidence_integrity_status": "PASS"

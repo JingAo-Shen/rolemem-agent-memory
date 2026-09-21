@@ -8,9 +8,12 @@
   "authenticity_verified": true,
   "primary_file_verified": true,
   "diff_hunk_bytes": 668,
-  "diff_sha256": "0ad53330efd63e058b2ad298566ce3627c2b7b45849079ee9a1cb3ae679ffae8",
+  "recomputed_diff_sha256": "0ad53330efd63e058b2ad298566ce3627c2b7b45849079ee9a1cb3ae679ffae8",
+  "stored_diff_sha256": "0ad53330efd63e058b2ad298566ce3627c2b7b45849079ee9a1cb3ae679ffae8",
+  "diff_hash_match": true,
   "pr_url": "https://github.com/encode/starlette/pull/3193",
   "pr_url_valid": true,
+  "pr_commit_relation": "VERIFIED",
   "external_evidence_found": true,
   "evidence_integrity_verified": true,
   "evidence_integrity_status": "PASS"

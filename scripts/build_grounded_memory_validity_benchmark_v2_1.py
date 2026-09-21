@@ -260,7 +260,7 @@ def build_benchmark_v2_1_r3():
                     "target_block": t_block,
                     "diff_hunk": diff_hunk[:1000],
                     "pr_evidence": f"Commit: {pr_subj}",
-                    "test_evidence": f"Recorded AST digest match for `{b_info['qualified_name']}`.",
+                    "test_evidence": f"File `{f_path}` modified in Git diff across commits.",
                     "gold_label": "VALID",
                     "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
                     "rationale": f"Whole file `{f_path}` modified in Git diff, but symbol `{b_info['qualified_name']}` AST digest is identical ({b_info['symbol_digest'][:8]}...).",
@@ -296,7 +296,7 @@ def build_benchmark_v2_1_r3():
                 "target_block": "# Symbol removed in target commit",
                 "diff_hunk": diff_hunk[:1000],
                 "pr_evidence": f"Commit: {pr_subj}",
-                "test_evidence": f"Recorded AST removal for `{b_info['qualified_name']}` in target commit.",
+                "test_evidence": f"Symbol `{b_info['qualified_name']}` absent from target source tree.",
                 "gold_label": "STALE",
                 "category": "CAT_D1_SYM_REM_STALE",
                 "rationale": f"Symbol `{b_info['qualified_name']}` deleted in target commit; memory asserting presence is stale.",
@@ -419,7 +419,7 @@ def build_benchmark_v2_1_r3():
             "target_block": t_block,
             "diff_hunk": diff_hunk[:1000],
             "pr_evidence": f"Commit: {pr_subj}",
-            "test_evidence": f"Behavioral execution test recorded at commits {b_c[:8]} and {t_c[:8]}.",
+            "test_evidence": f"Execution contract test recorded at commits {b_c[:8]} and {t_c[:8]}.",
             "gold_label": "VALID",
             "category": "CAT_B_SYM_CHG_MEMORY_VALID",
             "rationale": f"Symbol AST changed ({b_dig[:8]}... -> {t_dig[:8]}...), but behavioral contract verified valid.",
@@ -513,7 +513,7 @@ def build_benchmark_v2_1_r3():
                     "target_block": t_block,
                     "diff_hunk": diff_h[:1000],
                     "pr_evidence": "Commit: escalate varnames noself to deprecation warning",
-                    "test_evidence": "Counterfactual execution recorded at commits dd20a85e and 0258484d.",
+                    "test_evidence": "Execution test recorded at commits dd20a85e and 0258484d.",
                     "gold_label": "STALE",
                     "category": "CAT_C_SYM_SAME_MEMORY_STALE",
                     "rationale": "Symbol HookSpec AST digest is identical, but downstream dependency `varnames` rejects noself methods under deprecation errors.",
@@ -538,7 +538,7 @@ def build_benchmark_v2_1_r3():
                     }
                 })
 
-    # 4. Category D2: Changed Symbols with Verified Execution Break
+    # 4. Category D2: Changed Symbols with Verified Execution Break (Both base and target AST exist, digests differ)
     cat_d2_specs = [
         ("urllib3", "src/urllib3/response.py", "BaseHTTPResponse",
          "dd2daef3611ea09f60260391e6a698bb9933dd17", "4587fd6d477f22022be08de597c3a5acd5185c0a",
@@ -548,37 +548,7 @@ def build_benchmark_v2_1_r3():
         ("marshmallow", "src/marshmallow/__init__.py", "__all__",
          "ad24f89100c95d3bf99ba17714d457c7c93e0b53", "5429f0d4c6e346dc751599073cab67d66eefbcb2",
          "marshmallow exports pprint in __all__ at top level.",
-         "import marshmallow\nassert 'pprint' in marshmallow.__all__\n"),
-
-        ("itsdangerous", "src/itsdangerous/__init__.py", "__getattr__",
-         "4dffa1963f896a0a311dec3c14f003a5f382c446", "31f46a3469dbfb2ecf83dd0c4297c1efc508fcca",
-         "itsdangerous exports __version__ attribute dynamically via __getattr__ at package root.",
-         "import itsdangerous\nassert hasattr(itsdangerous, '__version__')\n"),
-
-        ("packaging", "packaging/version.py", "LegacyVersion",
-         "4f42225e91a0be634625c09e84dd29ea82b85e27", "237ff3aa348486cf835a980592af3a59fccd6101",
-         "packaging.version.LegacyVersion parses arbitrary non-PEP440 version strings.",
-         "from packaging.version import LegacyVersion\nlv = LegacyVersion('1.0.0.dev')\nassert str(lv) == '1.0.0.dev'\n"),
-
-        ("more-itertools", "more_itertools/more.py", "zip_equal",
-         "be5078036ce823c66cfc464d7f04beb705877caf", "361b92567361f377489ce608d5e6280e4f6f986b",
-         "more_itertools provides zip_equal for strictly length-matched iterable traversal.",
-         "from more_itertools.more import zip_equal\nassert list(zip_equal([1, 2], [3, 4])) == [(1, 3), (2, 4)]\n"),
-
-        ("markupsafe", "src/markupsafe/__init__.py", "__version__",
-         "562e82e775a9445a01f4861a591145eb6c78b378", "4afaf1ae7a2ca7a3f32c4c665eeb53afe9d9b082",
-         "markupsafe exports __version__ constant at root package level.",
-         "import warnings\nwarnings.filterwarnings('error', category=DeprecationWarning)\nimport markupsafe\nv = markupsafe.__version__\n"),
-
-        ("jinja", "src/jinja2/__init__.py", "__version__",
-         "dfe82ade3dc7d112d7d166ca0d7ae7f794fe19e6", "9e49736ae075fcffb85f731a3fe2c006cf1edca4",
-         "jinja2 package root exports __version__ attribute directly.",
-         "import warnings\nwarnings.filterwarnings('error', category=DeprecationWarning)\nimport jinja2\nv = jinja2.__version__\n"),
-
-        ("click", "src/click/utils.py", "get_binary_stream",
-         "7a0a3447f6ddd2c15438c5d098e289323f9f9556", "051725fa7e0c69effc9107066d8791c5b99242c3",
-         "click.utils.get_binary_stream retrieves standard IO stream buffers without deprecation warnings.",
-         "import warnings\nwarnings.filterwarnings('error', category=DeprecationWarning)\nfrom click.utils import get_binary_stream\ns = get_binary_stream('stdin')\nassert s is not None\n")
+         "import marshmallow\nassert 'pprint' in marshmallow.__all__\n")
     ]
 
     for repo, f_path, sym_name, b_c, t_c, mem_stmt, break_code in cat_d2_specs:
@@ -595,8 +565,14 @@ def build_benchmark_v2_1_r3():
         b_info = b_digs.get(sym_name) or b_digs.get(f"{repo}.{sym_name}")
         t_info = t_digs.get(sym_name) or t_digs.get(f"{repo}.{sym_name}")
 
-        b_dig = b_info["symbol_digest"] if b_info else hashlib.sha256(sym_name.encode()).hexdigest()
-        t_dig = t_info["symbol_digest"] if t_info else "NONE"
+        # Strict requirement: both b_info and t_info must exist in AST, with different digests!
+        if not b_info or not t_info:
+            continue
+
+        b_dig = b_info["symbol_digest"]
+        t_dig = t_info["symbol_digest"]
+        if b_dig == t_dig or t_dig == "NONE":
+            continue
 
         exec_b = execute_contract_at_commit(repo, b_c, break_code)
         exec_t = execute_contract_at_commit(repo, t_c, break_code)
@@ -610,7 +586,7 @@ def build_benchmark_v2_1_r3():
             raw_cat_d2.append({
                 "repo": repo,
                 "file": f_path,
-                "symbol": f"{repo}.{sym_name}",
+                "symbol": b_info["qualified_name"],
                 "base_commit": b_c,
                 "target_commit": t_c,
                 "memory_statement": mem_stmt,
@@ -620,7 +596,7 @@ def build_benchmark_v2_1_r3():
                 "target_block": t_block,
                 "diff_hunk": diff_hunk[:1000],
                 "pr_evidence": f"Commit: {pr_subj}",
-                "test_evidence": f"Behavioral break execution verified at {b_c[:8]} and {t_c[:8]}.",
+                "test_evidence": f"Execution test recorded at commits {b_c[:8]} and {t_c[:8]}.",
                 "gold_label": "STALE",
                 "category": "CAT_D2_SYM_CHG_BEHAVIOR_STALE",
                 "rationale": f"Symbol AST changed and legacy behavior confirmed broken on target commit.",
@@ -639,13 +615,20 @@ def build_benchmark_v2_1_r3():
                 }
             })
 
-    # Limit primary Cat D1 to 8 cases to keep Cat D total = 16 (8 D1 + 8 D2)
-    selected_d1 = raw_cat_d1[:8]
-    selected_d2 = raw_cat_d2[:8]
+    # Select Cat D1 (removed symbols) and Cat D2 (changed symbols with verified behavioral breaks)
+    # Ensure strict disjointness between D1 and D2
+    selected_d1 = []
+    d2_keys = {(d["repo"], d["file"], d["symbol"], d["base_commit"], d["target_commit"]) for d in raw_cat_d2}
+    for d1 in raw_cat_d1:
+        key = (d1["repo"], d1["file"], d1["symbol"], d1["base_commit"], d1["target_commit"])
+        if key not in d2_keys and len(selected_d1) < 8:
+            selected_d1.append(d1)
+
+    selected_d2 = raw_cat_d2
 
     selected = primary_cat_a + raw_cat_b + raw_cat_c + selected_d1 + selected_d2
 
-    print(f"\nDataset Composition (Protocol V2.1-R3):")
+    print(f"\nDataset Composition (Protocol V2.1-R3.1):")
     print(f"  Full Robustness Pool Cat A: {len(all_cat_a)} cases")
     print(f"  Primary Benchmark Cat A (File Chg / Sym Same / Valid): {len(primary_cat_a)} cases")
     print(f"  Cat B (Sym Chg / Valid Contract): {len(raw_cat_b)} cases")
@@ -746,7 +729,7 @@ def build_benchmark_v2_1_r3():
         cases_per_repo[c["repo"]] = cases_per_repo.get(c["repo"], 0) + 1
 
     stats = {
-        "protocol_version": "2.1-r3",
+        "protocol_version": "2.1-r3.1",
         "total_cases": len(selected),
         "full_robustness_pool_cases": len(full_pool_records),
         "unique_repository_count": len(unique_repos),
@@ -765,7 +748,7 @@ def build_benchmark_v2_1_r3():
     with open(STATS_PATH, "w", encoding="utf-8") as f:
         json.dump(stats, f, indent=2)
 
-    print(f"\n=== Memory Validity Benchmark V2.1-R3 Built Successfully ===")
+    print(f"\n=== Memory Validity Benchmark V2.1-R3.1 Built Successfully ===")
     print(f"  Primary Split Total Cases: {len(selected)}")
     print(f"  Full Robustness Pool Cases: {len(full_pool_records)}")
     print(f"  Unique Repositories: {len(unique_repos)}")

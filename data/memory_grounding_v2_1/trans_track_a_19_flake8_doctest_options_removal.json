@@ -4,14 +4,24 @@
   "base_commit": "15f45696701bc234494fbc0e803f8fdee712b945",
   "target_commit": "b3e251512238ad39c87e4b8d1614903fe493f7ea",
   "primary_file": "src/flake8/plugins/pyflakes.py",
-  "claim_subject": "check_doctest_filtering",
-  "subject_found_base": true,
-  "subject_found_target": false,
-  "base_grounded": true,
-  "target_grounded": true,
-  "grounding_status": "PASS",
-  "stale_memory_candidate": "Check include_in_doctest attribute on FlakesChecker.",
-  "valid_memory_candidate": "Check with_doctest attribute on FlakesChecker.",
-  "base_file_sha256": "3fd53ab2d996c2590c998f3e1aa1deac635c387cb7c8cae0ef42334ee5201b4f",
-  "target_file_sha256": "58186b5b62b6d992448796f8b46852f7ee2f7184682553608ce1c02ba592bece"
+  "task_symbol": "check_doctest_filtering",
+  "stale_claim": {
+    "statement": "Check include_in_doctest attribute on FlakesChecker.",
+    "subject": "include_in_doctest",
+    "subject_found": true,
+    "evidence_commit": "15f45696701bc234494fbc0e803f8fdee712b945",
+    "evidence_file": "src/flake8/plugins/pyflakes.py",
+    "evidence_sha256": "3fd53ab2d996c2590c998f3e1aa1deac635c387cb7c8cae0ef42334ee5201b4f",
+    "status": "PASS"
+  },
+  "valid_claim": {
+    "statement": "Check with_doctest attribute on FlakesChecker.",
+    "subject": "check_doctest_filtering",
+    "subject_found": false,
+    "evidence_commit": "b3e251512238ad39c87e4b8d1614903fe493f7ea",
+    "evidence_file": "src/flake8/plugins/pyflakes.py",
+    "evidence_sha256": "58186b5b62b6d992448796f8b46852f7ee2f7184682553608ce1c02ba592bece",
+    "status": "UNKNOWN"
+  },
+  "grounding_status": "UNKNOWN"
 }

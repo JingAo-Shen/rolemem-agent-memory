@@ -1,0 +1,40 @@
+{
+  "protocol_version": "2.1-r3.1",
+  "protocol_status": "PROTOCOL_V2_1_DEVELOPMENT_CLOSED",
+  "declarations": {
+    "PROTOCOL_V2_1_DEVELOPMENT_CLOSED": "YES",
+    "ALGORITHM_FREEZE": "NO",
+    "BENCHMARK_FREEZE": "NO",
+    "HUMAN_VALIDATION": "PENDING",
+    "FORMAL_AGENT_RESULTS": "NO",
+    "FORMAL_PAPER_RESULTS": "NO"
+  },
+  "benchmark_summary": {
+    "total_cases": 55,
+    "valid_cases": 44,
+    "stale_cases": 11,
+    "category_breakdown": {
+      "CAT_A_FILE_CHG_SYM_SAME_VALID": 36,
+      "CAT_B_SYM_CHG_MEMORY_VALID": 8,
+      "CAT_C_SYM_SAME_MEMORY_STALE": 1,
+      "CAT_D1_SYM_REM_STALE": 8,
+      "CAT_D2_SYM_CHG_BEHAVIOR_STALE": 2
+    }
+  },
+  "file_checksums_sha256": {
+    "data/memory_validity_v2_1/blind_inputs.jsonl": "be64cb4e3bc17606d03f7a81b186c1861b3495d5aa9888729fccf74b85ceae83",
+    "data/memory_validity_v2_1/gold_labels.jsonl": "b80e626debef7209510b0c10ca1a1abb0cda37b4bf315086d6910acc153ac999",
+    "data/memory_validity_v2_1/case_id_map_private.json": "0c9a1d6380b86e7292b0c3494679fad60c07a509b6d6dadd570156e3bc938cd8",
+    "data/memory_validity_v2_1/benchmark_stats.json": "58d3b2cb1d4f65b5eda32cccd21c271c5fec65a63d0557b96eaa139603defa03",
+    "data/memory_validity_v2_1/human_annotation_package_v2_1.jsonl": "28cb699e3be84438185e11f40cfa2b2539d3bbe04894c35427e8df5525cbb7e0",
+    "data/memory_validity_v2_1/evaluation_results.json": "49271471110a63af2f8d0cc74e7b5146454471536043ad4aedfd24d58b3e6e17",
+    "configs/experiment_protocol_v2_1.yaml": "2a02a452aa3cb16b5a350aaab79162186583dd142e1d2a1d879a1c880b20cbd4",
+    "src/validity/__init__.py": "1b5791eb67d89e2a56aa157a026864280e14e0e7a768f8686b32bf003496cb1f",
+    "src/validity/dependency_graph.py": "758da1204e3c3e0ca699f7f502bbc2a91f82d2148f039d60fe47b71052ae3d82",
+    "src/validity/dependency_validity.py": "00c28baa7e067056256a345ad278996c4b064209a5c27f4a4a0ed66414c5c079",
+    "src/validity/engine.py": "badec0590c34c0e71b631b16492af95b46340c0495c672291a08542cf7e9bdde",
+    "src/validity/file_validity.py": "8d465ef7a2e49c99a3b5136e06b0ad8f7f7e385c84cf34e7c8fe17d6741abb3a",
+    "src/validity/symbol_validity.py": "7bb45f5d7754a096cffcafec0519a2134c2de32f4b03c72c664f6855ef358e8a",
+    "src/validity/types.py": "a8cd7cd2b19eefbae85a5fca574d25d50573ac9d4159bd1c8a43e35a61454b11"
+  }
+}

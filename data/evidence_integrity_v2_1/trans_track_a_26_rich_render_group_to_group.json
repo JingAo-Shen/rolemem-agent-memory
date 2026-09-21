@@ -8,9 +8,12 @@
   "authenticity_verified": true,
   "primary_file_verified": true,
   "diff_hunk_bytes": 1928,
-  "diff_sha256": "a4346b0d138d631b83fb8057f23f1b66aed99a19c467a8dcfaf31f1202fbc2a5",
+  "recomputed_diff_sha256": "a4346b0d138d631b83fb8057f23f1b66aed99a19c467a8dcfaf31f1202fbc2a5",
+  "stored_diff_sha256": "a4346b0d138d631b83fb8057f23f1b66aed99a19c467a8dcfaf31f1202fbc2a5",
+  "diff_hash_match": true,
   "pr_url": "https://github.com/Textualize/rich/pull/1819",
   "pr_url_valid": true,
+  "pr_commit_relation": "VERIFIED",
   "external_evidence_found": true,
   "evidence_integrity_verified": true,
   "evidence_integrity_status": "PASS"

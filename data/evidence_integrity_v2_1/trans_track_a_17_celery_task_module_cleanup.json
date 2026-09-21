@@ -8,9 +8,12 @@
   "authenticity_verified": true,
   "primary_file_verified": true,
   "diff_hunk_bytes": 842,
-  "diff_sha256": "53ec21d966d2d0adb867a95e2fad2655d84df2517d3cdcbfdf5090f965450d15",
+  "recomputed_diff_sha256": "53ec21d966d2d0adb867a95e2fad2655d84df2517d3cdcbfdf5090f965450d15",
+  "stored_diff_sha256": "53ec21d966d2d0adb867a95e2fad2655d84df2517d3cdcbfdf5090f965450d15",
+  "diff_hash_match": true,
   "pr_url": "https://github.com/celery/celery/pull/6869",
   "pr_url_valid": true,
+  "pr_commit_relation": "VERIFIED",
   "external_evidence_found": true,
   "evidence_integrity_verified": true,
   "evidence_integrity_status": "PASS"

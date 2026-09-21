@@ -4,14 +4,24 @@
   "base_commit": "8bce583b9547c7b82d44c8e97f37cf9a16cbe758",
   "target_commit": "2d5517682b3b38547634d153cea43d48fbc8cdb5",
   "primary_file": "requests/models.py",
-  "claim_subject": "parse_api_response",
-  "subject_found_base": true,
-  "subject_found_target": false,
-  "base_grounded": true,
-  "target_grounded": true,
-  "grounding_status": "PASS",
-  "stale_memory_candidate": "Catch standard json.decoder.JSONDecodeError when calling response.json() as RequestException does not catch JSON errors in base state.",
-  "valid_memory_candidate": "Catch requests.exceptions.RequestException or requests.exceptions.JSONDecodeError when calling response.json().",
-  "base_file_sha256": "5a56c98845f38bdfbb9ef343292bef6b9289a210e576aa694dc20d5f1f8bb333",
-  "target_file_sha256": "97e2643e03b1c1910c4c63885a1c9aedf18816d11eaea3ce70c65db43e567d8e"
+  "task_symbol": "parse_api_response",
+  "stale_claim": {
+    "statement": "Catch standard json.decoder.JSONDecodeError when calling response.json() as RequestException does not catch JSON errors in base state.",
+    "subject": "None",
+    "subject_found": true,
+    "evidence_commit": "8bce583b9547c7b82d44c8e97f37cf9a16cbe758",
+    "evidence_file": "requests/models.py",
+    "evidence_sha256": "5a56c98845f38bdfbb9ef343292bef6b9289a210e576aa694dc20d5f1f8bb333",
+    "status": "PASS"
+  },
+  "valid_claim": {
+    "statement": "Catch requests.exceptions.RequestException or requests.exceptions.JSONDecodeError when calling response.json().",
+    "subject": "parse_api_response",
+    "subject_found": false,
+    "evidence_commit": "2d5517682b3b38547634d153cea43d48fbc8cdb5",
+    "evidence_file": "requests/models.py",
+    "evidence_sha256": "97e2643e03b1c1910c4c63885a1c9aedf18816d11eaea3ce70c65db43e567d8e",
+    "status": "UNKNOWN"
+  },
+  "grounding_status": "UNKNOWN"
 }

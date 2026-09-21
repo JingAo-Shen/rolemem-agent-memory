@@ -4,14 +4,24 @@
   "base_commit": "f97c305673ba121a1dae6764c37e8be48907a1d1",
   "target_commit": "7641d4990f06d583425a4e6ba25e9d2f18934885",
   "primary_file": "src/werkzeug/utils.py",
-  "claim_subject": "create_header_property",
-  "subject_found_base": true,
-  "subject_found_target": false,
-  "base_grounded": true,
-  "target_grounded": true,
-  "grounding_status": "PASS",
-  "stale_memory_candidate": "Use werkzeug.utils.environ_property descriptor to bind WSGI environ keys.",
-  "valid_memory_candidate": "Access request.environ dictionary directly or wrap with standard property.",
-  "base_file_sha256": "a2e9a72d1c6ce2934d3ecb854b0ad363c932f30d1195003e306e89b4a61dfbb2",
-  "target_file_sha256": "d968ce12ac66444aad034934bdc05399f0c16c1b72bf65ffc4cf5e5e90d518e2"
+  "task_symbol": "create_header_property",
+  "stale_claim": {
+    "statement": "Use werkzeug.utils.environ_property descriptor to bind WSGI environ keys.",
+    "subject": "werkzeug.utils.environ_property",
+    "subject_found": true,
+    "evidence_commit": "f97c305673ba121a1dae6764c37e8be48907a1d1",
+    "evidence_file": "src/werkzeug/utils.py",
+    "evidence_sha256": "a2e9a72d1c6ce2934d3ecb854b0ad363c932f30d1195003e306e89b4a61dfbb2",
+    "status": "PASS"
+  },
+  "valid_claim": {
+    "statement": "Access request.environ dictionary directly or wrap with standard property.",
+    "subject": "create_header_property",
+    "subject_found": false,
+    "evidence_commit": "7641d4990f06d583425a4e6ba25e9d2f18934885",
+    "evidence_file": "src/werkzeug/utils.py",
+    "evidence_sha256": "d968ce12ac66444aad034934bdc05399f0c16c1b72bf65ffc4cf5e5e90d518e2",
+    "status": "UNKNOWN"
+  },
+  "grounding_status": "UNKNOWN"
 }

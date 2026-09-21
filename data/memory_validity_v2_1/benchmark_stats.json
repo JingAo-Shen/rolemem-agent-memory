@@ -1,21 +1,21 @@
 {
-  "protocol_version": "2.1-r3",
-  "total_cases": 61,
-  "full_robustness_pool_cases": 1153,
+  "protocol_version": "2.1-r3.1",
+  "total_cases": 55,
+  "full_robustness_pool_cases": 1147,
   "unique_repository_count": 22,
-  "unique_transition_count": 37,
+  "unique_transition_count": 31,
   "category_counts": {
     "CAT_A": 36,
     "CAT_B": 8,
     "CAT_C": 1,
     "CAT_D1": 8,
-    "CAT_D2": 8
+    "CAT_D2": 2
   },
   "cases_per_repository": {
-    "click": 6,
+    "click": 5,
     "flask": 2,
     "werkzeug": 6,
-    "markupsafe": 4,
+    "markupsafe": 3,
     "pluggy": 3,
     "attrs": 2,
     "virtualenv": 2,
@@ -24,15 +24,15 @@
     "urllib3": 4,
     "starlette": 3,
     "fastapi": 3,
-    "more-itertools": 3,
+    "more-itertools": 2,
     "rich": 4,
     "celery": 2,
     "flake8": 2,
     "iniconfig": 2,
-    "packaging": 3,
+    "packaging": 2,
     "tqdm": 1,
-    "jinja": 2,
-    "itsdangerous": 2,
+    "jinja": 1,
+    "itsdangerous": 1,
     "marshmallow": 1
   },
   "cases_per_transition": {
@@ -66,12 +66,6 @@
     "trans_track_a_04_jinja_version_deprecation": 1,
     "trans_track_a_05_itsdangerous_version_removal": 1,
     "trans_urllib3_basehttpresponse": 1,
-    "trans_marshmallow___all__": 1,
-    "trans_itsdangerous___getattr__": 1,
-    "trans_packaging_legacyversion": 1,
-    "trans_more-itertools_zip_equal": 1,
-    "trans_markupsafe___version__": 1,
-    "trans_jinja___version__": 1,
-    "trans_click_get_binary_stream": 1
+    "trans_marshmallow___all__": 1
   }
 }

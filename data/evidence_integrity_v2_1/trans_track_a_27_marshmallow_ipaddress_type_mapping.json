@@ -8,9 +8,12 @@
   "authenticity_verified": true,
   "primary_file_verified": true,
   "diff_hunk_bytes": 812,
-  "diff_sha256": "96aa5b421844acce3a70dd967b981004dbf8e223a2b8c92932e3d43697ff4718",
+  "recomputed_diff_sha256": "96aa5b421844acce3a70dd967b981004dbf8e223a2b8c92932e3d43697ff4718",
+  "stored_diff_sha256": "96aa5b421844acce3a70dd967b981004dbf8e223a2b8c92932e3d43697ff4718",
+  "diff_hash_match": true,
   "pr_url": "https://github.com/marshmallow-code/marshmallow/pull/2906",
   "pr_url_valid": true,
+  "pr_commit_relation": "VERIFIED",
   "external_evidence_found": true,
   "evidence_integrity_verified": true,
   "evidence_integrity_status": "PASS"

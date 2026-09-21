@@ -8,9 +8,12 @@
   "authenticity_verified": true,
   "primary_file_verified": true,
   "diff_hunk_bytes": 1152,
-  "diff_sha256": "2700e2638426bc68c923656f657d768470eac2eab7fb1b87a0340600fa21a1e1",
+  "recomputed_diff_sha256": "2700e2638426bc68c923656f657d768470eac2eab7fb1b87a0340600fa21a1e1",
+  "stored_diff_sha256": "2700e2638426bc68c923656f657d768470eac2eab7fb1b87a0340600fa21a1e1",
+  "diff_hash_match": true,
   "pr_url": "https://github.com/encode/uvicorn/pull/1825",
   "pr_url_valid": true,
+  "pr_commit_relation": "VERIFIED",
   "external_evidence_found": true,
   "evidence_integrity_verified": true,
   "evidence_integrity_status": "PASS"

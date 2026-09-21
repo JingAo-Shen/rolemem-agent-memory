@@ -116,7 +116,6 @@ def score_predictions():
 
         valid_cov = (tn + fp) / valid_cases if valid_cases > 0 else 0.0
         stale_cov = (tp + fn) / stale_cases if stale_cases > 0 else 0.0
-        aurc = selective_risk * coverage  # Risk-Coverage Area product
 
         per_cat_acc = {}
         for cat in sorted(cat_counts):
@@ -134,7 +133,6 @@ def score_predictions():
             "Valid_Coverage": valid_cov,
             "Stale_Coverage": stale_cov,
             "Selective_Risk": selective_risk,
-            "AURC": aurc,
             "Accuracy_Decided": acc_decided,
             "Accuracy_Overall": acc_overall,
             "Balanced_Accuracy": balanced_acc,
@@ -152,7 +150,7 @@ def score_predictions():
 
     out_data = {
         "benchmark_summary": {
-            "protocol_version": "2.1-r3",
+            "protocol_version": "2.1-r3.1",
             "total_cases": total_cases,
             "valid_cases": valid_cases,
             "stale_cases": stale_cases,

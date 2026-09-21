@@ -8,9 +8,12 @@
   "authenticity_verified": true,
   "primary_file_verified": true,
   "diff_hunk_bytes": 2865,
-  "diff_sha256": "e1d1138c3cb1826ac2c4c53d8deeac962a5181027e4aaeacd2a224ac6081b318",
+  "recomputed_diff_sha256": "e1d1138c3cb1826ac2c4c53d8deeac962a5181027e4aaeacd2a224ac6081b318",
+  "stored_diff_sha256": "e1d1138c3cb1826ac2c4c53d8deeac962a5181027e4aaeacd2a224ac6081b318",
+  "diff_hash_match": true,
   "pr_url": "https://github.com/pallets/click/pull/3695",
   "pr_url_valid": true,
+  "pr_commit_relation": "VERIFIED",
   "external_evidence_found": true,
   "evidence_integrity_verified": true,
   "evidence_integrity_status": "PASS"

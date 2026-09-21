@@ -8,9 +8,12 @@
   "authenticity_verified": true,
   "primary_file_verified": true,
   "diff_hunk_bytes": 4614,
-  "diff_sha256": "2e0c62456e894fe34c16f1e2046b731bc55c2f3caed4cd768b0f6476b91f5336",
+  "recomputed_diff_sha256": "2e0c62456e894fe34c16f1e2046b731bc55c2f3caed4cd768b0f6476b91f5336",
+  "stored_diff_sha256": "2e0c62456e894fe34c16f1e2046b731bc55c2f3caed4cd768b0f6476b91f5336",
+  "diff_hash_match": true,
   "pr_url": "https://github.com/PyCQA/flake8/pull/1854",
   "pr_url_valid": true,
+  "pr_commit_relation": "VERIFIED",
   "external_evidence_found": true,
   "evidence_integrity_verified": true,
   "evidence_integrity_status": "PASS"

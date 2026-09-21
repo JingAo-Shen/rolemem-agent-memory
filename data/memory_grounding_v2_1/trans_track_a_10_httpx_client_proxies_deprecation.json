@@ -4,14 +4,24 @@
   "base_commit": "b471f01d668b9ef730e8843531b07b1c21b74c47",
   "target_commit": "f8981f3d124f9b8db9073fd5c8afa11acb55a738",
   "primary_file": "httpx/_client.py",
-  "claim_subject": "build_proxied_client",
-  "subject_found_base": true,
-  "subject_found_target": false,
-  "base_grounded": true,
-  "target_grounded": true,
-  "grounding_status": "PASS",
-  "stale_memory_candidate": "Pass proxies={'http://': url} dictionary to httpx.Client.",
-  "valid_memory_candidate": "Pass proxy=url directly to httpx.Client constructor.",
-  "base_file_sha256": "26fa1ac41dd76032d7ca52e39fde413a75064f84e0987f924a1812fb5fad97a6",
-  "target_file_sha256": "d086376600749fe0d098898828011c693134013a45a96d46150b663fd07e4102"
+  "task_symbol": "build_proxied_client",
+  "stale_claim": {
+    "statement": "Pass proxies={'http://': url} dictionary to httpx.Client.",
+    "subject": "Client.__init__.proxies",
+    "subject_found": true,
+    "evidence_commit": "b471f01d668b9ef730e8843531b07b1c21b74c47",
+    "evidence_file": "httpx/_client.py",
+    "evidence_sha256": "26fa1ac41dd76032d7ca52e39fde413a75064f84e0987f924a1812fb5fad97a6",
+    "status": "PASS"
+  },
+  "valid_claim": {
+    "statement": "Pass proxy=url directly to httpx.Client constructor.",
+    "subject": "build_proxied_client",
+    "subject_found": false,
+    "evidence_commit": "f8981f3d124f9b8db9073fd5c8afa11acb55a738",
+    "evidence_file": "httpx/_client.py",
+    "evidence_sha256": "d086376600749fe0d098898828011c693134013a45a96d46150b663fd07e4102",
+    "status": "UNKNOWN"
+  },
+  "grounding_status": "UNKNOWN"
 }

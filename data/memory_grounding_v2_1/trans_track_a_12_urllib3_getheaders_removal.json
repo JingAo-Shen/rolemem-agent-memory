@@ -4,14 +4,24 @@
   "base_commit": "dd2daef3611ea09f60260391e6a698bb9933dd17",
   "target_commit": "4587fd6d477f22022be08de597c3a5acd5185c0a",
   "primary_file": "src/urllib3/response.py",
-  "claim_subject": "get_header_content_type",
-  "subject_found_base": true,
-  "subject_found_target": false,
-  "base_grounded": true,
-  "target_grounded": true,
-  "grounding_status": "PASS",
-  "stale_memory_candidate": "Inspect response headers via HTTPResponse.getheaders().",
-  "valid_memory_candidate": "Access response headers directly via response.headers.",
-  "base_file_sha256": "410fd0dbe9767b100391aad3fa68b6a51b012d20516fd274059af86294a7035d",
-  "target_file_sha256": "96fb034838422e9b8f5782b569d3f70a674ecf26a2f6195f137406c6fc798332"
+  "task_symbol": "get_header_content_type",
+  "stale_claim": {
+    "statement": "Inspect response headers via HTTPResponse.getheaders().",
+    "subject": "HTTPResponse.getheaders",
+    "subject_found": true,
+    "evidence_commit": "dd2daef3611ea09f60260391e6a698bb9933dd17",
+    "evidence_file": "src/urllib3/response.py",
+    "evidence_sha256": "410fd0dbe9767b100391aad3fa68b6a51b012d20516fd274059af86294a7035d",
+    "status": "PASS"
+  },
+  "valid_claim": {
+    "statement": "Access response headers directly via response.headers.",
+    "subject": "get_header_content_type",
+    "subject_found": false,
+    "evidence_commit": "4587fd6d477f22022be08de597c3a5acd5185c0a",
+    "evidence_file": "src/urllib3/response.py",
+    "evidence_sha256": "96fb034838422e9b8f5782b569d3f70a674ecf26a2f6195f137406c6fc798332",
+    "status": "UNKNOWN"
+  },
+  "grounding_status": "UNKNOWN"
 }

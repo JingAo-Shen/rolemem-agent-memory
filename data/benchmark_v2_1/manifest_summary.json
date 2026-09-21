@@ -1,11 +1,15 @@
 {
-  "protocol_version": "2.1-r3",
+  "protocol_version": "2.1-r3.1",
   "total_evaluated_transitions": 30,
-  "core_benchmark_count": 13,
+  "core_benchmark_count": 0,
   "control_benchmark_count": 1,
-  "rebuild_candidate_count": 12,
+  "rebuild_candidate_count": 25,
   "excluded_count": 4,
-  "core_transitions": [
+  "core_transitions": [],
+  "control_transitions": [
+    "trans_track_a_08_attrs_py313_replace_control"
+  ],
+  "rebuild_transitions": [
     "trans_track_a_01_click_stream_deprecations",
     "trans_track_a_02_flask_should_ignore_error",
     "trans_track_a_03_werkzeug_environ_property",
@@ -15,25 +19,20 @@
     "trans_track_a_07_pluggy_varnames_noself",
     "trans_track_a_09_virtualenv_drop_py38_control",
     "trans_track_a_10_httpx_client_proxies_deprecation",
-    "trans_track_a_12_urllib3_getheaders_removal",
-    "trans_track_a_15_more_itertools_zip_equal_removal",
-    "trans_track_a_25_uvicorn_wsgi_middleware_deprecation",
-    "trans_track_a_28_starlette_exceptions_middleware_removal"
-  ],
-  "control_transitions": [
-    "trans_track_a_08_attrs_py313_replace_control"
-  ],
-  "rebuild_transitions": [
     "trans_track_a_11_requests_json_decode_error",
+    "trans_track_a_12_urllib3_getheaders_removal",
     "trans_track_a_13_starlette_weak_etag_removeprefix",
     "trans_track_a_14_fastapi_on_event_compatibility",
+    "trans_track_a_15_more_itertools_zip_equal_removal",
     "trans_track_a_16_rich_file_proxy_isatty",
     "trans_track_a_20_iniconfig_strip_inline_comments",
     "trans_track_a_22_dateutil_unknown_timezone_warning",
     "trans_track_a_23_tqdm_asyncio_gather_return_exceptions",
     "trans_track_a_24_cachelib_timeout_timedelta",
+    "trans_track_a_25_uvicorn_wsgi_middleware_deprecation",
     "trans_track_a_26_rich_render_group_to_group",
     "trans_track_a_27_marshmallow_ipaddress_type_mapping",
+    "trans_track_a_28_starlette_exceptions_middleware_removal",
     "trans_track_a_29_pluggy_static_hook_attr_discovery",
     "trans_track_a_30_fastapi_pydantic_v1_deprecation"
   ],
@@ -43,12 +42,12 @@
     "trans_track_a_19_flake8_doctest_options_removal",
     "trans_track_a_21_packaging_legacy_version_removal"
   ],
-  "distinct_repositories_core": 13,
+  "distinct_repositories_core": 0,
   "distinct_repositories_all": 25,
   "manifest_sha256": {
-    "track_a_core.jsonl": "9081ed21be26a1d24890752670cccb0e0d5cfc1c39ad63620f52a656813883f0",
-    "track_a_controls.jsonl": "9b584aefc7ed0df5c37bc124d567bca4cbfb0ddedec2b8306f1fbe01c2e6e119",
-    "rebuild_candidates.jsonl": "fed8a50d117f4deb9d09180b3bb6513d918771106f2c26b86c8d46824a9db896",
-    "excluded.jsonl": "9e7a1bef569d63a1c074e6792cb7fd53ae0788f919e0bbec7d6822c8a06b3c7e"
+    "track_a_core.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "track_a_controls.jsonl": "73fe989a140e6132df58ecb5ec52894b1d97f89cbe0cc262791dbe0ded6f45d7",
+    "rebuild_candidates.jsonl": "125a3af03e674c7be30ac18a764acd285b6150ee0ea0695f031732ec4c52b826",
+    "excluded.jsonl": "87bfeb05f5a71ed185e35d2f64d5c2e8ce3a7692f4b66f8d37f1da6a5e1c9ac2"
   }
 }

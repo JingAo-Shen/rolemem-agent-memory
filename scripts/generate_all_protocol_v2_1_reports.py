@@ -2,7 +2,7 @@
 """
 scripts/generate_all_protocol_v2_1_reports.py
 
-Single Source of Truth Report Generator for Protocol V2.1-R3:
+Single Source of Truth Report Generator for Protocol V2.1-R3.1:
 - reports/symbol-validity-protocol-v2.1.md
 - reports/human-annotation-status-v2.1.md
 - reports/protocol-v2.1-readiness.md
@@ -10,6 +10,7 @@ Single Source of Truth Report Generator for Protocol V2.1-R3:
 
 import os
 import sys
+import glob
 import json
 
 sys.path.insert(0, "/code/rolemem-agent-memory")
@@ -19,6 +20,25 @@ EVAL_RESULTS_PATH = os.path.join(DATA_DIR, "evaluation_results.json")
 CURATION_POOL_PATH = "/code/rolemem-agent-memory/data/curation/track_a_pool_v2_1.jsonl"
 MANIFEST_SUMMARY_PATH = "/code/rolemem-agent-memory/data/benchmark_v2_1/manifest_summary.json"
 CAUSAL_SUMMARY_PATH = "/code/rolemem-agent-memory/data/causal_matrix_v2_1/summary.json"
+GROUNDING_DIR = "/code/rolemem-agent-memory/data/memory_grounding_v2_1"
+TASK_MAPPING_DIR = "/code/rolemem-agent-memory/data/task_mapping_v2_1"
+EVIDENCE_INTEGRITY_DIR = "/code/rolemem-agent-memory/data/evidence_integrity_v2_1"
+
+
+def get_gate_counts(directory: str, status_key: str):
+    counts = {"PASS": 0, "UNKNOWN": 0, "FAIL": 0}
+    if os.path.exists(directory):
+        for fname in os.listdir(directory):
+            if fname.endswith(".json"):
+                fpath = os.path.join(directory, fname)
+                try:
+                    with open(fpath, "r", encoding="utf-8") as f:
+                        data = json.load(f)
+                        st = data.get(status_key, "UNKNOWN")
+                        counts[st] = counts.get(st, 0) + 1
+                except Exception:
+                    counts["UNKNOWN"] += 1
+    return counts
 
 
 def generate_symbol_validity_report(eval_data: dict) -> str:
@@ -27,7 +47,7 @@ def generate_symbol_validity_report(eval_data: dict) -> str:
     cat_dist = bench.get("category_distribution", {})
 
     lines = [
-        "# Memory Validity Protocol V2.1-R3 — Empirical Mechanism Evaluation Report",
+        "# Memory Validity Protocol V2.1-R3.1 — Empirical Mechanism Evaluation Report",
         "",
         "## 1. Protocol V2.1 Development Benchmark Composition (100% Real Git Commits)",
         f"- **Total Empirical Cases**: {bench['total_cases']}",
@@ -40,6 +60,9 @@ def generate_symbol_validity_report(eval_data: dict) -> str:
         f"- **Category C** (Target Symbol Unchanged / Verified Dependency Linkage Broken): {cat_dist.get('CAT_C_SYM_SAME_MEMORY_STALE', 0)} cases",
         f"- **Category D1** (Target Symbol Removed / Memory Stale): {cat_dist.get('CAT_D1_SYM_REM_STALE', 0)} cases",
         f"- **Category D2** (Target Symbol Modified / Verified Behavioral Break): {cat_dist.get('CAT_D2_SYM_CHG_BEHAVIOR_STALE', 0)} cases",
+        "",
+        "> [!NOTE]",
+        "> **Diagnostic Category C Scope**: Category C contains 1 verified diagnostic case (`pluggy.HookSpec`). It serves as an exploratory/diagnostic sanity check for cross-file dependency propagation, and is not used to make standalone statistical category-level superiority claims.",
         "",
         "---",
         "",
@@ -62,6 +85,17 @@ def generate_symbol_validity_report(eval_data: dict) -> str:
         fir = mdata["False_Invalidation_Rate_FIR"] * 100
         ser = mdata["Stale_Exposure_Rate_SER"] * 100
         lines.append(f"| **{mname}** | {cov:.1f}% | {acc:.1f}% | {bacc:.1f}% | {mf1:.1f}% | {mcc:+.3f} | {risk:.1f}% | {prec:.1f}% | {rec:.1f}% | {f1:.1f}% | {fir:.1f}% | {ser:.1f}% |")
+
+    lines.extend([
+        "",
+        "### Selective Performance (Decided Subset)",
+        ""
+    ])
+    for mname, mdata in mechs.items():
+        cov = mdata["Coverage"] * 100
+        bacc = mdata.get("Balanced_Accuracy", 0.0) * 100
+        risk = mdata.get("Selective_Risk", 0.0) * 100
+        lines.append(f"- **{mname}**: Selective Balanced Accuracy = {bacc:.1f}% at Coverage = {cov:.1f}% (Selective Risk = {risk:.1f}%)")
 
     lines.extend([
         "",
@@ -99,7 +133,7 @@ def generate_symbol_validity_report(eval_data: dict) -> str:
 
 def generate_human_annotation_report(pkg_cases_count: int) -> str:
     lines = [
-        "# Human Annotation Status Report (Protocol V2.1-R3)",
+        "# Human Annotation Status Report (Protocol V2.1-R3.1)",
         "",
         "> [!IMPORTANT]",
         "> **Formal Scientific Declaration**: External human validation is currently in `PENDING` status. No synthetic multi-annotator agreement metrics (such as fake Cohen's kappa) are reported until external third-party reviewers complete the blinded annotation templates.",
@@ -123,12 +157,17 @@ def generate_readiness_report(eval_data: dict, manifest: dict, causal: dict) -> 
     mechs = eval_data["mechanisms"]
     cat_dist = bench.get("category_distribution", {})
 
+    grounding_counts = get_gate_counts(GROUNDING_DIR, "grounding_status")
+    task_mapping_counts = get_gate_counts(TASK_MAPPING_DIR, "task_mapping_status")
+    evidence_counts = get_gate_counts(EVIDENCE_INTEGRITY_DIR, "evidence_integrity_status")
+
     lines = [
-        "# RoleMem Protocol V2.1-R3 — Benchmark Freeze Readiness & Scientific Audit Report",
+        "# RoleMem Protocol V2.1-R3.1 — Benchmark Freeze Readiness & Scientific Audit Report",
         "",
         "## Formal Status Declaration",
         "```text",
-        "PROTOCOL_VERSION = 2.1-r3",
+        "PROTOCOL_VERSION = 2.1-r3.1",
+        "PROTOCOL_V2_1_DEVELOPMENT_CLOSED = YES",
         "ALGORITHM_FREEZE = NO",
         "BENCHMARK_FREEZE = NO",
         "HUMAN_VALIDATION = PENDING",
@@ -138,16 +177,21 @@ def generate_readiness_report(eval_data: dict, manifest: dict, causal: dict) -> 
         "",
         "---",
         "",
-        "## 1. Protocol V2.1-R3 Core Audit Metrics",
+        "## 1. Protocol V2.1-R3.1 Core Audit Metrics",
         "",
-        "### A. Track A Transition Pool & Curation",
+        "### A. Track A Transition Pool & Curation Gate Audit",
         f"- **Total Evaluated Transitions**: {manifest['total_evaluated_transitions']}",
-        f"- **Core Benchmark Transitions**: {manifest['core_benchmark_count']} (100% gate-verified across 8 criteria)",
+        f"- **Core Benchmark Transitions**: {manifest['core_benchmark_count']}",
         f"- **Control Benchmark Transitions**: {manifest['control_benchmark_count']}",
         f"- **Rebuild Candidates**: {manifest['rebuild_candidate_count']}",
         f"- **Excluded Transitions**: {manifest['excluded_count']}",
         f"- **Distinct Repositories (Core)**: {manifest['distinct_repositories_core']}",
         f"- **Distinct Repositories (All)**: {manifest['distinct_repositories_all']}",
+        "",
+        "#### Curation Gate Machine Evaluation Counts",
+        f"- **Memory Grounding Gate**: {grounding_counts['PASS']} PASS, {grounding_counts['UNKNOWN']} UNKNOWN, {grounding_counts['FAIL']} FAIL (Total: {sum(grounding_counts.values())})",
+        f"- **Task Mapping Gate**: {task_mapping_counts['PASS']} PASS, {task_mapping_counts['UNKNOWN']} UNKNOWN, {task_mapping_counts['FAIL']} FAIL (Total: {sum(task_mapping_counts.values())})",
+        f"- **Evidence Integrity Gate**: {evidence_counts['PASS']} PASS, {evidence_counts['UNKNOWN']} UNKNOWN, {evidence_counts['FAIL']} FAIL (Total: {sum(evidence_counts.values())})",
         "",
         "### B. 2x2 Causal Counterfactual Sandbox Matrix",
         f"- **Machine-Generated Causal Pass Rate**: {causal['causal_pass_count']}/{causal['total_evaluated']} ({causal['pass_rate']*100:.1f}%)",
@@ -171,7 +215,7 @@ def generate_readiness_report(eval_data: dict, manifest: dict, causal: dict) -> 
 
 
 def main():
-    print("Loading Protocol V2.1 artifacts...")
+    print("Loading Protocol V2.1-R3.1 artifacts...")
     with open(EVAL_RESULTS_PATH, "r", encoding="utf-8") as f:
         eval_data = json.load(f)
 
@@ -202,9 +246,10 @@ def main():
         f.write(readiness_rep)
     print("Generated reports/protocol-v2.1-readiness.md")
 
-    print("All Protocol V2.1-R3 reports generated successfully from SSOT JSON data.")
+    print("All Protocol V2.1-R3.1 reports generated successfully from SSOT JSON data.")
 
 
 if __name__ == "__main__":
     main()
+
 

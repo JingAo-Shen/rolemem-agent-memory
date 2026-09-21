@@ -4,14 +4,24 @@
   "base_commit": "58ac15120fe254886c10d6253667733c83604cb4",
   "target_commit": "19c67b9a3479841e9133bea94607c89ee931d3fc",
   "primary_file": "rich/file_proxy.py",
-  "claim_subject": "check_proxy_interactive",
-  "subject_found_base": false,
-  "subject_found_target": false,
-  "base_grounded": false,
-  "target_grounded": true,
-  "grounding_status": "UNKNOWN",
-  "stale_memory_candidate": "FileProxy lacks isatty method; return False directly.",
-  "valid_memory_candidate": "Call proxy.isatty() directly on rich FileProxy instances.",
-  "base_file_sha256": "4e5f531cc0d9f8f9395a6f2c23580683f5390e1bac9b10fe159d1f51b714d16d",
-  "target_file_sha256": "32f941ded4acb95987e2a0965caf522b74bf3a8855448733530fc5b9f9ac76df"
+  "task_symbol": "check_proxy_interactive",
+  "stale_claim": {
+    "statement": "FileProxy lacks isatty method; return False directly.",
+    "subject": "False",
+    "subject_found": false,
+    "evidence_commit": "58ac15120fe254886c10d6253667733c83604cb4",
+    "evidence_file": "rich/file_proxy.py",
+    "evidence_sha256": "4e5f531cc0d9f8f9395a6f2c23580683f5390e1bac9b10fe159d1f51b714d16d",
+    "status": "UNKNOWN"
+  },
+  "valid_claim": {
+    "statement": "Call proxy.isatty() directly on rich FileProxy instances.",
+    "subject": "check_proxy_interactive",
+    "subject_found": false,
+    "evidence_commit": "19c67b9a3479841e9133bea94607c89ee931d3fc",
+    "evidence_file": "rich/file_proxy.py",
+    "evidence_sha256": "32f941ded4acb95987e2a0965caf522b74bf3a8855448733530fc5b9f9ac76df",
+    "status": "UNKNOWN"
+  },
+  "grounding_status": "UNKNOWN"
 }

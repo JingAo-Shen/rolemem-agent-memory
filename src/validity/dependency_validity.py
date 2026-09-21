@@ -208,6 +208,29 @@ class DependencyValidityChecker:
 
         return False
 
+    def _is_repo_local_import(self, repository_root: str, file_path: str, mod_name: str) -> bool:
+        if not mod_name:
+            return False
+        if mod_name.startswith("."):
+            return True
+        top = mod_name.split(".")[0]
+        if repository_root and os.path.isdir(repository_root):
+            candidates = [top, f"src/{top}", f"{top}.py", f"src/{top}.py"]
+            for c in candidates:
+                if os.path.exists(os.path.join(repository_root, c)):
+                    return True
+            repo_base = os.path.basename(repository_root).replace("-", "_")
+            if top == repo_base:
+                return True
+        if file_path:
+            parts = file_path.split("/")
+            first_part = parts[0]
+            if first_part == "src" and len(parts) > 1:
+                first_part = parts[1]
+            if first_part in (top, f"{top}.py"):
+                return True
+        return False
+
     def evaluate(
         self,
         base_source: str,
@@ -326,19 +349,19 @@ class DependencyValidityChecker:
                                     dependency_changed=True
                                 )
                             break
-                    if not found_mod and (target_mod_name.startswith(".") or dep.imported_from.startswith(".")):
+                    if not found_mod and self._is_repo_local_import(repository_root, file_path, target_mod_name):
                         unresolved_local_dep = dep.qualified_name
 
         if unresolved_local_dep:
             return ValidityResult(
                 decision="UNCERTAIN",
                 confidence=0.50,
-                reasons=[f"Local relative dependency `{unresolved_local_dep}` could not be resolved in target commit."],
+                reasons=[f"Local repository dependency `{unresolved_local_dep}` could not be resolved in target commit."],
                 evidence=[
                     ValidityEvidence(
                         evidence_type="unresolved_local_dependency",
                         source="target_repo_ast_resolution",
-                        detail=f"Relative module path for `{unresolved_local_dep}` not found in target repo tree.",
+                        detail=f"Module path for local dependency `{unresolved_local_dep}` not found in target repo tree.",
                         confidence=0.50
                     )
                 ],

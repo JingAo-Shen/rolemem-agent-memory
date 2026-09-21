@@ -4,14 +4,24 @@
   "base_commit": "8c1a6ef241b51ff055e89219f050ccf4f15f37f6",
   "target_commit": "8fa3b81c8dd90c3b3f6648add2228aaaebb42884",
   "primary_file": "more_itertools/more.py",
-  "claim_subject": "pair_strictly",
-  "subject_found_base": true,
-  "subject_found_target": false,
-  "base_grounded": true,
-  "target_grounded": true,
-  "grounding_status": "PASS",
-  "stale_memory_candidate": "Use more_itertools.zip_equal to pair iterables with length equality validation.",
-  "valid_memory_candidate": "Use Python built-in zip(..., strict=True) to pair iterables with strict length check.",
-  "base_file_sha256": "98d3ca2aee5423b9512f8eb4be09b441309616218c542328b123f15527626e8b",
-  "target_file_sha256": "96c243943842abaa67f96a91b2d43b271ccf32cfffd9747bf14817c802013574"
+  "task_symbol": "pair_strictly",
+  "stale_claim": {
+    "statement": "Use more_itertools.zip_equal to pair iterables with length equality validation.",
+    "subject": "from more_itertools import zip_equal",
+    "subject_found": true,
+    "evidence_commit": "8c1a6ef241b51ff055e89219f050ccf4f15f37f6",
+    "evidence_file": "more_itertools/more.py",
+    "evidence_sha256": "98d3ca2aee5423b9512f8eb4be09b441309616218c542328b123f15527626e8b",
+    "status": "PASS"
+  },
+  "valid_claim": {
+    "statement": "Use Python built-in zip(..., strict=True) to pair iterables with strict length check.",
+    "subject": "pair_strictly",
+    "subject_found": false,
+    "evidence_commit": "8fa3b81c8dd90c3b3f6648add2228aaaebb42884",
+    "evidence_file": "more_itertools/more.py",
+    "evidence_sha256": "96c243943842abaa67f96a91b2d43b271ccf32cfffd9747bf14817c802013574",
+    "status": "UNKNOWN"
+  },
+  "grounding_status": "UNKNOWN"
 }

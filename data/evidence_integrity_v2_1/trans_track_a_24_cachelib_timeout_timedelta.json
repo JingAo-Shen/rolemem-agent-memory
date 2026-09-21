@@ -8,9 +8,12 @@
   "authenticity_verified": true,
   "primary_file_verified": true,
   "diff_hunk_bytes": 5825,
-  "diff_sha256": "699611d887d6c6f5840366fe171702f7ef7736cd70519b6772ab7a4fa3f313c2",
+  "recomputed_diff_sha256": "699611d887d6c6f5840366fe171702f7ef7736cd70519b6772ab7a4fa3f313c2",
+  "stored_diff_sha256": "699611d887d6c6f5840366fe171702f7ef7736cd70519b6772ab7a4fa3f313c2",
+  "diff_hash_match": true,
   "pr_url": "https://github.com/pallets-eco/cachelib/pull/510",
   "pr_url_valid": true,
+  "pr_commit_relation": "VERIFIED",
   "external_evidence_found": true,
   "evidence_integrity_verified": true,
   "evidence_integrity_status": "PASS"

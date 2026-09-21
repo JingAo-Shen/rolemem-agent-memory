@@ -8,9 +8,12 @@
   "authenticity_verified": true,
   "primary_file_verified": true,
   "diff_hunk_bytes": 1381,
-  "diff_sha256": "a5a1685af04a36b4ba6599d0baf8f1a9a3b779119efdbae268190a822450812a",
+  "recomputed_diff_sha256": "a5a1685af04a36b4ba6599d0baf8f1a9a3b779119efdbae268190a822450812a",
+  "stored_diff_sha256": "a5a1685af04a36b4ba6599d0baf8f1a9a3b779119efdbae268190a822450812a",
+  "diff_hash_match": true,
   "pr_url": "https://github.com/urllib3/urllib3/pull/3622",
   "pr_url_valid": true,
+  "pr_commit_relation": "VERIFIED",
   "external_evidence_found": true,
   "evidence_integrity_verified": true,
   "evidence_integrity_status": "PASS"

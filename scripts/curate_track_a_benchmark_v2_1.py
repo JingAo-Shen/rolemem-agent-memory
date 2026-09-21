@@ -101,14 +101,7 @@ def curate_benchmark():
             with open(ev_file, "r", encoding="utf-8") as ef:
                 edata = json.load(ef)
                 authenticity_pass = bool(edata.get("authenticity_verified", False))
-                evidence_pass = bool(edata.get("evidence_integrity_verified", False))
-        else:
-            auth_base = check_git_commit(repo_name, b_commit)
-            auth_target = check_git_commit(repo_name, t_commit)
-            authenticity_pass = auth_base and auth_target
-            pr_valid = bool(spec.get("pr_url") and str(spec.get("pr_url")).startswith("https://github.com/"))
-            ext_ev_exists = os.path.isdir(os.path.join(EXTERNAL_EV_DIR, tid)) or os.path.exists(os.path.join(EXTERNAL_EV_DIR, f"{tid}.json"))
-            evidence_pass = authenticity_pass and pr_valid and bool(spec.get("primary_file")) and ext_ev_exists
+                evidence_pass = bool(edata.get("evidence_integrity_status") == "PASS")
 
         # Gate 3 & 8: Causal Matrix & Environment Reproducibility Pass
         causal_file = os.path.join(CAUSAL_DIR, f"{tid}.json")
@@ -122,20 +115,17 @@ def curate_benchmark():
                 causal_matrix = cdata.get("matrix", {})
                 env_repro_pass = bool(cdata.get("environment_reproducible", False))
 
-        # Gate 4 & 5: Memory Grounding Passes from memory_grounding_v2_1
+        # Gate 4 & 5: Memory Grounding Passes from memory_grounding_v2_1 (Two Structured Claims)
         ground_file = os.path.join(GROUNDING_DIR, f"{tid}.json")
         stale_mem_pass = False
         valid_mem_pass = False
+        grounding_pass = False
         if os.path.exists(ground_file):
             with open(ground_file, "r", encoding="utf-8") as gf:
                 gdata = json.load(gf)
-                stale_mem_pass = bool(gdata.get("base_grounded", False))
-                valid_mem_pass = bool(gdata.get("target_grounded", False))
-        else:
-            stale_candidate = spec.get("stale_memory_candidate", "")
-            valid_candidate = spec.get("valid_memory_candidate", "")
-            stale_mem_pass = bool(stale_candidate and len(stale_candidate.strip()) > 15)
-            valid_mem_pass = bool(valid_candidate and len(valid_candidate.strip()) > 15)
+                stale_mem_pass = bool(gdata.get("stale_claim", {}).get("status") == "PASS")
+                valid_mem_pass = bool(gdata.get("valid_claim", {}).get("status") == "PASS")
+                grounding_pass = bool(gdata.get("grounding_status") == "PASS")
 
         # Gate 6: Task Mapping Pass from task_mapping_v2_1
         tm_file = os.path.join(TASK_MAPPING_DIR, f"{tid}.json")
@@ -143,9 +133,7 @@ def curate_benchmark():
         if os.path.exists(tm_file):
             with open(tm_file, "r", encoding="utf-8") as tf:
                 tdata = json.load(tf)
-                task_mapping_pass = bool(tdata.get("task_mapping_verified", False) and tdata.get("execution_status") == "EXECUTED")
-        else:
-            task_mapping_pass = (cdata.get("execution_status") == "EXECUTED") if os.path.exists(causal_file) else False
+                task_mapping_pass = bool(tdata.get("task_mapping_status") == "PASS")
 
         # Gate 7: Leakage Pass
         leakage_file = os.path.join(LEAKAGE_DIR, f"{tid}.json")
@@ -252,7 +240,7 @@ def curate_benchmark():
     distinct_all_repos = len(set(r["repo_name"] for r in pool_records))
 
     summary = {
-        "protocol_version": "2.1-r3",
+        "protocol_version": "2.1-r3.1",
         "total_evaluated_transitions": len(pool_records),
         "core_benchmark_count": len(core_records),
         "control_benchmark_count": len(control_records),
@@ -278,7 +266,7 @@ def curate_benchmark():
     # Generate markdown report
     rep_p = os.path.join(REPORTS_DIR, "benchmark-curation-v2.1.md")
     lines = [
-        "# RoleMem Protocol V2.1-R3 — Gate-Based Benchmark Curation Report",
+        "# RoleMem Protocol V2.1-R3.1 — Gate-Based Benchmark Curation Report",
         "",
         "## 1. Executive Curation Summary",
         f"- **Total Evaluated Transitions**: {len(pool_records)}",

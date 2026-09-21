@@ -4,14 +4,24 @@
   "base_commit": "dfe82ade3dc7d112d7d166ca0d7ae7f794fe19e6",
   "target_commit": "9e49736ae075fcffb85f731a3fe2c006cf1edca4",
   "primary_file": "src/jinja2/__init__.py",
-  "claim_subject": "get_engine_version",
-  "subject_found_base": true,
-  "subject_found_target": false,
-  "base_grounded": true,
-  "target_grounded": true,
-  "grounding_status": "PASS",
-  "stale_memory_candidate": "Inspect jinja2.__version__ to read template engine version.",
-  "valid_memory_candidate": "Inspect package version using importlib.metadata.version('jinja2').",
-  "base_file_sha256": "705fcc42991fcdeea57124f06144730a08d45f425a04bb6ef9bbc222e6e6b70e",
-  "target_file_sha256": "eb0f58170da5a4d0a844700d760611c4ccce6c987471ba3210851433462d9044"
+  "task_symbol": "get_engine_version",
+  "stale_claim": {
+    "statement": "Inspect jinja2.__version__ to read template engine version.",
+    "subject": "jinja2.__version__",
+    "subject_found": true,
+    "evidence_commit": "dfe82ade3dc7d112d7d166ca0d7ae7f794fe19e6",
+    "evidence_file": "src/jinja2/__init__.py",
+    "evidence_sha256": "705fcc42991fcdeea57124f06144730a08d45f425a04bb6ef9bbc222e6e6b70e",
+    "status": "PASS"
+  },
+  "valid_claim": {
+    "statement": "Inspect package version using importlib.metadata.version('jinja2').",
+    "subject": "get_engine_version",
+    "subject_found": false,
+    "evidence_commit": "9e49736ae075fcffb85f731a3fe2c006cf1edca4",
+    "evidence_file": "src/jinja2/__init__.py",
+    "evidence_sha256": "eb0f58170da5a4d0a844700d760611c4ccce6c987471ba3210851433462d9044",
+    "status": "UNKNOWN"
+  },
+  "grounding_status": "UNKNOWN"
 }

@@ -8,9 +8,12 @@
   "authenticity_verified": true,
   "primary_file_verified": true,
   "diff_hunk_bytes": 1170,
-  "diff_sha256": "ff07368ed1cc423d0124fd42c00f7d99d4111332fd33a1bb3ae7c8282d07fbf3",
+  "recomputed_diff_sha256": "ff07368ed1cc423d0124fd42c00f7d99d4111332fd33a1bb3ae7c8282d07fbf3",
+  "stored_diff_sha256": "ff07368ed1cc423d0124fd42c00f7d99d4111332fd33a1bb3ae7c8282d07fbf3",
+  "diff_hash_match": true,
   "pr_url": "https://github.com/pallets/flask/pull/5899",
   "pr_url_valid": true,
+  "pr_commit_relation": "VERIFIED",
   "external_evidence_found": true,
   "evidence_integrity_verified": true,
   "evidence_integrity_status": "PASS"

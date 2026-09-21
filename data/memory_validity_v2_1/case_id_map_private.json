@@ -427,7 +427,7 @@
     "source_tid": "trans_urllib3_basehttpresponse",
     "repository": "urllib3",
     "file_path": "src/urllib3/response.py",
-    "symbol_qualified_name": "urllib3.BaseHTTPResponse",
+    "symbol_qualified_name": "BaseHTTPResponse",
     "category": "CAT_D2_SYM_CHG_BEHAVIOR_STALE",
     "gold_label": "STALE"
   },
@@ -435,55 +435,7 @@
     "source_tid": "trans_marshmallow___all__",
     "repository": "marshmallow",
     "file_path": "src/marshmallow/__init__.py",
-    "symbol_qualified_name": "marshmallow.__all__",
-    "category": "CAT_D2_SYM_CHG_BEHAVIOR_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000056": {
-    "source_tid": "trans_itsdangerous___getattr__",
-    "repository": "itsdangerous",
-    "file_path": "src/itsdangerous/__init__.py",
-    "symbol_qualified_name": "itsdangerous.__getattr__",
-    "category": "CAT_D2_SYM_CHG_BEHAVIOR_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000057": {
-    "source_tid": "trans_packaging_legacyversion",
-    "repository": "packaging",
-    "file_path": "packaging/version.py",
-    "symbol_qualified_name": "packaging.LegacyVersion",
-    "category": "CAT_D2_SYM_CHG_BEHAVIOR_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000058": {
-    "source_tid": "trans_more-itertools_zip_equal",
-    "repository": "more-itertools",
-    "file_path": "more_itertools/more.py",
-    "symbol_qualified_name": "more-itertools.zip_equal",
-    "category": "CAT_D2_SYM_CHG_BEHAVIOR_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000059": {
-    "source_tid": "trans_markupsafe___version__",
-    "repository": "markupsafe",
-    "file_path": "src/markupsafe/__init__.py",
-    "symbol_qualified_name": "markupsafe.__version__",
-    "category": "CAT_D2_SYM_CHG_BEHAVIOR_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000060": {
-    "source_tid": "trans_jinja___version__",
-    "repository": "jinja",
-    "file_path": "src/jinja2/__init__.py",
-    "symbol_qualified_name": "jinja.__version__",
-    "category": "CAT_D2_SYM_CHG_BEHAVIOR_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000061": {
-    "source_tid": "trans_click_get_binary_stream",
-    "repository": "click",
-    "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "click.get_binary_stream",
+    "symbol_qualified_name": "__all__",
     "category": "CAT_D2_SYM_CHG_BEHAVIOR_STALE",
     "gold_label": "STALE"
   }

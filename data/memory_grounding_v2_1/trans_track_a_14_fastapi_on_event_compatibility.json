@@ -4,14 +4,24 @@
   "base_commit": "8e50c55fd90c4433ddc9096ff439da9498a8314a",
   "target_commit": "f9f79926047d7f5d8e0127dd585e7683ee57e9f7",
   "primary_file": "fastapi/routing.py",
-  "claim_subject": "has_default_lifespan",
-  "subject_found_base": true,
-  "subject_found_target": false,
-  "base_grounded": true,
-  "target_grounded": true,
-  "grounding_status": "PASS",
-  "stale_memory_candidate": "Call APIRouter.on_event to register application startup and shutdown events.",
-  "valid_memory_candidate": "Use lifespan parameter on APIRouter to register application lifespan handlers instead of on_event.",
-  "base_file_sha256": "747656e8d2f36ef0fb8d94f637e57a7e3d48adb7bc1d1f850de881352b931c7b",
-  "target_file_sha256": "cfa4b7e4c42c9a6988edfa72191e5b6aab6ee357690f3dc7d3e2dc43e8ec652c"
+  "task_symbol": "has_default_lifespan",
+  "stale_claim": {
+    "statement": "Call APIRouter.on_event to register application startup and shutdown events.",
+    "subject": "on_event",
+    "subject_found": true,
+    "evidence_commit": "8e50c55fd90c4433ddc9096ff439da9498a8314a",
+    "evidence_file": "fastapi/routing.py",
+    "evidence_sha256": "747656e8d2f36ef0fb8d94f637e57a7e3d48adb7bc1d1f850de881352b931c7b",
+    "status": "PASS"
+  },
+  "valid_claim": {
+    "statement": "Use lifespan parameter on APIRouter to register application lifespan handlers instead of on_event.",
+    "subject": "has_default_lifespan",
+    "subject_found": false,
+    "evidence_commit": "f9f79926047d7f5d8e0127dd585e7683ee57e9f7",
+    "evidence_file": "fastapi/routing.py",
+    "evidence_sha256": "cfa4b7e4c42c9a6988edfa72191e5b6aab6ee357690f3dc7d3e2dc43e8ec652c",
+    "status": "UNKNOWN"
+  },
+  "grounding_status": "UNKNOWN"
 }

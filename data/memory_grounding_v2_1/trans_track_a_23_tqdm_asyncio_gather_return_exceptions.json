@@ -4,14 +4,24 @@
   "base_commit": "53d096e77c28005b4f9fe1e9d6274ae311bf87e7",
   "target_commit": "99615b978702dcf61986de62dfd252d82720af76",
   "primary_file": "tqdm/asyncio.py",
-  "claim_subject": "run_gather_tasks",
-  "subject_found_base": true,
-  "subject_found_target": false,
-  "base_grounded": true,
-  "target_grounded": true,
-  "grounding_status": "PASS",
-  "stale_memory_candidate": "tqdm_asyncio.gather does not support return_exceptions; omit argument and catch exceptions manually.",
-  "valid_memory_candidate": "Pass return_exceptions=True directly to tqdm_asyncio.gather.",
-  "base_file_sha256": "77abd9f3c645abaceaded016a64227076c484d528234405a92e766ffef17b5ff",
-  "target_file_sha256": "00cd67c94cdf79055cd48417516dabe17c6c764919b07831bb5627d81dfc19df"
+  "task_symbol": "run_gather_tasks",
+  "stale_claim": {
+    "statement": "tqdm_asyncio.gather does not support return_exceptions; omit argument and catch exceptions manually.",
+    "subject": "gather",
+    "subject_found": true,
+    "evidence_commit": "53d096e77c28005b4f9fe1e9d6274ae311bf87e7",
+    "evidence_file": "tqdm/asyncio.py",
+    "evidence_sha256": "77abd9f3c645abaceaded016a64227076c484d528234405a92e766ffef17b5ff",
+    "status": "PASS"
+  },
+  "valid_claim": {
+    "statement": "Pass return_exceptions=True directly to tqdm_asyncio.gather.",
+    "subject": "run_gather_tasks",
+    "subject_found": false,
+    "evidence_commit": "99615b978702dcf61986de62dfd252d82720af76",
+    "evidence_file": "tqdm/asyncio.py",
+    "evidence_sha256": "00cd67c94cdf79055cd48417516dabe17c6c764919b07831bb5627d81dfc19df",
+    "status": "UNKNOWN"
+  },
+  "grounding_status": "UNKNOWN"
 }

@@ -4,14 +4,24 @@
   "base_commit": "846066a34413509695434ed5a661280d7db4f993",
   "target_commit": "3cf5072ee5f95744024f60e0f4a77eb2edb8959f",
   "primary_file": "celery/__init__.py",
-  "claim_subject": "check_task_export",
-  "subject_found_base": true,
-  "subject_found_target": false,
-  "base_grounded": true,
-  "target_grounded": true,
-  "grounding_status": "PASS",
-  "stale_memory_candidate": "Check task presence in celery.__all__.",
-  "valid_memory_candidate": "Check Task export presence in celery.__all__.",
-  "base_file_sha256": "800ac3a448b38cfccfcb2e70faee9eb7f14a1ab8ab8445e3d1c6a4ab8bbc5bb6",
-  "target_file_sha256": "7ced07269ebd08f84b963ac38ff1842cb69471edeabb3dfa7db98fed10ff2e3d"
+  "task_symbol": "check_task_export",
+  "stale_claim": {
+    "statement": "Check task presence in celery.__all__.",
+    "subject": "task",
+    "subject_found": true,
+    "evidence_commit": "846066a34413509695434ed5a661280d7db4f993",
+    "evidence_file": "celery/__init__.py",
+    "evidence_sha256": "800ac3a448b38cfccfcb2e70faee9eb7f14a1ab8ab8445e3d1c6a4ab8bbc5bb6",
+    "status": "PASS"
+  },
+  "valid_claim": {
+    "statement": "Check Task export presence in celery.__all__.",
+    "subject": "check_task_export",
+    "subject_found": false,
+    "evidence_commit": "3cf5072ee5f95744024f60e0f4a77eb2edb8959f",
+    "evidence_file": "celery/__init__.py",
+    "evidence_sha256": "7ced07269ebd08f84b963ac38ff1842cb69471edeabb3dfa7db98fed10ff2e3d",
+    "status": "UNKNOWN"
+  },
+  "grounding_status": "UNKNOWN"
 }

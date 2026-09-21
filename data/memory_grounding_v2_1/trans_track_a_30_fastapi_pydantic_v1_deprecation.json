@@ -4,14 +4,24 @@
   "base_commit": "6513d4daa16a536d17743de6a292f49bd06388a4",
   "target_commit": "6e42bcd8ce2ade33d94f478310dad20ee84f8f0f",
   "primary_file": "fastapi/dependencies/utils.py",
-  "claim_subject": "is_pydantic_v1_deprecated",
-  "subject_found_base": true,
-  "subject_found_target": false,
-  "base_grounded": true,
-  "target_grounded": true,
-  "grounding_status": "PASS",
-  "stale_memory_candidate": "Define FastAPI routes with pydantic.v1 models without deprecation warnings.",
-  "valid_memory_candidate": "FastAPI warns on pydantic.v1 usage in get_dependant; migrate models to standard Pydantic v2.",
-  "base_file_sha256": "a284ca8152c7ea3fc2a44ab94aeabbeb19fda1da363d5bc9e45dd4def6caf995",
-  "target_file_sha256": "c13666b10e9efe83d2d56eda93cf900b6b65e5eabef404cbfaf7617bb0991cb5"
+  "task_symbol": "is_pydantic_v1_deprecated",
+  "stale_claim": {
+    "statement": "Define FastAPI routes with pydantic.v1 models without deprecation warnings.",
+    "subject": "pydantic.v1",
+    "subject_found": true,
+    "evidence_commit": "6513d4daa16a536d17743de6a292f49bd06388a4",
+    "evidence_file": "fastapi/dependencies/utils.py",
+    "evidence_sha256": "a284ca8152c7ea3fc2a44ab94aeabbeb19fda1da363d5bc9e45dd4def6caf995",
+    "status": "PASS"
+  },
+  "valid_claim": {
+    "statement": "FastAPI warns on pydantic.v1 usage in get_dependant; migrate models to standard Pydantic v2.",
+    "subject": "is_pydantic_v1_deprecated",
+    "subject_found": false,
+    "evidence_commit": "6e42bcd8ce2ade33d94f478310dad20ee84f8f0f",
+    "evidence_file": "fastapi/dependencies/utils.py",
+    "evidence_sha256": "c13666b10e9efe83d2d56eda93cf900b6b65e5eabef404cbfaf7617bb0991cb5",
+    "status": "UNKNOWN"
+  },
+  "grounding_status": "UNKNOWN"
 }

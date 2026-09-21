@@ -8,9 +8,12 @@
   "authenticity_verified": true,
   "primary_file_verified": true,
   "diff_hunk_bytes": 4420,
-  "diff_sha256": "d7145c3c10839b3846c1671211de47c0c2e065fc3ccb9343718585c785fef8dc",
+  "recomputed_diff_sha256": "d7145c3c10839b3846c1671211de47c0c2e065fc3ccb9343718585c785fef8dc",
+  "stored_diff_sha256": "d7145c3c10839b3846c1671211de47c0c2e065fc3ccb9343718585c785fef8dc",
+  "diff_hash_match": true,
   "pr_url": "https://github.com/more-itertools/more-itertools/pull/1076",
   "pr_url_valid": true,
+  "pr_commit_relation": "VERIFIED",
   "external_evidence_found": true,
   "evidence_integrity_verified": true,
   "evidence_integrity_status": "PASS"
