@@ -1,0 +1,34 @@
+{
+  "protocol_version": "2.2-claim-aware-v0.2",
+  "representation_revision": "r1",
+  "supersedes": "protocol_v2_2_dev_claim_representation.json",
+  "supersession_reason": "DEPENDENCY_SUBJECT_REGEX_TRUNCATION",
+  "affected_claims": [
+    "CLM-000045"
+  ],
+  "extractor_version": "2.2-v0.2-r1",
+  "freeze_status": "FROZEN",
+  "representation_gold_source": "extractor-derived-development-representation-r1",
+  "independent_extraction_gold": false,
+  "validity_gold_source": "frozen-v2.1-human/machine-curated-labels",
+  "scientific_scope_note": "Structured claim representation was generated within the same extractor development cycle and does not constitute independent extraction ground truth. Revision r1 corrects regex subject truncation for CLM-000045 (HookSpec).",
+  "total_claims": 55,
+  "files": {
+    "source_v2_1_blind_inputs": {
+      "path": "data/memory_validity_v2_1/blind_inputs.jsonl",
+      "sha256": "be64cb4e3bc17606d03f7a81b186c1861b3495d5aa9888729fccf74b85ceae83"
+    },
+    "claim_extractor": {
+      "path": "src/claim_validity/claim_extractor.py",
+      "sha256": "e918983c78622f211704ad45c2d845ef6b3bf63355b7e5feb3962b915e7ec665"
+    },
+    "dev_claim_inputs_v2r1": {
+      "path": "data/claim_validity_v2_2/dev_claim_inputs_v2r1.jsonl",
+      "sha256": "5445dfde35a33b12acc1729ea562411b75bf6ee826f03929956984128e455fb4"
+    },
+    "dev_claim_gold_v2r1": {
+      "path": "data/claim_validity_v2_2/dev_claim_gold_v2r1.jsonl",
+      "sha256": "f1f4700dde8e32a19e6c56b3801c9fb5dddfe54ee293bd9c4f6167bf017f377a"
+    }
+  }
+}

@@ -7,9 +7,9 @@
       "FAILED": 0
     },
     "CAT_C_BINDINGS": {
-      "VERIFIED": 0,
+      "VERIFIED": 1,
       "UNKNOWN": 0,
-      "FAILED": 1
+      "FAILED": 0
     },
     "CAT_D2_BINDINGS": {
       "VERIFIED": 0,
@@ -18,7 +18,7 @@
     },
     "total_records": 55,
     "total_intended_executable_evidence": 11,
-    "total_verified_executable_evidence": 8
+    "total_verified_executable_evidence": 9
   },
   "records": [
     {
@@ -1301,7 +1301,7 @@
       "claim_id": "CLM-000045",
       "source_case_id": "MV21-000045",
       "raw_statement_sha256": "22f45f8051538bffdfb1c24fdd31270578523fff070de603a4b97e0843b49dfc",
-      "subject": "c",
+      "subject": "HookSpec",
       "predicate": "depends_on",
       "object": "varnames",
       "repository": "pluggy",
@@ -1309,10 +1309,9 @@
       "target_commit": "0258484dc180a0c28705de83783b269f4fed4873",
       "evidence_artifact_sha256": "e9a60d7ab78a52ede1ac72c89ba6b8a64421c0b0e11f47bc451b3635b254eabc",
       "contract_hash": "91dd516e37aba3e96955a2faed2d02a7577371400b62874390dae16f955419b0",
-      "binding_status": "FAILED",
+      "binding_status": "VERIFIED",
       "binding_reasons": [
-        "Cat C target_symbol mismatch: artifact=HookSpec, claim=c",
-        "Cat C dependency_path mismatch: path=['HookSpec', 'varnames'], expected start=c, end=varnames"
+        "Cat C dependency counterfactual binding verified."
       ],
       "artifact_claim_hash": null,
       "claim_raw_statement_hash": null,
@@ -1324,7 +1323,7 @@
       "contract_assertions_hash": null,
       "artifact_type": "DEPENDENCY_COUNTERFACTUAL",
       "category": "CAT_C_SYM_SAME_MEMORY_STALE",
-      "claim_hash": "984d62977dc5b9e8875bbd3b05f04f703a85446bc75dd30c027218e11a229539",
+      "claim_hash": "e8712f78aed6f199191b5fa3c3b131a072e138af639e30cca7d8074afa987357",
       "artifact_hash": "e9a60d7ab78a52ede1ac72c89ba6b8a64421c0b0e11f47bc451b3635b254eabc"
     },
     {

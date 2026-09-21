@@ -468,8 +468,8 @@
     }
   },
   "claim_static_selective": {
-    "Coverage": 0.8181818181818182,
-    "Accuracy_Overall": 0.8181818181818182,
+    "Coverage": 0.8,
+    "Accuracy_Overall": 0.8,
     "Accuracy_Decided": 1.0,
     "Balanced_Accuracy": 1.0,
     "Macro_F1": 1.0,
@@ -495,9 +495,9 @@
       },
       "CAT_C_SYM_SAME_MEMORY_STALE": {
         "total": 1,
-        "decided": 1,
-        "coverage": 1.0,
-        "accuracy": 1.0
+        "decided": 0,
+        "coverage": 0.0,
+        "accuracy": null
       },
       "CAT_D1_SYM_REM_STALE": {
         "total": 8,
@@ -527,9 +527,9 @@
       },
       "DEPENDENCY_CONTRACT": {
         "total": 1,
-        "decided": 1,
-        "coverage": 1.0,
-        "accuracy": 1.0
+        "decided": 0,
+        "coverage": 0.0,
+        "accuracy": null
       },
       "IMPORT_PATH_VALID": {
         "total": 1,
@@ -547,17 +547,17 @@
   },
   "claim_static_valid_default": {
     "Coverage": 1.0,
-    "Accuracy_Overall": 0.9636363636363636,
-    "Accuracy_Decided": 0.9636363636363636,
-    "Balanced_Accuracy": 0.9090909090909092,
-    "Macro_F1": 0.9388888888888889,
-    "MCC": 0.8846517369293828,
-    "Selective_Risk": 0.03636363636363636,
+    "Accuracy_Overall": 0.9454545454545454,
+    "Accuracy_Decided": 0.9454545454545454,
+    "Balanced_Accuracy": 0.8636363636363636,
+    "Macro_F1": 0.9045691150954309,
+    "MCC": 0.8251369970070347,
+    "Selective_Risk": 0.05454545454545454,
     "Precision": 1.0,
-    "Recall": 0.8181818181818182,
-    "F1": 0.9,
+    "Recall": 0.7272727272727273,
+    "F1": 0.8421052631578948,
     "False_Invalidation_Rate_FIR": 0.0,
-    "Stale_Exposure_Rate_SER": 0.18181818181818182,
+    "Stale_Exposure_Rate_SER": 0.2727272727272727,
     "Per_Category_Breakdown": {
       "CAT_A_FILE_CHG_SYM_SAME_VALID": {
         "total": 36,
@@ -575,7 +575,7 @@
         "total": 1,
         "decided": 1,
         "coverage": 1.0,
-        "accuracy": 1.0
+        "accuracy": 0.0
       },
       "CAT_D1_SYM_REM_STALE": {
         "total": 8,
@@ -607,7 +607,7 @@
         "total": 1,
         "decided": 1,
         "coverage": 1.0,
-        "accuracy": 1.0
+        "accuracy": 0.0
       },
       "IMPORT_PATH_VALID": {
         "total": 1,

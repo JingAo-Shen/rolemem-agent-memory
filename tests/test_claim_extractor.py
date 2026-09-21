@@ -92,7 +92,71 @@ def test_extract_dependency_contract(extractor):
     raw = "HookCaller inspects hook functions via varnames allowing hook methods without explicit self parameter."
     c = extractor.extract(raw, symbol="HookCaller")
     assert c.claim_type == ClaimType.DEPENDENCY_CONTRACT
+    assert c.subject == "HookCaller"
+    assert c.predicate == "depends_on"
+    assert c.object == "varnames"
     assert c.claim_parse_status == "PARSED"
+
+
+def test_extract_dependency_strict_regression_cases(extractor):
+    cases = [
+        ("HookSpec inspects hook functions via varnames", "HookSpec", "depends_on", "varnames"),
+        ("HookCaller inspects hook functions via varnames", "HookCaller", "depends_on", "varnames"),
+        ("Service depends on Database", "Service", "depends_on", "Database"),
+        ("Class Service depends on Database", "Service", "depends_on", "Database"),
+        ("pkg.Service.run calls helper", "pkg.Service.run", "depends_on", "helper"),
+    ]
+    for raw, exp_subj, exp_pred, exp_obj in cases:
+        c = extractor.extract(raw)
+        assert c.claim_type == ClaimType.DEPENDENCY_CONTRACT, f"Failed type on {raw}"
+        assert c.subject == exp_subj, f"Failed subject on {raw}: got {c.subject}, expected {exp_subj}"
+        assert c.predicate == exp_pred, f"Failed predicate on {raw}: got {c.predicate}, expected {exp_pred}"
+        assert c.object == exp_obj, f"Failed object on {raw}: got {c.object}, expected {exp_obj}"
+        assert c.claim_parse_status == "PARSED", f"Failed parse status on {raw}"
+
+
+def test_clm_000045_corrected_representation(extractor):
+    raw = "HookSpec inspects hook functions via varnames allowing hook methods without explicit self parameter."
+    c = extractor.extract(
+        raw_statement=raw,
+        claim_id="CLM-000045",
+        repository="pluggy",
+        file_path="src/pluggy/_hooks.py",
+        symbol="HookSpec",
+        source_case_id="MV21-000045"
+    )
+    assert c.claim_type == ClaimType.DEPENDENCY_CONTRACT
+    assert c.subject == "HookSpec"
+    assert c.predicate == "depends_on"
+    assert c.object == "varnames"
+    assert c.symbol == "HookSpec"
+    assert c.source_case_id == "MV21-000045"
+    assert c.claim_parse_status == "PARSED"
+
+
+def test_blind_inputs_leading_symbol_subject_not_truncated(extractor):
+    """Semantic invariant: If a known symbol is the leading subject in statement, extracted subject must not truncate to last char."""
+    import json
+    blind_path = "/code/rolemem-agent-memory/data/memory_validity_v2_1/blind_inputs.jsonl"
+    with open(blind_path, "r", encoding="utf-8") as f:
+        blind_records = [json.loads(line) for line in f if line.strip()]
+
+    for r in blind_records:
+        st = r["memory_statement"]
+        sym = r.get("symbol_qualified_name") or r.get("symbol", "")
+        cid = r["case_id"]
+        claim = extractor.extract(st, repository=r.get("repository", ""), file_path=r.get("file_path", ""), symbol=sym)
+
+        if sym and len(sym) > 1:
+            prefixes = [sym, f"`{sym}`", f"'{sym}'", f'"{sym}"', f"Class {sym}", f"Symbol {sym}", f"Function {sym}"]
+            if any(st.startswith(p) for p in prefixes):
+                assert claim.subject != sym[-1], (
+                    f"Regression: Single-character truncation detected for {cid}! "
+                    f"Symbol '{sym}', Extracted subject '{claim.subject}', Statement: '{st}'"
+                )
+                assert claim.subject.split(".")[-1] == sym.split(".")[-1], (
+                    f"Subject alignment mismatch for {cid}: expected '{sym}', got '{claim.subject}'"
+                )
 
 
 def test_extract_unresolved_arbitrary_statement(extractor):

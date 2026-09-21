@@ -51,11 +51,11 @@ class DeterministicClaimExtractor:
             re.IGNORECASE
         )
         self.pat_dependency = re.compile(
-            r"^(?:Symbol|Class|Function|Interface|Method|Module|[a-zA-Z0-9_]+)?\s*[`'\"]?([a-zA-Z0-9_\.]+)['`\"]?\s+(?:depends\s+on|delegates\s+to|invokes|calls|inspects\s+.*?via)\s+(?:dependency\s+)?[`'\"]?([a-zA-Z0-9_\.]+)['`\"]?\s*(.*)",
+            r"^(?:(?:Symbol|Class|Function|Interface|Method|Module)\s+)?\s*[`'\"]?([a-zA-Z_][a-zA-Z0-9_\.]*)['`\"]?\s+(?:depends\s+on|delegates\s+to|invokes|calls|inspects\s+.*?via)\s+(?:dependency\s+)?[`'\"]?([a-zA-Z0-9_\.]+)['`\"]?\s*(.*)",
             re.IGNORECASE
         )
         self.pat_contract = re.compile(
-            r"^(?:When\s+)?(?:Symbol|Class|Function)?\s*[`'\"]?([a-zA-Z0-9_\.]+)['`\"]?\s+(?:instance\s+|class\s+|application\s+instance\s+)?(?:is\s+initialized|initialized|wrapping|initializes|can\s+be\s+instantiated|maintains\s+contract|satisfies\s+behavioral\s+contract|satisfies\s+contract|ensures\s+behavior|returns\s+valid|formats\s+and\s+parses|implements\s+contract)\s*(.*)",
+            r"^(?:When\s+)?(?:(?:Symbol|Class|Function)\s+)?\s*[`'\"]?([a-zA-Z0-9_\.]+)['`\"]?\s+(?:instance\s+|class\s+|application\s+instance\s+)?(?:is\s+initialized|initialized|wrapping|initializes|can\s+be\s+instantiated|maintains\s+contract|satisfies\s+behavioral\s+contract|satisfies\s+contract|ensures\s+behavior|returns\s+valid|formats\s+and\s+parses|implements\s+contract)\s*(.*)",
             re.IGNORECASE
         )
 

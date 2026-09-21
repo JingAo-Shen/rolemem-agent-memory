@@ -50,8 +50,8 @@ from src.validity import (
 )
 
 DATA_DIR = "/code/rolemem-agent-memory/data/claim_validity_v2_2"
-INPUTS_PATH = os.path.join(DATA_DIR, "dev_claim_inputs_v2.jsonl")
-GOLD_PATH = os.path.join(DATA_DIR, "dev_claim_gold_v2.jsonl")
+INPUTS_PATH = os.path.join(DATA_DIR, "dev_claim_inputs_v2r1.jsonl")
+GOLD_PATH = os.path.join(DATA_DIR, "dev_claim_gold_v2r1.jsonl")
 BLIND_INPUTS_PATH = "/code/rolemem-agent-memory/data/memory_validity_v2_1/blind_inputs.jsonl"
 V2_1_DIR = "/code/rolemem-agent-memory/data/memory_validity_v2_1"
 REPORTS_DIR = "/code/rolemem-agent-memory/reports"
@@ -572,7 +572,8 @@ def generate_reports(eval_summary: Dict[str, Any], audit_data: Dict[str, Any]):
         "CURRENT_V0_RESULT_STATUS = DEVELOPMENT_COUPLED_NOT_FOR_SCIENTIFIC_CLAIM",
         "V2_1_DEVELOPMENT_MUTATIONS = 0",
         "V2_2_DETERMINISTIC_FOUNDATION = CLOSED",
-        "V2_2_STRUCTURED_CLAIM_REPRESENTATION = FROZEN",
+        "V2_2_STRUCTURED_CLAIM_REPRESENTATION = CORRECTED_FROZEN_REVISION",
+        "V2_2_PREVIOUS_REPRESENTATION = SUPERSEDED_DUE_TO_EXTRACTION_REGRESSION",
         "V2_2_EXTRACTION_SELF_CONSISTENCY_EVALUATED = YES",
         "V2_2_INDEPENDENT_EXTRACTION_GOLD = NO",
         f"V2_2_EVIDENCE_BINDING = {b_status}",
@@ -603,7 +604,7 @@ def generate_reports(eval_summary: Dict[str, Any], audit_data: Dict[str, Any]):
         "| **RoleMem_Structural_V2_1** | Full Source File | Yes | Yes | No | AST + Diff Heuristic | Heuristic abstaining baseline |",
         "| **Oracle_Execution_Evidence_UpperBound** | None | No | No | **100% Oracle** | Oracle Execution Result | **Theoretical Oracle Upper Bound** |",
         "| **Claim_Aware_Static** | Full Source File | Yes | Yes | **0% (Zero Exec)** | Selective Policy | **Primary Deployable Static Engine** |",
-        "| **Claim_Aware_StaticPlusExecution** | Full Source File | Yes | Yes | **Verified Binding** | Selective Policy | Execution-Assisted Engine |",
+        "| **Claim_Aware_StaticPlusExecution** | Full Source File | Yes | Yes | **Verified-only execution evidence accepted (partial binding coverage)** | Selective Policy | Execution-Assisted Engine |",
         "",
         "---",
         "",
@@ -623,6 +624,19 @@ def generate_reports(eval_summary: Dict[str, Any], audit_data: Dict[str, Any]):
         ser = mdata["Stale_Exposure_Rate_SER"] * 100
         fairness_lines.append(f"| **{name}** | {cov:.1f}% | {acc:.1f}% | {bacc:.1f}% | {mf1:.1f}% | {mcc:+.3f} | {fir:.1f}% | {ser:.1f}% |")
 
+    fairness_lines.extend([
+        "",
+        "---",
+        "",
+        "## 3. Cat C Invalidation & Recomputation Notice",
+        "",
+        "- Previous Cat C static metrics derived from truncated `subject=\"c\"` in CLM-000045 have been invalidated.",
+        "- Under corrected revision `v2r1` (`subject=\"HookSpec\"`, `object=\"varnames\"`), `Claim_Aware_Static` returns `UNCERTAIN` on CLM-000045 because cross-function deprecation cannot be proven statically without execution evidence.",
+        "- CLM-000045 enters abstention, reducing decided cases from 45 to 44. Static selective coverage is 80.0% (44/55) with 100.0% decided accuracy.",
+        "- `Claim_Aware_Exec_Assisted` binds the counterfactual execution failure, predicting `STALE` with verified contract hash.",
+        ""
+    ])
+
     fairness_p = os.path.join(REPORTS_DIR, "v2.2-v0.1-baseline-fairness.md")
     with open(fairness_p, "w", encoding="utf-8") as f:
         f.write("\n".join(fairness_lines) + "\n")
@@ -637,7 +651,8 @@ def generate_reports(eval_summary: Dict[str, Any], audit_data: Dict[str, Any]):
         "CURRENT_V0_RESULT_STATUS = DEVELOPMENT_COUPLED_NOT_FOR_SCIENTIFIC_CLAIM",
         "V2_1_DEVELOPMENT_MUTATIONS = 0",
         "V2_2_DETERMINISTIC_FOUNDATION = CLOSED",
-        "V2_2_STRUCTURED_CLAIM_REPRESENTATION = FROZEN",
+        "V2_2_STRUCTURED_CLAIM_REPRESENTATION = CORRECTED_FROZEN_REVISION",
+        "V2_2_PREVIOUS_REPRESENTATION = SUPERSEDED_DUE_TO_EXTRACTION_REGRESSION",
         "V2_2_EXTRACTION_SELF_CONSISTENCY_EVALUATED = YES",
         "V2_2_INDEPENDENT_EXTRACTION_GOLD = NO",
         f"V2_2_EVIDENCE_BINDING = {b_status}",
@@ -755,6 +770,7 @@ def generate_reports(eval_summary: Dict[str, Any], audit_data: Dict[str, Any]):
         "4. **Policy-Driven Numbers**: `Claim_Static_Valid_Default` achieves 100% on Cat B not through intrinsic static proof, but through the `UNCERTAIN -> VALID` optimistic retrieval policy.",
         "5. **Oracle Upper Bound**: `Oracle_Execution_Evidence_UpperBound` is documented strictly as an oracle ceiling measurement and is not a standalone deployable engine.",
         "6. **Evidence Binding Integrity**: D2 and unproven contract assertions produce `UNKNOWN` binding status without artificial fallback.",
+        "7. **Cat C Invalidation & Recomputation**: Previous Cat C static metrics derived from truncated `subject=\"c\"` in CLM-000045 have been invalidated. Under corrected revision `v2r1`, CLM-000045 returns `UNCERTAIN` for static reasoning and abstains (static selective coverage = 80.0%, 44/55, decided accuracy = 100.0%), while execution-assisted reasoning binds the counterfactual execution failure and correctly predicts `STALE`.",
         ""
     ])
 

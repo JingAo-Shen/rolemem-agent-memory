@@ -18,8 +18,8 @@ sys.path.insert(0, "/code/rolemem-agent-memory")
 from src.claim_validity.claim_extractor import DeterministicClaimExtractor
 
 DATA_DIR = "/code/rolemem-agent-memory/data/claim_validity_v2_2"
-INPUTS_PATH = os.path.join(DATA_DIR, "dev_claim_inputs_v2.jsonl")
-GOLD_PATH = os.path.join(DATA_DIR, "dev_claim_gold_v2.jsonl")
+INPUTS_PATH = os.path.join(DATA_DIR, "dev_claim_inputs_v2r1.jsonl")
+GOLD_PATH = os.path.join(DATA_DIR, "dev_claim_gold_v2r1.jsonl")
 PARAPHRASE_PATH = os.path.join(DATA_DIR, "paraphrase_dev.jsonl")
 
 PRED_EXTRACTION_PATH = os.path.join(DATA_DIR, "predictions_claim_extraction.jsonl")
