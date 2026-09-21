@@ -2,19 +2,30 @@
 """
 scripts/evaluate_claim_validity_v2_2.py
 
-Protocol V2.2-Claim-Aware-V0 Comprehensive Benchmark Evaluator & Report Generator:
-- Evaluates ClaimAwareValidityEngine and Decision Policies on data/claim_validity_v2_2/dev_claims.jsonl.
-- Compares against File-Level, Pure Symbol AST, Dependency Validity, and RoleMem Structural baselines.
-- Generates data/claim_validity_v2_2/evaluation_results.json and reports/protocol-v2.2-v0-design.md.
+Protocol V2.2-Claim-Aware-V0.1 Comprehensive Benchmark Evaluator & Report Generator:
+- Separates Phase 1 (Prediction Generation on Blind Inputs) and Phase 2 (Scoring against Gold Labels).
+- Implements Fair Unified Evaluation Context with full file snapshots.
+- Evaluates:
+    1. File_Level_Baseline (Whole-file SHA256 parity)
+    2. Pure_Symbol_AST_Baseline (AST symbol existence/digest)
+    3. AST_Heuristic_RoleMem_Baseline (AST digest + diff hunk)
+    4. Execution_Evidence_Baseline (Dynamic contract oracle alone)
+    5. Claim_Aware_Static (Pure static AST claim verification: zero execution artifacts)
+    6. Claim_Aware_StaticPlusExecution (Static claim verification + verified execution artifacts)
+- Applies SelectivePolicy, ForcedBinaryValidDefaultPolicy, and ForcedBinaryStaleDefaultPolicy.
+- Generates data/claim_validity_v2_2/evaluation_results.json and comprehensive markdown reports.
 """
 
 import os
 import sys
 import json
 import math
-from typing import Dict, Any, List, Tuple
+import hashlib
+import subprocess
+from typing import Dict, Any, List, Tuple, Optional
 
 sys.path.insert(0, "/code/rolemem-agent-memory")
+from src.evaluation.context import EvaluationContext, build_evaluation_context
 from src.claim_validity.types import (
     ClaimType,
     GroundingStatus,
@@ -36,23 +47,29 @@ from src.validity import (
     RoleMemValidityEngine
 )
 
-DEV_CLAIMS_PATH = "/code/rolemem-agent-memory/data/claim_validity_v2_2/dev_claims.jsonl"
+DATA_DIR = "/code/rolemem-agent-memory/data/claim_validity_v2_2"
+INPUTS_PATH = os.path.join(DATA_DIR, "dev_claim_inputs.jsonl")
+GOLD_PATH = os.path.join(DATA_DIR, "dev_claim_gold.jsonl")
+PARAPHRASE_PATH = os.path.join(DATA_DIR, "paraphrase_dev.jsonl")
 BLIND_INPUTS_PATH = "/code/rolemem-agent-memory/data/memory_validity_v2_1/blind_inputs.jsonl"
-OUT_DIR = "/code/rolemem-agent-memory/data/claim_validity_v2_2"
-REPORTS_DIR = "/code/rolemem-agent-memory/reports"
 V2_1_DIR = "/code/rolemem-agent-memory/data/memory_validity_v2_1"
+REPORTS_DIR = "/code/rolemem-agent-memory/reports"
 
-os.makedirs(OUT_DIR, exist_ok=True)
+os.makedirs(DATA_DIR, exist_ok=True)
 os.makedirs(REPORTS_DIR, exist_ok=True)
 
 
-def compute_metrics(predictions: List[str], gold_labels: List[str], categories: List[str], claim_types: List[str]) -> Dict[str, Any]:
+def compute_metrics(
+    predictions: List[str],
+    gold_labels: List[str],
+    categories: List[str],
+    claim_types: List[str]
+) -> Dict[str, Any]:
     total = len(gold_labels)
     decided_indices = [i for i, p in enumerate(predictions) if p != "UNCERTAIN"]
     decided_count = len(decided_indices)
     coverage = decided_count / total if total > 0 else 0.0
 
-    # Overall Metrics on Decided Subset (or full dataset for forced binary)
     if decided_count > 0:
         tp = sum(1 for i in decided_indices if predictions[i] == "STALE" and gold_labels[i] == "STALE")
         tn = sum(1 for i in decided_indices if predictions[i] == "VALID" and gold_labels[i] == "VALID")
@@ -75,14 +92,12 @@ def compute_metrics(predictions: List[str], gold_labels: List[str], categories: 
         valid_f1 = (2 * valid_prec * valid_recall) / (valid_prec + valid_recall) if (valid_prec + valid_recall) > 0 else 0.0
         macro_f1 = (f1 + valid_f1) / 2.0
 
-        # Matthews Correlation Coefficient (MCC)
         denom = math.sqrt((tp + fp) * (tp + fn) * (tn + fp) * (tn + fn))
         mcc = ((tp * tn) - (fp * fn)) / denom if denom > 0 else 0.0
 
-        # Scientific Failure Rates
-        # FIR = False Invalidation Rate (Valid memories falsely deemed STALE: FP / (FP + TN))
+        # FIR = False Invalidation Rate: FP / (FP + TN)
         fir = fp / (fp + tn) if (fp + tn) > 0 else 0.0
-        # SER = Stale Exposure Rate (Stale memories falsely deemed VALID: FN / (FN + TP))
+        # SER = Stale Exposure Rate: FN / (FN + TP)
         ser = fn / (fn + tp) if (fn + tp) > 0 else 0.0
     else:
         decided_acc = overall_acc = selective_risk = precision = recall = f1 = balanced_acc = macro_f1 = mcc = fir = ser = 0.0
@@ -104,13 +119,12 @@ def compute_metrics(predictions: List[str], gold_labels: List[str], categories: 
     per_type = {}
     for ct in unique_types:
         ct_indices = [i for i, t in enumerate(claim_types) if t == ct]
-        ct_decided = [i for i in ct_indices if predictions[i] != "UNCERTAIN"]
-        if ct_decided:
-            ct_correct = sum(1 for i in ct_decided if predictions[i] == gold_labels[i])
+        if cat_decided := [i for i in ct_indices if predictions[i] != "UNCERTAIN"]:
+            ct_correct = sum(1 for i in cat_decided if predictions[i] == gold_labels[i])
             per_type[ct] = {
                 "count": len(ct_indices),
-                "decided": len(ct_decided),
-                "accuracy": ct_correct / len(ct_decided)
+                "decided": len(cat_decided),
+                "accuracy": ct_correct / len(cat_decided)
             }
         else:
             per_type[ct] = {
@@ -137,45 +151,71 @@ def compute_metrics(predictions: List[str], gold_labels: List[str], categories: 
     }
 
 
-def evaluate():
-    with open(DEV_CLAIMS_PATH, "r", encoding="utf-8") as f:
-        dev_claims = [json.loads(line) for line in f if line.strip()]
+def run_phase_1_predictions() -> Dict[str, str]:
+    """
+    Phase 1: Generates blind prediction files on disk.
+    Strictly independent of gold labels.
+    """
+    print("--- Running Phase 1: Blind Predictions Generation ---")
+    with open(INPUTS_PATH, "r", encoding="utf-8") as f:
+        inputs = [json.loads(line) for line in f if line.strip()]
 
     with open(BLIND_INPUTS_PATH, "r", encoding="utf-8") as f:
         blind_inputs = {r["case_id"]: r for r in [json.loads(line) for line in f if line.strip()]}
-
-    gold_labels = [c["gold_label"] for c in dev_claims]
-    categories = [c["category"] for c in dev_claims]
-    claim_types = [c["claim_type"] for c in dev_claims]
 
     claim_engine = ClaimAwareValidityEngine()
     selective_policy = SelectivePolicy()
     valid_default_policy = ForcedBinaryValidDefaultPolicy()
     stale_default_policy = ForcedBinaryStaleDefaultPolicy()
 
-    # Baselines
     file_checker = FileValidityChecker()
     sym_checker = SymbolValidityChecker()
     dep_checker = DependencyValidityChecker()
     rolemem_engine = RoleMemValidityEngine()
 
-    preds_file = []
-    preds_sym = []
-    preds_dep = []
-    preds_rolemem_forced = []
-    preds_rolemem_abstain = []
+    pred_records_file = []
+    pred_records_sym = []
+    pred_records_dep = []
+    pred_records_rolemem_abstain = []
+    pred_records_rolemem_forced = []
+    pred_records_exec_only = []
 
-    claim_results: List[ClaimEvaluationResult] = []
+    claim_static_results: List[ClaimEvaluationResult] = []
+    claim_exec_results: List[ClaimEvaluationResult] = []
 
-    for c in dev_claims:
-        cid = c["source_case_id"]
+    for item in inputs:
+        cid = item.get("source_case_id") or item["claim_id"]
+        claim_id = item["claim_id"]
         blind = blind_inputs.get(cid, {})
-        b_src = blind.get("base_source_excerpt", "")
-        t_src = blind.get("target_source_excerpt", "")
-        diff = blind.get("diff_hunk", "")
-        fpath = c["file_path"]
-        sym = c["symbol"]
-        repo = c["repository"]
+        fpath = item["file_path"]
+        sym = item["symbol"]
+        repo = item["repository"]
+        b_commit = item.get("base_commit", "")
+        t_commit = item.get("target_commit", "")
+
+        repo_root = os.path.join("/code/repo_cache", repo)
+        b_src = ""
+        t_src = ""
+        diff = ""
+
+        # Fetch full files from repository cache if available
+        if os.path.isdir(repo_root) and b_commit and t_commit and fpath:
+            res_b = subprocess.run(["git", "show", f"{b_commit}:{fpath}"], cwd=repo_root, capture_output=True, text=True)
+            if res_b.returncode == 0:
+                b_src = res_b.stdout
+            res_t = subprocess.run(["git", "show", f"{t_commit}:{fpath}"], cwd=repo_root, capture_output=True, text=True)
+            if res_t.returncode == 0:
+                t_src = res_t.stdout
+            res_d = subprocess.run(["git", "diff", b_commit, t_commit, "--", fpath], cwd=repo_root, capture_output=True, text=True)
+            if res_d.returncode == 0:
+                diff = res_d.stdout
+
+        if not b_src:
+            b_src = blind.get("base_source_excerpt", "")
+        if not t_src:
+            t_src = blind.get("target_source_excerpt", "")
+        if not diff:
+            diff = blind.get("diff_hunk", "")
 
         # Load execution artifact if available
         exec_art = None
@@ -189,196 +229,298 @@ def evaluate():
                     pass
                 break
 
-        # 1. Run Claim-Aware Engine
-        m_claim = MemoryClaim.from_dict(c)
-        res_claim = claim_engine.evaluate(
-            claim_or_statement=m_claim,
+        # Build unified evaluation context
+        ctx = build_evaluation_context(
+            repository=repo,
+            base_commit=b_commit,
+            target_commit=t_commit,
+            file_path=fpath,
             base_source=b_src,
             target_source=t_src,
+            diff=diff,
+            memory_statement=item["raw_statement"],
+            symbol=sym,
+            repository_root=repo_root if os.path.isdir(repo_root) else None,
+            execution_evidence=exec_art,
+            case_id=cid,
+            claim_id=claim_id
+        )
+
+        # 1. File-Level Baseline (Whole-file SHA256 comparison)
+        file_decision = "VALID" if ctx.is_file_unchanged else "STALE"
+        pred_records_file.append({"claim_id": claim_id, "case_id": cid, "decision": file_decision})
+
+        # 2. Pure Symbol AST Baseline
+        res_s = sym_checker.evaluate(base_source=ctx.base_full_source, target_source=ctx.target_full_source, symbol_qualified_name=sym)
+        pred_records_sym.append({"claim_id": claim_id, "case_id": cid, "decision": res_s.decision})
+
+        # 3. Dependency Validity Baseline
+        res_d = dep_checker.evaluate(base_source=ctx.base_full_source, target_source=ctx.target_full_source, symbol_qualified_name=sym, diff_hunk=diff)
+        pred_records_dep.append({"claim_id": claim_id, "case_id": cid, "decision": res_d.decision})
+
+        # 4. RoleMem Structural Baseline
+        res_rm = rolemem_engine.evaluate(
+            memory_statement=ctx.memory_statement,
+            symbol_qualified_name=sym,
+            base_source=ctx.base_full_source,
+            target_source=ctx.target_full_source,
+            diff_hunk=diff,
+            file_path=fpath
+        )
+        pred_records_rolemem_abstain.append({"claim_id": claim_id, "case_id": cid, "decision": res_rm.decision})
+        pred_records_rolemem_forced.append({"claim_id": claim_id, "case_id": cid, "decision": "VALID" if res_rm.decision == "UNCERTAIN" else res_rm.decision})
+
+        # 5. Execution Evidence Oracle Baseline (measures oracle contribution alone)
+        if exec_art:
+            target_exec = exec_art.get("target_execution") or exec_art.get("old_on_target") or {}
+            if target_exec.get("passed") is True:
+                exec_decision = "VALID"
+            elif target_exec.get("passed") is False:
+                exec_decision = "STALE"
+            else:
+                exec_decision = "UNCERTAIN"
+        else:
+            exec_decision = "UNCERTAIN"
+        pred_records_exec_only.append({"claim_id": claim_id, "case_id": cid, "decision": exec_decision})
+
+        # 6. Claim-Aware Engine (Static Only: zero execution artifacts passed)
+        m_claim = MemoryClaim.from_dict(item)
+        res_claim_static = claim_engine.evaluate(
+            claim_or_statement=m_claim,
+            base_source=ctx.base_full_source,
+            target_source=ctx.target_full_source,
             diff_hunk=diff,
             symbol_qualified_name=sym,
             file_path=fpath,
             repository=repo,
-            base_commit=c.get("base_commit", ""),
-            target_commit=c.get("target_commit", ""),
-            dependency_symbols=["varnames"] if "hookspec" in sym.lower() else None,
+            base_commit=ctx.base_commit,
+            target_commit=ctx.target_commit,
+            execution_artifact=None,
+            source_case_id=cid
+        )
+        claim_static_results.append(res_claim_static)
+
+        # 7. Claim-Aware Engine (Static + Execution: explicitly tagged EXECUTION_EVIDENCE_ASSISTED)
+        res_claim_exec = claim_engine.evaluate(
+            claim_or_statement=m_claim,
+            base_source=ctx.base_full_source,
+            target_source=ctx.target_full_source,
+            diff_hunk=diff,
+            symbol_qualified_name=sym,
+            file_path=fpath,
+            repository=repo,
+            base_commit=ctx.base_commit,
+            target_commit=ctx.target_commit,
             execution_artifact=exec_art,
             source_case_id=cid
         )
-        claim_results.append(res_claim)
+        claim_exec_results.append(res_claim_exec)
 
-        # 2. Baseline evaluations
-        # File level
-        res_f = file_checker.evaluate(base_source=b_src, target_source=t_src, file_path=fpath)
-        preds_file.append(res_f.decision)
+    # Apply policies for claim static and claim static+execution
+    preds_static_sel = selective_policy.decide_batch(claim_static_results)
+    preds_static_vdef = valid_default_policy.decide_batch(claim_static_results)
+    preds_static_sdef = stale_default_policy.decide_batch(claim_static_results)
 
-        # Symbol level
-        res_s = sym_checker.evaluate(base_source=b_src, target_source=t_src, symbol_qualified_name=sym)
-        preds_sym.append(res_s.decision)
+    preds_exec_sel = selective_policy.decide_batch(claim_exec_results)
+    preds_exec_vdef = valid_default_policy.decide_batch(claim_exec_results)
+    preds_exec_sdef = stale_default_policy.decide_batch(claim_exec_results)
 
-        # Dependency level
-        res_d = dep_checker.evaluate(base_source=b_src, target_source=t_src, symbol_qualified_name=sym, diff_hunk=diff)
-        preds_dep.append(res_d.decision)
-
-        # RoleMem Engine
-        res_rm = rolemem_engine.evaluate(
-            memory_statement=c["raw_statement"],
-            symbol_qualified_name=sym,
-            base_source=b_src,
-            target_source=t_src,
-            diff_hunk=diff,
-            file_path=fpath
-        )
-        preds_rolemem_abstain.append(res_rm.decision)
-        preds_rolemem_forced.append("VALID" if res_rm.decision == "UNCERTAIN" else res_rm.decision)
-
-    # Apply claim policies
-    preds_claim_selective = selective_policy.decide_batch(claim_results)
-    preds_claim_valid_default = valid_default_policy.decide_batch(claim_results)
-    preds_claim_stale_default = stale_default_policy.decide_batch(claim_results)
-
-    # Compute metrics across all conditions
-    eval_summary = {
-        "File_Level_Baseline": compute_metrics(preds_file, gold_labels, categories, claim_types),
-        "Pure_Symbol_AST_Baseline": compute_metrics(preds_sym, gold_labels, categories, claim_types),
-        "Dependency_Validity_Baseline": compute_metrics(preds_dep, gold_labels, categories, claim_types),
-        "RoleMem_Structural_V2_1_Forced": compute_metrics(preds_rolemem_forced, gold_labels, categories, claim_types),
-        "RoleMem_Structural_V2_1_Abstain": compute_metrics(preds_rolemem_abstain, gold_labels, categories, claim_types),
-        "Claim_Aware_Engine_Selective": compute_metrics(preds_claim_selective, gold_labels, categories, claim_types),
-        "Claim_Aware_Engine_Valid_Default": compute_metrics(preds_claim_valid_default, gold_labels, categories, claim_types),
-        "Claim_Aware_Engine_Stale_Default": compute_metrics(preds_claim_stale_default, gold_labels, categories, claim_types),
+    prediction_files = {
+        "file_level": os.path.join(DATA_DIR, "predictions_file_level.jsonl"),
+        "pure_symbol": os.path.join(DATA_DIR, "predictions_pure_symbol.jsonl"),
+        "dependency": os.path.join(DATA_DIR, "predictions_dependency.jsonl"),
+        "rolemem_abstain": os.path.join(DATA_DIR, "predictions_rolemem_abstain.jsonl"),
+        "rolemem_forced": os.path.join(DATA_DIR, "predictions_rolemem_forced.jsonl"),
+        "execution_only": os.path.join(DATA_DIR, "predictions_execution_only.jsonl"),
+        "claim_static_selective": os.path.join(DATA_DIR, "predictions_claim_static_selective.jsonl"),
+        "claim_static_valid_default": os.path.join(DATA_DIR, "predictions_claim_static_valid_default.jsonl"),
+        "claim_static_stale_default": os.path.join(DATA_DIR, "predictions_claim_static_stale_default.jsonl"),
+        "claim_exec_selective": os.path.join(DATA_DIR, "predictions_claim_exec_selective.jsonl"),
+        "claim_exec_valid_default": os.path.join(DATA_DIR, "predictions_claim_exec_valid_default.jsonl"),
+        "claim_exec_stale_default": os.path.join(DATA_DIR, "predictions_claim_exec_stale_default.jsonl")
     }
 
-    # Save evaluation results
-    eval_json_p = os.path.join(OUT_DIR, "evaluation_results.json")
+    # Write prediction files
+    def write_preds(path: str, records: List[Dict[str, Any]]):
+        with open(path, "w", encoding="utf-8") as f:
+            for r in records:
+                f.write(json.dumps(r) + "\n")
+
+    write_preds(prediction_files["file_level"], pred_records_file)
+    write_preds(prediction_files["pure_symbol"], pred_records_sym)
+    write_preds(prediction_files["dependency"], pred_records_dep)
+    write_preds(prediction_files["rolemem_abstain"], pred_records_rolemem_abstain)
+    write_preds(prediction_files["rolemem_forced"], pred_records_rolemem_forced)
+    write_preds(prediction_files["execution_only"], pred_records_exec_only)
+
+    write_preds(prediction_files["claim_static_selective"], [{"claim_id": inputs[i]["claim_id"], "decision": p} for i, p in enumerate(preds_static_sel)])
+    write_preds(prediction_files["claim_static_valid_default"], [{"claim_id": inputs[i]["claim_id"], "decision": p} for i, p in enumerate(preds_static_vdef)])
+    write_preds(prediction_files["claim_static_stale_default"], [{"claim_id": inputs[i]["claim_id"], "decision": p} for i, p in enumerate(preds_static_sdef)])
+
+    write_preds(prediction_files["claim_exec_selective"], [{"claim_id": inputs[i]["claim_id"], "decision": p} for i, p in enumerate(preds_exec_sel)])
+    write_preds(prediction_files["claim_exec_valid_default"], [{"claim_id": inputs[i]["claim_id"], "decision": p} for i, p in enumerate(preds_exec_vdef)])
+    write_preds(prediction_files["claim_exec_stale_default"], [{"claim_id": inputs[i]["claim_id"], "decision": p} for i, p in enumerate(preds_exec_sdef)])
+
+    print("Phase 1 Predictions generated and saved to disk.")
+    return prediction_files
+
+
+def run_phase_2_evaluation(prediction_files: Dict[str, str]):
+    """
+    Phase 2: Reads blind predictions and gold labels from disk, scores metrics.
+    """
+    print("--- Running Phase 2: Scoring & Metric Evaluation ---")
+    with open(GOLD_PATH, "r", encoding="utf-8") as f:
+        gold_records = [json.loads(line) for line in f if line.strip()]
+
+    gold_labels = [g["gold_label"] for g in gold_records]
+    categories = [g["category"] for g in gold_records]
+    claim_types = [g["claim_type"] for g in gold_records]
+
+    eval_summary = {}
+
+    for name, path in prediction_files.items():
+        with open(path, "r", encoding="utf-8") as f:
+            preds = [json.loads(line)["decision"] for line in f if line.strip()]
+        eval_summary[name] = compute_metrics(preds, gold_labels, categories, claim_types)
+
+    # Save evaluation results JSON
+    eval_json_p = os.path.join(DATA_DIR, "evaluation_results.json")
     with open(eval_json_p, "w", encoding="utf-8") as f:
         json.dump(eval_summary, f, indent=2)
 
-    # Generate design and results report
-    rep_lines = [
-        "# RoleMem Protocol V2.2-Claim-Aware-V0 — Architecture Design & Empirical Report",
+    print(f"Scoring Complete. Results saved to {eval_json_p}")
+
+    # Generate Markdown Design & Fairness Reports
+    generate_reports(eval_summary)
+
+
+def generate_reports(eval_summary: Dict[str, Any]):
+    # 1. Generate reports/v2.2-v0.1-baseline-fairness.md
+    fairness_lines = [
+        "# RoleMem Protocol V2.2-V0.1 — Baseline Fairness & Evidence Budget Audit",
         "",
         "## Formal Status Declaration",
         "```text",
-        "PROTOCOL_VERSION = 2.2-claim-aware-v0",
+        "PROTOCOL_VERSION = 2.2-claim-aware-v0.1",
+        "CURRENT_V0_RESULT_STATUS = DEVELOPMENT_COUPLED_NOT_FOR_SCIENTIFIC_CLAIM",
         "V2_1_DEVELOPMENT_MUTATIONS = 0",
+        "V2_2_V0_1_EVALUATION_INTEGRITY = COMPLETE",
         "V2_2_ALGORITHM_FREEZE = NO",
         "V2_2_FORMAL_TEST_OPENED = NO",
+        "V2_2_FORMAL_HOLDOUT_DEFINED = NO",
         "FORMAL_AGENT_RESULTS = NO",
         "FORMAL_PAPER_RESULTS = NO",
         "```",
         "",
         "---",
         "",
-        "## 1. Executive Summary & Design Overview",
+        "## 1. Evidence Budget & Information Asymmetry Audit",
         "",
-        "Protocol V2.2-Claim-Aware-V0 transitions RoleMem from coarse file/symbol validity checking to **fine-grained claim-aware verification**.",
-        "It introduces a formal claim semantics model, deterministic extraction and grounding, modular claim validators, AST dependency impact tracing, evidence aggregation, and separated retrieval decision policies.",
-        "",
-        "### Key Principles & Guarantees",
-        "1. **Zero V2.1 Mutations (`V2_1_DEVELOPMENT_MUTATIONS = 0`)**: All 55 development cases in V2.1 are preserved immutably as a sanity reference.",
-        "2. **100% Deterministic Lower Bound (No LLMs in V0)**: Operates without LLM verifiers, embedding models, or heuristic whitelists.",
-        "3. **Strict Policy Separation**: Intrinsic validity verification (`SUPPORTED`, `CONTRADICTED`, `UNCERTAIN`) is fully separated from retrieval policies (`SelectivePolicy`, `ForcedBinaryValidDefaultPolicy`, `ForcedBinaryStaleDefaultPolicy`).",
-        "4. **Repository-Level Holdout Split**: 22 historical repositories assigned strictly to `DEVELOPMENT`; 7 unseen repositories sealed for formal testing (`v2_2_repo_split.json`).",
-        "",
-        "---",
-        "",
-        "## 2. Claim Schema & Taxonomy",
-        "",
-        "### Supported Claim Types (`ClaimType`)",
-        "- `SYMBOL_EXISTS`: Symbol exists in target module AST.",
-        "- `ATTRIBUTE_EXISTS`: Specific attribute or method exists on class/object.",
-        "- `IMPORT_PATH_VALID`: Module/symbol import path or `__all__` export remains valid.",
-        "- `CALLABLE` / `SIGNATURE_COMPATIBLE`: Parameter list and signature constraints are satisfied.",
-        "- `DEFAULT_VALUE`: Parameter default value matches expected value.",
-        "- `RETURN_VALUE`: Return type / expression matches expectation.",
-        "- `DEPRECATION_STATUS`: Deprecation / warning state matches expectation.",
-        "- `BEHAVIORAL_CONTRACT`: Multi-assertion execution contract passes without failure.",
-        "- `DEPENDENCY_CONTRACT`: Cross-symbol dependency linkage remains intact.",
-        "- `UNKNOWN_CLAIM_TYPE`: Explicit unparsed fallback (no guessing).",
-        "",
-        "### Claim Extraction & Grounding Coverage (55 Development Cases)",
-        f"- **Claim Extraction Coverage**: {sum(1 for c in dev_claims if c['claim_parse_status'] == 'PARSED')}/{len(dev_claims)} (100.0%)",
-        f"- **Claim Grounding Coverage**: {sum(1 for r in claim_results if r.grounding_status in (GroundingStatus.EXACT, GroundingStatus.ALIASED))}/{len(claim_results)} (100.0%)",
+        "| Mechanism | Input Context | AST Analysis | Git Diff | Execution Oracle | Decision Policy | Notes |",
+        "| :--- | :--- | :--- | :--- | :--- | :--- | :--- |",
+        "| **File_Level_Baseline** | Full Source File | No | No | No | SHA256 Parity | Whole-file byte hash |",
+        "| **Pure_Symbol_AST_Baseline** | Full Source File | Yes | No | No | Symbol Digest Parity | Function/class AST digest |",
+        "| **Dependency_Validity_Baseline** | Full Source File | Yes | Yes | No | Intra-module Linkage | Graph & call chain trace |",
+        "| **RoleMem_Structural_V2_1** | Full Source File | Yes | Yes | No | AST + Diff Heuristic | Abstain / Forced Valid |",
+        "| **Execution_Evidence_Baseline** | None | No | No | Yes | Oracle Execution Result | Dynamic test runner alone |",
+        "| **Claim_Aware_Static** | Full Source File | Yes | Yes | **NO (0%)** | Selective / Valid / Stale Default | 100% Static Claim-Aware |",
+        "| **Claim_Aware_StaticPlusExecution** | Full Source File | Yes | Yes | **YES (Assisted)** | Selective / Valid / Stale Default | Explicitly Assisted |",
         "",
         "---",
         "",
-        "## 3. Empirical Benchmark Comparison (Development Split: 55 Cases)",
+        "## 2. Performance Breakdown by Mechanism",
         "",
-        "| Mechanism / Policy | Coverage | Overall Acc | Balanced Acc | Macro F1 | MCC | Selective Risk | Stale Prec | Stale Rec | Stale F1 | FIR (False Inval) | SER (Stale Exposure) |",
-        "| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |"
+        "| Mechanism | Coverage | Overall Acc | Balanced Acc | Macro F1 | MCC | FIR | SER |",
+        "| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |"
     ]
 
-    for mname, mdata in eval_summary.items():
+    for name, mdata in eval_summary.items():
+        cov = mdata["Coverage"] * 100
+        acc = mdata["Accuracy_Overall"] * 100
+        bacc = mdata["Balanced_Accuracy"] * 100
+        mf1 = mdata["Macro_F1"] * 100
+        mcc = mdata["MCC"]
+        fir = mdata["False_Invalidation_Rate_FIR"] * 100
+        ser = mdata["Stale_Exposure_Rate_SER"] * 100
+        fairness_lines.append(f"| **{name}** | {cov:.1f}% | {acc:.1f}% | {bacc:.1f}% | {mf1:.1f}% | {mcc:+.3f} | {fir:.1f}% | {ser:.1f}% |")
+
+    fairness_p = os.path.join(REPORTS_DIR, "v2.2-v0.1-baseline-fairness.md")
+    with open(fairness_p, "w", encoding="utf-8") as f:
+        f.write("\n".join(fairness_lines) + "\n")
+
+    # 2. Update reports/protocol-v2.2-v0-design.md
+    design_lines = [
+        "# RoleMem Protocol V2.2-Claim-Aware-V0.1 — Architecture Design & Empirical Report",
+        "",
+        "## Formal Status Declaration",
+        "```text",
+        "PROTOCOL_VERSION = 2.2-claim-aware-v0.1",
+        "CURRENT_V0_RESULT_STATUS = DEVELOPMENT_COUPLED_NOT_FOR_SCIENTIFIC_CLAIM",
+        "V2_1_DEVELOPMENT_MUTATIONS = 0",
+        "V2_2_V0_1_EVALUATION_INTEGRITY = COMPLETE",
+        "V2_2_ALGORITHM_FREEZE = NO",
+        "V2_2_FORMAL_TEST_OPENED = NO",
+        "V2_2_FORMAL_HOLDOUT_DEFINED = NO",
+        "FORMAL_AGENT_RESULTS = NO",
+        "FORMAL_PAPER_RESULTS = NO",
+        "```",
+        "",
+        "---",
+        "",
+        "## 1. Integrity Hardening & Decoupling in V0.1",
+        "",
+        "- **Zero Benchmark Heuristic Whitelists**: All case IDs and keyword-specific hacks eliminated from source code.",
+        "- **Unified EvaluationContext**: Whole-file SHA256 parity and identical source snapshots for all baselines and claim engines.",
+        "- **Separation of Static vs Execution Assisted**: Honest breakdown between pure static claim reasoning and execution-assisted reasoning.",
+        "- **Two-Phase Pipeline**: Complete separation of prediction generation on blind inputs and scoring against gold labels.",
+        "- **Holdout Invalidation & Contamination Registry**: Formal holdout candidate split marked INVALIDATED due to prior protocol contamination.",
+        "",
+        "---",
+        "",
+        "## 2. Benchmark Metrics Summary (55 Development Cases)",
+        "",
+        "| Mechanism / Policy | Coverage | Overall Acc | Balanced Acc | Macro F1 | MCC | Selective Risk | FIR | SER |",
+        "| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |"
+    ]
+
+    for name, mdata in eval_summary.items():
         cov = mdata["Coverage"] * 100
         acc = mdata["Accuracy_Overall"] * 100
         bacc = mdata["Balanced_Accuracy"] * 100
         mf1 = mdata["Macro_F1"] * 100
         mcc = mdata["MCC"]
         risk = mdata["Selective_Risk"] * 100
-        prec = mdata["Precision"] * 100
-        rec = mdata["Recall"] * 100
-        f1 = mdata["F1"] * 100
         fir = mdata["False_Invalidation_Rate_FIR"] * 100
         ser = mdata["Stale_Exposure_Rate_SER"] * 100
-        rep_lines.append(f"| **{mname}** | {cov:.1f}% | {acc:.1f}% | {bacc:.1f}% | {mf1:.1f}% | {mcc:+.3f} | {risk:.1f}% | {prec:.1f}% | {rec:.1f}% | {f1:.1f}% | {fir:.1f}% | {ser:.1f}% |")
+        design_lines.append(f"| **{name}** | {cov:.1f}% | {acc:.1f}% | {bacc:.1f}% | {mf1:.1f}% | {mcc:+.3f} | {risk:.1f}% | {fir:.1f}% | {ser:.1f}% |")
 
-    rep_lines.extend([
+    design_lines.extend([
         "",
         "---",
         "",
-        "## 4. Granular Per-Category Accuracy",
+        "## 3. Granular Category Breakdown",
         "",
         "| Mechanism / Policy | Cat A (Valid) | Cat B (Valid) | Cat C (Stale) | Cat D1 (Stale) | Cat D2 (Stale) |",
         "| :--- | :--- | :--- | :--- | :--- | :--- |"
     ])
 
-    for mname, mdata in eval_summary.items():
+    for name, mdata in eval_summary.items():
         pca = mdata["Per_Category_Accuracy"]
         a_acc = pca.get("CAT_A_FILE_CHG_SYM_SAME_VALID", 0.0) * 100
         b_acc = pca.get("CAT_B_SYM_CHG_MEMORY_VALID", 0.0) * 100
         c_acc = pca.get("CAT_C_SYM_SAME_MEMORY_STALE", 0.0) * 100
         d1_acc = pca.get("CAT_D1_SYM_REM_STALE", 0.0) * 100
         d2_acc = pca.get("CAT_D2_SYM_CHG_BEHAVIOR_STALE", 0.0) * 100
-        rep_lines.append(f"| **{mname}** | {a_acc:.1f}% | {b_acc:.1f}% | {c_acc:.1f}% | {d1_acc:.1f}% | {d2_acc:.1f}% |")
+        design_lines.append(f"| **{name}** | {a_acc:.1f}% | {b_acc:.1f}% | {c_acc:.1f}% | {d1_acc:.1f}% | {d2_acc:.1f}% |")
 
-    rep_lines.extend([
-        "",
-        "---",
-        "",
-        "## 5. Core Capability Analysis",
-        "",
-        "### 1. Category B: Reducing False Invalidation (FIR)",
-        "- **Problem**: Pure AST digest comparison falsely invalidates symbols whose internal implementations changed but whose behavioral contracts remain valid.",
-        "- **Claim-Aware Performance**: Cat B achieves **100.0% accuracy** under `Claim_Aware_Engine_Valid_Default` and `Claim_Aware_Engine_Selective` by validating against behavioral contract execution.",
-        "- **FIR Impact**: FIR remains low at **0.0%** for `Claim_Aware_Engine_Valid_Default`.",
-        "",
-        "### 2. Category D2: Reducing Stale Exposure (SER)",
-        "- **Problem**: Pure Symbol AST fails to detect behavioral breaks when symbol structure survives (`SER = 36.4%`).",
-        "- **Claim-Aware Performance**: Claim-aware validators inspect attributes (`BaseHTTPResponse.getheaders()`) and `__all__` exports (`marshmallow.pprint`), correctly identifying invalidations and reducing SER.",
-        "",
-        "### 3. Category C: AST Dependency Linkage Awareness",
-        "- **Problem**: Symbols unchanged across commits may become stale if downstream dependencies break.",
-        "- **Claim-Aware Performance**: AST dependency impact tracing successfully flags broken dependencies, achieving **100.0% accuracy** on Category C.",
-        "",
-        "---",
-        "",
-        "## 6. Repository-Level Holdout Split Overview",
-        "- `data/splits/v2_2_repository_universe.json` (29 total repositories).",
-        "- `data/splits/v2_2_repo_split.json`:",
-        "  - **DEVELOPMENT (22 repos)**: Historical V2.1 repositories (`attrs`, `celery`, `click`, `fastapi`, `flake8`, `flask`, `httpx`, `iniconfig`, `itsdangerous`, `jinja`, `markupsafe`, `marshmallow`, `more-itertools`, `packaging`, `pluggy`, `requests`, `rich`, `starlette`, `tqdm`, `urllib3`, `virtualenv`, `werkzeug`).",
-        "  - **SEALED_TEST (7 repos)**: Unseen holdout repositories (`cachelib`, `cryptography`, `dateutil`, `pydantic`, `pytest`, `sqlalchemy`, `uvicorn`). Inspection of transitions and labels is strictly forbidden until algorithm freeze.",
-        ""
-    ])
+    design_p = os.path.join(REPORTS_DIR, "protocol-v2.2-v0-design.md")
+    with open(design_p, "w", encoding="utf-8") as f:
+        f.write("\n".join(design_lines) + "\n")
 
-    rep_p = os.path.join(REPORTS_DIR, "protocol-v2.2-v0-design.md")
-    with open(rep_p, "w", encoding="utf-8") as f:
-        f.write("\n".join(rep_lines))
-
-    print(f"=== Protocol V2.2 Evaluation Complete ===")
-    print(f"  Results JSON: {eval_json_p}")
-    print(f"  Design Report: {rep_p}")
+    print(f"Reports generated:\n  {fairness_p}\n  {design_p}")
 
 
 if __name__ == "__main__":
-    evaluate()
+    preds = run_phase_1_predictions()
+    run_phase_2_evaluation(preds)

@@ -4,6 +4,7 @@ src/claim_validity/engine.py
 Protocol V2.2 Claim-Aware Validity Engine:
 - Coordinates Claim Extraction, Grounding, Validation, Impact Tracing, and Evidence Aggregation.
 - Enforces strict fail-uncertain guarantees: no internal UNCERTAIN -> VALID conversions.
+- Operates deterministically without hardcoded benchmark-specific rules.
 - Returns rich ClaimEvaluationResult.
 """
 
@@ -82,7 +83,7 @@ class ClaimAwareValidityEngine:
                 repository_root = cand
 
         # If repository_root and target_commit are available, load full target file from git history
-        if repository_root and target_file_path and target_commit:
+        if repository_root and target_file_path and target_commit and (not target_source or len(target_source) < 200):
             res_git = subprocess.run(
                 ["git", "show", f"{target_commit}:{target_file_path}"],
                 cwd=repository_root,
@@ -92,7 +93,7 @@ class ClaimAwareValidityEngine:
             if res_git.returncode == 0 and res_git.stdout.strip():
                 target_source = res_git.stdout
 
-        if repository_root and target_file_path and base_commit:
+        if repository_root and target_file_path and base_commit and (not base_source or len(base_source) < 200):
             res_base_git = subprocess.run(
                 ["git", "show", f"{base_commit}:{target_file_path}"],
                 cwd=repository_root,
@@ -111,7 +112,7 @@ class ClaimAwareValidityEngine:
                 validation_status=ValidationStatus.INSUFFICIENT_EVIDENCE,
                 confidence=0.50,
                 evidences=[],
-                reasons=[f"Claim statement could not be deterministically parsed into supported claim types."]
+                reasons=["Claim statement could not be deterministically parsed into supported claim types."]
             )
 
         # 2. Claim Grounding

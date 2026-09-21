@@ -11,7 +11,7 @@ import ast
 import textwrap
 from typing import List, Dict, Any, Optional, Set, Tuple
 from src.validity.dependency_graph import DependencyGraphVerifier
-from .types import ClaimImpact, MemoryClaim, GroundedClaim
+from .types import ClaimImpact, MemoryClaim, GroundedClaim, ClaimType
 
 
 class ASTDependencyImpactTracer:
@@ -54,7 +54,14 @@ class ASTDependencyImpactTracer:
                     if sym_name in aline or not removed_lines:
                         impact.deprecation_changed = True
 
-        # 2. Downstream / Intra-module AST dependency linkage tracing
+        # 2. Derive dependency symbols if not provided
+        if dependency_symbols is None:
+            if claim.claim_type == ClaimType.DEPENDENCY_CONTRACT and claim.object:
+                dependency_symbols = [claim.object]
+            else:
+                dependency_symbols = []
+
+        # 3. Downstream / Intra-module AST dependency linkage tracing
         if dependency_symbols and base_source:
             for dep_sym in dependency_symbols:
                 dep_path_res = self.dep_verifier.verify_linkage(

@@ -5,6 +5,7 @@ Claim Grounding Engine for Protocol V2.2:
 - Binds a MemoryClaim to a target repository snapshot / source AST.
 - Distinguishes EXACT, ALIASED, AMBIGUOUS, and UNRESOLVED grounding states.
 - Ensures only EXACT and ALIASED groundings proceed to deterministic evaluation.
+- Enforces qualified symbol disambiguation.
 """
 
 import ast
@@ -21,7 +22,6 @@ class ClaimGrounder:
     def _safe_parse_ast(self, source_code: str) -> Optional[ast.AST]:
         if not source_code or not source_code.strip():
             return None
-        import textwrap
         dedented = textwrap.dedent(source_code)
         try:
             return ast.parse(dedented)
@@ -61,7 +61,7 @@ class ClaimGrounder:
 
         tree = self._safe_parse_ast(target_source)
         if tree is None:
-            # If AST completely unparseable, check if the symbol exists as text definition
+            # If AST completely unparseable, check textual definition
             subject_sym = claim.subject or claim.symbol or ""
             unqual = subject_sym.split(".")[-1]
             if f"def {unqual}" in target_source or f"class {unqual}" in target_source or f"{unqual} =" in target_source:
@@ -87,12 +87,13 @@ class ClaimGrounder:
                 detail="Claim subject/symbol is empty."
             )
 
+        is_qualified = "." in subject_sym
         unqualified = subject_sym.split(".")[-1]
+        parent_qual = subject_sym.split(".")[0] if is_qualified else None
 
-        # Use SymbolDigestExtractor to get all functions, classes, methods, and assignments
+        # Extract digests with qualified symbols
         digests = SymbolDigestExtractor.extract_symbol_digests(target_source)
         if not digests and tree is not None:
-            # Extract directly from AST if extractor returned empty
             for node in ast.walk(tree):
                 if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
                     digests[node.name] = {"symbol_name": node.name, "qualified_name": node.name}
@@ -100,34 +101,51 @@ class ClaimGrounder:
         direct_matches = []
         aliased_matches = []
 
-        # 1. Exact match on qualified name or unqualified name in extracted digests
+        # 1. Exact match on qualified name
         if subject_sym in digests:
             direct_matches.append(subject_sym)
-        elif unqualified in digests:
-            direct_matches.append(unqualified)
-        else:
-            for k in digests.keys():
-                if k.endswith(f".{unqualified}") or k.split(".")[-1] == unqualified:
-                    direct_matches.append(k)
 
-        # 2. Check imports and module-level variables
-        for node in ast.walk(tree):
-            if isinstance(node, (ast.Assign, ast.AnnAssign)):
-                targets = node.targets if isinstance(node, ast.Assign) else [node.target]
-                for tgt in targets:
-                    if isinstance(tgt, ast.Name) and tgt.id in (subject_sym, unqualified):
-                        if tgt.id not in direct_matches:
-                            direct_matches.append(tgt.id)
-            elif isinstance(node, ast.Import):
-                for alias in node.names:
-                    name_to_check = alias.asname if alias.asname else alias.name
-                    if name_to_check in (subject_sym, unqualified):
-                        aliased_matches.append(alias.name)
-            elif isinstance(node, ast.ImportFrom):
-                for alias in node.names:
-                    name_to_check = alias.asname if alias.asname else alias.name
-                    if name_to_check in (subject_sym, unqualified):
-                        aliased_matches.append(f"{node.module}.{alias.name}" if node.module else alias.name)
+        # 2. Match qualified class.method
+        if not direct_matches and is_qualified and tree is not None:
+            for node in ast.iter_child_nodes(tree):
+                if isinstance(node, ast.ClassDef) and node.name == parent_qual:
+                    for child in node.body:
+                        if isinstance(child, (ast.FunctionDef, ast.AsyncFunctionDef)) and child.name == unqualified:
+                            direct_matches.append(f"{parent_qual}.{unqualified}")
+                        elif isinstance(child, (ast.Assign, ast.AnnAssign)):
+                            targets = child.targets if isinstance(child, ast.Assign) else [child.target]
+                            for tgt in targets:
+                                if isinstance(tgt, ast.Name) and tgt.id == unqualified:
+                                    direct_matches.append(f"{parent_qual}.{unqualified}")
+
+        # 3. Unqualified match across digests
+        if not direct_matches:
+            if unqualified in digests:
+                direct_matches.append(unqualified)
+            else:
+                for k in digests.keys():
+                    if k.endswith(f".{unqualified}"):
+                        direct_matches.append(k)
+
+        # 4. Check imports and module-level assignments
+        if tree is not None:
+            for node in ast.walk(tree):
+                if isinstance(node, (ast.Assign, ast.AnnAssign)):
+                    targets = node.targets if isinstance(node, ast.Assign) else [node.target]
+                    for tgt in targets:
+                        if isinstance(tgt, ast.Name) and tgt.id in (subject_sym, unqualified):
+                            if tgt.id not in direct_matches:
+                                direct_matches.append(tgt.id)
+                elif isinstance(node, ast.Import):
+                    for alias in node.names:
+                        name_to_check = alias.asname if alias.asname else alias.name
+                        if name_to_check in (subject_sym, unqualified):
+                            aliased_matches.append(alias.name)
+                elif isinstance(node, ast.ImportFrom):
+                    for alias in node.names:
+                        name_to_check = alias.asname if alias.asname else alias.name
+                        if name_to_check in (subject_sym, unqualified):
+                            aliased_matches.append(f"{node.module}.{alias.name}" if node.module else alias.name)
 
         # Grounding decision logic
         if len(direct_matches) == 1:
@@ -140,13 +158,21 @@ class ClaimGrounder:
                 detail=f"Exact AST match for symbol `{direct_matches[0]}` in target file."
             )
         elif len(direct_matches) > 1:
+            # Check if subject_sym exactly matches one of the candidates
+            exact_cands = [m for m in direct_matches if m == subject_sym]
+            if len(exact_cands) == 1:
+                return GroundedClaim(
+                    claim=claim,
+                    grounding_status=GroundingStatus.EXACT,
+                    target_node_name=exact_cands[0],
+                    target_file_path=file_path or claim.file_path,
+                    resolved_qualified_name=exact_cands[0],
+                    detail=f"Exact qualified match for `{subject_sym}`."
+                )
             return GroundedClaim(
                 claim=claim,
-                grounding_status=GroundingStatus.EXACT,
-                target_node_name=direct_matches[0],
-                target_file_path=file_path or claim.file_path,
-                resolved_qualified_name=subject_sym,
-                detail=f"Matched AST definition for `{subject_sym}`."
+                grounding_status=GroundingStatus.AMBIGUOUS,
+                detail=f"Multiple ambiguous candidate symbols found for `{unqualified}`: {direct_matches}."
             )
         elif len(aliased_matches) == 1:
             return GroundedClaim(

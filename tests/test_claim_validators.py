@@ -1,7 +1,10 @@
 """
 tests/test_claim_validators.py
 
-Unit tests for Protocol V2.2 individual claim validators.
+Unit tests for Protocol V2.2 individual claim validators:
+- Verifies behavior for all validator types.
+- Tests fail-uncertain semantics (INSUFFICIENT_EVIDENCE when evidence is missing).
+- Tests artifact-claim binding verification.
 """
 
 import pytest
@@ -98,16 +101,56 @@ def test_deprecation_validator():
     assert status_active == ValidationStatus.CONTRADICTED
 
 
+def test_import_path_validator_all():
+    val = ImportPathValidator()
+    claim = MemoryClaim("C_imp", "pprint exported in __all__", ClaimType.IMPORT_PATH_VALID, "pprint", "exported_in", "__all__")
+    gc = GroundedClaim(claim, GroundingStatus.EXACT, target_node_name="pprint")
+
+    src_with_all = "__all__ = ['pprint', 'dumps']\npprint = lambda: None\n"
+    src_without_sym_in_all = "__all__ = ['dumps']\npprint = lambda: None\n"
+
+    status_ok, _, _ = val.validate(gc, "", src_with_all)
+    assert status_ok == ValidationStatus.SUPPORTED
+
+    status_fail, _, _ = val.validate(gc, "", src_without_sym_in_all)
+    assert status_fail == ValidationStatus.CONTRADICTED
+
+
 def test_behavioral_contract_validator():
     val = BehavioralContractValidator()
-    claim = MemoryClaim("C6", "When Parser is initialized...", ClaimType.BEHAVIORAL_CONTRACT, "Parser", "maintains_contract", "")
+    claim = MemoryClaim("C6", "When Parser is initialized...", ClaimType.BEHAVIORAL_CONTRACT, "Parser", "maintains_contract", "", source_case_id="CASE-01")
     gc = GroundedClaim(claim, GroundingStatus.EXACT, target_node_name="Parser")
 
-    exec_pass = {"target_execution": {"passed": True, "exit_code": 0}}
-    exec_fail = {"target_execution": {"passed": False, "exit_code": 1}}
+    exec_pass = {"source_case_id": "CASE-01", "target_execution": {"passed": True, "exit_code": 0}}
+    exec_fail = {"source_case_id": "CASE-01", "target_execution": {"passed": False, "exit_code": 1}}
+    exec_mismatched_case = {"source_case_id": "CASE-99", "target_execution": {"passed": True, "exit_code": 0}}
 
+    # 1. Matching artifact pass
     status_ok, _, _ = val.validate(gc, "", "", execution_artifact=exec_pass)
     assert status_ok == ValidationStatus.SUPPORTED
 
+    # 2. Matching artifact fail
     status_fail, _, _ = val.validate(gc, "", "", execution_artifact=exec_fail)
     assert status_fail == ValidationStatus.CONTRADICTED
+
+    # 3. Mismatched artifact -> INSUFFICIENT_EVIDENCE (fail-uncertain)
+    status_mismatch, _, _ = val.validate(gc, "", "", execution_artifact=exec_mismatched_case)
+    assert status_mismatch == ValidationStatus.INSUFFICIENT_EVIDENCE
+
+    # 4. No artifact -> INSUFFICIENT_EVIDENCE (fail-uncertain)
+    status_none, _, _ = val.validate(gc, "", "", execution_artifact=None)
+    assert status_none == ValidationStatus.INSUFFICIENT_EVIDENCE
+
+
+def test_dependency_contract_validator():
+    val = DependencyContractValidator()
+    claim = MemoryClaim("C7", "HookCaller depends on varnames", ClaimType.DEPENDENCY_CONTRACT, "HookCaller", "depends_on", "varnames", source_case_id="CASE-02")
+    gc = GroundedClaim(claim, GroundingStatus.EXACT, target_node_name="HookCaller")
+
+    art_fail = {"source_case_id": "CASE-02", "old_on_target": {"passed": False}}
+    status_fail, _, _ = val.validate(gc, "", "", execution_artifact=art_fail)
+    assert status_fail == ValidationStatus.CONTRADICTED
+
+    # Without artifact, returns INSUFFICIENT_EVIDENCE
+    status_none, _, _ = val.validate(gc, "", "", execution_artifact=None)
+    assert status_none == ValidationStatus.INSUFFICIENT_EVIDENCE

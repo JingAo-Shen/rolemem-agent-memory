@@ -1,7 +1,9 @@
 """
 tests/test_claim_grounding.py
 
-Unit tests for ClaimGrounder AST binding.
+Unit tests for ClaimGrounder AST binding:
+- EXACT, ALIASED, AMBIGUOUS, and UNRESOLVED grounding states.
+- Qualified vs unqualified symbol resolution.
 """
 
 import pytest
@@ -41,6 +43,40 @@ def test_grounding_exact_class_method(grounder):
     )
     res = grounder.ground(claim, src)
     assert res.grounding_status == GroundingStatus.EXACT
+
+
+def test_grounding_ambiguous_multiple_classes(grounder):
+    src = (
+        "class JsonParser:\n"
+        "    def parse(self):\n"
+        "        pass\n\n"
+        "class XmlParser:\n"
+        "    def parse(self):\n"
+        "        pass\n"
+    )
+    # Unqualified ambiguous claim
+    claim_unqual = MemoryClaim(
+        claim_id="CLM-AMB",
+        raw_statement="Method parse exists",
+        claim_type=ClaimType.SYMBOL_EXISTS,
+        subject="parse",
+        predicate="exists_in",
+        object="test.py"
+    )
+    res_amb = grounder.ground(claim_unqual, src)
+    assert res_amb.grounding_status == GroundingStatus.AMBIGUOUS
+
+    # Disambiguated qualified claim
+    claim_qual = MemoryClaim(
+        claim_id="CLM-QUAL",
+        raw_statement="Method parse exists in JsonParser",
+        claim_type=ClaimType.SYMBOL_EXISTS,
+        subject="JsonParser.parse",
+        predicate="exists_in",
+        object="test.py"
+    )
+    res_qual = grounder.ground(claim_qual, src)
+    assert res_qual.grounding_status == GroundingStatus.EXACT
 
 
 def test_grounding_aliased_import(grounder):

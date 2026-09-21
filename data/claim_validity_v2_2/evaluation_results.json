@@ -1,21 +1,21 @@
 {
-  "File_Level_Baseline": {
+  "file_level": {
     "Coverage": 1.0,
-    "Accuracy_Overall": 0.5454545454545454,
-    "Accuracy_Decided": 0.5454545454545454,
-    "Balanced_Accuracy": 0.6818181818181818,
-    "Macro_F1": 0.5299145299145299,
-    "MCC": 0.29939247542604785,
-    "Selective_Risk": 0.45454545454545453,
-    "Precision": 0.29411764705882354,
-    "Recall": 0.9090909090909091,
-    "F1": 0.4444444444444445,
-    "False_Invalidation_Rate_FIR": 0.5454545454545454,
-    "Stale_Exposure_Rate_SER": 0.09090909090909091,
+    "Accuracy_Overall": 0.2,
+    "Accuracy_Decided": 0.2,
+    "Balanced_Accuracy": 0.5,
+    "Macro_F1": 0.16666666666666669,
+    "MCC": 0.0,
+    "Selective_Risk": 0.8,
+    "Precision": 0.2,
+    "Recall": 1.0,
+    "F1": 0.33333333333333337,
+    "False_Invalidation_Rate_FIR": 1.0,
+    "Stale_Exposure_Rate_SER": 0.0,
     "Per_Category_Accuracy": {
-      "CAT_A_FILE_CHG_SYM_SAME_VALID": 0.5277777777777778,
-      "CAT_B_SYM_CHG_MEMORY_VALID": 0.125,
-      "CAT_C_SYM_SAME_MEMORY_STALE": 0.0,
+      "CAT_A_FILE_CHG_SYM_SAME_VALID": 0.0,
+      "CAT_B_SYM_CHG_MEMORY_VALID": 0.0,
+      "CAT_C_SYM_SAME_MEMORY_STALE": 1.0,
       "CAT_D1_SYM_REM_STALE": 1.0,
       "CAT_D2_SYM_CHG_BEHAVIOR_STALE": 1.0
     },
@@ -28,7 +28,103 @@
       "BEHAVIORAL_CONTRACT": {
         "count": 8,
         "decided": 8,
-        "accuracy": 0.125
+        "accuracy": 0.0
+      },
+      "DEPENDENCY_CONTRACT": {
+        "count": 1,
+        "decided": 1,
+        "accuracy": 1.0
+      },
+      "IMPORT_PATH_VALID": {
+        "count": 1,
+        "decided": 1,
+        "accuracy": 1.0
+      },
+      "SYMBOL_EXISTS": {
+        "count": 44,
+        "decided": 44,
+        "accuracy": 0.18181818181818182
+      }
+    }
+  },
+  "pure_symbol": {
+    "Coverage": 0.8181818181818182,
+    "Accuracy_Overall": 0.7636363636363637,
+    "Accuracy_Decided": 0.9333333333333333,
+    "Balanced_Accuracy": 0.8333333333333333,
+    "Macro_F1": 0.8800000000000001,
+    "MCC": 0.7844645405527361,
+    "Selective_Risk": 0.06666666666666667,
+    "Precision": 1.0,
+    "Recall": 0.6666666666666666,
+    "F1": 0.8,
+    "False_Invalidation_Rate_FIR": 0.0,
+    "Stale_Exposure_Rate_SER": 0.3333333333333333,
+    "Per_Category_Accuracy": {
+      "CAT_A_FILE_CHG_SYM_SAME_VALID": 1.0,
+      "CAT_B_SYM_CHG_MEMORY_VALID": 0.0,
+      "CAT_C_SYM_SAME_MEMORY_STALE": 0.0,
+      "CAT_D1_SYM_REM_STALE": 0.75,
+      "CAT_D2_SYM_CHG_BEHAVIOR_STALE": 0.0
+    },
+    "Per_ClaimType_Accuracy": {
+      "ATTRIBUTE_EXISTS": {
+        "count": 1,
+        "decided": 0,
+        "accuracy": 0.0
+      },
+      "BEHAVIORAL_CONTRACT": {
+        "count": 8,
+        "decided": 0,
+        "accuracy": 0.0
+      },
+      "DEPENDENCY_CONTRACT": {
+        "count": 1,
+        "decided": 1,
+        "accuracy": 0.0
+      },
+      "IMPORT_PATH_VALID": {
+        "count": 1,
+        "decided": 0,
+        "accuracy": 0.0
+      },
+      "SYMBOL_EXISTS": {
+        "count": 44,
+        "decided": 44,
+        "accuracy": 0.9545454545454546
+      }
+    }
+  },
+  "dependency": {
+    "Coverage": 0.9636363636363636,
+    "Accuracy_Overall": 0.7454545454545455,
+    "Accuracy_Decided": 0.7735849056603774,
+    "Balanced_Accuracy": 0.7900432900432901,
+    "Macro_F1": 0.7210526315789474,
+    "MCC": 0.4905661155442039,
+    "Selective_Risk": 0.22641509433962265,
+    "Precision": 0.47368421052631576,
+    "Recall": 0.8181818181818182,
+    "F1": 0.6,
+    "False_Invalidation_Rate_FIR": 0.23809523809523808,
+    "Stale_Exposure_Rate_SER": 0.18181818181818182,
+    "Per_Category_Accuracy": {
+      "CAT_A_FILE_CHG_SYM_SAME_VALID": 0.7352941176470589,
+      "CAT_B_SYM_CHG_MEMORY_VALID": 0.875,
+      "CAT_C_SYM_SAME_MEMORY_STALE": 0.0,
+      "CAT_D1_SYM_REM_STALE": 0.875,
+      "CAT_D2_SYM_CHG_BEHAVIOR_STALE": 1.0
+    },
+    "Per_ClaimType_Accuracy": {
+      "ATTRIBUTE_EXISTS": {
+        "count": 1,
+        "decided": 1,
+        "accuracy": 1.0
+      },
+      "BEHAVIORAL_CONTRACT": {
+        "count": 8,
+        "decided": 8,
+        "accuracy": 0.875
       },
       "DEPENDENCY_CONTRACT": {
         "count": 1,
@@ -42,26 +138,26 @@
       },
       "SYMBOL_EXISTS": {
         "count": 44,
-        "decided": 44,
-        "accuracy": 0.6136363636363636
+        "decided": 42,
+        "accuracy": 0.7619047619047619
       }
     }
   },
-  "Pure_Symbol_AST_Baseline": {
-    "Coverage": 0.32727272727272727,
-    "Accuracy_Overall": 0.3090909090909091,
-    "Accuracy_Decided": 0.9444444444444444,
-    "Balanced_Accuracy": 0.9166666666666667,
-    "Macro_F1": 0.9345454545454546,
-    "MCC": 0.8770580193070291,
-    "Selective_Risk": 0.05555555555555555,
-    "Precision": 1.0,
-    "Recall": 0.8333333333333334,
-    "F1": 0.9090909090909091,
-    "False_Invalidation_Rate_FIR": 0.0,
-    "Stale_Exposure_Rate_SER": 0.16666666666666666,
+  "rolemem_abstain": {
+    "Coverage": 0.7818181818181819,
+    "Accuracy_Overall": 0.6,
+    "Accuracy_Decided": 0.7674418604651163,
+    "Balanced_Accuracy": 0.8120915032679739,
+    "Macro_F1": 0.7243589743589742,
+    "MCC": 0.5193516543089155,
+    "Selective_Risk": 0.23255813953488372,
+    "Precision": 0.47058823529411764,
+    "Recall": 0.8888888888888888,
+    "F1": 0.6153846153846153,
+    "False_Invalidation_Rate_FIR": 0.2647058823529412,
+    "Stale_Exposure_Rate_SER": 0.1111111111111111,
     "Per_Category_Accuracy": {
-      "CAT_A_FILE_CHG_SYM_SAME_VALID": 1.0,
+      "CAT_A_FILE_CHG_SYM_SAME_VALID": 0.7352941176470589,
       "CAT_B_SYM_CHG_MEMORY_VALID": 0.0,
       "CAT_C_SYM_SAME_MEMORY_STALE": 0.0,
       "CAT_D1_SYM_REM_STALE": 1.0,
@@ -90,77 +186,29 @@
       },
       "SYMBOL_EXISTS": {
         "count": 44,
-        "decided": 17,
-        "accuracy": 1.0
+        "decided": 42,
+        "accuracy": 0.7857142857142857
       }
     }
   },
-  "Dependency_Validity_Baseline": {
-    "Coverage": 0.6909090909090909,
-    "Accuracy_Overall": 0.509090909090909,
-    "Accuracy_Decided": 0.7368421052631579,
-    "Balanced_Accuracy": 0.7875,
-    "Macro_F1": 0.6955128205128205,
-    "MCC": 0.47479062371074304,
-    "Selective_Risk": 0.2631578947368421,
-    "Precision": 0.4375,
-    "Recall": 0.875,
-    "F1": 0.5833333333333334,
-    "False_Invalidation_Rate_FIR": 0.3,
-    "Stale_Exposure_Rate_SER": 0.125,
-    "Per_Category_Accuracy": {
-      "CAT_A_FILE_CHG_SYM_SAME_VALID": 0.6521739130434783,
-      "CAT_B_SYM_CHG_MEMORY_VALID": 0.8571428571428571,
-      "CAT_C_SYM_SAME_MEMORY_STALE": 0.0,
-      "CAT_D1_SYM_REM_STALE": 1.0,
-      "CAT_D2_SYM_CHG_BEHAVIOR_STALE": 1.0
-    },
-    "Per_ClaimType_Accuracy": {
-      "ATTRIBUTE_EXISTS": {
-        "count": 1,
-        "decided": 1,
-        "accuracy": 1.0
-      },
-      "BEHAVIORAL_CONTRACT": {
-        "count": 8,
-        "decided": 7,
-        "accuracy": 0.8571428571428571
-      },
-      "DEPENDENCY_CONTRACT": {
-        "count": 1,
-        "decided": 1,
-        "accuracy": 0.0
-      },
-      "IMPORT_PATH_VALID": {
-        "count": 1,
-        "decided": 1,
-        "accuracy": 1.0
-      },
-      "SYMBOL_EXISTS": {
-        "count": 44,
-        "decided": 28,
-        "accuracy": 0.7142857142857143
-      }
-    }
-  },
-  "RoleMem_Structural_V2_1_Forced": {
+  "rolemem_forced": {
     "Coverage": 1.0,
-    "Accuracy_Overall": 0.8727272727272727,
-    "Accuracy_Decided": 0.8727272727272727,
-    "Balanced_Accuracy": 0.7159090909090909,
-    "Macro_F1": 0.756483238456673,
-    "MCC": 0.554051251343814,
-    "Selective_Risk": 0.12727272727272726,
-    "Precision": 0.8333333333333334,
-    "Recall": 0.45454545454545453,
-    "F1": 0.5882352941176471,
-    "False_Invalidation_Rate_FIR": 0.022727272727272728,
-    "Stale_Exposure_Rate_SER": 0.5454545454545454,
+    "Accuracy_Overall": 0.7818181818181819,
+    "Accuracy_Decided": 0.7818181818181819,
+    "Balanced_Accuracy": 0.7613636363636364,
+    "Macro_F1": 0.7125435540069687,
+    "MCC": 0.4524614483346644,
+    "Selective_Risk": 0.21818181818181817,
+    "Precision": 0.47058823529411764,
+    "Recall": 0.7272727272727273,
+    "F1": 0.5714285714285714,
+    "False_Invalidation_Rate_FIR": 0.20454545454545456,
+    "Stale_Exposure_Rate_SER": 0.2727272727272727,
     "Per_Category_Accuracy": {
-      "CAT_A_FILE_CHG_SYM_SAME_VALID": 0.9722222222222222,
+      "CAT_A_FILE_CHG_SYM_SAME_VALID": 0.75,
       "CAT_B_SYM_CHG_MEMORY_VALID": 1.0,
       "CAT_C_SYM_SAME_MEMORY_STALE": 0.0,
-      "CAT_D1_SYM_REM_STALE": 0.625,
+      "CAT_D1_SYM_REM_STALE": 1.0,
       "CAT_D2_SYM_CHG_BEHAVIOR_STALE": 0.0
     },
     "Per_ClaimType_Accuracy": {
@@ -187,35 +235,83 @@
       "SYMBOL_EXISTS": {
         "count": 44,
         "decided": 44,
-        "accuracy": 0.9090909090909091
+        "accuracy": 0.7954545454545454
       }
     }
   },
-  "RoleMem_Structural_V2_1_Abstain": {
-    "Coverage": 0.3090909090909091,
-    "Accuracy_Overall": 0.2727272727272727,
-    "Accuracy_Decided": 0.8823529411764706,
-    "Balanced_Accuracy": 0.8712121212121212,
-    "Macro_F1": 0.8712121212121212,
-    "MCC": 0.7424242424242424,
-    "Selective_Risk": 0.11764705882352941,
-    "Precision": 0.8333333333333334,
-    "Recall": 0.8333333333333334,
-    "F1": 0.8333333333333334,
-    "False_Invalidation_Rate_FIR": 0.09090909090909091,
-    "Stale_Exposure_Rate_SER": 0.16666666666666666,
+  "execution_only": {
+    "Coverage": 0.2,
+    "Accuracy_Overall": 0.2,
+    "Accuracy_Decided": 1.0,
+    "Balanced_Accuracy": 1.0,
+    "Macro_F1": 1.0,
+    "MCC": 1.0,
+    "Selective_Risk": 0.0,
+    "Precision": 1.0,
+    "Recall": 1.0,
+    "F1": 1.0,
+    "False_Invalidation_Rate_FIR": 0.0,
+    "Stale_Exposure_Rate_SER": 0.0,
     "Per_Category_Accuracy": {
-      "CAT_A_FILE_CHG_SYM_SAME_VALID": 0.9090909090909091,
+      "CAT_A_FILE_CHG_SYM_SAME_VALID": 0.0,
+      "CAT_B_SYM_CHG_MEMORY_VALID": 1.0,
+      "CAT_C_SYM_SAME_MEMORY_STALE": 1.0,
+      "CAT_D1_SYM_REM_STALE": 0.0,
+      "CAT_D2_SYM_CHG_BEHAVIOR_STALE": 1.0
+    },
+    "Per_ClaimType_Accuracy": {
+      "ATTRIBUTE_EXISTS": {
+        "count": 1,
+        "decided": 1,
+        "accuracy": 1.0
+      },
+      "BEHAVIORAL_CONTRACT": {
+        "count": 8,
+        "decided": 8,
+        "accuracy": 1.0
+      },
+      "DEPENDENCY_CONTRACT": {
+        "count": 1,
+        "decided": 1,
+        "accuracy": 1.0
+      },
+      "IMPORT_PATH_VALID": {
+        "count": 1,
+        "decided": 1,
+        "accuracy": 1.0
+      },
+      "SYMBOL_EXISTS": {
+        "count": 44,
+        "decided": 0,
+        "accuracy": 0.0
+      }
+    }
+  },
+  "claim_static_selective": {
+    "Coverage": 0.8,
+    "Accuracy_Overall": 0.8,
+    "Accuracy_Decided": 1.0,
+    "Balanced_Accuracy": 1.0,
+    "Macro_F1": 1.0,
+    "MCC": 1.0,
+    "Selective_Risk": 0.0,
+    "Precision": 1.0,
+    "Recall": 1.0,
+    "F1": 1.0,
+    "False_Invalidation_Rate_FIR": 0.0,
+    "Stale_Exposure_Rate_SER": 0.0,
+    "Per_Category_Accuracy": {
+      "CAT_A_FILE_CHG_SYM_SAME_VALID": 1.0,
       "CAT_B_SYM_CHG_MEMORY_VALID": 0.0,
       "CAT_C_SYM_SAME_MEMORY_STALE": 0.0,
       "CAT_D1_SYM_REM_STALE": 1.0,
-      "CAT_D2_SYM_CHG_BEHAVIOR_STALE": 0.0
+      "CAT_D2_SYM_CHG_BEHAVIOR_STALE": 1.0
     },
     "Per_ClaimType_Accuracy": {
       "ATTRIBUTE_EXISTS": {
         "count": 1,
-        "decided": 0,
-        "accuracy": 0.0
+        "decided": 1,
+        "accuracy": 1.0
       },
       "BEHAVIORAL_CONTRACT": {
         "count": 8,
@@ -224,22 +320,166 @@
       },
       "DEPENDENCY_CONTRACT": {
         "count": 1,
+        "decided": 0,
+        "accuracy": 0.0
+      },
+      "IMPORT_PATH_VALID": {
+        "count": 1,
+        "decided": 1,
+        "accuracy": 1.0
+      },
+      "SYMBOL_EXISTS": {
+        "count": 44,
+        "decided": 42,
+        "accuracy": 1.0
+      }
+    }
+  },
+  "claim_static_valid_default": {
+    "Coverage": 1.0,
+    "Accuracy_Overall": 0.9454545454545454,
+    "Accuracy_Decided": 0.9454545454545454,
+    "Balanced_Accuracy": 0.8636363636363636,
+    "Macro_F1": 0.9045691150954309,
+    "MCC": 0.8251369970070347,
+    "Selective_Risk": 0.05454545454545454,
+    "Precision": 1.0,
+    "Recall": 0.7272727272727273,
+    "F1": 0.8421052631578948,
+    "False_Invalidation_Rate_FIR": 0.0,
+    "Stale_Exposure_Rate_SER": 0.2727272727272727,
+    "Per_Category_Accuracy": {
+      "CAT_A_FILE_CHG_SYM_SAME_VALID": 1.0,
+      "CAT_B_SYM_CHG_MEMORY_VALID": 1.0,
+      "CAT_C_SYM_SAME_MEMORY_STALE": 0.0,
+      "CAT_D1_SYM_REM_STALE": 0.75,
+      "CAT_D2_SYM_CHG_BEHAVIOR_STALE": 1.0
+    },
+    "Per_ClaimType_Accuracy": {
+      "ATTRIBUTE_EXISTS": {
+        "count": 1,
+        "decided": 1,
+        "accuracy": 1.0
+      },
+      "BEHAVIORAL_CONTRACT": {
+        "count": 8,
+        "decided": 8,
+        "accuracy": 1.0
+      },
+      "DEPENDENCY_CONTRACT": {
+        "count": 1,
         "decided": 1,
         "accuracy": 0.0
       },
       "IMPORT_PATH_VALID": {
         "count": 1,
-        "decided": 0,
-        "accuracy": 0.0
+        "decided": 1,
+        "accuracy": 1.0
       },
       "SYMBOL_EXISTS": {
         "count": 44,
-        "decided": 16,
-        "accuracy": 0.9375
+        "decided": 44,
+        "accuracy": 0.9545454545454546
       }
     }
   },
-  "Claim_Aware_Engine_Selective": {
+  "claim_static_stale_default": {
+    "Coverage": 1.0,
+    "Accuracy_Overall": 0.8545454545454545,
+    "Accuracy_Decided": 0.8545454545454545,
+    "Balanced_Accuracy": 0.9090909090909092,
+    "Macro_F1": 0.8166666666666667,
+    "MCC": 0.6882472016116853,
+    "Selective_Risk": 0.14545454545454545,
+    "Precision": 0.5789473684210527,
+    "Recall": 1.0,
+    "F1": 0.7333333333333334,
+    "False_Invalidation_Rate_FIR": 0.18181818181818182,
+    "Stale_Exposure_Rate_SER": 0.0,
+    "Per_Category_Accuracy": {
+      "CAT_A_FILE_CHG_SYM_SAME_VALID": 1.0,
+      "CAT_B_SYM_CHG_MEMORY_VALID": 0.0,
+      "CAT_C_SYM_SAME_MEMORY_STALE": 1.0,
+      "CAT_D1_SYM_REM_STALE": 1.0,
+      "CAT_D2_SYM_CHG_BEHAVIOR_STALE": 1.0
+    },
+    "Per_ClaimType_Accuracy": {
+      "ATTRIBUTE_EXISTS": {
+        "count": 1,
+        "decided": 1,
+        "accuracy": 1.0
+      },
+      "BEHAVIORAL_CONTRACT": {
+        "count": 8,
+        "decided": 8,
+        "accuracy": 0.0
+      },
+      "DEPENDENCY_CONTRACT": {
+        "count": 1,
+        "decided": 1,
+        "accuracy": 1.0
+      },
+      "IMPORT_PATH_VALID": {
+        "count": 1,
+        "decided": 1,
+        "accuracy": 1.0
+      },
+      "SYMBOL_EXISTS": {
+        "count": 44,
+        "decided": 44,
+        "accuracy": 1.0
+      }
+    }
+  },
+  "claim_exec_selective": {
+    "Coverage": 0.9636363636363636,
+    "Accuracy_Overall": 0.9636363636363636,
+    "Accuracy_Decided": 1.0,
+    "Balanced_Accuracy": 1.0,
+    "Macro_F1": 1.0,
+    "MCC": 1.0,
+    "Selective_Risk": 0.0,
+    "Precision": 1.0,
+    "Recall": 1.0,
+    "F1": 1.0,
+    "False_Invalidation_Rate_FIR": 0.0,
+    "Stale_Exposure_Rate_SER": 0.0,
+    "Per_Category_Accuracy": {
+      "CAT_A_FILE_CHG_SYM_SAME_VALID": 1.0,
+      "CAT_B_SYM_CHG_MEMORY_VALID": 1.0,
+      "CAT_C_SYM_SAME_MEMORY_STALE": 1.0,
+      "CAT_D1_SYM_REM_STALE": 1.0,
+      "CAT_D2_SYM_CHG_BEHAVIOR_STALE": 1.0
+    },
+    "Per_ClaimType_Accuracy": {
+      "ATTRIBUTE_EXISTS": {
+        "count": 1,
+        "decided": 1,
+        "accuracy": 1.0
+      },
+      "BEHAVIORAL_CONTRACT": {
+        "count": 8,
+        "decided": 8,
+        "accuracy": 1.0
+      },
+      "DEPENDENCY_CONTRACT": {
+        "count": 1,
+        "decided": 1,
+        "accuracy": 1.0
+      },
+      "IMPORT_PATH_VALID": {
+        "count": 1,
+        "decided": 1,
+        "accuracy": 1.0
+      },
+      "SYMBOL_EXISTS": {
+        "count": 44,
+        "decided": 42,
+        "accuracy": 1.0
+      }
+    }
+  },
+  "claim_exec_valid_default": {
     "Coverage": 1.0,
     "Accuracy_Overall": 0.9636363636363636,
     "Accuracy_Decided": 0.9636363636363636,
@@ -287,24 +527,24 @@
       }
     }
   },
-  "Claim_Aware_Engine_Valid_Default": {
+  "claim_exec_stale_default": {
     "Coverage": 1.0,
-    "Accuracy_Overall": 0.9636363636363636,
-    "Accuracy_Decided": 0.9636363636363636,
-    "Balanced_Accuracy": 0.9090909090909092,
-    "Macro_F1": 0.9388888888888889,
-    "MCC": 0.8846517369293828,
-    "Selective_Risk": 0.03636363636363636,
+    "Accuracy_Overall": 1.0,
+    "Accuracy_Decided": 1.0,
+    "Balanced_Accuracy": 1.0,
+    "Macro_F1": 1.0,
+    "MCC": 1.0,
+    "Selective_Risk": 0.0,
     "Precision": 1.0,
-    "Recall": 0.8181818181818182,
-    "F1": 0.9,
+    "Recall": 1.0,
+    "F1": 1.0,
     "False_Invalidation_Rate_FIR": 0.0,
-    "Stale_Exposure_Rate_SER": 0.18181818181818182,
+    "Stale_Exposure_Rate_SER": 0.0,
     "Per_Category_Accuracy": {
       "CAT_A_FILE_CHG_SYM_SAME_VALID": 1.0,
       "CAT_B_SYM_CHG_MEMORY_VALID": 1.0,
       "CAT_C_SYM_SAME_MEMORY_STALE": 1.0,
-      "CAT_D1_SYM_REM_STALE": 0.75,
+      "CAT_D1_SYM_REM_STALE": 1.0,
       "CAT_D2_SYM_CHG_BEHAVIOR_STALE": 1.0
     },
     "Per_ClaimType_Accuracy": {
@@ -331,55 +571,7 @@
       "SYMBOL_EXISTS": {
         "count": 44,
         "decided": 44,
-        "accuracy": 0.9545454545454546
-      }
-    }
-  },
-  "Claim_Aware_Engine_Stale_Default": {
-    "Coverage": 1.0,
-    "Accuracy_Overall": 0.9636363636363636,
-    "Accuracy_Decided": 0.9636363636363636,
-    "Balanced_Accuracy": 0.9090909090909092,
-    "Macro_F1": 0.9388888888888889,
-    "MCC": 0.8846517369293828,
-    "Selective_Risk": 0.03636363636363636,
-    "Precision": 1.0,
-    "Recall": 0.8181818181818182,
-    "F1": 0.9,
-    "False_Invalidation_Rate_FIR": 0.0,
-    "Stale_Exposure_Rate_SER": 0.18181818181818182,
-    "Per_Category_Accuracy": {
-      "CAT_A_FILE_CHG_SYM_SAME_VALID": 1.0,
-      "CAT_B_SYM_CHG_MEMORY_VALID": 1.0,
-      "CAT_C_SYM_SAME_MEMORY_STALE": 1.0,
-      "CAT_D1_SYM_REM_STALE": 0.75,
-      "CAT_D2_SYM_CHG_BEHAVIOR_STALE": 1.0
-    },
-    "Per_ClaimType_Accuracy": {
-      "ATTRIBUTE_EXISTS": {
-        "count": 1,
-        "decided": 1,
         "accuracy": 1.0
-      },
-      "BEHAVIORAL_CONTRACT": {
-        "count": 8,
-        "decided": 8,
-        "accuracy": 1.0
-      },
-      "DEPENDENCY_CONTRACT": {
-        "count": 1,
-        "decided": 1,
-        "accuracy": 1.0
-      },
-      "IMPORT_PATH_VALID": {
-        "count": 1,
-        "decided": 1,
-        "accuracy": 1.0
-      },
-      "SYMBOL_EXISTS": {
-        "count": 44,
-        "decided": 44,
-        "accuracy": 0.9545454545454546
       }
     }
   }

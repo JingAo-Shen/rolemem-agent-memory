@@ -3,6 +3,9 @@ src/claim_validity/validators/dependency_contract.py
 
 Validates ClaimType.DEPENDENCY_CONTRACT:
 - Checks if cross-symbol dependency linkage remains valid.
+- Verifies artifact-claim binding.
+- CONTRADICTED if dependency is broken in execution evidence or removed in Git diff.
+- INSUFFICIENT_EVIDENCE (fail-uncertain) if no verified execution or static removal evidence exists.
 """
 
 from typing import Tuple, List, Dict, Any, Optional
@@ -21,6 +24,26 @@ class DependencyContractValidator(BaseClaimValidator):
     @property
     def target_claim_type(self) -> ClaimType:
         return ClaimType.DEPENDENCY_CONTRACT
+
+    def _verify_artifact_binding(self, claim, execution_artifact: Dict[str, Any]) -> bool:
+        """Verifies that the execution artifact is validly bound to this specific claim."""
+        if not execution_artifact:
+            return False
+        
+        art_case_id = execution_artifact.get("case_id") or execution_artifact.get("source_case_id")
+        if art_case_id and claim.source_case_id and art_case_id != claim.source_case_id:
+            return False
+
+        art_claim_id = execution_artifact.get("claim_id")
+        if art_claim_id and art_claim_id != claim.claim_id:
+            return False
+
+        art_symbol = execution_artifact.get("symbol") or execution_artifact.get("target_symbol")
+        claim_sym = (claim.subject or claim.symbol).split(".")[-1]
+        if art_symbol and claim_sym and art_symbol.split(".")[-1] != claim_sym:
+            return False
+
+        return True
 
     def validate(
         self,
@@ -50,8 +73,8 @@ class DependencyContractValidator(BaseClaimValidator):
             evidences.append(ev)
             return ValidationStatus.CONTRADICTED, evidences, f"Symbol `{sym_name}` does not exist."
 
-        # Check counterfactual / execution artifact if available
-        if execution_artifact:
+        # Check counterfactual / execution artifact if available and verified
+        if execution_artifact and self._verify_artifact_binding(claim, execution_artifact):
             target_exec = execution_artifact.get("old_on_target") or execution_artifact.get("target_execution") or {}
             if "passed" in target_exec:
                 if target_exec["passed"] is False:
@@ -74,7 +97,7 @@ class DependencyContractValidator(BaseClaimValidator):
                         supports_or_contradicts="SUPPORTS",
                         confidence=0.98,
                         artifact_hash=sha256_text(str(target_exec)),
-                        detail=f"Dependency contract verified valid on target commit."
+                        detail="Dependency contract verified valid on target commit."
                     )
                     evidences.append(ev)
                     return ValidationStatus.SUPPORTED, evidences, f"Dependency contract `{dep_name}` intact."
