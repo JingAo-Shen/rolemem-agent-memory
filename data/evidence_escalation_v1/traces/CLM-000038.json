@@ -1,0 +1,30 @@
+{
+  "claim_id": "CLM-000038",
+  "static_decision": "UNCERTAIN",
+  "final_decision": "UNCERTAIN",
+  "total_actions": 1,
+  "total_cost": {
+    "repository_files_scanned": 17,
+    "tests_inspected": 74,
+    "executions_run": 0,
+    "execution_time_ms": 0.0,
+    "total_actions": 1,
+    "action_counts": {
+      "TEST_DISCOVERY": 1
+    }
+  },
+  "stop_reason": "REMAINED_UNCERTAIN_AFTER_ESCALATION",
+  "steps": [
+    {
+      "step_number": 1,
+      "action_type": "TEST_DISCOVERY",
+      "target": "Request op_tokens=['method']",
+      "outcome": "Discovered 5 candidates (0 strong)",
+      "evidence_id": null,
+      "binding_strength": "WEAK",
+      "cost_increment": {},
+      "detail": "Top candidate: tests/middleware/test_proxy_fix.py:test_proxy_fix"
+    }
+  ],
+  "acquired_evidences": []
+}

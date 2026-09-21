@@ -1,0 +1,72 @@
+{
+  "claim_id": "CLM-000039",
+  "static_decision": "UNCERTAIN",
+  "final_decision": "UNCERTAIN",
+  "total_actions": 2,
+  "total_cost": {
+    "repository_files_scanned": 1,
+    "tests_inspected": 74,
+    "executions_run": 1,
+    "execution_time_ms": 197.43,
+    "total_actions": 2,
+    "action_counts": {
+      "TEST_DISCOVERY": 1,
+      "TARGETED_EXECUTION": 1
+    }
+  },
+  "stop_reason": "REMAINED_UNCERTAIN_AFTER_ESCALATION",
+  "steps": [
+    {
+      "step_number": 1,
+      "action_type": "TEST_DISCOVERY",
+      "target": "tqdm op_tokens=['len']",
+      "outcome": "Discovered 62 candidates (10 strong)",
+      "evidence_id": null,
+      "binding_strength": "STRONG",
+      "cost_increment": {},
+      "detail": "Top candidate: tests/tests_tqdm.py:test_format_meter"
+    },
+    {
+      "step_number": 2,
+      "action_type": "TARGETED_EXECUTION",
+      "target": "tests/tests_tqdm.py::test_format_meter",
+      "outcome": "INCONCLUSIVE",
+      "evidence_id": "EV-EXEC-7824e8e6",
+      "binding_strength": "STRONG",
+      "cost_increment": {
+        "execution_time_ms": 197.43,
+        "timeout_sec": 15
+      },
+      "detail": "Native test execution resulted in ERROR (not interpreted as staleness)."
+    }
+  ],
+  "acquired_evidences": [
+    {
+      "evidence_id": "EV-EXEC-7824e8e6",
+      "claim_id": "CLM-000039",
+      "action_type": "TARGETED_EXECUTION",
+      "source_type": "NATIVE_TEST_EXECUTION",
+      "repository": "tqdm",
+      "commit": "5dcb022b55553b60ed2131b64aa5bf1e65470df1",
+      "file_path": "tests/tests_tqdm.py",
+      "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "binding_strength": "STRONG",
+      "supports_or_contradicts": "INCONCLUSIVE",
+      "confidence": 0.0,
+      "cost": {
+        "execution_time_ms": 197.43,
+        "timeout_sec": 15
+      },
+      "detail": "Native test execution resulted in ERROR (not interpreted as staleness).",
+      "extra_metadata": {
+        "test_name": "test_format_meter",
+        "execution_status": "ERROR",
+        "command_hash": "e1a43c13074e654ef8af86f3a91cc32fce057a44fb43e230420710796eb7d9f9",
+        "stdout_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_hash": "ea69b2cd4217b8d75a7ef8b4a749ac48530713803b60a84fa7809351879a901f",
+        "environment_provenance": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
+        "python_version": "3.13.5"
+      }
+    }
+  ]
+}

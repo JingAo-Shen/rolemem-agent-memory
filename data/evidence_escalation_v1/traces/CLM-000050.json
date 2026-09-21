@@ -1,0 +1,53 @@
+{
+  "claim_id": "CLM-000050",
+  "static_decision": "UNCERTAIN",
+  "final_decision": "STALE",
+  "total_actions": 1,
+  "total_cost": {
+    "repository_files_scanned": 2,
+    "tests_inspected": 0,
+    "executions_run": 0,
+    "execution_time_ms": 0.0,
+    "total_actions": 1,
+    "action_counts": {
+      "REPOSITORY_SEARCH": 1
+    }
+  },
+  "stop_reason": "RESOLVED_TO_STALE",
+  "steps": [
+    {
+      "step_number": 1,
+      "action_type": "REPOSITORY_SEARCH",
+      "target": "environ_property.read_only",
+      "outcome": "CONTRADICTS",
+      "evidence_id": "EV-QUAL-REM-421e0fc6",
+      "binding_strength": "STRONG",
+      "cost_increment": {},
+      "detail": "Qualified symbol 'environ_property.read_only' existed in base commit but was removed in target commit (diff deletion confirmed: False)."
+    }
+  ],
+  "acquired_evidences": [
+    {
+      "evidence_id": "EV-QUAL-REM-421e0fc6",
+      "claim_id": "CLM-000050",
+      "action_type": "REPOSITORY_SEARCH",
+      "source_type": "AST_SNAPSHOT_AND_DIFF",
+      "repository": "werkzeug",
+      "commit": "7641d4990f06d583425a4e6ba25e9d2f18934885",
+      "file_path": "src/werkzeug/utils.py",
+      "content_hash": "d968ce12ac66444aad034934bdc05399f0c16c1b72bf65ffc4cf5e5e90d518e2",
+      "binding_strength": "STRONG",
+      "supports_or_contradicts": "CONTRADICTS",
+      "confidence": 0.95,
+      "cost": {},
+      "detail": "Qualified symbol 'environ_property.read_only' existed in base commit but was removed in target commit (diff deletion confirmed: False).",
+      "extra_metadata": {
+        "parent_symbol": "environ_property",
+        "child_symbol": "read_only",
+        "base_had_child": true,
+        "target_has_child": false,
+        "diff_deleted_child": false
+      }
+    }
+  ]
+}

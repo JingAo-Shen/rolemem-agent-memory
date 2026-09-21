@@ -1,0 +1,569 @@
+{
+  "ablations": {
+    "S0_Static": {
+      "Total_Cases": 55,
+      "Decided_Cases": 44,
+      "Uncertain_Cases": 11,
+      "Coverage": 0.8,
+      "Accuracy_Overall": 0.8,
+      "Accuracy_Decided": 1.0,
+      "Balanced_Accuracy": 1.0,
+      "Macro_F1": 1.0,
+      "MCC": 1.0,
+      "Selective_Risk": 0.0,
+      "Precision": 1.0,
+      "Recall": 1.0,
+      "F1": 1.0,
+      "False_Invalidation_Rate_FIR": 0.0,
+      "Stale_Exposure_Rate_SER": 0.0,
+      "Per_Category_Breakdown": {
+        "CAT_A_FILE_CHG_SYM_SAME_VALID": {
+          "total": 36,
+          "decided": 36,
+          "uncertain": 0,
+          "coverage": 1.0,
+          "accuracy": 1.0
+        },
+        "CAT_B_SYM_CHG_MEMORY_VALID": {
+          "total": 8,
+          "decided": 0,
+          "uncertain": 8,
+          "coverage": 0.0,
+          "accuracy": null
+        },
+        "CAT_C_SYM_SAME_MEMORY_STALE": {
+          "total": 1,
+          "decided": 0,
+          "uncertain": 1,
+          "coverage": 0.0,
+          "accuracy": null
+        },
+        "CAT_D1_SYM_REM_STALE": {
+          "total": 8,
+          "decided": 6,
+          "uncertain": 2,
+          "coverage": 0.75,
+          "accuracy": 1.0
+        },
+        "CAT_D2_SYM_CHG_BEHAVIOR_STALE": {
+          "total": 2,
+          "decided": 2,
+          "uncertain": 0,
+          "coverage": 1.0,
+          "accuracy": 1.0
+        }
+      },
+      "Per_ClaimType_Breakdown": {
+        "SYMBOL_EXISTS": {
+          "total": 44,
+          "decided": 42,
+          "uncertain": 2,
+          "coverage": 0.9545454545454546,
+          "accuracy": 1.0
+        },
+        "BEHAVIORAL_CONTRACT": {
+          "total": 8,
+          "decided": 0,
+          "uncertain": 8,
+          "coverage": 0.0,
+          "accuracy": null
+        },
+        "DEPENDENCY_CONTRACT": {
+          "total": 1,
+          "decided": 0,
+          "uncertain": 1,
+          "coverage": 0.0,
+          "accuracy": null
+        },
+        "ATTRIBUTE_EXISTS": {
+          "total": 1,
+          "decided": 1,
+          "uncertain": 0,
+          "coverage": 1.0,
+          "accuracy": 1.0
+        },
+        "IMPORT_PATH_VALID": {
+          "total": 1,
+          "decided": 1,
+          "uncertain": 0,
+          "coverage": 1.0,
+          "accuracy": 1.0
+        }
+      }
+    },
+    "S1_RepoSearch": {
+      "Total_Cases": 55,
+      "Decided_Cases": 46,
+      "Uncertain_Cases": 9,
+      "Coverage": 0.8363636363636363,
+      "Accuracy_Overall": 0.8363636363636363,
+      "Accuracy_Decided": 1.0,
+      "Balanced_Accuracy": 1.0,
+      "Macro_F1": 1.0,
+      "MCC": 1.0,
+      "Selective_Risk": 0.0,
+      "Precision": 1.0,
+      "Recall": 1.0,
+      "F1": 1.0,
+      "False_Invalidation_Rate_FIR": 0.0,
+      "Stale_Exposure_Rate_SER": 0.0,
+      "Per_Category_Breakdown": {
+        "CAT_A_FILE_CHG_SYM_SAME_VALID": {
+          "total": 36,
+          "decided": 36,
+          "uncertain": 0,
+          "coverage": 1.0,
+          "accuracy": 1.0
+        },
+        "CAT_B_SYM_CHG_MEMORY_VALID": {
+          "total": 8,
+          "decided": 0,
+          "uncertain": 8,
+          "coverage": 0.0,
+          "accuracy": null
+        },
+        "CAT_C_SYM_SAME_MEMORY_STALE": {
+          "total": 1,
+          "decided": 0,
+          "uncertain": 1,
+          "coverage": 0.0,
+          "accuracy": null
+        },
+        "CAT_D1_SYM_REM_STALE": {
+          "total": 8,
+          "decided": 8,
+          "uncertain": 0,
+          "coverage": 1.0,
+          "accuracy": 1.0
+        },
+        "CAT_D2_SYM_CHG_BEHAVIOR_STALE": {
+          "total": 2,
+          "decided": 2,
+          "uncertain": 0,
+          "coverage": 1.0,
+          "accuracy": 1.0
+        }
+      },
+      "Per_ClaimType_Breakdown": {
+        "SYMBOL_EXISTS": {
+          "total": 44,
+          "decided": 44,
+          "uncertain": 0,
+          "coverage": 1.0,
+          "accuracy": 1.0
+        },
+        "BEHAVIORAL_CONTRACT": {
+          "total": 8,
+          "decided": 0,
+          "uncertain": 8,
+          "coverage": 0.0,
+          "accuracy": null
+        },
+        "DEPENDENCY_CONTRACT": {
+          "total": 1,
+          "decided": 0,
+          "uncertain": 1,
+          "coverage": 0.0,
+          "accuracy": null
+        },
+        "ATTRIBUTE_EXISTS": {
+          "total": 1,
+          "decided": 1,
+          "uncertain": 0,
+          "coverage": 1.0,
+          "accuracy": 1.0
+        },
+        "IMPORT_PATH_VALID": {
+          "total": 1,
+          "decided": 1,
+          "uncertain": 0,
+          "coverage": 1.0,
+          "accuracy": 1.0
+        }
+      }
+    },
+    "S2_RepoSearch_Dep": {
+      "Total_Cases": 55,
+      "Decided_Cases": 46,
+      "Uncertain_Cases": 9,
+      "Coverage": 0.8363636363636363,
+      "Accuracy_Overall": 0.8363636363636363,
+      "Accuracy_Decided": 1.0,
+      "Balanced_Accuracy": 1.0,
+      "Macro_F1": 1.0,
+      "MCC": 1.0,
+      "Selective_Risk": 0.0,
+      "Precision": 1.0,
+      "Recall": 1.0,
+      "F1": 1.0,
+      "False_Invalidation_Rate_FIR": 0.0,
+      "Stale_Exposure_Rate_SER": 0.0,
+      "Per_Category_Breakdown": {
+        "CAT_A_FILE_CHG_SYM_SAME_VALID": {
+          "total": 36,
+          "decided": 36,
+          "uncertain": 0,
+          "coverage": 1.0,
+          "accuracy": 1.0
+        },
+        "CAT_B_SYM_CHG_MEMORY_VALID": {
+          "total": 8,
+          "decided": 0,
+          "uncertain": 8,
+          "coverage": 0.0,
+          "accuracy": null
+        },
+        "CAT_C_SYM_SAME_MEMORY_STALE": {
+          "total": 1,
+          "decided": 0,
+          "uncertain": 1,
+          "coverage": 0.0,
+          "accuracy": null
+        },
+        "CAT_D1_SYM_REM_STALE": {
+          "total": 8,
+          "decided": 8,
+          "uncertain": 0,
+          "coverage": 1.0,
+          "accuracy": 1.0
+        },
+        "CAT_D2_SYM_CHG_BEHAVIOR_STALE": {
+          "total": 2,
+          "decided": 2,
+          "uncertain": 0,
+          "coverage": 1.0,
+          "accuracy": 1.0
+        }
+      },
+      "Per_ClaimType_Breakdown": {
+        "SYMBOL_EXISTS": {
+          "total": 44,
+          "decided": 44,
+          "uncertain": 0,
+          "coverage": 1.0,
+          "accuracy": 1.0
+        },
+        "BEHAVIORAL_CONTRACT": {
+          "total": 8,
+          "decided": 0,
+          "uncertain": 8,
+          "coverage": 0.0,
+          "accuracy": null
+        },
+        "DEPENDENCY_CONTRACT": {
+          "total": 1,
+          "decided": 0,
+          "uncertain": 1,
+          "coverage": 0.0,
+          "accuracy": null
+        },
+        "ATTRIBUTE_EXISTS": {
+          "total": 1,
+          "decided": 1,
+          "uncertain": 0,
+          "coverage": 1.0,
+          "accuracy": 1.0
+        },
+        "IMPORT_PATH_VALID": {
+          "total": 1,
+          "decided": 1,
+          "uncertain": 0,
+          "coverage": 1.0,
+          "accuracy": 1.0
+        }
+      }
+    },
+    "S3_TestDiscovery": {
+      "Total_Cases": 55,
+      "Decided_Cases": 44,
+      "Uncertain_Cases": 11,
+      "Coverage": 0.8,
+      "Accuracy_Overall": 0.8,
+      "Accuracy_Decided": 1.0,
+      "Balanced_Accuracy": 1.0,
+      "Macro_F1": 1.0,
+      "MCC": 1.0,
+      "Selective_Risk": 0.0,
+      "Precision": 1.0,
+      "Recall": 1.0,
+      "F1": 1.0,
+      "False_Invalidation_Rate_FIR": 0.0,
+      "Stale_Exposure_Rate_SER": 0.0,
+      "Per_Category_Breakdown": {
+        "CAT_A_FILE_CHG_SYM_SAME_VALID": {
+          "total": 36,
+          "decided": 36,
+          "uncertain": 0,
+          "coverage": 1.0,
+          "accuracy": 1.0
+        },
+        "CAT_B_SYM_CHG_MEMORY_VALID": {
+          "total": 8,
+          "decided": 0,
+          "uncertain": 8,
+          "coverage": 0.0,
+          "accuracy": null
+        },
+        "CAT_C_SYM_SAME_MEMORY_STALE": {
+          "total": 1,
+          "decided": 0,
+          "uncertain": 1,
+          "coverage": 0.0,
+          "accuracy": null
+        },
+        "CAT_D1_SYM_REM_STALE": {
+          "total": 8,
+          "decided": 6,
+          "uncertain": 2,
+          "coverage": 0.75,
+          "accuracy": 1.0
+        },
+        "CAT_D2_SYM_CHG_BEHAVIOR_STALE": {
+          "total": 2,
+          "decided": 2,
+          "uncertain": 0,
+          "coverage": 1.0,
+          "accuracy": 1.0
+        }
+      },
+      "Per_ClaimType_Breakdown": {
+        "SYMBOL_EXISTS": {
+          "total": 44,
+          "decided": 42,
+          "uncertain": 2,
+          "coverage": 0.9545454545454546,
+          "accuracy": 1.0
+        },
+        "BEHAVIORAL_CONTRACT": {
+          "total": 8,
+          "decided": 0,
+          "uncertain": 8,
+          "coverage": 0.0,
+          "accuracy": null
+        },
+        "DEPENDENCY_CONTRACT": {
+          "total": 1,
+          "decided": 0,
+          "uncertain": 1,
+          "coverage": 0.0,
+          "accuracy": null
+        },
+        "ATTRIBUTE_EXISTS": {
+          "total": 1,
+          "decided": 1,
+          "uncertain": 0,
+          "coverage": 1.0,
+          "accuracy": 1.0
+        },
+        "IMPORT_PATH_VALID": {
+          "total": 1,
+          "decided": 1,
+          "uncertain": 0,
+          "coverage": 1.0,
+          "accuracy": 1.0
+        }
+      }
+    },
+    "S4_TestDiscovery_Exec": {
+      "Total_Cases": 55,
+      "Decided_Cases": 47,
+      "Uncertain_Cases": 8,
+      "Coverage": 0.8545454545454545,
+      "Accuracy_Overall": 0.8545454545454545,
+      "Accuracy_Decided": 1.0,
+      "Balanced_Accuracy": 1.0,
+      "Macro_F1": 1.0,
+      "MCC": 1.0,
+      "Selective_Risk": 0.0,
+      "Precision": 1.0,
+      "Recall": 1.0,
+      "F1": 1.0,
+      "False_Invalidation_Rate_FIR": 0.0,
+      "Stale_Exposure_Rate_SER": 0.0,
+      "Per_Category_Breakdown": {
+        "CAT_A_FILE_CHG_SYM_SAME_VALID": {
+          "total": 36,
+          "decided": 36,
+          "uncertain": 0,
+          "coverage": 1.0,
+          "accuracy": 1.0
+        },
+        "CAT_B_SYM_CHG_MEMORY_VALID": {
+          "total": 8,
+          "decided": 3,
+          "uncertain": 5,
+          "coverage": 0.375,
+          "accuracy": 1.0
+        },
+        "CAT_C_SYM_SAME_MEMORY_STALE": {
+          "total": 1,
+          "decided": 0,
+          "uncertain": 1,
+          "coverage": 0.0,
+          "accuracy": null
+        },
+        "CAT_D1_SYM_REM_STALE": {
+          "total": 8,
+          "decided": 6,
+          "uncertain": 2,
+          "coverage": 0.75,
+          "accuracy": 1.0
+        },
+        "CAT_D2_SYM_CHG_BEHAVIOR_STALE": {
+          "total": 2,
+          "decided": 2,
+          "uncertain": 0,
+          "coverage": 1.0,
+          "accuracy": 1.0
+        }
+      },
+      "Per_ClaimType_Breakdown": {
+        "SYMBOL_EXISTS": {
+          "total": 44,
+          "decided": 42,
+          "uncertain": 2,
+          "coverage": 0.9545454545454546,
+          "accuracy": 1.0
+        },
+        "BEHAVIORAL_CONTRACT": {
+          "total": 8,
+          "decided": 3,
+          "uncertain": 5,
+          "coverage": 0.375,
+          "accuracy": 1.0
+        },
+        "DEPENDENCY_CONTRACT": {
+          "total": 1,
+          "decided": 0,
+          "uncertain": 1,
+          "coverage": 0.0,
+          "accuracy": null
+        },
+        "ATTRIBUTE_EXISTS": {
+          "total": 1,
+          "decided": 1,
+          "uncertain": 0,
+          "coverage": 1.0,
+          "accuracy": 1.0
+        },
+        "IMPORT_PATH_VALID": {
+          "total": 1,
+          "decided": 1,
+          "uncertain": 0,
+          "coverage": 1.0,
+          "accuracy": 1.0
+        }
+      }
+    },
+    "S5_Full_Selective_Escalation": {
+      "Total_Cases": 55,
+      "Decided_Cases": 49,
+      "Uncertain_Cases": 6,
+      "Coverage": 0.8909090909090909,
+      "Accuracy_Overall": 0.8909090909090909,
+      "Accuracy_Decided": 1.0,
+      "Balanced_Accuracy": 1.0,
+      "Macro_F1": 1.0,
+      "MCC": 1.0,
+      "Selective_Risk": 0.0,
+      "Precision": 1.0,
+      "Recall": 1.0,
+      "F1": 1.0,
+      "False_Invalidation_Rate_FIR": 0.0,
+      "Stale_Exposure_Rate_SER": 0.0,
+      "Per_Category_Breakdown": {
+        "CAT_A_FILE_CHG_SYM_SAME_VALID": {
+          "total": 36,
+          "decided": 36,
+          "uncertain": 0,
+          "coverage": 1.0,
+          "accuracy": 1.0
+        },
+        "CAT_B_SYM_CHG_MEMORY_VALID": {
+          "total": 8,
+          "decided": 3,
+          "uncertain": 5,
+          "coverage": 0.375,
+          "accuracy": 1.0
+        },
+        "CAT_C_SYM_SAME_MEMORY_STALE": {
+          "total": 1,
+          "decided": 0,
+          "uncertain": 1,
+          "coverage": 0.0,
+          "accuracy": null
+        },
+        "CAT_D1_SYM_REM_STALE": {
+          "total": 8,
+          "decided": 8,
+          "uncertain": 0,
+          "coverage": 1.0,
+          "accuracy": 1.0
+        },
+        "CAT_D2_SYM_CHG_BEHAVIOR_STALE": {
+          "total": 2,
+          "decided": 2,
+          "uncertain": 0,
+          "coverage": 1.0,
+          "accuracy": 1.0
+        }
+      },
+      "Per_ClaimType_Breakdown": {
+        "SYMBOL_EXISTS": {
+          "total": 44,
+          "decided": 44,
+          "uncertain": 0,
+          "coverage": 1.0,
+          "accuracy": 1.0
+        },
+        "BEHAVIORAL_CONTRACT": {
+          "total": 8,
+          "decided": 3,
+          "uncertain": 5,
+          "coverage": 0.375,
+          "accuracy": 1.0
+        },
+        "DEPENDENCY_CONTRACT": {
+          "total": 1,
+          "decided": 0,
+          "uncertain": 1,
+          "coverage": 0.0,
+          "accuracy": null
+        },
+        "ATTRIBUTE_EXISTS": {
+          "total": 1,
+          "decided": 1,
+          "uncertain": 0,
+          "coverage": 1.0,
+          "accuracy": 1.0
+        },
+        "IMPORT_PATH_VALID": {
+          "total": 1,
+          "decided": 1,
+          "uncertain": 0,
+          "coverage": 1.0,
+          "accuracy": 1.0
+        }
+      }
+    }
+  },
+  "cost_statistics": {
+    "escalated_claims_count": 11,
+    "total_files_scanned": 91,
+    "mean_files_scanned_per_escalated": 8.3,
+    "total_tests_inspected": 643,
+    "mean_tests_inspected_per_escalated": 58.5,
+    "total_executions_run": 6,
+    "mean_executions_per_escalated": 0.55,
+    "total_execution_time_ms": 1844.71,
+    "mean_execution_time_ms_per_escalated": 167.7,
+    "total_actions": 18,
+    "mean_actions_per_escalated": 1.64,
+    "action_counts": {
+      "TEST_DISCOVERY": 9,
+      "TARGETED_EXECUTION": 6,
+      "DEPENDENCY_INSPECTION": 1,
+      "REPOSITORY_SEARCH": 2
+    }
+  }
+}

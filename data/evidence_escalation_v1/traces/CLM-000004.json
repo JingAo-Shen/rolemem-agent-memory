@@ -1,0 +1,17 @@
+{
+  "claim_id": "CLM-000004",
+  "static_decision": "VALID",
+  "final_decision": "VALID",
+  "total_actions": 0,
+  "total_cost": {
+    "repository_files_scanned": 0,
+    "tests_inspected": 0,
+    "executions_run": 0,
+    "execution_time_ms": 0.0,
+    "total_actions": 0,
+    "action_counts": {}
+  },
+  "stop_reason": "STATIC_DECIDED_NO_ESCALATION",
+  "steps": [],
+  "acquired_evidences": []
+}
