@@ -1,0 +1,49 @@
+{
+  "protocol_version": "2.2-claim-aware-v0",
+  "random_seed": 42,
+  "universe_sha256": "841056128b6e74dae70359cc3668a5e0eaec102fe5872cd36bc64d1f304967f9",
+  "partitions": {
+    "DEVELOPMENT": {
+      "count": 22,
+      "description": "Historical 22 development repositories used in Protocol V2.1.",
+      "repositories": [
+        "attrs",
+        "celery",
+        "click",
+        "fastapi",
+        "flake8",
+        "flask",
+        "httpx",
+        "iniconfig",
+        "itsdangerous",
+        "jinja",
+        "markupsafe",
+        "marshmallow",
+        "more-itertools",
+        "packaging",
+        "pluggy",
+        "requests",
+        "rich",
+        "starlette",
+        "tqdm",
+        "urllib3",
+        "virtualenv",
+        "werkzeug"
+      ]
+    },
+    "SEALED_TEST": {
+      "count": 7,
+      "description": "Strictly unseen holdout repositories. Inspection of target transitions/labels forbidden until formal algorithm freeze.",
+      "repositories": [
+        "cachelib",
+        "cryptography",
+        "dateutil",
+        "pydantic",
+        "pytest",
+        "sqlalchemy",
+        "uvicorn"
+      ]
+    }
+  },
+  "split_sha256": "34d9325a36aff0c663311422fad2662ceb6fe9a90d8aa8d317e636f765394ef4"
+}
