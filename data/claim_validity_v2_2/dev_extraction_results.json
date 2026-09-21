@@ -54,6 +54,9 @@
       "unresolved_rate": 0.0
     }
   },
-  "benchmark_designation": "DEVELOPMENT_STRUCTURED_CLAIM_EXTRACTION",
-  "extractor_version": "2.2-v0.2"
+  "benchmark_designation": "DEVELOPMENT_EXTRACTION_SELF_CONSISTENCY",
+  "extractor_version": "2.2-v0.2",
+  "independent_gold": false,
+  "scientific_generalization_claim": false,
+  "note": "Structured claim representation was generated within the same extractor development cycle and does not constitute independent extraction ground truth."
 }

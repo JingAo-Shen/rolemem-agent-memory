@@ -7,14 +7,23 @@ CURRENT_V0_RESULT_STATUS = DEVELOPMENT_COUPLED_NOT_FOR_SCIENTIFIC_CLAIM
 V2_1_DEVELOPMENT_MUTATIONS = 0
 V2_2_DETERMINISTIC_FOUNDATION = CLOSED
 V2_2_STRUCTURED_CLAIM_REPRESENTATION = FROZEN
-V2_2_EXTRACTION_DEV_EVALUATED = YES
-V2_2_EVIDENCE_BINDING = VERIFIED
+V2_2_EXTRACTION_SELF_CONSISTENCY_EVALUATED = YES
+V2_2_INDEPENDENT_EXTRACTION_GOLD = NO
+V2_2_EVIDENCE_BINDING = PARTIAL
 V2_2_ALGORITHM_FREEZE = NO
 V2_2_FORMAL_HOLDOUT_DEFINED = NO
 V2_2_FORMAL_TEST_OPENED = NO
 FORMAL_AGENT_RESULTS = NO
 FORMAL_PAPER_RESULTS = NO
 ```
+
+---
+
+## Evidence Binding Audit Breakdown
+- **Overall Binding Status**: `PARTIAL`
+- **Cat B Bindings**: VERIFIED=8, UNKNOWN=0, FAILED=0
+- **Cat C Bindings**: VERIFIED=0, UNKNOWN=0, FAILED=1
+- **Cat D2 Bindings**: VERIFIED=0, UNKNOWN=2, FAILED=0
 
 ---
 
@@ -70,7 +79,9 @@ FORMAL_PAPER_RESULTS = NO
 ## 4. Honest Results Interpretation & Scope Boundaries
 
 1. **Development-Coupled Context**: All metrics in this report belong strictly to the `Protocol V2.2 Development Structured-Claim Benchmark` (55 cases).
-2. **No Claim of Generalization**: `paraphrase_dev.jsonl` is marked as `DEVELOPER_SEEN_PARAPHRASE_DEV` because paraphrases were authored during parser refinement.
-3. **Policy-Driven Numbers**: `Claim_Static_Valid_Default` achieves 100% on Cat B not through intrinsic static proof, but through the `UNCERTAIN -> VALID` optimistic retrieval policy.
-4. **Oracle Upper Bound**: `Oracle_Execution_Evidence_UpperBound` is documented strictly as an oracle ceiling measurement and is not a standalone deployable engine.
+2. **Extraction Evaluation Scope**: Structured claim representation was generated within the same extractor development cycle and does not constitute independent extraction ground truth (`independent_gold = false`).
+3. **Paraphrase Evaluation Scope**: `paraphrase_dev.jsonl` is marked as `DEVELOPER_SEEN_PARAPHRASE_DEV` because paraphrases were authored during parser refinement. `BEHAVIORAL_CONTRACT` object exact match is 0%, documented as a known V1 development limitation.
+4. **Policy-Driven Numbers**: `Claim_Static_Valid_Default` achieves 100% on Cat B not through intrinsic static proof, but through the `UNCERTAIN -> VALID` optimistic retrieval policy.
+5. **Oracle Upper Bound**: `Oracle_Execution_Evidence_UpperBound` is documented strictly as an oracle ceiling measurement and is not a standalone deployable engine.
+6. **Evidence Binding Integrity**: D2 and unproven contract assertions produce `UNKNOWN` binding status without artificial fallback.
 

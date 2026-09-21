@@ -133,16 +133,19 @@ def test_behavioral_contract_validator():
     exec_pass = {
         "case_id": "CASE-01",
         "claim_subject": "Parser",
+        "claim_predicate": "maintains parser contract",
         "target_execution": {"passed": True, "exit_code": 0, "contract_hash": "c_hash_1"}
     }
     exec_fail = {
         "case_id": "CASE-01",
         "claim_subject": "Parser",
+        "claim_predicate": "maintains parser contract",
         "target_execution": {"passed": False, "exit_code": 1, "contract_hash": "c_hash_1"}
     }
     exec_mismatched_case = {
         "case_id": "CASE-99",
         "claim_subject": "Parser",
+        "claim_predicate": "maintains parser contract",
         "target_execution": {"passed": True, "exit_code": 0, "contract_hash": "c_hash_1"}
     }
 

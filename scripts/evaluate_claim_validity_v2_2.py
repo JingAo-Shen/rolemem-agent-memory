@@ -35,6 +35,7 @@ from src.claim_validity.types import (
     ClaimEvaluationResult
 )
 from src.claim_validity.engine import ClaimAwareValidityEngine
+from src.claim_validity.binding import ClaimEvidenceBinder
 from src.claim_validity.policy import (
     SelectivePolicy,
     ForcedBinaryValidDefaultPolicy,
@@ -199,6 +200,9 @@ def run_phase_1_predictions() -> Dict[str, str]:
     pred_records_rolemem_forced = []
     pred_records_oracle_exec = []
 
+    claim_ctx_hashes = {}
+    claim_input_hashes = {}
+
     claim_static_results: List[ClaimEvaluationResult] = []
     claim_exec_results: List[ClaimEvaluationResult] = []
 
@@ -267,6 +271,8 @@ def run_phase_1_predictions() -> Dict[str, str]:
 
         claim_hash = compute_sha256(item)
         ctx_hash = compute_sha256(ctx.to_dict())
+        claim_input_hashes[claim_id] = claim_hash
+        claim_ctx_hashes[claim_id] = ctx_hash
 
         # 1. File-Level Baseline
         file_decision = "VALID" if ctx.is_file_unchanged else "STALE"
@@ -405,7 +411,8 @@ def run_phase_1_predictions() -> Dict[str, str]:
             "decision": decisions[i],
             "engine_version": "2.2-v0.2",
             "policy": policy_name,
-            "input_claim_hash": compute_sha256(inputs[i]),
+            "input_claim_hash": claim_input_hashes[inputs[i]["claim_id"]],
+            "evaluation_context_hash": claim_ctx_hashes[inputs[i]["claim_id"]],
             "evidence_mode": mode
         } for i in range(len(inputs))]
 
@@ -419,6 +426,109 @@ def run_phase_1_predictions() -> Dict[str, str]:
 
     print("Phase 1 Predictions generated and saved with full run provenance.")
     return prediction_files
+
+
+AUDIT_PATH = os.path.join(DATA_DIR, "evidence_binding_audit.json")
+
+
+def run_evidence_binding_audit() -> Dict[str, Any]:
+    print("--- Running Evidence Binding Audit ---")
+    with open(INPUTS_PATH, "r", encoding="utf-8") as f:
+        inputs = [json.loads(line) for line in f if line.strip()]
+
+    with open(GOLD_PATH, "r", encoding="utf-8") as f:
+        gold_map = {g["claim_id"]: g for g in [json.loads(l) for l in f if l.strip()]}
+
+    binder = ClaimEvidenceBinder()
+    audit_records = []
+
+    cat_b_counts = {"VERIFIED": 0, "UNKNOWN": 0, "FAILED": 0}
+    cat_c_counts = {"VERIFIED": 0, "UNKNOWN": 0, "FAILED": 0}
+    cat_d2_counts = {"VERIFIED": 0, "UNKNOWN": 0, "FAILED": 0}
+
+    for item in inputs:
+        cid = item.get("source_case_id") or item["claim_id"]
+        claim_id = item["claim_id"]
+        gold_entry = gold_map.get(claim_id, {})
+        category = gold_entry.get("category", "")
+
+        m_claim = MemoryClaim.from_dict(item)
+
+        exec_art = None
+        artifact_type = "NONE"
+        for sub, atype in [
+            ("contracts", "BEHAVIORAL_CONTRACT"),
+            ("counterfactuals", "DEPENDENCY_COUNTERFACTUAL"),
+            ("behavior_breaks", "BEHAVIOR_BREAK")
+        ]:
+            art_p = os.path.join(V2_1_DIR, sub, f"{cid}.json")
+            if os.path.exists(art_p):
+                try:
+                    with open(art_p, "r", encoding="utf-8") as af:
+                        exec_art = json.load(af)
+                        artifact_type = atype
+                except Exception:
+                    pass
+                break
+
+        b_commit = item.get("base_commit", "")
+        t_commit = item.get("target_commit", "")
+        repo = item.get("repository", "")
+
+        binding = binder.verify(
+            claim=m_claim,
+            execution_artifact=exec_art,
+            base_commit=b_commit,
+            target_commit=t_commit,
+            repository=repo
+        )
+
+        status = binding.binding_status
+        if category == "CAT_B_SYM_CHG_MEMORY_VALID":
+            cat_b_counts[status] = cat_b_counts.get(status, 0) + 1
+        elif category == "CAT_C_SYM_SAME_MEMORY_STALE":
+            cat_c_counts[status] = cat_c_counts.get(status, 0) + 1
+        elif category == "CAT_D2_SYM_CHG_BEHAVIOR_STALE":
+            cat_d2_counts[status] = cat_d2_counts.get(status, 0) + 1
+
+        rec = binding.to_dict()
+        rec["artifact_type"] = artifact_type
+        rec["category"] = category
+        rec["claim_hash"] = compute_sha256(item)
+        rec["artifact_hash"] = binding.evidence_artifact_sha256
+        rec["contract_hash"] = binding.contract_hash
+        audit_records.append(rec)
+
+    total_intended = sum(cat_b_counts.values()) + sum(cat_c_counts.values()) + sum(cat_d2_counts.values())
+    total_verified = cat_b_counts["VERIFIED"] + cat_c_counts["VERIFIED"] + cat_d2_counts["VERIFIED"]
+
+    if total_intended > 0 and total_verified == total_intended:
+        overall_status = "VERIFIED"
+    else:
+        overall_status = "PARTIAL"
+
+    audit_data = {
+        "overall_binding_status": overall_status,
+        "summary": {
+            "CAT_B_BINDINGS": cat_b_counts,
+            "CAT_C_BINDINGS": cat_c_counts,
+            "CAT_D2_BINDINGS": cat_d2_counts,
+            "total_records": len(audit_records),
+            "total_intended_executable_evidence": total_intended,
+            "total_verified_executable_evidence": total_verified
+        },
+        "records": audit_records
+    }
+
+    with open(AUDIT_PATH, "w", encoding="utf-8") as f:
+        json.dump(audit_data, f, indent=2)
+
+    print(f"Evidence binding audit written to {AUDIT_PATH}")
+    print(f"Overall Binding Status: {overall_status}")
+    print(f"  CAT_B:  {cat_b_counts}")
+    print(f"  CAT_C:  {cat_c_counts}")
+    print(f"  CAT_D2: {cat_d2_counts}")
+    return audit_data
 
 
 def run_phase_2_evaluation(prediction_files: Dict[str, str]):
@@ -441,10 +551,17 @@ def run_phase_2_evaluation(prediction_files: Dict[str, str]):
         json.dump(eval_summary, f, indent=2)
 
     print(f"Scoring Complete. Results saved to {eval_json_p}")
-    generate_reports(eval_summary)
+
+    audit_data = run_evidence_binding_audit()
+    generate_reports(eval_summary, audit_data)
 
 
-def generate_reports(eval_summary: Dict[str, Any]):
+def generate_reports(eval_summary: Dict[str, Any], audit_data: Dict[str, Any]):
+    b_status = audit_data["overall_binding_status"]
+    cat_b = audit_data["summary"]["CAT_B_BINDINGS"]
+    cat_c = audit_data["summary"]["CAT_C_BINDINGS"]
+    cat_d2 = audit_data["summary"]["CAT_D2_BINDINGS"]
+
     # 1. Generate reports/v2.2-v0.1-baseline-fairness.md
     fairness_lines = [
         "# RoleMem Protocol V2.2-V0.2 — Baseline Fairness & Evidence Budget Audit",
@@ -456,14 +573,23 @@ def generate_reports(eval_summary: Dict[str, Any]):
         "V2_1_DEVELOPMENT_MUTATIONS = 0",
         "V2_2_DETERMINISTIC_FOUNDATION = CLOSED",
         "V2_2_STRUCTURED_CLAIM_REPRESENTATION = FROZEN",
-        "V2_2_EXTRACTION_DEV_EVALUATED = YES",
-        "V2_2_EVIDENCE_BINDING = VERIFIED",
+        "V2_2_EXTRACTION_SELF_CONSISTENCY_EVALUATED = YES",
+        "V2_2_INDEPENDENT_EXTRACTION_GOLD = NO",
+        f"V2_2_EVIDENCE_BINDING = {b_status}",
         "V2_2_ALGORITHM_FREEZE = NO",
         "V2_2_FORMAL_HOLDOUT_DEFINED = NO",
         "V2_2_FORMAL_TEST_OPENED = NO",
         "FORMAL_AGENT_RESULTS = NO",
         "FORMAL_PAPER_RESULTS = NO",
         "```",
+        "",
+        "---",
+        "",
+        "## Evidence Binding Audit Breakdown",
+        f"- **Overall Binding Status**: `{b_status}`",
+        f"- **Cat B Bindings**: VERIFIED={cat_b['VERIFIED']}, UNKNOWN={cat_b['UNKNOWN']}, FAILED={cat_b['FAILED']}",
+        f"- **Cat C Bindings**: VERIFIED={cat_c['VERIFIED']}, UNKNOWN={cat_c['UNKNOWN']}, FAILED={cat_c['FAILED']}",
+        f"- **Cat D2 Bindings**: VERIFIED={cat_d2['VERIFIED']}, UNKNOWN={cat_d2['UNKNOWN']}, FAILED={cat_d2['FAILED']}",
         "",
         "---",
         "",
@@ -512,14 +638,23 @@ def generate_reports(eval_summary: Dict[str, Any]):
         "V2_1_DEVELOPMENT_MUTATIONS = 0",
         "V2_2_DETERMINISTIC_FOUNDATION = CLOSED",
         "V2_2_STRUCTURED_CLAIM_REPRESENTATION = FROZEN",
-        "V2_2_EXTRACTION_DEV_EVALUATED = YES",
-        "V2_2_EVIDENCE_BINDING = VERIFIED",
+        "V2_2_EXTRACTION_SELF_CONSISTENCY_EVALUATED = YES",
+        "V2_2_INDEPENDENT_EXTRACTION_GOLD = NO",
+        f"V2_2_EVIDENCE_BINDING = {b_status}",
         "V2_2_ALGORITHM_FREEZE = NO",
         "V2_2_FORMAL_HOLDOUT_DEFINED = NO",
         "V2_2_FORMAL_TEST_OPENED = NO",
         "FORMAL_AGENT_RESULTS = NO",
         "FORMAL_PAPER_RESULTS = NO",
         "```",
+        "",
+        "---",
+        "",
+        "## Evidence Binding Audit Breakdown",
+        f"- **Overall Binding Status**: `{b_status}`",
+        f"- **Cat B Bindings**: VERIFIED={cat_b['VERIFIED']}, UNKNOWN={cat_b['UNKNOWN']}, FAILED={cat_b['FAILED']}",
+        f"- **Cat C Bindings**: VERIFIED={cat_c['VERIFIED']}, UNKNOWN={cat_c['UNKNOWN']}, FAILED={cat_c['FAILED']}",
+        f"- **Cat D2 Bindings**: VERIFIED={cat_d2['VERIFIED']}, UNKNOWN={cat_d2['UNKNOWN']}, FAILED={cat_d2['FAILED']}",
         "",
         "---",
         "",
@@ -615,9 +750,11 @@ def generate_reports(eval_summary: Dict[str, Any]):
         "## 4. Honest Results Interpretation & Scope Boundaries",
         "",
         "1. **Development-Coupled Context**: All metrics in this report belong strictly to the `Protocol V2.2 Development Structured-Claim Benchmark` (55 cases).",
-        "2. **No Claim of Generalization**: `paraphrase_dev.jsonl` is marked as `DEVELOPER_SEEN_PARAPHRASE_DEV` because paraphrases were authored during parser refinement.",
-        "3. **Policy-Driven Numbers**: `Claim_Static_Valid_Default` achieves 100% on Cat B not through intrinsic static proof, but through the `UNCERTAIN -> VALID` optimistic retrieval policy.",
-        "4. **Oracle Upper Bound**: `Oracle_Execution_Evidence_UpperBound` is documented strictly as an oracle ceiling measurement and is not a standalone deployable engine.",
+        "2. **Extraction Evaluation Scope**: Structured claim representation was generated within the same extractor development cycle and does not constitute independent extraction ground truth (`independent_gold = false`).",
+        "3. **Paraphrase Evaluation Scope**: `paraphrase_dev.jsonl` is marked as `DEVELOPER_SEEN_PARAPHRASE_DEV` because paraphrases were authored during parser refinement. `BEHAVIORAL_CONTRACT` object exact match is 0%, documented as a known V1 development limitation.",
+        "4. **Policy-Driven Numbers**: `Claim_Static_Valid_Default` achieves 100% on Cat B not through intrinsic static proof, but through the `UNCERTAIN -> VALID` optimistic retrieval policy.",
+        "5. **Oracle Upper Bound**: `Oracle_Execution_Evidence_UpperBound` is documented strictly as an oracle ceiling measurement and is not a standalone deployable engine.",
+        "6. **Evidence Binding Integrity**: D2 and unproven contract assertions produce `UNKNOWN` binding status without artificial fallback.",
         ""
     ])
 
@@ -631,3 +768,4 @@ def generate_reports(eval_summary: Dict[str, Any]):
 if __name__ == "__main__":
     preds = run_phase_1_predictions()
     run_phase_2_evaluation(preds)
+

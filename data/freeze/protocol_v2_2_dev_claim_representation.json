@@ -2,6 +2,10 @@
   "protocol_version": "2.2-claim-aware-v0.2",
   "extractor_version": "2.2-v0.2",
   "freeze_status": "FROZEN",
+  "representation_gold_source": "extractor-derived-development-representation",
+  "independent_extraction_gold": false,
+  "validity_gold_source": "frozen-v2.1-human/machine-curated-labels",
+  "scientific_scope_note": "Structured claim representation was generated within the same extractor development cycle and does not constitute independent extraction ground truth. Validity label gold represents frozen V2.1 benchmark truth.",
   "generation_timestamp": "2026-09-21T02:06:05.342894+00:00",
   "total_claims": 55,
   "files": {

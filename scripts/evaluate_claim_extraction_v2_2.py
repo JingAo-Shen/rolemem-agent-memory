@@ -172,8 +172,11 @@ def run_phase_2_dev_evaluation():
         gold = [json.loads(line) for line in f if line.strip()]
 
     metrics = score_extraction(preds, gold)
-    metrics["benchmark_designation"] = "DEVELOPMENT_STRUCTURED_CLAIM_EXTRACTION"
+    metrics["benchmark_designation"] = "DEVELOPMENT_EXTRACTION_SELF_CONSISTENCY"
     metrics["extractor_version"] = "2.2-v0.2"
+    metrics["independent_gold"] = False
+    metrics["scientific_generalization_claim"] = False
+    metrics["note"] = "Structured claim representation was generated within the same extractor development cycle and does not constitute independent extraction ground truth."
 
     with open(DEV_RESULTS_PATH, "w", encoding="utf-8") as f:
         json.dump(metrics, f, indent=2)
