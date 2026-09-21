@@ -5,9 +5,9 @@
   "total_actions": 2,
   "total_cost": {
     "repository_files_scanned": 2,
-    "tests_inspected": 74,
+    "tests_inspected": 50,
     "executions_run": 1,
-    "execution_time_ms": 263.39,
+    "execution_time_ms": 225.22,
     "total_actions": 2,
     "action_counts": {
       "TEST_DISCOVERY": 1,
@@ -15,16 +15,52 @@
     }
   },
   "stop_reason": "REMAINED_UNCERTAIN_AFTER_ESCALATION",
+  "selected_witness": {
+    "test_file": "test/test_poolmanager.py",
+    "test_name": "test_poolmanager_blocksize",
+    "subject_mentions": 1,
+    "object_mentions": 0,
+    "dependency_mentions": 0,
+    "assertion_count": 2,
+    "target_commit": "adde463f32b7c52727211d10f45ae961650ffd4c",
+    "source_hash": "30568f0c738b698daf59028102b1adc0d5c7f7fe560c7136d7b550816bcf2b28",
+    "test_file_sha256": "e3b4428a2232095665b79ab5ac316b445db96f97507e5b7d5731eaee82bd092d",
+    "test_function_sha256": "30568f0c738b698daf59028102b1adc0d5c7f7fe560c7136d7b550816bcf2b28",
+    "binding_strength": "STRONG",
+    "discovery_reason": "Direct assertion verification on subject instance state.",
+    "line_start": 434,
+    "line_end": 444,
+    "witness_binding": {
+      "claim_id": "CLM-000044",
+      "subject": "PoolManager",
+      "operation_tokens": [],
+      "expected_literals": [],
+      "expected_attributes": [],
+      "test_file": "test/test_poolmanager.py",
+      "test_name": "test_poolmanager_blocksize",
+      "test_function_sha256": "30568f0c738b698daf59028102b1adc0d5c7f7fe560c7136d7b550816bcf2b28",
+      "subject_binding": true,
+      "operation_binding": true,
+      "assertion_binding": true,
+      "dataflow_binding": true,
+      "critical_operation_coverage_ratio": 1.0,
+      "assertion_local_coverage": 0,
+      "binding_strength": "STRONG",
+      "binding_reasons": [
+        "Direct assertion verification on subject instance state."
+      ]
+    }
+  },
   "steps": [
     {
       "step_number": 1,
       "action_type": "TEST_DISCOVERY",
       "target": "PoolManager op_tokens=[]",
-      "outcome": "Discovered 63 candidates (1 strong)",
+      "outcome": "Discovered 50 candidates (21 strong)",
       "evidence_id": null,
       "binding_strength": "STRONG",
       "cost_increment": {},
-      "detail": "Top candidate: test/test_poolmanager.py:test_poolmanager_blocksize"
+      "detail": "Top candidate: test/test_poolmanager.py:test_poolmanager_blocksize (Direct assertion verification on subject instance state.)"
     },
     {
       "step_number": 2,
@@ -34,10 +70,10 @@
       "evidence_id": "EV-EXEC-a50c4f38",
       "binding_strength": "STRONG",
       "cost_increment": {
-        "execution_time_ms": 263.39,
+        "execution_time_ms": 225.22,
         "timeout_sec": 15
       },
-      "detail": "Native test execution resulted in UNAVAILABLE (not interpreted as staleness)."
+      "detail": "Execution resulted in UNAVAILABLE (not interpreted as staleness)."
     }
   ],
   "acquired_evidences": [
@@ -49,23 +85,49 @@
       "repository": "urllib3",
       "commit": "adde463f32b7c52727211d10f45ae961650ffd4c",
       "file_path": "test/test_poolmanager.py",
-      "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "content_hash": "30568f0c738b698daf59028102b1adc0d5c7f7fe560c7136d7b550816bcf2b28",
       "binding_strength": "STRONG",
       "supports_or_contradicts": "INCONCLUSIVE",
       "confidence": 0.0,
+      "test_file_sha256": "e3b4428a2232095665b79ab5ac316b445db96f97507e5b7d5731eaee82bd092d",
+      "test_function_sha256": "30568f0c738b698daf59028102b1adc0d5c7f7fe560c7136d7b550816bcf2b28",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "d3fe769be84a88977bcc0093516e2023941019da784f1dcd6a15ea2f846d28b3",
+      "command_sha256": "022fd24ab3f7ee1943b58d1440f0e382fd8e3bd255717545930d681ee80452df",
+      "source_origin_status": "VERIFIED_TARGET_WORKTREE",
+      "dependency_environment_status": "CURRENT_ENVIRONMENT_NOT_HISTORICALLY_RESTORED",
       "cost": {
-        "execution_time_ms": 263.39,
+        "execution_time_ms": 225.22,
         "timeout_sec": 15
       },
-      "detail": "Native test execution resulted in UNAVAILABLE (not interpreted as staleness).",
+      "detail": "Execution resulted in UNAVAILABLE (not interpreted as staleness).",
       "extra_metadata": {
         "test_name": "test_poolmanager_blocksize",
         "execution_status": "UNAVAILABLE",
-        "command_hash": "022fd24ab3f7ee1943b58d1440f0e382fd8e3bd255717545930d681ee80452df",
-        "stdout_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "stderr_hash": "861870e13ce9fbdc79322cc927dd8c1de04f46a9d8a3f6127303c45a8110610a",
+        "package_name": "urllib3",
+        "module_origin": "/tmp/rolemem_v1_worktrees/wt_38tagf2n/src/urllib3/__init__.py",
         "environment_provenance": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
-        "python_version": "3.13.5"
+        "python_version": "3.13.5",
+        "witness_binding": {
+          "claim_id": "CLM-000044",
+          "subject": "PoolManager",
+          "operation_tokens": [],
+          "expected_literals": [],
+          "expected_attributes": [],
+          "test_file": "test/test_poolmanager.py",
+          "test_name": "test_poolmanager_blocksize",
+          "test_function_sha256": "30568f0c738b698daf59028102b1adc0d5c7f7fe560c7136d7b550816bcf2b28",
+          "subject_binding": true,
+          "operation_binding": true,
+          "assertion_binding": true,
+          "dataflow_binding": true,
+          "critical_operation_coverage_ratio": 1.0,
+          "assertion_local_coverage": 0,
+          "binding_strength": "STRONG",
+          "binding_reasons": [
+            "Direct assertion verification on subject instance state."
+          ]
+        }
       }
     }
   ]

@@ -14,6 +14,7 @@
     }
   },
   "stop_reason": "RESOLVED_TO_STALE",
+  "selected_witness": null,
   "steps": [
     {
       "step_number": 1,
@@ -39,6 +40,13 @@
       "binding_strength": "STRONG",
       "supports_or_contradicts": "CONTRADICTS",
       "confidence": 0.95,
+      "test_file_sha256": "",
+      "test_function_sha256": "",
+      "stdout_sha256": "",
+      "stderr_sha256": "",
+      "command_sha256": "",
+      "source_origin_status": "SOURCE_ORIGIN_UNVERIFIED",
+      "dependency_environment_status": "CURRENT_ENVIRONMENT_NOT_HISTORICALLY_RESTORED",
       "cost": {},
       "detail": "Qualified symbol 'environ_property.read_only' existed in base commit but was removed in target commit (diff deletion confirmed: False).",
       "extra_metadata": {

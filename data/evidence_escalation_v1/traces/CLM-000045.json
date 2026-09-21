@@ -5,7 +5,7 @@
   "total_actions": 2,
   "total_cost": {
     "repository_files_scanned": 6,
-    "tests_inspected": 54,
+    "tests_inspected": 50,
     "executions_run": 0,
     "execution_time_ms": 0.0,
     "total_actions": 2,
@@ -15,6 +15,44 @@
     }
   },
   "stop_reason": "REMAINED_UNCERTAIN_AFTER_ESCALATION",
+  "selected_witness": {
+    "test_file": "testing/test_helpers.py",
+    "test_name": "test_varnames_hookspec_without_self",
+    "subject_mentions": 0,
+    "object_mentions": 0,
+    "dependency_mentions": 2,
+    "assertion_count": 2,
+    "target_commit": "0258484dc180a0c28705de83783b269f4fed4873",
+    "source_hash": "62df793542234e9df442d4a94cdfedcecb241904a82afd3ea5b977485d0d7ff3",
+    "test_file_sha256": "414810b7e72a9d0dbe32ca6239d72bf8b065cfeb4b1b9c7e7eb3247d2cab68b3",
+    "test_function_sha256": "62df793542234e9df442d4a94cdfedcecb241904a82afd3ea5b977485d0d7ff3",
+    "binding_strength": "UNBOUND",
+    "discovery_reason": "Subject 'HookSpec' not instantiated or called in test code.",
+    "line_start": 171,
+    "line_end": 187,
+    "witness_binding": {
+      "claim_id": "CLM-000045",
+      "subject": "HookSpec",
+      "operation_tokens": [
+        "self"
+      ],
+      "expected_literals": [],
+      "expected_attributes": [],
+      "test_file": "testing/test_helpers.py",
+      "test_name": "test_varnames_hookspec_without_self",
+      "test_function_sha256": "62df793542234e9df442d4a94cdfedcecb241904a82afd3ea5b977485d0d7ff3",
+      "subject_binding": false,
+      "operation_binding": false,
+      "assertion_binding": false,
+      "dataflow_binding": false,
+      "critical_operation_coverage_ratio": 0.0,
+      "assertion_local_coverage": 0,
+      "binding_strength": "UNBOUND",
+      "binding_reasons": [
+        "Subject 'HookSpec' not instantiated or called in test code."
+      ]
+    }
+  },
   "steps": [
     {
       "step_number": 1,
@@ -32,9 +70,9 @@
       "target": "dependency HookSpec & varnames",
       "outcome": "Discovered 16 candidates (0 strong)",
       "evidence_id": null,
-      "binding_strength": null,
+      "binding_strength": "UNBOUND",
       "cost_increment": {},
-      "detail": "Top candidate: testing/test_hookcaller.py:test_hookspec"
+      "detail": "Top candidate: testing/test_helpers.py:test_varnames_hookspec_without_self (Subject 'HookSpec' not instantiated or called in test code.)"
     }
   ],
   "acquired_evidences": [
@@ -50,6 +88,13 @@
       "binding_strength": "WEAK",
       "supports_or_contradicts": "SUPPORTS",
       "confidence": 0.6,
+      "test_file_sha256": "",
+      "test_function_sha256": "",
+      "stdout_sha256": "",
+      "stderr_sha256": "",
+      "command_sha256": "",
+      "source_origin_status": "SOURCE_ORIGIN_UNVERIFIED",
+      "dependency_environment_status": "CURRENT_ENVIRONMENT_NOT_HISTORICALLY_RESTORED",
       "cost": {},
       "detail": "Static reference to 'varnames' inside 'HookSpec' exists in AST (weak evidence; runtime contract unverified).",
       "extra_metadata": {

@@ -275,10 +275,10 @@
     },
     "S3_TestDiscovery": {
       "Total_Cases": 55,
-      "Decided_Cases": 44,
-      "Uncertain_Cases": 11,
-      "Coverage": 0.8,
-      "Accuracy_Overall": 0.8,
+      "Decided_Cases": 46,
+      "Uncertain_Cases": 9,
+      "Coverage": 0.8363636363636363,
+      "Accuracy_Overall": 0.8363636363636363,
       "Accuracy_Decided": 1.0,
       "Balanced_Accuracy": 1.0,
       "Macro_F1": 1.0,
@@ -313,9 +313,9 @@
         },
         "CAT_D1_SYM_REM_STALE": {
           "total": 8,
-          "decided": 6,
-          "uncertain": 2,
-          "coverage": 0.75,
+          "decided": 8,
+          "uncertain": 0,
+          "coverage": 1.0,
           "accuracy": 1.0
         },
         "CAT_D2_SYM_CHG_BEHAVIOR_STALE": {
@@ -329,9 +329,9 @@
       "Per_ClaimType_Breakdown": {
         "SYMBOL_EXISTS": {
           "total": 44,
-          "decided": 42,
-          "uncertain": 2,
-          "coverage": 0.9545454545454546,
+          "decided": 44,
+          "uncertain": 0,
+          "coverage": 1.0,
           "accuracy": 1.0
         },
         "BEHAVIORAL_CONTRACT": {
@@ -547,23 +547,120 @@
       }
     }
   },
+  "budget_sensitivity_curves": {
+    "B10": {
+      "preset": "B10",
+      "budget_limits": {
+        "max_files_scanned": 20,
+        "max_tests_inspected": 10,
+        "max_executions": 1,
+        "max_total_actions": 3
+      },
+      "coverage": 0.8545454545454545,
+      "accuracy_decided": 1.0,
+      "selective_risk": 0.0,
+      "balanced_accuracy": 1.0,
+      "macro_f1": 1.0,
+      "mcc": 1.0,
+      "total_files_scanned": 47,
+      "total_tests_inspected": 90,
+      "total_executions": 2,
+      "mean_executions_per_escalated": 0.18,
+      "total_time_ms": 716.52,
+      "mean_time_ms_per_escalated": 65.14,
+      "total_actions": 14
+    },
+    "B25": {
+      "preset": "B25",
+      "budget_limits": {
+        "max_files_scanned": 50,
+        "max_tests_inspected": 25,
+        "max_executions": 2,
+        "max_total_actions": 5
+      },
+      "coverage": 0.8727272727272727,
+      "accuracy_decided": 1.0,
+      "selective_risk": 0.0,
+      "balanced_accuracy": 1.0,
+      "macro_f1": 1.0,
+      "mcc": 1.0,
+      "total_files_scanned": 65,
+      "total_tests_inspected": 225,
+      "total_executions": 3,
+      "mean_executions_per_escalated": 0.27,
+      "total_time_ms": 1009.36,
+      "mean_time_ms_per_escalated": 91.76,
+      "total_actions": 15
+    },
+    "B50": {
+      "preset": "B50",
+      "budget_limits": {
+        "max_files_scanned": 100,
+        "max_tests_inspected": 50,
+        "max_executions": 3,
+        "max_total_actions": 8
+      },
+      "coverage": 0.8909090909090909,
+      "accuracy_decided": 1.0,
+      "selective_risk": 0.0,
+      "balanced_accuracy": 1.0,
+      "macro_f1": 1.0,
+      "mcc": 1.0,
+      "total_files_scanned": 91,
+      "total_tests_inspected": 450,
+      "total_executions": 4,
+      "mean_executions_per_escalated": 0.36,
+      "total_time_ms": 1410.29,
+      "mean_time_ms_per_escalated": 128.21,
+      "total_actions": 16
+    },
+    "B100": {
+      "preset": "B100",
+      "budget_limits": {
+        "max_files_scanned": 300,
+        "max_tests_inspected": 100,
+        "max_executions": 5,
+        "max_total_actions": 15
+      },
+      "coverage": 0.8909090909090909,
+      "accuracy_decided": 1.0,
+      "selective_risk": 0.0,
+      "balanced_accuracy": 1.0,
+      "macro_f1": 1.0,
+      "mcc": 1.0,
+      "total_files_scanned": 131,
+      "total_tests_inspected": 900,
+      "total_executions": 4,
+      "mean_executions_per_escalated": 0.36,
+      "total_time_ms": 1366.37,
+      "mean_time_ms_per_escalated": 124.22,
+      "total_actions": 16
+    }
+  },
   "cost_statistics": {
     "escalated_claims_count": 11,
     "total_files_scanned": 91,
     "mean_files_scanned_per_escalated": 8.3,
-    "total_tests_inspected": 643,
-    "mean_tests_inspected_per_escalated": 58.5,
-    "total_executions_run": 6,
-    "mean_executions_per_escalated": 0.55,
-    "total_execution_time_ms": 1844.71,
-    "mean_execution_time_ms_per_escalated": 167.7,
-    "total_actions": 18,
-    "mean_actions_per_escalated": 1.64,
+    "total_tests_inspected": 450,
+    "mean_tests_inspected_per_escalated": 40.9,
+    "total_executions_run": 4,
+    "mean_executions_per_escalated": 0.36,
+    "total_execution_time_ms": 1368.64,
+    "mean_execution_time_ms_per_escalated": 124.42,
+    "total_actions": 16,
+    "mean_actions_per_escalated": 1.45,
     "action_counts": {
       "TEST_DISCOVERY": 9,
-      "TARGETED_EXECUTION": 6,
+      "TARGETED_EXECUTION": 4,
       "DEPENDENCY_INSPECTION": 1,
       "REPOSITORY_SEARCH": 2
     }
+  },
+  "audit_statistics": {
+    "total_claims_audited": 55,
+    "escalated_claims_count": 11,
+    "newly_decided_count": 5,
+    "verified_witness_newly_decided_count": 5,
+    "verified_witness_rate": 1.0
   }
 }

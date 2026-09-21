@@ -1,9 +1,10 @@
 """
 src/evidence_escalation/cost.py
 
-Cost Accounting and Tracking for Protocol V2.2-V1 Evidence Escalation:
+Cost Accounting and Tracking for Protocol V2.2-V1.1 Evidence Escalation:
 - Tracks fine-grained computational actions per claim and across evaluation batches.
 - Measures repository files scanned, tests inspected, executions run, execution time ms, and total actions.
+- Provides BudgetGuard for pre-action verification and budget exhaustion enforcement.
 """
 
 from __future__ import annotations
@@ -66,3 +67,26 @@ class CostTracker:
             total_actions=self.total_actions,
             action_counts=dict(self.action_counts)
         )
+
+
+class BudgetGuard:
+    """Enforces pre-action budget constraints across all evidence acquisition stages."""
+
+    @staticmethod
+    def can_perform_action(tracker: CostTracker, budget: CostBudget, action_type: EvidenceActionType) -> Tuple[bool, str]:
+        if tracker.total_actions >= budget.max_total_actions:
+            return False, f"Total actions limit reached ({budget.max_total_actions})"
+
+        if action_type == EvidenceActionType.TARGETED_EXECUTION:
+            if tracker.executions_run >= budget.max_executions_run:
+                return False, f"Max executions reached ({budget.max_executions_run})"
+
+        if action_type == EvidenceActionType.TEST_DISCOVERY or action_type == EvidenceActionType.TEST_INSPECTION:
+            if tracker.tests_inspected >= budget.max_tests_inspected:
+                return False, f"Max tests inspected reached ({budget.max_tests_inspected})"
+
+        if action_type == EvidenceActionType.REPOSITORY_SEARCH:
+            if tracker.repository_files_scanned >= budget.max_files_scanned:
+                return False, f"Max files scanned reached ({budget.max_files_scanned})"
+
+        return True, ""

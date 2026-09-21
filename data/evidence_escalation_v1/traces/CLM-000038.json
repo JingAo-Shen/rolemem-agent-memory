@@ -5,7 +5,7 @@
   "total_actions": 1,
   "total_cost": {
     "repository_files_scanned": 17,
-    "tests_inspected": 74,
+    "tests_inspected": 50,
     "executions_run": 0,
     "execution_time_ms": 0.0,
     "total_actions": 1,
@@ -14,6 +14,44 @@
     }
   },
   "stop_reason": "REMAINED_UNCERTAIN_AFTER_ESCALATION",
+  "selected_witness": {
+    "test_file": "tests/middleware/test_proxy_fix.py",
+    "test_name": "test_proxy_fix",
+    "subject_mentions": 2,
+    "object_mentions": 0,
+    "dependency_mentions": 0,
+    "assertion_count": 5,
+    "target_commit": "2f2625fefdaead837c5433e44d5fe86972d013dd",
+    "source_hash": "96afce565f654b5a327aff091628cc4c8afc8c42d260fea2201e089dc401d52f",
+    "test_file_sha256": "81c61fab282e811f9d60045f66d7062c8f01ae2638c93a1413b02875215adbcc",
+    "test_function_sha256": "96afce565f654b5a327aff091628cc4c8afc8c42d260fea2201e089dc401d52f",
+    "binding_strength": "WEAK",
+    "discovery_reason": "Operation 'method' executed without direct assertion binding.",
+    "line_start": 162,
+    "line_end": 196,
+    "witness_binding": {
+      "claim_id": "CLM-000038",
+      "subject": "Request",
+      "operation_tokens": [
+        "method"
+      ],
+      "expected_literals": [],
+      "expected_attributes": [],
+      "test_file": "tests/middleware/test_proxy_fix.py",
+      "test_name": "test_proxy_fix",
+      "test_function_sha256": "96afce565f654b5a327aff091628cc4c8afc8c42d260fea2201e089dc401d52f",
+      "subject_binding": true,
+      "operation_binding": false,
+      "assertion_binding": false,
+      "dataflow_binding": false,
+      "critical_operation_coverage_ratio": 0.0,
+      "assertion_local_coverage": 0,
+      "binding_strength": "WEAK",
+      "binding_reasons": [
+        "Operation 'method' executed without direct assertion binding."
+      ]
+    }
+  },
   "steps": [
     {
       "step_number": 1,
@@ -23,7 +61,7 @@
       "evidence_id": null,
       "binding_strength": "WEAK",
       "cost_increment": {},
-      "detail": "Top candidate: tests/middleware/test_proxy_fix.py:test_proxy_fix"
+      "detail": "Top candidate: tests/middleware/test_proxy_fix.py:test_proxy_fix (Operation 'method' executed without direct assertion binding.)"
     }
   ],
   "acquired_evidences": []

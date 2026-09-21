@@ -12,6 +12,7 @@
     "action_counts": {}
   },
   "stop_reason": "STATIC_DECIDED_NO_ESCALATION",
+  "selected_witness": null,
   "steps": [],
   "acquired_evidences": []
 }

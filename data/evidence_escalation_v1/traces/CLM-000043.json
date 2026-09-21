@@ -2,71 +2,67 @@
   "claim_id": "CLM-000043",
   "static_decision": "UNCERTAIN",
   "final_decision": "UNCERTAIN",
-  "total_actions": 2,
+  "total_actions": 1,
   "total_cost": {
     "repository_files_scanned": 6,
-    "tests_inspected": 64,
-    "executions_run": 1,
-    "execution_time_ms": 269.01,
-    "total_actions": 2,
+    "tests_inspected": 50,
+    "executions_run": 0,
+    "execution_time_ms": 0.0,
+    "total_actions": 1,
     "action_counts": {
-      "TEST_DISCOVERY": 1,
-      "TARGETED_EXECUTION": 1
+      "TEST_DISCOVERY": 1
     }
   },
   "stop_reason": "REMAINED_UNCERTAIN_AFTER_ESCALATION",
+  "selected_witness": {
+    "test_file": "tests/middleware/test_body_limit.py",
+    "test_name": "test_starlette_limit_applies_before_user_middleware",
+    "subject_mentions": 1,
+    "object_mentions": 0,
+    "dependency_mentions": 0,
+    "assertion_count": 1,
+    "target_commit": "8a55ce12c02b4a52363f587706e39c2c71738fb3",
+    "source_hash": "284bf1cb0a26535102f0e32fa9ed008fe0233e6aa45ed552f23a89a7081b70ff",
+    "test_file_sha256": "cb7afb49958d0f109cf93bea75e1707ecc48d678bebf328f93c84bbed504917c",
+    "test_function_sha256": "284bf1cb0a26535102f0e32fa9ed008fe0233e6aa45ed552f23a89a7081b70ff",
+    "binding_strength": "WEAK",
+    "discovery_reason": "Operation 'debug' executed without direct assertion binding.",
+    "line_start": 244,
+    "line_end": 263,
+    "witness_binding": {
+      "claim_id": "CLM-000043",
+      "subject": "Starlette",
+      "operation_tokens": [
+        "debug"
+      ],
+      "expected_literals": [],
+      "expected_attributes": [],
+      "test_file": "tests/middleware/test_body_limit.py",
+      "test_name": "test_starlette_limit_applies_before_user_middleware",
+      "test_function_sha256": "284bf1cb0a26535102f0e32fa9ed008fe0233e6aa45ed552f23a89a7081b70ff",
+      "subject_binding": true,
+      "operation_binding": false,
+      "assertion_binding": false,
+      "dataflow_binding": false,
+      "critical_operation_coverage_ratio": 0.0,
+      "assertion_local_coverage": 0,
+      "binding_strength": "WEAK",
+      "binding_reasons": [
+        "Operation 'debug' executed without direct assertion binding."
+      ]
+    }
+  },
   "steps": [
     {
       "step_number": 1,
       "action_type": "TEST_DISCOVERY",
       "target": "Starlette op_tokens=['debug']",
-      "outcome": "Discovered 48 candidates (1 strong)",
+      "outcome": "Discovered 34 candidates (0 strong)",
       "evidence_id": null,
-      "binding_strength": "STRONG",
+      "binding_strength": "WEAK",
       "cost_increment": {},
-      "detail": "Top candidate: tests/middleware/test_body_limit.py:test_starlette_limit_applies_before_user_middleware"
-    },
-    {
-      "step_number": 2,
-      "action_type": "TARGETED_EXECUTION",
-      "target": "tests/middleware/test_body_limit.py::test_starlette_limit_applies_before_user_middleware",
-      "outcome": "INCONCLUSIVE",
-      "evidence_id": "EV-EXEC-59bbe512",
-      "binding_strength": "STRONG",
-      "cost_increment": {
-        "execution_time_ms": 269.01,
-        "timeout_sec": 15
-      },
-      "detail": "Native test execution resulted in UNAVAILABLE (not interpreted as staleness)."
+      "detail": "Top candidate: tests/middleware/test_body_limit.py:test_starlette_limit_applies_before_user_middleware (Operation 'debug' executed without direct assertion binding.)"
     }
   ],
-  "acquired_evidences": [
-    {
-      "evidence_id": "EV-EXEC-59bbe512",
-      "claim_id": "CLM-000043",
-      "action_type": "TARGETED_EXECUTION",
-      "source_type": "NATIVE_TEST_EXECUTION",
-      "repository": "starlette",
-      "commit": "8a55ce12c02b4a52363f587706e39c2c71738fb3",
-      "file_path": "tests/middleware/test_body_limit.py",
-      "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "binding_strength": "STRONG",
-      "supports_or_contradicts": "INCONCLUSIVE",
-      "confidence": 0.0,
-      "cost": {
-        "execution_time_ms": 269.01,
-        "timeout_sec": 15
-      },
-      "detail": "Native test execution resulted in UNAVAILABLE (not interpreted as staleness).",
-      "extra_metadata": {
-        "test_name": "test_starlette_limit_applies_before_user_middleware",
-        "execution_status": "UNAVAILABLE",
-        "command_hash": "439a74545b0075425362c607c16f19c087b7b9d0e606db2d9d5364aeb23142b0",
-        "stdout_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "stderr_hash": "6c31a5c4bbe59c45c81c3a7c5e87acb4a9fa450106f1488319cf78596d12a167",
-        "environment_provenance": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
-        "python_version": "3.13.5"
-      }
-    }
-  ]
+  "acquired_evidences": []
 }

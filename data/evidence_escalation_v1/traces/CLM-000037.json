@@ -5,9 +5,9 @@
   "total_actions": 2,
   "total_cost": {
     "repository_files_scanned": 17,
-    "tests_inspected": 65,
+    "tests_inspected": 50,
     "executions_run": 1,
-    "execution_time_ms": 235.2,
+    "execution_time_ms": 284.41,
     "total_actions": 2,
     "action_counts": {
       "TEST_DISCOVERY": 1,
@@ -15,16 +15,55 @@
     }
   },
   "stop_reason": "RESOLVED_TO_VALID",
+  "selected_witness": {
+    "test_file": "tests/test_formatting.py",
+    "test_name": "test_help_formatter_write_text",
+    "subject_mentions": 1,
+    "object_mentions": 2,
+    "dependency_mentions": 0,
+    "assertion_count": 1,
+    "target_commit": "aef225df47377a1bc3d967327b501f577dd5462c",
+    "source_hash": "638b88faba4d612b7a168bf00cbb2b9bb37fbd32f767425cc1d61434e9302184",
+    "test_file_sha256": "8c77e1c8d772b461ce24e63b228880eb261e9b425c2bf5f54c22b169f29ecd37",
+    "test_function_sha256": "638b88faba4d612b7a168bf00cbb2b9bb37fbd32f767425cc1d61434e9302184",
+    "binding_strength": "STRONG",
+    "discovery_reason": "Full critical operation chain covered ['write_text', 'getvalue'] with direct assertion dataflow.",
+    "line_start": 429,
+    "line_end": 436,
+    "witness_binding": {
+      "claim_id": "CLM-000037",
+      "subject": "HelpFormatter",
+      "operation_tokens": [
+        "write_text",
+        "getvalue"
+      ],
+      "expected_literals": [],
+      "expected_attributes": [],
+      "test_file": "tests/test_formatting.py",
+      "test_name": "test_help_formatter_write_text",
+      "test_function_sha256": "638b88faba4d612b7a168bf00cbb2b9bb37fbd32f767425cc1d61434e9302184",
+      "subject_binding": true,
+      "operation_binding": true,
+      "assertion_binding": true,
+      "dataflow_binding": true,
+      "critical_operation_coverage_ratio": 1.0,
+      "assertion_local_coverage": 2,
+      "binding_strength": "STRONG",
+      "binding_reasons": [
+        "Full critical operation chain covered ['write_text', 'getvalue'] with direct assertion dataflow."
+      ]
+    }
+  },
   "steps": [
     {
       "step_number": 1,
       "action_type": "TEST_DISCOVERY",
-      "target": "HelpFormatter op_tokens=['getvalue', 'write_text']",
-      "outcome": "Discovered 5 candidates (4 strong)",
+      "target": "HelpFormatter op_tokens=['write_text', 'getvalue']",
+      "outcome": "Discovered 5 candidates (1 strong)",
       "evidence_id": null,
       "binding_strength": "STRONG",
       "cost_increment": {},
-      "detail": "Top candidate: tests/test_formatting.py:test_help_formatter_write_text"
+      "detail": "Top candidate: tests/test_formatting.py:test_help_formatter_write_text (Full critical operation chain covered ['write_text', 'getvalue'] with direct assertion dataflow.)"
     },
     {
       "step_number": 2,
@@ -34,10 +73,10 @@
       "evidence_id": "EV-EXEC-857264d0",
       "binding_strength": "STRONG",
       "cost_increment": {
-        "execution_time_ms": 235.2,
+        "execution_time_ms": 284.41,
         "timeout_sec": 15
       },
-      "detail": "Native test 'tests/test_formatting.py::test_help_formatter_write_text' passed under target commit aef225df."
+      "detail": "Verified witness 'tests/test_formatting.py::test_help_formatter_write_text' passed under target commit aef225df (source verified: click)."
     }
   ],
   "acquired_evidences": [
@@ -49,23 +88,52 @@
       "repository": "click",
       "commit": "aef225df47377a1bc3d967327b501f577dd5462c",
       "file_path": "tests/test_formatting.py",
-      "content_hash": "a71df3ef716cabe43ead70bd8311cda3aeadcb986bea501da0ea9262f31c3925",
+      "content_hash": "638b88faba4d612b7a168bf00cbb2b9bb37fbd32f767425cc1d61434e9302184",
       "binding_strength": "STRONG",
       "supports_or_contradicts": "SUPPORTS",
       "confidence": 0.95,
+      "test_file_sha256": "8c77e1c8d772b461ce24e63b228880eb261e9b425c2bf5f54c22b169f29ecd37",
+      "test_function_sha256": "638b88faba4d612b7a168bf00cbb2b9bb37fbd32f767425cc1d61434e9302184",
+      "stdout_sha256": "a71df3ef716cabe43ead70bd8311cda3aeadcb986bea501da0ea9262f31c3925",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command_sha256": "29034415efc9464448abc352d4a32a8647235396c49b3c51f49c66e011f7d8a7",
+      "source_origin_status": "VERIFIED_TARGET_WORKTREE",
+      "dependency_environment_status": "CURRENT_ENVIRONMENT_NOT_HISTORICALLY_RESTORED",
       "cost": {
-        "execution_time_ms": 235.2,
+        "execution_time_ms": 284.41,
         "timeout_sec": 15
       },
-      "detail": "Native test 'tests/test_formatting.py::test_help_formatter_write_text' passed under target commit aef225df.",
+      "detail": "Verified witness 'tests/test_formatting.py::test_help_formatter_write_text' passed under target commit aef225df (source verified: click).",
       "extra_metadata": {
         "test_name": "test_help_formatter_write_text",
         "execution_status": "PASS",
-        "command_hash": "29034415efc9464448abc352d4a32a8647235396c49b3c51f49c66e011f7d8a7",
-        "stdout_hash": "a71df3ef716cabe43ead70bd8311cda3aeadcb986bea501da0ea9262f31c3925",
-        "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "package_name": "click",
+        "module_origin": "/tmp/rolemem_v1_worktrees/wt__kzn6x_3/src/click/__init__.py",
         "environment_provenance": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
-        "python_version": "3.13.5"
+        "python_version": "3.13.5",
+        "witness_binding": {
+          "claim_id": "CLM-000037",
+          "subject": "HelpFormatter",
+          "operation_tokens": [
+            "write_text",
+            "getvalue"
+          ],
+          "expected_literals": [],
+          "expected_attributes": [],
+          "test_file": "tests/test_formatting.py",
+          "test_name": "test_help_formatter_write_text",
+          "test_function_sha256": "638b88faba4d612b7a168bf00cbb2b9bb37fbd32f767425cc1d61434e9302184",
+          "subject_binding": true,
+          "operation_binding": true,
+          "assertion_binding": true,
+          "dataflow_binding": true,
+          "critical_operation_coverage_ratio": 1.0,
+          "assertion_local_coverage": 2,
+          "binding_strength": "STRONG",
+          "binding_reasons": [
+            "Full critical operation chain covered ['write_text', 'getvalue'] with direct assertion dataflow."
+          ]
+        }
       }
     }
   ]

@@ -137,7 +137,7 @@ class NativeTestDiscoveryEngine:
             except Exception:
                 continue
 
-            src_hash = hashlib.sha256(src.encode("utf-8")).hexdigest()
+            test_file_sha256 = hashlib.sha256(src.encode("utf-8")).hexdigest()
 
             for node in ast.walk(tree):
                 if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
@@ -145,11 +145,15 @@ class NativeTestDiscoveryEngine:
                     if not fn_name.startswith("test_") and not fn_name.startswith("test"):
                         continue
 
+                    if budget and cost_tracker and cost_tracker.tests_inspected >= budget.max_tests_inspected:
+                        break
+
                     if cost_tracker:
                         cost_tracker.add_test_inspection(1)
 
                     # Inspect AST body of test function (excluding docstrings)
                     fn_src = ast.get_source_segment(src, node) or ""
+                    test_fn_sha256 = hashlib.sha256(fn_src.encode("utf-8")).hexdigest()
 
                     # Count AST identifier mentions (Name, Attribute, Call)
                     subj_mentions = 0
@@ -199,8 +203,10 @@ class NativeTestDiscoveryEngine:
                             dependency_mentions=dep_mentions,
                             assertion_count=assertion_count,
                             target_commit=target_commit,
-                            source_hash=src_hash,
-                            binding_strength=BindingStrength.UNBOUND,  # will be computed by TestBinder
+                            source_hash=test_fn_sha256,
+                            test_file_sha256=test_file_sha256,
+                            test_function_sha256=test_fn_sha256,
+                            binding_strength=BindingStrength.UNBOUND,  # will be computed by WitnessBindingAnalyzer
                             discovery_reason=f"Found in {tf}:{fn_name} with {subj_mentions} subject and {dep_mentions} dep mentions",
                             test_source=fn_src,
                             line_start=getattr(node, "lineno", 1),

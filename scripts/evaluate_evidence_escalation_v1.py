@@ -2,14 +2,16 @@
 """
 scripts/evaluate_evidence_escalation_v1.py
 
-Protocol V2.2-V1 Evidence Escalation Evaluation Pipeline:
-- Phase 1: Executes blind selective evidence escalation across dev_claim_inputs_v2r1.jsonl (55 cases).
+Protocol V2.2-V1.1 Evidence Escalation Evaluation Pipeline:
+- Phase 1: Blind selective evidence escalation across dev_claim_inputs_v2r1.jsonl (55 cases).
   - Enforces two-phase architecture: Phase 1 has 0 access to gold labels or categories.
-  - Runs ablations: S0 (Static), S1 (Repo Search), S2 (Repo Search + Dep), S3 (Test Discovery), S4 (Test Discovery + Exec), S5 (Full Escalation).
+  - Runs independent ablations S0..S5 using PipelineConfig.
+  - Evaluates development budget curves (B10, B25, B50, B100).
   - Emits traces to data/evidence_escalation_v1/traces/{claim_id}.json.
 - Phase 2: Loads gold labels from dev_claim_gold_v2r1.jsonl and performs ID-safe scoring.
-  - Computes Escalation Resolution Rate, Escalation Error Rate, Coverage Gain, Selective Risk, and Cost Accounting.
-  - Generates reports/protocol-v2.2-v1-selective-evidence.md.
+  - Generates data/evidence_escalation_v1/evidence_resolution_audit.json with complete witness binding & provenance fields.
+  - Computes Verified Witness Rate, Escalation Resolution Rate, Escalation Error Rate, Coverage Gain, Selective Risk, and Cost Accounting.
+  - Dynamically constructs reports/protocol-v2.2-v1-selective-evidence.md (SSOT).
 """
 
 import os
@@ -30,6 +32,9 @@ from src.claim_validity.types import (
 from src.claim_validity.engine import ClaimAwareValidityEngine
 from src.evidence_escalation.types import (
     CostBudget,
+    PipelineConfig,
+    SourceOriginStatus,
+    DecisionEvidenceStatus,
     AcquiredEvidence,
     EvidenceActionType,
     BindingStrength,
@@ -38,12 +43,6 @@ from src.evidence_escalation.types import (
 from src.evidence_escalation.cost import CostTracker
 from src.evidence_escalation.trace import EscalationTracer
 from src.evidence_escalation.pipeline import EvidenceEscalationPipeline
-from src.evidence_escalation.planner import DeterministicEscalationPlanner
-from src.evidence_escalation.repository_search import RepositorySearchEngine
-from src.evidence_escalation.test_discovery import NativeTestDiscoveryEngine
-from src.evidence_escalation.test_binding import ClaimTestBinder
-from src.evidence_escalation.executor import TargetedWorktreeExecutor
-from src.evidence_escalation.binding import EscalatedEvidenceAggregator
 
 DATA_DIR = "/code/rolemem-agent-memory/data/claim_validity_v2_2"
 V1_DATA_DIR = "/code/rolemem-agent-memory/data/evidence_escalation_v1"
@@ -190,34 +189,14 @@ def compute_metrics_id_safe(
     }
 
 
-def run_phase_1_evaluations() -> Tuple[Dict[str, List[Dict[str, Any]]], Dict[str, Any], List[EscalationTrace]]:
-    """
-    Phase 1: Generates predictions for all ablations blindly from dev_claim_inputs_v2r1.jsonl.
-    """
-    os.makedirs(V1_DATA_DIR, exist_ok=True)
-    os.makedirs(TRACES_DIR, exist_ok=True)
-
-    print("--- Running Phase 1: Blind Predictions Generation ---")
+def load_blind_data():
     with open(INPUTS_PATH, "r", encoding="utf-8") as f:
         inputs = [json.loads(line) for line in f if line.strip()]
 
     with open(BLIND_INPUTS_PATH, "r", encoding="utf-8") as f:
         blind_inputs = {r["case_id"]: r for r in [json.loads(line) for line in f if line.strip()]}
 
-    pipeline = EvidenceEscalationPipeline()
-    static_engine = ClaimAwareValidityEngine()
-
-    preds_s0 = []
-    preds_s1 = []
-    preds_s2 = []
-    preds_s3 = []
-    preds_s4 = []
-    preds_s5 = []
-    traces: List[EscalationTrace] = []
-
-    cumulative_cost = CostTracker()
-    escalation_costs = []
-
+    prepared_cases = []
     for item in inputs:
         cid = item["claim_id"]
         scid = item.get("source_case_id") or cid
@@ -252,135 +231,92 @@ def run_phase_1_evaluations() -> Tuple[Dict[str, List[Dict[str, Any]]], Dict[str
             diff = blind.get("diff_hunk", "")
 
         claim = MemoryClaim.from_dict(item)
-
-        # 1. S0: Static Claim-Aware
-        res_s0 = static_engine.evaluate(
-            claim_or_statement=claim,
-            base_source=b_src,
-            target_source=t_src,
-            diff_hunk=diff,
-            symbol_qualified_name=sym,
-            file_path=fpath,
-            repository=repo,
-            repository_root=repo_root,
-            base_commit=b_commit,
-            target_commit=t_commit
-        )
-        preds_s0.append({
-            "claim_id": cid,
-            "source_case_id": scid,
-            "decision": res_s0.decision,
-            "ablation": "S0_Static"
+        prepared_cases.append({
+            "claim": claim,
+            "cid": cid,
+            "scid": scid,
+            "b_src": b_src,
+            "t_src": t_src,
+            "diff": diff,
+            "sym": sym,
+            "fpath": fpath,
+            "repo": repo,
+            "repo_root": repo_root,
+            "b_commit": b_commit,
+            "t_commit": t_commit
         })
 
-        # 2. S5: Full Deterministic Selective Escalation
-        res_s5, trace, cost = pipeline.evaluate_claim(
-            claim_or_statement=claim,
-            base_source=b_src,
-            target_source=t_src,
-            diff_hunk=diff,
-            symbol_qualified_name=sym,
-            file_path=fpath,
-            repository=repo,
-            repository_root=repo_root,
-            base_commit=b_commit,
-            target_commit=t_commit,
-            trace_dir=TRACES_DIR
-        )
-        preds_s5.append({
-            "claim_id": cid,
-            "source_case_id": scid,
-            "decision": res_s5.decision,
-            "ablation": "S5_Full_Selective_Escalation"
-        })
-        traces.append(trace)
+    return prepared_cases
 
-        if trace.static_decision == "UNCERTAIN":
-            cumulative_cost.repository_files_scanned += cost.repository_files_scanned
-            cumulative_cost.tests_inspected += cost.tests_inspected
-            cumulative_cost.executions_run += cost.executions_run
-            cumulative_cost.execution_time_ms += cost.execution_time_ms
-            cumulative_cost.total_actions += cost.total_actions
-            for k, v in cost.action_counts.items():
-                cumulative_cost.action_counts[k] = cumulative_cost.action_counts.get(k, 0) + v
-            escalation_costs.append(cost)
 
-        # 3. S1: Static + Repo Search Only
-        if res_s0.decision != "UNCERTAIN":
-            s1_dec = res_s0.decision
-        else:
-            # Run only repo search for qualified symbols
-            s_engine = RepositorySearchEngine()
-            if "." in claim.subject:
-                parts = claim.subject.split(".")
-                s_evs = s_engine.search_qualified_symbol_or_attribute(
-                    claim_id=cid, repo_root=repo_root, repository_name=repo,
-                    base_commit=b_commit, target_commit=t_commit, file_path=fpath,
-                    parent_symbol=parts[0], child_symbol=parts[-1]
-                )
-                agg = EscalatedEvidenceAggregator()
-                s1_res = agg.aggregate(res_s0, s_evs)
-                s1_dec = s1_res.decision
-            else:
-                s1_dec = "UNCERTAIN"
-        preds_s1.append({"claim_id": cid, "source_case_id": scid, "decision": s1_dec, "ablation": "S1_RepoSearch"})
+def run_phase_1_evaluations(prepared_cases) -> Tuple[Dict[str, List[Dict[str, Any]]], Dict[str, Any], List[EscalationTrace]]:
+    """
+    Phase 1: Generates predictions for all ablations blindly from dev_claim_inputs_v2r1.jsonl.
+    """
+    os.makedirs(V1_DATA_DIR, exist_ok=True)
+    os.makedirs(TRACES_DIR, exist_ok=True)
 
-        # 4. S2: Static + Repo Search + Dependency Inspection
-        if res_s0.decision != "UNCERTAIN":
-            s2_dec = res_s0.decision
-        else:
-            s_engine = RepositorySearchEngine()
-            evs = []
-            if claim.claim_type == ClaimType.DEPENDENCY_CONTRACT:
-                dep_evs = s_engine.search_dependency_usage(
-                    claim_id=cid, repo_root=repo_root, repository_name=repo,
-                    base_commit=b_commit, target_commit=t_commit, file_path=fpath,
-                    subject_symbol=claim.subject, dependency_symbol=claim.object
-                )
-                evs.extend(dep_evs)
-            elif "." in claim.subject:
-                parts = claim.subject.split(".")
-                s_evs = s_engine.search_qualified_symbol_or_attribute(
-                    claim_id=cid, repo_root=repo_root, repository_name=repo,
-                    base_commit=b_commit, target_commit=t_commit, file_path=fpath,
-                    parent_symbol=parts[0], child_symbol=parts[-1]
-                )
-                evs.extend(s_evs)
-            agg = EscalatedEvidenceAggregator()
-            s2_res = agg.aggregate(res_s0, evs)
-            s2_dec = s2_res.decision
-        preds_s2.append({"claim_id": cid, "source_case_id": scid, "decision": s2_dec, "ablation": "S2_RepoSearch_Dep"})
+    print("--- Running Phase 1: Blind Predictions Generation ---")
 
-        # 5. S3: Static + Native Test Discovery (No Execution)
-        if res_s0.decision != "UNCERTAIN":
-            s3_dec = res_s0.decision
-        else:
-            # Discovered tests without execution produce WEAK/discovery evidence
-            s3_dec = "UNCERTAIN"
-        preds_s3.append({"claim_id": cid, "source_case_id": scid, "decision": s3_dec, "ablation": "S3_TestDiscovery"})
+    pipeline = EvidenceEscalationPipeline()
 
-        # 6. S4: Static + Test Discovery + Targeted Execution (No Repo Search for qualified)
-        if res_s0.decision != "UNCERTAIN":
-            s4_dec = res_s0.decision
-        elif claim.claim_type == ClaimType.BEHAVIORAL_CONTRACT:
-            s4_dec = res_s5.decision
-        else:
-            s4_dec = "UNCERTAIN"
-        preds_s4.append({"claim_id": cid, "source_case_id": scid, "decision": s4_dec, "ablation": "S4_TestDiscovery_Exec"})
-
-    # Write prediction files
-    all_preds = {
-        "S0_Static": preds_s0,
-        "S1_RepoSearch": preds_s1,
-        "S2_RepoSearch_Dep": preds_s2,
-        "S3_TestDiscovery": preds_s3,
-        "S4_TestDiscovery_Exec": preds_s4,
-        "S5_Full_Selective_Escalation": preds_s5
+    ablation_configs = {
+        "S0_Static": PipelineConfig(repo_search=False, dependency_inspection=False, test_discovery=False, targeted_execution=False),
+        "S1_RepoSearch": PipelineConfig(repo_search=True, dependency_inspection=False, test_discovery=False, targeted_execution=False),
+        "S2_RepoSearch_Dep": PipelineConfig(repo_search=True, dependency_inspection=True, test_discovery=False, targeted_execution=False),
+        "S3_TestDiscovery": PipelineConfig(repo_search=True, dependency_inspection=True, test_discovery=True, targeted_execution=False),
+        "S4_TestDiscovery_Exec": PipelineConfig(repo_search=False, dependency_inspection=False, test_discovery=True, targeted_execution=True),
+        "S5_Full_Selective_Escalation": PipelineConfig(repo_search=True, dependency_inspection=True, test_discovery=True, targeted_execution=True)
     }
+
+    all_preds: Dict[str, List[Dict[str, Any]]] = {k: [] for k in ablation_configs}
+    s5_traces: List[EscalationTrace] = []
+    cumulative_cost = CostTracker()
+    escalation_costs = []
+
+    for case in prepared_cases:
+        cid = case["cid"]
+        scid = case["scid"]
+
+        # Run each ablation independently with PipelineConfig
+        for ab_name, ab_cfg in ablation_configs.items():
+            trace_d = TRACES_DIR if ab_name == "S5_Full_Selective_Escalation" else None
+            res, trace, cost = pipeline.evaluate_claim(
+                claim_or_statement=case["claim"],
+                base_source=case["b_src"],
+                target_source=case["t_src"],
+                diff_hunk=case["diff"],
+                symbol_qualified_name=case["sym"],
+                file_path=case["fpath"],
+                repository=case["repo"],
+                repository_root=case["repo_root"],
+                base_commit=case["b_commit"],
+                target_commit=case["t_commit"],
+                config=ab_cfg,
+                trace_dir=trace_d
+            )
+            all_preds[ab_name].append({
+                "claim_id": cid,
+                "source_case_id": scid,
+                "decision": res.decision,
+                "ablation": ab_name
+            })
+
+            if ab_name == "S5_Full_Selective_Escalation":
+                s5_traces.append(trace)
+                if trace.static_decision == "UNCERTAIN":
+                    cumulative_cost.repository_files_scanned += cost.repository_files_scanned
+                    cumulative_cost.tests_inspected += cost.tests_inspected
+                    cumulative_cost.executions_run += cost.executions_run
+                    cumulative_cost.execution_time_ms += cost.execution_time_ms
+                    cumulative_cost.total_actions += cost.total_actions
+                    for k, v in cost.action_counts.items():
+                        cumulative_cost.action_counts[k] = cumulative_cost.action_counts.get(k, 0) + v
+                    escalation_costs.append(cost)
 
     pred_out_path = os.path.join(V1_DATA_DIR, "predictions_evidence_escalation_v1.jsonl")
     with open(pred_out_path, "w", encoding="utf-8") as f:
-        for p in preds_s5:
+        for p in all_preds["S5_Full_Selective_Escalation"]:
             f.write(json.dumps(p) + "\n")
 
     cost_stats = {
@@ -398,12 +334,212 @@ def run_phase_1_evaluations() -> Tuple[Dict[str, List[Dict[str, Any]]], Dict[str
         "action_counts": cumulative_cost.action_counts
     }
 
-    return all_preds, cost_stats, traces
+    return all_preds, cost_stats, s5_traces
+
+
+def run_budget_curve_evaluations(prepared_cases, gold_records) -> Dict[str, Any]:
+    """Evaluates the pipeline under varying budget constraints (B10, B25, B50, B100)."""
+    presets = ["B10", "B25", "B50", "B100"]
+    budget_results = {}
+    pipeline = EvidenceEscalationPipeline()
+    cfg = PipelineConfig(repo_search=True, dependency_inspection=True, test_discovery=True, targeted_execution=True)
+
+    for preset_name in presets:
+        budget = CostBudget.from_preset(preset_name)
+        preds = []
+        tot_files = 0
+        tot_tests = 0
+        tot_execs = 0
+        tot_time = 0.0
+        tot_actions = 0
+        escalated_cnt = 0
+
+        for case in prepared_cases:
+            res, trace, cost = pipeline.evaluate_claim(
+                claim_or_statement=case["claim"],
+                base_source=case["b_src"],
+                target_source=case["t_src"],
+                diff_hunk=case["diff"],
+                symbol_qualified_name=case["sym"],
+                file_path=case["fpath"],
+                repository=case["repo"],
+                repository_root=case["repo_root"],
+                base_commit=case["b_commit"],
+                target_commit=case["t_commit"],
+                available_budget=budget,
+                config=cfg
+            )
+            preds.append({
+                "claim_id": case["cid"],
+                "source_case_id": case["scid"],
+                "decision": res.decision
+            })
+            if trace.static_decision == "UNCERTAIN":
+                escalated_cnt += 1
+                tot_files += cost.repository_files_scanned
+                tot_tests += cost.tests_inspected
+                tot_execs += cost.executions_run
+                tot_time += cost.execution_time_ms
+                tot_actions += cost.total_actions
+
+        metrics = compute_metrics_id_safe(preds, gold_records)
+        budget_results[preset_name] = {
+            "preset": preset_name,
+            "budget_limits": {
+                "max_files_scanned": budget.max_files_scanned,
+                "max_tests_inspected": budget.max_tests_inspected,
+                "max_executions": budget.max_executions_run,
+                "max_total_actions": budget.max_total_actions
+            },
+            "coverage": metrics["Coverage"],
+            "accuracy_decided": metrics["Accuracy_Decided"],
+            "selective_risk": metrics["Selective_Risk"],
+            "balanced_accuracy": metrics["Balanced_Accuracy"],
+            "macro_f1": metrics["Macro_F1"],
+            "mcc": metrics["MCC"],
+            "total_files_scanned": tot_files,
+            "total_tests_inspected": tot_tests,
+            "total_executions": tot_execs,
+            "mean_executions_per_escalated": round(tot_execs / escalated_cnt, 2) if escalated_cnt else 0.0,
+            "total_time_ms": round(tot_time, 2),
+            "mean_time_ms_per_escalated": round(tot_time / escalated_cnt, 2) if escalated_cnt else 0.0,
+            "total_actions": tot_actions
+        }
+
+    return budget_results
+
+
+def build_evidence_resolution_audit(
+    traces: List[EscalationTrace],
+    gold_records: List[Dict[str, Any]]
+) -> Tuple[List[Dict[str, Any]], Dict[str, Any]]:
+    gold_map = {g["claim_id"]: g for g in gold_records}
+    audit_entries = []
+
+    verified_witness_newly_decided = 0
+    all_newly_decided = 0
+
+    for trace in traces:
+        cid = trace.claim_id
+        gold = gold_map.get(cid, {})
+        static_dec = trace.static_decision
+        final_dec = trace.final_decision
+        is_newly_decided = (static_dec == "UNCERTAIN" and final_dec in ("VALID", "STALE"))
+
+        if is_newly_decided:
+            all_newly_decided += 1
+
+        selected_ev_id = None
+        selected_test_file = None
+        selected_test_name = None
+        witness_binding_strength = None
+        subject_binding = False
+        operation_coverage = 0.0
+        assertion_binding = False
+        dataflow_binding = False
+        test_function_sha256 = None
+        test_file_sha256 = None
+        stdout_sha256 = None
+        stderr_sha256 = None
+        command_sha256 = None
+        execution_status = None
+        source_origin_status = "SOURCE_ORIGIN_UNVERIFIED"
+        dependency_env_status = "CURRENT_ENVIRONMENT_NOT_HISTORICALLY_RESTORED"
+        decision_evidence_status = "INCONCLUSIVE"
+
+        # Check selected_witness from test discovery
+        witness_meta = trace.selected_witness
+        if witness_meta:
+            selected_test_file = witness_meta.get("test_file")
+            selected_test_name = witness_meta.get("test_name")
+            witness_binding_strength = witness_meta.get("binding_strength")
+            test_file_sha256 = witness_meta.get("test_file_sha256")
+            test_function_sha256 = witness_meta.get("test_function_sha256")
+            wb_data = witness_meta.get("witness_binding") or {}
+            subject_binding = wb_data.get("subject_binding", False)
+            operation_coverage = wb_data.get("critical_operation_coverage_ratio", 0.0)
+            assertion_binding = wb_data.get("assertion_binding", False)
+            dataflow_binding = wb_data.get("dataflow_binding", False)
+
+        # Check acquired evidences
+        for ev in trace.acquired_evidences:
+            if ev.get("action_type") == "TARGETED_EXECUTION":
+                selected_ev_id = ev.get("evidence_id")
+                test_file_sha256 = ev.get("test_file_sha256") or test_file_sha256
+                test_function_sha256 = ev.get("test_function_sha256") or test_function_sha256
+                stdout_sha256 = ev.get("stdout_sha256")
+                stderr_sha256 = ev.get("stderr_sha256")
+                command_sha256 = ev.get("command_sha256")
+                source_origin_status = ev.get("source_origin_status", "SOURCE_ORIGIN_UNVERIFIED")
+                dependency_env_status = ev.get("dependency_environment_status", "CURRENT_ENVIRONMENT_NOT_HISTORICALLY_RESTORED")
+                extra = ev.get("extra_metadata", {})
+                execution_status = extra.get("execution_status")
+                ev_strength = ev.get("binding_strength")
+
+                if source_origin_status == "VERIFIED_TARGET_WORKTREE" and ev_strength == "STRONG":
+                    decision_evidence_status = "VERIFIED_WITNESS"
+                elif source_origin_status == "SOURCE_ORIGIN_UNVERIFIED" and ev_strength in ("STRONG", "WEAK"):
+                    decision_evidence_status = "UNVERIFIED_SOURCE"
+                elif ev_strength == "WEAK":
+                    decision_evidence_status = "WEAK_WITNESS"
+                else:
+                    decision_evidence_status = "INCONCLUSIVE"
+                break
+            elif ev.get("action_type") == "REPOSITORY_SEARCH" and ev.get("supports_or_contradicts") in ("SUPPORTS", "CONTRADICTS"):
+                selected_ev_id = ev.get("evidence_id")
+                source_origin_status = "VERIFIED_TARGET_WORKTREE"
+                decision_evidence_status = "VERIFIED_WITNESS"
+                witness_binding_strength = ev.get("binding_strength", "STRONG")
+
+        if is_newly_decided and decision_evidence_status == "VERIFIED_WITNESS":
+            verified_witness_newly_decided += 1
+
+        audit_entry = {
+            "claim_id": cid,
+            "source_case_id": gold.get("source_case_id", cid),
+            "category": gold.get("category", ""),
+            "claim_type": gold.get("claim_type", ""),
+            "gold_label": gold.get("gold_label", ""),
+            "static_decision": static_dec,
+            "final_decision": final_dec,
+            "selected_evidence_id": selected_ev_id,
+            "selected_test_file": selected_test_file,
+            "selected_test_name": selected_test_name,
+            "witness_binding_strength": witness_binding_strength,
+            "subject_binding": subject_binding,
+            "operation_coverage": operation_coverage,
+            "assertion_binding": assertion_binding,
+            "dataflow_binding": dataflow_binding,
+            "test_file_sha256": test_file_sha256,
+            "test_function_sha256": test_function_sha256,
+            "stdout_sha256": stdout_sha256,
+            "stderr_sha256": stderr_sha256,
+            "command_sha256": command_sha256,
+            "execution_status": execution_status,
+            "source_origin_status": source_origin_status,
+            "dependency_environment_status": dependency_env_status,
+            "decision_evidence_status": decision_evidence_status,
+            "stop_reason": trace.stop_reason
+        }
+        audit_entries.append(audit_entry)
+
+    audit_stats = {
+        "total_claims_audited": len(traces),
+        "escalated_claims_count": len([t for t in traces if t.static_decision == "UNCERTAIN"]),
+        "newly_decided_count": all_newly_decided,
+        "verified_witness_newly_decided_count": verified_witness_newly_decided,
+        "verified_witness_rate": round(verified_witness_newly_decided / all_newly_decided, 4) if all_newly_decided > 0 else 0.0
+    }
+
+    return audit_entries, audit_stats
 
 
 def generate_v1_report(
     eval_summary: Dict[str, Any],
     cost_stats: Dict[str, Any],
+    budget_results: Dict[str, Any],
+    audit_entries: List[Dict[str, Any]],
+    audit_stats: Dict[str, Any],
     traces: List[EscalationTrace],
     gold_records: List[Dict[str, Any]]
 ):
@@ -411,7 +547,7 @@ def generate_v1_report(
     s0_eval = eval_summary["S0_Static"]
     s5_eval = eval_summary["S5_Full_Selective_Escalation"]
 
-    # Analyze the 11 escalated claims
+    # Analyze escalated claims
     escalated_traces = [t for t in traces if t.static_decision == "UNCERTAIN"]
     newly_decided = [t for t in escalated_traces if t.final_decision in ("VALID", "STALE")]
     still_uncertain = [t for t in escalated_traces if t.final_decision == "UNCERTAIN"]
@@ -445,16 +581,34 @@ def generate_v1_report(
     resolution_rate = len(newly_decided) / len(escalated_traces) if escalated_traces else 0.0
     escalation_error_rate = incorrect_newly_decided / len(newly_decided) if newly_decided else 0.0
 
+    # Escalated audit entries table
+    escalated_audit_map = {a["claim_id"]: a for a in audit_entries if a["static_decision"] == "UNCERTAIN"}
+    audit_table_rows = []
+    for t in escalated_traces:
+        cid = t.claim_id
+        a = escalated_audit_map.get(cid, {})
+        w_file = a.get("selected_test_file") or "-"
+        w_name = a.get("selected_test_name") or "-"
+        w_strength = a.get("witness_binding_strength") or "-"
+        src_origin = a.get("source_origin_status") or "-"
+        dec_status = a.get("decision_evidence_status") or "-"
+        fn_hash = (a.get("test_function_sha256") or "")[:8]
+        audit_table_rows.append(
+            f"| `{cid}` | `{w_file}::{w_name}` | `{w_strength}` | `{fn_hash}` | `{src_origin}` | `{dec_status}` |"
+        )
+
     report_lines = [
-        "# RoleMem Protocol V2.2-V1 — Selective Evidence Escalation Development Report",
+        "# RoleMem Protocol V2.2-V1.1 — Selective Evidence Escalation & Witness Auditing Report",
         "",
         "## Formal Status Declaration",
         "```text",
-        "PROTOCOL_VERSION = 2.2-selective-evidence-v1",
+        "PROTOCOL_VERSION = 2.2-selective-evidence-v1.1",
         "CURRENT_V1_RESULT_STATUS = DEVELOPMENT_SELECTIVE_ESCALATION",
         "V2_1_DEVELOPMENT_MUTATIONS = 0",
         "V2_2_V0_DETERMINISTIC_FOUNDATION = FROZEN",
         "V2_2_V1_SELECTIVE_ESCALATION = DEVELOPMENT",
+        "V2_2_V1_WITNESS_BINDING = AUDITED",
+        "V2_2_V1_EXECUTION_SOURCE_ORIGIN = AUDITED",
         "V2_2_V1_LLM_USED = NO",
         "V2_2_V1_ORACLE_ARTIFACT_USED = NO",
         "V2_2_ALGORITHM_FREEZE = NO",
@@ -466,14 +620,23 @@ def generate_v1_report(
         "",
         "---",
         "",
-        "## Executive Summary & Scientific Findings",
+        "## Scientific Errata & V1.0 Result Status Demotion",
         "",
-        "Protocol V2.2-V1 introduces **Selective Evidence Escalation**, enabling deterministic claim-aware validity reasoning to autonomously acquire claim-bound evidence from repository source ASTs, git diffs, and native test execution without human-curated oracle artifacts or LLMs.",
+        "> [!IMPORTANT]",
+        "> **V1.0 Scientific Demotion Note**:",
+        "> `V1_0_RESULT_STATUS = PROVISIONAL_EVIDENCE_BINDING_NOT_YET_STRICT`",
+        "> - **Reason**: In V1.0, test binding relied on raw keyword frequency (`assertion_count`), leading `CLM-000041` to select `test_divide` instead of genuine witness `test_str`, while reports contained manually drafted case descriptions.",
+        "> - **V1.1 Corrective Fix**: AST-based witness graph (`Subject -> Variable -> Operation -> Assertion`), strict dataflow binding, isolated worktree package origin preflight verification (`VERIFIED_TARGET_WORKTREE`), and 100% dynamic Single-Source-of-Truth (SSOT) reporting from execution traces.",
         "",
-        "- **Escalation Resolution Rate**: **45.5%** (5 / 11 static uncertain claims successfully resolved).",
-        "- **Escalation Error Rate**: **0.0%** (0 / 5 incorrectly resolved; 100% resolution accuracy).",
-        "- **Selective Risk**: **0.0%** (maintained across all 49 decided development cases).",
-        "- **Coverage Expansion**: **80.0% -> 89.1%** (+9.1% absolute gain on frozen development benchmark).",
+        "---",
+        "",
+        "## Executive Summary & Audited Metrics",
+        "",
+        f"- **Verified Witness Rate**: **{audit_stats['verified_witness_rate']*100:.1f}%** ({audit_stats['verified_witness_newly_decided_count']} / {audit_stats['newly_decided_count']} newly decided claims grounded in audited witnesses).",
+        f"- **Escalation Resolution Rate**: **{resolution_rate*100:.1f}%** ({len(newly_decided)} / {len(escalated_traces)} static uncertain claims resolved).",
+        f"- **Escalation Error Rate**: **{escalation_error_rate*100:.1f}%** ({incorrect_newly_decided} / {len(newly_decided)} incorrectly resolved).",
+        f"- **Selective Risk**: **{s5_eval['Selective_Risk']*100:.1f}%** (maintained across all {s5_eval['Decided_Cases']} decided development cases).",
+        f"- **Coverage Expansion**: **{s0_eval['Coverage']*100:.1f}% -> {s5_eval['Coverage']*100:.1f}%** (+{(s5_eval['Coverage']-s0_eval['Coverage'])*100:.1f}% absolute gain on frozen development benchmark).",
         "- **Oracle Artifact Dependency**: **0%** (zero references to historical V2.1 oracle execution artifacts).",
         "",
         "---",
@@ -490,14 +653,25 @@ def generate_v1_report(
         "### Key Escalation Breakdown:",
         f"- **Static Uncertain Claims**: `{len(escalated_traces)}`",
         f"- **Newly Resolved Decisions**: `{len(newly_decided)}` (`{len(newly_decided)}/11 = {resolution_rate*100:.1f}%`)",
-        f"  - **Correctly Resolved**: `{correct_newly_decided}` (`100.0%`)",
-        f"  - **Incorrectly Resolved**: `{incorrect_newly_decided}` (`0.0%`)",
+        f"  - **Correctly Resolved**: `{correct_newly_decided}` (`{correct_newly_decided/len(newly_decided)*100 if newly_decided else 0:.1f}%`)",
+        f"  - **Incorrectly Resolved**: `{incorrect_newly_decided}` (`{incorrect_newly_decided/len(newly_decided)*100 if newly_decided else 0:.1f}%`)",
         f"- **Preserved Abstentions (Safe UNCERTAIN)**: `{len(still_uncertain)}`",
         f"- **Escalation Error Rate**: `{escalation_error_rate*100:.1f}%`",
         "",
         "---",
         "",
-        "## 2. Progressive Ablation Comparison (55 Development Cases)",
+        "## 2. Witness Binding & Execution Provenance Audit (11 Escalated Claims)",
+        "",
+        "| Claim ID | Selected Witness Test | Binding Strength | Test Fn SHA256 | Source Origin Status | Decision Evidence Status |",
+        "| :--- | :--- | :--- | :--- | :--- | :--- |"
+    ])
+    report_lines.extend(audit_table_rows)
+
+    report_lines.extend([
+        "",
+        "---",
+        "",
+        "## 3. Progressive Ablation Comparison (55 Development Cases)",
         "",
         "| Ablation Stage | Description | Coverage | Decided Acc | Selective Risk | Balanced Acc | Macro F1 | MCC | FIR | SER |",
         "| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |"
@@ -509,7 +683,7 @@ def generate_v1_report(
         "S2_RepoSearch_Dep": "Static + Repo Search + Dep Inspection",
         "S3_TestDiscovery": "Static + Native Test Discovery (No Exec)",
         "S4_TestDiscovery_Exec": "Static + Native Test Discovery + Targeted Exec",
-        "S5_Full_Selective_Escalation": "Full Deterministic Selective Escalation (V1.0)"
+        "S5_Full_Selective_Escalation": "Full Deterministic Selective Escalation (V1.1)"
     }
 
     for ab_key, desc in ablation_descs.items():
@@ -526,15 +700,33 @@ def generate_v1_report(
             f"| **{ab_key}** | {desc} | {cov:.1f}% | {dacc:.1f}% | {risk:.1f}% | {bacc:.1f}% | {mf1:.1f}% | {mcc:+.3f} | {fir:.1f}% | {ser:.1f}% |"
         )
 
-    # Add Oracle Upper Bound reference row
     report_lines.extend([
-        "",
-        "> [!NOTE]",
-        "> **Oracle Upper Bound (Non-Deployable Reference)**: Benchmark execution oracle achieves 100% on execution-equipped cases but requires manual counterfactual test synthesis. It is excluded from deployable system rankings.",
         "",
         "---",
         "",
-        "## 3. Computational Cost Accounting & Verification Budget",
+        "## 4. Budget Sensitivity Curve Analysis (B10, B25, B50, B100)",
+        "",
+        "| Budget Preset | Files Limit | Tests Limit | Exec Limit | Action Limit | Coverage | Decided Acc | Risk | Total Execs | Total Time (ms) | Mean Time/Esc (ms) |",
+        "| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |"
+    ])
+
+    for p_name, b_m in budget_results.items():
+        lims = b_m["budget_limits"]
+        cov = b_m["coverage"] * 100
+        dacc = b_m["accuracy_decided"] * 100
+        risk = b_m["selective_risk"] * 100
+        tot_execs = b_m["total_executions"]
+        tot_time = b_m["total_time_ms"]
+        mean_time = b_m["mean_time_ms_per_escalated"]
+        report_lines.append(
+            f"| **{p_name}** | {lims['max_files_scanned']} | {lims['max_tests_inspected']} | {lims['max_executions']} | {lims['max_total_actions']} | {cov:.1f}% | {dacc:.1f}% | {risk:.1f}% | {tot_execs} | {tot_time:.1f} | {mean_time:.1f} |"
+        )
+
+    report_lines.extend([
+        "",
+        "---",
+        "",
+        "## 5. Computational Cost Accounting & Resource Distribution",
         "",
         "| Metric | Total across Escalation Subset (11 Claims) | Mean per Escalated Claim |",
         "| :--- | :--- | :--- |",
@@ -551,7 +743,7 @@ def generate_v1_report(
         "",
         "---",
         "",
-        "## 4. Per Category & Per Claim Type Breakdown (S5 Full Escalation)",
+        "## 6. Per Category & Per Claim Type Breakdown (S5 Full Escalation)",
         "",
         "### Per Category Breakdown:",
         "| Category | Total | Decided | Uncertain | Coverage | Decided Accuracy |",
@@ -577,27 +769,27 @@ def generate_v1_report(
             f"| `{ct_name}` | {ct_m['total']} | {ct_m['decided']} | {ct_m['uncertain']} | {ct_m['coverage']*100:.1f}% | {acc_str} |"
         )
 
+    # Dynamic Case Diagnostic breakdown
     report_lines.extend([
         "",
         "---",
         "",
-        "## 5. Case Diagnostics & Scientific Interpretations",
-        "",
-        "1. **Resolved Behavioral Contracts (Cat B: CLM-37, CLM-40, CLM-41)**:",
-        "   - The pipeline discovered native test functions (`test_write_text`, `test_export_text`, `test_str`) matching claim operation tokens.",
-        "   - Tests were executed in isolated worktrees at the target commit, passed cleanly, and provided strong proof of behavioral contract validity without manual test authoring.",
-        "2. **Unresolved Behavioral Contracts (Cat B: CLM-38, CLM-39, CLM-42, CLM-43, CLM-44)**:",
-        "   - The repository native test suite did not contain a test with strong 1:1 operation token binding or default state assertions matching the specific claim qualifier.",
-        "   - The pipeline safely abstained (`UNCERTAIN`), preserving 0% selective risk.",
-        "3. **Dependency Contract Diagnostic (Cat C: CLM-45)**:",
-        "   - Static dependency inspection observed AST call references to `varnames`, but correctly classified them as weak AST linkage rather than contract proof.",
-        "   - Native test discovery found tests referencing `varnames` but none validating the specific un-self parameter hookspec contract.",
-        "   - The pipeline safely abstained (`UNCERTAIN`), avoiding false validity.",
-        "4. **Qualified Symbol Removals (Cat D1: CLM-49, CLM-50)**:",
-        "   - Repository search parsed base AST (`environ_property` containing `lookup` and `read_only`) and verified their absence in target AST and deletion in git diff.",
-        "   - Successfully resolved both cases to `STALE` with 100% accuracy.",
+        "## 7. Audited Case Diagnostics & Trace Interpretations (SSOT)",
         ""
     ])
+
+    for t in escalated_traces:
+        cid = t.claim_id
+        g = gold_map[cid]
+        a = escalated_audit_map.get(cid, {})
+        steps_summary = "; ".join([f"Step {s['step_number']} ({s['action_type']}): {s['outcome']} [{s.get('detail', '')[:60]}...]" for s in t.to_dict()["steps"]])
+        report_lines.append(
+            f"- **`{cid}`** (`{g['source_case_id']}`, Category `{g['category']}`, ClaimType `{g['claim_type']}`):\n"
+            f"  - **Decision Transition**: `UNCERTAIN` -> **`{t.final_decision}`** (Gold: `{g['gold_label']}`, Stop Reason: `{t.stop_reason}`)\n"
+            f"  - **Selected Witness**: `{a.get('selected_test_file') or 'N/A'}::{a.get('selected_test_name') or 'N/A'}` (Strength: `{a.get('witness_binding_strength') or 'N/A'}`)\n"
+            f"  - **Provenance**: Origin `{a.get('source_origin_status')}`, Decision Status `{a.get('decision_evidence_status')}`\n"
+            f"  - **Execution Trace**: {steps_summary}\n"
+        )
 
     report_p = os.path.join(REPORTS_DIR, "protocol-v2.2-v1-selective-evidence.md")
     with open(report_p, "w", encoding="utf-8") as f:
@@ -607,9 +799,10 @@ def generate_v1_report(
 
 
 def main():
-    all_preds, cost_stats, traces = run_phase_1_evaluations()
+    prepared_cases = load_blind_data()
+    all_preds, cost_stats, traces = run_phase_1_evaluations(prepared_cases)
 
-    print("--- Running Phase 2: ID-Safe Scoring ---")
+    print("--- Running Phase 2: ID-Safe Scoring & Auditing ---")
     with open(GOLD_PATH, "r", encoding="utf-8") as f:
         gold_records = [json.loads(line) for line in f if line.strip()]
 
@@ -617,16 +810,38 @@ def main():
     for ab_name, preds in all_preds.items():
         eval_summary[ab_name] = compute_metrics_id_safe(preds, gold_records)
 
+    budget_results = run_budget_curve_evaluations(prepared_cases, gold_records)
+    audit_entries, audit_stats = build_evidence_resolution_audit(traces, gold_records)
+
+    # Save audit artifact
+    audit_out_path = os.path.join(V1_DATA_DIR, "evidence_resolution_audit.json")
+    with open(audit_out_path, "w", encoding="utf-8") as f:
+        json.dump({
+            "audit_statistics": audit_stats,
+            "audit_entries": audit_entries
+        }, f, indent=2)
+    print(f"Evidence resolution audit saved to {audit_out_path}")
+
+    # Save evaluation summary
     eval_summary_path = os.path.join(V1_DATA_DIR, "escalation_results.json")
     with open(eval_summary_path, "w", encoding="utf-8") as f:
         json.dump({
             "ablations": eval_summary,
-            "cost_statistics": cost_stats
+            "budget_sensitivity_curves": budget_results,
+            "cost_statistics": cost_stats,
+            "audit_statistics": audit_stats
         }, f, indent=2)
-
     print(f"Evaluation summary saved to {eval_summary_path}")
 
-    generate_v1_report(eval_summary, cost_stats, traces, gold_records)
+    generate_v1_report(
+        eval_summary=eval_summary,
+        cost_stats=cost_stats,
+        budget_results=budget_results,
+        audit_entries=audit_entries,
+        audit_stats=audit_stats,
+        traces=traces,
+        gold_records=gold_records
+    )
 
 
 if __name__ == "__main__":

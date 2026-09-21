@@ -5,9 +5,9 @@
   "total_actions": 2,
   "total_cost": {
     "repository_files_scanned": 1,
-    "tests_inspected": 97,
+    "tests_inspected": 50,
     "executions_run": 1,
-    "execution_time_ms": 418.75,
+    "execution_time_ms": 406.2,
     "total_actions": 2,
     "action_counts": {
       "TEST_DISCOVERY": 1,
@@ -15,57 +15,131 @@
     }
   },
   "stop_reason": "RESOLVED_TO_VALID",
+  "selected_witness": {
+    "test_file": "tests/test_console.py",
+    "test_name": "test_export_text",
+    "subject_mentions": 1,
+    "object_mentions": 2,
+    "dependency_mentions": 0,
+    "assertion_count": 1,
+    "target_commit": "285d9e94e268daf3ef159ca41e113a2e11b625e1",
+    "source_hash": "017121c21bc2097972958bde2563fa94af79c45e4a627521b0ac387d1063595c",
+    "test_file_sha256": "3e1ffd2446c18e58990e75a20b21794f141e2d76466b06d972344d4906be007a",
+    "test_function_sha256": "017121c21bc2097972958bde2563fa94af79c45e4a627521b0ac387d1063595c",
+    "binding_strength": "STRONG",
+    "discovery_reason": "Full critical operation chain covered ['print', 'export_text'] with direct assertion dataflow.",
+    "line_start": 511,
+    "line_end": 516,
+    "witness_binding": {
+      "claim_id": "CLM-000040",
+      "subject": "Console",
+      "operation_tokens": [
+        "print",
+        "export_text"
+      ],
+      "expected_literals": [],
+      "expected_attributes": [
+        "record=True",
+        "record=True"
+      ],
+      "test_file": "tests/test_console.py",
+      "test_name": "test_export_text",
+      "test_function_sha256": "017121c21bc2097972958bde2563fa94af79c45e4a627521b0ac387d1063595c",
+      "subject_binding": true,
+      "operation_binding": true,
+      "assertion_binding": true,
+      "dataflow_binding": true,
+      "critical_operation_coverage_ratio": 1.0,
+      "assertion_local_coverage": 2,
+      "binding_strength": "STRONG",
+      "binding_reasons": [
+        "Full critical operation chain covered ['print', 'export_text'] with direct assertion dataflow."
+      ]
+    }
+  },
   "steps": [
     {
       "step_number": 1,
       "action_type": "TEST_DISCOVERY",
-      "target": "Console op_tokens=['export_text', 'print']",
-      "outcome": "Discovered 94 candidates (53 strong)",
+      "target": "Console op_tokens=['print', 'export_text']",
+      "outcome": "Discovered 48 candidates (1 strong)",
       "evidence_id": null,
       "binding_strength": "STRONG",
       "cost_increment": {},
-      "detail": "Top candidate: tests/test_console.py:test_capture_and_record"
+      "detail": "Top candidate: tests/test_console.py:test_export_text (Full critical operation chain covered ['print', 'export_text'] with direct assertion dataflow.)"
     },
     {
       "step_number": 2,
       "action_type": "TARGETED_EXECUTION",
-      "target": "tests/test_console.py::test_capture_and_record",
+      "target": "tests/test_console.py::test_export_text",
       "outcome": "SUPPORTS",
-      "evidence_id": "EV-EXEC-7dd52d96",
+      "evidence_id": "EV-EXEC-2ca46991",
       "binding_strength": "STRONG",
       "cost_increment": {
-        "execution_time_ms": 418.75,
+        "execution_time_ms": 406.2,
         "timeout_sec": 15
       },
-      "detail": "Native test 'tests/test_console.py::test_capture_and_record' passed under target commit 285d9e94."
+      "detail": "Verified witness 'tests/test_console.py::test_export_text' passed under target commit 285d9e94 (source verified: rich)."
     }
   ],
   "acquired_evidences": [
     {
-      "evidence_id": "EV-EXEC-7dd52d96",
+      "evidence_id": "EV-EXEC-2ca46991",
       "claim_id": "CLM-000040",
       "action_type": "TARGETED_EXECUTION",
       "source_type": "NATIVE_TEST_EXECUTION",
       "repository": "rich",
       "commit": "285d9e94e268daf3ef159ca41e113a2e11b625e1",
       "file_path": "tests/test_console.py",
-      "content_hash": "e596cce97643441f2f2c7ef01ee068b6705ce1e028a07a32ba3bd3b3d35d7353",
+      "content_hash": "017121c21bc2097972958bde2563fa94af79c45e4a627521b0ac387d1063595c",
       "binding_strength": "STRONG",
       "supports_or_contradicts": "SUPPORTS",
       "confidence": 0.95,
+      "test_file_sha256": "3e1ffd2446c18e58990e75a20b21794f141e2d76466b06d972344d4906be007a",
+      "test_function_sha256": "017121c21bc2097972958bde2563fa94af79c45e4a627521b0ac387d1063595c",
+      "stdout_sha256": "e596cce97643441f2f2c7ef01ee068b6705ce1e028a07a32ba3bd3b3d35d7353",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command_sha256": "4d5c1d12e836695a5b00e7a7fc8947d85611f75fbfe198004bb16059e89171e3",
+      "source_origin_status": "VERIFIED_TARGET_WORKTREE",
+      "dependency_environment_status": "CURRENT_ENVIRONMENT_NOT_HISTORICALLY_RESTORED",
       "cost": {
-        "execution_time_ms": 418.75,
+        "execution_time_ms": 406.2,
         "timeout_sec": 15
       },
-      "detail": "Native test 'tests/test_console.py::test_capture_and_record' passed under target commit 285d9e94.",
+      "detail": "Verified witness 'tests/test_console.py::test_export_text' passed under target commit 285d9e94 (source verified: rich).",
       "extra_metadata": {
-        "test_name": "test_capture_and_record",
+        "test_name": "test_export_text",
         "execution_status": "PASS",
-        "command_hash": "e1c9020774d5b2a95f3fe26383e53300e0a517ca6ca73c67cc8c091f1d65ea11",
-        "stdout_hash": "e596cce97643441f2f2c7ef01ee068b6705ce1e028a07a32ba3bd3b3d35d7353",
-        "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "package_name": "rich",
+        "module_origin": "/tmp/rolemem_v1_worktrees/wt_i00j5y9w/rich/__init__.py",
         "environment_provenance": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
-        "python_version": "3.13.5"
+        "python_version": "3.13.5",
+        "witness_binding": {
+          "claim_id": "CLM-000040",
+          "subject": "Console",
+          "operation_tokens": [
+            "print",
+            "export_text"
+          ],
+          "expected_literals": [],
+          "expected_attributes": [
+            "record=True",
+            "record=True"
+          ],
+          "test_file": "tests/test_console.py",
+          "test_name": "test_export_text",
+          "test_function_sha256": "017121c21bc2097972958bde2563fa94af79c45e4a627521b0ac387d1063595c",
+          "subject_binding": true,
+          "operation_binding": true,
+          "assertion_binding": true,
+          "dataflow_binding": true,
+          "critical_operation_coverage_ratio": 1.0,
+          "assertion_local_coverage": 2,
+          "binding_strength": "STRONG",
+          "binding_reasons": [
+            "Full critical operation chain covered ['print', 'export_text'] with direct assertion dataflow."
+          ]
+        }
       }
     }
   ]

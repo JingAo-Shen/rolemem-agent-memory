@@ -14,11 +14,12 @@
     }
   },
   "stop_reason": "REMAINED_UNCERTAIN_AFTER_ESCALATION",
+  "selected_witness": null,
   "steps": [
     {
       "step_number": 1,
       "action_type": "TEST_DISCOVERY",
-      "target": "FastAPI op_tokens=['FastAPI', 'title']",
+      "target": "FastAPI op_tokens=['title']",
       "outcome": "Discovered 0 candidates (0 strong)",
       "evidence_id": null,
       "binding_strength": null,

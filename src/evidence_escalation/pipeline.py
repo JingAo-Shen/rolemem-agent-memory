@@ -20,6 +20,7 @@ from src.claim_validity.engine import ClaimAwareValidityEngine
 from .types import (
     EvidenceActionType,
     CostBudget,
+    PipelineConfig,
     AcquiredEvidence,
     EvidenceAcquisitionRequest,
     EscalationTrace
@@ -49,6 +50,7 @@ class EvidenceEscalationPipeline:
         base_commit: Optional[str] = None,
         target_commit: Optional[str] = None,
         available_budget: Optional[CostBudget] = None,
+        config: Optional[PipelineConfig] = None,
         trace_dir: Optional[str] = None
     ) -> Tuple[ClaimEvaluationResult, EscalationTrace, CostTracker]:
         """
@@ -110,6 +112,7 @@ class EvidenceEscalationPipeline:
             repository_root=repository_root or "",
             static_result=static_result,
             available_budget=budget,
+            config=config or PipelineConfig(),
             base_commit=base_commit or "",
             target_commit=target_commit or ""
         )

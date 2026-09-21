@@ -1,13 +1,16 @@
 """
 src/evidence_escalation/types.py
 
-Core Type Definitions and Data Models for Protocol V2.2-V1 Selective Evidence Escalation:
+Core Type Definitions and Data Models for Protocol V2.2-V1.1 Selective Evidence Escalation:
 - EvidenceActionType: Types of evidence acquisition actions.
 - BindingStrength: Strength of grounding/binding of discovered artifact to claim (STRONG, WEAK, UNBOUND).
 - ExecutionStatus: Status of targeted execution (PASS, FAIL, ERROR, TIMEOUT, UNAVAILABLE).
-- CostBudget: Budget limits for evidence acquisition.
-- AcquiredEvidence: Standardized representation of acquired evidence with full provenance.
-- TestCandidate: Discovered test candidate in the native repository.
+- SourceOriginStatus: Verification status of execution package origin (VERIFIED_TARGET_WORKTREE, SOURCE_ORIGIN_UNVERIFIED).
+- DecisionEvidenceStatus: Audit status of final evidence (VERIFIED_WITNESS, WEAK_WITNESS, UNVERIFIED_SOURCE, INCONCLUSIVE).
+- CostBudget: Budget limits for evidence acquisition with standard development presets (B10, B25, B50, B100).
+- PipelineConfig: Granular enablement of escalation stages for independent ablation studies.
+- AcquiredEvidence: Standardized representation of acquired evidence with full provenance hashes.
+- TestCandidate: Discovered test candidate in the native repository with function-level SHA256.
 - EvidenceAcquisitionRequest: Standardized request interface for evidence escalation.
 - EscalationTrace & EscalationTraceStep: Full execution trace of selective escalation.
 """
@@ -53,6 +56,18 @@ class ExecutionStatus(str, Enum):
     UNAVAILABLE = "UNAVAILABLE"
 
 
+class SourceOriginStatus(str, Enum):
+    VERIFIED_TARGET_WORKTREE = "VERIFIED_TARGET_WORKTREE"
+    SOURCE_ORIGIN_UNVERIFIED = "SOURCE_ORIGIN_UNVERIFIED"
+
+
+class DecisionEvidenceStatus(str, Enum):
+    VERIFIED_WITNESS = "VERIFIED_WITNESS"
+    WEAK_WITNESS = "WEAK_WITNESS"
+    UNVERIFIED_SOURCE = "UNVERIFIED_SOURCE"
+    INCONCLUSIVE = "INCONCLUSIVE"
+
+
 @dataclass
 class CostBudget:
     max_files_scanned: int = 500
@@ -68,6 +83,38 @@ class CostBudget:
     def from_dict(cls, data: Dict[str, Any]) -> CostBudget:
         return cls(**data)
 
+    @classmethod
+    def get_preset(cls, name: str) -> CostBudget:
+        name_u = name.upper()
+        if name_u == "B10":
+            return cls(max_files_scanned=20, max_tests_inspected=10, max_executions_run=1, max_total_actions=3)
+        elif name_u == "B25":
+            return cls(max_files_scanned=50, max_tests_inspected=25, max_executions_run=2, max_total_actions=5)
+        elif name_u == "B50":
+            return cls(max_files_scanned=100, max_tests_inspected=50, max_executions_run=3, max_total_actions=8)
+        elif name_u == "B100":
+            return cls(max_files_scanned=300, max_tests_inspected=100, max_executions_run=5, max_total_actions=15)
+        return cls()
+
+    @classmethod
+    def from_preset(cls, name: str) -> CostBudget:
+        return cls.get_preset(name)
+
+
+@dataclass
+class PipelineConfig:
+    repo_search: bool = True
+    dependency_inspection: bool = True
+    test_discovery: bool = True
+    targeted_execution: bool = True
+
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)
+
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> PipelineConfig:
+        return cls(**data)
+
 
 @dataclass
 class AcquiredEvidence:
@@ -78,10 +125,17 @@ class AcquiredEvidence:
     repository: str
     commit: str
     file_path: str
-    content_hash: str
+    content_hash: str  # defined as test_function_sha256 or AST segment hash
     binding_strength: BindingStrength
     supports_or_contradicts: str  # "SUPPORTS", "CONTRADICTS", "INCONCLUSIVE"
     confidence: float
+    test_file_sha256: str = ""
+    test_function_sha256: str = ""
+    stdout_sha256: str = ""
+    stderr_sha256: str = ""
+    command_sha256: str = ""
+    source_origin_status: str = "SOURCE_ORIGIN_UNVERIFIED"
+    dependency_environment_status: str = "CURRENT_ENVIRONMENT_NOT_HISTORICALLY_RESTORED"
     cost: Dict[str, Any] = field(default_factory=dict)
     detail: str = ""
     extra_metadata: Dict[str, Any] = field(default_factory=dict)
@@ -99,6 +153,13 @@ class AcquiredEvidence:
             "binding_strength": self.binding_strength.value if isinstance(self.binding_strength, Enum) else str(self.binding_strength),
             "supports_or_contradicts": self.supports_or_contradicts,
             "confidence": self.confidence,
+            "test_file_sha256": self.test_file_sha256,
+            "test_function_sha256": self.test_function_sha256,
+            "stdout_sha256": self.stdout_sha256,
+            "stderr_sha256": self.stderr_sha256,
+            "command_sha256": self.command_sha256,
+            "source_origin_status": self.source_origin_status,
+            "dependency_environment_status": self.dependency_environment_status,
             "cost": self.cost,
             "detail": self.detail,
             "extra_metadata": self.extra_metadata
@@ -120,6 +181,13 @@ class AcquiredEvidence:
             binding_strength=strength,
             supports_or_contradicts=data.get("supports_or_contradicts", "INCONCLUSIVE"),
             confidence=float(data.get("confidence", 0.0)),
+            test_file_sha256=data.get("test_file_sha256", ""),
+            test_function_sha256=data.get("test_function_sha256", ""),
+            stdout_sha256=data.get("stdout_sha256", ""),
+            stderr_sha256=data.get("stderr_sha256", ""),
+            command_sha256=data.get("command_sha256", ""),
+            source_origin_status=data.get("source_origin_status", "SOURCE_ORIGIN_UNVERIFIED"),
+            dependency_environment_status=data.get("dependency_environment_status", "CURRENT_ENVIRONMENT_NOT_HISTORICALLY_RESTORED"),
             cost=data.get("cost", {}),
             detail=data.get("detail", ""),
             extra_metadata=data.get("extra_metadata", {})
@@ -152,8 +220,11 @@ class TestCandidate:
     binding_strength: BindingStrength
     discovery_reason: str
     test_source: str = ""
+    test_file_sha256: str = ""
+    test_function_sha256: str = ""
     line_start: int = 1
     line_end: int = 1
+    witness_binding: Optional[Dict[str, Any]] = None
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -165,10 +236,13 @@ class TestCandidate:
             "assertion_count": self.assertion_count,
             "target_commit": self.target_commit,
             "source_hash": self.source_hash,
+            "test_file_sha256": self.test_file_sha256,
+            "test_function_sha256": self.test_function_sha256,
             "binding_strength": self.binding_strength.value if isinstance(self.binding_strength, Enum) else str(self.binding_strength),
             "discovery_reason": self.discovery_reason,
             "line_start": self.line_start,
-            "line_end": self.line_end
+            "line_end": self.line_end,
+            "witness_binding": self.witness_binding
         }
 
 
@@ -179,6 +253,7 @@ class EvidenceAcquisitionRequest:
     repository_root: str = ""
     static_result: Optional[ClaimEvaluationResult] = None
     available_budget: CostBudget = field(default_factory=CostBudget)
+    config: PipelineConfig = field(default_factory=PipelineConfig)
     base_commit: str = ""
     target_commit: str = ""
 
@@ -217,6 +292,7 @@ class EscalationTrace:
     total_cost: Dict[str, Any] = field(default_factory=dict)
     stop_reason: str = ""
     acquired_evidences: List[Dict[str, Any]] = field(default_factory=list)
+    selected_witness: Optional[Dict[str, Any]] = None
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -226,6 +302,7 @@ class EscalationTrace:
             "total_actions": self.total_actions,
             "total_cost": self.total_cost,
             "stop_reason": self.stop_reason,
+            "selected_witness": self.selected_witness,
             "steps": [s.to_dict() for s in self.steps],
             "acquired_evidences": self.acquired_evidences
         }

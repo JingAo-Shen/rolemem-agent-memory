@@ -5,9 +5,9 @@
   "total_actions": 2,
   "total_cost": {
     "repository_files_scanned": 1,
-    "tests_inspected": 91,
+    "tests_inspected": 50,
     "executions_run": 1,
-    "execution_time_ms": 460.94,
+    "execution_time_ms": 452.82,
     "total_actions": 2,
     "action_counts": {
       "TEST_DISCOVERY": 1,
@@ -15,57 +15,123 @@
     }
   },
   "stop_reason": "RESOLVED_TO_VALID",
+  "selected_witness": {
+    "test_file": "tests/test_text.py",
+    "test_name": "test_str",
+    "subject_mentions": 1,
+    "object_mentions": 2,
+    "dependency_mentions": 0,
+    "assertion_count": 1,
+    "target_commit": "9a99acc97d26d7832200a271ed8e95dd59df10c7",
+    "source_hash": "5a0099a19df708c62c1ed4d1089478d237a2e110cc476e5b8b8d3214018bd0e5",
+    "test_file_sha256": "fbe2dda0532c9857c3369b535d3b5bc0f8ab794d7dce378993f29517100e4028",
+    "test_function_sha256": "5a0099a19df708c62c1ed4d1089478d237a2e110cc476e5b8b8d3214018bd0e5",
+    "binding_strength": "STRONG",
+    "discovery_reason": "Direct verified dataflow from Subject to generic operation 'str' inside assertion.",
+    "line_start": 49,
+    "line_end": 50,
+    "witness_binding": {
+      "claim_id": "CLM-000041",
+      "subject": "Text",
+      "operation_tokens": [
+        "str"
+      ],
+      "expected_literals": [],
+      "expected_attributes": [],
+      "test_file": "tests/test_text.py",
+      "test_name": "test_str",
+      "test_function_sha256": "5a0099a19df708c62c1ed4d1089478d237a2e110cc476e5b8b8d3214018bd0e5",
+      "subject_binding": true,
+      "operation_binding": true,
+      "assertion_binding": true,
+      "dataflow_binding": true,
+      "critical_operation_coverage_ratio": 1.0,
+      "assertion_local_coverage": 1,
+      "binding_strength": "STRONG",
+      "binding_reasons": [
+        "Direct verified dataflow from Subject to generic operation 'str' inside assertion."
+      ]
+    }
+  },
   "steps": [
     {
       "step_number": 1,
       "action_type": "TEST_DISCOVERY",
       "target": "Text op_tokens=['str']",
-      "outcome": "Discovered 80 candidates (23 strong)",
+      "outcome": "Discovered 46 candidates (9 strong)",
       "evidence_id": null,
       "binding_strength": "STRONG",
       "cost_increment": {},
-      "detail": "Top candidate: tests/test_text.py:test_divide"
+      "detail": "Top candidate: tests/test_text.py:test_str (Direct verified dataflow from Subject to generic operation 'str' inside assertion.)"
     },
     {
       "step_number": 2,
       "action_type": "TARGETED_EXECUTION",
-      "target": "tests/test_text.py::test_divide",
+      "target": "tests/test_text.py::test_str",
       "outcome": "SUPPORTS",
-      "evidence_id": "EV-EXEC-fd2ec17d",
+      "evidence_id": "EV-EXEC-ef3d2bde",
       "binding_strength": "STRONG",
       "cost_increment": {
-        "execution_time_ms": 460.94,
+        "execution_time_ms": 452.82,
         "timeout_sec": 15
       },
-      "detail": "Native test 'tests/test_text.py::test_divide' passed under target commit 9a99acc9."
+      "detail": "Verified witness 'tests/test_text.py::test_str' passed under target commit 9a99acc9 (source verified: rich)."
     }
   ],
   "acquired_evidences": [
     {
-      "evidence_id": "EV-EXEC-fd2ec17d",
+      "evidence_id": "EV-EXEC-ef3d2bde",
       "claim_id": "CLM-000041",
       "action_type": "TARGETED_EXECUTION",
       "source_type": "NATIVE_TEST_EXECUTION",
       "repository": "rich",
       "commit": "9a99acc97d26d7832200a271ed8e95dd59df10c7",
       "file_path": "tests/test_text.py",
-      "content_hash": "7fefcaf66f6e7137767bc25d16d128cbf7b8617ad0b6f14fbf9a0b8e7fdd81cd",
+      "content_hash": "5a0099a19df708c62c1ed4d1089478d237a2e110cc476e5b8b8d3214018bd0e5",
       "binding_strength": "STRONG",
       "supports_or_contradicts": "SUPPORTS",
       "confidence": 0.95,
+      "test_file_sha256": "fbe2dda0532c9857c3369b535d3b5bc0f8ab794d7dce378993f29517100e4028",
+      "test_function_sha256": "5a0099a19df708c62c1ed4d1089478d237a2e110cc476e5b8b8d3214018bd0e5",
+      "stdout_sha256": "76af71df60bb5f93ea635e8763126ecf98e837672c9980e80aefde989b203765",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command_sha256": "c57e2a23b768d3d3c47f4ce8a807c21cad85a434c6cbc957e228407f57c5b84f",
+      "source_origin_status": "VERIFIED_TARGET_WORKTREE",
+      "dependency_environment_status": "CURRENT_ENVIRONMENT_NOT_HISTORICALLY_RESTORED",
       "cost": {
-        "execution_time_ms": 460.94,
+        "execution_time_ms": 452.82,
         "timeout_sec": 15
       },
-      "detail": "Native test 'tests/test_text.py::test_divide' passed under target commit 9a99acc9.",
+      "detail": "Verified witness 'tests/test_text.py::test_str' passed under target commit 9a99acc9 (source verified: rich).",
       "extra_metadata": {
-        "test_name": "test_divide",
+        "test_name": "test_str",
         "execution_status": "PASS",
-        "command_hash": "bde90763ac02cbc76527563bbf04cd7e7846bce778a24acbe252d024e996feba",
-        "stdout_hash": "7fefcaf66f6e7137767bc25d16d128cbf7b8617ad0b6f14fbf9a0b8e7fdd81cd",
-        "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "package_name": "rich",
+        "module_origin": "/tmp/rolemem_v1_worktrees/wt_l17ordi2/rich/__init__.py",
         "environment_provenance": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
-        "python_version": "3.13.5"
+        "python_version": "3.13.5",
+        "witness_binding": {
+          "claim_id": "CLM-000041",
+          "subject": "Text",
+          "operation_tokens": [
+            "str"
+          ],
+          "expected_literals": [],
+          "expected_attributes": [],
+          "test_file": "tests/test_text.py",
+          "test_name": "test_str",
+          "test_function_sha256": "5a0099a19df708c62c1ed4d1089478d237a2e110cc476e5b8b8d3214018bd0e5",
+          "subject_binding": true,
+          "operation_binding": true,
+          "assertion_binding": true,
+          "dataflow_binding": true,
+          "critical_operation_coverage_ratio": 1.0,
+          "assertion_local_coverage": 1,
+          "binding_strength": "STRONG",
+          "binding_reasons": [
+            "Direct verified dataflow from Subject to generic operation 'str' inside assertion."
+          ]
+        }
       }
     }
   ]

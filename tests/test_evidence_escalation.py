@@ -179,7 +179,7 @@ def test_claim_test_binder_scoring():
     )
     res_strong = binder.evaluate_binding(claim, cand_strong)
     assert res_strong.binding_strength == BindingStrength.STRONG
-    assert res_strong.object_mentions >= 2
+    assert res_strong.witness_binding["critical_operation_coverage_ratio"] == 1.0
 
     # Weak candidate (only mentions name in AST without operations or assertions)
     cand_weak = TestCandidate(
