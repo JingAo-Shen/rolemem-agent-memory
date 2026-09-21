@@ -2,7 +2,7 @@
 """
 scripts/generate_all_protocol_v2_1_reports.py
 
-Single Source of Truth Report Generator for Protocol V2.1:
+Single Source of Truth Report Generator for Protocol V2.1-R3:
 - reports/symbol-validity-protocol-v2.1.md
 - reports/human-annotation-status-v2.1.md
 - reports/protocol-v2.1-readiness.md
@@ -24,27 +24,29 @@ CAUSAL_SUMMARY_PATH = "/code/rolemem-agent-memory/data/causal_matrix_v2_1/summar
 def generate_symbol_validity_report(eval_data: dict) -> str:
     bench = eval_data["benchmark_summary"]
     mechs = eval_data["mechanisms"]
+    cat_dist = bench.get("category_distribution", {})
 
     lines = [
-        "# Memory Validity Protocol V2.1 — Empirical Mechanism Evaluation Report",
+        "# Memory Validity Protocol V2.1-R3 — Empirical Mechanism Evaluation Report",
         "",
-        "## 1. Grounded Benchmark Composition (100% Real Git Commits)",
+        "## 1. Protocol V2.1 Development Benchmark Composition (100% Real Git Commits)",
         f"- **Total Empirical Cases**: {bench['total_cases']}",
         f"- **Valid Cases (True Negative for Stale)**: {bench['valid_cases']} ({(bench['valid_cases']/bench['total_cases'])*100:.1f}%)",
         f"- **Stale Cases (True Positive for Stale)**: {bench['stale_cases']} ({(bench['stale_cases']/bench['total_cases'])*100:.1f}%)",
         "",
         "### Empirical Taxonomy Breakdown",
-        f"- **Category A** (File Modified / Target Symbol Unchanged / Memory Valid): {bench['category_distribution']['CAT_A_FILE_CHG_SYM_SAME_VALID']} cases",
-        f"- **Category B** (Target Symbol Modified Internally / Memory Still Semantically Valid): {bench['category_distribution']['CAT_B_SYM_CHG_MEMORY_VALID']} cases",
-        f"- **Category C** (Target Symbol Unchanged / External Interface Stale): {bench['category_distribution']['CAT_C_SYM_SAME_MEMORY_STALE']} cases",
-        f"- **Category D** (Target Symbol Modified or Removed / Memory Stale): {bench['category_distribution']['CAT_D_SYM_CHG_OR_REM_STALE']} cases",
+        f"- **Category A** (File Modified / Target Symbol Unchanged / Memory Valid): {cat_dist.get('CAT_A_FILE_CHG_SYM_SAME_VALID', 0)} cases",
+        f"- **Category B** (Target Symbol Modified Internally / Valid Contract Assertions): {cat_dist.get('CAT_B_SYM_CHG_MEMORY_VALID', 0)} cases",
+        f"- **Category C** (Target Symbol Unchanged / Verified Dependency Linkage Broken): {cat_dist.get('CAT_C_SYM_SAME_MEMORY_STALE', 0)} cases",
+        f"- **Category D1** (Target Symbol Removed / Memory Stale): {cat_dist.get('CAT_D1_SYM_REM_STALE', 0)} cases",
+        f"- **Category D2** (Target Symbol Modified / Verified Behavioral Break): {cat_dist.get('CAT_D2_SYM_CHG_BEHAVIOR_STALE', 0)} cases",
         "",
         "---",
         "",
-        "## 2. Mechanism Benchmark Comparison (Unseen General AST Logic)",
+        "## 2. Mechanism Benchmark Comparison (General AST & Dependency Logic)",
         "",
-        "| Mechanism | Coverage | Overall Acc | Balanced Acc | Macro F1 | MCC | Stale Prec | Stale Rec | Stale F1 | FIR (False Inval) | SER (Stale Exposure) |",
-        "| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |"
+        "| Mechanism | Coverage | Overall Acc | Balanced Acc | Macro F1 | MCC | Selective Risk | Stale Prec | Stale Rec | Stale F1 | FIR (False Inval) | SER (Stale Exposure) |",
+        "| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |"
     ]
 
     for mname, mdata in mechs.items():
@@ -53,12 +55,13 @@ def generate_symbol_validity_report(eval_data: dict) -> str:
         bacc = mdata.get("Balanced_Accuracy", 0.0) * 100
         mf1 = mdata.get("Macro_F1", 0.0) * 100
         mcc = mdata.get("MCC", 0.0)
+        risk = mdata.get("Selective_Risk", 0.0) * 100
         prec = mdata["Precision"] * 100
         rec = mdata["Recall"] * 100
         f1 = mdata["F1"] * 100
         fir = mdata["False_Invalidation_Rate_FIR"] * 100
         ser = mdata["Stale_Exposure_Rate_SER"] * 100
-        lines.append(f"| **{mname}** | {cov:.1f}% | {acc:.1f}% | {bacc:.1f}% | {mf1:.1f}% | {mcc:+.3f} | {prec:.1f}% | {rec:.1f}% | {f1:.1f}% | {fir:.1f}% | {ser:.1f}% |")
+        lines.append(f"| **{mname}** | {cov:.1f}% | {acc:.1f}% | {bacc:.1f}% | {mf1:.1f}% | {mcc:+.3f} | {risk:.1f}% | {prec:.1f}% | {rec:.1f}% | {f1:.1f}% | {fir:.1f}% | {ser:.1f}% |")
 
     lines.extend([
         "",
@@ -66,8 +69,8 @@ def generate_symbol_validity_report(eval_data: dict) -> str:
         "",
         "## 3. Per-Category Granular Accuracy",
         "",
-        "| Mechanism | Cat A (File Chg / Sym Same / Valid) | Cat B (Sym Chg / Valid) | Cat C (Sym Same / Stale) | Cat D (Sym Chg / Stale) |",
-        "| :--- | :--- | :--- | :--- | :--- |"
+        "| Mechanism | Cat A (File Chg / Sym Same / Valid) | Cat B (Sym Chg / Valid) | Cat C (Sym Same / Stale) | Cat D1 (Sym Rem / Stale) | Cat D2 (Sym Chg / Stale) |",
+        "| :--- | :--- | :--- | :--- | :--- | :--- |"
     ])
 
     for mname, mdata in mechs.items():
@@ -75,8 +78,9 @@ def generate_symbol_validity_report(eval_data: dict) -> str:
         a_acc = pca.get("CAT_A_FILE_CHG_SYM_SAME_VALID", 0.0) * 100
         b_acc = pca.get("CAT_B_SYM_CHG_MEMORY_VALID", 0.0) * 100
         c_acc = pca.get("CAT_C_SYM_SAME_MEMORY_STALE", 0.0) * 100
-        d_acc = pca.get("CAT_D_SYM_CHG_OR_REM_STALE", 0.0) * 100
-        lines.append(f"| **{mname}** | {a_acc:.1f}% | {b_acc:.1f}% | {c_acc:.1f}% | {d_acc:.1f}% |")
+        d1_acc = pca.get("CAT_D1_SYM_REM_STALE", 0.0) * 100
+        d2_acc = pca.get("CAT_D2_SYM_CHG_BEHAVIOR_STALE", 0.0) * 100
+        lines.append(f"| **{mname}** | {a_acc:.1f}% | {b_acc:.1f}% | {c_acc:.1f}% | {d1_acc:.1f}% | {d2_acc:.1f}% |")
 
     lines.extend([
         "",
@@ -86,7 +90,7 @@ def generate_symbol_validity_report(eval_data: dict) -> str:
         "1. **Zero Heuristics Guarantee**: Evaluator contains 0 hardcoded benchmark keywords or symbol literals.",
         "2. **Strict Phase Separation**: Phase 1 blind prediction outputs to `predictions_<mech>.jsonl` before Phase 2 scoring reads `gold_labels.jsonl`.",
         "3. **De-leaked Case IDs**: All blind input case IDs follow `MV21-XXXXXX` without category or outcome leakage.",
-        "4. **Balanced Robustness Split**: Primary split contains 64 cases (Cat A: 36, Cat B: 8, Cat C: 4, Cat D: 16) mined from 22 distinct repositories.",
+        "4. **Verified Causal & Dependency Linkage**: Cat B cases validated with historical commit executions; Cat C verified with 2-hop AST dependency call graphs; Cat D2 validated with concrete behavioral breaks.",
         ""
     ])
 
@@ -95,7 +99,7 @@ def generate_symbol_validity_report(eval_data: dict) -> str:
 
 def generate_human_annotation_report(pkg_cases_count: int) -> str:
     lines = [
-        "# Human Annotation Status Report (Protocol V2.1-R2)",
+        "# Human Annotation Status Report (Protocol V2.1-R3)",
         "",
         "> [!IMPORTANT]",
         "> **Formal Scientific Declaration**: External human validation is currently in `PENDING` status. No synthetic multi-annotator agreement metrics (such as fake Cohen's kappa) are reported until external third-party reviewers complete the blinded annotation templates.",
@@ -117,13 +121,14 @@ def generate_human_annotation_report(pkg_cases_count: int) -> str:
 def generate_readiness_report(eval_data: dict, manifest: dict, causal: dict) -> str:
     bench = eval_data["benchmark_summary"]
     mechs = eval_data["mechanisms"]
+    cat_dist = bench.get("category_distribution", {})
 
     lines = [
-        "# RoleMem Protocol V2.1-R2 — Benchmark Freeze Readiness & Scientific Audit Report",
+        "# RoleMem Protocol V2.1-R3 — Benchmark Freeze Readiness & Scientific Audit Report",
         "",
         "## Formal Status Declaration",
         "```text",
-        "PROTOCOL_VERSION = 2.1-r2",
+        "PROTOCOL_VERSION = 2.1-r3",
         "ALGORITHM_FREEZE = NO",
         "BENCHMARK_FREEZE = NO",
         "HUMAN_VALIDATION = PENDING",
@@ -133,7 +138,7 @@ def generate_readiness_report(eval_data: dict, manifest: dict, causal: dict) -> 
         "",
         "---",
         "",
-        "## 1. Protocol V2.1-R2 Core Audit Metrics",
+        "## 1. Protocol V2.1-R3 Core Audit Metrics",
         "",
         "### A. Track A Transition Pool & Curation",
         f"- **Total Evaluated Transitions**: {manifest['total_evaluated_transitions']}",
@@ -148,9 +153,9 @@ def generate_readiness_report(eval_data: dict, manifest: dict, causal: dict) -> 
         f"- **Machine-Generated Causal Pass Rate**: {causal['causal_pass_count']}/{causal['total_evaluated']} ({causal['pass_rate']*100:.1f}%)",
         "- **Execution Method**: Real execution inside Bubblewrap containerized sandbox with SHA256 output verification.",
         "",
-        "### C. Memory Validity Benchmark V2.1-R2",
+        "### C. Memory Validity Protocol V2.1 Development Benchmark",
         f"- **Total Empirical Cases**: {bench['total_cases']}",
-        f"- **Category Distribution**: Cat A ({bench['category_distribution']['CAT_A_FILE_CHG_SYM_SAME_VALID']}), Cat B ({bench['category_distribution']['CAT_B_SYM_CHG_MEMORY_VALID']}), Cat C ({bench['category_distribution']['CAT_C_SYM_SAME_MEMORY_STALE']}), Cat D ({bench['category_distribution']['CAT_D_SYM_CHG_OR_REM_STALE']})",
+        f"- **Category Distribution**: Cat A ({cat_dist.get('CAT_A_FILE_CHG_SYM_SAME_VALID', 0)}), Cat B ({cat_dist.get('CAT_B_SYM_CHG_MEMORY_VALID', 0)}), Cat C ({cat_dist.get('CAT_C_SYM_SAME_MEMORY_STALE', 0)}), Cat D1 ({cat_dist.get('CAT_D1_SYM_REM_STALE', 0)}), Cat D2 ({cat_dist.get('CAT_D2_SYM_CHG_BEHAVIOR_STALE', 0)})",
         "- **De-leaked Case IDs**: 100% matching `^MV21-\\d{6}$` (0% category leakage).",
         "- **Benchmark-Specific Keyword Rules**: **0** (Zero heuristic whitelist).",
         "",
@@ -159,7 +164,7 @@ def generate_readiness_report(eval_data: dict, manifest: dict, causal: dict) -> 
         "## 2. Outstanding Scientific Risks & Required Next Steps",
         "1. **External Human Annotation**: Multi-annotator blinded validation (`human_annotation_template_annotator_*.csv`) must be completed by independent annotators.",
         "2. **Full Agent Baseline Runs**: Multi-seed agent evaluation across conditions B0-B5, F, A1-A5 with paired bootstrap 95% CIs.",
-        "3. **Rebuild Candidates**: 12 transitions currently undergoing fixture enhancement before prospective promotion to Core.",
+        "3. **Rebuild Candidates**: Transitions currently undergoing fixture enhancement before prospective promotion to Core.",
         ""
     ]
     return "\n".join(lines)
@@ -197,8 +202,9 @@ def main():
         f.write(readiness_rep)
     print("Generated reports/protocol-v2.1-readiness.md")
 
-    print("All Protocol V2.1-R2 reports generated successfully from SSOT JSON data.")
+    print("All Protocol V2.1-R3 reports generated successfully from SSOT JSON data.")
 
 
 if __name__ == "__main__":
     main()
+

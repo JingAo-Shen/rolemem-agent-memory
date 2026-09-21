@@ -1,0 +1,41 @@
+{
+  "case_id": "MV21-000059",
+  "repository": "markupsafe",
+  "base_commit": "562e82e775a9445a01f4861a591145eb6c78b378",
+  "target_commit": "4afaf1ae7a2ca7a3f32c4c665eeb53afe9d9b082",
+  "base_execution": {
+    "passed": true,
+    "exit_code": 0,
+    "source_commit": "562e82e775a9445a01f4861a591145eb6c78b378",
+    "python_version": "3.13.5",
+    "cwd_commit": "562e82e775a9445a01f4861a591145eb6c78b378",
+    "contract_hash": "5a57a7c6add7f1f1de13de5b89e60c5fe9c46803bff502e598054ab6b593de78",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout": "",
+    "stderr": "",
+    "timestamp": 1789951254.6162832,
+    "worktree_clean_before": true,
+    "worktree_clean_after": true,
+    "environment_mode": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
+    "dependency_lock_restored": false
+  },
+  "target_execution": {
+    "passed": false,
+    "exit_code": 1,
+    "source_commit": "4afaf1ae7a2ca7a3f32c4c665eeb53afe9d9b082",
+    "python_version": "3.13.5",
+    "cwd_commit": "4afaf1ae7a2ca7a3f32c4c665eeb53afe9d9b082",
+    "contract_hash": "5a57a7c6add7f1f1de13de5b89e60c5fe9c46803bff502e598054ab6b593de78",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "1a94986863742b080863901be6cb29a7335498e156a641407829c3cffd4d3ab4",
+    "stdout": "",
+    "stderr": "<string>:13: UserWarning: The '__version__' attribute is deprecated and will be removed in MarkupSafe 3.1. Use feature detection, or `importlib.metadata.version(\"markupsafe\")`, instead.\nTraceback (most recent call last):\n  File \"/root/anaconda3/lib/python3.13/importlib/metadata/__init__.py\", line 407, in from_name\n    return next(iter(cls.discover(name=name)))\nStopIteration\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"<string>\", line 13, in <module>\n    v = markupsafe.__version__\n        ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/tmpnsjk7owh/wt/src/markupsafe/__init__.py\", line 329, in __getattr__\n    return importlib.metadata.version(\"flask-classful\")\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^\n  File \"/root/anaconda3/lib/python3.13/importlib/metadata/__init__.py\", line 987, in version\n    return distribution(distribution_name).version\n           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^\n  File \"/root/anaconda3/lib/python3.13/importlib/metadata/__init__.py\", line 960, in distribution\n    return Distribution.from_name(distribution_name)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^\n  File \"/root/anaconda3/lib/python3.13/importlib/metadata/__init__.py\", line 409, in from_name\n    raise PackageNotFoundError(name)\nimportlib.metadata.PackageNotFoundError: No package metadata was found for flask-classful\n",
+    "timestamp": 1789951254.6876173,
+    "worktree_clean_before": true,
+    "worktree_clean_after": true,
+    "environment_mode": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
+    "dependency_lock_restored": false
+  },
+  "break_verified": true
+}

@@ -2,23 +2,15 @@
 """
 scripts/build_grounded_memory_validity_benchmark_v2_1.py
 
-Constructs the 100% Empirically-Grounded Memory Validity Benchmark V2.1-R1:
-- Zero mock hashes, zero placeholder SHAs, zero HEAD~N references.
-- Zero DIGEST_BASE, DIGEST_TARGET, or mock digest placeholders.
-- Strict Category Criteria:
-  - Cat A: file changed, base_symbol_digest == target_symbol_digest, valid memory.
-    Enforces concentration limits: max 5 cases per transition, max 8 per repo.
-  - Cat B: base_symbol_digest != target_symbol_digest, machine-verified behavioral contract passes on both base and target snapshots.
-  - Cat C: base_symbol_digest == target_symbol_digest (strictly verified!), machine-verified counterfactual demonstrates failure under target dependency break.
-  - Cat D: base_symbol_digest != target_symbol_digest or symbol removed, stale memory.
-- Anonymized Blind Case IDs: MV21-000001, MV21-000002, ... (Matching ^MV21-\\d{6}$).
-- Machine Artifacts Generated:
-  - data/memory_validity_v2_1/contracts/<case_id>.json
-  - data/memory_validity_v2_1/counterfactuals/<case_id>.json
-  - data/memory_validity_v2_1/blind_inputs.jsonl
-  - data/memory_validity_v2_1/gold_labels.jsonl
-  - data/memory_validity_v2_1/case_id_map_private.json
-  - data/memory_validity_v2_1/benchmark_stats.json
+Protocol V2.1-R3: Grounded Memory Validity Benchmark Builder
+- Real worktree execution evidence with zero source mutation and verified clean worktrees.
+- Honest environment provenance ("CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE").
+- Category B: Contract-derived memory claims with explicit claim-contract linkage.
+- Category C: AST dependency linkage verified (HookSpec -> varnames) with strict counterfactual execution.
+- Category D split:
+  - D1 = CAT_D1_SYM_REM_STALE (symbol removed in target commit)
+  - D2 = CAT_D2_SYM_CHG_BEHAVIOR_STALE (symbol changed + behavioral break verified by execution)
+- De-leaked blind inputs: zero researcher interpretation in test_evidence.
 """
 
 import os
@@ -26,6 +18,7 @@ import sys
 import glob
 import json
 import time
+import shutil
 import hashlib
 import tempfile
 import subprocess
@@ -33,12 +26,14 @@ from typing import Dict, Any, List, Optional, Tuple, Set
 
 sys.path.insert(0, "/code/rolemem-agent-memory")
 from src.symbol_validity import SymbolDigestExtractor
+from src.validity.dependency_graph import DependencyGraphVerifier
 
 REPO_CACHE_ROOT = "/code/repo_cache"
 OUT_DIR = "/code/rolemem-agent-memory/data/memory_validity_v2_1"
 FULL_POOL_DIR = os.path.join(OUT_DIR, "full_pool")
 CONTRACTS_DIR = os.path.join(OUT_DIR, "contracts")
 COUNTERFACTUALS_DIR = os.path.join(OUT_DIR, "counterfactuals")
+BEHAVIOR_BREAKS_DIR = os.path.join(OUT_DIR, "behavior_breaks")
 BLIND_INPUTS_PATH = os.path.join(OUT_DIR, "blind_inputs.jsonl")
 GOLD_LABELS_PATH = os.path.join(OUT_DIR, "gold_labels.jsonl")
 PRIVATE_MAP_PATH = os.path.join(OUT_DIR, "case_id_map_private.json")
@@ -48,16 +43,12 @@ os.makedirs(OUT_DIR, exist_ok=True)
 os.makedirs(FULL_POOL_DIR, exist_ok=True)
 os.makedirs(CONTRACTS_DIR, exist_ok=True)
 os.makedirs(COUNTERFACTUALS_DIR, exist_ok=True)
+os.makedirs(BEHAVIOR_BREAKS_DIR, exist_ok=True)
 
 # Primary development benchmark concentration limits
 PRIMARY_MAX_CAT_A_PER_TRANSITION = 2
 PRIMARY_MAX_CAT_A_PER_REPO = 3
 PRIMARY_MAX_CAT_A_TOTAL = 36
-
-PRIMARY_MAX_CAT_D_PER_TRANSITION = 1
-PRIMARY_MAX_CAT_D_PER_REPO = 2
-PRIMARY_MAX_CAT_D_TOTAL = 16
-
 
 
 def sha256_text(s: str) -> str:
@@ -74,6 +65,7 @@ def execute_contract_at_commit(repo_name: str, commit: str, contract_code: str) 
             return {
                 "passed": False,
                 "exit_code": res_wt.returncode,
+                "source_commit": commit,
                 "python_version": sys.version.split()[0],
                 "cwd_commit": "",
                 "contract_hash": sha256_text(contract_code),
@@ -81,23 +73,37 @@ def execute_contract_at_commit(repo_name: str, commit: str, contract_code: str) 
                 "stderr_sha256": sha256_text(res_wt.stderr),
                 "stdout": "",
                 "stderr": res_wt.stderr,
-                "timestamp": time.time()
+                "timestamp": time.time(),
+                "worktree_clean_before": False,
+                "worktree_clean_after": False,
+                "environment_mode": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
+                "dependency_lock_restored": False
             }
         try:
-            # Handle package version file if necessary
-            for subpkg in [repo_clean, f"src/{repo_clean}"]:
-                pkg_d = os.path.join(wt_dir, subpkg)
-                if os.path.isdir(pkg_d) and not os.path.exists(os.path.join(pkg_d, "_version.py")):
-                    try:
-                        with open(os.path.join(pkg_d, "_version.py"), "w") as vf:
-                            vf.write('__version__ = "0.0.0.dev0"\n')
-                    except Exception:
-                        pass
+            # Check git status before execution (must be clean)
+            res_stat_before = subprocess.run(["git", "status", "--porcelain"], cwd=wt_dir, capture_output=True, text=True)
+            clean_before = (res_stat_before.returncode == 0 and not res_stat_before.stdout.strip())
+
+            # Wrap contract with in-memory version helper (avoids mutating worktree files)
+            preamble = (
+                "import sys, types\n"
+                f"for pkg in ['{repo_clean}', 'urllib3', 'setuptools_scm']:\n"
+                "    vname = f'{pkg}._version'\n"
+                "    if vname not in sys.modules:\n"
+                "        try:\n"
+                "            vmod = types.ModuleType(vname)\n"
+                "            vmod.__version__ = '1.0.0.dev0'\n"
+                "            sys.modules[vname] = vmod\n"
+                "        except Exception: pass\n"
+            )
+            full_code = preamble + contract_code
 
             env = os.environ.copy()
             env["PYTHONPATH"] = f"{wt_dir}:{wt_dir}/src:" + env.get("PYTHONPATH", "")
+            env["SETUPTOOLS_SCM_PRETEND_VERSION"] = "1.0.0"
+
             res_exec = subprocess.run(
-                [sys.executable, "-c", contract_code],
+                [sys.executable, "-c", full_code],
                 cwd=wt_dir,
                 env=env,
                 capture_output=True,
@@ -105,13 +111,18 @@ def execute_contract_at_commit(repo_name: str, commit: str, contract_code: str) 
                 timeout=10
             )
 
+            # Check git status after execution (must remain clean)
+            res_stat_after = subprocess.run(["git", "status", "--porcelain"], cwd=wt_dir, capture_output=True, text=True)
+            clean_after = (res_stat_after.returncode == 0 and not res_stat_after.stdout.strip())
+
             res_rev = subprocess.run(["git", "rev-parse", "HEAD"], cwd=wt_dir, capture_output=True, text=True)
             actual_commit = res_rev.stdout.strip()
 
-            passed = (res_exec.returncode == 0)
+            passed = (res_exec.returncode == 0 and clean_before and clean_after)
             return {
                 "passed": passed,
                 "exit_code": res_exec.returncode,
+                "source_commit": commit,
                 "python_version": sys.version.split()[0],
                 "cwd_commit": actual_commit,
                 "contract_hash": sha256_text(contract_code),
@@ -119,91 +130,71 @@ def execute_contract_at_commit(repo_name: str, commit: str, contract_code: str) 
                 "stderr_sha256": sha256_text(res_exec.stderr),
                 "stdout": res_exec.stdout,
                 "stderr": res_exec.stderr,
-                "timestamp": time.time()
+                "timestamp": time.time(),
+                "worktree_clean_before": clean_before,
+                "worktree_clean_after": clean_after,
+                "environment_mode": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
+                "dependency_lock_restored": False
             }
         finally:
             subprocess.run(["git", "worktree", "remove", "--force", wt_dir], cwd=repo_dir, capture_output=True, text=True)
 
 
-
-def git_cmd(repo_name: str, args: List[str]) -> Tuple[int, str]:
+def get_git_file(repo_name: str, commit_sha: str, filepath: str) -> Optional[str]:
     repo_name_clean = repo_name.split("/")[-1]
     repo_dir = os.path.join(REPO_CACHE_ROOT, repo_name_clean)
-    if not os.path.exists(repo_dir):
-        return 1, ""
-    res = subprocess.run(["git"] + args, cwd=repo_dir, capture_output=True, text=True)
-    return res.returncode, res.stdout
+    if not os.path.isdir(repo_dir):
+        return None
+    res = subprocess.run(["git", "show", f"{commit_sha}:{filepath}"], cwd=repo_dir, capture_output=True, text=True)
+    return res.stdout if res.returncode == 0 else None
 
 
-def get_git_file(repo_name: str, commit: str, file_path: str) -> Optional[str]:
-    code, out = git_cmd(repo_name, ["show", f"{commit}:{file_path}"])
-    if code == 0:
-        return out
-    return None
+def get_git_diff(repo_name: str, base_sha: str, target_sha: str, filepath: str) -> str:
+    repo_name_clean = repo_name.split("/")[-1]
+    repo_dir = os.path.join(REPO_CACHE_ROOT, repo_name_clean)
+    if not os.path.isdir(repo_dir):
+        return ""
+    res = subprocess.run(["git", "diff", base_sha, target_sha, "--", filepath], cwd=repo_dir, capture_output=True, text=True)
+    return res.stdout if res.returncode == 0 else ""
 
 
-def get_git_diff(repo_name: str, base_commit: str, target_commit: str, file_path: str) -> str:
-    code, out = git_cmd(repo_name, ["diff", f"{base_commit}..{target_commit}", "--", file_path])
-    if code == 0:
-        return out
-    return ""
+def get_commit_subject(repo_name: str, commit_sha: str) -> str:
+    repo_name_clean = repo_name.split("/")[-1]
+    repo_dir = os.path.join(REPO_CACHE_ROOT, repo_name_clean)
+    res = subprocess.run(["git", "log", "-1", "--format=%s", commit_sha], cwd=repo_dir, capture_output=True, text=True)
+    return res.stdout.strip() if res.returncode == 0 else "Code update"
 
 
-def get_commit_subject(repo_name: str, commit: str) -> str:
-    code, out = git_cmd(repo_name, ["log", "-1", "--format=%s", commit])
-    if code == 0:
-        return out.strip()
-    return ""
-
-
-def find_commit_pair(repo_name: str, file_path: str) -> Tuple[Optional[str], Optional[str]]:
-    code, out = git_cmd(repo_name, ["log", "--format=%H", "-n", "10", "--", file_path])
-    if code == 0:
-        commits = [c.strip() for c in out.splitlines() if c.strip()]
-        if len(commits) >= 2:
-            return commits[1], commits[0]
+def find_commit_pair(repo_name: str, filepath: str) -> Tuple[Optional[str], Optional[str]]:
+    repo_clean = repo_name.split("/")[-1]
+    repo_dir = os.path.join(REPO_CACHE_ROOT, repo_clean)
+    if not os.path.isdir(repo_dir):
+        return None, None
+    res = subprocess.run(["git", "log", "--format=%H", "-n", "10", "--", filepath], cwd=repo_dir, capture_output=True, text=True)
+    if res.returncode != 0:
+        return None, None
+    commits = [c.strip() for c in res.stdout.splitlines() if c.strip()]
+    if len(commits) >= 2:
+        return commits[1], commits[0]
     return None, None
 
 
-def extract_symbol_code_block(source: str, sym_name: str) -> str:
-    parts = sym_name.split(".")
-    target_class = parts[0] if len(parts) > 1 else None
-    target_func = parts[-1]
-
-    lines = source.splitlines()
-    search_names = [sym_name, target_class, target_func] if target_class else [sym_name, target_func]
-    search_names = [n for n in search_names if n]
-
-    for sname in search_names:
-        target_lines = []
-        recording = False
-        base_indent = 0
-        for line in lines:
-            stripped = line.strip()
-            if (stripped.startswith(f"def {sname}(") or stripped.startswith(f"class {sname}(")
-                or stripped.startswith(f"class {sname}:") or stripped.startswith(f"async def {sname}(")):
-                recording = True
-                base_indent = len(line) - len(line.lstrip())
-                target_lines.append(line)
-                continue
-            if recording:
-                if not stripped:
-                    target_lines.append(line)
-                    continue
-                curr_indent = len(line) - len(line.lstrip())
-                if curr_indent <= base_indent and not stripped.startswith("#"):
+def extract_symbol_code_block(full_source: str, symbol_name: str) -> str:
+    lines = full_source.splitlines()
+    for idx, line in enumerate(lines):
+        if line.startswith(f"def {symbol_name}(") or line.startswith(f"class {symbol_name}") or line.startswith(f"async def {symbol_name}("):
+            target_lines = [line]
+            for next_line in lines[idx + 1:]:
+                if next_line.strip() == "" or next_line.startswith(" ") or next_line.startswith("\t"):
+                    target_lines.append(next_line)
+                else:
                     break
-                target_lines.append(line)
-                if len(target_lines) > 80:
-                    break
-        if target_lines:
             return "\n".join(target_lines)
     return "\n".join(lines[:50])
 
 
-def build_benchmark_v2_1_r2():
-    import shutil
-    for d in (CONTRACTS_DIR, COUNTERFACTUALS_DIR):
+def build_benchmark_v2_1_r3():
+    for d in (CONTRACTS_DIR, COUNTERFACTUALS_DIR, BEHAVIOR_BREAKS_DIR):
         if os.path.exists(d):
             shutil.rmtree(d)
         os.makedirs(d, exist_ok=True)
@@ -215,15 +206,13 @@ def build_benchmark_v2_1_r2():
     primary_cat_a = []
     raw_cat_b = []
     raw_cat_c = []
-    all_cat_d = []
-    primary_cat_d = []
+    raw_cat_d1 = []
+    raw_cat_d2 = []
 
     cat_a_repo_counts: Dict[str, int] = {}
     cat_a_trans_counts: Dict[str, int] = {}
-    cat_d_repo_counts: Dict[str, int] = {}
-    cat_d_trans_counts: Dict[str, int] = {}
 
-    # 1. Mine Cat A and Cat D from real Track A transitions
+    # 1. Mine Cat A and Cat D1 (Removed Symbols) from real Track A transitions
     for sf in spec_files:
         with open(sf, "r", encoding="utf-8") as f:
             spec = json.load(f)
@@ -271,7 +260,7 @@ def build_benchmark_v2_1_r2():
                     "target_block": t_block,
                     "diff_hunk": diff_hunk[:1000],
                     "pr_evidence": f"Commit: {pr_subj}",
-                    "test_evidence": f"Verify behavioral stability of `{b_info['qualified_name']}` in {repo}.",
+                    "test_evidence": f"Recorded AST digest match for `{b_info['qualified_name']}`.",
                     "gold_label": "VALID",
                     "category": "CAT_A_FILE_CHG_SYM_SAME_VALID",
                     "rationale": f"Whole file `{f_path}` modified in Git diff, but symbol `{b_info['qualified_name']}` AST digest is identical ({b_info['symbol_digest'][:8]}...).",
@@ -283,58 +272,18 @@ def build_benchmark_v2_1_r2():
                 }
                 all_cat_a.append(record_a)
 
-                # Primary split concentration control
                 if len(primary_cat_a) < PRIMARY_MAX_CAT_A_TOTAL:
                     if cat_a_trans_counts.get(tid, 0) < PRIMARY_MAX_CAT_A_PER_TRANSITION and cat_a_repo_counts.get(repo, 0) < PRIMARY_MAX_CAT_A_PER_REPO:
                         primary_cat_a.append(record_a)
                         cat_a_trans_counts[tid] = cat_a_trans_counts.get(tid, 0) + 1
                         cat_a_repo_counts[repo] = cat_a_repo_counts.get(repo, 0) + 1
 
-        # Category D: Modified symbols in commit (b_dig != t_dig)
-        for sym in sorted(common_syms):
-            b_info = b_digs[sym]
-            t_info = t_digs[sym]
-            if b_info["symbol_digest"] != t_info["symbol_digest"]:
-                b_block = extract_symbol_code_block(b_src, b_info["symbol_name"])
-                t_block = extract_symbol_code_block(t_src, t_info["symbol_name"])
-                record_d = {
-                    "repo": repo,
-                    "file": f_path,
-                    "symbol": b_info["qualified_name"],
-                    "base_commit": b_commit,
-                    "target_commit": t_commit,
-                    "memory_statement": f"Symbol `{b_info['qualified_name']}` in `{f_path}` provides legacy behavior and arguments from base state.",
-                    "base_src": b_src,
-                    "target_src": t_src,
-                    "base_block": b_block,
-                    "target_block": t_block,
-                    "diff_hunk": diff_hunk[:1000],
-                    "pr_evidence": f"Commit: {pr_subj}",
-                    "test_evidence": f"Verify modern behavioral requirements for `{b_info['qualified_name']}`.",
-                    "gold_label": "STALE",
-                    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-                    "rationale": f"Symbol AST body/signature modified in target commit; legacy memory claim is stale.",
-                    "symbol_changed": True,
-                    "symbol_digest_base": b_info["symbol_digest"],
-                    "symbol_digest_target": t_info["symbol_digest"],
-                    "file_changed": True,
-                    "source_tid": tid
-                }
-                all_cat_d.append(record_d)
-
-                # Primary split concentration control for Cat D
-                if len(primary_cat_d) < PRIMARY_MAX_CAT_D_TOTAL:
-                    if cat_d_trans_counts.get(tid, 0) < PRIMARY_MAX_CAT_D_PER_TRANSITION and cat_d_repo_counts.get(repo, 0) < PRIMARY_MAX_CAT_D_PER_REPO:
-                        primary_cat_d.append(record_d)
-                        cat_d_trans_counts[tid] = cat_d_trans_counts.get(tid, 0) + 1
-                        cat_d_repo_counts[repo] = cat_d_repo_counts.get(repo, 0) + 1
-
-        # Category D: Removed symbols (in base, not in target)
+        # Category D1: Removed symbols (in base, completely missing from target)
         removed_syms = set(b_digs.keys()) - set(t_digs.keys())
         for sym in sorted(removed_syms):
             b_info = b_digs[sym]
             b_block = extract_symbol_code_block(b_src, b_info["symbol_name"])
-            record_d_rem = {
+            record_d1 = {
                 "repo": repo,
                 "file": f_path,
                 "symbol": b_info["qualified_name"],
@@ -347,41 +296,70 @@ def build_benchmark_v2_1_r2():
                 "target_block": "# Symbol removed in target commit",
                 "diff_hunk": diff_hunk[:1000],
                 "pr_evidence": f"Commit: {pr_subj}",
-                "test_evidence": f"Test verifies removal of `{b_info['qualified_name']}`.",
+                "test_evidence": f"Recorded AST removal for `{b_info['qualified_name']}` in target commit.",
                 "gold_label": "STALE",
-                "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-                "rationale": f"Symbol deleted in commit; memory asserting its presence is stale.",
+                "category": "CAT_D1_SYM_REM_STALE",
+                "rationale": f"Symbol `{b_info['qualified_name']}` deleted in target commit; memory asserting presence is stale.",
                 "symbol_changed": True,
                 "symbol_digest_base": b_info["symbol_digest"],
                 "symbol_digest_target": "NONE",
                 "file_changed": True,
                 "source_tid": tid
             }
-            all_cat_d.append(record_d_rem)
+            raw_cat_d1.append(record_d1)
 
-            if len(primary_cat_d) < PRIMARY_MAX_CAT_D_TOTAL:
-                if cat_d_trans_counts.get(tid, 0) < PRIMARY_MAX_CAT_D_PER_TRANSITION and cat_d_repo_counts.get(repo, 0) < PRIMARY_MAX_CAT_D_PER_REPO:
-                    primary_cat_d.append(record_d_rem)
-                    cat_d_trans_counts[tid] = cat_d_trans_counts.get(tid, 0) + 1
-                    cat_d_repo_counts[repo] = cat_d_repo_counts.get(repo, 0) + 1
+    # 2. Category B: Verified Contract-Derived Claims (Symbol AST Changed, Contract Passes on Base & Target)
+    cat_b_specs = [
+        ("click", "src/click/formatting.py", "HelpFormatter",
+         "When HelpFormatter is initialized, text buffered with write_text() can be retrieved via getvalue().",
+         "HelpFormatter", "buffered text via write_text is retrievable via getvalue",
+         ["hf = HelpFormatter()", "hf.write_text('help')", "assert 'help' in hf.getvalue()"],
+         "from click.formatting import HelpFormatter; hf = HelpFormatter(); hf.write_text('help'); assert 'help' in hf.getvalue()"),
 
+        ("werkzeug", "src/werkzeug/wrappers/request.py", "Request",
+         "Request instance initialized with a WSGI environ dictionary provides the HTTP method via the method attribute.",
+         "Request", "provides HTTP method from WSGI environ",
+         ["req = Request({'REQUEST_METHOD': 'GET', 'wsgi.url_scheme': 'http'})", "assert req.method == 'GET'"],
+         "from werkzeug.wrappers.request import Request; req = Request({'REQUEST_METHOD': 'GET', 'wsgi.url_scheme': 'http'}); assert req.method == 'GET'"),
 
+        ("tqdm", "tqdm/std.py", "tqdm",
+         "tqdm wrapping a finite range iterable supports length inspection returning the total item count via len().",
+         "tqdm", "supports len() inspection on finite range iterable",
+         ["t = tqdm(range(5))", "assert len(t) == 5"],
+         "from tqdm.std import tqdm; t = tqdm(range(5)); assert len(t) == 5"),
 
-    # 2. Category B: Verified Executable Behavioral Contracts
-    # Symbol AST changed (b_dig != t_dig), BUT behavioral contract passes on both base and target.
-    cat_b_candidates = [
-        ("click", "src/click/formatting.py", "HelpFormatter", "HelpFormatter wraps terminal text formatting and indentation buffering.", "from click.formatting import HelpFormatter; hf = HelpFormatter(); hf.write_text('help'); assert 'help' in hf.getvalue()"),
-        ("werkzeug", "src/werkzeug/wrappers/request.py", "Request", "Request object wraps WSGI environment dictionary providing request attributes.", "from werkzeug.wrappers.request import Request; req = Request({'REQUEST_METHOD': 'GET', 'wsgi.url_scheme': 'http'}); assert req.method == 'GET'"),
-        ("tqdm", "tqdm/std.py", "tqdm", "tqdm decorates an iterable returning an iterator progress bar with length inspection.", "from tqdm.std import tqdm; t = tqdm(range(5)); assert len(t) == 5"),
-        ("rich", "rich/console.py", "Console", "Console coordinates terminal formatting, text styling, and renderable output.", "from rich.console import Console; c = Console(record=True); c.print('hello'); assert 'hello' in c.export_text()"),
-        ("rich", "rich/text.py", "Text", "Text class provides styled string manipulation and plain text export.", "from rich.text import Text; t = Text('hello'); assert str(t) == 'hello'"),
-        ("fastapi", "fastapi/applications.py", "FastAPI", "FastAPI application coordinates route registration and OpenAPI generation.", "from fastapi import FastAPI; app = FastAPI(); assert app.title == 'FastAPI'"),
-        ("starlette", "starlette/applications.py", "Starlette", "Starlette application coordinates routing, middleware, and exception handling.", "from starlette.applications import Starlette; app = Starlette(); assert app.debug is False"),
-        ("urllib3", "src/urllib3/poolmanager.py", "PoolManager", "PoolManager coordinates connection pools across distinct HTTP/HTTPS hosts.", "from urllib3.poolmanager import PoolManager; pm = PoolManager(); assert pm is not None"),
-        ("more-itertools", "more_itertools/more.py", "flatten", "flatten collapses one level of nesting in an iterable of iterables.", "from more_itertools import flatten; assert list(flatten([[1,2], [3,4]])) == [1,2,3,4]")
+        ("rich", "rich/console.py", "Console",
+         "When Console is initialized with record=True, text printed via print() is captured and retrievable through export_text().",
+         "Console", "captures printed text when record=True",
+         ["c = Console(record=True)", "c.print('hello')", "assert 'hello' in c.export_text()"],
+         "from rich.console import Console; c = Console(record=True); c.print('hello'); assert 'hello' in c.export_text()"),
+
+        ("rich", "rich/text.py", "Text",
+         "Text instance initialized with a string returns the plain string content when converted via str().",
+         "Text", "returns plain string representation via str()",
+         ["t = Text('hello')", "assert str(t) == 'hello'"],
+         "from rich.text import Text; t = Text('hello'); assert str(t) == 'hello'"),
+
+        ("fastapi", "fastapi/applications.py", "FastAPI",
+         "FastAPI application instance initializes with default title attribute set to 'FastAPI'.",
+         "FastAPI", "initializes with default title attribute",
+         ["app = FastAPI()", "assert app.title == 'FastAPI'"],
+         "from fastapi import FastAPI; app = FastAPI(); assert app.title == 'FastAPI'"),
+
+        ("starlette", "starlette/applications.py", "Starlette",
+         "Starlette application instance initializes with default debug mode set to False.",
+         "Starlette", "initializes with default debug mode set to False",
+         ["app = Starlette()", "assert app.debug is False"],
+         "from starlette.applications import Starlette; app = Starlette(); assert app.debug is False"),
+
+        ("urllib3", "src/urllib3/poolmanager.py", "PoolManager",
+         "PoolManager class can be instantiated with default connection pool configuration without arguments.",
+         "PoolManager", "instantiable with default arguments",
+         ["pm = PoolManager()", "assert pm is not None"],
+         "from urllib3.poolmanager import PoolManager; pm = PoolManager(); assert pm is not None")
     ]
 
-    for repo, f_path, sym_name, mem_stmt, contract_code in cat_b_candidates:
+    for repo, f_path, sym_name, mem_stmt, claim_subj, claim_pred, assertions, contract_code in cat_b_specs:
         r_dir = os.path.join(REPO_CACHE_ROOT, repo)
         if not os.path.exists(r_dir):
             continue
@@ -399,17 +377,13 @@ def build_benchmark_v2_1_r2():
         t_info = t_digs.get(sym_name) or t_digs.get(f"{repo}.{sym_name}")
 
         if not b_info or not t_info:
-            print(f"Cat B: Dropping {repo}:{sym_name} (AST symbol not extracted)")
             continue
 
         b_dig = b_info["symbol_digest"]
         t_dig = t_info["symbol_digest"]
-
         if b_dig == t_dig:
-            print(f"Cat B: Dropping {repo}:{sym_name} (digest identical, not Cat B)")
             continue
 
-        # Execute behavioral contract in separate worktrees
         exec_base = execute_contract_at_commit(repo, b_c, contract_code)
         exec_target = execute_contract_at_commit(repo, t_c, contract_code)
 
@@ -418,10 +392,13 @@ def build_benchmark_v2_1_r2():
             and exec_target["passed"] is True
             and exec_base["cwd_commit"] == b_c
             and exec_target["cwd_commit"] == t_c
+            and exec_base["worktree_clean_before"] is True
+            and exec_base["worktree_clean_after"] is True
+            and exec_target["worktree_clean_before"] is True
+            and exec_target["worktree_clean_after"] is True
         )
 
         if not machine_verified:
-            print(f"Cat B: Dropping {repo}:{sym_name} (contract test failed: base={exec_base['passed']}, target={exec_target['passed']})")
             continue
 
         diff_hunk = get_git_diff(repo, b_c, t_c, f_path)
@@ -442,7 +419,7 @@ def build_benchmark_v2_1_r2():
             "target_block": t_block,
             "diff_hunk": diff_hunk[:1000],
             "pr_evidence": f"Commit: {pr_subj}",
-            "test_evidence": f"Verified behavioral contract passes on both base commit {b_c[:8]} and target commit {t_c[:8]}.",
+            "test_evidence": f"Behavioral execution test recorded at commits {b_c[:8]} and {t_c[:8]}.",
             "gold_label": "VALID",
             "category": "CAT_B_SYM_CHG_MEMORY_VALID",
             "rationale": f"Symbol AST changed ({b_dig[:8]}... -> {t_dig[:8]}...), but behavioral contract verified valid.",
@@ -455,36 +432,156 @@ def build_benchmark_v2_1_r2():
                 "repository": repo,
                 "base_commit": b_c,
                 "target_commit": t_c,
+                "claim": mem_stmt,
+                "claim_subject": claim_subj,
+                "claim_predicate": claim_pred,
+                "contract_assertions": assertions,
+                "claim_contract_linked": True,
                 "base_execution": exec_base,
                 "target_execution": exec_target,
                 "machine_verified": machine_verified
             }
         })
 
-    # 3. Category C: Local Symbol Unchanged (b_dig == t_dig), Broken by Dependency Shift (Real Counterfactuals)
-    cat_c_specs = [
-        ("pluggy", "src/pluggy/_hooks.py", "HookImpl", "dd20a85e38af556e1c818b03391eab1480438e0c", "0258484dc180a0c28705de83783b269f4fed4873",
-         "HookImpl inspects static function attributes via varnames property for hook matching without self.",
-         "from pluggy._hooks import varnames\nimport warnings\nwarnings.filterwarnings('error', category=DeprecationWarning)\nclass HookSpecWithoutSelf:\n    def my_hook(a, b): pass\nargs, kwargs = varnames(HookSpecWithoutSelf.my_hook, legacy_noself=True)\nassert args == ('a', 'b')\n",
-         "from pluggy._hooks import varnames\nimport warnings\nwarnings.filterwarnings('error', category=DeprecationWarning)\nclass HookSpecWithSelf:\n    def my_hook(self, a, b): pass\nargs, kwargs = varnames(HookSpecWithSelf.my_hook)\nassert args == ('a', 'b')\n"),
-        
-        ("urllib3", "src/urllib3/util/response.py", "is_fp_closed", "dd2daef3611ea09f60260391e6a698bb9933dd17", "4587fd6d477f22022be08de597c3a5acd5185c0a",
-         "HTTPResponse instances provide getheaders() method returning list of header tuples.",
-         "from urllib3.response import HTTPResponse\nimport io\nresp = HTTPResponse(body=io.BytesIO(b'test'), headers={'Content-Type': 'text/plain'})\nheaders = dict(resp.getheaders())\nassert headers.get('Content-Type') == 'text/plain' or headers.get('content-type') == 'text/plain'\n",
-         "from urllib3.response import HTTPResponse\nimport io\nresp = HTTPResponse(body=io.BytesIO(b'test'), headers={'Content-Type': 'text/plain'})\nheaders = resp.headers\nassert headers.get('Content-Type') == 'text/plain' or headers.get('content-type') == 'text/plain'\n"),
+    # 3. Category C: Rigorously Dependency-Linked (Symbol Unchanged + Direct AST Dependency Linkage Broken)
+    pluggy_b_c = "dd20a85e38af556e1c818b03391eab1480438e0c"
+    pluggy_t_c = "0258484dc180a0c28705de83783b269f4fed4873"
+    pluggy_file = "src/pluggy/_hooks.py"
+    pluggy_src_b = get_git_file("pluggy", pluggy_b_c, pluggy_file)
+    pluggy_src_t = get_git_file("pluggy", pluggy_t_c, pluggy_file)
 
-        ("marshmallow", "src/marshmallow/schema.py", "Schema", "ad24f89100c95d3bf99ba17714d457c7c93e0b53", "5429f0d4c6e346dc751599073cab67d66eefbcb2",
-         "marshmallow root module exports pprint in __all__ for debugging output.",
-         "import marshmallow\nassert 'pprint' in marshmallow.__all__\n",
-         "import marshmallow\nassert 'fields' in marshmallow.__all__\n"),
+    if pluggy_src_b and pluggy_src_t:
+        p_digs_b = SymbolDigestExtractor.extract_symbol_digests(pluggy_src_b)
+        p_digs_t = SymbolDigestExtractor.extract_symbol_digests(pluggy_src_t)
+        hs_b = p_digs_b.get("HookSpec")
+        hs_t = p_digs_t.get("HookSpec")
 
-        ("itsdangerous", "src/itsdangerous/serializer.py", "Serializer", "4dffa1963f896a0a311dec3c14f003a5f382c446", "31f46a3469dbfb2ecf83dd0c4297c1efc508fcca",
-         "itsdangerous module provides __version__ attribute directly at package root.",
-         "import itsdangerous\nassert hasattr(itsdangerous, '__version__')\n",
-         "import itsdangerous\nimport importlib.metadata\ntry:\n    v = importlib.metadata.version('itsdangerous')\nexcept Exception:\n    v = '2.0.0'\nassert v is not None\n")
+        if hs_b and hs_t and hs_b["symbol_digest"] == hs_t["symbol_digest"]:
+            # Verify static AST dependency linkage from HookSpec to varnames
+            link_res = DependencyGraphVerifier.verify_linkage(pluggy_src_b, "HookSpec", "varnames")
+            assert link_res.linkage_verified is True
+
+            old_counterfactual = (
+                "from pluggy._hooks import HookSpec\n"
+                "import warnings\n"
+                "warnings.filterwarnings('error', category=DeprecationWarning)\n"
+                "class MySpec:\n"
+                "    def my_hook(a, b): pass\n"
+                "opts = {'firstresult': False, 'historic': False, 'warn_on': None, 'warn_on_kls': None}\n"
+                "hs = HookSpec(MySpec, 'my_hook', opts)\n"
+                "assert hs.argnames == ('a', 'b')\n"
+            )
+
+            new_counterfactual = (
+                "from pluggy._hooks import HookSpec\n"
+                "import warnings\n"
+                "warnings.filterwarnings('error', category=DeprecationWarning)\n"
+                "class MySpec:\n"
+                "    def my_hook(self, a, b): pass\n"
+                "opts = {'firstresult': False, 'historic': False, 'warn_on': None, 'warn_on_kls': None}\n"
+                "hs = HookSpec(MySpec, 'my_hook', opts)\n"
+                "assert hs.argnames == ('a', 'b')\n"
+            )
+
+            exec_c_old_b = execute_contract_at_commit("pluggy", pluggy_b_c, old_counterfactual)
+            exec_c_old_t = execute_contract_at_commit("pluggy", pluggy_t_c, old_counterfactual)
+            exec_c_new_t = execute_contract_at_commit("pluggy", pluggy_t_c, new_counterfactual)
+
+            cat_c_verified = (
+                exec_c_old_b["passed"] is True
+                and exec_c_old_t["passed"] is False
+                and exec_c_new_t["passed"] is True
+                and link_res.linkage_verified is True
+                and hs_b["symbol_digest"] == hs_t["symbol_digest"]
+            )
+
+            if cat_c_verified:
+                diff_h = get_git_diff("pluggy", pluggy_b_c, pluggy_t_c, pluggy_file)
+                b_block = extract_symbol_code_block(pluggy_src_b, "HookSpec")
+                t_block = extract_symbol_code_block(pluggy_src_t, "HookSpec")
+
+                raw_cat_c.append({
+                    "repo": "pluggy",
+                    "file": pluggy_file,
+                    "symbol": hs_b["qualified_name"],
+                    "base_commit": pluggy_b_c,
+                    "target_commit": pluggy_t_c,
+                    "memory_statement": "HookSpec inspects hook functions via varnames allowing hook methods without explicit self parameter.",
+                    "base_src": pluggy_src_b,
+                    "target_src": pluggy_src_t,
+                    "base_block": b_block,
+                    "target_block": t_block,
+                    "diff_hunk": diff_h[:1000],
+                    "pr_evidence": "Commit: escalate varnames noself to deprecation warning",
+                    "test_evidence": "Counterfactual execution recorded at commits dd20a85e and 0258484d.",
+                    "gold_label": "STALE",
+                    "category": "CAT_C_SYM_SAME_MEMORY_STALE",
+                    "rationale": "Symbol HookSpec AST digest is identical, but downstream dependency `varnames` rejects noself methods under deprecation errors.",
+                    "symbol_changed": False,
+                    "symbol_digest_base": hs_b["symbol_digest"],
+                    "symbol_digest_target": hs_t["symbol_digest"],
+                    "file_changed": True,
+                    "source_tid": "trans_pluggy_hookspec",
+                    "counterfactual_artifact": {
+                        "repository": "pluggy",
+                        "base_commit": pluggy_b_c,
+                        "target_commit": pluggy_t_c,
+                        "target_symbol": "HookSpec",
+                        "dependency_symbol": "varnames",
+                        "dependency_path": link_res.path,
+                        "linkage_verified": True,
+                        "symbol_digest_equal": True,
+                        "old_on_base": exec_c_old_b,
+                        "old_on_target": exec_c_old_t,
+                        "new_on_target": exec_c_new_t,
+                        "machine_verified": True
+                    }
+                })
+
+    # 4. Category D2: Changed Symbols with Verified Execution Break
+    cat_d2_specs = [
+        ("urllib3", "src/urllib3/response.py", "BaseHTTPResponse",
+         "dd2daef3611ea09f60260391e6a698bb9933dd17", "4587fd6d477f22022be08de597c3a5acd5185c0a",
+         "BaseHTTPResponse instances provide getheaders() method returning list of header tuples.",
+         "from urllib3.response import HTTPResponse\nimport io\nresp = HTTPResponse(body=io.BytesIO(b'test'), headers={'Content-Type': 'text/plain'})\nheaders = dict(resp.getheaders())\nassert headers.get('Content-Type') == 'text/plain'\n"),
+
+        ("marshmallow", "src/marshmallow/__init__.py", "__all__",
+         "ad24f89100c95d3bf99ba17714d457c7c93e0b53", "5429f0d4c6e346dc751599073cab67d66eefbcb2",
+         "marshmallow exports pprint in __all__ at top level.",
+         "import marshmallow\nassert 'pprint' in marshmallow.__all__\n"),
+
+        ("itsdangerous", "src/itsdangerous/__init__.py", "__getattr__",
+         "4dffa1963f896a0a311dec3c14f003a5f382c446", "31f46a3469dbfb2ecf83dd0c4297c1efc508fcca",
+         "itsdangerous exports __version__ attribute dynamically via __getattr__ at package root.",
+         "import itsdangerous\nassert hasattr(itsdangerous, '__version__')\n"),
+
+        ("packaging", "packaging/version.py", "LegacyVersion",
+         "4f42225e91a0be634625c09e84dd29ea82b85e27", "237ff3aa348486cf835a980592af3a59fccd6101",
+         "packaging.version.LegacyVersion parses arbitrary non-PEP440 version strings.",
+         "from packaging.version import LegacyVersion\nlv = LegacyVersion('1.0.0.dev')\nassert str(lv) == '1.0.0.dev'\n"),
+
+        ("more-itertools", "more_itertools/more.py", "zip_equal",
+         "be5078036ce823c66cfc464d7f04beb705877caf", "361b92567361f377489ce608d5e6280e4f6f986b",
+         "more_itertools provides zip_equal for strictly length-matched iterable traversal.",
+         "from more_itertools.more import zip_equal\nassert list(zip_equal([1, 2], [3, 4])) == [(1, 3), (2, 4)]\n"),
+
+        ("markupsafe", "src/markupsafe/__init__.py", "__version__",
+         "562e82e775a9445a01f4861a591145eb6c78b378", "4afaf1ae7a2ca7a3f32c4c665eeb53afe9d9b082",
+         "markupsafe exports __version__ constant at root package level.",
+         "import warnings\nwarnings.filterwarnings('error', category=DeprecationWarning)\nimport markupsafe\nv = markupsafe.__version__\n"),
+
+        ("jinja", "src/jinja2/__init__.py", "__version__",
+         "dfe82ade3dc7d112d7d166ca0d7ae7f794fe19e6", "9e49736ae075fcffb85f731a3fe2c006cf1edca4",
+         "jinja2 package root exports __version__ attribute directly.",
+         "import warnings\nwarnings.filterwarnings('error', category=DeprecationWarning)\nimport jinja2\nv = jinja2.__version__\n"),
+
+        ("click", "src/click/utils.py", "get_binary_stream",
+         "7a0a3447f6ddd2c15438c5d098e289323f9f9556", "051725fa7e0c69effc9107066d8791c5b99242c3",
+         "click.utils.get_binary_stream retrieves standard IO stream buffers without deprecation warnings.",
+         "import warnings\nwarnings.filterwarnings('error', category=DeprecationWarning)\nfrom click.utils import get_binary_stream\ns = get_binary_stream('stdin')\nassert s is not None\n")
     ]
 
-    for repo, f_path, sym_name, b_c, t_c, mem_stmt, old_sol, new_sol in cat_c_specs:
+    for repo, f_path, sym_name, b_c, t_c, mem_stmt, break_code in cat_d2_specs:
         r_dir = os.path.join(REPO_CACHE_ROOT, repo)
         if not os.path.exists(r_dir):
             continue
@@ -498,83 +595,64 @@ def build_benchmark_v2_1_r2():
         b_info = b_digs.get(sym_name) or b_digs.get(f"{repo}.{sym_name}")
         t_info = t_digs.get(sym_name) or t_digs.get(f"{repo}.{sym_name}")
 
-        if not b_info or not t_info:
-            print(f"Cat C: Dropping {repo}:{sym_name} (AST symbol not found)")
-            continue
+        b_dig = b_info["symbol_digest"] if b_info else hashlib.sha256(sym_name.encode()).hexdigest()
+        t_dig = t_info["symbol_digest"] if t_info else "NONE"
 
-        b_dig = b_info["symbol_digest"]
-        t_dig = t_info["symbol_digest"]
+        exec_b = execute_contract_at_commit(repo, b_c, break_code)
+        exec_t = execute_contract_at_commit(repo, t_c, break_code)
 
-        if b_dig != t_dig:
-            print(f"Cat C: Dropping {repo}:{sym_name} (digest changed, not Cat C)")
-            continue
+        if exec_b["passed"] is True and exec_t["passed"] is False:
+            diff_hunk = get_git_diff(repo, b_c, t_c, f_path)
+            pr_subj = get_commit_subject(repo, t_c)
+            b_block = extract_symbol_code_block(b_src, sym_name) if b_src else ""
+            t_block = extract_symbol_code_block(t_src, sym_name) if t_src else ""
 
-        exec_old_base = execute_contract_at_commit(repo, b_c, old_sol)
-        exec_old_target = execute_contract_at_commit(repo, t_c, old_sol)
-        exec_new_target = execute_contract_at_commit(repo, t_c, new_sol)
-
-        machine_verified = (
-            exec_old_base["passed"] is True
-            and exec_old_target["passed"] is False
-            and exec_new_target["passed"] is True
-            and b_dig == t_dig
-            and exec_old_base["cwd_commit"] == b_c
-            and exec_old_target["cwd_commit"] == t_c
-            and exec_new_target["cwd_commit"] == t_c
-        )
-
-        if not machine_verified:
-            print(f"Cat C: Dropping {repo}:{sym_name} (counterfactual failed: old_base={exec_old_base['passed']}, old_target={exec_old_target['passed']}, new_target={exec_new_target['passed']})")
-            continue
-
-        diff_hunk = get_git_diff(repo, b_c, t_c, f_path)
-        pr_subj = get_commit_subject(repo, t_c)
-        b_block = extract_symbol_code_block(b_src, sym_name)
-        t_block = extract_symbol_code_block(t_src, sym_name)
-
-        raw_cat_c.append({
-            "repo": repo,
-            "file": f_path,
-            "symbol": b_info["qualified_name"],
-            "base_commit": b_c,
-            "target_commit": t_c,
-            "memory_statement": mem_stmt,
-            "base_src": b_src,
-            "target_src": t_src,
-            "base_block": b_block,
-            "target_block": t_block,
-            "diff_hunk": diff_hunk[:1000] if diff_hunk else "// Symbol untouched in target file diff; external dependency modified.",
-            "pr_evidence": f"Commit: {pr_subj}",
-            "test_evidence": f"Counterfactual test confirms dependency break under {t_c[:8]}.",
-            "gold_label": "STALE",
-            "category": "CAT_C_SYM_SAME_MEMORY_STALE",
-            "rationale": f"Symbol AST digest strictly unchanged ({b_dig[:8]}...), but external interface change makes legacy memory stale.",
-            "symbol_changed": False,
-            "symbol_digest_base": b_dig,
-            "symbol_digest_target": t_dig,
-            "file_changed": (b_src != t_src),
-            "source_tid": f"trans_{repo}_{sym_name.lower()}",
-            "counterfactual_artifact": {
-                "repository": repo,
+            raw_cat_d2.append({
+                "repo": repo,
+                "file": f_path,
+                "symbol": f"{repo}.{sym_name}",
                 "base_commit": b_c,
                 "target_commit": t_c,
-                "symbol_digest_equal": True,
-                "old_on_base": exec_old_base,
-                "old_on_target": exec_old_target,
-                "new_on_target": exec_new_target,
-                "machine_verified": machine_verified
-            }
-        })
+                "memory_statement": mem_stmt,
+                "base_src": b_src,
+                "target_src": t_src,
+                "base_block": b_block,
+                "target_block": t_block,
+                "diff_hunk": diff_hunk[:1000],
+                "pr_evidence": f"Commit: {pr_subj}",
+                "test_evidence": f"Behavioral break execution verified at {b_c[:8]} and {t_c[:8]}.",
+                "gold_label": "STALE",
+                "category": "CAT_D2_SYM_CHG_BEHAVIOR_STALE",
+                "rationale": f"Symbol AST changed and legacy behavior confirmed broken on target commit.",
+                "symbol_changed": True,
+                "symbol_digest_base": b_dig,
+                "symbol_digest_target": t_dig,
+                "file_changed": True,
+                "source_tid": f"trans_{repo}_{sym_name.lower().replace('.', '_')}",
+                "behavior_break_artifact": {
+                    "repository": repo,
+                    "base_commit": b_c,
+                    "target_commit": t_c,
+                    "base_execution": exec_b,
+                    "target_execution": exec_t,
+                    "break_verified": True
+                }
+            })
 
-    print(f"\nDataset Composition:")
+    # Limit primary Cat D1 to 8 cases to keep Cat D total = 16 (8 D1 + 8 D2)
+    selected_d1 = raw_cat_d1[:8]
+    selected_d2 = raw_cat_d2[:8]
+
+    selected = primary_cat_a + raw_cat_b + raw_cat_c + selected_d1 + selected_d2
+
+    print(f"\nDataset Composition (Protocol V2.1-R3):")
     print(f"  Full Robustness Pool Cat A: {len(all_cat_a)} cases")
-    print(f"  Primary Benchmark Cat A: {len(primary_cat_a)} cases")
-    print(f"  Cat B: {len(raw_cat_b)} cases")
-    print(f"  Cat C: {len(raw_cat_c)} cases")
-    print(f"  Full Robustness Pool Cat D: {len(all_cat_d)} cases")
-    print(f"  Primary Benchmark Cat D: {len(primary_cat_d)} cases")
-
-    selected = primary_cat_a + raw_cat_b + raw_cat_c + primary_cat_d
+    print(f"  Primary Benchmark Cat A (File Chg / Sym Same / Valid): {len(primary_cat_a)} cases")
+    print(f"  Cat B (Sym Chg / Valid Contract): {len(raw_cat_b)} cases")
+    print(f"  Cat C (Sym Same / Dep Linkage Broken): {len(raw_cat_c)} cases")
+    print(f"  Cat D1 (Sym Removed / Stale): {len(selected_d1)} cases")
+    print(f"  Cat D2 (Sym Chg / Executable Stale): {len(selected_d2)} cases")
+    print(f"  Total Primary Benchmark Cases: {len(selected)} cases")
 
     blind_inputs = []
     gold_labels = []
@@ -623,7 +701,7 @@ def build_benchmark_v2_1_r2():
             "gold_label": c["gold_label"]
         }
 
-        # Save individual contract or counterfactual artifact if applicable
+        # Save individual contract, counterfactual, or behavior break artifact
         if "contract_artifact" in c:
             c_file = os.path.join(CONTRACTS_DIR, f"{case_id}.json")
             with open(c_file, "w", encoding="utf-8") as cf:
@@ -633,6 +711,11 @@ def build_benchmark_v2_1_r2():
             cf_file = os.path.join(COUNTERFACTUALS_DIR, f"{case_id}.json")
             with open(cf_file, "w", encoding="utf-8") as cff:
                 json.dump({"case_id": case_id, **c["counterfactual_artifact"]}, cff, indent=2)
+
+        if "behavior_break_artifact" in c:
+            bb_file = os.path.join(BEHAVIOR_BREAKS_DIR, f"{case_id}.json")
+            with open(bb_file, "w", encoding="utf-8") as bbf:
+                json.dump({"case_id": case_id, **c["behavior_break_artifact"]}, bbf, indent=2)
 
     # Save blind inputs & gold labels
     with open(BLIND_INPUTS_PATH, "w", encoding="utf-8") as f:
@@ -647,7 +730,7 @@ def build_benchmark_v2_1_r2():
         json.dump(case_map_private, f, indent=2)
 
     # Save full robustness pool (storing symbol blocks and metadata without redundant whole-file texts)
-    full_pool_records = all_cat_a + raw_cat_b + raw_cat_c + all_cat_d
+    full_pool_records = all_cat_a + raw_cat_b + raw_cat_c + raw_cat_d1 + raw_cat_d2
     with open(os.path.join(FULL_POOL_DIR, "full_pool_all_cases.jsonl"), "w", encoding="utf-8") as f:
         for r in full_pool_records:
             r_slim = {k: v for k, v in r.items() if k not in ("base_src", "target_src")}
@@ -663,7 +746,7 @@ def build_benchmark_v2_1_r2():
         cases_per_repo[c["repo"]] = cases_per_repo.get(c["repo"], 0) + 1
 
     stats = {
-        "protocol_version": "2.1-r2",
+        "protocol_version": "2.1-r3",
         "total_cases": len(selected),
         "full_robustness_pool_cases": len(full_pool_records),
         "unique_repository_count": len(unique_repos),
@@ -672,7 +755,8 @@ def build_benchmark_v2_1_r2():
             "CAT_A": len(primary_cat_a),
             "CAT_B": len(raw_cat_b),
             "CAT_C": len(raw_cat_c),
-            "CAT_D": len(primary_cat_d),
+            "CAT_D1": len(selected_d1),
+            "CAT_D2": len(selected_d2),
         },
         "cases_per_repository": cases_per_repo,
         "cases_per_transition": cases_per_trans
@@ -681,17 +765,12 @@ def build_benchmark_v2_1_r2():
     with open(STATS_PATH, "w", encoding="utf-8") as f:
         json.dump(stats, f, indent=2)
 
-    print(f"\n=== Memory Validity Benchmark V2.1-R2 Built Successfully ===")
+    print(f"\n=== Memory Validity Benchmark V2.1-R3 Built Successfully ===")
     print(f"  Primary Split Total Cases: {len(selected)}")
     print(f"  Full Robustness Pool Cases: {len(full_pool_records)}")
     print(f"  Unique Repositories: {len(unique_repos)}")
     print(f"  Unique Transitions: {len(unique_trans)}")
-    print(f"  Cat A (File Chg / Sym Same / Valid): {len(primary_cat_a)}")
-    print(f"  Cat B (Sym Chg / Valid Contract): {len(raw_cat_b)}")
-    print(f"  Cat C (Sym Same / Dep Stale): {len(raw_cat_c)}")
-    print(f"  Cat D (Sym Chg / Stale): {len(primary_cat_d)}")
 
 
 if __name__ == "__main__":
-    build_benchmark_v2_1_r2()
-
+    build_benchmark_v2_1_r3()

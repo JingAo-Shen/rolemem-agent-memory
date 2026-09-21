@@ -252,7 +252,7 @@ def curate_benchmark():
     distinct_all_repos = len(set(r["repo_name"] for r in pool_records))
 
     summary = {
-        "protocol_version": "2.1-r2",
+        "protocol_version": "2.1-r3",
         "total_evaluated_transitions": len(pool_records),
         "core_benchmark_count": len(core_records),
         "control_benchmark_count": len(control_records),
@@ -278,7 +278,7 @@ def curate_benchmark():
     # Generate markdown report
     rep_p = os.path.join(REPORTS_DIR, "benchmark-curation-v2.1.md")
     lines = [
-        "# RoleMem Protocol V2.1-R2 — Gate-Based Benchmark Curation Report",
+        "# RoleMem Protocol V2.1-R3 — Gate-Based Benchmark Curation Report",
         "",
         "## 1. Executive Curation Summary",
         f"- **Total Evaluated Transitions**: {len(pool_records)}",

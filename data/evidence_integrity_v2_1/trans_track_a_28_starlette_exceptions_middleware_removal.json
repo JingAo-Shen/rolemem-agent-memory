@@ -8,8 +8,10 @@
   "authenticity_verified": true,
   "primary_file_verified": true,
   "diff_hunk_bytes": 1698,
+  "diff_sha256": "3106c5a06471a3057c2925a3d040bd4d3d87cf64d07d74fedefe03b7e1e7e5db",
   "pr_url": "https://github.com/encode/starlette/pull/2826",
   "pr_url_valid": true,
   "external_evidence_found": true,
-  "evidence_integrity_verified": true
+  "evidence_integrity_verified": true,
+  "evidence_integrity_status": "PASS"
 }

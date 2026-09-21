@@ -3,9 +3,18 @@
   "repository": "rich",
   "base_commit": "b9040928de20454342b58e9ecaabeba092b74626",
   "target_commit": "9a99acc97d26d7832200a271ed8e95dd59df10c7",
+  "claim": "Text instance initialized with a string returns the plain string content when converted via str().",
+  "claim_subject": "Text",
+  "claim_predicate": "returns plain string representation via str()",
+  "contract_assertions": [
+    "t = Text('hello')",
+    "assert str(t) == 'hello'"
+  ],
+  "claim_contract_linked": true,
   "base_execution": {
     "passed": true,
     "exit_code": 0,
+    "source_commit": "b9040928de20454342b58e9ecaabeba092b74626",
     "python_version": "3.13.5",
     "cwd_commit": "b9040928de20454342b58e9ecaabeba092b74626",
     "contract_hash": "f05c4b058a2703da8003b7d2eda3b914df6708f5c948c883ee6e8a12d1a90413",
@@ -13,11 +22,16 @@
     "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "stdout": "",
     "stderr": "",
-    "timestamp": 1789918694.724723
+    "timestamp": 1789951250.882358,
+    "worktree_clean_before": true,
+    "worktree_clean_after": true,
+    "environment_mode": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
+    "dependency_lock_restored": false
   },
   "target_execution": {
     "passed": true,
     "exit_code": 0,
+    "source_commit": "9a99acc97d26d7832200a271ed8e95dd59df10c7",
     "python_version": "3.13.5",
     "cwd_commit": "9a99acc97d26d7832200a271ed8e95dd59df10c7",
     "contract_hash": "f05c4b058a2703da8003b7d2eda3b914df6708f5c948c883ee6e8a12d1a90413",
@@ -25,7 +39,11 @@
     "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "stdout": "",
     "stderr": "",
-    "timestamp": 1789918694.917859
+    "timestamp": 1789951251.1340985,
+    "worktree_clean_before": true,
+    "worktree_clean_after": true,
+    "environment_mode": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
+    "dependency_lock_restored": false
   },
   "machine_verified": true
 }

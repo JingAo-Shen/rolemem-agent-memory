@@ -1,0 +1,41 @@
+{
+  "case_id": "MV21-000058",
+  "repository": "more-itertools",
+  "base_commit": "be5078036ce823c66cfc464d7f04beb705877caf",
+  "target_commit": "361b92567361f377489ce608d5e6280e4f6f986b",
+  "base_execution": {
+    "passed": true,
+    "exit_code": 0,
+    "source_commit": "be5078036ce823c66cfc464d7f04beb705877caf",
+    "python_version": "3.13.5",
+    "cwd_commit": "be5078036ce823c66cfc464d7f04beb705877caf",
+    "contract_hash": "8eb469f351c37e5f2c6d5e1aa2a4fdebde5dba60e8d1be33c6064320dcebea0f",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout": "",
+    "stderr": "",
+    "timestamp": 1789951254.465625,
+    "worktree_clean_before": true,
+    "worktree_clean_after": true,
+    "environment_mode": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
+    "dependency_lock_restored": false
+  },
+  "target_execution": {
+    "passed": false,
+    "exit_code": 1,
+    "source_commit": "361b92567361f377489ce608d5e6280e4f6f986b",
+    "python_version": "3.13.5",
+    "cwd_commit": "361b92567361f377489ce608d5e6280e4f6f986b",
+    "contract_hash": "8eb469f351c37e5f2c6d5e1aa2a4fdebde5dba60e8d1be33c6064320dcebea0f",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "73368d3aae57e76c40c8d479ae8e7d366f28951fdc36e1b239b4f3f71efffe88",
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 10, in <module>\n    from more_itertools.more import zip_equal\nImportError: cannot import name 'zip_equal' from 'more_itertools.more' (/tmp/tmpuznd94z1/wt/more_itertools/more.py). Did you mean: 'all_equal'?\n",
+    "timestamp": 1789951254.5439827,
+    "worktree_clean_before": true,
+    "worktree_clean_after": true,
+    "environment_mode": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
+    "dependency_lock_restored": false
+  },
+  "break_verified": true
+}

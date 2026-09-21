@@ -8,8 +8,10 @@
   "authenticity_verified": true,
   "primary_file_verified": true,
   "diff_hunk_bytes": 318,
+  "diff_sha256": "6295551e9f94b56f2016f368759753bd9b9f2e19c2e722403df669878bb34849",
   "pr_url": "https://github.com/marshmallow-code/marshmallow/pull/2823",
   "pr_url_valid": true,
   "external_evidence_found": true,
-  "evidence_integrity_verified": true
+  "evidence_integrity_verified": true,
+  "evidence_integrity_status": "PASS"
 }

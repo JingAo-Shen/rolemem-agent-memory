@@ -6,6 +6,7 @@ from .types import ValidityDecision, ValidityEvidence, ValidityResult
 from .file_validity import FileValidityChecker
 from .symbol_validity import SymbolValidityChecker
 from .dependency_validity import DependencyValidityChecker, DependencyReference
+from .dependency_graph import DependencyGraphVerifier, DependencyPath
 from .engine import RoleMemValidityEngine
 
 __all__ = [
@@ -16,5 +17,7 @@ __all__ = [
     "SymbolValidityChecker",
     "DependencyValidityChecker",
     "DependencyReference",
+    "DependencyGraphVerifier",
+    "DependencyPath",
     "RoleMemValidityEngine",
 ]

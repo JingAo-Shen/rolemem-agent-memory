@@ -8,8 +8,10 @@
   "authenticity_verified": true,
   "primary_file_verified": true,
   "diff_hunk_bytes": 1544,
+  "diff_sha256": "7596ccfbf3e9fffec38d1b90e78c38c92a8afb125b423ec5b4e5b818a67c0cf9",
   "pr_url": "https://github.com/pypa/virtualenv/pull/3170",
   "pr_url_valid": true,
   "external_evidence_found": true,
-  "evidence_integrity_verified": true
+  "evidence_integrity_verified": true,
+  "evidence_integrity_status": "PASS"
 }

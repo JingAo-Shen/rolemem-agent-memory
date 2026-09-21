@@ -3,9 +3,19 @@
   "repository": "click",
   "base_commit": "9c41f46a4015700489ad009266edf1f3893d01d1",
   "target_commit": "aef225df47377a1bc3d967327b501f577dd5462c",
+  "claim": "When HelpFormatter is initialized, text buffered with write_text() can be retrieved via getvalue().",
+  "claim_subject": "HelpFormatter",
+  "claim_predicate": "buffered text via write_text is retrievable via getvalue",
+  "contract_assertions": [
+    "hf = HelpFormatter()",
+    "hf.write_text('help')",
+    "assert 'help' in hf.getvalue()"
+  ],
+  "claim_contract_linked": true,
   "base_execution": {
     "passed": true,
     "exit_code": 0,
+    "source_commit": "9c41f46a4015700489ad009266edf1f3893d01d1",
     "python_version": "3.13.5",
     "cwd_commit": "9c41f46a4015700489ad009266edf1f3893d01d1",
     "contract_hash": "a3ac5d1f535634aff7bde13a343c6c997622d67c3684e668dd47f8549ad9f760",
@@ -13,11 +23,16 @@
     "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "stdout": "",
     "stderr": "",
-    "timestamp": 1789918693.361035
+    "timestamp": 1789951249.108544,
+    "worktree_clean_before": true,
+    "worktree_clean_after": true,
+    "environment_mode": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
+    "dependency_lock_restored": false
   },
   "target_execution": {
     "passed": true,
     "exit_code": 0,
+    "source_commit": "aef225df47377a1bc3d967327b501f577dd5462c",
     "python_version": "3.13.5",
     "cwd_commit": "aef225df47377a1bc3d967327b501f577dd5462c",
     "contract_hash": "a3ac5d1f535634aff7bde13a343c6c997622d67c3684e668dd47f8549ad9f760",
@@ -25,7 +40,11 @@
     "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "stdout": "",
     "stderr": "",
-    "timestamp": 1789918693.453397
+    "timestamp": 1789951249.223311,
+    "worktree_clean_before": true,
+    "worktree_clean_after": true,
+    "environment_mode": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
+    "dependency_lock_restored": false
   },
   "machine_verified": true
 }

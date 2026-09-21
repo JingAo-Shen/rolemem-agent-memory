@@ -1,0 +1,41 @@
+{
+  "case_id": "MV21-000054",
+  "repository": "urllib3",
+  "base_commit": "dd2daef3611ea09f60260391e6a698bb9933dd17",
+  "target_commit": "4587fd6d477f22022be08de597c3a5acd5185c0a",
+  "base_execution": {
+    "passed": true,
+    "exit_code": 0,
+    "source_commit": "dd2daef3611ea09f60260391e6a698bb9933dd17",
+    "python_version": "3.13.5",
+    "cwd_commit": "dd2daef3611ea09f60260391e6a698bb9933dd17",
+    "contract_hash": "36846460ece611e6fb1ff89cdf79a6e0d9b66c2f802d8ae69fbb2f12a6be281a",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "79c53e617ebd7302ea1d1cb6583ae9bd4e853df778874cdd995fd9c52e9acfde",
+    "stdout": "",
+    "stderr": "<string>:13: DeprecationWarning: HTTPResponse.getheaders() is deprecated and will be removed in urllib3 v2.6.0. Instead access HTTPResponse.headers directly.\n",
+    "timestamp": 1789951253.7097673,
+    "worktree_clean_before": true,
+    "worktree_clean_after": true,
+    "environment_mode": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
+    "dependency_lock_restored": false
+  },
+  "target_execution": {
+    "passed": false,
+    "exit_code": 1,
+    "source_commit": "4587fd6d477f22022be08de597c3a5acd5185c0a",
+    "python_version": "3.13.5",
+    "cwd_commit": "4587fd6d477f22022be08de597c3a5acd5185c0a",
+    "contract_hash": "36846460ece611e6fb1ff89cdf79a6e0d9b66c2f802d8ae69fbb2f12a6be281a",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "d0aab82f1efbe3ae9b9ae4ba4ff027a3ccd4dd71b84916f7d073a14d9bc5dbf0",
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 13, in <module>\n    headers = dict(resp.getheaders())\n                   ^^^^^^^^^^^^^^^\nAttributeError: 'HTTPResponse' object has no attribute 'getheaders'. Did you mean: 'headers'?\n",
+    "timestamp": 1789951253.857251,
+    "worktree_clean_before": true,
+    "worktree_clean_after": true,
+    "environment_mode": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
+    "dependency_lock_restored": false
+  },
+  "break_verified": true
+}

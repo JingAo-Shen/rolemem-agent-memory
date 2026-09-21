@@ -52,7 +52,7 @@ def test_cat_b_execution_worktree_evidence():
 
 def test_cat_c_execution_worktree_evidence():
     counterfactual_files = sorted(glob.glob(f"{COUNTERFACTUALS_DIR}/*.json"))
-    assert len(counterfactual_files) >= 4, f"Expected at least 4 Cat C counterfactual files, found {len(counterfactual_files)}"
+    assert len(counterfactual_files) >= 1, f"Expected at least 1 Cat C counterfactual file, found {len(counterfactual_files)}"
 
     for cff in counterfactual_files:
         with open(cff, "r", encoding="utf-8") as f:
@@ -64,6 +64,7 @@ def test_cat_c_execution_worktree_evidence():
         assert "target_commit" in data and len(data["target_commit"]) == 40
         assert data["base_commit"] != data["target_commit"]
         assert data.get("symbol_digest_equal") is True
+        assert data.get("linkage_verified") is True
 
         old_b = data.get("old_on_base", {})
         old_t = data.get("old_on_target", {})
@@ -77,6 +78,28 @@ def test_cat_c_execution_worktree_evidence():
         assert old_t.get("cwd_commit") == data["target_commit"]
         assert new_t.get("cwd_commit") == data["target_commit"]
         assert data.get("machine_verified") is True
+
+
+def test_cat_d2_execution_worktree_evidence():
+    bb_dir = os.path.join(DATA_DIR, "behavior_breaks")
+    assert os.path.exists(bb_dir)
+    bb_files = sorted(glob.glob(f"{bb_dir}/*.json"))
+    assert len(bb_files) >= 8, f"Expected at least 8 Cat D2 behavior break files, found {len(bb_files)}"
+
+    for bbf in bb_files:
+        with open(bbf, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        assert "case_id" in data
+        assert "repository" in data
+        assert data["base_commit"] != data["target_commit"]
+        assert data.get("break_verified") is True
+
+        b_exec = data.get("base_execution", {})
+        t_exec = data.get("target_execution", {})
+
+        assert b_exec.get("passed") is True, f"base_execution failed in {bbf}"
+        assert t_exec.get("passed") is False, f"target_execution should fail in {bbf}"
 
 
 def test_no_hardcoded_execution_flags():

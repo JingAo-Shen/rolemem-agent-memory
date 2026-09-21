@@ -8,8 +8,10 @@
   "authenticity_verified": true,
   "primary_file_verified": true,
   "diff_hunk_bytes": 1260,
+  "diff_sha256": "969c11ace4203dded2b72c2626944cea67c65185f13bc53982bff7371040efda",
   "pr_url": "https://github.com/pallets/jinja/pull/2098",
   "pr_url_valid": true,
   "external_evidence_found": true,
-  "evidence_integrity_verified": true
+  "evidence_integrity_verified": true,
+  "evidence_integrity_status": "PASS"
 }

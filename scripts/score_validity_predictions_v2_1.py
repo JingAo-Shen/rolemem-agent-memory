@@ -93,6 +93,7 @@ def score_predictions():
         coverage = decided / total_cases if total_cases > 0 else 0.0
         acc_decided = (tp + tn) / decided if decided > 0 else 0.0
         acc_overall = (tp + tn) / total_cases if total_cases > 0 else 0.0
+        selective_risk = (fp + fn) / decided if decided > 0 else 0.0
 
         prec_stale = tp / (tp + fp) if (tp + fp) > 0 else 0.0
         rec_stale = tp / (tp + fn) if (tp + fn) > 0 else 0.0
@@ -113,6 +114,10 @@ def score_predictions():
         vmr = tn / (tn + fp) if (tn + fp) > 0 else 0.0
         smr = tp / (tp + fn) if (tp + fn) > 0 else 0.0
 
+        valid_cov = (tn + fp) / valid_cases if valid_cases > 0 else 0.0
+        stale_cov = (tp + fn) / stale_cases if stale_cases > 0 else 0.0
+        aurc = selective_risk * coverage  # Risk-Coverage Area product
+
         per_cat_acc = {}
         for cat in sorted(cat_counts):
             tot = cat_total[cat]
@@ -126,6 +131,10 @@ def score_predictions():
             "FN": fn,
             "ABSTAIN": abstain,
             "Coverage": coverage,
+            "Valid_Coverage": valid_cov,
+            "Stale_Coverage": stale_cov,
+            "Selective_Risk": selective_risk,
+            "AURC": aurc,
             "Accuracy_Decided": acc_decided,
             "Accuracy_Overall": acc_overall,
             "Balanced_Accuracy": balanced_acc,
@@ -143,7 +152,7 @@ def score_predictions():
 
     out_data = {
         "benchmark_summary": {
-            "protocol_version": "2.1-r2",
+            "protocol_version": "2.1-r3",
             "total_cases": total_cases,
             "valid_cases": valid_cases,
             "stale_cases": stale_cases,
@@ -158,7 +167,7 @@ def score_predictions():
     print(f"=== Scoring Complete ===")
     print(f"  Saved evaluation results to: {OUT_JSON}")
     for mname, res in mech_results.items():
-        print(f"  - {mname}: Acc={res['Accuracy_Overall']*100:.1f}%, F1={res['F1']*100:.1f}%, FIR={res['False_Invalidation_Rate_FIR']*100:.1f}%, SER={res['Stale_Exposure_Rate_SER']*100:.1f}%")
+        print(f"  - {mname}: Acc={res['Accuracy_Overall']*100:.1f}%, F1={res['F1']*100:.1f}%, Risk={res['Selective_Risk']*100:.1f}%, FIR={res['False_Invalidation_Rate_FIR']*100:.1f}%, SER={res['Stale_Exposure_Rate_SER']*100:.1f}%")
 
 
 if __name__ == "__main__":

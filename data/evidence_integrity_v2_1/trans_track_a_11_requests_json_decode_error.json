@@ -8,8 +8,10 @@
   "authenticity_verified": true,
   "primary_file_verified": true,
   "diff_hunk_bytes": 507,
+  "diff_sha256": "78cabf4fda69356c29ea598425a65f302cf6d21c5ca6bda815c5cf9a9e0ae01e",
   "pr_url": "https://github.com/psf/requests/pull/6097",
   "pr_url_valid": true,
   "external_evidence_found": true,
-  "evidence_integrity_verified": true
+  "evidence_integrity_verified": true,
+  "evidence_integrity_status": "PASS"
 }

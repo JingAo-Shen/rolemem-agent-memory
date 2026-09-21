@@ -43,9 +43,9 @@
 {"case_id": "MV21-000043", "prediction": "STALE", "confidence": 1.0, "reasons": ["File modified in Git diff hunk."], "evidence": []}
 {"case_id": "MV21-000044", "prediction": "STALE", "confidence": 1.0, "reasons": ["File modified in Git diff hunk."], "evidence": []}
 {"case_id": "MV21-000045", "prediction": "STALE", "confidence": 1.0, "reasons": ["File modified in Git diff hunk."], "evidence": []}
-{"case_id": "MV21-000046", "prediction": "VALID", "confidence": 1.0, "reasons": ["File content SHA256 identical (cbd4c367734f...)."], "evidence": []}
-{"case_id": "MV21-000047", "prediction": "VALID", "confidence": 1.0, "reasons": ["File content SHA256 identical (b4e792cc9337...)."], "evidence": []}
-{"case_id": "MV21-000048", "prediction": "VALID", "confidence": 1.0, "reasons": ["File content SHA256 identical (cbf0dc79d649...)."], "evidence": []}
+{"case_id": "MV21-000046", "prediction": "STALE", "confidence": 1.0, "reasons": ["File modified in Git diff hunk."], "evidence": []}
+{"case_id": "MV21-000047", "prediction": "STALE", "confidence": 1.0, "reasons": ["File modified in Git diff hunk."], "evidence": []}
+{"case_id": "MV21-000048", "prediction": "STALE", "confidence": 1.0, "reasons": ["File modified in Git diff hunk."], "evidence": []}
 {"case_id": "MV21-000049", "prediction": "STALE", "confidence": 1.0, "reasons": ["File modified in Git diff hunk."], "evidence": []}
 {"case_id": "MV21-000050", "prediction": "STALE", "confidence": 1.0, "reasons": ["File modified in Git diff hunk."], "evidence": []}
 {"case_id": "MV21-000051", "prediction": "STALE", "confidence": 1.0, "reasons": ["File modified in Git diff hunk."], "evidence": []}
@@ -59,6 +59,3 @@
 {"case_id": "MV21-000059", "prediction": "STALE", "confidence": 1.0, "reasons": ["File modified in Git diff hunk."], "evidence": []}
 {"case_id": "MV21-000060", "prediction": "STALE", "confidence": 1.0, "reasons": ["File modified in Git diff hunk."], "evidence": []}
 {"case_id": "MV21-000061", "prediction": "STALE", "confidence": 1.0, "reasons": ["File modified in Git diff hunk."], "evidence": []}
-{"case_id": "MV21-000062", "prediction": "STALE", "confidence": 1.0, "reasons": ["File modified in Git diff hunk."], "evidence": []}
-{"case_id": "MV21-000063", "prediction": "STALE", "confidence": 1.0, "reasons": ["File modified in Git diff hunk."], "evidence": []}
-{"case_id": "MV21-000064", "prediction": "STALE", "confidence": 1.0, "reasons": ["File modified in Git diff hunk."], "evidence": []}

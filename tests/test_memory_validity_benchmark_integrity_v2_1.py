@@ -67,9 +67,11 @@ def test_cat_c_digest_same():
 
 def test_cat_d_digest_changed_or_removed():
     records = load_gold_records()
-    cat_d = [r for r in records if r["category"] == "CAT_D_SYM_CHG_OR_REM_STALE"]
-    assert len(cat_d) > 0, "Cat D must contain cases"
-    for r in cat_d:
+    cat_d1 = [r for r in records if r["category"] == "CAT_D1_SYM_REM_STALE"]
+    cat_d2 = [r for r in records if r["category"] == "CAT_D2_SYM_CHG_BEHAVIOR_STALE"]
+    assert len(cat_d1) > 0, "Cat D1 must contain cases"
+    assert len(cat_d2) > 0, "Cat D2 must contain cases"
+    for r in cat_d1 + cat_d2:
         assert r["symbol_changed"] is True, f"Cat D case {r['case_id']} has symbol_changed=False"
         assert r["symbol_digest_base"] != r["symbol_digest_target"] or r["symbol_digest_target"] == "NONE"
         assert r["gold_label"] == "STALE"

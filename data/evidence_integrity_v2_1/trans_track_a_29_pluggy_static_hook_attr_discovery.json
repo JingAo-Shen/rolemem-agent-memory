@@ -8,8 +8,10 @@
   "authenticity_verified": true,
   "primary_file_verified": true,
   "diff_hunk_bytes": 6915,
+  "diff_sha256": "c4ae2ae6c15bd9f49cb4f9641df7044f3727e4b8bc8e598e36ca24174ada012d",
   "pr_url": "https://github.com/pytest-dev/pluggy/pull/701",
   "pr_url_valid": true,
   "external_evidence_found": true,
-  "evidence_integrity_verified": true
+  "evidence_integrity_verified": true,
+  "evidence_integrity_status": "PASS"
 }

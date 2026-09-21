@@ -8,8 +8,10 @@
   "authenticity_verified": true,
   "primary_file_verified": true,
   "diff_hunk_bytes": 3192,
+  "diff_sha256": "ac2868666314d21a7bceb1d95d537932992c006d5442d7f4c9c71df9db7d3758",
   "pr_url": "https://github.com/python-attrs/attrs/pull/1383",
   "pr_url_valid": true,
   "external_evidence_found": true,
-  "evidence_integrity_verified": true
+  "evidence_integrity_verified": true,
+  "evidence_integrity_status": "PASS"
 }

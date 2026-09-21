@@ -1,4 +1,4 @@
-# RoleMem Protocol V2.1-R2 — Gate-Based Benchmark Curation Report
+# RoleMem Protocol V2.1-R3 — Gate-Based Benchmark Curation Report
 
 ## 1. Executive Curation Summary
 - **Total Evaluated Transitions**: 30
@@ -18,7 +18,7 @@
 | **1. Authenticity** | Real 40-char Git SHA & verified git commit | 30/30 | 100.0% |
 | **2. Evidence Integrity** | Real diff hunks, PR URL & external evidence | 30/30 | 100.0% |
 | **3. Causal Matrix** | Machine-generated 2x2 sandbox execution | 19/30 | 63.3% |
-| **4. Stale Grounding** | Grounded historical memory | 30/30 | 100.0% |
+| **4. Stale Grounding** | Grounded historical memory | 28/30 | 93.3% |
 | **5. Valid Grounding** | Grounded target memory | 30/30 | 100.0% |
 | **6. Task Mapping** | Concrete pytest task mapping | 30/30 | 100.0% |
 | **7. Leakage** | Non-trivial BM25 context | 29/30 | 96.7% |

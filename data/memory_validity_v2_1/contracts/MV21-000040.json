@@ -3,9 +3,19 @@
   "repository": "rich",
   "base_commit": "84716e746257b9023e7d5e770e376db92473aa21",
   "target_commit": "285d9e94e268daf3ef159ca41e113a2e11b625e1",
+  "claim": "When Console is initialized with record=True, text printed via print() is captured and retrievable through export_text().",
+  "claim_subject": "Console",
+  "claim_predicate": "captures printed text when record=True",
+  "contract_assertions": [
+    "c = Console(record=True)",
+    "c.print('hello')",
+    "assert 'hello' in c.export_text()"
+  ],
+  "claim_contract_linked": true,
   "base_execution": {
     "passed": true,
     "exit_code": 0,
+    "source_commit": "84716e746257b9023e7d5e770e376db92473aa21",
     "python_version": "3.13.5",
     "cwd_commit": "84716e746257b9023e7d5e770e376db92473aa21",
     "contract_hash": "b524d5033216b8bf7fff053abb879aac6563fbd2ee959399e4d8f65033b49d6f",
@@ -13,11 +23,16 @@
     "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "stdout": "hello\n",
     "stderr": "",
-    "timestamp": 1789918694.2917411
+    "timestamp": 1789951250.2297716,
+    "worktree_clean_before": true,
+    "worktree_clean_after": true,
+    "environment_mode": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
+    "dependency_lock_restored": false
   },
   "target_execution": {
     "passed": true,
     "exit_code": 0,
+    "source_commit": "285d9e94e268daf3ef159ca41e113a2e11b625e1",
     "python_version": "3.13.5",
     "cwd_commit": "285d9e94e268daf3ef159ca41e113a2e11b625e1",
     "contract_hash": "b524d5033216b8bf7fff053abb879aac6563fbd2ee959399e4d8f65033b49d6f",
@@ -25,7 +40,11 @@
     "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "stdout": "hello\n",
     "stderr": "",
-    "timestamp": 1789918694.4954872
+    "timestamp": 1789951250.5455317,
+    "worktree_clean_before": true,
+    "worktree_clean_after": true,
+    "environment_mode": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
+    "dependency_lock_restored": false
   },
   "machine_verified": true
 }

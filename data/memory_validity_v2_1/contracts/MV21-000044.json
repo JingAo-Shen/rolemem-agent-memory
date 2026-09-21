@@ -3,9 +3,18 @@
   "repository": "urllib3",
   "base_commit": "07408cec79d1856d81bb42c74a904a24fdb9e465",
   "target_commit": "adde463f32b7c52727211d10f45ae961650ffd4c",
+  "claim": "PoolManager class can be instantiated with default connection pool configuration without arguments.",
+  "claim_subject": "PoolManager",
+  "claim_predicate": "instantiable with default arguments",
+  "contract_assertions": [
+    "pm = PoolManager()",
+    "assert pm is not None"
+  ],
+  "claim_contract_linked": true,
   "base_execution": {
     "passed": true,
     "exit_code": 0,
+    "source_commit": "07408cec79d1856d81bb42c74a904a24fdb9e465",
     "python_version": "3.13.5",
     "cwd_commit": "07408cec79d1856d81bb42c74a904a24fdb9e465",
     "contract_hash": "7d0a8f7864399fdcb446fb0d731c4bfcb0dec8f1e97cadea3566c4b5f3f1a0ee",
@@ -13,11 +22,16 @@
     "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "stdout": "",
     "stderr": "",
-    "timestamp": 1789918696.6203964
+    "timestamp": 1789951253.1699576,
+    "worktree_clean_before": true,
+    "worktree_clean_after": true,
+    "environment_mode": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
+    "dependency_lock_restored": false
   },
   "target_execution": {
     "passed": true,
     "exit_code": 0,
+    "source_commit": "adde463f32b7c52727211d10f45ae961650ffd4c",
     "python_version": "3.13.5",
     "cwd_commit": "adde463f32b7c52727211d10f45ae961650ffd4c",
     "contract_hash": "7d0a8f7864399fdcb446fb0d731c4bfcb0dec8f1e97cadea3566c4b5f3f1a0ee",
@@ -25,7 +39,11 @@
     "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "stdout": "",
     "stderr": "",
-    "timestamp": 1789918696.7425966
+    "timestamp": 1789951253.305123,
+    "worktree_clean_before": true,
+    "worktree_clean_after": true,
+    "environment_mode": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
+    "dependency_lock_restored": false
   },
   "machine_verified": true
 }

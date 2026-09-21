@@ -1,0 +1,41 @@
+{
+  "case_id": "MV21-000055",
+  "repository": "marshmallow",
+  "base_commit": "ad24f89100c95d3bf99ba17714d457c7c93e0b53",
+  "target_commit": "5429f0d4c6e346dc751599073cab67d66eefbcb2",
+  "base_execution": {
+    "passed": true,
+    "exit_code": 0,
+    "source_commit": "ad24f89100c95d3bf99ba17714d457c7c93e0b53",
+    "python_version": "3.13.5",
+    "cwd_commit": "ad24f89100c95d3bf99ba17714d457c7c93e0b53",
+    "contract_hash": "c2060101d2729a99251479fa07403d99559d215dbc8238bcfcee4e33d07d1050",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout": "",
+    "stderr": "",
+    "timestamp": 1789951253.9745784,
+    "worktree_clean_before": true,
+    "worktree_clean_after": true,
+    "environment_mode": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
+    "dependency_lock_restored": false
+  },
+  "target_execution": {
+    "passed": false,
+    "exit_code": 1,
+    "source_commit": "5429f0d4c6e346dc751599073cab67d66eefbcb2",
+    "python_version": "3.13.5",
+    "cwd_commit": "5429f0d4c6e346dc751599073cab67d66eefbcb2",
+    "contract_hash": "c2060101d2729a99251479fa07403d99559d215dbc8238bcfcee4e33d07d1050",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "8cb85a7b97760d448302a89b8cc77ff7f9c4fe811bf137080d05d4146bacde43",
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 11, in <module>\n    assert 'pprint' in marshmallow.__all__\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+    "timestamp": 1789951254.0706694,
+    "worktree_clean_before": true,
+    "worktree_clean_after": true,
+    "environment_mode": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
+    "dependency_lock_restored": false
+  },
+  "break_verified": true
+}

@@ -52,7 +52,7 @@ def test_readiness_report_consistency():
     with open(REPORT_READINESS, "r", encoding="utf-8") as f:
         rep_content = f.read()
 
-    assert "PROTOCOL_VERSION = 2.1-r2" in rep_content
+    assert "PROTOCOL_VERSION = 2.1-r3" in rep_content
     assert "ALGORITHM_FREEZE = NO" in rep_content
     assert "BENCHMARK_FREEZE = NO" in rep_content
     assert "HUMAN_VALIDATION = PENDING" in rep_content
@@ -76,7 +76,7 @@ def test_curation_report_consistency():
     with open(REPORT_CURATION, "r", encoding="utf-8") as f:
         rep_content = f.read()
 
-    assert "Protocol V2.1-R2" in rep_content
+    assert "Protocol V2.1-R3" in rep_content
     assert f"Total Evaluated Transitions**: {manifest['total_evaluated_transitions']}" in rep_content
     assert f"Core Benchmark Candidates**: {manifest['core_benchmark_count']}" in rep_content
     assert f"Control Benchmark Candidates**: {manifest['control_benchmark_count']}" in rep_content

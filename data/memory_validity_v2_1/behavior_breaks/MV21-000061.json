@@ -1,0 +1,41 @@
+{
+  "case_id": "MV21-000061",
+  "repository": "click",
+  "base_commit": "7a0a3447f6ddd2c15438c5d098e289323f9f9556",
+  "target_commit": "051725fa7e0c69effc9107066d8791c5b99242c3",
+  "base_execution": {
+    "passed": true,
+    "exit_code": 0,
+    "source_commit": "7a0a3447f6ddd2c15438c5d098e289323f9f9556",
+    "python_version": "3.13.5",
+    "cwd_commit": "7a0a3447f6ddd2c15438c5d098e289323f9f9556",
+    "contract_hash": "f877b909ca50b4066eb98df590bd6c82eed672b947ce52fc9991e94f7c4a48d4",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout": "",
+    "stderr": "",
+    "timestamp": 1789951255.0800786,
+    "worktree_clean_before": true,
+    "worktree_clean_after": true,
+    "environment_mode": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
+    "dependency_lock_restored": false
+  },
+  "target_execution": {
+    "passed": false,
+    "exit_code": 1,
+    "source_commit": "051725fa7e0c69effc9107066d8791c5b99242c3",
+    "python_version": "3.13.5",
+    "cwd_commit": "051725fa7e0c69effc9107066d8791c5b99242c3",
+    "contract_hash": "f877b909ca50b4066eb98df590bd6c82eed672b947ce52fc9991e94f7c4a48d4",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "4362e7f94564cab100bcb90b4672fd9bad3437b641ce9adb1c263014a6289725",
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 12, in <module>\n    from click.utils import get_binary_stream\n  File \"/tmp/tmph2ze30l6/wt/src/click/utils.py\", line 681, in __getattr__\n    warnings.warn(\n    ~~~~~~~~~~~~~^\n        f\"'click.utils.{name}' is deprecated and will be removed in Click 9.0.\",\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n        DeprecationWarning,\n        ^^^^^^^^^^^^^^^^^^^\n        stacklevel=2,\n        ^^^^^^^^^^^^^\n    )\n    ^\nDeprecationWarning: 'click.utils.get_binary_stream' is deprecated and will be removed in Click 9.0.\n",
+    "timestamp": 1789951255.2034543,
+    "worktree_clean_before": true,
+    "worktree_clean_after": true,
+    "environment_mode": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
+    "dependency_lock_restored": false
+  },
+  "break_verified": true
+}

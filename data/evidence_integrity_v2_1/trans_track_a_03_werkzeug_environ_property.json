@@ -8,8 +8,10 @@
   "authenticity_verified": true,
   "primary_file_verified": true,
   "diff_hunk_bytes": 2034,
+  "diff_sha256": "3dda7663a86d280b0e583b415be2de242e8ea616f29b13b257a8c452382f02cf",
   "pr_url": "https://github.com/pallets/werkzeug/pull/3276",
   "pr_url_valid": true,
   "external_evidence_found": true,
-  "evidence_integrity_verified": true
+  "evidence_integrity_verified": true,
+  "evidence_integrity_status": "PASS"
 }

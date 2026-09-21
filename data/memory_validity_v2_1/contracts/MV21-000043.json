@@ -3,9 +3,18 @@
   "repository": "starlette",
   "base_commit": "38f8999a229610b36f39d11f67d80515a15c6330",
   "target_commit": "8a55ce12c02b4a52363f587706e39c2c71738fb3",
+  "claim": "Starlette application instance initializes with default debug mode set to False.",
+  "claim_subject": "Starlette",
+  "claim_predicate": "initializes with default debug mode set to False",
+  "contract_assertions": [
+    "app = Starlette()",
+    "assert app.debug is False"
+  ],
+  "claim_contract_linked": true,
   "base_execution": {
     "passed": true,
     "exit_code": 0,
+    "source_commit": "38f8999a229610b36f39d11f67d80515a15c6330",
     "python_version": "3.13.5",
     "cwd_commit": "38f8999a229610b36f39d11f67d80515a15c6330",
     "contract_hash": "17ad7737790f3fc99ff501f33dd3e64ebd1bf79e1f7495aa60f91a013e8e38db",
@@ -13,11 +22,16 @@
     "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "stdout": "",
     "stderr": "",
-    "timestamp": 1789918696.322986
+    "timestamp": 1789951252.858244,
+    "worktree_clean_before": true,
+    "worktree_clean_after": true,
+    "environment_mode": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
+    "dependency_lock_restored": false
   },
   "target_execution": {
     "passed": true,
     "exit_code": 0,
+    "source_commit": "8a55ce12c02b4a52363f587706e39c2c71738fb3",
     "python_version": "3.13.5",
     "cwd_commit": "8a55ce12c02b4a52363f587706e39c2c71738fb3",
     "contract_hash": "17ad7737790f3fc99ff501f33dd3e64ebd1bf79e1f7495aa60f91a013e8e38db",
@@ -25,7 +39,11 @@
     "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "stdout": "",
     "stderr": "",
-    "timestamp": 1789918696.4454608
+    "timestamp": 1789951252.998135,
+    "worktree_clean_before": true,
+    "worktree_clean_after": true,
+    "environment_mode": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
+    "dependency_lock_restored": false
   },
   "machine_verified": true
 }

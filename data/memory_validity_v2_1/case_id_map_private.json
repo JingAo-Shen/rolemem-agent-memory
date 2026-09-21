@@ -352,163 +352,139 @@
     "gold_label": "VALID"
   },
   "MV21-000045": {
-    "source_tid": "trans_pluggy_hookimpl",
+    "source_tid": "trans_pluggy_hookspec",
     "repository": "pluggy",
     "file_path": "src/pluggy/_hooks.py",
-    "symbol_qualified_name": "HookImpl",
+    "symbol_qualified_name": "HookSpec",
     "category": "CAT_C_SYM_SAME_MEMORY_STALE",
     "gold_label": "STALE"
   },
   "MV21-000046": {
-    "source_tid": "trans_urllib3_is_fp_closed",
-    "repository": "urllib3",
-    "file_path": "src/urllib3/util/response.py",
-    "symbol_qualified_name": "is_fp_closed",
-    "category": "CAT_C_SYM_SAME_MEMORY_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000047": {
-    "source_tid": "trans_marshmallow_schema",
-    "repository": "marshmallow",
-    "file_path": "src/marshmallow/schema.py",
-    "symbol_qualified_name": "Schema",
-    "category": "CAT_C_SYM_SAME_MEMORY_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000048": {
-    "source_tid": "trans_itsdangerous_serializer",
-    "repository": "itsdangerous",
-    "file_path": "src/itsdangerous/serializer.py",
-    "symbol_qualified_name": "Serializer",
-    "category": "CAT_C_SYM_SAME_MEMORY_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000049": {
     "source_tid": "trans_track_a_01_click_stream_deprecations",
     "repository": "click",
     "file_path": "src/click/utils.py",
-    "symbol_qualified_name": "_LazyFile",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
+    "symbol_qualified_name": "get_binary_stream",
+    "category": "CAT_D1_SYM_REM_STALE",
     "gold_label": "STALE"
   },
-  "MV21-000050": {
-    "source_tid": "trans_track_a_02_flask_should_ignore_error",
-    "repository": "flask",
-    "file_path": "src/flask/app.py",
-    "symbol_qualified_name": "Flask",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
+  "MV21-000047": {
+    "source_tid": "trans_track_a_01_click_stream_deprecations",
+    "repository": "click",
+    "file_path": "src/click/utils.py",
+    "symbol_qualified_name": "get_text_stream",
+    "category": "CAT_D1_SYM_REM_STALE",
     "gold_label": "STALE"
   },
-  "MV21-000051": {
+  "MV21-000048": {
     "source_tid": "trans_track_a_03_werkzeug_environ_property",
     "repository": "werkzeug",
     "file_path": "src/werkzeug/utils.py",
     "symbol_qualified_name": "environ_property",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
+    "category": "CAT_D1_SYM_REM_STALE",
     "gold_label": "STALE"
   },
-  "MV21-000052": {
+  "MV21-000049": {
+    "source_tid": "trans_track_a_03_werkzeug_environ_property",
+    "repository": "werkzeug",
+    "file_path": "src/werkzeug/utils.py",
+    "symbol_qualified_name": "environ_property.lookup",
+    "category": "CAT_D1_SYM_REM_STALE",
+    "gold_label": "STALE"
+  },
+  "MV21-000050": {
+    "source_tid": "trans_track_a_03_werkzeug_environ_property",
+    "repository": "werkzeug",
+    "file_path": "src/werkzeug/utils.py",
+    "symbol_qualified_name": "environ_property.read_only",
+    "category": "CAT_D1_SYM_REM_STALE",
+    "gold_label": "STALE"
+  },
+  "MV21-000051": {
     "source_tid": "trans_track_a_04_jinja_version_deprecation",
     "repository": "jinja",
     "file_path": "src/jinja2/__init__.py",
     "symbol_qualified_name": "__version__",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
+    "category": "CAT_D1_SYM_REM_STALE",
     "gold_label": "STALE"
   },
-  "MV21-000053": {
+  "MV21-000052": {
     "source_tid": "trans_track_a_05_itsdangerous_version_removal",
     "repository": "itsdangerous",
     "file_path": "src/itsdangerous/__init__.py",
     "symbol_qualified_name": "__getattr__",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
+    "category": "CAT_D1_SYM_REM_STALE",
     "gold_label": "STALE"
   },
-  "MV21-000054": {
+  "MV21-000053": {
     "source_tid": "trans_track_a_06_markupsafe_version_removal",
     "repository": "markupsafe",
     "file_path": "src/markupsafe/__init__.py",
     "symbol_qualified_name": "__getattr__",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
+    "category": "CAT_D1_SYM_REM_STALE",
+    "gold_label": "STALE"
+  },
+  "MV21-000054": {
+    "source_tid": "trans_urllib3_basehttpresponse",
+    "repository": "urllib3",
+    "file_path": "src/urllib3/response.py",
+    "symbol_qualified_name": "urllib3.BaseHTTPResponse",
+    "category": "CAT_D2_SYM_CHG_BEHAVIOR_STALE",
     "gold_label": "STALE"
   },
   "MV21-000055": {
-    "source_tid": "trans_track_a_07_pluggy_varnames_noself",
-    "repository": "pluggy",
-    "file_path": "src/pluggy/_hooks.py",
-    "symbol_qualified_name": "varnames",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
+    "source_tid": "trans_marshmallow___all__",
+    "repository": "marshmallow",
+    "file_path": "src/marshmallow/__init__.py",
+    "symbol_qualified_name": "marshmallow.__all__",
+    "category": "CAT_D2_SYM_CHG_BEHAVIOR_STALE",
     "gold_label": "STALE"
   },
   "MV21-000056": {
-    "source_tid": "trans_track_a_08_attrs_py313_replace_control",
-    "repository": "attrs",
-    "file_path": "src/attr/_make.py",
-    "symbol_qualified_name": "Attribute.evolve",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
+    "source_tid": "trans_itsdangerous___getattr__",
+    "repository": "itsdangerous",
+    "file_path": "src/itsdangerous/__init__.py",
+    "symbol_qualified_name": "itsdangerous.__getattr__",
+    "category": "CAT_D2_SYM_CHG_BEHAVIOR_STALE",
     "gold_label": "STALE"
   },
   "MV21-000057": {
-    "source_tid": "trans_track_a_09_virtualenv_drop_py38_control",
-    "repository": "virtualenv",
-    "file_path": "src/virtualenv/create/via_global_ref/builtin/cpython/cpython3.py",
-    "symbol_qualified_name": "CPython3Posix",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
+    "source_tid": "trans_packaging_legacyversion",
+    "repository": "packaging",
+    "file_path": "packaging/version.py",
+    "symbol_qualified_name": "packaging.LegacyVersion",
+    "category": "CAT_D2_SYM_CHG_BEHAVIOR_STALE",
     "gold_label": "STALE"
   },
   "MV21-000058": {
-    "source_tid": "trans_track_a_10_httpx_client_proxies_deprecation",
-    "repository": "httpx",
-    "file_path": "httpx/_client.py",
-    "symbol_qualified_name": "AsyncClient",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
+    "source_tid": "trans_more-itertools_zip_equal",
+    "repository": "more-itertools",
+    "file_path": "more_itertools/more.py",
+    "symbol_qualified_name": "more-itertools.zip_equal",
+    "category": "CAT_D2_SYM_CHG_BEHAVIOR_STALE",
     "gold_label": "STALE"
   },
   "MV21-000059": {
-    "source_tid": "trans_track_a_11_requests_json_decode_error",
-    "repository": "requests",
-    "file_path": "requests/models.py",
-    "symbol_qualified_name": "Response",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
+    "source_tid": "trans_markupsafe___version__",
+    "repository": "markupsafe",
+    "file_path": "src/markupsafe/__init__.py",
+    "symbol_qualified_name": "markupsafe.__version__",
+    "category": "CAT_D2_SYM_CHG_BEHAVIOR_STALE",
     "gold_label": "STALE"
   },
   "MV21-000060": {
-    "source_tid": "trans_track_a_12_urllib3_getheaders_removal",
-    "repository": "urllib3",
-    "file_path": "src/urllib3/response.py",
-    "symbol_qualified_name": "BaseHTTPResponse",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
+    "source_tid": "trans_jinja___version__",
+    "repository": "jinja",
+    "file_path": "src/jinja2/__init__.py",
+    "symbol_qualified_name": "jinja.__version__",
+    "category": "CAT_D2_SYM_CHG_BEHAVIOR_STALE",
     "gold_label": "STALE"
   },
   "MV21-000061": {
-    "source_tid": "trans_track_a_13_starlette_weak_etag_removeprefix",
-    "repository": "starlette",
-    "file_path": "starlette/staticfiles.py",
-    "symbol_qualified_name": "StaticFiles",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000062": {
-    "source_tid": "trans_track_a_14_fastapi_on_event_compatibility",
-    "repository": "fastapi",
-    "file_path": "fastapi/routing.py",
-    "symbol_qualified_name": "APIRouter",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000063": {
-    "source_tid": "trans_track_a_15_more_itertools_zip_equal_removal",
-    "repository": "more-itertools",
-    "file_path": "more_itertools/more.py",
-    "symbol_qualified_name": "__all__",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
-    "gold_label": "STALE"
-  },
-  "MV21-000064": {
-    "source_tid": "trans_track_a_16_rich_file_proxy_isatty",
-    "repository": "rich",
-    "file_path": "rich/file_proxy.py",
-    "symbol_qualified_name": "FileProxy",
-    "category": "CAT_D_SYM_CHG_OR_REM_STALE",
+    "source_tid": "trans_click_get_binary_stream",
+    "repository": "click",
+    "file_path": "src/click/utils.py",
+    "symbol_qualified_name": "click.get_binary_stream",
+    "category": "CAT_D2_SYM_CHG_BEHAVIOR_STALE",
     "gold_label": "STALE"
   }
 }

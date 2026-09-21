@@ -8,8 +8,10 @@
   "authenticity_verified": true,
   "primary_file_verified": true,
   "diff_hunk_bytes": 324,
+  "diff_sha256": "c03f5e8ec27106ccaf1f599e60170dbd0eca5d644c9cc0237c0378572d359e01",
   "pr_url": "https://github.com/Textualize/rich/pull/4077",
   "pr_url_valid": true,
   "external_evidence_found": true,
-  "evidence_integrity_verified": true
+  "evidence_integrity_verified": true,
+  "evidence_integrity_status": "PASS"
 }

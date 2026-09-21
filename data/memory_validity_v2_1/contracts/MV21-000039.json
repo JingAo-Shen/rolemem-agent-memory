@@ -3,9 +3,18 @@
   "repository": "tqdm",
   "base_commit": "4664b5701ebc5299290a1fb31a229fb1bfc64703",
   "target_commit": "5dcb022b55553b60ed2131b64aa5bf1e65470df1",
+  "claim": "tqdm wrapping a finite range iterable supports length inspection returning the total item count via len().",
+  "claim_subject": "tqdm",
+  "claim_predicate": "supports len() inspection on finite range iterable",
+  "contract_assertions": [
+    "t = tqdm(range(5))",
+    "assert len(t) == 5"
+  ],
+  "claim_contract_linked": true,
   "base_execution": {
     "passed": true,
     "exit_code": 0,
+    "source_commit": "4664b5701ebc5299290a1fb31a229fb1bfc64703",
     "python_version": "3.13.5",
     "cwd_commit": "4664b5701ebc5299290a1fb31a229fb1bfc64703",
     "contract_hash": "7897ce1eef1b2ec043889241d9ddc69180222055892db9309499376ede9fce74",
@@ -13,11 +22,16 @@
     "stderr_sha256": "122adc60d452e723e782ebf84259909680ff48a581f4d82716d1cfd4056178ea",
     "stdout": "",
     "stderr": "\n  0%|          | 0/5 [00:00<?, ?it/s]\n  0%|          | 0/5 [00:00<?, ?it/s]\n",
-    "timestamp": 1789918693.9476755
+    "timestamp": 1789951249.7795389,
+    "worktree_clean_before": true,
+    "worktree_clean_after": true,
+    "environment_mode": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
+    "dependency_lock_restored": false
   },
   "target_execution": {
     "passed": true,
     "exit_code": 0,
+    "source_commit": "5dcb022b55553b60ed2131b64aa5bf1e65470df1",
     "python_version": "3.13.5",
     "cwd_commit": "5dcb022b55553b60ed2131b64aa5bf1e65470df1",
     "contract_hash": "7897ce1eef1b2ec043889241d9ddc69180222055892db9309499376ede9fce74",
@@ -25,7 +39,11 @@
     "stderr_sha256": "122adc60d452e723e782ebf84259909680ff48a581f4d82716d1cfd4056178ea",
     "stdout": "",
     "stderr": "\n  0%|          | 0/5 [00:00<?, ?it/s]\n  0%|          | 0/5 [00:00<?, ?it/s]\n",
-    "timestamp": 1789918694.0366194
+    "timestamp": 1789951249.8837833,
+    "worktree_clean_before": true,
+    "worktree_clean_after": true,
+    "environment_mode": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
+    "dependency_lock_restored": false
   },
   "machine_verified": true
 }

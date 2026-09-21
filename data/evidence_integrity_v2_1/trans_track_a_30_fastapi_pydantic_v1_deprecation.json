@@ -8,8 +8,10 @@
   "authenticity_verified": true,
   "primary_file_verified": true,
   "diff_hunk_bytes": 1029,
+  "diff_sha256": "ea5dcd6bd0ff10a784f1a2d09b0e23993f2ce7244aada705a74da0a279227698",
   "pr_url": "https://github.com/tiangolo/fastapi/pull/14583",
   "pr_url_valid": true,
   "external_evidence_found": true,
-  "evidence_integrity_verified": true
+  "evidence_integrity_verified": true,
+  "evidence_integrity_status": "PASS"
 }

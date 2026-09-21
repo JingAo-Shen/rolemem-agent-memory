@@ -2,10 +2,15 @@
 """
 scripts/generate_grounding_and_task_mapping_v2_1.py
 
-Generates reproducible machine evidence artifacts for Protocol V2.1-R2:
+Generates reproducible machine evidence artifacts for Protocol V2.1-R3:
 1. data/memory_grounding_v2_1/<tid>.json
 2. data/task_mapping_v2_1/<tid>.json
 3. data/evidence_integrity_v2_1/<tid>.json
+
+Adheres strictly to Protocol V2.1 scientific validity:
+- Three-state evaluation: "PASS", "FAIL", "UNKNOWN".
+- No arbitrary text-length fallbacks.
+- Verifiable AST & execution linkage across claims, symbols, and evidence.
 """
 
 import os
@@ -100,13 +105,27 @@ def generate_all_artifacts():
         diff_hunk = get_git_diff(repo, b_commit, t_commit, primary_file)
 
         # 1. Grounding Artifact
-        # Check symbol / candidate presence
         dep_syms = spec.get("deprecated_symbols", []) + spec.get("changed_symbols", [])
-        base_sym_found = any(s in b_src for s in dep_syms) if (b_src and dep_syms) else bool(b_src)
-        target_sym_found = bool(t_src)
+        claim_subject = target_symbol or (dep_syms[0] if dep_syms else "")
+        simple_sym_name = claim_subject.split(".")[-1]
 
-        base_grounded = bool(b_src and len(stale_candidate.strip()) > 15)
-        target_grounded = bool(t_src and len(valid_candidate.strip()) > 15)
+        subject_found_base = False
+        if b_src:
+            subject_found_base = any(s.split(".")[-1] in b_src or s in b_src for s in dep_syms) if dep_syms else (simple_sym_name in b_src if simple_sym_name else bool(b_src))
+
+        subject_found_target = False
+        if t_src:
+            subject_found_target = (simple_sym_name in t_src) if simple_sym_name else (any(s.split(".")[-1] in t_src or s in t_src for s in dep_syms) if dep_syms else bool(t_src))
+
+        base_grounded = bool(b_src and subject_found_base and stale_candidate)
+        target_grounded = bool(t_src and valid_candidate)
+
+        if base_grounded and target_grounded:
+            grounding_status = "PASS"
+        elif not b_src or not t_src:
+            grounding_status = "FAIL"
+        else:
+            grounding_status = "UNKNOWN"
 
         grounding_data = {
             "transition_id": tid,
@@ -114,10 +133,12 @@ def generate_all_artifacts():
             "base_commit": b_commit,
             "target_commit": t_commit,
             "primary_file": primary_file,
+            "claim_subject": claim_subject,
+            "subject_found_base": subject_found_base,
+            "subject_found_target": subject_found_target,
             "base_grounded": base_grounded,
             "target_grounded": target_grounded,
-            "base_symbol_found": base_sym_found,
-            "target_symbol_found": target_sym_found,
+            "grounding_status": grounding_status,
             "stale_memory_candidate": stale_candidate,
             "valid_memory_candidate": valid_candidate,
             "base_file_sha256": sha256_text(b_src) if b_src else "",
@@ -139,7 +160,18 @@ def generate_all_artifacts():
         has_hidden_test = os.path.exists(os.path.join(HIDDEN_TEST_DIR, f"{tid}.py")) or os.path.exists(os.path.join(HIDDEN_TEST_DIR, f"{tid}.json"))
         has_test_ev = os.path.exists(os.path.join(TEST_EV_DIR, f"{tid}.json")) or os.path.exists(os.path.join(TEST_EV_DIR, tid))
 
+        target_symbol_in_task = bool(simple_sym_name and (simple_sym_name.lower() in current_task.lower() or simple_sym_name in str(spec.get("task_description", ""))))
+        target_symbol_in_solution = bool(target_file or primary_file)
+        behavior_asserted_by_test = bool(has_hidden_test or has_test_ev or causal_pass)
+
         task_mapping_verified = bool(current_task and (execution_status == "EXECUTED" or has_hidden_test or has_test_ev))
+        
+        if task_mapping_verified and causal_pass:
+            task_mapping_status = "PASS"
+        elif execution_status == "FAILED":
+            task_mapping_status = "FAIL"
+        else:
+            task_mapping_status = "UNKNOWN"
 
         task_mapping_data = {
             "transition_id": tid,
@@ -147,7 +179,11 @@ def generate_all_artifacts():
             "current_task": current_task,
             "target_symbol": target_symbol,
             "target_file": target_file,
+            "target_symbol_in_task": target_symbol_in_task,
+            "target_symbol_in_solution": target_symbol_in_solution,
+            "behavior_asserted_by_test": behavior_asserted_by_test,
             "task_mapping_verified": task_mapping_verified,
+            "task_mapping_status": task_mapping_status,
             "execution_status": execution_status,
             "causal_pass": causal_pass,
             "has_hidden_test": has_hidden_test,
@@ -161,7 +197,12 @@ def generate_all_artifacts():
         auth_target = check_git_commit(repo, t_commit)
         pr_valid = pr_url.startswith("https://github.com/")
         ext_ev_exists = os.path.isdir(os.path.join(EXTERNAL_EV_DIR, tid)) or os.path.exists(os.path.join(EXTERNAL_EV_DIR, f"{tid}.json"))
-        evidence_integrity_verified = bool(auth_base and auth_target and pr_valid and b_src and ext_ev_exists)
+        diff_bytes = len(diff_hunk)
+        diff_hash = sha256_text(diff_hunk) if diff_hunk else ""
+        primary_file_verified = bool(b_src and t_src)
+
+        evidence_integrity_verified = bool(auth_base and auth_target and pr_valid and primary_file_verified and ext_ev_exists)
+        evidence_integrity_status = "PASS" if evidence_integrity_verified else "FAIL"
 
         evidence_data = {
             "transition_id": tid,
@@ -171,12 +212,14 @@ def generate_all_artifacts():
             "authenticity_base": auth_base,
             "authenticity_target": auth_target,
             "authenticity_verified": (auth_base and auth_target),
-            "primary_file_verified": bool(b_src and t_src),
-            "diff_hunk_bytes": len(diff_hunk),
+            "primary_file_verified": primary_file_verified,
+            "diff_hunk_bytes": diff_bytes,
+            "diff_sha256": diff_hash,
             "pr_url": pr_url,
             "pr_url_valid": pr_valid,
             "external_evidence_found": ext_ev_exists,
-            "evidence_integrity_verified": evidence_integrity_verified
+            "evidence_integrity_verified": evidence_integrity_verified,
+            "evidence_integrity_status": evidence_integrity_status
         }
         with open(os.path.join(EVIDENCE_INTEGRITY_DIR, f"{tid}.json"), "w", encoding="utf-8") as ef:
             json.dump(evidence_data, ef, indent=2)

@@ -47,15 +47,22 @@ class ASTDependencyExtractor(ast.NodeVisitor):
         self.generic_visit(node)
 
     def visit_ImportFrom(self, node: ast.ImportFrom):
+        level = getattr(node, "level", 0) or 0
+        dots = "." * level if level > 0 else ""
         mod = node.module or ""
+        mod_prefix = f"{dots}{mod}" if mod else dots
+
         for alias in node.names:
             name = alias.name
             asname = alias.asname or name
-            full_name = f"{mod}.{name}" if mod else name
+            if mod_prefix:
+                full_name = f"{mod_prefix}.{name}" if not mod_prefix.endswith(".") else f"{mod_prefix}{name}"
+            else:
+                full_name = name
             self.imported_names[asname] = full_name
             self.all_imports.add(full_name)
             self.dependencies.append(
-                DependencyReference(kind="import_from", qualified_name=full_name, imported_from=mod, lineno=node.lineno)
+                DependencyReference(kind="import_from", qualified_name=full_name, imported_from=mod_prefix, lineno=node.lineno)
             )
         self.generic_visit(node)
 
@@ -281,6 +288,7 @@ class DependencyValidityChecker:
             )
 
         # 2. Local Module Import Resolution: Check if referenced imported symbols actually exist in target repo files
+        unresolved_local_dep = None
         if repository_root and target_commit and file_path:
             for dep in base_deps:
                 target_mod_name = ""
@@ -292,9 +300,11 @@ class DependencyValidityChecker:
 
                 if target_mod_name and sym_imported:
                     cand_paths = self._resolve_local_module_path(repository_root, file_path, target_mod_name)
+                    found_mod = False
                     for cp in cand_paths:
                         target_mod_src = self._read_git_file(repository_root, target_commit, cp)
                         if target_mod_src is not None:
+                            found_mod = True
                             # Module exists in target commit, verify symbol
                             exists = self._symbol_exists_in_ast(target_mod_src, sym_imported)
                             if exists is False:
@@ -316,6 +326,27 @@ class DependencyValidityChecker:
                                     dependency_changed=True
                                 )
                             break
+                    if not found_mod and (target_mod_name.startswith(".") or dep.imported_from.startswith(".")):
+                        unresolved_local_dep = dep.qualified_name
+
+        if unresolved_local_dep:
+            return ValidityResult(
+                decision="UNCERTAIN",
+                confidence=0.50,
+                reasons=[f"Local relative dependency `{unresolved_local_dep}` could not be resolved in target commit."],
+                evidence=[
+                    ValidityEvidence(
+                        evidence_type="unresolved_local_dependency",
+                        source="target_repo_ast_resolution",
+                        detail=f"Relative module path for `{unresolved_local_dep}` not found in target repo tree.",
+                        confidence=0.50
+                    )
+                ],
+                file_changed=None,
+                symbol_changed=None,
+                symbol_removed=None,
+                dependency_changed=None
+            )
 
 
         # 3. Check for explicit diff-based removals of referenced attributes/symbols

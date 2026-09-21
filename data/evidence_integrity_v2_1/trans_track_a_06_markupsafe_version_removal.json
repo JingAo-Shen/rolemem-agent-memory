@@ -8,8 +8,10 @@
   "authenticity_verified": true,
   "primary_file_verified": true,
   "diff_hunk_bytes": 814,
+  "diff_sha256": "536df7e72d1ef5465ede337b439aade6b77197e0b95cb0f73e61bc599cb778ec",
   "pr_url": "https://github.com/pallets/markupsafe/pull/499",
   "pr_url_valid": true,
   "external_evidence_found": true,
-  "evidence_integrity_verified": true
+  "evidence_integrity_verified": true,
+  "evidence_integrity_status": "PASS"
 }

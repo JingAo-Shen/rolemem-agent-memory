@@ -1,5 +1,5 @@
 {
-  "protocol_version": "2.1-r2",
+  "protocol_version": "2.1-r3",
   "total_evaluated_transitions": 30,
   "core_benchmark_count": 13,
   "control_benchmark_count": 1,
@@ -48,7 +48,7 @@
   "manifest_sha256": {
     "track_a_core.jsonl": "9081ed21be26a1d24890752670cccb0e0d5cfc1c39ad63620f52a656813883f0",
     "track_a_controls.jsonl": "9b584aefc7ed0df5c37bc124d567bca4cbfb0ddedec2b8306f1fbe01c2e6e119",
-    "rebuild_candidates.jsonl": "28cbebad90042b15c869602b38c458f43d7a5f5522dc5abc9b907d379cb08a0b",
+    "rebuild_candidates.jsonl": "fed8a50d117f4deb9d09180b3bb6513d918771106f2c26b86c8d46824a9db896",
     "excluded.jsonl": "9e7a1bef569d63a1c074e6792cb7fd53ae0788f919e0bbec7d6822c8a06b3c7e"
   }
 }

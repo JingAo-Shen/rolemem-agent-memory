@@ -8,8 +8,10 @@
   "authenticity_verified": true,
   "primary_file_verified": true,
   "diff_hunk_bytes": 1202,
+  "diff_sha256": "5cfa20ccb3bb91b18ca37c6558da7e4f9c5e6a0322e80d4dfff3fe31cbb15fd5",
   "pr_url": "https://github.com/pallets/itsdangerous/pull/406",
   "pr_url_valid": true,
   "external_evidence_found": true,
-  "evidence_integrity_verified": true
+  "evidence_integrity_verified": true,
+  "evidence_integrity_status": "PASS"
 }
