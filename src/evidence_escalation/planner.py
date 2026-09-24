@@ -189,7 +189,8 @@ class DeterministicEscalationPlanner:
                         file_path=claim.file_path,
                         subject_symbol=claim.subject,
                         dependency_symbol=dep_obj,
-                        cost_tracker=tracker
+                        cost_tracker=tracker,
+                        budget=budget
                     )
                     acquired_evidences.extend(dep_evs)
 
@@ -301,7 +302,8 @@ class DeterministicEscalationPlanner:
                             file_path=claim.file_path,
                             parent_symbol=parent_sym,
                             child_symbol=child_sym,
-                            cost_tracker=tracker
+                            cost_tracker=tracker,
+                            budget=budget
                         )
                         acquired_evidences.extend(search_evs)
 
@@ -338,7 +340,8 @@ class DeterministicEscalationPlanner:
                             file_path=claim.file_path,
                             parent_symbol=parent_sym,
                             child_symbol=child_sym,
-                            cost_tracker=tracker
+                            cost_tracker=tracker,
+                            budget=budget
                         )
                         acquired_evidences.extend(search_evs)
 

@@ -6,7 +6,7 @@ PROTOCOL_VERSION = 2.2-selective-evidence-v1.2
 CURRENT_V1_RESULT_STATUS = DEVELOPMENT_SELECTIVE_ESCALATION
 V2_1_DEVELOPMENT_MUTATIONS = 0
 V2_2_V0_DETERMINISTIC_FOUNDATION = FROZEN
-V2_2_V1_SELECTIVE_ESCALATION = DEVELOPMENT
+V2_2_V1_SELECTIVE_ESCALATION = FREEZE_CANDIDATE
 V2_2_V1_WITNESS_BINDING = AUDITED
 V2_2_V1_CONTRACT_SEMANTICS = AUDITED
 V2_2_V1_EVIDENCE_TAXONOMY = AUDITED
@@ -78,8 +78,8 @@ FORMAL_PAPER_RESULTS = NO
 | Claim ID | Evidence Kind | Selected Target | Strength | Requirements Satisfied | Source Origin | Decision Evidence Status |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | `CLM-000037` | `EXECUTABLE_TEST_WITNESS` | `tests/test_formatting.py::test_help_formatter_write_text` | `STRONG` | `3/3` | `VERIFIED_TARGET_WORKTREE` | `VERIFIED_TEST_WITNESS` |
-| `CLM-000038` | `-` | `tests/sansio/test_request.py::test_cookies` | `WEAK` | `1/2` | `NOT_APPLICABLE` | `INCONCLUSIVE` |
-| `CLM-000039` | `-` | `tests/tests_tqdm.py::test_max_interval` | `WEAK` | `2/3` | `NOT_APPLICABLE` | `INCONCLUSIVE` |
+| `CLM-000038` | `-` | `tests/middleware/test_proxy_fix.py::test_proxy_fix` | `WEAK` | `1/2` | `NOT_APPLICABLE` | `INCONCLUSIVE` |
+| `CLM-000039` | `-` | `tests/tests_tqdm.py::test_max_interval` | `WEAK` | `1/3` | `NOT_APPLICABLE` | `INCONCLUSIVE` |
 | `CLM-000040` | `EXECUTABLE_TEST_WITNESS` | `tests/test_console.py::test_export_text` | `STRONG` | `4/4` | `VERIFIED_TARGET_WORKTREE` | `VERIFIED_TEST_WITNESS` |
 | `CLM-000041` | `EXECUTABLE_TEST_WITNESS` | `tests/test_text.py::test_str` | `STRONG` | `3/3` | `VERIFIED_TARGET_WORKTREE` | `VERIFIED_TEST_WITNESS` |
 | `CLM-000042` | `-` | `-` | `-` | `-` | `NOT_APPLICABLE` | `INCONCLUSIVE` |
@@ -108,10 +108,10 @@ FORMAL_PAPER_RESULTS = NO
 
 | Budget Preset | Files Limit | Tests Limit | Exec Limit | Action Limit | Coverage | Decided Acc | Risk | Total Execs | Total Time (ms) | Mean Time/Esc (ms) |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **B10** | 20 | 10 | 1 | 3 | 85.5% | 100.0% | 0.0% | 1 | 474.3 | 43.1 |
-| **B25** | 50 | 25 | 2 | 5 | 87.3% | 100.0% | 0.0% | 2 | 751.2 | 68.3 |
-| **B50** | 100 | 50 | 3 | 8 | 89.1% | 100.0% | 0.0% | 3 | 1184.7 | 107.7 |
-| **B100** | 300 | 100 | 5 | 15 | 89.1% | 100.0% | 0.0% | 3 | 1231.7 | 112.0 |
+| **B10** | 20 | 10 | 1 | 3 | 85.5% | 100.0% | 0.0% | 1 | 503.4 | 45.8 |
+| **B25** | 50 | 25 | 2 | 5 | 87.3% | 100.0% | 0.0% | 2 | 754.3 | 68.6 |
+| **B50** | 100 | 50 | 3 | 8 | 89.1% | 100.0% | 0.0% | 3 | 1167.1 | 106.1 |
+| **B100** | 300 | 100 | 5 | 15 | 89.1% | 100.0% | 0.0% | 3 | 1208.1 | 109.8 |
 
 ---
 
@@ -119,10 +119,10 @@ FORMAL_PAPER_RESULTS = NO
 
 | Metric | Total across Escalation Subset (11 Claims) | Mean per Escalated Claim |
 | :--- | :--- | :--- |
-| **Repository Files Scanned** | 91 | 8.3 files |
+| **Repository Files Scanned** | 806 | 73.3 files |
 | **Test Candidates Inspected** | 450 | 40.9 tests |
 | **Targeted Worktree Executions** | 3 | 0.27 executions |
-| **Total Execution Wall Time** | 1194.0 ms | 108.55 ms |
+| **Total Execution Wall Time** | 1171.92 ms | 106.54 ms |
 | **Total Acquisition Actions** | 15 | 1.36 actions |
 
 ### Action Type Distribution:
@@ -173,14 +173,14 @@ FORMAL_PAPER_RESULTS = NO
   - **Decision Transition**: `UNCERTAIN` -> **`UNCERTAIN`** (Gold: `VALID`, Stop Reason: `REMAINED_UNCERTAIN_AFTER_ESCALATION`)
   - **Evidence Kind**: `NONE` (Decision Status: `INCONCLUSIVE`)
   - **Requirement Coverage**: `1/2 (50.0%)`
-  - **Selected Target**: `tests/sansio/test_request.py::test_cookies` (Strength: `WEAK`)
+  - **Selected Target**: `tests/middleware/test_proxy_fix.py::test_proxy_fix` (Strength: `WEAK`)
   - **Provenance**: Snapshot `VERIFIED_TARGET_COMMIT`, Source Origin `NOT_APPLICABLE`
-  - **Execution Trace**: Step 1 (TEST_DISCOVERY): Discovered 5 candidates (0 strong) [Top candidate: tests/sansio/test_request.py:test_cookies (Pa...]
+  - **Execution Trace**: Step 1 (TEST_DISCOVERY): Discovered 5 candidates (0 strong) [Top candidate: tests/middleware/test_proxy_fix.py:test_proxy...]
 
 - **`CLM-000039`** (`MV21-000039`, Category `CAT_B_SYM_CHG_MEMORY_VALID`, ClaimType `BEHAVIORAL_CONTRACT`):
   - **Decision Transition**: `UNCERTAIN` -> **`UNCERTAIN`** (Gold: `VALID`, Stop Reason: `REMAINED_UNCERTAIN_AFTER_ESCALATION`)
   - **Evidence Kind**: `NONE` (Decision Status: `INCONCLUSIVE`)
-  - **Requirement Coverage**: `2/3 (66.7%)`
+  - **Requirement Coverage**: `1/3 (33.3%)`
   - **Selected Target**: `tests/tests_tqdm.py::test_max_interval` (Strength: `WEAK`)
   - **Provenance**: Snapshot `VERIFIED_TARGET_COMMIT`, Source Origin `NOT_APPLICABLE`
   - **Execution Trace**: Step 1 (TEST_DISCOVERY): Discovered 45 candidates (0 strong) [Top candidate: tests/tests_tqdm.py:test_max_interval (Partia...]
@@ -199,7 +199,7 @@ FORMAL_PAPER_RESULTS = NO
   - **Requirement Coverage**: `3/3 (100.0%)`
   - **Selected Target**: `tests/test_text.py::test_str` (Strength: `STRONG`)
   - **Provenance**: Snapshot `VERIFIED_TARGET_COMMIT`, Source Origin `VERIFIED_TARGET_WORKTREE`
-  - **Execution Trace**: Step 1 (TEST_DISCOVERY): Discovered 46 candidates (8 strong) [Top candidate: tests/test_text.py:test_str (All 3 semantic r...]; Step 2 (TARGETED_EXECUTION): SUPPORTS [Verified witness 'tests/test_text.py::test_str' passed under...]
+  - **Execution Trace**: Step 1 (TEST_DISCOVERY): Discovered 46 candidates (1 strong) [Top candidate: tests/test_text.py:test_str (All 3 semantic r...]; Step 2 (TARGETED_EXECUTION): SUPPORTS [Verified witness 'tests/test_text.py::test_str' passed under...]
 
 - **`CLM-000042`** (`MV21-000042`, Category `CAT_B_SYM_CHG_MEMORY_VALID`, ClaimType `BEHAVIORAL_CONTRACT`):
   - **Decision Transition**: `UNCERTAIN` -> **`UNCERTAIN`** (Gold: `VALID`, Stop Reason: `REMAINED_UNCERTAIN_AFTER_ESCALATION`)

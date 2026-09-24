@@ -109,7 +109,8 @@ class BudgetGuard:
         files: int = 0,
         tests: int = 0,
         executions: int = 0,
-        actions: int = 1
+        actions: int = 0,
+        action_type: Optional[EvidenceActionType] = None
     ) -> Tuple[bool, str]:
         if tracker.total_actions + actions > budget.max_total_actions:
             return False, f"Total actions limit reached ({budget.max_total_actions})"
@@ -119,4 +120,15 @@ class BudgetGuard:
             return False, f"Max tests inspected reached ({budget.max_tests_inspected})"
         if tracker.executions_run + executions > budget.max_executions_run:
             return False, f"Max executions reached ({budget.max_executions_run})"
+
+        # Check and consume immediately
+        tracker.total_actions += actions
+        tracker.repository_files_scanned += files
+        tracker.tests_inspected += tests
+        tracker.executions_run += executions
+        if action_type is not None:
+            act_name = action_type.value if isinstance(action_type, EvidenceActionType) else str(action_type)
+            tracker.action_counts[act_name] = tracker.action_counts.get(act_name, 0) + 1
+
         return True, ""
+

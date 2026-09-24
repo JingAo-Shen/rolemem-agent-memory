@@ -26,6 +26,16 @@ class BehavioralRequirementType(str, Enum):
     SEQUENCE = "SEQUENCE"
 
 
+class ConstructorInputSemantic(str, Enum):
+    STRING = "STRING"
+    MAPPING = "MAPPING"
+    ITERABLE = "ITERABLE"
+    RANGE = "RANGE"
+    ENVIRON = "ENVIRON"
+    UNKNOWN = "UNKNOWN"
+
+
+
 @dataclass
 class BehavioralRequirement:
     req_id: str
@@ -104,21 +114,30 @@ class ContractSemanticsExtractor:
                 count += 1
 
 
-        # C. Initialized with a [type/object]
-        init_with_match = re.search(r"(?:initialized with a|initialized with an|wrapping a|wrapping an)\s+([a-zA-Z0-9_]+(?:\s+[a-zA-Z0-9_]+)?)", text, re.IGNORECASE)
-        if init_with_match:
-            init_val = init_with_match.group(1).strip()
-            # Avoid duplicate if already captured as kwarg
-            if not any(r.target_name == "input_arg" for r in reqs):
-                reqs.append(BehavioralRequirement(
-                    req_id=f"{cid}-R{count}",
-                    req_type=BehavioralRequirementType.CONSTRUCTOR_ARGUMENT,
-                    target_name="input_arg",
-                    expected_value=init_val,
-                    is_critical=True,
-                    description=f"{claim.subject} instantiated with {init_val}"
-                ))
-                count += 1
+        # C. Initialized with a [type/object] / wrapping a [type/object]
+        input_semantic = None
+        if re.search(r"\b(?:with|wrapping)\s+(?:a\s+)?(?:finite\s+)?range(?:\s+iterable)?\b", text, re.IGNORECASE):
+            input_semantic = ConstructorInputSemantic.RANGE.value
+        elif re.search(r"\b(?:with|wrapping)\s+(?:a\s+)?(?:wsgi\s+)?environ(?:\s+dictionary)?\b", text, re.IGNORECASE):
+            input_semantic = ConstructorInputSemantic.ENVIRON.value
+        elif re.search(r"\b(?:with|wrapping)\s+(?:a\s+)?(?:dictionary|dict|mapping)\b", text, re.IGNORECASE):
+            input_semantic = ConstructorInputSemantic.MAPPING.value
+        elif re.search(r"\b(?:with|wrapping)\s+(?:a\s+)?string\b", text, re.IGNORECASE):
+            input_semantic = ConstructorInputSemantic.STRING.value
+        elif re.search(r"\b(?:with|wrapping)\s+(?:a\s+)?(?:list|iterable|sequence)\b", text, re.IGNORECASE):
+            input_semantic = ConstructorInputSemantic.ITERABLE.value
+
+        if input_semantic and not any(r.target_name == "input_arg" for r in reqs):
+            reqs.append(BehavioralRequirement(
+                req_id=f"{cid}-R{count}",
+                req_type=BehavioralRequirementType.CONSTRUCTOR_ARGUMENT,
+                target_name="input_arg",
+                expected_value=input_semantic,
+                is_critical=True,
+                description=f"{claim.subject} instantiated with {input_semantic} input"
+            ))
+            count += 1
+
 
         # -----------------------------------------------------------------
         # 2. Attribute State & Default Value Requirements

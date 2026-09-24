@@ -4,7 +4,7 @@
   "final_decision": "UNCERTAIN",
   "total_actions": 1,
   "total_cost": {
-    "repository_files_scanned": 17,
+    "repository_files_scanned": 32,
     "tests_inspected": 50,
     "executions_run": 0,
     "execution_time_ms": 0.0,
@@ -15,20 +15,20 @@
   },
   "stop_reason": "REMAINED_UNCERTAIN_AFTER_ESCALATION",
   "selected_witness": {
-    "test_file": "tests/sansio/test_request.py",
-    "test_name": "test_cookies",
-    "subject_mentions": 1,
+    "test_file": "tests/middleware/test_proxy_fix.py",
+    "test_name": "test_proxy_fix",
+    "subject_mentions": 2,
     "object_mentions": 0,
     "dependency_mentions": 0,
-    "assertion_count": 2,
+    "assertion_count": 5,
     "target_commit": "2f2625fefdaead837c5433e44d5fe86972d013dd",
-    "source_hash": "203caa3dbb6e179c32c7cf6b1bb1423d4c4a789b2fe261eab702167efa8fbcdd",
-    "test_file_sha256": "94acd3f6f902d8ba4b175023452cacaada00c67ea808a32f640da24a16819e46",
-    "test_function_sha256": "203caa3dbb6e179c32c7cf6b1bb1423d4c4a789b2fe261eab702167efa8fbcdd",
+    "source_hash": "96afce565f654b5a327aff091628cc4c8afc8c42d260fea2201e089dc401d52f",
+    "test_file_sha256": "81c61fab282e811f9d60045f66d7062c8f01ae2638c93a1413b02875215adbcc",
+    "test_function_sha256": "96afce565f654b5a327aff091628cc4c8afc8c42d260fea2201e089dc401d52f",
     "binding_strength": "WEAK",
     "discovery_reason": "Partial semantic requirement satisfaction (1/2 requirements verified).",
-    "line_start": 27,
-    "line_end": 31,
+    "line_start": 162,
+    "line_end": 196,
     "witness_binding": {
       "claim_id": "CLM-000038",
       "subject": "Request",
@@ -37,13 +37,13 @@
       ],
       "expected_literals": [],
       "expected_attributes": [],
-      "test_file": "tests/sansio/test_request.py",
-      "test_name": "test_cookies",
-      "test_function_sha256": "203caa3dbb6e179c32c7cf6b1bb1423d4c4a789b2fe261eab702167efa8fbcdd",
+      "test_file": "tests/middleware/test_proxy_fix.py",
+      "test_name": "test_proxy_fix",
+      "test_function_sha256": "96afce565f654b5a327aff091628cc4c8afc8c42d260fea2201e089dc401d52f",
       "subject_binding": true,
       "operation_binding": false,
-      "assertion_binding": true,
-      "dataflow_binding": true,
+      "assertion_binding": false,
+      "dataflow_binding": false,
       "critical_operation_coverage_ratio": 0.0,
       "assertion_local_coverage": 0,
       "semantic_requirements": [
@@ -51,9 +51,9 @@
           "req_id": "CLM-000038-R1",
           "req_type": "CONSTRUCTOR_ARGUMENT",
           "target_name": "input_arg",
-          "expected_value": "WSGI environ",
+          "expected_value": "ENVIRON",
           "is_critical": true,
-          "description": "Request instantiated with WSGI environ"
+          "description": "Request instantiated with ENVIRON input"
         },
         {
           "req_id": "CLM-000038-R2",
@@ -67,7 +67,7 @@
       "requirement_count": 2,
       "requirements_satisfied": 1,
       "requirement_coverage": 0.5,
-      "operation_requirement_applicable": true,
+      "operation_requirement_applicable": false,
       "binding_strength": "WEAK",
       "binding_reasons": [
         "Partial semantic requirement satisfaction (1/2 requirements verified)."
@@ -78,9 +78,9 @@
         "req_id": "CLM-000038-R1",
         "req_type": "CONSTRUCTOR_ARGUMENT",
         "target_name": "input_arg",
-        "expected_value": "WSGI environ",
+        "expected_value": "ENVIRON",
         "is_critical": true,
-        "description": "Request instantiated with WSGI environ"
+        "description": "Request instantiated with ENVIRON input"
       },
       {
         "req_id": "CLM-000038-R2",
@@ -94,7 +94,7 @@
     "requirement_count": 2,
     "requirements_satisfied": 1,
     "requirement_coverage": 0.5,
-    "operation_requirement_applicable": true
+    "operation_requirement_applicable": false
   },
   "steps": [
     {
@@ -105,7 +105,7 @@
       "evidence_id": null,
       "binding_strength": "WEAK",
       "cost_increment": {},
-      "detail": "Top candidate: tests/sansio/test_request.py:test_cookies (Partial semantic requirement satisfaction (1/2 requirements verified).)"
+      "detail": "Top candidate: tests/middleware/test_proxy_fix.py:test_proxy_fix (Partial semantic requirement satisfaction (1/2 requirements verified).)"
     }
   ],
   "acquired_evidences": []

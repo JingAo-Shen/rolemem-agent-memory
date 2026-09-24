@@ -129,12 +129,32 @@ class TargetedWorktreeExecutor:
         cost_tracker: Optional[CostTracker] = None,
         budget: Optional[CostBudget] = None
     ) -> AcquiredEvidence:
-        """
-        Executes candidate test within an isolated worktree checked out to candidate.target_commit.
-        Returns AcquiredEvidence capturing test result, full provenance, and source origin audit.
-        """
-        if cost_tracker:
+        if cost_tracker and budget:
+            from .cost import BudgetGuard
+            ok, reason = BudgetGuard.reserve(cost_tracker, budget, executions=1, actions=1, action_type=EvidenceActionType.TARGETED_EXECUTION)
+            if not ok:
+                ev_id = f"EV-EXEC-EXHAUSTED-{hashlib.sha256(f'{claim_id}:{candidate.test_file}:{candidate.test_name}'.encode()).hexdigest()[:8]}"
+                return AcquiredEvidence(
+                    evidence_id=ev_id,
+                    claim_id=claim_id,
+                    action_type=EvidenceActionType.TARGETED_EXECUTION,
+                    source_type="NATIVE_TEST_EXECUTION",
+                    evidence_kind=EvidenceKind.EXECUTABLE_TEST_WITNESS,
+                    repository=repository_name,
+                    commit=candidate.target_commit,
+                    file_path=candidate.test_file,
+                    content_hash="",
+                    binding_strength=BindingStrength.WEAK,
+                    supports_or_contradicts="INCONCLUSIVE",
+                    confidence=0.0,
+                    source_origin_status="NOT_APPLICABLE",
+                    repository_snapshot_status="VERIFIED_TARGET_COMMIT",
+                    detail=f"Budget exhausted before test execution ({reason})."
+                )
+        elif cost_tracker:
             cost_tracker.add_action(EvidenceActionType.TARGETED_EXECUTION)
+            cost_tracker.executions_run += 1
+
 
         timeout_sec = budget.execution_timeout_sec if budget else 15
         target_commit = candidate.target_commit
@@ -220,7 +240,8 @@ class TargetedWorktreeExecutor:
 
         t_elapsed_ms = (time.time() - t_start) * 1000.0
         if cost_tracker:
-            cost_tracker.add_execution(t_elapsed_ms)
+            cost_tracker.execution_time_ms += max(0.0, t_elapsed_ms)
+
 
         stdout_sha256 = hashlib.sha256(stdout_text.encode("utf-8")).hexdigest()
         stderr_sha256 = hashlib.sha256(stderr_text.encode("utf-8")).hexdigest()

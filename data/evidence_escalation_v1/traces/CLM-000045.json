@@ -4,7 +4,7 @@
   "final_decision": "UNCERTAIN",
   "total_actions": 2,
   "total_cost": {
-    "repository_files_scanned": 6,
+    "repository_files_scanned": 11,
     "tests_inspected": 50,
     "executions_run": 0,
     "execution_time_ms": 0.0,
@@ -51,7 +51,7 @@
       "requirement_count": 0,
       "requirements_satisfied": 0,
       "requirement_coverage": 0.0,
-      "operation_requirement_applicable": true,
+      "operation_requirement_applicable": false,
       "binding_strength": "UNBOUND",
       "binding_reasons": [
         "Subject 'HookSpec' not instantiated or called in test code."
@@ -61,7 +61,7 @@
     "requirement_count": 0,
     "requirements_satisfied": 0,
     "requirement_coverage": 0.0,
-    "operation_requirement_applicable": true
+    "operation_requirement_applicable": false
   },
   "steps": [
     {

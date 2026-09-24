@@ -356,3 +356,264 @@ def test_fastapi_routes():
     assert res_strong.binding_strength == BindingStrength.STRONG
     assert res_weak.binding_strength != BindingStrength.STRONG
 
+
+def test_sequence_reversed():
+    """
+    Negative test for SEQUENCE requirement:
+    When HelpFormatter is initialized, write_text() must precede getvalue().
+    Reversing the order causes SEQUENCE requirement to fail -> WEAK binding.
+    """
+    claim = MemoryClaim(
+        claim_id="CLM-000037",
+        claim_type=ClaimType.BEHAVIORAL_CONTRACT,
+        subject="HelpFormatter",
+        predicate="satisfies_contract",
+        object=", text buffered with write_text() can be retrieved via getvalue().",
+        raw_statement="When HelpFormatter is initialized, text buffered with write_text() can be retrieved via getvalue()."
+    )
+
+    reversed_order_src = '''
+def test_help_formatter_reversed():
+    formatter = HelpFormatter()
+    result = formatter.getvalue()
+    formatter.write_text("Hello World")
+    assert result == "Hello World"
+'''
+    analyzer = WitnessBindingAnalyzer()
+    cand = TestCandidate(
+        test_file="tests/test_formatting.py",
+        test_name="test_help_formatter_reversed",
+        subject_mentions=1,
+        object_mentions=1,
+        dependency_mentions=0,
+        assertion_count=1,
+        target_commit="commit1",
+        source_hash="hash_rev",
+        binding_strength=BindingStrength.UNBOUND,
+        discovery_reason="",
+        test_source=reversed_order_src
+    )
+
+    res = analyzer.analyze_witness(claim=claim, candidate=cand)
+    assert res.binding_strength in (BindingStrength.WEAK, BindingStrength.UNBOUND)
+    assert res.binding_strength != BindingStrength.STRONG
+
+
+def test_return_relation_wrong_output():
+    """
+    Negative test for RETURN_RELATION requirement:
+    Text instance initialized with a string returns the plain string content when converted via str().
+    Constructor input is "foo", assertion expects "bar" -> unsatisfied -> WEAK binding.
+    """
+    claim = MemoryClaim(
+        claim_id="CLM-000041",
+        claim_type=ClaimType.BEHAVIORAL_CONTRACT,
+        subject="Text",
+        predicate="satisfies_contract",
+        object="with a string returns the plain string content when converted via str().",
+        raw_statement="Text instance initialized with a string returns the plain string content when converted via str()."
+    )
+
+    wrong_output_src = '''
+def test_wrong_output():
+    assert str(Text("foo")) == "bar"
+'''
+    analyzer = WitnessBindingAnalyzer()
+    cand = TestCandidate(
+        test_file="tests/test_text.py",
+        test_name="test_wrong_output",
+        subject_mentions=1,
+        object_mentions=1,
+        dependency_mentions=0,
+        assertion_count=1,
+        target_commit="commit1",
+        source_hash="hash_wrong_out",
+        binding_strength=BindingStrength.UNBOUND,
+        discovery_reason="",
+        test_source=wrong_output_src
+    )
+
+    res = analyzer.analyze_witness(claim=claim, candidate=cand)
+    assert res.binding_strength in (BindingStrength.WEAK, BindingStrength.UNBOUND)
+    assert res.binding_strength != BindingStrength.STRONG
+
+
+def test_constructor_wrong_input_shape():
+    """
+    Negative test for CONSTRUCTOR_ARGUMENT requirement:
+    Text instance initialized with a string returns the plain string content when converted via str().
+    Requires STRING input in constructor, but 123 (integer) is passed -> unsatisfied -> WEAK binding.
+    """
+    claim = MemoryClaim(
+        claim_id="CLM-000041",
+        claim_type=ClaimType.BEHAVIORAL_CONTRACT,
+        subject="Text",
+        predicate="satisfies_contract",
+        object="with a string returns the plain string content when converted via str().",
+        raw_statement="Text instance initialized with a string returns the plain string content when converted via str()."
+    )
+
+    wrong_shape_src = '''
+def test_wrong_constructor_arg():
+    assert str(Text(123)) == "123"
+'''
+    analyzer = WitnessBindingAnalyzer()
+    cand = TestCandidate(
+        test_file="tests/test_text.py",
+        test_name="test_wrong_constructor_arg",
+        subject_mentions=1,
+        object_mentions=1,
+        dependency_mentions=0,
+        assertion_count=1,
+        target_commit="commit1",
+        source_hash="hash_wrong_shape",
+        binding_strength=BindingStrength.UNBOUND,
+        discovery_reason="",
+        test_source=wrong_shape_src
+    )
+
+    res = analyzer.analyze_witness(claim=claim, candidate=cand)
+    assert res.binding_strength in (BindingStrength.WEAK, BindingStrength.UNBOUND)
+    assert res.binding_strength != BindingStrength.STRONG
+
+
+def test_attribute_state_wrong_value():
+    """
+    Negative test for ATTRIBUTE_STATE requirement:
+    FastAPI initializes with default title 'FastAPI'.
+    Assertion checks app.title == 'WrongTitle' -> unsatisfied -> WEAK binding.
+    """
+    claim = MemoryClaim(
+        claim_id="CLM-TEST-DEFAULT-ATTR",
+        claim_type=ClaimType.BEHAVIORAL_CONTRACT,
+        subject="FastAPI",
+        predicate="satisfies_contract",
+        object="with default title attribute set to 'FastAPI'.",
+        raw_statement="FastAPI application instance initializes with default title attribute set to 'FastAPI'."
+    )
+
+    wrong_val_src = '''
+def test_wrong_attr_value():
+    app = FastAPI()
+    assert app.title == "WrongTitle"
+'''
+    analyzer = WitnessBindingAnalyzer()
+    cand = TestCandidate(
+        test_file="tests/test_main.py",
+        test_name="test_wrong_attr_value",
+        subject_mentions=1,
+        object_mentions=1,
+        dependency_mentions=0,
+        assertion_count=1,
+        target_commit="commit1",
+        source_hash="hash_wrong_val",
+        binding_strength=BindingStrength.UNBOUND,
+        discovery_reason="",
+        test_source=wrong_val_src
+    )
+
+    res = analyzer.analyze_witness(claim=claim, candidate=cand)
+    assert res.binding_strength in (BindingStrength.WEAK, BindingStrength.UNBOUND)
+    assert res.binding_strength != BindingStrength.STRONG
+
+
+def test_default_value_explicitly_passed():
+    """
+    Negative test for DEFAULT_VALUE requirement:
+    Starlette application has debug disabled by default.
+    Candidate explicitly passes debug=False in constructor -> DEFAULT_VALUE unsatisfied -> WEAK binding.
+    """
+    claim = MemoryClaim(
+        claim_id="CLM-TEST-STARLETTE-DEFAULT",
+        claim_type=ClaimType.BEHAVIORAL_CONTRACT,
+        subject="Starlette",
+        predicate="satisfies_contract",
+        object="with default debug mode set to False.",
+        raw_statement="Starlette application instance initializes with default debug mode set to False."
+    )
+
+    explicit_src = '''
+def test_explicit_debug():
+    app = Starlette(debug=False)
+    assert app.debug is False
+'''
+    default_src = '''
+def test_default_debug():
+    app = Starlette()
+    assert app.debug is False
+'''
+    analyzer = WitnessBindingAnalyzer()
+    cand_explicit = TestCandidate(
+        test_file="tests/test_app.py",
+        test_name="test_explicit_debug",
+        subject_mentions=1,
+        object_mentions=1,
+        dependency_mentions=0,
+        assertion_count=1,
+        target_commit="commit1",
+        source_hash="hash_explicit",
+        binding_strength=BindingStrength.UNBOUND,
+        discovery_reason="",
+        test_source=explicit_src
+    )
+    cand_default = TestCandidate(
+        test_file="tests/test_app.py",
+        test_name="test_default_debug",
+        subject_mentions=1,
+        object_mentions=1,
+        dependency_mentions=0,
+        assertion_count=1,
+        target_commit="commit1",
+        source_hash="hash_default",
+        binding_strength=BindingStrength.UNBOUND,
+        discovery_reason="",
+        test_source=default_src
+    )
+
+    res_explicit = analyzer.analyze_witness(claim=claim, candidate=cand_explicit)
+    res_default = analyzer.analyze_witness(claim=claim, candidate=cand_default)
+
+    assert res_explicit.binding_strength in (BindingStrength.WEAK, BindingStrength.UNBOUND)
+    assert res_explicit.binding_strength != BindingStrength.STRONG
+    assert res_default.binding_strength == BindingStrength.STRONG
+
+
+def test_unrelated_literal_in_assert():
+    """
+    Negative test: unrelated literal match in assertion does not bind attribute state.
+    """
+    claim = MemoryClaim(
+        claim_id="CLM-TEST-DEFAULT-ATTR",
+        claim_type=ClaimType.BEHAVIORAL_CONTRACT,
+        subject="FastAPI",
+        predicate="has_default_attribute",
+        object="title='FastAPI'",
+        raw_statement="FastAPI initializes with default title 'FastAPI' when instantiated without parameters."
+    )
+
+    unrelated_src = '''
+def test_unrelated():
+    app = FastAPI()
+    label = "FastAPI"
+    assert app.debug is True or label == "FastAPI"
+'''
+    analyzer = WitnessBindingAnalyzer()
+    cand = TestCandidate(
+        test_file="tests/test_main.py",
+        test_name="test_unrelated",
+        subject_mentions=1,
+        object_mentions=1,
+        dependency_mentions=0,
+        assertion_count=1,
+        target_commit="commit1",
+        source_hash="hash_unrelated",
+        binding_strength=BindingStrength.UNBOUND,
+        discovery_reason="",
+        test_source=unrelated_src
+    )
+
+    res = analyzer.analyze_witness(claim=claim, candidate=cand)
+    assert res.binding_strength in (BindingStrength.WEAK, BindingStrength.UNBOUND)
+    assert res.binding_strength != BindingStrength.STRONG
+
+

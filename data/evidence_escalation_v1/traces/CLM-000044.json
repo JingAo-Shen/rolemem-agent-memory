@@ -4,7 +4,7 @@
   "final_decision": "UNCERTAIN",
   "total_actions": 1,
   "total_cost": {
-    "repository_files_scanned": 2,
+    "repository_files_scanned": 38,
     "tests_inspected": 50,
     "executions_run": 0,
     "execution_time_ms": 0.0,
@@ -39,11 +39,11 @@
       "test_name": "test_poolmanager_blocksize",
       "test_function_sha256": "30568f0c738b698daf59028102b1adc0d5c7f7fe560c7136d7b550816bcf2b28",
       "subject_binding": true,
-      "operation_binding": false,
+      "operation_binding": true,
       "assertion_binding": true,
       "dataflow_binding": true,
       "critical_operation_coverage_ratio": 0.0,
-      "assertion_local_coverage": 0,
+      "assertion_local_coverage": 1,
       "semantic_requirements": [
         {
           "req_id": "CLM-000044-R1",

@@ -66,7 +66,8 @@ class RepositorySearchEngine:
         file_path: str,
         parent_symbol: str,
         child_symbol: str,
-        cost_tracker: Optional[CostTracker] = None
+        cost_tracker: Optional[CostTracker] = None,
+        budget: Optional[CostBudget] = None
     ) -> List[AcquiredEvidence]:
         """
         Searches for a qualified symbol/attribute (parent_symbol.child_symbol) across target and base snapshots.
@@ -74,13 +75,17 @@ class RepositorySearchEngine:
         records concrete evidence of symbol removal.
         """
         evidences: List[AcquiredEvidence] = []
-        if cost_tracker:
+        if cost_tracker and budget:
+            from .cost import BudgetGuard
+            ok, reason = BudgetGuard.reserve(cost_tracker, budget, files=2, actions=1, action_type=EvidenceActionType.REPOSITORY_SEARCH)
+            if not ok:
+                return evidences
+        elif cost_tracker:
             cost_tracker.add_action(EvidenceActionType.REPOSITORY_SEARCH)
-
-        base_src = self._get_file_content_at_commit(repo_root, base_commit, file_path)
-        target_src = self._get_file_content_at_commit(repo_root, target_commit, file_path)
-        if cost_tracker:
             cost_tracker.add_file_scan(2)
+
+        target_src = self._get_file_content_at_commit(repo_root, target_commit, file_path)
+        base_src = self._get_file_content_at_commit(repo_root, base_commit, file_path)
 
         if not target_src:
             return evidences
@@ -221,21 +226,25 @@ class RepositorySearchEngine:
         file_path: str,
         subject_symbol: str,
         dependency_symbol: str,
-        cost_tracker: Optional[CostTracker] = None
+        cost_tracker: Optional[CostTracker] = None,
+        budget: Optional[CostBudget] = None
     ) -> List[AcquiredEvidence]:
         """
         Searches for references to dependency_symbol within subject_symbol definition.
         Checks if dependency reference was removed in git diff.
         """
         evidences: List[AcquiredEvidence] = []
-        if cost_tracker:
+        if cost_tracker and budget:
+            from .cost import BudgetGuard
+            ok, reason = BudgetGuard.reserve(cost_tracker, budget, files=2, actions=1, action_type=EvidenceActionType.DEPENDENCY_INSPECTION)
+            if not ok:
+                return evidences
+        elif cost_tracker:
             cost_tracker.add_action(EvidenceActionType.DEPENDENCY_INSPECTION)
-
-        base_src = self._get_file_content_at_commit(repo_root, base_commit, file_path)
-        target_src = self._get_file_content_at_commit(repo_root, target_commit, file_path)
-        diff_text = self._get_git_diff(repo_root, base_commit, target_commit, file_path)
-        if cost_tracker:
             cost_tracker.add_file_scan(2)
+
+        target_src = self._get_file_content_at_commit(repo_root, target_commit, file_path)
+        base_src = self._get_file_content_at_commit(repo_root, base_commit, file_path)
 
         if not target_src:
             return evidences
@@ -276,6 +285,7 @@ class RepositorySearchEngine:
                 pass
 
         # Check if diff removed dependency_symbol
+        diff_text = self._get_git_diff(repo_root, base_commit, target_commit, file_path)
         diff_removed_dep = False
         if diff_text and dependency_symbol:
             del_pattern = re.compile(rf"^\-.*\b{re.escape(dependency_symbol)}\b", re.MULTILINE)

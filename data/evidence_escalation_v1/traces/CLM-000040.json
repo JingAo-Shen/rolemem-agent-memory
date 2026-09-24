@@ -4,10 +4,10 @@
   "final_decision": "VALID",
   "total_actions": 2,
   "total_cost": {
-    "repository_files_scanned": 1,
+    "repository_files_scanned": 67,
     "tests_inspected": 50,
     "executions_run": 1,
-    "execution_time_ms": 442.04,
+    "execution_time_ms": 436.17,
     "total_actions": 2,
     "action_counts": {
       "TEST_DISCOVERY": 1,
@@ -152,7 +152,7 @@
       "evidence_id": "EV-EXEC-2ca46991",
       "binding_strength": "STRONG",
       "cost_increment": {
-        "execution_time_ms": 442.04,
+        "execution_time_ms": 436.17,
         "timeout_sec": 15
       },
       "detail": "Verified witness 'tests/test_console.py::test_export_text' passed under target commit 285d9e94 (source verified: rich)."
@@ -223,7 +223,7 @@
       "requirement_coverage": 1.0,
       "operation_requirement_applicable": true,
       "cost": {
-        "execution_time_ms": 442.04,
+        "execution_time_ms": 436.17,
         "timeout_sec": 15
       },
       "detail": "Verified witness 'tests/test_console.py::test_export_text' passed under target commit 285d9e94 (source verified: rich).",
@@ -231,7 +231,7 @@
         "test_name": "test_export_text",
         "execution_status": "PASS",
         "package_name": "rich",
-        "module_origin": "/tmp/rolemem_v1_worktrees/wt_1jv2iem8/rich/__init__.py",
+        "module_origin": "/tmp/rolemem_v1_worktrees/wt_emcc9lj3/rich/__init__.py",
         "environment_provenance": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
         "python_version": "3.13.5",
         "witness_binding": {

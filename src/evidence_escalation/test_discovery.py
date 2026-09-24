@@ -89,7 +89,12 @@ class NativeTestDiscoveryEngine:
         candidates: List[TestCandidate] = []
         test_files = self._list_test_files(repo_root, target_commit)
 
-        if cost_tracker:
+        if cost_tracker and budget:
+            from .cost import BudgetGuard
+            ok, reason = BudgetGuard.reserve(cost_tracker, budget, actions=1, action_type=EvidenceActionType.TEST_DISCOVERY)
+            if not ok:
+                return candidates
+        elif cost_tracker:
             cost_tracker.add_action(EvidenceActionType.TEST_DISCOVERY)
 
         # Prioritize test files whose name mentions subject or core modules
@@ -97,28 +102,28 @@ class NativeTestDiscoveryEngine:
         obj_toks = set(t.lower() for t in (object_tokens or []) if len(t) > 2)
 
         def file_priority(fpath: str) -> int:
-            f_base = os.path.basename(fpath).lower()
             p = 0
-            if subject_clean and subject_clean.lower() in f_base:
+            if subject_clean and subject_clean.lower() in fpath.lower():
                 p += 10
-            if dependency_symbol and dependency_symbol.lower() in f_base:
+            if dependency_symbol and dependency_symbol.lower() in fpath.lower():
                 p += 8
             for ot in obj_toks:
-                if ot in f_base:
+                if ot in fpath.lower():
                     p += 3
             return p
 
         sorted_test_files = sorted(test_files, key=file_priority, reverse=True)
 
         for tf in sorted_test_files:
-            if budget and cost_tracker and cost_tracker.repository_files_scanned >= budget.max_files_scanned:
-                break
-            if budget and cost_tracker and cost_tracker.tests_inspected >= budget.max_tests_inspected:
-                break
+            if cost_tracker and budget:
+                from .cost import BudgetGuard
+                ok, reason = BudgetGuard.reserve(cost_tracker, budget, files=1)
+                if not ok:
+                    break
+            elif cost_tracker:
+                cost_tracker.add_file_scan(1)
 
             src = self._get_file_content(repo_root, target_commit, tf)
-            if cost_tracker:
-                cost_tracker.add_file_scan(1)
             if not src:
                 continue
 
@@ -145,11 +150,14 @@ class NativeTestDiscoveryEngine:
                     if not fn_name.startswith("test_") and not fn_name.startswith("test"):
                         continue
 
-                    if budget and cost_tracker and cost_tracker.tests_inspected >= budget.max_tests_inspected:
-                        break
-
-                    if cost_tracker:
+                    if cost_tracker and budget:
+                        from .cost import BudgetGuard
+                        ok, reason = BudgetGuard.reserve(cost_tracker, budget, tests=1)
+                        if not ok:
+                            break
+                    elif cost_tracker:
                         cost_tracker.add_test_inspection(1)
+
 
                     # Inspect AST body of test function (excluding docstrings)
                     fn_src = ast.get_source_segment(src, node) or ""

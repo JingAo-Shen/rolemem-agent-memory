@@ -1420,21 +1420,21 @@
       "source_origin_status": "NOT_APPLICABLE",
       "execution_status": null,
       "selected_evidence_id": null,
-      "selected_test_file": "tests/sansio/test_request.py",
-      "selected_test_name": "test_cookies",
+      "selected_test_file": "tests/middleware/test_proxy_fix.py",
+      "selected_test_name": "test_proxy_fix",
       "witness_binding_strength": "WEAK",
       "subject_binding": true,
       "operation_coverage": 0.0,
-      "assertion_binding": true,
-      "dataflow_binding": true,
+      "assertion_binding": false,
+      "dataflow_binding": false,
       "semantic_requirements": [
         {
           "req_id": "CLM-000038-R1",
           "req_type": "CONSTRUCTOR_ARGUMENT",
           "target_name": "input_arg",
-          "expected_value": "WSGI environ",
+          "expected_value": "ENVIRON",
           "is_critical": true,
-          "description": "Request instantiated with WSGI environ"
+          "description": "Request instantiated with ENVIRON input"
         },
         {
           "req_id": "CLM-000038-R2",
@@ -1448,9 +1448,9 @@
       "requirement_count": 2,
       "requirements_satisfied": 1,
       "requirement_coverage": 0.5,
-      "operation_requirement_applicable": true,
-      "test_file_sha256": "94acd3f6f902d8ba4b175023452cacaada00c67ea808a32f640da24a16819e46",
-      "test_function_sha256": "203caa3dbb6e179c32c7cf6b1bb1423d4c4a789b2fe261eab702167efa8fbcdd",
+      "operation_requirement_applicable": false,
+      "test_file_sha256": "81c61fab282e811f9d60045f66d7062c8f01ae2638c93a1413b02875215adbcc",
+      "test_function_sha256": "96afce565f654b5a327aff091628cc4c8afc8c42d260fea2201e089dc401d52f",
       "stdout_sha256": null,
       "stderr_sha256": null,
       "command_sha256": null,
@@ -1486,9 +1486,9 @@
           "req_id": "CLM-000039-R1",
           "req_type": "CONSTRUCTOR_ARGUMENT",
           "target_name": "input_arg",
-          "expected_value": "finite range",
+          "expected_value": "RANGE",
           "is_critical": true,
-          "description": "tqdm instantiated with finite range"
+          "description": "tqdm instantiated with RANGE input"
         },
         {
           "req_id": "CLM-000039-R2",
@@ -1508,8 +1508,8 @@
         }
       ],
       "requirement_count": 3,
-      "requirements_satisfied": 2,
-      "requirement_coverage": 0.6666666666666666,
+      "requirements_satisfied": 1,
+      "requirement_coverage": 0.3333333333333333,
       "operation_requirement_applicable": true,
       "test_file_sha256": "01875d28f7d061c43e27096564c2d7dae32db134305d2228a5f80076b64ce69d",
       "test_function_sha256": "98de1d65bd1e5b67b5c81ec3b3bf7551049f54b075870754f151bac5d55eab35",
@@ -1618,9 +1618,9 @@
           "req_id": "CLM-000041-R1",
           "req_type": "CONSTRUCTOR_ARGUMENT",
           "target_name": "input_arg",
-          "expected_value": "string returns",
+          "expected_value": "STRING",
           "is_critical": true,
-          "description": "Text instantiated with string returns"
+          "description": "Text instantiated with STRING input"
         },
         {
           "req_id": "CLM-000041-R2",
@@ -1733,7 +1733,7 @@
       "requirement_count": 2,
       "requirements_satisfied": 0,
       "requirement_coverage": 0.0,
-      "operation_requirement_applicable": true,
+      "operation_requirement_applicable": false,
       "test_file_sha256": "cb7afb49958d0f109cf93bea75e1707ecc48d678bebf328f93c84bbed504917c",
       "test_function_sha256": "284bf1cb0a26535102f0e32fa9ed008fe0233e6aa45ed552f23a89a7081b70ff",
       "stdout_sha256": null,
@@ -1824,7 +1824,7 @@
       "requirement_count": 0,
       "requirements_satisfied": 0,
       "requirement_coverage": 0.0,
-      "operation_requirement_applicable": true,
+      "operation_requirement_applicable": false,
       "test_file_sha256": "414810b7e72a9d0dbe32ca6239d72bf8b065cfeb4b1b9c7e7eb3247d2cab68b3",
       "test_function_sha256": "62df793542234e9df442d4a94cdfedcecb241904a82afd3ea5b977485d0d7ff3",
       "stdout_sha256": null,

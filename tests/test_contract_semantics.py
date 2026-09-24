@@ -73,6 +73,10 @@ def test_clm41_semantics_extraction():
     assert BehavioralRequirementType.OPERATION in req_types
     assert "str" in req_targets
     assert BehavioralRequirementType.RETURN_RELATION in req_types
+    assert BehavioralRequirementType.CONSTRUCTOR_ARGUMENT in req_types
+    input_req = next(r for r in reqs if r.target_name == "input_arg")
+    assert input_req.expected_value == "STRING"
+
 
 
 def test_clm42_semantics_extraction():

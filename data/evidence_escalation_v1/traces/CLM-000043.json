@@ -4,7 +4,7 @@
   "final_decision": "UNCERTAIN",
   "total_actions": 1,
   "total_cost": {
-    "repository_files_scanned": 6,
+    "repository_files_scanned": 35,
     "tests_inspected": 50,
     "executions_run": 0,
     "execution_time_ms": 0.0,
@@ -41,7 +41,7 @@
       "test_name": "test_starlette_limit_applies_before_user_middleware",
       "test_function_sha256": "284bf1cb0a26535102f0e32fa9ed008fe0233e6aa45ed552f23a89a7081b70ff",
       "subject_binding": true,
-      "operation_binding": false,
+      "operation_binding": true,
       "assertion_binding": false,
       "dataflow_binding": false,
       "critical_operation_coverage_ratio": 0.0,
@@ -67,7 +67,7 @@
       "requirement_count": 2,
       "requirements_satisfied": 0,
       "requirement_coverage": 0.0,
-      "operation_requirement_applicable": true,
+      "operation_requirement_applicable": false,
       "binding_strength": "WEAK",
       "binding_reasons": [
         "Partial semantic requirement satisfaction (0/2 requirements verified)."
@@ -94,7 +94,7 @@
     "requirement_count": 2,
     "requirements_satisfied": 0,
     "requirement_coverage": 0.0,
-    "operation_requirement_applicable": true
+    "operation_requirement_applicable": false
   },
   "steps": [
     {

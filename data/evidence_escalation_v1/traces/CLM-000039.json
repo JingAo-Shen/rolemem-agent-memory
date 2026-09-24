@@ -4,7 +4,7 @@
   "final_decision": "UNCERTAIN",
   "total_actions": 1,
   "total_cost": {
-    "repository_files_scanned": 1,
+    "repository_files_scanned": 21,
     "tests_inspected": 50,
     "executions_run": 0,
     "execution_time_ms": 0.0,
@@ -26,7 +26,7 @@
     "test_file_sha256": "01875d28f7d061c43e27096564c2d7dae32db134305d2228a5f80076b64ce69d",
     "test_function_sha256": "98de1d65bd1e5b67b5c81ec3b3bf7551049f54b075870754f151bac5d55eab35",
     "binding_strength": "WEAK",
-    "discovery_reason": "Partial semantic requirement satisfaction (2/3 requirements verified).",
+    "discovery_reason": "Partial semantic requirement satisfaction (1/3 requirements verified).",
     "line_start": 464,
     "line_end": 591,
     "witness_binding": {
@@ -41,7 +41,7 @@
       "test_name": "test_max_interval",
       "test_function_sha256": "98de1d65bd1e5b67b5c81ec3b3bf7551049f54b075870754f151bac5d55eab35",
       "subject_binding": true,
-      "operation_binding": false,
+      "operation_binding": true,
       "assertion_binding": true,
       "dataflow_binding": true,
       "critical_operation_coverage_ratio": 0.0,
@@ -51,9 +51,9 @@
           "req_id": "CLM-000039-R1",
           "req_type": "CONSTRUCTOR_ARGUMENT",
           "target_name": "input_arg",
-          "expected_value": "finite range",
+          "expected_value": "RANGE",
           "is_critical": true,
-          "description": "tqdm instantiated with finite range"
+          "description": "tqdm instantiated with RANGE input"
         },
         {
           "req_id": "CLM-000039-R2",
@@ -73,12 +73,12 @@
         }
       ],
       "requirement_count": 3,
-      "requirements_satisfied": 2,
-      "requirement_coverage": 0.6666666666666666,
+      "requirements_satisfied": 1,
+      "requirement_coverage": 0.3333333333333333,
       "operation_requirement_applicable": true,
       "binding_strength": "WEAK",
       "binding_reasons": [
-        "Partial semantic requirement satisfaction (2/3 requirements verified)."
+        "Partial semantic requirement satisfaction (1/3 requirements verified)."
       ]
     },
     "semantic_requirements": [
@@ -86,9 +86,9 @@
         "req_id": "CLM-000039-R1",
         "req_type": "CONSTRUCTOR_ARGUMENT",
         "target_name": "input_arg",
-        "expected_value": "finite range",
+        "expected_value": "RANGE",
         "is_critical": true,
-        "description": "tqdm instantiated with finite range"
+        "description": "tqdm instantiated with RANGE input"
       },
       {
         "req_id": "CLM-000039-R2",
@@ -108,8 +108,8 @@
       }
     ],
     "requirement_count": 3,
-    "requirements_satisfied": 2,
-    "requirement_coverage": 0.6666666666666666,
+    "requirements_satisfied": 1,
+    "requirement_coverage": 0.3333333333333333,
     "operation_requirement_applicable": true
   },
   "steps": [
@@ -121,7 +121,7 @@
       "evidence_id": null,
       "binding_strength": "WEAK",
       "cost_increment": {},
-      "detail": "Top candidate: tests/tests_tqdm.py:test_max_interval (Partial semantic requirement satisfaction (2/3 requirements verified).)"
+      "detail": "Top candidate: tests/tests_tqdm.py:test_max_interval (Partial semantic requirement satisfaction (1/3 requirements verified).)"
     }
   ],
   "acquired_evidences": []

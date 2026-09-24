@@ -4,7 +4,7 @@
   "final_decision": "UNCERTAIN",
   "total_actions": 1,
   "total_cost": {
-    "repository_files_scanned": 36,
+    "repository_files_scanned": 500,
     "tests_inspected": 50,
     "executions_run": 0,
     "execution_time_ms": 0.0,

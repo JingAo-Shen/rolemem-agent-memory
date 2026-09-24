@@ -91,3 +91,91 @@ def test_budget_guard_reservation():
     assert can_res_a is False
     assert "total actions" in reason_a.lower()
 
+
+def test_pipeline_budget_limit_files():
+    from src.claim_validity.types import MemoryClaim, ClaimType
+    from src.evidence_escalation.pipeline import EvidenceEscalationPipeline
+
+    pipeline = EvidenceEscalationPipeline()
+    claim = MemoryClaim(
+        claim_id="CLM-000008",
+        claim_type=ClaimType.SYMBOL_EXISTS,
+        subject="HTMLParser.unescape",
+        predicate="exists",
+        object="",
+        raw_statement="HTMLParser.unescape exists.",
+        file_path="src/utils.py",
+        repository="psf/requests"
+    )
+
+    budget = CostBudget(max_files_scanned=1, max_tests_inspected=1, max_executions_run=0, max_total_actions=1)
+    res, trace, cost_tracker = pipeline.evaluate_claim(
+        claim_or_statement=claim,
+        repository_root="/code/repo_cache/requests",
+        base_commit="commit1",
+        target_commit="commit2",
+        available_budget=budget
+    )
+
+    # Budget strictly respected
+    assert cost_tracker.repository_files_scanned <= 1
+    assert cost_tracker.total_actions <= 1
+
+
+def test_pipeline_budget_limit_tests():
+    from src.claim_validity.types import MemoryClaim, ClaimType
+    from src.evidence_escalation.pipeline import EvidenceEscalationPipeline
+
+    pipeline = EvidenceEscalationPipeline()
+    claim = MemoryClaim(
+        claim_id="CLM-000041",
+        claim_type=ClaimType.BEHAVIORAL_CONTRACT,
+        subject="Text",
+        predicate="converts_to",
+        object="str",
+        raw_statement="Text object converts to string representation containing its plain text via str().",
+        file_path="rich/text.py",
+        repository="Textualize/rich"
+    )
+
+    budget = CostBudget(max_files_scanned=50, max_tests_inspected=3, max_executions_run=0, max_total_actions=5)
+    res, trace, cost_tracker = pipeline.evaluate_claim(
+        claim_or_statement=claim,
+        repository_root="/code/repo_cache/rich",
+        base_commit="commit1",
+        target_commit="commit2",
+        available_budget=budget
+    )
+
+    assert cost_tracker.tests_inspected <= 3
+    assert cost_tracker.executions_run == 0
+
+
+def test_pipeline_budget_limit_executions():
+    from src.claim_validity.types import MemoryClaim, ClaimType
+    from src.evidence_escalation.pipeline import EvidenceEscalationPipeline
+
+    pipeline = EvidenceEscalationPipeline()
+    claim = MemoryClaim(
+        claim_id="CLM-000041",
+        claim_type=ClaimType.BEHAVIORAL_CONTRACT,
+        subject="Text",
+        predicate="converts_to",
+        object="str",
+        raw_statement="Text object converts to string representation containing its plain text via str().",
+        file_path="rich/text.py",
+        repository="Textualize/rich"
+    )
+
+    budget = CostBudget(max_files_scanned=50, max_tests_inspected=50, max_executions_run=0, max_total_actions=5)
+    res, trace, cost_tracker = pipeline.evaluate_claim(
+        claim_or_statement=claim,
+        repository_root="/code/repo_cache/rich",
+        base_commit="commit1",
+        target_commit="commit2",
+        available_budget=budget
+    )
+
+    assert cost_tracker.executions_run == 0
+
+
