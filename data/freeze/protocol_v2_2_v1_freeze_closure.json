@@ -1,0 +1,26 @@
+{
+  "protocol_version": "2.2-v1.2",
+  "closure_type": "DETERMINISTIC_ALGORITHM_FREEZE_CLOSURE",
+  "algorithm_source_commit": "fe62749b98ea2a8e62ed5dbb031b39deddc33624",
+  "freeze_metadata_commit": "29c2b11a53235430c6bd53e39e96a67f1db65391",
+  "freeze_tag": "protocol-v2.2-v1-deterministic-freeze",
+  "attestation_commit": "fcff4104645203bdf35a27ffbd04542d7e9dd995",
+  "attestation_tag": "protocol-v2.2-v1-freeze-attestation",
+  "algorithm_source_diff_files": 0,
+  "attestation_metadata_diff_files": 3,
+  "evaluation_freeze_diff_status": "PASS",
+  "manifest_hash_integrity": "PASS",
+  "manifest_files_checked": 43,
+  "manifest_files_breakdown": {
+    "algorithm_source_files": 33,
+    "evaluation_scripts": 2,
+    "development_representation_files": 3,
+    "development_result_files": 3,
+    "contamination_files": 2
+  },
+  "test_attestation_status": "PASS",
+  "formal_firewall_status": "PASS",
+  "contamination_registry_status": "PASS",
+  "formal_data_opened": false,
+  "freeze_closure": "PASS"
+}
