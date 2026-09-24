@@ -60,3 +60,34 @@ def test_budget_guard_limits():
     can_exec2, exec_reason2 = BudgetGuard.can_perform_action(tracker, budget, EvidenceActionType.TARGETED_EXECUTION)
     assert can_exec2 is False
     assert "reached" in exec_reason2.lower() or "limit" in exec_reason2.lower()
+
+
+def test_budget_guard_reservation():
+    budget = CostBudget(max_files_scanned=10, max_tests_inspected=15, max_executions_run=2, max_total_actions=5)
+    tracker = CostTracker()
+
+    # Can reserve within limits
+    can_res, reason = BudgetGuard.reserve(tracker, budget, files=5, tests=10, executions=1, actions=2)
+    assert can_res is True
+    assert reason == ""
+
+    # Exceeding files reservation
+    can_res_f, reason_f = BudgetGuard.reserve(tracker, budget, files=15)
+    assert can_res_f is False
+    assert "files scanned" in reason_f.lower()
+
+    # Exceeding tests reservation
+    can_res_t, reason_t = BudgetGuard.reserve(tracker, budget, tests=20)
+    assert can_res_t is False
+    assert "tests inspected" in reason_t.lower()
+
+    # Exceeding executions reservation
+    can_res_e, reason_e = BudgetGuard.reserve(tracker, budget, executions=3)
+    assert can_res_e is False
+    assert "executions" in reason_e.lower()
+
+    # Exceeding actions reservation
+    can_res_a, reason_a = BudgetGuard.reserve(tracker, budget, actions=6)
+    assert can_res_a is False
+    assert "total actions" in reason_a.lower()
+

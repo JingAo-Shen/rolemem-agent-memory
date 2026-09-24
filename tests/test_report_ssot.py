@@ -40,11 +40,14 @@ def test_ssot_report_metrics_consistency():
     assert s5_cov_str in report_text
 
     # Verify protocol version and status strings
-    assert "PROTOCOL_VERSION = 2.2-selective-evidence-v1.1" in report_text
-    assert "V1_0_RESULT_STATUS = PROVISIONAL_EVIDENCE_BINDING_NOT_YET_STRICT" in report_text
+    assert "PROTOCOL_VERSION = 2.2-selective-evidence-v1.2" in report_text
+    assert "CURRENT_V1_RESULT_STATUS = DEVELOPMENT_SELECTIVE_ESCALATION" in report_text
     assert "V2_2_V1_WITNESS_BINDING = AUDITED" in report_text
+    assert "V2_2_V1_CONTRACT_SEMANTICS = AUDITED" in report_text
+    assert "V2_2_V1_EVIDENCE_TAXONOMY = AUDITED" in report_text
     assert "V2_2_V1_EXECUTION_SOURCE_ORIGIN = AUDITED" in report_text
+    assert "V2_2_V1_BUDGET_ENFORCEMENT = AUDITED" in report_text
 
     # Verify CLM-000041 selected test in report
     assert "tests/test_text.py::test_str" in report_text
-    assert "test_divide" not in report_text or "test_divide" in "In V1.0, test binding relied on raw keyword frequency (`assertion_count`), leading `CLM-000041` to select `test_divide` instead of genuine witness `test_str`"
+

@@ -245,3 +245,114 @@ def test_unrelated():
 
     res = analyzer.analyze_witness(claim=claim, candidate=cand)
     assert res.binding_strength != BindingStrength.STRONG
+
+
+def test_clm_000044_regression():
+    """
+    CLM-000044 Regression Test:
+    Statement: "PoolManager initializes connection pools with default configuration when no arguments provided."
+    Subject: "PoolManager"
+    Requirements:
+      - CONSTRUCTOR_ARGUMENT (0 arguments / no arguments)
+      - DEFAULT_VALUE / ATTRIBUTE_STATE (default configuration)
+    Candidate test_poolmanager_blocksize passes custom blocksize=10, satisfying constructor arg count
+    but failing default configuration semantics. Must be WEAK, not STRONG.
+    """
+    claim = MemoryClaim(
+        claim_id="CLM-000044",
+        claim_type=ClaimType.BEHAVIORAL_CONTRACT,
+        subject="PoolManager",
+        predicate="initializes_with_default",
+        object="default configuration",
+        raw_statement="PoolManager initializes connection pools with default configuration when no arguments provided."
+    )
+
+    test_src = '''
+def test_poolmanager_blocksize():
+    p = PoolManager(blocksize=10)
+    assert p.connection_pools is not None
+'''
+
+    analyzer = WitnessBindingAnalyzer()
+    cand = TestCandidate(
+        test_file="test/test_poolmanager.py",
+        test_name="test_poolmanager_blocksize",
+        subject_mentions=1,
+        object_mentions=0,
+        dependency_mentions=0,
+        assertion_count=1,
+        target_commit="commit1",
+        source_hash="hash1",
+        binding_strength=BindingStrength.UNBOUND,
+        discovery_reason="",
+        test_source=test_src
+    )
+
+    res = analyzer.analyze_witness(claim=claim, candidate=cand)
+    assert res.binding_strength == BindingStrength.WEAK
+    assert res.binding_strength != BindingStrength.STRONG
+
+
+def test_state_default_contract():
+    """
+    State/default contract test:
+    FastAPI() initialized with default title="FastAPI".
+    Candidate A asserts app.title == "FastAPI" -> STRONG
+    Candidate B only asserts app.routes is not None -> WEAK
+    """
+    claim = MemoryClaim(
+        claim_id="CLM-TEST-DEFAULT-ATTR",
+        claim_type=ClaimType.BEHAVIORAL_CONTRACT,
+        subject="FastAPI",
+        predicate="has_default_attribute",
+        object="title='FastAPI'",
+        raw_statement="FastAPI initializes with default title 'FastAPI' when instantiated without parameters."
+    )
+
+    strong_src = '''
+def test_fastapi_default_title():
+    app = FastAPI()
+    assert app.title == "FastAPI"
+'''
+
+    weak_src = '''
+def test_fastapi_routes():
+    app = FastAPI()
+    assert app.routes is not None
+'''
+
+    analyzer = WitnessBindingAnalyzer()
+    cand_strong = TestCandidate(
+        test_file="tests/test_main.py",
+        test_name="test_fastapi_default_title",
+        subject_mentions=1,
+        object_mentions=1,
+        dependency_mentions=0,
+        assertion_count=1,
+        target_commit="commit1",
+        source_hash="hash1",
+        binding_strength=BindingStrength.UNBOUND,
+        discovery_reason="",
+        test_source=strong_src
+    )
+
+    cand_weak = TestCandidate(
+        test_file="tests/test_main.py",
+        test_name="test_fastapi_routes",
+        subject_mentions=1,
+        object_mentions=0,
+        dependency_mentions=0,
+        assertion_count=1,
+        target_commit="commit1",
+        source_hash="hash2",
+        binding_strength=BindingStrength.UNBOUND,
+        discovery_reason="",
+        test_source=weak_src
+    )
+
+    res_strong = analyzer.analyze_witness(claim=claim, candidate=cand_strong)
+    res_weak = analyzer.analyze_witness(claim=claim, candidate=cand_weak)
+
+    assert res_strong.binding_strength == BindingStrength.STRONG
+    assert res_weak.binding_strength != BindingStrength.STRONG
+

@@ -7,7 +7,7 @@
     "repository_files_scanned": 1,
     "tests_inspected": 50,
     "executions_run": 1,
-    "execution_time_ms": 406.2,
+    "execution_time_ms": 442.04,
     "total_actions": 2,
     "action_counts": {
       "TEST_DISCOVERY": 1,
@@ -27,7 +27,7 @@
     "test_file_sha256": "3e1ffd2446c18e58990e75a20b21794f141e2d76466b06d972344d4906be007a",
     "test_function_sha256": "017121c21bc2097972958bde2563fa94af79c45e4a627521b0ac387d1063595c",
     "binding_strength": "STRONG",
-    "discovery_reason": "Full critical operation chain covered ['print', 'export_text'] with direct assertion dataflow.",
+    "discovery_reason": "All 4 semantic requirements satisfied with verified assertion dataflow.",
     "line_start": 511,
     "line_end": 516,
     "witness_binding": {
@@ -51,11 +51,87 @@
       "dataflow_binding": true,
       "critical_operation_coverage_ratio": 1.0,
       "assertion_local_coverage": 2,
+      "semantic_requirements": [
+        {
+          "req_id": "CLM-000040-R1",
+          "req_type": "CONSTRUCTOR_ARGUMENT",
+          "target_name": "record",
+          "expected_value": "True",
+          "is_critical": true,
+          "description": "Console constructor configured with record=True"
+        },
+        {
+          "req_id": "CLM-000040-R2",
+          "req_type": "OPERATION",
+          "target_name": "print",
+          "expected_value": null,
+          "is_critical": true,
+          "description": "Executes operation 'print()' on or with subject"
+        },
+        {
+          "req_id": "CLM-000040-R3",
+          "req_type": "OPERATION",
+          "target_name": "export_text",
+          "expected_value": null,
+          "is_critical": true,
+          "description": "Executes operation 'export_text()' on or with subject"
+        },
+        {
+          "req_id": "CLM-000040-R4",
+          "req_type": "SEQUENCE",
+          "target_name": "print -> export_text",
+          "expected_value": null,
+          "is_critical": true,
+          "description": "Sequential execution order: print -> export_text"
+        }
+      ],
+      "requirement_count": 4,
+      "requirements_satisfied": 4,
+      "requirement_coverage": 1.0,
+      "operation_requirement_applicable": true,
       "binding_strength": "STRONG",
       "binding_reasons": [
-        "Full critical operation chain covered ['print', 'export_text'] with direct assertion dataflow."
+        "All 4 semantic requirements satisfied with verified assertion dataflow."
       ]
-    }
+    },
+    "semantic_requirements": [
+      {
+        "req_id": "CLM-000040-R1",
+        "req_type": "CONSTRUCTOR_ARGUMENT",
+        "target_name": "record",
+        "expected_value": "True",
+        "is_critical": true,
+        "description": "Console constructor configured with record=True"
+      },
+      {
+        "req_id": "CLM-000040-R2",
+        "req_type": "OPERATION",
+        "target_name": "print",
+        "expected_value": null,
+        "is_critical": true,
+        "description": "Executes operation 'print()' on or with subject"
+      },
+      {
+        "req_id": "CLM-000040-R3",
+        "req_type": "OPERATION",
+        "target_name": "export_text",
+        "expected_value": null,
+        "is_critical": true,
+        "description": "Executes operation 'export_text()' on or with subject"
+      },
+      {
+        "req_id": "CLM-000040-R4",
+        "req_type": "SEQUENCE",
+        "target_name": "print -> export_text",
+        "expected_value": null,
+        "is_critical": true,
+        "description": "Sequential execution order: print -> export_text"
+      }
+    ],
+    "requirement_count": 4,
+    "requirements_satisfied": 4,
+    "requirement_coverage": 1.0,
+    "operation_requirement_applicable": true
   },
   "steps": [
     {
@@ -66,7 +142,7 @@
       "evidence_id": null,
       "binding_strength": "STRONG",
       "cost_increment": {},
-      "detail": "Top candidate: tests/test_console.py:test_export_text (Full critical operation chain covered ['print', 'export_text'] with direct assertion dataflow.)"
+      "detail": "Top candidate: tests/test_console.py:test_export_text (All 4 semantic requirements satisfied with verified assertion dataflow.)"
     },
     {
       "step_number": 2,
@@ -76,7 +152,7 @@
       "evidence_id": "EV-EXEC-2ca46991",
       "binding_strength": "STRONG",
       "cost_increment": {
-        "execution_time_ms": 406.2,
+        "execution_time_ms": 442.04,
         "timeout_sec": 15
       },
       "detail": "Verified witness 'tests/test_console.py::test_export_text' passed under target commit 285d9e94 (source verified: rich)."
@@ -87,6 +163,7 @@
       "evidence_id": "EV-EXEC-2ca46991",
       "claim_id": "CLM-000040",
       "action_type": "TARGETED_EXECUTION",
+      "evidence_kind": "EXECUTABLE_TEST_WITNESS",
       "source_type": "NATIVE_TEST_EXECUTION",
       "repository": "rich",
       "commit": "285d9e94e268daf3ef159ca41e113a2e11b625e1",
@@ -95,15 +172,58 @@
       "binding_strength": "STRONG",
       "supports_or_contradicts": "SUPPORTS",
       "confidence": 0.95,
+      "repository_snapshot_status": "VERIFIED_TARGET_COMMIT",
       "test_file_sha256": "3e1ffd2446c18e58990e75a20b21794f141e2d76466b06d972344d4906be007a",
       "test_function_sha256": "017121c21bc2097972958bde2563fa94af79c45e4a627521b0ac387d1063595c",
       "stdout_sha256": "e596cce97643441f2f2c7ef01ee068b6705ce1e028a07a32ba3bd3b3d35d7353",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "command_sha256": "4d5c1d12e836695a5b00e7a7fc8947d85611f75fbfe198004bb16059e89171e3",
+      "base_file_sha256": "",
+      "target_file_sha256": "",
+      "base_symbol_presence": false,
+      "target_symbol_presence": false,
       "source_origin_status": "VERIFIED_TARGET_WORKTREE",
       "dependency_environment_status": "CURRENT_ENVIRONMENT_NOT_HISTORICALLY_RESTORED",
+      "semantic_requirements": [
+        {
+          "req_id": "CLM-000040-R1",
+          "req_type": "CONSTRUCTOR_ARGUMENT",
+          "target_name": "record",
+          "expected_value": "True",
+          "is_critical": true,
+          "description": "Console constructor configured with record=True"
+        },
+        {
+          "req_id": "CLM-000040-R2",
+          "req_type": "OPERATION",
+          "target_name": "print",
+          "expected_value": null,
+          "is_critical": true,
+          "description": "Executes operation 'print()' on or with subject"
+        },
+        {
+          "req_id": "CLM-000040-R3",
+          "req_type": "OPERATION",
+          "target_name": "export_text",
+          "expected_value": null,
+          "is_critical": true,
+          "description": "Executes operation 'export_text()' on or with subject"
+        },
+        {
+          "req_id": "CLM-000040-R4",
+          "req_type": "SEQUENCE",
+          "target_name": "print -> export_text",
+          "expected_value": null,
+          "is_critical": true,
+          "description": "Sequential execution order: print -> export_text"
+        }
+      ],
+      "requirement_count": 4,
+      "requirements_satisfied": 4,
+      "requirement_coverage": 1.0,
+      "operation_requirement_applicable": true,
       "cost": {
-        "execution_time_ms": 406.2,
+        "execution_time_ms": 442.04,
         "timeout_sec": 15
       },
       "detail": "Verified witness 'tests/test_console.py::test_export_text' passed under target commit 285d9e94 (source verified: rich).",
@@ -111,7 +231,7 @@
         "test_name": "test_export_text",
         "execution_status": "PASS",
         "package_name": "rich",
-        "module_origin": "/tmp/rolemem_v1_worktrees/wt_i00j5y9w/rich/__init__.py",
+        "module_origin": "/tmp/rolemem_v1_worktrees/wt_1jv2iem8/rich/__init__.py",
         "environment_provenance": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
         "python_version": "3.13.5",
         "witness_binding": {
@@ -135,9 +255,47 @@
           "dataflow_binding": true,
           "critical_operation_coverage_ratio": 1.0,
           "assertion_local_coverage": 2,
+          "semantic_requirements": [
+            {
+              "req_id": "CLM-000040-R1",
+              "req_type": "CONSTRUCTOR_ARGUMENT",
+              "target_name": "record",
+              "expected_value": "True",
+              "is_critical": true,
+              "description": "Console constructor configured with record=True"
+            },
+            {
+              "req_id": "CLM-000040-R2",
+              "req_type": "OPERATION",
+              "target_name": "print",
+              "expected_value": null,
+              "is_critical": true,
+              "description": "Executes operation 'print()' on or with subject"
+            },
+            {
+              "req_id": "CLM-000040-R3",
+              "req_type": "OPERATION",
+              "target_name": "export_text",
+              "expected_value": null,
+              "is_critical": true,
+              "description": "Executes operation 'export_text()' on or with subject"
+            },
+            {
+              "req_id": "CLM-000040-R4",
+              "req_type": "SEQUENCE",
+              "target_name": "print -> export_text",
+              "expected_value": null,
+              "is_critical": true,
+              "description": "Sequential execution order: print -> export_text"
+            }
+          ],
+          "requirement_count": 4,
+          "requirements_satisfied": 4,
+          "requirement_coverage": 1.0,
+          "operation_requirement_applicable": true,
           "binding_strength": "STRONG",
           "binding_reasons": [
-            "Full critical operation chain covered ['print', 'export_text'] with direct assertion dataflow."
+            "All 4 semantic requirements satisfied with verified assertion dataflow."
           ]
         }
       }

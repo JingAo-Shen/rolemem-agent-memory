@@ -7,7 +7,7 @@
     "repository_files_scanned": 17,
     "tests_inspected": 50,
     "executions_run": 1,
-    "execution_time_ms": 284.41,
+    "execution_time_ms": 269.68,
     "total_actions": 2,
     "action_counts": {
       "TEST_DISCOVERY": 1,
@@ -27,7 +27,7 @@
     "test_file_sha256": "8c77e1c8d772b461ce24e63b228880eb261e9b425c2bf5f54c22b169f29ecd37",
     "test_function_sha256": "638b88faba4d612b7a168bf00cbb2b9bb37fbd32f767425cc1d61434e9302184",
     "binding_strength": "STRONG",
-    "discovery_reason": "Full critical operation chain covered ['write_text', 'getvalue'] with direct assertion dataflow.",
+    "discovery_reason": "All 3 semantic requirements satisfied with verified assertion dataflow.",
     "line_start": 429,
     "line_end": 436,
     "witness_binding": {
@@ -48,11 +48,71 @@
       "dataflow_binding": true,
       "critical_operation_coverage_ratio": 1.0,
       "assertion_local_coverage": 2,
+      "semantic_requirements": [
+        {
+          "req_id": "CLM-000037-R1",
+          "req_type": "OPERATION",
+          "target_name": "write_text",
+          "expected_value": null,
+          "is_critical": true,
+          "description": "Executes operation 'write_text()' on or with subject"
+        },
+        {
+          "req_id": "CLM-000037-R2",
+          "req_type": "OPERATION",
+          "target_name": "getvalue",
+          "expected_value": null,
+          "is_critical": true,
+          "description": "Executes operation 'getvalue()' on or with subject"
+        },
+        {
+          "req_id": "CLM-000037-R3",
+          "req_type": "SEQUENCE",
+          "target_name": "write_text -> getvalue",
+          "expected_value": null,
+          "is_critical": true,
+          "description": "Sequential execution order: write_text -> getvalue"
+        }
+      ],
+      "requirement_count": 3,
+      "requirements_satisfied": 3,
+      "requirement_coverage": 1.0,
+      "operation_requirement_applicable": true,
       "binding_strength": "STRONG",
       "binding_reasons": [
-        "Full critical operation chain covered ['write_text', 'getvalue'] with direct assertion dataflow."
+        "All 3 semantic requirements satisfied with verified assertion dataflow."
       ]
-    }
+    },
+    "semantic_requirements": [
+      {
+        "req_id": "CLM-000037-R1",
+        "req_type": "OPERATION",
+        "target_name": "write_text",
+        "expected_value": null,
+        "is_critical": true,
+        "description": "Executes operation 'write_text()' on or with subject"
+      },
+      {
+        "req_id": "CLM-000037-R2",
+        "req_type": "OPERATION",
+        "target_name": "getvalue",
+        "expected_value": null,
+        "is_critical": true,
+        "description": "Executes operation 'getvalue()' on or with subject"
+      },
+      {
+        "req_id": "CLM-000037-R3",
+        "req_type": "SEQUENCE",
+        "target_name": "write_text -> getvalue",
+        "expected_value": null,
+        "is_critical": true,
+        "description": "Sequential execution order: write_text -> getvalue"
+      }
+    ],
+    "requirement_count": 3,
+    "requirements_satisfied": 3,
+    "requirement_coverage": 1.0,
+    "operation_requirement_applicable": true
   },
   "steps": [
     {
@@ -63,7 +123,7 @@
       "evidence_id": null,
       "binding_strength": "STRONG",
       "cost_increment": {},
-      "detail": "Top candidate: tests/test_formatting.py:test_help_formatter_write_text (Full critical operation chain covered ['write_text', 'getvalue'] with direct assertion dataflow.)"
+      "detail": "Top candidate: tests/test_formatting.py:test_help_formatter_write_text (All 3 semantic requirements satisfied with verified assertion dataflow.)"
     },
     {
       "step_number": 2,
@@ -73,7 +133,7 @@
       "evidence_id": "EV-EXEC-857264d0",
       "binding_strength": "STRONG",
       "cost_increment": {
-        "execution_time_ms": 284.41,
+        "execution_time_ms": 269.68,
         "timeout_sec": 15
       },
       "detail": "Verified witness 'tests/test_formatting.py::test_help_formatter_write_text' passed under target commit aef225df (source verified: click)."
@@ -84,6 +144,7 @@
       "evidence_id": "EV-EXEC-857264d0",
       "claim_id": "CLM-000037",
       "action_type": "TARGETED_EXECUTION",
+      "evidence_kind": "EXECUTABLE_TEST_WITNESS",
       "source_type": "NATIVE_TEST_EXECUTION",
       "repository": "click",
       "commit": "aef225df47377a1bc3d967327b501f577dd5462c",
@@ -92,15 +153,50 @@
       "binding_strength": "STRONG",
       "supports_or_contradicts": "SUPPORTS",
       "confidence": 0.95,
+      "repository_snapshot_status": "VERIFIED_TARGET_COMMIT",
       "test_file_sha256": "8c77e1c8d772b461ce24e63b228880eb261e9b425c2bf5f54c22b169f29ecd37",
       "test_function_sha256": "638b88faba4d612b7a168bf00cbb2b9bb37fbd32f767425cc1d61434e9302184",
       "stdout_sha256": "a71df3ef716cabe43ead70bd8311cda3aeadcb986bea501da0ea9262f31c3925",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "command_sha256": "29034415efc9464448abc352d4a32a8647235396c49b3c51f49c66e011f7d8a7",
+      "base_file_sha256": "",
+      "target_file_sha256": "",
+      "base_symbol_presence": false,
+      "target_symbol_presence": false,
       "source_origin_status": "VERIFIED_TARGET_WORKTREE",
       "dependency_environment_status": "CURRENT_ENVIRONMENT_NOT_HISTORICALLY_RESTORED",
+      "semantic_requirements": [
+        {
+          "req_id": "CLM-000037-R1",
+          "req_type": "OPERATION",
+          "target_name": "write_text",
+          "expected_value": null,
+          "is_critical": true,
+          "description": "Executes operation 'write_text()' on or with subject"
+        },
+        {
+          "req_id": "CLM-000037-R2",
+          "req_type": "OPERATION",
+          "target_name": "getvalue",
+          "expected_value": null,
+          "is_critical": true,
+          "description": "Executes operation 'getvalue()' on or with subject"
+        },
+        {
+          "req_id": "CLM-000037-R3",
+          "req_type": "SEQUENCE",
+          "target_name": "write_text -> getvalue",
+          "expected_value": null,
+          "is_critical": true,
+          "description": "Sequential execution order: write_text -> getvalue"
+        }
+      ],
+      "requirement_count": 3,
+      "requirements_satisfied": 3,
+      "requirement_coverage": 1.0,
+      "operation_requirement_applicable": true,
       "cost": {
-        "execution_time_ms": 284.41,
+        "execution_time_ms": 269.68,
         "timeout_sec": 15
       },
       "detail": "Verified witness 'tests/test_formatting.py::test_help_formatter_write_text' passed under target commit aef225df (source verified: click).",
@@ -108,7 +204,7 @@
         "test_name": "test_help_formatter_write_text",
         "execution_status": "PASS",
         "package_name": "click",
-        "module_origin": "/tmp/rolemem_v1_worktrees/wt__kzn6x_3/src/click/__init__.py",
+        "module_origin": "/tmp/rolemem_v1_worktrees/wt_vjo2lw32/src/click/__init__.py",
         "environment_provenance": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
         "python_version": "3.13.5",
         "witness_binding": {
@@ -129,9 +225,39 @@
           "dataflow_binding": true,
           "critical_operation_coverage_ratio": 1.0,
           "assertion_local_coverage": 2,
+          "semantic_requirements": [
+            {
+              "req_id": "CLM-000037-R1",
+              "req_type": "OPERATION",
+              "target_name": "write_text",
+              "expected_value": null,
+              "is_critical": true,
+              "description": "Executes operation 'write_text()' on or with subject"
+            },
+            {
+              "req_id": "CLM-000037-R2",
+              "req_type": "OPERATION",
+              "target_name": "getvalue",
+              "expected_value": null,
+              "is_critical": true,
+              "description": "Executes operation 'getvalue()' on or with subject"
+            },
+            {
+              "req_id": "CLM-000037-R3",
+              "req_type": "SEQUENCE",
+              "target_name": "write_text -> getvalue",
+              "expected_value": null,
+              "is_critical": true,
+              "description": "Sequential execution order: write_text -> getvalue"
+            }
+          ],
+          "requirement_count": 3,
+          "requirements_satisfied": 3,
+          "requirement_coverage": 1.0,
+          "operation_requirement_applicable": true,
           "binding_strength": "STRONG",
           "binding_reasons": [
-            "Full critical operation chain covered ['write_text', 'getvalue'] with direct assertion dataflow."
+            "All 3 semantic requirements satisfied with verified assertion dataflow."
           ]
         }
       }

@@ -7,7 +7,7 @@
     "repository_files_scanned": 1,
     "tests_inspected": 50,
     "executions_run": 1,
-    "execution_time_ms": 452.82,
+    "execution_time_ms": 482.29,
     "total_actions": 2,
     "action_counts": {
       "TEST_DISCOVERY": 1,
@@ -27,7 +27,7 @@
     "test_file_sha256": "fbe2dda0532c9857c3369b535d3b5bc0f8ab794d7dce378993f29517100e4028",
     "test_function_sha256": "5a0099a19df708c62c1ed4d1089478d237a2e110cc476e5b8b8d3214018bd0e5",
     "binding_strength": "STRONG",
-    "discovery_reason": "Direct verified dataflow from Subject to generic operation 'str' inside assertion.",
+    "discovery_reason": "All 3 semantic requirements satisfied with verified assertion dataflow.",
     "line_start": 49,
     "line_end": 50,
     "witness_binding": {
@@ -47,22 +47,82 @@
       "dataflow_binding": true,
       "critical_operation_coverage_ratio": 1.0,
       "assertion_local_coverage": 1,
+      "semantic_requirements": [
+        {
+          "req_id": "CLM-000041-R1",
+          "req_type": "CONSTRUCTOR_ARGUMENT",
+          "target_name": "input_arg",
+          "expected_value": "string returns",
+          "is_critical": true,
+          "description": "Text instantiated with string returns"
+        },
+        {
+          "req_id": "CLM-000041-R2",
+          "req_type": "OPERATION",
+          "target_name": "str",
+          "expected_value": null,
+          "is_critical": true,
+          "description": "Executes operation 'str()' on or with subject"
+        },
+        {
+          "req_id": "CLM-000041-R3",
+          "req_type": "RETURN_RELATION",
+          "target_name": "str",
+          "expected_value": "plain_content",
+          "is_critical": true,
+          "description": "Conversion via str() returns plain string content"
+        }
+      ],
+      "requirement_count": 3,
+      "requirements_satisfied": 3,
+      "requirement_coverage": 1.0,
+      "operation_requirement_applicable": true,
       "binding_strength": "STRONG",
       "binding_reasons": [
-        "Direct verified dataflow from Subject to generic operation 'str' inside assertion."
+        "All 3 semantic requirements satisfied with verified assertion dataflow."
       ]
-    }
+    },
+    "semantic_requirements": [
+      {
+        "req_id": "CLM-000041-R1",
+        "req_type": "CONSTRUCTOR_ARGUMENT",
+        "target_name": "input_arg",
+        "expected_value": "string returns",
+        "is_critical": true,
+        "description": "Text instantiated with string returns"
+      },
+      {
+        "req_id": "CLM-000041-R2",
+        "req_type": "OPERATION",
+        "target_name": "str",
+        "expected_value": null,
+        "is_critical": true,
+        "description": "Executes operation 'str()' on or with subject"
+      },
+      {
+        "req_id": "CLM-000041-R3",
+        "req_type": "RETURN_RELATION",
+        "target_name": "str",
+        "expected_value": "plain_content",
+        "is_critical": true,
+        "description": "Conversion via str() returns plain string content"
+      }
+    ],
+    "requirement_count": 3,
+    "requirements_satisfied": 3,
+    "requirement_coverage": 1.0,
+    "operation_requirement_applicable": true
   },
   "steps": [
     {
       "step_number": 1,
       "action_type": "TEST_DISCOVERY",
       "target": "Text op_tokens=['str']",
-      "outcome": "Discovered 46 candidates (9 strong)",
+      "outcome": "Discovered 46 candidates (8 strong)",
       "evidence_id": null,
       "binding_strength": "STRONG",
       "cost_increment": {},
-      "detail": "Top candidate: tests/test_text.py:test_str (Direct verified dataflow from Subject to generic operation 'str' inside assertion.)"
+      "detail": "Top candidate: tests/test_text.py:test_str (All 3 semantic requirements satisfied with verified assertion dataflow.)"
     },
     {
       "step_number": 2,
@@ -72,7 +132,7 @@
       "evidence_id": "EV-EXEC-ef3d2bde",
       "binding_strength": "STRONG",
       "cost_increment": {
-        "execution_time_ms": 452.82,
+        "execution_time_ms": 482.29,
         "timeout_sec": 15
       },
       "detail": "Verified witness 'tests/test_text.py::test_str' passed under target commit 9a99acc9 (source verified: rich)."
@@ -83,6 +143,7 @@
       "evidence_id": "EV-EXEC-ef3d2bde",
       "claim_id": "CLM-000041",
       "action_type": "TARGETED_EXECUTION",
+      "evidence_kind": "EXECUTABLE_TEST_WITNESS",
       "source_type": "NATIVE_TEST_EXECUTION",
       "repository": "rich",
       "commit": "9a99acc97d26d7832200a271ed8e95dd59df10c7",
@@ -91,15 +152,50 @@
       "binding_strength": "STRONG",
       "supports_or_contradicts": "SUPPORTS",
       "confidence": 0.95,
+      "repository_snapshot_status": "VERIFIED_TARGET_COMMIT",
       "test_file_sha256": "fbe2dda0532c9857c3369b535d3b5bc0f8ab794d7dce378993f29517100e4028",
       "test_function_sha256": "5a0099a19df708c62c1ed4d1089478d237a2e110cc476e5b8b8d3214018bd0e5",
-      "stdout_sha256": "76af71df60bb5f93ea635e8763126ecf98e837672c9980e80aefde989b203765",
+      "stdout_sha256": "7fefcaf66f6e7137767bc25d16d128cbf7b8617ad0b6f14fbf9a0b8e7fdd81cd",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "command_sha256": "c57e2a23b768d3d3c47f4ce8a807c21cad85a434c6cbc957e228407f57c5b84f",
+      "base_file_sha256": "",
+      "target_file_sha256": "",
+      "base_symbol_presence": false,
+      "target_symbol_presence": false,
       "source_origin_status": "VERIFIED_TARGET_WORKTREE",
       "dependency_environment_status": "CURRENT_ENVIRONMENT_NOT_HISTORICALLY_RESTORED",
+      "semantic_requirements": [
+        {
+          "req_id": "CLM-000041-R1",
+          "req_type": "CONSTRUCTOR_ARGUMENT",
+          "target_name": "input_arg",
+          "expected_value": "string returns",
+          "is_critical": true,
+          "description": "Text instantiated with string returns"
+        },
+        {
+          "req_id": "CLM-000041-R2",
+          "req_type": "OPERATION",
+          "target_name": "str",
+          "expected_value": null,
+          "is_critical": true,
+          "description": "Executes operation 'str()' on or with subject"
+        },
+        {
+          "req_id": "CLM-000041-R3",
+          "req_type": "RETURN_RELATION",
+          "target_name": "str",
+          "expected_value": "plain_content",
+          "is_critical": true,
+          "description": "Conversion via str() returns plain string content"
+        }
+      ],
+      "requirement_count": 3,
+      "requirements_satisfied": 3,
+      "requirement_coverage": 1.0,
+      "operation_requirement_applicable": true,
       "cost": {
-        "execution_time_ms": 452.82,
+        "execution_time_ms": 482.29,
         "timeout_sec": 15
       },
       "detail": "Verified witness 'tests/test_text.py::test_str' passed under target commit 9a99acc9 (source verified: rich).",
@@ -107,7 +203,7 @@
         "test_name": "test_str",
         "execution_status": "PASS",
         "package_name": "rich",
-        "module_origin": "/tmp/rolemem_v1_worktrees/wt_l17ordi2/rich/__init__.py",
+        "module_origin": "/tmp/rolemem_v1_worktrees/wt_vi1ru30y/rich/__init__.py",
         "environment_provenance": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
         "python_version": "3.13.5",
         "witness_binding": {
@@ -127,9 +223,39 @@
           "dataflow_binding": true,
           "critical_operation_coverage_ratio": 1.0,
           "assertion_local_coverage": 1,
+          "semantic_requirements": [
+            {
+              "req_id": "CLM-000041-R1",
+              "req_type": "CONSTRUCTOR_ARGUMENT",
+              "target_name": "input_arg",
+              "expected_value": "string returns",
+              "is_critical": true,
+              "description": "Text instantiated with string returns"
+            },
+            {
+              "req_id": "CLM-000041-R2",
+              "req_type": "OPERATION",
+              "target_name": "str",
+              "expected_value": null,
+              "is_critical": true,
+              "description": "Executes operation 'str()' on or with subject"
+            },
+            {
+              "req_id": "CLM-000041-R3",
+              "req_type": "RETURN_RELATION",
+              "target_name": "str",
+              "expected_value": "plain_content",
+              "is_critical": true,
+              "description": "Conversion via str() returns plain string content"
+            }
+          ],
+          "requirement_count": 3,
+          "requirements_satisfied": 3,
+          "requirement_coverage": 1.0,
+          "operation_requirement_applicable": true,
           "binding_strength": "STRONG",
           "binding_reasons": [
-            "Direct verified dataflow from Subject to generic operation 'str' inside assertion."
+            "All 3 semantic requirements satisfied with verified assertion dataflow."
           ]
         }
       }

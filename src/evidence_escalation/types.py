@@ -56,14 +56,30 @@ class ExecutionStatus(str, Enum):
     UNAVAILABLE = "UNAVAILABLE"
 
 
+class EvidenceKind(str, Enum):
+    EXECUTABLE_TEST_WITNESS = "EXECUTABLE_TEST_WITNESS"
+    STRUCTURAL_AST_EVIDENCE = "STRUCTURAL_AST_EVIDENCE"
+    DEPENDENCY_EVIDENCE = "DEPENDENCY_EVIDENCE"
+    GIT_HISTORY_EVIDENCE = "GIT_HISTORY_EVIDENCE"
+
+
 class SourceOriginStatus(str, Enum):
     VERIFIED_TARGET_WORKTREE = "VERIFIED_TARGET_WORKTREE"
     SOURCE_ORIGIN_UNVERIFIED = "SOURCE_ORIGIN_UNVERIFIED"
+    NOT_APPLICABLE = "NOT_APPLICABLE"
+
+
+class RepositorySnapshotStatus(str, Enum):
+    VERIFIED_TARGET_COMMIT = "VERIFIED_TARGET_COMMIT"
+    SNAPSHOT_UNVERIFIED = "SNAPSHOT_UNVERIFIED"
+    NOT_APPLICABLE = "NOT_APPLICABLE"
 
 
 class DecisionEvidenceStatus(str, Enum):
-    VERIFIED_WITNESS = "VERIFIED_WITNESS"
-    WEAK_WITNESS = "WEAK_WITNESS"
+    VERIFIED_TEST_WITNESS = "VERIFIED_TEST_WITNESS"
+    VERIFIED_STRUCTURAL_EVIDENCE = "VERIFIED_STRUCTURAL_EVIDENCE"
+    VERIFIED_DEPENDENCY_EVIDENCE = "VERIFIED_DEPENDENCY_EVIDENCE"
+    WEAK_TEST_WITNESS = "WEAK_TEST_WITNESS"
     UNVERIFIED_SOURCE = "UNVERIFIED_SOURCE"
     INCONCLUSIVE = "INCONCLUSIVE"
 
@@ -129,13 +145,24 @@ class AcquiredEvidence:
     binding_strength: BindingStrength
     supports_or_contradicts: str  # "SUPPORTS", "CONTRADICTS", "INCONCLUSIVE"
     confidence: float
+    evidence_kind: EvidenceKind = EvidenceKind.EXECUTABLE_TEST_WITNESS
+    repository_snapshot_status: str = "VERIFIED_TARGET_COMMIT"
     test_file_sha256: str = ""
     test_function_sha256: str = ""
     stdout_sha256: str = ""
     stderr_sha256: str = ""
     command_sha256: str = ""
+    base_file_sha256: str = ""
+    target_file_sha256: str = ""
+    base_symbol_presence: bool = False
+    target_symbol_presence: bool = False
     source_origin_status: str = "SOURCE_ORIGIN_UNVERIFIED"
     dependency_environment_status: str = "CURRENT_ENVIRONMENT_NOT_HISTORICALLY_RESTORED"
+    semantic_requirements: List[Dict[str, Any]] = field(default_factory=list)
+    requirement_count: int = 0
+    requirements_satisfied: int = 0
+    requirement_coverage: float = 0.0
+    operation_requirement_applicable: bool = True
     cost: Dict[str, Any] = field(default_factory=dict)
     detail: str = ""
     extra_metadata: Dict[str, Any] = field(default_factory=dict)
@@ -145,6 +172,7 @@ class AcquiredEvidence:
             "evidence_id": self.evidence_id,
             "claim_id": self.claim_id,
             "action_type": self.action_type.value if isinstance(self.action_type, Enum) else str(self.action_type),
+            "evidence_kind": self.evidence_kind.value if isinstance(self.evidence_kind, Enum) else str(self.evidence_kind),
             "source_type": self.source_type,
             "repository": self.repository,
             "commit": self.commit,
@@ -153,13 +181,23 @@ class AcquiredEvidence:
             "binding_strength": self.binding_strength.value if isinstance(self.binding_strength, Enum) else str(self.binding_strength),
             "supports_or_contradicts": self.supports_or_contradicts,
             "confidence": self.confidence,
+            "repository_snapshot_status": self.repository_snapshot_status,
             "test_file_sha256": self.test_file_sha256,
             "test_function_sha256": self.test_function_sha256,
             "stdout_sha256": self.stdout_sha256,
             "stderr_sha256": self.stderr_sha256,
             "command_sha256": self.command_sha256,
+            "base_file_sha256": self.base_file_sha256,
+            "target_file_sha256": self.target_file_sha256,
+            "base_symbol_presence": self.base_symbol_presence,
+            "target_symbol_presence": self.target_symbol_presence,
             "source_origin_status": self.source_origin_status,
             "dependency_environment_status": self.dependency_environment_status,
+            "semantic_requirements": self.semantic_requirements,
+            "requirement_count": self.requirement_count,
+            "requirements_satisfied": self.requirements_satisfied,
+            "requirement_coverage": self.requirement_coverage,
+            "operation_requirement_applicable": self.operation_requirement_applicable,
             "cost": self.cost,
             "detail": self.detail,
             "extra_metadata": self.extra_metadata
@@ -169,6 +207,7 @@ class AcquiredEvidence:
     def from_dict(cls, data: Dict[str, Any]) -> AcquiredEvidence:
         action = EvidenceActionType(data["action_type"]) if isinstance(data["action_type"], str) else data["action_type"]
         strength = BindingStrength(data["binding_strength"]) if isinstance(data["binding_strength"], str) else data["binding_strength"]
+        kind = EvidenceKind(data.get("evidence_kind", EvidenceKind.EXECUTABLE_TEST_WITNESS)) if isinstance(data.get("evidence_kind"), str) else data.get("evidence_kind", EvidenceKind.EXECUTABLE_TEST_WITNESS)
         return cls(
             evidence_id=data["evidence_id"],
             claim_id=data["claim_id"],
@@ -181,13 +220,24 @@ class AcquiredEvidence:
             binding_strength=strength,
             supports_or_contradicts=data.get("supports_or_contradicts", "INCONCLUSIVE"),
             confidence=float(data.get("confidence", 0.0)),
+            evidence_kind=kind,
+            repository_snapshot_status=data.get("repository_snapshot_status", "VERIFIED_TARGET_COMMIT"),
             test_file_sha256=data.get("test_file_sha256", ""),
             test_function_sha256=data.get("test_function_sha256", ""),
             stdout_sha256=data.get("stdout_sha256", ""),
             stderr_sha256=data.get("stderr_sha256", ""),
             command_sha256=data.get("command_sha256", ""),
+            base_file_sha256=data.get("base_file_sha256", ""),
+            target_file_sha256=data.get("target_file_sha256", ""),
+            base_symbol_presence=data.get("base_symbol_presence", False),
+            target_symbol_presence=data.get("target_symbol_presence", False),
             source_origin_status=data.get("source_origin_status", "SOURCE_ORIGIN_UNVERIFIED"),
             dependency_environment_status=data.get("dependency_environment_status", "CURRENT_ENVIRONMENT_NOT_HISTORICALLY_RESTORED"),
+            semantic_requirements=data.get("semantic_requirements", []),
+            requirement_count=int(data.get("requirement_count", 0)),
+            requirements_satisfied=int(data.get("requirements_satisfied", 0)),
+            requirement_coverage=float(data.get("requirement_coverage", 0.0)),
+            operation_requirement_applicable=data.get("operation_requirement_applicable", True),
             cost=data.get("cost", {}),
             detail=data.get("detail", ""),
             extra_metadata=data.get("extra_metadata", {})
@@ -225,6 +275,11 @@ class TestCandidate:
     line_start: int = 1
     line_end: int = 1
     witness_binding: Optional[Dict[str, Any]] = None
+    semantic_requirements: List[Dict[str, Any]] = field(default_factory=list)
+    requirement_count: int = 0
+    requirements_satisfied: int = 0
+    requirement_coverage: float = 0.0
+    operation_requirement_applicable: bool = True
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -242,7 +297,12 @@ class TestCandidate:
             "discovery_reason": self.discovery_reason,
             "line_start": self.line_start,
             "line_end": self.line_end,
-            "witness_binding": self.witness_binding
+            "witness_binding": self.witness_binding,
+            "semantic_requirements": self.semantic_requirements,
+            "requirement_count": self.requirement_count,
+            "requirements_satisfied": self.requirements_satisfied,
+            "requirement_coverage": self.requirement_coverage,
+            "operation_requirement_applicable": self.operation_requirement_applicable
         }
 
 

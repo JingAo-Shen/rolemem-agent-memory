@@ -26,7 +26,7 @@
     "test_file_sha256": "cb7afb49958d0f109cf93bea75e1707ecc48d678bebf328f93c84bbed504917c",
     "test_function_sha256": "284bf1cb0a26535102f0e32fa9ed008fe0233e6aa45ed552f23a89a7081b70ff",
     "binding_strength": "WEAK",
-    "discovery_reason": "Operation 'debug' executed without direct assertion binding.",
+    "discovery_reason": "Partial semantic requirement satisfaction (0/2 requirements verified).",
     "line_start": 244,
     "line_end": 263,
     "witness_binding": {
@@ -46,11 +46,55 @@
       "dataflow_binding": false,
       "critical_operation_coverage_ratio": 0.0,
       "assertion_local_coverage": 0,
+      "semantic_requirements": [
+        {
+          "req_id": "CLM-000043-R1",
+          "req_type": "ATTRIBUTE_STATE",
+          "target_name": "debug",
+          "expected_value": "False",
+          "is_critical": true,
+          "description": "Attribute 'debug' matches expected state 'False'"
+        },
+        {
+          "req_id": "CLM-000043-R2",
+          "req_type": "DEFAULT_VALUE",
+          "target_name": "debug",
+          "expected_value": "False",
+          "is_critical": true,
+          "description": "Attribute 'debug' defaults to 'False' without explicit configuration"
+        }
+      ],
+      "requirement_count": 2,
+      "requirements_satisfied": 0,
+      "requirement_coverage": 0.0,
+      "operation_requirement_applicable": true,
       "binding_strength": "WEAK",
       "binding_reasons": [
-        "Operation 'debug' executed without direct assertion binding."
+        "Partial semantic requirement satisfaction (0/2 requirements verified)."
       ]
-    }
+    },
+    "semantic_requirements": [
+      {
+        "req_id": "CLM-000043-R1",
+        "req_type": "ATTRIBUTE_STATE",
+        "target_name": "debug",
+        "expected_value": "False",
+        "is_critical": true,
+        "description": "Attribute 'debug' matches expected state 'False'"
+      },
+      {
+        "req_id": "CLM-000043-R2",
+        "req_type": "DEFAULT_VALUE",
+        "target_name": "debug",
+        "expected_value": "False",
+        "is_critical": true,
+        "description": "Attribute 'debug' defaults to 'False' without explicit configuration"
+      }
+    ],
+    "requirement_count": 2,
+    "requirements_satisfied": 0,
+    "requirement_coverage": 0.0,
+    "operation_requirement_applicable": true
   },
   "steps": [
     {
@@ -61,7 +105,7 @@
       "evidence_id": null,
       "binding_strength": "WEAK",
       "cost_increment": {},
-      "detail": "Top candidate: tests/middleware/test_body_limit.py:test_starlette_limit_applies_before_user_middleware (Operation 'debug' executed without direct assertion binding.)"
+      "detail": "Top candidate: tests/middleware/test_body_limit.py:test_starlette_limit_applies_before_user_middleware (Partial semantic requirement satisfaction (0/2 requirements verified).)"
     }
   ],
   "acquired_evidences": []

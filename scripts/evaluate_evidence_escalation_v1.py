@@ -2,15 +2,15 @@
 """
 scripts/evaluate_evidence_escalation_v1.py
 
-Protocol V2.2-V1.1 Evidence Escalation Evaluation Pipeline:
+Protocol V2.2-V1.2 Evidence Escalation Evaluation Pipeline:
 - Phase 1: Blind selective evidence escalation across dev_claim_inputs_v2r1.jsonl (55 cases).
   - Enforces two-phase architecture: Phase 1 has 0 access to gold labels or categories.
   - Runs independent ablations S0..S5 using PipelineConfig.
-  - Evaluates development budget curves (B10, B25, B50, B100).
+  - Evaluates development budget curves (B10, B25, B50, B100) with strict resource reservations.
   - Emits traces to data/evidence_escalation_v1/traces/{claim_id}.json.
 - Phase 2: Loads gold labels from dev_claim_gold_v2r1.jsonl and performs ID-safe scoring.
-  - Generates data/evidence_escalation_v1/evidence_resolution_audit.json with complete witness binding & provenance fields.
-  - Computes Verified Witness Rate, Escalation Resolution Rate, Escalation Error Rate, Coverage Gain, Selective Risk, and Cost Accounting.
+  - Generates data/evidence_escalation_v1/evidence_resolution_audit.json with complete taxonomy separation (EvidenceKind, DecisionEvidenceStatus, RepositorySnapshotStatus, SemanticRequirements).
+  - Computes Verified Evidence Decision Rate, Verified Test Witness Rate, Structural Evidence Decisions, Resolution Rate, Error Rate, Coverage Gain, Selective Risk, and Cost Accounting.
   - Dynamically constructs reports/protocol-v2.2-v1-selective-evidence.md (SSOT).
 """
 
@@ -33,14 +33,16 @@ from src.claim_validity.engine import ClaimAwareValidityEngine
 from src.evidence_escalation.types import (
     CostBudget,
     PipelineConfig,
+    EvidenceKind,
     SourceOriginStatus,
+    RepositorySnapshotStatus,
     DecisionEvidenceStatus,
     AcquiredEvidence,
     EvidenceActionType,
     BindingStrength,
     EscalationTrace
 )
-from src.evidence_escalation.cost import CostTracker
+from src.evidence_escalation.cost import CostTracker, BudgetGuard
 from src.evidence_escalation.trace import EscalationTracer
 from src.evidence_escalation.pipeline import EvidenceEscalationPipeline
 
@@ -265,7 +267,7 @@ def run_phase_1_evaluations(prepared_cases) -> Tuple[Dict[str, List[Dict[str, An
         "S1_RepoSearch": PipelineConfig(repo_search=True, dependency_inspection=False, test_discovery=False, targeted_execution=False),
         "S2_RepoSearch_Dep": PipelineConfig(repo_search=True, dependency_inspection=True, test_discovery=False, targeted_execution=False),
         "S3_TestDiscovery": PipelineConfig(repo_search=True, dependency_inspection=True, test_discovery=True, targeted_execution=False),
-        "S4_TestDiscovery_Exec": PipelineConfig(repo_search=False, dependency_inspection=False, test_discovery=True, targeted_execution=True),
+        "D1_TestDiscovery_Exec": PipelineConfig(repo_search=False, dependency_inspection=False, test_discovery=True, targeted_execution=True),
         "S5_Full_Selective_Escalation": PipelineConfig(repo_search=True, dependency_inspection=True, test_discovery=True, targeted_execution=True)
     }
 
@@ -416,7 +418,10 @@ def build_evidence_resolution_audit(
     gold_map = {g["claim_id"]: g for g in gold_records}
     audit_entries = []
 
-    verified_witness_newly_decided = 0
+    verified_test_witness_decisions = 0
+    verified_structural_decisions = 0
+    verified_dependency_decisions = 0
+    all_newly_decided_with_test = 0
     all_newly_decided = 0
 
     for trace in traces:
@@ -442,10 +447,21 @@ def build_evidence_resolution_audit(
         stdout_sha256 = None
         stderr_sha256 = None
         command_sha256 = None
+        base_file_sha256 = None
+        target_file_sha256 = None
+        base_symbol_presence = False
+        target_symbol_presence = False
         execution_status = None
-        source_origin_status = "SOURCE_ORIGIN_UNVERIFIED"
+        evidence_kind = None
+        source_origin_status = "NOT_APPLICABLE"
+        repository_snapshot_status = "VERIFIED_TARGET_COMMIT"
         dependency_env_status = "CURRENT_ENVIRONMENT_NOT_HISTORICALLY_RESTORED"
         decision_evidence_status = "INCONCLUSIVE"
+        semantic_requirements = []
+        requirement_count = 0
+        requirements_satisfied = 0
+        requirement_coverage = 0.0
+        operation_requirement_applicable = True
 
         # Check selected_witness from test discovery
         witness_meta = trace.selected_witness
@@ -455,6 +471,11 @@ def build_evidence_resolution_audit(
             witness_binding_strength = witness_meta.get("binding_strength")
             test_file_sha256 = witness_meta.get("test_file_sha256")
             test_function_sha256 = witness_meta.get("test_function_sha256")
+            semantic_requirements = witness_meta.get("semantic_requirements", [])
+            requirement_count = witness_meta.get("requirement_count", 0)
+            requirements_satisfied = witness_meta.get("requirements_satisfied", 0)
+            requirement_coverage = witness_meta.get("requirement_coverage", 0.0)
+            operation_requirement_applicable = witness_meta.get("operation_requirement_applicable", True)
             wb_data = witness_meta.get("witness_binding") or {}
             subject_binding = wb_data.get("subject_binding", False)
             operation_coverage = wb_data.get("critical_operation_coverage_ratio", 0.0)
@@ -463,7 +484,11 @@ def build_evidence_resolution_audit(
 
         # Check acquired evidences
         for ev in trace.acquired_evidences:
-            if ev.get("action_type") == "TARGETED_EXECUTION":
+            act = ev.get("action_type")
+            ev_kind_raw = ev.get("evidence_kind") or ("EXECUTABLE_TEST_WITNESS" if act == "TARGETED_EXECUTION" else "STRUCTURAL_AST_EVIDENCE")
+            evidence_kind = ev_kind_raw
+
+            if act == "TARGETED_EXECUTION":
                 selected_ev_id = ev.get("evidence_id")
                 test_file_sha256 = ev.get("test_file_sha256") or test_file_sha256
                 test_function_sha256 = ev.get("test_function_sha256") or test_function_sha256
@@ -471,28 +496,58 @@ def build_evidence_resolution_audit(
                 stderr_sha256 = ev.get("stderr_sha256")
                 command_sha256 = ev.get("command_sha256")
                 source_origin_status = ev.get("source_origin_status", "SOURCE_ORIGIN_UNVERIFIED")
+                repository_snapshot_status = ev.get("repository_snapshot_status", "VERIFIED_TARGET_COMMIT")
                 dependency_env_status = ev.get("dependency_environment_status", "CURRENT_ENVIRONMENT_NOT_HISTORICALLY_RESTORED")
                 extra = ev.get("extra_metadata", {})
                 execution_status = extra.get("execution_status")
                 ev_strength = ev.get("binding_strength")
+                witness_binding_strength = ev_strength
 
-                if source_origin_status == "VERIFIED_TARGET_WORKTREE" and ev_strength == "STRONG":
-                    decision_evidence_status = "VERIFIED_WITNESS"
-                elif source_origin_status == "SOURCE_ORIGIN_UNVERIFIED" and ev_strength in ("STRONG", "WEAK"):
+                semantic_requirements = ev.get("semantic_requirements") or semantic_requirements
+                requirement_count = ev.get("requirement_count") or requirement_count
+                requirements_satisfied = ev.get("requirements_satisfied") or requirements_satisfied
+                requirement_coverage = ev.get("requirement_coverage") or requirement_coverage
+
+                if is_newly_decided:
+                    all_newly_decided_with_test += 1
+
+                if source_origin_status == "VERIFIED_TARGET_WORKTREE" and ev_strength == "STRONG" and execution_status == "PASS":
+                    decision_evidence_status = "VERIFIED_TEST_WITNESS"
+                    if is_newly_decided:
+                        verified_test_witness_decisions += 1
+                elif source_origin_status == "SOURCE_ORIGIN_UNVERIFIED":
                     decision_evidence_status = "UNVERIFIED_SOURCE"
                 elif ev_strength == "WEAK":
-                    decision_evidence_status = "WEAK_WITNESS"
+                    decision_evidence_status = "WEAK_TEST_WITNESS"
                 else:
                     decision_evidence_status = "INCONCLUSIVE"
                 break
-            elif ev.get("action_type") == "REPOSITORY_SEARCH" and ev.get("supports_or_contradicts") in ("SUPPORTS", "CONTRADICTS"):
-                selected_ev_id = ev.get("evidence_id")
-                source_origin_status = "VERIFIED_TARGET_WORKTREE"
-                decision_evidence_status = "VERIFIED_WITNESS"
-                witness_binding_strength = ev.get("binding_strength", "STRONG")
 
-        if is_newly_decided and decision_evidence_status == "VERIFIED_WITNESS":
-            verified_witness_newly_decided += 1
+            elif act == "REPOSITORY_SEARCH" and ev.get("supports_or_contradicts") in ("SUPPORTS", "CONTRADICTS"):
+                selected_ev_id = ev.get("evidence_id")
+                source_origin_status = "NOT_APPLICABLE"
+                repository_snapshot_status = "VERIFIED_TARGET_COMMIT"
+                decision_evidence_status = "VERIFIED_STRUCTURAL_EVIDENCE"
+                witness_binding_strength = ev.get("binding_strength", "STRONG")
+                base_file_sha256 = ev.get("base_file_sha256")
+                target_file_sha256 = ev.get("target_file_sha256")
+                base_symbol_presence = ev.get("base_symbol_presence", False)
+                target_symbol_presence = ev.get("target_symbol_presence", False)
+                if is_newly_decided:
+                    verified_structural_decisions += 1
+
+            elif act == "DEPENDENCY_INSPECTION" and ev.get("supports_or_contradicts") in ("SUPPORTS", "CONTRADICTS") and ev.get("binding_strength") == "STRONG":
+                selected_ev_id = ev.get("evidence_id")
+                source_origin_status = "NOT_APPLICABLE"
+                repository_snapshot_status = "VERIFIED_TARGET_COMMIT"
+                decision_evidence_status = "VERIFIED_DEPENDENCY_EVIDENCE"
+                witness_binding_strength = ev.get("binding_strength", "STRONG")
+                base_file_sha256 = ev.get("base_file_sha256")
+                target_file_sha256 = ev.get("target_file_sha256")
+                base_symbol_presence = ev.get("base_symbol_presence", False)
+                target_symbol_presence = ev.get("target_symbol_presence", False)
+                if is_newly_decided:
+                    verified_dependency_decisions += 1
 
         audit_entry = {
             "claim_id": cid,
@@ -502,6 +557,11 @@ def build_evidence_resolution_audit(
             "gold_label": gold.get("gold_label", ""),
             "static_decision": static_dec,
             "final_decision": final_dec,
+            "evidence_kind": evidence_kind,
+            "decision_evidence_status": decision_evidence_status,
+            "repository_snapshot_status": repository_snapshot_status,
+            "source_origin_status": source_origin_status,
+            "execution_status": execution_status,
             "selected_evidence_id": selected_ev_id,
             "selected_test_file": selected_test_file,
             "selected_test_name": selected_test_name,
@@ -510,25 +570,37 @@ def build_evidence_resolution_audit(
             "operation_coverage": operation_coverage,
             "assertion_binding": assertion_binding,
             "dataflow_binding": dataflow_binding,
+            "semantic_requirements": semantic_requirements,
+            "requirement_count": requirement_count,
+            "requirements_satisfied": requirements_satisfied,
+            "requirement_coverage": requirement_coverage,
+            "operation_requirement_applicable": operation_requirement_applicable,
             "test_file_sha256": test_file_sha256,
             "test_function_sha256": test_function_sha256,
             "stdout_sha256": stdout_sha256,
             "stderr_sha256": stderr_sha256,
             "command_sha256": command_sha256,
-            "execution_status": execution_status,
-            "source_origin_status": source_origin_status,
-            "dependency_environment_status": dependency_env_status,
-            "decision_evidence_status": decision_evidence_status,
+            "base_file_sha256": base_file_sha256,
+            "target_file_sha256": target_file_sha256,
+            "base_symbol_presence": base_symbol_presence,
+            "target_symbol_presence": target_symbol_presence,
             "stop_reason": trace.stop_reason
         }
         audit_entries.append(audit_entry)
+
+    total_verified_evidence_decisions = verified_test_witness_decisions + verified_structural_decisions + verified_dependency_decisions
 
     audit_stats = {
         "total_claims_audited": len(traces),
         "escalated_claims_count": len([t for t in traces if t.static_decision == "UNCERTAIN"]),
         "newly_decided_count": all_newly_decided,
-        "verified_witness_newly_decided_count": verified_witness_newly_decided,
-        "verified_witness_rate": round(verified_witness_newly_decided / all_newly_decided, 4) if all_newly_decided > 0 else 0.0
+        "verified_evidence_decisions_count": total_verified_evidence_decisions,
+        "verified_test_witness_decisions_count": verified_test_witness_decisions,
+        "verified_structural_decisions_count": verified_structural_decisions,
+        "verified_dependency_decisions_count": verified_dependency_decisions,
+        "all_newly_decided_with_test_count": all_newly_decided_with_test,
+        "verified_evidence_decision_rate": round(total_verified_evidence_decisions / all_newly_decided, 4) if all_newly_decided > 0 else 0.0,
+        "verified_test_witness_rate": round(verified_test_witness_decisions / all_newly_decided_with_test, 4) if all_newly_decided_with_test > 0 else 0.0
     }
 
     return audit_entries, audit_stats
@@ -587,28 +659,31 @@ def generate_v1_report(
     for t in escalated_traces:
         cid = t.claim_id
         a = escalated_audit_map.get(cid, {})
-        w_file = a.get("selected_test_file") or "-"
-        w_name = a.get("selected_test_name") or "-"
+        ev_kind = a.get("evidence_kind") or "-"
+        w_target = f"{a.get('selected_test_file')}::{a.get('selected_test_name')}" if a.get("selected_test_file") else "-"
         w_strength = a.get("witness_binding_strength") or "-"
+        req_cov = f"{a.get('requirements_satisfied')}/{a.get('requirement_count')}" if a.get('requirement_count') else "-"
         src_origin = a.get("source_origin_status") or "-"
         dec_status = a.get("decision_evidence_status") or "-"
-        fn_hash = (a.get("test_function_sha256") or "")[:8]
         audit_table_rows.append(
-            f"| `{cid}` | `{w_file}::{w_name}` | `{w_strength}` | `{fn_hash}` | `{src_origin}` | `{dec_status}` |"
+            f"| `{cid}` | `{ev_kind}` | `{w_target}` | `{w_strength}` | `{req_cov}` | `{src_origin}` | `{dec_status}` |"
         )
 
     report_lines = [
-        "# RoleMem Protocol V2.2-V1.1 — Selective Evidence Escalation & Witness Auditing Report",
+        "# RoleMem Protocol V2.2-V1.2 — Behavioral Contract Semantics & Evidence Taxonomy Report",
         "",
         "## Formal Status Declaration",
         "```text",
-        "PROTOCOL_VERSION = 2.2-selective-evidence-v1.1",
+        "PROTOCOL_VERSION = 2.2-selective-evidence-v1.2",
         "CURRENT_V1_RESULT_STATUS = DEVELOPMENT_SELECTIVE_ESCALATION",
         "V2_1_DEVELOPMENT_MUTATIONS = 0",
         "V2_2_V0_DETERMINISTIC_FOUNDATION = FROZEN",
         "V2_2_V1_SELECTIVE_ESCALATION = DEVELOPMENT",
         "V2_2_V1_WITNESS_BINDING = AUDITED",
+        "V2_2_V1_CONTRACT_SEMANTICS = AUDITED",
+        "V2_2_V1_EVIDENCE_TAXONOMY = AUDITED",
         "V2_2_V1_EXECUTION_SOURCE_ORIGIN = AUDITED",
+        "V2_2_V1_BUDGET_ENFORCEMENT = AUDITED",
         "V2_2_V1_LLM_USED = NO",
         "V2_2_V1_ORACLE_ARTIFACT_USED = NO",
         "V2_2_ALGORITHM_FREEZE = NO",
@@ -620,19 +695,22 @@ def generate_v1_report(
         "",
         "---",
         "",
-        "## Scientific Errata & V1.0 Result Status Demotion",
+        "## Scientific Errata & V1.2 Taxonomy Innovations",
         "",
         "> [!IMPORTANT]",
-        "> **V1.0 Scientific Demotion Note**:",
-        "> `V1_0_RESULT_STATUS = PROVISIONAL_EVIDENCE_BINDING_NOT_YET_STRICT`",
-        "> - **Reason**: In V1.0, test binding relied on raw keyword frequency (`assertion_count`), leading `CLM-000041` to select `test_divide` instead of genuine witness `test_str`, while reports contained manually drafted case descriptions.",
-        "> - **V1.1 Corrective Fix**: AST-based witness graph (`Subject -> Variable -> Operation -> Assertion`), strict dataflow binding, isolated worktree package origin preflight verification (`VERIFIED_TARGET_WORKTREE`), and 100% dynamic Single-Source-of-Truth (SSOT) reporting from execution traces.",
+        "> **Protocol V2.2-V1.2 Enhancements**:",
+        "> 1. **Behavioral Contract Semantic Requirements**: Granular extraction of `OPERATION`, `ATTRIBUTE_STATE`, `CONSTRUCTOR_ARGUMENT`, `DEFAULT_VALUE`, `RETURN_RELATION`, and `SEQUENCE` requirements. Eliminates the flaw where absent operation tokens yielded automatic 100% operation coverage.",
+        "> 2. **Evidence Taxonomy Disaggregation**: Disaggregates `VERIFIED_WITNESS` into `VERIFIED_TEST_WITNESS`, `VERIFIED_STRUCTURAL_EVIDENCE`, and `VERIFIED_DEPENDENCY_EVIDENCE`. `SourceOriginStatus` applies strictly to executable tests (`NOT_APPLICABLE` for structural AST searches).",
+        "> 3. **Resource Reservation Budget Guard**: Enforces pre-action resource reservations (`reserve_files`, `reserve_tests`, `reserve_executions`) preventing resource overshoot across batch iterations.",
         "",
         "---",
         "",
         "## Executive Summary & Audited Metrics",
         "",
-        f"- **Verified Witness Rate**: **{audit_stats['verified_witness_rate']*100:.1f}%** ({audit_stats['verified_witness_newly_decided_count']} / {audit_stats['newly_decided_count']} newly decided claims grounded in audited witnesses).",
+        f"- **Verified Evidence Decision Rate**: **{audit_stats['verified_evidence_decision_rate']*100:.1f}%** ({audit_stats['verified_evidence_decisions_count']} / {audit_stats['newly_decided_count']} newly decided claims supported by verified evidence).",
+        f"  - **Verified Test-Witness Decisions**: `{audit_stats['verified_test_witness_decisions_count']}` (Rate: `{audit_stats['verified_test_witness_rate']*100:.1f}%` among test-escalated decisions)",
+        f"  - **Verified Structural-Evidence Decisions**: `{audit_stats['verified_structural_decisions_count']}`",
+        f"  - **Verified Dependency-Evidence Decisions**: `{audit_stats['verified_dependency_decisions_count']}`",
         f"- **Escalation Resolution Rate**: **{resolution_rate*100:.1f}%** ({len(newly_decided)} / {len(escalated_traces)} static uncertain claims resolved).",
         f"- **Escalation Error Rate**: **{escalation_error_rate*100:.1f}%** ({incorrect_newly_decided} / {len(newly_decided)} incorrectly resolved).",
         f"- **Selective Risk**: **{s5_eval['Selective_Risk']*100:.1f}%** (maintained across all {s5_eval['Decided_Cases']} decided development cases).",
@@ -660,10 +738,10 @@ def generate_v1_report(
         "",
         "---",
         "",
-        "## 2. Witness Binding & Execution Provenance Audit (11 Escalated Claims)",
+        "## 2. Evidence Taxonomy & Semantic Requirements Audit (11 Escalated Claims)",
         "",
-        "| Claim ID | Selected Witness Test | Binding Strength | Test Fn SHA256 | Source Origin Status | Decision Evidence Status |",
-        "| :--- | :--- | :--- | :--- | :--- | :--- |"
+        "| Claim ID | Evidence Kind | Selected Target | Strength | Requirements Satisfied | Source Origin | Decision Evidence Status |",
+        "| :--- | :--- | :--- | :--- | :--- | :--- | :--- |"
     ])
     report_lines.extend(audit_table_rows)
 
@@ -671,7 +749,7 @@ def generate_v1_report(
         "",
         "---",
         "",
-        "## 3. Progressive Ablation Comparison (55 Development Cases)",
+        "## 3. Component and Cumulative Ablations (55 Development Cases)",
         "",
         "| Ablation Stage | Description | Coverage | Decided Acc | Selective Risk | Balanced Acc | Macro F1 | MCC | FIR | SER |",
         "| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |"
@@ -679,11 +757,11 @@ def generate_v1_report(
 
     ablation_descs = {
         "S0_Static": "Static Claim-Aware (Zero Escalation)",
-        "S1_RepoSearch": "Static + Repository Qualified Search",
-        "S2_RepoSearch_Dep": "Static + Repo Search + Dep Inspection",
-        "S3_TestDiscovery": "Static + Native Test Discovery (No Exec)",
-        "S4_TestDiscovery_Exec": "Static + Native Test Discovery + Targeted Exec",
-        "S5_Full_Selective_Escalation": "Full Deterministic Selective Escalation (V1.1)"
+        "S1_RepoSearch": "Static + Repository Structural Search",
+        "S2_RepoSearch_Dep": "Static + Repo Search + Dependency Inspection",
+        "S3_TestDiscovery": "Static + Repo Search + Dependency + Test Discovery (No Exec)",
+        "D1_TestDiscovery_Exec": "Static + Native Test Discovery + Targeted Exec (Dynamic Channel Diagnostic)",
+        "S5_Full_Selective_Escalation": "Full Deterministic Selective Escalation (V1.2)"
     }
 
     for ab_key, desc in ablation_descs.items():
@@ -783,11 +861,14 @@ def generate_v1_report(
         g = gold_map[cid]
         a = escalated_audit_map.get(cid, {})
         steps_summary = "; ".join([f"Step {s['step_number']} ({s['action_type']}): {s['outcome']} [{s.get('detail', '')[:60]}...]" for s in t.to_dict()["steps"]])
+        req_summary = f"{a.get('requirements_satisfied', 0)}/{a.get('requirement_count', 0)} ({a.get('requirement_coverage', 0.0)*100:.1f}%)" if a.get('requirement_count', 0) > 0 else "N/A"
         report_lines.append(
             f"- **`{cid}`** (`{g['source_case_id']}`, Category `{g['category']}`, ClaimType `{g['claim_type']}`):\n"
             f"  - **Decision Transition**: `UNCERTAIN` -> **`{t.final_decision}`** (Gold: `{g['gold_label']}`, Stop Reason: `{t.stop_reason}`)\n"
-            f"  - **Selected Witness**: `{a.get('selected_test_file') or 'N/A'}::{a.get('selected_test_name') or 'N/A'}` (Strength: `{a.get('witness_binding_strength') or 'N/A'}`)\n"
-            f"  - **Provenance**: Origin `{a.get('source_origin_status')}`, Decision Status `{a.get('decision_evidence_status')}`\n"
+            f"  - **Evidence Kind**: `{a.get('evidence_kind') or 'NONE'}` (Decision Status: `{a.get('decision_evidence_status')}`)\n"
+            f"  - **Requirement Coverage**: `{req_summary}`\n"
+            f"  - **Selected Target**: `{a.get('selected_test_file') or 'N/A'}::{a.get('selected_test_name') or 'N/A'}` (Strength: `{a.get('witness_binding_strength') or 'N/A'}`)\n"
+            f"  - **Provenance**: Snapshot `{a.get('repository_snapshot_status')}`, Source Origin `{a.get('source_origin_status')}`\n"
             f"  - **Execution Trace**: {steps_summary}\n"
         )
 

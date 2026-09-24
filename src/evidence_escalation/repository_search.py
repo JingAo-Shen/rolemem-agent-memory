@@ -18,6 +18,7 @@ from typing import Dict, Any, List, Optional, Tuple, Set
 
 from .types import (
     EvidenceActionType,
+    EvidenceKind,
     BindingStrength,
     AcquiredEvidence,
     CostBudget
@@ -145,7 +146,8 @@ class RepositorySearchEngine:
             if del_pattern.search(diff_text):
                 diff_deleted_child = True
 
-        chash = hashlib.sha256((target_src or "").encode("utf-8")).hexdigest()
+        base_chash = hashlib.sha256((base_src or "").encode("utf-8")).hexdigest() if base_src else ""
+        target_chash = hashlib.sha256((target_src or "").encode("utf-8")).hexdigest() if target_src else ""
 
         if base_had_child and (not target_has_child or diff_deleted_child):
             # Proved removal of qualified symbol / attribute
@@ -154,13 +156,20 @@ class RepositorySearchEngine:
                 claim_id=claim_id,
                 action_type=EvidenceActionType.REPOSITORY_SEARCH,
                 source_type="AST_SNAPSHOT_AND_DIFF",
+                evidence_kind=EvidenceKind.STRUCTURAL_AST_EVIDENCE,
                 repository=repository_name,
                 commit=target_commit,
                 file_path=file_path,
-                content_hash=chash,
+                content_hash=target_chash,
                 binding_strength=BindingStrength.STRONG,
                 supports_or_contradicts="CONTRADICTS",
                 confidence=0.95,
+                source_origin_status="NOT_APPLICABLE",
+                repository_snapshot_status="VERIFIED_TARGET_COMMIT",
+                base_file_sha256=base_chash,
+                target_file_sha256=target_chash,
+                base_symbol_presence=base_had_child,
+                target_symbol_presence=target_has_child,
                 detail=f"Qualified symbol '{parent_symbol}.{child_symbol}' existed in base commit but was removed in target commit (diff deletion confirmed: {diff_deleted_child}).",
                 extra_metadata={
                     "parent_symbol": parent_symbol,
@@ -177,13 +186,20 @@ class RepositorySearchEngine:
                 claim_id=claim_id,
                 action_type=EvidenceActionType.REPOSITORY_SEARCH,
                 source_type="AST_SNAPSHOT",
+                evidence_kind=EvidenceKind.STRUCTURAL_AST_EVIDENCE,
                 repository=repository_name,
                 commit=target_commit,
                 file_path=file_path,
-                content_hash=chash,
+                content_hash=target_chash,
                 binding_strength=BindingStrength.STRONG,
                 supports_or_contradicts="SUPPORTS",
                 confidence=0.95,
+                source_origin_status="NOT_APPLICABLE",
+                repository_snapshot_status="VERIFIED_TARGET_COMMIT",
+                base_file_sha256=base_chash,
+                target_file_sha256=target_chash,
+                base_symbol_presence=base_had_child,
+                target_symbol_presence=target_has_child,
                 detail=f"Qualified symbol '{parent_symbol}.{child_symbol}' verified present in target commit AST.",
                 extra_metadata={
                     "parent_symbol": parent_symbol,
@@ -266,7 +282,8 @@ class RepositorySearchEngine:
             if del_pattern.search(diff_text):
                 diff_removed_dep = True
 
-        chash = hashlib.sha256((target_src or "").encode("utf-8")).hexdigest()
+        base_chash = hashlib.sha256((base_src or "").encode("utf-8")).hexdigest() if base_src else ""
+        target_chash = hashlib.sha256((target_src or "").encode("utf-8")).hexdigest() if target_src else ""
 
         if base_uses_dep and not target_uses_dep:
             ev = AcquiredEvidence(
@@ -274,13 +291,20 @@ class RepositorySearchEngine:
                 claim_id=claim_id,
                 action_type=EvidenceActionType.DEPENDENCY_INSPECTION,
                 source_type="AST_AND_DIFF",
+                evidence_kind=EvidenceKind.DEPENDENCY_EVIDENCE,
                 repository=repository_name,
                 commit=target_commit,
                 file_path=file_path,
-                content_hash=chash,
+                content_hash=target_chash,
                 binding_strength=BindingStrength.STRONG,
                 supports_or_contradicts="CONTRADICTS",
                 confidence=0.92,
+                source_origin_status="NOT_APPLICABLE",
+                repository_snapshot_status="VERIFIED_TARGET_COMMIT",
+                base_file_sha256=base_chash,
+                target_file_sha256=target_chash,
+                base_symbol_presence=base_uses_dep,
+                target_symbol_presence=target_uses_dep,
                 detail=f"Dependency on '{dependency_symbol}' inside '{subject_symbol}' was removed between base and target commit (diff removed: {diff_removed_dep}).",
                 extra_metadata={
                     "subject_symbol": subject_symbol,
@@ -298,13 +322,20 @@ class RepositorySearchEngine:
                 claim_id=claim_id,
                 action_type=EvidenceActionType.DEPENDENCY_INSPECTION,
                 source_type="AST",
+                evidence_kind=EvidenceKind.DEPENDENCY_EVIDENCE,
                 repository=repository_name,
                 commit=target_commit,
                 file_path=file_path,
-                content_hash=chash,
+                content_hash=target_chash,
                 binding_strength=BindingStrength.WEAK,
                 supports_or_contradicts="SUPPORTS",
                 confidence=0.60,
+                source_origin_status="NOT_APPLICABLE",
+                repository_snapshot_status="VERIFIED_TARGET_COMMIT",
+                base_file_sha256=base_chash,
+                target_file_sha256=target_chash,
+                base_symbol_presence=base_uses_dep,
+                target_symbol_presence=target_uses_dep,
                 detail=f"Static reference to '{dependency_symbol}' inside '{subject_symbol}' exists in AST (weak evidence; runtime contract unverified).",
                 extra_metadata={
                     "subject_symbol": subject_symbol,
@@ -315,3 +346,4 @@ class RepositorySearchEngine:
             evidences.append(ev)
 
         return evidences
+

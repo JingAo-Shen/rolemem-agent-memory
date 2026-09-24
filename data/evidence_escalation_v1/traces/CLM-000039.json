@@ -16,19 +16,19 @@
   "stop_reason": "REMAINED_UNCERTAIN_AFTER_ESCALATION",
   "selected_witness": {
     "test_file": "tests/tests_tqdm.py",
-    "test_name": "test_deprecated_gui",
-    "subject_mentions": 3,
+    "test_name": "test_max_interval",
+    "subject_mentions": 8,
     "object_mentions": 0,
     "dependency_mentions": 0,
-    "assertion_count": 2,
+    "assertion_count": 10,
     "target_commit": "5dcb022b55553b60ed2131b64aa5bf1e65470df1",
-    "source_hash": "5566469599d68c0cc48508d195d5a15bf22fdd48fcd1432d7f1e10f439a4c84b",
+    "source_hash": "98de1d65bd1e5b67b5c81ec3b3bf7551049f54b075870754f151bac5d55eab35",
     "test_file_sha256": "01875d28f7d061c43e27096564c2d7dae32db134305d2228a5f80076b64ce69d",
-    "test_function_sha256": "5566469599d68c0cc48508d195d5a15bf22fdd48fcd1432d7f1e10f439a4c84b",
+    "test_function_sha256": "98de1d65bd1e5b67b5c81ec3b3bf7551049f54b075870754f151bac5d55eab35",
     "binding_strength": "WEAK",
-    "discovery_reason": "Generic operation 'len' lacks direct assertion-local subject dataflow.",
-    "line_start": 1320,
-    "line_end": 1361,
+    "discovery_reason": "Partial semantic requirement satisfaction (2/3 requirements verified).",
+    "line_start": 464,
+    "line_end": 591,
     "witness_binding": {
       "claim_id": "CLM-000039",
       "subject": "tqdm",
@@ -38,19 +38,79 @@
       "expected_literals": [],
       "expected_attributes": [],
       "test_file": "tests/tests_tqdm.py",
-      "test_name": "test_deprecated_gui",
-      "test_function_sha256": "5566469599d68c0cc48508d195d5a15bf22fdd48fcd1432d7f1e10f439a4c84b",
+      "test_name": "test_max_interval",
+      "test_function_sha256": "98de1d65bd1e5b67b5c81ec3b3bf7551049f54b075870754f151bac5d55eab35",
       "subject_binding": true,
       "operation_binding": false,
       "assertion_binding": true,
       "dataflow_binding": true,
       "critical_operation_coverage_ratio": 0.0,
       "assertion_local_coverage": 0,
+      "semantic_requirements": [
+        {
+          "req_id": "CLM-000039-R1",
+          "req_type": "CONSTRUCTOR_ARGUMENT",
+          "target_name": "input_arg",
+          "expected_value": "finite range",
+          "is_critical": true,
+          "description": "tqdm instantiated with finite range"
+        },
+        {
+          "req_id": "CLM-000039-R2",
+          "req_type": "OPERATION",
+          "target_name": "len",
+          "expected_value": null,
+          "is_critical": true,
+          "description": "Executes operation 'len()' on or with subject"
+        },
+        {
+          "req_id": "CLM-000039-R3",
+          "req_type": "RETURN_RELATION",
+          "target_name": "len",
+          "expected_value": "total_count",
+          "is_critical": true,
+          "description": "len() returns total item count"
+        }
+      ],
+      "requirement_count": 3,
+      "requirements_satisfied": 2,
+      "requirement_coverage": 0.6666666666666666,
+      "operation_requirement_applicable": true,
       "binding_strength": "WEAK",
       "binding_reasons": [
-        "Generic operation 'len' lacks direct assertion-local subject dataflow."
+        "Partial semantic requirement satisfaction (2/3 requirements verified)."
       ]
-    }
+    },
+    "semantic_requirements": [
+      {
+        "req_id": "CLM-000039-R1",
+        "req_type": "CONSTRUCTOR_ARGUMENT",
+        "target_name": "input_arg",
+        "expected_value": "finite range",
+        "is_critical": true,
+        "description": "tqdm instantiated with finite range"
+      },
+      {
+        "req_id": "CLM-000039-R2",
+        "req_type": "OPERATION",
+        "target_name": "len",
+        "expected_value": null,
+        "is_critical": true,
+        "description": "Executes operation 'len()' on or with subject"
+      },
+      {
+        "req_id": "CLM-000039-R3",
+        "req_type": "RETURN_RELATION",
+        "target_name": "len",
+        "expected_value": "total_count",
+        "is_critical": true,
+        "description": "len() returns total item count"
+      }
+    ],
+    "requirement_count": 3,
+    "requirements_satisfied": 2,
+    "requirement_coverage": 0.6666666666666666,
+    "operation_requirement_applicable": true
   },
   "steps": [
     {
@@ -61,7 +121,7 @@
       "evidence_id": null,
       "binding_strength": "WEAK",
       "cost_increment": {},
-      "detail": "Top candidate: tests/tests_tqdm.py:test_deprecated_gui (Generic operation 'len' lacks direct assertion-local subject dataflow.)"
+      "detail": "Top candidate: tests/tests_tqdm.py:test_max_interval (Partial semantic requirement satisfaction (2/3 requirements verified).)"
     }
   ],
   "acquired_evidences": []

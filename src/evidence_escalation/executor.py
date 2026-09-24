@@ -25,6 +25,7 @@ from typing import Dict, Any, List, Optional, Tuple
 
 from .types import (
     EvidenceActionType,
+    EvidenceKind,
     BindingStrength,
     ExecutionStatus,
     SourceOriginStatus,
@@ -270,6 +271,7 @@ class TargetedWorktreeExecutor:
             claim_id=claim_id,
             action_type=EvidenceActionType.TARGETED_EXECUTION,
             source_type="NATIVE_TEST_EXECUTION",
+            evidence_kind=EvidenceKind.EXECUTABLE_TEST_WITNESS,
             repository=repository_name,
             commit=target_commit,
             file_path=test_file,
@@ -283,7 +285,13 @@ class TargetedWorktreeExecutor:
             stderr_sha256=stderr_sha256,
             command_sha256=command_sha256,
             source_origin_status=origin_status.value if isinstance(origin_status, SourceOriginStatus) else str(origin_status),
+            repository_snapshot_status="VERIFIED_TARGET_COMMIT",
             dependency_environment_status="CURRENT_ENVIRONMENT_NOT_HISTORICALLY_RESTORED",
+            semantic_requirements=candidate.semantic_requirements,
+            requirement_count=candidate.requirement_count,
+            requirements_satisfied=candidate.requirements_satisfied,
+            requirement_coverage=candidate.requirement_coverage,
+            operation_requirement_applicable=candidate.operation_requirement_applicable,
             cost={
                 "execution_time_ms": round(t_elapsed_ms, 2),
                 "timeout_sec": timeout_sec
@@ -291,11 +299,11 @@ class TargetedWorktreeExecutor:
             detail=detail,
             extra_metadata={
                 "test_name": test_name,
-                "execution_status": exec_status.value,
+                "execution_status": exec_status.value if isinstance(exec_status, ExecutionStatus) else str(exec_status),
                 "package_name": pkg_name,
                 "module_origin": origin_path,
                 "environment_provenance": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
                 "python_version": sys.version.split()[0],
-                "witness_binding": candidate.witness_binding
+                "witness_binding": candidate.witness_binding or {}
             }
         )

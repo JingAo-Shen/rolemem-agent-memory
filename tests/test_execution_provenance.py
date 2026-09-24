@@ -69,8 +69,10 @@ def test_audit_json_integrity():
     assert stats["total_claims_audited"] == 55
     assert stats["escalated_claims_count"] == 11
     assert stats["newly_decided_count"] == 5
-    assert stats["verified_witness_newly_decided_count"] == 5
-    assert stats["verified_witness_rate"] == 1.0
+    assert stats["verified_evidence_decisions_count"] == 5
+    assert stats["verified_test_witness_decisions_count"] == 3
+    assert stats["verified_structural_decisions_count"] == 2
+    assert stats["verified_evidence_decision_rate"] == 1.0
 
     entries = data["audit_entries"]
     assert len(entries) == 55
@@ -82,6 +84,7 @@ def test_audit_json_integrity():
     assert clm41["selected_test_name"] == "test_str"
     assert clm41["witness_binding_strength"] == "STRONG"
     assert clm41["source_origin_status"] == "VERIFIED_TARGET_WORKTREE"
-    assert clm41["decision_evidence_status"] == "VERIFIED_WITNESS"
+    assert clm41["decision_evidence_status"] == "VERIFIED_TEST_WITNESS"
     assert clm41["dataflow_binding"] is True
     assert clm41["operation_coverage"] == 1.0
+

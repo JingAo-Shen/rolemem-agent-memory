@@ -364,7 +364,7 @@
         }
       }
     },
-    "S4_TestDiscovery_Exec": {
+    "D1_TestDiscovery_Exec": {
       "Total_Cases": 55,
       "Decided_Cases": 47,
       "Uncertain_Cases": 8,
@@ -564,11 +564,11 @@
       "mcc": 1.0,
       "total_files_scanned": 47,
       "total_tests_inspected": 90,
-      "total_executions": 2,
-      "mean_executions_per_escalated": 0.18,
-      "total_time_ms": 716.52,
-      "mean_time_ms_per_escalated": 65.14,
-      "total_actions": 14
+      "total_executions": 1,
+      "mean_executions_per_escalated": 0.09,
+      "total_time_ms": 474.3,
+      "mean_time_ms_per_escalated": 43.12,
+      "total_actions": 13
     },
     "B25": {
       "preset": "B25",
@@ -586,11 +586,11 @@
       "mcc": 1.0,
       "total_files_scanned": 65,
       "total_tests_inspected": 225,
-      "total_executions": 3,
-      "mean_executions_per_escalated": 0.27,
-      "total_time_ms": 1009.36,
-      "mean_time_ms_per_escalated": 91.76,
-      "total_actions": 15
+      "total_executions": 2,
+      "mean_executions_per_escalated": 0.18,
+      "total_time_ms": 751.18,
+      "mean_time_ms_per_escalated": 68.29,
+      "total_actions": 14
     },
     "B50": {
       "preset": "B50",
@@ -608,11 +608,11 @@
       "mcc": 1.0,
       "total_files_scanned": 91,
       "total_tests_inspected": 450,
-      "total_executions": 4,
-      "mean_executions_per_escalated": 0.36,
-      "total_time_ms": 1410.29,
-      "mean_time_ms_per_escalated": 128.21,
-      "total_actions": 16
+      "total_executions": 3,
+      "mean_executions_per_escalated": 0.27,
+      "total_time_ms": 1184.72,
+      "mean_time_ms_per_escalated": 107.7,
+      "total_actions": 15
     },
     "B100": {
       "preset": "B100",
@@ -630,11 +630,11 @@
       "mcc": 1.0,
       "total_files_scanned": 131,
       "total_tests_inspected": 900,
-      "total_executions": 4,
-      "mean_executions_per_escalated": 0.36,
-      "total_time_ms": 1366.37,
-      "mean_time_ms_per_escalated": 124.22,
-      "total_actions": 16
+      "total_executions": 3,
+      "mean_executions_per_escalated": 0.27,
+      "total_time_ms": 1231.71,
+      "mean_time_ms_per_escalated": 111.97,
+      "total_actions": 15
     }
   },
   "cost_statistics": {
@@ -643,15 +643,15 @@
     "mean_files_scanned_per_escalated": 8.3,
     "total_tests_inspected": 450,
     "mean_tests_inspected_per_escalated": 40.9,
-    "total_executions_run": 4,
-    "mean_executions_per_escalated": 0.36,
-    "total_execution_time_ms": 1368.64,
-    "mean_execution_time_ms_per_escalated": 124.42,
-    "total_actions": 16,
-    "mean_actions_per_escalated": 1.45,
+    "total_executions_run": 3,
+    "mean_executions_per_escalated": 0.27,
+    "total_execution_time_ms": 1194.0,
+    "mean_execution_time_ms_per_escalated": 108.55,
+    "total_actions": 15,
+    "mean_actions_per_escalated": 1.36,
     "action_counts": {
       "TEST_DISCOVERY": 9,
-      "TARGETED_EXECUTION": 4,
+      "TARGETED_EXECUTION": 3,
       "DEPENDENCY_INSPECTION": 1,
       "REPOSITORY_SEARCH": 2
     }
@@ -660,7 +660,12 @@
     "total_claims_audited": 55,
     "escalated_claims_count": 11,
     "newly_decided_count": 5,
-    "verified_witness_newly_decided_count": 5,
-    "verified_witness_rate": 1.0
+    "verified_evidence_decisions_count": 5,
+    "verified_test_witness_decisions_count": 3,
+    "verified_structural_decisions_count": 2,
+    "verified_dependency_decisions_count": 0,
+    "all_newly_decided_with_test_count": 3,
+    "verified_evidence_decision_rate": 1.0,
+    "verified_test_witness_rate": 1.0
   }
 }

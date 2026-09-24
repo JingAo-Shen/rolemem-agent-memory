@@ -1,11 +1,12 @@
 """
 src/evidence_escalation/witness_binding.py
 
-Claim Witness Binding & AST Dataflow Analysis Engine for Protocol V2.2-V1.1:
+Claim Witness Binding & AST Dataflow Analysis Engine for Protocol V2.2-V1.2:
 - Builds AST witness graphs for candidate test functions:
   Subject Construction -> Variable Propagation -> Operation Call -> Result -> Assertion.
-- Evaluates strict subject binding, operation binding, assertion binding, and dataflow connectivity.
-- Enforces critical operation coverage (e.g. write_text AND getvalue).
+- Integrates fine-grained BehavioralRequirement semantics (OPERATION, ATTRIBUTE_STATE, CONSTRUCTOR_ARGUMENT, DEFAULT_VALUE, RETURN_RELATION, SEQUENCE).
+- Eliminates assumption that empty operations equals 100% operation coverage.
+- Enforces strict multi-requirement verification for state and default semantics.
 - De-weights generic built-in operations (str, len, print, etc.) unless proven to receive direct subject dataflow.
 - Ranks candidate tests by genuine witness strength rather than raw keyword counts.
 """
@@ -19,6 +20,11 @@ from typing import Dict, Any, List, Optional, Set, Tuple
 
 from src.claim_validity.types import MemoryClaim, ClaimType
 from .types import BindingStrength, TestCandidate
+from .contract_semantics import (
+    BehavioralRequirement,
+    BehavioralRequirementType,
+    ContractSemanticsExtractor
+)
 
 GENERIC_BUILTIN_OPS = {"str", "len", "print", "get", "set", "list", "dict", "bool", "repr", "int", "float"}
 
@@ -39,6 +45,11 @@ class ClaimWitnessBinding:
     dataflow_binding: bool = False
     critical_operation_coverage_ratio: float = 0.0
     assertion_local_coverage: int = 0
+    semantic_requirements: List[Dict[str, Any]] = field(default_factory=list)
+    requirement_count: int = 0
+    requirements_satisfied: int = 0
+    requirement_coverage: float = 0.0
+    operation_requirement_applicable: bool = True
     binding_strength: BindingStrength = BindingStrength.UNBOUND
     binding_reasons: List[str] = field(default_factory=list)
 
@@ -58,6 +69,11 @@ class ClaimWitnessBinding:
             "dataflow_binding": self.dataflow_binding,
             "critical_operation_coverage_ratio": self.critical_operation_coverage_ratio,
             "assertion_local_coverage": self.assertion_local_coverage,
+            "semantic_requirements": self.semantic_requirements,
+            "requirement_count": self.requirement_count,
+            "requirements_satisfied": self.requirements_satisfied,
+            "requirement_coverage": self.requirement_coverage,
+            "operation_requirement_applicable": self.operation_requirement_applicable,
             "binding_strength": self.binding_strength.value if isinstance(self.binding_strength, BindingStrength) else str(self.binding_strength),
             "binding_reasons": self.binding_reasons
         }
@@ -70,7 +86,7 @@ class WitnessBindingAnalyzer:
     def extract_critical_operations(claim: MemoryClaim) -> List[str]:
         """Extracts specific method calls and operation tokens from claim statement and object."""
         ops = []
-        text = f"{claim.object} {claim.raw_statement}"
+        text = f"{claim.object or ''} {claim.raw_statement or ''}"
 
         # 1. Matches fn() tokens: e.g. write_text(), getvalue(), export_text(), str(), len()
         fn_matches = re.findall(r"([a-zA-Z_][a-zA-Z0-9_]*)\s*\(\)", text)
@@ -99,7 +115,7 @@ class WitnessBindingAnalyzer:
         """Extracts expected literals (e.g. 'FastAPI', False, 'foo') and keywords (e.g. record=True)."""
         literals = []
         keywords = []
-        text = f"{claim.object} {claim.raw_statement}"
+        text = f"{claim.object or ''} {claim.raw_statement or ''}"
 
         # Extract string literals in quotes
         str_literals = re.findall(r"['\"]([^'\"]+)['\"]", text)
@@ -126,6 +142,9 @@ class WitnessBindingAnalyzer:
         subject = claim.subject.split(".")[-1] if claim.subject else ""
         critical_ops = self.extract_critical_operations(claim)
         exp_literals, exp_kws = self.extract_expected_literals_and_keywords(claim)
+        reqs = ContractSemanticsExtractor.extract_requirements(claim)
+
+        has_op_reqs = any(r.req_type == BehavioralRequirementType.OPERATION for r in reqs) or bool(critical_ops)
 
         binding = ClaimWitnessBinding(
             claim_id=claim.claim_id,
@@ -135,7 +154,10 @@ class WitnessBindingAnalyzer:
             expected_attributes=exp_kws,
             test_file=candidate.test_file,
             test_name=candidate.test_name,
-            test_function_sha256=candidate.test_function_sha256
+            test_function_sha256=candidate.test_function_sha256,
+            semantic_requirements=[r.to_dict() for r in reqs],
+            requirement_count=len(reqs),
+            operation_requirement_applicable=has_op_reqs
         )
 
         test_src = candidate.test_source or ""
@@ -181,8 +203,10 @@ class WitnessBindingAnalyzer:
                 if isinstance(node.value, ast.Call):
                     if isinstance(node.value.func, ast.Name) and node.value.func.id == subject:
                         is_subject_val = True
+                        direct_subject_calls.append(node.value)
                     elif isinstance(node.value.func, ast.Attribute) and node.value.func.attr == subject:
                         is_subject_val = True
+                        direct_subject_calls.append(node.value)
                 elif isinstance(node.value, ast.Name) and node.value.id == subject:
                     is_subject_val = True
 
@@ -298,6 +322,16 @@ class WitnessBindingAnalyzer:
                         for op in covered_operations:
                             asserted_operations.add(op)
 
+                    # Direct attribute access inside assert: assert var.attr == ...
+                    elif isinstance(inner, ast.Attribute):
+                        recv = inner.value
+                        if (isinstance(recv, ast.Name) and recv.id in subject_vars) or (isinstance(recv, ast.Call) and isinstance(recv.func, ast.Name) and recv.func.id == subject):
+                            has_direct_assert_dataflow = True
+                            for op in critical_ops:
+                                if inner.attr.lower() == op.lower():
+                                    asserted_operations.add(op)
+
+
         # For dependency contract: check if subject and dependency both present
         if claim.claim_type == ClaimType.DEPENDENCY_CONTRACT and dependency_symbol:
             dep_clean = dependency_symbol.split(".")[-1]
@@ -312,9 +346,95 @@ class WitnessBindingAnalyzer:
                 asserted_operations.add(dep_clean)
 
         # -------------------------------------------------------------
-        # Phase 4: Compute Witness Metrics & Decision Strength
+        # Phase 4: Semantic Requirements Evaluation
         # -------------------------------------------------------------
-        binding.operation_binding = len(covered_operations) > 0 or len(critical_ops) == 0
+        satisfied_req_ids: Set[str] = set()
+
+        for req in reqs:
+            # 1. CONSTRUCTOR_ARGUMENT
+            if req.req_type == BehavioralRequirementType.CONSTRUCTOR_ARGUMENT:
+                if req.expected_value == "0_args":
+                    # Check for subject instantiation with zero positional and zero keyword args
+                    zero_args_found = False
+                    for call_node in direct_subject_calls:
+                        if len(call_node.args) == 0 and len(call_node.keywords) == 0:
+                            zero_args_found = True
+                            break
+                    if zero_args_found:
+                        satisfied_req_ids.add(req.req_id)
+                elif req.target_name != "input_arg":
+                    # Check for keyword arg matching target_name
+                    kw_found = False
+                    for call_node in direct_subject_calls:
+                        for kw in call_node.keywords:
+                            if kw.arg == req.target_name:
+                                if req.expected_value is None:
+                                    kw_found = True
+                                elif isinstance(kw.value, ast.Constant) and str(kw.value.value).lower() == str(req.expected_value).lower():
+                                    kw_found = True
+                                elif isinstance(kw.value, ast.Name) and kw.value.id.lower() == str(req.expected_value).lower():
+                                    kw_found = True
+                    if kw_found:
+                        satisfied_req_ids.add(req.req_id)
+                else:
+                    # input_arg (e.g. instantiated with string)
+                    if any(len(c.args) > 0 for c in direct_subject_calls):
+                        satisfied_req_ids.add(req.req_id)
+
+            # 2. OPERATION
+            elif req.req_type == BehavioralRequirementType.OPERATION:
+                op_t = req.target_name
+                if op_t in covered_operations or op_t in asserted_operations:
+                    satisfied_req_ids.add(req.req_id)
+
+            # 3. SEQUENCE
+            elif req.req_type == BehavioralRequirementType.SEQUENCE:
+                # Target name format: "op1 -> op2"
+                seq_ops = [s.strip() for s in req.target_name.split("->")]
+                if len(seq_ops) >= 2 and all(op in covered_operations or op in asserted_operations for op in seq_ops):
+                    satisfied_req_ids.add(req.req_id)
+
+            # 4. ATTRIBUTE_STATE & DEFAULT_VALUE
+            elif req.req_type in (BehavioralRequirementType.ATTRIBUTE_STATE, BehavioralRequirementType.DEFAULT_VALUE):
+                attr_t = req.target_name
+                exp_v = req.expected_value
+                attr_verified = False
+
+                # Search in asserts
+                for node in ast.walk(tree):
+                    if isinstance(node, ast.Assert):
+                        for inner in ast.walk(node):
+                            # assert var.attr == exp_v or assert var.attr is exp_v
+                            if isinstance(inner, ast.Attribute):
+                                if inner.attr.lower() == attr_t.lower():
+                                    recv = inner.value
+                                    if (isinstance(recv, ast.Name) and recv.id in subject_vars) or (isinstance(recv, ast.Call) and isinstance(recv.func, ast.Name) and recv.func.id == subject):
+                                        if exp_v is None:
+                                            attr_verified = True
+                                        else:
+                                            # Check if expected value is present in the assert comparison
+                                            assert_str = ast.unparse(node) if hasattr(ast, "unparse") else ""
+                                            if exp_v.lower() in assert_str.lower():
+                                                attr_verified = True
+
+                if attr_verified:
+                    satisfied_req_ids.add(req.req_id)
+
+            # 5. RETURN_RELATION
+            elif req.req_type == BehavioralRequirementType.RETURN_RELATION:
+                # Verify that operation output is compared in assertion
+                if has_direct_assert_dataflow or len(asserted_operations) > 0:
+                    satisfied_req_ids.add(req.req_id)
+
+        binding.requirements_satisfied = len(satisfied_req_ids)
+        binding.requirement_coverage = (
+            len(satisfied_req_ids) / float(len(reqs)) if reqs else 0.0
+        )
+
+        # -------------------------------------------------------------
+        # Phase 5: Compute Witness Metrics & Decision Strength
+        # -------------------------------------------------------------
+        binding.operation_binding = (len(covered_operations) > 0)
         binding.assertion_binding = (has_direct_assert_dataflow or len(asserted_operations) > 0)
         binding.dataflow_binding = (binding.subject_binding and binding.assertion_binding)
         binding.assertion_local_coverage = len(asserted_operations)
@@ -322,46 +442,31 @@ class WitnessBindingAnalyzer:
         if critical_ops:
             cov_ratio = len(covered_operations.intersection(set(critical_ops))) / float(len(critical_ops))
         else:
-            cov_ratio = 1.0
+            cov_ratio = 0.0  # Protocol V2.2-V1.2: No automatic 1.0 for empty ops
         binding.critical_operation_coverage_ratio = cov_ratio
 
         # Determine final binding strength
         if claim.claim_type == ClaimType.BEHAVIORAL_CONTRACT:
-            # Case 1: Multi-operation behavioral contracts (e.g. write_text AND getvalue, or print AND export_text)
-            if len(critical_ops) >= 2:
+            if len(reqs) > 0:
+                # All critical requirements must be satisfied for STRONG
+                if binding.requirement_coverage >= 1.0 and binding.dataflow_binding:
+                    binding.binding_strength = BindingStrength.STRONG
+                    binding.binding_reasons.append(f"All {len(reqs)} semantic requirements satisfied with verified assertion dataflow.")
+                elif binding.requirements_satisfied > 0 or binding.subject_binding:
+                    binding.binding_strength = BindingStrength.WEAK
+                    binding.binding_reasons.append(f"Partial semantic requirement satisfaction ({binding.requirements_satisfied}/{len(reqs)} requirements verified).")
+                else:
+                    binding.binding_strength = BindingStrength.UNBOUND
+                    binding.binding_reasons.append("Zero semantic requirements satisfied.")
+            else:
+                # Fallback if no requirements extracted
                 if cov_ratio >= 1.0 and binding.assertion_binding and binding.dataflow_binding:
                     binding.binding_strength = BindingStrength.STRONG
-                    binding.binding_reasons.append(f"Full critical operation chain covered {critical_ops} with direct assertion dataflow.")
-                else:
+                    binding.binding_reasons.append("Full operation coverage with assertion dataflow.")
+                elif binding.subject_binding:
                     binding.binding_strength = BindingStrength.WEAK
-                    binding.binding_reasons.append(f"Partial critical operation coverage ({len(covered_operations)}/{len(critical_ops)} ops).")
-
-            # Case 2: Single-operation or generic built-in (e.g. str(Text("foo")))
-            elif len(critical_ops) == 1:
-                op = critical_ops[0]
-                if op in GENERIC_BUILTIN_OPS:
-                    if (op in asserted_operations or op in covered_operations) and has_direct_assert_dataflow:
-                        binding.binding_strength = BindingStrength.STRONG
-                        binding.binding_reasons.append(f"Direct verified dataflow from Subject to generic operation '{op}' inside assertion.")
-                    else:
-                        binding.binding_strength = BindingStrength.WEAK
-                        binding.binding_reasons.append(f"Generic operation '{op}' lacks direct assertion-local subject dataflow.")
                 else:
-                    if op in asserted_operations and binding.dataflow_binding:
-                        binding.binding_strength = BindingStrength.STRONG
-                        binding.binding_reasons.append(f"Verified operation '{op}' asserting subject state.")
-                    else:
-                        binding.binding_strength = BindingStrength.WEAK
-                        binding.binding_reasons.append(f"Operation '{op}' executed without direct assertion binding.")
-
-            # Case 3: Attribute/State verification (e.g. default title or debug mode)
-            else:
-                if binding.assertion_binding and binding.dataflow_binding:
-                    binding.binding_strength = BindingStrength.STRONG
-                    binding.binding_reasons.append("Direct assertion verification on subject instance state.")
-                else:
-                    binding.binding_strength = BindingStrength.WEAK
-                    binding.binding_reasons.append("Subject instantiated without direct claim attribute assertion.")
+                    binding.binding_strength = BindingStrength.UNBOUND
 
         elif claim.claim_type == ClaimType.DEPENDENCY_CONTRACT:
             dep_clean = dependency_symbol.split(".")[-1] if dependency_symbol else ""
@@ -397,17 +502,23 @@ class WitnessBindingAnalyzer:
             cand.witness_binding = witness.to_dict()
             cand.binding_strength = witness.binding_strength
             cand.discovery_reason = "; ".join(witness.binding_reasons)
+            cand.semantic_requirements = witness.semantic_requirements
+            cand.requirement_count = witness.requirement_count
+            cand.requirements_satisfied = witness.requirements_satisfied
+            cand.requirement_coverage = witness.requirement_coverage
+            cand.operation_requirement_applicable = witness.operation_requirement_applicable
             evaluated.append((cand, witness))
 
         # Ranking Hierarchy:
         # 1. Witness binding strength (STRONG=2, WEAK=1, UNBOUND=0)
-        # 2. Critical operation coverage ratio (1.0 > 0.5 > 0.0)
-        # 3. Assertion-local operation coverage (number of asserted operations)
-        # 4. Subject-dataflow connectivity (boolean)
-        # 5. Test name similarity to claim operations / subject
-        # 6. Raw mention count (weak tie-breaker)
-        # 7. Assertion count (last tie-breaker)
-        def ranking_key(item: Tuple[TestCandidate, ClaimWitnessBinding]) -> Tuple[int, float, int, int, int, int, int]:
+        # 2. Semantic requirement coverage ratio (1.0 > 0.5 > 0.0)
+        # 3. Critical operation coverage ratio (1.0 > 0.5 > 0.0)
+        # 4. Assertion-local operation coverage (number of asserted operations)
+        # 5. Subject-dataflow connectivity (boolean)
+        # 6. Test name similarity to claim operations / subject
+        # 7. Raw mention count (weak tie-breaker)
+        # 8. Assertion count (last tie-breaker)
+        def ranking_key(item: Tuple[TestCandidate, ClaimWitnessBinding]) -> Tuple[int, float, float, int, int, int, int, int]:
             cand, wit = item
             s_val = 2 if wit.binding_strength == BindingStrength.STRONG else (1 if wit.binding_strength == BindingStrength.WEAK else 0)
             df_val = 1 if wit.dataflow_binding else 0
@@ -423,6 +534,7 @@ class WitnessBindingAnalyzer:
 
             return (
                 s_val,
+                wit.requirement_coverage,
                 wit.critical_operation_coverage_ratio,
                 wit.assertion_local_coverage,
                 df_val,

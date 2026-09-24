@@ -47,11 +47,21 @@
       "dataflow_binding": false,
       "critical_operation_coverage_ratio": 0.0,
       "assertion_local_coverage": 0,
+      "semantic_requirements": [],
+      "requirement_count": 0,
+      "requirements_satisfied": 0,
+      "requirement_coverage": 0.0,
+      "operation_requirement_applicable": true,
       "binding_strength": "UNBOUND",
       "binding_reasons": [
         "Subject 'HookSpec' not instantiated or called in test code."
       ]
-    }
+    },
+    "semantic_requirements": [],
+    "requirement_count": 0,
+    "requirements_satisfied": 0,
+    "requirement_coverage": 0.0,
+    "operation_requirement_applicable": true
   },
   "steps": [
     {
@@ -80,6 +90,7 @@
       "evidence_id": "EV-DEP-PRES-7557963c",
       "claim_id": "CLM-000045",
       "action_type": "DEPENDENCY_INSPECTION",
+      "evidence_kind": "DEPENDENCY_EVIDENCE",
       "source_type": "AST",
       "repository": "pluggy",
       "commit": "0258484dc180a0c28705de83783b269f4fed4873",
@@ -88,13 +99,23 @@
       "binding_strength": "WEAK",
       "supports_or_contradicts": "SUPPORTS",
       "confidence": 0.6,
+      "repository_snapshot_status": "VERIFIED_TARGET_COMMIT",
       "test_file_sha256": "",
       "test_function_sha256": "",
       "stdout_sha256": "",
       "stderr_sha256": "",
       "command_sha256": "",
-      "source_origin_status": "SOURCE_ORIGIN_UNVERIFIED",
+      "base_file_sha256": "abffecf3558e24afb0725ae73dbc3957f278e009fc96c8802a21ceb6c38145a2",
+      "target_file_sha256": "ee1c8cc8fefc5656f23efdc330a2b735c5bba7b7b1dfd41f6c3b0aa4aa2cd52f",
+      "base_symbol_presence": true,
+      "target_symbol_presence": true,
+      "source_origin_status": "NOT_APPLICABLE",
       "dependency_environment_status": "CURRENT_ENVIRONMENT_NOT_HISTORICALLY_RESTORED",
+      "semantic_requirements": [],
+      "requirement_count": 0,
+      "requirements_satisfied": 0,
+      "requirement_coverage": 0.0,
+      "operation_requirement_applicable": true,
       "cost": {},
       "detail": "Static reference to 'varnames' inside 'HookSpec' exists in AST (weak evidence; runtime contract unverified).",
       "extra_metadata": {

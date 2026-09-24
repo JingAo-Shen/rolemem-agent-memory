@@ -70,23 +70,53 @@ class CostTracker:
 
 
 class BudgetGuard:
-    """Enforces pre-action budget constraints across all evidence acquisition stages."""
+    """Enforces pre-action budget constraints and resource reservations across all evidence acquisition stages."""
 
     @staticmethod
-    def can_perform_action(tracker: CostTracker, budget: CostBudget, action_type: EvidenceActionType) -> Tuple[bool, str]:
-        if tracker.total_actions >= budget.max_total_actions:
+    def can_perform_action(
+        tracker: CostTracker,
+        budget: CostBudget,
+        action_type: EvidenceActionType,
+        files: int = 0,
+        tests: int = 0,
+        executions: int = 0,
+        actions: int = 1
+    ) -> Tuple[bool, str]:
+        if tracker.total_actions + actions > budget.max_total_actions:
             return False, f"Total actions limit reached ({budget.max_total_actions})"
 
-        if action_type == EvidenceActionType.TARGETED_EXECUTION:
-            if tracker.executions_run >= budget.max_executions_run:
+        if action_type == EvidenceActionType.TARGETED_EXECUTION or executions > 0:
+            exec_to_add = max(1, executions) if action_type == EvidenceActionType.TARGETED_EXECUTION else executions
+            if tracker.executions_run + exec_to_add > budget.max_executions_run:
                 return False, f"Max executions reached ({budget.max_executions_run})"
 
-        if action_type == EvidenceActionType.TEST_DISCOVERY or action_type == EvidenceActionType.TEST_INSPECTION:
-            if tracker.tests_inspected >= budget.max_tests_inspected:
+        if action_type in (EvidenceActionType.TEST_DISCOVERY, EvidenceActionType.TEST_INSPECTION) or tests > 0:
+            tests_to_add = max(1, tests) if action_type == EvidenceActionType.TEST_INSPECTION else tests
+            if tracker.tests_inspected + tests_to_add > budget.max_tests_inspected:
                 return False, f"Max tests inspected reached ({budget.max_tests_inspected})"
 
-        if action_type == EvidenceActionType.REPOSITORY_SEARCH:
-            if tracker.repository_files_scanned >= budget.max_files_scanned:
+        if action_type == EvidenceActionType.REPOSITORY_SEARCH or files > 0:
+            files_to_add = max(1, files) if action_type == EvidenceActionType.REPOSITORY_SEARCH else files
+            if tracker.repository_files_scanned + files_to_add > budget.max_files_scanned:
                 return False, f"Max files scanned reached ({budget.max_files_scanned})"
 
+        return True, ""
+
+    @staticmethod
+    def reserve(
+        tracker: CostTracker,
+        budget: CostBudget,
+        files: int = 0,
+        tests: int = 0,
+        executions: int = 0,
+        actions: int = 1
+    ) -> Tuple[bool, str]:
+        if tracker.total_actions + actions > budget.max_total_actions:
+            return False, f"Total actions limit reached ({budget.max_total_actions})"
+        if tracker.repository_files_scanned + files > budget.max_files_scanned:
+            return False, f"Max files scanned reached ({budget.max_files_scanned})"
+        if tracker.tests_inspected + tests > budget.max_tests_inspected:
+            return False, f"Max tests inspected reached ({budget.max_tests_inspected})"
+        if tracker.executions_run + executions > budget.max_executions_run:
+            return False, f"Max executions reached ({budget.max_executions_run})"
         return True, ""
