@@ -1645,7 +1645,7 @@
       "operation_requirement_applicable": true,
       "test_file_sha256": "fbe2dda0532c9857c3369b535d3b5bc0f8ab794d7dce378993f29517100e4028",
       "test_function_sha256": "5a0099a19df708c62c1ed4d1089478d237a2e110cc476e5b8b8d3214018bd0e5",
-      "stdout_sha256": "7fefcaf66f6e7137767bc25d16d128cbf7b8617ad0b6f14fbf9a0b8e7fdd81cd",
+      "stdout_sha256": "76af71df60bb5f93ea635e8763126ecf98e837672c9980e80aefde989b203765",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "command_sha256": "c57e2a23b768d3d3c47f4ce8a807c21cad85a434c6cbc957e228407f57c5b84f",
       "base_file_sha256": null,

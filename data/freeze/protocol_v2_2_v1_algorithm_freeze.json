@@ -1,0 +1,108 @@
+{
+  "protocol_version": "2.2-v1.2",
+  "freeze_type": "DETERMINISTIC_ALGORITHM_FREEZE",
+  "frozen_algorithm_source_commit": "fe62749b98ea2a8e62ed5dbb031b39deddc33624",
+  "algorithm_freeze": "YES",
+  "development_benchmark_status": "DEVELOPMENT_ONLY_NOT_FORMAL",
+  "formal_holdout_defined": "NO",
+  "formal_test_opened": "NO",
+  "llm_used": "NO",
+  "oracle_artifact_used": "NO",
+  "post_freeze_mutation_rule": "Any modification under src/claim_validity/** or src/evidence_escalation/** invalidates V2_2_ALGORITHM_FREEZE and requires a new protocol version. Formal benchmark data must never be used to tune the frozen V1 algorithm.",
+  "frozen_runtime_policy": {
+    "default_budget": "B50",
+    "selective_policy": true,
+    "targeted_execution_enabled": true,
+    "test_discovery_enabled": true,
+    "repository_search_enabled": true,
+    "dependency_inspection_enabled": true,
+    "llm_enabled": false
+  },
+  "frozen_algorithm_source_files": {
+    "src/claim_validity/__init__.py": "07d2f1989f55015b4db9ba652f77749920feda989da0593830d4c37d9e97e87b",
+    "src/claim_validity/binding.py": "c17ca8201cc919db53c7d65fc6eabd16f3450fc2b43d63bb78b074450dd15b8a",
+    "src/claim_validity/claim_extractor.py": "e918983c78622f211704ad45c2d845ef6b3bf63355b7e5feb3962b915e7ec665",
+    "src/claim_validity/engine.py": "cbb233ea583595483cc1967ab9da501b6b2df2d108de81225f8fc03a2b2043e4",
+    "src/claim_validity/evidence.py": "8c71e6fd3540f5aff540089200acd1c8c6aace53990a98ff8907dbb8683f80c9",
+    "src/claim_validity/grounding.py": "e8b85cce6c67c74e208881956f8efd336a85d4d130963bcd515a9c4c2192b873",
+    "src/claim_validity/impact.py": "f8881c08426d8d8d12c402eb72f8870b1b5eac115eceeddf94f7cd4f7b3e6815",
+    "src/claim_validity/policy.py": "08597530f396e98b8fa1b6c6bd74c85d9ec5d3d818701362cd5f7d9c2e267c1b",
+    "src/claim_validity/types.py": "08f04de3033a7dc105f611748582305eaa21dc546acdddafa9319e0080803162",
+    "src/claim_validity/validators/__init__.py": "9b94997b6dbfedb1b034d4fb2d65926ceeef67aa62621832e9a0acc9cda284f3",
+    "src/claim_validity/validators/attribute_exists.py": "5757b55cac9a04569ae22426616ad08cf7b1cd0ad021ebd59727efa861d6fc26",
+    "src/claim_validity/validators/base.py": "9e8e0250aad8a6b377b874066f1cf202e9ee3051d6accc573b89e9293fc42483",
+    "src/claim_validity/validators/behavioral_contract.py": "068df317e4324695f5a053a534d7d775b57d3975a11345b70e4a0704363089fa",
+    "src/claim_validity/validators/default_value.py": "2f7a41c6839358681ee77e9b8917c1946b85cc19a9448016e4fe44684c993035",
+    "src/claim_validity/validators/dependency_contract.py": "36dd75f8b5a51440800b565767521cbd8e246f7bf867631f5b69bcf82475ad24",
+    "src/claim_validity/validators/deprecation.py": "72ec58a88734d44660b1792541348b2d6e52a1e76f0f3e144a57ae1dea61b85e",
+    "src/claim_validity/validators/import_path.py": "70fbc78b06c78f49045a004c8209cd5605b1cff7e5125a021b7115328ee10a7c",
+    "src/claim_validity/validators/return_value.py": "7cd8d90e566b6e2dddf871c4bb621e744852f257957c60d05dc670c17e79526d",
+    "src/claim_validity/validators/signature.py": "c2f9bda5f2a2f6ed4ba831b348ad0828ec8819b3ec496e2ff17321e9962fab53",
+    "src/claim_validity/validators/symbol_exists.py": "9eed74060cba7e0d3d93e3eb99becf70a1c7dbb79504b77541142041d2e84c39",
+    "src/evidence_escalation/__init__.py": "7dbd70de213ca1213a6c29d31e616e094185e708dfd1bb214c3cddfa039b7658",
+    "src/evidence_escalation/binding.py": "a973fdf3c7b548dfaf3d9cc7bd55c5a90192972b9874b71e1da0829f34c939da",
+    "src/evidence_escalation/contract_semantics.py": "528e0c5b6fcf407c9c9d12007d5aaf7fc0933fa64927e456127862342d3fba18",
+    "src/evidence_escalation/cost.py": "be026c333afbe61bc48f556626cbdee39c68e22086f797c4c04ae1e7315e13d2",
+    "src/evidence_escalation/executor.py": "cea928b2f1468d4c3f6cf77a261d2bc359c8745c8ead1677cbed3158975f1b15",
+    "src/evidence_escalation/pipeline.py": "e214669dd3e49fe335a928c05a5b7fe9b2e9fad93a2c693b7f55f42f5a08adcb",
+    "src/evidence_escalation/planner.py": "b72b25318d6a768b0955a819262c4f0310609d836948fb1eda77ad5307a0c3a6",
+    "src/evidence_escalation/repository_search.py": "d63dca46a1945a9b976143210e6c37cb73ff11984bd282c8b235d60611e3febe",
+    "src/evidence_escalation/test_binding.py": "eda2217fa328c7554b79dbae30dc9871cd0175292e1ecb1c1bd38910f94482fd",
+    "src/evidence_escalation/test_discovery.py": "1ed4041051166589a10954d19ec441270492b2e74c5051c8ba73203717e99983",
+    "src/evidence_escalation/trace.py": "efceff87a2d8e776cd6247b8186db7ef825e659eb685f9b6fa39aff682a938d0",
+    "src/evidence_escalation/types.py": "412eee7812568c7c7ca9f7c72955887940a3b98b102df2beb67c58ac62221e88",
+    "src/evidence_escalation/witness_binding.py": "b04834bf10d13e0a5b2f92fe2f2db9e403081fca53b92edee9ad103b82d24eef"
+  },
+  "frozen_evaluation_scripts": {
+    "scripts/evaluate_claim_validity_v2_2.py": "de0c0f26652ae9d3d63a5cbeb92ef6cdd5cdddf47ad8612f6e560551f2fa565a",
+    "scripts/evaluate_evidence_escalation_v1.py": "7d22efa9ec967dc3f9ff0c605d92664468b1dd8e9a8199b01eb721c97231a04e"
+  },
+  "development_claim_representation": {
+    "status": "DEVELOPMENT",
+    "files": {
+      "data/freeze/protocol_v2_2_dev_claim_representation_r1.json": "7fd5186224323e2e4c3133405ad360abab1503b4ab65d7c6db96b66ff5eccfb8",
+      "data/claim_validity_v2_2/dev_claim_inputs_v2r1.jsonl": "5445dfde35a33b12acc1729ea562411b75bf6ee826f03929956984128e455fb4",
+      "data/claim_validity_v2_2/dev_claim_gold_v2r1.jsonl": "f1f4700dde8e32a19e6c56b3801c9fb5dddfe54ee293bd9c4f6167bf017f377a"
+    }
+  },
+  "development_result_provenance": {
+    "status": "DEVELOPMENT_RESULT_ONLY",
+    "scientific_scope": "NOT_FORMAL_GENERALIZATION_EVIDENCE",
+    "files": {
+      "data/evidence_escalation_v1/escalation_results.json": "da12fa7eeb58456debda38373e36aede4cdcb42e1a1adac0514e8394002ecd5b",
+      "data/evidence_escalation_v1/evidence_resolution_audit.json": "0956ac6f7e14c143690e65b16816d24699c7fff35423877422423fcdc2ccfd7b",
+      "reports/protocol-v2.2-v1-selective-evidence.md": "f3ae347d345ffc97af53a31ef6ea14fa43ec3022a93ad7145e931d445128933f"
+    }
+  },
+  "development_reference_metrics": {
+    "scientific_scope": "DEVELOPMENT_DIAGNOSTIC_ONLY",
+    "cases": 55,
+    "static_coverage": 0.8,
+    "full_deterministic_coverage": 0.8909090909090909,
+    "static_uncertain": 11,
+    "newly_resolved": 5,
+    "remaining_uncertain": 6,
+    "newly_resolved_errors": 0,
+    "verified_test_witness_decisions": 3,
+    "verified_structural_decisions": 2
+  },
+  "frozen_known_limitations": {
+    "unresolved_claims_count": 6,
+    "unresolved_claim_ids": [
+      "CLM-000038",
+      "CLM-000039",
+      "CLM-000042",
+      "CLM-000043",
+      "CLM-000044",
+      "CLM-000045"
+    ],
+    "limitation_description": "Claims remaining UNCERTAIN under deterministic evidence escalation due to absence of sound executable witness or unstated domain contracts."
+  },
+  "contaminated_repository_universe": {
+    "status": "DEVELOPMENT_CONTAMINATED",
+    "registry_path": "data/splits/repository_contamination_registry.json",
+    "registry_sha256": "ae01f0c825cb3beb4bd415426d7ce4ff6931db1b9535369f28239c4aded7a03d",
+    "split_manifest_path": "data/splits/v2_2_repo_split.json",
+    "split_manifest_sha256": "a5dda52a60ac2f623d85eb254d2ecce7137d25567913490db6bb88787c8a0d70"
+  }
+}

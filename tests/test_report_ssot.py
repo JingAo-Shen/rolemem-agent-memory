@@ -42,11 +42,11 @@ def test_ssot_report_metrics_consistency():
     # Verify protocol version and status strings
     assert "PROTOCOL_VERSION = 2.2-selective-evidence-v1.2" in report_text
     assert "CURRENT_V1_RESULT_STATUS = DEVELOPMENT_SELECTIVE_ESCALATION" in report_text
-    assert "V2_2_V1_WITNESS_BINDING = AUDITED" in report_text
-    assert "V2_2_V1_CONTRACT_SEMANTICS = AUDITED" in report_text
-    assert "V2_2_V1_EVIDENCE_TAXONOMY = AUDITED" in report_text
-    assert "V2_2_V1_EXECUTION_SOURCE_ORIGIN = AUDITED" in report_text
-    assert "V2_2_V1_BUDGET_ENFORCEMENT = AUDITED" in report_text
+    assert ("V2_2_V1_WITNESS_BINDING = AUDITED" in report_text or "V2_2_V1_WITNESS_BINDING = FROZEN" in report_text)
+    assert ("V2_2_V1_CONTRACT_SEMANTICS = AUDITED" in report_text or "V2_2_V1_CONTRACT_SEMANTICS = FROZEN" in report_text)
+    assert ("V2_2_V1_EVIDENCE_TAXONOMY = AUDITED" in report_text or "V2_2_V1_EVIDENCE_TAXONOMY = FROZEN" in report_text)
+    assert ("V2_2_V1_EXECUTION_SOURCE_ORIGIN = AUDITED" in report_text or "V2_2_V1_EXECUTION_SOURCE_ORIGIN = FROZEN" in report_text)
+    assert ("V2_2_V1_BUDGET_ENFORCEMENT = AUDITED" in report_text or "V2_2_V1_BUDGET_ENFORCEMENT = FROZEN" in report_text)
 
     # Verify CLM-000041 selected test in report
     assert "tests/test_text.py::test_str" in report_text

@@ -1,0 +1,14 @@
+{
+  "protocol_version": "2.2-v1.2",
+  "declaration_type": "FORMAL_DATA_FIREWALL",
+  "algorithm_freeze_status": "FROZEN",
+  "algorithm_freeze_commit": "fe62749b98ea2a8e62ed5dbb031b39deddc33624",
+  "algorithm_source_hash_manifest": "e318b6cc610bced94f5a71fef641aec0cc104f5be561398d1ac20d5f5b1cf629",
+  "development_repository_blacklist_path": "data/splits/repository_contamination_registry.json",
+  "development_repository_blacklist_hash": "ae01f0c825cb3beb4bd415426d7ce4ff6931db1b9535369f28239c4aded7a03d",
+  "formal_repository_list": null,
+  "formal_case_ids": null,
+  "formal_gold": null,
+  "formal_data_opened": false,
+  "firewall_invariant": "Algorithm freeze strictly precedes formal repository selection and formal test construction. Zero formal data exists or has been examined prior to this freeze point."
+}

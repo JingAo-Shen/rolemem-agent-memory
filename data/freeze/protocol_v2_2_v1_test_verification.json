@@ -1,0 +1,15 @@
+{
+  "commit": "fe62749b98ea2a8e62ed5dbb031b39deddc33624",
+  "test_command": "pytest tests/",
+  "python_version": "3.13.5",
+  "platform": "Linux-6.8.0-83-generic-x86_64-with-glibc2.35",
+  "timestamp": "2026-09-24T14:30:52.151397+00:00",
+  "exit_code": 0,
+  "passed": 284,
+  "failed": 0,
+  "skipped": 0,
+  "ci_verified": "NO",
+  "ci_verification_note": "Recorded from local test execution; GitHub Actions workflow runs not configured for this repository.",
+  "test_log_path": "data/freeze/protocol_v2_2_v1_test_log.txt",
+  "test_log_sha256": "94b6c202095e0452c8af8d508fff1296a03694286c8e5c8e7669650db645c179"
+}

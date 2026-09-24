@@ -6,18 +6,18 @@ PROTOCOL_VERSION = 2.2-selective-evidence-v1.2
 CURRENT_V1_RESULT_STATUS = DEVELOPMENT_SELECTIVE_ESCALATION
 V2_1_DEVELOPMENT_MUTATIONS = 0
 V2_2_V0_DETERMINISTIC_FOUNDATION = FROZEN
-V2_2_V1_SELECTIVE_ESCALATION = FREEZE_CANDIDATE
-V2_2_V1_WITNESS_BINDING = AUDITED
-V2_2_V1_CONTRACT_SEMANTICS = AUDITED
-V2_2_V1_EVIDENCE_TAXONOMY = AUDITED
-V2_2_V1_EXECUTION_SOURCE_ORIGIN = AUDITED
-V2_2_V1_BUDGET_ENFORCEMENT = AUDITED
-V2_2_V1_ANTI_COUPLING = AUDITED
-V2_2_V1_LLM_USED = NO
-V2_2_V1_ORACLE_ARTIFACT_USED = NO
-V2_2_ALGORITHM_FREEZE = NO
+V2_2_V1_SELECTIVE_ESCALATION = FROZEN
+V2_2_V1_WITNESS_BINDING = FROZEN
+V2_2_V1_CONTRACT_SEMANTICS = FROZEN
+V2_2_V1_EVIDENCE_TAXONOMY = FROZEN
+V2_2_V1_EXECUTION_SOURCE_ORIGIN = FROZEN
+V2_2_V1_BUDGET_ENFORCEMENT = FROZEN
+V2_2_V1_ANTI_COUPLING = FROZEN
+V2_2_ALGORITHM_FREEZE = YES
 V2_2_FORMAL_HOLDOUT_DEFINED = NO
 V2_2_FORMAL_TEST_OPENED = NO
+V2_2_V1_LLM_USED = NO
+V2_2_V1_ORACLE_ARTIFACT_USED = NO
 FORMAL_AGENT_RESULTS = NO
 FORMAL_PAPER_RESULTS = NO
 ```
@@ -109,10 +109,10 @@ FORMAL_PAPER_RESULTS = NO
 
 | Budget Preset | Files Limit | Tests Limit | Exec Limit | Action Limit | Coverage | Decided Acc | Risk | Total Execs | Total Time (ms) | Mean Time/Esc (ms) |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **B10** | 20 | 10 | 1 | 3 | 85.5% | 100.0% | 0.0% | 1 | 480.8 | 43.7 |
-| **B25** | 50 | 25 | 2 | 5 | 87.3% | 100.0% | 0.0% | 2 | 753.3 | 68.5 |
-| **B50** | 100 | 50 | 3 | 8 | 89.1% | 100.0% | 0.0% | 3 | 1187.6 | 108.0 |
-| **B100** | 300 | 100 | 5 | 15 | 89.1% | 100.0% | 0.0% | 3 | 1185.2 | 107.8 |
+| **B10** | 20 | 10 | 1 | 3 | 85.5% | 100.0% | 0.0% | 1 | 468.0 | 42.5 |
+| **B25** | 50 | 25 | 2 | 5 | 87.3% | 100.0% | 0.0% | 2 | 756.5 | 68.8 |
+| **B50** | 100 | 50 | 3 | 8 | 89.1% | 100.0% | 0.0% | 3 | 1177.0 | 107.0 |
+| **B100** | 300 | 100 | 5 | 15 | 89.1% | 100.0% | 0.0% | 3 | 1191.1 | 108.3 |
 
 ---
 
@@ -123,7 +123,7 @@ FORMAL_PAPER_RESULTS = NO
 | **Repository Files Scanned** | 806 | 73.3 files |
 | **Test Candidates Inspected** | 450 | 40.9 tests |
 | **Targeted Worktree Executions** | 3 | 0.27 executions |
-| **Total Execution Wall Time** | 1179.31 ms | 107.21 ms |
+| **Total Execution Wall Time** | 1173.76 ms | 106.71 ms |
 | **Total Acquisition Actions** | 15 | 1.36 actions |
 
 ### Action Type Distribution:

@@ -7,7 +7,7 @@
     "repository_files_scanned": 31,
     "tests_inspected": 50,
     "executions_run": 1,
-    "execution_time_ms": 273.25,
+    "execution_time_ms": 256.51,
     "total_actions": 2,
     "action_counts": {
       "TEST_DISCOVERY": 1,
@@ -133,7 +133,7 @@
       "evidence_id": "EV-EXEC-857264d0",
       "binding_strength": "STRONG",
       "cost_increment": {
-        "execution_time_ms": 273.25,
+        "execution_time_ms": 256.51,
         "timeout_sec": 15
       },
       "detail": "Verified witness 'tests/test_formatting.py::test_help_formatter_write_text' passed under target commit aef225df (source verified: click)."
@@ -196,7 +196,7 @@
       "requirement_coverage": 1.0,
       "operation_requirement_applicable": true,
       "cost": {
-        "execution_time_ms": 273.25,
+        "execution_time_ms": 256.51,
         "timeout_sec": 15
       },
       "detail": "Verified witness 'tests/test_formatting.py::test_help_formatter_write_text' passed under target commit aef225df (source verified: click).",
@@ -204,7 +204,7 @@
         "test_name": "test_help_formatter_write_text",
         "execution_status": "PASS",
         "package_name": "click",
-        "module_origin": "/tmp/rolemem_v1_worktrees/wt_yghyimty/src/click/__init__.py",
+        "module_origin": "/tmp/rolemem_v1_worktrees/wt_6nosqnsu/src/click/__init__.py",
         "environment_provenance": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
         "python_version": "3.13.5",
         "witness_binding": {
