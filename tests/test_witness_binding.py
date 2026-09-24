@@ -617,3 +617,206 @@ def test_unrelated():
     assert res.binding_strength != BindingStrength.STRONG
 
 
+def test_environ_negative():
+    """
+    Negative test for WSGI ENVIRON constructor input requirement:
+    Passing a plain dict with non-WSGI keys does NOT satisfy ENVIRON requirement.
+    """
+    claim = MemoryClaim(
+        claim_id="CLM-TEST-REQUEST-ENVIRON",
+        claim_type=ClaimType.BEHAVIORAL_CONTRACT,
+        subject="Request",
+        predicate="initializes_from",
+        object="environ",
+        raw_statement="Request instance initializes with a WSGI environ dictionary and provides HTTP method access."
+    )
+
+    neg_src = '''
+def test_req_plain_dict():
+    req = Request({"foo": "bar"})
+    assert req.method is not None
+'''
+    analyzer = WitnessBindingAnalyzer()
+    cand_neg = TestCandidate(
+        test_file="tests/test_req.py",
+        test_name="test_req_plain_dict",
+        subject_mentions=1,
+        object_mentions=1,
+        dependency_mentions=0,
+        assertion_count=1,
+        target_commit="c1",
+        source_hash="h1",
+        binding_strength=BindingStrength.UNBOUND,
+        discovery_reason="",
+        test_source=neg_src
+    )
+
+    res_neg = analyzer.analyze_witness(claim, cand_neg)
+    assert res_neg.binding_strength != BindingStrength.STRONG
+    assert res_neg.requirements_satisfied == 0
+
+
+def test_environ_positive_canonical_keys():
+    """
+    Positive test for WSGI ENVIRON constructor input requirement:
+    Passing a dict containing canonical WSGI keys satisfies ENVIRON requirement -> STRONG binding.
+    """
+    claim = MemoryClaim(
+        claim_id="CLM-TEST-REQUEST-ENVIRON",
+        claim_type=ClaimType.BEHAVIORAL_CONTRACT,
+        subject="Request",
+        predicate="initializes_from",
+        object="environ",
+        raw_statement="Request instance initializes with a WSGI environ dictionary and provides HTTP method access."
+    )
+
+    pos_src = '''
+def test_req_wsgi_environ():
+    environ = {"REQUEST_METHOD": "GET", "SERVER_NAME": "localhost"}
+    req = Request(environ)
+    assert req.method == "GET"
+'''
+    analyzer = WitnessBindingAnalyzer()
+    cand_pos = TestCandidate(
+        test_file="tests/test_req.py",
+        test_name="test_req_wsgi_environ",
+        subject_mentions=1,
+        object_mentions=1,
+        dependency_mentions=0,
+        assertion_count=1,
+        target_commit="c1",
+        source_hash="h2",
+        binding_strength=BindingStrength.UNBOUND,
+        discovery_reason="",
+        test_source=pos_src
+    )
+
+    res_pos = analyzer.analyze_witness(claim, cand_pos)
+    assert res_pos.binding_strength == BindingStrength.STRONG
+    assert res_pos.requirements_satisfied == 1
+    assert res_pos.requirement_coverage == 1.0
+
+
+def test_sequence_mutually_exclusive_branches():
+    """
+    Negative test for SEQUENCE requirement across mutually exclusive branches:
+    Operations located in if and else branches cannot satisfy monotonically increasing execution order.
+    """
+    claim = MemoryClaim(
+        claim_id="CLM-TEST-SEQUENCE",
+        claim_type=ClaimType.BEHAVIORAL_CONTRACT,
+        subject="HelpFormatter",
+        predicate="satisfies_sequence",
+        object="write_text() followed by getvalue()",
+        raw_statement="HelpFormatter object sequences write_text() operation followed by getvalue() retrieval."
+    )
+
+    mutually_exclusive_src = '''
+def test_branching():
+    formatter = HelpFormatter()
+    if flag:
+        formatter.write_text("hello")
+    else:
+        result = formatter.getvalue()
+        assert result == ""
+'''
+    analyzer = WitnessBindingAnalyzer()
+    cand_branch = TestCandidate(
+        test_file="tests/test_help.py",
+        test_name="test_branching",
+        subject_mentions=1,
+        object_mentions=1,
+        dependency_mentions=0,
+        assertion_count=1,
+        target_commit="c1",
+        source_hash="h1",
+        binding_strength=BindingStrength.UNBOUND,
+        discovery_reason="",
+        test_source=mutually_exclusive_src
+    )
+
+    res_branch = analyzer.analyze_witness(claim, cand_branch)
+    assert res_branch.binding_strength != BindingStrength.STRONG
+    assert res_branch.requirement_coverage < 1.0
+
+
+def test_return_relation_multi_instance_negative():
+    """
+    Negative test for RETURN_RELATION multi-instance mismatch:
+    Asserting str(b) against the input literal of instance a must fail return relation provenance.
+    """
+    claim = MemoryClaim(
+        claim_id="CLM-TEST-RETURN-RELATION",
+        claim_type=ClaimType.BEHAVIORAL_CONTRACT,
+        subject="Text",
+        predicate="converts_to",
+        object="str()",
+        raw_statement="Text object returns the plain string content when converted via str()."
+    )
+
+    multi_instance_neg_src = '''
+def test_multi_instance_mismatch():
+    a = Text("foo")
+    b = Text("bar")
+    assert str(b) == "foo"
+'''
+    analyzer = WitnessBindingAnalyzer()
+    cand_neg = TestCandidate(
+        test_file="tests/test_text.py",
+        test_name="test_multi_instance_mismatch",
+        subject_mentions=2,
+        object_mentions=1,
+        dependency_mentions=0,
+        assertion_count=1,
+        target_commit="c1",
+        source_hash="h1",
+        binding_strength=BindingStrength.UNBOUND,
+        discovery_reason="",
+        test_source=multi_instance_neg_src
+    )
+
+    res_neg = analyzer.analyze_witness(claim, cand_neg)
+    assert res_neg.binding_strength != BindingStrength.STRONG
+    assert res_neg.requirement_coverage < 1.0
+
+
+def test_return_relation_result_var_instance():
+    """
+    Positive test for RETURN_RELATION with intermediate result variable provenance.
+    """
+    claim = MemoryClaim(
+        claim_id="CLM-TEST-RETURN-RELATION",
+        claim_type=ClaimType.BEHAVIORAL_CONTRACT,
+        subject="Text",
+        predicate="converts_to",
+        object="str()",
+        raw_statement="Text object returns the plain string content when converted via str()."
+    )
+
+    result_var_src = '''
+def test_result_var_provenance():
+    text = Text("foo")
+    result = str(text)
+    assert result == "foo"
+'''
+    analyzer = WitnessBindingAnalyzer()
+    cand_pos = TestCandidate(
+        test_file="tests/test_text.py",
+        test_name="test_result_var_provenance",
+        subject_mentions=1,
+        object_mentions=1,
+        dependency_mentions=0,
+        assertion_count=1,
+        target_commit="c1",
+        source_hash="h2",
+        binding_strength=BindingStrength.UNBOUND,
+        discovery_reason="",
+        test_source=result_var_src
+    )
+
+    res_pos = analyzer.analyze_witness(claim, cand_pos)
+    assert res_pos.binding_strength == BindingStrength.STRONG
+    assert res_pos.requirement_coverage == 1.0
+
+
+

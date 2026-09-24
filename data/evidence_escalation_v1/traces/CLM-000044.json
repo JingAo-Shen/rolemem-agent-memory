@@ -39,7 +39,7 @@
       "test_name": "test_poolmanager_blocksize",
       "test_function_sha256": "30568f0c738b698daf59028102b1adc0d5c7f7fe560c7136d7b550816bcf2b28",
       "subject_binding": true,
-      "operation_binding": true,
+      "operation_binding": false,
       "assertion_binding": true,
       "dataflow_binding": true,
       "critical_operation_coverage_ratio": 0.0,

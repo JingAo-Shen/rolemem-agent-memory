@@ -566,8 +566,8 @@
       "total_tests_inspected": 90,
       "total_executions": 1,
       "mean_executions_per_escalated": 0.09,
-      "total_time_ms": 503.36,
-      "mean_time_ms_per_escalated": 45.76,
+      "total_time_ms": 480.77,
+      "mean_time_ms_per_escalated": 43.71,
       "total_actions": 13
     },
     "B25": {
@@ -588,8 +588,8 @@
       "total_tests_inspected": 225,
       "total_executions": 2,
       "mean_executions_per_escalated": 0.18,
-      "total_time_ms": 754.28,
-      "mean_time_ms_per_escalated": 68.57,
+      "total_time_ms": 753.34,
+      "mean_time_ms_per_escalated": 68.49,
       "total_actions": 14
     },
     "B50": {
@@ -610,8 +610,8 @@
       "total_tests_inspected": 450,
       "total_executions": 3,
       "mean_executions_per_escalated": 0.27,
-      "total_time_ms": 1167.12,
-      "mean_time_ms_per_escalated": 106.1,
+      "total_time_ms": 1187.56,
+      "mean_time_ms_per_escalated": 107.96,
       "total_actions": 15
     },
     "B100": {
@@ -632,8 +632,8 @@
       "total_tests_inspected": 900,
       "total_executions": 3,
       "mean_executions_per_escalated": 0.27,
-      "total_time_ms": 1208.12,
-      "mean_time_ms_per_escalated": 109.83,
+      "total_time_ms": 1185.21,
+      "mean_time_ms_per_escalated": 107.75,
       "total_actions": 15
     }
   },
@@ -645,8 +645,8 @@
     "mean_tests_inspected_per_escalated": 40.9,
     "total_executions_run": 3,
     "mean_executions_per_escalated": 0.27,
-    "total_execution_time_ms": 1171.92,
-    "mean_execution_time_ms_per_escalated": 106.54,
+    "total_execution_time_ms": 1179.31,
+    "mean_execution_time_ms_per_escalated": 107.21,
     "total_actions": 15,
     "mean_actions_per_escalated": 1.36,
     "action_counts": {

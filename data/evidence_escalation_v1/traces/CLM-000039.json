@@ -41,7 +41,7 @@
       "test_name": "test_max_interval",
       "test_function_sha256": "98de1d65bd1e5b67b5c81ec3b3bf7551049f54b075870754f151bac5d55eab35",
       "subject_binding": true,
-      "operation_binding": true,
+      "operation_binding": false,
       "assertion_binding": true,
       "dataflow_binding": true,
       "critical_operation_coverage_ratio": 0.0,

@@ -41,7 +41,7 @@
       "test_name": "test_starlette_limit_applies_before_user_middleware",
       "test_function_sha256": "284bf1cb0a26535102f0e32fa9ed008fe0233e6aa45ed552f23a89a7081b70ff",
       "subject_binding": true,
-      "operation_binding": true,
+      "operation_binding": false,
       "assertion_binding": false,
       "dataflow_binding": false,
       "critical_operation_coverage_ratio": 0.0,

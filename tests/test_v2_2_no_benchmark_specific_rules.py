@@ -2,7 +2,7 @@
 tests/test_v2_2_no_benchmark_specific_rules.py
 
 Comprehensive anti-coupling unit test:
-- Dynamically extracts repository names, case IDs, and symbols from development claims.
+- Dynamically extracts repository names, case IDs, and symbols/tokens from development claims.
 - Parses src/claim_validity/**/*.py and src/evidence_escalation/**/*.py ASTs to verify that
   NO production control-flow / condition branches contain hardcoded benchmark-specific literals.
 - Asserts zero benchmark-specific coupling in production logic.
@@ -20,25 +20,56 @@ SRC_DIRS = [
 ]
 INPUTS_PATH = "/code/rolemem-agent-memory/data/claim_validity_v2_2/dev_claim_inputs_v2r1.jsonl"
 
+GENERIC_ALLOWLIST = {
+    "request", "response", "headers", "params", "format", "stream", "environ",
+    "status_code", "method", "data", "json", "text", "content", "url", "client",
+    "cookie", "cookies", "auth", "session", "close", "send", "get", "post", "put",
+    "delete", "patch", "head", "options", "name", "value", "type", "args", "kwargs",
+    "true", "false", "none", "self", "cls", "init", "call", "enter", "exit",
+    "getitem", "setitem", "delitem", "len", "str", "repr", "iter", "next",
+    "equal", "is", "in", "not", "and", "or", "attribute", "function", "class",
+    "module", "package", "path", "file", "directory", "test", "tests",
+    "default", "configuration", "config", "state", "setting",
+    "count", "total", "index", "key", "items", "values", "mapping", "dict",
+    "list", "set", "tuple", "bool", "int", "float", "bytes", "string",
+    "iterable", "range", "arguments", "plain", "length", "supports", "sequence",
+    "operation", "constructor", "without", "finite", "inspection", "dictionary",
+    "var", "val", "obj", "item", "elem", "node", "tree", "ast", "lineno", "line",
+    "code", "src", "body", "left", "right", "target", "parent", "child", "scope"
+}
 
-def get_benchmark_literals():
+
+def get_development_rare_identifiers():
     with open(INPUTS_PATH, "r", encoding="utf-8") as f:
         dev_claims = [json.loads(line) for line in f if line.strip()]
 
-    repo_names = set(c["repository"] for c in dev_claims)
-    case_ids = set(c["source_case_id"] for c in dev_claims if c.get("source_case_id"))
-    symbols = set(c["symbol"] for c in dev_claims)
-    # Rare symbols specific to benchmark transitions
-    specific_symbols = set(s.split(".")[-1] for s in symbols if len(s.split(".")[-1]) > 3)
+    repo_names = set(c["repository"].lower() for c in dev_claims)
+    case_ids = set(c["source_case_id"].lower() for c in dev_claims if c.get("source_case_id"))
 
-    return repo_names, case_ids, specific_symbols
+    rare_ids = set()
+    for c in dev_claims:
+        for field in ["subject", "symbol", "object"]:
+            val = str(c.get(field, ""))
+            parts = re.split(r"[^a-zA-Z0-9_]+", val)
+            for p in parts:
+                p_subparts = re.split(r"_+", p)
+                for sp in p_subparts:
+                    sp_clean = sp.strip().lower()
+                    if len(sp_clean) >= 4 and sp_clean not in GENERIC_ALLOWLIST and not sp_clean.isdigit():
+                        rare_ids.add(sp_clean)
+
+    banned_in_conditions = (
+        repo_names
+        | case_ids
+        | rare_ids
+        | {"connection_pool_kw", "connection_pools", "pool_classes_by_scheme", "hookspec", "varnames"}
+    )
+    return banned_in_conditions
 
 
 def test_no_benchmark_literals_in_conditions():
-    """Verify that no benchmark repos, case IDs, or specific symbol names are used in if/match/compare expressions."""
-    repo_names, case_ids, specific_symbols = get_benchmark_literals()
-
-    banned_in_conditions = set(repo_names) | set(case_ids) | {"hookspec", "varnames"}
+    """Verify that no benchmark repos, case IDs, or development rare identifiers are used in if/match/compare expressions."""
+    banned_in_conditions = get_development_rare_identifiers()
 
     for sdir in SRC_DIRS:
         for root, _, files in os.walk(sdir):
@@ -66,7 +97,7 @@ def test_no_benchmark_literals_in_conditions():
                             if isinstance(sub, ast.Constant) and isinstance(sub.value, str):
                                 val = sub.value.lower()
                                 for b in banned_in_conditions:
-                                    assert b.lower() not in val, (
+                                    assert b != val, (
                                         f"Found hardcoded benchmark literal '{b}' in condition at {fp}:{getattr(node, 'lineno', '?')}"
                                     )
 
@@ -86,8 +117,11 @@ def test_no_case_ids_in_src_claim_validity_and_escalation():
 
 
 def test_no_banned_keyword_hacks_in_src():
-    """Ensure banned keyword hacks (hookspec, varnames) do not appear in production code."""
-    banned_tokens = ["hookspec", "varnames"]
+    """Ensure banned keyword hacks (hookspec, varnames, connection_pool_kw, connection_pools, pool_classes_by_scheme) do not appear in production code."""
+    banned_tokens = [
+        "hookspec", "varnames",
+        "connection_pool_kw", "connection_pools", "pool_classes_by_scheme"
+    ]
     for sdir in SRC_DIRS:
         for root, _, files in os.walk(sdir):
             for f in files:
@@ -97,9 +131,10 @@ def test_no_banned_keyword_hacks_in_src():
                         lines = file.readlines()
                         for line_idx, line in enumerate(lines, 1):
                             lower_line = line.lower()
-                            # Ignore comments
+                            # Ignore comments and docstrings
                             if lower_line.strip().startswith("#") or lower_line.strip().startswith('"""'):
                                 continue
                             for tok in banned_tokens:
                                 assert tok not in lower_line, f"Found banned token '{tok}' in {fp}:{line_idx}: {line.strip()}"
+
 

@@ -7,7 +7,7 @@
     "repository_files_scanned": 67,
     "tests_inspected": 50,
     "executions_run": 1,
-    "execution_time_ms": 472.47,
+    "execution_time_ms": 469.32,
     "total_actions": 2,
     "action_counts": {
       "TEST_DISCOVERY": 1,
@@ -132,7 +132,7 @@
       "evidence_id": "EV-EXEC-ef3d2bde",
       "binding_strength": "STRONG",
       "cost_increment": {
-        "execution_time_ms": 472.47,
+        "execution_time_ms": 469.32,
         "timeout_sec": 15
       },
       "detail": "Verified witness 'tests/test_text.py::test_str' passed under target commit 9a99acc9 (source verified: rich)."
@@ -195,7 +195,7 @@
       "requirement_coverage": 1.0,
       "operation_requirement_applicable": true,
       "cost": {
-        "execution_time_ms": 472.47,
+        "execution_time_ms": 469.32,
         "timeout_sec": 15
       },
       "detail": "Verified witness 'tests/test_text.py::test_str' passed under target commit 9a99acc9 (source verified: rich).",
@@ -203,7 +203,7 @@
         "test_name": "test_str",
         "execution_status": "PASS",
         "package_name": "rich",
-        "module_origin": "/tmp/rolemem_v1_worktrees/wt_qiv4nek9/rich/__init__.py",
+        "module_origin": "/tmp/rolemem_v1_worktrees/wt_x70va9w3/rich/__init__.py",
         "environment_provenance": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
         "python_version": "3.13.5",
         "witness_binding": {

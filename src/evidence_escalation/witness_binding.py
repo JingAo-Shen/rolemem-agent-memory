@@ -79,12 +79,30 @@ class ClaimWitnessBinding:
         }
 
 
+WSGI_CANONICAL_KEYS = {
+    "REQUEST_METHOD",
+    "SCRIPT_NAME",
+    "PATH_INFO",
+    "SERVER_NAME",
+    "SERVER_PORT",
+    "SERVER_PROTOCOL",
+    "wsgi.version",
+    "wsgi.url_scheme",
+    "wsgi.input",
+    "wsgi.errors",
+    "wsgi.multithread",
+    "wsgi.multiprocess",
+    "wsgi.run_once"
+}
+
+
 @dataclass
 class OperationEvent:
     operation: str
     lineno: int
     receiver_or_subject: Optional[str] = None
     result_var: Optional[str] = None
+    control_scope: Tuple[Tuple[int, str], ...] = ()
 
 
 class WitnessBindingAnalyzer:
@@ -179,6 +197,53 @@ class WitnessBindingAnalyzer:
         return False
 
     @staticmethod
+    def _traverse_with_scope(node: ast.AST, current_scope: Tuple[Tuple[int, str], ...] = ()):
+        """Traverses AST yielding (node, control_scope) tuples to detect mutually exclusive branches."""
+        yield node, current_scope
+        if isinstance(node, ast.If):
+            for child in node.body:
+                yield from WitnessBindingAnalyzer._traverse_with_scope(child, current_scope + ((id(node), "then"),))
+            for child in node.orelse:
+                yield from WitnessBindingAnalyzer._traverse_with_scope(child, current_scope + ((id(node), "else"),))
+        elif isinstance(node, ast.Try):
+            for child in node.body:
+                yield from WitnessBindingAnalyzer._traverse_with_scope(child, current_scope + ((id(node), "try"),))
+            for handler in node.handlers:
+                for child in handler.body:
+                    yield from WitnessBindingAnalyzer._traverse_with_scope(child, current_scope + ((id(handler), "except"),))
+            for child in node.orelse:
+                yield from WitnessBindingAnalyzer._traverse_with_scope(child, current_scope + ((id(node), "try_else"),))
+            for child in node.finalbody:
+                yield from WitnessBindingAnalyzer._traverse_with_scope(child, current_scope + ((id(node), "finally"),))
+        elif isinstance(node, (ast.For, ast.While)):
+            for child in node.body:
+                yield from WitnessBindingAnalyzer._traverse_with_scope(child, current_scope + ((id(node), "loop"),))
+            for child in node.orelse:
+                yield from WitnessBindingAnalyzer._traverse_with_scope(child, current_scope + ((id(node), "loop_else"),))
+        elif isinstance(node, ast.With):
+            for child in node.body:
+                yield from WitnessBindingAnalyzer._traverse_with_scope(child, current_scope + ((id(node), "with"),))
+        else:
+            for field, value in ast.iter_fields(node):
+                if isinstance(value, list):
+                    for item in value:
+                        if isinstance(item, ast.AST):
+                            yield from WitnessBindingAnalyzer._traverse_with_scope(item, current_scope)
+                elif isinstance(value, ast.AST):
+                    yield from WitnessBindingAnalyzer._traverse_with_scope(value, current_scope)
+
+    @staticmethod
+    def are_mutually_exclusive(scope1: Tuple[Tuple[int, str], ...], scope2: Tuple[Tuple[int, str], ...]) -> bool:
+        """Returns True if two control scopes are in mutually exclusive branches of the same construct."""
+        dict1 = dict(scope1)
+        dict2 = dict(scope2)
+        common_blocks = set(dict1.keys()) & set(dict2.keys())
+        for b in common_blocks:
+            if dict1[b] != dict2[b]:
+                return True
+        return False
+
+    @staticmethod
     def _check_constructor_input_shape(call_node: ast.Call, expected_semantic: str, var_assignments: Dict[str, Any]) -> bool:
         if len(call_node.args) == 0:
             return False
@@ -190,7 +255,7 @@ class WitnessBindingAnalyzer:
                 val = var_assignments.get(first_arg.id)
                 return isinstance(val, str)
             return False
-        elif expected_semantic in ("MAPPING", "ENVIRON"):
+        elif expected_semantic == "MAPPING":
             if isinstance(first_arg, ast.Dict):
                 return True
             if isinstance(first_arg, ast.Call) and isinstance(first_arg.func, ast.Name) and first_arg.func.id == "dict":
@@ -199,9 +264,22 @@ class WitnessBindingAnalyzer:
                 val = var_assignments.get(first_arg.id)
                 if isinstance(val, dict):
                     return True
-                if "environ" in first_arg.id.lower() or "env" in first_arg.id.lower():
-                    return True
             return False
+        elif expected_semantic == "ENVIRON":
+            # Must contain WSGI-specific observable evidence (canonical WSGI keys)
+            keys = set()
+            if isinstance(first_arg, ast.Dict):
+                for k in first_arg.keys:
+                    if k is not None:
+                        k_val = WitnessBindingAnalyzer._extract_node_constant(k, var_assignments)
+                        if k_val:
+                            keys.add(str(k_val))
+            elif isinstance(first_arg, ast.Name):
+                val = var_assignments.get(first_arg.id)
+                if isinstance(val, dict):
+                    keys = set(str(k) for k in val.keys())
+            has_wsgi = any(k in WSGI_CANONICAL_KEYS for k in keys)
+            return has_wsgi
         elif expected_semantic == "RANGE":
             if isinstance(first_arg, ast.Call) and isinstance(first_arg.func, ast.Name) and first_arg.func.id == "range":
                 return True
@@ -231,49 +309,62 @@ class WitnessBindingAnalyzer:
             receivers = {None}
         for r in receivers:
             r_events = [e for e in events if e.receiver_or_subject == r or r is None]
-            last_lineno = -1
-            for op in seq_ops:
-                found = False
+            def find_chain(op_idx: int, last_lineno: int, last_scope: Tuple[Tuple[int, str], ...]) -> bool:
+                if op_idx >= len(seq_ops):
+                    return True
+                target_op = seq_ops[op_idx].lower()
                 for e in r_events:
-                    if e.operation.lower() == op.lower() and e.lineno > last_lineno:
-                        last_lineno = e.lineno
-                        found = True
-                        break
-                if not found:
-                    break
-            else:
+                    if e.operation.lower() == target_op and e.lineno > last_lineno:
+                        if not WitnessBindingAnalyzer.are_mutually_exclusive(last_scope, e.control_scope):
+                            if find_chain(op_idx + 1, e.lineno, e.control_scope):
+                                return True
+                return False
+
+            if find_chain(0, -1, ()):
                 return True
         return False
 
     @staticmethod
-    def _extract_str_call_or_result(node: ast.AST, subject_vars: Set[str], subject_name: str, var_assignments: Dict[str, Any]) -> Tuple[bool, Optional[str]]:
+    def _extract_str_provenance(
+        node: ast.AST,
+        subject_vars: Set[str],
+        subject_name: str,
+        result_var_provenance: Dict[str, Dict[str, Any]],
+        inline_subject_instances: Dict[int, Dict[str, Any]]
+    ) -> Tuple[bool, Optional[str], Optional[Dict[str, Any]]]:
         if isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and node.func.id == "str":
             if node.args:
                 arg0 = node.args[0]
                 if isinstance(arg0, ast.Name) and (arg0.id in subject_vars or arg0.id == subject_name):
-                    return True, None
+                    return True, arg0.id, None
                 if isinstance(arg0, ast.Call) and isinstance(arg0.func, ast.Name) and arg0.func.id == subject_name:
-                    return True, None
+                    inline_dict = inline_subject_instances.get(id(arg0))
+                    return True, None, inline_dict
         if isinstance(node, ast.Name):
-            val = var_assignments.get(node.id)
-            if isinstance(val, dict) and val.get("type") == "str_call":
-                return True, None
-        return False, None
+            if node.id in result_var_provenance and result_var_provenance[node.id].get("operation") == "str":
+                return True, node.id, None
+        return False, None, None
 
     @staticmethod
-    def _is_len_call_on_subject(node: ast.AST, subject_vars: Set[str], subject_name: str, var_assignments: Dict[str, Any]) -> bool:
+    def _extract_len_provenance(
+        node: ast.AST,
+        subject_vars: Set[str],
+        subject_name: str,
+        result_var_provenance: Dict[str, Dict[str, Any]],
+        inline_subject_instances: Dict[int, Dict[str, Any]]
+    ) -> Tuple[bool, Optional[str], Optional[Dict[str, Any]]]:
         if isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and node.func.id == "len":
             if node.args:
                 arg0 = node.args[0]
                 if isinstance(arg0, ast.Name) and (arg0.id in subject_vars or arg0.id == subject_name):
-                    return True
+                    return True, arg0.id, None
                 if isinstance(arg0, ast.Call) and isinstance(arg0.func, ast.Name) and arg0.func.id == subject_name:
-                    return True
+                    inline_dict = inline_subject_instances.get(id(arg0))
+                    return True, None, inline_dict
         if isinstance(node, ast.Name):
-            val = var_assignments.get(node.id)
-            if isinstance(val, dict) and val.get("type") == "len_call":
-                return True
-        return False
+            if node.id in result_var_provenance and result_var_provenance[node.id].get("operation") == "len":
+                return True, node.id, None
+        return False, None, None
 
     @staticmethod
     def _is_len_call_on_var(node: ast.AST, var_name: str) -> bool:
@@ -331,27 +422,34 @@ class WitnessBindingAnalyzer:
         # -------------------------------------------------------------
         var_assignments: Dict[str, Any] = {}
         subject_vars: Set[str] = set()
+        subject_instances: Dict[str, Dict[str, Any]] = {}
+        inline_subject_instances: Dict[int, Dict[str, Any]] = {}
         direct_subject_calls: List[ast.Call] = []
         subject_nodes_found = 0
         operation_events: List[OperationEvent] = []
+        result_var_provenance: Dict[str, Dict[str, Any]] = {}
 
         for node in ast.walk(tree):
             if isinstance(node, ast.Assign):
-                # Track basic literal constants
                 val = node.value
                 val_repr = None
                 if isinstance(val, ast.Constant):
                     val_repr = val.value
+                elif isinstance(val, ast.Dict):
+                    dict_val = {}
+                    for k, v in zip(val.keys, val.values):
+                        if k is not None:
+                            k_const = WitnessBindingAnalyzer._extract_node_constant(k, var_assignments)
+                            v_const = WitnessBindingAnalyzer._extract_node_constant(v, var_assignments) if v else None
+                            if k_const is not None:
+                                dict_val[str(k_const)] = v_const
+                    val_repr = dict_val
                 elif isinstance(val, ast.Call) and isinstance(val.func, ast.Name):
                     if val.func.id == "range":
                         stop_val = None
                         if val.args and isinstance(val.args[0], ast.Constant):
                             stop_val = val.args[0].value
                         val_repr = {"type": "range", "stop": stop_val}
-                    elif val.func.id == "str":
-                        val_repr = {"type": "str_call"}
-                    elif val.func.id == "len":
-                        val_repr = {"type": "len_call"}
                 elif isinstance(val, (ast.List, ast.Tuple, ast.Set)):
                     val_repr = [WitnessBindingAnalyzer._extract_node_constant(elt, var_assignments) for elt in getattr(val, "elts", [])]
 
@@ -362,21 +460,52 @@ class WitnessBindingAnalyzer:
 
                 # Check variable assignments to Subject
                 is_subject_val = False
+                subj_call_node = None
                 if isinstance(val, ast.Call):
                     if isinstance(val.func, ast.Name) and val.func.id == subject:
                         is_subject_val = True
+                        subj_call_node = val
                         direct_subject_calls.append(val)
                     elif isinstance(val.func, ast.Attribute) and val.func.attr == subject:
                         is_subject_val = True
+                        subj_call_node = val
                         direct_subject_calls.append(val)
-                elif isinstance(val, ast.Name) and val.id == subject:
+                elif isinstance(val, ast.Name) and (val.id in subject_vars or val.id == subject):
                     is_subject_val = True
-
-                if is_subject_val:
-                    subject_nodes_found += 1
                     for tgt in node.targets:
                         if isinstance(tgt, ast.Name):
                             subject_vars.add(tgt.id)
+                            if val.id in subject_instances:
+                                subject_instances[tgt.id] = subject_instances[val.id]
+
+                if is_subject_val and subj_call_node:
+                    subject_nodes_found += 1
+                    input_lit = None
+                    input_card = None
+                    if len(subj_call_node.args) > 0:
+                        arg0 = subj_call_node.args[0]
+                        if isinstance(arg0, ast.Constant):
+                            input_lit = arg0.value
+                        elif isinstance(arg0, ast.Name):
+                            v_named = var_assignments.get(arg0.id)
+                            if isinstance(v_named, str):
+                                input_lit = v_named
+                            elif isinstance(v_named, dict) and v_named.get("type") == "range":
+                                input_card = v_named.get("stop")
+                            elif isinstance(v_named, (list, tuple, set, dict)):
+                                input_card = len(v_named)
+                        elif isinstance(arg0, ast.Call) and isinstance(arg0.func, ast.Name) and arg0.func.id == "range":
+                            if arg0.args and isinstance(arg0.args[0], ast.Constant):
+                                input_card = arg0.args[0].value
+
+                    for tgt in node.targets:
+                        if isinstance(tgt, ast.Name):
+                            subject_vars.add(tgt.id)
+                            subject_instances[tgt.id] = {
+                                "input_literal": input_lit,
+                                "input_cardinality": input_card,
+                                "call_node": subj_call_node
+                            }
 
             elif isinstance(node, ast.Call):
                 func_name = ""
@@ -387,6 +516,33 @@ class WitnessBindingAnalyzer:
                 if func_name == subject:
                     direct_subject_calls.append(node)
                     subject_nodes_found += 1
+                    input_lit = None
+                    input_card = None
+                    if len(node.args) > 0:
+                        arg0 = node.args[0]
+                        if isinstance(arg0, ast.Constant):
+                            input_lit = arg0.value
+                        elif isinstance(arg0, ast.Name):
+                            v_named = var_assignments.get(arg0.id)
+                            if isinstance(v_named, str):
+                                input_lit = v_named
+                            elif isinstance(v_named, dict) and v_named.get("type") == "range":
+                                input_card = v_named.get("stop")
+                            elif isinstance(v_named, (list, tuple, set, dict)):
+                                input_card = len(v_named)
+                        elif isinstance(arg0, ast.Call) and isinstance(arg0.func, ast.Name) and arg0.func.id == "range":
+                            if arg0.args and isinstance(arg0.args[0], ast.Constant):
+                                input_card = arg0.args[0].value
+                    inline_subject_instances[id(node)] = {
+                        "input_literal": input_lit,
+                        "input_cardinality": input_card,
+                        "call_node": node
+                    }
+
+            elif isinstance(node, ast.Name) and node.id == subject:
+                subject_nodes_found += 1
+            elif isinstance(node, ast.Attribute) and node.attr == subject:
+                subject_nodes_found += 1
 
         # 1-hop alias propagation: e.g. alias_var = var
         for node in ast.walk(tree):
@@ -395,6 +551,8 @@ class WitnessBindingAnalyzer:
                     for tgt in node.targets:
                         if isinstance(tgt, ast.Name):
                             subject_vars.add(tgt.id)
+                            if node.value.id in subject_instances:
+                                subject_instances[tgt.id] = subject_instances[node.value.id]
 
         binding.subject_binding = (subject_nodes_found > 0 or len(subject_vars) > 0 or len(direct_subject_calls) > 0)
         if not binding.subject_binding:
@@ -403,14 +561,14 @@ class WitnessBindingAnalyzer:
             return binding
 
         # -------------------------------------------------------------
-        # Phase 2: Track Operations on Subject Instance & Statement Events
+        # Phase 2: Track Operations on Subject Instance & Scoped Events
         # -------------------------------------------------------------
         covered_operations: Set[str] = set()
         asserted_operations: Set[str] = set()
         result_vars_to_assert: Set[str] = set()
         has_direct_assert_dataflow = False
 
-        for node in ast.walk(tree):
+        for node, c_scope in WitnessBindingAnalyzer._traverse_with_scope(tree):
             lineno = getattr(node, "lineno", 0)
 
             # 1. Method call: var.op(...)
@@ -432,7 +590,8 @@ class WitnessBindingAnalyzer:
                     operation_events.append(OperationEvent(
                         operation=attr_name,
                         lineno=lineno,
-                        receiver_or_subject=receiver_name
+                        receiver_or_subject=receiver_name,
+                        control_scope=c_scope
                     ))
 
             # 2. Built-in call: op(var) or op(Subject(...))
@@ -454,7 +613,8 @@ class WitnessBindingAnalyzer:
                         operation_events.append(OperationEvent(
                             operation=fn_name,
                             lineno=lineno,
-                            receiver_or_subject=receiver_name
+                            receiver_or_subject=receiver_name,
+                            control_scope=c_scope
                         ))
 
             # 3. Assignments capturing operation results: res = var.op(...) or res = op(var)
@@ -462,35 +622,57 @@ class WitnessBindingAnalyzer:
                 val = node.value
                 op_captured = None
                 receiver_name = None
+                input_lit = None
+                input_card = None
+
                 if isinstance(val, ast.Call):
                     if isinstance(val.func, ast.Attribute):
                         recv = val.func.value
                         if isinstance(recv, ast.Name) and recv.id in subject_vars:
                             op_captured = val.func.attr
                             receiver_name = recv.id
+                            if receiver_name in subject_instances:
+                                input_lit = subject_instances[receiver_name].get("input_literal")
+                                input_card = subject_instances[receiver_name].get("input_cardinality")
                         elif isinstance(recv, ast.Call) and isinstance(recv.func, ast.Name) and recv.func.id == subject:
                             op_captured = val.func.attr
                             receiver_name = subject
+                            if id(recv) in inline_subject_instances:
+                                input_lit = inline_subject_instances[id(recv)].get("input_literal")
+                                input_card = inline_subject_instances[id(recv)].get("input_cardinality")
                     elif isinstance(val.func, ast.Name):
                         if val.args:
                             arg0 = val.args[0]
                             if isinstance(arg0, ast.Name) and arg0.id in subject_vars:
                                 op_captured = val.func.id
                                 receiver_name = arg0.id
+                                if receiver_name in subject_instances:
+                                    input_lit = subject_instances[receiver_name].get("input_literal")
+                                    input_card = subject_instances[receiver_name].get("input_cardinality")
                             elif isinstance(arg0, ast.Call) and isinstance(arg0.func, ast.Name) and arg0.func.id == subject:
                                 op_captured = val.func.id
                                 receiver_name = subject
+                                if id(arg0) in inline_subject_instances:
+                                    input_lit = inline_subject_instances[id(arg0)].get("input_literal")
+                                    input_card = inline_subject_instances[id(arg0)].get("input_cardinality")
 
                 if op_captured:
                     covered_operations.add(op_captured)
                     for tgt in node.targets:
                         if isinstance(tgt, ast.Name):
                             result_vars_to_assert.add(tgt.id)
+                            result_var_provenance[tgt.id] = {
+                                "operation": op_captured,
+                                "receiver": receiver_name,
+                                "input_literal": input_lit,
+                                "input_cardinality": input_card
+                            }
                             operation_events.append(OperationEvent(
                                 operation=op_captured,
                                 lineno=lineno,
                                 receiver_or_subject=receiver_name,
-                                result_var=tgt.id
+                                result_var=tgt.id,
+                                control_scope=c_scope
                             ))
 
         # -------------------------------------------------------------
@@ -629,29 +811,10 @@ class WitnessBindingAnalyzer:
                 default_verified = False
 
                 if attr_t == "default_configuration":
-                    # Check for subject instantiation with zero positional and zero keyword args
-                    # and verified assertion on default configuration / pools attributes
-                    zero_args_found = False
-                    for call_node in direct_subject_calls:
-                        if len(call_node.args) == 0 and len(call_node.keywords) == 0:
-                            zero_args_found = True
-                            break
-
-                    config_attr_verified = False
-                    if zero_args_found:
-                        for node in ast.walk(tree):
-                            if isinstance(node, ast.Assert):
-                                for inner in ast.walk(node):
-                                    if isinstance(inner, ast.Attribute):
-                                        if inner.attr in ("connection_pool_kw", "connection_pools", "default_config", "default_configuration"):
-                                            recv = inner.value
-                                            if isinstance(recv, ast.Name) and (recv.id in subject_vars or recv.id == subject):
-                                                config_attr_verified = True
-                                                break
-                    if zero_args_found and config_attr_verified:
-                        default_verified = True
+                    # Generic default_configuration cannot be proven without observable attribute in claim
+                    default_verified = False
                 else:
-                    # Check attribute state was verified
+                    # Check attribute state was verified on subject instance
                     attr_verified = False
                     for node in ast.walk(tree):
                         if isinstance(node, ast.Assert):
@@ -689,20 +852,6 @@ class WitnessBindingAnalyzer:
             elif req.req_type == BehavioralRequirementType.RETURN_RELATION:
                 rel_ok = False
                 if req.expected_value == "plain_content":
-                    # Verify literal-preserving string conversion
-                    input_str = None
-                    for call_node in direct_subject_calls:
-                        if len(call_node.args) > 0:
-                            arg = call_node.args[0]
-                            if isinstance(arg, ast.Constant):
-                                input_str = arg.value
-                                break
-                            elif isinstance(arg, ast.Name):
-                                val = var_assignments.get(arg.id)
-                                if isinstance(val, str):
-                                    input_str = val
-                                    break
-
                     for node in ast.walk(tree):
                         if isinstance(node, ast.Assert):
                             test_expr = node.test
@@ -710,35 +859,36 @@ class WitnessBindingAnalyzer:
                                 left = test_expr.left
                                 for op, comp in zip(test_expr.ops, test_expr.comparators):
                                     if isinstance(op, (ast.Eq, ast.Is)):
-                                        is_str_left, _ = WitnessBindingAnalyzer._extract_str_call_or_result(left, subject_vars, subject, var_assignments)
-                                        is_str_right, _ = WitnessBindingAnalyzer._extract_str_call_or_result(comp, subject_vars, subject, var_assignments)
+                                        is_str_l, recv_l, inline_l = WitnessBindingAnalyzer._extract_str_provenance(left, subject_vars, subject, result_var_provenance, inline_subject_instances)
+                                        is_str_r, recv_r, inline_r = WitnessBindingAnalyzer._extract_str_provenance(comp, subject_vars, subject, result_var_provenance, inline_subject_instances)
 
-                                        if is_str_left:
-                                            c_val = WitnessBindingAnalyzer._extract_node_constant(comp, var_assignments)
-                                            if input_str is not None and c_val == input_str:
+                                        if is_str_l:
+                                            expected_const = WitnessBindingAnalyzer._extract_node_constant(comp, var_assignments)
+                                            input_lit = None
+                                            if recv_l in subject_instances:
+                                                input_lit = subject_instances[recv_l].get("input_literal")
+                                            elif recv_l in result_var_provenance:
+                                                input_lit = result_var_provenance[recv_l].get("input_literal")
+                                            elif inline_l:
+                                                input_lit = inline_l.get("input_literal")
+
+                                            if input_lit is not None and expected_const == input_lit:
                                                 rel_ok = True
-                                        if is_str_right:
-                                            l_val = WitnessBindingAnalyzer._extract_node_constant(left, var_assignments)
-                                            if input_str is not None and l_val == input_str:
+
+                                        if is_str_r:
+                                            expected_const = WitnessBindingAnalyzer._extract_node_constant(left, var_assignments)
+                                            input_lit = None
+                                            if recv_r in subject_instances:
+                                                input_lit = subject_instances[recv_r].get("input_literal")
+                                            elif recv_r in result_var_provenance:
+                                                input_lit = result_var_provenance[recv_r].get("input_literal")
+                                            elif inline_r:
+                                                input_lit = inline_r.get("input_literal")
+
+                                            if input_lit is not None and expected_const == input_lit:
                                                 rel_ok = True
 
                 elif req.expected_value == "total_count":
-                    input_cardinality = None
-                    input_var_name = None
-                    for call_node in direct_subject_calls:
-                        if len(call_node.args) > 0:
-                            arg = call_node.args[0]
-                            if isinstance(arg, ast.Call) and isinstance(arg.func, ast.Name) and arg.func.id == "range":
-                                if arg.args and isinstance(arg.args[0], ast.Constant):
-                                    input_cardinality = arg.args[0].value
-                            elif isinstance(arg, ast.Name):
-                                input_var_name = arg.id
-                                val = var_assignments.get(arg.id)
-                                if isinstance(val, dict) and val.get("type") == "range":
-                                    input_cardinality = val.get("stop")
-                                elif isinstance(val, (list, tuple, set, dict)):
-                                    input_cardinality = len(val)
-
                     for node in ast.walk(tree):
                         if isinstance(node, ast.Assert):
                             test_expr = node.test
@@ -746,20 +896,33 @@ class WitnessBindingAnalyzer:
                                 left = test_expr.left
                                 for op, comp in zip(test_expr.ops, test_expr.comparators):
                                     if isinstance(op, (ast.Eq, ast.Is)):
-                                        is_len_left = WitnessBindingAnalyzer._is_len_call_on_subject(left, subject_vars, subject, var_assignments)
-                                        is_len_right = WitnessBindingAnalyzer._is_len_call_on_subject(comp, subject_vars, subject, var_assignments)
+                                        is_len_l, recv_l, inline_l = WitnessBindingAnalyzer._extract_len_provenance(left, subject_vars, subject, result_var_provenance, inline_subject_instances)
+                                        is_len_r, recv_r, inline_r = WitnessBindingAnalyzer._extract_len_provenance(comp, subject_vars, subject, result_var_provenance, inline_subject_instances)
 
-                                        if is_len_left:
-                                            c_val = WitnessBindingAnalyzer._extract_node_constant(comp, var_assignments)
-                                            if input_cardinality is not None and c_val == input_cardinality:
+                                        if is_len_l:
+                                            expected_const = WitnessBindingAnalyzer._extract_node_constant(comp, var_assignments)
+                                            input_card = None
+                                            if recv_l in subject_instances:
+                                                input_card = subject_instances[recv_l].get("input_cardinality")
+                                            elif recv_l in result_var_provenance:
+                                                input_card = result_var_provenance[recv_l].get("input_cardinality")
+                                            elif inline_l:
+                                                input_card = inline_l.get("input_cardinality")
+
+                                            if input_card is not None and expected_const == input_card:
                                                 rel_ok = True
-                                            if input_var_name and WitnessBindingAnalyzer._is_len_call_on_var(comp, input_var_name):
-                                                rel_ok = True
-                                        if is_len_right:
-                                            l_val = WitnessBindingAnalyzer._extract_node_constant(left, var_assignments)
-                                            if input_cardinality is not None and l_val == input_cardinality:
-                                                rel_ok = True
-                                            if input_var_name and WitnessBindingAnalyzer._is_len_call_on_var(left, input_var_name):
+
+                                        if is_len_r:
+                                            expected_const = WitnessBindingAnalyzer._extract_node_constant(left, var_assignments)
+                                            input_card = None
+                                            if recv_r in subject_instances:
+                                                input_card = subject_instances[recv_r].get("input_cardinality")
+                                            elif recv_r in result_var_provenance:
+                                                input_card = result_var_provenance[recv_r].get("input_cardinality")
+                                            elif inline_r:
+                                                input_card = inline_r.get("input_cardinality")
+
+                                            if input_card is not None and expected_const == input_card:
                                                 rel_ok = True
 
                 elif has_direct_assert_dataflow or len(asserted_operations) > 0:
@@ -776,7 +939,15 @@ class WitnessBindingAnalyzer:
         # -------------------------------------------------------------
         # Phase 5: Compute Witness Metrics & Decision Strength
         # -------------------------------------------------------------
-        binding.operation_binding = (len(covered_operations) > 0)
+        if claim.claim_type == ClaimType.BEHAVIORAL_CONTRACT:
+            if has_op_reqs:
+                op_req_ids = {r.req_id for r in reqs if r.req_type == BehavioralRequirementType.OPERATION}
+                binding.operation_binding = any(r_id in satisfied_req_ids for r_id in op_req_ids)
+            else:
+                binding.operation_binding = False
+        else:
+            binding.operation_binding = (len(covered_operations.intersection(set(critical_ops))) > 0) if critical_ops else False
+
         binding.assertion_binding = (has_direct_assert_dataflow or len(asserted_operations) > 0)
         binding.dataflow_binding = (binding.subject_binding and binding.assertion_binding)
         binding.assertion_local_coverage = len(asserted_operations)

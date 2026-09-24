@@ -7,7 +7,7 @@
     "repository_files_scanned": 67,
     "tests_inspected": 50,
     "executions_run": 1,
-    "execution_time_ms": 436.17,
+    "execution_time_ms": 436.75,
     "total_actions": 2,
     "action_counts": {
       "TEST_DISCOVERY": 1,
@@ -152,7 +152,7 @@
       "evidence_id": "EV-EXEC-2ca46991",
       "binding_strength": "STRONG",
       "cost_increment": {
-        "execution_time_ms": 436.17,
+        "execution_time_ms": 436.75,
         "timeout_sec": 15
       },
       "detail": "Verified witness 'tests/test_console.py::test_export_text' passed under target commit 285d9e94 (source verified: rich)."
@@ -175,7 +175,7 @@
       "repository_snapshot_status": "VERIFIED_TARGET_COMMIT",
       "test_file_sha256": "3e1ffd2446c18e58990e75a20b21794f141e2d76466b06d972344d4906be007a",
       "test_function_sha256": "017121c21bc2097972958bde2563fa94af79c45e4a627521b0ac387d1063595c",
-      "stdout_sha256": "e596cce97643441f2f2c7ef01ee068b6705ce1e028a07a32ba3bd3b3d35d7353",
+      "stdout_sha256": "09229b326b028651d725fa47cd1bae9fd8e0145ff8779bdb84ae2762c00ab737",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "command_sha256": "4d5c1d12e836695a5b00e7a7fc8947d85611f75fbfe198004bb16059e89171e3",
       "base_file_sha256": "",
@@ -223,7 +223,7 @@
       "requirement_coverage": 1.0,
       "operation_requirement_applicable": true,
       "cost": {
-        "execution_time_ms": 436.17,
+        "execution_time_ms": 436.75,
         "timeout_sec": 15
       },
       "detail": "Verified witness 'tests/test_console.py::test_export_text' passed under target commit 285d9e94 (source verified: rich).",
@@ -231,7 +231,7 @@
         "test_name": "test_export_text",
         "execution_status": "PASS",
         "package_name": "rich",
-        "module_origin": "/tmp/rolemem_v1_worktrees/wt_emcc9lj3/rich/__init__.py",
+        "module_origin": "/tmp/rolemem_v1_worktrees/wt_kptf1nvb/rich/__init__.py",
         "environment_provenance": "CURRENT_RUNTIME_WITH_HISTORICAL_SOURCE",
         "python_version": "3.13.5",
         "witness_binding": {

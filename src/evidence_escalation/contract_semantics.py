@@ -142,13 +142,20 @@ class ContractSemanticsExtractor:
         # -----------------------------------------------------------------
         # 2. Attribute State & Default Value Requirements
         # -----------------------------------------------------------------
-        # A. Default attribute with value: e.g. "default title attribute set to 'FastAPI'", "default debug mode set to False"
-        def_attr_match = re.search(r"default\s+([a-zA-Z_][a-zA-Z0-9_]*)\s+(?:attribute|mode|property|setting)?\s*(?:set to|is|=)?\s*([a-zA-Z0-9_'\"]+)", text, re.IGNORECASE)
+        # A. Default attribute with value: e.g. "default title attribute set to 'FastAPI'", "default debug mode set to False", "default title 'FastAPI'"
+        def_attr_match = re.search(
+            r"\bdefault\s+([a-zA-Z_][a-zA-Z0-9_]*)(?:"
+            r"\s+(?:attribute|mode|property|setting)\s*(?:set to|is|=|:)?\s*([\'\"][a-zA-Z0-9_]+[\'\"]|[a-zA-Z0-9_]+)"
+            r"|\s*(?:set to|=|:)\s*([\'\"][a-zA-Z0-9_]+[\'\"]|[a-zA-Z0-9_]+)"
+            r"|\s+([\'\"][a-zA-Z0-9_]+[\'\"]|True|False|None|\d+)"
+            r")",
+            text,
+            re.IGNORECASE
+        )
         if def_attr_match:
             attr_name = def_attr_match.group(1)
-            expected_val = def_attr_match.group(2).strip("'\"")
-            # If word is "connection", it might be "default connection pool configuration"
-            if attr_name.lower() not in ("connection", "pool"):
+            if attr_name.lower() not in ("configuration", "state", "setting", "behavior", "constructor"):
+                expected_val = (def_attr_match.group(2) or def_attr_match.group(3) or def_attr_match.group(4)).strip("'\"")
                 reqs.append(BehavioralRequirement(
                     req_id=f"{cid}-R{count}",
                     req_type=BehavioralRequirementType.ATTRIBUTE_STATE,
@@ -168,8 +175,8 @@ class ContractSemanticsExtractor:
                 ))
                 count += 1
 
-        # B. Default state/configuration (e.g. "default connection pool configuration")
-        if re.search(r"\bdefault\s+(?:connection\s+pool\s+)?configuration\b", text, re.IGNORECASE):
+        # B. Default state/configuration (generic default state)
+        if re.search(r"\bdefault\s+(?:(?:\w+)\s+){0,3}(?:configuration|state|setting)\b", text, re.IGNORECASE):
             reqs.append(BehavioralRequirement(
                 req_id=f"{cid}-R{count}",
                 req_type=BehavioralRequirementType.DEFAULT_VALUE,

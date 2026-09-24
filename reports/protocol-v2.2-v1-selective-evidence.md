@@ -12,6 +12,7 @@ V2_2_V1_CONTRACT_SEMANTICS = AUDITED
 V2_2_V1_EVIDENCE_TAXONOMY = AUDITED
 V2_2_V1_EXECUTION_SOURCE_ORIGIN = AUDITED
 V2_2_V1_BUDGET_ENFORCEMENT = AUDITED
+V2_2_V1_ANTI_COUPLING = AUDITED
 V2_2_V1_LLM_USED = NO
 V2_2_V1_ORACLE_ARTIFACT_USED = NO
 V2_2_ALGORITHM_FREEZE = NO
@@ -78,14 +79,14 @@ FORMAL_PAPER_RESULTS = NO
 | Claim ID | Evidence Kind | Selected Target | Strength | Requirements Satisfied | Source Origin | Decision Evidence Status |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | `CLM-000037` | `EXECUTABLE_TEST_WITNESS` | `tests/test_formatting.py::test_help_formatter_write_text` | `STRONG` | `3/3` | `VERIFIED_TARGET_WORKTREE` | `VERIFIED_TEST_WITNESS` |
-| `CLM-000038` | `-` | `tests/middleware/test_proxy_fix.py::test_proxy_fix` | `WEAK` | `1/2` | `NOT_APPLICABLE` | `INCONCLUSIVE` |
+| `CLM-000038` | `-` | `tests/sansio/test_request.py::test_cookies` | `WEAK` | `0/2` | `NOT_APPLICABLE` | `INCONCLUSIVE` |
 | `CLM-000039` | `-` | `tests/tests_tqdm.py::test_max_interval` | `WEAK` | `1/3` | `NOT_APPLICABLE` | `INCONCLUSIVE` |
 | `CLM-000040` | `EXECUTABLE_TEST_WITNESS` | `tests/test_console.py::test_export_text` | `STRONG` | `4/4` | `VERIFIED_TARGET_WORKTREE` | `VERIFIED_TEST_WITNESS` |
 | `CLM-000041` | `EXECUTABLE_TEST_WITNESS` | `tests/test_text.py::test_str` | `STRONG` | `3/3` | `VERIFIED_TARGET_WORKTREE` | `VERIFIED_TEST_WITNESS` |
 | `CLM-000042` | `-` | `-` | `-` | `-` | `NOT_APPLICABLE` | `INCONCLUSIVE` |
 | `CLM-000043` | `-` | `tests/middleware/test_body_limit.py::test_starlette_limit_applies_before_user_middleware` | `WEAK` | `0/2` | `NOT_APPLICABLE` | `INCONCLUSIVE` |
 | `CLM-000044` | `-` | `test/test_poolmanager.py::test_poolmanager_blocksize` | `WEAK` | `1/2` | `NOT_APPLICABLE` | `INCONCLUSIVE` |
-| `CLM-000045` | `DEPENDENCY_EVIDENCE` | `testing/test_helpers.py::test_varnames_hookspec_without_self` | `UNBOUND` | `-` | `NOT_APPLICABLE` | `INCONCLUSIVE` |
+| `CLM-000045` | `DEPENDENCY_EVIDENCE` | `testing/test_hookcaller.py::test_hookspec` | `WEAK` | `-` | `NOT_APPLICABLE` | `INCONCLUSIVE` |
 | `CLM-000049` | `STRUCTURAL_AST_EVIDENCE` | `-` | `STRONG` | `-` | `NOT_APPLICABLE` | `VERIFIED_STRUCTURAL_EVIDENCE` |
 | `CLM-000050` | `STRUCTURAL_AST_EVIDENCE` | `-` | `STRONG` | `-` | `NOT_APPLICABLE` | `VERIFIED_STRUCTURAL_EVIDENCE` |
 
@@ -108,10 +109,10 @@ FORMAL_PAPER_RESULTS = NO
 
 | Budget Preset | Files Limit | Tests Limit | Exec Limit | Action Limit | Coverage | Decided Acc | Risk | Total Execs | Total Time (ms) | Mean Time/Esc (ms) |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **B10** | 20 | 10 | 1 | 3 | 85.5% | 100.0% | 0.0% | 1 | 503.4 | 45.8 |
-| **B25** | 50 | 25 | 2 | 5 | 87.3% | 100.0% | 0.0% | 2 | 754.3 | 68.6 |
-| **B50** | 100 | 50 | 3 | 8 | 89.1% | 100.0% | 0.0% | 3 | 1167.1 | 106.1 |
-| **B100** | 300 | 100 | 5 | 15 | 89.1% | 100.0% | 0.0% | 3 | 1208.1 | 109.8 |
+| **B10** | 20 | 10 | 1 | 3 | 85.5% | 100.0% | 0.0% | 1 | 480.8 | 43.7 |
+| **B25** | 50 | 25 | 2 | 5 | 87.3% | 100.0% | 0.0% | 2 | 753.3 | 68.5 |
+| **B50** | 100 | 50 | 3 | 8 | 89.1% | 100.0% | 0.0% | 3 | 1187.6 | 108.0 |
+| **B100** | 300 | 100 | 5 | 15 | 89.1% | 100.0% | 0.0% | 3 | 1185.2 | 107.8 |
 
 ---
 
@@ -122,7 +123,7 @@ FORMAL_PAPER_RESULTS = NO
 | **Repository Files Scanned** | 806 | 73.3 files |
 | **Test Candidates Inspected** | 450 | 40.9 tests |
 | **Targeted Worktree Executions** | 3 | 0.27 executions |
-| **Total Execution Wall Time** | 1171.92 ms | 106.54 ms |
+| **Total Execution Wall Time** | 1179.31 ms | 107.21 ms |
 | **Total Acquisition Actions** | 15 | 1.36 actions |
 
 ### Action Type Distribution:
@@ -172,10 +173,10 @@ FORMAL_PAPER_RESULTS = NO
 - **`CLM-000038`** (`MV21-000038`, Category `CAT_B_SYM_CHG_MEMORY_VALID`, ClaimType `BEHAVIORAL_CONTRACT`):
   - **Decision Transition**: `UNCERTAIN` -> **`UNCERTAIN`** (Gold: `VALID`, Stop Reason: `REMAINED_UNCERTAIN_AFTER_ESCALATION`)
   - **Evidence Kind**: `NONE` (Decision Status: `INCONCLUSIVE`)
-  - **Requirement Coverage**: `1/2 (50.0%)`
-  - **Selected Target**: `tests/middleware/test_proxy_fix.py::test_proxy_fix` (Strength: `WEAK`)
+  - **Requirement Coverage**: `0/2 (0.0%)`
+  - **Selected Target**: `tests/sansio/test_request.py::test_cookies` (Strength: `WEAK`)
   - **Provenance**: Snapshot `VERIFIED_TARGET_COMMIT`, Source Origin `NOT_APPLICABLE`
-  - **Execution Trace**: Step 1 (TEST_DISCOVERY): Discovered 5 candidates (0 strong) [Top candidate: tests/middleware/test_proxy_fix.py:test_proxy...]
+  - **Execution Trace**: Step 1 (TEST_DISCOVERY): Discovered 5 candidates (0 strong) [Top candidate: tests/sansio/test_request.py:test_cookies (Pa...]
 
 - **`CLM-000039`** (`MV21-000039`, Category `CAT_B_SYM_CHG_MEMORY_VALID`, ClaimType `BEHAVIORAL_CONTRACT`):
   - **Decision Transition**: `UNCERTAIN` -> **`UNCERTAIN`** (Gold: `VALID`, Stop Reason: `REMAINED_UNCERTAIN_AFTER_ESCALATION`)
@@ -229,9 +230,9 @@ FORMAL_PAPER_RESULTS = NO
   - **Decision Transition**: `UNCERTAIN` -> **`UNCERTAIN`** (Gold: `STALE`, Stop Reason: `REMAINED_UNCERTAIN_AFTER_ESCALATION`)
   - **Evidence Kind**: `DEPENDENCY_EVIDENCE` (Decision Status: `INCONCLUSIVE`)
   - **Requirement Coverage**: `N/A`
-  - **Selected Target**: `testing/test_helpers.py::test_varnames_hookspec_without_self` (Strength: `UNBOUND`)
+  - **Selected Target**: `testing/test_hookcaller.py::test_hookspec` (Strength: `WEAK`)
   - **Provenance**: Snapshot `VERIFIED_TARGET_COMMIT`, Source Origin `NOT_APPLICABLE`
-  - **Execution Trace**: Step 1 (DEPENDENCY_INSPECTION): SUPPORTS [Static reference to 'varnames' inside 'HookSpec' exists in A...]; Step 2 (TEST_DISCOVERY): Discovered 16 candidates (0 strong) [Top candidate: testing/test_helpers.py:test_varnames_hookspe...]
+  - **Execution Trace**: Step 1 (DEPENDENCY_INSPECTION): SUPPORTS [Static reference to 'varnames' inside 'HookSpec' exists in A...]; Step 2 (TEST_DISCOVERY): Discovered 16 candidates (0 strong) [Top candidate: testing/test_hookcaller.py:test_hookspec (Dep...]
 
 - **`CLM-000049`** (`MV21-000049`, Category `CAT_D1_SYM_REM_STALE`, ClaimType `SYMBOL_EXISTS`):
   - **Decision Transition**: `UNCERTAIN` -> **`STALE`** (Gold: `STALE`, Stop Reason: `RESOLVED_TO_STALE`)

@@ -179,3 +179,72 @@ def test_pipeline_budget_limit_executions():
     assert cost_tracker.executions_run == 0
 
 
+def test_per_claim_budget_invariants():
+    """
+    Budget Invariant Test:
+    Iterate across all 11 escalation claims on presets B10, B25, B50, B100.
+    Assert for each single claim that:
+    - files_scanned <= preset.max_files_scanned
+    - tests_inspected <= preset.max_tests_inspected
+    - executions_run <= preset.max_executions_run
+    - total_actions <= preset.max_total_actions
+    """
+    from scripts.evaluate_evidence_escalation_v1 import load_blind_data
+    from src.evidence_escalation.pipeline import EvidenceEscalationPipeline
+    from src.evidence_escalation.types import CostBudget, PipelineConfig
+
+    prepared_cases = load_blind_data()
+    pipeline = EvidenceEscalationPipeline()
+
+    escalation_cases = []
+    for case in prepared_cases:
+        res, trace, cost = pipeline.evaluate_claim(
+            claim_or_statement=case["claim"],
+            base_source=case["b_src"],
+            target_source=case["t_src"],
+            diff_hunk=case["diff"],
+            symbol_qualified_name=case["sym"],
+            file_path=case["fpath"],
+            repository=case["repo"],
+            repository_root=case["repo_root"],
+            base_commit=case["b_commit"],
+            target_commit=case["t_commit"],
+            config=PipelineConfig(repo_search=False, dependency_inspection=False, test_discovery=False, targeted_execution=False)
+        )
+        if trace.static_decision == "UNCERTAIN":
+            escalation_cases.append(case)
+
+    assert len(escalation_cases) == 11, f"Expected 11 escalation cases, got {len(escalation_cases)}"
+
+    presets = ["B10", "B25", "B50", "B100"]
+    for preset_name in presets:
+        budget = CostBudget.from_preset(preset_name)
+        for case in escalation_cases:
+            res, trace, cost = pipeline.evaluate_claim(
+                claim_or_statement=case["claim"],
+                base_source=case["b_src"],
+                target_source=case["t_src"],
+                diff_hunk=case["diff"],
+                symbol_qualified_name=case["sym"],
+                file_path=case["fpath"],
+                repository=case["repo"],
+                repository_root=case["repo_root"],
+                base_commit=case["b_commit"],
+                target_commit=case["t_commit"],
+                available_budget=budget
+            )
+            assert cost.repository_files_scanned <= budget.max_files_scanned, (
+                f"Claim {case['cid']} scanned {cost.repository_files_scanned} files > {budget.max_files_scanned} for preset {preset_name}"
+            )
+            assert cost.tests_inspected <= budget.max_tests_inspected, (
+                f"Claim {case['cid']} inspected {cost.tests_inspected} tests > {budget.max_tests_inspected} for preset {preset_name}"
+            )
+            assert cost.executions_run <= budget.max_executions_run, (
+                f"Claim {case['cid']} executed {cost.executions_run} tests > {budget.max_executions_run} for preset {preset_name}"
+            )
+            assert cost.total_actions <= budget.max_total_actions, (
+                f"Claim {case['cid']} performed {cost.total_actions} actions > {budget.max_total_actions} for preset {preset_name}"
+            )
+
+
+
