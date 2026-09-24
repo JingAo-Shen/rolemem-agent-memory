@@ -1,0 +1,250 @@
+{
+  "protocol_version": "2.2-formal-v1.0",
+  "preregistration_type": "FORMAL_UNSEEN_BENCHMARK_PREREGISTRATION",
+  "preregistration_status": "PREREGISTERED_FROZEN",
+  "created_at": "2026-09-24T22:55:00+08:00",
+  "frozen_algorithm_linkage": {
+    "frozen_algorithm_source_commit": "fe62749b98ea2a8e62ed5dbb031b39deddc33624",
+    "freeze_metadata_commit": "29c2b11a53235430c6bd53e39e96a67f1db65391",
+    "freeze_tag": "protocol-v2.2-v1-deterministic-freeze",
+    "attestation_commit": "fcff4104645203bdf35a27ffbd04542d7e9dd995",
+    "attestation_tag": "protocol-v2.2-v1-freeze-attestation",
+    "freeze_closure_commit": "da105f9555e098e9e2fcb87e190ce9eb730af3ee",
+    "freeze_closure_status": "PASS",
+    "post_formal_mutation_rule": "Frozen V1 algorithm source (under src/claim_validity/** and src/evidence_escalation/**) is strictly immutable. If formal evaluation reveals algorithmic weaknesses, V1 formal results remain immutable; any future V2/V1.1-postformal requires a newly sealed, uninspected formal benchmark."
+  },
+  "state_machine": {
+    "current_state": "S0_PREREGISTRATION",
+    "states": {
+      "S0_PREREGISTRATION": "Protocol rules, hypotheses, metrics, sampling hierarchy, and firewall preregistered before candidate search.",
+      "S1_REPOSITORY_DISCOVERY": "Candidate repository discovery against objective inclusion rules and programmatic blacklist.",
+      "S2_TRANSITION_MINING": "Rule-based transition sampling and technical eligibility screening from accepted repositories.",
+      "S3_CLAIM_CONSTRUCTION": "Base-only historical memory claim construction by isolated Memory Author.",
+      "S4_GOLD_ADJUDICATION": "Target validity gold adjudication by isolated Validity Adjudicator.",
+      "S5_FORMAL_INPUT_FREEZE": "Physical separation and cryptographic hashing of formal_inputs.jsonl, formal_gold_private.jsonl, and formal_case_map_private.json.",
+      "S6_PREDICTION_RUN": "Single one-shot execution of frozen RoleMem algorithm on formal_inputs.jsonl; prediction hashing.",
+      "S7_GOLD_OPEN": "Controlled unsealing and opening of formal_gold_private.jsonl.",
+      "S8_SCORING_COMPLETE": "Scoring, micro/macro metric reporting, clustered bootstrap CI calculation, and diagnostic subgroup reporting."
+    },
+    "monotonicity_invariant": "State progression is strictly monotonic. Skipping backwards or altering frozen artifacts invalidates formal scientific validity."
+  },
+  "formal_data_firewall": {
+    "formal_data_opened": false,
+    "formal_repository_list": null,
+    "formal_case_ids": null,
+    "formal_gold": null,
+    "formal_repositories_selected_count": 0,
+    "formal_transitions_inspected_count": 0,
+    "formal_claims_created_count": 0,
+    "formal_gold_labels_created_count": 0
+  },
+  "repository_eligibility": {
+    "contamination_blacklist": {
+      "registry_path": "data/splits/repository_contamination_registry.json",
+      "registry_sha256": "ae01f0c825cb3beb4bd415426d7ce4ff6931db1b9535369f28239c4aded7a03d",
+      "contaminated_universe_count": 29,
+      "blacklist_rule": "Candidate repository R (including aliases, forks, renames, and submodules) MUST NOT exist in the frozen contamination registry."
+    },
+    "historical_unseen_condition": {
+      "definition": "A repository is FORMAL_UNSEEN iff it has zero historical occurrence in data/**, reports/**, runs/**, test fixtures, previous benchmark manifests, transition specs, curation artifacts, or agent runs.",
+      "verification_method": "Programmatic keyword and path scanning across all historical repo artifacts before repository acceptance."
+    },
+    "objective_inclusion_criteria": {
+      "public_git_repository": true,
+      "primary_language": "Python",
+      "real_version_history": true,
+      "history_threshold": ">= 2 years of meaningful history OR >= 100 non-merge commits",
+      "automated_tests_required": "Directory tests/ or test/ or equivalent automated test suite (pytest/unittest)",
+      "identifiable_releases": "Multiple tagged releases (Tier 1 preferred) OR clearly identifiable historical non-merge commits (Tier 2)",
+      "ast_parseable": "Source code parseable by standard Python AST for relevant files",
+      "not_archived_at_transition": true,
+      "not_synthetic_or_tutorial": true,
+      "outcome_independence": "Repository selection MUST NOT depend on RoleMem execution, predictions, accuracy, or claim solvability."
+    },
+    "discovery_source": {
+      "universe": "Public open-source Python repositories (GitHub public repository universe)",
+      "fixed_search_constraints": {
+        "language": "Python",
+        "is_fork": false,
+        "is_archived": false,
+        "min_stars": 50,
+        "min_non_merge_commits": 100
+      },
+      "category_diversity": {
+        "required_categories": [
+          "libraries",
+          "developer_tools",
+          "data_utility",
+          "cli_packages",
+          "web_backend",
+          "infrastructure"
+        ],
+        "balance_rule": "Formal repository sample must span multiple functional domains. Category selection must never be engineered to produce desired labels."
+      }
+    },
+    "target_repository_scale": {
+      "min_accepted_repositories": 20,
+      "target_repositories": 25,
+      "max_repositories": 30,
+      "shortfall_procedure": "If fewer than 20 eligible repositories are found, record FORMAL_REPOSITORY_SHORTFALL and halt pipeline for review. Criteria relaxation is prohibited."
+    }
+  },
+  "transition_sampling_protocol": {
+    "selection_hierarchy": {
+      "tier_1": "Consecutive stable release tags (e.g. tag v_i -> v_{i+1}, excluding alpha/beta/rc unless standard release cycle)",
+      "tier_2": "Chronologically sampled non-merge commits satisfying min_commit_distance=20 non-merge commits and min_temporal_distance_days=14 days"
+    },
+    "per_repository_caps": {
+      "max_transitions_per_repository": 3,
+      "max_claims_per_repository": 8
+    },
+    "screening_separation": {
+      "technical_screening": "Transitions may be rejected ONLY for objective technical reasons: commit missing, git checkout failure, source unavailable, AST syntax unparseable, or corrupt history.",
+      "forbidden_screening": "Rejection based on claim difficulty, lack of stale claims, or RoleMem abstention is strictly forbidden."
+    }
+  },
+  "claim_construction_protocol": {
+    "role_separation": {
+      "memory_author": {
+        "visible_scope": ["base commit source", "base commit tests", "base commit documentation"],
+        "forbidden_scope": ["target commit", "target diff", "future tests", "future docs", "gold labels", "RoleMem predictions"],
+        "purpose": "Construct factual historical memory claims representing verified true state at base commit."
+      },
+      "validity_adjudicator": {
+        "visible_scope": ["frozen base claim", "target commit source", "target tests", "target docs"],
+        "purpose": "Adjudicate temporal validity of the frozen claim at target state."
+      }
+    },
+    "base_truth_invariant": "base_truth = VERIFIED at base commit. Any claim that cannot be verified at base commit is categorized as EXCLUDE_INVALID_HISTORICAL_MEMORY and excluded from benchmark.",
+    "eligible_frozen_claim_types": [
+      "SYMBOL_EXISTS",
+      "ATTRIBUTE_EXISTS",
+      "IMPORT_PATH_VALID",
+      "CALLABLE",
+      "SIGNATURE_COMPATIBLE",
+      "DEFAULT_VALUE",
+      "RETURN_VALUE",
+      "DEPRECATION_STATUS",
+      "BEHAVIORAL_CONTRACT",
+      "DEPENDENCY_CONTRACT"
+    ],
+    "claim_type_cap": "No single claim type may exceed 50% of the final benchmark (enforced prior to target gold adjudication).",
+    "semantics_standards": {
+      "behavioral_contract": "Must specify concrete, executable/observable requirements (e.g., OPERATION, ATTRIBUTE_STATE, CONSTRUCTOR_ARGUMENT, DEFAULT_VALUE, RETURN_RELATION, SEQUENCE). Vague assertions are rejected.",
+      "dependency_contract": "Must specify subject, dependency, and relation directly grounded in base-state source/manifest evidence."
+    },
+    "preserved_provenance_fields": [
+      "raw_statement",
+      "structured_claim",
+      "base_evidence",
+      "repository",
+      "base_commit",
+      "target_commit",
+      "file_symbol_provenance"
+    ]
+  },
+  "benchmark_composition_and_scale": {
+    "tracks": {
+      "primary": "FORMAL-NATURAL (Unbiased natural prevalence track; no artificial quota on VALID vs STALE)",
+      "secondary_optional": "FORMAL-CHALLENGE (Structural diagnostic slices; strictly secondary)"
+    },
+    "scale_targets": {
+      "min_valid_claims": 100,
+      "target_valid_claims": 150,
+      "max_valid_claims": 200,
+      "min_repositories": 20,
+      "shortfall_procedure": "If rule-based generation produces fewer than 100 valid claims across >= 20 repositories, record FORMAL_BENCHMARK_SHORTFALL and halt pipeline."
+    }
+  },
+  "gold_adjudication_and_isolation": {
+    "opaque_case_id_format": "FV22-XXXXXX (6-digit sequential zero-padded number, e.g. FV22-000001; zero semantic leakage)",
+    "physical_file_isolation": {
+      "inputs_file": "data/formal_v2_2/formal_inputs.jsonl",
+      "gold_file": "data/formal_v2_2/formal_gold_private.jsonl",
+      "case_map_file": "data/formal_v2_2/formal_case_map_private.json"
+    },
+    "gold_labels": [
+      "VALID",
+      "STALE",
+      "UNRESOLVED_GOLD"
+    ],
+    "unresolved_gold_rule": "UNRESOLVED_GOLD cases are excluded from primary binary metrics and reported separately as data quality diagnostics.",
+    "evidence_hierarchy": [
+      "1. target source / AST",
+      "2. repository-native target tests",
+      "3. target API / observable behavior",
+      "4. dependency-local source evidence",
+      "5. release documentation / changelog",
+      "6. human adjudication"
+    ],
+    "dual_adjudication": "Ambiguous behavioral/dependency cases require two independent adjudications with agreement recorded. Adjudicators remain blind to RoleMem predictions."
+  },
+  "evaluation_and_execution_protocol": {
+    "execution_sequence": [
+      "1. Freeze formal_inputs.jsonl",
+      "2. SHA256 hash formal_inputs.jsonl",
+      "3. Execute frozen RoleMem algorithm once under default B50 budget",
+      "4. Save predictions to formal_predictions.jsonl",
+      "5. SHA256 hash formal_predictions.jsonl",
+      "6. Close prediction phase",
+      "7. Unseal and open formal_gold_private.jsonl",
+      "8. Compute scoring metrics and bootstrap confidence intervals"
+    ],
+    "one_shot_rule": "The frozen algorithm may be executed on the formal benchmark exactly once. Reruns with altered algorithms are strictly prohibited.",
+    "restart_conditions": "Pipeline restart is permissible ONLY in case of documented infrastructure crash occurring before any predictions were exposed and before gold was opened."
+  },
+  "metrics_and_statistical_analysis": {
+    "primary_metrics": {
+      "primary_pair": [
+        "Coverage",
+        "Selective Risk"
+      ],
+      "decided_classification_metrics": [
+        "Accuracy among decided",
+        "Balanced Accuracy among decided",
+        "MCC among decided"
+      ],
+      "error_rates": [
+        "False Invalid Rate (FIR)",
+        "Stale Escape Rate (SER)"
+      ]
+    },
+    "cost_metrics": [
+      "files_scanned",
+      "tests_inspected",
+      "executions",
+      "execution_wall_time_sec",
+      "action_count",
+      "abstentions"
+    ],
+    "runtime_budget": "B50",
+    "statistical_inference": {
+      "method": "Repository-level clustered bootstrap confidence intervals",
+      "bootstrap_seed": 3407,
+      "bootstrap_samples": 5000,
+      "confidence_level": 0.95
+    },
+    "reporting_granularity": [
+      "claim_level_micro",
+      "repository_level_macro",
+      "label_prevalence_breakdown"
+    ],
+    "preregistered_baselines": [
+      "File-Level Validity",
+      "Pure Symbol AST",
+      "Dependency-Aware Static",
+      "RoleMem V2.1 Baseline",
+      "Claim-Aware Static",
+      "Claim-Aware + Selective Escalation V1 (Frozen RoleMem V2.2)"
+    ],
+    "preregistered_ablations": [
+      "Static only",
+      "+ Repository Search",
+      "+ Dependency Inspection",
+      "+ Test Discovery",
+      "+ Targeted Execution",
+      "Full V1 (Default B50)"
+    ],
+    "diagnostic_subgroups_rule": "All post-hoc slice analyses (symbol changed vs unchanged, behavioral vs structural, repository categories) are descriptive diagnostics and must be labeled EXPLORATORY_POST_HOC."
+  }
+}
