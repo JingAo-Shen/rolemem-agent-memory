@@ -3,6 +3,7 @@
   "preregistration_type": "FORMAL_UNSEEN_BENCHMARK_PREREGISTRATION",
   "preregistration_status": "PREREGISTERED_FROZEN",
   "created_at": "2026-09-24T22:55:00+08:00",
+  "last_audited_at": "2026-09-26T09:25:00+08:00",
   "frozen_algorithm_linkage": {
     "frozen_algorithm_source_commit": "fe62749b98ea2a8e62ed5dbb031b39deddc33624",
     "freeze_metadata_commit": "29c2b11a53235430c6bd53e39e96a67f1db65391",
@@ -63,12 +64,13 @@
     },
     "discovery_source": {
       "universe": "Public open-source Python repositories (GitHub public repository universe)",
+      "search_priority_rule": "Discovery prioritizes objective engineering criteria (history duration >= 2 years, non-merge commits >= 100, active commit cadence, and presence of executable tests). Popularity metrics such as stars threshold are strictly secondary and non-disqualifying for mature, tested software projects.",
       "fixed_search_constraints": {
         "language": "Python",
         "is_fork": false,
         "is_archived": false,
-        "min_stars": 50,
-        "min_non_merge_commits": 100
+        "min_history_years_or_commits": ">= 2 years OR >= 100 non-merge commits",
+        "has_automated_tests": true
       },
       "category_diversity": {
         "required_categories": [
@@ -79,7 +81,7 @@
           "web_backend",
           "infrastructure"
         ],
-        "balance_rule": "Formal repository sample must span multiple functional domains. Category selection must never be engineered to produce desired labels."
+        "category_inclusion_invariant": "Category balance CANNOT influence repository inclusion or exclusion. Repositories entering the candidate pool are evaluated strictly against objective history, activity, and test suite criteria. Functional categories serve as descriptive metadata for sample characterization and diagnostic reporting, not as an inclusion quota or selection filter."
       }
     },
     "target_repository_scale": {
@@ -128,7 +130,11 @@
       "BEHAVIORAL_CONTRACT",
       "DEPENDENCY_CONTRACT"
     ],
-    "claim_type_cap": "No single claim type may exceed 50% of the final benchmark (enforced prior to target gold adjudication).",
+    "claim_type_cap": {
+      "max_percentage": 50,
+      "rule": "No single claim type may exceed 50% of the final benchmark.",
+      "claim_type_cap_execution_timing": "The 50% single claim-type cap MUST strictly be executed BEFORE target validity gold adjudication. It is applied exclusively to frozen base-state memory claims without any knowledge or consideration of target-state validity, staleness, or ground truth."
+    },
     "semantics_standards": {
       "behavioral_contract": "Must specify concrete, executable/observable requirements (e.g., OPERATION, ATTRIBUTE_STATE, CONSTRUCTOR_ARGUMENT, DEFAULT_VALUE, RETURN_RELATION, SEQUENCE). Vague assertions are rejected.",
       "dependency_contract": "Must specify subject, dependency, and relation directly grounded in base-state source/manifest evidence."

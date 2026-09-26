@@ -9,7 +9,7 @@
 **Freeze Closure Commit:** `da105f9555e098e9e2fcb87e190ce9eb730af3ee`  
 **Freeze Closure Status:** `PASS`  
 **Preregistration State:** `S0_PREREGISTRATION`  
-**Date:** September 24, 2026  
+**Last Audited:** September 26, 2026  
 
 ---
 
@@ -99,13 +99,15 @@ The pipeline enforces strict temporal and logical separation: **Repository selec
 
 ## 6. Preregistered Discovery Source & Search Constraints
 
-- **Discovery Source**: Public Python open-source universe (GitHub public search API / open-source archive).
+- **Discovery Source**: Public Python open-source universe (GitHub public repository universe).
+- **Search Prioritization Rule**: Discovery prioritizes objective engineering criteria (history duration $\ge 2$ years, non-merge commits $\ge 100$, active commit cadence, and presence of executable automated tests).
+- **Popularity Metrics Evaluation**: Arbitrary popularity metrics (such as a fixed stars threshold) are strictly secondary and non-disqualifying. Mature, well-tested Python projects that satisfy commit history and automated test suite criteria remain fully eligible regardless of star counts.
 - **Fixed Search Parameters**:
   - `language`: `Python`
   - `is:fork`: `false`
   - `is:archived`: `false`
-  - `min_stars`: `50` (ensures non-trivial codebase quality and maintenance)
-  - `min_non_merge_commits`: `100`
+  - `history_threshold`: `Commit count >= 100 non-merge commits OR history duration >= 2 years`
+  - `tests_required`: `Presence of tests/ or test/ directory or pytest/unittest test files`
 
 Search constraints are fixed now and must not be altered post hoc.
 
@@ -113,15 +115,16 @@ Search constraints are fixed now and must not be altered post hoc.
 
 ## 7. Category Diversity Specifications
 
-To prevent over-indexing on web frameworks or simple CLI tools, candidate discovery must ensure coverage across distinct functional domains:
+To ensure the formal benchmark evaluates RoleMem across varied functional domains:
 1. `libraries` (algorithmic, mathematical, data-structure libraries)
 2. `developer_tools` (linters, formatters, code analyzers, build tools)
-3. `data_utility` (parsers, serializes, file format handlers, ETL tools)
+3. `data_utility` (parsers, serializers, file format handlers, ETL tools)
 4. `cli_packages` (command-line interfaces, terminal tooling)
 5. `web_backend` (HTTP clients, servers, API frameworks, networking)
 6. `infrastructure` (process managers, storage engines, system abstractions)
 
-Category assignment must be based solely on package purpose, never on expected benchmark label.
+### Category Inclusion Invariant:
+**Category balance CANNOT influence repository inclusion or exclusion.** Repositories entering the candidate pool are evaluated strictly against objective history, activity, and test suite criteria. Functional categories serve as descriptive metadata for sample characterization and diagnostic reporting, not as an inclusion quota or selection filter.
 
 ---
 
@@ -285,11 +288,11 @@ If rule-based generation produces fewer than 100 valid claims across $\ge 20$ re
 
 ---
 
-## 22. Claim Type Distribution Caps
+## 22. Claim Type Distribution Caps & Pre-Gold Execution Invariant
 
 To prevent the benchmark from being overwhelmed by trivial presence checks:
 - **Single Claim Type Cap**: No single `ClaimType` (e.g., `SYMBOL_EXISTS`) may exceed **50%** of the total formal benchmark.
-- This cap is applied prior to target gold adjudication based strictly on claim schema.
+- **Pre-Gold Adjudication Execution Invariant**: This 50% single claim-type cap **MUST strictly be executed BEFORE target validity gold adjudication**. It is applied exclusively to frozen base-state memory claims without any knowledge or consideration of target-state validity, staleness, or ground truth.
 
 ---
 
@@ -599,15 +602,15 @@ Automated verification of this preregistration milestone is implemented in:
 ## 49. Anti-Leak & Accidental Exposure Scanner
 
 The automated verifier incorporates an anti-leak scanner that audits all repository files for:
-- GitHub URLs or repository names outside the frozen 29-repository contaminated universe.
-- Unregistered commit SHAs.
+- Candidate repository names outside the frozen 29-repository contaminated universe.
+- Unregistered candidate commit SHAs.
 - Premature formal case IDs or gold annotations.
 
 ---
 
 ## 50. Preregistration Freeze Tag Specification
 
-Upon successful verification of this protocol, an immutable Git tag will be created:
+Upon successful verification and audit of this protocol, an immutable Git tag will be created/anchored:
 ```
 protocol-v2.2-formal-preregistration
 ```

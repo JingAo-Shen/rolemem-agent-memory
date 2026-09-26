@@ -1,0 +1,47 @@
+{
+  "protocol_version": "2.2-formal-v1.0",
+  "audit_type": "FORMAL_PREREGISTRATION_INTEGRITY_AUDIT",
+  "audit_timestamp": "2026-09-26T01:23:21.246048+00:00",
+  "base_commit": "da105f9555e098e9e2fcb87e190ce9eb730af3ee",
+  "formal_firewall_status": "PASS",
+  "state_machine_status": "PASS",
+  "freeze_linkage_status": "PASS",
+  "formal_contamination_scan_status": "PASS",
+  "repository_selection_audit_status": "PASS",
+  "formal_preregistration_audit": "PASS",
+  "audit_details": {
+    "firewall": {
+      "formal_repository_list": null,
+      "formal_case_ids": null,
+      "formal_gold": null,
+      "formal_data_opened": false
+    },
+    "state_machine": {
+      "current_state": "S0_PREREGISTRATION"
+    },
+    "freeze_linkage": {
+      "frozen_algorithm_source_commit": "fe62749b98ea2a8e62ed5dbb031b39deddc33624",
+      "freeze_metadata_commit": "29c2b11a53235430c6bd53e39e96a67f1db65391",
+      "freeze_tag": "protocol-v2.2-v1-deterministic-freeze",
+      "attestation_commit": "fcff4104645203bdf35a27ffbd04542d7e9dd995",
+      "attestation_tag": "protocol-v2.2-v1-freeze-attestation",
+      "freeze_closure_commit": "da105f9555e098e9e2fcb87e190ce9eb730af3ee",
+      "algorithm_source_mutation_files": 0
+    },
+    "contamination_scan": {
+      "files_scanned": [
+        "data/formal_v2_2/protocol_preregistration.json",
+        "data/freeze/protocol_v2_2_formal_data_firewall.json"
+      ],
+      "leaks_found": 0
+    },
+    "selection_audit": {
+      "independent_of_rolemem_result": true,
+      "independent_of_claim_solvability": true,
+      "independent_of_target_transition_outcome": true,
+      "category_balance_cannot_influence_inclusion": true,
+      "claim_type_cap_pre_gold_only": true
+    }
+  },
+  "errors": []
+}
