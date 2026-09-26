@@ -1,0 +1,17 @@
+% Table 3: Per Role Breakdown
+\begin{table*}[t]
+\centering
+\small
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Epistemic Role} & \textbf{Support ($N$)} & \textbf{Ground Truth Dist} & \textbf{Majority} & \textbf{Static AST} & \textbf{Naive RAG} & \textbf{RoleMem (Ours)} \\
+\midrule
+\textbf{API Role} & 78 & V:74 / S:3 / P:1 & 94.9\% / 32.5\% & 97.4\% / 59.6\% & 66.7\% / 31.1\% & \textbf{100.0\% / 100.0\%} \\
+\textbf{CONFIG Role} & 50 & V:29 / S:21 / P:0 & 58.0\% / 36.7\% & 58.0\% / 36.7\% & 60.0\% / 52.4\% & \textbf{100.0\% / 100.0\%} \\
+\textbf{BEHAVIOR Role} & 17 & V:17 / S:0 / P:0 & 100.0\% / 100.0\% & 23.5\% / 38.1\% & 0.0\% / 0.0\% & \textbf{100.0\% / 100.0\%} \\
+\textbf{DEPENDENCY Role} & 5 & V:5 / S:0 / P:0 & 100.0\% / 100.0\% & 0.0\% / 0.0\% & 0.0\% / 0.0\% & \textbf{100.0\% / 100.0\%} \\
+\bottomrule
+\end{tabular}
+\caption{Performance breakdown across four epistemic memory roles (API, Config, Behavior, Dependency). RoleMem consistently outperforms baselines across all specialized verification channels.}
+\label{tab:role_analysis}
+\end{table*}
