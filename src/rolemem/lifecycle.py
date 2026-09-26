@@ -18,10 +18,116 @@ import subprocess
 import time
 import textwrap
 
-from .schema import RoleMemoryRecord, RoleEnum, MemoryStatus, TemporalAnchor
+from .schema import RoleMemoryRecord, RoleEnum, MemoryStatus, TemporalAnchor, DeprecationStatus
 from src.claim_validity.types import MemoryClaim, ClaimType, ClaimEvaluationResult, ValidationStatus
 from src.evidence_escalation.pipeline import EvidenceEscalationPipeline
 from src.evidence_escalation.types import CostBudget, PipelineConfig
+
+
+@dataclass
+class FunctionSignature:
+    """Extracted function or method signature for lifecycle checking."""
+    name: str
+    parameters: List[str]
+    defaults: Dict[str, str]  # param_name -> default value representation string
+    has_varargs: bool = False
+    has_varkw: bool = False
+    is_method: bool = False
+
+
+class DefaultValueEvolutionChecker:
+    """
+    Dedicated checker for parameter default value evolution across codebase revisions.
+    Compares old_signature vs new_signature according to formal lifecycle rules:
+      - same parameter + same default => VALID
+      - same parameter + changed default => PARTIALLY_VALID
+      - parameter removed => STALE
+      - parameter required without default => STALE
+    """
+
+    @classmethod
+    def extract_signature_from_ast(
+        cls,
+        source_code: str,
+        symbol_name: str
+    ) -> Optional[FunctionSignature]:
+        if not source_code:
+            return None
+        try:
+            tree = ast.parse(textwrap.dedent(source_code))
+        except Exception:
+            return None
+
+        target_func = None
+        for node in ast.walk(tree):
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and node.name == symbol_name:
+                target_func = node
+                break
+        if target_func is None:
+            return None
+
+        args = target_func.args.args
+        defaults = target_func.args.defaults
+        offset = len(args) - len(defaults)
+
+        params = [a.arg for a in args]
+        def_map: Dict[str, str] = {}
+        for i, arg in enumerate(args):
+            if i >= offset:
+                def_node = defaults[i - offset]
+                try:
+                    act_val = ast.literal_eval(def_node)
+                    val_str = str(act_val) if not isinstance(act_val, (int, float, bool, type(None))) else str(act_val)
+                except Exception:
+                    val_str = ast.unparse(def_node) if hasattr(ast, "unparse") else str(def_node)
+                def_map[arg.arg] = val_str
+
+        return FunctionSignature(
+            name=symbol_name,
+            parameters=params,
+            defaults=def_map,
+            has_varargs=target_func.args.vararg is not None,
+            has_varkw=target_func.args.kwarg is not None,
+            is_method=len(params) > 0 and params[0] in ("self", "cls")
+        )
+
+    @classmethod
+    def check_evolution(
+        cls,
+        old_signature: Optional[FunctionSignature],
+        new_signature: Optional[FunctionSignature],
+        parameter_name: str,
+        expected_default: Any = None
+    ) -> Tuple[str, str, str]:
+        """
+        Evaluate evolution of default value from old_signature (or expected default) to new_signature.
+        Returns: (decision, rule_name, evidence_str)
+        """
+        if new_signature is None:
+            return "STALE", "FUNCTION_REMOVED", f"Function missing from target state."
+
+        if parameter_name not in new_signature.parameters:
+            return "STALE", "DEFAULT_VALUE_PARAMETER_REMOVED", f"Parameter '{parameter_name}' was removed or renamed in target state."
+
+        if parameter_name not in new_signature.defaults:
+            return "STALE", "DEFAULT_VALUE_MADE_REQUIRED", f"Parameter '{parameter_name}' was made required without default value in target state."
+
+        actual_val = new_signature.defaults[parameter_name]
+
+        # Resolve expected default string
+        if expected_default is not None:
+            clean_exp = str(expected_default).strip().strip("'\"")
+        elif old_signature and parameter_name in old_signature.defaults:
+            clean_exp = str(old_signature.defaults[parameter_name]).strip().strip("'\"")
+        else:
+            clean_exp = "None"
+
+        clean_act = str(actual_val).strip().strip("'\"")
+
+        if clean_act == clean_exp or (clean_exp == "None" and clean_act in ("None", "null")):
+            return "VALID", "DEFAULT_VALUE_PRESERVED", f"Parameter '{parameter_name}' preserves exact default value '{clean_act}'."
+        else:
+            return "PARTIALLY_VALID", "DEFAULT_VALUE_MUTATED_COMPATIBLE", f"Parameter '{parameter_name}' default value altered: expected '{clean_exp}', found '{clean_act}'."
 
 
 @dataclass
@@ -258,61 +364,27 @@ class RoleMemLifecycleEngine:
                         evidence_str = f"Callable '{sym_name}' lacks required parameters: {missing}."
                         reasons = [evidence_str]
 
-            # B. Config Role: Default Value Inspection
-            elif ctype == ClaimType.DEFAULT_VALUE and tree is not None:
+            # B. Config Role: Default Value Evolution Checking
+            elif ctype == ClaimType.DEFAULT_VALUE:
                 param_name = qualifiers.get("parameter_name", "")
                 expected_default = qualifiers.get("expected_default")
-                clean_exp = str(expected_default).strip().strip("'\"") if expected_default is not None else "None"
 
-                target_func = find_target_function(tree)
+                old_sig = DefaultValueEvolutionChecker.extract_signature_from_ast(base_source, sym_name) if base_source else None
+                new_sig = DefaultValueEvolutionChecker.extract_signature_from_ast(target_source, sym_name) if target_source else None
 
-                if target_func is not None:
-                    args = target_func.args.args
-                    defaults = target_func.args.defaults
-                    offset = len(args) - len(defaults)
-                    found_param = False
-                    actual_val_str = None
+                decision, rule_name, evidence_str = DefaultValueEvolutionChecker.check_evolution(
+                    old_signature=old_sig,
+                    new_signature=new_sig,
+                    parameter_name=param_name,
+                    expected_default=expected_default
+                )
+                reasons = [evidence_str]
 
-                    for i, arg in enumerate(args):
-                        if arg.arg == param_name:
-                            found_param = True
-                            if i >= offset:
-                                def_node = defaults[i - offset]
-                                actual_val_str = ast.unparse(def_node) if hasattr(ast, "unparse") else str(def_node)
-                            break
-
-                    if not found_param:
-                        decision = "STALE"
-                        rule_name = "DEFAULT_VALUE_PARAMETER_REMOVED"
-                        evidence_str = f"Parameter '{param_name}' of '{sym_name}' was removed or renamed."
-                        reasons = [evidence_str]
-                    elif actual_val_str is None:
-                        # Parameter exists but has no default value (made required)
-                        decision = "STALE"
-                        rule_name = "DEFAULT_VALUE_MADE_REQUIRED"
-                        evidence_str = f"Parameter '{param_name}' of '{sym_name}' was made required without default."
-                        reasons = [evidence_str]
-                    else:
-                        clean_act = actual_val_str.strip().strip("'\"")
-                        if clean_act == clean_exp or (clean_exp == "None" and clean_act in ("None", "null")):
-                            decision = "VALID"
-                            rule_name = "DEFAULT_VALUE_AST_MATCH"
-                            evidence_str = f"Parameter '{param_name}' of '{sym_name}' preserves exact default value '{clean_act}'."
-                            reasons = [evidence_str]
-                        else:
-                            decision = "STALE"
-                            rule_name = "DEFAULT_VALUE_MUTATED"
-                            evidence_str = f"Parameter '{param_name}' of '{sym_name}' default value altered: expected '{clean_exp}', found '{clean_act}'."
-                            reasons = [evidence_str]
-                else:
-                    decision = "STALE"
-                    rule_name = "FUNCTION_REMOVED"
-                    evidence_str = f"Function '{sym_name}' missing from target file."
-                    reasons = [evidence_str]
-
-            # C. API Role: Deprecation Status
+            # C. API Role: Deprecation Status (Unified Schema)
             elif ctype == ClaimType.DEPRECATION_STATUS:
-                expected_status = qualifiers.get("expected_status", "active")
+                raw_status = qualifiers.get("is_deprecated", qualifiers.get("expected_status", qualifiers.get("deprecation_status", "active")))
+                dep_status_enum = DeprecationStatus.from_value(raw_status)
+                expected_status = dep_status_enum.value  # "active" or "deprecated"
                 is_dep_in_target = False
                 dep_reason = ""
 
@@ -347,36 +419,35 @@ class RoleMemLifecycleEngine:
                             if doc and ("deprecated" in doc.lower() or "deprecation" in doc.lower()):
                                 is_dep_in_target = True
                                 dep_reason = "Docstring deprecation notice"
-                    else:
+                    if target_node is None:
                         # Symbol not in file
                         decision = "STALE"
                         rule_name = "SYMBOL_REMOVED"
                         evidence_str = f"Symbol '{sym_name}' was removed at target state."
                         reasons = [evidence_str]
-
-                if decision != "STALE":
-                    if expected_status == "active":
-                        if not is_dep_in_target:
-                            decision = "VALID"
-                            rule_name = "ACTIVE_SYMBOL_VERIFIED"
-                            evidence_str = f"Symbol '{sym_name}' lifecycle status verified unchanged (active, non-deprecated)."
-                            reasons = [evidence_str]
-                        else:
-                            decision = "PARTIALLY_VALID"
-                            rule_name = "SOFT_DEPRECATION_ADVISORY"
-                            evidence_str = f"Symbol '{sym_name}' remains accessible but attached soft deprecation: {dep_reason}."
-                            reasons = [evidence_str]
                     else:
-                        if is_dep_in_target:
-                            decision = "VALID"
-                            rule_name = "DEPRECATED_SYMBOL_CONFIRMED"
-                            evidence_str = f"Symbol '{sym_name}' deprecation confirmed: {dep_reason}."
-                            reasons = [evidence_str]
+                        if expected_status == "active":
+                            if not is_dep_in_target:
+                                decision = "VALID"
+                                rule_name = "ACTIVE_SYMBOL_VERIFIED"
+                                evidence_str = f"Symbol '{sym_name}' lifecycle status verified unchanged (active, non-deprecated)."
+                                reasons = [evidence_str]
+                            else:
+                                decision = "PARTIALLY_VALID"
+                                rule_name = "SOFT_DEPRECATION_ADVISORY"
+                                evidence_str = f"Symbol '{sym_name}' remains accessible but attached soft deprecation: {dep_reason}."
+                                reasons = [evidence_str]
                         else:
-                            decision = "STALE"
-                            rule_name = "DEPRECATION_MISSING"
-                            evidence_str = f"Symbol '{sym_name}' contains no deprecation warning."
-                            reasons = [evidence_str]
+                            if is_dep_in_target:
+                                decision = "VALID"
+                                rule_name = "DEPRECATED_SYMBOL_CONFIRMED"
+                                evidence_str = f"Symbol '{sym_name}' deprecation confirmed: {dep_reason}."
+                                reasons = [evidence_str]
+                            else:
+                                decision = "STALE"
+                                rule_name = "DEPRECATION_MISSING"
+                                evidence_str = f"Symbol '{sym_name}' contains no deprecation warning."
+                                reasons = [evidence_str]
 
             # D. Behavior Role: Behavioral Contract
             elif ctype == ClaimType.BEHAVIORAL_CONTRACT:

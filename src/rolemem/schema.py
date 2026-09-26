@@ -45,6 +45,34 @@ class MemoryStatus(str, Enum):
     INVALIDATED = "INVALIDATED"
 
 
+class DeprecationStatus(str, Enum):
+    """Canonical deprecation status representing symbol lifecycle state."""
+    ACTIVE = "active"
+    DEPRECATED = "deprecated"
+
+    @classmethod
+    def from_value(cls, val: Any) -> "DeprecationStatus":
+        """
+        Normalize boolean, string, or object representations into canonical DeprecationStatus enum.
+        Eliminates boolean vs string/object discrepancies.
+        """
+        if isinstance(val, cls):
+            return val
+        if isinstance(val, bool):
+            return cls.DEPRECATED if val else cls.ACTIVE
+        if isinstance(val, str):
+            clean = val.strip().lower()
+            if clean in ("deprecated", "true", "1", "raising deprecationwarning", "soft_deprecated"):
+                return cls.DEPRECATED
+            return cls.ACTIVE
+        if isinstance(val, dict):
+            if val.get("is_deprecated") is True or val.get("status") == "deprecated":
+                return cls.DEPRECATED
+            return cls.ACTIVE
+        return cls.ACTIVE
+
+
+
 @dataclass
 class ClaimPayload:
     """Factual proposition asserted by the agent (structured slots + natural language statement)."""

@@ -158,6 +158,10 @@ class BenchmarkRunner:
                 for p in preds:
                     f.write(json.dumps(p) + "\n")
 
+            # Evaluate metrics
+            m_eval = evaluate_predictions(preds, gold_subset, track=track)
+            all_metrics[method] = m_eval
+
             if method == "rolemem":
                 # Also save primary predictions.jsonl
                 primary_pred_file = os.path.join(self.output_dir, "predictions.jsonl")
@@ -165,9 +169,15 @@ class BenchmarkRunner:
                     for p in preds:
                         f.write(json.dumps(p) + "\n")
 
-            # Evaluate metrics
-            m_eval = evaluate_predictions(preds, gold_subset, track=track)
-            all_metrics[method] = m_eval
+                # Save decision_trace.json
+                dt_file = os.path.join(self.output_dir, "decision_trace.json")
+                with open(dt_file, "w", encoding="utf-8") as f:
+                    json.dump(preds, f, indent=2)
+
+                # Save confusion_matrix.json
+                cm_file = os.path.join(self.output_dir, "confusion_matrix.json")
+                with open(cm_file, "w", encoding="utf-8") as f:
+                    json.dump(m_eval.get("primary_3class", {}).get("confusion_matrix", {}), f, indent=2)
 
         # Save metrics.json
         metrics_file = os.path.join(self.output_dir, "metrics.json")

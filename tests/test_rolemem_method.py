@@ -306,3 +306,75 @@ def test_evaluation_adapter_and_agent_interface():
     assert "[RoleMem Verified Codebase Knowledge]" in prompt_context
     assert "authenticate()" in prompt_context
     assert "Confidence: 0.95" in prompt_context
+
+
+def test_default_value_evolution_checker():
+    """Verify DefaultValueEvolutionChecker logic across all 4 formal rules."""
+    from src.rolemem.lifecycle import DefaultValueEvolutionChecker, FunctionSignature
+
+    base_code = """
+def connect(host, port=8080, timeout=30, retry=True):
+    pass
+"""
+    # 1. Target with same defaults -> VALID
+    target_same = """
+def connect(host, port=8080, timeout=30, retry=True):
+    pass
+"""
+    sig_base = DefaultValueEvolutionChecker.extract_signature_from_ast(base_code, "connect")
+    sig_same = DefaultValueEvolutionChecker.extract_signature_from_ast(target_same, "connect")
+    dec, rule, ev = DefaultValueEvolutionChecker.check_evolution(sig_base, sig_same, "timeout", expected_default=30)
+    assert dec == "VALID"
+    assert rule == "DEFAULT_VALUE_PRESERVED"
+
+    # 2. Target with changed default -> PARTIALLY_VALID
+    target_changed = """
+def connect(host, port=8080, timeout=60, retry=True):
+    pass
+"""
+    sig_changed = DefaultValueEvolutionChecker.extract_signature_from_ast(target_changed, "connect")
+    dec, rule, ev = DefaultValueEvolutionChecker.check_evolution(sig_base, sig_changed, "timeout", expected_default=30)
+    assert dec == "PARTIALLY_VALID"
+    assert rule == "DEFAULT_VALUE_MUTATED_COMPATIBLE"
+
+    # 3. Target with parameter removed -> STALE
+    target_removed = """
+def connect(host, port=8080, retry=True):
+    pass
+"""
+    sig_removed = DefaultValueEvolutionChecker.extract_signature_from_ast(target_removed, "connect")
+    dec, rule, ev = DefaultValueEvolutionChecker.check_evolution(sig_base, sig_removed, "timeout", expected_default=30)
+    assert dec == "STALE"
+    assert rule == "DEFAULT_VALUE_PARAMETER_REMOVED"
+
+    # 4. Target with parameter made required -> STALE
+    target_required = """
+def connect(host, timeout, port=8080, retry=True):
+    pass
+"""
+    sig_required = DefaultValueEvolutionChecker.extract_signature_from_ast(target_required, "connect")
+    dec, rule, ev = DefaultValueEvolutionChecker.check_evolution(sig_base, sig_required, "timeout", expected_default=30)
+    assert dec == "STALE"
+    assert rule == "DEFAULT_VALUE_MADE_REQUIRED"
+
+
+def test_deprecation_status_schema_unification():
+    """Verify DeprecationStatus enum normalization across boolean, string, and object representations."""
+    from src.rolemem.schema import DeprecationStatus
+
+    # Boolean normalization
+    assert DeprecationStatus.from_value(True) == DeprecationStatus.DEPRECATED
+    assert DeprecationStatus.from_value(False) == DeprecationStatus.ACTIVE
+
+    # String normalization
+    assert DeprecationStatus.from_value("deprecated") == DeprecationStatus.DEPRECATED
+    assert DeprecationStatus.from_value("DEPRECATED") == DeprecationStatus.DEPRECATED
+    assert DeprecationStatus.from_value("active") == DeprecationStatus.ACTIVE
+    assert DeprecationStatus.from_value("supported") == DeprecationStatus.ACTIVE
+
+    # Object normalization
+    assert DeprecationStatus.from_value({"is_deprecated": True}) == DeprecationStatus.DEPRECATED
+    assert DeprecationStatus.from_value({"is_deprecated": False}) == DeprecationStatus.ACTIVE
+    assert DeprecationStatus.from_value({"status": "deprecated"}) == DeprecationStatus.DEPRECATED
+    assert DeprecationStatus.from_value({"status": "active"}) == DeprecationStatus.ACTIVE
+

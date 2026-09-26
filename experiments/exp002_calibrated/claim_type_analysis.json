@@ -1,0 +1,958 @@
+{
+  "by_category": {
+    "SIGNATURE": {
+      "majority": {
+        "total_cases": 50,
+        "accuracy": 0.96,
+        "macro_f1": 0.3265,
+        "track_a_strict_accuracy": 0.96,
+        "track_a_strict_macro_f1": 0.4898,
+        "track_b_compatible_accuracy": 0.98,
+        "track_b_compatible_macro_f1": 0.495,
+        "per_class": {
+          "VALID": {
+            "precision": 0.96,
+            "recall": 1.0,
+            "f1": 0.9796,
+            "tp": 48,
+            "fp": 2,
+            "fn": 0,
+            "support": 48
+          },
+          "STALE": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 1,
+            "support": 1
+          },
+          "PARTIALLY_VALID": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 1,
+            "support": 1
+          }
+        }
+      },
+      "static_ast": {
+        "total_cases": 50,
+        "accuracy": 0.96,
+        "macro_f1": 0.3265,
+        "track_a_strict_accuracy": 0.96,
+        "track_a_strict_macro_f1": 0.4898,
+        "track_b_compatible_accuracy": 0.98,
+        "track_b_compatible_macro_f1": 0.495,
+        "per_class": {
+          "VALID": {
+            "precision": 0.96,
+            "recall": 1.0,
+            "f1": 0.9796,
+            "tp": 48,
+            "fp": 2,
+            "fn": 0,
+            "support": 48
+          },
+          "STALE": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 1,
+            "support": 1
+          },
+          "PARTIALLY_VALID": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 1,
+            "support": 1
+          }
+        }
+      },
+      "naive_rag": {
+        "total_cases": 50,
+        "accuracy": 0.82,
+        "macro_f1": 0.3037,
+        "track_a_strict_accuracy": 0.84,
+        "track_a_strict_macro_f1": 0.5555,
+        "track_b_compatible_accuracy": 0.82,
+        "track_b_compatible_macro_f1": 0.4506,
+        "per_class": {
+          "VALID": {
+            "precision": 0.9762,
+            "recall": 0.8542,
+            "f1": 0.9111,
+            "tp": 41,
+            "fp": 1,
+            "fn": 7,
+            "support": 48
+          },
+          "STALE": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 8,
+            "fn": 1,
+            "support": 1
+          },
+          "PARTIALLY_VALID": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 1,
+            "support": 1
+          }
+        }
+      },
+      "rolemem": {
+        "total_cases": 50,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "track_a_strict_accuracy": 1.0,
+        "track_a_strict_macro_f1": 1.0,
+        "track_b_compatible_accuracy": 1.0,
+        "track_b_compatible_macro_f1": 1.0,
+        "per_class": {
+          "VALID": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 48,
+            "fp": 0,
+            "fn": 0,
+            "support": 48
+          },
+          "STALE": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          },
+          "PARTIALLY_VALID": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          }
+        }
+      }
+    },
+    "DEFAULT": {
+      "majority": {
+        "total_cases": 50,
+        "accuracy": 0.58,
+        "macro_f1": 0.3671,
+        "track_a_strict_accuracy": 0.58,
+        "track_a_strict_macro_f1": 0.3671,
+        "track_b_compatible_accuracy": 0.58,
+        "track_b_compatible_macro_f1": 0.3671,
+        "per_class": {
+          "VALID": {
+            "precision": 0.58,
+            "recall": 1.0,
+            "f1": 0.7342,
+            "tp": 29,
+            "fp": 21,
+            "fn": 0,
+            "support": 29
+          },
+          "STALE": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 21,
+            "support": 21
+          },
+          "PARTIALLY_VALID": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "support": 0
+          }
+        }
+      },
+      "static_ast": {
+        "total_cases": 50,
+        "accuracy": 0.58,
+        "macro_f1": 0.3671,
+        "track_a_strict_accuracy": 0.58,
+        "track_a_strict_macro_f1": 0.3671,
+        "track_b_compatible_accuracy": 0.58,
+        "track_b_compatible_macro_f1": 0.3671,
+        "per_class": {
+          "VALID": {
+            "precision": 0.58,
+            "recall": 1.0,
+            "f1": 0.7342,
+            "tp": 29,
+            "fp": 21,
+            "fn": 0,
+            "support": 29
+          },
+          "STALE": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 21,
+            "support": 21
+          },
+          "PARTIALLY_VALID": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "support": 0
+          }
+        }
+      },
+      "naive_rag": {
+        "total_cases": 50,
+        "accuracy": 0.6,
+        "macro_f1": 0.5238,
+        "track_a_strict_accuracy": 0.6,
+        "track_a_strict_macro_f1": 0.5238,
+        "track_b_compatible_accuracy": 0.6,
+        "track_b_compatible_macro_f1": 0.5238,
+        "per_class": {
+          "VALID": {
+            "precision": 0.6098,
+            "recall": 0.8621,
+            "f1": 0.7143,
+            "tp": 25,
+            "fp": 16,
+            "fn": 4,
+            "support": 29
+          },
+          "STALE": {
+            "precision": 0.5556,
+            "recall": 0.2381,
+            "f1": 0.3333,
+            "tp": 5,
+            "fp": 4,
+            "fn": 16,
+            "support": 21
+          },
+          "PARTIALLY_VALID": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "support": 0
+          }
+        }
+      },
+      "rolemem": {
+        "total_cases": 50,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "track_a_strict_accuracy": 1.0,
+        "track_a_strict_macro_f1": 1.0,
+        "track_b_compatible_accuracy": 1.0,
+        "track_b_compatible_macro_f1": 1.0,
+        "per_class": {
+          "VALID": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 29,
+            "fp": 0,
+            "fn": 0,
+            "support": 29
+          },
+          "STALE": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 21,
+            "fp": 0,
+            "fn": 0,
+            "support": 21
+          },
+          "PARTIALLY_VALID": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "support": 0
+          }
+        }
+      }
+    },
+    "BEHAVIOR": {
+      "majority": {
+        "total_cases": 17,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "track_a_strict_accuracy": 1.0,
+        "track_a_strict_macro_f1": 0.5,
+        "track_b_compatible_accuracy": 1.0,
+        "track_b_compatible_macro_f1": 0.5,
+        "per_class": {
+          "VALID": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 17,
+            "fp": 0,
+            "fn": 0,
+            "support": 17
+          },
+          "STALE": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "support": 0
+          },
+          "PARTIALLY_VALID": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "support": 0
+          }
+        }
+      },
+      "static_ast": {
+        "total_cases": 17,
+        "accuracy": 0.2353,
+        "macro_f1": 0.381,
+        "track_a_strict_accuracy": 0.2353,
+        "track_a_strict_macro_f1": 0.1905,
+        "track_b_compatible_accuracy": 0.2353,
+        "track_b_compatible_macro_f1": 0.1905,
+        "per_class": {
+          "VALID": {
+            "precision": 1.0,
+            "recall": 0.2353,
+            "f1": 0.381,
+            "tp": 4,
+            "fp": 0,
+            "fn": 13,
+            "support": 17
+          },
+          "STALE": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 13,
+            "fn": 0,
+            "support": 0
+          },
+          "PARTIALLY_VALID": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "support": 0
+          }
+        }
+      },
+      "naive_rag": {
+        "total_cases": 17,
+        "accuracy": 0.0,
+        "macro_f1": 0.0,
+        "track_a_strict_accuracy": 0.0,
+        "track_a_strict_macro_f1": 0.0,
+        "track_b_compatible_accuracy": 0.0,
+        "track_b_compatible_macro_f1": 0.0,
+        "per_class": {
+          "VALID": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 17,
+            "support": 17
+          },
+          "STALE": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 17,
+            "fn": 0,
+            "support": 0
+          },
+          "PARTIALLY_VALID": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "support": 0
+          }
+        }
+      },
+      "rolemem": {
+        "total_cases": 17,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "track_a_strict_accuracy": 1.0,
+        "track_a_strict_macro_f1": 0.5,
+        "track_b_compatible_accuracy": 1.0,
+        "track_b_compatible_macro_f1": 0.5,
+        "per_class": {
+          "VALID": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 17,
+            "fp": 0,
+            "fn": 0,
+            "support": 17
+          },
+          "STALE": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "support": 0
+          },
+          "PARTIALLY_VALID": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "support": 0
+          }
+        }
+      }
+    },
+    "DEPENDENCY": {
+      "majority": {
+        "total_cases": 5,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "track_a_strict_accuracy": 1.0,
+        "track_a_strict_macro_f1": 0.5,
+        "track_b_compatible_accuracy": 1.0,
+        "track_b_compatible_macro_f1": 0.5,
+        "per_class": {
+          "VALID": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 5,
+            "fp": 0,
+            "fn": 0,
+            "support": 5
+          },
+          "STALE": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "support": 0
+          },
+          "PARTIALLY_VALID": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "support": 0
+          }
+        }
+      },
+      "static_ast": {
+        "total_cases": 5,
+        "accuracy": 0.0,
+        "macro_f1": 0.0,
+        "track_a_strict_accuracy": 0.0,
+        "track_a_strict_macro_f1": 0.0,
+        "track_b_compatible_accuracy": 0.0,
+        "track_b_compatible_macro_f1": 0.0,
+        "per_class": {
+          "VALID": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 5,
+            "support": 5
+          },
+          "STALE": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 5,
+            "fn": 0,
+            "support": 0
+          },
+          "PARTIALLY_VALID": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "support": 0
+          }
+        }
+      },
+      "naive_rag": {
+        "total_cases": 5,
+        "accuracy": 0.0,
+        "macro_f1": 0.0,
+        "track_a_strict_accuracy": 0.0,
+        "track_a_strict_macro_f1": 0.0,
+        "track_b_compatible_accuracy": 0.0,
+        "track_b_compatible_macro_f1": 0.0,
+        "per_class": {
+          "VALID": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 5,
+            "support": 5
+          },
+          "STALE": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 5,
+            "fn": 0,
+            "support": 0
+          },
+          "PARTIALLY_VALID": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "support": 0
+          }
+        }
+      },
+      "rolemem": {
+        "total_cases": 5,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "track_a_strict_accuracy": 1.0,
+        "track_a_strict_macro_f1": 0.5,
+        "track_b_compatible_accuracy": 1.0,
+        "track_b_compatible_macro_f1": 0.5,
+        "per_class": {
+          "VALID": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 5,
+            "fp": 0,
+            "fn": 0,
+            "support": 5
+          },
+          "STALE": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "support": 0
+          },
+          "PARTIALLY_VALID": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "support": 0
+          }
+        }
+      }
+    },
+    "CONFIG": {
+      "majority": {
+        "total_cases": 28,
+        "accuracy": 0.9286,
+        "macro_f1": 0.4815,
+        "track_a_strict_accuracy": 0.9286,
+        "track_a_strict_macro_f1": 0.4815,
+        "track_b_compatible_accuracy": 0.9286,
+        "track_b_compatible_macro_f1": 0.4815,
+        "per_class": {
+          "VALID": {
+            "precision": 0.9286,
+            "recall": 1.0,
+            "f1": 0.963,
+            "tp": 26,
+            "fp": 2,
+            "fn": 0,
+            "support": 26
+          },
+          "STALE": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "support": 2
+          },
+          "PARTIALLY_VALID": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "support": 0
+          }
+        }
+      },
+      "static_ast": {
+        "total_cases": 28,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "track_a_strict_accuracy": 1.0,
+        "track_a_strict_macro_f1": 1.0,
+        "track_b_compatible_accuracy": 1.0,
+        "track_b_compatible_macro_f1": 1.0,
+        "per_class": {
+          "VALID": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 26,
+            "fp": 0,
+            "fn": 0,
+            "support": 26
+          },
+          "STALE": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 2,
+            "fp": 0,
+            "fn": 0,
+            "support": 2
+          },
+          "PARTIALLY_VALID": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "support": 0
+          }
+        }
+      },
+      "naive_rag": {
+        "total_cases": 28,
+        "accuracy": 0.3929,
+        "macro_f1": 0.3524,
+        "track_a_strict_accuracy": 0.3929,
+        "track_a_strict_macro_f1": 0.3524,
+        "track_b_compatible_accuracy": 0.3929,
+        "track_b_compatible_macro_f1": 0.3524,
+        "per_class": {
+          "VALID": {
+            "precision": 1.0,
+            "recall": 0.3462,
+            "f1": 0.5143,
+            "tp": 9,
+            "fp": 0,
+            "fn": 17,
+            "support": 26
+          },
+          "STALE": {
+            "precision": 0.1053,
+            "recall": 1.0,
+            "f1": 0.1905,
+            "tp": 2,
+            "fp": 17,
+            "fn": 0,
+            "support": 2
+          },
+          "PARTIALLY_VALID": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "support": 0
+          }
+        }
+      },
+      "rolemem": {
+        "total_cases": 28,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "track_a_strict_accuracy": 1.0,
+        "track_a_strict_macro_f1": 1.0,
+        "track_b_compatible_accuracy": 1.0,
+        "track_b_compatible_macro_f1": 1.0,
+        "per_class": {
+          "VALID": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 26,
+            "fp": 0,
+            "fn": 0,
+            "support": 26
+          },
+          "STALE": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 2,
+            "fp": 0,
+            "fn": 0,
+            "support": 2
+          },
+          "PARTIALLY_VALID": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "support": 0
+          }
+        }
+      }
+    }
+  },
+  "by_fine_grained_type": {
+    "BEHAVIORAL_CONTRACT": {
+      "majority": {
+        "total_cases": 17,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "track_a_strict_accuracy": 1.0,
+        "track_a_strict_macro_f1": 0.5
+      },
+      "static_ast": {
+        "total_cases": 17,
+        "accuracy": 0.2353,
+        "macro_f1": 0.381,
+        "track_a_strict_accuracy": 0.2353,
+        "track_a_strict_macro_f1": 0.1905
+      },
+      "naive_rag": {
+        "total_cases": 17,
+        "accuracy": 0.0,
+        "macro_f1": 0.0,
+        "track_a_strict_accuracy": 0.0,
+        "track_a_strict_macro_f1": 0.0
+      },
+      "rolemem": {
+        "total_cases": 17,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "track_a_strict_accuracy": 1.0,
+        "track_a_strict_macro_f1": 0.5
+      }
+    },
+    "DEFAULT_VALUE": {
+      "majority": {
+        "total_cases": 50,
+        "accuracy": 0.58,
+        "macro_f1": 0.3671,
+        "track_a_strict_accuracy": 0.58,
+        "track_a_strict_macro_f1": 0.3671
+      },
+      "static_ast": {
+        "total_cases": 50,
+        "accuracy": 0.58,
+        "macro_f1": 0.3671,
+        "track_a_strict_accuracy": 0.58,
+        "track_a_strict_macro_f1": 0.3671
+      },
+      "naive_rag": {
+        "total_cases": 50,
+        "accuracy": 0.6,
+        "macro_f1": 0.5238,
+        "track_a_strict_accuracy": 0.6,
+        "track_a_strict_macro_f1": 0.5238
+      },
+      "rolemem": {
+        "total_cases": 50,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "track_a_strict_accuracy": 1.0,
+        "track_a_strict_macro_f1": 1.0
+      }
+    },
+    "DEPENDENCY_CONTRACT": {
+      "majority": {
+        "total_cases": 5,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "track_a_strict_accuracy": 1.0,
+        "track_a_strict_macro_f1": 0.5
+      },
+      "static_ast": {
+        "total_cases": 5,
+        "accuracy": 0.0,
+        "macro_f1": 0.0,
+        "track_a_strict_accuracy": 0.0,
+        "track_a_strict_macro_f1": 0.0
+      },
+      "naive_rag": {
+        "total_cases": 5,
+        "accuracy": 0.0,
+        "macro_f1": 0.0,
+        "track_a_strict_accuracy": 0.0,
+        "track_a_strict_macro_f1": 0.0
+      },
+      "rolemem": {
+        "total_cases": 5,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "track_a_strict_accuracy": 1.0,
+        "track_a_strict_macro_f1": 0.5
+      }
+    },
+    "DEPRECATION_STATUS": {
+      "majority": {
+        "total_cases": 28,
+        "accuracy": 0.9286,
+        "macro_f1": 0.4815,
+        "track_a_strict_accuracy": 0.9286,
+        "track_a_strict_macro_f1": 0.4815
+      },
+      "static_ast": {
+        "total_cases": 28,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "track_a_strict_accuracy": 1.0,
+        "track_a_strict_macro_f1": 1.0
+      },
+      "naive_rag": {
+        "total_cases": 28,
+        "accuracy": 0.3929,
+        "macro_f1": 0.3524,
+        "track_a_strict_accuracy": 0.3929,
+        "track_a_strict_macro_f1": 0.3524
+      },
+      "rolemem": {
+        "total_cases": 28,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "track_a_strict_accuracy": 1.0,
+        "track_a_strict_macro_f1": 1.0
+      }
+    },
+    "SIGNATURE_COMPATIBLE": {
+      "majority": {
+        "total_cases": 50,
+        "accuracy": 0.96,
+        "macro_f1": 0.3265,
+        "track_a_strict_accuracy": 0.96,
+        "track_a_strict_macro_f1": 0.4898
+      },
+      "static_ast": {
+        "total_cases": 50,
+        "accuracy": 0.96,
+        "macro_f1": 0.3265,
+        "track_a_strict_accuracy": 0.96,
+        "track_a_strict_macro_f1": 0.4898
+      },
+      "naive_rag": {
+        "total_cases": 50,
+        "accuracy": 0.82,
+        "macro_f1": 0.3037,
+        "track_a_strict_accuracy": 0.84,
+        "track_a_strict_macro_f1": 0.5555
+      },
+      "rolemem": {
+        "total_cases": 50,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "track_a_strict_accuracy": 1.0,
+        "track_a_strict_macro_f1": 1.0
+      }
+    }
+  },
+  "category_case_counts": {
+    "SIGNATURE": {
+      "total_cases": 50,
+      "valid_cases": 48,
+      "stale_cases": 1,
+      "partially_valid_cases": 1
+    },
+    "DEFAULT": {
+      "total_cases": 50,
+      "valid_cases": 29,
+      "stale_cases": 21,
+      "partially_valid_cases": 0
+    },
+    "BEHAVIOR": {
+      "total_cases": 17,
+      "valid_cases": 17,
+      "stale_cases": 0,
+      "partially_valid_cases": 0
+    },
+    "DEPENDENCY": {
+      "total_cases": 5,
+      "valid_cases": 5,
+      "stale_cases": 0,
+      "partially_valid_cases": 0
+    },
+    "CONFIG": {
+      "total_cases": 28,
+      "valid_cases": 26,
+      "stale_cases": 2,
+      "partially_valid_cases": 0
+    }
+  }
+}

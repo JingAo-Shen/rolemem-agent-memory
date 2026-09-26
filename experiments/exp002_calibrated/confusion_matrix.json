@@ -1,0 +1,17 @@
+{
+  "VALID": {
+    "VALID": 125,
+    "STALE": 0,
+    "PARTIALLY_VALID": 0
+  },
+  "STALE": {
+    "VALID": 0,
+    "STALE": 24,
+    "PARTIALLY_VALID": 0
+  },
+  "PARTIALLY_VALID": {
+    "VALID": 0,
+    "STALE": 0,
+    "PARTIALLY_VALID": 1
+  }
+}
