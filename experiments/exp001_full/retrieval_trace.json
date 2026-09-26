@@ -1,0 +1,4052 @@
+[
+  {
+    "case_id": "FV22-000001",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000002",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000003",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000004",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000005",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000006",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000007",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000008",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000009",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000010",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000011",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000012",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000013",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000014",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000015",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000016",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000017",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000018",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000019",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000020",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000021",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000022",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000023",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000024",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000025",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000026",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000027",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000028",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000029",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000030",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000031",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000032",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000033",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000034",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000035",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000036",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000037",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000038",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000039",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000040",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000041",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000042",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000043",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000044",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000045",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000046",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000047",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000048",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000049",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000050",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000051",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000052",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000053",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000054",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000055",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000056",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000057",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000058",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000059",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000060",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000061",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000062",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000063",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000064",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000065",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000066",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000067",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000068",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000069",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000070",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000071",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000072",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000073",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000074",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000075",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000076",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000077",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000078",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000079",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000080",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000081",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000082",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000083",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000084",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000085",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000086",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000087",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000088",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000089",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000090",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000091",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000092",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000093",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000094",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000095",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000096",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000097",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000098",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000099",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000100",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000101",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000102",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000103",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000104",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000105",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000106",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000107",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000108",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000109",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000110",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000111",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000112",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000113",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000114",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000115",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000116",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000117",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000118",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000119",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000120",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000121",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000122",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000123",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000124",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000125",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000126",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000127",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000128",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000129",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000130",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000131",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000132",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000133",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000134",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000135",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000136",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000137",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000138",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000139",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000140",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000141",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000142",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000143",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000144",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000145",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000146",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000147",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000148",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000149",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000150",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000001",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000002",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000003",
+    "method": "static_ast",
+    "predicted_label": "STALE",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000004",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000005",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000006",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000007",
+    "method": "static_ast",
+    "predicted_label": "STALE",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000008",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000009",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000010",
+    "method": "static_ast",
+    "predicted_label": "STALE",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000011",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000012",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000013",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000014",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000015",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000016",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000017",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000018",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000019",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000020",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000021",
+    "method": "static_ast",
+    "predicted_label": "STALE",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000022",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000023",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000024",
+    "method": "static_ast",
+    "predicted_label": "STALE",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000025",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000026",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000027",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000028",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000029",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000030",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000031",
+    "method": "static_ast",
+    "predicted_label": "STALE",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000032",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000033",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000034",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000035",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000036",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000037",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000038",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000039",
+    "method": "static_ast",
+    "predicted_label": "STALE",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000040",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000041",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000042",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000043",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000044",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000045",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000046",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000047",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000048",
+    "method": "static_ast",
+    "predicted_label": "STALE",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000049",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000050",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000051",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000052",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000053",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000054",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000055",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000056",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000057",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000058",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000059",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000060",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000061",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000062",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000063",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000064",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000065",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000066",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000067",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000068",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000069",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000070",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000071",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000072",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000073",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000074",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000075",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000076",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000077",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000078",
+    "method": "static_ast",
+    "predicted_label": "STALE",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000079",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000080",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000081",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000082",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000083",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000084",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000085",
+    "method": "static_ast",
+    "predicted_label": "STALE",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000086",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000087",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000088",
+    "method": "static_ast",
+    "predicted_label": "STALE",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000089",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000090",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000091",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000092",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000093",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000094",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000095",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000096",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000097",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000098",
+    "method": "static_ast",
+    "predicted_label": "STALE",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000099",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000100",
+    "method": "static_ast",
+    "predicted_label": "STALE",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000101",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000102",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000103",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000104",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000105",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000106",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000107",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000108",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000109",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000110",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000111",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000112",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000113",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000114",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000115",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000116",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000117",
+    "method": "static_ast",
+    "predicted_label": "STALE",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000118",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000119",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000120",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000121",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000122",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000123",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000124",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000125",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000126",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000127",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000128",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000129",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000130",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000131",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000132",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000133",
+    "method": "static_ast",
+    "predicted_label": "STALE",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000134",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000135",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000136",
+    "method": "static_ast",
+    "predicted_label": "STALE",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000137",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000138",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000139",
+    "method": "static_ast",
+    "predicted_label": "STALE",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000140",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000141",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000142",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000143",
+    "method": "static_ast",
+    "predicted_label": "STALE",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000144",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000145",
+    "method": "static_ast",
+    "predicted_label": "STALE",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000146",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000147",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000148",
+    "method": "static_ast",
+    "predicted_label": "STALE",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000149",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000150",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000001",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000002",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000003",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000004",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000005",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000006",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000007",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000008",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000009",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000010",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000011",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000012",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000013",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000014",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000015",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000016",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000017",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000018",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000019",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000020",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000021",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000022",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000023",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000024",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000025",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000026",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000027",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000028",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000029",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000030",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000031",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000032",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000033",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000034",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000035",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000036",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000037",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000038",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000039",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000040",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000041",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000042",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000043",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000044",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000045",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000046",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000047",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000048",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000049",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000050",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000051",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000052",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000053",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000054",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000055",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000056",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000057",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000058",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000059",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000060",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000061",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000062",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000063",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000064",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000065",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000066",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000067",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000068",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000069",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000070",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000071",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000072",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000073",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000074",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000075",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000076",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000077",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000078",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000079",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000080",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000081",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000082",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000083",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000084",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000085",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000086",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000087",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000088",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000089",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000090",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000091",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000092",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000093",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000094",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000095",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000096",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000097",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000098",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000099",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000100",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000101",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000102",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000103",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000104",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000105",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000106",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000107",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000108",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000109",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000110",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000111",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000112",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000113",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000114",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000115",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000116",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000117",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000118",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000119",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000120",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000121",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000122",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000123",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000124",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000125",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000126",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000127",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000128",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000129",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000130",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000131",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000132",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000133",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000134",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000135",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000136",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000137",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000138",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000139",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000140",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000141",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000142",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000143",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000144",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000145",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000146",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000147",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000148",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000149",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000150",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000001",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0053
+  },
+  {
+    "case_id": "FV22-000002",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0051
+  },
+  {
+    "case_id": "FV22-000003",
+    "method": "rolemem",
+    "claim_type": "DEPRECATION_STATUS",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0045
+  },
+  {
+    "case_id": "FV22-000004",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0065
+  },
+  {
+    "case_id": "FV22-000005",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0071
+  },
+  {
+    "case_id": "FV22-000006",
+    "method": "rolemem",
+    "claim_type": "DEPRECATION_STATUS",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0066
+  },
+  {
+    "case_id": "FV22-000007",
+    "method": "rolemem",
+    "claim_type": "BEHAVIORAL_CONTRACT",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0129
+  },
+  {
+    "case_id": "FV22-000008",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0043
+  },
+  {
+    "case_id": "FV22-000009",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.016
+  },
+  {
+    "case_id": "FV22-000010",
+    "method": "rolemem",
+    "claim_type": "BEHAVIORAL_CONTRACT",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_1_FILE_SEARCH",
+    "action_count": 1,
+    "elapsed_sec": 0.047
+  },
+  {
+    "case_id": "FV22-000011",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0097
+  },
+  {
+    "case_id": "FV22-000012",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0141
+  },
+  {
+    "case_id": "FV22-000013",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0185
+  },
+  {
+    "case_id": "FV22-000014",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0186
+  },
+  {
+    "case_id": "FV22-000015",
+    "method": "rolemem",
+    "claim_type": "DEPRECATION_STATUS",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0211
+  },
+  {
+    "case_id": "FV22-000016",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0049
+  },
+  {
+    "case_id": "FV22-000017",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0036
+  },
+  {
+    "case_id": "FV22-000018",
+    "method": "rolemem",
+    "claim_type": "DEPRECATION_STATUS",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0033
+  },
+  {
+    "case_id": "FV22-000019",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0093
+  },
+  {
+    "case_id": "FV22-000020",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0146
+  },
+  {
+    "case_id": "FV22-000021",
+    "method": "rolemem",
+    "claim_type": "DEPENDENCY_CONTRACT",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0076
+  },
+  {
+    "case_id": "FV22-000022",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0206
+  },
+  {
+    "case_id": "FV22-000023",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0137
+  },
+  {
+    "case_id": "FV22-000024",
+    "method": "rolemem",
+    "claim_type": "DEPENDENCY_CONTRACT",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0032
+  },
+  {
+    "case_id": "FV22-000025",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0099
+  },
+  {
+    "case_id": "FV22-000026",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0181
+  },
+  {
+    "case_id": "FV22-000027",
+    "method": "rolemem",
+    "claim_type": "DEPRECATION_STATUS",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0095
+  },
+  {
+    "case_id": "FV22-000028",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0127
+  },
+  {
+    "case_id": "FV22-000029",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0136
+  },
+  {
+    "case_id": "FV22-000030",
+    "method": "rolemem",
+    "claim_type": "DEPRECATION_STATUS",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0202
+  },
+  {
+    "case_id": "FV22-000031",
+    "method": "rolemem",
+    "claim_type": "BEHAVIORAL_CONTRACT",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.008
+  },
+  {
+    "case_id": "FV22-000032",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0235
+  },
+  {
+    "case_id": "FV22-000033",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0182
+  },
+  {
+    "case_id": "FV22-000034",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.013
+  },
+  {
+    "case_id": "FV22-000035",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0132
+  },
+  {
+    "case_id": "FV22-000036",
+    "method": "rolemem",
+    "claim_type": "DEPRECATION_STATUS",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0113
+  },
+  {
+    "case_id": "FV22-000037",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0273
+  },
+  {
+    "case_id": "FV22-000038",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0179
+  },
+  {
+    "case_id": "FV22-000039",
+    "method": "rolemem",
+    "claim_type": "DEPENDENCY_CONTRACT",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0042
+  },
+  {
+    "case_id": "FV22-000040",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0184
+  },
+  {
+    "case_id": "FV22-000041",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.005
+  },
+  {
+    "case_id": "FV22-000042",
+    "method": "rolemem",
+    "claim_type": "DEPRECATION_STATUS",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0376
+  },
+  {
+    "case_id": "FV22-000043",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0053
+  },
+  {
+    "case_id": "FV22-000044",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0072
+  },
+  {
+    "case_id": "FV22-000045",
+    "method": "rolemem",
+    "claim_type": "DEPRECATION_STATUS",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0045
+  },
+  {
+    "case_id": "FV22-000046",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0103
+  },
+  {
+    "case_id": "FV22-000047",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0092
+  },
+  {
+    "case_id": "FV22-000048",
+    "method": "rolemem",
+    "claim_type": "DEPENDENCY_CONTRACT",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0044
+  },
+  {
+    "case_id": "FV22-000049",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0106
+  },
+  {
+    "case_id": "FV22-000050",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.008
+  },
+  {
+    "case_id": "FV22-000051",
+    "method": "rolemem",
+    "claim_type": "DEPRECATION_STATUS",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0058
+  },
+  {
+    "case_id": "FV22-000052",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0133
+  },
+  {
+    "case_id": "FV22-000053",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0129
+  },
+  {
+    "case_id": "FV22-000054",
+    "method": "rolemem",
+    "claim_type": "DEPRECATION_STATUS",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0056
+  },
+  {
+    "case_id": "FV22-000055",
+    "method": "rolemem",
+    "claim_type": "BEHAVIORAL_CONTRACT",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0082
+  },
+  {
+    "case_id": "FV22-000056",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0187
+  },
+  {
+    "case_id": "FV22-000057",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0195
+  },
+  {
+    "case_id": "FV22-000058",
+    "method": "rolemem",
+    "claim_type": "BEHAVIORAL_CONTRACT",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0117
+  },
+  {
+    "case_id": "FV22-000059",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0421
+  },
+  {
+    "case_id": "FV22-000060",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0312
+  },
+  {
+    "case_id": "FV22-000061",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0097
+  },
+  {
+    "case_id": "FV22-000062",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0107
+  },
+  {
+    "case_id": "FV22-000063",
+    "method": "rolemem",
+    "claim_type": "DEPRECATION_STATUS",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0118
+  },
+  {
+    "case_id": "FV22-000064",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0349
+  },
+  {
+    "case_id": "FV22-000065",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0135
+  },
+  {
+    "case_id": "FV22-000066",
+    "method": "rolemem",
+    "claim_type": "DEPRECATION_STATUS",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0129
+  },
+  {
+    "case_id": "FV22-000067",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0099
+  },
+  {
+    "case_id": "FV22-000068",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0254
+  },
+  {
+    "case_id": "FV22-000069",
+    "method": "rolemem",
+    "claim_type": "DEPRECATION_STATUS",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0102
+  },
+  {
+    "case_id": "FV22-000070",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0205
+  },
+  {
+    "case_id": "FV22-000071",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0247
+  },
+  {
+    "case_id": "FV22-000072",
+    "method": "rolemem",
+    "claim_type": "DEPRECATION_STATUS",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0133
+  },
+  {
+    "case_id": "FV22-000073",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0224
+  },
+  {
+    "case_id": "FV22-000074",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0443
+  },
+  {
+    "case_id": "FV22-000075",
+    "method": "rolemem",
+    "claim_type": "DEPRECATION_STATUS",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0097
+  },
+  {
+    "case_id": "FV22-000076",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0228
+  },
+  {
+    "case_id": "FV22-000077",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0148
+  },
+  {
+    "case_id": "FV22-000078",
+    "method": "rolemem",
+    "claim_type": "DEPRECATION_STATUS",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0071
+  },
+  {
+    "case_id": "FV22-000079",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.1156
+  },
+  {
+    "case_id": "FV22-000080",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.1167
+  },
+  {
+    "case_id": "FV22-000081",
+    "method": "rolemem",
+    "claim_type": "DEPRECATION_STATUS",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.1084
+  },
+  {
+    "case_id": "FV22-000082",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.1106
+  },
+  {
+    "case_id": "FV22-000083",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.1127
+  },
+  {
+    "case_id": "FV22-000084",
+    "method": "rolemem",
+    "claim_type": "DEPRECATION_STATUS",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.1278
+  },
+  {
+    "case_id": "FV22-000085",
+    "method": "rolemem",
+    "claim_type": "BEHAVIORAL_CONTRACT",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0058
+  },
+  {
+    "case_id": "FV22-000086",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0053
+  },
+  {
+    "case_id": "FV22-000087",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0096
+  },
+  {
+    "case_id": "FV22-000088",
+    "method": "rolemem",
+    "claim_type": "BEHAVIORAL_CONTRACT",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0058
+  },
+  {
+    "case_id": "FV22-000089",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0051
+  },
+  {
+    "case_id": "FV22-000090",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0064
+  },
+  {
+    "case_id": "FV22-000091",
+    "method": "rolemem",
+    "claim_type": "BEHAVIORAL_CONTRACT",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_1_FILE_SEARCH",
+    "action_count": 1,
+    "elapsed_sec": 0.0751
+  },
+  {
+    "case_id": "FV22-000092",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0314
+  },
+  {
+    "case_id": "FV22-000093",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0158
+  },
+  {
+    "case_id": "FV22-000094",
+    "method": "rolemem",
+    "claim_type": "BEHAVIORAL_CONTRACT",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_1_FILE_SEARCH",
+    "action_count": 1,
+    "elapsed_sec": 0.0645
+  },
+  {
+    "case_id": "FV22-000095",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.015
+  },
+  {
+    "case_id": "FV22-000096",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_1_FILE_SEARCH",
+    "action_count": 1,
+    "elapsed_sec": 0.0219
+  },
+  {
+    "case_id": "FV22-000097",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0191
+  },
+  {
+    "case_id": "FV22-000098",
+    "method": "rolemem",
+    "claim_type": "BEHAVIORAL_CONTRACT",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_1_FILE_SEARCH",
+    "action_count": 1,
+    "elapsed_sec": 0.0552
+  },
+  {
+    "case_id": "FV22-000099",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0094
+  },
+  {
+    "case_id": "FV22-000100",
+    "method": "rolemem",
+    "claim_type": "BEHAVIORAL_CONTRACT",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0039
+  },
+  {
+    "case_id": "FV22-000101",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0152
+  },
+  {
+    "case_id": "FV22-000102",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0099
+  },
+  {
+    "case_id": "FV22-000103",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.006
+  },
+  {
+    "case_id": "FV22-000104",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0096
+  },
+  {
+    "case_id": "FV22-000105",
+    "method": "rolemem",
+    "claim_type": "DEPRECATION_STATUS",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0052
+  },
+  {
+    "case_id": "FV22-000106",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.029
+  },
+  {
+    "case_id": "FV22-000107",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0066
+  },
+  {
+    "case_id": "FV22-000108",
+    "method": "rolemem",
+    "claim_type": "DEPRECATION_STATUS",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0681
+  },
+  {
+    "case_id": "FV22-000109",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0134
+  },
+  {
+    "case_id": "FV22-000110",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0238
+  },
+  {
+    "case_id": "FV22-000111",
+    "method": "rolemem",
+    "claim_type": "DEPRECATION_STATUS",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0135
+  },
+  {
+    "case_id": "FV22-000112",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0209
+  },
+  {
+    "case_id": "FV22-000113",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0181
+  },
+  {
+    "case_id": "FV22-000114",
+    "method": "rolemem",
+    "claim_type": "DEPRECATION_STATUS",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0181
+  },
+  {
+    "case_id": "FV22-000115",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0056
+  },
+  {
+    "case_id": "FV22-000116",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0145
+  },
+  {
+    "case_id": "FV22-000117",
+    "method": "rolemem",
+    "claim_type": "DEPENDENCY_CONTRACT",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0069
+  },
+  {
+    "case_id": "FV22-000118",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0192
+  },
+  {
+    "case_id": "FV22-000119",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0117
+  },
+  {
+    "case_id": "FV22-000120",
+    "method": "rolemem",
+    "claim_type": "DEPRECATION_STATUS",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0043
+  },
+  {
+    "case_id": "FV22-000121",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0057
+  },
+  {
+    "case_id": "FV22-000122",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.007
+  },
+  {
+    "case_id": "FV22-000123",
+    "method": "rolemem",
+    "claim_type": "DEPRECATION_STATUS",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0196
+  },
+  {
+    "case_id": "FV22-000124",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0056
+  },
+  {
+    "case_id": "FV22-000125",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.006
+  },
+  {
+    "case_id": "FV22-000126",
+    "method": "rolemem",
+    "claim_type": "DEPRECATION_STATUS",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0168
+  },
+  {
+    "case_id": "FV22-000127",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.013
+  },
+  {
+    "case_id": "FV22-000128",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.022
+  },
+  {
+    "case_id": "FV22-000129",
+    "method": "rolemem",
+    "claim_type": "DEPRECATION_STATUS",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.014
+  },
+  {
+    "case_id": "FV22-000130",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0156
+  },
+  {
+    "case_id": "FV22-000131",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0156
+  },
+  {
+    "case_id": "FV22-000132",
+    "method": "rolemem",
+    "claim_type": "DEPRECATION_STATUS",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0219
+  },
+  {
+    "case_id": "FV22-000133",
+    "method": "rolemem",
+    "claim_type": "BEHAVIORAL_CONTRACT",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.013
+  },
+  {
+    "case_id": "FV22-000134",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0128
+  },
+  {
+    "case_id": "FV22-000135",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0134
+  },
+  {
+    "case_id": "FV22-000136",
+    "method": "rolemem",
+    "claim_type": "BEHAVIORAL_CONTRACT",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0091
+  },
+  {
+    "case_id": "FV22-000137",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0081
+  },
+  {
+    "case_id": "FV22-000138",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0068
+  },
+  {
+    "case_id": "FV22-000139",
+    "method": "rolemem",
+    "claim_type": "BEHAVIORAL_CONTRACT",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0072
+  },
+  {
+    "case_id": "FV22-000140",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.019
+  },
+  {
+    "case_id": "FV22-000141",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.009
+  },
+  {
+    "case_id": "FV22-000142",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0139
+  },
+  {
+    "case_id": "FV22-000143",
+    "method": "rolemem",
+    "claim_type": "BEHAVIORAL_CONTRACT",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0203
+  },
+  {
+    "case_id": "FV22-000144",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0153
+  },
+  {
+    "case_id": "FV22-000145",
+    "method": "rolemem",
+    "claim_type": "BEHAVIORAL_CONTRACT",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0087
+  },
+  {
+    "case_id": "FV22-000146",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0208
+  },
+  {
+    "case_id": "FV22-000147",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0124
+  },
+  {
+    "case_id": "FV22-000148",
+    "method": "rolemem",
+    "claim_type": "BEHAVIORAL_CONTRACT",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0097
+  },
+  {
+    "case_id": "FV22-000149",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0175
+  },
+  {
+    "case_id": "FV22-000150",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0155
+  }
+]

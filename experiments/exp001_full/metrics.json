@@ -1,0 +1,459 @@
+{
+  "experiment_metadata": {
+    "evaluated_cases_count": 150,
+    "track": "strict",
+    "methods_evaluated": [
+      "majority",
+      "static_ast",
+      "naive_rag",
+      "rolemem"
+    ],
+    "timestamp": "2026-09-26T07:45:01Z"
+  },
+  "methods": {
+    "majority": {
+      "total_evaluated": 150,
+      "primary_3class": {
+        "accuracy": 0.8333,
+        "macro_f1": 0.303,
+        "per_class": {
+          "VALID": {
+            "precision": 0.8333,
+            "recall": 1.0,
+            "f1": 0.9091,
+            "tp": 125,
+            "fp": 25,
+            "fn": 0,
+            "support": 125
+          },
+          "STALE": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 24,
+            "support": 24
+          },
+          "PARTIALLY_VALID": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 1,
+            "support": 1
+          }
+        },
+        "confusion_matrix": {
+          "VALID": {
+            "VALID": 125,
+            "STALE": 0,
+            "PARTIALLY_VALID": 0
+          },
+          "STALE": {
+            "VALID": 24,
+            "STALE": 0,
+            "PARTIALLY_VALID": 0
+          },
+          "PARTIALLY_VALID": {
+            "VALID": 1,
+            "STALE": 0,
+            "PARTIALLY_VALID": 0
+          }
+        }
+      },
+      "track_a_strict": {
+        "accuracy": 0.8333,
+        "macro_f1": 0.4546,
+        "per_class": {
+          "VALID": {
+            "precision": 0.8333,
+            "recall": 1.0,
+            "f1": 0.9091,
+            "tp": 125,
+            "fp": 25,
+            "fn": 0,
+            "support": 125
+          },
+          "STALE": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 25,
+            "support": 25
+          }
+        }
+      },
+      "track_b_compatible": {
+        "accuracy": 0.84,
+        "macro_f1": 0.4565,
+        "per_class": {
+          "VALID": {
+            "precision": 0.84,
+            "recall": 1.0,
+            "f1": 0.913,
+            "tp": 126,
+            "fp": 24,
+            "fn": 0,
+            "support": 126
+          },
+          "STALE": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 24,
+            "support": 24
+          }
+        }
+      },
+      "selective_risk_metrics": {
+        "coverage": 1.0,
+        "selective_risk": 0.1667,
+        "false_invalid_rate_FIR": 0.0,
+        "stale_escape_rate_SER": 1.0
+      },
+      "operational_efficiency": {
+        "avg_action_count": 0.0,
+        "avg_wall_time_sec": 0.0
+      }
+    },
+    "static_ast": {
+      "total_evaluated": 150,
+      "primary_3class": {
+        "accuracy": 0.7267,
+        "macro_f1": 0.31,
+        "per_class": {
+          "VALID": {
+            "precision": 0.8231,
+            "recall": 0.856,
+            "f1": 0.8392,
+            "tp": 107,
+            "fp": 23,
+            "fn": 18,
+            "support": 125
+          },
+          "STALE": {
+            "precision": 0.1,
+            "recall": 0.0833,
+            "f1": 0.0909,
+            "tp": 2,
+            "fp": 18,
+            "fn": 22,
+            "support": 24
+          },
+          "PARTIALLY_VALID": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 1,
+            "support": 1
+          }
+        },
+        "confusion_matrix": {
+          "VALID": {
+            "VALID": 107,
+            "STALE": 18,
+            "PARTIALLY_VALID": 0
+          },
+          "STALE": {
+            "VALID": 22,
+            "STALE": 2,
+            "PARTIALLY_VALID": 0
+          },
+          "PARTIALLY_VALID": {
+            "VALID": 1,
+            "STALE": 0,
+            "PARTIALLY_VALID": 0
+          }
+        }
+      },
+      "track_a_strict": {
+        "accuracy": 0.7267,
+        "macro_f1": 0.464,
+        "per_class": {
+          "VALID": {
+            "precision": 0.8231,
+            "recall": 0.856,
+            "f1": 0.8392,
+            "tp": 107,
+            "fp": 23,
+            "fn": 18,
+            "support": 125
+          },
+          "STALE": {
+            "precision": 0.1,
+            "recall": 0.08,
+            "f1": 0.0889,
+            "tp": 2,
+            "fp": 18,
+            "fn": 23,
+            "support": 25
+          }
+        }
+      },
+      "track_b_compatible": {
+        "accuracy": 0.7333,
+        "macro_f1": 0.4673,
+        "per_class": {
+          "VALID": {
+            "precision": 0.8308,
+            "recall": 0.8571,
+            "f1": 0.8438,
+            "tp": 108,
+            "fp": 22,
+            "fn": 18,
+            "support": 126
+          },
+          "STALE": {
+            "precision": 0.1,
+            "recall": 0.0833,
+            "f1": 0.0909,
+            "tp": 2,
+            "fp": 18,
+            "fn": 22,
+            "support": 24
+          }
+        }
+      },
+      "selective_risk_metrics": {
+        "coverage": 1.0,
+        "selective_risk": 0.2733,
+        "false_invalid_rate_FIR": 0.144,
+        "stale_escape_rate_SER": 0.9167
+      },
+      "operational_efficiency": {
+        "avg_action_count": 1.0,
+        "avg_wall_time_sec": 0.0058
+      }
+    },
+    "naive_rag": {
+      "total_evaluated": 150,
+      "primary_3class": {
+        "accuracy": 0.5467,
+        "macro_f1": 0.2873,
+        "per_class": {
+          "VALID": {
+            "precision": 0.8152,
+            "recall": 0.6,
+            "f1": 0.6912,
+            "tp": 75,
+            "fp": 17,
+            "fn": 50,
+            "support": 125
+          },
+          "STALE": {
+            "precision": 0.1207,
+            "recall": 0.2917,
+            "f1": 0.1707,
+            "tp": 7,
+            "fp": 51,
+            "fn": 17,
+            "support": 24
+          },
+          "PARTIALLY_VALID": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 1,
+            "support": 1
+          }
+        },
+        "confusion_matrix": {
+          "VALID": {
+            "VALID": 75,
+            "STALE": 50,
+            "PARTIALLY_VALID": 0
+          },
+          "STALE": {
+            "VALID": 17,
+            "STALE": 7,
+            "PARTIALLY_VALID": 0
+          },
+          "PARTIALLY_VALID": {
+            "VALID": 0,
+            "STALE": 1,
+            "PARTIALLY_VALID": 0
+          }
+        }
+      },
+      "track_a_strict": {
+        "accuracy": 0.5533,
+        "macro_f1": 0.442,
+        "per_class": {
+          "VALID": {
+            "precision": 0.8152,
+            "recall": 0.6,
+            "f1": 0.6912,
+            "tp": 75,
+            "fp": 17,
+            "fn": 50,
+            "support": 125
+          },
+          "STALE": {
+            "precision": 0.1379,
+            "recall": 0.32,
+            "f1": 0.1928,
+            "tp": 8,
+            "fp": 50,
+            "fn": 17,
+            "support": 25
+          }
+        }
+      },
+      "track_b_compatible": {
+        "accuracy": 0.5467,
+        "macro_f1": 0.4294,
+        "per_class": {
+          "VALID": {
+            "precision": 0.8152,
+            "recall": 0.5952,
+            "f1": 0.6881,
+            "tp": 75,
+            "fp": 17,
+            "fn": 51,
+            "support": 126
+          },
+          "STALE": {
+            "precision": 0.1207,
+            "recall": 0.2917,
+            "f1": 0.1707,
+            "tp": 7,
+            "fp": 51,
+            "fn": 17,
+            "support": 24
+          }
+        }
+      },
+      "selective_risk_metrics": {
+        "coverage": 1.0,
+        "selective_risk": 0.4533,
+        "false_invalid_rate_FIR": 0.4,
+        "stale_escape_rate_SER": 0.7083
+      },
+      "operational_efficiency": {
+        "avg_action_count": 2.0,
+        "avg_wall_time_sec": 0.0051
+      }
+    },
+    "rolemem": {
+      "total_evaluated": 150,
+      "primary_3class": {
+        "accuracy": 0.48,
+        "macro_f1": 0.3523,
+        "per_class": {
+          "VALID": {
+            "precision": 0.9796,
+            "recall": 0.384,
+            "f1": 0.5517,
+            "tp": 48,
+            "fp": 1,
+            "fn": 77,
+            "support": 125
+          },
+          "STALE": {
+            "precision": 0.338,
+            "recall": 1.0,
+            "f1": 0.5053,
+            "tp": 24,
+            "fp": 47,
+            "fn": 0,
+            "support": 24
+          },
+          "PARTIALLY_VALID": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 1,
+            "support": 1
+          }
+        },
+        "confusion_matrix": {
+          "VALID": {
+            "VALID": 48,
+            "STALE": 47,
+            "PARTIALLY_VALID": 0
+          },
+          "STALE": {
+            "VALID": 0,
+            "STALE": 24,
+            "PARTIALLY_VALID": 0
+          },
+          "PARTIALLY_VALID": {
+            "VALID": 1,
+            "STALE": 0,
+            "PARTIALLY_VALID": 0
+          }
+        }
+      },
+      "track_a_strict": {
+        "accuracy": 0.48,
+        "macro_f1": 0.5258,
+        "per_class": {
+          "VALID": {
+            "precision": 0.9796,
+            "recall": 0.384,
+            "f1": 0.5517,
+            "tp": 48,
+            "fp": 1,
+            "fn": 77,
+            "support": 125
+          },
+          "STALE": {
+            "precision": 0.338,
+            "recall": 0.96,
+            "f1": 0.5,
+            "tp": 24,
+            "fp": 47,
+            "fn": 1,
+            "support": 25
+          }
+        }
+      },
+      "track_b_compatible": {
+        "accuracy": 0.4867,
+        "macro_f1": 0.5327,
+        "per_class": {
+          "VALID": {
+            "precision": 1.0,
+            "recall": 0.3889,
+            "f1": 0.56,
+            "tp": 49,
+            "fp": 0,
+            "fn": 77,
+            "support": 126
+          },
+          "STALE": {
+            "precision": 0.338,
+            "recall": 1.0,
+            "f1": 0.5053,
+            "tp": 24,
+            "fp": 47,
+            "fn": 0,
+            "support": 24
+          }
+        }
+      },
+      "selective_risk_metrics": {
+        "coverage": 0.8,
+        "selective_risk": 0.65,
+        "false_invalid_rate_FIR": 0.376,
+        "stale_escape_rate_SER": 0.0
+      },
+      "operational_efficiency": {
+        "avg_action_count": 0.03,
+        "avg_wall_time_sec": 0.0191
+      }
+    }
+  }
+}
