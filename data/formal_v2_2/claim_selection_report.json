@@ -1,0 +1,530 @@
+{
+  "protocol_version": "2.2-formal-v1.0",
+  "report_type": "CLAIM_SELECTION_REPORT",
+  "generated_at": "2026-09-26T06:49:59.391408+00:00",
+  "candidate_pool_size": 35369,
+  "selected_claims_count": 150,
+  "random_seed": 3407,
+  "summary_metrics": {
+    "total_repositories": 25,
+    "repositories_represented": 25,
+    "claims_per_repository": 6,
+    "total_transitions": 50,
+    "transitions_represented": 50,
+    "claims_per_transition": 3,
+    "max_single_claim_type_percentage": 33.33,
+    "trivial_existence_percentage": 0.0
+  },
+  "claim_type_distribution_comparison": {
+    "BEHAVIORAL_CONTRACT": {
+      "candidate_count": 98,
+      "candidate_percentage": 0.28,
+      "selected_count": 17,
+      "selected_percentage": 11.33
+    },
+    "CALLABLE": {
+      "candidate_count": 7998,
+      "candidate_percentage": 22.61,
+      "selected_count": 0,
+      "selected_percentage": 0.0
+    },
+    "DEFAULT_VALUE": {
+      "candidate_count": 4629,
+      "candidate_percentage": 13.09,
+      "selected_count": 50,
+      "selected_percentage": 33.33
+    },
+    "DEPENDENCY_CONTRACT": {
+      "candidate_count": 122,
+      "candidate_percentage": 0.34,
+      "selected_count": 5,
+      "selected_percentage": 3.33
+    },
+    "DEPRECATION_STATUS": {
+      "candidate_count": 4214,
+      "candidate_percentage": 11.91,
+      "selected_count": 28,
+      "selected_percentage": 18.67
+    },
+    "IMPORT_PATH_VALID": {
+      "candidate_count": 1125,
+      "candidate_percentage": 3.18,
+      "selected_count": 0,
+      "selected_percentage": 0.0
+    },
+    "SIGNATURE_COMPATIBLE": {
+      "candidate_count": 9185,
+      "candidate_percentage": 25.97,
+      "selected_count": 50,
+      "selected_percentage": 33.33
+    },
+    "SYMBOL_EXISTS": {
+      "candidate_count": 7998,
+      "candidate_percentage": 22.61,
+      "selected_count": 0,
+      "selected_percentage": 0.0
+    }
+  },
+  "category_distribution_comparison": {
+    "cli_packages": {
+      "candidate_count": 10269,
+      "candidate_percentage": 29.03,
+      "selected_count": 18,
+      "selected_percentage": 12.0
+    },
+    "data_utility": {
+      "candidate_count": 3962,
+      "candidate_percentage": 11.2,
+      "selected_count": 30,
+      "selected_percentage": 20.0
+    },
+    "developer_tools": {
+      "candidate_count": 7708,
+      "candidate_percentage": 21.79,
+      "selected_count": 42,
+      "selected_percentage": 28.0
+    },
+    "infrastructure": {
+      "candidate_count": 2446,
+      "candidate_percentage": 6.92,
+      "selected_count": 12,
+      "selected_percentage": 8.0
+    },
+    "libraries": {
+      "candidate_count": 2401,
+      "candidate_percentage": 6.79,
+      "selected_count": 24,
+      "selected_percentage": 16.0
+    },
+    "web_backend": {
+      "candidate_count": 8583,
+      "candidate_percentage": 24.27,
+      "selected_count": 24,
+      "selected_percentage": 16.0
+    }
+  },
+  "repository_representation_check": {
+    "PyCQA/isort": {
+      "candidate_count": 600,
+      "selected_count": 6,
+      "quota_status": "EXACT_6_PASS"
+    },
+    "PyCQA/pyflakes": {
+      "candidate_count": 722,
+      "selected_count": 6,
+      "quota_status": "EXACT_6_PASS"
+    },
+    "agronholm/anyio": {
+      "candidate_count": 2272,
+      "selected_count": 6,
+      "quota_status": "EXACT_6_PASS"
+    },
+    "arrow-py/arrow": {
+      "candidate_count": 402,
+      "selected_count": 6,
+      "quota_status": "EXACT_6_PASS"
+    },
+    "borntyping/python-colorlog": {
+      "candidate_count": 207,
+      "selected_count": 6,
+      "quota_status": "EXACT_6_PASS"
+    },
+    "bottlepy/bottle": {
+      "candidate_count": 1082,
+      "selected_count": 6,
+      "quota_status": "EXACT_6_PASS"
+    },
+    "frictionlessdata/frictionless-py": {
+      "candidate_count": 2847,
+      "selected_count": 6,
+      "quota_status": "EXACT_6_PASS"
+    },
+    "iterative/shtab": {
+      "candidate_count": 178,
+      "selected_count": 6,
+      "quota_status": "EXACT_6_PASS"
+    },
+    "marshmallow-code/apispec": {
+      "candidate_count": 552,
+      "selected_count": 6,
+      "quota_status": "EXACT_6_PASS"
+    },
+    "marshmallow-code/webargs": {
+      "candidate_count": 565,
+      "selected_count": 6,
+      "quota_status": "EXACT_6_PASS"
+    },
+    "msgpack/msgpack-python": {
+      "candidate_count": 238,
+      "selected_count": 6,
+      "quota_status": "EXACT_6_PASS"
+    },
+    "prompt-toolkit/python-prompt-toolkit": {
+      "candidate_count": 5903,
+      "selected_count": 6,
+      "quota_status": "EXACT_6_PASS"
+    },
+    "psf/black": {
+      "candidate_count": 3373,
+      "selected_count": 6,
+      "quota_status": "EXACT_6_PASS"
+    },
+    "pypa/build": {
+      "candidate_count": 551,
+      "selected_count": 6,
+      "quota_status": "EXACT_6_PASS"
+    },
+    "pypa/flit": {
+      "candidate_count": 1046,
+      "selected_count": 6,
+      "quota_status": "EXACT_6_PASS"
+    },
+    "pypa/twine": {
+      "candidate_count": 409,
+      "selected_count": 6,
+      "quota_status": "EXACT_6_PASS"
+    },
+    "pypa/wheel": {
+      "candidate_count": 1007,
+      "selected_count": 6,
+      "quota_status": "EXACT_6_PASS"
+    },
+    "samuelcolvin/watchfiles": {
+      "candidate_count": 174,
+      "selected_count": 6,
+      "quota_status": "EXACT_6_PASS"
+    },
+    "tartley/colorama": {
+      "candidate_count": 366,
+      "selected_count": 6,
+      "quota_status": "EXACT_6_PASS"
+    },
+    "tiangolo/typer": {
+      "candidate_count": 4188,
+      "selected_count": 6,
+      "quota_status": "EXACT_6_PASS"
+    },
+    "tornadoweb/tornado": {
+      "candidate_count": 6384,
+      "selected_count": 6,
+      "quota_status": "EXACT_6_PASS"
+    },
+    "wireservice/agate-excel": {
+      "candidate_count": 85,
+      "selected_count": 6,
+      "quota_status": "EXACT_6_PASS"
+    },
+    "wireservice/agate-sql": {
+      "candidate_count": 111,
+      "selected_count": 6,
+      "quota_status": "EXACT_6_PASS"
+    },
+    "wireservice/csvkit": {
+      "candidate_count": 712,
+      "selected_count": 6,
+      "quota_status": "EXACT_6_PASS"
+    },
+    "yaml/pyyaml": {
+      "candidate_count": 1395,
+      "selected_count": 6,
+      "quota_status": "EXACT_6_PASS"
+    }
+  },
+  "transition_representation_check": {
+    "TR-001": {
+      "candidate_count": 37,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-002": {
+      "candidate_count": 48,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-003": {
+      "candidate_count": 310,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-004": {
+      "candidate_count": 242,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-005": {
+      "candidate_count": 688,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-006": {
+      "candidate_count": 707,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-007": {
+      "candidate_count": 58,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-008": {
+      "candidate_count": 53,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-009": {
+      "candidate_count": 472,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-010": {
+      "candidate_count": 240,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-011": {
+      "candidate_count": 93,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-012": {
+      "candidate_count": 85,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-013": {
+      "candidate_count": 110,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-014": {
+      "candidate_count": 490,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-015": {
+      "candidate_count": 182,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-016": {
+      "candidate_count": 25,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-017": {
+      "candidate_count": 183,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-018": {
+      "candidate_count": 183,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-019": {
+      "candidate_count": 118,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-020": {
+      "candidate_count": 120,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-021": {
+      "candidate_count": 3080,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-022": {
+      "candidate_count": 3304,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-023": {
+      "candidate_count": 640,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-024": {
+      "candidate_count": 406,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-025": {
+      "candidate_count": 1660,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-026": {
+      "candidate_count": 1713,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-027": {
+      "candidate_count": 541,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-028": {
+      "candidate_count": 541,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-029": {
+      "candidate_count": 200,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-030": {
+      "candidate_count": 209,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-031": {
+      "candidate_count": 2999,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-032": {
+      "candidate_count": 2904,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-033": {
+      "candidate_count": 324,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-034": {
+      "candidate_count": 683,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-035": {
+      "candidate_count": 269,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-036": {
+      "candidate_count": 453,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-037": {
+      "candidate_count": 237,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-038": {
+      "candidate_count": 314,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-039": {
+      "candidate_count": 163,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-040": {
+      "candidate_count": 239,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-041": {
+      "candidate_count": 275,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-042": {
+      "candidate_count": 290,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-043": {
+      "candidate_count": 1959,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-044": {
+      "candidate_count": 2229,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-045": {
+      "candidate_count": 86,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-046": {
+      "candidate_count": 88,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-047": {
+      "candidate_count": 1414,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-048": {
+      "candidate_count": 1433,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-049": {
+      "candidate_count": 1327,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    },
+    "TR-050": {
+      "candidate_count": 945,
+      "selected_count": 3,
+      "quota_status": "EXACT_3_PASS"
+    }
+  },
+  "human_audit_subsample": {
+    "sample_size": 30,
+    "sample_fraction": 0.2,
+    "candidate_ids": [
+      "CAND-3076",
+      "CAND-24286",
+      "CAND-33728",
+      "CAND-25080",
+      "CAND-3650",
+      "CAND-15857",
+      "CAND-31645",
+      "CAND-2965",
+      "CAND-0117",
+      "CAND-25523",
+      "CAND-4441",
+      "CAND-21728",
+      "CAND-15102",
+      "CAND-24852",
+      "CAND-11594",
+      "CAND-16469",
+      "CAND-22958",
+      "CAND-30136",
+      "CAND-3977",
+      "CAND-27788",
+      "CAND-7472",
+      "CAND-0003",
+      "CAND-2093",
+      "CAND-2823",
+      "CAND-1320",
+      "CAND-2085",
+      "CAND-19737",
+      "CAND-23646",
+      "CAND-3018",
+      "CAND-4160"
+    ]
+  },
+  "diversity_compliance": {
+    "fifty_percent_single_type_cap_satisfied": true,
+    "trivial_existence_cap_satisfied": true,
+    "repository_uniformity_satisfied": true,
+    "transition_uniformity_satisfied": true,
+    "zero_gold_leakage": true,
+    "zero_rolemem_predictions": true
+  },
+  "selection_verdict": "SELECTION_DESIGN_COMPLETE_VALID"
+}

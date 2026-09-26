@@ -1,0 +1,13 @@
+{
+  "protocol_version": "2.2-formal-v1.0",
+  "attestation_type": "CLAIM_SELECTION_PROTOCOL_ATTESTATION",
+  "attested_at": "2026-09-26T06:50:09.004778+00:00",
+  "commit_sha": "3e3b240375aa4307a04a085d77ae3ae245df84b2",
+  "selection_protocol_hash": "7ca28d8b132ed77c8cf38aed95d23ee925704f5408012cf676aabd775c77e168",
+  "selection_report_hash": "1eb36f7c534ba39596fdc6b46843f82fa0c4188fc588c3ed86e815ffa62a8690",
+  "candidate_claims_hash": "c015b61d0ba9a13897d8bf87b595d05a34ef3ff57a3a0ca028ed8419124fd750",
+  "pipeline_freeze_hash": "3213b239f8a16c3b06623a14d0bded7589a3b776102e60281c42704501921fec",
+  "seed": 3407,
+  "verifier_version": "2.2-formal-v1.0",
+  "attestation_verdict": "ATTESTED_VALID"
+}

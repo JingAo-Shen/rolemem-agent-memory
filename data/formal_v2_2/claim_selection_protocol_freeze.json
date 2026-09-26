@@ -1,0 +1,42 @@
+{
+  "protocol_version": "2.2-formal-v1.0",
+  "freeze_type": "CLAIM_SELECTION_PROTOCOL_FREEZE",
+  "frozen_at": "2026-09-26T06:50:09.004959+00:00",
+  "freeze_tag": "protocol-v2.2-claim-selection-protocol-freeze",
+  "artifacts": {
+    "claim_quality_selection_protocol": {
+      "path": "data/formal_v2_2/claim_quality_selection_protocol.json",
+      "sha256": "7ca28d8b132ed77c8cf38aed95d23ee925704f5408012cf676aabd775c77e168"
+    },
+    "claim_selection_report": {
+      "path": "data/formal_v2_2/claim_selection_report.json",
+      "sha256": "1eb36f7c534ba39596fdc6b46843f82fa0c4188fc588c3ed86e815ffa62a8690"
+    },
+    "claim_selection_protocol_attestation": {
+      "path": "data/formal_v2_2/claim_selection_protocol_attestation.json",
+      "sha256": "271cf7600a2609bada0750582ea6c7c59c6ff7905f6725edd4573d4c9ba7bd23"
+    },
+    "candidate_claims": {
+      "path": "data/formal_v2_2/candidate_claims.jsonl",
+      "sha256": "c015b61d0ba9a13897d8bf87b595d05a34ef3ff57a3a0ca028ed8419124fd750"
+    },
+    "claim_generation_pipeline_freeze": {
+      "path": "data/formal_v2_2/claim_generation_pipeline_freeze.json",
+      "sha256": "3213b239f8a16c3b06623a14d0bded7589a3b776102e60281c42704501921fec"
+    }
+  },
+  "random_seed": 3407,
+  "compliance_assertions": {
+    "claim_value_scoring_defined": true,
+    "claim_diversity_constraint_enforced": true,
+    "fifty_percent_single_type_cap_pre_gold": true,
+    "repository_balance_enforced": true,
+    "transition_balance_enforced": true,
+    "claim_category_distribution_verified": true,
+    "human_audit_sampling_specified": true,
+    "zero_gold_labels_created": true,
+    "zero_rolemem_predictions_run": true,
+    "frozen_algorithm_immutable": true
+  },
+  "selection_protocol_freeze_verdict": "FROZEN_VALID"
+}

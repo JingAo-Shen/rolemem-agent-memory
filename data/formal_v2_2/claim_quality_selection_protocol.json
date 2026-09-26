@@ -1,0 +1,118 @@
+{
+  "protocol_version": "2.2-formal-v1.0",
+  "protocol_type": "CLAIM_QUALITY_SELECTION_SPECIFICATION",
+  "status": "FROZEN_CLAIM_QUALITY_SELECTION_PROTOCOL",
+  "created_at": "2026-09-26T14:50:00+08:00",
+  "frozen_at": "2026-09-26T14:55:00+08:00",
+  "candidate_pool_linkage": {
+    "candidate_claims_path": "data/formal_v2_2/candidate_claims.jsonl",
+    "verification_report_path": "data/formal_v2_2/candidate_claim_verification_report.json",
+    "total_verified_candidates": 35369,
+    "total_transitions": 50,
+    "total_repositories": 25,
+    "random_seed": 3407
+  },
+  "quality_scoring_model": {
+    "formula": "Q(c) = w_richness * S_richness + w_usefulness * S_usefulness + w_confidence * S_confidence + w_uniqueness * S_uniqueness",
+    "weights": {
+      "w_richness": 0.35,
+      "w_usefulness": 0.35,
+      "w_confidence": 0.15,
+      "w_uniqueness": 0.15
+    },
+    "dimensions": {
+      "semantic_richness": {
+        "description": "Measures syntactic and semantic density of the memory assertion.",
+        "type_scores": {
+          "BEHAVIORAL_CONTRACT": 1.0,
+          "DEPENDENCY_CONTRACT": 0.95,
+          "DEFAULT_VALUE": 0.85,
+          "SIGNATURE_COMPATIBLE": 0.8,
+          "DEPRECATION_STATUS": 0.75,
+          "IMPORT_PATH_VALID": 0.7,
+          "ATTRIBUTE_EXISTS": 0.65,
+          "CALLABLE": 0.5,
+          "SYMBOL_EXISTS": 0.45
+        }
+      },
+      "memory_usefulness": {
+        "description": "Evaluates practical actionability for code generation and agent planning.",
+        "type_scores": {
+          "DEFAULT_VALUE": 1.0,
+          "SIGNATURE_COMPATIBLE": 0.95,
+          "DEPENDENCY_CONTRACT": 0.9,
+          "BEHAVIORAL_CONTRACT": 0.9,
+          "DEPRECATION_STATUS": 0.8,
+          "IMPORT_PATH_VALID": 0.75,
+          "ATTRIBUTE_EXISTS": 0.65,
+          "CALLABLE": 0.6,
+          "SYMBOL_EXISTS": 0.5
+        }
+      },
+      "verification_confidence": {
+        "description": "Verification snippet specificity and AST grounding strength.",
+        "score_rule": "1.0 if evidence_snippet length > 5 characters else 0.8"
+      },
+      "uniqueness": {
+        "description": "Inverse symbol frequency penalty to ensure diverse module and symbol representation.",
+        "formula": "1.0 / (1.0 + 0.1 * symbol_frequency)"
+      }
+    }
+  },
+  "diversity_and_balance_constraints": {
+    "claim_diversity_constraint": {
+      "fifty_percent_single_type_cap": {
+        "max_type_percentage": 50.0,
+        "timing_invariant": "The 50% single claim-type cap MUST strictly be evaluated and enforced BEFORE target validity gold adjudication. It is applied exclusively to frozen base-state memory claims without any knowledge or consideration of target-state validity, staleness, or ground truth."
+      },
+      "trivial_existence_cap": {
+        "combined_max_percentage": 40.0,
+        "rule": "SYMBOL_EXISTS and CALLABLE combined must not exceed 40.0% of the benchmark."
+      },
+      "multi_type_transition_invariant": {
+        "min_types_per_transition": 2,
+        "rule": "Whenever available in the verified candidate pool, each transition must sample across at least 2 distinct claim types."
+      }
+    },
+    "repository_balance": {
+      "target_claims_per_repository": 6,
+      "max_claims_per_repository": 8,
+      "total_repositories": 25,
+      "uniformity_rule": "Exactly 6 claims per repository across all 25 repositories (25 * 6 = 150 claims total)."
+    },
+    "transition_balance": {
+      "target_claims_per_transition": 3,
+      "allowed_range_per_transition": [
+        2,
+        6
+      ],
+      "total_transitions": 50,
+      "uniformity_rule": "Exactly 3 claims per transition across all 50 transitions (50 * 3 = 150 claims total)."
+    },
+    "category_distribution": {
+      "functional_categories": [
+        "data_utility",
+        "web_backend",
+        "libraries",
+        "cli_packages",
+        "developer_tools",
+        "infrastructure"
+      ],
+      "distribution_rule": "Stratified natural representation across all 6 functional categories."
+    }
+  },
+  "human_audit_sampling_specification": {
+    "audit_fraction": 0.2,
+    "audit_sample_size": 30,
+    "sampling_method": "Deterministic stratified PRNG sampling (seed=3407) ensuring representation of all 25 repositories.",
+    "purpose": "Independent inter-annotator agreement and ground truth factuality audit."
+  },
+  "firewall_and_separation_assertions": {
+    "no_target_inspection": true,
+    "no_gold_labels_created": true,
+    "no_validity_or_staleness_assigned": true,
+    "no_rolemem_predictions_run": true,
+    "no_formal_inputs_generated_in_protocol_step": true,
+    "frozen_algorithm_immutable": true
+  }
+}
