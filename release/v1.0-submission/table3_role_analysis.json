@@ -1,0 +1,54 @@
+[
+  {
+    "role": "API",
+    "total_cases": 78,
+    "distribution": "V:74 / S:3 / P:1",
+    "majority_acc": 0.9487,
+    "majority_f1": 0.3246,
+    "static_ast_acc": 0.9744,
+    "static_ast_f1": 0.5956,
+    "naive_rag_acc": 0.6667,
+    "naive_rag_f1": 0.3111,
+    "rolemem_acc": 1.0,
+    "rolemem_f1": 1.0
+  },
+  {
+    "role": "CONFIG",
+    "total_cases": 50,
+    "distribution": "V:29 / S:21 / P:0",
+    "majority_acc": 0.58,
+    "majority_f1": 0.3671,
+    "static_ast_acc": 0.58,
+    "static_ast_f1": 0.3671,
+    "naive_rag_acc": 0.6,
+    "naive_rag_f1": 0.5238,
+    "rolemem_acc": 1.0,
+    "rolemem_f1": 1.0
+  },
+  {
+    "role": "BEHAVIOR",
+    "total_cases": 17,
+    "distribution": "V:17 / S:0 / P:0",
+    "majority_acc": 1.0,
+    "majority_f1": 1.0,
+    "static_ast_acc": 0.2353,
+    "static_ast_f1": 0.381,
+    "naive_rag_acc": 0.0,
+    "naive_rag_f1": 0.0,
+    "rolemem_acc": 1.0,
+    "rolemem_f1": 1.0
+  },
+  {
+    "role": "DEPENDENCY",
+    "total_cases": 5,
+    "distribution": "V:5 / S:0 / P:0",
+    "majority_acc": 1.0,
+    "majority_f1": 1.0,
+    "static_ast_acc": 0.0,
+    "static_ast_f1": 0.0,
+    "naive_rag_acc": 0.0,
+    "naive_rag_f1": 0.0,
+    "rolemem_acc": 1.0,
+    "rolemem_f1": 1.0
+  }
+]

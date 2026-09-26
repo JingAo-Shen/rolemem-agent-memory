@@ -11,9 +11,9 @@ Below, we provide detailed, point-by-point responses to the core questions raise
 
 ### Author Response:
 
-We appreciate the reviewer raising this question. In empirical machine learning, a $100\%$ score naturally warrants scrutiny. However, in RoleMem, this outcome is the expected result of a **deterministic decision procedure over formal AST syntax**, rather than a statistical heuristic over ambiguous natural language text.
+We appreciate the reviewer raising this question. In empirical machine learning, a $100\%$ score naturally warrants scrutiny. However, in RoleMem, this outcome is the expected result of a **deterministic syntactic invariant validation over structured AST subtrees**, rather than a statistical heuristic over ambiguous natural language text.
 
-1. **Deterministic Decision Procedure over Formal Syntax**:
+1. **Deterministic Syntactic Invariant Validation over Structured AST Subtrees**:
    Unlike unstructured text retrieval, software engineering artifacts have well-defined, standardized formal grammars (Python AST). When a memory claim is grounded by concrete physical provenance $\mathcal{E} = \langle \text{file\_path}, \text{line\_number}, \text{ast\_snippet} \rangle$, the verification task reduces from an ill-posed global search to an exact syntactic invariant evaluation over a specific AST subtree.
 2. **Domain-Specialized Invariant Checkers**:
    RoleMem routes claims according to their epistemic role ($\mathcal{R}$):

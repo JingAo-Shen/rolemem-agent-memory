@@ -207,7 +207,7 @@ To stress-test RoleMem beyond standard repository patterns, we evaluate an indep
 ## 6. Discussion & In-Depth Analysis
 
 ### 6.1 Understanding Standard Benchmark Performance
-The high performance of RoleMem on the standard benchmark stems from its design as a **deterministic decision procedure over formal AST grammars**, rather than an empirical statistical approximation over unstructured natural language. When:
+The high performance of RoleMem on the standard benchmark stems from its design as a **deterministic syntactic invariant validation over structured AST subtrees**, rather than an empirical statistical approximation over unstructured natural language. When:
 1. Physical grounding $\mathcal{E}$ uniquely localizes the target entity,
 2. Invariants are evaluated via domain-specialized AST visitors (`DefaultValueEvolutionChecker`), and
 3. Code modifications are statically observable within the repository Git tree,
@@ -233,4 +233,4 @@ Our robustness experiments illuminate the precise operational boundary between s
 
 ## 8. Conclusion
 
-We presented **RoleMem**, a framework and evaluation architecture for maintaining temporal consistency in role-based agent memory across evolving software repositories. By integrating a structured 6-tuple memory schema, role-aware invariant routing, and dynamic 3-state lifecycle modeling, RoleMem mitigates stale memory escape and false invalidation with sub-30ms latency and zero LLM token cost. Systematic evaluation across 150 benchmark claims and 30 robustness edge cases validates our hypotheses and provides a principled empirical foundation for building temporally consistent autonomous coding agents.
+We presented **RoleMem**, a framework and evaluation architecture for maintaining temporal consistency in role-based agent memory across evolving software repositories. By integrating a structured 6-tuple memory schema, role-aware invariant routing, and dynamic 3-state lifecycle modeling, RoleMem mitigates stale memory escape and false invalidation with sub-30ms latency and without LLM token consumption. Systematic evaluation across 150 benchmark claims and 30 robustness edge cases validates our hypotheses and provides a principled empirical foundation for building temporally consistent autonomous coding agents.
