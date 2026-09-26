@@ -1,0 +1,42 @@
+{
+  "protocol_version": "2.2-formal-v1.0",
+  "freeze_type": "GOLD_ANNOTATION_PROTOCOL_FREEZE",
+  "frozen_at": "2026-09-26T06:58:25.760886+00:00",
+  "freeze_tag": "protocol-v2.2-gold-annotation-protocol-freeze",
+  "artifacts": {
+    "gold_annotation_protocol": {
+      "path": "data/formal_v2_2/gold_annotation_protocol.json",
+      "sha256": "1e07fb08af49591efdb6a0453328fb45f3560e5add0baec09b1a5b4ccf49f58e"
+    },
+    "gold_annotation_protocol_attestation": {
+      "path": "data/formal_v2_2/gold_annotation_protocol_attestation.json",
+      "sha256": "c0fca82ccd6b9272213012fc56409b6293c943ef68fc61929276402e88929ca0"
+    },
+    "claim_selection_protocol_freeze": {
+      "path": "data/formal_v2_2/claim_selection_protocol_freeze.json",
+      "sha256": "5d70bffc40b81703fa326f9b60c33400a6559237dc1d1b5a37bfcabe837beb22"
+    },
+    "claim_quality_selection_protocol": {
+      "path": "data/formal_v2_2/claim_quality_selection_protocol.json",
+      "sha256": "7ca28d8b132ed77c8cf38aed95d23ee925704f5408012cf676aabd775c77e168"
+    },
+    "claim_selection_report": {
+      "path": "data/formal_v2_2/claim_selection_report.json",
+      "sha256": "1eb36f7c534ba39596fdc6b46843f82fa0c4188fc588c3ed86e815ffa62a8690"
+    }
+  },
+  "random_seed": 3407,
+  "compliance_assertions": {
+    "gold_label_taxonomy_defined": true,
+    "valid_stale_partially_valid_included": true,
+    "annotation_information_boundary_enforced": true,
+    "rolemem_predictions_prohibited_from_annotator": true,
+    "adjudication_process_three_tiers_defined": true,
+    "mandatory_target_evidence_snippet_enforced": true,
+    "cohen_kappa_agreement_metric_defined": true,
+    "gold_file_isolation_architecture_locked": true,
+    "zero_gold_labels_generated_in_protocol_design": true,
+    "frozen_algorithm_immutable": true
+  },
+  "gold_protocol_freeze_verdict": "FROZEN_VALID"
+}

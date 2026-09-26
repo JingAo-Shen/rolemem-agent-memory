@@ -1,0 +1,144 @@
+{
+  "protocol_version": "2.2-formal-v1.0",
+  "protocol_type": "GOLD_ANNOTATION_SPECIFICATION",
+  "status": "FROZEN_GOLD_ANNOTATION_PROTOCOL",
+  "created_at": "2026-09-26T15:00:00+08:00",
+  "frozen_at": "2026-09-26T15:05:00+08:00",
+  "protocol_linkage": {
+    "claim_selection_protocol_freeze_tag": "protocol-v2.2-claim-selection-protocol-freeze",
+    "claim_selection_protocol_freeze_sha256": "5d70bffc40b81703fa326f9b60c33400a6559237dc1d1b5a37bfcabe837beb22",
+    "claim_quality_selection_protocol_sha256": "7ca28d8b132ed77c8cf38aed95d23ee925704f5408012cf676aabd775c77e168",
+    "claim_selection_report_sha256": "1eb36f7c534ba39596fdc6b46843f82fa0c4188fc588c3ed86e815ffa62a8690",
+    "formal_transition_manifest_sha256": "a90a4ea9b7820f4f0378673ac5aa45c27f8664876e746b6e1950c5002fcf987b",
+    "random_seed": 3407
+  },
+  "gold_label_taxonomy": {
+    "labels": {
+      "VALID": {
+        "definition": "The historical memory claim remains fully true, valid, and operational at target_commit.",
+        "criteria": "Target AST defines identical symbol/attribute/parameter signature/default value/dependency constraint without breaking change or semantic invalidation.",
+        "primary_binary_mapping": "VALID"
+      },
+      "STALE": {
+        "definition": "The historical memory claim has become false, invalid, broken, deprecated, removed, renamed, or behaviorally altered at target_commit.",
+        "criteria": "Symbol missing (AttributeError / ModuleNotFoundError), parameter changed/removed, default value altered, dependency version incompatible, or behavioral test contract violated.",
+        "primary_binary_mapping": "STALE"
+      },
+      "PARTIALLY_VALID": {
+        "definition": "The claim remains partially operational under relaxed or legacy conditions (e.g. backward-compatibility re-export alias, parameter list extended with optional parameters with default values, or soft deprecation notice without hard removal).",
+        "resolution_tracks": {
+          "Track_A_Strict_Stale": "Classified as STALE under strict validity requirements where any divergence from base state is considered stale.",
+          "Track_B_Compatible_Valid": "Classified as VALID under backward-compatible execution where aliases and non-breaking signature extensions maintain execution validity."
+        },
+        "reporting_rule": "Sensitivity analysis comparing Track A vs Track B reported in benchmark diagnostic evaluation."
+      },
+      "UNRESOLVED_GOLD": {
+        "definition": "Target state evidence is contradictory, ambiguous, or untestable.",
+        "handling_rule": "Excluded from primary binary metrics; reported in data quality diagnostics."
+      }
+    }
+  },
+  "annotation_information_boundary": {
+    "annotator_role": "VALIDITY_ADJUDICATOR",
+    "allowed_visible_scope": [
+      "Frozen base claim (claim_id, claim_type, raw_statement, structured_claim)",
+      "Base grounding evidence (base_evidence_path, base_evidence_lineno, base_evidence_snippet)",
+      "Target repository snapshot at target_commit (source files, test suite, documentation, package manifests)",
+      "Target execution environment and AST parser"
+    ],
+    "prohibited_scope": [
+      "RoleMem algorithm execution, predictions, decisions, confidence scores, or escalation traces (rolemem_result, rolemem_prediction)",
+      "Baseline model predictions",
+      "Future commits beyond target_commit (> target_commit)"
+    ],
+    "blinding_guarantee": "Adjudicators are strictly blinded to all algorithmic predictions, ensuring zero outcome conditioning or confirmation bias."
+  },
+  "adjudication_process": {
+    "three_tier_architecture": {
+      "tier_1_single_primary_annotation": {
+        "description": "All 150 benchmark claims are independently annotated by Primary Adjudicator A1 using target evidence inspection.",
+        "scope": "150 claims (100% of benchmark)"
+      },
+      "tier_2_double_blind_independent_annotation": {
+        "description": "Mandatory double blind annotation on all complex behavioral/dependency claims (BEHAVIORAL_CONTRACT, DEPENDENCY_CONTRACT, DEPRECATION_STATUS) plus a 20% random stratified sample of structural claims (N >= 50 claims double-annotated by Adjudicator A2 without consulting A1).",
+        "scope": "All complex claims + 20% stratified sample (N >= 50 claims)"
+      },
+      "tier_3_conflict_resolution_and_consensus": {
+        "description": "When A1 != A2, Senior Adjudicator A3 reviews target evidence independently and resolves discrepancy through formal consensus.",
+        "logging_rule": "Record initial votes (A1, A2), consensus label A_final, and technical justification in formal adjudication log."
+      }
+    }
+  },
+  "evidence_requirements": {
+    "mandatory_target_evidence_rule": "No gold label may be assigned without verifiable, ground-truth target evidence snippet.",
+    "target_evidence_schema": {
+      "fields": [
+        "target_evidence_path",
+        "target_evidence_lineno",
+        "target_evidence_snippet",
+        "target_verification_method",
+        "justification_note"
+      ],
+      "field_specifications": {
+        "target_evidence_path": "String: Relative file path in target repository tree",
+        "target_evidence_lineno": "Integer: 1-based line number in target file",
+        "target_evidence_snippet": "String: Verbatim code/manifest/test snippet from target repository proving label assignment",
+        "target_verification_method": "String: TARGET_AST_INSPECTION | TARGET_TEST_EXECUTION | TARGET_MANIFEST_PARSING | TARGET_DOCSTRING_VERIFICATION",
+        "justification_note": "String: Technical rationale explaining the validity or staleness of the claim at target state"
+      }
+    }
+  },
+  "inter_annotator_agreement": {
+    "metric": "Cohen Kappa",
+    "mathematical_definition": {
+      "formula": "kappa = (p_o - p_e) / (1.0 - p_e)",
+      "observed_agreement": "p_o = sum_i(n_ii) / N",
+      "expected_agreement": "p_e = sum_k(p_A1(k) * p_A2(k))",
+      "interpretation": "Evaluates agreement between independent annotators corrected for chance."
+    },
+    "quality_thresholds": {
+      "target_threshold": 0.85,
+      "minimum_acceptable_threshold": 0.75,
+      "remediation_rule": "If kappa < 0.75, adjudication guidelines are clarified and all conflicting cases undergo triple re-adjudication."
+    }
+  },
+  "gold_freeze_and_isolation_specification": {
+    "file_isolation_architecture": {
+      "formal_inputs": {
+        "path": "data/formal_v2_2/formal_inputs.jsonl",
+        "visibility": "PUBLIC_TO_EVALUATOR",
+        "contains": [
+          "case_id",
+          "structured_claim",
+          "raw_statement"
+        ]
+      },
+      "formal_gold_private": {
+        "path": "data/formal_v2_2/formal_gold_private.jsonl",
+        "visibility": "SEALED_PRIVATE",
+        "contains": [
+          "case_id",
+          "gold_label",
+          "target_evidence",
+          "justification_note"
+        ]
+      },
+      "formal_case_map_private": {
+        "path": "data/formal_v2_2/formal_case_map_private.json",
+        "visibility": "SEALED_PRIVATE",
+        "contains": [
+          "case_id",
+          "transition_id",
+          "candidate_id",
+          "repository_name"
+        ]
+      }
+    },
+    "firewall_rules": {
+      "unsealing_timing": "formal_gold_private.jsonl is cryptographically hashed and sealed; it remains strictly unopened until prediction freeze in Phase S7.",
+      "zero_gold_labels_in_protocol_phase": "Phase S4 Protocol Design freezes the specification; zero gold labels are generated in this design task.",
+      "zero_rolemem_predictions": "Zero RoleMem algorithm executions or predictions.",
+      "frozen_algorithm_immutable": "Algorithm code in src/claim_validity/** and src/evidence_escalation/** is strictly immutable against fe62749b."
+    }
+  }
+}
