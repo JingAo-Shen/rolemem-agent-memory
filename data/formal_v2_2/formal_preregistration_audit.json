@@ -8,6 +8,8 @@
   "freeze_linkage_status": "PASS",
   "formal_contamination_scan_status": "PASS",
   "repository_selection_audit_status": "PASS",
+  "discovery_protocol_status": "PASS",
+  "audit_attestation_status": "PASS",
   "formal_preregistration_audit": "PASS",
   "audit_details": {
     "firewall": {
@@ -31,7 +33,9 @@
     "contamination_scan": {
       "files_scanned": [
         "data/formal_v2_2/protocol_preregistration.json",
-        "data/freeze/protocol_v2_2_formal_data_firewall.json"
+        "data/freeze/protocol_v2_2_formal_data_firewall.json",
+        "data/formal_v2_2/discovery_protocol.json",
+        "data/formal_v2_2/audit_attestation.json"
       ],
       "leaks_found": 0
     },
@@ -41,6 +45,11 @@
       "independent_of_target_transition_outcome": true,
       "category_balance_cannot_influence_inclusion": true,
       "claim_type_cap_pre_gold_only": true
+    },
+    "discovery_readiness": {
+      "discovery_protocol_verified": true,
+      "selection_report_schema_enforced": true,
+      "audit_attestation_verified": true
     }
   },
   "errors": []

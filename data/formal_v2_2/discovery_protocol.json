@@ -1,0 +1,81 @@
+{
+  "protocol_version": "2.2-formal-v1.0",
+  "protocol_type": "DISCOVERY_REPRODUCIBILITY_SPECIFICATION",
+  "created_at": "2026-09-26T09:30:00+08:00",
+  "discovery_parameters": {
+    "search_date": "2026-09-26",
+    "random_seed": 3407,
+    "github_query_constraints": {
+      "language": "Python",
+      "is_fork": false,
+      "is_archived": false,
+      "min_stars": 50,
+      "min_non_merge_commits": 100,
+      "min_history_years": 2
+    }
+  },
+  "inclusion_criteria": {
+    "public_git_repository": true,
+    "primary_language": "Python",
+    "min_history": ">= 2 calendar years OR >= 100 non-merge commits",
+    "automated_tests": "Dedicated tests/ or test/ directory with executable pytest/unittest test suites",
+    "release_anchors": "Multiple tagged releases (Tier 1 preferred) OR clearly identifiable chronological commit milestones (Tier 2)",
+    "ast_parseable": "Source code parseable by standard Python 3 AST parser",
+    "active_at_transition": "Not archived or abandoned at sampled transition point",
+    "project_type": "Real software engineering project (libraries, CLI, utilities, web backend, infrastructure; excludes synthetic/tutorial/toy repositories)",
+    "outcome_independence": "Repository eligibility is evaluated strictly on repository-level engineering criteria, completely independent of RoleMem predictions or claim solvability."
+  },
+  "exclusion_criteria": {
+    "contamination_registry_path": "data/splits/repository_contamination_registry.json",
+    "contamination_registry_sha256": "ae01f0c825cb3beb4bd415426d7ce4ff6931db1b9535369f28239c4aded7a03d",
+    "blacklisted_repositories_count": 29,
+    "blacklist_rule": "Candidate repository R (including any forks, renames, mirrors, or submodules) MUST NOT exist in the frozen contamination registry.",
+    "historical_occurrence_prohibition": "Candidate repository R must have zero occurrences across data/**, reports/**, runs/**, tests fixtures, previous benchmark manifests, or transition specs.",
+    "forbidden_outcome_conditioning": "Rejection based on claim difficulty, lack of stale transitions, or RoleMem abstention is strictly prohibited."
+  },
+  "category_diversity_invariant": {
+    "allowed_categories": [
+      "libraries",
+      "developer_tools",
+      "data_utility",
+      "cli_packages",
+      "web_backend",
+      "infrastructure"
+    ],
+    "category_inclusion_invariant": "Category balance CANNOT influence repository inclusion or exclusion. Repositories entering the candidate pool are evaluated strictly against objective history, activity, and test suite criteria. Functional categories serve as descriptive metadata for sample characterization, not as an inclusion quota."
+  },
+  "repository_selection_report_schema": {
+    "description": "Strict schema for formal repository selection reports. Enforces recording of repository metadata only, prohibiting any transition, claim, or outcome leakage.",
+    "allowed_metadata_fields": [
+      "repository_name",
+      "repository_url",
+      "category",
+      "history_duration_years",
+      "commit_count",
+      "test_availability",
+      "license",
+      "primary_language_fraction"
+    ],
+    "prohibited_fields": [
+      "claim",
+      "claims",
+      "target_transition",
+      "target_commit",
+      "expected_outcome",
+      "expected_labels",
+      "staleness",
+      "rolemem_result",
+      "validity"
+    ],
+    "field_specifications": {
+      "repository_name": "String identifier (owner/name or canonical package name)",
+      "repository_url": "Public Git clone/HTTPS URL",
+      "category": "One of: libraries, developer_tools, data_utility, cli_packages, web_backend, infrastructure",
+      "history_duration_years": "Float: calendar duration from first commit to latest commit in years",
+      "commit_count": "Integer: total non-merge commits in primary branch",
+      "test_availability": "String: description of test framework and test path (e.g. pytest under tests/)",
+      "license": "String: SPDX license identifier or license description",
+      "primary_language_fraction": "Float: percentage of Python source code in repository"
+    }
+  }
+}

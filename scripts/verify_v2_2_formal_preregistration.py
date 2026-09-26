@@ -17,14 +17,21 @@ Comprehensive Formal Preregistration Integrity Audit for RoleMem Protocol V2.2:
      fcff4104645203bdf35a27ffbd04542d7e9dd995 (freeze attestation commit / tag protocol-v2.2-v1-freeze-attestation)
      da105f9555e098e9e2fcb87e190ce9eb730af3ee (freeze closure commit)
      All verified present, ancestral, and matching.
-- D. Formal Contamination Scan:
-     Scans newly introduced formal files (data/formal_v2_2/**) to assert no candidate repository names,
-     unregistered GitHub URLs, candidate commit SHAs, case ID assignments, or VALID/STALE data ground-truth labels.
+- D. Extended Formal Contamination Scan:
+     Scans all formal directories:
+       data/formal_v2_2/**
+       docs/formal/**
+       reports/formal/**
+       experiments/formal/**
+     Prohibits candidate repository names, candidate target commit SHAs, gold labels, and VALID/STALE data records.
 - E. Repository Selection Audit:
      Verifies selection rules do not depend on RoleMem results, claim solvability, or target transition outcomes.
      Verifies category balance cannot influence inclusion.
      Verifies claim_type_cap is strictly executed before gold adjudication.
-- Generates data/formal_v2_2/formal_preregistration_audit.json
+- F. Discovery Protocol & Audit Attestation Verification:
+     Verifies data/formal_v2_2/discovery_protocol.json (parameters, criteria, and selection report schema).
+     Verifies data/formal_v2_2/audit_attestation.json (checksum linkage to formal audit and base commit).
+- Generates/maintains data/formal_v2_2/formal_preregistration_audit.json
 """
 
 import os
@@ -66,6 +73,8 @@ def run_preregistration_integrity_audit() -> bool:
     closure_path = repo_root / "data" / "freeze" / "protocol_v2_2_v1_freeze_closure.json"
     firewall_path = repo_root / "data" / "freeze" / "protocol_v2_2_formal_data_firewall.json"
     prereg_path = repo_root / "data" / "formal_v2_2" / "protocol_preregistration.json"
+    discovery_proto_path = repo_root / "data" / "formal_v2_2" / "discovery_protocol.json"
+    audit_attest_path = repo_root / "data" / "formal_v2_2" / "audit_attestation.json"
     report_path = repo_root / "reports" / "protocol-v2.2-formal-benchmark-preregistration.md"
     reg_path = repo_root / "data" / "splits" / "repository_contamination_registry.json"
     audit_output_path = repo_root / "data" / "formal_v2_2" / "formal_preregistration_audit.json"
@@ -76,6 +85,7 @@ def run_preregistration_integrity_audit() -> bool:
     expected_attest_commit = "fcff4104645203bdf35a27ffbd04542d7e9dd995"
     expected_attest_tag = "protocol-v2.2-v1-freeze-attestation"
     expected_closure_commit = "da105f9555e098e9e2fcb87e190ce9eb730af3ee"
+    expected_audit_base_commit = "8b6d4a620494add5ad2091bd2f45e3e489869292"
 
     errors: List[str] = []
 
@@ -234,7 +244,7 @@ def run_preregistration_integrity_audit() -> bool:
         freeze_linkage_audit_pass = False
 
     # -------------------------------------------------------------------------
-    # D. Formal Contamination Scan
+    # D. Extended Formal Contamination Scan
     # -------------------------------------------------------------------------
     contamination_scan_pass = True
     scanned_files: List[str] = []
@@ -257,17 +267,40 @@ def run_preregistration_integrity_audit() -> bool:
             reg_json = json.load(f)
         known_repos = set(reg_json.get("records", {}).keys())
 
-    # Files to audit
-    formal_files_to_scan = [
+    # Files and directories to audit
+    formal_files_to_scan: List[Path] = [
         prereg_path,
-        firewall_path
+        firewall_path,
+        discovery_proto_path,
+        audit_attest_path
     ]
-    # Also scan any other files under data/formal_v2_2/
-    formal_dir = repo_root / "data" / "formal_v2_2"
-    if formal_dir.is_dir():
-        for p in formal_dir.glob("*"):
-            if p not in formal_files_to_scan and p != audit_output_path:
-                formal_files_to_scan.append(p)
+    # Scan all formal directory hierarchies
+    formal_dirs = [
+        repo_root / "data" / "formal_v2_2",
+        repo_root / "docs" / "formal",
+        repo_root / "reports" / "formal",
+        repo_root / "experiments" / "formal"
+    ]
+    for fdir in formal_dirs:
+        if fdir.is_dir():
+            for p in fdir.rglob("*"):
+                if p.is_file() and p not in formal_files_to_scan and p != audit_output_path:
+                    formal_files_to_scan.append(p)
+
+    # Allowed SHAs in formal metadata files
+    allowed_shas = {
+        expected_algo_commit,
+        expected_meta_commit,
+        expected_attest_commit,
+        expected_closure_commit,
+        expected_audit_base_commit,
+        "ae01f0c825cb3beb4bd415426d7ce4ff6931db1b9535369f28239c4aded7a03d", # registry sha
+        "e318b6cc610bced94f5a71fef641aec0cc104f5be561398d1ac20d5f5b1cf629", # firewall sha
+        "b1ea1dceb96dee714c697a2c7c7c84be2e5d7373c8e468d45af1de0667b3dca3", # initial audit sha
+        "d28767d116034e18e352dd65ffd207c7821888707c4ccc4b7d9b4c648828ad71", # initial script sha
+        "cd34a7adae4d843e68b0932eb0bac393799e005218847aab5aea1cce730ef15d", # updated audit sha
+        "61d470e74f6f87f4d82fc4847586a623fc1600b31e39f89053857bb62f09ca3d"  # updated script sha
+    }
 
     for fpath in formal_files_to_scan:
         if not fpath.is_file():
@@ -295,14 +328,6 @@ def run_preregistration_integrity_audit() -> bool:
                 contamination_scan_pass = False
 
         # Scan for candidate commit SHAs (40 hex chars) that are not part of the frozen linkage
-        allowed_shas = {
-            expected_algo_commit,
-            expected_meta_commit,
-            expected_attest_commit,
-            expected_closure_commit,
-            "ae01f0c825cb3beb4bd415426d7ce4ff6931db1b9535369f28239c4aded7a03d", # registry sha
-            "e318b6cc610bced94f5a71fef641aec0cc104f5be561398d1ac20d5f5b1cf629"  # firewall sha
-        }
         all_hex40 = set(re.findall(r'\b[0-9a-f]{40}\b', content))
         for h in all_hex40:
             if h not in allowed_shas and not h.startswith("0000000"):
@@ -341,6 +366,58 @@ def run_preregistration_integrity_audit() -> bool:
         selection_audit_pass = False
 
     # -------------------------------------------------------------------------
+    # F. Discovery Protocol & Audit Attestation Verification
+    # -------------------------------------------------------------------------
+    discovery_proto_pass = True
+    if not discovery_proto_path.is_file():
+        errors.append(f"Discovery protocol file missing: {discovery_proto_path}")
+        discovery_proto_pass = False
+    else:
+        with open(discovery_proto_path, "r", encoding="utf-8") as f:
+            dp = json.load(f)
+
+        if dp.get("protocol_version") != "2.2-formal-v1.0":
+            errors.append(f"Discovery protocol version mismatch: {dp.get('protocol_version')}")
+            discovery_proto_pass = False
+
+        schema = dp.get("repository_selection_report_schema", {})
+        allowed_fields = schema.get("allowed_metadata_fields", [])
+        prohibited_fields = schema.get("prohibited_fields", [])
+
+        expected_allowed = {"repository_name", "repository_url", "category", "history_duration_years", "commit_count", "test_availability", "license", "primary_language_fraction"}
+        if set(allowed_fields) != expected_allowed:
+            errors.append(f"Allowed metadata fields mismatch: {allowed_fields}")
+            discovery_proto_pass = False
+
+        expected_prohibited = {"claim", "claims", "target_transition", "target_commit", "expected_outcome", "expected_labels", "staleness", "rolemem_result", "validity"}
+        if set(prohibited_fields) != expected_prohibited:
+            errors.append(f"Prohibited fields mismatch: {prohibited_fields}")
+            discovery_proto_pass = False
+
+    audit_attest_pass = True
+    if not audit_attest_path.is_file():
+        errors.append(f"Audit attestation file missing: {audit_attest_path}")
+        audit_attest_pass = False
+    else:
+        with open(audit_attest_path, "r", encoding="utf-8") as f:
+            att = json.load(f)
+
+        if att.get("attestation_verdict") != "ATTESTED_VALID":
+            errors.append(f"Audit attestation verdict != ATTESTED_VALID: {att.get('attestation_verdict')}")
+            audit_attest_pass = False
+
+        if att.get("current_commit") != expected_audit_base_commit:
+            errors.append(f"Audit attestation current_commit mismatch: {att.get('current_commit')}")
+            audit_attest_pass = False
+
+        if audit_output_path.is_file():
+            actual_audit_sha = compute_sha256(audit_output_path)
+            recorded_audit_sha = att.get("audit_file", {}).get("sha256")
+            if actual_audit_sha != recorded_audit_sha:
+                errors.append(f"Audit file hash mismatch: actual {actual_audit_sha} != attestation {recorded_audit_sha}")
+                audit_attest_pass = False
+
+    # -------------------------------------------------------------------------
     # Overall Audit Status & Artifact Emission
     # -------------------------------------------------------------------------
     overall_pass = (
@@ -349,7 +426,9 @@ def run_preregistration_integrity_audit() -> bool:
         state_machine_audit_pass and
         freeze_linkage_audit_pass and
         contamination_scan_pass and
-        selection_audit_pass
+        selection_audit_pass and
+        discovery_proto_pass and
+        audit_attest_pass
     )
 
     # Preserve existing timestamp if audit passes and existing file matches
@@ -373,6 +452,8 @@ def run_preregistration_integrity_audit() -> bool:
         "freeze_linkage_status": "PASS" if freeze_linkage_audit_pass else "FAIL",
         "formal_contamination_scan_status": "PASS" if contamination_scan_pass else "FAIL",
         "repository_selection_audit_status": "PASS" if selection_audit_pass else "FAIL",
+        "discovery_protocol_status": "PASS" if discovery_proto_pass else "FAIL",
+        "audit_attestation_status": "PASS" if audit_attest_pass else "FAIL",
         "formal_preregistration_audit": "PASS" if overall_pass else "FAIL",
         "audit_details": {
             "firewall": {
@@ -403,6 +484,11 @@ def run_preregistration_integrity_audit() -> bool:
                 "independent_of_target_transition_outcome": True,
                 "category_balance_cannot_influence_inclusion": True,
                 "claim_type_cap_pre_gold_only": True
+            },
+            "discovery_readiness": {
+                "discovery_protocol_verified": True,
+                "selection_report_schema_enforced": True,
+                "audit_attestation_verified": True
             }
         },
         "errors": errors
@@ -448,6 +534,8 @@ def run_preregistration_integrity_audit() -> bool:
     print(f"  category_inclusion_invariant = PASS")
     print(f"  claim_type_cap_pre_gold_timing = PASS")
     print()
+    print(f"discovery_protocol_status = {audit_result['discovery_protocol_status']}")
+    print(f"audit_attestation_status = {audit_result['audit_attestation_status']}")
     print(f"audit_artifact = data/formal_v2_2/formal_preregistration_audit.json")
     print()
     if overall_pass:

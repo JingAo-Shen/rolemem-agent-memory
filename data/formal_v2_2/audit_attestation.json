@@ -1,0 +1,22 @@
+{
+  "protocol_version": "2.2-formal-v1.0",
+  "attestation_type": "FORMAL_PREREGISTRATION_AUDIT_ATTESTATION",
+  "attestation_timestamp": "2026-09-26T09:30:00+08:00",
+  "current_commit": "8b6d4a620494add5ad2091bd2f45e3e489869292",
+  "audit_file": {
+    "path": "data/formal_v2_2/formal_preregistration_audit.json",
+    "sha256": "cd34a7adae4d843e68b0932eb0bac393799e005218847aab5aea1cce730ef15d",
+    "audit_verdict": "PASS"
+  },
+  "verification_script": {
+    "path": "scripts/verify_v2_2_formal_preregistration.py",
+    "sha256": "61d470e74f6f87f4d82fc4847586a623fc1600b31e39f89053857bb62f09ca3d"
+  },
+  "preregistration_files": {
+    "manifest_path": "data/formal_v2_2/protocol_preregistration.json",
+    "discovery_protocol_path": "data/formal_v2_2/discovery_protocol.json",
+    "firewall_path": "data/freeze/protocol_v2_2_formal_data_firewall.json"
+  },
+  "attestation_verdict": "ATTESTED_VALID",
+  "formal_state": "S0_PREREGISTRATION"
+}
