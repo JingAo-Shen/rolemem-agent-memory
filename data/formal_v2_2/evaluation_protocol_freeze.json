@@ -1,0 +1,46 @@
+{
+  "protocol_version": "2.2-formal-v1.0",
+  "freeze_type": "EVALUATION_PROTOCOL_FREEZE",
+  "frozen_at": "2026-09-26T07:19:54.948812+00:00",
+  "freeze_tag": "protocol-v2.2-evaluation-protocol-freeze",
+  "artifacts": {
+    "evaluation_protocol": {
+      "path": "data/formal_v2_2/evaluation_protocol.json",
+      "sha256": "a302212830064d2cab2b4dd1947215f791a373d58a4071b96d556d685ac72e63"
+    },
+    "evaluation_protocol_attestation": {
+      "path": "data/formal_v2_2/evaluation_protocol_attestation.json",
+      "sha256": "b6c6aaaaa47b8077471fb790ed5c105630f5eb10dbfff52d3571df2dd5224dec"
+    },
+    "formal_inputs": {
+      "path": "data/formal_v2_2/formal_inputs.jsonl",
+      "sha256": "e9d27af58b9590c22fd46f76f4e8b4ab5ed0d1d7841bea6ad8c9e3323fccec75"
+    },
+    "formal_gold_private": {
+      "path": "data/formal_v2_2/formal_gold_private.jsonl",
+      "sha256": "59a49d4c9114561b820dcf116a671ab476a7545743a77f859272e16762de9856"
+    },
+    "formal_case_map_private": {
+      "path": "data/formal_v2_2/formal_case_map_private.json",
+      "sha256": "fdcd13bf68ea36dcb6b6369b0635f15d551efcebfd13c235905c216171e81553"
+    },
+    "gold_annotation_protocol_freeze": {
+      "path": "data/formal_v2_2/gold_annotation_protocol_freeze.json",
+      "sha256": "4e14275fc25e21f65a1339610e1a626134de1b05d1da7fc52cb1326009a3a2db"
+    }
+  },
+  "random_seed": 3407,
+  "total_benchmark_cases": 150,
+  "compliance_assertions": {
+    "benchmark_task_formulation_defined": true,
+    "primary_metrics_accuracy_macro_f1_per_class_defined": true,
+    "confusion_matrix_specification_defined": true,
+    "secondary_analyses_breakdowns_defined": true,
+    "baseline_evaluation_interfaces_defined": true,
+    "rule_based_llm_and_oracle_baselines_specified": true,
+    "no_model_execution_in_protocol_design": true,
+    "physical_gold_separation_locked": true,
+    "frozen_algorithm_immutable": true
+  },
+  "evaluation_protocol_freeze_verdict": "FROZEN_VALID"
+}

@@ -1,0 +1,184 @@
+{
+  "protocol_version": "2.2-formal-v1.0",
+  "protocol_type": "EVALUATION_PROTOCOL_SPECIFICATION",
+  "status": "FROZEN_EVALUATION_PROTOCOL",
+  "created_at": "2026-09-26T15:20:00+08:00",
+  "frozen_at": "2026-09-26T15:25:00+08:00",
+  "benchmark_artifacts_linkage": {
+    "formal_inputs": {
+      "path": "data/formal_v2_2/formal_inputs.jsonl",
+      "sha256": "e9d27af58b9590c22fd46f76f4e8b4ab5ed0d1d7841bea6ad8c9e3323fccec75",
+      "count": 150
+    },
+    "formal_gold_private": {
+      "path": "data/formal_v2_2/formal_gold_private.jsonl",
+      "sha256": "59a49d4c9114561b820dcf116a671ab476a7545743a77f859272e16762de9856",
+      "count": 150
+    },
+    "formal_case_map_private": {
+      "path": "data/formal_v2_2/formal_case_map_private.json",
+      "sha256": "fdcd13bf68ea36dcb6b6369b0635f15d551efcebfd13c235905c216171e81553",
+      "count": 150
+    },
+    "total_repositories": 25,
+    "total_transitions": 50,
+    "random_seed": 3407
+  },
+  "benchmark_task_formulation": {
+    "task_name": "Temporal Memory Validity Adjudication",
+    "description": "Given a factual historical memory claim c created at base repository state S_base, evaluate whether c remains temporally VALID, has become STALE, or is PARTIALLY_VALID at evolved target repository state S_target.",
+    "input_specification": {
+      "case_id": "String: Opaque 6-digit identifier (FV22-000001 to FV22-000150)",
+      "structured_claim": "Object: Normalized semantic query slots (module, symbol, attribute, parameters, default, contract)",
+      "raw_statement": "String: Natural language agent memory assertion",
+      "claim_type": "String: One of the 10 formal claim types",
+      "repository_name": "String: Target repository owner/name"
+    },
+    "observation_context": {
+      "target_state": "Target repository workspace checked out at target_commit",
+      "allowed_tools": [
+        "file_read",
+        "ast_symbol_lookup",
+        "manifest_inspection",
+        "test_discovery",
+        "targeted_test_execution"
+      ],
+      "budget_constraint": "Budget B50 (max 50 tool actions per evaluation session)"
+    },
+    "prediction_target": {
+      "label_space": [
+        "VALID",
+        "STALE",
+        "PARTIALLY_VALID"
+      ],
+      "binary_evaluation_mapping": {
+        "Track_A_Strict": {
+          "VALID": "VALID",
+          "STALE": "STALE",
+          "PARTIALLY_VALID": "STALE"
+        },
+        "Track_B_Compatible": {
+          "VALID": "VALID",
+          "STALE": "STALE",
+          "PARTIALLY_VALID": "VALID"
+        }
+      },
+      "abstention_support": "Models may output ABSTAIN when confidence is below operating threshold, enabling selective classification analysis."
+    }
+  },
+  "metrics_specification": {
+    "primary_metrics": {
+      "accuracy": {
+        "formula": "Accuracy = (TP + TN) / (TP + TN + FP + FN)",
+        "description": "Overall proportion of correct validity predictions across all evaluated cases."
+      },
+      "macro_f1": {
+        "formula": "Macro-F1 = (1 / |C|) * sum_{c in C} F1_c",
+        "description": "Unweighted mean of F1 scores across classes, giving equal importance to minority stale claims."
+      },
+      "per_class_metrics": {
+        "precision": "Precision_c = TP_c / (TP_c + FP_c)",
+        "recall": "Recall_c = TP_c / (TP_c + FN_c)",
+        "f1_score": "F1_c = 2 * Precision_c * Recall_c / (Precision_c + Recall_c)"
+      },
+      "confusion_matrix": {
+        "dimensions": [
+          "VALID",
+          "STALE",
+          "PARTIALLY_VALID"
+        ],
+        "description": "Full cross-tabulation of actual gold labels versus model predictions."
+      }
+    },
+    "selective_classification_and_risk_metrics": {
+      "coverage": {
+        "formula": "Coverage = |Decided| / |Total|",
+        "description": "Proportion of claims where the evaluator makes a definitive decision (non-abstained)."
+      },
+      "selective_risk": {
+        "formula": "Selective Risk = Errors_decided / |Decided|",
+        "description": "Error rate strictly evaluated on decided predictions."
+      },
+      "false_invalid_rate": {
+        "acronym": "FIR",
+        "formula": "FIR = FP_stale / Total_VALID",
+        "description": "Proportion of valid agent memories incorrectly invalidated as stale."
+      },
+      "stale_escape_rate": {
+        "acronym": "SER",
+        "formula": "SER = FN_stale / Total_STALE",
+        "description": "Proportion of broken/stale memories that escape detection (falsely predicted valid)."
+      }
+    },
+    "statistical_inference": {
+      "bootstrap_method": "Repository-level clustered bootstrap confidence intervals",
+      "bootstrap_samples": 5000,
+      "confidence_level": 0.95,
+      "random_seed": 3407
+    }
+  },
+  "secondary_and_diagnostic_analyses": {
+    "claim_type_breakdown": {
+      "description": "Accuracy, F1, and error rates broken down by individual claim type (DEFAULT_VALUE, SIGNATURE_COMPATIBLE, DEPRECATION_STATUS, BEHAVIORAL_CONTRACT, DEPENDENCY_CONTRACT)."
+    },
+    "repository_breakdown": {
+      "description": "Macro accuracy and macro F1 averaged across all 25 distinct benchmark repositories."
+    },
+    "transition_difficulty_breakdown": {
+      "commit_distance_bins": {
+        "short_span": "< 10 commits",
+        "medium_span": "10 - 50 commits",
+        "long_span": "> 50 commits"
+      },
+      "temporal_distance_bins": {
+        "short_duration": "< 30 days",
+        "medium_duration": "30 - 180 days",
+        "long_duration": "> 180 days"
+      }
+    },
+    "functional_category_breakdown": {
+      "categories": [
+        "developer_tools",
+        "data_utility",
+        "web_backend",
+        "libraries",
+        "cli_packages",
+        "infrastructure"
+      ]
+    }
+  },
+  "baseline_evaluation_interfaces": {
+    "rule_based_baselines": {
+      "naive_majority_baseline": {
+        "description": "Always predicts VALID for all claims (Majority class heuristic).",
+        "expected_accuracy": "Equal to benchmark VALID prevalence (83.33%)."
+      },
+      "pure_symbol_ast_checker": {
+        "description": "Inspects target AST for symbol existence only; ignores parameter and default mutations."
+      },
+      "claim_aware_static_checker": {
+        "description": "Static AST comparison of function signatures, parameter names, and default values without dynamic execution."
+      }
+    },
+    "llm_baselines": {
+      "zero_shot_direct_llm": {
+        "description": "Prompts LLM directly with structured_claim and target code context snippet."
+      },
+      "rag_retrieval_augmented_llm": {
+        "description": "Retrieves top-k target files via BM25/dense retriever and prompts LLM for validity classification."
+      }
+    },
+    "oracle_upper_bound": {
+      "description": "Theoretical ground-truth oracle with target test suite execution and perfect dependency resolution (100.0% accuracy ceiling)."
+    },
+    "frozen_rolemem_v2_2_system": {
+      "description": "Frozen RoleMem V2.2 framework under default B50 runtime budget with budget-bounded evidence escalation."
+    }
+  },
+  "execution_boundary_and_firewall": {
+    "no_model_execution_in_protocol_design": true,
+    "physical_gold_separation_enforced": true,
+    "unsealing_timing": "formal_gold_private.jsonl unsealed strictly after prediction file freeze in Phase S7.",
+    "frozen_algorithm_immutable": true
+  }
+}
