@@ -17,7 +17,7 @@ Despite their utility in static environments, contemporary agent memory architec
 
 When an agent consults a static vector database or key-value memory store populated in a prior repository state $S_{\text{base}}$, it retrieves obsolete factual assertions. If the current repository state $S_{\text{target}}$ has modified these contracts, the agent exhibits *stale memory escape*—invoking non-existent arguments or violating newly introduced invariants. Existing approaches attempt to mitigate this through generic vector re-indexing or naive semantic similarity searches. However, semantic similarity is fundamentally limited when distinguishing fine-grained syntactic mutations: changing `timeout=30` to `timeout=60` produces near-identical text embeddings but represents a semantic parameter mutation that invalidates caller assumptions. Furthermore, repeatedly feeding raw multi-file diffs into frontier LLM prompts incurs substantial latency (multiple seconds per query) and token cost, making runtime per-step validation expensive.
 
-To address this challenge, we introduce **RoleMem**, a framework and dynamic verification system for evaluating and maintaining temporal memory consistency in autonomous agents. Rather than treating memory as unstructured text chunks, RoleMem conceptualizes agent memory as grounded, role-differentiated epistemic invariants. Operating as an inline verification gate with an average latency of **$22.6\text{ms}$** per memory unit and without LLM token consumption, RoleMem validates candidate memories prior to agent tool execution.
+To address this challenge, we introduce **RoleMem**, a framework and dynamic verification system for evaluating and maintaining temporal memory consistency in autonomous agents. Rather than treating memory as unstructured text chunks, RoleMem conceptualizes agent memory as grounded, role-differentiated epistemic invariants. Operating as an inline verification gate with an average latency of **$22.6\text{ms}$** per memory unit and without additional LLM inference during verification, RoleMem validates candidate memories prior to agent tool execution.
 
 ### Key Contributions:
 1. **Structured 6-Tuple Memory Representation**: We define a formal memory unit $\mathcal{M} = \langle c, \mathcal{E}, \mathcal{R}, \gamma, \tau, \Phi \rangle$, binding factual claims to concrete physical grounding provenance, epistemic roles, dynamic confidence scores, temporal anchors, and SHA-256 cryptographic integrity hashes.
@@ -155,7 +155,7 @@ Table 1 presents the comparative evaluation of RoleMem against baseline methods 
 **Key Findings**:
 1. **Mitigating Stale Memory Escape**: RoleMem reduces stale memory escape to $SER = 0.0\%$ on the evaluated benchmark claims, whereas baselines exhibit high escape rates ($70.8\% - 100.0\%$), allowing broken facts to persist.
 2. **Preventing False Invalidation**: RoleMem maintains $FIR = 0.0\%$ on benchmark cases, whereas Naive RAG incorrectly invalidates $40.0\%$ of valid memories due to ungrounded semantic drift.
-3. **Execution Efficiency**: RoleMem verifies memory in **$0.0226\text{s}$ per claim**, enabling practical inline verification in agent execution loops without LLM token expenditure.
+3. **Execution Efficiency**: RoleMem verifies memory in **$0.0226\text{s}$ per claim**, enabling practical inline verification in agent execution loops without additional LLM inference during verification.
 
 ---
 
@@ -233,10 +233,10 @@ Our robustness experiments illuminate the precise operational boundary between s
 2. **Missing Grounding Evidence**: When memory claims lack physical file provenance $\mathcal{E}$ (e.g. conversational memories generated without file anchors), RoleMem falls back to ungrounded heuristic search, which is susceptible to namespace collisions across identical helper function names.
 3. **Conflicting Multi-Channel Evidence**: In cases where documentation (docstrings), packaging metadata, and AST decorators provide contradictory status indications, RoleMem adopts a conservative fail-closed strategy that may flag non-breaking APIs as partially valid.
 4. **Observable Repository Evolution**: Invariant checking assumes transitions are observable via version-controlled repository files; external microservice state shifts or untracked environment variables remain outside the static analysis scope.
-5. **Ecosystem Scope**: The current reference implementation targets Python 3.8–3.13 source code and standard PEP packaging manifests; adapting to other ecosystems requires language-specific grammar extractors.
+5. **Ecosystem Scope**: The current reference implementation targets Python 3.10+ source code and standard PEP packaging manifests; adapting to other ecosystems requires language-specific grammar extractors.
 
 ---
 
 ## 8. Conclusion
 
-We presented **RoleMem**, a framework and evaluation architecture for maintaining temporal consistency in role-based agent memory across evolving software repositories. By integrating a structured 6-tuple memory schema, role-aware invariant routing, and dynamic 3-state lifecycle modeling, RoleMem mitigates stale memory escape and false invalidation with sub-30ms latency and without LLM token consumption. Systematic evaluation across 150 benchmark claims and 30 robustness edge cases validates our hypotheses and provides a principled empirical foundation for building temporally consistent autonomous coding agents.
+We presented **RoleMem**, a framework and evaluation architecture for maintaining temporal consistency in role-based agent memory across evolving software repositories. By integrating a structured 6-tuple memory schema, role-aware invariant routing, and dynamic 3-state lifecycle modeling, RoleMem mitigates stale memory escape and false invalidation with sub-30ms latency and without additional LLM inference during verification. Systematic evaluation across 150 benchmark claims and 30 robustness edge cases validates our hypotheses and provides a principled empirical foundation for building temporally consistent autonomous coding agents.

@@ -56,7 +56,7 @@ python scripts/run_robustness_experiment.py
 
 ## 3. Key Results Summary
 
-- **Table 1 (Overall Comparative Performance, $N=150$)**: RoleMem achieves **$100.0\%$ Macro-F1**, reducing False Invalidation Rate ($FIR$) and Stale Escape Rate ($SER$) to **$0.0\%$**, outperforming Majority ($30.3\%$), Static AST ($31.0\%$), and Naive RAG ($28.7\%$) with a mean latency of **$22.6\text{ms}$** and no external LLM token overhead.
+- **Table 1 (Overall Comparative Performance, $N=150$)**: RoleMem achieves **$100.0\%$ Macro-F1**, reducing False Invalidation Rate ($FIR$) and Stale Escape Rate ($SER$) to **$0.0\%$**, outperforming Majority ($30.3\%$), Static AST ($31.0\%$), and Naive RAG ($28.7\%$) with a mean latency of **$22.6\text{ms}$** and without additional LLM inference during verification.
 - **Table 2 (Component Ablations, $N=150$)**: Removing Epistemic Roles ($-\mathcal{R}$) drops Macro-F1 by **$-68.8\%$**; removing Grounding Evidence ($-\mathcal{E}$) drops Macro-F1 by **$-59.3\%$** ($+35.2\%$ FIR); disabling Dynamic Lifecycle ($-\Lambda$) drops Macro-F1 by **$-67.5\%$**.
 - **Table 3 (Epistemic Role Breakdown, $N=150$)**: $100.0\%$ F1 across API ($N=78$), Config ($N=50$), Behavior ($N=17$), and Dependency ($N=5$) roles.
 - **Table 4 (Robustness Challenge Suite, $N=30$)**: $70.0\%$ on Ambiguous Evolution (`ROB-AE`), $50.0\%$ on Missing Evidence (`ROB-EM`), $20.0\%$ on Conflicting Evidence (`ROB-CE`).

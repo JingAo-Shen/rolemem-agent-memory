@@ -29,7 +29,7 @@ Autonomous LLM agents operating in software engineering tasks accumulate factual
 ## 2. Environment Requirements
 
 - **Operating System**: Linux x86_64 (Kernel 5.15+ / 6.6+)
-- **Python Runtime**: Python 3.8 to 3.13 (tested on Python 3.10, 3.11, 3.12, 3.13)
+- **Python Runtime**: Python 3.10+ (tested on Python 3.10, 3.11, 3.12, 3.13)
 - **Core Dependencies**: `pytest >= 7.0`, `ast`, `git >= 2.34`, `matplotlib >= 3.7`, `numpy >= 1.24`
 - **Hardware Requirement**: Standard CPU (no GPU required for static analysis). Mean verification latency is **$22.6\text{ms}$** per memory unit.
 - **Repository Cache**: 25 bare Git repositories pre-cached in `/tmp/formal_bare_repos/` for local offline, deterministic reproduction.

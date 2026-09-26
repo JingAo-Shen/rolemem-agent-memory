@@ -43,7 +43,7 @@ This document compiles 22 anticipated reviewer questions across Machine Learning
 ### Q6: Why was there no baseline using frontier LLMs directly prompted with full repository diffs?
 - **Category**: Baselines | **Priority**: High
 - **Reviewer Question**: *"Why didn't the authors evaluate GPT-4o or Claude 3.5 Sonnet by feeding raw git diffs into their prompt context?"*
-- **Author Response**: While prompting frontier LLMs with multi-file diffs is possible, it introduces three major operational bottlenecks for real-time agent memory: (1) **Latency**: LLM diff reading requires $2.0 - 5.0\text{s}$ per query vs. RoleMem's **$22.6\text{ms}$** ($>100\times$ faster); (2) **Cost**: Large repository diffs consume tens of thousands of tokens per step; (3) **Stochastic Hallucination**: LLMs frequently misinterpret subtle parameter defaults. RoleMem provides deterministic validation with no LLM token overhead.
+- **Author Response**: While prompting frontier LLMs with multi-file diffs is possible, it introduces three major operational bottlenecks for real-time agent memory: (1) **Latency**: LLM diff reading requires $2.0 - 5.0\text{s}$ per query vs. RoleMem's **$22.6\text{ms}$** ($>100\times$ faster); (2) **Cost**: Large repository diffs consume tens of thousands of tokens per step; (3) **Stochastic Hallucination**: LLMs frequently misinterpret subtle parameter defaults. RoleMem provides deterministic validation with without additional LLM inference during verification.
 - **Supporting Evidence**: Section 1, Section 5.1, `paper/reviewer_response_draft.md` Q3.
 
 ### Q7: Why did Naive RAG perform so poorly (28.7% Macro-F1)?

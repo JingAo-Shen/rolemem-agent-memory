@@ -29,13 +29,13 @@
    - Unified manuscript title across all documents:  
      ***"RoleMem: A Temporal Consistency Evaluation Framework for Role-Based Agent Memory"***.
    - Standardized formal terms: *Formal 6-Tuple Memory Unit $\mathcal{M} = \langle c, \mathcal{E}, \mathcal{R}, \gamma, \tau, \Phi \rangle$*, *Epistemic Memory Roles (API, Config, Behavior, Dependency)*, *Dynamic 3-State Lifecycle Engine ($\Lambda$: PRESERVE, DOWNGRADE, INVALIDATE)*.
-   - Unified Python environment specification to **Python 3.10+ (compatible with Python 3.8–3.13)**.
+   - Unified Python environment specification to **Python 3.10+ (compatible with Python 3.10+)**.
 
 2. **Systematic Language & Over-Claim Audit**:
    - Eliminated unqualified assertions (`formal guarantee`, `verification guarantee`, `complete`, `sound`, `zero cost`, `eliminate`, `regardless`).
    - Replaced with measured, defensible academic formulations:
      - *"deterministic decision procedure"* $\to$ *"deterministic syntactic invariant validation over structured AST subtrees"*.
-     - *"zero LLM token cost"* $\to$ *"without LLM token consumption"*.
+     - *"zero LLM token cost"* $\to$ *"without additional LLM inference during verification"*.
      - *"eliminates stale memory escape"* $\to$ *"substantially mitigates stale memory escape, achieving $SER = 0.0\%$ on the evaluated benchmark claims"*.
      - *"regardless of repository scale"* $\to$ *"across repositories of varying scale (2k - 350k LOC)"*.
 
@@ -62,7 +62,7 @@ The paper transparently defines the following operational boundaries and risks:
    - *Description*: When memory claims lack physical file provenance $\mathcal{E}$, RoleMem falls back to repository-wide heuristic search, causing namespace collisions across polymorphic helper functions ($50.0\%$ accuracy).
    - *Mitigation*: Validates our core hypothesis (**RQ2**) that physical evidence grounding is essential for agent memory integrity.
 5. **Language Ecosystem Specialization**:
-   - *Description*: The current reference implementation targets Python 3.8–3.13 ASTs and PEP packaging manifests.
+   - *Description*: The current reference implementation targets Python 3.10+ ASTs and PEP packaging manifests.
    - *Mitigation*: The 6-tuple schema and 3-state lifecycle are language-agnostic; multi-language expansion requires language-specific Tree-sitter parsers.
 
 ---

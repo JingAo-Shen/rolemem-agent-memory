@@ -133,7 +133,7 @@ This document compiles 22 anticipated reviewer questions across Machine Learning
 ### Q19: What is the memory garbage collection and compaction policy?
 - **Category**: Agent Lifecycle | **Priority**: Medium
 - **Reviewer Question**: *"How does RoleMem prevent memory bloat during long-horizon agent execution?"*
-- **Author Response**: When a claim transitions to `STALE`, its confidence is zeroed ($\gamma = 0.0$) and it is evicted from active working prompt memory into an episodic cold-storage audit log. This guarantees that the agent's prompt context remains bounded while retaining historical auditability.
+- **Author Response**: When a claim transitions to `STALE`, its confidence is zeroed ($\gamma = 0.0$) and it is evicted from active working prompt memory into an episodic cold-storage audit log. This ensures that the agent's prompt context remains bounded while retaining historical auditability.
 - **Supporting Evidence**: Section 3.3.
 
 ### Q20: How was the confidence decay parameter (\gamma \times 0.70) determined?
@@ -145,7 +145,7 @@ This document compiles 22 anticipated reviewer questions across Machine Learning
 ### Q21: What is the purpose of the cryptographic SHA-256 fingerprint (\Phi)?
 - **Category**: Architecture | **Priority**: Low
 - **Reviewer Question**: *"Why is a cryptographic hash included in the memory representation?"*
-- **Author Response**: The hash $\Phi = \text{SHA-256}(\text{canonicalize}(c, \mathcal{E}, \mathcal{R}, \tau))$ guarantees tamper-evident provenance across multi-agent handoffs and distributed subagent execution, ensuring that memory claims cannot be silently corrupted or forged during agent collaboration.
+- **Author Response**: The hash $\Phi = \text{SHA-256}(\text{canonicalize}(c, \mathcal{E}, \mathcal{R}, \tau))$ provides tamper-evident provenance across multi-agent handoffs and distributed subagent execution, ensuring that memory claims cannot be silently corrupted or forged during agent collaboration.
 - **Supporting Evidence**: Section 3.1.
 
 ### Q22: How is RoleMem integrated into downstream autonomous coding agent loops (e.g., SWE-bench)?

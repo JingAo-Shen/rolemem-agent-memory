@@ -56,7 +56,7 @@ RoleMem operates under two primary epistemic assumptions regarding agent memory 
 
 | Dimension | RoleMem Scope | Out-of-Scope / Requires Extension |
 | :--- | :--- | :--- |
-| **Language Target** | Python 3.8 - 3.13 source code | Non-Python compiled binaries without source |
+| **Language Target** | Python 3.10+ source code | Non-Python compiled binaries without source |
 | **Memory Grounding** | Concrete file path, line number, AST snippet | Hallucinated abstract text with no file links |
 | **Repository Artifacts** | Git commits, AST, manifests, test witnesses | Out-of-band runtime microservice states |
 | **Evolution Invariants** | Signature, Default Value, Deprecation, Manifest | Deep inter-procedural runtime heap state |

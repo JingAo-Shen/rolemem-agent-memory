@@ -37,7 +37,7 @@ Three expert reviewer personas have been modeled to rigorously evaluate the subm
 
 ### 4. Author Rebuttal & Defense Strategy
 - **Defense on 100% Benchmark Score**: The $100\%$ score is not an empirical statistical approximation over fuzzy natural language, but the mathematical outcome of a deterministic syntactic invariant validation over structured AST subtrees. When grounding $\mathcal{E}$ is exact and repository evolution is fully observable within Python ASTs, invariant evaluation over well-defined language grammars (e.g. `DefaultValueEvolutionChecker`) is deterministic and systematically verifiable over standard syntax. The non-triviality of the benchmark is conclusively proven by the baseline failures (Naive RAG: $28.7\%$ F1, Static AST: $31.0\%$ F1) and the catastrophic ablation drops ($-68.8\%$ without roles, $-59.3\%$ without evidence).
-- **Defense on Downstream Latency & Cost**: Frontier LLMs require hundreds of thousands of tokens and multiple seconds of latency to process repository diffs per memory retrieval. RoleMem achieves deterministic verification in **$0.0226\text{s}$ ($22.6\text{ms}$)** with **without LLM token overhead**, making it practical for real-time per-step agent memory gating.
+- **Defense on Downstream Latency & Cost**: Frontier LLMs require hundreds of thousands of tokens and multiple seconds of latency to process repository diffs per memory retrieval. RoleMem achieves deterministic verification in **$0.0226\text{s}$ ($22.6\text{ms}$)** with **without additional LLM inference during verification**, making it practical for real-time per-step agent memory gating.
 - **Robustness Suite Evidence**: The independent 30-case robustness suite (Table 4) explicitly demonstrates that under ambiguous, ungrounded, or adversarial conditions, accuracy drops to $46.7\%-70.0\%$, confirming that the framework does not overfit to synthetic artifacts.
 
 ---
@@ -111,7 +111,7 @@ Three expert reviewer personas have been modeled to rigorously evaluate the subm
 | Reviewer | Core Concern | Paper Text Refinement Action |
 | :--- | :--- | :--- |
 | **R1 (ML)** | Benchmark 100% skepticism & triviality | Added formal proof/justification of deterministic AST invariant validation, contrasted against high ablation drops ($-68.8\%$) and high baseline failure rates ($SER \ge 70.8\%$). |
-| **R1 (ML)** | Downstream agent execution latency & cost | Added quantitative latency ($22.6\text{ms}$) and no LLM token overhead analysis comparing RoleMem with multi-thousand-token LLM diff re-reading. |
+| **R1 (ML)** | Downstream agent execution latency & cost | Added quantitative latency ($22.6\text{ms}$) and without additional LLM inference during verification analysis comparing RoleMem with multi-thousand-token LLM diff re-reading. |
 | **R2 (SE)** | Dynamic Python metaprogramming & variadics | Added explicit operational boundaries in Section 3 and Section 7, detailing how test assertion witnesses handle dynamic behavior and referencing Table 4 (`ROB-AE`). |
 | **R2 (SE)** | SE literature & SemVer dataset curation | Integrated citations to classic software evolution literature (SemVer, API breaking changes) and detailed the AST delta mining protocol in Section 4. |
 | **R3 (Memory)** | Distinction from Graph RAG & Knowledge Graphs | Clarified the conceptual difference between associative semantic graphs vs. formally grounded AST invariant checkers in Section 2 and Section 3. |

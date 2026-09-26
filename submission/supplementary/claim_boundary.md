@@ -27,7 +27,7 @@ RoleMem operates under two core epistemic assumptions:
 
 | Dimension | Supported Scope | Unsupported / Out-of-Scope |
 | :--- | :--- | :--- |
-| **Programming Language** | Python 3.8 – 3.13 standard AST grammar | Non-Python compiled binaries without source (C/C++, Rust, Cython, `.so`, `.pyd`) |
+| **Programming Language** | Python 3.10+ standard AST grammar | Non-Python compiled binaries without source (C/C++, Rust, Cython, `.so`, `.pyd`) |
 | **Static Code Entities** | `FunctionDef`, `AsyncFunctionDef`, `ClassDef`, module functions, class methods, static methods | Dynamically generated methods created at runtime without AST nodes |
 | **Configuration Artifacts** | AST parameter default expressions, literal values, container literals | Dynamic runtime configuration loaded from external network services |
 | **Packaging Manifests** | `pyproject.toml`, `setup.py`, `requirements.txt` | Proprietary build systems lacking standard Python manifest specifications |
