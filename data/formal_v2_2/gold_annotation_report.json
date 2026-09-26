@@ -1,0 +1,138 @@
+{
+  "protocol_version": "2.2-formal-v1.0",
+  "report_type": "GOLD_ANNOTATION_EXECUTION_REPORT",
+  "generated_at": "2026-09-26T07:16:00.521133+00:00",
+  "total_claims_annotated": 150,
+  "total_transitions_evaluated": 50,
+  "total_repositories_evaluated": 25,
+  "label_distribution": {
+    "VALID": {
+      "count": 125,
+      "percentage": 83.33
+    },
+    "STALE": {
+      "count": 24,
+      "percentage": 16.0
+    },
+    "PARTIALLY_VALID": {
+      "count": 1,
+      "percentage": 0.67
+    },
+    "UNRESOLVED_GOLD": {
+      "count": 0,
+      "percentage": 0.0
+    }
+  },
+  "claim_type_breakdown": {
+    "BEHAVIORAL_CONTRACT": {
+      "total": 17,
+      "VALID": 17,
+      "STALE": 0,
+      "PARTIALLY_VALID": 0
+    },
+    "DEFAULT_VALUE": {
+      "total": 50,
+      "VALID": 29,
+      "STALE": 21,
+      "PARTIALLY_VALID": 0
+    },
+    "DEPENDENCY_CONTRACT": {
+      "total": 5,
+      "VALID": 5,
+      "STALE": 0,
+      "PARTIALLY_VALID": 0
+    },
+    "DEPRECATION_STATUS": {
+      "total": 28,
+      "VALID": 26,
+      "STALE": 2,
+      "PARTIALLY_VALID": 0
+    },
+    "SIGNATURE_COMPATIBLE": {
+      "total": 50,
+      "VALID": 48,
+      "STALE": 1,
+      "PARTIALLY_VALID": 1
+    }
+  },
+  "repository_distribution": {
+    "wireservice/agate-excel": 6,
+    "marshmallow-code/apispec": 6,
+    "yaml/pyyaml": 6,
+    "wireservice/agate-sql": 6,
+    "wireservice/csvkit": 6,
+    "iterative/shtab": 6,
+    "PyCQA/isort": 6,
+    "borntyping/python-colorlog": 6,
+    "tartley/colorama": 6,
+    "msgpack/msgpack-python": 6,
+    "tornadoweb/tornado": 6,
+    "pypa/flit": 6,
+    "psf/black": 6,
+    "bottlepy/bottle": 6,
+    "pypa/twine": 6,
+    "prompt-toolkit/python-prompt-toolkit": 6,
+    "pypa/wheel": 6,
+    "PyCQA/pyflakes": 6,
+    "pypa/build": 6,
+    "arrow-py/arrow": 6,
+    "marshmallow-code/webargs": 6,
+    "tiangolo/typer": 6,
+    "samuelcolvin/watchfiles": 6,
+    "frictionlessdata/frictionless-py": 6,
+    "agronholm/anyio": 6
+  },
+  "transition_distribution": {
+    "TR-001": 3,
+    "TR-002": 3,
+    "TR-003": 3,
+    "TR-004": 3,
+    "TR-005": 3,
+    "TR-006": 3,
+    "TR-007": 3,
+    "TR-008": 3,
+    "TR-009": 3,
+    "TR-010": 3,
+    "TR-011": 3,
+    "TR-012": 3,
+    "TR-013": 3,
+    "TR-014": 3,
+    "TR-015": 3,
+    "TR-016": 3,
+    "TR-017": 3,
+    "TR-018": 3,
+    "TR-019": 3,
+    "TR-020": 3,
+    "TR-021": 3,
+    "TR-022": 3,
+    "TR-023": 3,
+    "TR-024": 3,
+    "TR-025": 3,
+    "TR-026": 3,
+    "TR-027": 3,
+    "TR-028": 3,
+    "TR-029": 3,
+    "TR-030": 3,
+    "TR-031": 3,
+    "TR-032": 3,
+    "TR-033": 3,
+    "TR-034": 3,
+    "TR-035": 3,
+    "TR-036": 3,
+    "TR-037": 3,
+    "TR-038": 3,
+    "TR-039": 3,
+    "TR-040": 3,
+    "TR-041": 3,
+    "TR-042": 3,
+    "TR-043": 3,
+    "TR-044": 3,
+    "TR-045": 3,
+    "TR-046": 3,
+    "TR-047": 3,
+    "TR-048": 3,
+    "TR-049": 3,
+    "TR-050": 3
+  },
+  "adjudication_verdict": "GOLD_ANNOTATION_COMPLETE_VALID"
+}
