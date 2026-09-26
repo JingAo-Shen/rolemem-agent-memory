@@ -1,0 +1,237 @@
+{
+  "protocol_version": "2.2-formal-v1.0",
+  "execution_type": "FORMAL_REPOSITORY_DISCOVERY_EXECUTION",
+  "execution_timestamp": "2026-09-26T02:39:35.948080+00:00",
+  "discovery_protocol_tag": "protocol-v2.2-discovery-protocol-freeze",
+  "random_seed": 3407,
+  "target_repository_count": 25,
+  "selected_repositories_count": 25,
+  "filter_pipeline_summary": {
+    "initial_candidates": 90,
+    "after_language_filter": 90,
+    "after_history_filter": 82,
+    "after_test_filter": 76,
+    "after_contamination_filter": 63
+  },
+  "category_distribution": {
+    "data_utility": 5,
+    "web_backend": 4,
+    "libraries": 4,
+    "cli_packages": 3,
+    "developer_tools": 7,
+    "infrastructure": 2
+  },
+  "selected_repositories": [
+    {
+      "selection_rank": 1,
+      "repository_name": "wireservice/agate-excel",
+      "category": "data_utility",
+      "history_duration_years": 10.88,
+      "commit_count": 164,
+      "license": "MIT"
+    },
+    {
+      "selection_rank": 2,
+      "repository_name": "marshmallow-code/apispec",
+      "category": "web_backend",
+      "history_duration_years": 11.89,
+      "commit_count": 1511,
+      "license": "MIT"
+    },
+    {
+      "selection_rank": 3,
+      "repository_name": "yaml/pyyaml",
+      "category": "libraries",
+      "history_duration_years": 20.29,
+      "commit_count": 326,
+      "license": "MIT"
+    },
+    {
+      "selection_rank": 4,
+      "repository_name": "wireservice/agate-sql",
+      "category": "data_utility",
+      "history_duration_years": 11.0,
+      "commit_count": 189,
+      "license": "MIT"
+    },
+    {
+      "selection_rank": 5,
+      "repository_name": "wireservice/csvkit",
+      "category": "data_utility",
+      "history_duration_years": 15.48,
+      "commit_count": 1744,
+      "license": "MIT"
+    },
+    {
+      "selection_rank": 6,
+      "repository_name": "iterative/shtab",
+      "category": "cli_packages",
+      "history_duration_years": 6.22,
+      "commit_count": 463,
+      "license": "MPL-2.0"
+    },
+    {
+      "selection_rank": 7,
+      "repository_name": "PyCQA/isort",
+      "category": "developer_tools",
+      "history_duration_years": 13.06,
+      "commit_count": 3517,
+      "license": "MIT"
+    },
+    {
+      "selection_rank": 8,
+      "repository_name": "borntyping/python-colorlog",
+      "category": "data_utility",
+      "history_duration_years": 13.88,
+      "commit_count": 241,
+      "license": "MIT"
+    },
+    {
+      "selection_rank": 9,
+      "repository_name": "tartley/colorama",
+      "category": "libraries",
+      "history_duration_years": 12.07,
+      "commit_count": 293,
+      "license": "MIT"
+    },
+    {
+      "selection_rank": 10,
+      "repository_name": "msgpack/msgpack-python",
+      "category": "libraries",
+      "history_duration_years": 17.34,
+      "commit_count": 852,
+      "license": "Apache-2.0"
+    },
+    {
+      "selection_rank": 11,
+      "repository_name": "tornadoweb/tornado",
+      "category": "web_backend",
+      "history_duration_years": 17.04,
+      "commit_count": 4006,
+      "license": "Apache-2.0"
+    },
+    {
+      "selection_rank": 12,
+      "repository_name": "pypa/flit",
+      "category": "developer_tools",
+      "history_duration_years": 11.51,
+      "commit_count": 1140,
+      "license": "MIT"
+    },
+    {
+      "selection_rank": 13,
+      "repository_name": "psf/black",
+      "category": "developer_tools",
+      "history_duration_years": 8.53,
+      "commit_count": 2344,
+      "license": "MIT"
+    },
+    {
+      "selection_rank": 14,
+      "repository_name": "bottlepy/bottle",
+      "category": "web_backend",
+      "history_duration_years": 17.22,
+      "commit_count": 1690,
+      "license": "MIT"
+    },
+    {
+      "selection_rank": 15,
+      "repository_name": "pypa/twine",
+      "category": "developer_tools",
+      "history_duration_years": 12.98,
+      "commit_count": 1050,
+      "license": "Apache-2.0"
+    },
+    {
+      "selection_rank": 16,
+      "repository_name": "prompt-toolkit/python-prompt-toolkit",
+      "category": "cli_packages",
+      "history_duration_years": 11.91,
+      "commit_count": 2816,
+      "license": "MIT"
+    },
+    {
+      "selection_rank": 17,
+      "repository_name": "pypa/wheel",
+      "category": "developer_tools",
+      "history_duration_years": 14.26,
+      "commit_count": 972,
+      "license": "MIT"
+    },
+    {
+      "selection_rank": 18,
+      "repository_name": "PyCQA/pyflakes",
+      "category": "developer_tools",
+      "history_duration_years": 20.97,
+      "commit_count": 560,
+      "license": "MIT"
+    },
+    {
+      "selection_rank": 19,
+      "repository_name": "pypa/build",
+      "category": "developer_tools",
+      "history_duration_years": 6.38,
+      "commit_count": 1102,
+      "license": "MIT"
+    },
+    {
+      "selection_rank": 20,
+      "repository_name": "arrow-py/arrow",
+      "category": "libraries",
+      "history_duration_years": 13.44,
+      "commit_count": 1132,
+      "license": "Apache-2.0"
+    },
+    {
+      "selection_rank": 21,
+      "repository_name": "marshmallow-code/webargs",
+      "category": "web_backend",
+      "history_duration_years": 12.56,
+      "commit_count": 1502,
+      "license": "MIT"
+    },
+    {
+      "selection_rank": 22,
+      "repository_name": "tiangolo/typer",
+      "category": "cli_packages",
+      "history_duration_years": 6.72,
+      "commit_count": 1732,
+      "license": "MIT"
+    },
+    {
+      "selection_rank": 23,
+      "repository_name": "samuelcolvin/watchfiles",
+      "category": "infrastructure",
+      "history_duration_years": 8.94,
+      "commit_count": 289,
+      "license": "MIT"
+    },
+    {
+      "selection_rank": 24,
+      "repository_name": "frictionlessdata/frictionless-py",
+      "category": "data_utility",
+      "history_duration_years": 11.76,
+      "commit_count": 1825,
+      "license": "MIT"
+    },
+    {
+      "selection_rank": 25,
+      "repository_name": "agronholm/anyio",
+      "category": "infrastructure",
+      "history_duration_years": 8.13,
+      "commit_count": 1419,
+      "license": "MIT"
+    }
+  ],
+  "compliance_assertions": {
+    "popularity_bias_eliminated": true,
+    "no_manual_cherry_picking": true,
+    "no_outcome_conditioning": true,
+    "no_transition_inspected": true,
+    "no_claim_created": true,
+    "no_gold_annotated": true,
+    "contamination_blacklist_enforced": true,
+    "metadata_only_schema_enforced": true
+  },
+  "discovery_execution_verdict": "EXECUTION_COMPLETE_VALID"
+}

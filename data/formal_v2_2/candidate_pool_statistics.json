@@ -1,0 +1,7 @@
+{
+  "initial_candidates": 90,
+  "after_language_filter": 90,
+  "after_history_filter": 82,
+  "after_test_filter": 76,
+  "after_contamination_filter": 63
+}
