@@ -1,0 +1,442 @@
+{
+  "protocol_version": "2.2-formal-v1.0",
+  "report_type": "CANDIDATE_CLAIM_VERIFICATION_REPORT",
+  "generated_at": "2026-09-26T06:41:34.795013+00:00",
+  "total_transitions_evaluated": 50,
+  "total_repositories_evaluated": 25,
+  "total_candidates_evaluated": 48813,
+  "verified_candidates_count": 35369,
+  "excluded_candidates_count": 13444,
+  "base_truth_verification_rate": 0.7246,
+  "exclusion_reasons_breakdown": {
+    "Symbol None not verified in AST at base_commit": 12419,
+    "Parameters mismatch": 1025
+  },
+  "claim_type_distribution": {
+    "SYMBOL_EXISTS": 7998,
+    "CALLABLE": 7998,
+    "DEPRECATION_STATUS": 4214,
+    "SIGNATURE_COMPATIBLE": 9185,
+    "DEFAULT_VALUE": 4629,
+    "IMPORT_PATH_VALID": 1125,
+    "DEPENDENCY_CONTRACT": 122,
+    "BEHAVIORAL_CONTRACT": 98
+  },
+  "category_distribution": {
+    "data_utility": 3962,
+    "web_backend": 8583,
+    "libraries": 2401,
+    "cli_packages": 10269,
+    "developer_tools": 7708,
+    "infrastructure": 2446
+  },
+  "per_transition_statistics": {
+    "TR-001": {
+      "repository_name": "wireservice/agate-excel",
+      "category": "data_utility",
+      "base_commit": "37f1b3884ee28f25d005cf8de2d67d68b18ada30",
+      "total_extracted": 39,
+      "verified_candidates": 37,
+      "excluded_candidates": 2
+    },
+    "TR-002": {
+      "repository_name": "wireservice/agate-excel",
+      "category": "data_utility",
+      "base_commit": "aa611c3f37e746cc1fc08b26beaf1b9be1bff86e",
+      "total_extracted": 50,
+      "verified_candidates": 48,
+      "excluded_candidates": 2
+    },
+    "TR-003": {
+      "repository_name": "marshmallow-code/apispec",
+      "category": "web_backend",
+      "base_commit": "0211a3b05d3ba25632787b3f7c668aa9858b0c93",
+      "total_extracted": 335,
+      "verified_candidates": 310,
+      "excluded_candidates": 21
+    },
+    "TR-004": {
+      "repository_name": "marshmallow-code/apispec",
+      "category": "web_backend",
+      "base_commit": "39dec23c09261db7ba41b77edc7e3486b28a99a1",
+      "total_extracted": 265,
+      "verified_candidates": 242,
+      "excluded_candidates": 20
+    },
+    "TR-005": {
+      "repository_name": "yaml/pyyaml",
+      "category": "libraries",
+      "base_commit": "c42fa3bff1eabdb64763bb1526d9ea1ccb708479",
+      "total_extracted": 1029,
+      "verified_candidates": 688,
+      "excluded_candidates": 302
+    },
+    "TR-006": {
+      "repository_name": "yaml/pyyaml",
+      "category": "libraries",
+      "base_commit": "41309b0bcb4559edb1d691d47199035ef539d785",
+      "total_extracted": 1052,
+      "verified_candidates": 707,
+      "excluded_candidates": 306
+    },
+    "TR-007": {
+      "repository_name": "wireservice/agate-sql",
+      "category": "data_utility",
+      "base_commit": "98f85246c1e29a250b509c6e32103f8bea30ed16",
+      "total_extracted": 63,
+      "verified_candidates": 58,
+      "excluded_candidates": 5
+    },
+    "TR-008": {
+      "repository_name": "wireservice/agate-sql",
+      "category": "data_utility",
+      "base_commit": "170b8dd696674716aabd098429561cb617e34c76",
+      "total_extracted": 58,
+      "verified_candidates": 53,
+      "excluded_candidates": 5
+    },
+    "TR-009": {
+      "repository_name": "wireservice/csvkit",
+      "category": "data_utility",
+      "base_commit": "b88b9f46938ae427c18600a5a9bd55656d2c119c",
+      "total_extracted": 624,
+      "verified_candidates": 472,
+      "excluded_candidates": 126
+    },
+    "TR-010": {
+      "repository_name": "wireservice/csvkit",
+      "category": "data_utility",
+      "base_commit": "0647faf88e0139e28189e792d42cb4761494f170",
+      "total_extracted": 342,
+      "verified_candidates": 240,
+      "excluded_candidates": 95
+    },
+    "TR-011": {
+      "repository_name": "iterative/shtab",
+      "category": "cli_packages",
+      "base_commit": "f8203d9bcc08455a7a1e02951650264eb96eca9e",
+      "total_extracted": 98,
+      "verified_candidates": 93,
+      "excluded_candidates": 5
+    },
+    "TR-012": {
+      "repository_name": "iterative/shtab",
+      "category": "cli_packages",
+      "base_commit": "f5693b8df8ede8c6d6794e259c6c9adef9400622",
+      "total_extracted": 91,
+      "verified_candidates": 85,
+      "excluded_candidates": 6
+    },
+    "TR-013": {
+      "repository_name": "PyCQA/isort",
+      "category": "developer_tools",
+      "base_commit": "a44da52d42649c51c1addeeabefd81b1968e7cd9",
+      "total_extracted": 132,
+      "verified_candidates": 110,
+      "excluded_candidates": 22
+    },
+    "TR-014": {
+      "repository_name": "PyCQA/isort",
+      "category": "developer_tools",
+      "base_commit": "fcaa71e4c505e6b5c8be9db6ff37d1c2f514757d",
+      "total_extracted": 540,
+      "verified_candidates": 490,
+      "excluded_candidates": 49
+    },
+    "TR-015": {
+      "repository_name": "borntyping/python-colorlog",
+      "category": "data_utility",
+      "base_commit": "c06583f39476a62664211508f65d4f33a5b0eee5",
+      "total_extracted": 194,
+      "verified_candidates": 182,
+      "excluded_candidates": 7
+    },
+    "TR-016": {
+      "repository_name": "borntyping/python-colorlog",
+      "category": "data_utility",
+      "base_commit": "02903d433475c59be4e87082cf3fc43a53b4b2d6",
+      "total_extracted": 27,
+      "verified_candidates": 25,
+      "excluded_candidates": 2
+    },
+    "TR-017": {
+      "repository_name": "tartley/colorama",
+      "category": "libraries",
+      "base_commit": "9f5a28369c4528502b9faa76088df965f6ac103d",
+      "total_extracted": 264,
+      "verified_candidates": 183,
+      "excluded_candidates": 79
+    },
+    "TR-018": {
+      "repository_name": "tartley/colorama",
+      "category": "libraries",
+      "base_commit": "d83cff271f67e756e65be9427056442858d2ec24",
+      "total_extracted": 264,
+      "verified_candidates": 183,
+      "excluded_candidates": 79
+    },
+    "TR-019": {
+      "repository_name": "msgpack/msgpack-python",
+      "category": "libraries",
+      "base_commit": "b5acfd53833c3dbd379e539cc6e540cec83d0a99",
+      "total_extracted": 181,
+      "verified_candidates": 118,
+      "excluded_candidates": 48
+    },
+    "TR-020": {
+      "repository_name": "msgpack/msgpack-python",
+      "category": "libraries",
+      "base_commit": "d4675bee6c83d42cecda9a84e6716021eb2ad679",
+      "total_extracted": 167,
+      "verified_candidates": 120,
+      "excluded_candidates": 35
+    },
+    "TR-021": {
+      "repository_name": "tornadoweb/tornado",
+      "category": "web_backend",
+      "base_commit": "38014ddb51520ff7762c1d55535925dba2cdbe31",
+      "total_extracted": 5868,
+      "verified_candidates": 3080,
+      "excluded_candidates": 2083
+    },
+    "TR-022": {
+      "repository_name": "tornadoweb/tornado",
+      "category": "web_backend",
+      "base_commit": "c890f840f28b668202682acae6fefb633e6e6fb2",
+      "total_extracted": 6245,
+      "verified_candidates": 3304,
+      "excluded_candidates": 2281
+    },
+    "TR-023": {
+      "repository_name": "pypa/flit",
+      "category": "developer_tools",
+      "base_commit": "3c949de24a8c7421eee2ad47dbdd42cd6e9d602e",
+      "total_extracted": 732,
+      "verified_candidates": 640,
+      "excluded_candidates": 78
+    },
+    "TR-024": {
+      "repository_name": "pypa/flit",
+      "category": "developer_tools",
+      "base_commit": "3d8cc13ebcd0f087289ea181747077434dd1f48f",
+      "total_extracted": 462,
+      "verified_candidates": 406,
+      "excluded_candidates": 50
+    },
+    "TR-025": {
+      "repository_name": "psf/black",
+      "category": "developer_tools",
+      "base_commit": "d2490e24dad33b8f68c77602ee29160de0fea24b",
+      "total_extracted": 1982,
+      "verified_candidates": 1660,
+      "excluded_candidates": 271
+    },
+    "TR-026": {
+      "repository_name": "psf/black",
+      "category": "developer_tools",
+      "base_commit": "6305bf1ae645ab7541be4f5028a86239316178eb",
+      "total_extracted": 2021,
+      "verified_candidates": 1713,
+      "excluded_candidates": 257
+    },
+    "TR-027": {
+      "repository_name": "bottlepy/bottle",
+      "category": "web_backend",
+      "base_commit": "a52ac347ace72be6b18d6ffcdab08e341f2c03de",
+      "total_extracted": 891,
+      "verified_candidates": 541,
+      "excluded_candidates": 229
+    },
+    "TR-028": {
+      "repository_name": "bottlepy/bottle",
+      "category": "web_backend",
+      "base_commit": "eb2cd2b30ab20dceb55373c2c9c2ff04e435b529",
+      "total_extracted": 891,
+      "verified_candidates": 541,
+      "excluded_candidates": 229
+    },
+    "TR-029": {
+      "repository_name": "pypa/twine",
+      "category": "developer_tools",
+      "base_commit": "315c5a3b254ed6a49cca11559a7ac430da2a6cd2",
+      "total_extracted": 276,
+      "verified_candidates": 200,
+      "excluded_candidates": 65
+    },
+    "TR-030": {
+      "repository_name": "pypa/twine",
+      "category": "developer_tools",
+      "base_commit": "49e88ce71a72139366e48eb44ba1fdd7923ebd18",
+      "total_extracted": 262,
+      "verified_candidates": 209,
+      "excluded_candidates": 50
+    },
+    "TR-031": {
+      "repository_name": "prompt-toolkit/python-prompt-toolkit",
+      "category": "cli_packages",
+      "base_commit": "6bdcb9d7e33ab25b665ea9b5ba373471737b1db2",
+      "total_extracted": 4629,
+      "verified_candidates": 2999,
+      "excluded_candidates": 1108
+    },
+    "TR-032": {
+      "repository_name": "prompt-toolkit/python-prompt-toolkit",
+      "category": "cli_packages",
+      "base_commit": "b9a0ad9b3a462aa71df0e62561c1b411aa84af8c",
+      "total_extracted": 4458,
+      "verified_candidates": 2904,
+      "excluded_candidates": 1050
+    },
+    "TR-033": {
+      "repository_name": "pypa/wheel",
+      "category": "developer_tools",
+      "base_commit": "4fb47f98550f3f43fc0b8c73f518592124ae21bd",
+      "total_extracted": 361,
+      "verified_candidates": 324,
+      "excluded_candidates": 25
+    },
+    "TR-034": {
+      "repository_name": "pypa/wheel",
+      "category": "developer_tools",
+      "base_commit": "a899f1c69ffddf564b904a5de974457c213dc36a",
+      "total_extracted": 841,
+      "verified_candidates": 683,
+      "excluded_candidates": 113
+    },
+    "TR-035": {
+      "repository_name": "PyCQA/pyflakes",
+      "category": "developer_tools",
+      "base_commit": "9f26423dd1b9dc7cb14193d7bd873130247f4027",
+      "total_extracted": 747,
+      "verified_candidates": 269,
+      "excluded_candidates": 439
+    },
+    "TR-036": {
+      "repository_name": "PyCQA/pyflakes",
+      "category": "developer_tools",
+      "base_commit": "40e6dc23a8fc48f814e0c81fdcd936321ab9c023",
+      "total_extracted": 1173,
+      "verified_candidates": 453,
+      "excluded_candidates": 661
+    },
+    "TR-037": {
+      "repository_name": "pypa/build",
+      "category": "developer_tools",
+      "base_commit": "bd889569a1b9e2e7722682378c2d0cec469166a2",
+      "total_extracted": 277,
+      "verified_candidates": 237,
+      "excluded_candidates": 28
+    },
+    "TR-038": {
+      "repository_name": "pypa/build",
+      "category": "developer_tools",
+      "base_commit": "d08fcd723500a7d676867144e1e7a22b650aeb7d",
+      "total_extracted": 355,
+      "verified_candidates": 314,
+      "excluded_candidates": 29
+    },
+    "TR-039": {
+      "repository_name": "arrow-py/arrow",
+      "category": "libraries",
+      "base_commit": "2f1d335c81872622eb7263af4b40510158bb4954",
+      "total_extracted": 248,
+      "verified_candidates": 163,
+      "excluded_candidates": 82
+    },
+    "TR-040": {
+      "repository_name": "arrow-py/arrow",
+      "category": "libraries",
+      "base_commit": "b83bb867e75d9d08a1253d913e2c8ec6eb86e8ea",
+      "total_extracted": 344,
+      "verified_candidates": 239,
+      "excluded_candidates": 92
+    },
+    "TR-041": {
+      "repository_name": "marshmallow-code/webargs",
+      "category": "web_backend",
+      "base_commit": "8f0bf43968520b622228e90885f5d6455d594b4e",
+      "total_extracted": 444,
+      "verified_candidates": 275,
+      "excluded_candidates": 164
+    },
+    "TR-042": {
+      "repository_name": "marshmallow-code/webargs",
+      "category": "web_backend",
+      "base_commit": "a0e4fb222581e3223e4b9385f82df288b286f9d1",
+      "total_extracted": 439,
+      "verified_candidates": 290,
+      "excluded_candidates": 144
+    },
+    "TR-043": {
+      "repository_name": "tiangolo/typer",
+      "category": "cli_packages",
+      "base_commit": "ae94d5753c60badda5afd04edafd7e381991e3f8",
+      "total_extracted": 2277,
+      "verified_candidates": 1959,
+      "excluded_candidates": 48
+    },
+    "TR-044": {
+      "repository_name": "tiangolo/typer",
+      "category": "cli_packages",
+      "base_commit": "753cb32965dd18a4a51eec860fcd9689d31be955",
+      "total_extracted": 2574,
+      "verified_candidates": 2229,
+      "excluded_candidates": 54
+    },
+    "TR-045": {
+      "repository_name": "samuelcolvin/watchfiles",
+      "category": "infrastructure",
+      "base_commit": "90a149de9cccdeae4795b4eba5e2d6cf2df3d301",
+      "total_extracted": 109,
+      "verified_candidates": 86,
+      "excluded_candidates": 10
+    },
+    "TR-046": {
+      "repository_name": "samuelcolvin/watchfiles",
+      "category": "infrastructure",
+      "base_commit": "be319f3abc13117c57ab7313daf618edf33703d7",
+      "total_extracted": 117,
+      "verified_candidates": 88,
+      "excluded_candidates": 13
+    },
+    "TR-047": {
+      "repository_name": "frictionlessdata/frictionless-py",
+      "category": "data_utility",
+      "base_commit": "bffe82989f0fc782cb51b0c83bf2dee521e55ad8",
+      "total_extracted": 2307,
+      "verified_candidates": 1414,
+      "excluded_candidates": 740
+    },
+    "TR-048": {
+      "repository_name": "frictionlessdata/frictionless-py",
+      "category": "data_utility",
+      "base_commit": "d4ba7b147a41ff40f65ba629f74e57997b676840",
+      "total_extracted": 2366,
+      "verified_candidates": 1433,
+      "excluded_candidates": 755
+    },
+    "TR-049": {
+      "repository_name": "agronholm/anyio",
+      "category": "infrastructure",
+      "base_commit": "928366259543412a2deb1e2ba09ea45ffa92ef4f",
+      "total_extracted": 2521,
+      "verified_candidates": 1327,
+      "excluded_candidates": 665
+    },
+    "TR-050": {
+      "repository_name": "agronholm/anyio",
+      "category": "infrastructure",
+      "base_commit": "d973403730cd687bba29f8c52f2ca19f7fb4f55f",
+      "total_extracted": 1652,
+      "verified_candidates": 945,
+      "excluded_candidates": 415
+    }
+  },
+  "firewall_compliance": {
+    "zero_gold_labels": true,
+    "zero_validity_or_staleness_assigned": true,
+    "zero_rolemem_predictions": true,
+    "no_formal_inputs_generated": true
+  },
+  "candidate_verification_verdict": "CANDIDATE_POOL_READY_FOR_REVIEW"
+}
