@@ -1,0 +1,272 @@
+{
+  "ROB-EM-01": {
+    "case_id": "ROB-EM-01",
+    "category": "EVIDENCE_MISSING",
+    "repository_name": "wireservice/agate-excel",
+    "base_commit": "37f1b3884ee28f25d005cf8de2d67d68b18ada30",
+    "target_commit": "03ec2250ea5fee3f1edb1a9880f43fb88b9c6c88",
+    "base_evidence_path": "",
+    "base_evidence_snippet": ""
+  },
+  "ROB-EM-02": {
+    "case_id": "ROB-EM-02",
+    "category": "EVIDENCE_MISSING",
+    "repository_name": "yaml/pyyaml",
+    "base_commit": "c42fa3bff1eabdb64763bb1526d9ea1ccb708479",
+    "target_commit": "41309b0bcb4559edb1d691d47199035ef539d785",
+    "base_evidence_path": "",
+    "base_evidence_snippet": ""
+  },
+  "ROB-EM-03": {
+    "case_id": "ROB-EM-03",
+    "category": "EVIDENCE_MISSING",
+    "repository_name": "tornadoweb/tornado",
+    "base_commit": "c890f840f28b668202682acae6fefb633e6e6fb2",
+    "target_commit": "cc2cf078a39abec6f8d181f76a4e5ba9432364f3",
+    "base_evidence_path": "",
+    "base_evidence_snippet": ""
+  },
+  "ROB-EM-04": {
+    "case_id": "ROB-EM-04",
+    "category": "EVIDENCE_MISSING",
+    "repository_name": "wireservice/csvkit",
+    "base_commit": "d6ebc453ca1668da9ae4c6d48220f188faeeaa7b",
+    "target_commit": "3e33f3c4dbb9b2ffaa771c5a93945a08ce19992f",
+    "base_evidence_path": "",
+    "base_evidence_snippet": ""
+  },
+  "ROB-EM-05": {
+    "case_id": "ROB-EM-05",
+    "category": "EVIDENCE_MISSING",
+    "repository_name": "bottlepy/bottle",
+    "base_commit": "d4cb310a0df6ec87e411b93f2f813a48e71aa9da",
+    "target_commit": "063c6c99c855239a5ec9cfb591b61c4ae4b50302",
+    "base_evidence_path": "",
+    "base_evidence_snippet": ""
+  },
+  "ROB-EM-06": {
+    "case_id": "ROB-EM-06",
+    "category": "EVIDENCE_MISSING",
+    "repository_name": "borntyping/python-colorlog",
+    "base_commit": "db7dfc5bf7dcbb8dbe2bce81d0be5eef9115eb37",
+    "target_commit": "216447814b7725902095ccddfa327c62bb95f87b",
+    "base_evidence_path": "",
+    "base_evidence_snippet": ""
+  },
+  "ROB-EM-07": {
+    "case_id": "ROB-EM-07",
+    "category": "EVIDENCE_MISSING",
+    "repository_name": "arrow-py/arrow",
+    "base_commit": "0085d30fdb7a2992f254b9d07010486c9d09e86c",
+    "target_commit": "22cbeaaef65b9e0f6ca4341b71d9d9551c9644ba",
+    "base_evidence_path": "",
+    "base_evidence_snippet": ""
+  },
+  "ROB-EM-08": {
+    "case_id": "ROB-EM-08",
+    "category": "EVIDENCE_MISSING",
+    "repository_name": "tiangolo/typer",
+    "base_commit": "04c7d0d0f77977eb711c03bf40ceb91ef494db13",
+    "target_commit": "065a0890bf70d8a5faae6a666e63286f916be9cb",
+    "base_evidence_path": "",
+    "base_evidence_snippet": ""
+  },
+  "ROB-EM-09": {
+    "case_id": "ROB-EM-09",
+    "category": "EVIDENCE_MISSING",
+    "repository_name": "psf/black",
+    "base_commit": "b4962eb02927233f815024b4395fb9a74421b072",
+    "target_commit": "81e4ae67f67beba56ff56f4a86f99ec1dae2a392",
+    "base_evidence_path": "",
+    "base_evidence_snippet": ""
+  },
+  "ROB-EM-10": {
+    "case_id": "ROB-EM-10",
+    "category": "EVIDENCE_MISSING",
+    "repository_name": "wireservice/agate-excel",
+    "base_commit": "37f1b3884ee28f25d005cf8de2d67d68b18ada30",
+    "target_commit": "03ec2250ea5fee3f1edb1a9880f43fb88b9c6c88",
+    "base_evidence_path": "",
+    "base_evidence_snippet": ""
+  },
+  "ROB-AE-01": {
+    "case_id": "ROB-AE-01",
+    "category": "AMBIGUOUS_EVOLUTION",
+    "repository_name": "samuelcolvin/watchfiles",
+    "base_commit": "316fa7d76cb1e5b158019ab76bc29bdf49684994",
+    "target_commit": "4c3d3257850892c90c74b172a5ec21387d55883a",
+    "base_evidence_path": "watchgod/watcher.py",
+    "base_evidence_snippet": ""
+  },
+  "ROB-AE-02": {
+    "case_id": "ROB-AE-02",
+    "category": "AMBIGUOUS_EVOLUTION",
+    "repository_name": "wireservice/agate-excel",
+    "base_commit": "37f1b3884ee28f25d005cf8de2d67d68b18ada30",
+    "target_commit": "03ec2250ea5fee3f1edb1a9880f43fb88b9c6c88",
+    "base_evidence_path": "agateexcel/table_xls.py",
+    "base_evidence_snippet": ""
+  },
+  "ROB-AE-03": {
+    "case_id": "ROB-AE-03",
+    "category": "AMBIGUOUS_EVOLUTION",
+    "repository_name": "yaml/pyyaml",
+    "base_commit": "c42fa3bff1eabdb64763bb1526d9ea1ccb708479",
+    "target_commit": "41309b0bcb4559edb1d691d47199035ef539d785",
+    "base_evidence_path": "lib/yaml/tokens.py",
+    "base_evidence_snippet": ""
+  },
+  "ROB-AE-04": {
+    "case_id": "ROB-AE-04",
+    "category": "AMBIGUOUS_EVOLUTION",
+    "repository_name": "tornadoweb/tornado",
+    "base_commit": "c890f840f28b668202682acae6fefb633e6e6fb2",
+    "target_commit": "cc2cf078a39abec6f8d181f76a4e5ba9432364f3",
+    "base_evidence_path": "tornado/template.py",
+    "base_evidence_snippet": ""
+  },
+  "ROB-AE-05": {
+    "case_id": "ROB-AE-05",
+    "category": "AMBIGUOUS_EVOLUTION",
+    "repository_name": "pypa/flit",
+    "base_commit": "97ee176c1caef11b7d59012f46258f8448eb0d59",
+    "target_commit": "fc2b9794cb4c8bdfc76b92f7e750e393a5255ee9",
+    "base_evidence_path": "flit/sdist.py",
+    "base_evidence_snippet": ""
+  },
+  "ROB-AE-06": {
+    "case_id": "ROB-AE-06",
+    "category": "AMBIGUOUS_EVOLUTION",
+    "repository_name": "prompt-toolkit/python-prompt-toolkit",
+    "base_commit": "be98f1fdb9e29a997ef2b77054817a3a0e68d904",
+    "target_commit": "ba15c544e457f59d5b78b09da74026838386127e",
+    "base_evidence_path": "src/prompt_toolkit/widgets/toolbars.py",
+    "base_evidence_snippet": ""
+  },
+  "ROB-AE-07": {
+    "case_id": "ROB-AE-07",
+    "category": "AMBIGUOUS_EVOLUTION",
+    "repository_name": "tiangolo/typer",
+    "base_commit": "04c7d0d0f77977eb711c03bf40ceb91ef494db13",
+    "target_commit": "065a0890bf70d8a5faae6a666e63286f916be9cb",
+    "base_evidence_path": "typer/models.py",
+    "base_evidence_snippet": ""
+  },
+  "ROB-AE-08": {
+    "case_id": "ROB-AE-08",
+    "category": "AMBIGUOUS_EVOLUTION",
+    "repository_name": "wireservice/agate-excel",
+    "base_commit": "37f1b3884ee28f25d005cf8de2d67d68b18ada30",
+    "target_commit": "03ec2250ea5fee3f1edb1a9880f43fb88b9c6c88",
+    "base_evidence_path": "agateexcel/table_xlsx.py",
+    "base_evidence_snippet": ""
+  },
+  "ROB-AE-09": {
+    "case_id": "ROB-AE-09",
+    "category": "AMBIGUOUS_EVOLUTION",
+    "repository_name": "marshmallow-code/webargs",
+    "base_commit": "fc72834b9cfbf4fef5709cfad72cb250a5fcf547",
+    "target_commit": "2e1329a287955c4d054d1933b934b1262d169c4a",
+    "base_evidence_path": "src/webargs/core.py",
+    "base_evidence_snippet": ""
+  },
+  "ROB-AE-10": {
+    "case_id": "ROB-AE-10",
+    "category": "AMBIGUOUS_EVOLUTION",
+    "repository_name": "pypa/twine",
+    "base_commit": "4d5718dfaa2998f483c66042db629007f3ea0f98",
+    "target_commit": "df4b752df4a54c6a9b4009772c3d5267ea0d2703",
+    "base_evidence_path": "twine/package.py",
+    "base_evidence_snippet": ""
+  },
+  "ROB-CE-01": {
+    "case_id": "ROB-CE-01",
+    "category": "CONFLICTING_EVIDENCE",
+    "repository_name": "tornadoweb/tornado",
+    "base_commit": "c890f840f28b668202682acae6fefb633e6e6fb2",
+    "target_commit": "cc2cf078a39abec6f8d181f76a4e5ba9432364f3",
+    "base_evidence_path": "tornado/wsgi.py",
+    "base_evidence_snippet": ""
+  },
+  "ROB-CE-02": {
+    "case_id": "ROB-CE-02",
+    "category": "CONFLICTING_EVIDENCE",
+    "repository_name": "bottlepy/bottle",
+    "base_commit": "d4cb310a0df6ec87e411b93f2f813a48e71aa9da",
+    "target_commit": "063c6c99c855239a5ec9cfb591b61c4ae4b50302",
+    "base_evidence_path": "bottle.py",
+    "base_evidence_snippet": ""
+  },
+  "ROB-CE-03": {
+    "case_id": "ROB-CE-03",
+    "category": "CONFLICTING_EVIDENCE",
+    "repository_name": "yaml/pyyaml",
+    "base_commit": "c42fa3bff1eabdb64763bb1526d9ea1ccb708479",
+    "target_commit": "41309b0bcb4559edb1d691d47199035ef539d785",
+    "base_evidence_path": "lib/yaml/__init__.py",
+    "base_evidence_snippet": ""
+  },
+  "ROB-CE-04": {
+    "case_id": "ROB-CE-04",
+    "category": "CONFLICTING_EVIDENCE",
+    "repository_name": "psf/black",
+    "base_commit": "b4962eb02927233f815024b4395fb9a74421b072",
+    "target_commit": "81e4ae67f67beba56ff56f4a86f99ec1dae2a392",
+    "base_evidence_path": "tests/test_blackd.py",
+    "base_evidence_snippet": ""
+  },
+  "ROB-CE-05": {
+    "case_id": "ROB-CE-05",
+    "category": "CONFLICTING_EVIDENCE",
+    "repository_name": "pypa/flit",
+    "base_commit": "97ee176c1caef11b7d59012f46258f8448eb0d59",
+    "target_commit": "fc2b9794cb4c8bdfc76b92f7e750e393a5255ee9",
+    "base_evidence_path": "flit_core/flit_core/tests/test_versionno.py",
+    "base_evidence_snippet": ""
+  },
+  "ROB-CE-06": {
+    "case_id": "ROB-CE-06",
+    "category": "CONFLICTING_EVIDENCE",
+    "repository_name": "wireservice/agate-excel",
+    "base_commit": "37f1b3884ee28f25d005cf8de2d67d68b18ada30",
+    "target_commit": "03ec2250ea5fee3f1edb1a9880f43fb88b9c6c88",
+    "base_evidence_path": "tests/test_table_xlsx.py",
+    "base_evidence_snippet": ""
+  },
+  "ROB-CE-07": {
+    "case_id": "ROB-CE-07",
+    "category": "CONFLICTING_EVIDENCE",
+    "repository_name": "tornadoweb/tornado",
+    "base_commit": "c890f840f28b668202682acae6fefb633e6e6fb2",
+    "target_commit": "cc2cf078a39abec6f8d181f76a4e5ba9432364f3",
+    "base_evidence_path": "tornado/test/util.py",
+    "base_evidence_snippet": ""
+  },
+  "ROB-CE-08": {
+    "case_id": "ROB-CE-08",
+    "category": "CONFLICTING_EVIDENCE",
+    "repository_name": "pypa/build",
+    "base_commit": "e50663f7361be317bfb0fb600eb3355be326f29a",
+    "target_commit": "565ff51fa73e6dae9fa3aa76da7470fcf1975e53",
+    "base_evidence_path": "src/build/env.py",
+    "base_evidence_snippet": ""
+  },
+  "ROB-CE-09": {
+    "case_id": "ROB-CE-09",
+    "category": "CONFLICTING_EVIDENCE",
+    "repository_name": "tiangolo/typer",
+    "base_commit": "04c7d0d0f77977eb711c03bf40ceb91ef494db13",
+    "target_commit": "065a0890bf70d8a5faae6a666e63286f916be9cb",
+    "base_evidence_path": "typer/rich_utils.py",
+    "base_evidence_snippet": ""
+  },
+  "ROB-CE-10": {
+    "case_id": "ROB-CE-10",
+    "category": "CONFLICTING_EVIDENCE",
+    "repository_name": "wireservice/agate-sql",
+    "base_commit": "5ef727dd8c6b758da4f4b4f51e06d9da639b7d4d",
+    "target_commit": "292c13d7e5d8ff7dd6f272a27ffb2aeb81d2df65",
+    "base_evidence_path": "agatesql/table.py",
+    "base_evidence_snippet": ""
+  }
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "variant_key": "rolemem_full",
+    "variant_name": "**RoleMem (Full System)**",
+    "accuracy": 1.0,
+    "macro_f1": 1.0,
+    "delta_f1": 0.0,
+    "valid_f1": 1.0,
+    "valid_recall": 1.0,
+    "stale_f1": 1.0,
+    "stale_recall": 1.0,
+    "partial_f1": 1.0,
+    "partial_recall": 1.0,
+    "fir": 0.0,
+    "ser": 0.0
+  },
+  {
+    "variant_key": "rolemem_no_role",
+    "variant_name": "w/o Epistemic Roles ($-\\mathcal{R}$)",
+    "accuracy": 0.7333,
+    "macro_f1": 0.3123,
+    "delta_f1": -0.6877,
+    "valid_f1": 0.8438,
+    "valid_recall": 0.864,
+    "stale_f1": 0.093,
+    "stale_recall": 0.0833,
+    "partial_f1": 0.0,
+    "partial_recall": 0.0,
+    "fir": 0.136,
+    "ser": 0.9167
+  },
+  {
+    "variant_key": "rolemem_no_evidence",
+    "variant_name": "w/o Grounding Evidence ($-\\mathcal{E}$)",
+    "accuracy": 0.6733,
+    "macro_f1": 0.4069,
+    "delta_f1": -0.5931,
+    "valid_f1": 0.7714,
+    "valid_recall": 0.648,
+    "stale_f1": 0.4494,
+    "stale_recall": 0.8333,
+    "partial_f1": 0.0,
+    "partial_recall": 0.0,
+    "fir": 0.352,
+    "ser": 0.1667
+  },
+  {
+    "variant_key": "rolemem_no_lifecycle",
+    "variant_name": "w/o Dynamic Lifecycle Engine ($-\\Lambda$)",
+    "accuracy": 0.7333,
+    "macro_f1": 0.3254,
+    "delta_f1": -0.6746,
+    "valid_f1": 0.8458,
+    "valid_recall": 0.856,
+    "stale_f1": 0.1304,
+    "stale_recall": 0.125,
+    "partial_f1": 0.0,
+    "partial_recall": 0.0,
+    "fir": 0.144,
+    "ser": 0.875
+  }
+]

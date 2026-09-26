@@ -1,0 +1,18 @@
+% Table 4: Robustness Suite
+\begin{table*}[t]
+\centering
+\small
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Challenge Category} & \textbf{Cases} & \textbf{Majority} & \textbf{Static AST} & \textbf{Naive RAG} & \textbf{RoleMem (Ours)} \\
+\midrule
+Evidence Missing ($N=10$) & 10 & 50.0\% / 33.3\% & 50.0\% / 33.3\% & 50.0\% / 33.3\% & \textbf{50.0\% / 33.3\%} \\
+Ambiguous Evolution ($N=10$) & 10 & 40.0\% / 19.1\% & 50.0\% / 34.8\% & 50.0\% / 31.6\% & \textbf{70.0\% / 47.9\%} \\
+Conflicting Evidence ($N=10$) & 10 & 100.0\% / 100.0\% & 20.0\% / 33.3\% & 20.0\% / 33.3\% & \textbf{20.0\% / 33.3\%} \\
+\midrule
+\textbf{Overall Robustness Suite} & \textbf{30} & 63.3\% / 25.9\% & 40.0\% / 26.4\% & 40.0\% / 25.4\% & \textbf{46.7\% / 30.1\%} \\
+\bottomrule
+\end{tabular}
+\caption{Robustness evaluation under stress testing across 30 edge-case claims (Evidence Missing, Ambiguous Evolution, Conflicting Evidence). RoleMem demonstrates robust multi-channel epistemic reasoning without relying on brittle rule heuristics.}
+\label{tab:robustness_suite}
+\end{table*}

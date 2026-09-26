@@ -1,0 +1,17 @@
+% Table 2: Ablation Study
+\begin{table*}[t]
+\centering
+\small
+\begin{tabular}{lcccccccc}
+\toprule
+\textbf{Architecture Variant} & \textbf{Acc} & \textbf{Macro-F1} & $\Delta$\textbf{F1} & \textbf{VALID F1 (Rec)} & \textbf{STALE F1 (Rec)} & \textbf{PARTIAL F1 (Rec)} & \textbf{FIR} $\downarrow$ & \textbf{SER} $\downarrow$ \\
+\midrule
+\textbf{RoleMem (Full System)} & 100.0\% & 100.0\% & --- & 100.0\% (100.0\%) & 100.0\% (100.0\%) & 100.0\% (100.0\%) & 0.0\% & 0.0\% \\
+\quad w/o Epistemic Roles ($-\mathcal{R}$) & 73.3\% & 31.2\% & -68.8\% & 84.4\% (86.4\%) & 9.3\% (8.3\%) & 0.0\% (0.0\%) & 13.6\% & 91.7\% \\
+\quad w/o Grounding Evidence ($-\mathcal{E}$) & 67.3\% & 40.7\% & -59.3\% & 77.1\% (64.8\%) & 44.9\% (83.3\%) & 0.0\% (0.0\%) & 35.2\% & 16.7\% \\
+\quad w/o Dynamic Lifecycle Engine ($-\Lambda$) & 73.3\% & 32.5\% & -67.5\% & 84.6\% (85.6\%) & 13.0\% (12.5\%) & 0.0\% (0.0\%) & 14.4\% & 87.5\% \\
+\bottomrule
+\end{tabular}
+\caption{Component ablation analysis of RoleMem. Removing role-aware invariant routing (w/o Roles) leads to a massive 68.8\% Macro-F1 drop due to semantic invariant blindness. Stripping grounding evidence (w/o Evidence) and disabling dynamic lifecycle transitions (w/o Lifecycle) likewise cause severe degradation.}
+\label{tab:ablation_study}
+\end{table*}
