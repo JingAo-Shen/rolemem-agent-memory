@@ -1,0 +1,10 @@
+{"case_id": "FV22-000001", "predicted_label": "VALID", "confidence": 0.9, "escalation_tier": "TIER_0_STATIC_AST", "action_count": 1, "execution_wall_time_sec": 0.004201}
+{"case_id": "FV22-000002", "predicted_label": "VALID", "confidence": 0.9, "escalation_tier": "TIER_0_STATIC_AST", "action_count": 1, "execution_wall_time_sec": 0.002218}
+{"case_id": "FV22-000003", "predicted_label": "STALE", "confidence": 0.8, "escalation_tier": "TIER_0_STATIC_AST", "action_count": 1, "execution_wall_time_sec": 0.001722}
+{"case_id": "FV22-000004", "predicted_label": "VALID", "confidence": 0.9, "escalation_tier": "TIER_0_STATIC_AST", "action_count": 1, "execution_wall_time_sec": 0.002322}
+{"case_id": "FV22-000005", "predicted_label": "VALID", "confidence": 0.9, "escalation_tier": "TIER_0_STATIC_AST", "action_count": 1, "execution_wall_time_sec": 0.00243}
+{"case_id": "FV22-000006", "predicted_label": "VALID", "confidence": 0.9, "escalation_tier": "TIER_0_STATIC_AST", "action_count": 1, "execution_wall_time_sec": 0.00211}
+{"case_id": "FV22-000007", "predicted_label": "STALE", "confidence": 0.8, "escalation_tier": "TIER_0_STATIC_AST", "action_count": 1, "execution_wall_time_sec": 0.005696}
+{"case_id": "FV22-000008", "predicted_label": "VALID", "confidence": 0.9, "escalation_tier": "TIER_0_STATIC_AST", "action_count": 1, "execution_wall_time_sec": 0.002124}
+{"case_id": "FV22-000009", "predicted_label": "VALID", "confidence": 0.9, "escalation_tier": "TIER_0_STATIC_AST", "action_count": 1, "execution_wall_time_sec": 0.002777}
+{"case_id": "FV22-000010", "predicted_label": "STALE", "confidence": 0.8, "escalation_tier": "TIER_0_STATIC_AST", "action_count": 1, "execution_wall_time_sec": 0.003376}

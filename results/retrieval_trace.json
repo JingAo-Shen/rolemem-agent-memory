@@ -1,0 +1,272 @@
+[
+  {
+    "case_id": "FV22-000001",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000002",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000003",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000004",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000005",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000006",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000007",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000008",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000009",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000010",
+    "method": "majority",
+    "predicted_label": "VALID"
+  },
+  {
+    "case_id": "FV22-000001",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000002",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000003",
+    "method": "static_ast",
+    "predicted_label": "STALE",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000004",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000005",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000006",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000007",
+    "method": "static_ast",
+    "predicted_label": "STALE",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000008",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000009",
+    "method": "static_ast",
+    "predicted_label": "VALID",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000010",
+    "method": "static_ast",
+    "predicted_label": "STALE",
+    "action_count": 1
+  },
+  {
+    "case_id": "FV22-000001",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000002",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000003",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000004",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000005",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000006",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000007",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000008",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000009",
+    "method": "naive_rag",
+    "predicted_label": "VALID",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000010",
+    "method": "naive_rag",
+    "predicted_label": "STALE",
+    "action_count": 2
+  },
+  {
+    "case_id": "FV22-000001",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0043
+  },
+  {
+    "case_id": "FV22-000002",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0046
+  },
+  {
+    "case_id": "FV22-000003",
+    "method": "rolemem",
+    "claim_type": "DEPRECATION_STATUS",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0048
+  },
+  {
+    "case_id": "FV22-000004",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0107
+  },
+  {
+    "case_id": "FV22-000005",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0145
+  },
+  {
+    "case_id": "FV22-000006",
+    "method": "rolemem",
+    "claim_type": "DEPRECATION_STATUS",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0114
+  },
+  {
+    "case_id": "FV22-000007",
+    "method": "rolemem",
+    "claim_type": "BEHAVIORAL_CONTRACT",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0163
+  },
+  {
+    "case_id": "FV22-000008",
+    "method": "rolemem",
+    "claim_type": "DEFAULT_VALUE",
+    "predicted_label": "STALE",
+    "confidence": 0.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0078
+  },
+  {
+    "case_id": "FV22-000009",
+    "method": "rolemem",
+    "claim_type": "SIGNATURE_COMPATIBLE",
+    "predicted_label": "VALID",
+    "confidence": 1.0,
+    "escalation_tier": "TIER_0_STATIC_AST",
+    "action_count": 0,
+    "elapsed_sec": 0.0198
+  },
+  {
+    "case_id": "FV22-000010",
+    "method": "rolemem",
+    "claim_type": "BEHAVIORAL_CONTRACT",
+    "predicted_label": "UNCERTAIN",
+    "confidence": 0.9,
+    "escalation_tier": "TIER_1_FILE_SEARCH",
+    "action_count": 1,
+    "elapsed_sec": 0.0468
+  }
+]

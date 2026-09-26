@@ -1,0 +1,10 @@
+{"case_id": "FV22-000001", "predicted_label": "VALID", "confidence": 0.8125, "escalation_tier": "TIER_1_FILE_SEARCH", "action_count": 2, "execution_wall_time_sec": 0.001901}
+{"case_id": "FV22-000002", "predicted_label": "VALID", "confidence": 0.7667, "escalation_tier": "TIER_1_FILE_SEARCH", "action_count": 2, "execution_wall_time_sec": 0.001672}
+{"case_id": "FV22-000003", "predicted_label": "STALE", "confidence": 0.9333, "escalation_tier": "TIER_1_FILE_SEARCH", "action_count": 2, "execution_wall_time_sec": 0.001431}
+{"case_id": "FV22-000004", "predicted_label": "VALID", "confidence": 0.8, "escalation_tier": "TIER_1_FILE_SEARCH", "action_count": 2, "execution_wall_time_sec": 0.001728}
+{"case_id": "FV22-000005", "predicted_label": "STALE", "confidence": 0.5385, "escalation_tier": "TIER_1_FILE_SEARCH", "action_count": 2, "execution_wall_time_sec": 0.001819}
+{"case_id": "FV22-000006", "predicted_label": "STALE", "confidence": 0.6875, "escalation_tier": "TIER_1_FILE_SEARCH", "action_count": 2, "execution_wall_time_sec": 0.001921}
+{"case_id": "FV22-000007", "predicted_label": "STALE", "confidence": 0.5217, "escalation_tier": "TIER_1_FILE_SEARCH", "action_count": 2, "execution_wall_time_sec": 0.002306}
+{"case_id": "FV22-000008", "predicted_label": "STALE", "confidence": 0.5714, "escalation_tier": "TIER_1_FILE_SEARCH", "action_count": 2, "execution_wall_time_sec": 0.001571}
+{"case_id": "FV22-000009", "predicted_label": "VALID", "confidence": 0.875, "escalation_tier": "TIER_1_FILE_SEARCH", "action_count": 2, "execution_wall_time_sec": 0.001896}
+{"case_id": "FV22-000010", "predicted_label": "STALE", "confidence": 0.6316, "escalation_tier": "TIER_1_FILE_SEARCH", "action_count": 2, "execution_wall_time_sec": 0.001975}

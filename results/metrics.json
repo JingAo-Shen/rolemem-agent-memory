@@ -1,0 +1,111 @@
+{
+  "total_evaluated": 10,
+  "primary_3class": {
+    "accuracy": 0.4,
+    "macro_f1": 0.4166,
+    "per_class": {
+      "VALID": {
+        "precision": 1.0,
+        "recall": 0.3333,
+        "f1": 0.5,
+        "tp": 3,
+        "fp": 0,
+        "fn": 6,
+        "support": 9
+      },
+      "STALE": {
+        "precision": 0.2,
+        "recall": 1.0,
+        "f1": 0.3333,
+        "tp": 1,
+        "fp": 4,
+        "fn": 0,
+        "support": 1
+      },
+      "PARTIALLY_VALID": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "support": 0
+      }
+    },
+    "confusion_matrix": {
+      "VALID": {
+        "VALID": 3,
+        "STALE": 4,
+        "PARTIALLY_VALID": 0
+      },
+      "STALE": {
+        "VALID": 0,
+        "STALE": 1,
+        "PARTIALLY_VALID": 0
+      },
+      "PARTIALLY_VALID": {
+        "VALID": 0,
+        "STALE": 0,
+        "PARTIALLY_VALID": 0
+      }
+    }
+  },
+  "track_a_strict": {
+    "accuracy": 0.4,
+    "macro_f1": 0.4166,
+    "per_class": {
+      "VALID": {
+        "precision": 1.0,
+        "recall": 0.3333,
+        "f1": 0.5,
+        "tp": 3,
+        "fp": 0,
+        "fn": 6,
+        "support": 9
+      },
+      "STALE": {
+        "precision": 0.2,
+        "recall": 1.0,
+        "f1": 0.3333,
+        "tp": 1,
+        "fp": 4,
+        "fn": 0,
+        "support": 1
+      }
+    }
+  },
+  "track_b_compatible": {
+    "accuracy": 0.4,
+    "macro_f1": 0.4166,
+    "per_class": {
+      "VALID": {
+        "precision": 1.0,
+        "recall": 0.3333,
+        "f1": 0.5,
+        "tp": 3,
+        "fp": 0,
+        "fn": 6,
+        "support": 9
+      },
+      "STALE": {
+        "precision": 0.2,
+        "recall": 1.0,
+        "f1": 0.3333,
+        "tp": 1,
+        "fp": 4,
+        "fn": 0,
+        "support": 1
+      }
+    }
+  },
+  "selective_risk_metrics": {
+    "coverage": 0.8,
+    "selective_risk": 0.75,
+    "false_invalid_rate_FIR": 0.4444,
+    "stale_escape_rate_SER": 0.0
+  },
+  "operational_efficiency": {
+    "avg_action_count": 0.1,
+    "avg_wall_time_sec": 0.0141
+  }
+}
