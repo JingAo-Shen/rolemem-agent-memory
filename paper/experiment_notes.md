@@ -18,7 +18,7 @@ This document provides the in-depth methodological notes, theoretical justificat
 ### B. Benchmark Preregistration & Firewalls
 - **Protocol Version**: RoleMem Protocol V2.2 (Frozen at commit `72a5a5b`, `data/formal_v2_2/protocol_preregistration.json`).
 - **Benchmark Corpus**: 150 stratified memory claims extracted across 50 real-world repository transitions.
-- **Firewall Isolation**: Gold annotations were produced independently via dual adjudication ($\kappa = 1.0$) with absolute algorithm isolation (zero baseline predictions and zero RoleMem executions during ground truth annotation).
+- **Firewall Isolation**: Gold annotations were produced independently via dual adjudication ($\kappa = 1.0$) with absolute algorithm isolation (no baseline predictions and zero RoleMem executions during ground truth annotation).
 
 ---
 

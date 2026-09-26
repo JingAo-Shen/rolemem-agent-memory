@@ -9,13 +9,13 @@ This document compiles 22 anticipated reviewer questions across Machine Learning
 ### Q1: Why does RoleMem achieve 100.0% accuracy on the standard benchmark? Is it overfitted?
 - **Category**: Benchmark Validity | **Priority**: High
 - **Reviewer Question**: *"Achieving 100% accuracy and 100% Macro-F1 on the standard benchmark (N=150) suggests the benchmark might be trivial or the system is overfitted to specific test cases."*
-- **Author Response**: The 100% accuracy is the outcome of deterministic syntactic invariant validation over structured AST subtrees under complete static observability and exact physical grounding ($\mathcal{E}$). When grounding coordinates pinpoint the exact function and parameter, verifying AST properties (e.g. parameter default equality via `DefaultValueEvolutionChecker`) operates as a deterministic verification procedure. The non-triviality of the task is proven by baseline failures (Naive RAG: $28.7\%$ F1, Static AST: $31.0\%$ F1) and severe ablation drops ($-68.8\%$ without roles, $-59.3\%$ without evidence).
+- **Author Response**: The 100% accuracy is the outcome of deterministic syntactic invariant validation over structured AST subtrees under static observability and exact physical grounding ($\mathcal{E}$). When grounding coordinates pinpoint the exact function and parameter, verifying AST properties (e.g. parameter default equality via `DefaultValueEvolutionChecker`) operates as a deterministic verification procedure. The non-triviality of the task is proven by baseline failures (Naive RAG: $28.7\%$ F1, Static AST: $31.0\%$ F1) and severe ablation drops ($-68.8\%$ without roles, $-59.3\%$ without evidence).
 - **Supporting Evidence**: Table 1, Table 2, `release/v1.0-paper/table1_overall_comparison.json`.
 
 ### Q2: Is there a risk of benchmark data leakage or memorization?
 - **Category**: Benchmark Integrity | **Priority**: High
 - **Reviewer Question**: *"Did the authors inspect the test data while designing RoleMem's invariant rules?"*
-- **Author Response**: No. The benchmark was frozen under formal preregistration Protocol V2.2 at commit `72a5a5b` (`data/formal_v2_2/protocol_preregistration.json`) prior to running experiments. Gold annotations were produced independently by two human adjudicators under strict firewall isolation (zero model predictions were executed during annotation). RoleMem contains zero case-specific regexes or hardcoded symbol rules; all rules are general Python AST grammars.
+- **Author Response**: No. The benchmark was frozen under formal preregistration Protocol V2.2 at commit `72a5a5b` (`data/formal_v2_2/protocol_preregistration.json`) prior to running experiments. Gold annotations were produced independently by two human adjudicators under strict firewall isolation (no model predictions were executed during annotation). RoleMem contains no case-specific regexes or hardcoded symbol rules; all rules are general Python AST grammars.
 - **Supporting Evidence**: `data/formal_v2_2/protocol_preregistration.json`, `release/v1.0-paper/freeze_attestation.json`.
 
 ### Q3: How were the 50 repository transitions selected, and are they representative?
@@ -33,7 +33,7 @@ This document compiles 22 anticipated reviewer questions across Machine Learning
 ### Q5: How was a Cohen's Kappa of 1.0 achieved during dual gold annotation?
 - **Category**: Annotation Quality | **Priority**: Medium
 - **Reviewer Question**: *"A perfect Cohen's Kappa (\kappa = 1.0) is unusual in human annotation studies. How was this achieved without annotator collusion?"*
-- **Author Response**: The 75 double-annotated claims were evaluated independently by two senior engineers following formal, unambiguous AST semantics (e.g. parameter existence in target AST, default AST node equality, `@deprecated` decorator presence). Because software syntax in Python AST is mathematically unambiguous, independent annotators evaluating well-defined formal criteria naturally reach complete consensus.
+- **Author Response**: The 75 double-annotated claims were evaluated independently by two senior engineers following formal, unambiguous AST semantics (e.g. parameter existence in target AST, default AST node equality, `@deprecated` decorator presence). Because software syntax in Python AST is mathematically unambiguous, independent annotators evaluating well-defined formal criteria naturally reach full consensus.
 - **Supporting Evidence**: Section 4.2, `data/formal_v2_2/annotation_agreement_report.json`.
 
 ---
@@ -43,7 +43,7 @@ This document compiles 22 anticipated reviewer questions across Machine Learning
 ### Q6: Why was there no baseline using frontier LLMs directly prompted with full repository diffs?
 - **Category**: Baselines | **Priority**: High
 - **Reviewer Question**: *"Why didn't the authors evaluate GPT-4o or Claude 3.5 Sonnet by feeding raw git diffs into their prompt context?"*
-- **Author Response**: While prompting frontier LLMs with multi-file diffs is possible, it introduces three major operational bottlenecks for real-time agent memory: (1) **Latency**: LLM diff reading requires $2.0 - 5.0\text{s}$ per query vs. RoleMem's **$22.6\text{ms}$** ($>100\times$ faster); (2) **Cost**: Large repository diffs consume tens of thousands of tokens per step; (3) **Stochastic Hallucination**: LLMs frequently misinterpret subtle parameter defaults. RoleMem provides deterministic validation with zero LLM token consumption.
+- **Author Response**: While prompting frontier LLMs with multi-file diffs is possible, it introduces three major operational bottlenecks for real-time agent memory: (1) **Latency**: LLM diff reading requires $2.0 - 5.0\text{s}$ per query vs. RoleMem's **$22.6\text{ms}$** ($>100\times$ faster); (2) **Cost**: Large repository diffs consume tens of thousands of tokens per step; (3) **Stochastic Hallucination**: LLMs frequently misinterpret subtle parameter defaults. RoleMem provides deterministic validation with no LLM token overhead.
 - **Supporting Evidence**: Section 1, Section 5.1, `paper/reviewer_response_draft.md` Q3.
 
 ### Q7: Why did Naive RAG perform so poorly (28.7% Macro-F1)?
@@ -133,7 +133,7 @@ This document compiles 22 anticipated reviewer questions across Machine Learning
 ### Q19: What is the memory garbage collection and compaction policy?
 - **Category**: Agent Lifecycle | **Priority**: Medium
 - **Reviewer Question**: *"How does RoleMem prevent memory bloat during long-horizon agent execution?"*
-- **Author Response**: When a claim transitions to `STALE`, its confidence is zeroed ($\gamma = 0.0$) and it is evicted from active working prompt memory into an episodic cold-storage audit log. This guarantees that the agent's prompt context remains bounded while retaining historical auditability.
+- **Author Response**: When a claim transitions to `STALE`, its confidence is zeroed ($\gamma = 0.0$) and it is evicted from active working prompt memory into an episodic cold-storage audit log. This keeps the agent's prompt context remains bounded while retaining historical auditability.
 - **Supporting Evidence**: Section 3.3.
 
 ### Q20: How was the confidence decay parameter (\gamma \times 0.70) determined?
@@ -145,7 +145,7 @@ This document compiles 22 anticipated reviewer questions across Machine Learning
 ### Q21: What is the purpose of the cryptographic SHA-256 fingerprint (\Phi)?
 - **Category**: Architecture | **Priority**: Low
 - **Reviewer Question**: *"Why is a cryptographic hash included in the memory representation?"*
-- **Author Response**: The hash $\Phi = \text{SHA-256}(\text{canonicalize}(c, \mathcal{E}, \mathcal{R}, \tau))$ guarantees tamper-evident provenance across multi-agent handoffs and distributed subagent execution, ensuring that memory claims cannot be silently corrupted or forged during agent collaboration.
+- **Author Response**: The hash $\Phi = \text{SHA-256}(\text{canonicalize}(c, \mathcal{E}, \mathcal{R}, \tau))$ provides tamper-evident provenance across multi-agent handoffs and distributed subagent execution, ensuring that memory claims cannot be silently corrupted or forged during agent collaboration.
 - **Supporting Evidence**: Section 3.1.
 
 ### Q22: How is RoleMem integrated into downstream autonomous coding agent loops (e.g., SWE-bench)?

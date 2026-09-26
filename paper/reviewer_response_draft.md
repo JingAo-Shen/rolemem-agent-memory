@@ -55,7 +55,7 @@ The lower accuracy on the independent robustness suite ($N=30$) is not a sign of
 
 While frontier LLMs (e.g., GPT-4o, Claude 3.5 Sonnet) can analyze code diffs, utilizing them for real-time per-step agent memory verification introduces critical operational bottlenecks:
 1. **Latency**: Prompting an LLM with multi-file diffs requires $2.0 - 5.0\text{s}$ per verification query. RoleMem executes in **$22.6\text{ms}$** ($0.0226\text{s}$), operating over **$100\times$ faster**.
-2. **Token Cost & Context Windows**: Large repository diffs consume tens of thousands of tokens per step, rapidly exhausting context budgets. RoleMem requires **zero LLM tokens**.
+2. **Token Cost & Context Windows**: Large repository diffs consume tens of thousands of tokens per step, rapidly exhausting context budgets. RoleMem requires **no external LLM tokens**.
 3. **Determinism**: LLM reasoning over complex parameter defaults remains prone to stochastic hallucinations, whereas RoleMem provides deterministic validation over AST subtrees.
 
 ---

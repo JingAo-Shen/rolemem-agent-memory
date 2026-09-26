@@ -70,7 +70,7 @@ Three expert reviewer personas have been modeled to rigorously evaluate the subm
 ### 4. Author Rebuttal & Defense Strategy
 - **Formal Boundaries & Assumptions**: We explicitly address the static/dynamic boundary in `paper/limitations.md`. When static AST nodes are absent due to dynamic metaprogramming, RoleMem leverages test suite assertion witnesses ($\mathcal{R}_{\text{BEHAVIOR}}$) to verify runtime invariants.
 - **Variadic Forwarding in Robustness Suite**: We directly evaluated variadic forwarding in our independent robustness suite (`ROB-AE` in Table 4), where RoleMem achieved $70.0\%$ accuracy on complex kwargs unpackers, outperforming baselines. We acknowledge inter-procedural dataflow analysis as a valuable direction for future static expansion.
-- **Rigorous Dataset Curation**: The 50 transitions were systematically mined using AST delta filtering to guarantee that each transition contains structural API modifications, default parameter mutations, or dependency changes, strictly excluding trivial documentation or cosmetic edits.
+- **Rigorous Dataset Curation**: The 50 transitions were systematically mined using AST delta filtering to ensure that each transition contains structural API modifications, default parameter mutations, or dependency changes, strictly excluding trivial documentation or cosmetic edits.
 
 ---
 
