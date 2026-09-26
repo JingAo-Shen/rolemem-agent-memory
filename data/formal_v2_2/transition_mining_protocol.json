@@ -1,9 +1,9 @@
 {
   "protocol_version": "2.2-formal-v1.0",
   "protocol_type": "TRANSITION_MINING_SPECIFICATION",
-  "status": "FROZEN_TRANSITION_MINING_PROTOCOL",
+  "status": "FROZEN_TRANSITION_MINING_PROTOCOL_FINAL",
   "created_at": "2026-09-26T10:46:00+08:00",
-  "frozen_at": "2026-09-26T10:48:00+08:00",
+  "frozen_at": "2026-09-26T10:55:00+08:00",
   "source_repository_freeze_tag": "protocol-v2.2-formal-repository-selection-freeze",
   "source_repositories_count": 25,
   "transition_eligibility_criteria": {
@@ -18,16 +18,30 @@
     },
     "selection_hierarchy": {
       "tier_1_release_tags": {
-        "description": "Consecutive or adjacent tagged stable releases on primary branch (e.g. v1.2.0 -> v1.3.0 or v1.2.0 -> v2.0.0).",
+        "description": "Consecutive or adjacent tagged stable releases on primary branch according to stable semantic release chronological nearest rule.",
         "precedence": "PRIMARY_PREFERRED",
-        "filter": "Exclude pre-releases (alpha, beta, rc, dev) unless standard release cycle of the repository."
+        "release_tag_adjacency_definition": {
+          "rule_name": "STABLE_SEMANTIC_RELEASE_CHRONOLOGICAL_NEAREST",
+          "pre_release_filter": "Exclude pre-releases, release candidates, and development tags matching: alpha, beta, rc, dev, post, a[0-9]+, b[0-9]+, preview.",
+          "chronological_ordering": "All stable release tags are sorted strictly chronologically by git tag / commit timestamp: (T_0, T_1, ..., T_m).",
+          "adjacency_rule": "For a base release tag T_i, the candidate adjacent target release tag is T_{i+1}. If T_{i+1} is not a direct git commit ancestor-descendant of T_i (e.g. parallel maintenance branch), step forward to the nearest chronological descendant T_j (j > i) satisfying git ancestry (git merge-base --is-ancestor T_i T_j == 0).",
+          "permitted_spans": "Consecutive patch releases (v1.2.0 -> v1.2.1), consecutive minor releases (v1.2.0 -> v1.3.0), or major evolution boundaries (v1.2.0 -> v2.0.0)."
+        }
       },
       "tier_2_commit_milestones": {
         "description": "Chronologically sampled non-merge commits on primary branch when tagged releases are unavailable or sparse.",
         "precedence": "SECONDARY_FALLBACK",
-        "constraints": {
-          "min_commit_distance": 20,
-          "min_temporal_distance_days": 14
+        "deterministic_milestone_sampling_rule": {
+          "rule_name": "DETERMINISTIC_STRIDE_QUANTILE_SAMPLING",
+          "manual_selection_prohibition": "Manual commit cherry-picking or subjective commit selection is STRICTLY FORBIDDEN.",
+          "commit_pool": "Collect all non-merge commits on primary branch ordered chronologically: C_0, C_1, ..., C_{M-1}.",
+          "deterministic_stride_formula": "Stride S = max(20, floor(M / 10)).",
+          "milestone_checkpoints": "Candidate checkpoints are established at deterministic indices: C_{k * S} for k = 0, 1, 2, ...",
+          "candidate_transitions": "Form milestone pairs (C_{k * S}, C_{(k+1) * S}).",
+          "distance_gates": {
+            "min_commit_distance": 20,
+            "min_temporal_distance_days": 14
+          }
         }
       }
     },
@@ -45,6 +59,11 @@
       "min_total_transitions": 40,
       "max_total_transitions": 75
     },
+    "transition_availability_fallback_rules": {
+      "tier_1_to_tier_2_fallback": "If repository R_i yields fewer than K_min = 1 valid Tier 1 release tag pairs, automatically activate Tier 2 deterministic commit milestone sampling for R_i.",
+      "tier_2_sparse_history_fallback": "If repository R_i has fewer than 20 non-merge commits or history < 14 days, evaluate single full-span transition (C_0, C_latest).",
+      "unserviceable_repository_replacement": "If repository R_i fails all technical git/AST gates (zero serviceable transitions), record REPOSITORY_TRANSITION_UNAVAILABLE and replace R_i with the next available uncontaminated repository in deterministic rank order from the candidate pool (Rank 26..63) using identical random seed 3407 without human intervention."
+    },
     "screening_separation_and_outcome_independence": {
       "technical_screening_rule": "Transitions may be rejected ONLY for objective technical reasons: commit missing, git checkout failure, source unavailable, AST syntax unparseable, or corrupt history.",
       "prohibited_outcome_conditioning": "Rejection or selection of transitions based on: (1) inspection of API diffs, (2) presence or absence of breaking changes, (3) claim difficulty, (4) lack of stale claims, or (5) RoleMem algorithm execution / predictions is STRICTLY FORBIDDEN."
@@ -56,7 +75,7 @@
     "deterministic_random_seed": 3407,
     "sampling_steps": [
       "1. Iterate through all 25 formal repositories in deterministic selection_rank order (Rank 1 to 25).",
-      "2. For repository R_i, enumerate all eligible candidate transitions T(R_i) satisfying Tier 1 (release tags) or Tier 2 (commit milestones).",
+      "2. For repository R_i, enumerate candidate transitions T(R_i) via Tier 1 (stable semantic release nearest) or Tier 2 (deterministic stride sampling).",
       "3. Sort candidate transitions chronologically by (base_timestamp, target_timestamp, base_ref, target_ref).",
       "4. Seed PRNG with seed = 3407 + selection_rank (or deterministic keyed hash) to shuffle the candidate transition list for R_i.",
       "5. Select the top K_target = 2 transitions per repository sequentially from the shuffled candidate list (up to max K_max = 3).",

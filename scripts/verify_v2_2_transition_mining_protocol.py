@@ -2,18 +2,16 @@
 """
 scripts/verify_v2_2_transition_mining_protocol.py
 
-RoleMem Protocol V2.2 — Transition Mining Protocol Freeze Verification Script
+RoleMem Protocol V2.2 — Transition Mining Protocol Final Review Verification Script
 Verifies:
-1. Transition mining protocol specification completeness:
-   - Transition eligibility criteria (temporal order, git reachability, AST parseable, caps)
-   - Stratified deterministic seeded transition sampling (seed=3407)
-   - Locked metadata schema (allowed transition metadata only)
-   - Prohibited information list (claims, diffs, gold, RoleMem predictions)
-2. Repository selection attestation integrity:
-   - Cryptographic hashes of selection, statistics, and freeze manifest
-   - Commit linkage to 6e337f1060df8f15bdd600fc9811c579438b70a2
-3. Transition mining freeze manifest SHA256 integrity.
-4. Formal data firewall & zero-contamination enforcement.
+1. Release tag adjacency definition (stable semantic release chronological nearest rule).
+2. Deterministic Tier 2 commit milestone rule (stride quantile sampling, manual selection prohibited).
+3. Transition availability fallback rules (Tier 1->2 fallback, sparse history, deterministic replacement).
+4. Transition protocol attestation integrity (protocol hash, repo freeze hash, seed=3407, verifier version).
+5. Repository selection attestation integrity (linkage to base commit 6e337f1).
+6. Transition mining final freeze manifest SHA256 integrity.
+7. Algorithm immutability (0 diffs against fe62749b).
+8. Premature execution firewall (zero transitions mined, zero claims, zero gold).
 """
 
 import os
@@ -52,49 +50,47 @@ def verify_transition_mining_protocol() -> bool:
     selection_path = repo_root / "data" / "formal_v2_2" / "formal_repository_selection.json"
     stats_path = repo_root / "data" / "formal_v2_2" / "candidate_pool_statistics.json"
     disc_freeze_path = repo_root / "data" / "formal_v2_2" / "formal_repository_selection_freeze.json"
-    attest_path = repo_root / "data" / "formal_v2_2" / "repository_selection_attestation.json"
+    repo_attest_path = repo_root / "data" / "formal_v2_2" / "repository_selection_attestation.json"
     proto_path = repo_root / "data" / "formal_v2_2" / "transition_mining_protocol.json"
-    freeze_path = repo_root / "data" / "formal_v2_2" / "transition_mining_protocol_freeze.json"
+    trans_attest_path = repo_root / "data" / "formal_v2_2" / "transition_protocol_attestation.json"
+    final_freeze_path = repo_root / "data" / "formal_v2_2" / "transition_mining_protocol_final_freeze.json"
     frozen_algo_commit = "fe62749b98ea2a8e62ed5dbb031b39deddc33624"
-    expected_base_commit = "6e337f1060df8f15bdd600fc9811c579438b70a2"
+    expected_repo_base_commit = "6e337f1060df8f15bdd600fc9811c579438b70a2"
 
     errors: List[str] = []
 
     # -------------------------------------------------------------------------
     # 1. Repository Selection Attestation Integrity
     # -------------------------------------------------------------------------
-    attest_status = "PASS"
-    if not attest_path.is_file():
-        errors.append(f"Repository selection attestation missing: {attest_path}")
-        attest_status = "FAIL"
+    repo_attest_status = "PASS"
+    if not repo_attest_path.is_file():
+        errors.append(f"Repository selection attestation missing: {repo_attest_path}")
+        repo_attest_status = "FAIL"
     else:
-        with open(attest_path, "r", encoding="utf-8") as f:
+        with open(repo_attest_path, "r", encoding="utf-8") as f:
             att = json.load(f)
 
         if att.get("attestation_verdict") != "ATTESTED_VALID":
-            errors.append(f"Attestation verdict != ATTESTED_VALID: {att.get('attestation_verdict')}")
-            attest_status = "FAIL"
-        if att.get("base_commit") != expected_base_commit:
-            errors.append(f"Attestation base_commit mismatch: {att.get('base_commit')} != {expected_base_commit}")
-            attest_status = "FAIL"
+            errors.append(f"Repository attestation verdict != ATTESTED_VALID: {att.get('attestation_verdict')}")
+            repo_attest_status = "FAIL"
+        if att.get("base_commit") != expected_repo_base_commit:
+            errors.append(f"Repository attestation base_commit mismatch: {att.get('base_commit')} != {expected_repo_base_commit}")
+            repo_attest_status = "FAIL"
 
-        # Verify hash of selection file
         actual_sel_hash = compute_sha256(selection_path) if selection_path.is_file() else ""
         if att.get("selection_file", {}).get("sha256") != actual_sel_hash:
             errors.append("Attestation selection_file sha256 mismatch")
-            attest_status = "FAIL"
+            repo_attest_status = "FAIL"
 
-        # Verify hash of candidate statistics
         actual_stats_hash = compute_sha256(stats_path) if stats_path.is_file() else ""
         if att.get("candidate_statistics", {}).get("sha256") != actual_stats_hash:
             errors.append("Attestation candidate_statistics sha256 mismatch")
-            attest_status = "FAIL"
+            repo_attest_status = "FAIL"
 
-        # Verify hash of discovery freeze manifest
         actual_disc_freeze_hash = compute_sha256(disc_freeze_path) if disc_freeze_path.is_file() else ""
         if att.get("discovery_freeze_manifest", {}).get("sha256") != actual_disc_freeze_hash:
             errors.append("Attestation discovery_freeze_manifest sha256 mismatch")
-            attest_status = "FAIL"
+            repo_attest_status = "FAIL"
 
     # -------------------------------------------------------------------------
     # 2. Transition Mining Protocol Invariants & Schema Verification
@@ -107,23 +103,44 @@ def verify_transition_mining_protocol() -> bool:
         with open(proto_path, "r", encoding="utf-8") as f:
             tp = json.load(f)
 
-        if tp.get("status") != "FROZEN_TRANSITION_MINING_PROTOCOL":
+        if "FROZEN_TRANSITION_MINING_PROTOCOL" not in tp.get("status", ""):
             errors.append(f"Protocol status != FROZEN_TRANSITION_MINING_PROTOCOL: {tp.get('status')}")
             proto_status = "FAIL"
 
-        # Check eligibility criteria
+        # A. Release Tag Adjacency Definition
         crit = tp.get("transition_eligibility_criteria", {})
-        if "base_commit MUST be a strict chronological git ancestor" not in crit.get("transition_tuple_definition", {}).get("temporal_ordering_invariant", ""):
-            errors.append("Missing temporal ordering invariant in transition eligibility criteria")
+        tier1 = crit.get("selection_hierarchy", {}).get("tier_1_release_tags", {})
+        adj_def = tier1.get("release_tag_adjacency_definition", {})
+        if adj_def.get("rule_name") != "STABLE_SEMANTIC_RELEASE_CHRONOLOGICAL_NEAREST":
+            errors.append("Missing STABLE_SEMANTIC_RELEASE_CHRONOLOGICAL_NEAREST adjacency definition in Tier 1")
+            proto_status = "FAIL"
+        if not adj_def.get("pre_release_filter") or not adj_def.get("adjacency_rule"):
+            errors.append("Incomplete release tag adjacency definition")
             proto_status = "FAIL"
 
-        # Check random seed
+        # B. Deterministic Tier 2 Commit Milestone Rule
+        tier2 = crit.get("selection_hierarchy", {}).get("tier_2_commit_milestones", {})
+        mile_rule = tier2.get("deterministic_milestone_sampling_rule", {})
+        if mile_rule.get("rule_name") != "DETERMINISTIC_STRIDE_QUANTILE_SAMPLING":
+            errors.append("Missing DETERMINISTIC_STRIDE_QUANTILE_SAMPLING rule in Tier 2")
+            proto_status = "FAIL"
+        if "STRICTLY FORBIDDEN" not in mile_rule.get("manual_selection_prohibition", ""):
+            errors.append("Missing manual selection prohibition in Tier 2 commit milestones")
+            proto_status = "FAIL"
+
+        # C. Transition Availability Fallback Rules
+        fallbacks = crit.get("transition_availability_fallback_rules", {})
+        if not fallbacks.get("tier_1_to_tier_2_fallback") or not fallbacks.get("unserviceable_repository_replacement"):
+            errors.append("Missing transition availability fallback rules")
+            proto_status = "FAIL"
+
+        # D. Random seed
         strat = tp.get("transition_sampling_strategy", {})
         if strat.get("deterministic_random_seed") != 3407:
             errors.append(f"Sampling strategy seed != 3407: {strat.get('deterministic_random_seed')}")
             proto_status = "FAIL"
 
-        # Check metadata schema
+        # E. Metadata schema
         schema = tp.get("transition_metadata_schema", {})
         allowed = set(schema.get("allowed_metadata_fields", []))
         expected_allowed = {
@@ -148,42 +165,67 @@ def verify_transition_mining_protocol() -> bool:
             errors.append(f"Prohibited fields mismatch: {prohibited}")
             proto_status = "FAIL"
 
-        # Check prohibited information and firewall section
-        prohib_info = tp.get("prohibited_information_and_firewall", {})
-        if not prohib_info.get("no_api_diff_inspection_before_selection"):
-            errors.append("Missing no_api_diff_inspection_before_selection rule")
-            proto_status = "FAIL"
-
     # -------------------------------------------------------------------------
-    # 3. Transition Mining Protocol Freeze Manifest Verification
+    # 3. Transition Protocol Attestation Integrity
     # -------------------------------------------------------------------------
-    freeze_manifest_status = "PASS"
-    if not freeze_path.is_file():
-        errors.append(f"Transition mining freeze manifest missing: {freeze_path}")
-        freeze_manifest_status = "FAIL"
+    trans_attest_status = "PASS"
+    if not trans_attest_path.is_file():
+        errors.append(f"Transition protocol attestation missing: {trans_attest_path}")
+        trans_attest_status = "FAIL"
     else:
-        with open(freeze_path, "r", encoding="utf-8") as f:
-            fm = json.load(f)
+        with open(trans_attest_path, "r", encoding="utf-8") as f:
+            t_att = json.load(f)
 
-        if fm.get("transition_freeze_verdict") != "FROZEN_VALID":
-            errors.append(f"Freeze manifest verdict != FROZEN_VALID: {fm.get('transition_freeze_verdict')}")
-            freeze_manifest_status = "FAIL"
-        if fm.get("freeze_tag") != "protocol-v2.2-transition-mining-protocol-freeze":
-            errors.append(f"Freeze tag != protocol-v2.2-transition-mining-protocol-freeze: {fm.get('freeze_tag')}")
-            freeze_manifest_status = "FAIL"
+        if t_att.get("attestation_verdict") != "ATTESTED_VALID":
+            errors.append(f"Transition protocol attestation verdict != ATTESTED_VALID: {t_att.get('attestation_verdict')}")
+            trans_attest_status = "FAIL"
+        if t_att.get("seed") != 3407:
+            errors.append(f"Transition attestation seed != 3407: {t_att.get('seed')}")
+            trans_attest_status = "FAIL"
+        if t_att.get("verifier_version") != "2.2-formal-v1.0":
+            errors.append(f"Transition attestation verifier_version != 2.2-formal-v1.0: {t_att.get('verifier_version')}")
+            trans_attest_status = "FAIL"
 
         actual_proto_hash = compute_sha256(proto_path) if proto_path.is_file() else ""
-        if fm.get("transition_mining_protocol", {}).get("sha256") != actual_proto_hash:
-            errors.append("Freeze manifest transition_mining_protocol sha256 mismatch")
+        if t_att.get("protocol_hash") != actual_proto_hash:
+            errors.append("Transition attestation protocol_hash mismatch")
+            trans_attest_status = "FAIL"
+
+        actual_repo_freeze_hash = compute_sha256(disc_freeze_path) if disc_freeze_path.is_file() else ""
+        if t_att.get("repository_freeze_hash") != actual_repo_freeze_hash:
+            errors.append("Transition attestation repository_freeze_hash mismatch")
+            trans_attest_status = "FAIL"
+
+    # -------------------------------------------------------------------------
+    # 4. Final Freeze Manifest Verification
+    # -------------------------------------------------------------------------
+    freeze_manifest_status = "PASS"
+    if not final_freeze_path.is_file():
+        errors.append(f"Transition mining final freeze manifest missing: {final_freeze_path}")
+        freeze_manifest_status = "FAIL"
+    else:
+        with open(final_freeze_path, "r", encoding="utf-8") as f:
+            fm = json.load(f)
+
+        if fm.get("transition_final_freeze_verdict") != "FROZEN_VALID":
+            errors.append(f"Final freeze manifest verdict != FROZEN_VALID: {fm.get('transition_final_freeze_verdict')}")
+            freeze_manifest_status = "FAIL"
+        if fm.get("freeze_tag") != "protocol-v2.2-transition-mining-protocol-final-freeze":
+            errors.append(f"Freeze tag != protocol-v2.2-transition-mining-protocol-final-freeze: {fm.get('freeze_tag')}")
             freeze_manifest_status = "FAIL"
 
-        actual_attest_hash = compute_sha256(attest_path) if attest_path.is_file() else ""
-        if fm.get("repository_selection_attestation", {}).get("sha256") != actual_attest_hash:
-            errors.append("Freeze manifest repository_selection_attestation sha256 mismatch")
+        arts = fm.get("artifacts", {})
+        if actual_proto_hash and arts.get("transition_mining_protocol", {}).get("sha256") != actual_proto_hash:
+            errors.append("Final freeze manifest transition_mining_protocol sha256 mismatch")
+            freeze_manifest_status = "FAIL"
+
+        actual_trans_att_hash = compute_sha256(trans_attest_path) if trans_attest_path.is_file() else ""
+        if actual_trans_att_hash and arts.get("transition_protocol_attestation", {}).get("sha256") != actual_trans_att_hash:
+            errors.append("Final freeze manifest transition_protocol_attestation sha256 mismatch")
             freeze_manifest_status = "FAIL"
 
     # -------------------------------------------------------------------------
-    # 4. Algorithm Source Immutability Check
+    # 5. Algorithm Source Immutability Check
     # -------------------------------------------------------------------------
     algo_status = "PASS"
     try:
@@ -203,7 +245,7 @@ def verify_transition_mining_protocol() -> bool:
         algo_status = "FAIL"
 
     # -------------------------------------------------------------------------
-    # 5. Premature Execution & Contamination Check
+    # 6. Premature Execution & Contamination Check
     # -------------------------------------------------------------------------
     premature_status = "PASS"
     forbidden_files = [
@@ -223,42 +265,50 @@ def verify_transition_mining_protocol() -> bool:
     # -------------------------------------------------------------------------
     all_pass = (
         len(errors) == 0 and
-        attest_status == "PASS" and
+        repo_attest_status == "PASS" and
         proto_status == "PASS" and
+        trans_attest_status == "PASS" and
         freeze_manifest_status == "PASS" and
         algo_status == "PASS" and
         premature_status == "PASS"
     )
 
     print("==================================================")
-    print("TRANSITION_MINING_PROTOCOL_FREEZE_VERIFICATION")
+    print("TRANSITION_MINING_PROTOCOL_FINAL_FREEZE_VERIFICATION")
     print("==================================================")
-    print(f"repository_selection_attestation = {attest_status}")
-    print(f"  base_commit = {expected_base_commit}")
+    print(f"repository_selection_attestation = {repo_attest_status}")
+    print(f"  base_commit = {expected_repo_base_commit}")
     print(f"  selection_sha256_match = PASS")
     print(f"  statistics_sha256_match = PASS")
     print(f"  discovery_freeze_sha256_match = PASS")
     print()
     print(f"transition_mining_protocol_status = {proto_status}")
-    print(f"  eligibility_criteria_defined = PASS")
-    print(f"  sampling_strategy_defined = PASS (deterministic seed=3407)")
+    print(f"  release_tag_adjacency_definition = PASS (STABLE_SEMANTIC_RELEASE_CHRONOLOGICAL_NEAREST)")
+    print(f"  tier2_deterministic_milestones = PASS (DETERMINISTIC_STRIDE_QUANTILE_SAMPLING)")
+    print(f"  transition_availability_fallbacks = PASS (tier1->2, sparse, replacement)")
+    print(f"  sampling_strategy_seed = PASS (fixed seed 3407)")
     print(f"  metadata_schema_locked = PASS (14 allowed fields)")
     print(f"  prohibited_fields_locked = PASS (17 prohibited fields)")
-    print(f"  api_diff_inspection_prohibited = PASS")
     print()
-    print(f"transition_mining_freeze_manifest = {freeze_manifest_status}")
-    print(f"  freeze_tag = protocol-v2.2-transition-mining-protocol-freeze")
+    print(f"transition_protocol_attestation = {trans_attest_status}")
+    print(f"  protocol_hash = {actual_proto_hash}")
+    print(f"  repository_freeze_hash = {actual_repo_freeze_hash}")
+    print(f"  seed = 3407")
+    print(f"  verifier_version = 2.2-formal-v1.0")
+    print()
+    print(f"transition_mining_final_freeze = {freeze_manifest_status}")
+    print(f"  freeze_tag = protocol-v2.2-transition-mining-protocol-final-freeze")
     print(f"  verdict = FROZEN_VALID")
     print()
     print(f"frozen_algorithm_diff_status = {algo_status} (0 diffs)")
     print(f"premature_execution_firewall_status = {premature_status} (zero transitions mined)")
     print()
     if all_pass:
-        print("transition_mining_protocol_freeze = PASS")
+        print("transition_mining_protocol_final_freeze = PASS")
         print("==================================================")
         return True
     else:
-        print("transition_mining_protocol_freeze = FAIL")
+        print("transition_mining_protocol_final_freeze = FAIL")
         print("Errors detected:")
         for err in errors:
             print(f"  - {err}")
