@@ -1,0 +1,260 @@
+{
+  "protocol_version": "2.2-formal-v1.0",
+  "pipeline_type": "CLAIM_GENERATION_PIPELINE_SPECIFICATION",
+  "status": "FROZEN_CLAIM_GENERATION_PIPELINE",
+  "created_at": "2026-09-26T14:30:00+08:00",
+  "frozen_at": "2026-09-26T14:35:00+08:00",
+  "protocol_linkage": {
+    "claim_construction_protocol_freeze_tag": "protocol-v2.2-claim-construction-protocol-freeze",
+    "claim_construction_protocol_sha256": "c3ac59e89007898f8fb912a2cc0845e5bd6ad05006dca6ba54573df548a00763",
+    "claim_construction_protocol_freeze_sha256": "ef5b2bef5f4ddb54249d0bde053b340b4e783c8122361730168ea87ed983e865",
+    "formal_transition_manifest_sha256": "a90a4ea9b7820f4f0378673ac5aa45c27f8664876e746b6e1950c5002fcf987b",
+    "random_seed": 3407
+  },
+  "pipeline_stages": {
+    "stage_1_candidate_extraction": {
+      "stage_name": "CANDIDATE_EXTRACTION",
+      "input_boundary": {
+        "allowed_input": "Base repository filesystem snapshot checked out at base_commit",
+        "prohibited_inputs": [
+          "Target commit snapshot or ref (target_commit)",
+          "Transition diff (git diff base_commit..target_commit)",
+          "Commit log beyond base_commit (git log > base_commit)",
+          "Future documentation, release notes, changelogs",
+          "Future test cases or target test execution logs"
+        ]
+      },
+      "extraction_channels": {
+        "ast_analysis": {
+          "description": "Static AST visitor inspecting Python source files (.py) at base_commit.",
+          "methods": [
+            "Parse AST tree via python standard library ast.parse().",
+            "Extract Module-level public symbols from __all__ or global definitions (FunctionDef, AsyncFunctionDef, ClassDef).",
+            "Extract Class-level methods, properties, and attribute assignments in __init__.",
+            "Extract Function parameter signatures, positional/keyword arguments, and default parameter values (ast.arguments)."
+          ],
+          "eligible_claim_types": [
+            "SYMBOL_EXISTS",
+            "ATTRIBUTE_EXISTS",
+            "IMPORT_PATH_VALID",
+            "CALLABLE",
+            "SIGNATURE_COMPATIBLE",
+            "DEFAULT_VALUE"
+          ]
+        },
+        "documentation_parsing": {
+          "description": "Docstring and base documentation parser at base_commit.",
+          "methods": [
+            "Extract structured docstrings (ast.get_docstring) for function/class specifications.",
+            "Extract official deprecation markers (@deprecated decorators, warnings.warn(..., DeprecationWarning), or docstring notices).",
+            "Extract documented return type invariants and configuration defaults."
+          ],
+          "eligible_claim_types": [
+            "DEPRECATION_STATUS",
+            "BEHAVIORAL_CONTRACT",
+            "DEFAULT_VALUE"
+          ]
+        },
+        "package_metadata_parsing": {
+          "description": "Packaging manifest parser at base_commit.",
+          "methods": [
+            "Parse pyproject.toml, setup.py, setup.cfg, and requirements.txt for declared dependencies.",
+            "Extract required packages, optional extras, and pinned version specifier ranges.",
+            "Extract package entrypoints and CLI console_scripts."
+          ],
+          "eligible_claim_types": [
+            "DEPENDENCY_CONTRACT",
+            "CONFIGURATION",
+            "SYMBOL_EXISTS"
+          ]
+        },
+        "test_assertion_extraction": {
+          "description": "Base test suite assertion extractor at base_commit.",
+          "methods": [
+            "Inspect native unit test files in tests/ and test/ directories at base_commit.",
+            "Extract deterministic input/output test assertions (e.g. assert func(x) == y).",
+            "Extract verified exception handling contracts (e.g. with pytest.raises(ExpectedError))."
+          ],
+          "eligible_claim_types": [
+            "RETURN_VALUE",
+            "BEHAVIORAL_CONTRACT"
+          ]
+        }
+      }
+    },
+    "stage_2_claim_normalization": {
+      "stage_name": "CLAIM_NORMALIZATION",
+      "description": "Standardize candidate extractions into formal structured_claim dictionaries and natural language raw_statements.",
+      "slot_schemas_by_claim_type": {
+        "SYMBOL_EXISTS": {
+          "required_slots": [
+            "module",
+            "symbol"
+          ],
+          "raw_statement_template": "In {repository_name}, the symbol '{symbol}' is defined and accessible in module '{module}'."
+        },
+        "ATTRIBUTE_EXISTS": {
+          "required_slots": [
+            "module",
+            "target_class",
+            "attribute"
+          ],
+          "raw_statement_template": "In {repository_name}, class '{target_class}' in module '{module}' has an attribute/method named '{attribute}'."
+        },
+        "IMPORT_PATH_VALID": {
+          "required_slots": [
+            "import_path",
+            "imported_symbol"
+          ],
+          "raw_statement_template": "In {repository_name}, the import statement 'from {import_path} import {imported_symbol}' is valid and resolvable."
+        },
+        "CALLABLE": {
+          "required_slots": [
+            "module",
+            "symbol"
+          ],
+          "raw_statement_template": "In {repository_name}, the symbol '{symbol}' in module '{module}' is a callable object/function/class."
+        },
+        "SIGNATURE_COMPATIBLE": {
+          "required_slots": [
+            "module",
+            "symbol",
+            "expected_parameters"
+          ],
+          "raw_statement_template": "In {repository_name}, the callable '{symbol}' in module '{module}' accepts parameters {expected_parameters}."
+        },
+        "DEFAULT_VALUE": {
+          "required_slots": [
+            "module",
+            "symbol",
+            "parameter_or_attr",
+            "expected_default"
+          ],
+          "raw_statement_template": "In {repository_name}, the parameter '{parameter_or_attr}' of '{symbol}' in module '{module}' defaults to '{expected_default}'."
+        },
+        "RETURN_VALUE": {
+          "required_slots": [
+            "module",
+            "symbol",
+            "inputs",
+            "expected_output"
+          ],
+          "raw_statement_template": "In {repository_name}, calling '{symbol}' in module '{module}' with inputs {inputs} yields output '{expected_output}'."
+        },
+        "DEPRECATION_STATUS": {
+          "required_slots": [
+            "module",
+            "symbol",
+            "is_deprecated"
+          ],
+          "raw_statement_template": "In {repository_name}, the symbol '{symbol}' in module '{module}' has deprecation status is_deprecated={is_deprecated}."
+        },
+        "BEHAVIORAL_CONTRACT": {
+          "required_slots": [
+            "module",
+            "symbol",
+            "contract_type",
+            "contract_specification"
+          ],
+          "raw_statement_template": "In {repository_name}, the symbol '{symbol}' in module '{module}' satisfies behavioral contract ({contract_type}): {contract_specification}."
+        },
+        "DEPENDENCY_CONTRACT": {
+          "required_slots": [
+            "package_name",
+            "dependency_name",
+            "version_constraint"
+          ],
+          "raw_statement_template": "In {repository_name}, package '{package_name}' declares dependency on '{dependency_name}' with constraint '{version_constraint}'."
+        }
+      }
+    },
+    "stage_3_claim_verification": {
+      "stage_name": "CLAIM_VERIFICATION",
+      "base_truth_invariant": "base_truth_status = VERIFIED",
+      "verification_procedure": [
+        "1. Load repository source tree at base_commit.",
+        "2. Parse structured_claim slots and resolve target file path (base_evidence_path).",
+        "3. For AST claims: Parse base_evidence_path with ast.parse and verify that target symbol/attribute/signature exists exactly at base_evidence_lineno.",
+        "4. For manifest claims: Parse manifest (pyproject.toml/setup.py/requirements.txt) at base_commit and confirm dependency specification.",
+        "5. For behavioral/return claims: Confirm corresponding test assertion or docstring specification in base files.",
+        "6. If verification succeeds, assign base_truth_status = VERIFIED and record verbatim base_evidence_snippet.",
+        "7. If verification fails or is ambiguous, assign status = EXCLUDE_INVALID_HISTORICAL_MEMORY and permanently drop candidate from benchmark pool."
+      ],
+      "hallucination_prohibition": "Any candidate claim without direct, reproducible grounding evidence at base_commit is strictly rejected."
+    },
+    "stage_4_deduplication": {
+      "stage_name": "CLAIM_DEDUPLICATION",
+      "canonical_key_formula": "MD5(transition_id + ':' + claim_type + ':' + module + ':' + symbol + ':' + target_attribute_or_param + ':' + contract_hash)",
+      "intra_transition_collision_rule": "If multiple candidate extractions yield an identical canonical key within the same transition, retain the candidate with the highest evidence specificity and discard duplicates.",
+      "cross_transition_diversity_rule": "For transitions originating from the same repository, prioritize distinct modules and functional components to ensure comprehensive subsystem coverage."
+    },
+    "stage_5_sampling_and_quotas": {
+      "stage_name": "SAMPLING_AND_QUOTAS",
+      "prng_engine": "Python random.Random(seed=3407) with transition-keyed seed stream (seed = 3407 + transition_index)",
+      "per_transition_quotas": {
+        "min_claims_per_transition": 2,
+        "target_claims_per_transition": 3,
+        "max_claims_per_transition": 6
+      },
+      "per_repository_caps": {
+        "max_claims_per_repository": 8
+      },
+      "benchmark_scale_bounds": {
+        "min_total_claims": 100,
+        "target_total_claims": 150,
+        "max_total_claims": 200
+      },
+      "fifty_percent_single_claim_type_cap": {
+        "max_type_percentage": 50.0,
+        "rule": "No single claim type (e.g. SYMBOL_EXISTS) may constitute more than 50.0% of the selected claims in the benchmark.",
+        "timing_invariant": "The 50% single claim-type cap MUST strictly be evaluated and enforced BEFORE target validity gold adjudication. It is applied exclusively to frozen base-state memory claims without any knowledge or consideration of target-state validity, staleness, or ground truth."
+      },
+      "category_stratification": {
+        "rule": "Sample across all 6 categories (API, BEHAVIOR, CONFIGURATION, DEPENDENCY, USAGE, ARCHITECTURE) in natural proportion to base codebase features."
+      }
+    },
+    "stage_6_audit_output_and_provenance": {
+      "stage_name": "AUDIT_OUTPUT_AND_PROVENANCE",
+      "provenance_schema": {
+        "fields": [
+          "claim_id",
+          "transition_id",
+          "repository_name",
+          "base_commit",
+          "claim_category",
+          "claim_type",
+          "raw_statement",
+          "structured_claim",
+          "base_evidence_path",
+          "base_evidence_lineno",
+          "base_evidence_snippet",
+          "base_truth_status",
+          "extraction_channel",
+          "verification_trace"
+        ],
+        "field_specifications": {
+          "claim_id": "String: Unique identifier (e.g. CLM-001 or FV22-XXXXXX)",
+          "transition_id": "String: Transition identifier (TR-001 to TR-050)",
+          "repository_name": "String: Repository owner/name",
+          "base_commit": "String: 40-character commit SHA at base state",
+          "claim_category": "String: One of the 6 formal categories",
+          "claim_type": "String: One of the 10 eligible claim types",
+          "raw_statement": "String: Natural language agent memory assertion",
+          "structured_claim": "Object: Normalized query slots dictionary",
+          "base_evidence_path": "String: Relative path to grounding file at base_commit",
+          "base_evidence_lineno": "Integer: Line number in base file",
+          "base_evidence_snippet": "String: Verbatim grounding code/text snippet",
+          "base_truth_status": "String: Must be VERIFIED",
+          "extraction_channel": "String: AST_ANALYSIS | DOCUMENTATION_PARSING | PACKAGE_METADATA_PARSING | TEST_ASSERTION_EXTRACTION",
+          "verification_trace": "String: Audit log of base AST/manifest verification check"
+        }
+      },
+      "firewall_rules": {
+        "no_target_inspection": "Pipeline execution occurs strictly within isolated base repository snapshot.",
+        "no_gold_labels": "Zero gold labels (VALID/STALE) may be generated or recorded.",
+        "no_predictions": "Zero RoleMem algorithm executions or predictions.",
+        "no_premature_inputs": "Phase S3 pipeline design freezes the pipeline specification; formal_inputs.jsonl is created in Phase S3 execution."
+      }
+    }
+  }
+}
