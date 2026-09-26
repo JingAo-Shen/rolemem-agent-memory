@@ -72,7 +72,7 @@ cd rolemem-agent-memory
 pip install -r requirements.txt
 ```
 
-### 1. Run Complete Test Suite
+### 1. Run Full Test Suite
 Executes all 297 unit, integration, and property tests:
 ```bash
 pytest -q

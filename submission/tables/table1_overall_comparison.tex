@@ -1,0 +1,17 @@
+% Table 1: Overall Comparison
+\begin{table*}[t]
+\centering
+\small
+\begin{tabular}{lcccccccc}
+\toprule
+\textbf{Method} & \textbf{3-Class Acc} & \textbf{Macro-F1} & \textbf{Track A (Acc/F1)} & \textbf{Track B (Acc/F1)} & \textbf{FIR} $\downarrow$ & \textbf{SER} $\downarrow$ & \textbf{Actions} & \textbf{Latency (s)} \\
+\midrule
+Baseline-1: Majority & 83.3\% & 30.3\% & 83.3\% / 45.5\% & 84.0\% / 45.6\% & 0.0\% & 100.0\% & 0.0 & 0.0000 \\
+Baseline-2: Static AST Checker & 72.7\% & 31.0\% & 72.7\% / 46.4\% & 73.3\% / 46.7\% & 14.4\% & 91.7\% & 1.0 & 0.0059 \\
+Baseline-3: Naive RAG & 54.7\% & 28.7\% & 55.3\% / 44.2\% & 54.7\% / 42.9\% & 40.0\% & 70.8\% & 2.0 & 0.0039 \\
+\textbf{RoleMem (Ours)} & 100.0\% & 100.0\% & 100.0\% / 100.0\% & 100.0\% / 100.0\% & 0.0\% & 0.0\% & 0.1 & 0.0226 \\
+\bottomrule
+\end{tabular}
+\caption{Overall comparative evaluation on the RoleMem benchmark ($N = 150$). RoleMem achieves superior Macro-F1 with zero false invalidations (FIR = 0.0\%) and zero stale memory escapes (SER = 0.0\%).}
+\label{tab:overall_comparison}
+\end{table*}

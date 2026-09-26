@@ -1,0 +1,17 @@
+{
+  "release_tag": "v1.0-paper",
+  "protocol_version": "RoleMem Protocol V2.2",
+  "timestamp": "2026-09-26T08:32:00Z",
+  "head_commit": "fa555cd",
+  "total_benchmark_cases": 150,
+  "total_transitions": 50,
+  "sha256_manifest": {
+    "all_predictions.json": "dcd72b01864b509f632fb3fc83c543e094f4628698b502c4da744a8d97531808",
+    "benchmark_gold.jsonl": "59a49d4c9114561b820dcf116a671ab476a7545743a77f859272e16762de9856",
+    "benchmark_inputs.jsonl": "e9d27af58b9590c22fd46f76f4e8b4ab5ed0d1d7841bea6ad8c9e3323fccec75",
+    "table1_overall_comparison.json": "ba8efdeb969ccde9ff6c2801156dd6ea7fef737ae50b862b2358bf0297de65ec",
+    "table2_ablation.json": "64596f67a2d83167884b3e1e8d1c157bc3d45c54f8bb71e280ce20189801c266",
+    "table3_role_analysis.json": "d1659ff825093017a02aec23d8e204e3741a294010515b23d037024031c730f3"
+  },
+  "attestation_status": "FROZEN_AND_VERIFIED"
+}

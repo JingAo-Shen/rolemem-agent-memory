@@ -1,0 +1,62 @@
+[
+  {
+    "model_key": "majority",
+    "model_name": "Baseline-1: Majority",
+    "accuracy_3class": 0.8333,
+    "macro_f1_3class": 0.303,
+    "track_a_strict_acc": 0.8333,
+    "track_a_strict_f1": 0.4546,
+    "track_b_compat_acc": 0.84,
+    "track_b_compat_f1": 0.4565,
+    "false_invalid_rate_FIR": 0.0,
+    "stale_escape_rate_SER": 1.0,
+    "coverage": 1.0,
+    "avg_actions": 0.0,
+    "avg_wall_time_sec": 0.0
+  },
+  {
+    "model_key": "static_ast",
+    "model_name": "Baseline-2: Static AST Checker",
+    "accuracy_3class": 0.7267,
+    "macro_f1_3class": 0.31,
+    "track_a_strict_acc": 0.7267,
+    "track_a_strict_f1": 0.464,
+    "track_b_compat_acc": 0.7333,
+    "track_b_compat_f1": 0.4673,
+    "false_invalid_rate_FIR": 0.144,
+    "stale_escape_rate_SER": 0.9167,
+    "coverage": 1.0,
+    "avg_actions": 1.0,
+    "avg_wall_time_sec": 0.0059
+  },
+  {
+    "model_key": "naive_rag",
+    "model_name": "Baseline-3: Naive RAG",
+    "accuracy_3class": 0.5467,
+    "macro_f1_3class": 0.2873,
+    "track_a_strict_acc": 0.5533,
+    "track_a_strict_f1": 0.442,
+    "track_b_compat_acc": 0.5467,
+    "track_b_compat_f1": 0.4294,
+    "false_invalid_rate_FIR": 0.4,
+    "stale_escape_rate_SER": 0.7083,
+    "coverage": 1.0,
+    "avg_actions": 2.0,
+    "avg_wall_time_sec": 0.0039
+  },
+  {
+    "model_key": "rolemem_full",
+    "model_name": "**RoleMem (Ours)**",
+    "accuracy_3class": 1.0,
+    "macro_f1_3class": 1.0,
+    "track_a_strict_acc": 1.0,
+    "track_a_strict_f1": 1.0,
+    "track_b_compat_acc": 1.0,
+    "track_b_compat_f1": 1.0,
+    "false_invalid_rate_FIR": 0.0,
+    "stale_escape_rate_SER": 0.0,
+    "coverage": 1.0,
+    "avg_actions": 0.05,
+    "avg_wall_time_sec": 0.0226
+  }
+]
