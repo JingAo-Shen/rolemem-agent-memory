@@ -1,0 +1,36 @@
+{
+  "protocol_version": "2.2-formal-v1.0",
+  "freeze_type": "FORMAL_TRANSITION_SELECTION_FREEZE",
+  "frozen_at": "2026-09-26T03:09:45.099923+00:00",
+  "freeze_tag": "protocol-v2.2-formal-transition-selection-freeze",
+  "source_repositories_count": 25,
+  "selected_transitions_count": 50,
+  "random_seed": 3407,
+  "artifacts": {
+    "formal_transition_manifest": {
+      "path": "data/formal_v2_2/formal_transition_manifest.json",
+      "sha256": "a90a4ea9b7820f4f0378673ac5aa45c27f8664876e746b6e1950c5002fcf987b"
+    },
+    "transition_execution_report": {
+      "path": "data/formal_v2_2/transition_execution_report.json",
+      "sha256": "e84327854ca2fb2bb0427a68ada8e6b8edc061e95efb84da7e2994f4fb693c04"
+    },
+    "formal_repository_selection": {
+      "path": "data/formal_v2_2/formal_repository_selection.json",
+      "sha256": "37bbfab72d119c52b680294d27bf604a2e038c012a238d595452419d85dacb57"
+    },
+    "transition_mining_protocol_final_freeze": {
+      "path": "data/formal_v2_2/transition_mining_protocol_final_freeze.json",
+      "sha256": "6021b0cce385ad6b6941b665312b8c8cea8e5f92ef43f4ca18da61074e0c4ee0"
+    }
+  },
+  "compliance_assertions": {
+    "no_api_diff_inspection": true,
+    "no_symbol_change_inspection": true,
+    "no_claim_created": true,
+    "no_gold_judged": true,
+    "no_rolemem_run": true,
+    "metadata_only_schema_enforced": true
+  },
+  "transition_selection_verdict": "FROZEN_VALID"
+}

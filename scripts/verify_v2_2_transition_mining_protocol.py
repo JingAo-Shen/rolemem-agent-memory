@@ -245,11 +245,10 @@ def verify_transition_mining_protocol() -> bool:
         algo_status = "FAIL"
 
     # -------------------------------------------------------------------------
-    # 6. Premature Execution & Contamination Check
+    # 6. Premature Claim & Gold Creation Firewall Check
     # -------------------------------------------------------------------------
     premature_status = "PASS"
     forbidden_files = [
-        repo_root / "data" / "formal_v2_2" / "formal_transition_manifest.json",
         repo_root / "data" / "formal_v2_2" / "formal_inputs.jsonl",
         repo_root / "data" / "formal_v2_2" / "formal_gold_private.jsonl",
         repo_root / "data" / "formal_v2_2" / "formal_case_map_private.json",
@@ -257,7 +256,7 @@ def verify_transition_mining_protocol() -> bool:
     ]
     for ff in forbidden_files:
         if ff.exists():
-            errors.append(f"Forbidden artifact exists prematurely (mining executed prematurely): {ff}")
+            errors.append(f"Forbidden artifact exists prematurely (claims/gold created prematurely): {ff}")
             premature_status = "FAIL"
 
     # -------------------------------------------------------------------------
