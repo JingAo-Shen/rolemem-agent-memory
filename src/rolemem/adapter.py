@@ -1,9 +1,9 @@
 """
 src/rolemem/adapter.py
 
-RoleMem Evaluation Adapter and Agent Integration Layer:
+RoleMem Evaluation Adapter and Agent Integration Layer (Calibrated):
 Interfaces benchmark cases (formal_inputs.jsonl) with the RoleMem Lifecycle Engine
-and provides high-level memory querying and context-formatting interfaces for autonomous agents.
+and provides explainable decision traces with rule annotations.
 """
 
 from __future__ import annotations
@@ -57,7 +57,7 @@ class RoleMemEvaluationAdapter:
         evidence_path_override: Optional[str] = None
     ) -> Dict[str, Any]:
         """
-        Evaluate a single benchmark input case and return formal prediction record.
+        Evaluate a single benchmark input case and return formal prediction record with explainable decision trace.
         """
         start_time = time.time()
         case_id = case_input.get("case_id", "UNKNOWN")
@@ -104,17 +104,14 @@ class RoleMemEvaluationAdapter:
         )
 
         wall_time = time.time() - start_time
-
-        # Map decision to formal prediction schema
         predicted_label = result.decision
-        if predicted_label == "UNCERTAIN":
-            # In fail-safe evaluation, uncertain cases are flagged or treated conservatively
-            predicted_label = "UNCERTAIN"
 
         return {
             "case_id": case_id,
-            "predicted_label": predicted_label,
+            "predicted_label": predicted_label, "label": predicted_label,
             "confidence": result.new_confidence if predicted_label != "STALE" else 0.0,
+            "evidence": result.evidence,
+            "rule": result.rule,
             "escalation_tier": result.escalation_tier,
             "action_count": result.action_count,
             "execution_wall_time_sec": round(wall_time, 4)

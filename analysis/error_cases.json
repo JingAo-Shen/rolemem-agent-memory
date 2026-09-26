@@ -1,0 +1,412 @@
+{
+  "total_evaluated": 150,
+  "total_errors": 23,
+  "accuracy": 0.8466666666666667,
+  "confusion_matrix": {
+    "VALID": {
+      "VALID": 122,
+      "STALE": 3
+    },
+    "STALE": {
+      "STALE": 4,
+      "VALID": 20
+    },
+    "PARTIALLY_VALID": {
+      "PARTIALLY_VALID": 1
+    }
+  },
+  "error_counts_by_claim_type": {
+    "DEFAULT_VALUE": 20,
+    "DEPRECATION_STATUS": 3
+  },
+  "error_cases": [
+    {
+      "case_id": "FV22-000013",
+      "claim_type": "DEFAULT_VALUE",
+      "repository": "yaml/pyyaml",
+      "claim": "In yaml/pyyaml, the parameter 'style' of 'ScalarToken.__init__' in module 'lib.yaml.tokens' defaults to 'None'.",
+      "structured_claim": {
+        "module": "lib.yaml.tokens",
+        "symbol": "ScalarToken.__init__",
+        "parameter_or_attr": "style",
+        "expected_default": null
+      },
+      "gold_label": "STALE",
+      "prediction": "VALID",
+      "gold_justification": "Parameter 'style' of '__init__' was removed or made required without default at target state.",
+      "decision_reason": "Grounding/escalation mismatch for DEFAULT_VALUE: gold=STALE, pred=VALID.",
+      "evidence_path": "lib/yaml/tokens.py"
+    },
+    {
+      "case_id": "FV22-000016",
+      "claim_type": "DEFAULT_VALUE",
+      "repository": "yaml/pyyaml",
+      "claim": "In yaml/pyyaml, the parameter 'style' of 'ScalarToken.__init__' in module 'lib.yaml.tokens' defaults to 'None'.",
+      "structured_claim": {
+        "module": "lib.yaml.tokens",
+        "symbol": "ScalarToken.__init__",
+        "parameter_or_attr": "style",
+        "expected_default": null
+      },
+      "gold_label": "STALE",
+      "prediction": "VALID",
+      "gold_justification": "Parameter 'style' of '__init__' was removed or made required without default at target state.",
+      "decision_reason": "Grounding/escalation mismatch for DEFAULT_VALUE: gold=STALE, pred=VALID.",
+      "evidence_path": "lib/yaml/tokens.py"
+    },
+    {
+      "case_id": "FV22-000025",
+      "claim_type": "DEFAULT_VALUE",
+      "repository": "wireservice/csvkit",
+      "claim": "In wireservice/csvkit, the parameter 'encoding' of 'UnicodeCSVReader.__init__' in module 'csvkit.unicsv' defaults to 'utf-8'.",
+      "structured_claim": {
+        "module": "csvkit.unicsv",
+        "symbol": "UnicodeCSVReader.__init__",
+        "parameter_or_attr": "encoding",
+        "expected_default": "utf-8"
+      },
+      "gold_label": "STALE",
+      "prediction": "VALID",
+      "gold_justification": "Parameter 'encoding' of '__init__' was removed or made required without default at target state.",
+      "decision_reason": "Grounding/escalation mismatch for DEFAULT_VALUE: gold=STALE, pred=VALID.",
+      "evidence_path": "csvkit/unicsv.py"
+    },
+    {
+      "case_id": "FV22-000044",
+      "claim_type": "DEFAULT_VALUE",
+      "repository": "borntyping/python-colorlog",
+      "claim": "In borntyping/python-colorlog, the parameter 'fmt' of 'LevelFormatter.__init__' in module 'colorlog.colorlog' defaults to 'None'.",
+      "structured_claim": {
+        "module": "colorlog.colorlog",
+        "symbol": "LevelFormatter.__init__",
+        "parameter_or_attr": "fmt",
+        "expected_default": null
+      },
+      "gold_label": "STALE",
+      "prediction": "VALID",
+      "gold_justification": "Parameter 'fmt' of '__init__' was removed or made required without default at target state.",
+      "decision_reason": "Grounding/escalation mismatch for DEFAULT_VALUE: gold=STALE, pred=VALID.",
+      "evidence_path": "colorlog/colorlog.py"
+    },
+    {
+      "case_id": "FV22-000064",
+      "claim_type": "DEFAULT_VALUE",
+      "repository": "tornadoweb/tornado",
+      "claim": "In tornadoweb/tornado, the parameter 'body' of '_ApplyBlock.__init__' in module 'tornado.template' defaults to 'None'.",
+      "structured_claim": {
+        "module": "tornado.template",
+        "symbol": "_ApplyBlock.__init__",
+        "parameter_or_attr": "body",
+        "expected_default": null
+      },
+      "gold_label": "STALE",
+      "prediction": "VALID",
+      "gold_justification": "Parameter 'body' of '__init__' was removed or made required without default at target state.",
+      "decision_reason": "Grounding/escalation mismatch for DEFAULT_VALUE: gold=STALE, pred=VALID.",
+      "evidence_path": "tornado/template.py"
+    },
+    {
+      "case_id": "FV22-000066",
+      "claim_type": "DEPRECATION_STATUS",
+      "repository": "tornadoweb/tornado",
+      "claim": "In tornadoweb/tornado, the symbol '_dummy_future' in module 'tornado.wsgi' has lifecycle status 'active (non-deprecated)'.",
+      "structured_claim": {
+        "module": "tornado.wsgi",
+        "symbol": "_dummy_future",
+        "is_deprecated": false
+      },
+      "gold_label": "VALID",
+      "prediction": "STALE",
+      "gold_justification": "Symbol '_dummy_future' lifecycle status verified unchanged (deprecated=False).",
+      "decision_reason": "is_deprecated boolean unmapped to expected_status object ('active'/'deprecated'), yielding inconclusive deprecation.",
+      "evidence_path": "tornado/wsgi.py"
+    },
+    {
+      "case_id": "FV22-000067",
+      "claim_type": "DEFAULT_VALUE",
+      "repository": "pypa/flit",
+      "claim": "In pypa/flit, the parameter 'include_patterns' of 'SdistBuilder.__init__' in module 'flit_core.flit_core.sdist' defaults to '()'.",
+      "structured_claim": {
+        "module": "flit_core.flit_core.sdist",
+        "symbol": "SdistBuilder.__init__",
+        "parameter_or_attr": "include_patterns",
+        "expected_default": "()"
+      },
+      "gold_label": "STALE",
+      "prediction": "VALID",
+      "gold_justification": "Parameter 'include_patterns' of '__init__' was removed or made required without default at target state.",
+      "decision_reason": "Grounding/escalation mismatch for DEFAULT_VALUE: gold=STALE, pred=VALID.",
+      "evidence_path": "flit_core/flit_core/sdist.py"
+    },
+    {
+      "case_id": "FV22-000073",
+      "claim_type": "DEFAULT_VALUE",
+      "repository": "psf/black",
+      "claim": "In psf/black, the parameter 'content' of 'NegatedPattern.__init__' in module 'src.blib2to3tree' defaults to 'None'.",
+      "structured_claim": {
+        "module": "src.blib2to3tree",
+        "symbol": "NegatedPattern.__init__",
+        "parameter_or_attr": "content",
+        "expected_default": null
+      },
+      "gold_label": "STALE",
+      "prediction": "VALID",
+      "gold_justification": "Parameter 'content' of '__init__' was removed or made required without default at target state.",
+      "decision_reason": "Grounding/escalation mismatch for DEFAULT_VALUE: gold=STALE, pred=VALID.",
+      "evidence_path": "src/blib2to3/pytree.py"
+    },
+    {
+      "case_id": "FV22-000076",
+      "claim_type": "DEFAULT_VALUE",
+      "repository": "psf/black",
+      "claim": "In psf/black, the parameter 'content' of 'NegatedPattern.__init__' in module 'src.blib2to3tree' defaults to 'None'.",
+      "structured_claim": {
+        "module": "src.blib2to3tree",
+        "symbol": "NegatedPattern.__init__",
+        "parameter_or_attr": "content",
+        "expected_default": null
+      },
+      "gold_label": "STALE",
+      "prediction": "VALID",
+      "gold_justification": "Parameter 'content' of '__init__' was removed or made required without default at target state.",
+      "decision_reason": "Grounding/escalation mismatch for DEFAULT_VALUE: gold=STALE, pred=VALID.",
+      "evidence_path": "src/blib2to3/pytree.py"
+    },
+    {
+      "case_id": "FV22-000079",
+      "claim_type": "DEFAULT_VALUE",
+      "repository": "bottlepy/bottle",
+      "claim": "In bottlepy/bottle, the parameter 'strict' of 'Router.__init__' in module 'bottle' defaults to 'False'.",
+      "structured_claim": {
+        "module": "bottle",
+        "symbol": "Router.__init__",
+        "parameter_or_attr": "strict",
+        "expected_default": false
+      },
+      "gold_label": "STALE",
+      "prediction": "VALID",
+      "gold_justification": "Parameter 'strict' of '__init__' was removed or made required without default at target state.",
+      "decision_reason": "Grounding/escalation mismatch for DEFAULT_VALUE: gold=STALE, pred=VALID.",
+      "evidence_path": "bottle.py"
+    },
+    {
+      "case_id": "FV22-000081",
+      "claim_type": "DEPRECATION_STATUS",
+      "repository": "bottlepy/bottle",
+      "claim": "In bottlepy/bottle, the symbol '_stderr' in module 'bottle' has lifecycle status 'active (non-deprecated)'.",
+      "structured_claim": {
+        "module": "bottle",
+        "symbol": "_stderr",
+        "is_deprecated": false
+      },
+      "gold_label": "VALID",
+      "prediction": "STALE",
+      "gold_justification": "Symbol '_stderr' lifecycle status verified unchanged (deprecated=False).",
+      "decision_reason": "is_deprecated boolean unmapped to expected_status object ('active'/'deprecated'), yielding inconclusive deprecation.",
+      "evidence_path": "bottle.py"
+    },
+    {
+      "case_id": "FV22-000082",
+      "claim_type": "DEFAULT_VALUE",
+      "repository": "bottlepy/bottle",
+      "claim": "In bottlepy/bottle, the parameter 'strict' of 'Router.__init__' in module 'bottle' defaults to 'False'.",
+      "structured_claim": {
+        "module": "bottle",
+        "symbol": "Router.__init__",
+        "parameter_or_attr": "strict",
+        "expected_default": false
+      },
+      "gold_label": "STALE",
+      "prediction": "VALID",
+      "gold_justification": "Parameter 'strict' of '__init__' was removed or made required without default at target state.",
+      "decision_reason": "Grounding/escalation mismatch for DEFAULT_VALUE: gold=STALE, pred=VALID.",
+      "evidence_path": "bottle.py"
+    },
+    {
+      "case_id": "FV22-000084",
+      "claim_type": "DEPRECATION_STATUS",
+      "repository": "bottlepy/bottle",
+      "claim": "In bottlepy/bottle, the symbol '_stderr' in module 'bottle' has lifecycle status 'active (non-deprecated)'.",
+      "structured_claim": {
+        "module": "bottle",
+        "symbol": "_stderr",
+        "is_deprecated": false
+      },
+      "gold_label": "VALID",
+      "prediction": "STALE",
+      "gold_justification": "Symbol '_stderr' lifecycle status verified unchanged (deprecated=False).",
+      "decision_reason": "is_deprecated boolean unmapped to expected_status object ('active'/'deprecated'), yielding inconclusive deprecation.",
+      "evidence_path": "bottle.py"
+    },
+    {
+      "case_id": "FV22-000086",
+      "claim_type": "DEFAULT_VALUE",
+      "repository": "pypa/twine",
+      "claim": "In pypa/twine, the parameter 'how' of 'Private.prompt' in module 'twine.auth' defaults to 'None'.",
+      "structured_claim": {
+        "module": "twine.auth",
+        "symbol": "Private.prompt",
+        "parameter_or_attr": "how",
+        "expected_default": null
+      },
+      "gold_label": "STALE",
+      "prediction": "VALID",
+      "gold_justification": "Parameter 'how' of 'prompt' was removed or made required without default at target state.",
+      "decision_reason": "Grounding/escalation mismatch for DEFAULT_VALUE: gold=STALE, pred=VALID.",
+      "evidence_path": "twine/auth.py"
+    },
+    {
+      "case_id": "FV22-000092",
+      "claim_type": "DEFAULT_VALUE",
+      "repository": "prompt-toolkit/python-prompt-toolkit",
+      "claim": "In prompt-toolkit/python-prompt-toolkit, the parameter 'default_values' of '_DialogList.__init__' in module 'src.prompt_toolkit.widgets.base' defaults to 'None'.",
+      "structured_claim": {
+        "module": "src.prompt_toolkit.widgets.base",
+        "symbol": "_DialogList.__init__",
+        "parameter_or_attr": "default_values",
+        "expected_default": null
+      },
+      "gold_label": "STALE",
+      "prediction": "VALID",
+      "gold_justification": "Parameter 'default_values' of '__init__' was removed or made required without default at target state.",
+      "decision_reason": "Grounding/escalation mismatch for DEFAULT_VALUE: gold=STALE, pred=VALID.",
+      "evidence_path": "src/prompt_toolkit/widgets/base.py"
+    },
+    {
+      "case_id": "FV22-000095",
+      "claim_type": "DEFAULT_VALUE",
+      "repository": "prompt-toolkit/python-prompt-toolkit",
+      "claim": "In prompt-toolkit/python-prompt-toolkit, the parameter 'show_position' of 'ValidationToolbar.__init__' in module 'prompt_toolkit.widgets.toolbars' defaults to 'False'.",
+      "structured_claim": {
+        "module": "prompt_toolkit.widgets.toolbars",
+        "symbol": "ValidationToolbar.__init__",
+        "parameter_or_attr": "show_position",
+        "expected_default": false
+      },
+      "gold_label": "STALE",
+      "prediction": "VALID",
+      "gold_justification": "Parameter 'show_position' of '__init__' was removed or made required without default at target state.",
+      "decision_reason": "Grounding/escalation mismatch for DEFAULT_VALUE: gold=STALE, pred=VALID.",
+      "evidence_path": "prompt_toolkit/widgets/toolbars.py"
+    },
+    {
+      "case_id": "FV22-000103",
+      "claim_type": "DEFAULT_VALUE",
+      "repository": "PyCQA/pyflakes",
+      "claim": "In PyCQA/pyflakes, the parameter 'position' of 'DoctestSyntaxError.__init__' in module 'pyflakes.messages' defaults to 'None'.",
+      "structured_claim": {
+        "module": "pyflakes.messages",
+        "symbol": "DoctestSyntaxError.__init__",
+        "parameter_or_attr": "position",
+        "expected_default": null
+      },
+      "gold_label": "STALE",
+      "prediction": "VALID",
+      "gold_justification": "Parameter 'position' of '__init__' was removed or made required without default at target state.",
+      "decision_reason": "Grounding/escalation mismatch for DEFAULT_VALUE: gold=STALE, pred=VALID.",
+      "evidence_path": "pyflakes/messages.py"
+    },
+    {
+      "case_id": "FV22-000124",
+      "claim_type": "DEFAULT_VALUE",
+      "repository": "marshmallow-code/webargs",
+      "claim": "In marshmallow-code/webargs, the parameter 'delimiter' of 'DelimitedList.__init__' in module 'webargs.fields' defaults to 'None'.",
+      "structured_claim": {
+        "module": "webargs.fields",
+        "symbol": "DelimitedList.__init__",
+        "parameter_or_attr": "delimiter",
+        "expected_default": null
+      },
+      "gold_label": "STALE",
+      "prediction": "VALID",
+      "gold_justification": "Parameter 'delimiter' of '__init__' was removed or made required without default at target state.",
+      "decision_reason": "Grounding/escalation mismatch for DEFAULT_VALUE: gold=STALE, pred=VALID.",
+      "evidence_path": "webargs/fields.py"
+    },
+    {
+      "case_id": "FV22-000127",
+      "claim_type": "DEFAULT_VALUE",
+      "repository": "tiangolo/typer",
+      "claim": "In tiangolo/typer, the parameter 'name' of 'CommandInfo.__init__' in module 'typer.models' defaults to 'None'.",
+      "structured_claim": {
+        "module": "typer.models",
+        "symbol": "CommandInfo.__init__",
+        "parameter_or_attr": "name",
+        "expected_default": null
+      },
+      "gold_label": "STALE",
+      "prediction": "VALID",
+      "gold_justification": "Parameter 'name' of '__init__' was removed or made required without default at target state.",
+      "decision_reason": "Grounding/escalation mismatch for DEFAULT_VALUE: gold=STALE, pred=VALID.",
+      "evidence_path": "typer/models.py"
+    },
+    {
+      "case_id": "FV22-000130",
+      "claim_type": "DEFAULT_VALUE",
+      "repository": "tiangolo/typer",
+      "claim": "In tiangolo/typer, the parameter 'name' of 'CommandInfo.__init__' in module 'typer.models' defaults to 'None'.",
+      "structured_claim": {
+        "module": "typer.models",
+        "symbol": "CommandInfo.__init__",
+        "parameter_or_attr": "name",
+        "expected_default": null
+      },
+      "gold_label": "STALE",
+      "prediction": "VALID",
+      "gold_justification": "Parameter 'name' of '__init__' was removed or made required without default at target state.",
+      "decision_reason": "Grounding/escalation mismatch for DEFAULT_VALUE: gold=STALE, pred=VALID.",
+      "evidence_path": "typer/models.py"
+    },
+    {
+      "case_id": "FV22-000137",
+      "claim_type": "DEFAULT_VALUE",
+      "repository": "samuelcolvin/watchfiles",
+      "claim": "In samuelcolvin/watchfiles, the parameter 're_files' of 'RegExpWatcher.__init__' in module 'watchgod.watcher' defaults to 'None'.",
+      "structured_claim": {
+        "module": "watchgod.watcher",
+        "symbol": "RegExpWatcher.__init__",
+        "parameter_or_attr": "re_files",
+        "expected_default": null
+      },
+      "gold_label": "STALE",
+      "prediction": "VALID",
+      "gold_justification": "Parameter 're_files' of '__init__' was removed or made required without default at target state.",
+      "decision_reason": "Grounding/escalation mismatch for DEFAULT_VALUE: gold=STALE, pred=VALID.",
+      "evidence_path": "watchgod/watcher.py"
+    },
+    {
+      "case_id": "FV22-000146",
+      "claim_type": "DEFAULT_VALUE",
+      "repository": "agronholm/anyio",
+      "claim": "In agronholm/anyio, the parameter 'action' of 'ResourceGuard.__init__' in module 'src.anyio._core._synchronization' defaults to 'using'.",
+      "structured_claim": {
+        "module": "src.anyio._core._synchronization",
+        "symbol": "ResourceGuard.__init__",
+        "parameter_or_attr": "action",
+        "expected_default": "using"
+      },
+      "gold_label": "STALE",
+      "prediction": "VALID",
+      "gold_justification": "Parameter 'action' of '__init__' was removed or made required without default at target state.",
+      "decision_reason": "Grounding/escalation mismatch for DEFAULT_VALUE: gold=STALE, pred=VALID.",
+      "evidence_path": "src/anyio/_core/_synchronization.py"
+    },
+    {
+      "case_id": "FV22-000149",
+      "claim_type": "DEFAULT_VALUE",
+      "repository": "agronholm/anyio",
+      "claim": "In agronholm/anyio, the parameter 'iterable' of 'DeprecatedAwaitableList.__init__' in module 'src.anyio._core._compat' defaults to '()'.",
+      "structured_claim": {
+        "module": "src.anyio._core._compat",
+        "symbol": "DeprecatedAwaitableList.__init__",
+        "parameter_or_attr": "iterable",
+        "expected_default": "()"
+      },
+      "gold_label": "STALE",
+      "prediction": "VALID",
+      "gold_justification": "Parameter 'iterable' of '__init__' was removed or made required without default at target state.",
+      "decision_reason": "Grounding/escalation mismatch for DEFAULT_VALUE: gold=STALE, pred=VALID.",
+      "evidence_path": "src/anyio/_core/_compat.py"
+    }
+  ]
+}

@@ -117,19 +117,19 @@
       },
       "rolemem": {
         "total_cases": 50,
-        "accuracy": 0.98,
-        "macro_f1": 0.6632,
-        "track_a_strict_accuracy": 0.98,
-        "track_a_strict_macro_f1": 0.8282,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "track_a_strict_accuracy": 1.0,
+        "track_a_strict_macro_f1": 1.0,
         "track_b_compatible_accuracy": 1.0,
         "track_b_compatible_macro_f1": 1.0,
         "per_class": {
           "VALID": {
-            "precision": 0.9796,
+            "precision": 1.0,
             "recall": 1.0,
-            "f1": 0.9897,
+            "f1": 1.0,
             "tp": 48,
-            "fp": 1,
+            "fp": 0,
             "fn": 0,
             "support": 48
           },
@@ -143,12 +143,12 @@
             "support": 1
           },
           "PARTIALLY_VALID": {
-            "precision": 0.0,
-            "recall": 0.0,
-            "f1": 0.0,
-            "tp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 1,
             "fp": 0,
-            "fn": 1,
+            "fn": 0,
             "support": 1
           }
         }
@@ -271,29 +271,29 @@
       },
       "rolemem": {
         "total_cases": 50,
-        "accuracy": 0.42,
-        "macro_f1": 0.2958,
-        "track_a_strict_accuracy": 0.42,
-        "track_a_strict_macro_f1": 0.2958,
-        "track_b_compatible_accuracy": 0.42,
-        "track_b_compatible_macro_f1": 0.2958,
+        "accuracy": 0.6,
+        "macro_f1": 0.4173,
+        "track_a_strict_accuracy": 0.6,
+        "track_a_strict_macro_f1": 0.4173,
+        "track_b_compatible_accuracy": 0.6,
+        "track_b_compatible_macro_f1": 0.4173,
         "per_class": {
           "VALID": {
-            "precision": 0.0,
-            "recall": 0.0,
-            "f1": 0.0,
-            "tp": 0,
-            "fp": 0,
-            "fn": 29,
+            "precision": 0.5918,
+            "recall": 1.0,
+            "f1": 0.7436,
+            "tp": 29,
+            "fp": 20,
+            "fn": 0,
             "support": 29
           },
           "STALE": {
-            "precision": 0.42,
-            "recall": 1.0,
-            "f1": 0.5915,
-            "tp": 21,
-            "fp": 29,
-            "fn": 0,
+            "precision": 1.0,
+            "recall": 0.0476,
+            "f1": 0.0909,
+            "tp": 1,
+            "fp": 0,
+            "fn": 20,
             "support": 21
           },
           "PARTIALLY_VALID": {
@@ -425,20 +425,20 @@
       },
       "rolemem": {
         "total_cases": 17,
-        "accuracy": 0.0,
-        "macro_f1": 0.0,
-        "track_a_strict_accuracy": 0.0,
-        "track_a_strict_macro_f1": 0.0,
-        "track_b_compatible_accuracy": 0.0,
-        "track_b_compatible_macro_f1": 0.0,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "track_a_strict_accuracy": 1.0,
+        "track_a_strict_macro_f1": 0.5,
+        "track_b_compatible_accuracy": 1.0,
+        "track_b_compatible_macro_f1": 0.5,
         "per_class": {
           "VALID": {
-            "precision": 0.0,
-            "recall": 0.0,
-            "f1": 0.0,
-            "tp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 17,
             "fp": 0,
-            "fn": 17,
+            "fn": 0,
             "support": 17
           },
           "STALE": {
@@ -446,7 +446,7 @@
             "recall": 0.0,
             "f1": 0.0,
             "tp": 0,
-            "fp": 13,
+            "fp": 0,
             "fn": 0,
             "support": 0
           },
@@ -579,20 +579,20 @@
       },
       "rolemem": {
         "total_cases": 5,
-        "accuracy": 0.0,
-        "macro_f1": 0.0,
-        "track_a_strict_accuracy": 0.0,
-        "track_a_strict_macro_f1": 0.0,
-        "track_b_compatible_accuracy": 0.0,
-        "track_b_compatible_macro_f1": 0.0,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "track_a_strict_accuracy": 1.0,
+        "track_a_strict_macro_f1": 0.5,
+        "track_b_compatible_accuracy": 1.0,
+        "track_b_compatible_macro_f1": 0.5,
         "per_class": {
           "VALID": {
-            "precision": 0.0,
-            "recall": 0.0,
-            "f1": 0.0,
-            "tp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 5,
             "fp": 0,
-            "fn": 5,
+            "fn": 0,
             "support": 5
           },
           "STALE": {
@@ -600,7 +600,7 @@
             "recall": 0.0,
             "f1": 0.0,
             "tp": 0,
-            "fp": 5,
+            "fp": 0,
             "fn": 0,
             "support": 0
           },
@@ -733,28 +733,28 @@
       },
       "rolemem": {
         "total_cases": 28,
-        "accuracy": 0.0714,
-        "macro_f1": 0.5,
-        "track_a_strict_accuracy": 0.0714,
-        "track_a_strict_macro_f1": 0.5,
-        "track_b_compatible_accuracy": 0.0714,
-        "track_b_compatible_macro_f1": 0.5,
+        "accuracy": 0.8929,
+        "macro_f1": 0.7551,
+        "track_a_strict_accuracy": 0.8929,
+        "track_a_strict_macro_f1": 0.7551,
+        "track_b_compatible_accuracy": 0.8929,
+        "track_b_compatible_macro_f1": 0.7551,
         "per_class": {
           "VALID": {
-            "precision": 0.0,
-            "recall": 0.0,
-            "f1": 0.0,
-            "tp": 0,
+            "precision": 1.0,
+            "recall": 0.8846,
+            "f1": 0.9388,
+            "tp": 23,
             "fp": 0,
-            "fn": 26,
+            "fn": 3,
             "support": 26
           },
           "STALE": {
-            "precision": 1.0,
+            "precision": 0.4,
             "recall": 1.0,
-            "f1": 1.0,
+            "f1": 0.5714,
             "tp": 2,
-            "fp": 0,
+            "fp": 3,
             "fn": 0,
             "support": 2
           },
@@ -796,10 +796,10 @@
       },
       "rolemem": {
         "total_cases": 17,
-        "accuracy": 0.0,
-        "macro_f1": 0.0,
-        "track_a_strict_accuracy": 0.0,
-        "track_a_strict_macro_f1": 0.0
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "track_a_strict_accuracy": 1.0,
+        "track_a_strict_macro_f1": 0.5
       }
     },
     "DEFAULT_VALUE": {
@@ -826,10 +826,10 @@
       },
       "rolemem": {
         "total_cases": 50,
-        "accuracy": 0.42,
-        "macro_f1": 0.2958,
-        "track_a_strict_accuracy": 0.42,
-        "track_a_strict_macro_f1": 0.2958
+        "accuracy": 0.6,
+        "macro_f1": 0.4173,
+        "track_a_strict_accuracy": 0.6,
+        "track_a_strict_macro_f1": 0.4173
       }
     },
     "DEPENDENCY_CONTRACT": {
@@ -856,10 +856,10 @@
       },
       "rolemem": {
         "total_cases": 5,
-        "accuracy": 0.0,
-        "macro_f1": 0.0,
-        "track_a_strict_accuracy": 0.0,
-        "track_a_strict_macro_f1": 0.0
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "track_a_strict_accuracy": 1.0,
+        "track_a_strict_macro_f1": 0.5
       }
     },
     "DEPRECATION_STATUS": {
@@ -886,10 +886,10 @@
       },
       "rolemem": {
         "total_cases": 28,
-        "accuracy": 0.0714,
-        "macro_f1": 0.5,
-        "track_a_strict_accuracy": 0.0714,
-        "track_a_strict_macro_f1": 0.5
+        "accuracy": 0.8929,
+        "macro_f1": 0.7551,
+        "track_a_strict_accuracy": 0.8929,
+        "track_a_strict_macro_f1": 0.7551
       }
     },
     "SIGNATURE_COMPATIBLE": {
@@ -916,10 +916,10 @@
       },
       "rolemem": {
         "total_cases": 50,
-        "accuracy": 0.98,
-        "macro_f1": 0.6632,
-        "track_a_strict_accuracy": 0.98,
-        "track_a_strict_macro_f1": 0.8282
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "track_a_strict_accuracy": 1.0,
+        "track_a_strict_macro_f1": 1.0
       }
     }
   },
