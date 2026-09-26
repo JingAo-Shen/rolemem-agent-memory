@@ -44,6 +44,9 @@ In knowledge representation, belief revision and temporal knowledge graphs study
 
 ## 3. The RoleMem Framework
 
+As illustrated in **Figure 1**, RoleMem conceptualizes agent memory as grounded, role-differentiated epistemic invariants rather than unstructured text chunks. It operates across three tightly integrated tiers: formal 6-tuple memory representation, role-aware invariant routing, and dynamic 3-state lifecycle transitions.
+
+
 ```
 +-----------------------------------------------------------------------------------+
 |                           RoleMem Architecture Overview                           |
@@ -70,6 +73,9 @@ In knowledge representation, belief revision and temporal knowledge graphs study
     - DOWNGRADE (PARTIALLY_VALID)-> Decay confidence, attach non-breaking migration advisory.
     - INVALIDATE (STALE)        -> Reset confidence, purge from active agent working set.
 ```
+
+**Figure 1: Architectural overview of the RoleMem framework, showing formal 6-tuple memory representation, role-aware semantic invariant routing, and dynamic 3-state lifecycle transitions.**
+
 
 ### 3.1 Formal 6-Tuple Memory Unit
 A memory unit $\mathcal{M} \in \mathbb{M}$ is defined as:

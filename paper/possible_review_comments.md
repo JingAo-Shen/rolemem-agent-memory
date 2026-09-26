@@ -27,7 +27,7 @@ This document compiles 22 anticipated reviewer questions across Machine Learning
 ### Q4: Why is the standard benchmark size N=150 claims rather than thousands?
 - **Category**: Dataset Scale | **Priority**: Medium
 - **Reviewer Question**: *"Is N=150 claims sufficient to draw statistically significant conclusions?"*
-- **Author Response**: Each claim in RoleMem Benchmark V2.2 represents an in-depth evolutionary trajectory requiring multi-state AST and manifest analysis across 50 full repository Git transitions. Stratified sampling guarantees balanced representation across 4 epistemic roles (API: 78, Config: 50, Behavior: 17, Dependency: 5) and 3 target classes (`VALID`: 125, `STALE`: 24, `PARTIALLY_VALID`: 1). The scale aligns with established software engineering benchmark standards (e.g., Defects4J, SWE-bench Lite).
+- **Author Response**: Each claim in RoleMem Benchmark V2.2 represents an in-depth evolutionary trajectory requiring multi-state AST and manifest analysis across 50 full repository Git transitions. Stratified sampling provides balanced representation across 4 epistemic roles (API: 78, Config: 50, Behavior: 17, Dependency: 5) and 3 target classes (`VALID`: 125, `STALE`: 24, `PARTIALLY_VALID`: 1). The scale aligns with established software engineering benchmark standards (e.g., Defects4J, SWE-bench Lite).
 - **Supporting Evidence**: Section 4.1, Table 3.
 
 ### Q5: How was a Cohen's Kappa of 1.0 achieved during dual gold annotation?
