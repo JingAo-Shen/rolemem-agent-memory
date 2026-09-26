@@ -1,0 +1,17 @@
+{
+  "protocol_version": "2.2-formal-v1.0",
+  "freeze_type": "TRANSITION_MINING_PROTOCOL_FREEZE",
+  "frozen_at": "2026-09-26T02:46:29.682607+00:00",
+  "freeze_tag": "protocol-v2.2-transition-mining-protocol-freeze",
+  "transition_mining_protocol": {
+    "path": "data/formal_v2_2/transition_mining_protocol.json",
+    "sha256": "80c62d8b8fc02e5cebd56747e21a2be70781ece336fd93f8583dc2b0187f5ea4"
+  },
+  "repository_selection_attestation": {
+    "path": "data/formal_v2_2/repository_selection_attestation.json",
+    "sha256": "6ab0762506a87f7b961683a94c6c5cb3dadd30535e5cfaf19923e7f5c22ebe2f"
+  },
+  "random_seed": 3407,
+  "source_repositories_count": 25,
+  "transition_freeze_verdict": "FROZEN_VALID"
+}

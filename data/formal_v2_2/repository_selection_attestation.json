@@ -1,0 +1,23 @@
+{
+  "protocol_version": "2.2-formal-v1.0",
+  "attestation_type": "REPOSITORY_SELECTION_INTEGRITY_ATTESTATION",
+  "attested_at": "2026-09-26T10:46:00+08:00",
+  "base_commit": "6e337f1060df8f15bdd600fc9811c579438b70a2",
+  "freeze_tag": "protocol-v2.2-formal-repository-selection-freeze",
+  "selection_file": {
+    "path": "data/formal_v2_2/formal_repository_selection.json",
+    "sha256": "37bbfab72d119c52b680294d27bf604a2e038c012a238d595452419d85dacb57",
+    "repositories_count": 25
+  },
+  "candidate_statistics": {
+    "path": "data/formal_v2_2/candidate_pool_statistics.json",
+    "sha256": "d76de7b7783e8a7c0eb1ec8643b8a28ac179bcd80c9999880be77fb5423e61c3",
+    "initial_candidates": 90,
+    "after_contamination_filter": 63
+  },
+  "discovery_freeze_manifest": {
+    "path": "data/formal_v2_2/formal_repository_selection_freeze.json",
+    "sha256": "87b8657a94ea9f84767f4b0cc0723cdb6f024eaf94c4b561a0eca79948fda7a6"
+  },
+  "attestation_verdict": "ATTESTED_VALID"
+}

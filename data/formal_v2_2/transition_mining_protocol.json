@@ -1,0 +1,130 @@
+{
+  "protocol_version": "2.2-formal-v1.0",
+  "protocol_type": "TRANSITION_MINING_SPECIFICATION",
+  "status": "FROZEN_TRANSITION_MINING_PROTOCOL",
+  "created_at": "2026-09-26T10:46:00+08:00",
+  "frozen_at": "2026-09-26T10:48:00+08:00",
+  "source_repository_freeze_tag": "protocol-v2.2-formal-repository-selection-freeze",
+  "source_repositories_count": 25,
+  "transition_eligibility_criteria": {
+    "repository_universe": {
+      "path": "data/formal_v2_2/formal_repository_selection.json",
+      "sha256": "37bbfab72d119c52b680294d27bf604a2e038c012a238d595452419d85dacb57",
+      "rule": "Transitions MUST be drawn exclusively from the 25 frozen formal benchmark repositories."
+    },
+    "transition_tuple_definition": {
+      "format": "(repository_name, base_ref, base_commit, target_ref, target_commit)",
+      "temporal_ordering_invariant": "base_commit MUST be a strict chronological git ancestor of target_commit (base_commit < target_commit). Non-ancestral or parallel branches are strictly excluded."
+    },
+    "selection_hierarchy": {
+      "tier_1_release_tags": {
+        "description": "Consecutive or adjacent tagged stable releases on primary branch (e.g. v1.2.0 -> v1.3.0 or v1.2.0 -> v2.0.0).",
+        "precedence": "PRIMARY_PREFERRED",
+        "filter": "Exclude pre-releases (alpha, beta, rc, dev) unless standard release cycle of the repository."
+      },
+      "tier_2_commit_milestones": {
+        "description": "Chronologically sampled non-merge commits on primary branch when tagged releases are unavailable or sparse.",
+        "precedence": "SECONDARY_FALLBACK",
+        "constraints": {
+          "min_commit_distance": 20,
+          "min_temporal_distance_days": 14
+        }
+      }
+    },
+    "technical_eligibility_gates": {
+      "git_reachability": "Both base_commit and target_commit must be fetchable and checkable out cleanly in a fresh git workspace.",
+      "python_ast_parseable": "Primary Python source files in both base and target trees must be parseable by standard Python 3 AST parser.",
+      "environment_independence": "Transitions must not require proprietary external hardware or unmockable network services for basic static AST / symbolic representation."
+    },
+    "per_repository_caps": {
+      "min_transitions_per_repository": 1,
+      "target_transitions_per_repository": 2,
+      "max_transitions_per_repository": 3,
+      "max_claims_per_repository": 8,
+      "target_total_transitions": 50,
+      "min_total_transitions": 40,
+      "max_total_transitions": 75
+    },
+    "screening_separation_and_outcome_independence": {
+      "technical_screening_rule": "Transitions may be rejected ONLY for objective technical reasons: commit missing, git checkout failure, source unavailable, AST syntax unparseable, or corrupt history.",
+      "prohibited_outcome_conditioning": "Rejection or selection of transitions based on: (1) inspection of API diffs, (2) presence or absence of breaking changes, (3) claim difficulty, (4) lack of stale claims, or (5) RoleMem algorithm execution / predictions is STRICTLY FORBIDDEN."
+    }
+  },
+  "transition_sampling_strategy": {
+    "algorithm": "Stratified Deterministic Seeded Transition Sampling",
+    "prng_engine": "Python random.Random(seed=3407) with repository-keyed deterministic stream",
+    "deterministic_random_seed": 3407,
+    "sampling_steps": [
+      "1. Iterate through all 25 formal repositories in deterministic selection_rank order (Rank 1 to 25).",
+      "2. For repository R_i, enumerate all eligible candidate transitions T(R_i) satisfying Tier 1 (release tags) or Tier 2 (commit milestones).",
+      "3. Sort candidate transitions chronologically by (base_timestamp, target_timestamp, base_ref, target_ref).",
+      "4. Seed PRNG with seed = 3407 + selection_rank (or deterministic keyed hash) to shuffle the candidate transition list for R_i.",
+      "5. Select the top K_target = 2 transitions per repository sequentially from the shuffled candidate list (up to max K_max = 3).",
+      "6. Verify that selected transitions pass objective technical eligibility gates.",
+      "7. Aggregate all selected transitions into formal_transition_manifest.json."
+    ],
+    "invariance_guarantee": "Given the frozen 25 repositories, candidate release history, and seed 3407, the mined transition manifest is 100% mathematically deterministic and reproducible."
+  },
+  "transition_metadata_schema": {
+    "target_artifact": "data/formal_v2_2/formal_transition_manifest.json",
+    "description": "Strict schema for formal transition manifest. Enforces recording of transition metadata only, strictly prohibiting claim, diff, validity, staleness, or RoleMem outcome leakage.",
+    "allowed_metadata_fields": [
+      "transition_id",
+      "repository_name",
+      "repository_url",
+      "category",
+      "selection_rank",
+      "transition_tier",
+      "base_ref",
+      "base_commit",
+      "base_timestamp",
+      "target_ref",
+      "target_commit",
+      "target_timestamp",
+      "commit_distance",
+      "temporal_distance_days"
+    ],
+    "prohibited_fields": [
+      "claim",
+      "claims",
+      "claim_type",
+      "structured_claim",
+      "api_diff",
+      "modified_symbols",
+      "deleted_symbols",
+      "expected_validity",
+      "expected_staleness",
+      "gold_label",
+      "target_label",
+      "gold_adjudication",
+      "rolemem_result",
+      "rolemem_prediction",
+      "escalation_level",
+      "difficulty",
+      "solvability"
+    ],
+    "field_specifications": {
+      "transition_id": "String: Opaque unique identifier (e.g. TR-001 to TR-050)",
+      "repository_name": "String: Repository owner/name from formal selection",
+      "repository_url": "String: Public Git clone/HTTPS URL",
+      "category": "String: Functional category from formal repository selection",
+      "selection_rank": "Integer: Repository selection rank (1 to 25)",
+      "transition_tier": "String: TIER_1_RELEASE_TAGS or TIER_2_COMMIT_MILESTONES",
+      "base_ref": "String: Git release tag name or commit ref at base state",
+      "base_commit": "String: 40-character hex commit SHA at base state",
+      "base_timestamp": "String: ISO 8601 commit timestamp of base_commit",
+      "target_ref": "String: Git release tag name or commit ref at target state",
+      "target_commit": "String: 40-character hex commit SHA at target state",
+      "target_timestamp": "String: ISO 8601 commit timestamp of target_commit",
+      "commit_distance": "Integer: Non-merge commit count between base and target",
+      "temporal_distance_days": "Float: Calendar days elapsed between base and target"
+    }
+  },
+  "prohibited_information_and_firewall": {
+    "no_api_diff_inspection_before_selection": "Transitions MUST be sampled strictly by release tag / chronological commit hierarchy before inspecting API diffs or symbol changes.",
+    "no_outcome_conditioning": "Sampling MUST NOT filter for or against breaking transitions, deprecations, or unchanged APIs.",
+    "no_claim_creation": "Phase S2 is restricted to transition discovery and metadata verification; zero claims may be constructed in Phase S2.",
+    "no_gold_adjudication": "Zero gold labels (VALID/STALE) may be assigned during transition mining.",
+    "isolation_boundary": "Memory Author (Phase S3) observes only base_commit; Target validity (Phase S4) observes target_commit only after claim freezing."
+  }
+}
