@@ -1,7 +1,7 @@
 {
   "protocol_version": "2.2-formal-v1.0",
   "audit_type": "FORMAL_PREREGISTRATION_INTEGRITY_AUDIT",
-  "audit_timestamp": "2026-09-26T01:23:21.246048+00:00",
+  "audit_timestamp": "2026-09-26T01:41:18.798600+00:00",
   "base_commit": "da105f9555e098e9e2fcb87e190ce9eb730af3ee",
   "formal_firewall_status": "PASS",
   "state_machine_status": "PASS",
@@ -35,7 +35,8 @@
         "data/formal_v2_2/protocol_preregistration.json",
         "data/freeze/protocol_v2_2_formal_data_firewall.json",
         "data/formal_v2_2/discovery_protocol.json",
-        "data/formal_v2_2/audit_attestation.json"
+        "data/formal_v2_2/audit_attestation.json",
+        "data/formal_v2_2/discovery_protocol_freeze.json"
       ],
       "leaks_found": 0
     },

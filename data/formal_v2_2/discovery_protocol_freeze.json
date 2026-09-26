@@ -1,0 +1,29 @@
+{
+  "protocol_version": "2.2-formal-v1.0",
+  "freeze_type": "DISCOVERY_PROTOCOL_FREEZE",
+  "frozen_at": "2026-09-26T09:40:00+08:00",
+  "discovery_protocol_file": "data/formal_v2_2/discovery_protocol.json",
+  "discovery_protocol_sha256": "91c15b19cacf5caa6c388028c0f39a7bff9015e658d2cfa2abbe3540bb6de924",
+  "discovery_parameters": {
+    "search_date": "2026-09-26",
+    "random_seed": 3407,
+    "target_repository_count": 25,
+    "min_accepted_repositories": 20,
+    "max_accepted_repositories": 30,
+    "popularity_bias_eliminated": true
+  },
+  "repository_selection_schema_status": "FROZEN_METADATA_ONLY",
+  "formal_firewall_status": {
+    "formal_state": "S0_PREREGISTRATION",
+    "formal_data_opened": false,
+    "formal_repository_list": null,
+    "formal_case_ids": null,
+    "formal_gold": null,
+    "formal_repositories_selected_count": 0,
+    "formal_transitions_inspected_count": 0,
+    "formal_claims_created_count": 0,
+    "formal_gold_labels_created_count": 0
+  },
+  "freeze_tag": "protocol-v2.2-discovery-protocol-freeze",
+  "discovery_freeze_verdict": "FROZEN_VALID"
+}

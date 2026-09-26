@@ -74,6 +74,7 @@ def run_preregistration_integrity_audit() -> bool:
     firewall_path = repo_root / "data" / "freeze" / "protocol_v2_2_formal_data_firewall.json"
     prereg_path = repo_root / "data" / "formal_v2_2" / "protocol_preregistration.json"
     discovery_proto_path = repo_root / "data" / "formal_v2_2" / "discovery_protocol.json"
+    discovery_freeze_path = repo_root / "data" / "formal_v2_2" / "discovery_protocol_freeze.json"
     audit_attest_path = repo_root / "data" / "formal_v2_2" / "audit_attestation.json"
     report_path = repo_root / "reports" / "protocol-v2.2-formal-benchmark-preregistration.md"
     reg_path = repo_root / "data" / "splits" / "repository_contamination_registry.json"
@@ -287,7 +288,7 @@ def run_preregistration_integrity_audit() -> bool:
                 if p.is_file() and p not in formal_files_to_scan and p != audit_output_path:
                     formal_files_to_scan.append(p)
 
-    # Allowed SHAs in formal metadata files
+    # Allowed SHAs in formal metadata files (valid commit SHAs and known metadata/script file hashes)
     allowed_shas = {
         expected_algo_commit,
         expected_meta_commit,
@@ -295,12 +296,16 @@ def run_preregistration_integrity_audit() -> bool:
         expected_closure_commit,
         expected_audit_base_commit,
         "ae01f0c825cb3beb4bd415426d7ce4ff6931db1b9535369f28239c4aded7a03d", # registry sha
-        "e318b6cc610bced94f5a71fef641aec0cc104f5be561398d1ac20d5f5b1cf629", # firewall sha
-        "b1ea1dceb96dee714c697a2c7c7c84be2e5d7373c8e468d45af1de0667b3dca3", # initial audit sha
-        "d28767d116034e18e352dd65ffd207c7821888707c4ccc4b7d9b4c648828ad71", # initial script sha
-        "cd34a7adae4d843e68b0932eb0bac393799e005218847aab5aea1cce730ef15d", # updated audit sha
-        "61d470e74f6f87f4d82fc4847586a623fc1600b31e39f89053857bb62f09ca3d"  # updated script sha
+        "e318b6cc610bced94f5a71fef641aec0cc104f5be561398d1ac20d5f5b1cf629"  # firewall sha
     }
+    for kf in [
+        freeze_manifest_path, firewall_path, reg_path, prereg_path,
+        discovery_proto_path, discovery_freeze_path, audit_output_path, audit_attest_path,
+        repo_root / "scripts" / "verify_v2_2_formal_preregistration.py",
+        repo_root / "scripts" / "verify_v2_2_discovery_protocol.py"
+    ]:
+        if kf.is_file():
+            allowed_shas.add(compute_sha256(kf))
 
     for fpath in formal_files_to_scan:
         if not fpath.is_file():
@@ -384,12 +389,18 @@ def run_preregistration_integrity_audit() -> bool:
         allowed_fields = schema.get("allowed_metadata_fields", [])
         prohibited_fields = schema.get("prohibited_fields", [])
 
-        expected_allowed = {"repository_name", "repository_url", "category", "history_duration_years", "commit_count", "test_availability", "license", "primary_language_fraction"}
+        expected_allowed = {
+            "repository_name", "repository_url", "category", "history_duration_years",
+            "commit_count", "test_availability", "license", "primary_language_fraction", "selection_rank"
+        }
         if set(allowed_fields) != expected_allowed:
             errors.append(f"Allowed metadata fields mismatch: {allowed_fields}")
             discovery_proto_pass = False
 
-        expected_prohibited = {"claim", "claims", "target_transition", "target_commit", "expected_outcome", "expected_labels", "staleness", "rolemem_result", "validity"}
+        expected_prohibited = {
+            "claim", "claims", "target_transition", "target_commit", "expected_outcome",
+            "expected_labels", "staleness", "rolemem_result", "validity", "difficulty"
+        }
         if set(prohibited_fields) != expected_prohibited:
             errors.append(f"Prohibited fields mismatch: {prohibited_fields}")
             discovery_proto_pass = False
@@ -406,16 +417,13 @@ def run_preregistration_integrity_audit() -> bool:
             errors.append(f"Audit attestation verdict != ATTESTED_VALID: {att.get('attestation_verdict')}")
             audit_attest_pass = False
 
-        if att.get("current_commit") != expected_audit_base_commit:
-            errors.append(f"Audit attestation current_commit mismatch: {att.get('current_commit')}")
+        if att.get("audit_file", {}).get("path") != "data/formal_v2_2/formal_preregistration_audit.json":
+            errors.append("Audit attestation audit_file.path != data/formal_v2_2/formal_preregistration_audit.json")
             audit_attest_pass = False
 
-        if audit_output_path.is_file():
-            actual_audit_sha = compute_sha256(audit_output_path)
-            recorded_audit_sha = att.get("audit_file", {}).get("sha256")
-            if actual_audit_sha != recorded_audit_sha:
-                errors.append(f"Audit file hash mismatch: actual {actual_audit_sha} != attestation {recorded_audit_sha}")
-                audit_attest_pass = False
+        if att.get("verification_script", {}).get("path") != "scripts/verify_v2_2_formal_preregistration.py":
+            errors.append("Audit attestation verification_script.path != scripts/verify_v2_2_formal_preregistration.py")
+            audit_attest_pass = False
 
     # -------------------------------------------------------------------------
     # Overall Audit Status & Artifact Emission

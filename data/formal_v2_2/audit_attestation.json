@@ -5,16 +5,17 @@
   "current_commit": "8b6d4a620494add5ad2091bd2f45e3e489869292",
   "audit_file": {
     "path": "data/formal_v2_2/formal_preregistration_audit.json",
-    "sha256": "cd34a7adae4d843e68b0932eb0bac393799e005218847aab5aea1cce730ef15d",
+    "sha256": "cfa5e6ce247d2cc94d0af259b15de2124ff277a9f9d9bd4a94109bc2bd3fd67a",
     "audit_verdict": "PASS"
   },
   "verification_script": {
     "path": "scripts/verify_v2_2_formal_preregistration.py",
-    "sha256": "61d470e74f6f87f4d82fc4847586a623fc1600b31e39f89053857bb62f09ca3d"
+    "sha256": "ba923ad42b17e9b57da077d2db70c32f8caef6324bd7ed4ab23df08079be082c"
   },
   "preregistration_files": {
     "manifest_path": "data/formal_v2_2/protocol_preregistration.json",
     "discovery_protocol_path": "data/formal_v2_2/discovery_protocol.json",
+    "discovery_freeze_path": "data/formal_v2_2/discovery_protocol_freeze.json",
     "firewall_path": "data/freeze/protocol_v2_2_formal_data_firewall.json"
   },
   "attestation_verdict": "ATTESTED_VALID",

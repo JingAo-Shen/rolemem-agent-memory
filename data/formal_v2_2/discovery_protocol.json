@@ -1,15 +1,25 @@
 {
   "protocol_version": "2.2-formal-v1.0",
   "protocol_type": "DISCOVERY_REPRODUCIBILITY_SPECIFICATION",
+  "status": "FROZEN_DISCOVERY_PROTOCOL",
   "created_at": "2026-09-26T09:30:00+08:00",
+  "frozen_at": "2026-09-26T09:40:00+08:00",
   "discovery_parameters": {
     "search_date": "2026-09-26",
     "random_seed": 3407,
+    "target_repository_count": 25,
+    "min_accepted_repositories": 20,
+    "max_accepted_repositories": 30,
+    "popularity_bias_elimination": {
+      "stars_threshold_status": "EXCLUDED",
+      "download_counts_status": "EXCLUDED",
+      "watcher_counts_status": "EXCLUDED",
+      "rationale": "Popularity metrics (such as GitHub star counts, download volumes, or social metrics) are strictly excluded from candidate filtering and ranking to eliminate popularity bias and ensure the benchmark represents authentic, diverse software engineering projects."
+    },
     "github_query_constraints": {
       "language": "Python",
       "is_fork": false,
       "is_archived": false,
-      "min_stars": 50,
       "min_non_merge_commits": 100,
       "min_history_years": 2
     }
@@ -44,8 +54,22 @@
     ],
     "category_inclusion_invariant": "Category balance CANNOT influence repository inclusion or exclusion. Repositories entering the candidate pool are evaluated strictly against objective history, activity, and test suite criteria. Functional categories serve as descriptive metadata for sample characterization, not as an inclusion quota."
   },
+  "seeded_sampling_specification": {
+    "algorithm": "Deterministic Seeded Pseudorandom Shuffle",
+    "prng_engine": "Python random.Random(seed=3407) / SHA256-keyed deterministic permutation",
+    "fixed_seed": 3407,
+    "sampling_steps": [
+      "1. Collect all candidate repositories satisfying objective inclusion criteria and passing contamination blacklist.",
+      "2. Sort candidates alphabetically by canonical repository URL to establish deterministic base ordering.",
+      "3. Apply seeded permutation using seed 3407.",
+      "4. Select top N_target = 25 repositories sequentially from the permuted sequence.",
+      "5. If total eligible candidates N < 20, record FORMAL_REPOSITORY_SHORTFALL and halt."
+    ],
+    "invariance_guarantee": "Given the candidate pool and seed 3407, the selected repository list is mathematically unique and immutable."
+  },
   "repository_selection_report_schema": {
     "description": "Strict schema for formal repository selection reports. Enforces recording of repository metadata only, prohibiting any transition, claim, or outcome leakage.",
+    "target_artifact": "data/formal_v2_2/formal_repository_selection.json",
     "allowed_metadata_fields": [
       "repository_name",
       "repository_url",
@@ -54,7 +78,8 @@
       "commit_count",
       "test_availability",
       "license",
-      "primary_language_fraction"
+      "primary_language_fraction",
+      "selection_rank"
     ],
     "prohibited_fields": [
       "claim",
@@ -65,7 +90,8 @@
       "expected_labels",
       "staleness",
       "rolemem_result",
-      "validity"
+      "validity",
+      "difficulty"
     ],
     "field_specifications": {
       "repository_name": "String identifier (owner/name or canonical package name)",
@@ -75,7 +101,8 @@
       "commit_count": "Integer: total non-merge commits in primary branch",
       "test_availability": "String: description of test framework and test path (e.g. pytest under tests/)",
       "license": "String: SPDX license identifier or license description",
-      "primary_language_fraction": "Float: percentage of Python source code in repository"
+      "primary_language_fraction": "Float: percentage of Python source code in repository",
+      "selection_rank": "Integer: deterministic rank index (1 to N) from seeded permutation"
     }
   }
 }
