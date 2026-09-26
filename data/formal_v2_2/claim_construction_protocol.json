@@ -1,0 +1,299 @@
+{
+  "protocol_version": "2.2-formal-v1.0",
+  "protocol_type": "CLAIM_CONSTRUCTION_SPECIFICATION",
+  "status": "FROZEN_CLAIM_CONSTRUCTION_PROTOCOL",
+  "created_at": "2026-09-26T13:30:00+08:00",
+  "frozen_at": "2026-09-26T13:35:00+08:00",
+  "transition_manifest_linkage": {
+    "path": "data/formal_v2_2/formal_transition_manifest.json",
+    "sha256": "a90a4ea9b7820f4f0378673ac5aa45c27f8664876e746b6e1950c5002fcf987b",
+    "transition_freeze_tag": "protocol-v2.2-formal-transition-selection-freeze",
+    "transition_count": 50,
+    "repository_count": 25
+  },
+  "claim_source_boundary": {
+    "role_separation": {
+      "memory_author": {
+        "isolation_level": "STRICT_BASE_ONLY_ISOLATION",
+        "visible_scope": [
+          "Base repository source tree at base_commit (modules, classes, functions, variables)",
+          "Base documentation at base_commit (README, docs/, docstrings, API reference)",
+          "Base test suite at base_commit (tests/, test fixtures, assertions valid at base commit)",
+          "Base package metadata / manifests at base_commit (pyproject.toml, setup.py, requirements.txt, setup.cfg)"
+        ],
+        "prohibited_scope": [
+          "Target commit snapshot or ref (target_commit)",
+          "Transition diff or commit history between base_commit and target_commit (git diff, git log)",
+          "Future documentation, changelogs, release notes for versions > base_ref",
+          "Future test suite or test executions at target_commit",
+          "Gold validity labels (VALID/STALE)",
+          "RoleMem algorithm execution, predictions, escalations, or confidence scores"
+        ],
+        "purpose": "Construct factual, verified historical memory claims representing exact knowledge state at base_commit without any awareness of downstream software evolution."
+      },
+      "validity_adjudicator": {
+        "activation_phase": "Phase S4 Gold Adjudication (strictly post-claim freeze)",
+        "visible_scope": [
+          "Frozen base claim",
+          "Target commit source tree at target_commit",
+          "Target test suite at target_commit",
+          "Target documentation at target_commit",
+          "Target environment and AST state"
+        ],
+        "prohibited_scope": [
+          "RoleMem algorithm predictions",
+          "Model decisions",
+          "Escalation traces"
+        ],
+        "purpose": "Adjudicate whether the frozen historical memory claim remains temporally VALID or has become STALE at target_commit."
+      }
+    }
+  },
+  "claim_taxonomy": {
+    "categories": {
+      "API": {
+        "description": "Structural interfaces, public symbol availability, signatures, and callable definitions.",
+        "claim_types": [
+          "SYMBOL_EXISTS",
+          "ATTRIBUTE_EXISTS",
+          "IMPORT_PATH_VALID",
+          "CALLABLE",
+          "SIGNATURE_COMPATIBLE"
+        ]
+      },
+      "BEHAVIOR": {
+        "description": "Observable runtime contracts, return value invariants, default parameters, and functional transformations.",
+        "claim_types": [
+          "DEFAULT_VALUE",
+          "RETURN_VALUE",
+          "BEHAVIORAL_CONTRACT"
+        ]
+      },
+      "CONFIGURATION": {
+        "description": "Settings, environment flags, config keys, default configuration parameters, and initialization options.",
+        "claim_types": [
+          "DEFAULT_VALUE",
+          "ATTRIBUTE_EXISTS"
+        ]
+      },
+      "DEPENDENCY": {
+        "description": "Package requirements, minimum/maximum dependency version constraints, optional feature extras, and external library bindings.",
+        "claim_types": [
+          "DEPENDENCY_CONTRACT"
+        ]
+      },
+      "USAGE": {
+        "description": "Deprecation warnings, migration directives, feature lifecycle status, and prescribed usage idioms.",
+        "claim_types": [
+          "DEPRECATION_STATUS"
+        ]
+      },
+      "ARCHITECTURE": {
+        "description": "Subsystem boundaries, internal package layout, module hierarchies, and namespace structure.",
+        "claim_types": [
+          "IMPORT_PATH_VALID",
+          "SYMBOL_EXISTS"
+        ]
+      }
+    },
+    "eligible_claim_types": [
+      "SYMBOL_EXISTS",
+      "ATTRIBUTE_EXISTS",
+      "IMPORT_PATH_VALID",
+      "CALLABLE",
+      "SIGNATURE_COMPATIBLE",
+      "DEFAULT_VALUE",
+      "RETURN_VALUE",
+      "DEPRECATION_STATUS",
+      "BEHAVIORAL_CONTRACT",
+      "DEPENDENCY_CONTRACT"
+    ],
+    "claim_type_definitions": {
+      "SYMBOL_EXISTS": {
+        "semantics": "Subject symbol (module, class, function, constant) is present and accessible in module namespace at base_commit.",
+        "required_slots": [
+          "module",
+          "symbol"
+        ],
+        "base_evidence_type": "AST definition or __all__ export at base_commit"
+      },
+      "ATTRIBUTE_EXISTS": {
+        "semantics": "Subject attribute or method exists on target class or object instance at base_commit.",
+        "required_slots": [
+          "module",
+          "target_class",
+          "attribute"
+        ],
+        "base_evidence_type": "Class AST body or __init__ attribute assignment at base_commit"
+      },
+      "IMPORT_PATH_VALID": {
+        "semantics": "Target import string (e.g. from pkg.sub import obj or import pkg.sub) successfully resolves without ImportError or ModuleNotFoundError at base_commit.",
+        "required_slots": [
+          "import_path",
+          "imported_symbol"
+        ],
+        "base_evidence_type": "File path / module tree structure at base_commit"
+      },
+      "CALLABLE": {
+        "semantics": "Subject symbol is invokable as a callable object / function / class instantiation at base_commit.",
+        "required_slots": [
+          "module",
+          "symbol"
+        ],
+        "base_evidence_type": "FunctionDef / AsyncFunctionDef / ClassDef or __call__ method at base_commit"
+      },
+      "SIGNATURE_COMPATIBLE": {
+        "semantics": "Subject callable accepts specified positional/keyword parameter names and arity at base_commit.",
+        "required_slots": [
+          "module",
+          "symbol",
+          "expected_parameters"
+        ],
+        "base_evidence_type": "Function/method signature and arguments in AST at base_commit"
+      },
+      "DEFAULT_VALUE": {
+        "semantics": "Parameter or attribute evaluates to a specific default literal value at base_commit.",
+        "required_slots": [
+          "module",
+          "symbol",
+          "parameter_or_attr",
+          "expected_default"
+        ],
+        "base_evidence_type": "Function parameter default AST value or module constant assignment at base_commit"
+      },
+      "RETURN_VALUE": {
+        "semantics": "Deterministic function/method invocation produces specified output structure or value given defined inputs at base_commit.",
+        "required_slots": [
+          "module",
+          "symbol",
+          "inputs",
+          "expected_output"
+        ],
+        "base_evidence_type": "Deterministic return expression or unit test assertion at base_commit"
+      },
+      "DEPRECATION_STATUS": {
+        "semantics": "Subject symbol is active (non-deprecated) or emits a specific deprecation warning at base_commit.",
+        "required_slots": [
+          "module",
+          "symbol",
+          "is_deprecated"
+        ],
+        "base_evidence_type": "warnings.warn call, decorator, or docstring deprecation notice at base_commit"
+      },
+      "BEHAVIORAL_CONTRACT": {
+        "semantics": "Concrete operational contract (e.g. exception raised on invalid input, specific state mutation, sequence ordering) verified at base_commit.",
+        "required_slots": [
+          "module",
+          "symbol",
+          "contract_type",
+          "contract_specification"
+        ],
+        "base_evidence_type": "Test assertion, raise statement, or formal docstring contract at base_commit"
+      },
+      "DEPENDENCY_CONTRACT": {
+        "semantics": "Direct specification of subject package dependency, version specifier range, or optional extra requirement grounded at base_commit.",
+        "required_slots": [
+          "package_name",
+          "dependency_name",
+          "version_constraint"
+        ],
+        "base_evidence_type": "pyproject.toml, setup.py, requirements.txt, or setup.cfg at base_commit"
+      }
+    }
+  },
+  "claim_generation_rules": {
+    "methodology": {
+      "deterministic_generation": "Claims must be generated using deterministic extraction algorithms and standardized rule templates grounded directly in AST symbols, docstrings, manifests, or base test assertions.",
+      "auditability_and_provenance": "Every generated claim must preserve verbatim provenance: exact relative file path (base_evidence_path), line number (base_evidence_lineno), verbatim code/text snippet (base_evidence_snippet), and structured assertion dictionary (structured_claim).",
+      "reproducibility": "Given the base commit tree and seed 3407, the extraction procedure yields an identical, verifiable claim set."
+    },
+    "sampling_and_scale_quotas": {
+      "transition_coverage": "All 50 transitions across all 25 repositories in formal_transition_manifest.json must be sampled.",
+      "target_claims_per_transition": 3,
+      "min_claims_per_transition": 2,
+      "max_claims_per_transition": 6,
+      "max_claims_per_repository": 8,
+      "benchmark_scale": {
+        "min_total_claims": 100,
+        "target_total_claims": 150,
+        "max_total_claims": 200
+      }
+    },
+    "claim_type_cap_pre_gold_invariant": {
+      "max_single_claim_type_percentage": 50,
+      "rule": "No single claim type (e.g. SYMBOL_EXISTS) may exceed 50% of the total claims in the benchmark.",
+      "execution_timing": "The 50% single claim-type cap MUST strictly be evaluated and enforced BEFORE target validity gold adjudication. It applies exclusively to frozen base-state memory claims without any knowledge or consideration of target-state validity, staleness, or ground truth."
+    },
+    "natural_prevalence_guarantee": {
+      "unbiased_natural_distribution": "Claims represent natural historical agent memories at base state. Memory Authors must NOT attempt to balance or skew the expected VALID vs STALE distribution, as the target state is strictly unseen and uninspected."
+    }
+  },
+  "claim_validation_rules": {
+    "base_truth_invariant": {
+      "required_status": "VERIFIED",
+      "verification_method": "Every candidate claim must evaluate to TRUE at base_commit. If a claim cannot be conclusively verified against base AST, documentation, or executable tests at base_commit, it is marked EXCLUDE_INVALID_HISTORICAL_MEMORY and permanently dropped from the formal benchmark pool.",
+      "prohibition_of_synthetic_hallucinations": "Fictitious or synthetic claims not grounded in base_commit code/docs/tests are strictly excluded."
+    },
+    "quality_gates": {
+      "well_formed_syntax": "The claim statement must be syntactically well-formed natural language in raw_statement and a strictly typed JSON object in structured_claim.",
+      "unambiguous_symbol_binding": "Structured claims must specify fully qualified module paths or explicit object targets (module, symbol, attribute, parameter).",
+      "behavioral_concreteness": "Behavioral claims must assert testable invariants (return types/values, exceptions raised on specific inputs, or observable state mutations). Vague or subjective claims are prohibited."
+    }
+  },
+  "claim_metadata_schema": {
+    "target_artifact": "data/formal_v2_2/formal_inputs.jsonl (to be generated and frozen in Phase S3/S5)",
+    "allowed_metadata_fields": [
+      "claim_id",
+      "transition_id",
+      "repository_name",
+      "base_commit",
+      "claim_category",
+      "claim_type",
+      "raw_statement",
+      "structured_claim",
+      "base_evidence_path",
+      "base_evidence_lineno",
+      "base_evidence_snippet",
+      "base_truth_status"
+    ],
+    "prohibited_fields": [
+      "target_commit_inspected",
+      "gold_label",
+      "target_label",
+      "validity",
+      "staleness",
+      "expected_outcome",
+      "gold_adjudication",
+      "rolemem_result",
+      "rolemem_prediction",
+      "prediction",
+      "confidence",
+      "escalation_level",
+      "difficulty",
+      "solvability",
+      "api_diff",
+      "modified_symbols",
+      "deleted_symbols"
+    ],
+    "field_specifications": {
+      "claim_id": "String: Opaque unique identifier (e.g. CLM-001 or FV22-XXXXXX)",
+      "transition_id": "String: Transition linkage identifier (e.g. TR-001 to TR-050)",
+      "repository_name": "String: Repository owner/name from formal selection",
+      "base_commit": "String: 40-character hex commit SHA at base state",
+      "claim_category": "String: One of the 6 categories (API, BEHAVIOR, CONFIGURATION, DEPENDENCY, USAGE, ARCHITECTURE)",
+      "claim_type": "String: One of the 10 eligible claim types",
+      "raw_statement": "String: Natural language statement of historical agent memory",
+      "structured_claim": "Object: Structured dictionary of formal query slots (subject, relation, target, kwargs, contract)",
+      "base_evidence_path": "String: Relative path to file in repository at base_commit containing grounding evidence",
+      "base_evidence_lineno": "Integer: 1-based line number of evidence in base file",
+      "base_evidence_snippet": "String: Verbatim text/code snippet from base repository proving claim truth at base_commit",
+      "base_truth_status": "String: Must be VERIFIED"
+    }
+  },
+  "claim_firewall": {
+    "base_only_isolation": "Phase S3 execution is strictly confined to base repository snapshot. Target commits, git diffs, and future states are firewalled.",
+    "zero_premature_claims": "During Phase S3 protocol design, zero concrete claims or input files (formal_inputs.jsonl) may be created.",
+    "zero_gold_leakage": "Zero gold labels (VALID/STALE) may be assigned or stored anywhere.",
+    "algorithm_immutability": "Zero modifications to frozen algorithm code (src/claim_validity/** and src/evidence_escalation/**) against fe62749b."
+  }
+}

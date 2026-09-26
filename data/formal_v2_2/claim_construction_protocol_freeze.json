@@ -1,0 +1,47 @@
+{
+  "protocol_version": "2.2-formal-v1.0",
+  "freeze_type": "CLAIM_CONSTRUCTION_PROTOCOL_FREEZE",
+  "frozen_at": "2026-09-26T05:28:51.580676+00:00",
+  "freeze_tag": "protocol-v2.2-claim-construction-protocol-freeze",
+  "artifacts": {
+    "claim_construction_protocol": {
+      "path": "data/formal_v2_2/claim_construction_protocol.json",
+      "sha256": "c3ac59e89007898f8fb912a2cc0845e5bd6ad05006dca6ba54573df548a00763"
+    },
+    "claim_protocol_attestation": {
+      "path": "data/formal_v2_2/claim_protocol_attestation.json",
+      "sha256": "2b4203375ec716fda9bdb8b992f18c4787864a02d6869e9f38b08972aefe4e7b"
+    },
+    "formal_transition_manifest": {
+      "path": "data/formal_v2_2/formal_transition_manifest.json",
+      "sha256": "a90a4ea9b7820f4f0378673ac5aa45c27f8664876e746b6e1950c5002fcf987b"
+    },
+    "formal_transition_selection_freeze": {
+      "path": "data/formal_v2_2/formal_transition_selection_freeze.json",
+      "sha256": "f541e81ea2aaea12d5a227d685c91e2fa3c3e3dc48cf246a9c53fa5b36d45aa6"
+    },
+    "formal_repository_selection": {
+      "path": "data/formal_v2_2/formal_repository_selection.json",
+      "sha256": "37bbfab72d119c52b680294d27bf604a2e038c012a238d595452419d85dacb57"
+    },
+    "formal_repository_selection_freeze": {
+      "path": "data/formal_v2_2/formal_repository_selection_freeze.json",
+      "sha256": "87b8657a94ea9f84767f4b0cc0723cdb6f024eaf94c4b561a0eca79948fda7a6"
+    }
+  },
+  "source_repositories_count": 25,
+  "source_transitions_count": 50,
+  "random_seed": 3407,
+  "compliance_assertions": {
+    "base_only_source_boundary_enforced": true,
+    "target_diff_and_future_state_prohibited": true,
+    "taxonomy_six_categories_ten_types_defined": true,
+    "fifty_percent_single_type_cap_pre_gold_enforced": true,
+    "base_truth_invariant_verified_enforced": true,
+    "zero_claims_generated_in_protocol_phase": true,
+    "zero_gold_labels_created": true,
+    "zero_rolemem_predictions_run": true,
+    "frozen_algorithm_immutable": true
+  },
+  "claim_protocol_freeze_verdict": "FROZEN_VALID"
+}
